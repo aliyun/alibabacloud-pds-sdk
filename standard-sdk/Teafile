@@ -1,0 +1,58 @@
+{
+	"scope": "alibabacloud",
+	"name": "standard",
+	"version": "1.0.0",
+	"main": "./main.tea",
+	"maintainers": [
+		{
+			"name": "Alibaba Cloud SDK",
+			"email": "sdk-team@alibabacloud.com"
+		}
+	],
+	"releases": {
+		"go": "github.com/alibabacloud-go/standard-sdk/client:v1.0.0",
+		"ts": "@alicloud/standard-sdk:^1.0.0",
+		"java": "com.aliyun:standard-client:1.0.0",
+		"csharp": "Aliyun.SDK.standard.Client:1.0.",
+		"php": "alibabacloud/standard-sdk:^0.1.0",
+		"python": "alibabacloud_standard_sdk:0.0.1"
+	},
+	"java": {
+		"package": "com.aliyun.standard.client"
+	},
+	"csharp": {
+		"namespace": "Aliyun.SDK.standard.Client"
+	},
+	"swift5": {
+		"package": "AliyunstandardSDK"
+	},
+	"python": {
+		"package": "alibabacloud_standard_sdk",
+		"clientName": "client",
+		"packageInfo": {
+			"name": "alibabacloud_standard_sdk",
+			"desc": "Alibaba Cloud standard SDK Library for Python",
+			"github": "https://github.com/aliyun/aliyun-ccp",
+			"author": "Alibaba Cloud SDK",
+			"email": "sdk-team@alibabacloud.com"
+		}
+	},
+	"php": {
+		"package": "Aliyun.standard.SDK",
+		"clientName": "standard",
+		"packageInfo": {
+			"name": "alibabacloud/standard-sdk",
+			"desc": "Alibaba Cloud standard SDK Library for PHP",
+			"github": "https://github.com/aliyun/aliyun-ccp",
+			"files": {
+				"LICENSE": "../LICENSE"
+			}
+		}
+	},
+	"libraries": {
+		"Util": "darabonba:Util:*",
+		"ROAUtil": "alibabacloud:ROAUtil:*",
+		"Credential": "alibabacloud:Credential:*",
+		"AccessTokenCredential": "alibabacloud:AccessTokenCredential:*"
+	}
+}
