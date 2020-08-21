@@ -1,0 +1,62 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.sum
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+.idea/
+*/java/target/*
+*/java/*.iml
+.classpath
+.project
+.vscode
+.settings
+doc/
+
+.nyc_output/
+node_modules/
+coverage/
+coverage.out
+dist/
+.DS_Store
+.history/
+coverage.html
+.libraries.json
+libraries/
+
+#csharp
+**/csharp/**/bin/
+**/csharp/**/obj/
+**/csharp/**/.vs/
+**/cs/**/bin/
+**/cs/**/obj/
+**/cs/**/.vs/
+
+#php
+vendor/
+.php_cs.cache
+composer.lock
+
+#scripts
+*.sh
+
+#python
+**/python/**/__pycache__/
