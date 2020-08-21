@@ -1,6 +1,6 @@
 {
 	"scope": "alibabacloud",
-	"name": "standard",
+	"name": "pds",
 	"version": "1.0.0",
 	"main": "./main.tea",
 	"maintainers": [
@@ -10,40 +10,40 @@
 		}
 	],
 	"releases": {
-		"go": "github.com/alibabacloud-go/standard-sdk/client:v1.0.0",
-		"ts": "@alicloud/standard-sdk:^1.0.0",
+		"go": "github.com/alibabacloud-go/pds-sdk/client:v1.0.0",
+		"ts": "@alicloud/psd-sdk:^1.0.0",
 		"java": "com.aliyun:aliyun-sdk-pds:1.0.0",
-		"csharp": "Aliyun.SDK.standard.Client:1.0.",
-		"php": "alibabacloud/standard-sdk:^0.1.0",
-		"python": "alibabacloud_standard_sdk:0.0.1"
+		"csharp": "Aliyun.SDK.PDS.Client:1.0.",
+		"php": "alibabacloud/pds-sdk:^0.1.0",
+		"python": "alibabacloud_pds_sdk:0.0.1"
 	},
 	"java": {
 		"package": "com.aliyun.pds.client"
 	},
 	"csharp": {
-		"namespace": "Aliyun.SDK.standard.Client"
+		"namespace": "Aliyun.SDK.PDS.Client"
 	},
 	"swift5": {
-		"package": "AliyunstandardSDK"
+		"package": "AliyunPDSSDK"
 	},
 	"python": {
-		"package": "alibabacloud_standard_sdk",
+		"package": "alibabacloud_pds_sdk",
 		"clientName": "client",
 		"packageInfo": {
-			"name": "alibabacloud_standard_sdk",
-			"desc": "Alibaba Cloud standard SDK Library for Python",
-			"github": "https://github.com/aliyun/aliyun-ccp",
+			"name": "alibabacloud_pds_sdk",
+			"desc": "Alibaba Cloud PDS SDK Library for Python",
+			"github": "https://github.com/aliyun/alibabacloud-pds-sdk",
 			"author": "Alibaba Cloud SDK",
 			"email": "sdk-team@alibabacloud.com"
 		}
 	},
 	"php": {
-		"package": "Aliyun.standard.SDK",
-		"clientName": "standard",
+		"package": "Aliyun.PDS.SDK",
+		"clientName": "pds",
 		"packageInfo": {
-			"name": "alibabacloud/standard-sdk",
-			"desc": "Alibaba Cloud standard SDK Library for PHP",
-			"github": "https://github.com/aliyun/aliyun-ccp",
+			"name": "alibabacloud/pds-sdk",
+			"desc": "Alibaba Cloud PDS SDK Library for PHP",
+			"github": "https://github.com/aliyun/alibabacloud-pds-sdk",
 			"files": {
 				"LICENSE": "../LICENSE"
 			}
