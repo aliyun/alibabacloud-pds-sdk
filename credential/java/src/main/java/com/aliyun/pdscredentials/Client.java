@@ -100,7 +100,7 @@ public class Client {
         request_.method = "POST";
         request_.pathname = "/v2/oauth/token";
         request_.headers = TeaConverter.buildMap(
-                new TeaPair("host", getHost(this.endpoint, this.domainId + ".api.alicloudpds.com")),
+                new TeaPair("host", getHost(this.endpoint, this.domainId + ".api.aliyunpds.com")),
                 new TeaPair("content-type", "application/x-www-form-urlencoded; charset=utf-8"),
                 new TeaPair("date", getGMTDate()),
                 new TeaPair("accept", "application/json"),
