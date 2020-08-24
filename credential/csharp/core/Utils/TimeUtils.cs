@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AlibabaCloud.AccessTokenCredential
+namespace AlibabaCloud.PDS.Credential
 {
     internal static class TimeUtils
     {

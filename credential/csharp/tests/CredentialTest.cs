@@ -1,7 +1,7 @@
 using System;
 using System.Net;
-using AlibabaCloud.AccessTokenCredential;
-using AlibabaCloud.AccessTokenCredential.Models;
+using AlibabaCloud.PDS.Credential;
+using AlibabaCloud.PDS.Credential.Models;
 using Xunit;
 
 namespace tests

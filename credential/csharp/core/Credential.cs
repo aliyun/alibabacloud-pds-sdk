@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 using Tea;
 using Tea.Utils;
 
-using AlibabaCloud.AccessTokenCredential.Models;
+using AlibabaCloud.PDS.Credential.Models;
 using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace AlibabaCloud.AccessTokenCredential
+namespace AlibabaCloud.PDS.Credential
 {
     public class Credential 
     {
