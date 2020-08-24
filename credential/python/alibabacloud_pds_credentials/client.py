@@ -56,7 +56,7 @@ class Client(object):
         tea_request.method = "POST"
         tea_request.pathname = "/v2/oauth/token"
         headers = {
-            "host": self._endpoint if self._endpoint else self._domain_id + ".api.alicloudpds.com",
+            "host": self._endpoint if self._endpoint else self._domain_id + ".api.aliyunpds.com",
             "content-type": "application/x-www-form-urlencoded; charset=utf-8",
             "date": datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT'),
             "accept": "application/json",
