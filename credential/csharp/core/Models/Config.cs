@@ -6,7 +6,7 @@ using System.IO;
 
 using Tea;
 
-namespace AlibabaCloud.AccessTokenCredential.Models
+namespace AlibabaCloud.PDS.Credential.Models
 {
     public class Config : TeaModel {
         [NameInMap("endpoint")]

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using AlibabaCloud.AccessTokenCredential;
+using AlibabaCloud.PDS.Credential;
 using Xunit;
 
 namespace tests.Utils
