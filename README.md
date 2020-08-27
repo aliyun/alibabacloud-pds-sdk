@@ -14,6 +14,10 @@ English | [简体中文](README-CN.md)
 
 - [pds-sdk](./pds/go/README.md)
 
+### PHP
+
+- [pds-sdk](/pds/php/README.md)
+
 ## Issues
 
 [Opening an Issue](https://github.com/aliyun/alibabacloud-pds-sdk/issues/new), Issues not conforming to the guidelines may be closed immediately.
