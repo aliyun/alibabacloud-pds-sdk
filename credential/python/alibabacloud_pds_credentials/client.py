@@ -3,6 +3,7 @@
 import time
 import datetime
 import json
+import calendar
 
 from Tea.exceptions import TeaException
 from Tea.request import TeaRequest
@@ -48,7 +49,7 @@ class Client(object):
             return False
         expire_time_str = self._expire_time.replace('T', ' ').replace('Z', '')
         time_array = time.strptime(expire_time_str, "%Y-%m-%d %H:%M:%S")
-        time_stamp = int(time.mktime(time_array))
+        time_stamp = calendar.timegm(time_array)
         return int(time.mktime(time.localtime())) >= (time_stamp - 180)
 
     def refresh_access_token(self):
