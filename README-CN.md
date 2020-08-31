@@ -11,7 +11,7 @@
 
 ### Go
 
-- [pds-sdk](./pds/go/README-CN.md)
+- [pds-sdk](./pds/golang/README-CN.md)
 
 ### PHP
 
