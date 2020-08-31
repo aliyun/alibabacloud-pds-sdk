@@ -16,7 +16,11 @@ English | [简体中文](README-CN.md)
 
 ### PHP
 
-- [pds-sdk](/pds/php/README.md)
+- [pds-sdk](./pds/php/README.md)
+
+### Python
+
+- [pds-sdk](./pds/python/README.md)
 
 ## Issues
 
