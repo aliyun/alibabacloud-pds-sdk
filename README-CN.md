@@ -15,7 +15,12 @@
 
 ### PHP
 
-- [pds-sdk](/pds/php/README-CN.md)
+- [pds-sdk](./pds/php/README-CN.md)
+
+### Python
+
+- [pds-sdk](./pds/python/README-CN.md)
+
 
 ## 问题
 
