@@ -12,7 +12,7 @@ English | [简体中文](README-CN.md)
 
 ### Go
 
-- [pds-sdk](./pds/go/README.md)
+- [pds-sdk](./pds/golang/README.md)
 
 ### PHP
 
