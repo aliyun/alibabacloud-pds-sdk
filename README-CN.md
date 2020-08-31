@@ -26,6 +26,10 @@
 
 - [pds-sdk](/pds/csharp/README-CN.md)
 
+### TypeScript
+
+- [pds-sdk](./pds/ts/README-CN.md)
+
 ## 问题
 
 [Opening an Issue](https://github.com/aliyun/alibabacloud-pds-sdk/issues/new)，不符合指南的问题可能会立即关闭。
