@@ -65,10 +65,10 @@ namespace tests
             };
             Credential accessTokenCredential = new Credential(config);
             Assert.Equal("2019-10-01T00:00:00", accessTokenCredential.GetExpireTime());
-            Assert.Throws<WebException>(() => { string accessToken = accessTokenCredential.GetAccessToken(); });
+            Assert.Throws<AggregateException>(() => { string accessToken = accessTokenCredential.GetAccessToken(); });
 
             accessTokenCredential.SetAccessToken("accessToken");
-            Assert.Throws<WebException>(() => { string accessToken = accessTokenCredential.GetAccessToken(); });
+            Assert.Throws<AggregateException>(() => { string accessToken = accessTokenCredential.GetAccessToken(); });
 
             string dateFuture = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss");
             accessTokenCredential.SetExpireTime(dateFuture);
