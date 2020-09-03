@@ -12,13 +12,13 @@
 	"releases": {
 		"go": "github.com/alibabacloud-go/hosting-sdk/client:v1.0.0",
 		"ts": "@alicloud/hosting-sdk:^1.0.0",
-		"java": "com.aliyun:hosting-client:1.0.0",
+		"java": "com.aliyun:aliyun-sdk-pds-hosting-mode:0.0.1",
 		"csharp": "Aliyun.SDK.hosting.Client:1.0.",
 		"php": "alibabacloud/hosting-sdk:^0.1.0",
 		"python": "alibabacloud_hosting_sdk:0.0.1"
 	},
 	"java": {
-		"package": "com.aliyun.hosting.client"
+		"package": "com.aliyun.hosting.mode"
 	},
 	"csharp": {
 		"namespace": "Aliyun.SDK.hosting.Client"
