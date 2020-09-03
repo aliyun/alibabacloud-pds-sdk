@@ -1,0 +1,58 @@
+{
+	"scope": "alibabacloud",
+	"name": "hosting",
+	"version": "1.0.0",
+	"main": "./main.tea",
+	"maintainers": [
+		{
+			"name": "Alibaba Cloud SDK",
+			"email": "sdk-team@alibabacloud.com"
+		}
+	],
+	"releases": {
+		"go": "github.com/alibabacloud-go/hosting-sdk/client:v1.0.0",
+		"ts": "@alicloud/hosting-sdk:^1.0.0",
+		"java": "com.aliyun:hosting-client:1.0.0",
+		"csharp": "Aliyun.SDK.hosting.Client:1.0.",
+		"php": "alibabacloud/hosting-sdk:^0.1.0",
+		"python": "alibabacloud_hosting_sdk:0.0.1"
+	},
+	"java": {
+		"package": "com.aliyun.hosting.client"
+	},
+	"csharp": {
+		"namespace": "Aliyun.SDK.hosting.Client"
+	},
+	"swift5": {
+		"package": "AliyunhostingSDK"
+	},
+	"python": {
+		"package": "alibabacloud_hosting_sdk",
+		"clientName": "client",
+		"packageInfo": {
+			"name": "alibabacloud_hosting_sdk",
+			"desc": "Alibaba Cloud hosting SDK Library for Python",
+			"github": "https://github.com/aliyun/aliyun-ccp",
+			"author": "Alibaba Cloud SDK",
+			"email": "sdk-team@alibabacloud.com"
+		}
+	},
+	"php": {
+		"package": "Aliyun.hosting.SDK",
+		"clientName": "hosting",
+		"packageInfo": {
+			"name": "alibabacloud/hosting-sdk",
+			"desc": "Alibaba Cloud hosting SDK Library for PHP",
+			"github": "https://github.com/aliyun/aliyun-ccp",
+			"files": {
+				"LICENSE": "../LICENSE"
+			}
+		}
+	},
+	"libraries": {
+		"Util": "darabonba:Util:*",
+		"ROAUtil": "alibabacloud:ROAUtil:*",
+		"Credential": "alibabacloud:Credential:*",
+		"AccessTokenCredential": "alibabacloud:AccessTokenCredential:*"
+	}
+}
