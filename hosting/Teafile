@@ -1,7 +1,7 @@
 {
 	"scope": "alibabacloud",
 	"name": "hosting",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"main": "./main.tea",
 	"maintainers": [
 		{
@@ -13,7 +13,7 @@
 		"go": "github.com/alibabacloud-go/hosting-sdk/client:v1.0.0",
 		"ts": "@alicloud/hosting-sdk:^1.0.0",
 		"java": "com.aliyun:aliyun-sdk-pds-hosting-mode:0.0.1",
-		"csharp": "Aliyun.SDK.hosting.Client:1.0.",
+		"csharp": "Aliyun.SDK.Hosting.Client:1.0.0",
 		"php": "alibabacloud/hosting-sdk:^0.1.0",
 		"python": "alibabacloud_hosting_sdk:0.0.1"
 	},
@@ -21,7 +21,7 @@
 		"package": "com.aliyun.hosting.mode"
 	},
 	"csharp": {
-		"namespace": "Aliyun.SDK.hosting.Client"
+		"namespace": "Aliyun.SDK.Hosting.Client"
 	},
 	"swift5": {
 		"package": "AliyunhostingSDK"
