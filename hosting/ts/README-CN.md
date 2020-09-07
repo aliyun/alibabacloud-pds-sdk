@@ -2,7 +2,7 @@
 
 ![](https://aliyunsdk-pages.alicdn.com/icons/AlibabaCloud.svg)
 
-## Alibaba Cloud Hosting SDK for TypeScript/Node.js
+## Alibaba Cloud PDS Hosting SDK for TypeScript/Node.js
 
 ## 要求
 
@@ -13,7 +13,7 @@ Node.js >= 8.x
 你可以使用 `npm` 来管理你的依赖，并通过下面命令安装依赖并写入package.json
 
 ```sh
-$ npm install @alicloud/hosting-sdk -S
+$ npm install @alicloud/pds-hosting-sdk -S
 ```
 
 ## 问题

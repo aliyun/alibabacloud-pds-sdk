@@ -1,5 +1,5 @@
 {
-  "name": "@alicloud/hosting-sdk",
+  "name": "@alicloud/pds-hosting-sdk",
   "version": "1.0.0",
   "description": "",
   "main": "dist/client.js",
