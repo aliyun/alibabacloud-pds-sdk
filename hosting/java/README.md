@@ -2,7 +2,7 @@ English | [简体中文](README-CN.md)
 ![](https://aliyunsdk-pages.alicdn.com/icons/AlibabaCloud.svg)
 
 ## Alibaba Cloud PDS SDK for Java
-[![Latest Stable Version](https://img.shields.io/maven-central/v/com.aliyun/aliyun-sdk-pds.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.aliyun%22%20AND%20a:%22aliyun-sdk-pds%22)
+[![Latest Stable Version](https://img.shields.io/maven-central/v/com.aliyun/aliyun-sdk-pds-hosting-mode.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.aliyun%22%20AND%20a:%22aliyun-sdk-pds-hosting-mode%22)
 
 ## Requirements
 - It's necessary for you to make sure your system have installed a Java environment which is new than 1.8.
@@ -12,7 +12,7 @@ English | [简体中文](README-CN.md)
 ```xml
 <dependency>
     <groupId>com.aliyun</groupId>
-    <artifactId>aliyun-sdk-pds</artifactId>
+    <artifactId>aliyun-sdk-pds-hosting-mode</artifactId>
     <version>Use the version shown in the maven badge</version>
 </dependency>
 ```
@@ -24,7 +24,7 @@ English | [简体中文](README-CN.md)
 Detailed changes for each release are documented in the [release notes](./ChangeLog.txt).
 
 ## References
-* [Latest Release](https://github.com/aliyun/alibabacloud-pds-sdk/tree/master/pds/java)
+* [Latest Release](https://github.com/aliyun/alibabacloud-pds-sdk/tree/master/hosting/java)
 
 ## License
 [Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0)

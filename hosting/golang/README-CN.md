@@ -21,7 +21,7 @@ $ go get github.com/alibabacloud-go/hosting-sdk
 每个版本的详细更改记录在[发行说明](./ChangeLog.txt)中。
 
 ## 相关
-* [最新源码](https://github.com/aliyun/alibabacloud-pds-sdk/tree/master/ccppath-sdk/go)
+* [最新源码](https://github.com/aliyun/alibabacloud-pds-sdk/tree/master/hosting/go)
 
 ## 许可证
 [Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0)
