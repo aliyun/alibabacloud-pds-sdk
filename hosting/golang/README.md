@@ -20,7 +20,7 @@ $ go get github.com/alibabacloud-go/hosting-sdk
 Detailed changes for each release are documented in the [release notes](./ChangeLog.txt).
 
 ## References
-* [Latest Release](https://github.com/aliyun/alibabacloud-pds-sdk/tree/master/ccppath-sdk/go)
+* [Latest Release](https://github.com/aliyun/alibabacloud-pds-sdk/tree/master/hosting/go)
 
 ## License
 [Apache-2.0](http://www.apache.org/licenses/LICENSE-2.0)
