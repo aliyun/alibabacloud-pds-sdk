@@ -1,7 +1,7 @@
 {
 	"scope": "alibabacloud",
 	"name": "hosting",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"main": "./main.tea",
 	"maintainers": [
 		{
@@ -10,12 +10,12 @@
 		}
 	],
 	"releases": {
-		"go": "github.com/alibabacloud-go/hosting-sdk/client:v1.0.0",
-		"ts": "@alicloud/hosting-sdk:^1.0.0",
+		"go": "github.com/alibabacloud-go/pds-hosting-sdk/client:v1.0.0",
+		"ts": "@alicloud/pds-hosting-sdk:^1.0.0",
 		"java": "com.aliyun:aliyun-sdk-pds-hosting-mode:0.0.1",
 		"csharp": "Aliyun.SDK.Hosting.Client:1.0.0",
-		"php": "alibabacloud/hosting-sdk:^0.1.0",
-		"python": "alibabacloud_hosting_sdk:0.0.1"
+		"php": "alibabacloud/pds-hosting-sdk:^0.1.0",
+		"python": "alibabacloud_pds_hosting_sdk:0.0.1"
 	},
 	"java": {
 		"package": "com.aliyun.hosting.mode"
@@ -24,13 +24,13 @@
 		"namespace": "Aliyun.SDK.Hosting.Client"
 	},
 	"swift5": {
-		"package": "AliyunhostingSDK"
+		"package": "AliyunHostingSDK"
 	},
 	"python": {
-		"package": "alibabacloud_hosting_sdk",
+		"package": "alibabacloud_pds_hosting_sdk",
 		"clientName": "client",
 		"packageInfo": {
-			"name": "alibabacloud_hosting_sdk",
+			"name": "alibabacloud_pds_hosting_sdk",
 			"desc": "Alibaba Cloud hosting SDK Library for Python",
 			"github": "https://github.com/aliyun/aliyun-ccp",
 			"author": "Alibaba Cloud SDK",
@@ -38,10 +38,10 @@
 		}
 	},
 	"php": {
-		"package": "Aliyun.hosting.SDK",
+		"package": "Aliyun.Hosting.SDK",
 		"clientName": "hosting",
 		"packageInfo": {
-			"name": "alibabacloud/hosting-sdk",
+			"name": "alibabacloud/pds-hosting-sdk",
 			"desc": "Alibaba Cloud hosting SDK Library for PHP",
 			"github": "https://github.com/aliyun/aliyun-ccp",
 			"files": {

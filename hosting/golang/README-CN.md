@@ -2,7 +2,7 @@
 
 ![](https://aliyunsdk-pages.alicdn.com/icons/AlibabaCloud.svg)
 
-## Alibaba Cloud Hosting SDK for Go
+## Alibaba Cloud PDS Hosting SDK for Go
 
 ## 要求
 - 您需要确保本地安装的 go 环境版本大于 1.12.0.
@@ -11,7 +11,7 @@
 
 你可以使用 `go mod` 来管理你的依赖，
 ```sh
-$ go get github.com/alibabacloud-go/hosting-sdk
+$ go get github.com/alibabacloud-go/pds-hosting-sdk
 ```
 
 ## 问题

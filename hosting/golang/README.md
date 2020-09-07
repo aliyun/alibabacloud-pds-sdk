@@ -1,7 +1,7 @@
 English | [简体中文](README-CN.md)
 ![](https://aliyunsdk-pages.alicdn.com/icons/AlibabaCloud.svg)
 
-## Alibaba Cloud Hosting SDK for Go
+## Alibaba Cloud PDS Hosting SDK for Go
 
 ## Requirements
 - It's necessary for you to make sure your system have installed a Go environment which is new than 1.12.0.
@@ -10,7 +10,7 @@ English | [简体中文](README-CN.md)
 If you use `go mod` to manage your dependence, you can use the following command:
 
 ```sh
-$ go get github.com/alibabacloud-go/hosting-sdk
+$ go get github.com/alibabacloud-go/pds-hosting-sdk
 ```
 
 ## Issues
