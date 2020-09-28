@@ -3,6 +3,9 @@
 
 ## 阿里云 PDS SDK
 
+[![Travis Build Status](https://travis-ci.org/aliyun/alibabacloud-pds-sdk.svg?branch=master)](https://travis-ci.org/aliyun/alibabacloud-pds-sdk)
+[![codecov](https://codecov.io/gh/aliyun/alibabacloud-pds-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/aliyun/alibabacloud-pds-sdk)
+
 ## 安装
 
 ### Java
