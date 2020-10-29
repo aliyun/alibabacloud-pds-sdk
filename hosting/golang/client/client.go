@@ -2547,7 +2547,7 @@ func (s *CroppingBoundary) SetWidth(v int64) *CroppingBoundary {
 type CroppingSuggestionItem struct {
 	AspectRatio      *string           `json:"aspect_ratio,omitempty" xml:"aspect_ratio,omitempty"`
 	CroppingBoundary *CroppingBoundary `json:"cropping_boundary,omitempty" xml:"cropping_boundary,omitempty"`
-	Score            *int              `json:"score,omitempty" xml:"score,omitempty"`
+	Score            *float64          `json:"score,omitempty" xml:"score,omitempty"`
 }
 
 func (s CroppingSuggestionItem) String() string {
@@ -2568,7 +2568,7 @@ func (s *CroppingSuggestionItem) SetCroppingBoundary(v *CroppingBoundary) *Cropp
 	return s
 }
 
-func (s *CroppingSuggestionItem) SetScore(v int) *CroppingSuggestionItem {
+func (s *CroppingSuggestionItem) SetScore(v float64) *CroppingSuggestionItem {
 	s.Score = &v
 	return s
 }
@@ -4203,7 +4203,7 @@ type ImageMediaResponse struct {
 	// province
 	Province *string `json:"province,omitempty" xml:"province,omitempty"`
 	// story_image_score
-	StoryImageScore *int `json:"story_image_score,omitempty" xml:"story_image_score,omitempty"`
+	StoryImageScore *float64 `json:"story_image_score,omitempty" xml:"story_image_score,omitempty"`
 	// time
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 	// township
@@ -4280,7 +4280,7 @@ func (s *ImageMediaResponse) SetProvince(v string) *ImageMediaResponse {
 	return s
 }
 
-func (s *ImageMediaResponse) SetStoryImageScore(v int) *ImageMediaResponse {
+func (s *ImageMediaResponse) SetStoryImageScore(v float64) *ImageMediaResponse {
 	s.StoryImageScore = &v
 	return s
 }
@@ -4304,16 +4304,16 @@ func (s *ImageMediaResponse) SetWidth(v int64) *ImageMediaResponse {
  *
  */
 type ImageQuality struct {
-	Clarity          *int `json:"clarity,omitempty" xml:"clarity,omitempty"`
-	ClarityScore     *int `json:"clarity_score,omitempty" xml:"clarity_score,omitempty"`
-	Color            *int `json:"color,omitempty" xml:"color,omitempty"`
-	ColorScore       *int `json:"color_score,omitempty" xml:"color_score,omitempty"`
-	CompositionScore *int `json:"composition_score,omitempty" xml:"composition_score,omitempty"`
-	Contrast         *int `json:"contrast,omitempty" xml:"contrast,omitempty"`
-	ContrastScore    *int `json:"contrast_score,omitempty" xml:"contrast_score,omitempty"`
-	Exposure         *int `json:"exposure,omitempty" xml:"exposure,omitempty"`
-	ExposureScore    *int `json:"exposure_score,omitempty" xml:"exposure_score,omitempty"`
-	OverallScore     *int `json:"overall_score,omitempty" xml:"overall_score,omitempty"`
+	Clarity          *float64 `json:"clarity,omitempty" xml:"clarity,omitempty"`
+	ClarityScore     *float64 `json:"clarity_score,omitempty" xml:"clarity_score,omitempty"`
+	Color            *float64 `json:"color,omitempty" xml:"color,omitempty"`
+	ColorScore       *float64 `json:"color_score,omitempty" xml:"color_score,omitempty"`
+	CompositionScore *float64 `json:"composition_score,omitempty" xml:"composition_score,omitempty"`
+	Contrast         *float64 `json:"contrast,omitempty" xml:"contrast,omitempty"`
+	ContrastScore    *float64 `json:"contrast_score,omitempty" xml:"contrast_score,omitempty"`
+	Exposure         *float64 `json:"exposure,omitempty" xml:"exposure,omitempty"`
+	ExposureScore    *float64 `json:"exposure_score,omitempty" xml:"exposure_score,omitempty"`
+	OverallScore     *float64 `json:"overall_score,omitempty" xml:"overall_score,omitempty"`
 }
 
 func (s ImageQuality) String() string {
@@ -4324,52 +4324,52 @@ func (s ImageQuality) GoString() string {
 	return s.String()
 }
 
-func (s *ImageQuality) SetClarity(v int) *ImageQuality {
+func (s *ImageQuality) SetClarity(v float64) *ImageQuality {
 	s.Clarity = &v
 	return s
 }
 
-func (s *ImageQuality) SetClarityScore(v int) *ImageQuality {
+func (s *ImageQuality) SetClarityScore(v float64) *ImageQuality {
 	s.ClarityScore = &v
 	return s
 }
 
-func (s *ImageQuality) SetColor(v int) *ImageQuality {
+func (s *ImageQuality) SetColor(v float64) *ImageQuality {
 	s.Color = &v
 	return s
 }
 
-func (s *ImageQuality) SetColorScore(v int) *ImageQuality {
+func (s *ImageQuality) SetColorScore(v float64) *ImageQuality {
 	s.ColorScore = &v
 	return s
 }
 
-func (s *ImageQuality) SetCompositionScore(v int) *ImageQuality {
+func (s *ImageQuality) SetCompositionScore(v float64) *ImageQuality {
 	s.CompositionScore = &v
 	return s
 }
 
-func (s *ImageQuality) SetContrast(v int) *ImageQuality {
+func (s *ImageQuality) SetContrast(v float64) *ImageQuality {
 	s.Contrast = &v
 	return s
 }
 
-func (s *ImageQuality) SetContrastScore(v int) *ImageQuality {
+func (s *ImageQuality) SetContrastScore(v float64) *ImageQuality {
 	s.ContrastScore = &v
 	return s
 }
 
-func (s *ImageQuality) SetExposure(v int) *ImageQuality {
+func (s *ImageQuality) SetExposure(v float64) *ImageQuality {
 	s.Exposure = &v
 	return s
 }
 
-func (s *ImageQuality) SetExposureScore(v int) *ImageQuality {
+func (s *ImageQuality) SetExposureScore(v float64) *ImageQuality {
 	s.ExposureScore = &v
 	return s
 }
 
-func (s *ImageQuality) SetOverallScore(v int) *ImageQuality {
+func (s *ImageQuality) SetOverallScore(v float64) *ImageQuality {
 	s.OverallScore = &v
 	return s
 }
@@ -6694,13 +6694,13 @@ func (s *StreamUploadInfo) SetUploadId(v string) *StreamUploadInfo {
  *
  */
 type SystemTag struct {
-	Confidence   *int    `json:"confidence,omitempty" xml:"confidence,omitempty"`
-	EnName       *string `json:"en_name,omitempty" xml:"en_name,omitempty"`
-	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
-	ParentEnName *string `json:"parent_en_name,omitempty" xml:"parent_en_name,omitempty"`
-	ParentName   *string `json:"parent_name,omitempty" xml:"parent_name,omitempty"`
-	Selected     *bool   `json:"selected,omitempty" xml:"selected,omitempty"`
-	TagLevel     *int64  `json:"tag_level,omitempty" xml:"tag_level,omitempty"`
+	Confidence   *float64 `json:"confidence,omitempty" xml:"confidence,omitempty"`
+	EnName       *string  `json:"en_name,omitempty" xml:"en_name,omitempty"`
+	Name         *string  `json:"name,omitempty" xml:"name,omitempty"`
+	ParentEnName *string  `json:"parent_en_name,omitempty" xml:"parent_en_name,omitempty"`
+	ParentName   *string  `json:"parent_name,omitempty" xml:"parent_name,omitempty"`
+	Selected     *bool    `json:"selected,omitempty" xml:"selected,omitempty"`
+	TagLevel     *int64   `json:"tag_level,omitempty" xml:"tag_level,omitempty"`
 }
 
 func (s SystemTag) String() string {
@@ -6711,7 +6711,7 @@ func (s SystemTag) GoString() string {
 	return s.String()
 }
 
-func (s *SystemTag) SetConfidence(v int) *SystemTag {
+func (s *SystemTag) SetConfidence(v float64) *SystemTag {
 	s.Confidence = &v
 	return s
 }
@@ -14328,7 +14328,7 @@ func (s *ListByAnonymousRequest) SetShareId(v string) *ListByAnonymousRequest {
 type ListDriveRequest struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// 每页大小限制
-	Limit *int `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
 	// 翻页标记, 接口返回的标记值
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// 所属者
@@ -14348,7 +14348,7 @@ func (s *ListDriveRequest) SetHeaders(v map[string]*string) *ListDriveRequest {
 	return s
 }
 
-func (s *ListDriveRequest) SetLimit(v int) *ListDriveRequest {
+func (s *ListDriveRequest) SetLimit(v int32) *ListDriveRequest {
 	s.Limit = &v
 	return s
 }
@@ -14493,7 +14493,7 @@ type ListFileDeltaRequest struct {
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
 	// limit
 	// default 100
-	Limit *int `json:"limit,omitempty" xml:"limit,omitempty"`
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 }
 
 func (s ListFileDeltaRequest) String() string {
@@ -14514,7 +14514,7 @@ func (s *ListFileDeltaRequest) SetDriveId(v string) *ListFileDeltaRequest {
 	return s
 }
 
-func (s *ListFileDeltaRequest) SetLimit(v int) *ListFileDeltaRequest {
+func (s *ListFileDeltaRequest) SetLimit(v int32) *ListFileDeltaRequest {
 	s.Limit = &v
 	return s
 }
@@ -14652,7 +14652,7 @@ func (s *ListFileRequest) SetVideoThumbnailProcess(v string) *ListFileRequest {
 type ListMyDriveRequest struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// 每页大小限制
-	Limit *int `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
 	// 翻页标记, 接口返回的标记值
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
@@ -14670,7 +14670,7 @@ func (s *ListMyDriveRequest) SetHeaders(v map[string]*string) *ListMyDriveReques
 	return s
 }
 
-func (s *ListMyDriveRequest) SetLimit(v int) *ListMyDriveRequest {
+func (s *ListMyDriveRequest) SetLimit(v int32) *ListMyDriveRequest {
 	s.Limit = &v
 	return s
 }
@@ -14687,7 +14687,7 @@ type ListShareLinkRequest struct {
 	// creator
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	// limit
-	Limit *int `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
 	// marker
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
@@ -14705,7 +14705,7 @@ func (s *ListShareLinkRequest) SetCreator(v string) *ListShareLinkRequest {
 	return s
 }
 
-func (s *ListShareLinkRequest) SetLimit(v int) *ListShareLinkRequest {
+func (s *ListShareLinkRequest) SetLimit(v int32) *ListShareLinkRequest {
 	s.Limit = &v
 	return s
 }
@@ -14724,7 +14724,7 @@ type ListShareRequest struct {
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
 	// limit
-	Limit *int `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
 	// marker
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// Owner
@@ -14756,7 +14756,7 @@ func (s *ListShareRequest) SetDriveId(v string) *ListShareRequest {
 	return s
 }
 
-func (s *ListShareRequest) SetLimit(v int) *ListShareRequest {
+func (s *ListShareRequest) SetLimit(v int32) *ListShareRequest {
 	s.Limit = &v
 	return s
 }
@@ -14995,7 +14995,7 @@ type ScanFileMetaRequest struct {
 	// drive_id
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
 	// limit
-	Limit *int `json:"limit,omitempty" xml:"limit,omitempty" maximum:"5000" minimum:"1"`
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"5000" minimum:"1"`
 	// marker
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
@@ -15018,7 +15018,7 @@ func (s *ScanFileMetaRequest) SetDriveId(v string) *ScanFileMetaRequest {
 	return s
 }
 
-func (s *ScanFileMetaRequest) SetLimit(v int) *ScanFileMetaRequest {
+func (s *ScanFileMetaRequest) SetLimit(v int32) *ScanFileMetaRequest {
 	s.Limit = &v
 	return s
 }
@@ -15039,7 +15039,7 @@ type SearchFileRequest struct {
 	// image_url_process
 	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
 	// limit
-	Limit *int `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
 	// Marker
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// order_by
@@ -15076,7 +15076,7 @@ func (s *SearchFileRequest) SetImageUrlProcess(v string) *SearchFileRequest {
 	return s
 }
 
-func (s *SearchFileRequest) SetLimit(v int) *SearchFileRequest {
+func (s *SearchFileRequest) SetLimit(v int32) *SearchFileRequest {
 	s.Limit = &v
 	return s
 }
@@ -16036,7 +16036,7 @@ func (s *GetUserResponse) SetUserName(v string) *GetUserResponse {
 type ListUserRequest struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// 每页大小限制
-	Limit *int `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
 	// 翻页标记
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
@@ -16054,7 +16054,7 @@ func (s *ListUserRequest) SetHeaders(v map[string]*string) *ListUserRequest {
 	return s
 }
 
-func (s *ListUserRequest) SetLimit(v int) *ListUserRequest {
+func (s *ListUserRequest) SetLimit(v int32) *ListUserRequest {
 	s.Limit = &v
 	return s
 }
@@ -16099,7 +16099,7 @@ type SearchUserRequest struct {
 	// 邮箱
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// 每页大小限制
-	Limit *int `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
 	// 翻页标记
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// 昵称
@@ -16132,7 +16132,7 @@ func (s *SearchUserRequest) SetEmail(v string) *SearchUserRequest {
 	return s
 }
 
-func (s *SearchUserRequest) SetLimit(v int) *SearchUserRequest {
+func (s *SearchUserRequest) SetLimit(v int32) *SearchUserRequest {
 	s.Limit = &v
 	return s
 }
@@ -25611,6 +25611,7 @@ func (client *Client) SetExpireTime(expireTime *string) (_err error) {
 
 func (client *Client) GetExpireTime() (_result *string) {
 	if tea.BoolValue(util.IsUnset(client.AccessTokenCredential)) {
+		_result = tea.String("")
 		return _result
 	}
 
@@ -25629,6 +25630,7 @@ func (client *Client) SetRefreshToken(token *string) {
 
 func (client *Client) GetRefreshToken() (_result *string) {
 	if tea.BoolValue(util.IsUnset(client.AccessTokenCredential)) {
+		_result = tea.String("")
 		return _result
 	}
 
@@ -25647,6 +25649,7 @@ func (client *Client) SetAccessToken(token *string) {
 
 func (client *Client) GetAccessToken() (_result *string, _err error) {
 	if tea.BoolValue(util.IsUnset(client.AccessTokenCredential)) {
+		_result = tea.String("")
 		return _result, _err
 	}
 
@@ -25675,6 +25678,7 @@ func (client *Client) GetUserAgent() (_result *string) {
 
 func (client *Client) GetAccessKeyId() (_result *string, _err error) {
 	if tea.BoolValue(util.IsUnset(client.Credential)) {
+		_result = tea.String("")
 		return _result, _err
 	}
 
@@ -25689,6 +25693,7 @@ func (client *Client) GetAccessKeyId() (_result *string, _err error) {
 
 func (client *Client) GetAccessKeySecret() (_result *string, _err error) {
 	if tea.BoolValue(util.IsUnset(client.Credential)) {
+		_result = tea.String("")
 		return _result, _err
 	}
 
@@ -25703,6 +25708,7 @@ func (client *Client) GetAccessKeySecret() (_result *string, _err error) {
 
 func (client *Client) GetSecurityToken() (_result *string, _err error) {
 	if tea.BoolValue(util.IsUnset(client.Credential)) {
+		_result = tea.String("")
 		return _result, _err
 	}
 
