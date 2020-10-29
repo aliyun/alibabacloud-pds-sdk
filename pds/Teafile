@@ -1,7 +1,7 @@
 {
 	"scope": "alibabacloud",
 	"name": "pds",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"main": "./main.tea",
 	"maintainers": [
 		{
@@ -10,7 +10,7 @@
 		}
 	],
 	"releases": {
-		"go": "github.com/alibabacloud-go/pds-sdk/client:v1.0.0",
+		"go": "github.com/alibabacloud-go/pds-sdk/client:v1.0.1",
 		"ts": "@alicloud/pds-sdk:^1.0.0",
 		"java": "com.aliyun:aliyun-sdk-pds:0.0.2",
 		"csharp": "Aliyun.SDK.PDS.Client:1.0.0",

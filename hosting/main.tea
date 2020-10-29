@@ -1977,7 +1977,7 @@ model AccessTokenResponse {
   accessToken: string(name='access_token', description='用于调用业务接口的accessToken', example='cnskjajkahwdhwialsnd'),
   defaultDriveId: string(name='default_drive_id', description='Default Drive ID', example='100'),
   expireTime: string(name='expire_time', description='accessToken过期时间，ISO时间', example='2019-09-01T06:57:48.813Z'),
-  expiresIn: long(name='expires_in', description='accessToken过期时间，单位秒', example=3600, format='int64'),
+  expiresIn: int64(name='expires_in', description='accessToken过期时间，单位秒', example=3600, format='int64'),
   refreshToken: string(name='refresh_token', description='用于刷新accessToken', example='cnskjajkahwdhwialsnd'),
   role: string(name='role', description='当前用户角色', example='user'),
   tokenType: string(name='token_type', description='accessToken类型，Bearer', example='Bearer'),
@@ -1995,7 +1995,7 @@ model AccountAccessTokenResponse {
   defaultDriveId?: string(name='default_drive_id', description='Default Drive ID', example='100'),
   existLink?: [ LinkInfo ](name='exist_link', description='当前用户已存在的登录方式', example='', items='{"$ref":"#/definitions/LinkInfo"}'),
   expireTime?: string(name='expire_time', description='accessToken过期时间，ISO时间', example='2019-09-01T06:57:48.813Z'),
-  expiresIn?: long(name='expires_in', description='accessToken过期时间，单位秒', example=3600, format='int64'),
+  expiresIn?: int64(name='expires_in', description='accessToken过期时间，单位秒', example=3600, format='int64'),
   isFirstLogin?: boolean(name='is_first_login', description='用户是否为第一次登录', example=true),
   needLink: boolean(name='need_link', description='是否需要绑定', example=false),
   nickName?: string(name='nick_name', description='当前用户昵称', example='cherry'),
@@ -2049,8 +2049,8 @@ model BaseDriveResponse {
   relativePath?: string(name='relative_path', description='Drive存储基于store的相对路径，domain的PathType为OSSPath时返回', example='/a/b/e/'),
   status?: string(name='status', description='Drive 状态', example='enabled'),
   storeId?: string(name='store_id', description='存储 ID, domain的PathType为OSSPath时返回', example='123'),
-  totalSize?: long(name='total_size', description='Drive 空间总量', example=102400, format='int64'),
-  usedSize?: long(name='used_size', description='Drive 空间已使用量', example=1024, format='int64'),
+  totalSize?: int64(name='total_size', description='Drive 空间总量', example=102400, format='int64'),
+  usedSize?: int64(name='used_size', description='Drive 空间已使用量', example=1024, format='int64'),
 }
 
 /**
@@ -2059,7 +2059,7 @@ model BaseDriveResponse {
 model BaseFileAnonymousResponse {
   fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   name?: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
-  size?: long(name='size', description='size, type=file时才有效', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='size, type=file时才有效', example=1024, format='int64', maximum=53687091200, minimum=0),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   type?: string(name='type', description='type', enum='file, folder', example='file'),
   updatedAt?: string(name='updated_at', description='updated_at', format='date-time'),
@@ -2090,7 +2090,7 @@ type: boolean', enum='false, true', example=false),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: integer(name='punish_flag'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   starred?: boolean(name='starred', description='starred
 type: boolean', example=false),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
@@ -2114,12 +2114,12 @@ model BaseMediaResponse {
   city?: string(name='city', description='city', example='杭州'),
   country?: string(name='country', description='country', example='中国'),
   district?: string(name='district', description='district', example='余杭区'),
-  height?: long(name='height', default=0, description='height', example=720, format='int64'),
+  height?: int64(name='height', default=0, description='height', example=720, format='int64'),
   location?: string(name='location', description='location', example='40.110333,116.349311'),
   province?: string(name='province', description='province', example='浙江省'),
   time?: string(name='time', description='time', format='date-time'),
   township?: string(name='township', description='township', example='沙河镇'),
-  width?: long(name='width', default=0, description='width', example=1024, format='int64'),
+  width?: int64(name='width', default=0, description='width', example=1024, format='int64'),
 }
 
 /**
@@ -2140,7 +2140,7 @@ model BaseOSSFileResponse {
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_id', example='/', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[0-9]+'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
@@ -2155,13 +2155,13 @@ model BaseOSSFileResponse {
  */
 model BaseShareLinkResponse {
   createdAt?: string(name='created_at', description='created_at', example='2006-01-02T15:04:05.999Z', format='date-time'),
-  downloadCount?: long(name='download_count', description='下载次数', example=1, format='int64'),
+  downloadCount?: int64(name='download_count', description='下载次数', example=1, format='int64'),
   driveId?: string(name='drive_id', description='drive_id', example='1'),
   expiration?: string(name='expiration', description='expiration', example='2006-01-02T15:04:05.999Z', format='date-time'),
   expired?: boolean(name='expired', description='expired', example=false),
   fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
-  previewCount?: long(name='preview_count', description='preview_count', example=1, format='int64'),
-  saveCount?: long(name='save_count', description='转存次数', example=1, format='int64'),
+  previewCount?: int64(name='preview_count', description='preview_count', example=1, format='int64'),
+  saveCount?: int64(name='save_count', description='转存次数', example=1, format='int64'),
   shareId?: string(name='share_id', description='share_id', example='z6e81Up4u3GDBoJ741dm8z8fZBc2dh8gW'),
   shareMsg?: string(name='share_msg', description='share_msg', example='复制这条消息并打开app，即可跳转到对应的分享页面'),
   sharePolicy?: string(name='share_policy', description='share_policy', enum='url, msg', example='url'),
@@ -2204,7 +2204,7 @@ model BatchResponse {
 model BatchSubResponse {
   body?: object(name='body', additionalProperties='{"type":"object"}', description='body 子请求的返回结果，可参考对于子请求文档 json 字符串', example='{"drive_id":"101","file_id":"xxxxxx"}'),
   id?: string(name='id', description='id 请求带过来的id, 可以跟 request 进行关联', example='"1"'),
-  status?: long(name='status', description='status 子请求的返回状态码，可参考对于子请求文档', example=200, format='int64'),
+  status?: int64(name='status', description='status 子请求的返回状态码，可参考对于子请求文档', example=200, format='int64'),
 }
 
 /**
@@ -2249,7 +2249,7 @@ type: boolean', enum='false, true', example=false),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: integer(name='punish_flag'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   starred?: boolean(name='starred', description='starred
 type: boolean', example=false),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
@@ -2291,7 +2291,7 @@ model CorsRule {
   allowedMethod?: [ string ](name='allowed_method', description='AllowedMethod', example='PUT, GET', items='{"type":"string"}'),
   allowedOrigin?: [ string ](name='allowed_origin', description='AllowedOrigin', example='*', items='{"type":"string"}'),
   exposeHeader?: [ string ](name='expose_header', description='ExposeHeader', example='ETag', items='{"type":"string"}'),
-  maxAgeSeconds?: long(name='max_age_seconds', description='MaxAgeSeconds', example=0, format='int64'),
+  maxAgeSeconds?: int64(name='max_age_seconds', description='MaxAgeSeconds', example=0, format='int64'),
 }
 
 /**
@@ -2346,10 +2346,10 @@ model CreateShareResponse {
  * 
  */
 model CroppingBoundary {
-  height?: long(name='height', format='int64'),
-  left?: long(name='left', format='int64'),
-  top?: long(name='top', format='int64'),
-  width?: long(name='width', format='int64'),
+  height?: int64(name='height', format='int64'),
+  left?: int64(name='left', format='int64'),
+  top?: int64(name='top', format='int64'),
+  width?: int64(name='width', format='int64'),
 }
 
 /**
@@ -2358,7 +2358,7 @@ model CroppingBoundary {
 model CroppingSuggestionItem {
   aspectRatio?: string(name='aspect_ratio'),
   croppingBoundary?: CroppingBoundary(name='cropping_boundary'),
-  score?: number(name='score', format='double'),
+  score?: double(name='score', format='double'),
 }
 
 /**
@@ -2484,7 +2484,7 @@ model GetDownloadUrlResponse {
   expiration?: string(name='expiration', description='expiration', example='2006-01-02T15:04:05.999Z07:00'),
   method?: string(name='method', description='method', example='GET'),
   ratelimit?: RateLimit(name='ratelimit'),
-  size?: long(name='size', description='size', example=102400, format='int64'),
+  size?: int64(name='size', description='size', example=102400, format='int64'),
   streamsUrl?: object(name='streams_url', additionalProperties='{"type":"string"}', description='streams url info'),
   url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d79219b0aa9a7c995a94a96993ba3205cd91c5a%2F5d79219bf3261a5d38744da0834ed489b677a27a?Expires=xxxOSSAccessKeyId=xxx&Signature=xxx&response-content-disposition=attachment%3Bfilename%3DtBiZAoJPC2c8b13450eda4292b7f5f8010618e078.txt'),
 }
@@ -2505,8 +2505,8 @@ model GetDriveResponse {
   relativePath?: string(name='relative_path', description='Drive存储基于store的相对路径，domain的PathType为OSSPath时返回', example='/a/b/e/'),
   status?: string(name='status', description='Drive 状态', example='enabled'),
   storeId?: string(name='store_id', description='存储 ID, domain的PathType为OSSPath时返回', example='123'),
-  totalSize?: long(name='total_size', description='Drive 空间总量', example=102400, format='int64'),
-  usedSize?: long(name='used_size', description='Drive 空间已使用量', example=1024, format='int64'),
+  totalSize?: int64(name='total_size', description='Drive 空间总量', example=102400, format='int64'),
+  usedSize?: int64(name='used_size', description='Drive 空间已使用量', example=1024, format='int64'),
 }
 
 /**
@@ -2534,7 +2534,7 @@ type: boolean', enum='false, true', example=false),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: integer(name='punish_flag'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   starred?: boolean(name='starred', description='starred
 type: boolean', example=false),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
@@ -2575,7 +2575,7 @@ type: boolean', enum='false, true', example=false),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: integer(name='punish_flag'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   starred?: boolean(name='starred', description='starred
 type: boolean', example=false),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
@@ -2653,7 +2653,7 @@ model GetShareLinkIDResponse {
  */
 model GetShareLinkTokenResponse {
   expireTime: string(name='expire_time', description='expire_time', example='2019-09-01T06:57:48.813Z'),
-  expiresIn: long(name='expires_in', description='expires_in', example=3600, format='int64'),
+  expiresIn: int64(name='expires_in', description='expires_in', example=3600, format='int64'),
   shareToken: string(name='share_token', description='share_token', example='cnskjajkahwdhwialsnd'),
 }
 
@@ -2694,12 +2694,12 @@ model GetUploadUrlResponse {
  * 获取视频雪碧图地址 url response
  */
 model GetVideoPreviewSpriteURLResponse {
-  col?: long(name='col', description='col', example=10, format='int64'),
-  count?: long(name='count', description='count', example=4, format='int64'),
-  frameCount?: long(name='frame_count', description='frame_count', example=450, format='int64'),
-  frameHeight?: long(name='frame_height', description='frame_height', example=90, format='int64'),
-  frameWidth?: long(name='frame_width', description='frame_width', example=160, format='int64'),
-  row?: long(name='row', description='row', example=10, format='int64'),
+  col?: int64(name='col', description='col', example=10, format='int64'),
+  count?: int64(name='count', description='count', example=4, format='int64'),
+  frameCount?: int64(name='frame_count', description='frame_count', example=450, format='int64'),
+  frameHeight?: int64(name='frame_height', description='frame_height', example=90, format='int64'),
+  frameWidth?: int64(name='frame_width', description='frame_width', example=160, format='int64'),
+  row?: int64(name='row', description='row', example=10, format='int64'),
   spriteUrlList?: [ string ](name='sprite_url_list', description='sprite_url_list', example='[https://ccp.data.aliyuncs.com/hz22%2F5d79219b0aa9a7c995a94a96993ba3205cd91c5a%2F5d79219bf3261a5d38744da0834ed489b677a27a?Expires=xxxOSSAccessKeyId=xxx&Signature=xxx&response-content-disposition=attachment%3Bfilename%3DtBiZAoJPC2c8b13450eda4292b7f5f8010618e078.txt]', items='{"type":"string"}'),
 }
 
@@ -2721,31 +2721,31 @@ model ImageMediaResponse {
   district?: string(name='district', description='district', example='余杭区'),
   exif?: string(name='exif', description='exif json string'),
   faces?: string(name='faces', description='faces json string'),
-  height?: long(name='height', default=0, description='height', example=720, format='int64'),
+  height?: int64(name='height', default=0, description='height', example=720, format='int64'),
   imageQuality?: ImageQuality(name='image_quality'),
   imageTags?: [ SystemTag ](name='image_tags', description='system_tags', items='{"$ref":"#/definitions/SystemTag"}'),
   location?: string(name='location', description='location', example='40.110333,116.349311'),
   province?: string(name='province', description='province', example='浙江省'),
-  storyImageScore?: number(name='story_image_score', description='story_image_score', format='double'),
+  storyImageScore?: double(name='story_image_score', description='story_image_score', format='double'),
   time?: string(name='time', description='time', format='date-time'),
   township?: string(name='township', description='township', example='沙河镇'),
-  width?: long(name='width', default=0, description='width', example=1024, format='int64'),
+  width?: int64(name='width', default=0, description='width', example=1024, format='int64'),
 }
 
 /**
  * 
  */
 model ImageQuality {
-  clarity?: number(name='clarity', format='double'),
-  clarityScore?: number(name='clarity_score', format='double'),
-  color?: number(name='color', format='double'),
-  colorScore?: number(name='color_score', format='double'),
-  compositionScore?: number(name='composition_score', format='double'),
-  contrast?: number(name='contrast', format='double'),
-  contrastScore?: number(name='contrast_score', format='double'),
-  exposure?: number(name='exposure', format='double'),
-  exposureScore?: number(name='exposure_score', format='double'),
-  overallScore?: number(name='overall_score', format='double'),
+  clarity?: double(name='clarity', format='double'),
+  clarityScore?: double(name='clarity_score', format='double'),
+  color?: double(name='color', format='double'),
+  colorScore?: double(name='color_score', format='double'),
+  compositionScore?: double(name='composition_score', format='double'),
+  contrast?: double(name='contrast', format='double'),
+  contrastScore?: double(name='contrast_score', format='double'),
+  exposure?: double(name='exposure', format='double'),
+  exposureScore?: double(name='exposure_score', format='double'),
+  overallScore?: double(name='overall_score', format='double'),
 }
 
 /**
@@ -2769,11 +2769,11 @@ model LinkInfoListResponse {
  */
 model LinkInfoResponse {
   authenticationType: string(name='authentication_type', description='认证类型', example='mobile'),
-  createdAt: long(name='created_at', description='创建时间', example=1556163159820, format='int64'),
+  createdAt: int64(name='created_at', description='创建时间', example=1556163159820, format='int64'),
   domainId: string(name='domain_id', description='Domain ID', example='5000'),
   extra?: string(name='extra', description='额外的信息，比如type为mobile时，此字段为国家编号，不填默认86', example='1'),
   identity: string(name='identity', description='唯一身份标识', example='15208345000'),
-  lastLoginTime: long(name='last_login_time', description='最后登录时间', example=1556163159820, format='int64'),
+  lastLoginTime: int64(name='last_login_time', description='最后登录时间', example=1556163159820, format='int64'),
   status: string(name='status', description='状态', example='normal'),
   userId: string(name='user_id', description='用户ID', example='00016a587b62b50003deea299a4f5b50'),
 }
@@ -2960,7 +2960,7 @@ model OSSCompleteFileResponse {
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_id', example='/', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[0-9]+'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
@@ -3042,7 +3042,7 @@ model OSSGetFileResponse {
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_id', example='/', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[0-9]+'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
@@ -3127,7 +3127,7 @@ model OSSUpdateFileMetaResponse {
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_id', example='/', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[0-9]+'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
@@ -3142,7 +3142,7 @@ model OSSUpdateFileMetaResponse {
  */
 model OSSVideoDRMLicenseResponse {
   data: string(name='data', description='drm_data', example='xxx'),
-  states: long(name='states', description='states', example=0, format='int64'),
+  states: int64(name='states', description='states', example=0, format='int64'),
 }
 
 /**
@@ -3158,8 +3158,8 @@ model OSSVideoDefinitionResponse {
  */
 model OSSVideoTranscodeResponse {
   definitionList?: [ string ](name='definition_list', description='definition_list', example='', items='{"type":"string"}'),
-  duration?: long(name='duration', description='duration', example=100, format='int64'),
-  hlsTime?: long(name='hls_time', description='hls_time', example=10, format='int64'),
+  duration?: int64(name='duration', description='duration', example=100, format='int64'),
+  hlsTime?: int64(name='hls_time', description='hls_time', example=10, format='int64'),
 }
 
 /**
@@ -3177,8 +3177,8 @@ model PreHashCheckSuccessResponse {
  * 下载限速配置
  */
 model RateLimit {
-  partSize?: long(name='part_size', format='int64'),
-  partSpeed?: long(name='part_speed', format='int64'),
+  partSize?: int64(name='part_size', format='int64'),
+  partSpeed?: int64(name='part_speed', format='int64'),
 }
 
 /**
@@ -3276,13 +3276,13 @@ type: boolean', example=false),
  * 
  */
 model SystemTag {
-  confidence?: number(name='confidence', format='double'),
+  confidence?: double(name='confidence', format='double'),
   enName?: string(name='en_name'),
   name?: string(name='name'),
   parentEnName?: string(name='parent_en_name'),
   parentName?: string(name='parent_name'),
   selected?: boolean(name='selected'),
-  tagLevel?: long(name='tag_level', format='int64'),
+  tagLevel?: int64(name='tag_level', format='int64'),
 }
 
 /**
@@ -3312,8 +3312,8 @@ model UpdateDriveResponse {
   relativePath?: string(name='relative_path', description='Drive存储基于store的相对路径，domain的PathType为OSSPath时返回', example='/a/b/e/'),
   status?: string(name='status', description='Drive 状态', example='enabled'),
   storeId?: string(name='store_id', description='存储 ID, domain的PathType为OSSPath时返回', example='123'),
-  totalSize?: long(name='total_size', description='Drive 空间总量', example=102400, format='int64'),
-  usedSize?: long(name='used_size', description='Drive 空间已使用量', example=1024, format='int64'),
+  totalSize?: int64(name='total_size', description='Drive 空间总量', example=102400, format='int64'),
+  usedSize?: int64(name='used_size', description='Drive 空间已使用量', example=1024, format='int64'),
 }
 
 /**
@@ -3341,7 +3341,7 @@ type: boolean', enum='false, true', example=false),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: integer(name='punish_flag'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   starred?: boolean(name='starred', description='starred
 type: boolean', example=false),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
@@ -3383,8 +3383,8 @@ model UpdateShareResponse {
  */
 model UploadPartInfo {
   etag?: string(name='etag', description='etag', example='0CC175B9C0F1B6A831C399E269772661'),
-  partNumber?: long(name='part_number', description='PartNumber', example=1, format='int64', maximum=10000, minimum=1, pattern='[0-9]+'),
-  partSize?: long(name='part_size', description='PartSize：', example=1024, format='int64', maximum=5368709120, minimum=102400),
+  partNumber?: int64(name='part_number', description='PartNumber', example=1, format='int64', maximum=10000, minimum=1, pattern='[0-9]+'),
+  partSize?: int64(name='part_size', description='PartSize：', example=1024, format='int64', maximum=5368709120, minimum=102400),
   uploadUrl?: string(name='upload_url', description='upload_url', example='https://ccp.data.aliyuncs.com/xxx/xxx?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx&partNumber=1&uploadId=0CC175B9C0F1B6A831C399E269772661'),
 }
 
@@ -3402,11 +3402,11 @@ model UrlInfo {
  */
 model UserAuthentication {
   AuthenticationType: string(name='AuthenticationType', description='认证类型', example='mobile'),
-  CreatedAt: long(name='CreatedAt', description='创建时间', example=1556163159820, format='int64'),
+  CreatedAt: int64(name='CreatedAt', description='创建时间', example=1556163159820, format='int64'),
   Detail: string(name='Detail', description='详情', example='{name:abc}'),
   DomainID: string(name='DomainID', description='Domain ID', example='5000'),
   Identity: string(name='Identity', description='唯一身份标识', example='15208345000'),
-  LastLoginTime: long(name='LastLoginTime', description='最后登录时间', example=1556163159820, format='int64'),
+  LastLoginTime: int64(name='LastLoginTime', description='最后登录时间', example=1556163159820, format='int64'),
   Status: string(name='Status', description='状态', example='normal'),
   UserID: string(name='UserID', description='用户ID', example='00016a587b62b50003deea299a4f5b50'),
   extra?: string(name='extra', description='额外的信息，比如type为mobile时，此字段为国家编号，不填默认86', example='1'),
@@ -3438,7 +3438,7 @@ model VerifyCodeResponse {
 model VideoMediaAudioStream {
   bitRate?: string(name='bit_rate', description='bit_rate 音频比特率 单位：bps', example='"129280"'),
   channelLayout?: string(name='channel_layout', description='channel_layout 声道布局', example='"5.1", "stereo"'),
-  channels?: long(name='channels', description='channels 音频数/声道数', example=2, format='int64'),
+  channels?: int64(name='channels', description='channels 音频数/声道数', example=2, format='int64'),
   codeName?: string(name='code_name', description='code_name 音频编码模式', example='"aac"'),
   duration?: string(name='duration', description='duration 单位 秒', example='"7704.573000"'),
   sampleRate?: string(name='sample_rate', description='sample_rate 音频采样率', example='"48000"'),
@@ -3453,14 +3453,14 @@ model VideoMediaResponse {
   country?: string(name='country', description='country', example='中国'),
   district?: string(name='district', description='district', example='余杭区'),
   duration?: string(name='duration', description='duration 单位 秒', example='"7704.573000"'),
-  height?: long(name='height', default=0, description='height', example=720, format='int64'),
+  height?: int64(name='height', default=0, description='height', example=720, format='int64'),
   location?: string(name='location', description='location', example='40.110333,116.349311'),
   province?: string(name='province', description='province', example='浙江省'),
   time?: string(name='time', description='time', format='date-time'),
   township?: string(name='township', description='township', example='沙河镇'),
   videoMediaAudioStream?: [ VideoMediaAudioStream ](name='video_media_audio_stream', items='{"$ref":"#/definitions/VideoMediaAudioStream"}'),
   videoMediaVideoStream?: [ VideoMediaVideoStream ](name='video_media_video_stream', items='{"$ref":"#/definitions/VideoMediaVideoStream"}'),
-  width?: long(name='width', default=0, description='width', example=1024, format='int64'),
+  width?: int64(name='width', default=0, description='width', example=1024, format='int64'),
 }
 
 /**
@@ -3482,24 +3482,24 @@ model VideoPreviewResponse {
   bitrate?: string(name='bitrate', description='bitrate', example='"39101896"'),
   duration?: string(name='duration', description='duration', example='"8053"'),
   frameRate?: string(name='frame_rate', description='frame_rate', example='"239.877"'),
-  height?: long(name='height', description='height', example=1280, format='int64'),
+  height?: int64(name='height', description='height', example=1280, format='int64'),
   spriteInfo?: VideoPreviewSprite(name='sprite_info'),
   templateList?: [ VideoPreviewTranscode ](name='template_list', description='template_list', items='{"$ref":"#/definitions/VideoPreviewTranscode"}'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   videoFormat?: string(name='video_format', description='video_format', example='"H264"'),
-  width?: long(name='width', description='width', example=720, format='int64'),
+  width?: int64(name='width', description='width', example=720, format='int64'),
 }
 
 /**
  * 
  */
 model VideoPreviewSprite {
-  col?: long(name='col', description='col', example=10, format='int64'),
-  count?: long(name='count', description='count', example=4, format='int64'),
-  frameCount?: long(name='frame_count', description='frame_count', example=333, format='int64'),
-  frameHeight?: long(name='frame_height', description='frame_height', example=90, format='int64'),
-  frameWidth?: long(name='frame_width', description='frame_width', example=160, format='int64'),
-  row?: long(name='row', description='row', example=10, format='int64'),
+  col?: int64(name='col', description='col', example=10, format='int64'),
+  count?: int64(name='count', description='count', example=4, format='int64'),
+  frameCount?: int64(name='frame_count', description='frame_count', example=333, format='int64'),
+  frameHeight?: int64(name='frame_height', description='frame_height', example=90, format='int64'),
+  frameWidth?: int64(name='frame_width', description='frame_width', example=160, format='int64'),
+  row?: int64(name='row', description='row', example=10, format='int64'),
   status?: string(name='status', description='status', example='finished'),
 }
 
@@ -3813,7 +3813,7 @@ model BaseDomainResponse {
   eventNames?: [ string ](name='event_names', description='事件名列表', example='abc', items='{"type":"string"}'),
   eventRoleArn?: string(name='event_role_arn', description='事件通知 Role Arn'),
   initDriveEnable?: boolean(name='init_drive_enable', description='是否开启了自动初始化 Drive', example=true),
-  initDriveSize?: long(name='init_drive_size', description='自动初始化 Drive 大小', example=1024, format='int64'),
+  initDriveSize?: int64(name='init_drive_size', description='自动初始化 Drive 大小', example=1024, format='int64'),
   initDriveStoreId?: string(name='init_drive_store_id', description='自动初始化 Drive 所用 Store ID', example='1'),
   mode?: string(name='mode', description='Domain 类型', example='StandardMode'),
   pathType?: string(name='path_type', description='Domain 类型', example='CCPPath'),
@@ -3860,7 +3860,7 @@ model CreateDomainResponse {
   eventNames?: [ string ](name='event_names', description='事件名列表', example='abc', items='{"type":"string"}'),
   eventRoleArn?: string(name='event_role_arn', description='事件通知 Role Arn'),
   initDriveEnable?: boolean(name='init_drive_enable', description='是否开启了自动初始化 Drive', example=true),
-  initDriveSize?: long(name='init_drive_size', description='自动初始化 Drive 大小', example=1024, format='int64'),
+  initDriveSize?: int64(name='init_drive_size', description='自动初始化 Drive 大小', example=1024, format='int64'),
   initDriveStoreId?: string(name='init_drive_store_id', description='自动初始化 Drive 所用 Store ID', example='1'),
   mode?: string(name='mode', description='Domain 类型', example='StandardMode'),
   pathType?: string(name='path_type', description='Domain 类型', example='CCPPath'),
@@ -3955,7 +3955,7 @@ model GetDomainResponse {
   eventNames?: [ string ](name='event_names', description='事件名列表', example='abc', items='{"type":"string"}'),
   eventRoleArn?: string(name='event_role_arn', description='事件通知 Role Arn'),
   initDriveEnable?: boolean(name='init_drive_enable', description='是否开启了自动初始化 Drive', example=true),
-  initDriveSize?: long(name='init_drive_size', description='自动初始化 Drive 大小', example=1024, format='int64'),
+  initDriveSize?: int64(name='init_drive_size', description='自动初始化 Drive 大小', example=1024, format='int64'),
   initDriveStoreId?: string(name='init_drive_store_id', description='自动初始化 Drive 所用 Store ID', example='1'),
   mode?: string(name='mode', description='Domain 类型', example='StandardMode'),
   pathType?: string(name='path_type', description='Domain 类型', example='CCPPath'),
@@ -4086,7 +4086,7 @@ model UpdateDomainResponse {
   eventNames?: [ string ](name='event_names', description='事件名列表', example='abc', items='{"type":"string"}'),
   eventRoleArn?: string(name='event_role_arn', description='事件通知 Role Arn'),
   initDriveEnable?: boolean(name='init_drive_enable', description='是否开启了自动初始化 Drive', example=true),
-  initDriveSize?: long(name='init_drive_size', description='自动初始化 Drive 大小', example=1024, format='int64'),
+  initDriveSize?: int64(name='init_drive_size', description='自动初始化 Drive 大小', example=1024, format='int64'),
   initDriveStoreId?: string(name='init_drive_store_id', description='自动初始化 Drive 所用 Store ID', example='1'),
   mode?: string(name='mode', description='Domain 类型', example='StandardMode'),
   pathType?: string(name='path_type', description='Domain 类型', example='CCPPath'),
@@ -7323,7 +7323,7 @@ model BaseCreateFileRequest {
   contentType?: string(name='content_type', description='ContentType', example='application/json'),
   name: string(name='name', description='Name', example='ccp.jpg', maxLength=1024, minLength=1),
   partInfoList?: [ UploadPartInfo ](name='part_info_list', description='part_info_list', items='{"$ref":"#/definitions/UploadPartInfo"}'),
-  size?: long(name='size', description='Size', format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', format='int64', maximum=53687091200, minimum=0),
   type: string(name='type', description='Type', enum='file, folder', example='file'),
 }
 
@@ -7362,7 +7362,7 @@ model BaseHostingFileResponse {
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_id', example='/', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[0-9]+'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
@@ -7379,7 +7379,7 @@ model BaseListFileRequest {
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  limit?: long(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0, pattern='[0-9]{1,3}'),
+  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0, pattern='[0-9]{1,3}'),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
 type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
@@ -7460,7 +7460,7 @@ model CreateDriveRequest {
   relativePath?: string(name='relative_path', description='domain的PathType为OSSPath时必选。 Drive存储基于store的相对路径', example='/d/e/f/'),
   status?: string(name='status', default='enabled', description='状态', enum='disabled, enabled', example='enabled'),
   storeId?: string(name='store_id', description='StoreID , domain的PathType为OSSPath时必选', example='store_id'),
-  totalSize?: long(name='total_size', default=-1, description='总大小,单位Byte [如果设置 -1 代表不限制]', example=1024, format='int64'),
+  totalSize?: int64(name='total_size', default=-1, description='总大小,单位Byte [如果设置 -1 代表不限制]', example=1024, format='int64'),
 }
 
 /**
@@ -7487,7 +7487,7 @@ model CreateFileRequest {
   parentFileId: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=4, pattern='[a-z0-9]{1,50}'),
   partInfoList?: [ UploadPartInfo ](name='part_info_list', description='part_info_list', items='{"$ref":"#/definitions/UploadPartInfo"}'),
   preHash?: string(name='pre_hash', description='pre_hash', example='E10ADC3949BA59ABBE56E057F20F883E'),
-  size?: long(name='size', description='Size', format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', format='int64', maximum=53687091200, minimum=0),
   streamsInfo?: object(name='streams_info', additionalProperties='{"$ref":"#/definitions/StreamInfo"}', description='streams_info'),
   type: string(name='type', description='Type', enum='file, folder', example='file'),
   userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
@@ -7591,7 +7591,7 @@ model GetDefaultDriveRequest {
 model GetDownloadUrlRequest {
   additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
   driveId: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
-  expireSec?: long(name='expire_sec', default=900, description='expire_sec', example=15, format='int64', maximum=14400, minimum=0),
+  expireSec?: int64(name='expire_sec', default=900, description='expire_sec', example=15, format='int64', maximum=14400, minimum=0),
   fileId: string(name='file_id', description='file_id', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
   fileName?: string(name='file_name', description='file_name', example='ccp.jpg', maxLength=1024, minLength=1),
 }
@@ -7616,7 +7616,7 @@ model GetFileByPathRequest {
 type:string', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_thumbnail_process
 type:string', example='image/crop,w_100,h_100/rounded-corners,r_10/format,png'),
-  urlExpireSec?: long(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
+  urlExpireSec?: int64(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
 type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
@@ -7632,7 +7632,7 @@ model GetFileRequest {
 type:string', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_thumbnail_process
 type:string', example='image/crop,w_100,h_100/rounded-corners,r_10/format,png'),
-  urlExpireSec?: long(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
+  urlExpireSec?: int64(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
 type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
@@ -7707,7 +7707,7 @@ model GetUploadUrlRequest {
  */
 model GetVideoPreviewSpriteURLRequest {
   driveId: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
-  expireSec?: long(name='expire_sec', default=900, description='expire_sec', example=15, format='int64', maximum=14400, minimum=0),
+  expireSec?: int64(name='expire_sec', default=900, description='expire_sec', example=15, format='int64', maximum=14400, minimum=0),
   fileId: string(name='file_id', description='file_id', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
 }
 
@@ -7717,7 +7717,7 @@ model GetVideoPreviewSpriteURLRequest {
 model GetVideoPreviewURLRequest {
   additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
   driveId: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
-  expireSec?: long(name='expire_sec', default=900, description='expire_sec', example=15, format='int64', maximum=14400, minimum=0),
+  expireSec?: int64(name='expire_sec', default=900, description='expire_sec', example=15, format='int64', maximum=14400, minimum=0),
   fileId: string(name='file_id', description='file_id', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
   templateId?: string(name='template_id', description='template_id', example='SD'),
 }
@@ -7756,7 +7756,7 @@ model HostingCompleteFileResponse {
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_id', example='/', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[0-9]+'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
@@ -7808,7 +7808,7 @@ type: boolean'),
   parentFilePath: string(name='parent_file_path', description='parent_file_path'),
   partInfoList?: [ UploadPartInfo ](name='part_info_list', description='part_info_list', items='{"$ref":"#/definitions/UploadPartInfo"}'),
   shareId?: string(name='share_id', description='share_id', pattern='[0-9a-zA-Z-]+'),
-  size?: long(name='size', description='Size', format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', format='int64', maximum=53687091200, minimum=0),
   type: string(name='type', description='Type', enum='file, folder', example='file'),
 }
 
@@ -7864,7 +7864,7 @@ model HostingDeleteFilesResponse {
 model HostingGetDownloadUrlRequest {
   headers?: map[string]string,
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
-  expireSec?: long(name='expire_sec', default=900, description='expire_sec', example=15, format='int64', maximum=14400, minimum=10),
+  expireSec?: int64(name='expire_sec', default=900, description='expire_sec', example=15, format='int64', maximum=14400, minimum=10),
   fileName?: string(name='file_name', description='file_name', example='ccp.jpg'),
   filePath: string(name='file_path', description='file_path', example='/a/b/c.jpg', maxLength=1000, minLength=1),
   shareId?: string(name='share_id', description='share_id', example='3d336314-63c8-4d96-bce0-17aefb6833b6', pattern='[0-9a-zA-Z-]+'),
@@ -7891,7 +7891,7 @@ type:string', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_thumbnail_process
 type:string', example='image/resize,w_200'),
   shareId?: string(name='share_id', description='share_id', example='3d336314-63c8-4d96-bce0-17aefb6833b6', pattern='[0-9a-zA-Z-]+'),
-  urlExpireSec?: long(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
+  urlExpireSec?: int64(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
 }
 
 /**
@@ -7912,7 +7912,7 @@ model HostingGetFileResponse {
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_id', example='/', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[0-9]+'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
@@ -7928,7 +7928,7 @@ model HostingGetFileResponse {
 model HostingGetSecureUrlRequest {
   headers?: map[string]string,
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
-  expireSec?: long(name='expire_sec', default=60, description='expire_sec 单位秒', example=60, format='int64'),
+  expireSec?: int64(name='expire_sec', default=60, description='expire_sec 单位秒', example=60, format='int64'),
   filePath: string(name='file_path', description='file_path', example='/a/b/c.jpg', maxLength=1000, minLength=1),
   secureIp?: string(name='secure_ip', description='secure_ip', example='192.168.1.1/24'),
   shareId?: string(name='share_id', description='share_id', example='3d336314-63c8-4d96-bce0-17aefb6833b6', pattern='[0-9a-zA-Z-]+'),
@@ -7975,11 +7975,11 @@ model HostingListFileRequest {
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  limit?: long(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0, pattern='[0-9]{1,3}'),
+  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0, pattern='[0-9]{1,3}'),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
   parentFilePath: string(name='parent_file_path', description='ParentFilePath', example='/a/b/c.jpg'),
   shareId?: string(name='share_id', description='share_id', example='1', pattern='[0-9a-zA-Z-]+'),
-  urlExpireSec?: long(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
+  urlExpireSec?: int64(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
 type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
@@ -7999,8 +7999,8 @@ model HostingListUploadedPartRequest {
   headers?: map[string]string,
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   filePath: string(name='file_path', description='file_path', example='/a/b/c.jpg'),
-  limit?: long(name='limit', default=1000, description='limit', example=1, format='int64', maximum=1000, minimum=1, pattern='[0-9]+'),
-  partNumberMarker?: long(name='part_number_marker', description='part_number_marker', example=1, format='int64', minimum=1, pattern='[0-9]+'),
+  limit?: int64(name='limit', default=1000, description='limit', example=1, format='int64', maximum=1000, minimum=1, pattern='[0-9]+'),
+  partNumberMarker?: int64(name='part_number_marker', description='part_number_marker', example=1, format='int64', minimum=1, pattern='[0-9]+'),
   shareId?: string(name='share_id', description='share_id', example='3d336314-63c8-4d96-bce0-17aefb6833b6', pattern='[0-9a-zA-Z-]+'),
   uploadId?: string(name='upload_id', description='upload_id', example='00668396C0814D818D90F0A92B04B355'),
 }
@@ -8066,7 +8066,7 @@ model HostingUpdateFileMetaResponse {
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_id', example='/', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[0-9]+'),
-  size?: long(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
@@ -8090,7 +8090,7 @@ model HostingVideoDRMLicenseRequest {
  */
 model HostingVideoDRMLicenseResponse {
   data: string(name='data', description='drm_data', example='xxx'),
-  states: long(name='states', description='states', example=0, format='int64'),
+  states: int64(name='states', description='states', example=0, format='int64'),
 }
 
 /**
@@ -8119,7 +8119,7 @@ model HostingVideoM3U8Request {
   headers?: map[string]string,
   definition?: string(name='definition', default='Original', description='definition', example='Original'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
-  expireSec?: long(name='expire_sec', default=60, description='expire_sec', example=60, format='int64', maximum=86400, minimum=60),
+  expireSec?: int64(name='expire_sec', default=60, description='expire_sec', example=60, format='int64', maximum=86400, minimum=60),
   filePath: string(name='file_path', description='file_path', example='/a/b/c.mp4', maxLength=1000, minLength=1),
   protectionScheme?: string(name='protection_scheme', default='none', description='protection_scheme', example='cbcs'),
   shareId?: string(name='share_id', description='share_id', example='3d336314-63c8-4d96-bce0-17aefb6833b6', pattern='[0-9a-zA-Z-]+'),
@@ -8133,7 +8133,7 @@ model HostingVideoTranscodeRequest {
   headers?: map[string]string,
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   filePath: string(name='file_path', description='file_path', example='/a/b/c.mp4', maxLength=1000, minLength=1),
-  hlsTime?: long(name='hls_time', description='hls_time', example=10, format='int64'),
+  hlsTime?: int64(name='hls_time', description='hls_time', example=10, format='int64'),
   protectionScheme?: string(name='protection_scheme', default='none', description='protection_scheme', example='cbcs'),
   remarks?: string(name='remarks', description='remarks', example='{"userID":"xxx"}'),
   shareId?: string(name='share_id', description='share_id', example='3d336314-63c8-4d96-bce0-17aefb6833b6', pattern='[0-9a-zA-Z-]+'),
@@ -8145,23 +8145,23 @@ model HostingVideoTranscodeRequest {
  */
 model HostingVideoTranscodeResponse {
   definitionList?: [ string ](name='definition_list', description='definition_list', example='', items='{"type":"string"}'),
-  duration?: long(name='duration', description='duration', example=100, format='int64'),
-  hlsTime?: long(name='hls_time', description='hls_time', example=10, format='int64'),
+  duration?: int64(name='duration', description='duration', example=100, format='int64'),
+  hlsTime?: int64(name='hls_time', description='hls_time', example=10, format='int64'),
 }
 
 /**
  * 
  */
 model ImageMediaMetadata {
-  height?: long(name='height', description='height', example=2448, format='int64'),
-  width?: long(name='width', description='width：', example=3264, format='int64'),
+  height?: int64(name='height', description='height', example=2448, format='int64'),
+  width?: int64(name='width', description='width：', example=3264, format='int64'),
 }
 
 /**
  * list_file_by_anonymous request
  */
 model ListByAnonymousRequest {
-  limit?: long(name='limit', description='limit', example=50, format='int64', maximum=100, minimum=1),
+  limit?: int64(name='limit', description='limit', example=50, format='int64', maximum=100, minimum=1),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
   parentFileId: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=4, pattern='[a-z0-9]{1,50}'),
   shareId: string(name='share_id', description='share_id', example='z6e81Up4u3GDBoJ741dm8z8fZBc2dh8gW'),
@@ -8172,7 +8172,7 @@ model ListByAnonymousRequest {
  */
 model ListDriveRequest {
   headers?: map[string]string,
-  limit?: integer(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
+  limit?: int32(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
   marker?: string(name='marker', description='翻页标记, 接口返回的标记值', example='marker'),
   owner?: string(name='owner', description='所属者', example='abc'),
 }
@@ -8189,12 +8189,12 @@ model ListFileByCustomIndexKeyRequest {
   fields?: string(name='fields', description='fields', example='*'),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  limit?: long(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0, pattern='[0-9]{1,3}'),
+  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0, pattern='[0-9]{1,3}'),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
   orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
   status?: string(name='status', default='available', description='status', enum='uploading, available', example='available'),
   type?: string(name='type', description='type', enum='file, folder', example='file'),
-  urlExpireSec?: long(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
+  urlExpireSec?: int64(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
 type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
@@ -8205,7 +8205,7 @@ type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 model ListFileDeltaRequest {
   cursor?: string(name='cursor', description='cursor 游标', example='abc'),
   driveId: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
-  limit?: integer(name='limit', description='limit
+  limit?: int32(name='limit', description='limit
 default 100', example=100, format='int32'),
 }
 
@@ -8220,14 +8220,14 @@ model ListFileRequest {
   fields?: string(name='fields', description='fields', example='*'),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  limit?: long(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0, pattern='[0-9]{1,3}'),
+  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0, pattern='[0-9]{1,3}'),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
   orderBy?: string(name='order_by', description='order_by', enum='update_time, name', example='name'),
   orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
   parentFileId: string(name='parent_file_id', description='ParentFileID', example='root', maxLength=50, minLength=4, pattern='[a-z0-9.-_]{1,50}'),
   status?: string(name='status', default='available', description='status', enum='uploading, available', example='available'),
   type?: string(name='type', description='type', enum='file, folder', example='file'),
-  urlExpireSec?: long(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
+  urlExpireSec?: int64(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
 type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
@@ -8237,7 +8237,7 @@ type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
  */
 model ListMyDriveRequest {
   headers?: map[string]string,
-  limit?: integer(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
+  limit?: int32(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
   marker?: string(name='marker', description='翻页标记, 接口返回的标记值', example='marker'),
 }
 
@@ -8246,7 +8246,7 @@ model ListMyDriveRequest {
  */
 model ListShareLinkRequest {
   creator?: string(name='creator', description='creator', example='tom'),
-  limit?: integer(name='limit', description='limit', example=50, format='int32', maximum=100, minimum=1),
+  limit?: int32(name='limit', description='limit', example=50, format='int32', maximum=100, minimum=1),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
 }
 
@@ -8257,7 +8257,7 @@ model ListShareRequest {
   headers?: map[string]string,
   creator?: string(name='creator', description='creator', example='tom'),
   driveId?: string(name='drive_id', example='1', pattern='[0-9]+'),
-  limit?: integer(name='limit', description='limit', example=50, format='int32', maximum=100, minimum=1),
+  limit?: int32(name='limit', description='limit', example=50, format='int32', maximum=100, minimum=1),
   marker?: string(name='marker', description='marker'),
   owner?: string(name='owner', description='Owner', example='jack'),
   shareFilePath?: string(name='share_file_path', description='share_file_path', example='/a/b/'),
@@ -8268,7 +8268,7 @@ model ListShareRequest {
  */
 model ListStoreFileRequest {
   headers?: map[string]string,
-  limit?: long(name='limit', default=100, description='limit', example=50, format='int64', maximum=1000, minimum=1),
+  limit?: int64(name='limit', default=100, description='limit', example=50, format='int64', maximum=1000, minimum=1),
   marker?: string(name='marker', description='marker'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_path'),
   storeId?: string(name='store_id', description='store_id', example='xxx'),
@@ -8288,8 +8288,8 @@ model ListStoreRequest {
 model ListUploadedPartRequest {
   driveId: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
-  limit?: long(name='limit', default=1000, description='limit', example=1, format='int64', maximum=1000, minimum=1, pattern='[0-9]+'),
-  partNumberMarker?: long(name='part_number_marker', description='part_number_marker', example=1, format='int64', minimum=1, pattern='[0-9]+'),
+  limit?: int64(name='limit', default=1000, description='limit', example=1, format='int64', maximum=1000, minimum=1, pattern='[0-9]+'),
+  partNumberMarker?: int64(name='part_number_marker', description='part_number_marker', example=1, format='int64', minimum=1, pattern='[0-9]+'),
   uploadId?: string(name='upload_id', description='upload_id', example='00668396C0814D818D90F0A92B04B355'),
 }
 
@@ -8320,7 +8320,7 @@ model PlayMediaRequest {
 model ScanFileMetaRequest {
   category?: string(name='category', description='category', example='image'),
   driveId: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
-  limit?: integer(name='limit', description='limit', example=1000, format='int32', maximum=5000, minimum=1),
+  limit?: int32(name='limit', description='limit', example=1000, format='int32', maximum=5000, minimum=1),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
 }
 
@@ -8331,11 +8331,11 @@ model SearchFileRequest {
   driveId: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,m_fill,h_128,w_128,limit_0'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,m_fill,h_128,w_128,limit_0'),
-  limit?: integer(name='limit', default=50, description='limit', example=10, format='int32', maximum=100, minimum=1),
+  limit?: int32(name='limit', default=50, description='limit', example=10, format='int32', maximum=100, minimum=1),
   marker?: string(name='marker', description='Marker', example='""'),
   orderBy?: string(name='order_by', default='updated_at', description='order_by', enum='name, created_at, updated_at, size', example='size'),
   query?: string(name='query', description='query', example='not name=123', maxLength=4096),
-  urlExpireSec?: long(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
+  urlExpireSec?: int64(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
 type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
@@ -8365,7 +8365,7 @@ model UpdateDriveRequest {
   encryptDataAccess?: boolean(name='encrypt_data_access', default=false, description='授权访问加密数据', example=true),
   encryptMode?: string(name='encrypt_mode', description='加密模式', example='server'),
   status?: string(name='status', default='enabled', description='状态', enum='disabled, enabled', example='enabled'),
-  totalSize?: long(name='total_size', default=0, description='总大小,单位Byte [如果设置 -1 代表不限制]', example=1024, format='int64'),
+  totalSize?: int64(name='total_size', default=0, description='总大小,单位Byte [如果设置 -1 代表不限制]', example=1024, format='int64'),
 }
 
 /**
@@ -9097,7 +9097,7 @@ api updateUserEx(request: UpdateUserRequest, runtime: RuntimeOptions): UpdateUse
  */
 model BaseUserResponse {
   avatar?: string(name='avatar', description='头像', example='http://a.b.c/ccp.jpg'),
-  createdAt?: long(name='created_at', description='用户创建时间', example=1567407718386, format='int64'),
+  createdAt?: int64(name='created_at', description='用户创建时间', example=1567407718386, format='int64'),
   defaultDriveId?: string(name='default_drive_id', description='默认 Drive ID', example='123'),
   description?: string(name='description', description='用户备注信息', example='ccp team user'),
   domainId?: string(name='domain_id', description='Domain ID', example='hz999'),
@@ -9106,7 +9106,7 @@ model BaseUserResponse {
   phone?: string(name='phone', description='电话', example='13700000000'),
   role?: string(name='role', description='角色', example='user'),
   status?: string(name='status', description='用户状态', example='enabled'),
-  updatedAt?: long(name='updated_at', description='用户修改时间', example=1567407718386, format='int64'),
+  updatedAt?: int64(name='updated_at', description='用户修改时间', example=1567407718386, format='int64'),
   userData?: object(name='user_data', additionalProperties='{"type":"object"}', description='用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K', example='{ is_student: true }'),
   userId?: string(name='user_id', description='用户 ID', example='ccpuserid'),
   userName?: string(name='user_name', description='用户名称', example='name'),
@@ -9134,7 +9134,7 @@ model CreateUserRequest {
  */
 model CreateUserResponse {
   avatar?: string(name='avatar', description='头像', example='http://a.b.c/ccp.jpg'),
-  createdAt?: long(name='created_at', description='用户创建时间', example=1567407718386, format='int64'),
+  createdAt?: int64(name='created_at', description='用户创建时间', example=1567407718386, format='int64'),
   defaultDriveId?: string(name='default_drive_id', description='默认 Drive ID', example='123'),
   description?: string(name='description', description='用户备注信息', example='ccp team user'),
   domainId?: string(name='domain_id', description='Domain ID', example='hz999'),
@@ -9143,7 +9143,7 @@ model CreateUserResponse {
   phone?: string(name='phone', description='电话', example='13700000000'),
   role?: string(name='role', description='角色', example='user'),
   status?: string(name='status', description='用户状态', example='enabled'),
-  updatedAt?: long(name='updated_at', description='用户修改时间', example=1567407718386, format='int64'),
+  updatedAt?: int64(name='updated_at', description='用户修改时间', example=1567407718386, format='int64'),
   userData?: object(name='user_data', additionalProperties='{"type":"object"}', description='用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K', example='{ is_student: true }'),
   userId?: string(name='user_id', description='用户 ID', example='ccpuserid'),
   userName?: string(name='user_name', description='用户名称', example='name'),
@@ -9177,7 +9177,7 @@ example'),
  */
 model GetUserResponse {
   avatar?: string(name='avatar', description='头像', example='http://a.b.c/ccp.jpg'),
-  createdAt?: long(name='created_at', description='用户创建时间', example=1567407718386, format='int64'),
+  createdAt?: int64(name='created_at', description='用户创建时间', example=1567407718386, format='int64'),
   defaultDriveId?: string(name='default_drive_id', description='默认 Drive ID', example='123'),
   description?: string(name='description', description='用户备注信息', example='ccp team user'),
   domainId?: string(name='domain_id', description='Domain ID', example='hz999'),
@@ -9186,7 +9186,7 @@ model GetUserResponse {
   phone?: string(name='phone', description='电话', example='13700000000'),
   role?: string(name='role', description='角色', example='user'),
   status?: string(name='status', description='用户状态', example='enabled'),
-  updatedAt?: long(name='updated_at', description='用户修改时间', example=1567407718386, format='int64'),
+  updatedAt?: int64(name='updated_at', description='用户修改时间', example=1567407718386, format='int64'),
   userData?: object(name='user_data', additionalProperties='{"type":"object"}', description='用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K', example='{ is_student: true }'),
   userId?: string(name='user_id', description='用户 ID', example='ccpuserid'),
   userName?: string(name='user_name', description='用户名称', example='name'),
@@ -9197,7 +9197,7 @@ model GetUserResponse {
  */
 model ListUserRequest {
   headers?: map[string]string,
-  limit?: integer(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
+  limit?: int32(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
   marker?: string(name='marker', description='翻页标记', example='marker'),
 }
 
@@ -9215,7 +9215,7 @@ model ListUserResponse {
 model SearchUserRequest {
   headers?: map[string]string,
   email?: string(name='email', description='邮箱', example='abc@ccp.com'),
-  limit?: integer(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
+  limit?: int32(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
   marker?: string(name='marker', description='翻页标记', example='marker'),
   nickName?: string(name='nick_name', description='昵称', example='la'),
   phone?: string(name='phone', description='电话号码', example='13700000000'),
@@ -9245,7 +9245,7 @@ model UpdateUserRequest {
  */
 model UpdateUserResponse {
   avatar?: string(name='avatar', description='头像', example='http://a.b.c/ccp.jpg'),
-  createdAt?: long(name='created_at', description='用户创建时间', example=1567407718386, format='int64'),
+  createdAt?: int64(name='created_at', description='用户创建时间', example=1567407718386, format='int64'),
   defaultDriveId?: string(name='default_drive_id', description='默认 Drive ID', example='123'),
   description?: string(name='description', description='用户备注信息', example='ccp team user'),
   domainId?: string(name='domain_id', description='Domain ID', example='hz999'),
@@ -9254,7 +9254,7 @@ model UpdateUserResponse {
   phone?: string(name='phone', description='电话', example='13700000000'),
   role?: string(name='role', description='角色', example='user'),
   status?: string(name='status', description='用户状态', example='enabled'),
-  updatedAt?: long(name='updated_at', description='用户修改时间', example=1567407718386, format='int64'),
+  updatedAt?: int64(name='updated_at', description='用户修改时间', example=1567407718386, format='int64'),
   userData?: object(name='user_data', additionalProperties='{"type":"object"}', description='用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K', example='{ is_student: true }'),
   userId?: string(name='user_id', description='用户 ID', example='ccpuserid'),
   userName?: string(name='user_name', description='用户名称', example='name'),
