@@ -14,7 +14,7 @@ composer require alibabacloud/pds-hosting-sdk
 
 ## Issues
 
-[Opening an Issue](https://github.com/aliyun/aliyun-ccp/issues/new), Issues not conforming to the guidelines may be closed immediately.
+[Opening an Issue](https://github.com/aliyun/alibabacloud-pds-sdk/issues/new), Issues not conforming to the guidelines may be closed immediately.
 
 ## Changelog
 
@@ -22,7 +22,7 @@ Detailed changes for each release are documented in the [release notes](./Change
 
 ## References
 
-* [Latest Release](https://github.com/aliyun/aliyun-ccp)
+* [Latest Release](https://github.com/aliyun/alibabacloud-pds-sdk)
 
 ## License
 

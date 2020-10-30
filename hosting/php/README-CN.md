@@ -14,7 +14,7 @@ composer require alibabacloud/pds-hosting-sdk
 
 ## 问题
 
-[提交 Issue](https://github.com/aliyun/aliyun-ccp/issues/new)，不符合指南的问题可能会立即关闭。
+[提交 Issue](https://github.com/aliyun/alibabacloud-pds-sdk/issues/new)，不符合指南的问题可能会立即关闭。
 
 ## 发行说明
 
@@ -22,7 +22,7 @@ composer require alibabacloud/pds-hosting-sdk
 
 ## 相关
 
-* [最新源码](https://github.com/aliyun/aliyun-ccp)
+* [最新源码](https://github.com/aliyun/alibabacloud-pds-sdk)
 
 ## 许可证
 
