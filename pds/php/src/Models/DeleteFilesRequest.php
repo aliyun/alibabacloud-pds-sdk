@@ -25,7 +25,7 @@ class DeleteFilesRequest extends Model
      *
      * @example
      *
-     * @var array
+     * @var string[]
      */
     public $fileIdList;
     protected $_name = [

@@ -13,7 +13,7 @@ class CorsRule extends Model
      *
      * @example h*
      *
-     * @var array
+     * @var string[]
      */
     public $allowedHeader;
 
@@ -22,7 +22,7 @@ class CorsRule extends Model
      *
      * @example PUT, GET
      *
-     * @var array
+     * @var string[]
      */
     public $allowedMethod;
 
@@ -31,7 +31,7 @@ class CorsRule extends Model
      *
      * @example *
      *
-     * @var array
+     * @var string[]
      */
     public $allowedOrigin;
 
@@ -40,7 +40,7 @@ class CorsRule extends Model
      *
      * @example ETag
      *
-     * @var array
+     * @var string[]
      */
     public $exposeHeader;
 

@@ -38,7 +38,7 @@ class ImageMediaResponse extends Model
     /**
      * @description cropping_suggestion
      *
-     * @var array
+     * @var CroppingSuggestionItem[]
      */
     public $croppingSuggestion;
 
@@ -82,7 +82,7 @@ class ImageMediaResponse extends Model
     /**
      * @description system_tags
      *
-     * @var array
+     * @var SystemTag[]
      */
     public $imageTags;
 
@@ -107,7 +107,7 @@ class ImageMediaResponse extends Model
     /**
      * @description story_image_score
      *
-     * @var int
+     * @var float
      */
     public $storyImageScore;
 

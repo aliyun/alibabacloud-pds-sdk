@@ -16,7 +16,7 @@ class ListShareLinkResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var BaseShareLinkResponse[]
      */
     public $items;
 

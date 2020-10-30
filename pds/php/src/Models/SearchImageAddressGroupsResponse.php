@@ -12,7 +12,7 @@ use AlibabaCloud\Tea\Model;
 class SearchImageAddressGroupsResponse extends Model
 {
     /**
-     * @var array
+     * @var ImageAddressResponse[]
      */
     public $items;
     protected $_name = [

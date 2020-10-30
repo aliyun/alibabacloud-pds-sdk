@@ -14,7 +14,7 @@ class ListDriveResponse extends Model
     /**
      * @description Drive 列表
      *
-     * @var array
+     * @var BaseDriveResponse[]
      */
     public $items;
 

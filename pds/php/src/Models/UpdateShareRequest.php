@@ -34,7 +34,7 @@ class UpdateShareRequest extends Model
      *
      * @example
      *
-     * @var array
+     * @var string[]
      */
     public $permissions;
 
@@ -59,7 +59,7 @@ class UpdateShareRequest extends Model
     /**
      * @description share_policy
      *
-     * @var array
+     * @var SharePermissionPolicy[]
      */
     public $sharePolicy;
 

@@ -19,7 +19,7 @@ class SharePermissionPolicy extends Model
     public $permissionInheritable;
 
     /**
-     * @var array
+     * @var string[]
      */
     public $permissionList;
 

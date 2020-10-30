@@ -12,7 +12,7 @@ use AlibabaCloud\Tea\Model;
 class ListUserResponse extends Model
 {
     /**
-     * @var array
+     * @var BaseUserResponse[]
      */
     public $items;
 

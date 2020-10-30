@@ -145,7 +145,7 @@ class BaseFileResponse extends Model
      *
      * @example label1:1, label2:2
      *
-     * @var array
+     * @var string[]
      */
     public $labels;
 
@@ -207,7 +207,7 @@ class BaseFileResponse extends Model
     /**
      * @description @Deprecated streams url info
      *
-     * @var array
+     * @var mixed[]
      */
     public $streamsInfo;
 

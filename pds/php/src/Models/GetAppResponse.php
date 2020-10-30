@@ -92,7 +92,7 @@ class GetAppResponse extends Model
     /**
      * @description App权限列表
      *
-     * @var array
+     * @var string[]
      */
     public $scope;
 
@@ -101,7 +101,7 @@ class GetAppResponse extends Model
      *
      * @example http://app.com/screenshot_1.jpg
      *
-     * @var array
+     * @var string[]
      */
     public $screenshots;
 

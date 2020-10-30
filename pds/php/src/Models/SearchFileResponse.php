@@ -16,7 +16,7 @@ class SearchFileResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var BaseFileResponse[]
      */
     public $items;
 

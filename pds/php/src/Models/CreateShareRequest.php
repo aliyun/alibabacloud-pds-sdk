@@ -52,7 +52,7 @@ class CreateShareRequest extends Model
      *
      * @example
      *
-     * @var array
+     * @var string[]
      */
     public $permissions;
 
@@ -76,7 +76,7 @@ class CreateShareRequest extends Model
      * @description share create policy
      *
      * share_policy
-     * @var array
+     * @var SharePermissionPolicy[]
      */
     public $sharePolicy;
 

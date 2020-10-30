@@ -17,7 +17,7 @@ class RemoveStoryImagesRequest extends Model
     public $driveId;
 
     /**
-     * @var array
+     * @var string[]
      */
     public $fileIds;
 

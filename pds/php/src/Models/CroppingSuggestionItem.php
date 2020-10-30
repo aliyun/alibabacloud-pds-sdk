@@ -19,7 +19,7 @@ class CroppingSuggestionItem extends Model
     public $croppingBoundary;
 
     /**
-     * @var int
+     * @var float
      */
     public $score;
     protected $_name = [

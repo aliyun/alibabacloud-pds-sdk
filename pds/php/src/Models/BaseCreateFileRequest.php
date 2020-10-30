@@ -14,7 +14,7 @@ class BaseCreateFileRequest extends Model
     /**
      * @description addition_data
      *
-     * @var array
+     * @var mixed[]
      */
     public $additionData;
 
@@ -48,7 +48,7 @@ class BaseCreateFileRequest extends Model
     /**
      * @description part_info_list
      *
-     * @var array
+     * @var UploadPartInfo[]
      */
     public $partInfoList;
 

@@ -88,7 +88,7 @@ class GetShareResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var string[]
      */
     public $permissions;
 
@@ -120,7 +120,7 @@ class GetShareResponse extends Model
     public $shareName;
 
     /**
-     * @var array
+     * @var SharePermissionPolicy[]
      */
     public $sharePolicy;
 

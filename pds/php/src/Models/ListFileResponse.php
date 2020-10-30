@@ -16,7 +16,7 @@ class ListFileResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var BaseFileResponse[]
      */
     public $items;
 

@@ -9,7 +9,7 @@ use AlibabaCloud\Tea\Model;
 class CopyFileModel extends Model
 {
     /**
-     * @var array
+     * @var string[]
      */
     public $headers;
 

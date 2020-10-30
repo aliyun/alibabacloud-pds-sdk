@@ -16,7 +16,7 @@ class OSSVideoTranscodeResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var string[]
      */
     public $definitionList;
 

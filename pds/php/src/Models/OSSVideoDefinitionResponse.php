@@ -16,7 +16,7 @@ class OSSVideoDefinitionResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var string[]
      */
     public $definitionList;
 

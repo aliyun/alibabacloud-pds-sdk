@@ -12,7 +12,7 @@ use AlibabaCloud\Tea\Model;
 class ListImageFaceGroupsResponse extends Model
 {
     /**
-     * @var array
+     * @var ImageFaceGroupResponse[]
      */
     public $items;
 

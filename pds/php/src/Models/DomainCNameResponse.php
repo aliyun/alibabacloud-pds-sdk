@@ -11,7 +11,7 @@ class DomainCNameResponse extends Model
     /**
      * @description data cname list
      *
-     * @var array
+     * @var DataCName[]
      */
     public $dataCnameList;
 

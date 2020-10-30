@@ -28,7 +28,7 @@ class GetStoryDetailResponse extends Model
     /**
      * @description items
      *
-     * @var array
+     * @var BaseFileResponse[]
      */
     public $items;
 
@@ -37,7 +37,7 @@ class GetStoryDetailResponse extends Model
      *
      * @example 50.5
      *
-     * @var int
+     * @var float
      */
     public $score;
 
@@ -53,7 +53,7 @@ class GetStoryDetailResponse extends Model
     /**
      * @description story_images_date_range
      *
-     * @var array
+     * @var int[]
      */
     public $storyImagesDateRange;
 

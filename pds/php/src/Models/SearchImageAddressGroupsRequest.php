@@ -27,7 +27,7 @@ class SearchImageAddressGroupsRequest extends Model
      *
      * @example 杭州市, 北京市
      *
-     * @var array
+     * @var string[]
      */
     public $addressNames;
 

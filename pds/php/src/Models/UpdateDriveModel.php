@@ -9,7 +9,7 @@ use AlibabaCloud\Tea\Model;
 class UpdateDriveModel extends Model
 {
     /**
-     * @var array
+     * @var string[]
      */
     public $headers;
 

@@ -16,7 +16,7 @@ class DeleteFilesResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var string[]
      */
     public $deletedFileIdList;
 

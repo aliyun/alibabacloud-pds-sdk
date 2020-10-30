@@ -34,7 +34,7 @@ class ListFileDeltaResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var FileDeltaResponse[]
      */
     public $items;
     protected $_name = [

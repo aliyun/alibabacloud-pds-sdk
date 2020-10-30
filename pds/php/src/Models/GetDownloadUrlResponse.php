@@ -46,7 +46,7 @@ class GetDownloadUrlResponse extends Model
     /**
      * @description streams url info
      *
-     * @var array
+     * @var mixed[]
      */
     public $streamsUrl;
 

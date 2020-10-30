@@ -16,7 +16,7 @@ class BatchRequest extends Model
     /**
      * @description Requests 请求合集
      *
-     * @var array
+     * @var BatchSubRequest[]
      */
     public $requests;
 
