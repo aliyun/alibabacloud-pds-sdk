@@ -95,14 +95,14 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("total_size")]
         [Validation(Required=false)]
-        public long TotalSize { get; set; }
+        public long? TotalSize { get; set; }
 
         /// <summary>
         /// Drive 空间已使用量
         /// </summary>
         [NameInMap("used_size")]
         [Validation(Required=false)]
-        public long UsedSize { get; set; }
+        public long? UsedSize { get; set; }
 
     }
 

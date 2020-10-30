@@ -17,14 +17,14 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("height")]
         [Validation(Required=false)]
-        public long Height { get; set; }
+        public long? Height { get; set; }
 
         /// <summary>
         /// width：
         /// </summary>
         [NameInMap("width")]
         [Validation(Required=false)]
-        public long Width { get; set; }
+        public long? Width { get; set; }
 
     }
 

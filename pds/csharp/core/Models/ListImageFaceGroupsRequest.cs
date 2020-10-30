@@ -28,7 +28,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("limit")]
         [Validation(Required=false)]
-        public long Limit { get; set; }
+        public long? Limit { get; set; }
 
         /// <summary>
         /// 翻页标记

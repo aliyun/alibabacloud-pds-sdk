@@ -175,7 +175,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("init_drive_size")]
         [Validation(Required=false)]
-        public long InitDriveSize { get; set; }
+        public long? InitDriveSize { get; set; }
 
         /// <summary>
         /// 自动初始化 Drive 所用 Store ID

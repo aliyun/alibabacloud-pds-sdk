@@ -38,7 +38,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("expires_in")]
         [Validation(Required=true)]
-        public long ExpiresIn { get; set; }
+        public long? ExpiresIn { get; set; }
 
         /// <summary>
         /// 用于刷新accessToken

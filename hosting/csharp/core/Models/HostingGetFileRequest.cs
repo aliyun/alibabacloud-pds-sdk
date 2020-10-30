@@ -58,7 +58,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("url_expire_sec")]
         [Validation(Required=false)]
-        public long UrlExpireSec { get; set; }
+        public long? UrlExpireSec { get; set; }
 
     }
 

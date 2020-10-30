@@ -14,11 +14,11 @@ namespace Aliyun.SDK.PDS.Client.Models
     public class RateLimit : TeaModel {
         [NameInMap("part_size")]
         [Validation(Required=false)]
-        public long PartSize { get; set; }
+        public long? PartSize { get; set; }
 
         [NameInMap("part_speed")]
         [Validation(Required=false)]
-        public long PartSpeed { get; set; }
+        public long? PartSpeed { get; set; }
 
     }
 

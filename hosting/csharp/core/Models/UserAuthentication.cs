@@ -24,7 +24,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("CreatedAt")]
         [Validation(Required=true)]
-        public long CreatedAt { get; set; }
+        public long? CreatedAt { get; set; }
 
         /// <summary>
         /// 详情
@@ -52,7 +52,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("LastLoginTime")]
         [Validation(Required=true)]
-        public long LastLoginTime { get; set; }
+        public long? LastLoginTime { get; set; }
 
         /// <summary>
         /// 状态

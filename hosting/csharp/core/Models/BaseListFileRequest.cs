@@ -38,7 +38,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("limit")]
         [Validation(Required=false, Pattern="[0-9]{1,3}")]
-        public long Limit { get; set; }
+        public long? Limit { get; set; }
 
         /// <summary>
         /// marker

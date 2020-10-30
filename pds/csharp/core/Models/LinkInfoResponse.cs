@@ -24,7 +24,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("created_at")]
         [Validation(Required=true)]
-        public long CreatedAt { get; set; }
+        public long? CreatedAt { get; set; }
 
         /// <summary>
         /// Domain ID
@@ -52,7 +52,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("last_login_time")]
         [Validation(Required=true)]
-        public long LastLoginTime { get; set; }
+        public long? LastLoginTime { get; set; }
 
         /// <summary>
         /// 状态

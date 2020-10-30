@@ -31,14 +31,14 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("limit")]
         [Validation(Required=false, Pattern="[0-9]+")]
-        public long Limit { get; set; }
+        public long? Limit { get; set; }
 
         /// <summary>
         /// part_number_marker
         /// </summary>
         [NameInMap("part_number_marker")]
         [Validation(Required=false, Pattern="[0-9]+")]
-        public long PartNumberMarker { get; set; }
+        public long? PartNumberMarker { get; set; }
 
         /// <summary>
         /// share_id

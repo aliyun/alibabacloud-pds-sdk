@@ -115,7 +115,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("size")]
         [Validation(Required=false)]
-        public long Size { get; set; }
+        public long? Size { get; set; }
 
         /// <summary>
         /// status

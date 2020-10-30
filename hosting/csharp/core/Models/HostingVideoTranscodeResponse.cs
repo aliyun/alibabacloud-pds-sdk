@@ -24,14 +24,14 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("duration")]
         [Validation(Required=false)]
-        public long Duration { get; set; }
+        public long? Duration { get; set; }
 
         /// <summary>
         /// hls_time
         /// </summary>
         [NameInMap("hls_time")]
         [Validation(Required=false)]
-        public long HlsTime { get; set; }
+        public long? HlsTime { get; set; }
 
     }
 

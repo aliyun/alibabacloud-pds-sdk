@@ -31,7 +31,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("channels")]
         [Validation(Required=false)]
-        public long Channels { get; set; }
+        public long? Channels { get; set; }
 
         /// <summary>
         /// code_name 音频编码模式

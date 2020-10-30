@@ -45,7 +45,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("height")]
         [Validation(Required=false)]
-        public long Height { get; set; }
+        public long? Height { get; set; }
 
         [NameInMap("sprite_info")]
         [Validation(Required=false)]
@@ -77,7 +77,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("width")]
         [Validation(Required=false)]
-        public long Width { get; set; }
+        public long? Width { get; set; }
 
     }
 

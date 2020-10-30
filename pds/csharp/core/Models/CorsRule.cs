@@ -45,7 +45,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("max_age_seconds")]
         [Validation(Required=false)]
-        public long MaxAgeSeconds { get; set; }
+        public long? MaxAgeSeconds { get; set; }
 
     }
 

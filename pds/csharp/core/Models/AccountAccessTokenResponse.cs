@@ -66,7 +66,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("expires_in")]
         [Validation(Required=false)]
-        public long ExpiresIn { get; set; }
+        public long? ExpiresIn { get; set; }
 
         /// <summary>
         /// 用户是否为第一次登录

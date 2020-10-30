@@ -14,7 +14,7 @@ namespace Aliyun.SDK.PDS.Client.Models
     public class SystemTag : TeaModel {
         [NameInMap("confidence")]
         [Validation(Required=false)]
-        public int? Confidence { get; set; }
+        public double? Confidence { get; set; }
 
         [NameInMap("en_name")]
         [Validation(Required=false)]
@@ -38,7 +38,7 @@ namespace Aliyun.SDK.PDS.Client.Models
 
         [NameInMap("tag_level")]
         [Validation(Required=false)]
-        public long TagLevel { get; set; }
+        public long? TagLevel { get; set; }
 
     }
 

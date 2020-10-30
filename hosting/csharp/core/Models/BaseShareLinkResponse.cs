@@ -24,7 +24,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("download_count")]
         [Validation(Required=false)]
-        public long DownloadCount { get; set; }
+        public long? DownloadCount { get; set; }
 
         /// <summary>
         /// drive_id
@@ -59,14 +59,14 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("preview_count")]
         [Validation(Required=false)]
-        public long PreviewCount { get; set; }
+        public long? PreviewCount { get; set; }
 
         /// <summary>
         /// 转存次数
         /// </summary>
         [NameInMap("save_count")]
         [Validation(Required=false)]
-        public long SaveCount { get; set; }
+        public long? SaveCount { get; set; }
 
         /// <summary>
         /// share_id

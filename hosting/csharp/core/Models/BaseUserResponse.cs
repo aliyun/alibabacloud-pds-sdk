@@ -24,7 +24,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("created_at")]
         [Validation(Required=false)]
-        public long CreatedAt { get; set; }
+        public long? CreatedAt { get; set; }
 
         /// <summary>
         /// 默认 Drive ID
@@ -87,7 +87,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("updated_at")]
         [Validation(Required=false)]
-        public long UpdatedAt { get; set; }
+        public long? UpdatedAt { get; set; }
 
         /// <summary>
         /// 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K

@@ -35,7 +35,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("video_url_expire_sec")]
         [Validation(Required=false)]
-        public long VideoUrlExpireSec { get; set; }
+        public long? VideoUrlExpireSec { get; set; }
 
     }
 
