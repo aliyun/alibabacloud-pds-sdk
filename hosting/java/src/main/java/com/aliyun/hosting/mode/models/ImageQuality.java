@@ -8,117 +8,117 @@ import com.aliyun.tea.*;
  */
 public class ImageQuality extends TeaModel {
     @NameInMap("clarity")
-    public Integer clarity;
+    public Double clarity;
 
     @NameInMap("clarity_score")
-    public Integer clarityScore;
+    public Double clarityScore;
 
     @NameInMap("color")
-    public Integer color;
+    public Double color;
 
     @NameInMap("color_score")
-    public Integer colorScore;
+    public Double colorScore;
 
     @NameInMap("composition_score")
-    public Integer compositionScore;
+    public Double compositionScore;
 
     @NameInMap("contrast")
-    public Integer contrast;
+    public Double contrast;
 
     @NameInMap("contrast_score")
-    public Integer contrastScore;
+    public Double contrastScore;
 
     @NameInMap("exposure")
-    public Integer exposure;
+    public Double exposure;
 
     @NameInMap("exposure_score")
-    public Integer exposureScore;
+    public Double exposureScore;
 
     @NameInMap("overall_score")
-    public Integer overallScore;
+    public Double overallScore;
 
     public static ImageQuality build(java.util.Map<String, ?> map) throws Exception {
         ImageQuality self = new ImageQuality();
         return TeaModel.build(map, self);
     }
 
-    public ImageQuality setClarity(Integer clarity) {
+    public ImageQuality setClarity(Double clarity) {
         this.clarity = clarity;
         return this;
     }
-    public Integer getClarity() {
+    public Double getClarity() {
         return this.clarity;
     }
 
-    public ImageQuality setClarityScore(Integer clarityScore) {
+    public ImageQuality setClarityScore(Double clarityScore) {
         this.clarityScore = clarityScore;
         return this;
     }
-    public Integer getClarityScore() {
+    public Double getClarityScore() {
         return this.clarityScore;
     }
 
-    public ImageQuality setColor(Integer color) {
+    public ImageQuality setColor(Double color) {
         this.color = color;
         return this;
     }
-    public Integer getColor() {
+    public Double getColor() {
         return this.color;
     }
 
-    public ImageQuality setColorScore(Integer colorScore) {
+    public ImageQuality setColorScore(Double colorScore) {
         this.colorScore = colorScore;
         return this;
     }
-    public Integer getColorScore() {
+    public Double getColorScore() {
         return this.colorScore;
     }
 
-    public ImageQuality setCompositionScore(Integer compositionScore) {
+    public ImageQuality setCompositionScore(Double compositionScore) {
         this.compositionScore = compositionScore;
         return this;
     }
-    public Integer getCompositionScore() {
+    public Double getCompositionScore() {
         return this.compositionScore;
     }
 
-    public ImageQuality setContrast(Integer contrast) {
+    public ImageQuality setContrast(Double contrast) {
         this.contrast = contrast;
         return this;
     }
-    public Integer getContrast() {
+    public Double getContrast() {
         return this.contrast;
     }
 
-    public ImageQuality setContrastScore(Integer contrastScore) {
+    public ImageQuality setContrastScore(Double contrastScore) {
         this.contrastScore = contrastScore;
         return this;
     }
-    public Integer getContrastScore() {
+    public Double getContrastScore() {
         return this.contrastScore;
     }
 
-    public ImageQuality setExposure(Integer exposure) {
+    public ImageQuality setExposure(Double exposure) {
         this.exposure = exposure;
         return this;
     }
-    public Integer getExposure() {
+    public Double getExposure() {
         return this.exposure;
     }
 
-    public ImageQuality setExposureScore(Integer exposureScore) {
+    public ImageQuality setExposureScore(Double exposureScore) {
         this.exposureScore = exposureScore;
         return this;
     }
-    public Integer getExposureScore() {
+    public Double getExposureScore() {
         return this.exposureScore;
     }
 
-    public ImageQuality setOverallScore(Integer overallScore) {
+    public ImageQuality setOverallScore(Double overallScore) {
         this.overallScore = overallScore;
         return this;
     }
-    public Integer getOverallScore() {
+    public Double getOverallScore() {
         return this.overallScore;
     }
 

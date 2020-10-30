@@ -21,7 +21,7 @@ public class GetStoryDetailResponse extends TeaModel {
 
     // score
     @NameInMap("score")
-    public Integer score;
+    public Double score;
 
     // story_id
     @NameInMap("story_id")
@@ -80,11 +80,11 @@ public class GetStoryDetailResponse extends TeaModel {
         return this.items;
     }
 
-    public GetStoryDetailResponse setScore(Integer score) {
+    public GetStoryDetailResponse setScore(Double score) {
         this.score = score;
         return this;
     }
-    public Integer getScore() {
+    public Double getScore() {
         return this.score;
     }
 
