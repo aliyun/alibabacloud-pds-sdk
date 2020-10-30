@@ -14,7 +14,7 @@ public class CroppingSuggestionItem extends TeaModel {
     public CroppingBoundary croppingBoundary;
 
     @NameInMap("score")
-    public Integer score;
+    public Double score;
 
     public static CroppingSuggestionItem build(java.util.Map<String, ?> map) throws Exception {
         CroppingSuggestionItem self = new CroppingSuggestionItem();
@@ -37,11 +37,11 @@ public class CroppingSuggestionItem extends TeaModel {
         return this.croppingBoundary;
     }
 
-    public CroppingSuggestionItem setScore(Integer score) {
+    public CroppingSuggestionItem setScore(Double score) {
         this.score = score;
         return this;
     }
-    public Integer getScore() {
+    public Double getScore() {
         return this.score;
     }
 

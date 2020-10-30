@@ -56,7 +56,7 @@ public class ImageMediaResponse extends TeaModel {
 
     // story_image_score
     @NameInMap("story_image_score")
-    public Integer storyImageScore;
+    public Double storyImageScore;
 
     // time
     @NameInMap("time")
@@ -171,11 +171,11 @@ public class ImageMediaResponse extends TeaModel {
         return this.province;
     }
 
-    public ImageMediaResponse setStoryImageScore(Integer storyImageScore) {
+    public ImageMediaResponse setStoryImageScore(Double storyImageScore) {
         this.storyImageScore = storyImageScore;
         return this;
     }
-    public Integer getStoryImageScore() {
+    public Double getStoryImageScore() {
         return this.storyImageScore;
     }
 

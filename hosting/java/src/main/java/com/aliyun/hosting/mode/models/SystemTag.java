@@ -8,7 +8,7 @@ import com.aliyun.tea.*;
  */
 public class SystemTag extends TeaModel {
     @NameInMap("confidence")
-    public Integer confidence;
+    public Double confidence;
 
     @NameInMap("en_name")
     public String enName;
@@ -33,11 +33,11 @@ public class SystemTag extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public SystemTag setConfidence(Integer confidence) {
+    public SystemTag setConfidence(Double confidence) {
         this.confidence = confidence;
         return this;
     }
-    public Integer getConfidence() {
+    public Double getConfidence() {
         return this.confidence;
     }
 
