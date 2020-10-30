@@ -10,7 +10,7 @@
 		}
 	],
 	"releases": {
-		"go": "github.com/alibabacloud-go/pds-hosting-sdk/client:v1.0.1",
+		"go": "github.com/alibabacloud-go/pds-hosting-sdk/client:v1.0.2",
 		"ts": "@alicloud/pds-hosting-sdk:^1.0.0",
 		"java": "com.aliyun:aliyun-sdk-pds-hosting-mode:0.0.1",
 		"csharp": "Aliyun.SDK.Hosting.Client:1.0.1",
