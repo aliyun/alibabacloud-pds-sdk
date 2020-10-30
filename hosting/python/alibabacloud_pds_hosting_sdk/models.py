@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+try:
+    from typing import Dict, List
+except ImportError:
+    pass
 
 
 class RuntimeOptions(TeaModel):
@@ -42,37 +45,65 @@ class RuntimeOptions(TeaModel):
 
     def to_map(self):
         result = {}
-        result['autoretry'] = self.autoretry
-        result['ignoreSSL'] = self.ignore_ssl
-        result['maxAttempts'] = self.max_attempts
-        result['backoffPolicy'] = self.backoff_policy
-        result['backoffPeriod'] = self.backoff_period
-        result['readTimeout'] = self.read_timeout
-        result['connectTimeout'] = self.connect_timeout
-        result['httpProxy'] = self.http_proxy
-        result['httpsProxy'] = self.https_proxy
-        result['noProxy'] = self.no_proxy
-        result['maxIdleConns'] = self.max_idle_conns
-        result['localAddr'] = self.local_addr
-        result['socks5Proxy'] = self.socks_5proxy
-        result['socks5NetWork'] = self.socks_5net_work
+        if self.autoretry is not None:
+            result['autoretry'] = self.autoretry
+        if self.ignore_ssl is not None:
+            result['ignoreSSL'] = self.ignore_ssl
+        if self.max_attempts is not None:
+            result['maxAttempts'] = self.max_attempts
+        if self.backoff_policy is not None:
+            result['backoffPolicy'] = self.backoff_policy
+        if self.backoff_period is not None:
+            result['backoffPeriod'] = self.backoff_period
+        if self.read_timeout is not None:
+            result['readTimeout'] = self.read_timeout
+        if self.connect_timeout is not None:
+            result['connectTimeout'] = self.connect_timeout
+        if self.http_proxy is not None:
+            result['httpProxy'] = self.http_proxy
+        if self.https_proxy is not None:
+            result['httpsProxy'] = self.https_proxy
+        if self.no_proxy is not None:
+            result['noProxy'] = self.no_proxy
+        if self.max_idle_conns is not None:
+            result['maxIdleConns'] = self.max_idle_conns
+        if self.local_addr is not None:
+            result['localAddr'] = self.local_addr
+        if self.socks_5proxy is not None:
+            result['socks5Proxy'] = self.socks_5proxy
+        if self.socks_5net_work is not None:
+            result['socks5NetWork'] = self.socks_5net_work
         return result
 
     def from_map(self, map={}):
-        self.autoretry = map.get('autoretry')
-        self.ignore_ssl = map.get('ignoreSSL')
-        self.max_attempts = map.get('maxAttempts')
-        self.backoff_policy = map.get('backoffPolicy')
-        self.backoff_period = map.get('backoffPeriod')
-        self.read_timeout = map.get('readTimeout')
-        self.connect_timeout = map.get('connectTimeout')
-        self.http_proxy = map.get('httpProxy')
-        self.https_proxy = map.get('httpsProxy')
-        self.no_proxy = map.get('noProxy')
-        self.max_idle_conns = map.get('maxIdleConns')
-        self.local_addr = map.get('localAddr')
-        self.socks_5proxy = map.get('socks5Proxy')
-        self.socks_5net_work = map.get('socks5NetWork')
+        if map.get('autoretry') is not None:
+            self.autoretry = map.get('autoretry')
+        if map.get('ignoreSSL') is not None:
+            self.ignore_ssl = map.get('ignoreSSL')
+        if map.get('maxAttempts') is not None:
+            self.max_attempts = map.get('maxAttempts')
+        if map.get('backoffPolicy') is not None:
+            self.backoff_policy = map.get('backoffPolicy')
+        if map.get('backoffPeriod') is not None:
+            self.backoff_period = map.get('backoffPeriod')
+        if map.get('readTimeout') is not None:
+            self.read_timeout = map.get('readTimeout')
+        if map.get('connectTimeout') is not None:
+            self.connect_timeout = map.get('connectTimeout')
+        if map.get('httpProxy') is not None:
+            self.http_proxy = map.get('httpProxy')
+        if map.get('httpsProxy') is not None:
+            self.https_proxy = map.get('httpsProxy')
+        if map.get('noProxy') is not None:
+            self.no_proxy = map.get('noProxy')
+        if map.get('maxIdleConns') is not None:
+            self.max_idle_conns = map.get('maxIdleConns')
+        if map.get('localAddr') is not None:
+            self.local_addr = map.get('localAddr')
+        if map.get('socks5Proxy') is not None:
+            self.socks_5proxy = map.get('socks5Proxy')
+        if map.get('socks5NetWork') is not None:
+            self.socks_5net_work = map.get('socks5NetWork')
         return self
 
 
@@ -96,42 +127,70 @@ class Config(TeaModel):
         self.user_agent = user_agent    # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '^[a-zA-Z0-9_-]+$')
 
     def to_map(self):
         result = {}
-        result['endpoint'] = self.endpoint
-        result['domainId'] = self.domain_id
-        result['clientId'] = self.client_id
-        result['refreshToken'] = self.refresh_token
-        result['clientSecret'] = self.client_secret
-        result['accessToken'] = self.access_token
-        result['expireTime'] = self.expire_time
-        result['protocol'] = self.protocol
-        result['type'] = self.type
-        result['securityToken'] = self.security_token
-        result['accessKeyId'] = self.access_key_id
-        result['accessKeySecret'] = self.access_key_secret
-        result['nickname'] = self.nickname
-        result['userAgent'] = self.user_agent
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.domain_id is not None:
+            result['domainId'] = self.domain_id
+        if self.client_id is not None:
+            result['clientId'] = self.client_id
+        if self.refresh_token is not None:
+            result['refreshToken'] = self.refresh_token
+        if self.client_secret is not None:
+            result['clientSecret'] = self.client_secret
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.expire_time is not None:
+            result['expireTime'] = self.expire_time
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.type is not None:
+            result['type'] = self.type
+        if self.security_token is not None:
+            result['securityToken'] = self.security_token
+        if self.access_key_id is not None:
+            result['accessKeyId'] = self.access_key_id
+        if self.access_key_secret is not None:
+            result['accessKeySecret'] = self.access_key_secret
+        if self.nickname is not None:
+            result['nickname'] = self.nickname
+        if self.user_agent is not None:
+            result['userAgent'] = self.user_agent
         return result
 
     def from_map(self, map={}):
-        self.endpoint = map.get('endpoint')
-        self.domain_id = map.get('domainId')
-        self.client_id = map.get('clientId')
-        self.refresh_token = map.get('refreshToken')
-        self.client_secret = map.get('clientSecret')
-        self.access_token = map.get('accessToken')
-        self.expire_time = map.get('expireTime')
-        self.protocol = map.get('protocol')
-        self.type = map.get('type')
-        self.security_token = map.get('securityToken')
-        self.access_key_id = map.get('accessKeyId')
-        self.access_key_secret = map.get('accessKeySecret')
-        self.nickname = map.get('nickname')
-        self.user_agent = map.get('userAgent')
+        if map.get('endpoint') is not None:
+            self.endpoint = map.get('endpoint')
+        if map.get('domainId') is not None:
+            self.domain_id = map.get('domainId')
+        if map.get('clientId') is not None:
+            self.client_id = map.get('clientId')
+        if map.get('refreshToken') is not None:
+            self.refresh_token = map.get('refreshToken')
+        if map.get('clientSecret') is not None:
+            self.client_secret = map.get('clientSecret')
+        if map.get('accessToken') is not None:
+            self.access_token = map.get('accessToken')
+        if map.get('expireTime') is not None:
+            self.expire_time = map.get('expireTime')
+        if map.get('protocol') is not None:
+            self.protocol = map.get('protocol')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('securityToken') is not None:
+            self.security_token = map.get('securityToken')
+        if map.get('accessKeyId') is not None:
+            self.access_key_id = map.get('accessKeyId')
+        if map.get('accessKeySecret') is not None:
+            self.access_key_secret = map.get('accessKeySecret')
+        if map.get('nickname') is not None:
+            self.nickname = map.get('nickname')
+        if map.get('userAgent') is not None:
+            self.user_agent = map.get('userAgent')
         return self
 
 
@@ -147,20 +206,18 @@ class CancelLinkModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = AccountAccessTokenResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -176,20 +233,18 @@ class ConfirmLinkModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = AccountAccessTokenResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -205,20 +260,18 @@ class ChangePasswordModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = AccountAccessTokenResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -231,11 +284,13 @@ class SetPasswordModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         return self
 
 
@@ -251,20 +306,18 @@ class VerifyCodeModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = VerifyCodeResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -280,20 +333,18 @@ class GetAccessTokenByLinkInfoModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = AccountAccessTokenResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -309,20 +360,18 @@ class GetCaptchaModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = Captcha()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -338,20 +387,18 @@ class GetLinkInfoModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = LinkInfoResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -367,20 +414,18 @@ class GetLinkInfoByUserIdModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = LinkInfoListResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -396,20 +441,18 @@ class GetPublicKeyModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = GetAppPublicKeyResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -425,20 +468,18 @@ class LinkModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = AccountAccessTokenResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -454,20 +495,18 @@ class CheckExistModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = MobileCheckExistResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -483,20 +522,18 @@ class LoginModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = AccountAccessTokenResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -512,20 +549,18 @@ class RegisterModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = AccountAccessTokenResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -541,20 +576,18 @@ class MobileSendSmsCodeModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = MobileSendSmsCodeResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -567,11 +600,13 @@ class AccountRevokeModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         return self
 
 
@@ -587,20 +622,18 @@ class AccountTokenModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = AccountAccessTokenResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -639,25 +672,41 @@ class AccessTokenResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['access_token'] = self.access_token
-        result['default_drive_id'] = self.default_drive_id
-        result['expire_time'] = self.expire_time
-        result['expires_in'] = self.expires_in
-        result['refresh_token'] = self.refresh_token
-        result['role'] = self.role
-        result['token_type'] = self.token_type
-        result['user_id'] = self.user_id
+        if self.access_token is not None:
+            result['access_token'] = self.access_token
+        if self.default_drive_id is not None:
+            result['default_drive_id'] = self.default_drive_id
+        if self.expire_time is not None:
+            result['expire_time'] = self.expire_time
+        if self.expires_in is not None:
+            result['expires_in'] = self.expires_in
+        if self.refresh_token is not None:
+            result['refresh_token'] = self.refresh_token
+        if self.role is not None:
+            result['role'] = self.role
+        if self.token_type is not None:
+            result['token_type'] = self.token_type
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
         return result
 
     def from_map(self, map={}):
-        self.access_token = map.get('access_token')
-        self.default_drive_id = map.get('default_drive_id')
-        self.expire_time = map.get('expire_time')
-        self.expires_in = map.get('expires_in')
-        self.refresh_token = map.get('refresh_token')
-        self.role = map.get('role')
-        self.token_type = map.get('token_type')
-        self.user_id = map.get('user_id')
+        if map.get('access_token') is not None:
+            self.access_token = map.get('access_token')
+        if map.get('default_drive_id') is not None:
+            self.default_drive_id = map.get('default_drive_id')
+        if map.get('expire_time') is not None:
+            self.expire_time = map.get('expire_time')
+        if map.get('expires_in') is not None:
+            self.expires_in = map.get('expires_in')
+        if map.get('refresh_token') is not None:
+            self.refresh_token = map.get('refresh_token')
+        if map.get('role') is not None:
+            self.role = map.get('role')
+        if map.get('token_type') is not None:
+            self.token_type = map.get('token_type')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
         return self
 
 
@@ -716,56 +765,86 @@ class AccountAccessTokenResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['access_token'] = self.access_token
-        result['avatar'] = self.avatar
-        result['data_pin_saved'] = self.data_pin_saved
-        result['data_pin_setup'] = self.data_pin_setup
-        result['default_drive_id'] = self.default_drive_id
+        if self.access_token is not None:
+            result['access_token'] = self.access_token
+        if self.avatar is not None:
+            result['avatar'] = self.avatar
+        if self.data_pin_saved is not None:
+            result['data_pin_saved'] = self.data_pin_saved
+        if self.data_pin_setup is not None:
+            result['data_pin_setup'] = self.data_pin_setup
+        if self.default_drive_id is not None:
+            result['default_drive_id'] = self.default_drive_id
         result['exist_link'] = []
         if self.exist_link is not None:
             for k in self.exist_link:
                 result['exist_link'].append(k.to_map() if k else None)
-        else:
-            result['exist_link'] = None
-        result['expire_time'] = self.expire_time
-        result['expires_in'] = self.expires_in
-        result['is_first_login'] = self.is_first_login
-        result['need_link'] = self.need_link
-        result['nick_name'] = self.nick_name
-        result['refresh_token'] = self.refresh_token
-        result['role'] = self.role
-        result['state'] = self.state
-        result['token_type'] = self.token_type
-        result['user_data'] = self.user_data
-        result['user_id'] = self.user_id
-        result['user_name'] = self.user_name
+        if self.expire_time is not None:
+            result['expire_time'] = self.expire_time
+        if self.expires_in is not None:
+            result['expires_in'] = self.expires_in
+        if self.is_first_login is not None:
+            result['is_first_login'] = self.is_first_login
+        if self.need_link is not None:
+            result['need_link'] = self.need_link
+        if self.nick_name is not None:
+            result['nick_name'] = self.nick_name
+        if self.refresh_token is not None:
+            result['refresh_token'] = self.refresh_token
+        if self.role is not None:
+            result['role'] = self.role
+        if self.state is not None:
+            result['state'] = self.state
+        if self.token_type is not None:
+            result['token_type'] = self.token_type
+        if self.user_data is not None:
+            result['user_data'] = self.user_data
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
         return result
 
     def from_map(self, map={}):
-        self.access_token = map.get('access_token')
-        self.avatar = map.get('avatar')
-        self.data_pin_saved = map.get('data_pin_saved')
-        self.data_pin_setup = map.get('data_pin_setup')
-        self.default_drive_id = map.get('default_drive_id')
+        if map.get('access_token') is not None:
+            self.access_token = map.get('access_token')
+        if map.get('avatar') is not None:
+            self.avatar = map.get('avatar')
+        if map.get('data_pin_saved') is not None:
+            self.data_pin_saved = map.get('data_pin_saved')
+        if map.get('data_pin_setup') is not None:
+            self.data_pin_setup = map.get('data_pin_setup')
+        if map.get('default_drive_id') is not None:
+            self.default_drive_id = map.get('default_drive_id')
         self.exist_link = []
         if map.get('exist_link') is not None:
             for k in map.get('exist_link'):
                 temp_model = LinkInfo()
                 self.exist_link.append(temp_model.from_map(k))
-        else:
-            self.exist_link = None
-        self.expire_time = map.get('expire_time')
-        self.expires_in = map.get('expires_in')
-        self.is_first_login = map.get('is_first_login')
-        self.need_link = map.get('need_link')
-        self.nick_name = map.get('nick_name')
-        self.refresh_token = map.get('refresh_token')
-        self.role = map.get('role')
-        self.state = map.get('state')
-        self.token_type = map.get('token_type')
-        self.user_data = map.get('user_data')
-        self.user_id = map.get('user_id')
-        self.user_name = map.get('user_name')
+        if map.get('expire_time') is not None:
+            self.expire_time = map.get('expire_time')
+        if map.get('expires_in') is not None:
+            self.expires_in = map.get('expires_in')
+        if map.get('is_first_login') is not None:
+            self.is_first_login = map.get('is_first_login')
+        if map.get('need_link') is not None:
+            self.need_link = map.get('need_link')
+        if map.get('nick_name') is not None:
+            self.nick_name = map.get('nick_name')
+        if map.get('refresh_token') is not None:
+            self.refresh_token = map.get('refresh_token')
+        if map.get('role') is not None:
+            self.role = map.get('role')
+        if map.get('state') is not None:
+            self.state = map.get('state')
+        if map.get('token_type') is not None:
+            self.token_type = map.get('token_type')
+        if map.get('user_data') is not None:
+            self.user_data = map.get('user_data')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
+        if map.get('user_name') is not None:
+            self.user_name = map.get('user_name')
         return self
 
 
@@ -795,23 +874,37 @@ class AccountLinkRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['detail'] = self.detail
-        result['extra'] = self.extra
-        result['identity'] = self.identity
-        result['status'] = self.status
-        result['type'] = self.type
-        result['user_id'] = self.user_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.detail is not None:
+            result['detail'] = self.detail
+        if self.extra is not None:
+            result['extra'] = self.extra
+        if self.identity is not None:
+            result['identity'] = self.identity
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.detail = map.get('detail')
-        self.extra = map.get('extra')
-        self.identity = map.get('identity')
-        self.status = map.get('status')
-        self.type = map.get('type')
-        self.user_id = map.get('user_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('detail') is not None:
+            self.detail = map.get('detail')
+        if map.get('extra') is not None:
+            self.extra = map.get('extra')
+        if map.get('identity') is not None:
+            self.identity = map.get('identity')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
         return self
 
 
@@ -841,21 +934,33 @@ class AuthorizeRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClientID'] = self.client_id
-        result['LoginType'] = self.login_type
-        result['RedirectUri'] = self.redirect_uri
-        result['ResponseType'] = self.response_type
-        result['Scope'] = self.scope
-        result['State'] = self.state
+        if self.client_id is not None:
+            result['ClientID'] = self.client_id
+        if self.login_type is not None:
+            result['LoginType'] = self.login_type
+        if self.redirect_uri is not None:
+            result['RedirectUri'] = self.redirect_uri
+        if self.response_type is not None:
+            result['ResponseType'] = self.response_type
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        if self.state is not None:
+            result['State'] = self.state
         return result
 
     def from_map(self, map={}):
-        self.client_id = map.get('ClientID')
-        self.login_type = map.get('LoginType')
-        self.redirect_uri = map.get('RedirectUri')
-        self.response_type = map.get('ResponseType')
-        self.scope = map.get('Scope')
-        self.state = map.get('State')
+        if map.get('ClientID') is not None:
+            self.client_id = map.get('ClientID')
+        if map.get('LoginType') is not None:
+            self.login_type = map.get('LoginType')
+        if map.get('RedirectUri') is not None:
+            self.redirect_uri = map.get('RedirectUri')
+        if map.get('ResponseType') is not None:
+            self.response_type = map.get('ResponseType')
+        if map.get('Scope') is not None:
+            self.scope = map.get('Scope')
+        if map.get('State') is not None:
+            self.state = map.get('State')
         return self
 
 
@@ -898,37 +1003,65 @@ class BaseDriveResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['creator'] = self.creator
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['drive_name'] = self.drive_name
-        result['drive_type'] = self.drive_type
-        result['encrypt_data_access'] = self.encrypt_data_access
-        result['encrypt_mode'] = self.encrypt_mode
-        result['owner'] = self.owner
-        result['relative_path'] = self.relative_path
-        result['status'] = self.status
-        result['store_id'] = self.store_id
-        result['total_size'] = self.total_size
-        result['used_size'] = self.used_size
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.drive_name is not None:
+            result['drive_name'] = self.drive_name
+        if self.drive_type is not None:
+            result['drive_type'] = self.drive_type
+        if self.encrypt_data_access is not None:
+            result['encrypt_data_access'] = self.encrypt_data_access
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.relative_path is not None:
+            result['relative_path'] = self.relative_path
+        if self.status is not None:
+            result['status'] = self.status
+        if self.store_id is not None:
+            result['store_id'] = self.store_id
+        if self.total_size is not None:
+            result['total_size'] = self.total_size
+        if self.used_size is not None:
+            result['used_size'] = self.used_size
         return result
 
     def from_map(self, map={}):
-        self.creator = map.get('creator')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.drive_name = map.get('drive_name')
-        self.drive_type = map.get('drive_type')
-        self.encrypt_data_access = map.get('encrypt_data_access')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.owner = map.get('owner')
-        self.relative_path = map.get('relative_path')
-        self.status = map.get('status')
-        self.store_id = map.get('store_id')
-        self.total_size = map.get('total_size')
-        self.used_size = map.get('used_size')
+        if map.get('creator') is not None:
+            self.creator = map.get('creator')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('drive_name') is not None:
+            self.drive_name = map.get('drive_name')
+        if map.get('drive_type') is not None:
+            self.drive_type = map.get('drive_type')
+        if map.get('encrypt_data_access') is not None:
+            self.encrypt_data_access = map.get('encrypt_data_access')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('owner') is not None:
+            self.owner = map.get('owner')
+        if map.get('relative_path') is not None:
+            self.relative_path = map.get('relative_path')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('store_id') is not None:
+            self.store_id = map.get('store_id')
+        if map.get('total_size') is not None:
+            self.total_size = map.get('total_size')
+        if map.get('used_size') is not None:
+            self.used_size = map.get('used_size')
         return self
 
 
@@ -951,29 +1084,44 @@ class BaseFileAnonymousResponse(TeaModel):
         self.updated_at = updated_at    # type: str
 
     def validate(self):
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
 
     def to_map(self):
         result = {}
-        result['file_id'] = self.file_id
-        result['name'] = self.name
-        result['size'] = self.size
-        result['thumbnail'] = self.thumbnail
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.size is not None:
+            result['size'] = self.size
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
         return result
 
     def from_map(self, map={}):
-        self.file_id = map.get('file_id')
-        self.name = map.get('name')
-        self.size = map.get('size')
-        self.thumbnail = map.get('thumbnail')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
         return self
 
 
@@ -1052,21 +1200,24 @@ class BaseFileResponse(TeaModel):
         self.video_preview_metadata = video_preview_metadata  # type: VideoPreviewResponse
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
         if self.image_media_metadata:
             self.image_media_metadata.validate()
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_id:
+        if self.parent_file_id is not None:
             self.validate_max_length(self.parent_file_id, 'parent_file_id', 50)
             self.validate_pattern(self.parent_file_id, 'parent_file_id', '[a-z0-9]{1,50}')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
         if self.video_media_metadata:
             self.video_media_metadata.validate()
         if self.video_preview_metadata:
@@ -1074,96 +1225,144 @@ class BaseFileResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['category'] = self.category
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['encrypt_mode'] = self.encrypt_mode
-        result['file_extension'] = self.file_extension
-        result['file_id'] = self.file_id
-        result['hidden'] = self.hidden
+        if self.category is not None:
+            result['category'] = self.category
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.hidden is not None:
+            result['hidden'] = self.hidden
         if self.image_media_metadata is not None:
             result['image_media_metadata'] = self.image_media_metadata.to_map()
-        else:
-            result['image_media_metadata'] = None
-        result['labels'] = self.labels
-        result['meta'] = self.meta
-        result['name'] = self.name
-        result['parent_file_id'] = self.parent_file_id
-        result['punish_flag'] = self.punish_flag
-        result['size'] = self.size
-        result['starred'] = self.starred
-        result['status'] = self.status
-        result['streams_info'] = self.streams_info
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
-        result['user_meta'] = self.user_meta
+        if self.labels is not None:
+            result['labels'] = self.labels
+        if self.meta is not None:
+            result['meta'] = self.meta
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_id is not None:
+            result['parent_file_id'] = self.parent_file_id
+        if self.punish_flag is not None:
+            result['punish_flag'] = self.punish_flag
+        if self.size is not None:
+            result['size'] = self.size
+        if self.starred is not None:
+            result['starred'] = self.starred
+        if self.status is not None:
+            result['status'] = self.status
+        if self.streams_info is not None:
+            result['streams_info'] = self.streams_info
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
+        if self.user_meta is not None:
+            result['user_meta'] = self.user_meta
         if self.video_media_metadata is not None:
             result['video_media_metadata'] = self.video_media_metadata.to_map()
-        else:
-            result['video_media_metadata'] = None
         if self.video_preview_metadata is not None:
             result['video_preview_metadata'] = self.video_preview_metadata.to_map()
-        else:
-            result['video_preview_metadata'] = None
         return result
 
     def from_map(self, map={}):
-        self.category = map.get('category')
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.file_extension = map.get('file_extension')
-        self.file_id = map.get('file_id')
-        self.hidden = map.get('hidden')
+        if map.get('category') is not None:
+            self.category = map.get('category')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('hidden') is not None:
+            self.hidden = map.get('hidden')
         if map.get('image_media_metadata') is not None:
             temp_model = ImageMediaResponse()
             self.image_media_metadata = temp_model.from_map(map['image_media_metadata'])
-        else:
-            self.image_media_metadata = None
-        self.labels = map.get('labels')
-        self.meta = map.get('meta')
-        self.name = map.get('name')
-        self.parent_file_id = map.get('parent_file_id')
-        self.punish_flag = map.get('punish_flag')
-        self.size = map.get('size')
-        self.starred = map.get('starred')
-        self.status = map.get('status')
-        self.streams_info = map.get('streams_info')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
-        self.user_meta = map.get('user_meta')
+        if map.get('labels') is not None:
+            self.labels = map.get('labels')
+        if map.get('meta') is not None:
+            self.meta = map.get('meta')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_id') is not None:
+            self.parent_file_id = map.get('parent_file_id')
+        if map.get('punish_flag') is not None:
+            self.punish_flag = map.get('punish_flag')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('starred') is not None:
+            self.starred = map.get('starred')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('streams_info') is not None:
+            self.streams_info = map.get('streams_info')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
+        if map.get('user_meta') is not None:
+            self.user_meta = map.get('user_meta')
         if map.get('video_media_metadata') is not None:
             temp_model = VideoMediaResponse()
             self.video_media_metadata = temp_model.from_map(map['video_media_metadata'])
-        else:
-            self.video_media_metadata = None
         if map.get('video_preview_metadata') is not None:
             temp_model = VideoPreviewResponse()
             self.video_preview_metadata = temp_model.from_map(map['video_preview_metadata'])
-        else:
-            self.video_preview_metadata = None
         return self
 
 
@@ -1199,29 +1398,49 @@ class BaseMediaResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['address_line'] = self.address_line
-        result['city'] = self.city
-        result['country'] = self.country
-        result['district'] = self.district
-        result['height'] = self.height
-        result['location'] = self.location
-        result['province'] = self.province
-        result['time'] = self.time
-        result['township'] = self.township
-        result['width'] = self.width
+        if self.address_line is not None:
+            result['address_line'] = self.address_line
+        if self.city is not None:
+            result['city'] = self.city
+        if self.country is not None:
+            result['country'] = self.country
+        if self.district is not None:
+            result['district'] = self.district
+        if self.height is not None:
+            result['height'] = self.height
+        if self.location is not None:
+            result['location'] = self.location
+        if self.province is not None:
+            result['province'] = self.province
+        if self.time is not None:
+            result['time'] = self.time
+        if self.township is not None:
+            result['township'] = self.township
+        if self.width is not None:
+            result['width'] = self.width
         return result
 
     def from_map(self, map={}):
-        self.address_line = map.get('address_line')
-        self.city = map.get('city')
-        self.country = map.get('country')
-        self.district = map.get('district')
-        self.height = map.get('height')
-        self.location = map.get('location')
-        self.province = map.get('province')
-        self.time = map.get('time')
-        self.township = map.get('township')
-        self.width = map.get('width')
+        if map.get('address_line') is not None:
+            self.address_line = map.get('address_line')
+        if map.get('city') is not None:
+            self.city = map.get('city')
+        if map.get('country') is not None:
+            self.country = map.get('country')
+        if map.get('district') is not None:
+            self.district = map.get('district')
+        if map.get('height') is not None:
+            self.height = map.get('height')
+        if map.get('location') is not None:
+            self.location = map.get('location')
+        if map.get('province') is not None:
+            self.province = map.get('province')
+        if map.get('time') is not None:
+            self.time = map.get('time')
+        if map.get('township') is not None:
+            self.township = map.get('township')
+        if map.get('width') is not None:
+            self.width = map.get('width')
         return self
 
 
@@ -1279,68 +1498,115 @@ class BaseOSSFileResponse(TeaModel):
         self.url = url                  # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_path:
+        if self.parent_file_path is not None:
             self.validate_max_length(self.parent_file_path, 'parent_file_path', 50)
             self.validate_pattern(self.parent_file_path, 'parent_file_path', '[a-z0-9]{1,50}')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9]+')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
 
     def to_map(self):
         result = {}
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['file_extension'] = self.file_extension
-        result['file_path'] = self.file_path
-        result['name'] = self.name
-        result['parent_file_path'] = self.parent_file_path
-        result['share_id'] = self.share_id
-        result['size'] = self.size
-        result['status'] = self.status
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_path is not None:
+            result['parent_file_path'] = self.parent_file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.size is not None:
+            result['size'] = self.size
+        if self.status is not None:
+            result['status'] = self.status
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.file_extension = map.get('file_extension')
-        self.file_path = map.get('file_path')
-        self.name = map.get('name')
-        self.parent_file_path = map.get('parent_file_path')
-        self.share_id = map.get('share_id')
-        self.size = map.get('size')
-        self.status = map.get('status')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_path') is not None:
+            self.parent_file_path = map.get('parent_file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -1385,37 +1651,65 @@ class BaseShareLinkResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['created_at'] = self.created_at
-        result['download_count'] = self.download_count
-        result['drive_id'] = self.drive_id
-        result['expiration'] = self.expiration
-        result['expired'] = self.expired
-        result['file_id'] = self.file_id
-        result['preview_count'] = self.preview_count
-        result['save_count'] = self.save_count
-        result['share_id'] = self.share_id
-        result['share_msg'] = self.share_msg
-        result['share_policy'] = self.share_policy
-        result['share_pwd'] = self.share_pwd
-        result['share_url'] = self.share_url
-        result['updated_at'] = self.updated_at
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.download_count is not None:
+            result['download_count'] = self.download_count
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.expired is not None:
+            result['expired'] = self.expired
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.preview_count is not None:
+            result['preview_count'] = self.preview_count
+        if self.save_count is not None:
+            result['save_count'] = self.save_count
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.share_msg is not None:
+            result['share_msg'] = self.share_msg
+        if self.share_policy is not None:
+            result['share_policy'] = self.share_policy
+        if self.share_pwd is not None:
+            result['share_pwd'] = self.share_pwd
+        if self.share_url is not None:
+            result['share_url'] = self.share_url
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
         return result
 
     def from_map(self, map={}):
-        self.created_at = map.get('created_at')
-        self.download_count = map.get('download_count')
-        self.drive_id = map.get('drive_id')
-        self.expiration = map.get('expiration')
-        self.expired = map.get('expired')
-        self.file_id = map.get('file_id')
-        self.preview_count = map.get('preview_count')
-        self.save_count = map.get('save_count')
-        self.share_id = map.get('share_id')
-        self.share_msg = map.get('share_msg')
-        self.share_policy = map.get('share_policy')
-        self.share_pwd = map.get('share_pwd')
-        self.share_url = map.get('share_url')
-        self.updated_at = map.get('updated_at')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('download_count') is not None:
+            self.download_count = map.get('download_count')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('expired') is not None:
+            self.expired = map.get('expired')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('preview_count') is not None:
+            self.preview_count = map.get('preview_count')
+        if map.get('save_count') is not None:
+            self.save_count = map.get('save_count')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('share_msg') is not None:
+            self.share_msg = map.get('share_msg')
+        if map.get('share_policy') is not None:
+            self.share_policy = map.get('share_policy')
+        if map.get('share_pwd') is not None:
+            self.share_pwd = map.get('share_pwd')
+        if map.get('share_url') is not None:
+            self.share_url = map.get('share_url')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
         return self
 
 
@@ -1464,50 +1758,74 @@ class BaseShareResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['created_at'] = self.created_at
-        result['creator'] = self.creator
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['expiration'] = self.expiration
-        result['expired'] = self.expired
-        result['owner'] = self.owner
-        result['permissions'] = self.permissions
-        result['share_file_path'] = self.share_file_path
-        result['share_id'] = self.share_id
-        result['share_name'] = self.share_name
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.expired is not None:
+            result['expired'] = self.expired
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.permissions is not None:
+            result['permissions'] = self.permissions
+        if self.share_file_path is not None:
+            result['share_file_path'] = self.share_file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.share_name is not None:
+            result['share_name'] = self.share_name
         result['share_policy'] = []
         if self.share_policy is not None:
             for k in self.share_policy:
                 result['share_policy'].append(k.to_map() if k else None)
-        else:
-            result['share_policy'] = None
-        result['status'] = self.status
-        result['updated_at'] = self.updated_at
+        if self.status is not None:
+            result['status'] = self.status
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
         return result
 
     def from_map(self, map={}):
-        self.created_at = map.get('created_at')
-        self.creator = map.get('creator')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.expiration = map.get('expiration')
-        self.expired = map.get('expired')
-        self.owner = map.get('owner')
-        self.permissions = map.get('permissions')
-        self.share_file_path = map.get('share_file_path')
-        self.share_id = map.get('share_id')
-        self.share_name = map.get('share_name')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('creator') is not None:
+            self.creator = map.get('creator')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('expired') is not None:
+            self.expired = map.get('expired')
+        if map.get('owner') is not None:
+            self.owner = map.get('owner')
+        if map.get('permissions') is not None:
+            self.permissions = map.get('permissions')
+        if map.get('share_file_path') is not None:
+            self.share_file_path = map.get('share_file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('share_name') is not None:
+            self.share_name = map.get('share_name')
         self.share_policy = []
         if map.get('share_policy') is not None:
             for k in map.get('share_policy'):
                 temp_model = SharePermissionPolicy()
                 self.share_policy.append(temp_model.from_map(k))
-        else:
-            self.share_policy = None
-        self.status = map.get('status')
-        self.updated_at = map.get('updated_at')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
         return self
 
 
@@ -1531,8 +1849,6 @@ class BatchResponse(TeaModel):
         if self.responses is not None:
             for k in self.responses:
                 result['responses'].append(k.to_map() if k else None)
-        else:
-            result['responses'] = None
         return result
 
     def from_map(self, map={}):
@@ -1541,8 +1857,6 @@ class BatchResponse(TeaModel):
             for k in map.get('responses'):
                 temp_model = BatchSubResponse()
                 self.responses.append(temp_model.from_map(k))
-        else:
-            self.responses = None
         return self
 
 
@@ -1563,15 +1877,21 @@ class BatchSubResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['body'] = self.body
-        result['id'] = self.id
-        result['status'] = self.status
+        if self.body is not None:
+            result['body'] = self.body
+        if self.id is not None:
+            result['id'] = self.id
+        if self.status is not None:
+            result['status'] = self.status
         return result
 
     def from_map(self, map={}):
-        self.body = map.get('body')
-        self.id = map.get('id')
-        self.status = map.get('status')
+        if map.get('body') is not None:
+            self.body = map.get('body')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('status') is not None:
+            self.status = map.get('status')
         return self
 
 
@@ -1589,13 +1909,17 @@ class CancelLinkRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['temporary_token'] = self.temporary_token
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.temporary_token is not None:
+            result['temporary_token'] = self.temporary_token
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.temporary_token = map.get('temporary_token')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('temporary_token') is not None:
+            self.temporary_token = map.get('temporary_token')
         return self
 
 
@@ -1618,15 +1942,21 @@ class Captcha(TeaModel):
 
     def to_map(self):
         result = {}
-        result['captcha'] = self.captcha
-        result['captcha_format'] = self.captcha_format
-        result['captcha_id'] = self.captcha_id
+        if self.captcha is not None:
+            result['captcha'] = self.captcha
+        if self.captcha_format is not None:
+            result['captcha_format'] = self.captcha_format
+        if self.captcha_id is not None:
+            result['captcha_id'] = self.captcha_id
         return result
 
     def from_map(self, map={}):
-        self.captcha = map.get('captcha')
-        self.captcha_format = map.get('captcha_format')
-        self.captcha_id = map.get('captcha_id')
+        if map.get('captcha') is not None:
+            self.captcha = map.get('captcha')
+        if map.get('captcha_format') is not None:
+            self.captcha_format = map.get('captcha_format')
+        if map.get('captcha_id') is not None:
+            self.captcha_id = map.get('captcha_id')
         return self
 
 
@@ -1705,21 +2035,24 @@ class CompleteFileResponse(TeaModel):
         self.video_preview_metadata = video_preview_metadata  # type: VideoPreviewResponse
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
         if self.image_media_metadata:
             self.image_media_metadata.validate()
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_id:
+        if self.parent_file_id is not None:
             self.validate_max_length(self.parent_file_id, 'parent_file_id', 50)
             self.validate_pattern(self.parent_file_id, 'parent_file_id', '[a-z0-9]{1,50}')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
         if self.video_media_metadata:
             self.video_media_metadata.validate()
         if self.video_preview_metadata:
@@ -1727,96 +2060,144 @@ class CompleteFileResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['category'] = self.category
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['encrypt_mode'] = self.encrypt_mode
-        result['file_extension'] = self.file_extension
-        result['file_id'] = self.file_id
-        result['hidden'] = self.hidden
+        if self.category is not None:
+            result['category'] = self.category
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.hidden is not None:
+            result['hidden'] = self.hidden
         if self.image_media_metadata is not None:
             result['image_media_metadata'] = self.image_media_metadata.to_map()
-        else:
-            result['image_media_metadata'] = None
-        result['labels'] = self.labels
-        result['meta'] = self.meta
-        result['name'] = self.name
-        result['parent_file_id'] = self.parent_file_id
-        result['punish_flag'] = self.punish_flag
-        result['size'] = self.size
-        result['starred'] = self.starred
-        result['status'] = self.status
-        result['streams_info'] = self.streams_info
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
-        result['user_meta'] = self.user_meta
+        if self.labels is not None:
+            result['labels'] = self.labels
+        if self.meta is not None:
+            result['meta'] = self.meta
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_id is not None:
+            result['parent_file_id'] = self.parent_file_id
+        if self.punish_flag is not None:
+            result['punish_flag'] = self.punish_flag
+        if self.size is not None:
+            result['size'] = self.size
+        if self.starred is not None:
+            result['starred'] = self.starred
+        if self.status is not None:
+            result['status'] = self.status
+        if self.streams_info is not None:
+            result['streams_info'] = self.streams_info
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
+        if self.user_meta is not None:
+            result['user_meta'] = self.user_meta
         if self.video_media_metadata is not None:
             result['video_media_metadata'] = self.video_media_metadata.to_map()
-        else:
-            result['video_media_metadata'] = None
         if self.video_preview_metadata is not None:
             result['video_preview_metadata'] = self.video_preview_metadata.to_map()
-        else:
-            result['video_preview_metadata'] = None
         return result
 
     def from_map(self, map={}):
-        self.category = map.get('category')
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.file_extension = map.get('file_extension')
-        self.file_id = map.get('file_id')
-        self.hidden = map.get('hidden')
+        if map.get('category') is not None:
+            self.category = map.get('category')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('hidden') is not None:
+            self.hidden = map.get('hidden')
         if map.get('image_media_metadata') is not None:
             temp_model = ImageMediaResponse()
             self.image_media_metadata = temp_model.from_map(map['image_media_metadata'])
-        else:
-            self.image_media_metadata = None
-        self.labels = map.get('labels')
-        self.meta = map.get('meta')
-        self.name = map.get('name')
-        self.parent_file_id = map.get('parent_file_id')
-        self.punish_flag = map.get('punish_flag')
-        self.size = map.get('size')
-        self.starred = map.get('starred')
-        self.status = map.get('status')
-        self.streams_info = map.get('streams_info')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
-        self.user_meta = map.get('user_meta')
+        if map.get('labels') is not None:
+            self.labels = map.get('labels')
+        if map.get('meta') is not None:
+            self.meta = map.get('meta')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_id') is not None:
+            self.parent_file_id = map.get('parent_file_id')
+        if map.get('punish_flag') is not None:
+            self.punish_flag = map.get('punish_flag')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('starred') is not None:
+            self.starred = map.get('starred')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('streams_info') is not None:
+            self.streams_info = map.get('streams_info')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
+        if map.get('user_meta') is not None:
+            self.user_meta = map.get('user_meta')
         if map.get('video_media_metadata') is not None:
             temp_model = VideoMediaResponse()
             self.video_media_metadata = temp_model.from_map(map['video_media_metadata'])
-        else:
-            self.video_media_metadata = None
         if map.get('video_preview_metadata') is not None:
             temp_model = VideoPreviewResponse()
             self.video_preview_metadata = temp_model.from_map(map['video_preview_metadata'])
-        else:
-            self.video_preview_metadata = None
         return self
 
 
@@ -1834,13 +2215,17 @@ class ConfirmLinkRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['temporary_token'] = self.temporary_token
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.temporary_token is not None:
+            result['temporary_token'] = self.temporary_token
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.temporary_token = map.get('temporary_token')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('temporary_token') is not None:
+            self.temporary_token = map.get('temporary_token')
         return self
 
 
@@ -1859,27 +2244,35 @@ class CopyFileResponse(TeaModel):
         self.file_id = file_id          # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
 
     def to_map(self):
         result = {}
-        result['async_task_id'] = self.async_task_id
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_id'] = self.file_id
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
         return result
 
     def from_map(self, map={}):
-        self.async_task_id = map.get('async_task_id')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_id = map.get('file_id')
+        if map.get('async_task_id') is not None:
+            self.async_task_id = map.get('async_task_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
         return self
 
 
@@ -1905,19 +2298,29 @@ class CorsRule(TeaModel):
 
     def to_map(self):
         result = {}
-        result['allowed_header'] = self.allowed_header
-        result['allowed_method'] = self.allowed_method
-        result['allowed_origin'] = self.allowed_origin
-        result['expose_header'] = self.expose_header
-        result['max_age_seconds'] = self.max_age_seconds
+        if self.allowed_header is not None:
+            result['allowed_header'] = self.allowed_header
+        if self.allowed_method is not None:
+            result['allowed_method'] = self.allowed_method
+        if self.allowed_origin is not None:
+            result['allowed_origin'] = self.allowed_origin
+        if self.expose_header is not None:
+            result['expose_header'] = self.expose_header
+        if self.max_age_seconds is not None:
+            result['max_age_seconds'] = self.max_age_seconds
         return result
 
     def from_map(self, map={}):
-        self.allowed_header = map.get('allowed_header')
-        self.allowed_method = map.get('allowed_method')
-        self.allowed_origin = map.get('allowed_origin')
-        self.expose_header = map.get('expose_header')
-        self.max_age_seconds = map.get('max_age_seconds')
+        if map.get('allowed_header') is not None:
+            self.allowed_header = map.get('allowed_header')
+        if map.get('allowed_method') is not None:
+            self.allowed_method = map.get('allowed_method')
+        if map.get('allowed_origin') is not None:
+            self.allowed_origin = map.get('allowed_origin')
+        if map.get('expose_header') is not None:
+            self.expose_header = map.get('expose_header')
+        if map.get('max_age_seconds') is not None:
+            self.max_age_seconds = map.get('max_age_seconds')
         return self
 
 
@@ -1936,13 +2339,17 @@ class CreateDriveResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
         return result
 
     def from_map(self, map={}):
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
         return self
 
 
@@ -1983,17 +2390,17 @@ class CreateFileResponse(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_max_length(self.domain_id, 'domain_id', 50)
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9]{1,50}')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
-        if self.file_name:
+        if self.file_name is not None:
             self.validate_max_length(self.file_name, 'file_name', 255)
-        if self.parent_file_id:
+        if self.parent_file_id is not None:
             self.validate_max_length(self.parent_file_id, 'parent_file_id', 50)
             self.validate_pattern(self.parent_file_id, 'parent_file_id', '[a-z0-9]{1,50}')
         if self.part_info_list:
@@ -2003,46 +2410,66 @@ class CreateFileResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['encrypt_mode'] = self.encrypt_mode
-        result['exist'] = self.exist
-        result['file_id'] = self.file_id
-        result['file_name'] = self.file_name
-        result['parent_file_id'] = self.parent_file_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.exist is not None:
+            result['exist'] = self.exist
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.file_name is not None:
+            result['file_name'] = self.file_name
+        if self.parent_file_id is not None:
+            result['parent_file_id'] = self.parent_file_id
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['rapid_upload'] = self.rapid_upload
-        result['status'] = self.status
-        result['streams_upload_info'] = self.streams_upload_info
-        result['type'] = self.type
-        result['upload_id'] = self.upload_id
+        if self.rapid_upload is not None:
+            result['rapid_upload'] = self.rapid_upload
+        if self.status is not None:
+            result['status'] = self.status
+        if self.streams_upload_info is not None:
+            result['streams_upload_info'] = self.streams_upload_info
+        if self.type is not None:
+            result['type'] = self.type
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.exist = map.get('exist')
-        self.file_id = map.get('file_id')
-        self.file_name = map.get('file_name')
-        self.parent_file_id = map.get('parent_file_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('exist') is not None:
+            self.exist = map.get('exist')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('file_name') is not None:
+            self.file_name = map.get('file_name')
+        if map.get('parent_file_id') is not None:
+            self.parent_file_id = map.get('parent_file_id')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.rapid_upload = map.get('rapid_upload')
-        self.status = map.get('status')
-        self.streams_upload_info = map.get('streams_upload_info')
-        self.type = map.get('type')
-        self.upload_id = map.get('upload_id')
+        if map.get('rapid_upload') is not None:
+            self.rapid_upload = map.get('rapid_upload')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('streams_upload_info') is not None:
+            self.streams_upload_info = map.get('streams_upload_info')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -2067,19 +2494,29 @@ class CreateShareLinkResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['share_id'] = self.share_id
-        result['share_msg'] = self.share_msg
-        result['share_policy'] = self.share_policy
-        result['share_pwd'] = self.share_pwd
-        result['share_url'] = self.share_url
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.share_msg is not None:
+            result['share_msg'] = self.share_msg
+        if self.share_policy is not None:
+            result['share_policy'] = self.share_policy
+        if self.share_pwd is not None:
+            result['share_pwd'] = self.share_pwd
+        if self.share_url is not None:
+            result['share_url'] = self.share_url
         return result
 
     def from_map(self, map={}):
-        self.share_id = map.get('share_id')
-        self.share_msg = map.get('share_msg')
-        self.share_policy = map.get('share_policy')
-        self.share_pwd = map.get('share_pwd')
-        self.share_url = map.get('share_url')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('share_msg') is not None:
+            self.share_msg = map.get('share_msg')
+        if map.get('share_policy') is not None:
+            self.share_policy = map.get('share_policy')
+        if map.get('share_pwd') is not None:
+            self.share_pwd = map.get('share_pwd')
+        if map.get('share_url') is not None:
+            self.share_url = map.get('share_url')
         return self
 
 
@@ -2098,13 +2535,17 @@ class CreateShareResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['domain_id'] = self.domain_id
-        result['share_id'] = self.share_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.domain_id = map.get('domain_id')
-        self.share_id = map.get('share_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -2123,17 +2564,25 @@ class CroppingBoundary(TeaModel):
 
     def to_map(self):
         result = {}
-        result['height'] = self.height
-        result['left'] = self.left
-        result['top'] = self.top
-        result['width'] = self.width
+        if self.height is not None:
+            result['height'] = self.height
+        if self.left is not None:
+            result['left'] = self.left
+        if self.top is not None:
+            result['top'] = self.top
+        if self.width is not None:
+            result['width'] = self.width
         return result
 
     def from_map(self, map={}):
-        self.height = map.get('height')
-        self.left = map.get('left')
-        self.top = map.get('top')
-        self.width = map.get('width')
+        if map.get('height') is not None:
+            self.height = map.get('height')
+        if map.get('left') is not None:
+            self.left = map.get('left')
+        if map.get('top') is not None:
+            self.top = map.get('top')
+        if map.get('width') is not None:
+            self.width = map.get('width')
         return self
 
 
@@ -2144,7 +2593,7 @@ class CroppingSuggestionItem(TeaModel):
     def __init__(self, aspect_ratio=None, cropping_boundary=None, score=None):
         self.aspect_ratio = aspect_ratio  # type: str
         self.cropping_boundary = cropping_boundary  # type: CroppingBoundary
-        self.score = score              # type: int
+        self.score = score              # type: float
 
     def validate(self):
         if self.cropping_boundary:
@@ -2152,22 +2601,22 @@ class CroppingSuggestionItem(TeaModel):
 
     def to_map(self):
         result = {}
-        result['aspect_ratio'] = self.aspect_ratio
+        if self.aspect_ratio is not None:
+            result['aspect_ratio'] = self.aspect_ratio
         if self.cropping_boundary is not None:
             result['cropping_boundary'] = self.cropping_boundary.to_map()
-        else:
-            result['cropping_boundary'] = None
-        result['score'] = self.score
+        if self.score is not None:
+            result['score'] = self.score
         return result
 
     def from_map(self, map={}):
-        self.aspect_ratio = map.get('aspect_ratio')
+        if map.get('aspect_ratio') is not None:
+            self.aspect_ratio = map.get('aspect_ratio')
         if map.get('cropping_boundary') is not None:
             temp_model = CroppingBoundary()
             self.cropping_boundary = temp_model.from_map(map['cropping_boundary'])
-        else:
-            self.cropping_boundary = None
-        self.score = map.get('score')
+        if map.get('score') is not None:
+            self.score = map.get('score')
         return self
 
 
@@ -2200,23 +2649,37 @@ class DefaultChangePasswordRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['app_id'] = self.app_id
-        result['encrypted_key'] = self.encrypted_key
-        result['new_password'] = self.new_password
-        result['phone_number'] = self.phone_number
-        result['phone_region'] = self.phone_region
-        result['state'] = self.state
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.encrypted_key is not None:
+            result['encrypted_key'] = self.encrypted_key
+        if self.new_password is not None:
+            result['new_password'] = self.new_password
+        if self.phone_number is not None:
+            result['phone_number'] = self.phone_number
+        if self.phone_region is not None:
+            result['phone_region'] = self.phone_region
+        if self.state is not None:
+            result['state'] = self.state
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.app_id = map.get('app_id')
-        self.encrypted_key = map.get('encrypted_key')
-        self.new_password = map.get('new_password')
-        self.phone_number = map.get('phone_number')
-        self.phone_region = map.get('phone_region')
-        self.state = map.get('state')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('encrypted_key') is not None:
+            self.encrypted_key = map.get('encrypted_key')
+        if map.get('new_password') is not None:
+            self.new_password = map.get('new_password')
+        if map.get('phone_number') is not None:
+            self.phone_number = map.get('phone_number')
+        if map.get('phone_region') is not None:
+            self.phone_region = map.get('phone_region')
+        if map.get('state') is not None:
+            self.state = map.get('state')
         return self
 
 
@@ -2243,19 +2706,29 @@ class DefaultSetPasswordRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['app_id'] = self.app_id
-        result['encrypted_key'] = self.encrypted_key
-        result['new_password'] = self.new_password
-        result['state'] = self.state
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.encrypted_key is not None:
+            result['encrypted_key'] = self.encrypted_key
+        if self.new_password is not None:
+            result['new_password'] = self.new_password
+        if self.state is not None:
+            result['state'] = self.state
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.app_id = map.get('app_id')
-        self.encrypted_key = map.get('encrypted_key')
-        self.new_password = map.get('new_password')
-        self.state = map.get('state')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('encrypted_key') is not None:
+            self.encrypted_key = map.get('encrypted_key')
+        if map.get('new_password') is not None:
+            self.new_password = map.get('new_password')
+        if map.get('state') is not None:
+            self.state = map.get('state')
         return self
 
 
@@ -2292,27 +2765,35 @@ class DeleteFileResponse(TeaModel):
         self.file_id = file_id          # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
 
     def to_map(self):
         result = {}
-        result['async_task_id'] = self.async_task_id
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_id'] = self.file_id
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
         return result
 
     def from_map(self, map={}):
-        self.async_task_id = map.get('async_task_id')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_id = map.get('file_id')
+        if map.get('async_task_id') is not None:
+            self.async_task_id = map.get('async_task_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
         return self
 
 
@@ -2329,22 +2810,28 @@ class DeleteFilesResponse(TeaModel):
         self.drive_id = drive_id        # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
 
     def to_map(self):
         result = {}
-        result['deleted_file_id_list'] = self.deleted_file_id_list
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
+        if self.deleted_file_id_list is not None:
+            result['deleted_file_id_list'] = self.deleted_file_id_list
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
         return result
 
     def from_map(self, map={}):
-        self.deleted_file_id_list = map.get('deleted_file_id_list')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
+        if map.get('deleted_file_id_list') is not None:
+            self.deleted_file_id_list = map.get('deleted_file_id_list')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
         return self
 
 
@@ -2370,19 +2857,29 @@ class DeviceAuthorizeRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ClientID'] = self.client_id
-        result['DeviceInfo'] = self.device_info
-        result['DeviceName'] = self.device_name
-        result['LoginType'] = self.login_type
-        result['Scope'] = self.scope
+        if self.client_id is not None:
+            result['ClientID'] = self.client_id
+        if self.device_info is not None:
+            result['DeviceInfo'] = self.device_info
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.login_type is not None:
+            result['LoginType'] = self.login_type
+        if self.scope is not None:
+            result['Scope'] = self.scope
         return result
 
     def from_map(self, map={}):
-        self.client_id = map.get('ClientID')
-        self.device_info = map.get('DeviceInfo')
-        self.device_name = map.get('DeviceName')
-        self.login_type = map.get('LoginType')
-        self.scope = map.get('Scope')
+        if map.get('ClientID') is not None:
+            self.client_id = map.get('ClientID')
+        if map.get('DeviceInfo') is not None:
+            self.device_info = map.get('DeviceInfo')
+        if map.get('DeviceName') is not None:
+            self.device_name = map.get('DeviceName')
+        if map.get('LoginType') is not None:
+            self.login_type = map.get('LoginType')
+        if map.get('Scope') is not None:
+            self.scope = map.get('Scope')
         return self
 
 
@@ -2402,24 +2899,26 @@ class FileDeltaResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['current_category'] = self.current_category
+        if self.current_category is not None:
+            result['current_category'] = self.current_category
         if self.file is not None:
             result['file'] = self.file.to_map()
-        else:
-            result['file'] = None
-        result['file_id'] = self.file_id
-        result['op'] = self.op
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.op is not None:
+            result['op'] = self.op
         return result
 
     def from_map(self, map={}):
-        self.current_category = map.get('current_category')
+        if map.get('current_category') is not None:
+            self.current_category = map.get('current_category')
         if map.get('file') is not None:
             temp_model = BaseFileResponse()
             self.file = temp_model.from_map(map['file'])
-        else:
-            self.file = None
-        self.file_id = map.get('file_id')
-        self.op = map.get('op')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('op') is not None:
+            self.op = map.get('op')
         return self
 
 
@@ -2442,17 +2941,25 @@ class GetAccessTokenByLinkInfoRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['extra'] = self.extra
-        result['identity'] = self.identity
-        result['type'] = self.type
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.extra is not None:
+            result['extra'] = self.extra
+        if self.identity is not None:
+            result['identity'] = self.identity
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.extra = map.get('extra')
-        self.identity = map.get('identity')
-        self.type = map.get('type')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('extra') is not None:
+            self.extra = map.get('extra')
+        if map.get('identity') is not None:
+            self.identity = map.get('identity')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -2470,13 +2977,17 @@ class GetAppPublicKeyRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['app_id'] = self.app_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.app_id = map.get('app_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
         return self
 
 
@@ -2498,15 +3009,21 @@ class GetAsyncTaskResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['async_task_id'] = self.async_task_id
-        result['message'] = self.message
-        result['state'] = self.state
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        if self.message is not None:
+            result['message'] = self.message
+        if self.state is not None:
+            result['state'] = self.state
         return result
 
     def from_map(self, map={}):
-        self.async_task_id = map.get('async_task_id')
-        self.message = map.get('message')
-        self.state = map.get('state')
+        if map.get('async_task_id') is not None:
+            self.async_task_id = map.get('async_task_id')
+        if map.get('message') is not None:
+            self.message = map.get('message')
+        if map.get('state') is not None:
+            self.state = map.get('state')
         return self
 
 
@@ -2529,17 +3046,25 @@ class GetByLinkInfoRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['extra'] = self.extra
-        result['identity'] = self.identity
-        result['type'] = self.type
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.extra is not None:
+            result['extra'] = self.extra
+        if self.identity is not None:
+            result['identity'] = self.identity
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.extra = map.get('extra')
-        self.identity = map.get('identity')
-        self.type = map.get('type')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('extra') is not None:
+            self.extra = map.get('extra')
+        if map.get('identity') is not None:
+            self.identity = map.get('identity')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -2557,13 +3082,17 @@ class GetCaptchaRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['app_id'] = self.app_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.app_id = map.get('app_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
         return self
 
 
@@ -2590,28 +3119,34 @@ class GetDownloadUrlResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['expiration'] = self.expiration
-        result['method'] = self.method
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.method is not None:
+            result['method'] = self.method
         if self.ratelimit is not None:
             result['ratelimit'] = self.ratelimit.to_map()
-        else:
-            result['ratelimit'] = None
-        result['size'] = self.size
-        result['streams_url'] = self.streams_url
-        result['url'] = self.url
+        if self.size is not None:
+            result['size'] = self.size
+        if self.streams_url is not None:
+            result['streams_url'] = self.streams_url
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.expiration = map.get('expiration')
-        self.method = map.get('method')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('method') is not None:
+            self.method = map.get('method')
         if map.get('ratelimit') is not None:
             temp_model = RateLimit()
             self.ratelimit = temp_model.from_map(map['ratelimit'])
-        else:
-            self.ratelimit = None
-        self.size = map.get('size')
-        self.streams_url = map.get('streams_url')
-        self.url = map.get('url')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('streams_url') is not None:
+            self.streams_url = map.get('streams_url')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -2654,37 +3189,65 @@ class GetDriveResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['creator'] = self.creator
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['drive_name'] = self.drive_name
-        result['drive_type'] = self.drive_type
-        result['encrypt_data_access'] = self.encrypt_data_access
-        result['encrypt_mode'] = self.encrypt_mode
-        result['owner'] = self.owner
-        result['relative_path'] = self.relative_path
-        result['status'] = self.status
-        result['store_id'] = self.store_id
-        result['total_size'] = self.total_size
-        result['used_size'] = self.used_size
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.drive_name is not None:
+            result['drive_name'] = self.drive_name
+        if self.drive_type is not None:
+            result['drive_type'] = self.drive_type
+        if self.encrypt_data_access is not None:
+            result['encrypt_data_access'] = self.encrypt_data_access
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.relative_path is not None:
+            result['relative_path'] = self.relative_path
+        if self.status is not None:
+            result['status'] = self.status
+        if self.store_id is not None:
+            result['store_id'] = self.store_id
+        if self.total_size is not None:
+            result['total_size'] = self.total_size
+        if self.used_size is not None:
+            result['used_size'] = self.used_size
         return result
 
     def from_map(self, map={}):
-        self.creator = map.get('creator')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.drive_name = map.get('drive_name')
-        self.drive_type = map.get('drive_type')
-        self.encrypt_data_access = map.get('encrypt_data_access')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.owner = map.get('owner')
-        self.relative_path = map.get('relative_path')
-        self.status = map.get('status')
-        self.store_id = map.get('store_id')
-        self.total_size = map.get('total_size')
-        self.used_size = map.get('used_size')
+        if map.get('creator') is not None:
+            self.creator = map.get('creator')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('drive_name') is not None:
+            self.drive_name = map.get('drive_name')
+        if map.get('drive_type') is not None:
+            self.drive_type = map.get('drive_type')
+        if map.get('encrypt_data_access') is not None:
+            self.encrypt_data_access = map.get('encrypt_data_access')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('owner') is not None:
+            self.owner = map.get('owner')
+        if map.get('relative_path') is not None:
+            self.relative_path = map.get('relative_path')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('store_id') is not None:
+            self.store_id = map.get('store_id')
+        if map.get('total_size') is not None:
+            self.total_size = map.get('total_size')
+        if map.get('used_size') is not None:
+            self.used_size = map.get('used_size')
         return self
 
 
@@ -2763,21 +3326,24 @@ class GetFileByPathResponse(TeaModel):
         self.video_preview_metadata = video_preview_metadata  # type: VideoPreviewResponse
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
         if self.image_media_metadata:
             self.image_media_metadata.validate()
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_id:
+        if self.parent_file_id is not None:
             self.validate_max_length(self.parent_file_id, 'parent_file_id', 50)
             self.validate_pattern(self.parent_file_id, 'parent_file_id', '[a-z0-9]{1,50}')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
         if self.video_media_metadata:
             self.video_media_metadata.validate()
         if self.video_preview_metadata:
@@ -2785,96 +3351,144 @@ class GetFileByPathResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['category'] = self.category
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['encrypt_mode'] = self.encrypt_mode
-        result['file_extension'] = self.file_extension
-        result['file_id'] = self.file_id
-        result['hidden'] = self.hidden
+        if self.category is not None:
+            result['category'] = self.category
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.hidden is not None:
+            result['hidden'] = self.hidden
         if self.image_media_metadata is not None:
             result['image_media_metadata'] = self.image_media_metadata.to_map()
-        else:
-            result['image_media_metadata'] = None
-        result['labels'] = self.labels
-        result['meta'] = self.meta
-        result['name'] = self.name
-        result['parent_file_id'] = self.parent_file_id
-        result['punish_flag'] = self.punish_flag
-        result['size'] = self.size
-        result['starred'] = self.starred
-        result['status'] = self.status
-        result['streams_info'] = self.streams_info
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
-        result['user_meta'] = self.user_meta
+        if self.labels is not None:
+            result['labels'] = self.labels
+        if self.meta is not None:
+            result['meta'] = self.meta
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_id is not None:
+            result['parent_file_id'] = self.parent_file_id
+        if self.punish_flag is not None:
+            result['punish_flag'] = self.punish_flag
+        if self.size is not None:
+            result['size'] = self.size
+        if self.starred is not None:
+            result['starred'] = self.starred
+        if self.status is not None:
+            result['status'] = self.status
+        if self.streams_info is not None:
+            result['streams_info'] = self.streams_info
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
+        if self.user_meta is not None:
+            result['user_meta'] = self.user_meta
         if self.video_media_metadata is not None:
             result['video_media_metadata'] = self.video_media_metadata.to_map()
-        else:
-            result['video_media_metadata'] = None
         if self.video_preview_metadata is not None:
             result['video_preview_metadata'] = self.video_preview_metadata.to_map()
-        else:
-            result['video_preview_metadata'] = None
         return result
 
     def from_map(self, map={}):
-        self.category = map.get('category')
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.file_extension = map.get('file_extension')
-        self.file_id = map.get('file_id')
-        self.hidden = map.get('hidden')
+        if map.get('category') is not None:
+            self.category = map.get('category')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('hidden') is not None:
+            self.hidden = map.get('hidden')
         if map.get('image_media_metadata') is not None:
             temp_model = ImageMediaResponse()
             self.image_media_metadata = temp_model.from_map(map['image_media_metadata'])
-        else:
-            self.image_media_metadata = None
-        self.labels = map.get('labels')
-        self.meta = map.get('meta')
-        self.name = map.get('name')
-        self.parent_file_id = map.get('parent_file_id')
-        self.punish_flag = map.get('punish_flag')
-        self.size = map.get('size')
-        self.starred = map.get('starred')
-        self.status = map.get('status')
-        self.streams_info = map.get('streams_info')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
-        self.user_meta = map.get('user_meta')
+        if map.get('labels') is not None:
+            self.labels = map.get('labels')
+        if map.get('meta') is not None:
+            self.meta = map.get('meta')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_id') is not None:
+            self.parent_file_id = map.get('parent_file_id')
+        if map.get('punish_flag') is not None:
+            self.punish_flag = map.get('punish_flag')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('starred') is not None:
+            self.starred = map.get('starred')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('streams_info') is not None:
+            self.streams_info = map.get('streams_info')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
+        if map.get('user_meta') is not None:
+            self.user_meta = map.get('user_meta')
         if map.get('video_media_metadata') is not None:
             temp_model = VideoMediaResponse()
             self.video_media_metadata = temp_model.from_map(map['video_media_metadata'])
-        else:
-            self.video_media_metadata = None
         if map.get('video_preview_metadata') is not None:
             temp_model = VideoPreviewResponse()
             self.video_preview_metadata = temp_model.from_map(map['video_preview_metadata'])
-        else:
-            self.video_preview_metadata = None
         return self
 
 
@@ -2953,21 +3567,24 @@ class GetFileResponse(TeaModel):
         self.video_preview_metadata = video_preview_metadata  # type: VideoPreviewResponse
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
         if self.image_media_metadata:
             self.image_media_metadata.validate()
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_id:
+        if self.parent_file_id is not None:
             self.validate_max_length(self.parent_file_id, 'parent_file_id', 50)
             self.validate_pattern(self.parent_file_id, 'parent_file_id', '[a-z0-9]{1,50}')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
         if self.video_media_metadata:
             self.video_media_metadata.validate()
         if self.video_preview_metadata:
@@ -2975,96 +3592,144 @@ class GetFileResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['category'] = self.category
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['encrypt_mode'] = self.encrypt_mode
-        result['file_extension'] = self.file_extension
-        result['file_id'] = self.file_id
-        result['hidden'] = self.hidden
+        if self.category is not None:
+            result['category'] = self.category
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.hidden is not None:
+            result['hidden'] = self.hidden
         if self.image_media_metadata is not None:
             result['image_media_metadata'] = self.image_media_metadata.to_map()
-        else:
-            result['image_media_metadata'] = None
-        result['labels'] = self.labels
-        result['meta'] = self.meta
-        result['name'] = self.name
-        result['parent_file_id'] = self.parent_file_id
-        result['punish_flag'] = self.punish_flag
-        result['size'] = self.size
-        result['starred'] = self.starred
-        result['status'] = self.status
-        result['streams_info'] = self.streams_info
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
-        result['user_meta'] = self.user_meta
+        if self.labels is not None:
+            result['labels'] = self.labels
+        if self.meta is not None:
+            result['meta'] = self.meta
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_id is not None:
+            result['parent_file_id'] = self.parent_file_id
+        if self.punish_flag is not None:
+            result['punish_flag'] = self.punish_flag
+        if self.size is not None:
+            result['size'] = self.size
+        if self.starred is not None:
+            result['starred'] = self.starred
+        if self.status is not None:
+            result['status'] = self.status
+        if self.streams_info is not None:
+            result['streams_info'] = self.streams_info
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
+        if self.user_meta is not None:
+            result['user_meta'] = self.user_meta
         if self.video_media_metadata is not None:
             result['video_media_metadata'] = self.video_media_metadata.to_map()
-        else:
-            result['video_media_metadata'] = None
         if self.video_preview_metadata is not None:
             result['video_preview_metadata'] = self.video_preview_metadata.to_map()
-        else:
-            result['video_preview_metadata'] = None
         return result
 
     def from_map(self, map={}):
-        self.category = map.get('category')
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.file_extension = map.get('file_extension')
-        self.file_id = map.get('file_id')
-        self.hidden = map.get('hidden')
+        if map.get('category') is not None:
+            self.category = map.get('category')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('hidden') is not None:
+            self.hidden = map.get('hidden')
         if map.get('image_media_metadata') is not None:
             temp_model = ImageMediaResponse()
             self.image_media_metadata = temp_model.from_map(map['image_media_metadata'])
-        else:
-            self.image_media_metadata = None
-        self.labels = map.get('labels')
-        self.meta = map.get('meta')
-        self.name = map.get('name')
-        self.parent_file_id = map.get('parent_file_id')
-        self.punish_flag = map.get('punish_flag')
-        self.size = map.get('size')
-        self.starred = map.get('starred')
-        self.status = map.get('status')
-        self.streams_info = map.get('streams_info')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
-        self.user_meta = map.get('user_meta')
+        if map.get('labels') is not None:
+            self.labels = map.get('labels')
+        if map.get('meta') is not None:
+            self.meta = map.get('meta')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_id') is not None:
+            self.parent_file_id = map.get('parent_file_id')
+        if map.get('punish_flag') is not None:
+            self.punish_flag = map.get('punish_flag')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('starred') is not None:
+            self.starred = map.get('starred')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('streams_info') is not None:
+            self.streams_info = map.get('streams_info')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
+        if map.get('user_meta') is not None:
+            self.user_meta = map.get('user_meta')
         if map.get('video_media_metadata') is not None:
             temp_model = VideoMediaResponse()
             self.video_media_metadata = temp_model.from_map(map['video_media_metadata'])
-        else:
-            self.video_media_metadata = None
         if map.get('video_preview_metadata') is not None:
             temp_model = VideoPreviewResponse()
             self.video_preview_metadata = temp_model.from_map(map['video_preview_metadata'])
-        else:
-            self.video_preview_metadata = None
         return self
 
 
@@ -3080,11 +3745,13 @@ class GetLastCursorResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['cursor'] = self.cursor
+        if self.cursor is not None:
+            result['cursor'] = self.cursor
         return result
 
     def from_map(self, map={}):
-        self.cursor = map.get('cursor')
+        if map.get('cursor') is not None:
+            self.cursor = map.get('cursor')
         return self
 
 
@@ -3102,13 +3769,17 @@ class GetLinkInfoByUserIDRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['user_id'] = self.user_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.user_id = map.get('user_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
         return self
 
 
@@ -3125,11 +3796,13 @@ class GetMediaPlayURLResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['url'] = self.url
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.url = map.get('url')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -3148,13 +3821,17 @@ class GetOfficePreviewUrlResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['access_token'] = self.access_token
-        result['preview_url'] = self.preview_url
+        if self.access_token is not None:
+            result['access_token'] = self.access_token
+        if self.preview_url is not None:
+            result['preview_url'] = self.preview_url
         return result
 
     def from_map(self, map={}):
-        self.access_token = map.get('access_token')
-        self.preview_url = map.get('preview_url')
+        if map.get('access_token') is not None:
+            self.access_token = map.get('access_token')
+        if map.get('preview_url') is not None:
+            self.preview_url = map.get('preview_url')
         return self
 
 
@@ -3175,15 +3852,21 @@ class GetPublicKeyResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['app_id'] = self.app_id
-        result['key_pair_id'] = self.key_pair_id
-        result['public_key'] = self.public_key
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.key_pair_id is not None:
+            result['key_pair_id'] = self.key_pair_id
+        if self.public_key is not None:
+            result['public_key'] = self.public_key
         return result
 
     def from_map(self, map={}):
-        self.app_id = map.get('app_id')
-        self.key_pair_id = map.get('key_pair_id')
-        self.public_key = map.get('public_key')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('key_pair_id') is not None:
+            self.key_pair_id = map.get('key_pair_id')
+        if map.get('public_key') is not None:
+            self.public_key = map.get('public_key')
         return self
 
 
@@ -3206,17 +3889,25 @@ class GetShareLinkByAnonymousResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['creator_id'] = self.creator_id
-        result['creator_name'] = self.creator_name
-        result['expiration'] = self.expiration
-        result['updated_at'] = self.updated_at
+        if self.creator_id is not None:
+            result['creator_id'] = self.creator_id
+        if self.creator_name is not None:
+            result['creator_name'] = self.creator_name
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
         return result
 
     def from_map(self, map={}):
-        self.creator_id = map.get('creator_id')
-        self.creator_name = map.get('creator_name')
-        self.expiration = map.get('expiration')
-        self.updated_at = map.get('updated_at')
+        if map.get('creator_id') is not None:
+            self.creator_id = map.get('creator_id')
+        if map.get('creator_name') is not None:
+            self.creator_name = map.get('creator_name')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
         return self
 
 
@@ -3235,13 +3926,17 @@ class GetShareLinkIDResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['share_id'] = self.share_id
-        result['share_pwd'] = self.share_pwd
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.share_pwd is not None:
+            result['share_pwd'] = self.share_pwd
         return result
 
     def from_map(self, map={}):
-        self.share_id = map.get('share_id')
-        self.share_pwd = map.get('share_pwd')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('share_pwd') is not None:
+            self.share_pwd = map.get('share_pwd')
         return self
 
 
@@ -3264,15 +3959,21 @@ class GetShareLinkTokenResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['expire_time'] = self.expire_time
-        result['expires_in'] = self.expires_in
-        result['share_token'] = self.share_token
+        if self.expire_time is not None:
+            result['expire_time'] = self.expire_time
+        if self.expires_in is not None:
+            result['expires_in'] = self.expires_in
+        if self.share_token is not None:
+            result['share_token'] = self.share_token
         return result
 
     def from_map(self, map={}):
-        self.expire_time = map.get('expire_time')
-        self.expires_in = map.get('expires_in')
-        self.share_token = map.get('share_token')
+        if map.get('expire_time') is not None:
+            self.expire_time = map.get('expire_time')
+        if map.get('expires_in') is not None:
+            self.expires_in = map.get('expires_in')
+        if map.get('share_token') is not None:
+            self.share_token = map.get('share_token')
         return self
 
 
@@ -3321,50 +4022,74 @@ class GetShareResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['created_at'] = self.created_at
-        result['creator'] = self.creator
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['expiration'] = self.expiration
-        result['expired'] = self.expired
-        result['owner'] = self.owner
-        result['permissions'] = self.permissions
-        result['share_file_path'] = self.share_file_path
-        result['share_id'] = self.share_id
-        result['share_name'] = self.share_name
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.expired is not None:
+            result['expired'] = self.expired
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.permissions is not None:
+            result['permissions'] = self.permissions
+        if self.share_file_path is not None:
+            result['share_file_path'] = self.share_file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.share_name is not None:
+            result['share_name'] = self.share_name
         result['share_policy'] = []
         if self.share_policy is not None:
             for k in self.share_policy:
                 result['share_policy'].append(k.to_map() if k else None)
-        else:
-            result['share_policy'] = None
-        result['status'] = self.status
-        result['updated_at'] = self.updated_at
+        if self.status is not None:
+            result['status'] = self.status
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
         return result
 
     def from_map(self, map={}):
-        self.created_at = map.get('created_at')
-        self.creator = map.get('creator')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.expiration = map.get('expiration')
-        self.expired = map.get('expired')
-        self.owner = map.get('owner')
-        self.permissions = map.get('permissions')
-        self.share_file_path = map.get('share_file_path')
-        self.share_id = map.get('share_id')
-        self.share_name = map.get('share_name')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('creator') is not None:
+            self.creator = map.get('creator')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('expired') is not None:
+            self.expired = map.get('expired')
+        if map.get('owner') is not None:
+            self.owner = map.get('owner')
+        if map.get('permissions') is not None:
+            self.permissions = map.get('permissions')
+        if map.get('share_file_path') is not None:
+            self.share_file_path = map.get('share_file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('share_name') is not None:
+            self.share_name = map.get('share_name')
         self.share_policy = []
         if map.get('share_policy') is not None:
             for k in map.get('share_policy'):
                 temp_model = SharePermissionPolicy()
                 self.share_policy.append(temp_model.from_map(k))
-        else:
-            self.share_policy = None
-        self.status = map.get('status')
-        self.updated_at = map.get('updated_at')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
         return self
 
 
@@ -3388,11 +4113,11 @@ class GetUploadUrlResponse(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
         if self.part_info_list:
@@ -3402,32 +4127,38 @@ class GetUploadUrlResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['create_at'] = self.create_at
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_id'] = self.file_id
+        if self.create_at is not None:
+            result['create_at'] = self.create_at
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['upload_id'] = self.upload_id
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.create_at = map.get('create_at')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_id = map.get('file_id')
+        if map.get('create_at') is not None:
+            self.create_at = map.get('create_at')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.upload_id = map.get('upload_id')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -3457,23 +4188,37 @@ class GetVideoPreviewSpriteURLResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['col'] = self.col
-        result['count'] = self.count
-        result['frame_count'] = self.frame_count
-        result['frame_height'] = self.frame_height
-        result['frame_width'] = self.frame_width
-        result['row'] = self.row
-        result['sprite_url_list'] = self.sprite_url_list
+        if self.col is not None:
+            result['col'] = self.col
+        if self.count is not None:
+            result['count'] = self.count
+        if self.frame_count is not None:
+            result['frame_count'] = self.frame_count
+        if self.frame_height is not None:
+            result['frame_height'] = self.frame_height
+        if self.frame_width is not None:
+            result['frame_width'] = self.frame_width
+        if self.row is not None:
+            result['row'] = self.row
+        if self.sprite_url_list is not None:
+            result['sprite_url_list'] = self.sprite_url_list
         return result
 
     def from_map(self, map={}):
-        self.col = map.get('col')
-        self.count = map.get('count')
-        self.frame_count = map.get('frame_count')
-        self.frame_height = map.get('frame_height')
-        self.frame_width = map.get('frame_width')
-        self.row = map.get('row')
-        self.sprite_url_list = map.get('sprite_url_list')
+        if map.get('col') is not None:
+            self.col = map.get('col')
+        if map.get('count') is not None:
+            self.count = map.get('count')
+        if map.get('frame_count') is not None:
+            self.frame_count = map.get('frame_count')
+        if map.get('frame_height') is not None:
+            self.frame_height = map.get('frame_height')
+        if map.get('frame_width') is not None:
+            self.frame_width = map.get('frame_width')
+        if map.get('row') is not None:
+            self.row = map.get('row')
+        if map.get('sprite_url_list') is not None:
+            self.sprite_url_list = map.get('sprite_url_list')
         return self
 
 
@@ -3490,11 +4235,13 @@ class GetVideoPreviewURLResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['preview_url'] = self.preview_url
+        if self.preview_url is not None:
+            result['preview_url'] = self.preview_url
         return result
 
     def from_map(self, map={}):
-        self.preview_url = map.get('preview_url')
+        if map.get('preview_url') is not None:
+            self.preview_url = map.get('preview_url')
         return self
 
 
@@ -3529,7 +4276,7 @@ class ImageMediaResponse(TeaModel):
         # province
         self.province = province        # type: str
         # story_image_score
-        self.story_image_score = story_image_score  # type: int
+        self.story_image_score = story_image_score  # type: float
         # time
         self.time = time                # type: str
         # township
@@ -3551,70 +4298,84 @@ class ImageMediaResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['address_line'] = self.address_line
-        result['city'] = self.city
-        result['country'] = self.country
+        if self.address_line is not None:
+            result['address_line'] = self.address_line
+        if self.city is not None:
+            result['city'] = self.city
+        if self.country is not None:
+            result['country'] = self.country
         result['cropping_suggestion'] = []
         if self.cropping_suggestion is not None:
             for k in self.cropping_suggestion:
                 result['cropping_suggestion'].append(k.to_map() if k else None)
-        else:
-            result['cropping_suggestion'] = None
-        result['district'] = self.district
-        result['exif'] = self.exif
-        result['faces'] = self.faces
-        result['height'] = self.height
+        if self.district is not None:
+            result['district'] = self.district
+        if self.exif is not None:
+            result['exif'] = self.exif
+        if self.faces is not None:
+            result['faces'] = self.faces
+        if self.height is not None:
+            result['height'] = self.height
         if self.image_quality is not None:
             result['image_quality'] = self.image_quality.to_map()
-        else:
-            result['image_quality'] = None
         result['image_tags'] = []
         if self.image_tags is not None:
             for k in self.image_tags:
                 result['image_tags'].append(k.to_map() if k else None)
-        else:
-            result['image_tags'] = None
-        result['location'] = self.location
-        result['province'] = self.province
-        result['story_image_score'] = self.story_image_score
-        result['time'] = self.time
-        result['township'] = self.township
-        result['width'] = self.width
+        if self.location is not None:
+            result['location'] = self.location
+        if self.province is not None:
+            result['province'] = self.province
+        if self.story_image_score is not None:
+            result['story_image_score'] = self.story_image_score
+        if self.time is not None:
+            result['time'] = self.time
+        if self.township is not None:
+            result['township'] = self.township
+        if self.width is not None:
+            result['width'] = self.width
         return result
 
     def from_map(self, map={}):
-        self.address_line = map.get('address_line')
-        self.city = map.get('city')
-        self.country = map.get('country')
+        if map.get('address_line') is not None:
+            self.address_line = map.get('address_line')
+        if map.get('city') is not None:
+            self.city = map.get('city')
+        if map.get('country') is not None:
+            self.country = map.get('country')
         self.cropping_suggestion = []
         if map.get('cropping_suggestion') is not None:
             for k in map.get('cropping_suggestion'):
                 temp_model = CroppingSuggestionItem()
                 self.cropping_suggestion.append(temp_model.from_map(k))
-        else:
-            self.cropping_suggestion = None
-        self.district = map.get('district')
-        self.exif = map.get('exif')
-        self.faces = map.get('faces')
-        self.height = map.get('height')
+        if map.get('district') is not None:
+            self.district = map.get('district')
+        if map.get('exif') is not None:
+            self.exif = map.get('exif')
+        if map.get('faces') is not None:
+            self.faces = map.get('faces')
+        if map.get('height') is not None:
+            self.height = map.get('height')
         if map.get('image_quality') is not None:
             temp_model = ImageQuality()
             self.image_quality = temp_model.from_map(map['image_quality'])
-        else:
-            self.image_quality = None
         self.image_tags = []
         if map.get('image_tags') is not None:
             for k in map.get('image_tags'):
                 temp_model = SystemTag()
                 self.image_tags.append(temp_model.from_map(k))
-        else:
-            self.image_tags = None
-        self.location = map.get('location')
-        self.province = map.get('province')
-        self.story_image_score = map.get('story_image_score')
-        self.time = map.get('time')
-        self.township = map.get('township')
-        self.width = map.get('width')
+        if map.get('location') is not None:
+            self.location = map.get('location')
+        if map.get('province') is not None:
+            self.province = map.get('province')
+        if map.get('story_image_score') is not None:
+            self.story_image_score = map.get('story_image_score')
+        if map.get('time') is not None:
+            self.time = map.get('time')
+        if map.get('township') is not None:
+            self.township = map.get('township')
+        if map.get('width') is not None:
+            self.width = map.get('width')
         return self
 
 
@@ -3624,45 +4385,65 @@ class ImageQuality(TeaModel):
     """
     def __init__(self, clarity=None, clarity_score=None, color=None, color_score=None, composition_score=None,
                  contrast=None, contrast_score=None, exposure=None, exposure_score=None, overall_score=None):
-        self.clarity = clarity          # type: int
-        self.clarity_score = clarity_score  # type: int
-        self.color = color              # type: int
-        self.color_score = color_score  # type: int
-        self.composition_score = composition_score  # type: int
-        self.contrast = contrast        # type: int
-        self.contrast_score = contrast_score  # type: int
-        self.exposure = exposure        # type: int
-        self.exposure_score = exposure_score  # type: int
-        self.overall_score = overall_score  # type: int
+        self.clarity = clarity          # type: float
+        self.clarity_score = clarity_score  # type: float
+        self.color = color              # type: float
+        self.color_score = color_score  # type: float
+        self.composition_score = composition_score  # type: float
+        self.contrast = contrast        # type: float
+        self.contrast_score = contrast_score  # type: float
+        self.exposure = exposure        # type: float
+        self.exposure_score = exposure_score  # type: float
+        self.overall_score = overall_score  # type: float
 
     def validate(self):
         pass
 
     def to_map(self):
         result = {}
-        result['clarity'] = self.clarity
-        result['clarity_score'] = self.clarity_score
-        result['color'] = self.color
-        result['color_score'] = self.color_score
-        result['composition_score'] = self.composition_score
-        result['contrast'] = self.contrast
-        result['contrast_score'] = self.contrast_score
-        result['exposure'] = self.exposure
-        result['exposure_score'] = self.exposure_score
-        result['overall_score'] = self.overall_score
+        if self.clarity is not None:
+            result['clarity'] = self.clarity
+        if self.clarity_score is not None:
+            result['clarity_score'] = self.clarity_score
+        if self.color is not None:
+            result['color'] = self.color
+        if self.color_score is not None:
+            result['color_score'] = self.color_score
+        if self.composition_score is not None:
+            result['composition_score'] = self.composition_score
+        if self.contrast is not None:
+            result['contrast'] = self.contrast
+        if self.contrast_score is not None:
+            result['contrast_score'] = self.contrast_score
+        if self.exposure is not None:
+            result['exposure'] = self.exposure
+        if self.exposure_score is not None:
+            result['exposure_score'] = self.exposure_score
+        if self.overall_score is not None:
+            result['overall_score'] = self.overall_score
         return result
 
     def from_map(self, map={}):
-        self.clarity = map.get('clarity')
-        self.clarity_score = map.get('clarity_score')
-        self.color = map.get('color')
-        self.color_score = map.get('color_score')
-        self.composition_score = map.get('composition_score')
-        self.contrast = map.get('contrast')
-        self.contrast_score = map.get('contrast_score')
-        self.exposure = map.get('exposure')
-        self.exposure_score = map.get('exposure_score')
-        self.overall_score = map.get('overall_score')
+        if map.get('clarity') is not None:
+            self.clarity = map.get('clarity')
+        if map.get('clarity_score') is not None:
+            self.clarity_score = map.get('clarity_score')
+        if map.get('color') is not None:
+            self.color = map.get('color')
+        if map.get('color_score') is not None:
+            self.color_score = map.get('color_score')
+        if map.get('composition_score') is not None:
+            self.composition_score = map.get('composition_score')
+        if map.get('contrast') is not None:
+            self.contrast = map.get('contrast')
+        if map.get('contrast_score') is not None:
+            self.contrast_score = map.get('contrast_score')
+        if map.get('exposure') is not None:
+            self.exposure = map.get('exposure')
+        if map.get('exposure_score') is not None:
+            self.exposure_score = map.get('exposure_score')
+        if map.get('overall_score') is not None:
+            self.overall_score = map.get('overall_score')
         return self
 
 
@@ -3683,15 +4464,21 @@ class LinkInfo(TeaModel):
 
     def to_map(self):
         result = {}
-        result['extra'] = self.extra
-        result['identity'] = self.identity
-        result['type'] = self.type
+        if self.extra is not None:
+            result['extra'] = self.extra
+        if self.identity is not None:
+            result['identity'] = self.identity
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.extra = map.get('extra')
-        self.identity = map.get('identity')
-        self.type = map.get('type')
+        if map.get('extra') is not None:
+            self.extra = map.get('extra')
+        if map.get('identity') is not None:
+            self.identity = map.get('identity')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -3716,8 +4503,6 @@ class LinkInfoListResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
         return result
 
     def from_map(self, map={}):
@@ -3726,8 +4511,6 @@ class LinkInfoListResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = LinkInfoResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
         return self
 
 
@@ -3765,25 +4548,41 @@ class LinkInfoResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['authentication_type'] = self.authentication_type
-        result['created_at'] = self.created_at
-        result['domain_id'] = self.domain_id
-        result['extra'] = self.extra
-        result['identity'] = self.identity
-        result['last_login_time'] = self.last_login_time
-        result['status'] = self.status
-        result['user_id'] = self.user_id
+        if self.authentication_type is not None:
+            result['authentication_type'] = self.authentication_type
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.extra is not None:
+            result['extra'] = self.extra
+        if self.identity is not None:
+            result['identity'] = self.identity
+        if self.last_login_time is not None:
+            result['last_login_time'] = self.last_login_time
+        if self.status is not None:
+            result['status'] = self.status
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
         return result
 
     def from_map(self, map={}):
-        self.authentication_type = map.get('authentication_type')
-        self.created_at = map.get('created_at')
-        self.domain_id = map.get('domain_id')
-        self.extra = map.get('extra')
-        self.identity = map.get('identity')
-        self.last_login_time = map.get('last_login_time')
-        self.status = map.get('status')
-        self.user_id = map.get('user_id')
+        if map.get('authentication_type') is not None:
+            self.authentication_type = map.get('authentication_type')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('extra') is not None:
+            self.extra = map.get('extra')
+        if map.get('identity') is not None:
+            self.identity = map.get('identity')
+        if map.get('last_login_time') is not None:
+            self.last_login_time = map.get('last_login_time')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
         return self
 
 
@@ -3809,9 +4608,8 @@ class ListByAnonymousResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -3820,9 +4618,8 @@ class ListByAnonymousResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseFileAnonymousResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -3848,9 +4645,8 @@ class ListDriveResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -3859,9 +4655,8 @@ class ListDriveResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseDriveResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -3885,26 +4680,26 @@ class ListFileDeltaResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['cursor'] = self.cursor
-        result['has_more'] = self.has_more
+        if self.cursor is not None:
+            result['cursor'] = self.cursor
+        if self.has_more is not None:
+            result['has_more'] = self.has_more
         result['items'] = []
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
         return result
 
     def from_map(self, map={}):
-        self.cursor = map.get('cursor')
-        self.has_more = map.get('has_more')
+        if map.get('cursor') is not None:
+            self.cursor = map.get('cursor')
+        if map.get('has_more') is not None:
+            self.has_more = map.get('has_more')
         self.items = []
         if map.get('items') is not None:
             for k in map.get('items'):
                 temp_model = FileDeltaResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
         return self
 
 
@@ -3930,9 +4725,8 @@ class ListFileResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -3941,9 +4735,8 @@ class ListFileResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseFileResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -3969,9 +4762,8 @@ class ListShareLinkResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -3980,9 +4772,8 @@ class ListShareLinkResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseShareLinkResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -4008,9 +4799,8 @@ class ListShareResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -4019,9 +4809,8 @@ class ListShareResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseShareResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -4047,9 +4836,8 @@ class ListStoreFileResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -4058,9 +4846,8 @@ class ListStoreFileResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = StoreFile()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -4084,8 +4871,6 @@ class ListStoreResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
         return result
 
     def from_map(self, map={}):
@@ -4094,8 +4879,6 @@ class ListStoreResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = StoreItemResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
         return self
 
 
@@ -4114,7 +4897,7 @@ class ListUploadedPartResponse(TeaModel):
         self.uploaded_parts = uploaded_parts  # type: List[UploadPartInfo]
 
     def validate(self):
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
         if self.uploaded_parts:
@@ -4124,28 +4907,30 @@ class ListUploadedPartResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['file_id'] = self.file_id
-        result['next_part_number_marker'] = self.next_part_number_marker
-        result['upload_id'] = self.upload_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.next_part_number_marker is not None:
+            result['next_part_number_marker'] = self.next_part_number_marker
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         result['uploaded_parts'] = []
         if self.uploaded_parts is not None:
             for k in self.uploaded_parts:
                 result['uploaded_parts'].append(k.to_map() if k else None)
-        else:
-            result['uploaded_parts'] = None
         return result
 
     def from_map(self, map={}):
-        self.file_id = map.get('file_id')
-        self.next_part_number_marker = map.get('next_part_number_marker')
-        self.upload_id = map.get('upload_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('next_part_number_marker') is not None:
+            self.next_part_number_marker = map.get('next_part_number_marker')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         self.uploaded_parts = []
         if map.get('uploaded_parts') is not None:
             for k in map.get('uploaded_parts'):
                 temp_model = UploadPartInfo()
                 self.uploaded_parts.append(temp_model.from_map(k))
-        else:
-            self.uploaded_parts = None
         return self
 
 
@@ -4169,17 +4954,25 @@ class LoginByCodeRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['access_token'] = self.access_token
-        result['app_id'] = self.app_id
-        result['auth_code'] = self.auth_code
-        result['type'] = self.type
+        if self.access_token is not None:
+            result['access_token'] = self.access_token
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.auth_code is not None:
+            result['auth_code'] = self.auth_code
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.access_token = map.get('access_token')
-        self.app_id = map.get('app_id')
-        self.auth_code = map.get('auth_code')
-        self.type = map.get('type')
+        if map.get('access_token') is not None:
+            self.access_token = map.get('access_token')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('auth_code') is not None:
+            self.auth_code = map.get('auth_code')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -4202,17 +4995,25 @@ class MobileCheckExistRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['app_id'] = self.app_id
-        result['phone_number'] = self.phone_number
-        result['phone_region'] = self.phone_region
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.phone_number is not None:
+            result['phone_number'] = self.phone_number
+        if self.phone_region is not None:
+            result['phone_region'] = self.phone_region
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.app_id = map.get('app_id')
-        self.phone_number = map.get('phone_number')
-        self.phone_region = map.get('phone_region')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('phone_number') is not None:
+            self.phone_number = map.get('phone_number')
+        if map.get('phone_region') is not None:
+            self.phone_region = map.get('phone_region')
         return self
 
 
@@ -4234,15 +5035,21 @@ class MobileCheckExistResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['is_exist'] = self.is_exist
-        result['phone_number'] = self.phone_number
-        result['phone_region'] = self.phone_region
+        if self.is_exist is not None:
+            result['is_exist'] = self.is_exist
+        if self.phone_number is not None:
+            result['phone_number'] = self.phone_number
+        if self.phone_region is not None:
+            result['phone_region'] = self.phone_region
         return result
 
     def from_map(self, map={}):
-        self.is_exist = map.get('is_exist')
-        self.phone_number = map.get('phone_number')
-        self.phone_region = map.get('phone_region')
+        if map.get('is_exist') is not None:
+            self.is_exist = map.get('is_exist')
+        if map.get('phone_number') is not None:
+            self.phone_number = map.get('phone_number')
+        if map.get('phone_region') is not None:
+            self.phone_region = map.get('phone_region')
         return self
 
 
@@ -4280,31 +5087,53 @@ class MobileLoginRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['app_id'] = self.app_id
-        result['auto_register'] = self.auto_register
-        result['captcha_id'] = self.captcha_id
-        result['captcha_text'] = self.captcha_text
-        result['encrypted_key'] = self.encrypted_key
-        result['password'] = self.password
-        result['phone_number'] = self.phone_number
-        result['phone_region'] = self.phone_region
-        result['sms_code'] = self.sms_code
-        result['sms_code_id'] = self.sms_code_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.auto_register is not None:
+            result['auto_register'] = self.auto_register
+        if self.captcha_id is not None:
+            result['captcha_id'] = self.captcha_id
+        if self.captcha_text is not None:
+            result['captcha_text'] = self.captcha_text
+        if self.encrypted_key is not None:
+            result['encrypted_key'] = self.encrypted_key
+        if self.password is not None:
+            result['password'] = self.password
+        if self.phone_number is not None:
+            result['phone_number'] = self.phone_number
+        if self.phone_region is not None:
+            result['phone_region'] = self.phone_region
+        if self.sms_code is not None:
+            result['sms_code'] = self.sms_code
+        if self.sms_code_id is not None:
+            result['sms_code_id'] = self.sms_code_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.app_id = map.get('app_id')
-        self.auto_register = map.get('auto_register')
-        self.captcha_id = map.get('captcha_id')
-        self.captcha_text = map.get('captcha_text')
-        self.encrypted_key = map.get('encrypted_key')
-        self.password = map.get('password')
-        self.phone_number = map.get('phone_number')
-        self.phone_region = map.get('phone_region')
-        self.sms_code = map.get('sms_code')
-        self.sms_code_id = map.get('sms_code_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('auto_register') is not None:
+            self.auto_register = map.get('auto_register')
+        if map.get('captcha_id') is not None:
+            self.captcha_id = map.get('captcha_id')
+        if map.get('captcha_text') is not None:
+            self.captcha_text = map.get('captcha_text')
+        if map.get('encrypted_key') is not None:
+            self.encrypted_key = map.get('encrypted_key')
+        if map.get('password') is not None:
+            self.password = map.get('password')
+        if map.get('phone_number') is not None:
+            self.phone_number = map.get('phone_number')
+        if map.get('phone_region') is not None:
+            self.phone_region = map.get('phone_region')
+        if map.get('sms_code') is not None:
+            self.sms_code = map.get('sms_code')
+        if map.get('sms_code_id') is not None:
+            self.sms_code_id = map.get('sms_code_id')
         return self
 
 
@@ -4334,21 +5163,33 @@ class MobileRegisterRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['app_id'] = self.app_id
-        result['phone_number'] = self.phone_number
-        result['phone_region'] = self.phone_region
-        result['sms_code'] = self.sms_code
-        result['sms_code_id'] = self.sms_code_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.phone_number is not None:
+            result['phone_number'] = self.phone_number
+        if self.phone_region is not None:
+            result['phone_region'] = self.phone_region
+        if self.sms_code is not None:
+            result['sms_code'] = self.sms_code
+        if self.sms_code_id is not None:
+            result['sms_code_id'] = self.sms_code_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.app_id = map.get('app_id')
-        self.phone_number = map.get('phone_number')
-        self.phone_region = map.get('phone_region')
-        self.sms_code = map.get('sms_code')
-        self.sms_code_id = map.get('sms_code_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('phone_number') is not None:
+            self.phone_number = map.get('phone_number')
+        if map.get('phone_region') is not None:
+            self.phone_region = map.get('phone_region')
+        if map.get('sms_code') is not None:
+            self.sms_code = map.get('sms_code')
+        if map.get('sms_code_id') is not None:
+            self.sms_code_id = map.get('sms_code_id')
         return self
 
 
@@ -4379,23 +5220,37 @@ class MobileSendSmsCodeRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['app_id'] = self.app_id
-        result['captcha_id'] = self.captcha_id
-        result['captcha_text'] = self.captcha_text
-        result['phone_number'] = self.phone_number
-        result['phone_region'] = self.phone_region
-        result['type'] = self.type
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.captcha_id is not None:
+            result['captcha_id'] = self.captcha_id
+        if self.captcha_text is not None:
+            result['captcha_text'] = self.captcha_text
+        if self.phone_number is not None:
+            result['phone_number'] = self.phone_number
+        if self.phone_region is not None:
+            result['phone_region'] = self.phone_region
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.app_id = map.get('app_id')
-        self.captcha_id = map.get('captcha_id')
-        self.captcha_text = map.get('captcha_text')
-        self.phone_number = map.get('phone_number')
-        self.phone_region = map.get('phone_region')
-        self.type = map.get('type')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('captcha_id') is not None:
+            self.captcha_id = map.get('captcha_id')
+        if map.get('captcha_text') is not None:
+            self.captcha_text = map.get('captcha_text')
+        if map.get('phone_number') is not None:
+            self.phone_number = map.get('phone_number')
+        if map.get('phone_region') is not None:
+            self.phone_region = map.get('phone_region')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -4412,11 +5267,13 @@ class MobileSendSmsCodeResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['sms_code_id'] = self.sms_code_id
+        if self.sms_code_id is not None:
+            result['sms_code_id'] = self.sms_code_id
         return result
 
     def from_map(self, map={}):
-        self.sms_code_id = map.get('sms_code_id')
+        if map.get('sms_code_id') is not None:
+            self.sms_code_id = map.get('sms_code_id')
         return self
 
 
@@ -4435,27 +5292,35 @@ class MoveFileResponse(TeaModel):
         self.file_id = file_id          # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
 
     def to_map(self):
         result = {}
-        result['async_task_id'] = self.async_task_id
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_id'] = self.file_id
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
         return result
 
     def from_map(self, map={}):
-        self.async_task_id = map.get('async_task_id')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_id = map.get('file_id')
+        if map.get('async_task_id') is not None:
+            self.async_task_id = map.get('async_task_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
         return self
 
 
@@ -4515,70 +5380,119 @@ class OSSCompleteFileResponse(TeaModel):
         self.url = url                  # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_path:
+        if self.parent_file_path is not None:
             self.validate_max_length(self.parent_file_path, 'parent_file_path', 50)
             self.validate_pattern(self.parent_file_path, 'parent_file_path', '[a-z0-9]{1,50}')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9]+')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
 
     def to_map(self):
         result = {}
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc'] = self.crc
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['file_extension'] = self.file_extension
-        result['file_path'] = self.file_path
-        result['name'] = self.name
-        result['parent_file_path'] = self.parent_file_path
-        result['share_id'] = self.share_id
-        result['size'] = self.size
-        result['status'] = self.status
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc is not None:
+            result['crc'] = self.crc
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_path is not None:
+            result['parent_file_path'] = self.parent_file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.size is not None:
+            result['size'] = self.size
+        if self.status is not None:
+            result['status'] = self.status
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc = map.get('crc')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.file_extension = map.get('file_extension')
-        self.file_path = map.get('file_path')
-        self.name = map.get('name')
-        self.parent_file_path = map.get('parent_file_path')
-        self.share_id = map.get('share_id')
-        self.size = map.get('size')
-        self.status = map.get('status')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc') is not None:
+            self.crc = map.get('crc')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_path') is not None:
+            self.parent_file_path = map.get('parent_file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -4599,28 +5513,38 @@ class OSSCopyFileResponse(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z-]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[a-z0-9A-Z]+')
 
     def to_map(self):
         result = {}
-        result['async_task_id'] = self.async_task_id
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['share_id'] = self.share_id
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.async_task_id = map.get('async_task_id')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.share_id = map.get('share_id')
+        if map.get('async_task_id') is not None:
+            self.async_task_id = map.get('async_task_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -4646,48 +5570,56 @@ class OSSCreateFileResponse(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_max_length(self.domain_id, 'domain_id', 50)
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9]{1,50}')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         if self.part_info_list:
             for k in self.part_info_list:
                 if k:
                     k.validate()
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9]+')
 
     def to_map(self):
         result = {}
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['share_id'] = self.share_id
-        result['type'] = self.type
-        result['upload_id'] = self.upload_id
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.share_id = map.get('share_id')
-        self.type = map.get('type')
-        self.upload_id = map.get('upload_id')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -4708,28 +5640,38 @@ class OSSDeleteFileResponse(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[a-z0-9A-Z]+')
 
     def to_map(self):
         result = {}
-        result['async_task_id'] = self.async_task_id
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['share_id'] = self.share_id
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.async_task_id = map.get('async_task_id')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.share_id = map.get('share_id')
+        if map.get('async_task_id') is not None:
+            self.async_task_id = map.get('async_task_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -4748,26 +5690,34 @@ class OSSDeleteFilesResponse(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9]+')
 
     def to_map(self):
         result = {}
-        result['deleted_file_id_list'] = self.deleted_file_id_list
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['share_id'] = self.share_id
+        if self.deleted_file_id_list is not None:
+            result['deleted_file_id_list'] = self.deleted_file_id_list
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.deleted_file_id_list = map.get('deleted_file_id_list')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.share_id = map.get('share_id')
+        if map.get('deleted_file_id_list') is not None:
+            self.deleted_file_id_list = map.get('deleted_file_id_list')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -4788,15 +5738,21 @@ class OSSGetDownloadUrlResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['expiration'] = self.expiration
-        result['method'] = self.method
-        result['url'] = self.url
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.method is not None:
+            result['method'] = self.method
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.expiration = map.get('expiration')
-        self.method = map.get('method')
-        self.url = map.get('url')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('method') is not None:
+            self.method = map.get('method')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -4854,68 +5810,115 @@ class OSSGetFileResponse(TeaModel):
         self.url = url                  # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_path:
+        if self.parent_file_path is not None:
             self.validate_max_length(self.parent_file_path, 'parent_file_path', 50)
             self.validate_pattern(self.parent_file_path, 'parent_file_path', '[a-z0-9]{1,50}')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9]+')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
 
     def to_map(self):
         result = {}
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['file_extension'] = self.file_extension
-        result['file_path'] = self.file_path
-        result['name'] = self.name
-        result['parent_file_path'] = self.parent_file_path
-        result['share_id'] = self.share_id
-        result['size'] = self.size
-        result['status'] = self.status
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_path is not None:
+            result['parent_file_path'] = self.parent_file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.size is not None:
+            result['size'] = self.size
+        if self.status is not None:
+            result['status'] = self.status
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.file_extension = map.get('file_extension')
-        self.file_path = map.get('file_path')
-        self.name = map.get('name')
-        self.parent_file_path = map.get('parent_file_path')
-        self.share_id = map.get('share_id')
-        self.size = map.get('size')
-        self.status = map.get('status')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_path') is not None:
+            self.parent_file_path = map.get('parent_file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -4934,13 +5937,17 @@ class OSSGetSecureUrlResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['expiration'] = self.expiration
-        result['url'] = self.url
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.expiration = map.get('expiration')
-        self.url = map.get('url')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -4964,9 +5971,9 @@ class OSSGetUploadUrlResponse(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         if self.part_info_list:
             for k in self.part_info_list:
@@ -4975,32 +5982,38 @@ class OSSGetUploadUrlResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['create_at'] = self.create_at
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
+        if self.create_at is not None:
+            result['create_at'] = self.create_at
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['upload_id'] = self.upload_id
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.create_at = map.get('create_at')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
+        if map.get('create_at') is not None:
+            self.create_at = map.get('create_at')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.upload_id = map.get('upload_id')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -5026,9 +6039,8 @@ class OSSListFileResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -5037,9 +6049,8 @@ class OSSListFileResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseOSSFileResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -5065,28 +6076,30 @@ class OSSListUploadedPartResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['file_path'] = self.file_path
-        result['next_part_number_marker'] = self.next_part_number_marker
-        result['upload_id'] = self.upload_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.next_part_number_marker is not None:
+            result['next_part_number_marker'] = self.next_part_number_marker
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         result['uploaded_parts'] = []
         if self.uploaded_parts is not None:
             for k in self.uploaded_parts:
                 result['uploaded_parts'].append(k.to_map() if k else None)
-        else:
-            result['uploaded_parts'] = None
         return result
 
     def from_map(self, map={}):
-        self.file_path = map.get('file_path')
-        self.next_part_number_marker = map.get('next_part_number_marker')
-        self.upload_id = map.get('upload_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('next_part_number_marker') is not None:
+            self.next_part_number_marker = map.get('next_part_number_marker')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         self.uploaded_parts = []
         if map.get('uploaded_parts') is not None:
             for k in map.get('uploaded_parts'):
                 temp_model = UploadPartInfo()
                 self.uploaded_parts.append(temp_model.from_map(k))
-        else:
-            self.uploaded_parts = None
         return self
 
 
@@ -5107,28 +6120,38 @@ class OSSMoveFileResponse(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z-]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[a-z0-9A-Z]+')
 
     def to_map(self):
         result = {}
-        result['async_task_id'] = self.async_task_id
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['share_id'] = self.share_id
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.async_task_id = map.get('async_task_id')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.share_id = map.get('share_id')
+        if map.get('async_task_id') is not None:
+            self.async_task_id = map.get('async_task_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -5154,9 +6177,8 @@ class OSSSearchFileResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -5165,9 +6187,8 @@ class OSSSearchFileResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseOSSFileResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -5225,68 +6246,115 @@ class OSSUpdateFileMetaResponse(TeaModel):
         self.url = url                  # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_path:
+        if self.parent_file_path is not None:
             self.validate_max_length(self.parent_file_path, 'parent_file_path', 50)
             self.validate_pattern(self.parent_file_path, 'parent_file_path', '[a-z0-9]{1,50}')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9]+')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
 
     def to_map(self):
         result = {}
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['file_extension'] = self.file_extension
-        result['file_path'] = self.file_path
-        result['name'] = self.name
-        result['parent_file_path'] = self.parent_file_path
-        result['share_id'] = self.share_id
-        result['size'] = self.size
-        result['status'] = self.status
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_path is not None:
+            result['parent_file_path'] = self.parent_file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.size is not None:
+            result['size'] = self.size
+        if self.status is not None:
+            result['status'] = self.status
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.file_extension = map.get('file_extension')
-        self.file_path = map.get('file_path')
-        self.name = map.get('name')
-        self.parent_file_path = map.get('parent_file_path')
-        self.share_id = map.get('share_id')
-        self.size = map.get('size')
-        self.status = map.get('status')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_path') is not None:
+            self.parent_file_path = map.get('parent_file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -5306,13 +6374,17 @@ class OSSVideoDRMLicenseResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['data'] = self.data
-        result['states'] = self.states
+        if self.data is not None:
+            result['data'] = self.data
+        if self.states is not None:
+            result['states'] = self.states
         return result
 
     def from_map(self, map={}):
-        self.data = map.get('data')
-        self.states = map.get('states')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('states') is not None:
+            self.states = map.get('states')
         return self
 
 
@@ -5331,13 +6403,17 @@ class OSSVideoDefinitionResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['definition_list'] = self.definition_list
-        result['frame_rate'] = self.frame_rate
+        if self.definition_list is not None:
+            result['definition_list'] = self.definition_list
+        if self.frame_rate is not None:
+            result['frame_rate'] = self.frame_rate
         return result
 
     def from_map(self, map={}):
-        self.definition_list = map.get('definition_list')
-        self.frame_rate = map.get('frame_rate')
+        if map.get('definition_list') is not None:
+            self.definition_list = map.get('definition_list')
+        if map.get('frame_rate') is not None:
+            self.frame_rate = map.get('frame_rate')
         return self
 
 
@@ -5358,15 +6434,21 @@ class OSSVideoTranscodeResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['definition_list'] = self.definition_list
-        result['duration'] = self.duration
-        result['hls_time'] = self.hls_time
+        if self.definition_list is not None:
+            result['definition_list'] = self.definition_list
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.hls_time is not None:
+            result['hls_time'] = self.hls_time
         return result
 
     def from_map(self, map={}):
-        self.definition_list = map.get('definition_list')
-        self.duration = map.get('duration')
-        self.hls_time = map.get('hls_time')
+        if map.get('definition_list') is not None:
+            self.definition_list = map.get('definition_list')
+        if map.get('duration') is not None:
+            self.duration = map.get('duration')
+        if map.get('hls_time') is not None:
+            self.hls_time = map.get('hls_time')
         return self
 
 
@@ -5388,25 +6470,35 @@ class PreHashCheckSuccessResponse(TeaModel):
 
     def validate(self):
         self.validate_required(self.parent_file_id, 'parent_file_id')
-        if self.parent_file_id:
+        if self.parent_file_id is not None:
             self.validate_max_length(self.parent_file_id, 'parent_file_id', 50)
             self.validate_pattern(self.parent_file_id, 'parent_file_id', '[a-z0-9]{1,50}')
 
     def to_map(self):
         result = {}
-        result['code'] = self.code
-        result['file_name'] = self.file_name
-        result['message'] = self.message
-        result['parent_file_id'] = self.parent_file_id
-        result['pre_hash'] = self.pre_hash
+        if self.code is not None:
+            result['code'] = self.code
+        if self.file_name is not None:
+            result['file_name'] = self.file_name
+        if self.message is not None:
+            result['message'] = self.message
+        if self.parent_file_id is not None:
+            result['parent_file_id'] = self.parent_file_id
+        if self.pre_hash is not None:
+            result['pre_hash'] = self.pre_hash
         return result
 
     def from_map(self, map={}):
-        self.code = map.get('code')
-        self.file_name = map.get('file_name')
-        self.message = map.get('message')
-        self.parent_file_id = map.get('parent_file_id')
-        self.pre_hash = map.get('pre_hash')
+        if map.get('code') is not None:
+            self.code = map.get('code')
+        if map.get('file_name') is not None:
+            self.file_name = map.get('file_name')
+        if map.get('message') is not None:
+            self.message = map.get('message')
+        if map.get('parent_file_id') is not None:
+            self.parent_file_id = map.get('parent_file_id')
+        if map.get('pre_hash') is not None:
+            self.pre_hash = map.get('pre_hash')
         return self
 
 
@@ -5423,13 +6515,17 @@ class RateLimit(TeaModel):
 
     def to_map(self):
         result = {}
-        result['part_size'] = self.part_size
-        result['part_speed'] = self.part_speed
+        if self.part_size is not None:
+            result['part_size'] = self.part_size
+        if self.part_speed is not None:
+            result['part_speed'] = self.part_speed
         return result
 
     def from_map(self, map={}):
-        self.part_size = map.get('part_size')
-        self.part_speed = map.get('part_speed')
+        if map.get('part_size') is not None:
+            self.part_size = map.get('part_size')
+        if map.get('part_speed') is not None:
+            self.part_speed = map.get('part_speed')
         return self
 
 
@@ -5450,15 +6546,21 @@ class RevokeRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['app_id'] = self.app_id
-        result['refresh_token'] = self.refresh_token
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.refresh_token is not None:
+            result['refresh_token'] = self.refresh_token
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.app_id = map.get('app_id')
-        self.refresh_token = map.get('refresh_token')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('refresh_token') is not None:
+            self.refresh_token = map.get('refresh_token')
         return self
 
 
@@ -5484,9 +6586,8 @@ class ScanFileMetaResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -5495,9 +6596,8 @@ class ScanFileMetaResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseFileResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -5523,9 +6623,8 @@ class SearchFileResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -5534,9 +6633,8 @@ class SearchFileResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseFileResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -5555,17 +6653,25 @@ class SharePermissionPolicy(TeaModel):
 
     def to_map(self):
         result = {}
-        result['file_path'] = self.file_path
-        result['permission_inheritable'] = self.permission_inheritable
-        result['permission_list'] = self.permission_list
-        result['permission_type'] = self.permission_type
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.permission_inheritable is not None:
+            result['permission_inheritable'] = self.permission_inheritable
+        if self.permission_list is not None:
+            result['permission_list'] = self.permission_list
+        if self.permission_type is not None:
+            result['permission_type'] = self.permission_type
         return result
 
     def from_map(self, map={}):
-        self.file_path = map.get('file_path')
-        self.permission_inheritable = map.get('permission_inheritable')
-        self.permission_list = map.get('permission_list')
-        self.permission_type = map.get('permission_type')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('permission_inheritable') is not None:
+            self.permission_inheritable = map.get('permission_inheritable')
+        if map.get('permission_list') is not None:
+            self.permission_list = map.get('permission_list')
+        if map.get('permission_type') is not None:
+            self.permission_type = map.get('permission_type')
         return self
 
 
@@ -5585,19 +6691,29 @@ class StoreFile(TeaModel):
 
     def to_map(self):
         result = {}
-        result['domain_id'] = self.domain_id
-        result['name'] = self.name
-        result['parent_file_path'] = self.parent_file_path
-        result['store_id'] = self.store_id
-        result['type'] = self.type
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_path is not None:
+            result['parent_file_path'] = self.parent_file_path
+        if self.store_id is not None:
+            result['store_id'] = self.store_id
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.domain_id = map.get('domain_id')
-        self.name = map.get('name')
-        self.parent_file_path = map.get('parent_file_path')
-        self.store_id = map.get('store_id')
-        self.type = map.get('type')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_path') is not None:
+            self.parent_file_path = map.get('parent_file_path')
+        if map.get('store_id') is not None:
+            self.store_id = map.get('store_id')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -5653,43 +6769,77 @@ class StoreItemResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['accelerate_endpoint'] = self.accelerate_endpoint
-        result['base_path'] = self.base_path
-        result['bucket'] = self.bucket
-        result['cdn_endpoint'] = self.cdn_endpoint
-        result['customized_accelerate_endpoint'] = self.customized_accelerate_endpoint
-        result['customized_cdn_endpoint'] = self.customized_cdn_endpoint
-        result['customized_endpoint'] = self.customized_endpoint
-        result['customized_internal_endpoint'] = self.customized_internal_endpoint
-        result['domain_id'] = self.domain_id
-        result['endpoint'] = self.endpoint
-        result['internal_endpoint'] = self.internal_endpoint
-        result['location'] = self.location
-        result['ownership'] = self.ownership
-        result['policy'] = self.policy
-        result['role_arn'] = self.role_arn
-        result['store_id'] = self.store_id
-        result['type'] = self.type
+        if self.accelerate_endpoint is not None:
+            result['accelerate_endpoint'] = self.accelerate_endpoint
+        if self.base_path is not None:
+            result['base_path'] = self.base_path
+        if self.bucket is not None:
+            result['bucket'] = self.bucket
+        if self.cdn_endpoint is not None:
+            result['cdn_endpoint'] = self.cdn_endpoint
+        if self.customized_accelerate_endpoint is not None:
+            result['customized_accelerate_endpoint'] = self.customized_accelerate_endpoint
+        if self.customized_cdn_endpoint is not None:
+            result['customized_cdn_endpoint'] = self.customized_cdn_endpoint
+        if self.customized_endpoint is not None:
+            result['customized_endpoint'] = self.customized_endpoint
+        if self.customized_internal_endpoint is not None:
+            result['customized_internal_endpoint'] = self.customized_internal_endpoint
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.internal_endpoint is not None:
+            result['internal_endpoint'] = self.internal_endpoint
+        if self.location is not None:
+            result['location'] = self.location
+        if self.ownership is not None:
+            result['ownership'] = self.ownership
+        if self.policy is not None:
+            result['policy'] = self.policy
+        if self.role_arn is not None:
+            result['role_arn'] = self.role_arn
+        if self.store_id is not None:
+            result['store_id'] = self.store_id
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.accelerate_endpoint = map.get('accelerate_endpoint')
-        self.base_path = map.get('base_path')
-        self.bucket = map.get('bucket')
-        self.cdn_endpoint = map.get('cdn_endpoint')
-        self.customized_accelerate_endpoint = map.get('customized_accelerate_endpoint')
-        self.customized_cdn_endpoint = map.get('customized_cdn_endpoint')
-        self.customized_endpoint = map.get('customized_endpoint')
-        self.customized_internal_endpoint = map.get('customized_internal_endpoint')
-        self.domain_id = map.get('domain_id')
-        self.endpoint = map.get('endpoint')
-        self.internal_endpoint = map.get('internal_endpoint')
-        self.location = map.get('location')
-        self.ownership = map.get('ownership')
-        self.policy = map.get('policy')
-        self.role_arn = map.get('role_arn')
-        self.store_id = map.get('store_id')
-        self.type = map.get('type')
+        if map.get('accelerate_endpoint') is not None:
+            self.accelerate_endpoint = map.get('accelerate_endpoint')
+        if map.get('base_path') is not None:
+            self.base_path = map.get('base_path')
+        if map.get('bucket') is not None:
+            self.bucket = map.get('bucket')
+        if map.get('cdn_endpoint') is not None:
+            self.cdn_endpoint = map.get('cdn_endpoint')
+        if map.get('customized_accelerate_endpoint') is not None:
+            self.customized_accelerate_endpoint = map.get('customized_accelerate_endpoint')
+        if map.get('customized_cdn_endpoint') is not None:
+            self.customized_cdn_endpoint = map.get('customized_cdn_endpoint')
+        if map.get('customized_endpoint') is not None:
+            self.customized_endpoint = map.get('customized_endpoint')
+        if map.get('customized_internal_endpoint') is not None:
+            self.customized_internal_endpoint = map.get('customized_internal_endpoint')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('endpoint') is not None:
+            self.endpoint = map.get('endpoint')
+        if map.get('internal_endpoint') is not None:
+            self.internal_endpoint = map.get('internal_endpoint')
+        if map.get('location') is not None:
+            self.location = map.get('location')
+        if map.get('ownership') is not None:
+            self.ownership = map.get('ownership')
+        if map.get('policy') is not None:
+            self.policy = map.get('policy')
+        if map.get('role_arn') is not None:
+            self.role_arn = map.get('role_arn')
+        if map.get('store_id') is not None:
+            self.store_id = map.get('store_id')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -5712,17 +6862,25 @@ class StreamInfo(TeaModel):
 
     def to_map(self):
         result = {}
-        result['crc64_hash'] = self.crc_64hash
-        result['download_url'] = self.download_url
-        result['thumbnail'] = self.thumbnail
-        result['url'] = self.url
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.crc_64hash = map.get('crc64_hash')
-        self.download_url = map.get('download_url')
-        self.thumbnail = map.get('thumbnail')
-        self.url = map.get('url')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -5754,11 +6912,12 @@ class StreamUploadInfo(TeaModel):
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['pre_rapid_upload'] = self.pre_rapid_upload
-        result['rapid_upload'] = self.rapid_upload
-        result['upload_id'] = self.upload_id
+        if self.pre_rapid_upload is not None:
+            result['pre_rapid_upload'] = self.pre_rapid_upload
+        if self.rapid_upload is not None:
+            result['rapid_upload'] = self.rapid_upload
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
@@ -5767,11 +6926,12 @@ class StreamUploadInfo(TeaModel):
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.pre_rapid_upload = map.get('pre_rapid_upload')
-        self.rapid_upload = map.get('rapid_upload')
-        self.upload_id = map.get('upload_id')
+        if map.get('pre_rapid_upload') is not None:
+            self.pre_rapid_upload = map.get('pre_rapid_upload')
+        if map.get('rapid_upload') is not None:
+            self.rapid_upload = map.get('rapid_upload')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -5781,7 +6941,7 @@ class SystemTag(TeaModel):
     """
     def __init__(self, confidence=None, en_name=None, name=None, parent_en_name=None, parent_name=None,
                  selected=None, tag_level=None):
-        self.confidence = confidence    # type: int
+        self.confidence = confidence    # type: float
         self.en_name = en_name          # type: str
         self.name = name                # type: str
         self.parent_en_name = parent_en_name  # type: str
@@ -5794,23 +6954,37 @@ class SystemTag(TeaModel):
 
     def to_map(self):
         result = {}
-        result['confidence'] = self.confidence
-        result['en_name'] = self.en_name
-        result['name'] = self.name
-        result['parent_en_name'] = self.parent_en_name
-        result['parent_name'] = self.parent_name
-        result['selected'] = self.selected
-        result['tag_level'] = self.tag_level
+        if self.confidence is not None:
+            result['confidence'] = self.confidence
+        if self.en_name is not None:
+            result['en_name'] = self.en_name
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_en_name is not None:
+            result['parent_en_name'] = self.parent_en_name
+        if self.parent_name is not None:
+            result['parent_name'] = self.parent_name
+        if self.selected is not None:
+            result['selected'] = self.selected
+        if self.tag_level is not None:
+            result['tag_level'] = self.tag_level
         return result
 
     def from_map(self, map={}):
-        self.confidence = map.get('confidence')
-        self.en_name = map.get('en_name')
-        self.name = map.get('name')
-        self.parent_en_name = map.get('parent_en_name')
-        self.parent_name = map.get('parent_name')
-        self.selected = map.get('selected')
-        self.tag_level = map.get('tag_level')
+        if map.get('confidence') is not None:
+            self.confidence = map.get('confidence')
+        if map.get('en_name') is not None:
+            self.en_name = map.get('en_name')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_en_name') is not None:
+            self.parent_en_name = map.get('parent_en_name')
+        if map.get('parent_name') is not None:
+            self.parent_name = map.get('parent_name')
+        if map.get('selected') is not None:
+            self.selected = map.get('selected')
+        if map.get('tag_level') is not None:
+            self.tag_level = map.get('tag_level')
         return self
 
 
@@ -5836,19 +7010,29 @@ class TokenRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['addition_data'] = self.addition_data
-        result['app_id'] = self.app_id
-        result['grant_type'] = self.grant_type
-        result['refresh_token'] = self.refresh_token
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.grant_type is not None:
+            result['grant_type'] = self.grant_type
+        if self.refresh_token is not None:
+            result['refresh_token'] = self.refresh_token
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.addition_data = map.get('addition_data')
-        self.app_id = map.get('app_id')
-        self.grant_type = map.get('grant_type')
-        self.refresh_token = map.get('refresh_token')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('addition_data') is not None:
+            self.addition_data = map.get('addition_data')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('grant_type') is not None:
+            self.grant_type = map.get('grant_type')
+        if map.get('refresh_token') is not None:
+            self.refresh_token = map.get('refresh_token')
         return self
 
 
@@ -5891,37 +7075,65 @@ class UpdateDriveResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['creator'] = self.creator
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['drive_name'] = self.drive_name
-        result['drive_type'] = self.drive_type
-        result['encrypt_data_access'] = self.encrypt_data_access
-        result['encrypt_mode'] = self.encrypt_mode
-        result['owner'] = self.owner
-        result['relative_path'] = self.relative_path
-        result['status'] = self.status
-        result['store_id'] = self.store_id
-        result['total_size'] = self.total_size
-        result['used_size'] = self.used_size
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.drive_name is not None:
+            result['drive_name'] = self.drive_name
+        if self.drive_type is not None:
+            result['drive_type'] = self.drive_type
+        if self.encrypt_data_access is not None:
+            result['encrypt_data_access'] = self.encrypt_data_access
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.relative_path is not None:
+            result['relative_path'] = self.relative_path
+        if self.status is not None:
+            result['status'] = self.status
+        if self.store_id is not None:
+            result['store_id'] = self.store_id
+        if self.total_size is not None:
+            result['total_size'] = self.total_size
+        if self.used_size is not None:
+            result['used_size'] = self.used_size
         return result
 
     def from_map(self, map={}):
-        self.creator = map.get('creator')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.drive_name = map.get('drive_name')
-        self.drive_type = map.get('drive_type')
-        self.encrypt_data_access = map.get('encrypt_data_access')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.owner = map.get('owner')
-        self.relative_path = map.get('relative_path')
-        self.status = map.get('status')
-        self.store_id = map.get('store_id')
-        self.total_size = map.get('total_size')
-        self.used_size = map.get('used_size')
+        if map.get('creator') is not None:
+            self.creator = map.get('creator')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('drive_name') is not None:
+            self.drive_name = map.get('drive_name')
+        if map.get('drive_type') is not None:
+            self.drive_type = map.get('drive_type')
+        if map.get('encrypt_data_access') is not None:
+            self.encrypt_data_access = map.get('encrypt_data_access')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('owner') is not None:
+            self.owner = map.get('owner')
+        if map.get('relative_path') is not None:
+            self.relative_path = map.get('relative_path')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('store_id') is not None:
+            self.store_id = map.get('store_id')
+        if map.get('total_size') is not None:
+            self.total_size = map.get('total_size')
+        if map.get('used_size') is not None:
+            self.used_size = map.get('used_size')
         return self
 
 
@@ -6000,21 +7212,24 @@ class UpdateFileMetaResponse(TeaModel):
         self.video_preview_metadata = video_preview_metadata  # type: VideoPreviewResponse
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
         if self.image_media_metadata:
             self.image_media_metadata.validate()
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_id:
+        if self.parent_file_id is not None:
             self.validate_max_length(self.parent_file_id, 'parent_file_id', 50)
             self.validate_pattern(self.parent_file_id, 'parent_file_id', '[a-z0-9]{1,50}')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
         if self.video_media_metadata:
             self.video_media_metadata.validate()
         if self.video_preview_metadata:
@@ -6022,96 +7237,144 @@ class UpdateFileMetaResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['category'] = self.category
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['encrypt_mode'] = self.encrypt_mode
-        result['file_extension'] = self.file_extension
-        result['file_id'] = self.file_id
-        result['hidden'] = self.hidden
+        if self.category is not None:
+            result['category'] = self.category
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.hidden is not None:
+            result['hidden'] = self.hidden
         if self.image_media_metadata is not None:
             result['image_media_metadata'] = self.image_media_metadata.to_map()
-        else:
-            result['image_media_metadata'] = None
-        result['labels'] = self.labels
-        result['meta'] = self.meta
-        result['name'] = self.name
-        result['parent_file_id'] = self.parent_file_id
-        result['punish_flag'] = self.punish_flag
-        result['size'] = self.size
-        result['starred'] = self.starred
-        result['status'] = self.status
-        result['streams_info'] = self.streams_info
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
-        result['user_meta'] = self.user_meta
+        if self.labels is not None:
+            result['labels'] = self.labels
+        if self.meta is not None:
+            result['meta'] = self.meta
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_id is not None:
+            result['parent_file_id'] = self.parent_file_id
+        if self.punish_flag is not None:
+            result['punish_flag'] = self.punish_flag
+        if self.size is not None:
+            result['size'] = self.size
+        if self.starred is not None:
+            result['starred'] = self.starred
+        if self.status is not None:
+            result['status'] = self.status
+        if self.streams_info is not None:
+            result['streams_info'] = self.streams_info
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
+        if self.user_meta is not None:
+            result['user_meta'] = self.user_meta
         if self.video_media_metadata is not None:
             result['video_media_metadata'] = self.video_media_metadata.to_map()
-        else:
-            result['video_media_metadata'] = None
         if self.video_preview_metadata is not None:
             result['video_preview_metadata'] = self.video_preview_metadata.to_map()
-        else:
-            result['video_preview_metadata'] = None
         return result
 
     def from_map(self, map={}):
-        self.category = map.get('category')
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.file_extension = map.get('file_extension')
-        self.file_id = map.get('file_id')
-        self.hidden = map.get('hidden')
+        if map.get('category') is not None:
+            self.category = map.get('category')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('hidden') is not None:
+            self.hidden = map.get('hidden')
         if map.get('image_media_metadata') is not None:
             temp_model = ImageMediaResponse()
             self.image_media_metadata = temp_model.from_map(map['image_media_metadata'])
-        else:
-            self.image_media_metadata = None
-        self.labels = map.get('labels')
-        self.meta = map.get('meta')
-        self.name = map.get('name')
-        self.parent_file_id = map.get('parent_file_id')
-        self.punish_flag = map.get('punish_flag')
-        self.size = map.get('size')
-        self.starred = map.get('starred')
-        self.status = map.get('status')
-        self.streams_info = map.get('streams_info')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
-        self.user_meta = map.get('user_meta')
+        if map.get('labels') is not None:
+            self.labels = map.get('labels')
+        if map.get('meta') is not None:
+            self.meta = map.get('meta')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_id') is not None:
+            self.parent_file_id = map.get('parent_file_id')
+        if map.get('punish_flag') is not None:
+            self.punish_flag = map.get('punish_flag')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('starred') is not None:
+            self.starred = map.get('starred')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('streams_info') is not None:
+            self.streams_info = map.get('streams_info')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
+        if map.get('user_meta') is not None:
+            self.user_meta = map.get('user_meta')
         if map.get('video_media_metadata') is not None:
             temp_model = VideoMediaResponse()
             self.video_media_metadata = temp_model.from_map(map['video_media_metadata'])
-        else:
-            self.video_media_metadata = None
         if map.get('video_preview_metadata') is not None:
             temp_model = VideoPreviewResponse()
             self.video_preview_metadata = temp_model.from_map(map['video_preview_metadata'])
-        else:
-            self.video_preview_metadata = None
         return self
 
 
@@ -6160,50 +7423,74 @@ class UpdateShareResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['created_at'] = self.created_at
-        result['creator'] = self.creator
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['expiration'] = self.expiration
-        result['expired'] = self.expired
-        result['owner'] = self.owner
-        result['permissions'] = self.permissions
-        result['share_file_path'] = self.share_file_path
-        result['share_id'] = self.share_id
-        result['share_name'] = self.share_name
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.expired is not None:
+            result['expired'] = self.expired
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.permissions is not None:
+            result['permissions'] = self.permissions
+        if self.share_file_path is not None:
+            result['share_file_path'] = self.share_file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.share_name is not None:
+            result['share_name'] = self.share_name
         result['share_policy'] = []
         if self.share_policy is not None:
             for k in self.share_policy:
                 result['share_policy'].append(k.to_map() if k else None)
-        else:
-            result['share_policy'] = None
-        result['status'] = self.status
-        result['updated_at'] = self.updated_at
+        if self.status is not None:
+            result['status'] = self.status
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
         return result
 
     def from_map(self, map={}):
-        self.created_at = map.get('created_at')
-        self.creator = map.get('creator')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.expiration = map.get('expiration')
-        self.expired = map.get('expired')
-        self.owner = map.get('owner')
-        self.permissions = map.get('permissions')
-        self.share_file_path = map.get('share_file_path')
-        self.share_id = map.get('share_id')
-        self.share_name = map.get('share_name')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('creator') is not None:
+            self.creator = map.get('creator')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('expired') is not None:
+            self.expired = map.get('expired')
+        if map.get('owner') is not None:
+            self.owner = map.get('owner')
+        if map.get('permissions') is not None:
+            self.permissions = map.get('permissions')
+        if map.get('share_file_path') is not None:
+            self.share_file_path = map.get('share_file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('share_name') is not None:
+            self.share_name = map.get('share_name')
         self.share_policy = []
         if map.get('share_policy') is not None:
             for k in map.get('share_policy'):
                 temp_model = SharePermissionPolicy()
                 self.share_policy.append(temp_model.from_map(k))
-        else:
-            self.share_policy = None
-        self.status = map.get('status')
-        self.updated_at = map.get('updated_at')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
         return self
 
 
@@ -6222,22 +7509,35 @@ class UploadPartInfo(TeaModel):
         self.upload_url = upload_url    # type: str
 
     def validate(self):
-        if self.part_number:
+        if self.part_number is not None:
             self.validate_pattern(self.part_number, 'part_number', '[0-9]+')
+            self.validate_maximum(self.part_number, 'part_number', 10000)
+            self.validate_minimum(self.part_number, 'part_number', 1)
+        if self.part_size is not None:
+            self.validate_maximum(self.part_size, 'part_size', 5368709120)
+            self.validate_minimum(self.part_size, 'part_size', 102400)
 
     def to_map(self):
         result = {}
-        result['etag'] = self.etag
-        result['part_number'] = self.part_number
-        result['part_size'] = self.part_size
-        result['upload_url'] = self.upload_url
+        if self.etag is not None:
+            result['etag'] = self.etag
+        if self.part_number is not None:
+            result['part_number'] = self.part_number
+        if self.part_size is not None:
+            result['part_size'] = self.part_size
+        if self.upload_url is not None:
+            result['upload_url'] = self.upload_url
         return result
 
     def from_map(self, map={}):
-        self.etag = map.get('etag')
-        self.part_number = map.get('part_number')
-        self.part_size = map.get('part_size')
-        self.upload_url = map.get('upload_url')
+        if map.get('etag') is not None:
+            self.etag = map.get('etag')
+        if map.get('part_number') is not None:
+            self.part_number = map.get('part_number')
+        if map.get('part_size') is not None:
+            self.part_size = map.get('part_size')
+        if map.get('upload_url') is not None:
+            self.upload_url = map.get('upload_url')
         return self
 
 
@@ -6258,15 +7558,21 @@ class UrlInfo(TeaModel):
 
     def to_map(self):
         result = {}
-        result['download_url'] = self.download_url
-        result['thumbnail'] = self.thumbnail
-        result['url'] = self.url
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.download_url = map.get('download_url')
-        self.thumbnail = map.get('thumbnail')
-        self.url = map.get('url')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -6307,27 +7613,45 @@ class UserAuthentication(TeaModel):
 
     def to_map(self):
         result = {}
-        result['AuthenticationType'] = self.authentication_type
-        result['CreatedAt'] = self.created_at
-        result['Detail'] = self.detail
-        result['DomainID'] = self.domain_id
-        result['Identity'] = self.identity
-        result['LastLoginTime'] = self.last_login_time
-        result['Status'] = self.status
-        result['UserID'] = self.user_id
-        result['extra'] = self.extra
+        if self.authentication_type is not None:
+            result['AuthenticationType'] = self.authentication_type
+        if self.created_at is not None:
+            result['CreatedAt'] = self.created_at
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.domain_id is not None:
+            result['DomainID'] = self.domain_id
+        if self.identity is not None:
+            result['Identity'] = self.identity
+        if self.last_login_time is not None:
+            result['LastLoginTime'] = self.last_login_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserID'] = self.user_id
+        if self.extra is not None:
+            result['extra'] = self.extra
         return result
 
     def from_map(self, map={}):
-        self.authentication_type = map.get('AuthenticationType')
-        self.created_at = map.get('CreatedAt')
-        self.detail = map.get('Detail')
-        self.domain_id = map.get('DomainID')
-        self.identity = map.get('Identity')
-        self.last_login_time = map.get('LastLoginTime')
-        self.status = map.get('Status')
-        self.user_id = map.get('UserID')
-        self.extra = map.get('extra')
+        if map.get('AuthenticationType') is not None:
+            self.authentication_type = map.get('AuthenticationType')
+        if map.get('CreatedAt') is not None:
+            self.created_at = map.get('CreatedAt')
+        if map.get('Detail') is not None:
+            self.detail = map.get('Detail')
+        if map.get('DomainID') is not None:
+            self.domain_id = map.get('DomainID')
+        if map.get('Identity') is not None:
+            self.identity = map.get('Identity')
+        if map.get('LastLoginTime') is not None:
+            self.last_login_time = map.get('LastLoginTime')
+        if map.get('Status') is not None:
+            self.status = map.get('Status')
+        if map.get('UserID') is not None:
+            self.user_id = map.get('UserID')
+        if map.get('extra') is not None:
+            self.extra = map.get('extra')
         return self
 
 
@@ -6359,23 +7683,37 @@ class VerifyCodeRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['app_id'] = self.app_id
-        result['phone_number'] = self.phone_number
-        result['phone_region'] = self.phone_region
-        result['sms_code'] = self.sms_code
-        result['sms_code_id'] = self.sms_code_id
-        result['verify_type'] = self.verify_type
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.phone_number is not None:
+            result['phone_number'] = self.phone_number
+        if self.phone_region is not None:
+            result['phone_region'] = self.phone_region
+        if self.sms_code is not None:
+            result['sms_code'] = self.sms_code
+        if self.sms_code_id is not None:
+            result['sms_code_id'] = self.sms_code_id
+        if self.verify_type is not None:
+            result['verify_type'] = self.verify_type
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.app_id = map.get('app_id')
-        self.phone_number = map.get('phone_number')
-        self.phone_region = map.get('phone_region')
-        self.sms_code = map.get('sms_code')
-        self.sms_code_id = map.get('sms_code_id')
-        self.verify_type = map.get('verify_type')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('phone_number') is not None:
+            self.phone_number = map.get('phone_number')
+        if map.get('phone_region') is not None:
+            self.phone_region = map.get('phone_region')
+        if map.get('sms_code') is not None:
+            self.sms_code = map.get('sms_code')
+        if map.get('sms_code_id') is not None:
+            self.sms_code_id = map.get('sms_code_id')
+        if map.get('verify_type') is not None:
+            self.verify_type = map.get('verify_type')
         return self
 
 
@@ -6392,11 +7730,13 @@ class VerifyCodeResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['state'] = self.state
+        if self.state is not None:
+            result['state'] = self.state
         return result
 
     def from_map(self, map={}):
-        self.state = map.get('state')
+        if map.get('state') is not None:
+            self.state = map.get('state')
         return self
 
 
@@ -6424,21 +7764,33 @@ class VideoMediaAudioStream(TeaModel):
 
     def to_map(self):
         result = {}
-        result['bit_rate'] = self.bit_rate
-        result['channel_layout'] = self.channel_layout
-        result['channels'] = self.channels
-        result['code_name'] = self.code_name
-        result['duration'] = self.duration
-        result['sample_rate'] = self.sample_rate
+        if self.bit_rate is not None:
+            result['bit_rate'] = self.bit_rate
+        if self.channel_layout is not None:
+            result['channel_layout'] = self.channel_layout
+        if self.channels is not None:
+            result['channels'] = self.channels
+        if self.code_name is not None:
+            result['code_name'] = self.code_name
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.sample_rate is not None:
+            result['sample_rate'] = self.sample_rate
         return result
 
     def from_map(self, map={}):
-        self.bit_rate = map.get('bit_rate')
-        self.channel_layout = map.get('channel_layout')
-        self.channels = map.get('channels')
-        self.code_name = map.get('code_name')
-        self.duration = map.get('duration')
-        self.sample_rate = map.get('sample_rate')
+        if map.get('bit_rate') is not None:
+            self.bit_rate = map.get('bit_rate')
+        if map.get('channel_layout') is not None:
+            self.channel_layout = map.get('channel_layout')
+        if map.get('channels') is not None:
+            self.channels = map.get('channels')
+        if map.get('code_name') is not None:
+            self.code_name = map.get('code_name')
+        if map.get('duration') is not None:
+            self.duration = map.get('duration')
+        if map.get('sample_rate') is not None:
+            self.sample_rate = map.get('sample_rate')
         return self
 
 
@@ -6486,57 +7838,71 @@ class VideoMediaResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['address_line'] = self.address_line
-        result['city'] = self.city
-        result['country'] = self.country
-        result['district'] = self.district
-        result['duration'] = self.duration
-        result['height'] = self.height
-        result['location'] = self.location
-        result['province'] = self.province
-        result['time'] = self.time
-        result['township'] = self.township
+        if self.address_line is not None:
+            result['address_line'] = self.address_line
+        if self.city is not None:
+            result['city'] = self.city
+        if self.country is not None:
+            result['country'] = self.country
+        if self.district is not None:
+            result['district'] = self.district
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.height is not None:
+            result['height'] = self.height
+        if self.location is not None:
+            result['location'] = self.location
+        if self.province is not None:
+            result['province'] = self.province
+        if self.time is not None:
+            result['time'] = self.time
+        if self.township is not None:
+            result['township'] = self.township
         result['video_media_audio_stream'] = []
         if self.video_media_audio_stream is not None:
             for k in self.video_media_audio_stream:
                 result['video_media_audio_stream'].append(k.to_map() if k else None)
-        else:
-            result['video_media_audio_stream'] = None
         result['video_media_video_stream'] = []
         if self.video_media_video_stream is not None:
             for k in self.video_media_video_stream:
                 result['video_media_video_stream'].append(k.to_map() if k else None)
-        else:
-            result['video_media_video_stream'] = None
-        result['width'] = self.width
+        if self.width is not None:
+            result['width'] = self.width
         return result
 
     def from_map(self, map={}):
-        self.address_line = map.get('address_line')
-        self.city = map.get('city')
-        self.country = map.get('country')
-        self.district = map.get('district')
-        self.duration = map.get('duration')
-        self.height = map.get('height')
-        self.location = map.get('location')
-        self.province = map.get('province')
-        self.time = map.get('time')
-        self.township = map.get('township')
+        if map.get('address_line') is not None:
+            self.address_line = map.get('address_line')
+        if map.get('city') is not None:
+            self.city = map.get('city')
+        if map.get('country') is not None:
+            self.country = map.get('country')
+        if map.get('district') is not None:
+            self.district = map.get('district')
+        if map.get('duration') is not None:
+            self.duration = map.get('duration')
+        if map.get('height') is not None:
+            self.height = map.get('height')
+        if map.get('location') is not None:
+            self.location = map.get('location')
+        if map.get('province') is not None:
+            self.province = map.get('province')
+        if map.get('time') is not None:
+            self.time = map.get('time')
+        if map.get('township') is not None:
+            self.township = map.get('township')
         self.video_media_audio_stream = []
         if map.get('video_media_audio_stream') is not None:
             for k in map.get('video_media_audio_stream'):
                 temp_model = VideoMediaAudioStream()
                 self.video_media_audio_stream.append(temp_model.from_map(k))
-        else:
-            self.video_media_audio_stream = None
         self.video_media_video_stream = []
         if map.get('video_media_video_stream') is not None:
             for k in map.get('video_media_video_stream'):
                 temp_model = VideoMediaVideoStream()
                 self.video_media_video_stream.append(temp_model.from_map(k))
-        else:
-            self.video_media_video_stream = None
-        self.width = map.get('width')
+        if map.get('width') is not None:
+            self.width = map.get('width')
         return self
 
 
@@ -6561,19 +7927,29 @@ class VideoMediaVideoStream(TeaModel):
 
     def to_map(self):
         result = {}
-        result['bitrate'] = self.bitrate
-        result['clarity'] = self.clarity
-        result['code_name'] = self.code_name
-        result['duration'] = self.duration
-        result['fps'] = self.fps
+        if self.bitrate is not None:
+            result['bitrate'] = self.bitrate
+        if self.clarity is not None:
+            result['clarity'] = self.clarity
+        if self.code_name is not None:
+            result['code_name'] = self.code_name
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.fps is not None:
+            result['fps'] = self.fps
         return result
 
     def from_map(self, map={}):
-        self.bitrate = map.get('bitrate')
-        self.clarity = map.get('clarity')
-        self.code_name = map.get('code_name')
-        self.duration = map.get('duration')
-        self.fps = map.get('fps')
+        if map.get('bitrate') is not None:
+            self.bitrate = map.get('bitrate')
+        if map.get('clarity') is not None:
+            self.clarity = map.get('clarity')
+        if map.get('code_name') is not None:
+            self.code_name = map.get('code_name')
+        if map.get('duration') is not None:
+            self.duration = map.get('duration')
+        if map.get('fps') is not None:
+            self.fps = map.get('fps')
         return self
 
 
@@ -6613,47 +7989,55 @@ class VideoPreviewResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['audio_format'] = self.audio_format
-        result['bitrate'] = self.bitrate
-        result['duration'] = self.duration
-        result['frame_rate'] = self.frame_rate
-        result['height'] = self.height
+        if self.audio_format is not None:
+            result['audio_format'] = self.audio_format
+        if self.bitrate is not None:
+            result['bitrate'] = self.bitrate
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.frame_rate is not None:
+            result['frame_rate'] = self.frame_rate
+        if self.height is not None:
+            result['height'] = self.height
         if self.sprite_info is not None:
             result['sprite_info'] = self.sprite_info.to_map()
-        else:
-            result['sprite_info'] = None
         result['template_list'] = []
         if self.template_list is not None:
             for k in self.template_list:
                 result['template_list'].append(k.to_map() if k else None)
-        else:
-            result['template_list'] = None
-        result['thumbnail'] = self.thumbnail
-        result['video_format'] = self.video_format
-        result['width'] = self.width
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.video_format is not None:
+            result['video_format'] = self.video_format
+        if self.width is not None:
+            result['width'] = self.width
         return result
 
     def from_map(self, map={}):
-        self.audio_format = map.get('audio_format')
-        self.bitrate = map.get('bitrate')
-        self.duration = map.get('duration')
-        self.frame_rate = map.get('frame_rate')
-        self.height = map.get('height')
+        if map.get('audio_format') is not None:
+            self.audio_format = map.get('audio_format')
+        if map.get('bitrate') is not None:
+            self.bitrate = map.get('bitrate')
+        if map.get('duration') is not None:
+            self.duration = map.get('duration')
+        if map.get('frame_rate') is not None:
+            self.frame_rate = map.get('frame_rate')
+        if map.get('height') is not None:
+            self.height = map.get('height')
         if map.get('sprite_info') is not None:
             temp_model = VideoPreviewSprite()
             self.sprite_info = temp_model.from_map(map['sprite_info'])
-        else:
-            self.sprite_info = None
         self.template_list = []
         if map.get('template_list') is not None:
             for k in map.get('template_list'):
                 temp_model = VideoPreviewTranscode()
                 self.template_list.append(temp_model.from_map(k))
-        else:
-            self.template_list = None
-        self.thumbnail = map.get('thumbnail')
-        self.video_format = map.get('video_format')
-        self.width = map.get('width')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('video_format') is not None:
+            self.video_format = map.get('video_format')
+        if map.get('width') is not None:
+            self.width = map.get('width')
         return self
 
 
@@ -6683,23 +8067,37 @@ class VideoPreviewSprite(TeaModel):
 
     def to_map(self):
         result = {}
-        result['col'] = self.col
-        result['count'] = self.count
-        result['frame_count'] = self.frame_count
-        result['frame_height'] = self.frame_height
-        result['frame_width'] = self.frame_width
-        result['row'] = self.row
-        result['status'] = self.status
+        if self.col is not None:
+            result['col'] = self.col
+        if self.count is not None:
+            result['count'] = self.count
+        if self.frame_count is not None:
+            result['frame_count'] = self.frame_count
+        if self.frame_height is not None:
+            result['frame_height'] = self.frame_height
+        if self.frame_width is not None:
+            result['frame_width'] = self.frame_width
+        if self.row is not None:
+            result['row'] = self.row
+        if self.status is not None:
+            result['status'] = self.status
         return result
 
     def from_map(self, map={}):
-        self.col = map.get('col')
-        self.count = map.get('count')
-        self.frame_count = map.get('frame_count')
-        self.frame_height = map.get('frame_height')
-        self.frame_width = map.get('frame_width')
-        self.row = map.get('row')
-        self.status = map.get('status')
+        if map.get('col') is not None:
+            self.col = map.get('col')
+        if map.get('count') is not None:
+            self.count = map.get('count')
+        if map.get('frame_count') is not None:
+            self.frame_count = map.get('frame_count')
+        if map.get('frame_height') is not None:
+            self.frame_height = map.get('frame_height')
+        if map.get('frame_width') is not None:
+            self.frame_width = map.get('frame_width')
+        if map.get('row') is not None:
+            self.row = map.get('row')
+        if map.get('status') is not None:
+            self.status = map.get('status')
         return self
 
 
@@ -6718,13 +8116,17 @@ class VideoPreviewTranscode(TeaModel):
 
     def to_map(self):
         result = {}
-        result['status'] = self.status
-        result['template_id'] = self.template_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.template_id is not None:
+            result['template_id'] = self.template_id
         return result
 
     def from_map(self, map={}):
-        self.status = map.get('status')
-        self.template_id = map.get('template_id')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('template_id') is not None:
+            self.template_id = map.get('template_id')
         return self
 
 
@@ -6740,20 +8142,18 @@ class AdminListStoresModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = ListStoresResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -6769,20 +8169,18 @@ class GetUserAccessTokenModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = AccessTokenResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -6840,43 +8238,77 @@ class AddStoreResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['accelerate_endpoint'] = self.accelerate_endpoint
-        result['base_path'] = self.base_path
-        result['bucket'] = self.bucket
-        result['cdn_endpoint'] = self.cdn_endpoint
-        result['customized_accelerate_endpoint'] = self.customized_accelerate_endpoint
-        result['customized_cdn_endpoint'] = self.customized_cdn_endpoint
-        result['customized_endpoint'] = self.customized_endpoint
-        result['customized_internal_endpoint'] = self.customized_internal_endpoint
-        result['domain_id'] = self.domain_id
-        result['endpoint'] = self.endpoint
-        result['internal_endpoint'] = self.internal_endpoint
-        result['location'] = self.location
-        result['ownership'] = self.ownership
-        result['policy'] = self.policy
-        result['role_arn'] = self.role_arn
-        result['store_id'] = self.store_id
-        result['type'] = self.type
+        if self.accelerate_endpoint is not None:
+            result['accelerate_endpoint'] = self.accelerate_endpoint
+        if self.base_path is not None:
+            result['base_path'] = self.base_path
+        if self.bucket is not None:
+            result['bucket'] = self.bucket
+        if self.cdn_endpoint is not None:
+            result['cdn_endpoint'] = self.cdn_endpoint
+        if self.customized_accelerate_endpoint is not None:
+            result['customized_accelerate_endpoint'] = self.customized_accelerate_endpoint
+        if self.customized_cdn_endpoint is not None:
+            result['customized_cdn_endpoint'] = self.customized_cdn_endpoint
+        if self.customized_endpoint is not None:
+            result['customized_endpoint'] = self.customized_endpoint
+        if self.customized_internal_endpoint is not None:
+            result['customized_internal_endpoint'] = self.customized_internal_endpoint
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.internal_endpoint is not None:
+            result['internal_endpoint'] = self.internal_endpoint
+        if self.location is not None:
+            result['location'] = self.location
+        if self.ownership is not None:
+            result['ownership'] = self.ownership
+        if self.policy is not None:
+            result['policy'] = self.policy
+        if self.role_arn is not None:
+            result['role_arn'] = self.role_arn
+        if self.store_id is not None:
+            result['store_id'] = self.store_id
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.accelerate_endpoint = map.get('accelerate_endpoint')
-        self.base_path = map.get('base_path')
-        self.bucket = map.get('bucket')
-        self.cdn_endpoint = map.get('cdn_endpoint')
-        self.customized_accelerate_endpoint = map.get('customized_accelerate_endpoint')
-        self.customized_cdn_endpoint = map.get('customized_cdn_endpoint')
-        self.customized_endpoint = map.get('customized_endpoint')
-        self.customized_internal_endpoint = map.get('customized_internal_endpoint')
-        self.domain_id = map.get('domain_id')
-        self.endpoint = map.get('endpoint')
-        self.internal_endpoint = map.get('internal_endpoint')
-        self.location = map.get('location')
-        self.ownership = map.get('ownership')
-        self.policy = map.get('policy')
-        self.role_arn = map.get('role_arn')
-        self.store_id = map.get('store_id')
-        self.type = map.get('type')
+        if map.get('accelerate_endpoint') is not None:
+            self.accelerate_endpoint = map.get('accelerate_endpoint')
+        if map.get('base_path') is not None:
+            self.base_path = map.get('base_path')
+        if map.get('bucket') is not None:
+            self.bucket = map.get('bucket')
+        if map.get('cdn_endpoint') is not None:
+            self.cdn_endpoint = map.get('cdn_endpoint')
+        if map.get('customized_accelerate_endpoint') is not None:
+            self.customized_accelerate_endpoint = map.get('customized_accelerate_endpoint')
+        if map.get('customized_cdn_endpoint') is not None:
+            self.customized_cdn_endpoint = map.get('customized_cdn_endpoint')
+        if map.get('customized_endpoint') is not None:
+            self.customized_endpoint = map.get('customized_endpoint')
+        if map.get('customized_internal_endpoint') is not None:
+            self.customized_internal_endpoint = map.get('customized_internal_endpoint')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('endpoint') is not None:
+            self.endpoint = map.get('endpoint')
+        if map.get('internal_endpoint') is not None:
+            self.internal_endpoint = map.get('internal_endpoint')
+        if map.get('location') is not None:
+            self.location = map.get('location')
+        if map.get('ownership') is not None:
+            self.ownership = map.get('ownership')
+        if map.get('policy') is not None:
+            self.policy = map.get('policy')
+        if map.get('role_arn') is not None:
+            self.role_arn = map.get('role_arn')
+        if map.get('store_id') is not None:
+            self.store_id = map.get('store_id')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -6892,11 +8324,13 @@ class AdminListStoresRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         return self
 
 
@@ -6913,13 +8347,17 @@ class AppAccessStrategy(TeaModel):
 
     def to_map(self):
         result = {}
-        result['effect'] = self.effect
-        result['except_app_id_list'] = self.except_app_id_list
+        if self.effect is not None:
+            result['effect'] = self.effect
+        if self.except_app_id_list is not None:
+            result['except_app_id_list'] = self.except_app_id_list
         return result
 
     def from_map(self, map={}):
-        self.effect = map.get('effect')
-        self.except_app_id_list = map.get('except_app_id_list')
+        if map.get('effect') is not None:
+            self.effect = map.get('effect')
+        if map.get('except_app_id_list') is not None:
+            self.except_app_id_list = map.get('except_app_id_list')
         return self
 
 
@@ -6944,27 +8382,45 @@ class AuthConfig(TeaModel):
 
     def to_map(self):
         result = {}
-        result['app_id'] = self.app_id
-        result['app_secret'] = self.app_secret
-        result['callback_security'] = self.callback_security
-        result['enable'] = self.enable
-        result['endpoint'] = self.endpoint
-        result['enterprise_id'] = self.enterprise_id
-        result['login_page_headers'] = self.login_page_headers
-        result['login_page_template'] = self.login_page_template
-        result['login_page_vars'] = self.login_page_vars
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.app_secret is not None:
+            result['app_secret'] = self.app_secret
+        if self.callback_security is not None:
+            result['callback_security'] = self.callback_security
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.enterprise_id is not None:
+            result['enterprise_id'] = self.enterprise_id
+        if self.login_page_headers is not None:
+            result['login_page_headers'] = self.login_page_headers
+        if self.login_page_template is not None:
+            result['login_page_template'] = self.login_page_template
+        if self.login_page_vars is not None:
+            result['login_page_vars'] = self.login_page_vars
         return result
 
     def from_map(self, map={}):
-        self.app_id = map.get('app_id')
-        self.app_secret = map.get('app_secret')
-        self.callback_security = map.get('callback_security')
-        self.enable = map.get('enable')
-        self.endpoint = map.get('endpoint')
-        self.enterprise_id = map.get('enterprise_id')
-        self.login_page_headers = map.get('login_page_headers')
-        self.login_page_template = map.get('login_page_template')
-        self.login_page_vars = map.get('login_page_vars')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('app_secret') is not None:
+            self.app_secret = map.get('app_secret')
+        if map.get('callback_security') is not None:
+            self.callback_security = map.get('callback_security')
+        if map.get('enable') is not None:
+            self.enable = map.get('enable')
+        if map.get('endpoint') is not None:
+            self.endpoint = map.get('endpoint')
+        if map.get('enterprise_id') is not None:
+            self.enterprise_id = map.get('enterprise_id')
+        if map.get('login_page_headers') is not None:
+            self.login_page_headers = map.get('login_page_headers')
+        if map.get('login_page_template') is not None:
+            self.login_page_template = map.get('login_page_template')
+        if map.get('login_page_vars') is not None:
+            self.login_page_vars = map.get('login_page_vars')
         return self
 
 
@@ -7048,80 +8504,138 @@ class BaseDomainResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['api_cname'] = self.api_cname
-        result['auth_alipay_app_id'] = self.auth_alipay_app_id
-        result['auth_alipay_enable'] = self.auth_alipay_enable
-        result['auth_alipay_private_key'] = self.auth_alipay_private_key
-        result['auth_config'] = self.auth_config
-        result['auth_dingding_app_id'] = self.auth_dingding_app_id
-        result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
-        result['auth_dingding_enable'] = self.auth_dingding_enable
-        result['auth_endpoint_enable'] = self.auth_endpoint_enable
-        result['auth_ram_app_id'] = self.auth_ram_app_id
-        result['auth_ram_app_secret'] = self.auth_ram_app_secret
-        result['auth_ram_enable'] = self.auth_ram_enable
-        result['created_at'] = self.created_at
-        result['data_hash_name'] = self.data_hash_name
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['domain_name'] = self.domain_name
-        result['event_filename_matches'] = self.event_filename_matches
-        result['event_mns_endpoint'] = self.event_mns_endpoint
-        result['event_mns_topic'] = self.event_mns_topic
-        result['event_names'] = self.event_names
-        result['event_role_arn'] = self.event_role_arn
-        result['init_drive_enable'] = self.init_drive_enable
-        result['init_drive_size'] = self.init_drive_size
-        result['init_drive_store_id'] = self.init_drive_store_id
-        result['mode'] = self.mode
-        result['path_type'] = self.path_type
+        if self.api_cname is not None:
+            result['api_cname'] = self.api_cname
+        if self.auth_alipay_app_id is not None:
+            result['auth_alipay_app_id'] = self.auth_alipay_app_id
+        if self.auth_alipay_enable is not None:
+            result['auth_alipay_enable'] = self.auth_alipay_enable
+        if self.auth_alipay_private_key is not None:
+            result['auth_alipay_private_key'] = self.auth_alipay_private_key
+        if self.auth_config is not None:
+            result['auth_config'] = self.auth_config
+        if self.auth_dingding_app_id is not None:
+            result['auth_dingding_app_id'] = self.auth_dingding_app_id
+        if self.auth_dingding_app_secret is not None:
+            result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
+        if self.auth_dingding_enable is not None:
+            result['auth_dingding_enable'] = self.auth_dingding_enable
+        if self.auth_endpoint_enable is not None:
+            result['auth_endpoint_enable'] = self.auth_endpoint_enable
+        if self.auth_ram_app_id is not None:
+            result['auth_ram_app_id'] = self.auth_ram_app_id
+        if self.auth_ram_app_secret is not None:
+            result['auth_ram_app_secret'] = self.auth_ram_app_secret
+        if self.auth_ram_enable is not None:
+            result['auth_ram_enable'] = self.auth_ram_enable
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.data_hash_name is not None:
+            result['data_hash_name'] = self.data_hash_name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.domain_name is not None:
+            result['domain_name'] = self.domain_name
+        if self.event_filename_matches is not None:
+            result['event_filename_matches'] = self.event_filename_matches
+        if self.event_mns_endpoint is not None:
+            result['event_mns_endpoint'] = self.event_mns_endpoint
+        if self.event_mns_topic is not None:
+            result['event_mns_topic'] = self.event_mns_topic
+        if self.event_names is not None:
+            result['event_names'] = self.event_names
+        if self.event_role_arn is not None:
+            result['event_role_arn'] = self.event_role_arn
+        if self.init_drive_enable is not None:
+            result['init_drive_enable'] = self.init_drive_enable
+        if self.init_drive_size is not None:
+            result['init_drive_size'] = self.init_drive_size
+        if self.init_drive_store_id is not None:
+            result['init_drive_store_id'] = self.init_drive_store_id
+        if self.mode is not None:
+            result['mode'] = self.mode
+        if self.path_type is not None:
+            result['path_type'] = self.path_type
         if self.published_app_access_strategy is not None:
             result['published_app_access_strategy'] = self.published_app_access_strategy.to_map()
-        else:
-            result['published_app_access_strategy'] = None
-        result['sharable'] = self.sharable
-        result['store_level'] = self.store_level
-        result['store_region_list'] = self.store_region_list
-        result['updated_at'] = self.updated_at
+        if self.sharable is not None:
+            result['sharable'] = self.sharable
+        if self.store_level is not None:
+            result['store_level'] = self.store_level
+        if self.store_region_list is not None:
+            result['store_region_list'] = self.store_region_list
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
         return result
 
     def from_map(self, map={}):
-        self.api_cname = map.get('api_cname')
-        self.auth_alipay_app_id = map.get('auth_alipay_app_id')
-        self.auth_alipay_enable = map.get('auth_alipay_enable')
-        self.auth_alipay_private_key = map.get('auth_alipay_private_key')
-        self.auth_config = map.get('auth_config')
-        self.auth_dingding_app_id = map.get('auth_dingding_app_id')
-        self.auth_dingding_app_secret = map.get('auth_dingding_app_secret')
-        self.auth_dingding_enable = map.get('auth_dingding_enable')
-        self.auth_endpoint_enable = map.get('auth_endpoint_enable')
-        self.auth_ram_app_id = map.get('auth_ram_app_id')
-        self.auth_ram_app_secret = map.get('auth_ram_app_secret')
-        self.auth_ram_enable = map.get('auth_ram_enable')
-        self.created_at = map.get('created_at')
-        self.data_hash_name = map.get('data_hash_name')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.domain_name = map.get('domain_name')
-        self.event_filename_matches = map.get('event_filename_matches')
-        self.event_mns_endpoint = map.get('event_mns_endpoint')
-        self.event_mns_topic = map.get('event_mns_topic')
-        self.event_names = map.get('event_names')
-        self.event_role_arn = map.get('event_role_arn')
-        self.init_drive_enable = map.get('init_drive_enable')
-        self.init_drive_size = map.get('init_drive_size')
-        self.init_drive_store_id = map.get('init_drive_store_id')
-        self.mode = map.get('mode')
-        self.path_type = map.get('path_type')
+        if map.get('api_cname') is not None:
+            self.api_cname = map.get('api_cname')
+        if map.get('auth_alipay_app_id') is not None:
+            self.auth_alipay_app_id = map.get('auth_alipay_app_id')
+        if map.get('auth_alipay_enable') is not None:
+            self.auth_alipay_enable = map.get('auth_alipay_enable')
+        if map.get('auth_alipay_private_key') is not None:
+            self.auth_alipay_private_key = map.get('auth_alipay_private_key')
+        if map.get('auth_config') is not None:
+            self.auth_config = map.get('auth_config')
+        if map.get('auth_dingding_app_id') is not None:
+            self.auth_dingding_app_id = map.get('auth_dingding_app_id')
+        if map.get('auth_dingding_app_secret') is not None:
+            self.auth_dingding_app_secret = map.get('auth_dingding_app_secret')
+        if map.get('auth_dingding_enable') is not None:
+            self.auth_dingding_enable = map.get('auth_dingding_enable')
+        if map.get('auth_endpoint_enable') is not None:
+            self.auth_endpoint_enable = map.get('auth_endpoint_enable')
+        if map.get('auth_ram_app_id') is not None:
+            self.auth_ram_app_id = map.get('auth_ram_app_id')
+        if map.get('auth_ram_app_secret') is not None:
+            self.auth_ram_app_secret = map.get('auth_ram_app_secret')
+        if map.get('auth_ram_enable') is not None:
+            self.auth_ram_enable = map.get('auth_ram_enable')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('data_hash_name') is not None:
+            self.data_hash_name = map.get('data_hash_name')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('domain_name') is not None:
+            self.domain_name = map.get('domain_name')
+        if map.get('event_filename_matches') is not None:
+            self.event_filename_matches = map.get('event_filename_matches')
+        if map.get('event_mns_endpoint') is not None:
+            self.event_mns_endpoint = map.get('event_mns_endpoint')
+        if map.get('event_mns_topic') is not None:
+            self.event_mns_topic = map.get('event_mns_topic')
+        if map.get('event_names') is not None:
+            self.event_names = map.get('event_names')
+        if map.get('event_role_arn') is not None:
+            self.event_role_arn = map.get('event_role_arn')
+        if map.get('init_drive_enable') is not None:
+            self.init_drive_enable = map.get('init_drive_enable')
+        if map.get('init_drive_size') is not None:
+            self.init_drive_size = map.get('init_drive_size')
+        if map.get('init_drive_store_id') is not None:
+            self.init_drive_store_id = map.get('init_drive_store_id')
+        if map.get('mode') is not None:
+            self.mode = map.get('mode')
+        if map.get('path_type') is not None:
+            self.path_type = map.get('path_type')
         if map.get('published_app_access_strategy') is not None:
             temp_model = AppAccessStrategy()
             self.published_app_access_strategy = temp_model.from_map(map['published_app_access_strategy'])
-        else:
-            self.published_app_access_strategy = None
-        self.sharable = map.get('sharable')
-        self.store_level = map.get('store_level')
-        self.store_region_list = map.get('store_region_list')
-        self.updated_at = map.get('updated_at')
+        if map.get('sharable') is not None:
+            self.sharable = map.get('sharable')
+        if map.get('store_level') is not None:
+            self.store_level = map.get('store_level')
+        if map.get('store_region_list') is not None:
+            self.store_region_list = map.get('store_region_list')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
         return self
 
 
@@ -7144,15 +8658,21 @@ class CNameStatus(TeaModel):
 
     def to_map(self):
         result = {}
-        result['bingding_state'] = self.bingding_state
-        result['legal_state'] = self.legal_state
-        result['remark'] = self.remark
+        if self.bingding_state is not None:
+            result['bingding_state'] = self.bingding_state
+        if self.legal_state is not None:
+            result['legal_state'] = self.legal_state
+        if self.remark is not None:
+            result['remark'] = self.remark
         return result
 
     def from_map(self, map={}):
-        self.bingding_state = map.get('bingding_state')
-        self.legal_state = map.get('legal_state')
-        self.remark = map.get('remark')
+        if map.get('bingding_state') is not None:
+            self.bingding_state = map.get('bingding_state')
+        if map.get('legal_state') is not None:
+            self.legal_state = map.get('legal_state')
+        if map.get('remark') is not None:
+            self.remark = map.get('remark')
         return self
 
 
@@ -7236,80 +8756,138 @@ class CreateDomainResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['api_cname'] = self.api_cname
-        result['auth_alipay_app_id'] = self.auth_alipay_app_id
-        result['auth_alipay_enable'] = self.auth_alipay_enable
-        result['auth_alipay_private_key'] = self.auth_alipay_private_key
-        result['auth_config'] = self.auth_config
-        result['auth_dingding_app_id'] = self.auth_dingding_app_id
-        result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
-        result['auth_dingding_enable'] = self.auth_dingding_enable
-        result['auth_endpoint_enable'] = self.auth_endpoint_enable
-        result['auth_ram_app_id'] = self.auth_ram_app_id
-        result['auth_ram_app_secret'] = self.auth_ram_app_secret
-        result['auth_ram_enable'] = self.auth_ram_enable
-        result['created_at'] = self.created_at
-        result['data_hash_name'] = self.data_hash_name
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['domain_name'] = self.domain_name
-        result['event_filename_matches'] = self.event_filename_matches
-        result['event_mns_endpoint'] = self.event_mns_endpoint
-        result['event_mns_topic'] = self.event_mns_topic
-        result['event_names'] = self.event_names
-        result['event_role_arn'] = self.event_role_arn
-        result['init_drive_enable'] = self.init_drive_enable
-        result['init_drive_size'] = self.init_drive_size
-        result['init_drive_store_id'] = self.init_drive_store_id
-        result['mode'] = self.mode
-        result['path_type'] = self.path_type
+        if self.api_cname is not None:
+            result['api_cname'] = self.api_cname
+        if self.auth_alipay_app_id is not None:
+            result['auth_alipay_app_id'] = self.auth_alipay_app_id
+        if self.auth_alipay_enable is not None:
+            result['auth_alipay_enable'] = self.auth_alipay_enable
+        if self.auth_alipay_private_key is not None:
+            result['auth_alipay_private_key'] = self.auth_alipay_private_key
+        if self.auth_config is not None:
+            result['auth_config'] = self.auth_config
+        if self.auth_dingding_app_id is not None:
+            result['auth_dingding_app_id'] = self.auth_dingding_app_id
+        if self.auth_dingding_app_secret is not None:
+            result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
+        if self.auth_dingding_enable is not None:
+            result['auth_dingding_enable'] = self.auth_dingding_enable
+        if self.auth_endpoint_enable is not None:
+            result['auth_endpoint_enable'] = self.auth_endpoint_enable
+        if self.auth_ram_app_id is not None:
+            result['auth_ram_app_id'] = self.auth_ram_app_id
+        if self.auth_ram_app_secret is not None:
+            result['auth_ram_app_secret'] = self.auth_ram_app_secret
+        if self.auth_ram_enable is not None:
+            result['auth_ram_enable'] = self.auth_ram_enable
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.data_hash_name is not None:
+            result['data_hash_name'] = self.data_hash_name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.domain_name is not None:
+            result['domain_name'] = self.domain_name
+        if self.event_filename_matches is not None:
+            result['event_filename_matches'] = self.event_filename_matches
+        if self.event_mns_endpoint is not None:
+            result['event_mns_endpoint'] = self.event_mns_endpoint
+        if self.event_mns_topic is not None:
+            result['event_mns_topic'] = self.event_mns_topic
+        if self.event_names is not None:
+            result['event_names'] = self.event_names
+        if self.event_role_arn is not None:
+            result['event_role_arn'] = self.event_role_arn
+        if self.init_drive_enable is not None:
+            result['init_drive_enable'] = self.init_drive_enable
+        if self.init_drive_size is not None:
+            result['init_drive_size'] = self.init_drive_size
+        if self.init_drive_store_id is not None:
+            result['init_drive_store_id'] = self.init_drive_store_id
+        if self.mode is not None:
+            result['mode'] = self.mode
+        if self.path_type is not None:
+            result['path_type'] = self.path_type
         if self.published_app_access_strategy is not None:
             result['published_app_access_strategy'] = self.published_app_access_strategy.to_map()
-        else:
-            result['published_app_access_strategy'] = None
-        result['sharable'] = self.sharable
-        result['store_level'] = self.store_level
-        result['store_region_list'] = self.store_region_list
-        result['updated_at'] = self.updated_at
+        if self.sharable is not None:
+            result['sharable'] = self.sharable
+        if self.store_level is not None:
+            result['store_level'] = self.store_level
+        if self.store_region_list is not None:
+            result['store_region_list'] = self.store_region_list
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
         return result
 
     def from_map(self, map={}):
-        self.api_cname = map.get('api_cname')
-        self.auth_alipay_app_id = map.get('auth_alipay_app_id')
-        self.auth_alipay_enable = map.get('auth_alipay_enable')
-        self.auth_alipay_private_key = map.get('auth_alipay_private_key')
-        self.auth_config = map.get('auth_config')
-        self.auth_dingding_app_id = map.get('auth_dingding_app_id')
-        self.auth_dingding_app_secret = map.get('auth_dingding_app_secret')
-        self.auth_dingding_enable = map.get('auth_dingding_enable')
-        self.auth_endpoint_enable = map.get('auth_endpoint_enable')
-        self.auth_ram_app_id = map.get('auth_ram_app_id')
-        self.auth_ram_app_secret = map.get('auth_ram_app_secret')
-        self.auth_ram_enable = map.get('auth_ram_enable')
-        self.created_at = map.get('created_at')
-        self.data_hash_name = map.get('data_hash_name')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.domain_name = map.get('domain_name')
-        self.event_filename_matches = map.get('event_filename_matches')
-        self.event_mns_endpoint = map.get('event_mns_endpoint')
-        self.event_mns_topic = map.get('event_mns_topic')
-        self.event_names = map.get('event_names')
-        self.event_role_arn = map.get('event_role_arn')
-        self.init_drive_enable = map.get('init_drive_enable')
-        self.init_drive_size = map.get('init_drive_size')
-        self.init_drive_store_id = map.get('init_drive_store_id')
-        self.mode = map.get('mode')
-        self.path_type = map.get('path_type')
+        if map.get('api_cname') is not None:
+            self.api_cname = map.get('api_cname')
+        if map.get('auth_alipay_app_id') is not None:
+            self.auth_alipay_app_id = map.get('auth_alipay_app_id')
+        if map.get('auth_alipay_enable') is not None:
+            self.auth_alipay_enable = map.get('auth_alipay_enable')
+        if map.get('auth_alipay_private_key') is not None:
+            self.auth_alipay_private_key = map.get('auth_alipay_private_key')
+        if map.get('auth_config') is not None:
+            self.auth_config = map.get('auth_config')
+        if map.get('auth_dingding_app_id') is not None:
+            self.auth_dingding_app_id = map.get('auth_dingding_app_id')
+        if map.get('auth_dingding_app_secret') is not None:
+            self.auth_dingding_app_secret = map.get('auth_dingding_app_secret')
+        if map.get('auth_dingding_enable') is not None:
+            self.auth_dingding_enable = map.get('auth_dingding_enable')
+        if map.get('auth_endpoint_enable') is not None:
+            self.auth_endpoint_enable = map.get('auth_endpoint_enable')
+        if map.get('auth_ram_app_id') is not None:
+            self.auth_ram_app_id = map.get('auth_ram_app_id')
+        if map.get('auth_ram_app_secret') is not None:
+            self.auth_ram_app_secret = map.get('auth_ram_app_secret')
+        if map.get('auth_ram_enable') is not None:
+            self.auth_ram_enable = map.get('auth_ram_enable')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('data_hash_name') is not None:
+            self.data_hash_name = map.get('data_hash_name')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('domain_name') is not None:
+            self.domain_name = map.get('domain_name')
+        if map.get('event_filename_matches') is not None:
+            self.event_filename_matches = map.get('event_filename_matches')
+        if map.get('event_mns_endpoint') is not None:
+            self.event_mns_endpoint = map.get('event_mns_endpoint')
+        if map.get('event_mns_topic') is not None:
+            self.event_mns_topic = map.get('event_mns_topic')
+        if map.get('event_names') is not None:
+            self.event_names = map.get('event_names')
+        if map.get('event_role_arn') is not None:
+            self.event_role_arn = map.get('event_role_arn')
+        if map.get('init_drive_enable') is not None:
+            self.init_drive_enable = map.get('init_drive_enable')
+        if map.get('init_drive_size') is not None:
+            self.init_drive_size = map.get('init_drive_size')
+        if map.get('init_drive_store_id') is not None:
+            self.init_drive_store_id = map.get('init_drive_store_id')
+        if map.get('mode') is not None:
+            self.mode = map.get('mode')
+        if map.get('path_type') is not None:
+            self.path_type = map.get('path_type')
         if map.get('published_app_access_strategy') is not None:
             temp_model = AppAccessStrategy()
             self.published_app_access_strategy = temp_model.from_map(map['published_app_access_strategy'])
-        else:
-            self.published_app_access_strategy = None
-        self.sharable = map.get('sharable')
-        self.store_level = map.get('store_level')
-        self.store_region_list = map.get('store_region_list')
-        self.updated_at = map.get('updated_at')
+        if map.get('sharable') is not None:
+            self.sharable = map.get('sharable')
+        if map.get('store_level') is not None:
+            self.store_level = map.get('store_level')
+        if map.get('store_region_list') is not None:
+            self.store_region_list = map.get('store_region_list')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
         return self
 
 
@@ -7329,13 +8907,17 @@ class DataCName(TeaModel):
 
     def to_map(self):
         result = {}
-        result['data_cname'] = self.data_cname
-        result['location'] = self.location
+        if self.data_cname is not None:
+            result['data_cname'] = self.data_cname
+        if self.location is not None:
+            result['location'] = self.location
         return result
 
     def from_map(self, map={}):
-        self.data_cname = map.get('data_cname')
-        self.location = map.get('location')
+        if map.get('data_cname') is not None:
+            self.data_cname = map.get('data_cname')
+        if map.get('location') is not None:
+            self.location = map.get('location')
         return self
 
 
@@ -7363,9 +8945,8 @@ class DomainCNameResponse(TeaModel):
         if self.data_cname_list is not None:
             for k in self.data_cname_list:
                 result['data_cname_list'].append(k.to_map() if k else None)
-        else:
-            result['data_cname_list'] = None
-        result['domain_id'] = self.domain_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
         return result
 
     def from_map(self, map={}):
@@ -7374,9 +8955,8 @@ class DomainCNameResponse(TeaModel):
             for k in map.get('data_cname_list'):
                 temp_model = DataCName()
                 self.data_cname_list.append(temp_model.from_map(k))
-        else:
-            self.data_cname_list = None
-        self.domain_id = map.get('domain_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
         return self
 
 
@@ -7396,13 +8976,17 @@ class GetAppPublicKeyResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['app_id'] = self.app_id
-        result['public_key'] = self.public_key
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.public_key is not None:
+            result['public_key'] = self.public_key
         return result
 
     def from_map(self, map={}):
-        self.app_id = map.get('app_id')
-        self.public_key = map.get('public_key')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('public_key') is not None:
+            self.public_key = map.get('public_key')
         return self
 
 
@@ -7446,13 +9030,13 @@ class GetAppResponse(TeaModel):
         self.validate_required(self.ali_owner_id, 'ali_owner_id')
         self.validate_required(self.app_id, 'app_id')
         self.validate_required(self.app_name, 'app_name')
-        if self.app_name:
+        if self.app_name is not None:
             self.validate_max_length(self.app_name, 'app_name', 128)
             self.validate_pattern(self.app_name, 'app_name', '[0-9a-zA-Z]+')
         self.validate_required(self.app_secret, 'app_secret')
         self.validate_required(self.created_at, 'created_at')
         self.validate_required(self.description, 'description')
-        if self.description:
+        if self.description is not None:
             self.validate_max_length(self.description, 'description', 128)
         self.validate_required(self.logo, 'logo')
         self.validate_required(self.provider, 'provider')
@@ -7465,37 +9049,65 @@ class GetAppResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['ali_owner_id'] = self.ali_owner_id
-        result['app_id'] = self.app_id
-        result['app_name'] = self.app_name
-        result['app_secret'] = self.app_secret
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['logo'] = self.logo
-        result['provider'] = self.provider
-        result['redirect_uri'] = self.redirect_uri
-        result['scope'] = self.scope
-        result['screenshots'] = self.screenshots
-        result['stage'] = self.stage
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
+        if self.ali_owner_id is not None:
+            result['ali_owner_id'] = self.ali_owner_id
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.app_name is not None:
+            result['app_name'] = self.app_name
+        if self.app_secret is not None:
+            result['app_secret'] = self.app_secret
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.logo is not None:
+            result['logo'] = self.logo
+        if self.provider is not None:
+            result['provider'] = self.provider
+        if self.redirect_uri is not None:
+            result['redirect_uri'] = self.redirect_uri
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.screenshots is not None:
+            result['screenshots'] = self.screenshots
+        if self.stage is not None:
+            result['stage'] = self.stage
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
         return result
 
     def from_map(self, map={}):
-        self.ali_owner_id = map.get('ali_owner_id')
-        self.app_id = map.get('app_id')
-        self.app_name = map.get('app_name')
-        self.app_secret = map.get('app_secret')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.logo = map.get('logo')
-        self.provider = map.get('provider')
-        self.redirect_uri = map.get('redirect_uri')
-        self.scope = map.get('scope')
-        self.screenshots = map.get('screenshots')
-        self.stage = map.get('stage')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
+        if map.get('ali_owner_id') is not None:
+            self.ali_owner_id = map.get('ali_owner_id')
+        if map.get('app_id') is not None:
+            self.app_id = map.get('app_id')
+        if map.get('app_name') is not None:
+            self.app_name = map.get('app_name')
+        if map.get('app_secret') is not None:
+            self.app_secret = map.get('app_secret')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('logo') is not None:
+            self.logo = map.get('logo')
+        if map.get('provider') is not None:
+            self.provider = map.get('provider')
+        if map.get('redirect_uri') is not None:
+            self.redirect_uri = map.get('redirect_uri')
+        if map.get('scope') is not None:
+            self.scope = map.get('scope')
+        if map.get('screenshots') is not None:
+            self.screenshots = map.get('screenshots')
+        if map.get('stage') is not None:
+            self.stage = map.get('stage')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
         return self
 
 
@@ -7526,30 +9138,38 @@ class GetBizCNameInfoResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['biz_cname'] = self.biz_cname
-        result['cert_id'] = self.cert_id
-        result['cert_name'] = self.cert_name
+        if self.biz_cname is not None:
+            result['biz_cname'] = self.biz_cname
+        if self.cert_id is not None:
+            result['cert_id'] = self.cert_id
+        if self.cert_name is not None:
+            result['cert_name'] = self.cert_name
         if self.cname_status is not None:
             result['cname_status'] = self.cname_status.to_map()
-        else:
-            result['cname_status'] = None
-        result['cname_type'] = self.cname_type
-        result['domain_id'] = self.domain_id
-        result['is_vpc'] = self.is_vpc
+        if self.cname_type is not None:
+            result['cname_type'] = self.cname_type
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.is_vpc is not None:
+            result['is_vpc'] = self.is_vpc
         return result
 
     def from_map(self, map={}):
-        self.biz_cname = map.get('biz_cname')
-        self.cert_id = map.get('cert_id')
-        self.cert_name = map.get('cert_name')
+        if map.get('biz_cname') is not None:
+            self.biz_cname = map.get('biz_cname')
+        if map.get('cert_id') is not None:
+            self.cert_id = map.get('cert_id')
+        if map.get('cert_name') is not None:
+            self.cert_name = map.get('cert_name')
         if map.get('cname_status') is not None:
             temp_model = CNameStatus()
             self.cname_status = temp_model.from_map(map['cname_status'])
-        else:
-            self.cname_status = None
-        self.cname_type = map.get('cname_type')
-        self.domain_id = map.get('domain_id')
-        self.is_vpc = map.get('is_vpc')
+        if map.get('cname_type') is not None:
+            self.cname_type = map.get('cname_type')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('is_vpc') is not None:
+            self.is_vpc = map.get('is_vpc')
         return self
 
 
@@ -7633,80 +9253,138 @@ class GetDomainResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['api_cname'] = self.api_cname
-        result['auth_alipay_app_id'] = self.auth_alipay_app_id
-        result['auth_alipay_enable'] = self.auth_alipay_enable
-        result['auth_alipay_private_key'] = self.auth_alipay_private_key
-        result['auth_config'] = self.auth_config
-        result['auth_dingding_app_id'] = self.auth_dingding_app_id
-        result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
-        result['auth_dingding_enable'] = self.auth_dingding_enable
-        result['auth_endpoint_enable'] = self.auth_endpoint_enable
-        result['auth_ram_app_id'] = self.auth_ram_app_id
-        result['auth_ram_app_secret'] = self.auth_ram_app_secret
-        result['auth_ram_enable'] = self.auth_ram_enable
-        result['created_at'] = self.created_at
-        result['data_hash_name'] = self.data_hash_name
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['domain_name'] = self.domain_name
-        result['event_filename_matches'] = self.event_filename_matches
-        result['event_mns_endpoint'] = self.event_mns_endpoint
-        result['event_mns_topic'] = self.event_mns_topic
-        result['event_names'] = self.event_names
-        result['event_role_arn'] = self.event_role_arn
-        result['init_drive_enable'] = self.init_drive_enable
-        result['init_drive_size'] = self.init_drive_size
-        result['init_drive_store_id'] = self.init_drive_store_id
-        result['mode'] = self.mode
-        result['path_type'] = self.path_type
+        if self.api_cname is not None:
+            result['api_cname'] = self.api_cname
+        if self.auth_alipay_app_id is not None:
+            result['auth_alipay_app_id'] = self.auth_alipay_app_id
+        if self.auth_alipay_enable is not None:
+            result['auth_alipay_enable'] = self.auth_alipay_enable
+        if self.auth_alipay_private_key is not None:
+            result['auth_alipay_private_key'] = self.auth_alipay_private_key
+        if self.auth_config is not None:
+            result['auth_config'] = self.auth_config
+        if self.auth_dingding_app_id is not None:
+            result['auth_dingding_app_id'] = self.auth_dingding_app_id
+        if self.auth_dingding_app_secret is not None:
+            result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
+        if self.auth_dingding_enable is not None:
+            result['auth_dingding_enable'] = self.auth_dingding_enable
+        if self.auth_endpoint_enable is not None:
+            result['auth_endpoint_enable'] = self.auth_endpoint_enable
+        if self.auth_ram_app_id is not None:
+            result['auth_ram_app_id'] = self.auth_ram_app_id
+        if self.auth_ram_app_secret is not None:
+            result['auth_ram_app_secret'] = self.auth_ram_app_secret
+        if self.auth_ram_enable is not None:
+            result['auth_ram_enable'] = self.auth_ram_enable
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.data_hash_name is not None:
+            result['data_hash_name'] = self.data_hash_name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.domain_name is not None:
+            result['domain_name'] = self.domain_name
+        if self.event_filename_matches is not None:
+            result['event_filename_matches'] = self.event_filename_matches
+        if self.event_mns_endpoint is not None:
+            result['event_mns_endpoint'] = self.event_mns_endpoint
+        if self.event_mns_topic is not None:
+            result['event_mns_topic'] = self.event_mns_topic
+        if self.event_names is not None:
+            result['event_names'] = self.event_names
+        if self.event_role_arn is not None:
+            result['event_role_arn'] = self.event_role_arn
+        if self.init_drive_enable is not None:
+            result['init_drive_enable'] = self.init_drive_enable
+        if self.init_drive_size is not None:
+            result['init_drive_size'] = self.init_drive_size
+        if self.init_drive_store_id is not None:
+            result['init_drive_store_id'] = self.init_drive_store_id
+        if self.mode is not None:
+            result['mode'] = self.mode
+        if self.path_type is not None:
+            result['path_type'] = self.path_type
         if self.published_app_access_strategy is not None:
             result['published_app_access_strategy'] = self.published_app_access_strategy.to_map()
-        else:
-            result['published_app_access_strategy'] = None
-        result['sharable'] = self.sharable
-        result['store_level'] = self.store_level
-        result['store_region_list'] = self.store_region_list
-        result['updated_at'] = self.updated_at
+        if self.sharable is not None:
+            result['sharable'] = self.sharable
+        if self.store_level is not None:
+            result['store_level'] = self.store_level
+        if self.store_region_list is not None:
+            result['store_region_list'] = self.store_region_list
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
         return result
 
     def from_map(self, map={}):
-        self.api_cname = map.get('api_cname')
-        self.auth_alipay_app_id = map.get('auth_alipay_app_id')
-        self.auth_alipay_enable = map.get('auth_alipay_enable')
-        self.auth_alipay_private_key = map.get('auth_alipay_private_key')
-        self.auth_config = map.get('auth_config')
-        self.auth_dingding_app_id = map.get('auth_dingding_app_id')
-        self.auth_dingding_app_secret = map.get('auth_dingding_app_secret')
-        self.auth_dingding_enable = map.get('auth_dingding_enable')
-        self.auth_endpoint_enable = map.get('auth_endpoint_enable')
-        self.auth_ram_app_id = map.get('auth_ram_app_id')
-        self.auth_ram_app_secret = map.get('auth_ram_app_secret')
-        self.auth_ram_enable = map.get('auth_ram_enable')
-        self.created_at = map.get('created_at')
-        self.data_hash_name = map.get('data_hash_name')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.domain_name = map.get('domain_name')
-        self.event_filename_matches = map.get('event_filename_matches')
-        self.event_mns_endpoint = map.get('event_mns_endpoint')
-        self.event_mns_topic = map.get('event_mns_topic')
-        self.event_names = map.get('event_names')
-        self.event_role_arn = map.get('event_role_arn')
-        self.init_drive_enable = map.get('init_drive_enable')
-        self.init_drive_size = map.get('init_drive_size')
-        self.init_drive_store_id = map.get('init_drive_store_id')
-        self.mode = map.get('mode')
-        self.path_type = map.get('path_type')
+        if map.get('api_cname') is not None:
+            self.api_cname = map.get('api_cname')
+        if map.get('auth_alipay_app_id') is not None:
+            self.auth_alipay_app_id = map.get('auth_alipay_app_id')
+        if map.get('auth_alipay_enable') is not None:
+            self.auth_alipay_enable = map.get('auth_alipay_enable')
+        if map.get('auth_alipay_private_key') is not None:
+            self.auth_alipay_private_key = map.get('auth_alipay_private_key')
+        if map.get('auth_config') is not None:
+            self.auth_config = map.get('auth_config')
+        if map.get('auth_dingding_app_id') is not None:
+            self.auth_dingding_app_id = map.get('auth_dingding_app_id')
+        if map.get('auth_dingding_app_secret') is not None:
+            self.auth_dingding_app_secret = map.get('auth_dingding_app_secret')
+        if map.get('auth_dingding_enable') is not None:
+            self.auth_dingding_enable = map.get('auth_dingding_enable')
+        if map.get('auth_endpoint_enable') is not None:
+            self.auth_endpoint_enable = map.get('auth_endpoint_enable')
+        if map.get('auth_ram_app_id') is not None:
+            self.auth_ram_app_id = map.get('auth_ram_app_id')
+        if map.get('auth_ram_app_secret') is not None:
+            self.auth_ram_app_secret = map.get('auth_ram_app_secret')
+        if map.get('auth_ram_enable') is not None:
+            self.auth_ram_enable = map.get('auth_ram_enable')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('data_hash_name') is not None:
+            self.data_hash_name = map.get('data_hash_name')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('domain_name') is not None:
+            self.domain_name = map.get('domain_name')
+        if map.get('event_filename_matches') is not None:
+            self.event_filename_matches = map.get('event_filename_matches')
+        if map.get('event_mns_endpoint') is not None:
+            self.event_mns_endpoint = map.get('event_mns_endpoint')
+        if map.get('event_mns_topic') is not None:
+            self.event_mns_topic = map.get('event_mns_topic')
+        if map.get('event_names') is not None:
+            self.event_names = map.get('event_names')
+        if map.get('event_role_arn') is not None:
+            self.event_role_arn = map.get('event_role_arn')
+        if map.get('init_drive_enable') is not None:
+            self.init_drive_enable = map.get('init_drive_enable')
+        if map.get('init_drive_size') is not None:
+            self.init_drive_size = map.get('init_drive_size')
+        if map.get('init_drive_store_id') is not None:
+            self.init_drive_store_id = map.get('init_drive_store_id')
+        if map.get('mode') is not None:
+            self.mode = map.get('mode')
+        if map.get('path_type') is not None:
+            self.path_type = map.get('path_type')
         if map.get('published_app_access_strategy') is not None:
             temp_model = AppAccessStrategy()
             self.published_app_access_strategy = temp_model.from_map(map['published_app_access_strategy'])
-        else:
-            self.published_app_access_strategy = None
-        self.sharable = map.get('sharable')
-        self.store_level = map.get('store_level')
-        self.store_region_list = map.get('store_region_list')
-        self.updated_at = map.get('updated_at')
+        if map.get('sharable') is not None:
+            self.sharable = map.get('sharable')
+        if map.get('store_level') is not None:
+            self.store_level = map.get('store_level')
+        if map.get('store_region_list') is not None:
+            self.store_region_list = map.get('store_region_list')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
         return self
 
 
@@ -7726,15 +9404,21 @@ class GetUserAccessTokenRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['role'] = self.role
-        result['user_id'] = self.user_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.role is not None:
+            result['role'] = self.role
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.role = map.get('role')
-        self.user_id = map.get('user_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('role') is not None:
+            self.role = map.get('role')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
         return self
 
 
@@ -7761,9 +9445,8 @@ class ListAppsResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -7772,9 +9455,8 @@ class ListAppsResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = GetAppResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -7800,9 +9482,8 @@ class ListDomainCORSRuleResponse(TeaModel):
         if self.cors_rule_list is not None:
             for k in self.cors_rule_list:
                 result['cors_rule_list'].append(k.to_map() if k else None)
-        else:
-            result['cors_rule_list'] = None
-        result['domain_id'] = self.domain_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
         return result
 
     def from_map(self, map={}):
@@ -7811,9 +9492,8 @@ class ListDomainCORSRuleResponse(TeaModel):
             for k in map.get('cors_rule_list'):
                 temp_model = CorsRule()
                 self.cors_rule_list.append(temp_model.from_map(k))
-        else:
-            self.cors_rule_list = None
-        self.domain_id = map.get('domain_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
         return self
 
 
@@ -7839,9 +9519,8 @@ class ListDomainsResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -7850,9 +9529,8 @@ class ListDomainsResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseDomainResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -7877,8 +9555,6 @@ class ListStoresResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
         return result
 
     def from_map(self, map={}):
@@ -7887,8 +9563,6 @@ class ListStoresResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = Store()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
         return self
 
 
@@ -7913,19 +9587,29 @@ class SetBizCNameCertResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['biz_cname'] = self.biz_cname
-        result['cert_name'] = self.cert_name
-        result['cname_type'] = self.cname_type
-        result['domain_id'] = self.domain_id
-        result['is_vpc'] = self.is_vpc
+        if self.biz_cname is not None:
+            result['biz_cname'] = self.biz_cname
+        if self.cert_name is not None:
+            result['cert_name'] = self.cert_name
+        if self.cname_type is not None:
+            result['cname_type'] = self.cname_type
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.is_vpc is not None:
+            result['is_vpc'] = self.is_vpc
         return result
 
     def from_map(self, map={}):
-        self.biz_cname = map.get('biz_cname')
-        self.cert_name = map.get('cert_name')
-        self.cname_type = map.get('cname_type')
-        self.domain_id = map.get('domain_id')
-        self.is_vpc = map.get('is_vpc')
+        if map.get('biz_cname') is not None:
+            self.biz_cname = map.get('biz_cname')
+        if map.get('cert_name') is not None:
+            self.cert_name = map.get('cert_name')
+        if map.get('cname_type') is not None:
+            self.cname_type = map.get('cname_type')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('is_vpc') is not None:
+            self.is_vpc = map.get('is_vpc')
         return self
 
 
@@ -7951,26 +9635,30 @@ class SetBizCNameResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['biz_cname'] = self.biz_cname
+        if self.biz_cname is not None:
+            result['biz_cname'] = self.biz_cname
         if self.cname_status is not None:
             result['cname_status'] = self.cname_status.to_map()
-        else:
-            result['cname_status'] = None
-        result['cname_type'] = self.cname_type
-        result['domain_id'] = self.domain_id
-        result['is_vpc'] = self.is_vpc
+        if self.cname_type is not None:
+            result['cname_type'] = self.cname_type
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.is_vpc is not None:
+            result['is_vpc'] = self.is_vpc
         return result
 
     def from_map(self, map={}):
-        self.biz_cname = map.get('biz_cname')
+        if map.get('biz_cname') is not None:
+            self.biz_cname = map.get('biz_cname')
         if map.get('cname_status') is not None:
             temp_model = CNameStatus()
             self.cname_status = temp_model.from_map(map['cname_status'])
-        else:
-            self.cname_status = None
-        self.cname_type = map.get('cname_type')
-        self.domain_id = map.get('domain_id')
-        self.is_vpc = map.get('is_vpc')
+        if map.get('cname_type') is not None:
+            self.cname_type = map.get('cname_type')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('is_vpc') is not None:
+            self.is_vpc = map.get('is_vpc')
         return self
 
 
@@ -7993,15 +9681,21 @@ class SetDataCNameResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['data_cname'] = self.data_cname
-        result['domain_id'] = self.domain_id
-        result['location'] = self.location
+        if self.data_cname is not None:
+            result['data_cname'] = self.data_cname
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.location is not None:
+            result['location'] = self.location
         return result
 
     def from_map(self, map={}):
-        self.data_cname = map.get('data_cname')
-        self.domain_id = map.get('domain_id')
-        self.location = map.get('location')
+        if map.get('data_cname') is not None:
+            self.data_cname = map.get('data_cname')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('location') is not None:
+            self.location = map.get('location')
         return self
 
 
@@ -8056,41 +9750,73 @@ class Store(TeaModel):
 
     def to_map(self):
         result = {}
-        result['accelerate_endpoint'] = self.accelerate_endpoint
-        result['base_path'] = self.base_path
-        result['bucket'] = self.bucket
-        result['cdn_endpoint'] = self.cdn_endpoint
-        result['customized_accelerate_endpoint'] = self.customized_accelerate_endpoint
-        result['customized_cdn_endpoint'] = self.customized_cdn_endpoint
-        result['customized_endpoint'] = self.customized_endpoint
-        result['customized_internal_endpoint'] = self.customized_internal_endpoint
-        result['endpoint'] = self.endpoint
-        result['internal_endpoint'] = self.internal_endpoint
-        result['location'] = self.location
-        result['ownership'] = self.ownership
-        result['policy'] = self.policy
-        result['role_arn'] = self.role_arn
-        result['store_id'] = self.store_id
-        result['type'] = self.type
+        if self.accelerate_endpoint is not None:
+            result['accelerate_endpoint'] = self.accelerate_endpoint
+        if self.base_path is not None:
+            result['base_path'] = self.base_path
+        if self.bucket is not None:
+            result['bucket'] = self.bucket
+        if self.cdn_endpoint is not None:
+            result['cdn_endpoint'] = self.cdn_endpoint
+        if self.customized_accelerate_endpoint is not None:
+            result['customized_accelerate_endpoint'] = self.customized_accelerate_endpoint
+        if self.customized_cdn_endpoint is not None:
+            result['customized_cdn_endpoint'] = self.customized_cdn_endpoint
+        if self.customized_endpoint is not None:
+            result['customized_endpoint'] = self.customized_endpoint
+        if self.customized_internal_endpoint is not None:
+            result['customized_internal_endpoint'] = self.customized_internal_endpoint
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.internal_endpoint is not None:
+            result['internal_endpoint'] = self.internal_endpoint
+        if self.location is not None:
+            result['location'] = self.location
+        if self.ownership is not None:
+            result['ownership'] = self.ownership
+        if self.policy is not None:
+            result['policy'] = self.policy
+        if self.role_arn is not None:
+            result['role_arn'] = self.role_arn
+        if self.store_id is not None:
+            result['store_id'] = self.store_id
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.accelerate_endpoint = map.get('accelerate_endpoint')
-        self.base_path = map.get('base_path')
-        self.bucket = map.get('bucket')
-        self.cdn_endpoint = map.get('cdn_endpoint')
-        self.customized_accelerate_endpoint = map.get('customized_accelerate_endpoint')
-        self.customized_cdn_endpoint = map.get('customized_cdn_endpoint')
-        self.customized_endpoint = map.get('customized_endpoint')
-        self.customized_internal_endpoint = map.get('customized_internal_endpoint')
-        self.endpoint = map.get('endpoint')
-        self.internal_endpoint = map.get('internal_endpoint')
-        self.location = map.get('location')
-        self.ownership = map.get('ownership')
-        self.policy = map.get('policy')
-        self.role_arn = map.get('role_arn')
-        self.store_id = map.get('store_id')
-        self.type = map.get('type')
+        if map.get('accelerate_endpoint') is not None:
+            self.accelerate_endpoint = map.get('accelerate_endpoint')
+        if map.get('base_path') is not None:
+            self.base_path = map.get('base_path')
+        if map.get('bucket') is not None:
+            self.bucket = map.get('bucket')
+        if map.get('cdn_endpoint') is not None:
+            self.cdn_endpoint = map.get('cdn_endpoint')
+        if map.get('customized_accelerate_endpoint') is not None:
+            self.customized_accelerate_endpoint = map.get('customized_accelerate_endpoint')
+        if map.get('customized_cdn_endpoint') is not None:
+            self.customized_cdn_endpoint = map.get('customized_cdn_endpoint')
+        if map.get('customized_endpoint') is not None:
+            self.customized_endpoint = map.get('customized_endpoint')
+        if map.get('customized_internal_endpoint') is not None:
+            self.customized_internal_endpoint = map.get('customized_internal_endpoint')
+        if map.get('endpoint') is not None:
+            self.endpoint = map.get('endpoint')
+        if map.get('internal_endpoint') is not None:
+            self.internal_endpoint = map.get('internal_endpoint')
+        if map.get('location') is not None:
+            self.location = map.get('location')
+        if map.get('ownership') is not None:
+            self.ownership = map.get('ownership')
+        if map.get('policy') is not None:
+            self.policy = map.get('policy')
+        if map.get('role_arn') is not None:
+            self.role_arn = map.get('role_arn')
+        if map.get('store_id') is not None:
+            self.store_id = map.get('store_id')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -8174,80 +9900,138 @@ class UpdateDomainResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['api_cname'] = self.api_cname
-        result['auth_alipay_app_id'] = self.auth_alipay_app_id
-        result['auth_alipay_enable'] = self.auth_alipay_enable
-        result['auth_alipay_private_key'] = self.auth_alipay_private_key
-        result['auth_config'] = self.auth_config
-        result['auth_dingding_app_id'] = self.auth_dingding_app_id
-        result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
-        result['auth_dingding_enable'] = self.auth_dingding_enable
-        result['auth_endpoint_enable'] = self.auth_endpoint_enable
-        result['auth_ram_app_id'] = self.auth_ram_app_id
-        result['auth_ram_app_secret'] = self.auth_ram_app_secret
-        result['auth_ram_enable'] = self.auth_ram_enable
-        result['created_at'] = self.created_at
-        result['data_hash_name'] = self.data_hash_name
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['domain_name'] = self.domain_name
-        result['event_filename_matches'] = self.event_filename_matches
-        result['event_mns_endpoint'] = self.event_mns_endpoint
-        result['event_mns_topic'] = self.event_mns_topic
-        result['event_names'] = self.event_names
-        result['event_role_arn'] = self.event_role_arn
-        result['init_drive_enable'] = self.init_drive_enable
-        result['init_drive_size'] = self.init_drive_size
-        result['init_drive_store_id'] = self.init_drive_store_id
-        result['mode'] = self.mode
-        result['path_type'] = self.path_type
+        if self.api_cname is not None:
+            result['api_cname'] = self.api_cname
+        if self.auth_alipay_app_id is not None:
+            result['auth_alipay_app_id'] = self.auth_alipay_app_id
+        if self.auth_alipay_enable is not None:
+            result['auth_alipay_enable'] = self.auth_alipay_enable
+        if self.auth_alipay_private_key is not None:
+            result['auth_alipay_private_key'] = self.auth_alipay_private_key
+        if self.auth_config is not None:
+            result['auth_config'] = self.auth_config
+        if self.auth_dingding_app_id is not None:
+            result['auth_dingding_app_id'] = self.auth_dingding_app_id
+        if self.auth_dingding_app_secret is not None:
+            result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
+        if self.auth_dingding_enable is not None:
+            result['auth_dingding_enable'] = self.auth_dingding_enable
+        if self.auth_endpoint_enable is not None:
+            result['auth_endpoint_enable'] = self.auth_endpoint_enable
+        if self.auth_ram_app_id is not None:
+            result['auth_ram_app_id'] = self.auth_ram_app_id
+        if self.auth_ram_app_secret is not None:
+            result['auth_ram_app_secret'] = self.auth_ram_app_secret
+        if self.auth_ram_enable is not None:
+            result['auth_ram_enable'] = self.auth_ram_enable
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.data_hash_name is not None:
+            result['data_hash_name'] = self.data_hash_name
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.domain_name is not None:
+            result['domain_name'] = self.domain_name
+        if self.event_filename_matches is not None:
+            result['event_filename_matches'] = self.event_filename_matches
+        if self.event_mns_endpoint is not None:
+            result['event_mns_endpoint'] = self.event_mns_endpoint
+        if self.event_mns_topic is not None:
+            result['event_mns_topic'] = self.event_mns_topic
+        if self.event_names is not None:
+            result['event_names'] = self.event_names
+        if self.event_role_arn is not None:
+            result['event_role_arn'] = self.event_role_arn
+        if self.init_drive_enable is not None:
+            result['init_drive_enable'] = self.init_drive_enable
+        if self.init_drive_size is not None:
+            result['init_drive_size'] = self.init_drive_size
+        if self.init_drive_store_id is not None:
+            result['init_drive_store_id'] = self.init_drive_store_id
+        if self.mode is not None:
+            result['mode'] = self.mode
+        if self.path_type is not None:
+            result['path_type'] = self.path_type
         if self.published_app_access_strategy is not None:
             result['published_app_access_strategy'] = self.published_app_access_strategy.to_map()
-        else:
-            result['published_app_access_strategy'] = None
-        result['sharable'] = self.sharable
-        result['store_level'] = self.store_level
-        result['store_region_list'] = self.store_region_list
-        result['updated_at'] = self.updated_at
+        if self.sharable is not None:
+            result['sharable'] = self.sharable
+        if self.store_level is not None:
+            result['store_level'] = self.store_level
+        if self.store_region_list is not None:
+            result['store_region_list'] = self.store_region_list
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
         return result
 
     def from_map(self, map={}):
-        self.api_cname = map.get('api_cname')
-        self.auth_alipay_app_id = map.get('auth_alipay_app_id')
-        self.auth_alipay_enable = map.get('auth_alipay_enable')
-        self.auth_alipay_private_key = map.get('auth_alipay_private_key')
-        self.auth_config = map.get('auth_config')
-        self.auth_dingding_app_id = map.get('auth_dingding_app_id')
-        self.auth_dingding_app_secret = map.get('auth_dingding_app_secret')
-        self.auth_dingding_enable = map.get('auth_dingding_enable')
-        self.auth_endpoint_enable = map.get('auth_endpoint_enable')
-        self.auth_ram_app_id = map.get('auth_ram_app_id')
-        self.auth_ram_app_secret = map.get('auth_ram_app_secret')
-        self.auth_ram_enable = map.get('auth_ram_enable')
-        self.created_at = map.get('created_at')
-        self.data_hash_name = map.get('data_hash_name')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.domain_name = map.get('domain_name')
-        self.event_filename_matches = map.get('event_filename_matches')
-        self.event_mns_endpoint = map.get('event_mns_endpoint')
-        self.event_mns_topic = map.get('event_mns_topic')
-        self.event_names = map.get('event_names')
-        self.event_role_arn = map.get('event_role_arn')
-        self.init_drive_enable = map.get('init_drive_enable')
-        self.init_drive_size = map.get('init_drive_size')
-        self.init_drive_store_id = map.get('init_drive_store_id')
-        self.mode = map.get('mode')
-        self.path_type = map.get('path_type')
+        if map.get('api_cname') is not None:
+            self.api_cname = map.get('api_cname')
+        if map.get('auth_alipay_app_id') is not None:
+            self.auth_alipay_app_id = map.get('auth_alipay_app_id')
+        if map.get('auth_alipay_enable') is not None:
+            self.auth_alipay_enable = map.get('auth_alipay_enable')
+        if map.get('auth_alipay_private_key') is not None:
+            self.auth_alipay_private_key = map.get('auth_alipay_private_key')
+        if map.get('auth_config') is not None:
+            self.auth_config = map.get('auth_config')
+        if map.get('auth_dingding_app_id') is not None:
+            self.auth_dingding_app_id = map.get('auth_dingding_app_id')
+        if map.get('auth_dingding_app_secret') is not None:
+            self.auth_dingding_app_secret = map.get('auth_dingding_app_secret')
+        if map.get('auth_dingding_enable') is not None:
+            self.auth_dingding_enable = map.get('auth_dingding_enable')
+        if map.get('auth_endpoint_enable') is not None:
+            self.auth_endpoint_enable = map.get('auth_endpoint_enable')
+        if map.get('auth_ram_app_id') is not None:
+            self.auth_ram_app_id = map.get('auth_ram_app_id')
+        if map.get('auth_ram_app_secret') is not None:
+            self.auth_ram_app_secret = map.get('auth_ram_app_secret')
+        if map.get('auth_ram_enable') is not None:
+            self.auth_ram_enable = map.get('auth_ram_enable')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('data_hash_name') is not None:
+            self.data_hash_name = map.get('data_hash_name')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('domain_name') is not None:
+            self.domain_name = map.get('domain_name')
+        if map.get('event_filename_matches') is not None:
+            self.event_filename_matches = map.get('event_filename_matches')
+        if map.get('event_mns_endpoint') is not None:
+            self.event_mns_endpoint = map.get('event_mns_endpoint')
+        if map.get('event_mns_topic') is not None:
+            self.event_mns_topic = map.get('event_mns_topic')
+        if map.get('event_names') is not None:
+            self.event_names = map.get('event_names')
+        if map.get('event_role_arn') is not None:
+            self.event_role_arn = map.get('event_role_arn')
+        if map.get('init_drive_enable') is not None:
+            self.init_drive_enable = map.get('init_drive_enable')
+        if map.get('init_drive_size') is not None:
+            self.init_drive_size = map.get('init_drive_size')
+        if map.get('init_drive_store_id') is not None:
+            self.init_drive_store_id = map.get('init_drive_store_id')
+        if map.get('mode') is not None:
+            self.mode = map.get('mode')
+        if map.get('path_type') is not None:
+            self.path_type = map.get('path_type')
         if map.get('published_app_access_strategy') is not None:
             temp_model = AppAccessStrategy()
             self.published_app_access_strategy = temp_model.from_map(map['published_app_access_strategy'])
-        else:
-            self.published_app_access_strategy = None
-        self.sharable = map.get('sharable')
-        self.store_level = map.get('store_level')
-        self.store_region_list = map.get('store_region_list')
-        self.updated_at = map.get('updated_at')
+        if map.get('sharable') is not None:
+            self.sharable = map.get('sharable')
+        if map.get('store_level') is not None:
+            self.store_level = map.get('store_level')
+        if map.get('store_region_list') is not None:
+            self.store_region_list = map.get('store_region_list')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
         return self
 
 
@@ -8263,20 +10047,18 @@ class CreateDriveModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CreateDriveResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8289,11 +10071,13 @@ class DeleteDriveModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         return self
 
 
@@ -8309,20 +10093,18 @@ class GetDriveModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = GetDriveResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8338,20 +10120,18 @@ class GetDefaultDriveModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = GetDriveResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8367,20 +10147,18 @@ class ListDrivesModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = ListDriveResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8396,20 +10174,18 @@ class ListMyDrivesModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = ListDriveResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8425,20 +10201,18 @@ class UpdateDriveModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = UpdateDriveResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8454,20 +10228,18 @@ class CompleteFileModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingCompleteFileResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8483,20 +10255,18 @@ class CopyFileModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingCopyFileResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8512,20 +10282,18 @@ class CreateFileModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingCreateFileResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8538,11 +10306,13 @@ class DeleteFileModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         return self
 
 
@@ -8558,20 +10328,18 @@ class GetFileModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingGetFileResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8587,20 +10355,18 @@ class GetDownloadUrlModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingGetDownloadUrlResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8616,20 +10382,18 @@ class GetSecureUrlModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingGetSecureUrlResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8645,20 +10409,18 @@ class GetUploadUrlModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingGetUploadUrlResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8674,20 +10436,18 @@ class ListFileModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingListFileResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8703,20 +10463,18 @@ class ListUploadedPartsModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingListUploadedPartResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8732,20 +10490,18 @@ class MoveFileModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingMoveFileResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8761,20 +10517,18 @@ class VideoDefinitionModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingVideoDefinitionResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8790,20 +10544,18 @@ class VideoLicenseModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingVideoDRMLicenseResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8817,13 +10569,17 @@ class VideoM3u8Model(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['body'] = self.body
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.body = map.get('body')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('body') is not None:
+            self.body = map.get('body')
         return self
 
 
@@ -8839,20 +10595,18 @@ class VideoTranscodeModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = HostingVideoTranscodeResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8868,20 +10622,18 @@ class CreateShareModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CreateShareResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8894,11 +10646,13 @@ class DeleteShareModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         return self
 
 
@@ -8914,20 +10668,18 @@ class GetShareModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = GetShareResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8943,20 +10695,18 @@ class ListShareModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = ListShareResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -8972,20 +10722,18 @@ class UpdateShareModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = UpdateShareResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -9001,20 +10749,18 @@ class ListStorefileModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = ListStoreFileResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -9033,7 +10779,7 @@ class BaseCompleteFileRequest(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         if self.part_info_list:
             for k in self.part_info_list:
@@ -9042,28 +10788,30 @@ class BaseCompleteFileRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['addition_data'] = self.addition_data
-        result['drive_id'] = self.drive_id
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['upload_id'] = self.upload_id
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.addition_data = map.get('addition_data')
-        self.drive_id = map.get('drive_id')
+        if map.get('addition_data') is not None:
+            self.addition_data = map.get('addition_data')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.upload_id = map.get('upload_id')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -9090,44 +10838,55 @@ class BaseCreateFileRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_max_length(self.name, 'name', 1024)
         if self.part_info_list:
             for k in self.part_info_list:
                 if k:
                     k.validate()
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
         self.validate_required(self.type, 'type')
 
     def to_map(self):
         result = {}
-        result['addition_data'] = self.addition_data
-        result['content_md5'] = self.content_md_5
-        result['content_type'] = self.content_type
-        result['name'] = self.name
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.content_md_5 is not None:
+            result['content_md5'] = self.content_md_5
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.name is not None:
+            result['name'] = self.name
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['size'] = self.size
-        result['type'] = self.type
+        if self.size is not None:
+            result['size'] = self.size
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.addition_data = map.get('addition_data')
-        self.content_md_5 = map.get('content_md5')
-        self.content_type = map.get('content_type')
-        self.name = map.get('name')
+        if map.get('addition_data') is not None:
+            self.addition_data = map.get('addition_data')
+        if map.get('content_md5') is not None:
+            self.content_md_5 = map.get('content_md5')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('name') is not None:
+            self.name = map.get('name')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.size = map.get('size')
-        self.type = map.get('type')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -9144,11 +10903,13 @@ class BaseFileRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['addition_data'] = self.addition_data
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
         return result
 
     def from_map(self, map={}):
-        self.addition_data = map.get('addition_data')
+        if map.get('addition_data') is not None:
+            self.addition_data = map.get('addition_data')
         return self
 
 
@@ -9167,9 +10928,9 @@ class BaseGetUploadUrlRequest(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.content_md_5:
+        if self.content_md_5 is not None:
             self.validate_max_length(self.content_md_5, 'content_md_5', 32)
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         if self.part_info_list:
             for k in self.part_info_list:
@@ -9179,28 +10940,30 @@ class BaseGetUploadUrlRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['content_md5'] = self.content_md_5
-        result['drive_id'] = self.drive_id
+        if self.content_md_5 is not None:
+            result['content_md5'] = self.content_md_5
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['upload_id'] = self.upload_id
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.content_md_5 = map.get('content_md5')
-        self.drive_id = map.get('drive_id')
+        if map.get('content_md5') is not None:
+            self.content_md_5 = map.get('content_md5')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.upload_id = map.get('upload_id')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -9258,68 +11021,115 @@ class BaseHostingFileResponse(TeaModel):
         self.url = url                  # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_path:
+        if self.parent_file_path is not None:
             self.validate_max_length(self.parent_file_path, 'parent_file_path', 50)
             self.validate_pattern(self.parent_file_path, 'parent_file_path', '[a-z0-9]{1,50}')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9]+')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
 
     def to_map(self):
         result = {}
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['file_extension'] = self.file_extension
-        result['file_path'] = self.file_path
-        result['name'] = self.name
-        result['parent_file_path'] = self.parent_file_path
-        result['share_id'] = self.share_id
-        result['size'] = self.size
-        result['status'] = self.status
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_path is not None:
+            result['parent_file_path'] = self.parent_file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.size is not None:
+            result['size'] = self.size
+        if self.status is not None:
+            result['status'] = self.status
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.file_extension = map.get('file_extension')
-        self.file_path = map.get('file_path')
-        self.name = map.get('name')
-        self.parent_file_path = map.get('parent_file_path')
-        self.share_id = map.get('share_id')
-        self.size = map.get('size')
-        self.status = map.get('status')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_path') is not None:
+            self.parent_file_path = map.get('parent_file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -9344,28 +11154,42 @@ class BaseListFileRequest(TeaModel):
         self.video_thumbnail_process = video_thumbnail_process  # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.limit:
+        if self.limit is not None:
             self.validate_pattern(self.limit, 'limit', '[0-9]{1,3}')
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 0)
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
-        result['image_thumbnail_process'] = self.image_thumbnail_process
-        result['image_url_process'] = self.image_url_process
-        result['limit'] = self.limit
-        result['marker'] = self.marker
-        result['video_thumbnail_process'] = self.video_thumbnail_process
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.image_url_process is not None:
+            result['image_url_process'] = self.image_url_process
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.video_thumbnail_process is not None:
+            result['video_thumbnail_process'] = self.video_thumbnail_process
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
-        self.image_thumbnail_process = map.get('image_thumbnail_process')
-        self.image_url_process = map.get('image_url_process')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
-        self.video_thumbnail_process = map.get('video_thumbnail_process')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = map.get('image_thumbnail_process')
+        if map.get('image_url_process') is not None:
+            self.image_url_process = map.get('image_url_process')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
+        if map.get('video_thumbnail_process') is not None:
+            self.video_thumbnail_process = map.get('video_thumbnail_process')
         return self
 
 
@@ -9384,22 +11208,28 @@ class BaseMoveFileRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.new_name:
+        if self.new_name is not None:
             self.validate_max_length(self.new_name, 'new_name', 1024)
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
-        result['new_name'] = self.new_name
-        result['overwrite'] = self.overwrite
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.new_name is not None:
+            result['new_name'] = self.new_name
+        if self.overwrite is not None:
+            result['overwrite'] = self.overwrite
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
-        self.new_name = map.get('new_name')
-        self.overwrite = map.get('overwrite')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('new_name') is not None:
+            self.new_name = map.get('new_name')
+        if map.get('overwrite') is not None:
+            self.overwrite = map.get('overwrite')
         return self
 
 
@@ -9427,9 +11257,8 @@ class BatchRequest(TeaModel):
         if self.requests is not None:
             for k in self.requests:
                 result['requests'].append(k.to_map() if k else None)
-        else:
-            result['requests'] = None
-        result['resource'] = self.resource
+        if self.resource is not None:
+            result['resource'] = self.resource
         return result
 
     def from_map(self, map={}):
@@ -9438,9 +11267,8 @@ class BatchRequest(TeaModel):
             for k in map.get('requests'):
                 temp_model = BatchSubRequest()
                 self.requests.append(temp_model.from_map(k))
-        else:
-            self.requests = None
-        self.resource = map.get('resource')
+        if map.get('resource') is not None:
+            self.resource = map.get('resource')
         return self
 
 
@@ -9467,19 +11295,29 @@ class BatchSubRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['body'] = self.body
-        result['headers'] = self.headers
-        result['id'] = self.id
-        result['method'] = self.method
-        result['url'] = self.url
+        if self.body is not None:
+            result['body'] = self.body
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.id is not None:
+            result['id'] = self.id
+        if self.method is not None:
+            result['method'] = self.method
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.body = map.get('body')
-        self.headers = map.get('headers')
-        self.id = map.get('id')
-        self.method = map.get('method')
-        self.url = map.get('url')
+        if map.get('body') is not None:
+            self.body = map.get('body')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('id') is not None:
+            self.id = map.get('id')
+        if map.get('method') is not None:
+            self.method = map.get('method')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -9496,11 +11334,13 @@ class CancelShareLinkRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['share_id'] = self.share_id
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.share_id = map.get('share_id')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -9521,10 +11361,10 @@ class CompleteFileRequest(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
         if self.part_info_list:
@@ -9534,30 +11374,34 @@ class CompleteFileRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['addition_data'] = self.addition_data
-        result['drive_id'] = self.drive_id
-        result['file_id'] = self.file_id
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['upload_id'] = self.upload_id
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.addition_data = map.get('addition_data')
-        self.drive_id = map.get('drive_id')
-        self.file_id = map.get('file_id')
+        if map.get('addition_data') is not None:
+            self.addition_data = map.get('addition_data')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.upload_id = map.get('upload_id')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -9584,40 +11428,54 @@ class CopyFileRequest(TeaModel):
         self.to_parent_file_id = to_parent_file_id  # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
-        if self.new_name:
+        if self.new_name is not None:
             self.validate_max_length(self.new_name, 'new_name', 1024)
-        if self.to_drive_id:
+        if self.to_drive_id is not None:
             self.validate_pattern(self.to_drive_id, 'to_drive_id', '[0-9]+')
         self.validate_required(self.to_parent_file_id, 'to_parent_file_id')
-        if self.to_parent_file_id:
+        if self.to_parent_file_id is not None:
             self.validate_max_length(self.to_parent_file_id, 'to_parent_file_id', 50)
             self.validate_pattern(self.to_parent_file_id, 'to_parent_file_id', '[a-z0-9.-_]{1,50}')
 
     def to_map(self):
         result = {}
-        result['auto_rename'] = self.auto_rename
-        result['drive_id'] = self.drive_id
-        result['file_id'] = self.file_id
-        result['new_name'] = self.new_name
-        result['share_id'] = self.share_id
-        result['to_drive_id'] = self.to_drive_id
-        result['to_parent_file_id'] = self.to_parent_file_id
+        if self.auto_rename is not None:
+            result['auto_rename'] = self.auto_rename
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.new_name is not None:
+            result['new_name'] = self.new_name
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.to_drive_id is not None:
+            result['to_drive_id'] = self.to_drive_id
+        if self.to_parent_file_id is not None:
+            result['to_parent_file_id'] = self.to_parent_file_id
         return result
 
     def from_map(self, map={}):
-        self.auto_rename = map.get('auto_rename')
-        self.drive_id = map.get('drive_id')
-        self.file_id = map.get('file_id')
-        self.new_name = map.get('new_name')
-        self.share_id = map.get('share_id')
-        self.to_drive_id = map.get('to_drive_id')
-        self.to_parent_file_id = map.get('to_parent_file_id')
+        if map.get('auto_rename') is not None:
+            self.auto_rename = map.get('auto_rename')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('new_name') is not None:
+            self.new_name = map.get('new_name')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('to_drive_id') is not None:
+            self.to_drive_id = map.get('to_drive_id')
+        if map.get('to_parent_file_id') is not None:
+            self.to_parent_file_id = map.get('to_parent_file_id')
         return self
 
 
@@ -9649,40 +11507,62 @@ class CreateDriveRequest(TeaModel):
         self.total_size = total_size    # type: int
 
     def validate(self):
-        if self.description:
+        if self.description is not None:
             self.validate_max_length(self.description, 'description', 1024)
         self.validate_required(self.drive_name, 'drive_name')
-        if self.drive_name:
+        if self.drive_name is not None:
             self.validate_max_length(self.drive_name, 'drive_name', 1024)
         self.validate_required(self.owner, 'owner')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['default'] = self.default
-        result['description'] = self.description
-        result['drive_name'] = self.drive_name
-        result['drive_type'] = self.drive_type
-        result['encrypt_mode'] = self.encrypt_mode
-        result['owner'] = self.owner
-        result['relative_path'] = self.relative_path
-        result['status'] = self.status
-        result['store_id'] = self.store_id
-        result['total_size'] = self.total_size
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.default is not None:
+            result['default'] = self.default
+        if self.description is not None:
+            result['description'] = self.description
+        if self.drive_name is not None:
+            result['drive_name'] = self.drive_name
+        if self.drive_type is not None:
+            result['drive_type'] = self.drive_type
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.relative_path is not None:
+            result['relative_path'] = self.relative_path
+        if self.status is not None:
+            result['status'] = self.status
+        if self.store_id is not None:
+            result['store_id'] = self.store_id
+        if self.total_size is not None:
+            result['total_size'] = self.total_size
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.default = map.get('default')
-        self.description = map.get('description')
-        self.drive_name = map.get('drive_name')
-        self.drive_type = map.get('drive_type')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.owner = map.get('owner')
-        self.relative_path = map.get('relative_path')
-        self.status = map.get('status')
-        self.store_id = map.get('store_id')
-        self.total_size = map.get('total_size')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('default') is not None:
+            self.default = map.get('default')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('drive_name') is not None:
+            self.drive_name = map.get('drive_name')
+        if map.get('drive_type') is not None:
+            self.drive_type = map.get('drive_type')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('owner') is not None:
+            self.owner = map.get('owner')
+        if map.get('relative_path') is not None:
+            self.relative_path = map.get('relative_path')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('store_id') is not None:
+            self.store_id = map.get('store_id')
+        if map.get('total_size') is not None:
+            self.total_size = map.get('total_size')
         return self
 
 
@@ -9743,108 +11623,143 @@ class CreateFileRequest(TeaModel):
         self.video_media_metadata = video_media_metadata  # type: VideoMediaMetadata
 
     def validate(self):
-        if self.description:
+        if self.description is not None:
             self.validate_max_length(self.description, 'description', 1024)
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         if self.image_media_metadata:
             self.image_media_metadata.validate()
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_max_length(self.name, 'name', 1024)
         self.validate_required(self.parent_file_id, 'parent_file_id')
-        if self.parent_file_id:
+        if self.parent_file_id is not None:
             self.validate_max_length(self.parent_file_id, 'parent_file_id', 50)
             self.validate_pattern(self.parent_file_id, 'parent_file_id', '[a-z0-9]{1,50}')
         if self.part_info_list:
             for k in self.part_info_list:
                 if k:
                     k.validate()
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
         self.validate_required(self.type, 'type')
         if self.video_media_metadata:
             self.video_media_metadata.validate()
 
     def to_map(self):
         result = {}
-        result['addition_data'] = self.addition_data
-        result['auto_rename'] = self.auto_rename
-        result['check_name_mode'] = self.check_name_mode
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_md5'] = self.content_md_5
-        result['content_type'] = self.content_type
-        result['description'] = self.description
-        result['drive_id'] = self.drive_id
-        result['encrypt_mode'] = self.encrypt_mode
-        result['file_id'] = self.file_id
-        result['hidden'] = self.hidden
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.auto_rename is not None:
+            result['auto_rename'] = self.auto_rename
+        if self.check_name_mode is not None:
+            result['check_name_mode'] = self.check_name_mode
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_md_5 is not None:
+            result['content_md5'] = self.content_md_5
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.description is not None:
+            result['description'] = self.description
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.hidden is not None:
+            result['hidden'] = self.hidden
         if self.image_media_metadata is not None:
             result['image_media_metadata'] = self.image_media_metadata.to_map()
-        else:
-            result['image_media_metadata'] = None
-        result['labels'] = self.labels
-        result['last_updated_at'] = self.last_updated_at
-        result['meta'] = self.meta
-        result['name'] = self.name
-        result['parent_file_id'] = self.parent_file_id
+        if self.labels is not None:
+            result['labels'] = self.labels
+        if self.last_updated_at is not None:
+            result['last_updated_at'] = self.last_updated_at
+        if self.meta is not None:
+            result['meta'] = self.meta
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_id is not None:
+            result['parent_file_id'] = self.parent_file_id
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['pre_hash'] = self.pre_hash
-        result['size'] = self.size
-        result['streams_info'] = self.streams_info
-        result['type'] = self.type
-        result['user_meta'] = self.user_meta
+        if self.pre_hash is not None:
+            result['pre_hash'] = self.pre_hash
+        if self.size is not None:
+            result['size'] = self.size
+        if self.streams_info is not None:
+            result['streams_info'] = self.streams_info
+        if self.type is not None:
+            result['type'] = self.type
+        if self.user_meta is not None:
+            result['user_meta'] = self.user_meta
         if self.video_media_metadata is not None:
             result['video_media_metadata'] = self.video_media_metadata.to_map()
-        else:
-            result['video_media_metadata'] = None
         return result
 
     def from_map(self, map={}):
-        self.addition_data = map.get('addition_data')
-        self.auto_rename = map.get('auto_rename')
-        self.check_name_mode = map.get('check_name_mode')
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_md_5 = map.get('content_md5')
-        self.content_type = map.get('content_type')
-        self.description = map.get('description')
-        self.drive_id = map.get('drive_id')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.file_id = map.get('file_id')
-        self.hidden = map.get('hidden')
+        if map.get('addition_data') is not None:
+            self.addition_data = map.get('addition_data')
+        if map.get('auto_rename') is not None:
+            self.auto_rename = map.get('auto_rename')
+        if map.get('check_name_mode') is not None:
+            self.check_name_mode = map.get('check_name_mode')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_md5') is not None:
+            self.content_md_5 = map.get('content_md5')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('hidden') is not None:
+            self.hidden = map.get('hidden')
         if map.get('image_media_metadata') is not None:
             temp_model = ImageMediaMetadata()
             self.image_media_metadata = temp_model.from_map(map['image_media_metadata'])
-        else:
-            self.image_media_metadata = None
-        self.labels = map.get('labels')
-        self.last_updated_at = map.get('last_updated_at')
-        self.meta = map.get('meta')
-        self.name = map.get('name')
-        self.parent_file_id = map.get('parent_file_id')
+        if map.get('labels') is not None:
+            self.labels = map.get('labels')
+        if map.get('last_updated_at') is not None:
+            self.last_updated_at = map.get('last_updated_at')
+        if map.get('meta') is not None:
+            self.meta = map.get('meta')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_id') is not None:
+            self.parent_file_id = map.get('parent_file_id')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.pre_hash = map.get('pre_hash')
-        self.size = map.get('size')
-        self.streams_info = map.get('streams_info')
-        self.type = map.get('type')
-        self.user_meta = map.get('user_meta')
+        if map.get('pre_hash') is not None:
+            self.pre_hash = map.get('pre_hash')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('streams_info') is not None:
+            self.streams_info = map.get('streams_info')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('user_meta') is not None:
+            self.user_meta = map.get('user_meta')
         if map.get('video_media_metadata') is not None:
             temp_model = VideoMediaMetadata()
             self.video_media_metadata = temp_model.from_map(map['video_media_metadata'])
-        else:
-            self.video_media_metadata = None
         return self
 
 
@@ -9864,24 +11779,32 @@ class CreateShareLinkRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.expiration, 'expiration')
         self.validate_required(self.file_id, 'file_id')
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
-        result['expiration'] = self.expiration
-        result['file_id'] = self.file_id
-        result['share_pwd'] = self.share_pwd
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.share_pwd is not None:
+            result['share_pwd'] = self.share_pwd
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
-        self.expiration = map.get('expiration')
-        self.file_id = map.get('file_id')
-        self.share_pwd = map.get('share_pwd')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('share_pwd') is not None:
+            self.share_pwd = map.get('share_pwd')
         return self
 
 
@@ -9915,7 +11838,7 @@ class CreateShareRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.owner, 'owner')
         self.validate_required(self.share_file_path, 'share_file_path')
@@ -9926,40 +11849,54 @@ class CreateShareRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['description'] = self.description
-        result['drive_id'] = self.drive_id
-        result['expiration'] = self.expiration
-        result['owner'] = self.owner
-        result['permissions'] = self.permissions
-        result['share_file_path'] = self.share_file_path
-        result['share_name'] = self.share_name
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.description is not None:
+            result['description'] = self.description
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.permissions is not None:
+            result['permissions'] = self.permissions
+        if self.share_file_path is not None:
+            result['share_file_path'] = self.share_file_path
+        if self.share_name is not None:
+            result['share_name'] = self.share_name
         result['share_policy'] = []
         if self.share_policy is not None:
             for k in self.share_policy:
                 result['share_policy'].append(k.to_map() if k else None)
-        else:
-            result['share_policy'] = None
-        result['status'] = self.status
+        if self.status is not None:
+            result['status'] = self.status
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.description = map.get('description')
-        self.drive_id = map.get('drive_id')
-        self.expiration = map.get('expiration')
-        self.owner = map.get('owner')
-        self.permissions = map.get('permissions')
-        self.share_file_path = map.get('share_file_path')
-        self.share_name = map.get('share_name')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('owner') is not None:
+            self.owner = map.get('owner')
+        if map.get('permissions') is not None:
+            self.permissions = map.get('permissions')
+        if map.get('share_file_path') is not None:
+            self.share_file_path = map.get('share_file_path')
+        if map.get('share_name') is not None:
+            self.share_name = map.get('share_name')
         self.share_policy = []
         if map.get('share_policy') is not None:
             for k in map.get('share_policy'):
                 temp_model = SharePermissionPolicy()
                 self.share_policy.append(temp_model.from_map(k))
-        else:
-            self.share_policy = None
-        self.status = map.get('status')
+        if map.get('status') is not None:
+            self.status = map.get('status')
         return self
 
 
@@ -9977,13 +11914,17 @@ class DeleteDriveRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drive_id'] = self.drive_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drive_id = map.get('drive_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
         return self
 
 
@@ -10002,24 +11943,30 @@ class DeleteFileRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
-        result['file_id'] = self.file_id
-        result['permanently'] = self.permanently
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.permanently is not None:
+            result['permanently'] = self.permanently
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
-        self.file_id = map.get('file_id')
-        self.permanently = map.get('permanently')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('permanently') is not None:
+            self.permanently = map.get('permanently')
         return self
 
 
@@ -10035,19 +11982,23 @@ class DeleteFilesRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id_list, 'file_id_list')
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
-        result['file_id_list'] = self.file_id_list
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id_list is not None:
+            result['file_id_list'] = self.file_id_list
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
-        self.file_id_list = map.get('file_id_list')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id_list') is not None:
+            self.file_id_list = map.get('file_id_list')
         return self
 
 
@@ -10065,13 +12016,17 @@ class DeleteShareRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['share_id'] = self.share_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.share_id = map.get('share_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -10099,19 +12054,29 @@ class DownloadRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['DriveID'] = self.drive_id
-        result['FileID'] = self.file_id
-        result['ImageThumbnailProcess'] = self.image_thumbnail_process
-        result['ShareID'] = self.share_id
-        result['VideoThumbnailProcess'] = self.video_thumbnail_process
+        if self.drive_id is not None:
+            result['DriveID'] = self.drive_id
+        if self.file_id is not None:
+            result['FileID'] = self.file_id
+        if self.image_thumbnail_process is not None:
+            result['ImageThumbnailProcess'] = self.image_thumbnail_process
+        if self.share_id is not None:
+            result['ShareID'] = self.share_id
+        if self.video_thumbnail_process is not None:
+            result['VideoThumbnailProcess'] = self.video_thumbnail_process
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('DriveID')
-        self.file_id = map.get('FileID')
-        self.image_thumbnail_process = map.get('ImageThumbnailProcess')
-        self.share_id = map.get('ShareID')
-        self.video_thumbnail_process = map.get('VideoThumbnailProcess')
+        if map.get('DriveID') is not None:
+            self.drive_id = map.get('DriveID')
+        if map.get('FileID') is not None:
+            self.file_id = map.get('FileID')
+        if map.get('ImageThumbnailProcess') is not None:
+            self.image_thumbnail_process = map.get('ImageThumbnailProcess')
+        if map.get('ShareID') is not None:
+            self.share_id = map.get('ShareID')
+        if map.get('VideoThumbnailProcess') is not None:
+            self.video_thumbnail_process = map.get('VideoThumbnailProcess')
         return self
 
 
@@ -10129,11 +12094,13 @@ class GetAsyncTaskRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['async_task_id'] = self.async_task_id
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
         return result
 
     def from_map(self, map={}):
-        self.async_task_id = map.get('async_task_id')
+        if map.get('async_task_id') is not None:
+            self.async_task_id = map.get('async_task_id')
         return self
 
 
@@ -10151,13 +12118,17 @@ class GetDefaultDriveRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['user_id'] = self.user_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.user_id = map.get('user_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
         return self
 
 
@@ -10179,30 +12150,43 @@ class GetDownloadUrlRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
+        if self.expire_sec is not None:
+            self.validate_maximum(self.expire_sec, 'expire_sec', 14400)
+            self.validate_minimum(self.expire_sec, 'expire_sec', 0)
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
-        if self.file_name:
+        if self.file_name is not None:
             self.validate_max_length(self.file_name, 'file_name', 1024)
 
     def to_map(self):
         result = {}
-        result['addition_data'] = self.addition_data
-        result['drive_id'] = self.drive_id
-        result['expire_sec'] = self.expire_sec
-        result['file_id'] = self.file_id
-        result['file_name'] = self.file_name
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expire_sec is not None:
+            result['expire_sec'] = self.expire_sec
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.file_name is not None:
+            result['file_name'] = self.file_name
         return result
 
     def from_map(self, map={}):
-        self.addition_data = map.get('addition_data')
-        self.drive_id = map.get('drive_id')
-        self.expire_sec = map.get('expire_sec')
-        self.file_id = map.get('file_id')
-        self.file_name = map.get('file_name')
+        if map.get('addition_data') is not None:
+            self.addition_data = map.get('addition_data')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('expire_sec') is not None:
+            self.expire_sec = map.get('expire_sec')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('file_name') is not None:
+            self.file_name = map.get('file_name')
         return self
 
 
@@ -10220,13 +12204,17 @@ class GetDriveRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drive_id'] = self.drive_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drive_id = map.get('drive_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
         return self
 
 
@@ -10258,34 +12246,53 @@ class GetFileByPathRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
+        if self.url_expire_sec is not None:
+            self.validate_maximum(self.url_expire_sec, 'url_expire_sec', 14400)
+            self.validate_minimum(self.url_expire_sec, 'url_expire_sec', 10)
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
-        result['fields'] = self.fields
-        result['file_id'] = self.file_id
-        result['file_path'] = self.file_path
-        result['image_thumbnail_process'] = self.image_thumbnail_process
-        result['image_url_process'] = self.image_url_process
-        result['url_expire_sec'] = self.url_expire_sec
-        result['video_thumbnail_process'] = self.video_thumbnail_process
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.fields is not None:
+            result['fields'] = self.fields
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.image_url_process is not None:
+            result['image_url_process'] = self.image_url_process
+        if self.url_expire_sec is not None:
+            result['url_expire_sec'] = self.url_expire_sec
+        if self.video_thumbnail_process is not None:
+            result['video_thumbnail_process'] = self.video_thumbnail_process
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
-        self.fields = map.get('fields')
-        self.file_id = map.get('file_id')
-        self.file_path = map.get('file_path')
-        self.image_thumbnail_process = map.get('image_thumbnail_process')
-        self.image_url_process = map.get('image_url_process')
-        self.url_expire_sec = map.get('url_expire_sec')
-        self.video_thumbnail_process = map.get('video_thumbnail_process')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('fields') is not None:
+            self.fields = map.get('fields')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = map.get('image_thumbnail_process')
+        if map.get('image_url_process') is not None:
+            self.image_url_process = map.get('image_url_process')
+        if map.get('url_expire_sec') is not None:
+            self.url_expire_sec = map.get('url_expire_sec')
+        if map.get('video_thumbnail_process') is not None:
+            self.video_thumbnail_process = map.get('video_thumbnail_process')
         return self
 
 
@@ -10315,32 +12322,49 @@ class GetFileRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
+        if self.url_expire_sec is not None:
+            self.validate_maximum(self.url_expire_sec, 'url_expire_sec', 14400)
+            self.validate_minimum(self.url_expire_sec, 'url_expire_sec', 10)
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
-        result['fields'] = self.fields
-        result['file_id'] = self.file_id
-        result['image_thumbnail_process'] = self.image_thumbnail_process
-        result['image_url_process'] = self.image_url_process
-        result['url_expire_sec'] = self.url_expire_sec
-        result['video_thumbnail_process'] = self.video_thumbnail_process
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.fields is not None:
+            result['fields'] = self.fields
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.image_url_process is not None:
+            result['image_url_process'] = self.image_url_process
+        if self.url_expire_sec is not None:
+            result['url_expire_sec'] = self.url_expire_sec
+        if self.video_thumbnail_process is not None:
+            result['video_thumbnail_process'] = self.video_thumbnail_process
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
-        self.fields = map.get('fields')
-        self.file_id = map.get('file_id')
-        self.image_thumbnail_process = map.get('image_thumbnail_process')
-        self.image_url_process = map.get('image_url_process')
-        self.url_expire_sec = map.get('url_expire_sec')
-        self.video_thumbnail_process = map.get('video_thumbnail_process')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('fields') is not None:
+            self.fields = map.get('fields')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = map.get('image_thumbnail_process')
+        if map.get('image_url_process') is not None:
+            self.image_url_process = map.get('image_url_process')
+        if map.get('url_expire_sec') is not None:
+            self.url_expire_sec = map.get('url_expire_sec')
+        if map.get('video_thumbnail_process') is not None:
+            self.video_thumbnail_process = map.get('video_thumbnail_process')
         return self
 
 
@@ -10354,16 +12378,18 @@ class GetLastCursorRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
         return self
 
 
@@ -10379,22 +12405,26 @@ class GetMediaPlayURLRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
-        result['file_id'] = self.file_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
-        self.file_id = map.get('file_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
         return self
 
 
@@ -10412,24 +12442,30 @@ class GetOfficePreviewUrlRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
 
     def to_map(self):
         result = {}
-        result['addition_data'] = self.addition_data
-        result['drive_id'] = self.drive_id
-        result['file_id'] = self.file_id
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
         return result
 
     def from_map(self, map={}):
-        self.addition_data = map.get('addition_data')
-        self.drive_id = map.get('drive_id')
-        self.file_id = map.get('file_id')
+        if map.get('addition_data') is not None:
+            self.addition_data = map.get('addition_data')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
         return self
 
 
@@ -10446,11 +12482,13 @@ class GetShareLinkByAnonymousRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['share_id'] = self.share_id
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.share_id = map.get('share_id')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -10467,11 +12505,13 @@ class GetShareLinkIDRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['share_msg'] = self.share_msg
+        if self.share_msg is not None:
+            result['share_msg'] = self.share_msg
         return result
 
     def from_map(self, map={}):
-        self.share_msg = map.get('share_msg')
+        if map.get('share_msg') is not None:
+            self.share_msg = map.get('share_msg')
         return self
 
 
@@ -10490,13 +12530,17 @@ class GetShareLinkTokenRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['share_id'] = self.share_id
-        result['share_pwd'] = self.share_pwd
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.share_pwd is not None:
+            result['share_pwd'] = self.share_pwd
         return result
 
     def from_map(self, map={}):
-        self.share_id = map.get('share_id')
-        self.share_pwd = map.get('share_pwd')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('share_pwd') is not None:
+            self.share_pwd = map.get('share_pwd')
         return self
 
 
@@ -10514,13 +12558,17 @@ class GetShareRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['share_id'] = self.share_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.share_id = map.get('share_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -10541,12 +12589,12 @@ class GetUploadUrlRequest(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.content_md_5:
+        if self.content_md_5 is not None:
             self.validate_max_length(self.content_md_5, 'content_md_5', 32)
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
         if self.part_info_list:
@@ -10557,30 +12605,34 @@ class GetUploadUrlRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['content_md5'] = self.content_md_5
-        result['drive_id'] = self.drive_id
-        result['file_id'] = self.file_id
+        if self.content_md_5 is not None:
+            result['content_md5'] = self.content_md_5
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['upload_id'] = self.upload_id
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.content_md_5 = map.get('content_md5')
-        self.drive_id = map.get('drive_id')
-        self.file_id = map.get('file_id')
+        if map.get('content_md5') is not None:
+            self.content_md_5 = map.get('content_md5')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.upload_id = map.get('upload_id')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -10598,24 +12650,33 @@ class GetVideoPreviewSpriteURLRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
+        if self.expire_sec is not None:
+            self.validate_maximum(self.expire_sec, 'expire_sec', 14400)
+            self.validate_minimum(self.expire_sec, 'expire_sec', 0)
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
-        result['expire_sec'] = self.expire_sec
-        result['file_id'] = self.file_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expire_sec is not None:
+            result['expire_sec'] = self.expire_sec
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
-        self.expire_sec = map.get('expire_sec')
-        self.file_id = map.get('file_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('expire_sec') is not None:
+            self.expire_sec = map.get('expire_sec')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
         return self
 
 
@@ -10637,28 +12698,41 @@ class GetVideoPreviewURLRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
+        if self.expire_sec is not None:
+            self.validate_maximum(self.expire_sec, 'expire_sec', 14400)
+            self.validate_minimum(self.expire_sec, 'expire_sec', 0)
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
 
     def to_map(self):
         result = {}
-        result['addition_data'] = self.addition_data
-        result['drive_id'] = self.drive_id
-        result['expire_sec'] = self.expire_sec
-        result['file_id'] = self.file_id
-        result['template_id'] = self.template_id
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expire_sec is not None:
+            result['expire_sec'] = self.expire_sec
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.template_id is not None:
+            result['template_id'] = self.template_id
         return result
 
     def from_map(self, map={}):
-        self.addition_data = map.get('addition_data')
-        self.drive_id = map.get('drive_id')
-        self.expire_sec = map.get('expire_sec')
-        self.file_id = map.get('file_id')
-        self.template_id = map.get('template_id')
+        if map.get('addition_data') is not None:
+            self.addition_data = map.get('addition_data')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('expire_sec') is not None:
+            self.expire_sec = map.get('expire_sec')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('template_id') is not None:
+            self.template_id = map.get('template_id')
         return self
 
 
@@ -10684,7 +12758,7 @@ class HostingCompleteFileRequest(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         if self.part_info_list:
             for k in self.part_info_list:
@@ -10693,36 +12767,46 @@ class HostingCompleteFileRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['addition_data'] = self.addition_data
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['forbid_overwrite'] = self.forbid_overwrite
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.forbid_overwrite is not None:
+            result['forbid_overwrite'] = self.forbid_overwrite
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['share_id'] = self.share_id
-        result['upload_id'] = self.upload_id
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.addition_data = map.get('addition_data')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.forbid_overwrite = map.get('forbid_overwrite')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('addition_data') is not None:
+            self.addition_data = map.get('addition_data')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('forbid_overwrite') is not None:
+            self.forbid_overwrite = map.get('forbid_overwrite')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.share_id = map.get('share_id')
-        self.upload_id = map.get('upload_id')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -10782,70 +12866,119 @@ class HostingCompleteFileResponse(TeaModel):
         self.url = url                  # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_path:
+        if self.parent_file_path is not None:
             self.validate_max_length(self.parent_file_path, 'parent_file_path', 50)
             self.validate_pattern(self.parent_file_path, 'parent_file_path', '[a-z0-9]{1,50}')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9]+')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
 
     def to_map(self):
         result = {}
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc'] = self.crc
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['file_extension'] = self.file_extension
-        result['file_path'] = self.file_path
-        result['name'] = self.name
-        result['parent_file_path'] = self.parent_file_path
-        result['share_id'] = self.share_id
-        result['size'] = self.size
-        result['status'] = self.status
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc is not None:
+            result['crc'] = self.crc
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_path is not None:
+            result['parent_file_path'] = self.parent_file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.size is not None:
+            result['size'] = self.size
+        if self.status is not None:
+            result['status'] = self.status
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc = map.get('crc')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.file_extension = map.get('file_extension')
-        self.file_path = map.get('file_path')
-        self.name = map.get('name')
-        self.parent_file_path = map.get('parent_file_path')
-        self.share_id = map.get('share_id')
-        self.size = map.get('size')
-        self.status = map.get('status')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc') is not None:
+            self.crc = map.get('crc')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_path') is not None:
+            self.parent_file_path = map.get('parent_file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -10875,40 +13008,58 @@ class HostingCopyFileRequest(TeaModel):
         self.to_share_id = to_share_id  # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_path, 'file_path')
-        if self.new_name:
+        if self.new_name is not None:
             self.validate_pattern(self.new_name, 'new_name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
-        if self.to_drive_id:
+        if self.to_drive_id is not None:
             self.validate_pattern(self.to_drive_id, 'to_drive_id', '[0-9]+')
         self.validate_required(self.to_parent_file_path, 'to_parent_file_path')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['new_name'] = self.new_name
-        result['overwrite'] = self.overwrite
-        result['share_id'] = self.share_id
-        result['to_drive_id'] = self.to_drive_id
-        result['to_parent_file_path'] = self.to_parent_file_path
-        result['to_share_id'] = self.to_share_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.new_name is not None:
+            result['new_name'] = self.new_name
+        if self.overwrite is not None:
+            result['overwrite'] = self.overwrite
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.to_drive_id is not None:
+            result['to_drive_id'] = self.to_drive_id
+        if self.to_parent_file_path is not None:
+            result['to_parent_file_path'] = self.to_parent_file_path
+        if self.to_share_id is not None:
+            result['to_share_id'] = self.to_share_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.new_name = map.get('new_name')
-        self.overwrite = map.get('overwrite')
-        self.share_id = map.get('share_id')
-        self.to_drive_id = map.get('to_drive_id')
-        self.to_parent_file_path = map.get('to_parent_file_path')
-        self.to_share_id = map.get('to_share_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('new_name') is not None:
+            self.new_name = map.get('new_name')
+        if map.get('overwrite') is not None:
+            self.overwrite = map.get('overwrite')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('to_drive_id') is not None:
+            self.to_drive_id = map.get('to_drive_id')
+        if map.get('to_parent_file_path') is not None:
+            self.to_parent_file_path = map.get('to_parent_file_path')
+        if map.get('to_share_id') is not None:
+            self.to_share_id = map.get('to_share_id')
         return self
 
 
@@ -10929,28 +13080,38 @@ class HostingCopyFileResponse(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z-]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[a-z0-9A-Z]+')
 
     def to_map(self):
         result = {}
-        result['async_task_id'] = self.async_task_id
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['share_id'] = self.share_id
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.async_task_id = map.get('async_task_id')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.share_id = map.get('share_id')
+        if map.get('async_task_id') is not None:
+            self.async_task_id = map.get('async_task_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -10986,60 +13147,81 @@ class HostingCreateFileRequest(TeaModel):
         self.type = type                # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_max_length(self.name, 'name', 1024)
         self.validate_required(self.parent_file_path, 'parent_file_path')
         if self.part_info_list:
             for k in self.part_info_list:
                 if k:
                     k.validate()
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
         self.validate_required(self.type, 'type')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['addition_data'] = self.addition_data
-        result['content_md5'] = self.content_md_5
-        result['content_type'] = self.content_type
-        result['drive_id'] = self.drive_id
-        result['forbid_overwrite'] = self.forbid_overwrite
-        result['name'] = self.name
-        result['parent_file_path'] = self.parent_file_path
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.content_md_5 is not None:
+            result['content_md5'] = self.content_md_5
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.forbid_overwrite is not None:
+            result['forbid_overwrite'] = self.forbid_overwrite
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_path is not None:
+            result['parent_file_path'] = self.parent_file_path
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['share_id'] = self.share_id
-        result['size'] = self.size
-        result['type'] = self.type
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.size is not None:
+            result['size'] = self.size
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.addition_data = map.get('addition_data')
-        self.content_md_5 = map.get('content_md5')
-        self.content_type = map.get('content_type')
-        self.drive_id = map.get('drive_id')
-        self.forbid_overwrite = map.get('forbid_overwrite')
-        self.name = map.get('name')
-        self.parent_file_path = map.get('parent_file_path')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('addition_data') is not None:
+            self.addition_data = map.get('addition_data')
+        if map.get('content_md5') is not None:
+            self.content_md_5 = map.get('content_md5')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('forbid_overwrite') is not None:
+            self.forbid_overwrite = map.get('forbid_overwrite')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_path') is not None:
+            self.parent_file_path = map.get('parent_file_path')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.share_id = map.get('share_id')
-        self.size = map.get('size')
-        self.type = map.get('type')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -11065,48 +13247,56 @@ class HostingCreateFileResponse(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_max_length(self.domain_id, 'domain_id', 50)
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9]{1,50}')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         if self.part_info_list:
             for k in self.part_info_list:
                 if k:
                     k.validate()
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9]+')
 
     def to_map(self):
         result = {}
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['share_id'] = self.share_id
-        result['type'] = self.type
-        result['upload_id'] = self.upload_id
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.share_id = map.get('share_id')
-        self.type = map.get('type')
-        self.upload_id = map.get('upload_id')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -11127,29 +13317,39 @@ class HostingDeleteFileRequest(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_path, 'file_path')
-        if self.file_path:
+        if self.file_path is not None:
             self.validate_max_length(self.file_path, 'file_path', 1000)
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['permanently'] = self.permanently
-        result['share_id'] = self.share_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.permanently is not None:
+            result['permanently'] = self.permanently
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.permanently = map.get('permanently')
-        self.share_id = map.get('share_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('permanently') is not None:
+            self.permanently = map.get('permanently')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -11170,28 +13370,38 @@ class HostingDeleteFileResponse(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[a-z0-9A-Z]+')
 
     def to_map(self):
         result = {}
-        result['async_task_id'] = self.async_task_id
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['share_id'] = self.share_id
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.async_task_id = map.get('async_task_id')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.share_id = map.get('share_id')
+        if map.get('async_task_id') is not None:
+            self.async_task_id = map.get('async_task_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -11210,26 +13420,34 @@ class HostingDeleteFilesResponse(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9]+')
 
     def to_map(self):
         result = {}
-        result['deleted_file_id_list'] = self.deleted_file_id_list
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['share_id'] = self.share_id
+        if self.deleted_file_id_list is not None:
+            result['deleted_file_id_list'] = self.deleted_file_id_list
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.deleted_file_id_list = map.get('deleted_file_id_list')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.share_id = map.get('share_id')
+        if map.get('deleted_file_id_list') is not None:
+            self.deleted_file_id_list = map.get('deleted_file_id_list')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -11251,31 +13469,46 @@ class HostingGetDownloadUrlRequest(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
+        if self.expire_sec is not None:
+            self.validate_maximum(self.expire_sec, 'expire_sec', 14400)
+            self.validate_minimum(self.expire_sec, 'expire_sec', 10)
         self.validate_required(self.file_path, 'file_path')
-        if self.file_path:
+        if self.file_path is not None:
             self.validate_max_length(self.file_path, 'file_path', 1000)
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drive_id'] = self.drive_id
-        result['expire_sec'] = self.expire_sec
-        result['file_name'] = self.file_name
-        result['file_path'] = self.file_path
-        result['share_id'] = self.share_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expire_sec is not None:
+            result['expire_sec'] = self.expire_sec
+        if self.file_name is not None:
+            result['file_name'] = self.file_name
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drive_id = map.get('drive_id')
-        self.expire_sec = map.get('expire_sec')
-        self.file_name = map.get('file_name')
-        self.file_path = map.get('file_path')
-        self.share_id = map.get('share_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('expire_sec') is not None:
+            self.expire_sec = map.get('expire_sec')
+        if map.get('file_name') is not None:
+            self.file_name = map.get('file_name')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -11296,15 +13529,21 @@ class HostingGetDownloadUrlResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['expiration'] = self.expiration
-        result['method'] = self.method
-        result['url'] = self.url
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.method is not None:
+            result['method'] = self.method
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.expiration = map.get('expiration')
-        self.method = map.get('method')
-        self.url = map.get('url')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('method') is not None:
+            self.method = map.get('method')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -11331,33 +13570,50 @@ class HostingGetFileRequest(TeaModel):
         self.url_expire_sec = url_expire_sec  # type: int
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_path, 'file_path')
-        if self.file_path:
+        if self.file_path is not None:
             self.validate_max_length(self.file_path, 'file_path', 1000)
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
+        if self.url_expire_sec is not None:
+            self.validate_maximum(self.url_expire_sec, 'url_expire_sec', 14400)
+            self.validate_minimum(self.url_expire_sec, 'url_expire_sec', 10)
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['image_thumbnail_process'] = self.image_thumbnail_process
-        result['image_url_process'] = self.image_url_process
-        result['share_id'] = self.share_id
-        result['url_expire_sec'] = self.url_expire_sec
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.image_url_process is not None:
+            result['image_url_process'] = self.image_url_process
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.url_expire_sec is not None:
+            result['url_expire_sec'] = self.url_expire_sec
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.image_thumbnail_process = map.get('image_thumbnail_process')
-        self.image_url_process = map.get('image_url_process')
-        self.share_id = map.get('share_id')
-        self.url_expire_sec = map.get('url_expire_sec')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = map.get('image_thumbnail_process')
+        if map.get('image_url_process') is not None:
+            self.image_url_process = map.get('image_url_process')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('url_expire_sec') is not None:
+            self.url_expire_sec = map.get('url_expire_sec')
         return self
 
 
@@ -11415,68 +13671,115 @@ class HostingGetFileResponse(TeaModel):
         self.url = url                  # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_path:
+        if self.parent_file_path is not None:
             self.validate_max_length(self.parent_file_path, 'parent_file_path', 50)
             self.validate_pattern(self.parent_file_path, 'parent_file_path', '[a-z0-9]{1,50}')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9]+')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
 
     def to_map(self):
         result = {}
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['file_extension'] = self.file_extension
-        result['file_path'] = self.file_path
-        result['name'] = self.name
-        result['parent_file_path'] = self.parent_file_path
-        result['share_id'] = self.share_id
-        result['size'] = self.size
-        result['status'] = self.status
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_path is not None:
+            result['parent_file_path'] = self.parent_file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.size is not None:
+            result['size'] = self.size
+        if self.status is not None:
+            result['status'] = self.status
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.file_extension = map.get('file_extension')
-        self.file_path = map.get('file_path')
-        self.name = map.get('name')
-        self.parent_file_path = map.get('parent_file_path')
-        self.share_id = map.get('share_id')
-        self.size = map.get('size')
-        self.status = map.get('status')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_path') is not None:
+            self.parent_file_path = map.get('parent_file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -11498,31 +13801,43 @@ class HostingGetSecureUrlRequest(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_path, 'file_path')
-        if self.file_path:
+        if self.file_path is not None:
             self.validate_max_length(self.file_path, 'file_path', 1000)
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drive_id'] = self.drive_id
-        result['expire_sec'] = self.expire_sec
-        result['file_path'] = self.file_path
-        result['secure_ip'] = self.secure_ip
-        result['share_id'] = self.share_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expire_sec is not None:
+            result['expire_sec'] = self.expire_sec
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.secure_ip is not None:
+            result['secure_ip'] = self.secure_ip
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drive_id = map.get('drive_id')
-        self.expire_sec = map.get('expire_sec')
-        self.file_path = map.get('file_path')
-        self.secure_ip = map.get('secure_ip')
-        self.share_id = map.get('share_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('expire_sec') is not None:
+            self.expire_sec = map.get('expire_sec')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('secure_ip') is not None:
+            self.secure_ip = map.get('secure_ip')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -11541,13 +13856,17 @@ class HostingGetSecureUrlResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['expiration'] = self.expiration
-        result['url'] = self.url
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.expiration = map.get('expiration')
-        self.url = map.get('url')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -11572,49 +13891,57 @@ class HostingGetUploadUrlRequest(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.content_md_5:
+        if self.content_md_5 is not None:
             self.validate_max_length(self.content_md_5, 'content_md_5', 32)
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_path, 'file_path')
         if self.part_info_list:
             for k in self.part_info_list:
                 if k:
                     k.validate()
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
         self.validate_required(self.upload_id, 'upload_id')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['content_md5'] = self.content_md_5
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.content_md_5 is not None:
+            result['content_md5'] = self.content_md_5
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['share_id'] = self.share_id
-        result['upload_id'] = self.upload_id
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.content_md_5 = map.get('content_md5')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('content_md5') is not None:
+            self.content_md_5 = map.get('content_md5')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.share_id = map.get('share_id')
-        self.upload_id = map.get('upload_id')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -11638,9 +13965,9 @@ class HostingGetUploadUrlResponse(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         if self.part_info_list:
             for k in self.part_info_list:
@@ -11649,32 +13976,38 @@ class HostingGetUploadUrlResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['create_at'] = self.create_at
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
+        if self.create_at is not None:
+            result['create_at'] = self.create_at
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
         result['part_info_list'] = []
         if self.part_info_list is not None:
             for k in self.part_info_list:
                 result['part_info_list'].append(k.to_map() if k else None)
-        else:
-            result['part_info_list'] = None
-        result['upload_id'] = self.upload_id
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.create_at = map.get('create_at')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
+        if map.get('create_at') is not None:
+            self.create_at = map.get('create_at')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
         self.part_info_list = []
         if map.get('part_info_list') is not None:
             for k in map.get('part_info_list'):
                 temp_model = UploadPartInfo()
                 self.part_info_list.append(temp_model.from_map(k))
-        else:
-            self.part_info_list = None
-        self.upload_id = map.get('upload_id')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -11707,39 +14040,64 @@ class HostingListFileRequest(TeaModel):
         self.video_thumbnail_process = video_thumbnail_process  # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.limit:
+        if self.limit is not None:
             self.validate_pattern(self.limit, 'limit', '[0-9]{1,3}')
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 0)
         self.validate_required(self.parent_file_path, 'parent_file_path')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
+        if self.url_expire_sec is not None:
+            self.validate_maximum(self.url_expire_sec, 'url_expire_sec', 14400)
+            self.validate_minimum(self.url_expire_sec, 'url_expire_sec', 10)
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drive_id'] = self.drive_id
-        result['image_thumbnail_process'] = self.image_thumbnail_process
-        result['image_url_process'] = self.image_url_process
-        result['limit'] = self.limit
-        result['marker'] = self.marker
-        result['parent_file_path'] = self.parent_file_path
-        result['share_id'] = self.share_id
-        result['url_expire_sec'] = self.url_expire_sec
-        result['video_thumbnail_process'] = self.video_thumbnail_process
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.image_url_process is not None:
+            result['image_url_process'] = self.image_url_process
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.parent_file_path is not None:
+            result['parent_file_path'] = self.parent_file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.url_expire_sec is not None:
+            result['url_expire_sec'] = self.url_expire_sec
+        if self.video_thumbnail_process is not None:
+            result['video_thumbnail_process'] = self.video_thumbnail_process
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drive_id = map.get('drive_id')
-        self.image_thumbnail_process = map.get('image_thumbnail_process')
-        self.image_url_process = map.get('image_url_process')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
-        self.parent_file_path = map.get('parent_file_path')
-        self.share_id = map.get('share_id')
-        self.url_expire_sec = map.get('url_expire_sec')
-        self.video_thumbnail_process = map.get('video_thumbnail_process')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = map.get('image_thumbnail_process')
+        if map.get('image_url_process') is not None:
+            self.image_url_process = map.get('image_url_process')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
+        if map.get('parent_file_path') is not None:
+            self.parent_file_path = map.get('parent_file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('url_expire_sec') is not None:
+            self.url_expire_sec = map.get('url_expire_sec')
+        if map.get('video_thumbnail_process') is not None:
+            self.video_thumbnail_process = map.get('video_thumbnail_process')
         return self
 
 
@@ -11765,9 +14123,8 @@ class HostingListFileResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -11776,9 +14133,8 @@ class HostingListFileResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseHostingFileResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -11803,35 +14159,52 @@ class HostingListUploadedPartRequest(TeaModel):
         self.upload_id = upload_id      # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_path, 'file_path')
-        if self.limit:
+        if self.limit is not None:
             self.validate_pattern(self.limit, 'limit', '[0-9]+')
-        if self.part_number_marker:
+            self.validate_maximum(self.limit, 'limit', 1000)
+            self.validate_minimum(self.limit, 'limit', 1)
+        if self.part_number_marker is not None:
             self.validate_pattern(self.part_number_marker, 'part_number_marker', '[0-9]+')
-        if self.share_id:
+            self.validate_minimum(self.part_number_marker, 'part_number_marker', 1)
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['limit'] = self.limit
-        result['part_number_marker'] = self.part_number_marker
-        result['share_id'] = self.share_id
-        result['upload_id'] = self.upload_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.part_number_marker is not None:
+            result['part_number_marker'] = self.part_number_marker
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.limit = map.get('limit')
-        self.part_number_marker = map.get('part_number_marker')
-        self.share_id = map.get('share_id')
-        self.upload_id = map.get('upload_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('part_number_marker') is not None:
+            self.part_number_marker = map.get('part_number_marker')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -11857,28 +14230,30 @@ class HostingListUploadedPartResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['file_path'] = self.file_path
-        result['next_part_number_marker'] = self.next_part_number_marker
-        result['upload_id'] = self.upload_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.next_part_number_marker is not None:
+            result['next_part_number_marker'] = self.next_part_number_marker
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         result['uploaded_parts'] = []
         if self.uploaded_parts is not None:
             for k in self.uploaded_parts:
                 result['uploaded_parts'].append(k.to_map() if k else None)
-        else:
-            result['uploaded_parts'] = None
         return result
 
     def from_map(self, map={}):
-        self.file_path = map.get('file_path')
-        self.next_part_number_marker = map.get('next_part_number_marker')
-        self.upload_id = map.get('upload_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('next_part_number_marker') is not None:
+            self.next_part_number_marker = map.get('next_part_number_marker')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         self.uploaded_parts = []
         if map.get('uploaded_parts') is not None:
             for k in map.get('uploaded_parts'):
                 temp_model = UploadPartInfo()
                 self.uploaded_parts.append(temp_model.from_map(k))
-        else:
-            self.uploaded_parts = None
         return self
 
 
@@ -11904,30 +14279,44 @@ class HostingMoveFileRequest(TeaModel):
         self.to_parent_file_path = to_parent_file_path  # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['new_name'] = self.new_name
-        result['overwrite'] = self.overwrite
-        result['share_id'] = self.share_id
-        result['to_parent_file_path'] = self.to_parent_file_path
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.new_name is not None:
+            result['new_name'] = self.new_name
+        if self.overwrite is not None:
+            result['overwrite'] = self.overwrite
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.to_parent_file_path is not None:
+            result['to_parent_file_path'] = self.to_parent_file_path
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.new_name = map.get('new_name')
-        self.overwrite = map.get('overwrite')
-        self.share_id = map.get('share_id')
-        self.to_parent_file_path = map.get('to_parent_file_path')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('new_name') is not None:
+            self.new_name = map.get('new_name')
+        if map.get('overwrite') is not None:
+            self.overwrite = map.get('overwrite')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('to_parent_file_path') is not None:
+            self.to_parent_file_path = map.get('to_parent_file_path')
         return self
 
 
@@ -11948,28 +14337,38 @@ class HostingMoveFileResponse(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z-]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[a-z0-9A-Z]+')
 
     def to_map(self):
         result = {}
-        result['async_task_id'] = self.async_task_id
-        result['domain_id'] = self.domain_id
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['share_id'] = self.share_id
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.async_task_id = map.get('async_task_id')
-        self.domain_id = map.get('domain_id')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.share_id = map.get('share_id')
+        if map.get('async_task_id') is not None:
+            self.async_task_id = map.get('async_task_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -11995,9 +14394,8 @@ class HostingSearchFileResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -12006,9 +14404,8 @@ class HostingSearchFileResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseHostingFileResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -12066,68 +14463,115 @@ class HostingUpdateFileMetaResponse(TeaModel):
         self.url = url                  # type: str
 
     def validate(self):
-        if self.domain_id:
+        if self.domain_id is not None:
             self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.name, 'name')
-        if self.name:
+        if self.name is not None:
             self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_path:
+        if self.parent_file_path is not None:
             self.validate_max_length(self.parent_file_path, 'parent_file_path', 50)
             self.validate_pattern(self.parent_file_path, 'parent_file_path', '[a-z0-9]{1,50}')
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9]+')
+        if self.size is not None:
+            self.validate_maximum(self.size, 'size', 53687091200)
+            self.validate_minimum(self.size, 'size', 0)
 
     def to_map(self):
         result = {}
-        result['content_hash'] = self.content_hash
-        result['content_hash_name'] = self.content_hash_name
-        result['content_type'] = self.content_type
-        result['crc64_hash'] = self.crc_64hash
-        result['created_at'] = self.created_at
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['download_url'] = self.download_url
-        result['drive_id'] = self.drive_id
-        result['file_extension'] = self.file_extension
-        result['file_path'] = self.file_path
-        result['name'] = self.name
-        result['parent_file_path'] = self.parent_file_path
-        result['share_id'] = self.share_id
-        result['size'] = self.size
-        result['status'] = self.status
-        result['thumbnail'] = self.thumbnail
-        result['trashed_at'] = self.trashed_at
-        result['type'] = self.type
-        result['updated_at'] = self.updated_at
-        result['upload_id'] = self.upload_id
-        result['url'] = self.url
+        if self.content_hash is not None:
+            result['content_hash'] = self.content_hash
+        if self.content_hash_name is not None:
+            result['content_hash_name'] = self.content_hash_name
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.crc_64hash is not None:
+            result['crc64_hash'] = self.crc_64hash
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.download_url is not None:
+            result['download_url'] = self.download_url
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_extension is not None:
+            result['file_extension'] = self.file_extension
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_file_path is not None:
+            result['parent_file_path'] = self.parent_file_path
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.size is not None:
+            result['size'] = self.size
+        if self.status is not None:
+            result['status'] = self.status
+        if self.thumbnail is not None:
+            result['thumbnail'] = self.thumbnail
+        if self.trashed_at is not None:
+            result['trashed_at'] = self.trashed_at
+        if self.type is not None:
+            result['type'] = self.type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
+        if self.url is not None:
+            result['url'] = self.url
         return result
 
     def from_map(self, map={}):
-        self.content_hash = map.get('content_hash')
-        self.content_hash_name = map.get('content_hash_name')
-        self.content_type = map.get('content_type')
-        self.crc_64hash = map.get('crc64_hash')
-        self.created_at = map.get('created_at')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.download_url = map.get('download_url')
-        self.drive_id = map.get('drive_id')
-        self.file_extension = map.get('file_extension')
-        self.file_path = map.get('file_path')
-        self.name = map.get('name')
-        self.parent_file_path = map.get('parent_file_path')
-        self.share_id = map.get('share_id')
-        self.size = map.get('size')
-        self.status = map.get('status')
-        self.thumbnail = map.get('thumbnail')
-        self.trashed_at = map.get('trashed_at')
-        self.type = map.get('type')
-        self.updated_at = map.get('updated_at')
-        self.upload_id = map.get('upload_id')
-        self.url = map.get('url')
+        if map.get('content_hash') is not None:
+            self.content_hash = map.get('content_hash')
+        if map.get('content_hash_name') is not None:
+            self.content_hash_name = map.get('content_hash_name')
+        if map.get('content_type') is not None:
+            self.content_type = map.get('content_type')
+        if map.get('crc64_hash') is not None:
+            self.crc_64hash = map.get('crc64_hash')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('download_url') is not None:
+            self.download_url = map.get('download_url')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_extension') is not None:
+            self.file_extension = map.get('file_extension')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('parent_file_path') is not None:
+            self.parent_file_path = map.get('parent_file_path')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('size') is not None:
+            self.size = map.get('size')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('thumbnail') is not None:
+            self.thumbnail = map.get('thumbnail')
+        if map.get('trashed_at') is not None:
+            self.trashed_at = map.get('trashed_at')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
+        if map.get('url') is not None:
+            self.url = map.get('url')
         return self
 
 
@@ -12148,15 +14592,21 @@ class HostingVideoDRMLicenseRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drmType'] = self.drm_type
-        result['licenseRequest'] = self.license_request
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drm_type is not None:
+            result['drmType'] = self.drm_type
+        if self.license_request is not None:
+            result['licenseRequest'] = self.license_request
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drm_type = map.get('drmType')
-        self.license_request = map.get('licenseRequest')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drmType') is not None:
+            self.drm_type = map.get('drmType')
+        if map.get('licenseRequest') is not None:
+            self.license_request = map.get('licenseRequest')
         return self
 
 
@@ -12176,13 +14626,17 @@ class HostingVideoDRMLicenseResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['data'] = self.data
-        result['states'] = self.states
+        if self.data is not None:
+            result['data'] = self.data
+        if self.states is not None:
+            result['states'] = self.states
         return result
 
     def from_map(self, map={}):
-        self.data = map.get('data')
-        self.states = map.get('states')
+        if map.get('data') is not None:
+            self.data = map.get('data')
+        if map.get('states') is not None:
+            self.states = map.get('states')
         return self
 
 
@@ -12202,29 +14656,39 @@ class HostingVideoDefinitionRequest(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_path, 'file_path')
-        if self.file_path:
+        if self.file_path is not None:
             self.validate_max_length(self.file_path, 'file_path', 1000)
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['protection_scheme'] = self.protection_scheme
-        result['share_id'] = self.share_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.protection_scheme is not None:
+            result['protection_scheme'] = self.protection_scheme
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.protection_scheme = map.get('protection_scheme')
-        self.share_id = map.get('share_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('protection_scheme') is not None:
+            self.protection_scheme = map.get('protection_scheme')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -12243,13 +14707,17 @@ class HostingVideoDefinitionResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['definition_list'] = self.definition_list
-        result['frame_rate'] = self.frame_rate
+        if self.definition_list is not None:
+            result['definition_list'] = self.definition_list
+        if self.frame_rate is not None:
+            result['frame_rate'] = self.frame_rate
         return result
 
     def from_map(self, map={}):
-        self.definition_list = map.get('definition_list')
-        self.frame_rate = map.get('frame_rate')
+        if map.get('definition_list') is not None:
+            self.definition_list = map.get('definition_list')
+        if map.get('frame_rate') is not None:
+            self.frame_rate = map.get('frame_rate')
         return self
 
 
@@ -12276,36 +14744,55 @@ class HostingVideoM3U8Request(TeaModel):
         self.sign_token = sign_token    # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
+        if self.expire_sec is not None:
+            self.validate_maximum(self.expire_sec, 'expire_sec', 86400)
+            self.validate_minimum(self.expire_sec, 'expire_sec', 60)
         self.validate_required(self.file_path, 'file_path')
-        if self.file_path:
+        if self.file_path is not None:
             self.validate_max_length(self.file_path, 'file_path', 1000)
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
         self.validate_required(self.sign_token, 'sign_token')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['definition'] = self.definition
-        result['drive_id'] = self.drive_id
-        result['expire_sec'] = self.expire_sec
-        result['file_path'] = self.file_path
-        result['protection_scheme'] = self.protection_scheme
-        result['share_id'] = self.share_id
-        result['sign_token'] = self.sign_token
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.definition is not None:
+            result['definition'] = self.definition
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expire_sec is not None:
+            result['expire_sec'] = self.expire_sec
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.protection_scheme is not None:
+            result['protection_scheme'] = self.protection_scheme
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.sign_token is not None:
+            result['sign_token'] = self.sign_token
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.definition = map.get('definition')
-        self.drive_id = map.get('drive_id')
-        self.expire_sec = map.get('expire_sec')
-        self.file_path = map.get('file_path')
-        self.protection_scheme = map.get('protection_scheme')
-        self.share_id = map.get('share_id')
-        self.sign_token = map.get('sign_token')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('definition') is not None:
+            self.definition = map.get('definition')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('expire_sec') is not None:
+            self.expire_sec = map.get('expire_sec')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('protection_scheme') is not None:
+            self.protection_scheme = map.get('protection_scheme')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('sign_token') is not None:
+            self.sign_token = map.get('sign_token')
         return self
 
 
@@ -12332,35 +14819,51 @@ class HostingVideoTranscodeRequest(TeaModel):
         self.transcode = transcode      # type: bool
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_path, 'file_path')
-        if self.file_path:
+        if self.file_path is not None:
             self.validate_max_length(self.file_path, 'file_path', 1000)
-        if self.share_id:
+        if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['drive_id'] = self.drive_id
-        result['file_path'] = self.file_path
-        result['hls_time'] = self.hls_time
-        result['protection_scheme'] = self.protection_scheme
-        result['remarks'] = self.remarks
-        result['share_id'] = self.share_id
-        result['transcode'] = self.transcode
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_path is not None:
+            result['file_path'] = self.file_path
+        if self.hls_time is not None:
+            result['hls_time'] = self.hls_time
+        if self.protection_scheme is not None:
+            result['protection_scheme'] = self.protection_scheme
+        if self.remarks is not None:
+            result['remarks'] = self.remarks
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.transcode is not None:
+            result['transcode'] = self.transcode
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.drive_id = map.get('drive_id')
-        self.file_path = map.get('file_path')
-        self.hls_time = map.get('hls_time')
-        self.protection_scheme = map.get('protection_scheme')
-        self.remarks = map.get('remarks')
-        self.share_id = map.get('share_id')
-        self.transcode = map.get('transcode')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_path') is not None:
+            self.file_path = map.get('file_path')
+        if map.get('hls_time') is not None:
+            self.hls_time = map.get('hls_time')
+        if map.get('protection_scheme') is not None:
+            self.protection_scheme = map.get('protection_scheme')
+        if map.get('remarks') is not None:
+            self.remarks = map.get('remarks')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('transcode') is not None:
+            self.transcode = map.get('transcode')
         return self
 
 
@@ -12381,15 +14884,21 @@ class HostingVideoTranscodeResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['definition_list'] = self.definition_list
-        result['duration'] = self.duration
-        result['hls_time'] = self.hls_time
+        if self.definition_list is not None:
+            result['definition_list'] = self.definition_list
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.hls_time is not None:
+            result['hls_time'] = self.hls_time
         return result
 
     def from_map(self, map={}):
-        self.definition_list = map.get('definition_list')
-        self.duration = map.get('duration')
-        self.hls_time = map.get('hls_time')
+        if map.get('definition_list') is not None:
+            self.definition_list = map.get('definition_list')
+        if map.get('duration') is not None:
+            self.duration = map.get('duration')
+        if map.get('hls_time') is not None:
+            self.hls_time = map.get('hls_time')
         return self
 
 
@@ -12408,13 +14917,17 @@ class ImageMediaMetadata(TeaModel):
 
     def to_map(self):
         result = {}
-        result['height'] = self.height
-        result['width'] = self.width
+        if self.height is not None:
+            result['height'] = self.height
+        if self.width is not None:
+            result['width'] = self.width
         return result
 
     def from_map(self, map={}):
-        self.height = map.get('height')
-        self.width = map.get('width')
+        if map.get('height') is not None:
+            self.height = map.get('height')
+        if map.get('width') is not None:
+            self.width = map.get('width')
         return self
 
 
@@ -12433,25 +14946,36 @@ class ListByAnonymousRequest(TeaModel):
         self.share_id = share_id        # type: str
 
     def validate(self):
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 1)
         self.validate_required(self.parent_file_id, 'parent_file_id')
-        if self.parent_file_id:
+        if self.parent_file_id is not None:
             self.validate_max_length(self.parent_file_id, 'parent_file_id', 50)
             self.validate_pattern(self.parent_file_id, 'parent_file_id', '[a-z0-9]{1,50}')
         self.validate_required(self.share_id, 'share_id')
 
     def to_map(self):
         result = {}
-        result['limit'] = self.limit
-        result['marker'] = self.marker
-        result['parent_file_id'] = self.parent_file_id
-        result['share_id'] = self.share_id
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.parent_file_id is not None:
+            result['parent_file_id'] = self.parent_file_id
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, map={}):
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
-        self.parent_file_id = map.get('parent_file_id')
-        self.share_id = map.get('share_id')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
+        if map.get('parent_file_id') is not None:
+            self.parent_file_id = map.get('parent_file_id')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
         return self
 
 
@@ -12469,21 +14993,31 @@ class ListDriveRequest(TeaModel):
         self.owner = owner              # type: str
 
     def validate(self):
-        pass
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 1)
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['limit'] = self.limit
-        result['marker'] = self.marker
-        result['owner'] = self.owner
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.owner is not None:
+            result['owner'] = self.owner
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
-        self.owner = map.get('owner')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
+        if map.get('owner') is not None:
+            self.owner = map.get('owner')
         return self
 
 
@@ -12528,46 +15062,81 @@ class ListFileByCustomIndexKeyRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.custom_index_key, 'custom_index_key')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.limit:
+        if self.limit is not None:
             self.validate_pattern(self.limit, 'limit', '[0-9]{1,3}')
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 0)
+        if self.url_expire_sec is not None:
+            self.validate_maximum(self.url_expire_sec, 'url_expire_sec', 14400)
+            self.validate_minimum(self.url_expire_sec, 'url_expire_sec', 10)
 
     def to_map(self):
         result = {}
-        result['Starred'] = self.starred
-        result['category'] = self.category
-        result['custom_index_key'] = self.custom_index_key
-        result['drive_id'] = self.drive_id
-        result['encrypt_mode'] = self.encrypt_mode
-        result['fields'] = self.fields
-        result['image_thumbnail_process'] = self.image_thumbnail_process
-        result['image_url_process'] = self.image_url_process
-        result['limit'] = self.limit
-        result['marker'] = self.marker
-        result['order_direction'] = self.order_direction
-        result['status'] = self.status
-        result['type'] = self.type
-        result['url_expire_sec'] = self.url_expire_sec
-        result['video_thumbnail_process'] = self.video_thumbnail_process
+        if self.starred is not None:
+            result['Starred'] = self.starred
+        if self.category is not None:
+            result['category'] = self.category
+        if self.custom_index_key is not None:
+            result['custom_index_key'] = self.custom_index_key
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.fields is not None:
+            result['fields'] = self.fields
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.image_url_process is not None:
+            result['image_url_process'] = self.image_url_process
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.order_direction is not None:
+            result['order_direction'] = self.order_direction
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.url_expire_sec is not None:
+            result['url_expire_sec'] = self.url_expire_sec
+        if self.video_thumbnail_process is not None:
+            result['video_thumbnail_process'] = self.video_thumbnail_process
         return result
 
     def from_map(self, map={}):
-        self.starred = map.get('Starred')
-        self.category = map.get('category')
-        self.custom_index_key = map.get('custom_index_key')
-        self.drive_id = map.get('drive_id')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.fields = map.get('fields')
-        self.image_thumbnail_process = map.get('image_thumbnail_process')
-        self.image_url_process = map.get('image_url_process')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
-        self.order_direction = map.get('order_direction')
-        self.status = map.get('status')
-        self.type = map.get('type')
-        self.url_expire_sec = map.get('url_expire_sec')
-        self.video_thumbnail_process = map.get('video_thumbnail_process')
+        if map.get('Starred') is not None:
+            self.starred = map.get('Starred')
+        if map.get('category') is not None:
+            self.category = map.get('category')
+        if map.get('custom_index_key') is not None:
+            self.custom_index_key = map.get('custom_index_key')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('fields') is not None:
+            self.fields = map.get('fields')
+        if map.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = map.get('image_thumbnail_process')
+        if map.get('image_url_process') is not None:
+            self.image_url_process = map.get('image_url_process')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
+        if map.get('order_direction') is not None:
+            self.order_direction = map.get('order_direction')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('url_expire_sec') is not None:
+            self.url_expire_sec = map.get('url_expire_sec')
+        if map.get('video_thumbnail_process') is not None:
+            self.video_thumbnail_process = map.get('video_thumbnail_process')
         return self
 
 
@@ -12586,20 +15155,26 @@ class ListFileDeltaRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
 
     def to_map(self):
         result = {}
-        result['cursor'] = self.cursor
-        result['drive_id'] = self.drive_id
-        result['limit'] = self.limit
+        if self.cursor is not None:
+            result['cursor'] = self.cursor
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.limit is not None:
+            result['limit'] = self.limit
         return result
 
     def from_map(self, map={}):
-        self.cursor = map.get('cursor')
-        self.drive_id = map.get('drive_id')
-        self.limit = map.get('limit')
+        if map.get('cursor') is not None:
+            self.cursor = map.get('cursor')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
         return self
 
 
@@ -12645,52 +15220,89 @@ class ListFileRequest(TeaModel):
         self.video_thumbnail_process = video_thumbnail_process  # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.limit:
+        if self.limit is not None:
             self.validate_pattern(self.limit, 'limit', '[0-9]{1,3}')
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 0)
         self.validate_required(self.parent_file_id, 'parent_file_id')
-        if self.parent_file_id:
+        if self.parent_file_id is not None:
             self.validate_max_length(self.parent_file_id, 'parent_file_id', 50)
             self.validate_pattern(self.parent_file_id, 'parent_file_id', '[a-z0-9.-_]{1,50}')
+        if self.url_expire_sec is not None:
+            self.validate_maximum(self.url_expire_sec, 'url_expire_sec', 14400)
+            self.validate_minimum(self.url_expire_sec, 'url_expire_sec', 10)
 
     def to_map(self):
         result = {}
-        result['Starred'] = self.starred
-        result['all'] = self.all
-        result['category'] = self.category
-        result['drive_id'] = self.drive_id
-        result['fields'] = self.fields
-        result['image_thumbnail_process'] = self.image_thumbnail_process
-        result['image_url_process'] = self.image_url_process
-        result['limit'] = self.limit
-        result['marker'] = self.marker
-        result['order_by'] = self.order_by
-        result['order_direction'] = self.order_direction
-        result['parent_file_id'] = self.parent_file_id
-        result['status'] = self.status
-        result['type'] = self.type
-        result['url_expire_sec'] = self.url_expire_sec
-        result['video_thumbnail_process'] = self.video_thumbnail_process
+        if self.starred is not None:
+            result['Starred'] = self.starred
+        if self.all is not None:
+            result['all'] = self.all
+        if self.category is not None:
+            result['category'] = self.category
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.fields is not None:
+            result['fields'] = self.fields
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.image_url_process is not None:
+            result['image_url_process'] = self.image_url_process
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.order_by is not None:
+            result['order_by'] = self.order_by
+        if self.order_direction is not None:
+            result['order_direction'] = self.order_direction
+        if self.parent_file_id is not None:
+            result['parent_file_id'] = self.parent_file_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.url_expire_sec is not None:
+            result['url_expire_sec'] = self.url_expire_sec
+        if self.video_thumbnail_process is not None:
+            result['video_thumbnail_process'] = self.video_thumbnail_process
         return result
 
     def from_map(self, map={}):
-        self.starred = map.get('Starred')
-        self.all = map.get('all')
-        self.category = map.get('category')
-        self.drive_id = map.get('drive_id')
-        self.fields = map.get('fields')
-        self.image_thumbnail_process = map.get('image_thumbnail_process')
-        self.image_url_process = map.get('image_url_process')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
-        self.order_by = map.get('order_by')
-        self.order_direction = map.get('order_direction')
-        self.parent_file_id = map.get('parent_file_id')
-        self.status = map.get('status')
-        self.type = map.get('type')
-        self.url_expire_sec = map.get('url_expire_sec')
-        self.video_thumbnail_process = map.get('video_thumbnail_process')
+        if map.get('Starred') is not None:
+            self.starred = map.get('Starred')
+        if map.get('all') is not None:
+            self.all = map.get('all')
+        if map.get('category') is not None:
+            self.category = map.get('category')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('fields') is not None:
+            self.fields = map.get('fields')
+        if map.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = map.get('image_thumbnail_process')
+        if map.get('image_url_process') is not None:
+            self.image_url_process = map.get('image_url_process')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
+        if map.get('order_by') is not None:
+            self.order_by = map.get('order_by')
+        if map.get('order_direction') is not None:
+            self.order_direction = map.get('order_direction')
+        if map.get('parent_file_id') is not None:
+            self.parent_file_id = map.get('parent_file_id')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('type') is not None:
+            self.type = map.get('type')
+        if map.get('url_expire_sec') is not None:
+            self.url_expire_sec = map.get('url_expire_sec')
+        if map.get('video_thumbnail_process') is not None:
+            self.video_thumbnail_process = map.get('video_thumbnail_process')
         return self
 
 
@@ -12706,19 +15318,27 @@ class ListMyDriveRequest(TeaModel):
         self.marker = marker            # type: str
 
     def validate(self):
-        pass
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 1)
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['limit'] = self.limit
-        result['marker'] = self.marker
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
         return self
 
 
@@ -12735,19 +15355,27 @@ class ListShareLinkRequest(TeaModel):
         self.marker = marker            # type: str
 
     def validate(self):
-        pass
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 1)
 
     def to_map(self):
         result = {}
-        result['creator'] = self.creator
-        result['limit'] = self.limit
-        result['marker'] = self.marker
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
         return result
 
     def from_map(self, map={}):
-        self.creator = map.get('creator')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
+        if map.get('creator') is not None:
+            self.creator = map.get('creator')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
         return self
 
 
@@ -12771,28 +15399,45 @@ class ListShareRequest(TeaModel):
         self.share_file_path = share_file_path  # type: str
 
     def validate(self):
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 1)
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['creator'] = self.creator
-        result['drive_id'] = self.drive_id
-        result['limit'] = self.limit
-        result['marker'] = self.marker
-        result['owner'] = self.owner
-        result['share_file_path'] = self.share_file_path
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.owner is not None:
+            result['owner'] = self.owner
+        if self.share_file_path is not None:
+            result['share_file_path'] = self.share_file_path
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.creator = map.get('creator')
-        self.drive_id = map.get('drive_id')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
-        self.owner = map.get('owner')
-        self.share_file_path = map.get('share_file_path')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('creator') is not None:
+            self.creator = map.get('creator')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
+        if map.get('owner') is not None:
+            self.owner = map.get('owner')
+        if map.get('share_file_path') is not None:
+            self.share_file_path = map.get('share_file_path')
         return self
 
 
@@ -12814,25 +15459,39 @@ class ListStoreFileRequest(TeaModel):
         self.type = type                # type: str
 
     def validate(self):
-        pass
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 1000)
+            self.validate_minimum(self.limit, 'limit', 1)
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['limit'] = self.limit
-        result['marker'] = self.marker
-        result['parent_file_path'] = self.parent_file_path
-        result['store_id'] = self.store_id
-        result['type'] = self.type
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.parent_file_path is not None:
+            result['parent_file_path'] = self.parent_file_path
+        if self.store_id is not None:
+            result['store_id'] = self.store_id
+        if self.type is not None:
+            result['type'] = self.type
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
-        self.parent_file_path = map.get('parent_file_path')
-        self.store_id = map.get('store_id')
-        self.type = map.get('type')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
+        if map.get('parent_file_path') is not None:
+            self.parent_file_path = map.get('parent_file_path')
+        if map.get('store_id') is not None:
+            self.store_id = map.get('store_id')
+        if map.get('type') is not None:
+            self.type = map.get('type')
         return self
 
 
@@ -12849,11 +15508,13 @@ class ListStoreRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['domain_id'] = self.domain_id
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
         return result
 
     def from_map(self, map={}):
-        self.domain_id = map.get('domain_id')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
         return self
 
 
@@ -12875,32 +15536,45 @@ class ListUploadedPartRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
-        if self.limit:
+        if self.limit is not None:
             self.validate_pattern(self.limit, 'limit', '[0-9]+')
-        if self.part_number_marker:
+            self.validate_maximum(self.limit, 'limit', 1000)
+            self.validate_minimum(self.limit, 'limit', 1)
+        if self.part_number_marker is not None:
             self.validate_pattern(self.part_number_marker, 'part_number_marker', '[0-9]+')
+            self.validate_minimum(self.part_number_marker, 'part_number_marker', 1)
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
-        result['file_id'] = self.file_id
-        result['limit'] = self.limit
-        result['part_number_marker'] = self.part_number_marker
-        result['upload_id'] = self.upload_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.part_number_marker is not None:
+            result['part_number_marker'] = self.part_number_marker
+        if self.upload_id is not None:
+            result['upload_id'] = self.upload_id
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
-        self.file_id = map.get('file_id')
-        self.limit = map.get('limit')
-        self.part_number_marker = map.get('part_number_marker')
-        self.upload_id = map.get('upload_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('part_number_marker') is not None:
+            self.part_number_marker = map.get('part_number_marker')
+        if map.get('upload_id') is not None:
+            self.upload_id = map.get('upload_id')
         return self
 
 
@@ -12923,33 +15597,43 @@ class MoveFileRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
-        if self.new_name:
+        if self.new_name is not None:
             self.validate_max_length(self.new_name, 'new_name', 1024)
         self.validate_required(self.to_parent_file_id, 'to_parent_file_id')
-        if self.to_parent_file_id:
+        if self.to_parent_file_id is not None:
             self.validate_max_length(self.to_parent_file_id, 'to_parent_file_id', 50)
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
-        result['file_id'] = self.file_id
-        result['new_name'] = self.new_name
-        result['overwrite'] = self.overwrite
-        result['to_parent_file_id'] = self.to_parent_file_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.new_name is not None:
+            result['new_name'] = self.new_name
+        if self.overwrite is not None:
+            result['overwrite'] = self.overwrite
+        if self.to_parent_file_id is not None:
+            result['to_parent_file_id'] = self.to_parent_file_id
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
-        self.file_id = map.get('file_id')
-        self.new_name = map.get('new_name')
-        self.overwrite = map.get('overwrite')
-        self.to_parent_file_id = map.get('to_parent_file_id')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('new_name') is not None:
+            self.new_name = map.get('new_name')
+        if map.get('overwrite') is not None:
+            self.overwrite = map.get('overwrite')
+        if map.get('to_parent_file_id') is not None:
+            self.to_parent_file_id = map.get('to_parent_file_id')
         return self
 
 
@@ -12967,27 +15651,33 @@ class PlayMediaRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.auth_key, 'auth_key')
-        if self.auth_key:
+        if self.auth_key is not None:
             self.validate_pattern(self.auth_key, 'auth_key', '[a-z0-9]+')
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
 
     def to_map(self):
         result = {}
-        result['AuthKey'] = self.auth_key
-        result['DriveID'] = self.drive_id
-        result['FileID'] = self.file_id
+        if self.auth_key is not None:
+            result['AuthKey'] = self.auth_key
+        if self.drive_id is not None:
+            result['DriveID'] = self.drive_id
+        if self.file_id is not None:
+            result['FileID'] = self.file_id
         return result
 
     def from_map(self, map={}):
-        self.auth_key = map.get('AuthKey')
-        self.drive_id = map.get('DriveID')
-        self.file_id = map.get('FileID')
+        if map.get('AuthKey') is not None:
+            self.auth_key = map.get('AuthKey')
+        if map.get('DriveID') is not None:
+            self.drive_id = map.get('DriveID')
+        if map.get('FileID') is not None:
+            self.file_id = map.get('FileID')
         return self
 
 
@@ -13007,22 +15697,33 @@ class ScanFileMetaRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 5000)
+            self.validate_minimum(self.limit, 'limit', 1)
 
     def to_map(self):
         result = {}
-        result['category'] = self.category
-        result['drive_id'] = self.drive_id
-        result['limit'] = self.limit
-        result['marker'] = self.marker
+        if self.category is not None:
+            result['category'] = self.category
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
         return result
 
     def from_map(self, map={}):
-        self.category = map.get('category')
-        self.drive_id = map.get('drive_id')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
+        if map.get('category') is not None:
+            self.category = map.get('category')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
         return self
 
 
@@ -13054,34 +15755,58 @@ class SearchFileRequest(TeaModel):
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.query:
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 1)
+        if self.query is not None:
             self.validate_max_length(self.query, 'query', 4096)
+        if self.url_expire_sec is not None:
+            self.validate_maximum(self.url_expire_sec, 'url_expire_sec', 14400)
+            self.validate_minimum(self.url_expire_sec, 'url_expire_sec', 10)
 
     def to_map(self):
         result = {}
-        result['drive_id'] = self.drive_id
-        result['image_thumbnail_process'] = self.image_thumbnail_process
-        result['image_url_process'] = self.image_url_process
-        result['limit'] = self.limit
-        result['marker'] = self.marker
-        result['order_by'] = self.order_by
-        result['query'] = self.query
-        result['url_expire_sec'] = self.url_expire_sec
-        result['video_thumbnail_process'] = self.video_thumbnail_process
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.image_url_process is not None:
+            result['image_url_process'] = self.image_url_process
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.order_by is not None:
+            result['order_by'] = self.order_by
+        if self.query is not None:
+            result['query'] = self.query
+        if self.url_expire_sec is not None:
+            result['url_expire_sec'] = self.url_expire_sec
+        if self.video_thumbnail_process is not None:
+            result['video_thumbnail_process'] = self.video_thumbnail_process
         return result
 
     def from_map(self, map={}):
-        self.drive_id = map.get('drive_id')
-        self.image_thumbnail_process = map.get('image_thumbnail_process')
-        self.image_url_process = map.get('image_url_process')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
-        self.order_by = map.get('order_by')
-        self.query = map.get('query')
-        self.url_expire_sec = map.get('url_expire_sec')
-        self.video_thumbnail_process = map.get('video_thumbnail_process')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = map.get('image_thumbnail_process')
+        if map.get('image_url_process') is not None:
+            self.image_url_process = map.get('image_url_process')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
+        if map.get('order_by') is not None:
+            self.order_by = map.get('order_by')
+        if map.get('query') is not None:
+            self.query = map.get('query')
+        if map.get('url_expire_sec') is not None:
+            self.url_expire_sec = map.get('url_expire_sec')
+        if map.get('video_thumbnail_process') is not None:
+            self.video_thumbnail_process = map.get('video_thumbnail_process')
         return self
 
 
@@ -13097,11 +15822,13 @@ class UCGetObjectInfoByObjectKeyRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['object_key'] = self.object_key
+        if self.object_key is not None:
+            result['object_key'] = self.object_key
         return result
 
     def from_map(self, map={}):
-        self.object_key = map.get('object_key')
+        if map.get('object_key') is not None:
+            self.object_key = map.get('object_key')
         return self
 
 
@@ -13117,11 +15844,13 @@ class UCGetObjectInfoBySha1Request(TeaModel):
 
     def to_map(self):
         result = {}
-        result['sha1'] = self.sha_1
+        if self.sha_1 is not None:
+            result['sha1'] = self.sha_1
         return result
 
     def from_map(self, map={}):
-        self.sha_1 = map.get('sha1')
+        if map.get('sha1') is not None:
+            self.sha_1 = map.get('sha1')
         return self
 
 
@@ -13148,33 +15877,49 @@ class UpdateDriveRequest(TeaModel):
         self.total_size = total_size    # type: int
 
     def validate(self):
-        if self.description:
+        if self.description is not None:
             self.validate_max_length(self.description, 'description', 1024)
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_name:
+        if self.drive_name is not None:
             self.validate_max_length(self.drive_name, 'drive_name', 1024)
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['description'] = self.description
-        result['drive_id'] = self.drive_id
-        result['drive_name'] = self.drive_name
-        result['encrypt_data_access'] = self.encrypt_data_access
-        result['encrypt_mode'] = self.encrypt_mode
-        result['status'] = self.status
-        result['total_size'] = self.total_size
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.description is not None:
+            result['description'] = self.description
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.drive_name is not None:
+            result['drive_name'] = self.drive_name
+        if self.encrypt_data_access is not None:
+            result['encrypt_data_access'] = self.encrypt_data_access
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.status is not None:
+            result['status'] = self.status
+        if self.total_size is not None:
+            result['total_size'] = self.total_size
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.description = map.get('description')
-        self.drive_id = map.get('drive_id')
-        self.drive_name = map.get('drive_name')
-        self.encrypt_data_access = map.get('encrypt_data_access')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.status = map.get('status')
-        self.total_size = map.get('total_size')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('drive_name') is not None:
+            self.drive_name = map.get('drive_name')
+        if map.get('encrypt_data_access') is not None:
+            self.encrypt_data_access = map.get('encrypt_data_access')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('total_size') is not None:
+            self.total_size = map.get('total_size')
         return self
 
 
@@ -13210,47 +15955,71 @@ class UpdateFileMetaRequest(TeaModel):
         self.user_meta = user_meta      # type: str
 
     def validate(self):
-        if self.description:
+        if self.description is not None:
             self.validate_max_length(self.description, 'description', 1024)
         self.validate_required(self.drive_id, 'drive_id')
-        if self.drive_id:
+        if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         self.validate_required(self.file_id, 'file_id')
-        if self.file_id:
+        if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
-        if self.name:
+        if self.name is not None:
             self.validate_max_length(self.name, 'name', 1024)
 
     def to_map(self):
         result = {}
-        result['check_name_mode'] = self.check_name_mode
-        result['custom_index_key'] = self.custom_index_key
-        result['description'] = self.description
-        result['drive_id'] = self.drive_id
-        result['encrypt_mode'] = self.encrypt_mode
-        result['file_id'] = self.file_id
-        result['hidden'] = self.hidden
-        result['labels'] = self.labels
-        result['meta'] = self.meta
-        result['name'] = self.name
-        result['starred'] = self.starred
-        result['user_meta'] = self.user_meta
+        if self.check_name_mode is not None:
+            result['check_name_mode'] = self.check_name_mode
+        if self.custom_index_key is not None:
+            result['custom_index_key'] = self.custom_index_key
+        if self.description is not None:
+            result['description'] = self.description
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.encrypt_mode is not None:
+            result['encrypt_mode'] = self.encrypt_mode
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.hidden is not None:
+            result['hidden'] = self.hidden
+        if self.labels is not None:
+            result['labels'] = self.labels
+        if self.meta is not None:
+            result['meta'] = self.meta
+        if self.name is not None:
+            result['name'] = self.name
+        if self.starred is not None:
+            result['starred'] = self.starred
+        if self.user_meta is not None:
+            result['user_meta'] = self.user_meta
         return result
 
     def from_map(self, map={}):
-        self.check_name_mode = map.get('check_name_mode')
-        self.custom_index_key = map.get('custom_index_key')
-        self.description = map.get('description')
-        self.drive_id = map.get('drive_id')
-        self.encrypt_mode = map.get('encrypt_mode')
-        self.file_id = map.get('file_id')
-        self.hidden = map.get('hidden')
-        self.labels = map.get('labels')
-        self.meta = map.get('meta')
-        self.name = map.get('name')
-        self.starred = map.get('starred')
-        self.user_meta = map.get('user_meta')
+        if map.get('check_name_mode') is not None:
+            self.check_name_mode = map.get('check_name_mode')
+        if map.get('custom_index_key') is not None:
+            self.custom_index_key = map.get('custom_index_key')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('drive_id') is not None:
+            self.drive_id = map.get('drive_id')
+        if map.get('encrypt_mode') is not None:
+            self.encrypt_mode = map.get('encrypt_mode')
+        if map.get('file_id') is not None:
+            self.file_id = map.get('file_id')
+        if map.get('hidden') is not None:
+            self.hidden = map.get('hidden')
+        if map.get('labels') is not None:
+            self.labels = map.get('labels')
+        if map.get('meta') is not None:
+            self.meta = map.get('meta')
+        if map.get('name') is not None:
+            self.name = map.get('name')
+        if map.get('starred') is not None:
+            self.starred = map.get('starred')
+        if map.get('user_meta') is not None:
+            self.user_meta = map.get('user_meta')
         return self
 
 
@@ -13277,7 +16046,7 @@ class UpdateShareRequest(TeaModel):
         self.status = status            # type: str
 
     def validate(self):
-        if self.description:
+        if self.description is not None:
             self.validate_max_length(self.description, 'description', 1024)
         self.validate_required(self.share_id, 'share_id')
         if self.share_policy:
@@ -13287,36 +16056,46 @@ class UpdateShareRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['description'] = self.description
-        result['expiration'] = self.expiration
-        result['permissions'] = self.permissions
-        result['share_id'] = self.share_id
-        result['share_name'] = self.share_name
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.description is not None:
+            result['description'] = self.description
+        if self.expiration is not None:
+            result['expiration'] = self.expiration
+        if self.permissions is not None:
+            result['permissions'] = self.permissions
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.share_name is not None:
+            result['share_name'] = self.share_name
         result['share_policy'] = []
         if self.share_policy is not None:
             for k in self.share_policy:
                 result['share_policy'].append(k.to_map() if k else None)
-        else:
-            result['share_policy'] = None
-        result['status'] = self.status
+        if self.status is not None:
+            result['status'] = self.status
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.description = map.get('description')
-        self.expiration = map.get('expiration')
-        self.permissions = map.get('permissions')
-        self.share_id = map.get('share_id')
-        self.share_name = map.get('share_name')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('expiration') is not None:
+            self.expiration = map.get('expiration')
+        if map.get('permissions') is not None:
+            self.permissions = map.get('permissions')
+        if map.get('share_id') is not None:
+            self.share_id = map.get('share_id')
+        if map.get('share_name') is not None:
+            self.share_name = map.get('share_name')
         self.share_policy = []
         if map.get('share_policy') is not None:
             for k in map.get('share_policy'):
                 temp_model = SharePermissionPolicy()
                 self.share_policy.append(temp_model.from_map(k))
-        else:
-            self.share_policy = None
-        self.status = map.get('status')
+        if map.get('status') is not None:
+            self.status = map.get('status')
         return self
 
 
@@ -13333,11 +16112,13 @@ class VideoMediaMetadata(TeaModel):
 
     def to_map(self):
         result = {}
-        result['duration'] = self.duration
+        if self.duration is not None:
+            result['duration'] = self.duration
         return result
 
     def from_map(self, map={}):
-        self.duration = map.get('duration')
+        if map.get('duration') is not None:
+            self.duration = map.get('duration')
         return self
 
 
@@ -13353,20 +16134,18 @@ class CreateUserModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = CreateUserResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -13379,11 +16158,13 @@ class DeleteUserModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         return self
 
 
@@ -13399,20 +16180,18 @@ class GetUserModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = GetUserResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -13428,20 +16207,18 @@ class ListUsersModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = ListUserResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -13457,20 +16234,18 @@ class SearchUserModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = ListUserResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -13486,20 +16261,18 @@ class UpdateUserModel(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
+        if self.headers is not None:
+            result['headers'] = self.headers
         if self.body is not None:
             result['body'] = self.body.to_map()
-        else:
-            result['body'] = None
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
         if map.get('body') is not None:
             temp_model = UpdateUserResponse()
             self.body = temp_model.from_map(map['body'])
-        else:
-            self.body = None
         return self
 
 
@@ -13544,37 +16317,65 @@ class BaseUserResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['avatar'] = self.avatar
-        result['created_at'] = self.created_at
-        result['default_drive_id'] = self.default_drive_id
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['email'] = self.email
-        result['nick_name'] = self.nick_name
-        result['phone'] = self.phone
-        result['role'] = self.role
-        result['status'] = self.status
-        result['updated_at'] = self.updated_at
-        result['user_data'] = self.user_data
-        result['user_id'] = self.user_id
-        result['user_name'] = self.user_name
+        if self.avatar is not None:
+            result['avatar'] = self.avatar
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.default_drive_id is not None:
+            result['default_drive_id'] = self.default_drive_id
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.email is not None:
+            result['email'] = self.email
+        if self.nick_name is not None:
+            result['nick_name'] = self.nick_name
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.role is not None:
+            result['role'] = self.role
+        if self.status is not None:
+            result['status'] = self.status
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.user_data is not None:
+            result['user_data'] = self.user_data
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
         return result
 
     def from_map(self, map={}):
-        self.avatar = map.get('avatar')
-        self.created_at = map.get('created_at')
-        self.default_drive_id = map.get('default_drive_id')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.email = map.get('email')
-        self.nick_name = map.get('nick_name')
-        self.phone = map.get('phone')
-        self.role = map.get('role')
-        self.status = map.get('status')
-        self.updated_at = map.get('updated_at')
-        self.user_data = map.get('user_data')
-        self.user_id = map.get('user_id')
-        self.user_name = map.get('user_name')
+        if map.get('avatar') is not None:
+            self.avatar = map.get('avatar')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('default_drive_id') is not None:
+            self.default_drive_id = map.get('default_drive_id')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('email') is not None:
+            self.email = map.get('email')
+        if map.get('nick_name') is not None:
+            self.nick_name = map.get('nick_name')
+        if map.get('phone') is not None:
+            self.phone = map.get('phone')
+        if map.get('role') is not None:
+            self.role = map.get('role')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('user_data') is not None:
+            self.user_data = map.get('user_data')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
+        if map.get('user_name') is not None:
+            self.user_name = map.get('user_name')
         return self
 
 
@@ -13607,37 +16408,59 @@ class CreateUserRequest(TeaModel):
         self.user_name = user_name      # type: str
 
     def validate(self):
-        if self.description:
+        if self.description is not None:
             self.validate_max_length(self.description, 'description', 1024)
         self.validate_required(self.user_id, 'user_id')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['avatar'] = self.avatar
-        result['description'] = self.description
-        result['email'] = self.email
-        result['nick_name'] = self.nick_name
-        result['phone'] = self.phone
-        result['role'] = self.role
-        result['status'] = self.status
-        result['user_data'] = self.user_data
-        result['user_id'] = self.user_id
-        result['user_name'] = self.user_name
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.avatar is not None:
+            result['avatar'] = self.avatar
+        if self.description is not None:
+            result['description'] = self.description
+        if self.email is not None:
+            result['email'] = self.email
+        if self.nick_name is not None:
+            result['nick_name'] = self.nick_name
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.role is not None:
+            result['role'] = self.role
+        if self.status is not None:
+            result['status'] = self.status
+        if self.user_data is not None:
+            result['user_data'] = self.user_data
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.avatar = map.get('avatar')
-        self.description = map.get('description')
-        self.email = map.get('email')
-        self.nick_name = map.get('nick_name')
-        self.phone = map.get('phone')
-        self.role = map.get('role')
-        self.status = map.get('status')
-        self.user_data = map.get('user_data')
-        self.user_id = map.get('user_id')
-        self.user_name = map.get('user_name')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('avatar') is not None:
+            self.avatar = map.get('avatar')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('email') is not None:
+            self.email = map.get('email')
+        if map.get('nick_name') is not None:
+            self.nick_name = map.get('nick_name')
+        if map.get('phone') is not None:
+            self.phone = map.get('phone')
+        if map.get('role') is not None:
+            self.role = map.get('role')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('user_data') is not None:
+            self.user_data = map.get('user_data')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
+        if map.get('user_name') is not None:
+            self.user_name = map.get('user_name')
         return self
 
 
@@ -13682,37 +16505,65 @@ class CreateUserResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['avatar'] = self.avatar
-        result['created_at'] = self.created_at
-        result['default_drive_id'] = self.default_drive_id
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['email'] = self.email
-        result['nick_name'] = self.nick_name
-        result['phone'] = self.phone
-        result['role'] = self.role
-        result['status'] = self.status
-        result['updated_at'] = self.updated_at
-        result['user_data'] = self.user_data
-        result['user_id'] = self.user_id
-        result['user_name'] = self.user_name
+        if self.avatar is not None:
+            result['avatar'] = self.avatar
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.default_drive_id is not None:
+            result['default_drive_id'] = self.default_drive_id
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.email is not None:
+            result['email'] = self.email
+        if self.nick_name is not None:
+            result['nick_name'] = self.nick_name
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.role is not None:
+            result['role'] = self.role
+        if self.status is not None:
+            result['status'] = self.status
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.user_data is not None:
+            result['user_data'] = self.user_data
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
         return result
 
     def from_map(self, map={}):
-        self.avatar = map.get('avatar')
-        self.created_at = map.get('created_at')
-        self.default_drive_id = map.get('default_drive_id')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.email = map.get('email')
-        self.nick_name = map.get('nick_name')
-        self.phone = map.get('phone')
-        self.role = map.get('role')
-        self.status = map.get('status')
-        self.updated_at = map.get('updated_at')
-        self.user_data = map.get('user_data')
-        self.user_id = map.get('user_id')
-        self.user_name = map.get('user_name')
+        if map.get('avatar') is not None:
+            self.avatar = map.get('avatar')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('default_drive_id') is not None:
+            self.default_drive_id = map.get('default_drive_id')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('email') is not None:
+            self.email = map.get('email')
+        if map.get('nick_name') is not None:
+            self.nick_name = map.get('nick_name')
+        if map.get('phone') is not None:
+            self.phone = map.get('phone')
+        if map.get('role') is not None:
+            self.role = map.get('role')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('user_data') is not None:
+            self.user_data = map.get('user_data')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
+        if map.get('user_name') is not None:
+            self.user_name = map.get('user_name')
         return self
 
 
@@ -13730,13 +16581,17 @@ class DeleteUserRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['user_id'] = self.user_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.user_id = map.get('user_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
         return self
 
 
@@ -13773,13 +16628,17 @@ class GetUserRequest(TeaModel):
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['user_id'] = self.user_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.user_id = map.get('user_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
         return self
 
 
@@ -13824,37 +16683,65 @@ class GetUserResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['avatar'] = self.avatar
-        result['created_at'] = self.created_at
-        result['default_drive_id'] = self.default_drive_id
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['email'] = self.email
-        result['nick_name'] = self.nick_name
-        result['phone'] = self.phone
-        result['role'] = self.role
-        result['status'] = self.status
-        result['updated_at'] = self.updated_at
-        result['user_data'] = self.user_data
-        result['user_id'] = self.user_id
-        result['user_name'] = self.user_name
+        if self.avatar is not None:
+            result['avatar'] = self.avatar
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.default_drive_id is not None:
+            result['default_drive_id'] = self.default_drive_id
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.email is not None:
+            result['email'] = self.email
+        if self.nick_name is not None:
+            result['nick_name'] = self.nick_name
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.role is not None:
+            result['role'] = self.role
+        if self.status is not None:
+            result['status'] = self.status
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.user_data is not None:
+            result['user_data'] = self.user_data
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
         return result
 
     def from_map(self, map={}):
-        self.avatar = map.get('avatar')
-        self.created_at = map.get('created_at')
-        self.default_drive_id = map.get('default_drive_id')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.email = map.get('email')
-        self.nick_name = map.get('nick_name')
-        self.phone = map.get('phone')
-        self.role = map.get('role')
-        self.status = map.get('status')
-        self.updated_at = map.get('updated_at')
-        self.user_data = map.get('user_data')
-        self.user_id = map.get('user_id')
-        self.user_name = map.get('user_name')
+        if map.get('avatar') is not None:
+            self.avatar = map.get('avatar')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('default_drive_id') is not None:
+            self.default_drive_id = map.get('default_drive_id')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('email') is not None:
+            self.email = map.get('email')
+        if map.get('nick_name') is not None:
+            self.nick_name = map.get('nick_name')
+        if map.get('phone') is not None:
+            self.phone = map.get('phone')
+        if map.get('role') is not None:
+            self.role = map.get('role')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('user_data') is not None:
+            self.user_data = map.get('user_data')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
+        if map.get('user_name') is not None:
+            self.user_name = map.get('user_name')
         return self
 
 
@@ -13870,19 +16757,27 @@ class ListUserRequest(TeaModel):
         self.marker = marker            # type: str
 
     def validate(self):
-        pass
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 1)
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['limit'] = self.limit
-        result['marker'] = self.marker
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
         return self
 
 
@@ -13907,9 +16802,8 @@ class ListUserResponse(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['items'].append(k.to_map() if k else None)
-        else:
-            result['items'] = None
-        result['next_marker'] = self.next_marker
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
         return result
 
     def from_map(self, map={}):
@@ -13918,9 +16812,8 @@ class ListUserResponse(TeaModel):
             for k in map.get('items'):
                 temp_model = BaseUserResponse()
                 self.items.append(temp_model.from_map(k))
-        else:
-            self.items = None
-        self.next_marker = map.get('next_marker')
+        if map.get('next_marker') is not None:
+            self.next_marker = map.get('next_marker')
         return self
 
 
@@ -13949,31 +16842,51 @@ class SearchUserRequest(TeaModel):
         self.user_name = user_name      # type: str
 
     def validate(self):
-        pass
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 1)
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['email'] = self.email
-        result['limit'] = self.limit
-        result['marker'] = self.marker
-        result['nick_name'] = self.nick_name
-        result['phone'] = self.phone
-        result['role'] = self.role
-        result['status'] = self.status
-        result['user_name'] = self.user_name
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.email is not None:
+            result['email'] = self.email
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.nick_name is not None:
+            result['nick_name'] = self.nick_name
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.role is not None:
+            result['role'] = self.role
+        if self.status is not None:
+            result['status'] = self.status
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.email = map.get('email')
-        self.limit = map.get('limit')
-        self.marker = map.get('marker')
-        self.nick_name = map.get('nick_name')
-        self.phone = map.get('phone')
-        self.role = map.get('role')
-        self.status = map.get('status')
-        self.user_name = map.get('user_name')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('email') is not None:
+            self.email = map.get('email')
+        if map.get('limit') is not None:
+            self.limit = map.get('limit')
+        if map.get('marker') is not None:
+            self.marker = map.get('marker')
+        if map.get('nick_name') is not None:
+            self.nick_name = map.get('nick_name')
+        if map.get('phone') is not None:
+            self.phone = map.get('phone')
+        if map.get('role') is not None:
+            self.role = map.get('role')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('user_name') is not None:
+            self.user_name = map.get('user_name')
         return self
 
 
@@ -14004,35 +16917,55 @@ class UpdateUserRequest(TeaModel):
         self.user_id = user_id          # type: str
 
     def validate(self):
-        if self.description:
+        if self.description is not None:
             self.validate_max_length(self.description, 'description', 1024)
         self.validate_required(self.user_id, 'user_id')
 
     def to_map(self):
         result = {}
-        result['headers'] = self.headers
-        result['avatar'] = self.avatar
-        result['description'] = self.description
-        result['email'] = self.email
-        result['nick_name'] = self.nick_name
-        result['phone'] = self.phone
-        result['role'] = self.role
-        result['status'] = self.status
-        result['user_data'] = self.user_data
-        result['user_id'] = self.user_id
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.avatar is not None:
+            result['avatar'] = self.avatar
+        if self.description is not None:
+            result['description'] = self.description
+        if self.email is not None:
+            result['email'] = self.email
+        if self.nick_name is not None:
+            result['nick_name'] = self.nick_name
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.role is not None:
+            result['role'] = self.role
+        if self.status is not None:
+            result['status'] = self.status
+        if self.user_data is not None:
+            result['user_data'] = self.user_data
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
         return result
 
     def from_map(self, map={}):
-        self.headers = map.get('headers')
-        self.avatar = map.get('avatar')
-        self.description = map.get('description')
-        self.email = map.get('email')
-        self.nick_name = map.get('nick_name')
-        self.phone = map.get('phone')
-        self.role = map.get('role')
-        self.status = map.get('status')
-        self.user_data = map.get('user_data')
-        self.user_id = map.get('user_id')
+        if map.get('headers') is not None:
+            self.headers = map.get('headers')
+        if map.get('avatar') is not None:
+            self.avatar = map.get('avatar')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('email') is not None:
+            self.email = map.get('email')
+        if map.get('nick_name') is not None:
+            self.nick_name = map.get('nick_name')
+        if map.get('phone') is not None:
+            self.phone = map.get('phone')
+        if map.get('role') is not None:
+            self.role = map.get('role')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('user_data') is not None:
+            self.user_data = map.get('user_data')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
         return self
 
 
@@ -14077,35 +17010,63 @@ class UpdateUserResponse(TeaModel):
 
     def to_map(self):
         result = {}
-        result['avatar'] = self.avatar
-        result['created_at'] = self.created_at
-        result['default_drive_id'] = self.default_drive_id
-        result['description'] = self.description
-        result['domain_id'] = self.domain_id
-        result['email'] = self.email
-        result['nick_name'] = self.nick_name
-        result['phone'] = self.phone
-        result['role'] = self.role
-        result['status'] = self.status
-        result['updated_at'] = self.updated_at
-        result['user_data'] = self.user_data
-        result['user_id'] = self.user_id
-        result['user_name'] = self.user_name
+        if self.avatar is not None:
+            result['avatar'] = self.avatar
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.default_drive_id is not None:
+            result['default_drive_id'] = self.default_drive_id
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.email is not None:
+            result['email'] = self.email
+        if self.nick_name is not None:
+            result['nick_name'] = self.nick_name
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.role is not None:
+            result['role'] = self.role
+        if self.status is not None:
+            result['status'] = self.status
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.user_data is not None:
+            result['user_data'] = self.user_data
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
         return result
 
     def from_map(self, map={}):
-        self.avatar = map.get('avatar')
-        self.created_at = map.get('created_at')
-        self.default_drive_id = map.get('default_drive_id')
-        self.description = map.get('description')
-        self.domain_id = map.get('domain_id')
-        self.email = map.get('email')
-        self.nick_name = map.get('nick_name')
-        self.phone = map.get('phone')
-        self.role = map.get('role')
-        self.status = map.get('status')
-        self.updated_at = map.get('updated_at')
-        self.user_data = map.get('user_data')
-        self.user_id = map.get('user_id')
-        self.user_name = map.get('user_name')
+        if map.get('avatar') is not None:
+            self.avatar = map.get('avatar')
+        if map.get('created_at') is not None:
+            self.created_at = map.get('created_at')
+        if map.get('default_drive_id') is not None:
+            self.default_drive_id = map.get('default_drive_id')
+        if map.get('description') is not None:
+            self.description = map.get('description')
+        if map.get('domain_id') is not None:
+            self.domain_id = map.get('domain_id')
+        if map.get('email') is not None:
+            self.email = map.get('email')
+        if map.get('nick_name') is not None:
+            self.nick_name = map.get('nick_name')
+        if map.get('phone') is not None:
+            self.phone = map.get('phone')
+        if map.get('role') is not None:
+            self.role = map.get('role')
+        if map.get('status') is not None:
+            self.status = map.get('status')
+        if map.get('updated_at') is not None:
+            self.updated_at = map.get('updated_at')
+        if map.get('user_data') is not None:
+            self.user_data = map.get('user_data')
+        if map.get('user_id') is not None:
+            self.user_id = map.get('user_id')
+        if map.get('user_name') is not None:
+            self.user_name = map.get('user_name')
         return self

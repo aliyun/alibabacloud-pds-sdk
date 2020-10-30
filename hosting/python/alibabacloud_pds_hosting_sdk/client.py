@@ -5736,9 +5736,7 @@ class Client(object):
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.cancel_link_ex(request, runtime)
 
     def confirm_link(self, request):
@@ -5751,9 +5749,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.confirm_link_ex(request, runtime)
 
     def change_password(self, request):
@@ -5765,9 +5761,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.change_password_ex(request, runtime)
 
     def set_password(self, request):
@@ -5779,9 +5773,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.set_password_ex(request, runtime)
 
     def verify_code(self, request):
@@ -5793,9 +5785,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.verify_code_ex(request, runtime)
 
     def get_access_token_by_link_info(self, request):
@@ -5807,9 +5797,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_access_token_by_link_info_ex(request, runtime)
 
     def get_captcha(self, request):
@@ -5821,9 +5809,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_captcha_ex(request, runtime)
 
     def get_link_info(self, request):
@@ -5835,9 +5821,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_link_info_ex(request, runtime)
 
     def get_link_info_by_user_id(self, request):
@@ -5848,9 +5832,7 @@ class Client(object):
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_link_info_by_user_id_ex(request, runtime)
 
     def get_public_key(self, request):
@@ -5862,9 +5844,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_public_key_ex(request, runtime)
 
     def link(self, request):
@@ -5877,9 +5857,7 @@ class Client(object):
         @error AlreadyExist {resource} has already exists. {extra_msg}
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.link_ex(request, runtime)
 
     def check_exist(self, request):
@@ -5891,9 +5869,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.check_exist_ex(request, runtime)
 
     def login(self, request):
@@ -5905,9 +5881,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.login_ex(request, runtime)
 
     def register(self, request):
@@ -5920,9 +5894,7 @@ class Client(object):
         @error AlreadyExist {resource} has already exists. {extra_msg}
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.register_ex(request, runtime)
 
     def mobile_send_sms_code(self, request):
@@ -5934,9 +5906,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.mobile_send_sms_code_ex(request, runtime)
 
     def account_revoke(self, request):
@@ -5948,9 +5918,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.account_revoke_ex(request, runtime)
 
     def account_token(self, request):
@@ -5962,9 +5930,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.account_token_ex(request, runtime)
 
     def admin_list_stores(self, request):
@@ -5975,9 +5941,7 @@ class Client(object):
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.admin_list_stores_ex(request, runtime)
 
     def get_user_access_token(self, request):
@@ -5990,9 +5954,7 @@ class Client(object):
         @error undefined undefined
         @error undefined undefined
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_user_access_token_ex(request, runtime)
 
     def create_drive(self, request):
@@ -6007,9 +5969,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.create_drive_ex(request, runtime)
 
     def delete_drive(self, request):
@@ -6022,9 +5982,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.delete_drive_ex(request, runtime)
 
     def get_drive(self, request):
@@ -6038,9 +5996,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_drive_ex(request, runtime)
 
     def get_default_drive(self, request):
@@ -6055,9 +6011,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_default_drive_ex(request, runtime)
 
     def list_drives(self, request):
@@ -6070,9 +6024,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.list_drives_ex(request, runtime)
 
     def list_my_drives(self, request):
@@ -6085,9 +6037,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.list_my_drives_ex(request, runtime)
 
     def update_drive(self, request):
@@ -6101,9 +6051,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.update_drive_ex(request, runtime)
 
     def complete_file(self, request):
@@ -6117,9 +6065,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.complete_file_ex(request, runtime)
 
     def copy_file(self, request):
@@ -6133,9 +6079,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.copy_file_ex(request, runtime)
 
     def create_file(self, request):
@@ -6150,9 +6094,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.create_file_ex(request, runtime)
 
     def delete_file(self, request):
@@ -6166,9 +6108,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.delete_file_ex(request, runtime)
 
     def get_file(self, request):
@@ -6182,9 +6122,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_file_ex(request, runtime)
 
     def get_download_url(self, request):
@@ -6198,9 +6136,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_download_url_ex(request, runtime)
 
     def get_secure_url(self, request):
@@ -6214,9 +6150,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_secure_url_ex(request, runtime)
 
     def get_upload_url(self, request):
@@ -6230,9 +6164,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_upload_url_ex(request, runtime)
 
     def list_file(self, request):
@@ -6246,9 +6178,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.list_file_ex(request, runtime)
 
     def list_uploaded_parts(self, request):
@@ -6262,9 +6192,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.list_uploaded_parts_ex(request, runtime)
 
     def move_file(self, request):
@@ -6278,9 +6206,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.move_file_ex(request, runtime)
 
     def video_definition(self, request):
@@ -6294,9 +6220,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.video_definition_ex(request, runtime)
 
     def video_license(self, request):
@@ -6309,9 +6233,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.video_license_ex(request, runtime)
 
     def video_m3u_8(self, request):
@@ -6325,9 +6247,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.video_m3u_8ex(request, runtime)
 
     def video_transcode(self, request):
@@ -6341,9 +6261,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.video_transcode_ex(request, runtime)
 
     def create_share(self, request):
@@ -6357,9 +6275,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.create_share_ex(request, runtime)
 
     def delete_share(self, request):
@@ -6372,9 +6288,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.delete_share_ex(request, runtime)
 
     def get_share(self, request):
@@ -6388,9 +6302,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_share_ex(request, runtime)
 
     def list_share(self, request):
@@ -6403,9 +6315,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.list_share_ex(request, runtime)
 
     def update_share(self, request):
@@ -6419,9 +6329,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.update_share_ex(request, runtime)
 
     def list_storefile(self, request):
@@ -6435,9 +6343,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.list_storefile_ex(request, runtime)
 
     def create_user(self, request):
@@ -6450,9 +6356,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.create_user_ex(request, runtime)
 
     def delete_user(self, request):
@@ -6465,9 +6369,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.delete_user_ex(request, runtime)
 
     def get_user(self, request):
@@ -6481,9 +6383,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.get_user_ex(request, runtime)
 
     def list_users(self, request):
@@ -6496,9 +6396,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.list_users_ex(request, runtime)
 
     def search_user(self, request):
@@ -6511,9 +6409,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.search_user_ex(request, runtime)
 
     def update_user(self, request):
@@ -6529,9 +6425,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = hosting_models.RuntimeOptions(
-
-        )
+        runtime = hosting_models.RuntimeOptions()
         return self.update_user_ex(request, runtime)
 
     def get_pathname(self, nickname, path):

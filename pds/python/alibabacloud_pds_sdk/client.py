@@ -2,33 +2,32 @@
 # This file is auto-generated, don't edit it. Thanks.
 import time
 
-from alibabacloud_pds_credentials.client import Client as AccessTokenCredentialClient
-from alibabacloud_credentials.client import Client as CredentialClient
-from alibabacloud_pds_sdk import models as pds_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from Tea.exceptions import TeaException
-from alibabacloud_pds_credentials import models as access_token_credential_models
-from alibabacloud_credentials import models as credential_models
+from Tea.exceptions import TeaException, UnretryableException
 from Tea.request import TeaRequest
 from Tea.core import TeaCore
-from Tea.response import TeaResponse
+
+from alibabacloud_pds_credentials.client import Client as AccessTokenCredentialClient
+from alibabacloud_credentials.client import Client as CredentialClient
+from alibabacloud_tea_util.client import Client as UtilClient
+from alibabacloud_pds_credentials import models as access_token_credential_models
+from alibabacloud_credentials import models as credential_models
+from alibabacloud_pds_sdk import models as pds_models
 from alibabacloud_roa_util.client import Client as ROAUtilClient
-from Tea.exceptions import UnretryableException
 
 
 class Client(object):
     """
-    *
+    *\
     """
     def __init__(self, config, _domain_id=None, _access_token_credential=None, _endpoint=None, _protocol=None,
                  _nickname=None, _user_agent=None, _credential=None):
-        self._domain_id = _domain_id  # type: str
-        self._access_token_credential = _access_token_credential  # type: AccessTokenCredential
-        self._endpoint = _endpoint  # type: str
-        self._protocol = _protocol  # type: str
-        self._nickname = _nickname  # type: str
+        self._domain_id = _domain_id    # type: str
+        self._access_token_credential = _access_token_credential
+        self._endpoint = _endpoint      # type: str
+        self._protocol = _protocol      # type: str
+        self._nickname = _nickname      # type: str
         self._user_agent = _user_agent  # type: str
-        self._credential = _credential  # type: Credential
+        self._credential = _credential
         if UtilClient.is_unset(config):
             raise TeaException({
                 "name": "ParameterMissing",
@@ -112,15 +111,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/cancel_link")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/cancel_link')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -129,7 +128,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -219,15 +218,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/confirm_link")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/confirm_link')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -236,7 +235,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -325,15 +324,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/default/change_password")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/default/change_password')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -342,7 +341,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -431,15 +430,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/default/set_password")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/default/set_password')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -448,7 +447,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -534,15 +533,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/default/verify_code")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/default/verify_code')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -551,7 +550,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -640,15 +639,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/get_access_token_by_link_info")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/get_access_token_by_link_info')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -657,7 +656,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -746,15 +745,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/get_captcha")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/get_captcha')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -763,7 +762,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -852,15 +851,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/get_link_info")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/get_link_info')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -869,7 +868,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -957,15 +956,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/get_link_info_by_user_id")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/get_link_info_by_user_id')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -974,7 +973,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -1063,15 +1062,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/get_public_key")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/get_public_key')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -1080,7 +1079,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -1170,15 +1169,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/link")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/link')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -1187,7 +1186,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -1276,15 +1275,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/mobile/check_exist")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/mobile/check_exist')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -1293,7 +1292,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -1382,15 +1381,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/mobile/login")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/mobile/login')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -1399,7 +1398,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -1489,15 +1488,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/mobile/register")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/mobile/register')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -1506,7 +1505,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -1595,15 +1594,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/mobile/send_sms_code")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/mobile/send_sms_code')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -1612,7 +1611,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -1701,15 +1700,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/revoke")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/revoke')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -1718,7 +1717,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -1804,15 +1803,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/account/token")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/account/token')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".auth.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.auth.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -1821,7 +1820,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -1909,15 +1908,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/domain/list_stores")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/domain/list_stores')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -1926,7 +1925,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -2016,15 +2015,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/user/get_access_token")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/user/get_access_token')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -2033,7 +2032,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -2125,15 +2124,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/async_task/get")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/async_task/get')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -2142,7 +2141,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -2233,15 +2232,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/batch")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/batch')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -2250,7 +2249,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -2342,15 +2341,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/drive/create")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/drive/create')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -2359,7 +2358,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -2449,15 +2448,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/drive/delete")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/drive/delete')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -2466,7 +2465,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -2554,15 +2553,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/drive/get")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/drive/get')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -2571,7 +2570,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -2663,15 +2662,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/drive/get_default_drive")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/drive/get_default_drive')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -2680,7 +2679,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -2770,15 +2769,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/drive/list")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/drive/list')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -2787,7 +2786,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -2877,15 +2876,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/drive/list_my_drives")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/drive/list_my_drives')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -2894,7 +2893,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -2985,15 +2984,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/drive/update")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/drive/update')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -3002,7 +3001,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -3093,15 +3092,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/complete")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/complete')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -3110,7 +3109,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -3201,15 +3200,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/copy")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/copy')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -3218,7 +3217,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -3318,15 +3317,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/create")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/create')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -3335,7 +3334,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -3426,15 +3425,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/delete")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/delete')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -3443,7 +3442,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -3538,15 +3537,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/get")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/get')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -3555,7 +3554,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -3646,15 +3645,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/get_by_path")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/get_by_path')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -3663,7 +3662,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -3754,15 +3753,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/get_download_url")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/get_download_url')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -3771,7 +3770,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -3862,15 +3861,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/get_last_cursor")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/get_last_cursor')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -3879,7 +3878,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -3969,15 +3968,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/get_media_play_url")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/get_media_play_url')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -3986,7 +3985,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -4077,15 +4076,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/get_office_preview_url")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/get_office_preview_url')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -4094,7 +4093,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -4185,15 +4184,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/get_upload_url")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/get_upload_url')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -4202,7 +4201,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -4293,15 +4292,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/get_video_preview_sprite_url")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/get_video_preview_sprite_url')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -4310,7 +4309,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -4401,15 +4400,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/get_video_preview_url")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/get_video_preview_url')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -4418,7 +4417,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -4509,15 +4508,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/list")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/list')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -4526,7 +4525,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -4616,15 +4615,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/list_by_anonymous")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/list_by_anonymous')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -4633,7 +4632,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -4724,15 +4723,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/list_by_custom_index_key")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/list_by_custom_index_key')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -4741,7 +4740,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -4832,15 +4831,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/list_delta")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/list_delta')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -4849,7 +4848,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -4940,15 +4939,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/list_uploaded_parts")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/list_uploaded_parts')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -4957,7 +4956,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -5048,15 +5047,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/move")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/move')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -5065,7 +5064,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -5156,15 +5155,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/scan")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/scan')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -5173,7 +5172,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -5264,15 +5263,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/search")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/search')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -5281,7 +5280,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -5373,15 +5372,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/file/update")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/file/update')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -5390,7 +5389,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -5480,15 +5479,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/share_link/cancel")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/share_link/cancel')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -5497,7 +5496,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -5585,15 +5584,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/share_link/create")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/share_link/create')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -5602,7 +5601,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -5692,15 +5691,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/share_link/get_share_id")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/share_link/get_share_id')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -5709,7 +5708,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -5798,15 +5797,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/share_link/get_share_token")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/share_link/get_share_token')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -5815,7 +5814,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -5905,15 +5904,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/share_link/list")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/share_link/list')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -5922,7 +5921,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -6012,15 +6011,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/user/create")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/user/create')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -6029,7 +6028,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -6119,15 +6118,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/user/delete")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/user/delete')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -6136,7 +6135,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -6224,15 +6223,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/user/get")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/user/get')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -6241,7 +6240,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -6331,15 +6330,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/user/list")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/user/list')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -6348,7 +6347,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -6438,15 +6437,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/user/search")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/user/search')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -6455,7 +6454,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -6548,15 +6547,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/user/update")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/user/update')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -6565,7 +6564,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -6656,15 +6655,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/image/create_story")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/image/create_story')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -6673,7 +6672,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -6764,15 +6763,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/image/get_photo_count")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/image/get_photo_count')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -6781,7 +6780,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -6872,15 +6871,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/image/get_story_detail")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/image/get_story_detail')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -6889,7 +6888,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -6980,15 +6979,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/image/get_story_task")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/image/get_story_task')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -6997,7 +6996,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -7088,15 +7087,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/image/list_address_groups")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/image/list_address_groups')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -7105,7 +7104,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -7196,15 +7195,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/image/list_face_groups")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/image/list_face_groups')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -7213,7 +7212,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -7304,15 +7303,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/image/list_story")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/image/list_story')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -7321,7 +7320,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -7412,15 +7411,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/image/list_tags")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/image/list_tags')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -7429,7 +7428,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -7520,15 +7519,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/image/search_address_groups")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/image/search_address_groups')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -7537,7 +7536,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -7628,15 +7627,15 @@ class Client(object):
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, "https")
                 _request.method = "POST"
-                _request.pathname = self.get_pathname(self._nickname, "/v2/image/update_facegroup_info")
+                _request.pathname = self.get_pathname(self._nickname, '/v2/image/update_facegroup_info')
                 _request.headers = TeaCore.merge({
                     "user-agent": self.get_user_agent(),
-                    "host": UtilClient.default_string(self._endpoint, "" + str(self._domain_id) + ".api.aliyunpds.com"),
+                    "host": UtilClient.default_string(self._endpoint, '%s.api.aliyunpds.com' % self._domain_id),
                     "content-type": "application/json; charset=utf-8"
                 }, request.headers)
                 real_req["headers"] = None
                 if not UtilClient.empty(access_token):
-                    _request.headers["authorization"] = "Bearer " + str(access_token) + ""
+                    _request.headers["authorization"] = 'Bearer %s' % access_token
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
                     if not UtilClient.empty(security_token):
                         _request.headers["x-acs-security-token"] = security_token
@@ -7645,7 +7644,7 @@ class Client(object):
                     _request.headers["x-acs-signature-method"] = "HMAC-SHA1"
                     _request.headers["x-acs-signature-version"] = "1.0"
                     string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers["authorization"] = "acs " + str(accesskey_id) + ":" + str(ROAUtilClient.get_signature(string_to_sign, access_key_secret)) + ""
+                    _request.headers["authorization"] = 'acs %s:%s' % (accesskey_id, ROAUtilClient.get_signature(string_to_sign, access_key_secret))
                 _request.body = UtilClient.to_jsonstring(real_req)
                 _last_request = _request
                 _response = TeaCore.do_action(_request, _runtime)
@@ -7691,9 +7690,7 @@ class Client(object):
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.cancel_link_ex(request, runtime)
 
     def confirm_link(self, request):
@@ -7706,9 +7703,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.confirm_link_ex(request, runtime)
 
     def change_password(self, request):
@@ -7720,9 +7715,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.change_password_ex(request, runtime)
 
     def set_password(self, request):
@@ -7734,9 +7727,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.set_password_ex(request, runtime)
 
     def verify_code(self, request):
@@ -7748,9 +7739,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.verify_code_ex(request, runtime)
 
     def get_access_token_by_link_info(self, request):
@@ -7762,9 +7751,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_access_token_by_link_info_ex(request, runtime)
 
     def get_captcha(self, request):
@@ -7776,9 +7763,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_captcha_ex(request, runtime)
 
     def get_link_info(self, request):
@@ -7790,9 +7775,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_link_info_ex(request, runtime)
 
     def get_link_info_by_user_id(self, request):
@@ -7803,9 +7786,7 @@ class Client(object):
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_link_info_by_user_id_ex(request, runtime)
 
     def get_public_key(self, request):
@@ -7817,9 +7798,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_public_key_ex(request, runtime)
 
     def link(self, request):
@@ -7832,9 +7811,7 @@ class Client(object):
         @error AlreadyExist {resource} has already exists. {extra_msg}
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.link_ex(request, runtime)
 
     def check_exist(self, request):
@@ -7846,9 +7823,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.check_exist_ex(request, runtime)
 
     def login(self, request):
@@ -7860,9 +7835,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.login_ex(request, runtime)
 
     def register(self, request):
@@ -7875,9 +7848,7 @@ class Client(object):
         @error AlreadyExist {resource} has already exists. {extra_msg}
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.register_ex(request, runtime)
 
     def mobile_send_sms_code(self, request):
@@ -7889,9 +7860,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.mobile_send_sms_code_ex(request, runtime)
 
     def account_revoke(self, request):
@@ -7903,9 +7872,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.account_revoke_ex(request, runtime)
 
     def account_token(self, request):
@@ -7917,9 +7884,7 @@ class Client(object):
         @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.account_token_ex(request, runtime)
 
     def admin_list_stores(self, request):
@@ -7930,9 +7895,7 @@ class Client(object):
         @error Forbidden User not authorized to operate on the specified APIs.
         @error InternalError The request has been failed due to some unknown error.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.admin_list_stores_ex(request, runtime)
 
     def get_user_access_token(self, request):
@@ -7945,9 +7908,7 @@ class Client(object):
         @error undefined undefined
         @error undefined undefined
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_user_access_token_ex(request, runtime)
 
     def get_async_task_info(self, request):
@@ -7962,9 +7923,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_async_task_info_ex(request, runtime)
 
     def batch_operation(self, request):
@@ -7978,9 +7937,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.batch_operation_ex(request, runtime)
 
     def create_drive(self, request):
@@ -7995,9 +7952,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.create_drive_ex(request, runtime)
 
     def delete_drive(self, request):
@@ -8010,9 +7965,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.delete_drive_ex(request, runtime)
 
     def get_drive(self, request):
@@ -8026,9 +7979,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_drive_ex(request, runtime)
 
     def get_default_drive(self, request):
@@ -8043,9 +7994,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_default_drive_ex(request, runtime)
 
     def list_drives(self, request):
@@ -8058,9 +8007,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_drives_ex(request, runtime)
 
     def list_my_drives(self, request):
@@ -8073,9 +8020,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_my_drives_ex(request, runtime)
 
     def update_drive(self, request):
@@ -8089,9 +8034,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.update_drive_ex(request, runtime)
 
     def complete_file(self, request):
@@ -8105,9 +8048,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.complete_file_ex(request, runtime)
 
     def copy_file(self, request):
@@ -8121,9 +8062,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.copy_file_ex(request, runtime)
 
     def create_file(self, request):
@@ -8139,9 +8078,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.create_file_ex(request, runtime)
 
     def delete_file(self, request):
@@ -8155,9 +8092,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.delete_file_ex(request, runtime)
 
     def get_file(self, request):
@@ -8171,9 +8106,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_file_ex(request, runtime)
 
     def get_file_by_path(self, request):
@@ -8187,9 +8120,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_file_by_path_ex(request, runtime)
 
     def get_download_url(self, request):
@@ -8203,9 +8134,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_download_url_ex(request, runtime)
 
     def get_last_cursor(self, request):
@@ -8219,9 +8148,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_last_cursor_ex(request, runtime)
 
     def get_media_play_url(self, request):
@@ -8234,9 +8161,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_media_play_url_ex(request, runtime)
 
     def get_office_preview_url(self, request):
@@ -8250,9 +8175,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_office_preview_url_ex(request, runtime)
 
     def get_upload_url(self, request):
@@ -8266,9 +8189,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_upload_url_ex(request, runtime)
 
     def get_video_preview_sprite_url(self, request):
@@ -8282,9 +8203,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_video_preview_sprite_url_ex(request, runtime)
 
     def get_video_preview_url(self, request):
@@ -8298,9 +8217,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_video_preview_url_ex(request, runtime)
 
     def list_file(self, request):
@@ -8314,9 +8231,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_file_ex(request, runtime)
 
     def list_file_by_anonymous(self, request):
@@ -8329,9 +8244,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_file_by_anonymous_ex(request, runtime)
 
     def list_file_by_custom_index_key(self, request):
@@ -8345,9 +8258,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_file_by_custom_index_key_ex(request, runtime)
 
     def list_file_delta(self, request):
@@ -8361,9 +8272,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_file_delta_ex(request, runtime)
 
     def list_uploaded_parts(self, request):
@@ -8377,9 +8286,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_uploaded_parts_ex(request, runtime)
 
     def move_file(self, request):
@@ -8393,9 +8300,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.move_file_ex(request, runtime)
 
     def scan_file_meta(self, request):
@@ -8409,9 +8314,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.scan_file_meta_ex(request, runtime)
 
     def search_file(self, request):
@@ -8425,9 +8328,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.search_file_ex(request, runtime)
 
     def update_file(self, request):
@@ -8442,9 +8343,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.update_file_ex(request, runtime)
 
     def cancel_share_link(self, request):
@@ -8457,9 +8356,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.cancel_share_link_ex(request, runtime)
 
     def create_share_link(self, request):
@@ -8473,9 +8370,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.create_share_link_ex(request, runtime)
 
     def get_share_id(self, request):
@@ -8488,9 +8383,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_share_id_ex(request, runtime)
 
     def get_share_token(self, request):
@@ -8502,9 +8395,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_share_token_ex(request, runtime)
 
     def list_share_link(self, request):
@@ -8517,9 +8408,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_share_link_ex(request, runtime)
 
     def create_user(self, request):
@@ -8532,9 +8421,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.create_user_ex(request, runtime)
 
     def delete_user(self, request):
@@ -8547,9 +8434,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.delete_user_ex(request, runtime)
 
     def get_user(self, request):
@@ -8563,9 +8448,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_user_ex(request, runtime)
 
     def list_users(self, request):
@@ -8578,9 +8461,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_users_ex(request, runtime)
 
     def search_user(self, request):
@@ -8593,9 +8474,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.search_user_ex(request, runtime)
 
     def update_user(self, request):
@@ -8611,9 +8490,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.update_user_ex(request, runtime)
 
     def create_story(self, request):
@@ -8627,9 +8504,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.create_story_ex(request, runtime)
 
     def get_photo_count(self, request):
@@ -8643,9 +8518,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_photo_count_ex(request, runtime)
 
     def get_story_detail(self, request):
@@ -8659,9 +8532,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_story_detail_ex(request, runtime)
 
     def get_story_task(self, request):
@@ -8675,9 +8546,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.get_story_task_ex(request, runtime)
 
     def list_address_groups(self, request):
@@ -8691,9 +8560,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_address_groups_ex(request, runtime)
 
     def list_face_groups(self, request):
@@ -8707,9 +8574,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_face_groups_ex(request, runtime)
 
     def list_story(self, request):
@@ -8723,9 +8588,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_story_ex(request, runtime)
 
     def list_tags(self, request):
@@ -8739,9 +8602,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.list_tags_ex(request, runtime)
 
     def search_address_groups(self, request):
@@ -8755,9 +8616,7 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.search_address_groups_ex(request, runtime)
 
     def update_facegroup_info(self, request):
@@ -8771,15 +8630,13 @@ class Client(object):
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
-        runtime = pds_models.RuntimeOptions(
-
-        )
+        runtime = pds_models.RuntimeOptions()
         return self.update_facegroup_info_ex(request, runtime)
 
     def get_pathname(self, nickname, path):
         if UtilClient.empty(nickname):
             return path
-        return "/" + str(nickname) + "" + str(path) + ""
+        return '/%s%s' % (nickname, path)
 
     def set_expire_time(self, expire_time):
         if UtilClient.is_unset(self._access_token_credential):
@@ -8818,7 +8675,7 @@ class Client(object):
         self._user_agent = user_agent
 
     def append_user_agent(self, user_agent):
-        self._user_agent = "" + str(self._user_agent) + " " + str(user_agent) + ""
+        self._user_agent = '%s %s' % (self._user_agent, user_agent)
 
     def get_user_agent(self):
         user_agent = UtilClient.get_user_agent(self._user_agent)
