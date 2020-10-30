@@ -58,7 +58,7 @@ class AccountAccessTokenResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var LinkInfo[]
      */
     public $existLink;
 
@@ -148,7 +148,7 @@ class AccountAccessTokenResponse extends Model
      *
      * @example { is_student: true }
      *
-     * @var array
+     * @var mixed[]
      */
     public $userData;
 

@@ -16,7 +16,7 @@ class OSSSearchFileResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var BaseOSSFileResponse[]
      */
     public $items;
 

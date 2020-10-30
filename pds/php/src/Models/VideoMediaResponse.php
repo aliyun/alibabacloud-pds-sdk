@@ -97,12 +97,12 @@ class VideoMediaResponse extends Model
     public $township;
 
     /**
-     * @var array
+     * @var VideoMediaAudioStream[]
      */
     public $videoMediaAudioStream;
 
     /**
-     * @var array
+     * @var VideoMediaVideoStream[]
      */
     public $videoMediaVideoStream;
 

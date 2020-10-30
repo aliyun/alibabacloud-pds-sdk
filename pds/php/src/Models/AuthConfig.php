@@ -39,7 +39,7 @@ class AuthConfig extends Model
     public $enterpriseId;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     public $loginPageHeaders;
 
@@ -49,7 +49,7 @@ class AuthConfig extends Model
     public $loginPageTemplate;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     public $loginPageVars;
     protected $_name = [

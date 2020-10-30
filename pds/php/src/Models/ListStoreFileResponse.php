@@ -16,7 +16,7 @@ class ListStoreFileResponse extends Model
      * file list
      * @example
      *
-     * @var array
+     * @var StoreFile[]
      */
     public $items;
 

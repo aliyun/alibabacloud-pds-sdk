@@ -79,7 +79,7 @@ class CreateFileResponse extends Model
      *
      * @example [
      *
-     * @var array
+     * @var UploadPartInfo[]
      */
     public $partInfoList;
 
@@ -104,7 +104,7 @@ class CreateFileResponse extends Model
     /**
      * @description streams_upload_info
      *
-     * @var array
+     * @var mixed[]
      */
     public $streamsUploadInfo;
 

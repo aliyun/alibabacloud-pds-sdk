@@ -14,7 +14,7 @@ class ListDomainCORSRuleResponse extends Model
     /**
      * @description cors rule 列表
      *
-     * @var array
+     * @var CorsRule[]
      */
     public $corsRuleList;
 

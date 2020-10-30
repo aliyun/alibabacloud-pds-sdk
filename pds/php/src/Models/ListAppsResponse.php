@@ -13,7 +13,7 @@ class ListAppsResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var GetAppResponse[]
      */
     public $items;
 

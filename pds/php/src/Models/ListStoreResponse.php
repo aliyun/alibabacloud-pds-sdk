@@ -16,7 +16,7 @@ class ListStoreResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var StoreItemResponse[]
      */
     public $items;
     protected $_name = [

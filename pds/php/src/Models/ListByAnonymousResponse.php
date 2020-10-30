@@ -14,7 +14,7 @@ class ListByAnonymousResponse extends Model
     /**
      * @description items
      *
-     * @var array
+     * @var BaseFileAnonymousResponse[]
      */
     public $items;
 

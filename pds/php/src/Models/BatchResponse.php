@@ -14,7 +14,7 @@ class BatchResponse extends Model
     /**
      * @description responses 返回结果合集
      *
-     * @var array
+     * @var BatchSubResponse[]
      */
     public $responses;
     protected $_name = [

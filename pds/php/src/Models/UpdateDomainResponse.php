@@ -52,7 +52,7 @@ class UpdateDomainResponse extends Model
      *
      * @example {}
      *
-     * @var array
+     * @var mixed[]
      */
     public $authConfig;
 
@@ -192,7 +192,7 @@ class UpdateDomainResponse extends Model
      *
      * @example abc
      *
-     * @var array
+     * @var string[]
      */
     public $eventNames;
 
@@ -276,7 +276,7 @@ class UpdateDomainResponse extends Model
      *
      * @example cn-hangzhou
      *
-     * @var array
+     * @var string[]
      */
     public $storeRegionList;
 

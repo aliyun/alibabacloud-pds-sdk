@@ -70,7 +70,7 @@ class GetVideoPreviewSpriteURLResponse extends Model
      *
      * @example [https://ccp.data.aliyuncs.com/hz22%2F5d79219b0aa9a7c995a94a96993ba3205cd91c5a%2F5d79219bf3261a5d38744da0834ed489b677a27a?Expires=xxxOSSAccessKeyId=xxx&Signature=xxx&response-content-disposition=attachment%3Bfilename%3DtBiZAoJPC2c8b13450eda4292b7f5f8010618e078.txt]
      *
-     * @var array
+     * @var string[]
      */
     public $spriteUrlList;
     protected $_name = [

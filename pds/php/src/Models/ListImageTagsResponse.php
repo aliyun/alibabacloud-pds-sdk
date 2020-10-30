@@ -12,7 +12,7 @@ use AlibabaCloud\Tea\Model;
 class ListImageTagsResponse extends Model
 {
     /**
-     * @var array
+     * @var ImageTagResponse[]
      */
     public $tags;
     protected $_name = [

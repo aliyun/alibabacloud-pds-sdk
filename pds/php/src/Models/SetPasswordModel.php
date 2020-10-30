@@ -9,7 +9,7 @@ use AlibabaCloud\Tea\Model;
 class SetPasswordModel extends Model
 {
     /**
-     * @var array
+     * @var string[]
      */
     public $headers;
     protected $_name = [

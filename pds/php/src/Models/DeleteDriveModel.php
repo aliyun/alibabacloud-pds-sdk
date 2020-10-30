@@ -9,7 +9,7 @@ use AlibabaCloud\Tea\Model;
 class DeleteDriveModel extends Model
 {
     /**
-     * @var array
+     * @var string[]
      */
     public $headers;
     protected $_name = [

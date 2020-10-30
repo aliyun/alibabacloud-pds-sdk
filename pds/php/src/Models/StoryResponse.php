@@ -27,7 +27,7 @@ class StoryResponse extends Model
      *
      * @example 50.5
      *
-     * @var int
+     * @var float
      */
     public $score;
 
@@ -43,7 +43,7 @@ class StoryResponse extends Model
     /**
      * @description story_images_date_range
      *
-     * @var array
+     * @var int[]
      */
     public $storyImagesDateRange;
 

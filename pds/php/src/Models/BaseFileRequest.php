@@ -11,7 +11,7 @@ class BaseFileRequest extends Model
     /**
      * @description addition_data
      *
-     * @var array
+     * @var mixed[]
      */
     public $additionData;
     protected $_name = [

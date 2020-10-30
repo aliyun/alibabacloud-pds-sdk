@@ -9,7 +9,7 @@ use AlibabaCloud\Tea\Model;
 class ListStoryModel extends Model
 {
     /**
-     * @var array
+     * @var string[]
      */
     public $headers;
 

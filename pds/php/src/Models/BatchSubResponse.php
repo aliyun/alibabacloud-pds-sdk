@@ -13,7 +13,7 @@ class BatchSubResponse extends Model
      *
      * @example {"drive_id":"101","file_id":"xxxxxx"}
      *
-     * @var array
+     * @var mixed[]
      */
     public $body;
 

@@ -43,7 +43,7 @@ class ListUploadedPartResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var UploadPartInfo[]
      */
     public $uploadedParts;
     protected $_name = [

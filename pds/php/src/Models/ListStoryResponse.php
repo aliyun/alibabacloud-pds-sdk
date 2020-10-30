@@ -14,7 +14,7 @@ class ListStoryResponse extends Model
     /**
      * @description items
      *
-     * @var array
+     * @var StoryResponse[]
      */
     public $items;
 

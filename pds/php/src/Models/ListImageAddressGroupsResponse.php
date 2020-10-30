@@ -12,7 +12,7 @@ use AlibabaCloud\Tea\Model;
 class ListImageAddressGroupsResponse extends Model
 {
     /**
-     * @var array
+     * @var ImageAddressResponse[]
      */
     public $items;
 

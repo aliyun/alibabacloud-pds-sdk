@@ -71,7 +71,7 @@ class UpdateFileMetaRequest extends Model
      *
      * @example label1, label2
      *
-     * @var array
+     * @var string[]
      */
     public $labels;
 

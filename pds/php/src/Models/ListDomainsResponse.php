@@ -16,7 +16,7 @@ class ListDomainsResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var BaseDomainResponse[]
      */
     public $items;
 

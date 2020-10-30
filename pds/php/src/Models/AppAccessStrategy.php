@@ -14,7 +14,7 @@ class AppAccessStrategy extends Model
     public $effect;
 
     /**
-     * @var array
+     * @var string[]
      */
     public $exceptAppIdList;
     protected $_name = [

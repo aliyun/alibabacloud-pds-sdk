@@ -13,7 +13,7 @@ class LinkInfoListResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var LinkInfoResponse[]
      */
     public $items;
     protected $_name = [

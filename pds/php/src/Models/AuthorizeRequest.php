@@ -47,7 +47,7 @@ class AuthorizeRequest extends Model
     /**
      * @description 申请的权限列表, 默认为所有权限
      *
-     * @var array
+     * @var string[]
      */
     public $Scope;
 

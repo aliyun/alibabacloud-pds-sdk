@@ -43,7 +43,7 @@ class OSSGetUploadUrlRequest extends Model
      *
      * @example
      *
-     * @var array
+     * @var UploadPartInfo[]
      */
     public $partInfoList;
 

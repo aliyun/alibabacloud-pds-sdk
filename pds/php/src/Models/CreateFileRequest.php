@@ -16,7 +16,7 @@ class CreateFileRequest extends Model
     /**
      * @description addition_data
      *
-     * @var array
+     * @var mixed[]
      */
     public $additionData;
 
@@ -119,7 +119,7 @@ class CreateFileRequest extends Model
      *
      * @example label1, label2
      *
-     * @var array
+     * @var string[]
      */
     public $labels;
 
@@ -158,7 +158,7 @@ class CreateFileRequest extends Model
     /**
      * @description part_info_list
      *
-     * @var array
+     * @var UploadPartInfo[]
      */
     public $partInfoList;
 
@@ -181,7 +181,7 @@ class CreateFileRequest extends Model
     /**
      * @description streams_info
      *
-     * @var array
+     * @var mixed[]
      */
     public $streamsInfo;
 

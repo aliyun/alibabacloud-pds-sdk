@@ -9,52 +9,52 @@ use AlibabaCloud\Tea\Model;
 class ImageQuality extends Model
 {
     /**
-     * @var int
+     * @var float
      */
     public $clarity;
 
     /**
-     * @var int
+     * @var float
      */
     public $clarityScore;
 
     /**
-     * @var int
+     * @var float
      */
     public $color;
 
     /**
-     * @var int
+     * @var float
      */
     public $colorScore;
 
     /**
-     * @var int
+     * @var float
      */
     public $compositionScore;
 
     /**
-     * @var int
+     * @var float
      */
     public $contrast;
 
     /**
-     * @var int
+     * @var float
      */
     public $contrastScore;
 
     /**
-     * @var int
+     * @var float
      */
     public $exposure;
 
     /**
-     * @var int
+     * @var float
      */
     public $exposureScore;
 
     /**
-     * @var int
+     * @var float
      */
     public $overallScore;
     protected $_name = [

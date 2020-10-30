@@ -61,7 +61,7 @@ class VideoPreviewResponse extends Model
     /**
      * @description template_list
      *
-     * @var array
+     * @var VideoPreviewTranscode[]
      */
     public $templateList;
 

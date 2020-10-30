@@ -9,7 +9,7 @@ use AlibabaCloud\Tea\Model;
 class SystemTag extends Model
 {
     /**
-     * @var int
+     * @var float
      */
     public $confidence;
 

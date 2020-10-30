@@ -16,7 +16,7 @@ class OSSListFileResponse extends Model
      *
      * @example
      *
-     * @var array
+     * @var BaseOSSFileResponse[]
      */
     public $items;
 

@@ -9,7 +9,7 @@ use AlibabaCloud\Tea\Model;
 class SearchFileModel extends Model
 {
     /**
-     * @var array
+     * @var string[]
      */
     public $headers;
 

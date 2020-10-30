@@ -115,7 +115,7 @@ class CreateUserResponse extends Model
      *
      * @example { is_student: true }
      *
-     * @var array
+     * @var mixed[]
      */
     public $userData;
 
