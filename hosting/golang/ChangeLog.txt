@@ -1,3 +1,6 @@
+2020-10-30 Version: v1.0.2
+- Update mod
+
 2020-10-29 Version: v1.0.1
 - Update apis
 
