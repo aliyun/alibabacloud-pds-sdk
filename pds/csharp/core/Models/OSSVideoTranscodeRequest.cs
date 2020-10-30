@@ -31,7 +31,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("hls_time")]
         [Validation(Required=false)]
-        public long HlsTime { get; set; }
+        public long? HlsTime { get; set; }
 
         /// <summary>
         /// protection_scheme

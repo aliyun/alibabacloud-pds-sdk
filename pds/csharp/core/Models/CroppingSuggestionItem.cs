@@ -22,7 +22,7 @@ namespace Aliyun.SDK.PDS.Client.Models
 
         [NameInMap("score")]
         [Validation(Required=false)]
-        public int? Score { get; set; }
+        public double? Score { get; set; }
 
     }
 

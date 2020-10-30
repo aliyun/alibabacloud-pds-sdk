@@ -14,43 +14,43 @@ namespace Aliyun.SDK.Hosting.Client.Models
     public class ImageQuality : TeaModel {
         [NameInMap("clarity")]
         [Validation(Required=false)]
-        public int? Clarity { get; set; }
+        public double? Clarity { get; set; }
 
         [NameInMap("clarity_score")]
         [Validation(Required=false)]
-        public int? ClarityScore { get; set; }
+        public double? ClarityScore { get; set; }
 
         [NameInMap("color")]
         [Validation(Required=false)]
-        public int? Color { get; set; }
+        public double? Color { get; set; }
 
         [NameInMap("color_score")]
         [Validation(Required=false)]
-        public int? ColorScore { get; set; }
+        public double? ColorScore { get; set; }
 
         [NameInMap("composition_score")]
         [Validation(Required=false)]
-        public int? CompositionScore { get; set; }
+        public double? CompositionScore { get; set; }
 
         [NameInMap("contrast")]
         [Validation(Required=false)]
-        public int? Contrast { get; set; }
+        public double? Contrast { get; set; }
 
         [NameInMap("contrast_score")]
         [Validation(Required=false)]
-        public int? ContrastScore { get; set; }
+        public double? ContrastScore { get; set; }
 
         [NameInMap("exposure")]
         [Validation(Required=false)]
-        public int? Exposure { get; set; }
+        public double? Exposure { get; set; }
 
         [NameInMap("exposure_score")]
         [Validation(Required=false)]
-        public int? ExposureScore { get; set; }
+        public double? ExposureScore { get; set; }
 
         [NameInMap("overall_score")]
         [Validation(Required=false)]
-        public int? OverallScore { get; set; }
+        public double? OverallScore { get; set; }
 
     }
 

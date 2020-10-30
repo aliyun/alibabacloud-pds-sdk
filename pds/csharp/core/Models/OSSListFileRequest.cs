@@ -38,7 +38,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("limit")]
         [Validation(Required=false, Pattern="[0-9]{1,3}")]
-        public long Limit { get; set; }
+        public long? Limit { get; set; }
 
         /// <summary>
         /// marker
@@ -66,7 +66,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("url_expire_sec")]
         [Validation(Required=false)]
-        public long UrlExpireSec { get; set; }
+        public long? UrlExpireSec { get; set; }
 
         /// <summary>
         /// video_thumbnail_process

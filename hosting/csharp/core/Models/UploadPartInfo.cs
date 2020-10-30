@@ -24,14 +24,14 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("part_number")]
         [Validation(Required=false, Pattern="[0-9]+")]
-        public long PartNumber { get; set; }
+        public long? PartNumber { get; set; }
 
         /// <summary>
         /// PartSize：
         /// </summary>
         [NameInMap("part_size")]
         [Validation(Required=false)]
-        public long PartSize { get; set; }
+        public long? PartSize { get; set; }
 
         /// <summary>
         /// upload_url

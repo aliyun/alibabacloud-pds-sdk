@@ -31,7 +31,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("status")]
         [Validation(Required=false)]
-        public long Status { get; set; }
+        public long? Status { get; set; }
 
     }
 

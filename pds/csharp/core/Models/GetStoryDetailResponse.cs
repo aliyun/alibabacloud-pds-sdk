@@ -38,7 +38,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("score")]
         [Validation(Required=false)]
-        public int? Score { get; set; }
+        public double? Score { get; set; }
 
         /// <summary>
         /// story_id

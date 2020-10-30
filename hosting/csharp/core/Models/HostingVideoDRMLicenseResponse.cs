@@ -24,7 +24,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("states")]
         [Validation(Required=true)]
-        public long States { get; set; }
+        public long? States { get; set; }
 
     }
 

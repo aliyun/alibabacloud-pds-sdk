@@ -31,7 +31,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("face_count")]
         [Validation(Required=false)]
-        public long FaceCount { get; set; }
+        public long? FaceCount { get; set; }
 
         /// <summary>
         /// 人脸分组封面头像地址
@@ -59,7 +59,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("image_count")]
         [Validation(Required=false)]
-        public long ImageCount { get; set; }
+        public long? ImageCount { get; set; }
 
         /// <summary>
         /// 人脸分组修改时间

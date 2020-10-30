@@ -66,7 +66,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("height")]
         [Validation(Required=false)]
-        public long Height { get; set; }
+        public long? Height { get; set; }
 
         [NameInMap("image_quality")]
         [Validation(Required=false)]
@@ -98,7 +98,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("story_image_score")]
         [Validation(Required=false)]
-        public int? StoryImageScore { get; set; }
+        public double? StoryImageScore { get; set; }
 
         /// <summary>
         /// time
@@ -119,7 +119,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("width")]
         [Validation(Required=false)]
-        public long Width { get; set; }
+        public long? Width { get; set; }
 
     }
 

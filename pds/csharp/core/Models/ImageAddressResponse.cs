@@ -21,7 +21,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("count")]
         [Validation(Required=false)]
-        public long Count { get; set; }
+        public long? Count { get; set; }
 
         /// <summary>
         /// cover_file_id

@@ -17,42 +17,42 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("col")]
         [Validation(Required=false)]
-        public long Col { get; set; }
+        public long? Col { get; set; }
 
         /// <summary>
         /// count
         /// </summary>
         [NameInMap("count")]
         [Validation(Required=false)]
-        public long Count { get; set; }
+        public long? Count { get; set; }
 
         /// <summary>
         /// frame_count
         /// </summary>
         [NameInMap("frame_count")]
         [Validation(Required=false)]
-        public long FrameCount { get; set; }
+        public long? FrameCount { get; set; }
 
         /// <summary>
         /// frame_height
         /// </summary>
         [NameInMap("frame_height")]
         [Validation(Required=false)]
-        public long FrameHeight { get; set; }
+        public long? FrameHeight { get; set; }
 
         /// <summary>
         /// frame_width
         /// </summary>
         [NameInMap("frame_width")]
         [Validation(Required=false)]
-        public long FrameWidth { get; set; }
+        public long? FrameWidth { get; set; }
 
         /// <summary>
         /// row
         /// </summary>
         [NameInMap("row")]
         [Validation(Required=false)]
-        public long Row { get; set; }
+        public long? Row { get; set; }
 
         /// <summary>
         /// sprite_url_list

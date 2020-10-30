@@ -17,7 +17,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("image_count")]
         [Validation(Required=false)]
-        public long ImageCount { get; set; }
+        public long? ImageCount { get; set; }
 
     }
 

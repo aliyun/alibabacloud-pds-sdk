@@ -63,7 +63,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// </summary>
         [NameInMap("total_size")]
         [Validation(Required=false)]
-        public long TotalSize { get; set; }
+        public long? TotalSize { get; set; }
 
     }
 
