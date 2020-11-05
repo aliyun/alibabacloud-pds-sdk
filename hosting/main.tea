@@ -8091,6 +8091,7 @@ model HostingVideoDRMLicenseRequest {
 model HostingVideoDRMLicenseResponse {
   data: string(name='data', description='drm_data', example='xxx'),
   states: int64(name='states', description='states', example=0, format='int64'),
+  deviceInfo?: string(name='device_info', description='device_info', example='xxx'),
 }
 
 /**
