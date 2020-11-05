@@ -1,3 +1,6 @@
+2020-11-05 Version: 0.0.3
+- Release Version 0.0.3
+
 2020-10-30 Version: 0.0.2
 - Release Version 0.0.2
 

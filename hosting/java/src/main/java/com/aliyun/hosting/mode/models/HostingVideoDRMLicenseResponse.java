@@ -17,6 +17,10 @@ public class HostingVideoDRMLicenseResponse extends TeaModel {
     @Validation(required = true)
     public Long states;
 
+    // device_info
+    @NameInMap("device_info")
+    public String deviceInfo;
+
     public static HostingVideoDRMLicenseResponse build(java.util.Map<String, ?> map) throws Exception {
         HostingVideoDRMLicenseResponse self = new HostingVideoDRMLicenseResponse();
         return TeaModel.build(map, self);
@@ -36,6 +40,14 @@ public class HostingVideoDRMLicenseResponse extends TeaModel {
     }
     public Long getStates() {
         return this.states;
+    }
+
+    public HostingVideoDRMLicenseResponse setDeviceInfo(String deviceInfo) {
+        this.deviceInfo = deviceInfo;
+        return this;
+    }
+    public String getDeviceInfo() {
+        return this.deviceInfo;
     }
 
 }
