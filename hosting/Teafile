@@ -49,6 +49,14 @@
 			}
 		}
 	},
+	"cpp": {
+		"packageInfo": {
+			"git": {
+				"scope": "alibabacloud-sdk-cpp",
+				"project": "pds-hosting"
+			}
+		}
+	},
 	"libraries": {
 		"Util": "darabonba:Util:*",
 		"ROAUtil": "alibabacloud:ROAUtil:*",
