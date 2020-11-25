@@ -1,7 +1,7 @@
 {
 	"scope": "alibabacloud",
 	"name": "pds",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"main": "./main.tea",
 	"maintainers": [
 		{
@@ -15,7 +15,8 @@
 		"java": "com.aliyun:aliyun-sdk-pds:0.0.2",
 		"csharp": "Aliyun.SDK.PDS.Client:1.0.1",
 		"php": "alibabacloud/pds-sdk:^0.2.0",
-		"python": "alibabacloud_pds_sdk:0.0.2"
+		"python": "alibabacloud_pds_sdk:0.0.2",
+		"cpp": "alibabacloud-sdk-cpp/pds:master"
 	},
 	"java": {
 		"package": "com.aliyun.pds.client"
@@ -46,6 +47,14 @@
 			"github": "https://github.com/aliyun/alibabacloud-pds-sdk",
 			"files": {
 				"LICENSE": "../LICENSE"
+			}
+		}
+	},
+	"cpp": {
+		"packageInfo": {
+			"git": {
+				"scope": "alibabacloud-sdk-cpp",
+				"project": "pds"
 			}
 		}
 	},
