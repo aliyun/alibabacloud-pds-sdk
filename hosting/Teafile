@@ -1,7 +1,7 @@
 {
 	"scope": "alibabacloud",
 	"name": "hosting",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"main": "./main.tea",
 	"maintainers": [
 		{
@@ -15,7 +15,8 @@
 		"java": "com.aliyun:aliyun-sdk-pds-hosting-mode:0.0.1",
 		"csharp": "Aliyun.SDK.Hosting.Client:1.0.1",
 		"php": "alibabacloud/pds-hosting-sdk:^0.2.0",
-		"python": "alibabacloud_pds_hosting_sdk:0.0.1"
+		"python": "alibabacloud_pds_hosting_sdk:0.0.1",
+		"cpp": "alibabacloud-sdk-cpp/pds-hosting:master"
 	},
 	"java": {
 		"package": "com.aliyun.hosting.mode"
