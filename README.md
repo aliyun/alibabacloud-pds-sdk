@@ -29,10 +29,13 @@ English | [简体中文](README-CN.md)
 
 - [pds-sdk](/pds/csharp/README.md)
 
-
 ### TypeScript
 
 - [pds-sdk](./pds/ts/README.md)
+
+### C++
+
+- [pds-sdk](./pds/cpp/README.md)
 
 ## Issues
 

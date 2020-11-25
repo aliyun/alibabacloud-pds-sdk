@@ -24,7 +24,6 @@
 
 - [pds-sdk](./pds/python/README-CN.md)
 
-
 ### .NET
 
 - [pds-sdk](/pds/csharp/README-CN.md)
@@ -32,6 +31,10 @@
 ### TypeScript
 
 - [pds-sdk](./pds/ts/README-CN.md)
+
+### C++
+
+- [pds-sdk](./pds/cpp/README-CN.md)
 
 ## 问题
 
