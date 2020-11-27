@@ -5,11 +5,9 @@
 
 #include <alibabacloud/access_token_credential.hpp>
 #include <alibabacloud/credential.hpp>
-#include <alibabacloud/roautil.hpp>
 #include <boost/any.hpp>
 #include <boost/throw_exception.hpp>
 #include <darabonba/core.hpp>
-#include <darabonba/util.hpp>
 #include <iostream>
 #include <map>
 #include <vector>
@@ -141,7 +139,7 @@ public:
     }
   }
 
-  ~RuntimeOptions() = default;
+  virtual ~RuntimeOptions() = default;
 };
 class Config : public Darabonba::Model {
 public:
@@ -270,7 +268,7 @@ public:
     }
   }
 
-  ~Config() = default;
+  virtual ~Config() = default;
 };
 class LinkInfo : public Darabonba::Model {
 public:
@@ -313,7 +311,7 @@ public:
     }
   }
 
-  ~LinkInfo() = default;
+  virtual ~LinkInfo() = default;
 };
 class AccountAccessTokenResponse : public Darabonba::Model {
 public:
@@ -440,11 +438,11 @@ public:
           make_shared<string>(boost::any_cast<string>(m["default_drive_id"]));
     }
     if (m.find("exist_link") != m.end() && !m["exist_link"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["exist_link"].type().name()) {
+      if (typeid(vector<boost::any>) == m["exist_link"].type()) {
         vector<LinkInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["exist_link"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             LinkInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -500,7 +498,7 @@ public:
     }
   }
 
-  ~AccountAccessTokenResponse() = default;
+  virtual ~AccountAccessTokenResponse() = default;
 };
 class CancelLinkModel : public Darabonba::Model {
 public:
@@ -544,7 +542,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         AccountAccessTokenResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<AccountAccessTokenResponse>(model1);
@@ -552,7 +550,7 @@ public:
     }
   }
 
-  ~CancelLinkModel() = default;
+  virtual ~CancelLinkModel() = default;
 };
 class ConfirmLinkModel : public Darabonba::Model {
 public:
@@ -596,7 +594,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         AccountAccessTokenResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<AccountAccessTokenResponse>(model1);
@@ -604,7 +602,7 @@ public:
     }
   }
 
-  ~ConfirmLinkModel() = default;
+  virtual ~ConfirmLinkModel() = default;
 };
 class ChangePasswordModel : public Darabonba::Model {
 public:
@@ -648,7 +646,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         AccountAccessTokenResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<AccountAccessTokenResponse>(model1);
@@ -656,7 +654,7 @@ public:
     }
   }
 
-  ~ChangePasswordModel() = default;
+  virtual ~ChangePasswordModel() = default;
 };
 class SetPasswordModel : public Darabonba::Model {
 public:
@@ -691,7 +689,7 @@ public:
     }
   }
 
-  ~SetPasswordModel() = default;
+  virtual ~SetPasswordModel() = default;
 };
 class VerifyCodeResponse : public Darabonba::Model {
 public:
@@ -725,7 +723,7 @@ public:
     }
   }
 
-  ~VerifyCodeResponse() = default;
+  virtual ~VerifyCodeResponse() = default;
 };
 class VerifyCodeModel : public Darabonba::Model {
 public:
@@ -769,7 +767,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         VerifyCodeResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<VerifyCodeResponse>(model1);
@@ -777,7 +775,7 @@ public:
     }
   }
 
-  ~VerifyCodeModel() = default;
+  virtual ~VerifyCodeModel() = default;
 };
 class GetAccessTokenByLinkInfoModel : public Darabonba::Model {
 public:
@@ -822,7 +820,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         AccountAccessTokenResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<AccountAccessTokenResponse>(model1);
@@ -830,7 +828,7 @@ public:
     }
   }
 
-  ~GetAccessTokenByLinkInfoModel() = default;
+  virtual ~GetAccessTokenByLinkInfoModel() = default;
 };
 class Captcha : public Darabonba::Model {
 public:
@@ -887,7 +885,7 @@ public:
     }
   }
 
-  ~Captcha() = default;
+  virtual ~Captcha() = default;
 };
 class GetCaptchaModel : public Darabonba::Model {
 public:
@@ -931,7 +929,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         Captcha model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<Captcha>(model1);
@@ -939,7 +937,7 @@ public:
     }
   }
 
-  ~GetCaptchaModel() = default;
+  virtual ~GetCaptchaModel() = default;
 };
 class LinkInfoResponse : public Darabonba::Model {
 public:
@@ -1049,7 +1047,7 @@ public:
     }
   }
 
-  ~LinkInfoResponse() = default;
+  virtual ~LinkInfoResponse() = default;
 };
 class GetLinkInfoModel : public Darabonba::Model {
 public:
@@ -1093,7 +1091,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         LinkInfoResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<LinkInfoResponse>(model1);
@@ -1101,7 +1099,7 @@ public:
     }
   }
 
-  ~GetLinkInfoModel() = default;
+  virtual ~GetLinkInfoModel() = default;
 };
 class LinkInfoListResponse : public Darabonba::Model {
 public:
@@ -1135,10 +1133,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<LinkInfoResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             LinkInfoResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -1149,7 +1147,7 @@ public:
     }
   }
 
-  ~LinkInfoListResponse() = default;
+  virtual ~LinkInfoListResponse() = default;
 };
 class GetLinkInfoByUserIdModel : public Darabonba::Model {
 public:
@@ -1193,7 +1191,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         LinkInfoListResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<LinkInfoListResponse>(model1);
@@ -1201,7 +1199,7 @@ public:
     }
   }
 
-  ~GetLinkInfoByUserIdModel() = default;
+  virtual ~GetLinkInfoByUserIdModel() = default;
 };
 class GetAppPublicKeyResponse : public Darabonba::Model {
 public:
@@ -1246,7 +1244,7 @@ public:
     }
   }
 
-  ~GetAppPublicKeyResponse() = default;
+  virtual ~GetAppPublicKeyResponse() = default;
 };
 class GetPublicKeyModel : public Darabonba::Model {
 public:
@@ -1290,7 +1288,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         GetAppPublicKeyResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<GetAppPublicKeyResponse>(model1);
@@ -1298,7 +1296,7 @@ public:
     }
   }
 
-  ~GetPublicKeyModel() = default;
+  virtual ~GetPublicKeyModel() = default;
 };
 class LinkModel : public Darabonba::Model {
 public:
@@ -1342,7 +1340,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         AccountAccessTokenResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<AccountAccessTokenResponse>(model1);
@@ -1350,7 +1348,7 @@ public:
     }
   }
 
-  ~LinkModel() = default;
+  virtual ~LinkModel() = default;
 };
 class MobileCheckExistResponse : public Darabonba::Model {
 public:
@@ -1404,7 +1402,7 @@ public:
     }
   }
 
-  ~MobileCheckExistResponse() = default;
+  virtual ~MobileCheckExistResponse() = default;
 };
 class CheckExistModel : public Darabonba::Model {
 public:
@@ -1448,7 +1446,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         MobileCheckExistResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<MobileCheckExistResponse>(model1);
@@ -1456,7 +1454,7 @@ public:
     }
   }
 
-  ~CheckExistModel() = default;
+  virtual ~CheckExistModel() = default;
 };
 class LoginModel : public Darabonba::Model {
 public:
@@ -1500,7 +1498,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         AccountAccessTokenResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<AccountAccessTokenResponse>(model1);
@@ -1508,7 +1506,7 @@ public:
     }
   }
 
-  ~LoginModel() = default;
+  virtual ~LoginModel() = default;
 };
 class RegisterModel : public Darabonba::Model {
 public:
@@ -1552,7 +1550,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         AccountAccessTokenResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<AccountAccessTokenResponse>(model1);
@@ -1560,7 +1558,7 @@ public:
     }
   }
 
-  ~RegisterModel() = default;
+  virtual ~RegisterModel() = default;
 };
 class MobileSendSmsCodeResponse : public Darabonba::Model {
 public:
@@ -1595,7 +1593,7 @@ public:
     }
   }
 
-  ~MobileSendSmsCodeResponse() = default;
+  virtual ~MobileSendSmsCodeResponse() = default;
 };
 class MobileSendSmsCodeModel : public Darabonba::Model {
 public:
@@ -1639,7 +1637,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         MobileSendSmsCodeResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<MobileSendSmsCodeResponse>(model1);
@@ -1647,7 +1645,7 @@ public:
     }
   }
 
-  ~MobileSendSmsCodeModel() = default;
+  virtual ~MobileSendSmsCodeModel() = default;
 };
 class AccountRevokeModel : public Darabonba::Model {
 public:
@@ -1682,7 +1680,7 @@ public:
     }
   }
 
-  ~AccountRevokeModel() = default;
+  virtual ~AccountRevokeModel() = default;
 };
 class AccountTokenModel : public Darabonba::Model {
 public:
@@ -1726,7 +1724,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         AccountAccessTokenResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<AccountAccessTokenResponse>(model1);
@@ -1734,7 +1732,7 @@ public:
     }
   }
 
-  ~AccountTokenModel() = default;
+  virtual ~AccountTokenModel() = default;
 };
 class AccessTokenResponse : public Darabonba::Model {
 public:
@@ -1850,7 +1848,7 @@ public:
     }
   }
 
-  ~AccessTokenResponse() = default;
+  virtual ~AccessTokenResponse() = default;
 };
 class AccountLinkRequest : public Darabonba::Model {
 public:
@@ -1940,7 +1938,7 @@ public:
     }
   }
 
-  ~AccountLinkRequest() = default;
+  virtual ~AccountLinkRequest() = default;
 };
 class AuthorizeRequest : public Darabonba::Model {
 public:
@@ -2013,7 +2011,7 @@ public:
     }
     if (m.find("Scope") != m.end() && !m["Scope"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["Scope"].type().name()) {
+      if (typeid(vector<boost::any>) == m["Scope"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["Scope"]);
         for (auto item : vec1) {
@@ -2027,7 +2025,7 @@ public:
     }
   }
 
-  ~AuthorizeRequest() = default;
+  virtual ~AuthorizeRequest() = default;
 };
 class BaseDriveResponse : public Darabonba::Model {
 public:
@@ -2152,7 +2150,7 @@ public:
     }
   }
 
-  ~BaseDriveResponse() = default;
+  virtual ~BaseDriveResponse() = default;
 };
 class BaseFileAnonymousResponse : public Darabonba::Model {
 public:
@@ -2229,7 +2227,7 @@ public:
     }
   }
 
-  ~BaseFileAnonymousResponse() = default;
+  virtual ~BaseFileAnonymousResponse() = default;
 };
 class CroppingBoundary : public Darabonba::Model {
 public:
@@ -2279,7 +2277,7 @@ public:
     }
   }
 
-  ~CroppingBoundary() = default;
+  virtual ~CroppingBoundary() = default;
 };
 class CroppingSuggestionItem : public Darabonba::Model {
 public:
@@ -2319,8 +2317,7 @@ public:
     }
     if (m.find("cropping_boundary") != m.end() &&
         !m["cropping_boundary"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["cropping_boundary"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["cropping_boundary"].type()) {
         CroppingBoundary model1;
         model1.fromMap(
             boost::any_cast<map<string, boost::any>>(m["cropping_boundary"]));
@@ -2332,7 +2329,7 @@ public:
     }
   }
 
-  ~CroppingSuggestionItem() = default;
+  virtual ~CroppingSuggestionItem() = default;
 };
 class ImageQuality : public Darabonba::Model {
 public:
@@ -2431,7 +2428,7 @@ public:
     }
   }
 
-  ~ImageQuality() = default;
+  virtual ~ImageQuality() = default;
 };
 class SystemTag : public Darabonba::Model {
 public:
@@ -2505,7 +2502,7 @@ public:
     }
   }
 
-  ~SystemTag() = default;
+  virtual ~SystemTag() = default;
 };
 class ImageMediaResponse : public Darabonba::Model {
 public:
@@ -2611,12 +2608,11 @@ public:
     }
     if (m.find("cropping_suggestion") != m.end() &&
         !m["cropping_suggestion"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["cropping_suggestion"].type().name()) {
+      if (typeid(vector<boost::any>) == m["cropping_suggestion"].type()) {
         vector<CroppingSuggestionItem> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["cropping_suggestion"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             CroppingSuggestionItem model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -2639,8 +2635,7 @@ public:
       height = make_shared<long>(boost::any_cast<long>(m["height"]));
     }
     if (m.find("image_quality") != m.end() && !m["image_quality"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["image_quality"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["image_quality"].type()) {
         ImageQuality model1;
         model1.fromMap(
             boost::any_cast<map<string, boost::any>>(m["image_quality"]));
@@ -2648,11 +2643,11 @@ public:
       }
     }
     if (m.find("image_tags") != m.end() && !m["image_tags"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["image_tags"].type().name()) {
+      if (typeid(vector<boost::any>) == m["image_tags"].type()) {
         vector<SystemTag> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["image_tags"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             SystemTag model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -2683,7 +2678,7 @@ public:
     }
   }
 
-  ~ImageMediaResponse() = default;
+  virtual ~ImageMediaResponse() = default;
 };
 class VideoMediaAudioStream : public Darabonba::Model {
 public:
@@ -2749,7 +2744,7 @@ public:
     }
   }
 
-  ~VideoMediaAudioStream() = default;
+  virtual ~VideoMediaAudioStream() = default;
 };
 class VideoMediaVideoStream : public Darabonba::Model {
 public:
@@ -2806,7 +2801,7 @@ public:
     }
   }
 
-  ~VideoMediaVideoStream() = default;
+  virtual ~VideoMediaVideoStream() = default;
 };
 class VideoMediaResponse : public Darabonba::Model {
 public:
@@ -2919,12 +2914,11 @@ public:
     }
     if (m.find("video_media_audio_stream") != m.end() &&
         !m["video_media_audio_stream"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["video_media_audio_stream"].type().name()) {
+      if (typeid(vector<boost::any>) == m["video_media_audio_stream"].type()) {
         vector<VideoMediaAudioStream> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(
                  m["video_media_audio_stream"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             VideoMediaAudioStream model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -2936,12 +2930,11 @@ public:
     }
     if (m.find("video_media_video_stream") != m.end() &&
         !m["video_media_video_stream"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["video_media_video_stream"].type().name()) {
+      if (typeid(vector<boost::any>) == m["video_media_video_stream"].type()) {
         vector<VideoMediaVideoStream> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(
                  m["video_media_video_stream"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             VideoMediaVideoStream model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -2956,7 +2949,7 @@ public:
     }
   }
 
-  ~VideoMediaResponse() = default;
+  virtual ~VideoMediaResponse() = default;
 };
 class VideoPreviewSprite : public Darabonba::Model {
 public:
@@ -3027,7 +3020,7 @@ public:
     }
   }
 
-  ~VideoPreviewSprite() = default;
+  virtual ~VideoPreviewSprite() = default;
 };
 class VideoPreviewTranscode : public Darabonba::Model {
 public:
@@ -3064,7 +3057,7 @@ public:
     }
   }
 
-  ~VideoPreviewTranscode() = default;
+  virtual ~VideoPreviewTranscode() = default;
 };
 class VideoPreviewResponse : public Darabonba::Model {
 public:
@@ -3146,8 +3139,7 @@ public:
       height = make_shared<long>(boost::any_cast<long>(m["height"]));
     }
     if (m.find("sprite_info") != m.end() && !m["sprite_info"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["sprite_info"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["sprite_info"].type()) {
         VideoPreviewSprite model1;
         model1.fromMap(
             boost::any_cast<map<string, boost::any>>(m["sprite_info"]));
@@ -3155,12 +3147,11 @@ public:
       }
     }
     if (m.find("template_list") != m.end() && !m["template_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["template_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["template_list"].type()) {
         vector<VideoPreviewTranscode> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["template_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             VideoPreviewTranscode model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -3181,7 +3172,7 @@ public:
     }
   }
 
-  ~VideoPreviewResponse() = default;
+  virtual ~VideoPreviewResponse() = default;
 };
 class BaseFileResponse : public Darabonba::Model {
 public:
@@ -3414,8 +3405,7 @@ public:
     }
     if (m.find("image_media_metadata") != m.end() &&
         !m["image_media_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["image_media_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["image_media_metadata"].type()) {
         ImageMediaResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["image_media_metadata"]));
@@ -3424,7 +3414,7 @@ public:
     }
     if (m.find("labels") != m.end() && !m["labels"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["labels"].type().name()) {
+      if (typeid(vector<boost::any>) == m["labels"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["labels"]);
         for (auto item : vec1) {
@@ -3487,8 +3477,7 @@ public:
     }
     if (m.find("video_media_metadata") != m.end() &&
         !m["video_media_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["video_media_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["video_media_metadata"].type()) {
         VideoMediaResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["video_media_metadata"]));
@@ -3497,8 +3486,8 @@ public:
     }
     if (m.find("video_preview_metadata") != m.end() &&
         !m["video_preview_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["video_preview_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) ==
+          m["video_preview_metadata"].type()) {
         VideoPreviewResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["video_preview_metadata"]));
@@ -3507,7 +3496,7 @@ public:
     }
   }
 
-  ~BaseFileResponse() = default;
+  virtual ~BaseFileResponse() = default;
 };
 class BaseMediaResponse : public Darabonba::Model {
 public:
@@ -3600,7 +3589,7 @@ public:
     }
   }
 
-  ~BaseMediaResponse() = default;
+  virtual ~BaseMediaResponse() = default;
 };
 class BaseOSSFileResponse : public Darabonba::Model {
 public:
@@ -3806,7 +3795,7 @@ public:
     }
   }
 
-  ~BaseOSSFileResponse() = default;
+  virtual ~BaseOSSFileResponse() = default;
 };
 class BaseShareLinkResponse : public Darabonba::Model {
 public:
@@ -3930,7 +3919,7 @@ public:
     }
   }
 
-  ~BaseShareLinkResponse() = default;
+  virtual ~BaseShareLinkResponse() = default;
 };
 class SharePermissionPolicy : public Darabonba::Model {
 public:
@@ -3976,8 +3965,7 @@ public:
     }
     if (m.find("permission_list") != m.end() && !m["permission_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["permission_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["permission_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["permission_list"]);
         for (auto item : vec1) {
@@ -3992,7 +3980,7 @@ public:
     }
   }
 
-  ~SharePermissionPolicy() = default;
+  virtual ~SharePermissionPolicy() = default;
 };
 class BaseShareResponse : public Darabonba::Model {
 public:
@@ -4104,7 +4092,7 @@ public:
     }
     if (m.find("permissions") != m.end() && !m["permissions"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["permissions"].type().name()) {
+      if (typeid(vector<boost::any>) == m["permissions"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["permissions"]);
         for (auto item : vec1) {
@@ -4124,12 +4112,11 @@ public:
       shareName = make_shared<string>(boost::any_cast<string>(m["share_name"]));
     }
     if (m.find("share_policy") != m.end() && !m["share_policy"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["share_policy"].type().name()) {
+      if (typeid(vector<boost::any>) == m["share_policy"].type()) {
         vector<SharePermissionPolicy> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["share_policy"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             SharePermissionPolicy model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -4146,7 +4133,7 @@ public:
     }
   }
 
-  ~BaseShareResponse() = default;
+  virtual ~BaseShareResponse() = default;
 };
 class BatchSubResponse : public Darabonba::Model {
 public:
@@ -4195,7 +4182,7 @@ public:
     }
   }
 
-  ~BatchSubResponse() = default;
+  virtual ~BatchSubResponse() = default;
 };
 class BatchResponse : public Darabonba::Model {
 public:
@@ -4224,10 +4211,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("responses") != m.end() && !m["responses"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["responses"].type().name()) {
+      if (typeid(vector<boost::any>) == m["responses"].type()) {
         vector<BatchSubResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["responses"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BatchSubResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -4238,7 +4225,7 @@ public:
     }
   }
 
-  ~BatchResponse() = default;
+  virtual ~BatchResponse() = default;
 };
 class CancelLinkRequest : public Darabonba::Model {
 public:
@@ -4286,7 +4273,7 @@ public:
     }
   }
 
-  ~CancelLinkRequest() = default;
+  virtual ~CancelLinkRequest() = default;
 };
 class CompleteFileResponse : public Darabonba::Model {
 public:
@@ -4519,8 +4506,7 @@ public:
     }
     if (m.find("image_media_metadata") != m.end() &&
         !m["image_media_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["image_media_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["image_media_metadata"].type()) {
         ImageMediaResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["image_media_metadata"]));
@@ -4529,7 +4515,7 @@ public:
     }
     if (m.find("labels") != m.end() && !m["labels"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["labels"].type().name()) {
+      if (typeid(vector<boost::any>) == m["labels"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["labels"]);
         for (auto item : vec1) {
@@ -4592,8 +4578,7 @@ public:
     }
     if (m.find("video_media_metadata") != m.end() &&
         !m["video_media_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["video_media_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["video_media_metadata"].type()) {
         VideoMediaResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["video_media_metadata"]));
@@ -4602,8 +4587,8 @@ public:
     }
     if (m.find("video_preview_metadata") != m.end() &&
         !m["video_preview_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["video_preview_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) ==
+          m["video_preview_metadata"].type()) {
         VideoPreviewResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["video_preview_metadata"]));
@@ -4612,7 +4597,7 @@ public:
     }
   }
 
-  ~CompleteFileResponse() = default;
+  virtual ~CompleteFileResponse() = default;
 };
 class ConfirmLinkRequest : public Darabonba::Model {
 public:
@@ -4660,7 +4645,7 @@ public:
     }
   }
 
-  ~ConfirmLinkRequest() = default;
+  virtual ~ConfirmLinkRequest() = default;
 };
 class CopyFileResponse : public Darabonba::Model {
 public:
@@ -4717,7 +4702,7 @@ public:
     }
   }
 
-  ~CopyFileResponse() = default;
+  virtual ~CopyFileResponse() = default;
 };
 class CorsRule : public Darabonba::Model {
 public:
@@ -4759,8 +4744,7 @@ public:
   void fromMap(map<string, boost::any> m) override {
     if (m.find("allowed_header") != m.end() && !m["allowed_header"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["allowed_header"].type().name()) {
+      if (typeid(vector<boost::any>) == m["allowed_header"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["allowed_header"]);
         for (auto item : vec1) {
@@ -4771,8 +4755,7 @@ public:
     }
     if (m.find("allowed_method") != m.end() && !m["allowed_method"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["allowed_method"].type().name()) {
+      if (typeid(vector<boost::any>) == m["allowed_method"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["allowed_method"]);
         for (auto item : vec1) {
@@ -4783,8 +4766,7 @@ public:
     }
     if (m.find("allowed_origin") != m.end() && !m["allowed_origin"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["allowed_origin"].type().name()) {
+      if (typeid(vector<boost::any>) == m["allowed_origin"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["allowed_origin"]);
         for (auto item : vec1) {
@@ -4795,8 +4777,7 @@ public:
     }
     if (m.find("expose_header") != m.end() && !m["expose_header"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["expose_header"].type().name()) {
+      if (typeid(vector<boost::any>) == m["expose_header"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["expose_header"]);
         for (auto item : vec1) {
@@ -4811,7 +4792,7 @@ public:
     }
   }
 
-  ~CorsRule() = default;
+  virtual ~CorsRule() = default;
 };
 class CreateDriveResponse : public Darabonba::Model {
 public:
@@ -4847,7 +4828,7 @@ public:
     }
   }
 
-  ~CreateDriveResponse() = default;
+  virtual ~CreateDriveResponse() = default;
 };
 class UploadPartInfo : public Darabonba::Model {
 public:
@@ -4914,7 +4895,7 @@ public:
     }
   }
 
-  ~UploadPartInfo() = default;
+  virtual ~UploadPartInfo() = default;
 };
 class CreateFileResponse : public Darabonba::Model {
 public:
@@ -5028,12 +5009,11 @@ public:
           make_shared<string>(boost::any_cast<string>(m["parent_file_id"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -5066,7 +5046,7 @@ public:
     }
   }
 
-  ~CreateFileResponse() = default;
+  virtual ~CreateFileResponse() = default;
 };
 class CreateShareLinkResponse : public Darabonba::Model {
 public:
@@ -5124,7 +5104,7 @@ public:
     }
   }
 
-  ~CreateShareLinkResponse() = default;
+  virtual ~CreateShareLinkResponse() = default;
 };
 class CreateShareResponse : public Darabonba::Model {
 public:
@@ -5160,7 +5140,7 @@ public:
     }
   }
 
-  ~CreateShareResponse() = default;
+  virtual ~CreateShareResponse() = default;
 };
 class DefaultChangePasswordRequest : public Darabonba::Model {
 public:
@@ -5263,7 +5243,7 @@ public:
     }
   }
 
-  ~DefaultChangePasswordRequest() = default;
+  virtual ~DefaultChangePasswordRequest() = default;
 };
 class DefaultSetPasswordRequest : public Darabonba::Model {
 public:
@@ -5345,7 +5325,7 @@ public:
     }
   }
 
-  ~DefaultSetPasswordRequest() = default;
+  virtual ~DefaultSetPasswordRequest() = default;
 };
 class DeleteDriveResponse : public Darabonba::Model {
 public:
@@ -5364,6 +5344,8 @@ public:
   }
 
   void fromMap(map<string, boost::any> m) override {}
+
+  virtual ~DeleteDriveResponse() = default;
 };
 class DeleteFileResponse : public Darabonba::Model {
 public:
@@ -5420,7 +5402,7 @@ public:
     }
   }
 
-  ~DeleteFileResponse() = default;
+  virtual ~DeleteFileResponse() = default;
 };
 class DeleteFilesResponse : public Darabonba::Model {
 public:
@@ -5458,8 +5440,7 @@ public:
     if (m.find("deleted_file_id_list") != m.end() &&
         !m["deleted_file_id_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["deleted_file_id_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["deleted_file_id_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["deleted_file_id_list"]);
         for (auto item : vec1) {
@@ -5476,7 +5457,7 @@ public:
     }
   }
 
-  ~DeleteFilesResponse() = default;
+  virtual ~DeleteFilesResponse() = default;
 };
 class DeviceAuthorizeRequest : public Darabonba::Model {
 public:
@@ -5541,7 +5522,7 @@ public:
     }
     if (m.find("Scope") != m.end() && !m["Scope"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["Scope"].type().name()) {
+      if (typeid(vector<boost::any>) == m["Scope"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["Scope"]);
         for (auto item : vec1) {
@@ -5552,7 +5533,7 @@ public:
     }
   }
 
-  ~DeviceAuthorizeRequest() = default;
+  virtual ~DeviceAuthorizeRequest() = default;
 };
 class FileDeltaResponse : public Darabonba::Model {
 public:
@@ -5595,7 +5576,7 @@ public:
           make_shared<string>(boost::any_cast<string>(m["current_category"]));
     }
     if (m.find("file") != m.end() && !m["file"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["file"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["file"].type()) {
         BaseFileResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["file"]));
         file = make_shared<BaseFileResponse>(model1);
@@ -5609,7 +5590,7 @@ public:
     }
   }
 
-  ~FileDeltaResponse() = default;
+  virtual ~FileDeltaResponse() = default;
 };
 class GetAccessTokenByLinkInfoRequest : public Darabonba::Model {
 public:
@@ -5675,7 +5656,7 @@ public:
     }
   }
 
-  ~GetAccessTokenByLinkInfoRequest() = default;
+  virtual ~GetAccessTokenByLinkInfoRequest() = default;
 };
 class GetAppPublicKeyRequest : public Darabonba::Model {
 public:
@@ -5717,7 +5698,7 @@ public:
     }
   }
 
-  ~GetAppPublicKeyRequest() = default;
+  virtual ~GetAppPublicKeyRequest() = default;
 };
 class GetAsyncTaskResponse : public Darabonba::Model {
 public:
@@ -5761,7 +5742,7 @@ public:
     }
   }
 
-  ~GetAsyncTaskResponse() = default;
+  virtual ~GetAsyncTaskResponse() = default;
 };
 class GetByLinkInfoRequest : public Darabonba::Model {
 public:
@@ -5826,7 +5807,7 @@ public:
     }
   }
 
-  ~GetByLinkInfoRequest() = default;
+  virtual ~GetByLinkInfoRequest() = default;
 };
 class GetCaptchaRequest : public Darabonba::Model {
 public:
@@ -5873,7 +5854,7 @@ public:
     }
   }
 
-  ~GetCaptchaRequest() = default;
+  virtual ~GetCaptchaRequest() = default;
 };
 class RateLimit : public Darabonba::Model {
 public:
@@ -5909,7 +5890,7 @@ public:
     }
   }
 
-  ~RateLimit() = default;
+  virtual ~RateLimit() = default;
 };
 class GetDownloadUrlResponse : public Darabonba::Model {
 public:
@@ -5962,8 +5943,7 @@ public:
       method = make_shared<string>(boost::any_cast<string>(m["method"]));
     }
     if (m.find("ratelimit") != m.end() && !m["ratelimit"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["ratelimit"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["ratelimit"].type()) {
         RateLimit model1;
         model1.fromMap(
             boost::any_cast<map<string, boost::any>>(m["ratelimit"]));
@@ -5987,7 +5967,7 @@ public:
     }
   }
 
-  ~GetDownloadUrlResponse() = default;
+  virtual ~GetDownloadUrlResponse() = default;
 };
 class GetDriveResponse : public Darabonba::Model {
 public:
@@ -6112,7 +6092,7 @@ public:
     }
   }
 
-  ~GetDriveResponse() = default;
+  virtual ~GetDriveResponse() = default;
 };
 class GetFileByPathResponse : public Darabonba::Model {
 public:
@@ -6345,8 +6325,7 @@ public:
     }
     if (m.find("image_media_metadata") != m.end() &&
         !m["image_media_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["image_media_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["image_media_metadata"].type()) {
         ImageMediaResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["image_media_metadata"]));
@@ -6355,7 +6334,7 @@ public:
     }
     if (m.find("labels") != m.end() && !m["labels"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["labels"].type().name()) {
+      if (typeid(vector<boost::any>) == m["labels"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["labels"]);
         for (auto item : vec1) {
@@ -6418,8 +6397,7 @@ public:
     }
     if (m.find("video_media_metadata") != m.end() &&
         !m["video_media_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["video_media_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["video_media_metadata"].type()) {
         VideoMediaResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["video_media_metadata"]));
@@ -6428,8 +6406,8 @@ public:
     }
     if (m.find("video_preview_metadata") != m.end() &&
         !m["video_preview_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["video_preview_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) ==
+          m["video_preview_metadata"].type()) {
         VideoPreviewResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["video_preview_metadata"]));
@@ -6438,7 +6416,7 @@ public:
     }
   }
 
-  ~GetFileByPathResponse() = default;
+  virtual ~GetFileByPathResponse() = default;
 };
 class GetFileResponse : public Darabonba::Model {
 public:
@@ -6671,8 +6649,7 @@ public:
     }
     if (m.find("image_media_metadata") != m.end() &&
         !m["image_media_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["image_media_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["image_media_metadata"].type()) {
         ImageMediaResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["image_media_metadata"]));
@@ -6681,7 +6658,7 @@ public:
     }
     if (m.find("labels") != m.end() && !m["labels"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["labels"].type().name()) {
+      if (typeid(vector<boost::any>) == m["labels"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["labels"]);
         for (auto item : vec1) {
@@ -6744,8 +6721,7 @@ public:
     }
     if (m.find("video_media_metadata") != m.end() &&
         !m["video_media_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["video_media_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["video_media_metadata"].type()) {
         VideoMediaResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["video_media_metadata"]));
@@ -6754,8 +6730,8 @@ public:
     }
     if (m.find("video_preview_metadata") != m.end() &&
         !m["video_preview_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["video_preview_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) ==
+          m["video_preview_metadata"].type()) {
         VideoPreviewResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["video_preview_metadata"]));
@@ -6764,7 +6740,7 @@ public:
     }
   }
 
-  ~GetFileResponse() = default;
+  virtual ~GetFileResponse() = default;
 };
 class GetLastCursorResponse : public Darabonba::Model {
 public:
@@ -6793,7 +6769,7 @@ public:
     }
   }
 
-  ~GetLastCursorResponse() = default;
+  virtual ~GetLastCursorResponse() = default;
 };
 class GetLinkInfoByUserIDRequest : public Darabonba::Model {
 public:
@@ -6841,7 +6817,7 @@ public:
     }
   }
 
-  ~GetLinkInfoByUserIDRequest() = default;
+  virtual ~GetLinkInfoByUserIDRequest() = default;
 };
 class GetMediaPlayURLResponse : public Darabonba::Model {
 public:
@@ -6870,7 +6846,7 @@ public:
     }
   }
 
-  ~GetMediaPlayURLResponse() = default;
+  virtual ~GetMediaPlayURLResponse() = default;
 };
 class GetOfficePreviewUrlResponse : public Darabonba::Model {
 public:
@@ -6909,7 +6885,7 @@ public:
     }
   }
 
-  ~GetOfficePreviewUrlResponse() = default;
+  virtual ~GetOfficePreviewUrlResponse() = default;
 };
 class GetPublicKeyResponse : public Darabonba::Model {
 public:
@@ -6962,7 +6938,7 @@ public:
     }
   }
 
-  ~GetPublicKeyResponse() = default;
+  virtual ~GetPublicKeyResponse() = default;
 };
 class GetShareLinkByAnonymousResponse : public Darabonba::Model {
 public:
@@ -7015,7 +6991,7 @@ public:
     }
   }
 
-  ~GetShareLinkByAnonymousResponse() = default;
+  virtual ~GetShareLinkByAnonymousResponse() = default;
 };
 class GetShareLinkIDResponse : public Darabonba::Model {
 public:
@@ -7051,7 +7027,7 @@ public:
     }
   }
 
-  ~GetShareLinkIDResponse() = default;
+  virtual ~GetShareLinkIDResponse() = default;
 };
 class GetShareLinkTokenResponse : public Darabonba::Model {
 public:
@@ -7109,7 +7085,7 @@ public:
     }
   }
 
-  ~GetShareLinkTokenResponse() = default;
+  virtual ~GetShareLinkTokenResponse() = default;
 };
 class GetShareResponse : public Darabonba::Model {
 public:
@@ -7221,7 +7197,7 @@ public:
     }
     if (m.find("permissions") != m.end() && !m["permissions"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["permissions"].type().name()) {
+      if (typeid(vector<boost::any>) == m["permissions"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["permissions"]);
         for (auto item : vec1) {
@@ -7241,12 +7217,11 @@ public:
       shareName = make_shared<string>(boost::any_cast<string>(m["share_name"]));
     }
     if (m.find("share_policy") != m.end() && !m["share_policy"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["share_policy"].type().name()) {
+      if (typeid(vector<boost::any>) == m["share_policy"].type()) {
         vector<SharePermissionPolicy> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["share_policy"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             SharePermissionPolicy model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -7263,7 +7238,7 @@ public:
     }
   }
 
-  ~GetShareResponse() = default;
+  virtual ~GetShareResponse() = default;
 };
 class GetUploadUrlResponse : public Darabonba::Model {
 public:
@@ -7330,12 +7305,11 @@ public:
       fileId = make_shared<string>(boost::any_cast<string>(m["file_id"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -7349,7 +7323,7 @@ public:
     }
   }
 
-  ~GetUploadUrlResponse() = default;
+  virtual ~GetUploadUrlResponse() = default;
 };
 class GetVideoPreviewSpriteURLResponse : public Darabonba::Model {
 public:
@@ -7418,8 +7392,7 @@ public:
     }
     if (m.find("sprite_url_list") != m.end() && !m["sprite_url_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["sprite_url_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["sprite_url_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["sprite_url_list"]);
         for (auto item : vec1) {
@@ -7430,7 +7403,7 @@ public:
     }
   }
 
-  ~GetVideoPreviewSpriteURLResponse() = default;
+  virtual ~GetVideoPreviewSpriteURLResponse() = default;
 };
 class GetVideoPreviewURLResponse : public Darabonba::Model {
 public:
@@ -7461,7 +7434,7 @@ public:
     }
   }
 
-  ~GetVideoPreviewURLResponse() = default;
+  virtual ~GetVideoPreviewURLResponse() = default;
 };
 class ListByAnonymousResponse : public Darabonba::Model {
 public:
@@ -7494,10 +7467,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseFileAnonymousResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseFileAnonymousResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -7512,7 +7485,7 @@ public:
     }
   }
 
-  ~ListByAnonymousResponse() = default;
+  virtual ~ListByAnonymousResponse() = default;
 };
 class ListDriveResponse : public Darabonba::Model {
 public:
@@ -7545,10 +7518,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseDriveResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseDriveResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -7563,7 +7536,7 @@ public:
     }
   }
 
-  ~ListDriveResponse() = default;
+  virtual ~ListDriveResponse() = default;
 };
 class ListFileDeltaResponse : public Darabonba::Model {
 public:
@@ -7606,10 +7579,10 @@ public:
       hasMore = make_shared<bool>(boost::any_cast<bool>(m["has_more"]));
     }
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<FileDeltaResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             FileDeltaResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -7620,7 +7593,7 @@ public:
     }
   }
 
-  ~ListFileDeltaResponse() = default;
+  virtual ~ListFileDeltaResponse() = default;
 };
 class ListFileResponse : public Darabonba::Model {
 public:
@@ -7653,10 +7626,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseFileResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseFileResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -7671,7 +7644,7 @@ public:
     }
   }
 
-  ~ListFileResponse() = default;
+  virtual ~ListFileResponse() = default;
 };
 class ListShareLinkResponse : public Darabonba::Model {
 public:
@@ -7704,10 +7677,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseShareLinkResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseShareLinkResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -7722,7 +7695,7 @@ public:
     }
   }
 
-  ~ListShareLinkResponse() = default;
+  virtual ~ListShareLinkResponse() = default;
 };
 class ListShareResponse : public Darabonba::Model {
 public:
@@ -7755,10 +7728,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseShareResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseShareResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -7773,7 +7746,7 @@ public:
     }
   }
 
-  ~ListShareResponse() = default;
+  virtual ~ListShareResponse() = default;
 };
 class StoreFile : public Darabonba::Model {
 public:
@@ -7832,7 +7805,7 @@ public:
     }
   }
 
-  ~StoreFile() = default;
+  virtual ~StoreFile() = default;
 };
 class ListStoreFileResponse : public Darabonba::Model {
 public:
@@ -7865,10 +7838,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<StoreFile> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             StoreFile model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -7883,7 +7856,7 @@ public:
     }
   }
 
-  ~ListStoreFileResponse() = default;
+  virtual ~ListStoreFileResponse() = default;
 };
 class StoreItemResponse : public Darabonba::Model {
 public:
@@ -8064,7 +8037,7 @@ public:
     }
   }
 
-  ~StoreItemResponse() = default;
+  virtual ~StoreItemResponse() = default;
 };
 class ListStoreResponse : public Darabonba::Model {
 public:
@@ -8093,10 +8066,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<StoreItemResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             StoreItemResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -8107,7 +8080,7 @@ public:
     }
   }
 
-  ~ListStoreResponse() = default;
+  virtual ~ListStoreResponse() = default;
 };
 class ListUploadedPartResponse : public Darabonba::Model {
 public:
@@ -8163,12 +8136,11 @@ public:
       uploadId = make_shared<string>(boost::any_cast<string>(m["upload_id"]));
     }
     if (m.find("uploaded_parts") != m.end() && !m["uploaded_parts"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["uploaded_parts"].type().name()) {
+      if (typeid(vector<boost::any>) == m["uploaded_parts"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["uploaded_parts"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -8179,7 +8151,7 @@ public:
     }
   }
 
-  ~ListUploadedPartResponse() = default;
+  virtual ~ListUploadedPartResponse() = default;
 };
 class LoginByCodeRequest : public Darabonba::Model {
 public:
@@ -8239,7 +8211,7 @@ public:
     }
   }
 
-  ~LoginByCodeRequest() = default;
+  virtual ~LoginByCodeRequest() = default;
 };
 class MobileCheckExistRequest : public Darabonba::Model {
 public:
@@ -8306,7 +8278,7 @@ public:
     }
   }
 
-  ~MobileCheckExistRequest() = default;
+  virtual ~MobileCheckExistRequest() = default;
 };
 class MobileLoginRequest : public Darabonba::Model {
 public:
@@ -8426,7 +8398,7 @@ public:
     }
   }
 
-  ~MobileLoginRequest() = default;
+  virtual ~MobileLoginRequest() = default;
 };
 class MobileRegisterRequest : public Darabonba::Model {
 public:
@@ -8516,7 +8488,7 @@ public:
     }
   }
 
-  ~MobileRegisterRequest() = default;
+  virtual ~MobileRegisterRequest() = default;
 };
 class MobileSendSmsCodeRequest : public Darabonba::Model {
 public:
@@ -8609,7 +8581,7 @@ public:
     }
   }
 
-  ~MobileSendSmsCodeRequest() = default;
+  virtual ~MobileSendSmsCodeRequest() = default;
 };
 class MoveFileResponse : public Darabonba::Model {
 public:
@@ -8666,7 +8638,7 @@ public:
     }
   }
 
-  ~MoveFileResponse() = default;
+  virtual ~MoveFileResponse() = default;
 };
 class OSSCompleteFileResponse : public Darabonba::Model {
 public:
@@ -8879,7 +8851,7 @@ public:
     }
   }
 
-  ~OSSCompleteFileResponse() = default;
+  virtual ~OSSCompleteFileResponse() = default;
 };
 class OSSCopyFileResponse : public Darabonba::Model {
 public:
@@ -8941,7 +8913,7 @@ public:
     }
   }
 
-  ~OSSCopyFileResponse() = default;
+  virtual ~OSSCopyFileResponse() = default;
 };
 class OSSCreateFileResponse : public Darabonba::Model {
 public:
@@ -9009,12 +8981,11 @@ public:
       filePath = make_shared<string>(boost::any_cast<string>(m["file_path"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -9034,7 +9005,7 @@ public:
     }
   }
 
-  ~OSSCreateFileResponse() = default;
+  virtual ~OSSCreateFileResponse() = default;
 };
 class OSSDeleteFileResponse : public Darabonba::Model {
 public:
@@ -9096,7 +9067,7 @@ public:
     }
   }
 
-  ~OSSDeleteFileResponse() = default;
+  virtual ~OSSDeleteFileResponse() = default;
 };
 class OSSDeleteFilesResponse : public Darabonba::Model {
 public:
@@ -9139,8 +9110,7 @@ public:
     if (m.find("deleted_file_id_list") != m.end() &&
         !m["deleted_file_id_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["deleted_file_id_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["deleted_file_id_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["deleted_file_id_list"]);
         for (auto item : vec1) {
@@ -9160,7 +9130,7 @@ public:
     }
   }
 
-  ~OSSDeleteFilesResponse() = default;
+  virtual ~OSSDeleteFilesResponse() = default;
 };
 class OSSGetDownloadUrlResponse : public Darabonba::Model {
 public:
@@ -9204,7 +9174,7 @@ public:
     }
   }
 
-  ~OSSGetDownloadUrlResponse() = default;
+  virtual ~OSSGetDownloadUrlResponse() = default;
 };
 class OSSGetFileResponse : public Darabonba::Model {
 public:
@@ -9410,7 +9380,7 @@ public:
     }
   }
 
-  ~OSSGetFileResponse() = default;
+  virtual ~OSSGetFileResponse() = default;
 };
 class OSSGetSecureUrlResponse : public Darabonba::Model {
 public:
@@ -9447,7 +9417,7 @@ public:
     }
   }
 
-  ~OSSGetSecureUrlResponse() = default;
+  virtual ~OSSGetSecureUrlResponse() = default;
 };
 class OSSGetUploadUrlResponse : public Darabonba::Model {
 public:
@@ -9511,12 +9481,11 @@ public:
       filePath = make_shared<string>(boost::any_cast<string>(m["file_path"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -9530,7 +9499,7 @@ public:
     }
   }
 
-  ~OSSGetUploadUrlResponse() = default;
+  virtual ~OSSGetUploadUrlResponse() = default;
 };
 class OSSListFileResponse : public Darabonba::Model {
 public:
@@ -9563,10 +9532,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseOSSFileResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseOSSFileResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -9581,7 +9550,7 @@ public:
     }
   }
 
-  ~OSSListFileResponse() = default;
+  virtual ~OSSListFileResponse() = default;
 };
 class OSSListUploadedPartResponse : public Darabonba::Model {
 public:
@@ -9634,12 +9603,11 @@ public:
       uploadId = make_shared<string>(boost::any_cast<string>(m["upload_id"]));
     }
     if (m.find("uploaded_parts") != m.end() && !m["uploaded_parts"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["uploaded_parts"].type().name()) {
+      if (typeid(vector<boost::any>) == m["uploaded_parts"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["uploaded_parts"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -9650,7 +9618,7 @@ public:
     }
   }
 
-  ~OSSListUploadedPartResponse() = default;
+  virtual ~OSSListUploadedPartResponse() = default;
 };
 class OSSMoveFileResponse : public Darabonba::Model {
 public:
@@ -9712,7 +9680,7 @@ public:
     }
   }
 
-  ~OSSMoveFileResponse() = default;
+  virtual ~OSSMoveFileResponse() = default;
 };
 class OSSSearchFileResponse : public Darabonba::Model {
 public:
@@ -9745,10 +9713,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseOSSFileResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseOSSFileResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -9763,7 +9731,7 @@ public:
     }
   }
 
-  ~OSSSearchFileResponse() = default;
+  virtual ~OSSSearchFileResponse() = default;
 };
 class OSSUpdateFileMetaResponse : public Darabonba::Model {
 public:
@@ -9969,7 +9937,7 @@ public:
     }
   }
 
-  ~OSSUpdateFileMetaResponse() = default;
+  virtual ~OSSUpdateFileMetaResponse() = default;
 };
 class OSSVideoDRMLicenseResponse : public Darabonba::Model {
 public:
@@ -10015,7 +9983,7 @@ public:
     }
   }
 
-  ~OSSVideoDRMLicenseResponse() = default;
+  virtual ~OSSVideoDRMLicenseResponse() = default;
 };
 class OSSVideoDefinitionResponse : public Darabonba::Model {
 public:
@@ -10046,8 +10014,7 @@ public:
   void fromMap(map<string, boost::any> m) override {
     if (m.find("definition_list") != m.end() && !m["definition_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["definition_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["definition_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["definition_list"]);
         for (auto item : vec1) {
@@ -10061,7 +10028,7 @@ public:
     }
   }
 
-  ~OSSVideoDefinitionResponse() = default;
+  virtual ~OSSVideoDefinitionResponse() = default;
 };
 class OSSVideoTranscodeResponse : public Darabonba::Model {
 public:
@@ -10095,8 +10062,7 @@ public:
   void fromMap(map<string, boost::any> m) override {
     if (m.find("definition_list") != m.end() && !m["definition_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["definition_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["definition_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["definition_list"]);
         for (auto item : vec1) {
@@ -10113,7 +10079,7 @@ public:
     }
   }
 
-  ~OSSVideoTranscodeResponse() = default;
+  virtual ~OSSVideoTranscodeResponse() = default;
 };
 class PreHashCheckSuccessResponse : public Darabonba::Model {
 public:
@@ -10181,7 +10147,7 @@ public:
     }
   }
 
-  ~PreHashCheckSuccessResponse() = default;
+  virtual ~PreHashCheckSuccessResponse() = default;
 };
 class RevokeRequest : public Darabonba::Model {
 public:
@@ -10240,7 +10206,7 @@ public:
     }
   }
 
-  ~RevokeRequest() = default;
+  virtual ~RevokeRequest() = default;
 };
 class ScanFileMetaResponse : public Darabonba::Model {
 public:
@@ -10273,10 +10239,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseFileResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseFileResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -10291,7 +10257,7 @@ public:
     }
   }
 
-  ~ScanFileMetaResponse() = default;
+  virtual ~ScanFileMetaResponse() = default;
 };
 class SearchFileResponse : public Darabonba::Model {
 public:
@@ -10324,10 +10290,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseFileResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseFileResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -10342,7 +10308,7 @@ public:
     }
   }
 
-  ~SearchFileResponse() = default;
+  virtual ~SearchFileResponse() = default;
 };
 class StreamInfo : public Darabonba::Model {
 public:
@@ -10393,7 +10359,7 @@ public:
     }
   }
 
-  ~StreamInfo() = default;
+  virtual ~StreamInfo() = default;
 };
 class StreamUploadInfo : public Darabonba::Model {
 public:
@@ -10434,12 +10400,11 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -10461,7 +10426,7 @@ public:
     }
   }
 
-  ~StreamUploadInfo() = default;
+  virtual ~StreamUploadInfo() = default;
 };
 class TokenRequest : public Darabonba::Model {
 public:
@@ -10544,7 +10509,7 @@ public:
     }
   }
 
-  ~TokenRequest() = default;
+  virtual ~TokenRequest() = default;
 };
 class UpdateDriveResponse : public Darabonba::Model {
 public:
@@ -10669,7 +10634,7 @@ public:
     }
   }
 
-  ~UpdateDriveResponse() = default;
+  virtual ~UpdateDriveResponse() = default;
 };
 class UpdateFileMetaResponse : public Darabonba::Model {
 public:
@@ -10902,8 +10867,7 @@ public:
     }
     if (m.find("image_media_metadata") != m.end() &&
         !m["image_media_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["image_media_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["image_media_metadata"].type()) {
         ImageMediaResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["image_media_metadata"]));
@@ -10912,7 +10876,7 @@ public:
     }
     if (m.find("labels") != m.end() && !m["labels"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["labels"].type().name()) {
+      if (typeid(vector<boost::any>) == m["labels"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["labels"]);
         for (auto item : vec1) {
@@ -10975,8 +10939,7 @@ public:
     }
     if (m.find("video_media_metadata") != m.end() &&
         !m["video_media_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["video_media_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["video_media_metadata"].type()) {
         VideoMediaResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["video_media_metadata"]));
@@ -10985,8 +10948,8 @@ public:
     }
     if (m.find("video_preview_metadata") != m.end() &&
         !m["video_preview_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["video_preview_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) ==
+          m["video_preview_metadata"].type()) {
         VideoPreviewResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["video_preview_metadata"]));
@@ -10995,7 +10958,7 @@ public:
     }
   }
 
-  ~UpdateFileMetaResponse() = default;
+  virtual ~UpdateFileMetaResponse() = default;
 };
 class UpdateShareResponse : public Darabonba::Model {
 public:
@@ -11107,7 +11070,7 @@ public:
     }
     if (m.find("permissions") != m.end() && !m["permissions"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["permissions"].type().name()) {
+      if (typeid(vector<boost::any>) == m["permissions"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["permissions"]);
         for (auto item : vec1) {
@@ -11127,12 +11090,11 @@ public:
       shareName = make_shared<string>(boost::any_cast<string>(m["share_name"]));
     }
     if (m.find("share_policy") != m.end() && !m["share_policy"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["share_policy"].type().name()) {
+      if (typeid(vector<boost::any>) == m["share_policy"].type()) {
         vector<SharePermissionPolicy> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["share_policy"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             SharePermissionPolicy model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -11149,7 +11111,7 @@ public:
     }
   }
 
-  ~UpdateShareResponse() = default;
+  virtual ~UpdateShareResponse() = default;
 };
 class UrlInfo : public Darabonba::Model {
 public:
@@ -11193,7 +11155,7 @@ public:
     }
   }
 
-  ~UrlInfo() = default;
+  virtual ~UrlInfo() = default;
 };
 class UserAuthentication : public Darabonba::Model {
 public:
@@ -11314,7 +11276,7 @@ public:
     }
   }
 
-  ~UserAuthentication() = default;
+  virtual ~UserAuthentication() = default;
 };
 class VerifyCodeRequest : public Darabonba::Model {
 public:
@@ -11412,7 +11374,7 @@ public:
     }
   }
 
-  ~VerifyCodeRequest() = default;
+  virtual ~VerifyCodeRequest() = default;
 };
 class Store : public Darabonba::Model {
 public:
@@ -11586,7 +11548,7 @@ public:
     }
   }
 
-  ~Store() = default;
+  virtual ~Store() = default;
 };
 class ListStoresResponse : public Darabonba::Model {
 public:
@@ -11620,10 +11582,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<Store> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             Store model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -11634,7 +11596,7 @@ public:
     }
   }
 
-  ~ListStoresResponse() = default;
+  virtual ~ListStoresResponse() = default;
 };
 class AdminListStoresModel : public Darabonba::Model {
 public:
@@ -11678,7 +11640,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         ListStoresResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<ListStoresResponse>(model1);
@@ -11686,7 +11648,7 @@ public:
     }
   }
 
-  ~AdminListStoresModel() = default;
+  virtual ~AdminListStoresModel() = default;
 };
 class GetUserAccessTokenModel : public Darabonba::Model {
 public:
@@ -11730,7 +11692,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         AccessTokenResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<AccessTokenResponse>(model1);
@@ -11738,7 +11700,7 @@ public:
     }
   }
 
-  ~GetUserAccessTokenModel() = default;
+  virtual ~GetUserAccessTokenModel() = default;
 };
 class AddStoreResponse : public Darabonba::Model {
 public:
@@ -11923,7 +11885,7 @@ public:
     }
   }
 
-  ~AddStoreResponse() = default;
+  virtual ~AddStoreResponse() = default;
 };
 class AdminListStoresRequest : public Darabonba::Model {
 public:
@@ -11958,7 +11920,7 @@ public:
     }
   }
 
-  ~AdminListStoresRequest() = default;
+  virtual ~AdminListStoresRequest() = default;
 };
 class AppAccessStrategy : public Darabonba::Model {
 public:
@@ -11992,8 +11954,7 @@ public:
     if (m.find("except_app_id_list") != m.end() &&
         !m["except_app_id_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["except_app_id_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["except_app_id_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["except_app_id_list"]);
         for (auto item : vec1) {
@@ -12004,7 +11965,7 @@ public:
     }
   }
 
-  ~AppAccessStrategy() = default;
+  virtual ~AppAccessStrategy() = default;
 };
 class AuthConfig : public Darabonba::Model {
 public:
@@ -12107,7 +12068,7 @@ public:
     }
   }
 
-  ~AuthConfig() = default;
+  virtual ~AuthConfig() = default;
 };
 class BaseDomainResponse : public Darabonba::Model {
 public:
@@ -12352,7 +12313,7 @@ public:
     }
     if (m.find("event_names") != m.end() && !m["event_names"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["event_names"].type().name()) {
+      if (typeid(vector<boost::any>) == m["event_names"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["event_names"]);
         for (auto item : vec1) {
@@ -12387,8 +12348,8 @@ public:
     }
     if (m.find("published_app_access_strategy") != m.end() &&
         !m["published_app_access_strategy"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["published_app_access_strategy"].type().name()) {
+      if (typeid(map<string, boost::any>) ==
+          m["published_app_access_strategy"].type()) {
         AppAccessStrategy model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["published_app_access_strategy"]));
@@ -12405,8 +12366,7 @@ public:
     if (m.find("store_region_list") != m.end() &&
         !m["store_region_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["store_region_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["store_region_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["store_region_list"]);
         for (auto item : vec1) {
@@ -12420,7 +12380,7 @@ public:
     }
   }
 
-  ~BaseDomainResponse() = default;
+  virtual ~BaseDomainResponse() = default;
 };
 class CNameStatus : public Darabonba::Model {
 public:
@@ -12478,7 +12438,7 @@ public:
     }
   }
 
-  ~CNameStatus() = default;
+  virtual ~CNameStatus() = default;
 };
 class CreateDomainResponse : public Darabonba::Model {
 public:
@@ -12723,7 +12683,7 @@ public:
     }
     if (m.find("event_names") != m.end() && !m["event_names"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["event_names"].type().name()) {
+      if (typeid(vector<boost::any>) == m["event_names"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["event_names"]);
         for (auto item : vec1) {
@@ -12758,8 +12718,8 @@ public:
     }
     if (m.find("published_app_access_strategy") != m.end() &&
         !m["published_app_access_strategy"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["published_app_access_strategy"].type().name()) {
+      if (typeid(map<string, boost::any>) ==
+          m["published_app_access_strategy"].type()) {
         AppAccessStrategy model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["published_app_access_strategy"]));
@@ -12776,8 +12736,7 @@ public:
     if (m.find("store_region_list") != m.end() &&
         !m["store_region_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["store_region_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["store_region_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["store_region_list"]);
         for (auto item : vec1) {
@@ -12791,7 +12750,7 @@ public:
     }
   }
 
-  ~CreateDomainResponse() = default;
+  virtual ~CreateDomainResponse() = default;
 };
 class DataCName : public Darabonba::Model {
 public:
@@ -12836,7 +12795,7 @@ public:
     }
   }
 
-  ~DataCName() = default;
+  virtual ~DataCName() = default;
 };
 class DomainCNameResponse : public Darabonba::Model {
 public:
@@ -12878,12 +12837,11 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("data_cname_list") != m.end() && !m["data_cname_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["data_cname_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["data_cname_list"].type()) {
         vector<DataCName> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["data_cname_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             DataCName model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -12897,7 +12855,7 @@ public:
     }
   }
 
-  ~DomainCNameResponse() = default;
+  virtual ~DomainCNameResponse() = default;
 };
 class GetAppResponse : public Darabonba::Model {
 public:
@@ -13067,7 +13025,7 @@ public:
     }
     if (m.find("scope") != m.end() && !m["scope"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["scope"].type().name()) {
+      if (typeid(vector<boost::any>) == m["scope"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["scope"]);
         for (auto item : vec1) {
@@ -13078,7 +13036,7 @@ public:
     }
     if (m.find("screenshots") != m.end() && !m["screenshots"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["screenshots"].type().name()) {
+      if (typeid(vector<boost::any>) == m["screenshots"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["screenshots"]);
         for (auto item : vec1) {
@@ -13098,7 +13056,7 @@ public:
     }
   }
 
-  ~GetAppResponse() = default;
+  virtual ~GetAppResponse() = default;
 };
 class GetBizCNameInfoResponse : public Darabonba::Model {
 public:
@@ -13163,8 +13121,7 @@ public:
       certName = make_shared<string>(boost::any_cast<string>(m["cert_name"]));
     }
     if (m.find("cname_status") != m.end() && !m["cname_status"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["cname_status"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["cname_status"].type()) {
         CNameStatus model1;
         model1.fromMap(
             boost::any_cast<map<string, boost::any>>(m["cname_status"]));
@@ -13182,7 +13139,7 @@ public:
     }
   }
 
-  ~GetBizCNameInfoResponse() = default;
+  virtual ~GetBizCNameInfoResponse() = default;
 };
 class GetDomainResponse : public Darabonba::Model {
 public:
@@ -13427,7 +13384,7 @@ public:
     }
     if (m.find("event_names") != m.end() && !m["event_names"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["event_names"].type().name()) {
+      if (typeid(vector<boost::any>) == m["event_names"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["event_names"]);
         for (auto item : vec1) {
@@ -13462,8 +13419,8 @@ public:
     }
     if (m.find("published_app_access_strategy") != m.end() &&
         !m["published_app_access_strategy"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["published_app_access_strategy"].type().name()) {
+      if (typeid(map<string, boost::any>) ==
+          m["published_app_access_strategy"].type()) {
         AppAccessStrategy model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["published_app_access_strategy"]));
@@ -13480,8 +13437,7 @@ public:
     if (m.find("store_region_list") != m.end() &&
         !m["store_region_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["store_region_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["store_region_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["store_region_list"]);
         for (auto item : vec1) {
@@ -13495,7 +13451,7 @@ public:
     }
   }
 
-  ~GetDomainResponse() = default;
+  virtual ~GetDomainResponse() = default;
 };
 class GetUserAccessTokenRequest : public Darabonba::Model {
 public:
@@ -13549,7 +13505,7 @@ public:
     }
   }
 
-  ~GetUserAccessTokenRequest() = default;
+  virtual ~GetUserAccessTokenRequest() = default;
 };
 class ListAppsResponse : public Darabonba::Model {
 public:
@@ -13587,10 +13543,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<GetAppResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             GetAppResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -13605,7 +13561,7 @@ public:
     }
   }
 
-  ~ListAppsResponse() = default;
+  virtual ~ListAppsResponse() = default;
 };
 class ListDomainCORSRuleResponse : public Darabonba::Model {
 public:
@@ -13639,12 +13595,11 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("cors_rule_list") != m.end() && !m["cors_rule_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["cors_rule_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["cors_rule_list"].type()) {
         vector<CorsRule> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["cors_rule_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             CorsRule model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -13658,7 +13613,7 @@ public:
     }
   }
 
-  ~ListDomainCORSRuleResponse() = default;
+  virtual ~ListDomainCORSRuleResponse() = default;
 };
 class ListDomainsResponse : public Darabonba::Model {
 public:
@@ -13691,10 +13646,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseDomainResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseDomainResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -13709,7 +13664,7 @@ public:
     }
   }
 
-  ~ListDomainsResponse() = default;
+  virtual ~ListDomainsResponse() = default;
 };
 class SetBizCNameCertResponse : public Darabonba::Model {
 public:
@@ -13771,7 +13726,7 @@ public:
     }
   }
 
-  ~SetBizCNameCertResponse() = default;
+  virtual ~SetBizCNameCertResponse() = default;
 };
 class SetBizCNameResponse : public Darabonba::Model {
 public:
@@ -13822,8 +13777,7 @@ public:
       bizCname = make_shared<string>(boost::any_cast<string>(m["biz_cname"]));
     }
     if (m.find("cname_status") != m.end() && !m["cname_status"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["cname_status"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["cname_status"].type()) {
         CNameStatus model1;
         model1.fromMap(
             boost::any_cast<map<string, boost::any>>(m["cname_status"]));
@@ -13841,7 +13795,7 @@ public:
     }
   }
 
-  ~SetBizCNameResponse() = default;
+  virtual ~SetBizCNameResponse() = default;
 };
 class SetDataCNameResponse : public Darabonba::Model {
 public:
@@ -13897,7 +13851,7 @@ public:
     }
   }
 
-  ~SetDataCNameResponse() = default;
+  virtual ~SetDataCNameResponse() = default;
 };
 class UpdateDomainResponse : public Darabonba::Model {
 public:
@@ -14142,7 +14096,7 @@ public:
     }
     if (m.find("event_names") != m.end() && !m["event_names"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["event_names"].type().name()) {
+      if (typeid(vector<boost::any>) == m["event_names"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["event_names"]);
         for (auto item : vec1) {
@@ -14177,8 +14131,8 @@ public:
     }
     if (m.find("published_app_access_strategy") != m.end() &&
         !m["published_app_access_strategy"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["published_app_access_strategy"].type().name()) {
+      if (typeid(map<string, boost::any>) ==
+          m["published_app_access_strategy"].type()) {
         AppAccessStrategy model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["published_app_access_strategy"]));
@@ -14195,8 +14149,7 @@ public:
     if (m.find("store_region_list") != m.end() &&
         !m["store_region_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["store_region_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["store_region_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["store_region_list"]);
         for (auto item : vec1) {
@@ -14210,7 +14163,7 @@ public:
     }
   }
 
-  ~UpdateDomainResponse() = default;
+  virtual ~UpdateDomainResponse() = default;
 };
 class CreateDriveModel : public Darabonba::Model {
 public:
@@ -14254,7 +14207,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         CreateDriveResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<CreateDriveResponse>(model1);
@@ -14262,7 +14215,7 @@ public:
     }
   }
 
-  ~CreateDriveModel() = default;
+  virtual ~CreateDriveModel() = default;
 };
 class DeleteDriveModel : public Darabonba::Model {
 public:
@@ -14297,7 +14250,7 @@ public:
     }
   }
 
-  ~DeleteDriveModel() = default;
+  virtual ~DeleteDriveModel() = default;
 };
 class GetDriveModel : public Darabonba::Model {
 public:
@@ -14341,7 +14294,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         GetDriveResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<GetDriveResponse>(model1);
@@ -14349,7 +14302,7 @@ public:
     }
   }
 
-  ~GetDriveModel() = default;
+  virtual ~GetDriveModel() = default;
 };
 class GetDefaultDriveModel : public Darabonba::Model {
 public:
@@ -14393,7 +14346,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         GetDriveResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<GetDriveResponse>(model1);
@@ -14401,7 +14354,7 @@ public:
     }
   }
 
-  ~GetDefaultDriveModel() = default;
+  virtual ~GetDefaultDriveModel() = default;
 };
 class ListDrivesModel : public Darabonba::Model {
 public:
@@ -14445,7 +14398,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         ListDriveResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<ListDriveResponse>(model1);
@@ -14453,7 +14406,7 @@ public:
     }
   }
 
-  ~ListDrivesModel() = default;
+  virtual ~ListDrivesModel() = default;
 };
 class ListMyDrivesModel : public Darabonba::Model {
 public:
@@ -14497,7 +14450,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         ListDriveResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<ListDriveResponse>(model1);
@@ -14505,7 +14458,7 @@ public:
     }
   }
 
-  ~ListMyDrivesModel() = default;
+  virtual ~ListMyDrivesModel() = default;
 };
 class UpdateDriveModel : public Darabonba::Model {
 public:
@@ -14549,7 +14502,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         UpdateDriveResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<UpdateDriveResponse>(model1);
@@ -14557,7 +14510,7 @@ public:
     }
   }
 
-  ~UpdateDriveModel() = default;
+  virtual ~UpdateDriveModel() = default;
 };
 class HostingCompleteFileResponse : public Darabonba::Model {
 public:
@@ -14771,7 +14724,7 @@ public:
     }
   }
 
-  ~HostingCompleteFileResponse() = default;
+  virtual ~HostingCompleteFileResponse() = default;
 };
 class CompleteFileModel : public Darabonba::Model {
 public:
@@ -14815,7 +14768,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingCompleteFileResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingCompleteFileResponse>(model1);
@@ -14823,7 +14776,7 @@ public:
     }
   }
 
-  ~CompleteFileModel() = default;
+  virtual ~CompleteFileModel() = default;
 };
 class HostingCopyFileResponse : public Darabonba::Model {
 public:
@@ -14885,7 +14838,7 @@ public:
     }
   }
 
-  ~HostingCopyFileResponse() = default;
+  virtual ~HostingCopyFileResponse() = default;
 };
 class CopyFileModel : public Darabonba::Model {
 public:
@@ -14929,7 +14882,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingCopyFileResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingCopyFileResponse>(model1);
@@ -14937,7 +14890,7 @@ public:
     }
   }
 
-  ~CopyFileModel() = default;
+  virtual ~CopyFileModel() = default;
 };
 class HostingCreateFileResponse : public Darabonba::Model {
 public:
@@ -15005,12 +14958,11 @@ public:
       filePath = make_shared<string>(boost::any_cast<string>(m["file_path"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -15030,7 +14982,7 @@ public:
     }
   }
 
-  ~HostingCreateFileResponse() = default;
+  virtual ~HostingCreateFileResponse() = default;
 };
 class CreateFileModel : public Darabonba::Model {
 public:
@@ -15074,7 +15026,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingCreateFileResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingCreateFileResponse>(model1);
@@ -15082,7 +15034,7 @@ public:
     }
   }
 
-  ~CreateFileModel() = default;
+  virtual ~CreateFileModel() = default;
 };
 class DeleteFileModel : public Darabonba::Model {
 public:
@@ -15117,7 +15069,7 @@ public:
     }
   }
 
-  ~DeleteFileModel() = default;
+  virtual ~DeleteFileModel() = default;
 };
 class HostingGetFileResponse : public Darabonba::Model {
 public:
@@ -15323,7 +15275,7 @@ public:
     }
   }
 
-  ~HostingGetFileResponse() = default;
+  virtual ~HostingGetFileResponse() = default;
 };
 class GetFileModel : public Darabonba::Model {
 public:
@@ -15367,7 +15319,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingGetFileResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingGetFileResponse>(model1);
@@ -15375,7 +15327,7 @@ public:
     }
   }
 
-  ~GetFileModel() = default;
+  virtual ~GetFileModel() = default;
 };
 class HostingGetDownloadUrlResponse : public Darabonba::Model {
 public:
@@ -15420,7 +15372,7 @@ public:
     }
   }
 
-  ~HostingGetDownloadUrlResponse() = default;
+  virtual ~HostingGetDownloadUrlResponse() = default;
 };
 class GetDownloadUrlModel : public Darabonba::Model {
 public:
@@ -15464,7 +15416,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingGetDownloadUrlResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingGetDownloadUrlResponse>(model1);
@@ -15472,7 +15424,7 @@ public:
     }
   }
 
-  ~GetDownloadUrlModel() = default;
+  virtual ~GetDownloadUrlModel() = default;
 };
 class HostingGetSecureUrlResponse : public Darabonba::Model {
 public:
@@ -15510,7 +15462,7 @@ public:
     }
   }
 
-  ~HostingGetSecureUrlResponse() = default;
+  virtual ~HostingGetSecureUrlResponse() = default;
 };
 class GetSecureUrlModel : public Darabonba::Model {
 public:
@@ -15554,7 +15506,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingGetSecureUrlResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingGetSecureUrlResponse>(model1);
@@ -15562,7 +15514,7 @@ public:
     }
   }
 
-  ~GetSecureUrlModel() = default;
+  virtual ~GetSecureUrlModel() = default;
 };
 class HostingGetUploadUrlResponse : public Darabonba::Model {
 public:
@@ -15627,12 +15579,11 @@ public:
       filePath = make_shared<string>(boost::any_cast<string>(m["file_path"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -15646,7 +15597,7 @@ public:
     }
   }
 
-  ~HostingGetUploadUrlResponse() = default;
+  virtual ~HostingGetUploadUrlResponse() = default;
 };
 class GetUploadUrlModel : public Darabonba::Model {
 public:
@@ -15690,7 +15641,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingGetUploadUrlResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingGetUploadUrlResponse>(model1);
@@ -15698,7 +15649,7 @@ public:
     }
   }
 
-  ~GetUploadUrlModel() = default;
+  virtual ~GetUploadUrlModel() = default;
 };
 class BaseHostingFileResponse : public Darabonba::Model {
 public:
@@ -15904,7 +15855,7 @@ public:
     }
   }
 
-  ~BaseHostingFileResponse() = default;
+  virtual ~BaseHostingFileResponse() = default;
 };
 class HostingListFileResponse : public Darabonba::Model {
 public:
@@ -15937,10 +15888,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseHostingFileResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseHostingFileResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -15955,7 +15906,7 @@ public:
     }
   }
 
-  ~HostingListFileResponse() = default;
+  virtual ~HostingListFileResponse() = default;
 };
 class ListFileModel : public Darabonba::Model {
 public:
@@ -15999,7 +15950,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingListFileResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingListFileResponse>(model1);
@@ -16007,7 +15958,7 @@ public:
     }
   }
 
-  ~ListFileModel() = default;
+  virtual ~ListFileModel() = default;
 };
 class HostingListUploadedPartResponse : public Darabonba::Model {
 public:
@@ -16060,12 +16011,11 @@ public:
       uploadId = make_shared<string>(boost::any_cast<string>(m["upload_id"]));
     }
     if (m.find("uploaded_parts") != m.end() && !m["uploaded_parts"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["uploaded_parts"].type().name()) {
+      if (typeid(vector<boost::any>) == m["uploaded_parts"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["uploaded_parts"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -16076,7 +16026,7 @@ public:
     }
   }
 
-  ~HostingListUploadedPartResponse() = default;
+  virtual ~HostingListUploadedPartResponse() = default;
 };
 class ListUploadedPartsModel : public Darabonba::Model {
 public:
@@ -16120,7 +16070,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingListUploadedPartResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingListUploadedPartResponse>(model1);
@@ -16128,7 +16078,7 @@ public:
     }
   }
 
-  ~ListUploadedPartsModel() = default;
+  virtual ~ListUploadedPartsModel() = default;
 };
 class HostingMoveFileResponse : public Darabonba::Model {
 public:
@@ -16190,7 +16140,7 @@ public:
     }
   }
 
-  ~HostingMoveFileResponse() = default;
+  virtual ~HostingMoveFileResponse() = default;
 };
 class MoveFileModel : public Darabonba::Model {
 public:
@@ -16234,7 +16184,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingMoveFileResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingMoveFileResponse>(model1);
@@ -16242,7 +16192,7 @@ public:
     }
   }
 
-  ~MoveFileModel() = default;
+  virtual ~MoveFileModel() = default;
 };
 class HostingVideoDefinitionResponse : public Darabonba::Model {
 public:
@@ -16273,8 +16223,7 @@ public:
   void fromMap(map<string, boost::any> m) override {
     if (m.find("definition_list") != m.end() && !m["definition_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["definition_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["definition_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["definition_list"]);
         for (auto item : vec1) {
@@ -16288,7 +16237,7 @@ public:
     }
   }
 
-  ~HostingVideoDefinitionResponse() = default;
+  virtual ~HostingVideoDefinitionResponse() = default;
 };
 class VideoDefinitionModel : public Darabonba::Model {
 public:
@@ -16332,7 +16281,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingVideoDefinitionResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingVideoDefinitionResponse>(model1);
@@ -16340,7 +16289,7 @@ public:
     }
   }
 
-  ~VideoDefinitionModel() = default;
+  virtual ~VideoDefinitionModel() = default;
 };
 class HostingVideoDRMLicenseResponse : public Darabonba::Model {
 public:
@@ -16394,7 +16343,7 @@ public:
     }
   }
 
-  ~HostingVideoDRMLicenseResponse() = default;
+  virtual ~HostingVideoDRMLicenseResponse() = default;
 };
 class VideoLicenseModel : public Darabonba::Model {
 public:
@@ -16438,7 +16387,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingVideoDRMLicenseResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingVideoDRMLicenseResponse>(model1);
@@ -16446,7 +16395,7 @@ public:
     }
   }
 
-  ~VideoLicenseModel() = default;
+  virtual ~VideoLicenseModel() = default;
 };
 class VideoM3u8Model : public Darabonba::Model {
 public:
@@ -16494,7 +16443,7 @@ public:
     }
   }
 
-  ~VideoM3u8Model() = default;
+  virtual ~VideoM3u8Model() = default;
 };
 class HostingVideoTranscodeResponse : public Darabonba::Model {
 public:
@@ -16529,8 +16478,7 @@ public:
   void fromMap(map<string, boost::any> m) override {
     if (m.find("definition_list") != m.end() && !m["definition_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["definition_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["definition_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["definition_list"]);
         for (auto item : vec1) {
@@ -16547,7 +16495,7 @@ public:
     }
   }
 
-  ~HostingVideoTranscodeResponse() = default;
+  virtual ~HostingVideoTranscodeResponse() = default;
 };
 class VideoTranscodeModel : public Darabonba::Model {
 public:
@@ -16591,7 +16539,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         HostingVideoTranscodeResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<HostingVideoTranscodeResponse>(model1);
@@ -16599,7 +16547,7 @@ public:
     }
   }
 
-  ~VideoTranscodeModel() = default;
+  virtual ~VideoTranscodeModel() = default;
 };
 class CreateShareModel : public Darabonba::Model {
 public:
@@ -16643,7 +16591,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         CreateShareResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<CreateShareResponse>(model1);
@@ -16651,7 +16599,7 @@ public:
     }
   }
 
-  ~CreateShareModel() = default;
+  virtual ~CreateShareModel() = default;
 };
 class DeleteShareModel : public Darabonba::Model {
 public:
@@ -16686,7 +16634,7 @@ public:
     }
   }
 
-  ~DeleteShareModel() = default;
+  virtual ~DeleteShareModel() = default;
 };
 class GetShareModel : public Darabonba::Model {
 public:
@@ -16730,7 +16678,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         GetShareResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<GetShareResponse>(model1);
@@ -16738,7 +16686,7 @@ public:
     }
   }
 
-  ~GetShareModel() = default;
+  virtual ~GetShareModel() = default;
 };
 class ListShareModel : public Darabonba::Model {
 public:
@@ -16782,7 +16730,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         ListShareResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<ListShareResponse>(model1);
@@ -16790,7 +16738,7 @@ public:
     }
   }
 
-  ~ListShareModel() = default;
+  virtual ~ListShareModel() = default;
 };
 class UpdateShareModel : public Darabonba::Model {
 public:
@@ -16834,7 +16782,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         UpdateShareResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<UpdateShareResponse>(model1);
@@ -16842,7 +16790,7 @@ public:
     }
   }
 
-  ~UpdateShareModel() = default;
+  virtual ~UpdateShareModel() = default;
 };
 class ListStorefileModel : public Darabonba::Model {
 public:
@@ -16886,7 +16834,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         ListStoreFileResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<ListStoreFileResponse>(model1);
@@ -16894,7 +16842,7 @@ public:
     }
   }
 
-  ~ListStorefileModel() = default;
+  virtual ~ListStorefileModel() = default;
 };
 class BaseCompleteFileRequest : public Darabonba::Model {
 public:
@@ -16949,12 +16897,11 @@ public:
       driveId = make_shared<string>(boost::any_cast<string>(m["drive_id"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -16968,7 +16915,7 @@ public:
     }
   }
 
-  ~BaseCompleteFileRequest() = default;
+  virtual ~BaseCompleteFileRequest() = default;
 };
 class BaseCreateFileRequest : public Darabonba::Model {
 public:
@@ -17060,12 +17007,11 @@ public:
       name = make_shared<string>(boost::any_cast<string>(m["name"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -17082,7 +17028,7 @@ public:
     }
   }
 
-  ~BaseCreateFileRequest() = default;
+  virtual ~BaseCreateFileRequest() = default;
 };
 class BaseFileRequest : public Darabonba::Model {
 public:
@@ -17117,7 +17063,7 @@ public:
     }
   }
 
-  ~BaseFileRequest() = default;
+  virtual ~BaseFileRequest() = default;
 };
 class BaseGetUploadUrlRequest : public Darabonba::Model {
 public:
@@ -17172,12 +17118,11 @@ public:
       driveId = make_shared<string>(boost::any_cast<string>(m["drive_id"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -17191,7 +17136,7 @@ public:
     }
   }
 
-  ~BaseGetUploadUrlRequest() = default;
+  virtual ~BaseGetUploadUrlRequest() = default;
 };
 class BaseListFileRequest : public Darabonba::Model {
 public:
@@ -17271,7 +17216,7 @@ public:
     }
   }
 
-  ~BaseListFileRequest() = default;
+  virtual ~BaseListFileRequest() = default;
 };
 class BaseMoveFileRequest : public Darabonba::Model {
 public:
@@ -17322,7 +17267,7 @@ public:
     }
   }
 
-  ~BaseMoveFileRequest() = default;
+  virtual ~BaseMoveFileRequest() = default;
 };
 class BatchSubRequest : public Darabonba::Model {
 public:
@@ -17404,7 +17349,7 @@ public:
     }
   }
 
-  ~BatchSubRequest() = default;
+  virtual ~BatchSubRequest() = default;
 };
 class BatchRequest : public Darabonba::Model {
 public:
@@ -17446,10 +17391,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("requests") != m.end() && !m["requests"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["requests"].type().name()) {
+      if (typeid(vector<boost::any>) == m["requests"].type()) {
         vector<BatchSubRequest> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["requests"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BatchSubRequest model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -17463,7 +17408,7 @@ public:
     }
   }
 
-  ~BatchRequest() = default;
+  virtual ~BatchRequest() = default;
 };
 class CancelShareLinkRequest : public Darabonba::Model {
 public:
@@ -17492,7 +17437,7 @@ public:
     }
   }
 
-  ~CancelShareLinkRequest() = default;
+  virtual ~CancelShareLinkRequest() = default;
 };
 class CompleteFileRequest : public Darabonba::Model {
 public:
@@ -17561,12 +17506,11 @@ public:
       fileId = make_shared<string>(boost::any_cast<string>(m["file_id"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -17580,7 +17524,7 @@ public:
     }
   }
 
-  ~CompleteFileRequest() = default;
+  virtual ~CompleteFileRequest() = default;
 };
 class CopyFileRequest : public Darabonba::Model {
 public:
@@ -17674,7 +17618,7 @@ public:
     }
   }
 
-  ~CopyFileRequest() = default;
+  virtual ~CopyFileRequest() = default;
 };
 class CreateDriveRequest : public Darabonba::Model {
 public:
@@ -17793,7 +17737,7 @@ public:
     }
   }
 
-  ~CreateDriveRequest() = default;
+  virtual ~CreateDriveRequest() = default;
 };
 class ImageMediaMetadata : public Darabonba::Model {
 public:
@@ -17829,7 +17773,7 @@ public:
     }
   }
 
-  ~ImageMediaMetadata() = default;
+  virtual ~ImageMediaMetadata() = default;
 };
 class VideoMediaMetadata : public Darabonba::Model {
 public:
@@ -17858,7 +17802,7 @@ public:
     }
   }
 
-  ~VideoMediaMetadata() = default;
+  virtual ~VideoMediaMetadata() = default;
 };
 class CreateFileRequest : public Darabonba::Model {
 public:
@@ -18072,8 +18016,7 @@ public:
     }
     if (m.find("image_media_metadata") != m.end() &&
         !m["image_media_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["image_media_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["image_media_metadata"].type()) {
         ImageMediaMetadata model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["image_media_metadata"]));
@@ -18082,7 +18025,7 @@ public:
     }
     if (m.find("labels") != m.end() && !m["labels"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["labels"].type().name()) {
+      if (typeid(vector<boost::any>) == m["labels"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["labels"]);
         for (auto item : vec1) {
@@ -18106,12 +18049,11 @@ public:
           make_shared<string>(boost::any_cast<string>(m["parent_file_id"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -18143,8 +18085,7 @@ public:
     }
     if (m.find("video_media_metadata") != m.end() &&
         !m["video_media_metadata"].empty()) {
-      if (typeid(map<string, boost::any>).name() ==
-          m["video_media_metadata"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["video_media_metadata"].type()) {
         VideoMediaMetadata model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(
             m["video_media_metadata"]));
@@ -18153,7 +18094,7 @@ public:
     }
   }
 
-  ~CreateFileRequest() = default;
+  virtual ~CreateFileRequest() = default;
 };
 class CreateShareLinkRequest : public Darabonba::Model {
 public:
@@ -18218,7 +18159,7 @@ public:
     }
   }
 
-  ~CreateShareLinkRequest() = default;
+  virtual ~CreateShareLinkRequest() = default;
 };
 class CreateShareRequest : public Darabonba::Model {
 public:
@@ -18321,7 +18262,7 @@ public:
     }
     if (m.find("permissions") != m.end() && !m["permissions"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["permissions"].type().name()) {
+      if (typeid(vector<boost::any>) == m["permissions"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["permissions"]);
         for (auto item : vec1) {
@@ -18338,12 +18279,11 @@ public:
       shareName = make_shared<string>(boost::any_cast<string>(m["share_name"]));
     }
     if (m.find("share_policy") != m.end() && !m["share_policy"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["share_policy"].type().name()) {
+      if (typeid(vector<boost::any>) == m["share_policy"].type()) {
         vector<SharePermissionPolicy> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["share_policy"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             SharePermissionPolicy model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -18357,7 +18297,7 @@ public:
     }
   }
 
-  ~CreateShareRequest() = default;
+  virtual ~CreateShareRequest() = default;
 };
 class DeleteDriveRequest : public Darabonba::Model {
 public:
@@ -18404,7 +18344,7 @@ public:
     }
   }
 
-  ~DeleteDriveRequest() = default;
+  virtual ~DeleteDriveRequest() = default;
 };
 class DeleteFileRequest : public Darabonba::Model {
 public:
@@ -18460,7 +18400,7 @@ public:
     }
   }
 
-  ~DeleteFileRequest() = default;
+  virtual ~DeleteFileRequest() = default;
 };
 class DeleteFilesRequest : public Darabonba::Model {
 public:
@@ -18503,8 +18443,7 @@ public:
     }
     if (m.find("file_id_list") != m.end() && !m["file_id_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["file_id_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["file_id_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["file_id_list"]);
         for (auto item : vec1) {
@@ -18515,7 +18454,7 @@ public:
     }
   }
 
-  ~DeleteFilesRequest() = default;
+  virtual ~DeleteFilesRequest() = default;
 };
 class DeleteShareRequest : public Darabonba::Model {
 public:
@@ -18562,7 +18501,7 @@ public:
     }
   }
 
-  ~DeleteShareRequest() = default;
+  virtual ~DeleteShareRequest() = default;
 };
 class DownloadRequest : public Darabonba::Model {
 public:
@@ -18628,7 +18567,7 @@ public:
     }
   }
 
-  ~DownloadRequest() = default;
+  virtual ~DownloadRequest() = default;
 };
 class GetAsyncTaskRequest : public Darabonba::Model {
 public:
@@ -18658,7 +18597,7 @@ public:
     }
   }
 
-  ~GetAsyncTaskRequest() = default;
+  virtual ~GetAsyncTaskRequest() = default;
 };
 class GetDefaultDriveRequest : public Darabonba::Model {
 public:
@@ -18700,7 +18639,7 @@ public:
     }
   }
 
-  ~GetDefaultDriveRequest() = default;
+  virtual ~GetDefaultDriveRequest() = default;
 };
 class GetDownloadUrlRequest : public Darabonba::Model {
 public:
@@ -18786,7 +18725,7 @@ public:
     }
   }
 
-  ~GetDownloadUrlRequest() = default;
+  virtual ~GetDownloadUrlRequest() = default;
 };
 class GetDriveRequest : public Darabonba::Model {
 public:
@@ -18833,7 +18772,7 @@ public:
     }
   }
 
-  ~GetDriveRequest() = default;
+  virtual ~GetDriveRequest() = default;
 };
 class GetFileByPathRequest : public Darabonba::Model {
 public:
@@ -18939,7 +18878,7 @@ public:
     }
   }
 
-  ~GetFileByPathRequest() = default;
+  virtual ~GetFileByPathRequest() = default;
 };
 class GetFileRequest : public Darabonba::Model {
 public:
@@ -19038,7 +18977,7 @@ public:
     }
   }
 
-  ~GetFileRequest() = default;
+  virtual ~GetFileRequest() = default;
 };
 class GetLastCursorRequest : public Darabonba::Model {
 public:
@@ -19073,7 +19012,7 @@ public:
     }
   }
 
-  ~GetLastCursorRequest() = default;
+  virtual ~GetLastCursorRequest() = default;
 };
 class GetMediaPlayURLRequest : public Darabonba::Model {
 public:
@@ -19122,7 +19061,7 @@ public:
     }
   }
 
-  ~GetMediaPlayURLRequest() = default;
+  virtual ~GetMediaPlayURLRequest() = default;
 };
 class GetOfficePreviewUrlRequest : public Darabonba::Model {
 public:
@@ -19185,7 +19124,7 @@ public:
     }
   }
 
-  ~GetOfficePreviewUrlRequest() = default;
+  virtual ~GetOfficePreviewUrlRequest() = default;
 };
 class GetShareLinkByAnonymousRequest : public Darabonba::Model {
 public:
@@ -19215,7 +19154,7 @@ public:
     }
   }
 
-  ~GetShareLinkByAnonymousRequest() = default;
+  virtual ~GetShareLinkByAnonymousRequest() = default;
 };
 class GetShareLinkIDRequest : public Darabonba::Model {
 public:
@@ -19244,7 +19183,7 @@ public:
     }
   }
 
-  ~GetShareLinkIDRequest() = default;
+  virtual ~GetShareLinkIDRequest() = default;
 };
 class GetShareLinkTokenRequest : public Darabonba::Model {
 public:
@@ -19280,7 +19219,7 @@ public:
     }
   }
 
-  ~GetShareLinkTokenRequest() = default;
+  virtual ~GetShareLinkTokenRequest() = default;
 };
 class GetShareRequest : public Darabonba::Model {
 public:
@@ -19322,7 +19261,7 @@ public:
     }
   }
 
-  ~GetShareRequest() = default;
+  virtual ~GetShareRequest() = default;
 };
 class GetUploadUrlRequest : public Darabonba::Model {
 public:
@@ -19391,12 +19330,11 @@ public:
       fileId = make_shared<string>(boost::any_cast<string>(m["file_id"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -19410,7 +19348,7 @@ public:
     }
   }
 
-  ~GetUploadUrlRequest() = default;
+  virtual ~GetUploadUrlRequest() = default;
 };
 class GetVideoPreviewSpriteURLRequest : public Darabonba::Model {
 public:
@@ -19475,7 +19413,7 @@ public:
     }
   }
 
-  ~GetVideoPreviewSpriteURLRequest() = default;
+  virtual ~GetVideoPreviewSpriteURLRequest() = default;
 };
 class GetVideoPreviewURLRequest : public Darabonba::Model {
 public:
@@ -19560,7 +19498,7 @@ public:
     }
   }
 
-  ~GetVideoPreviewURLRequest() = default;
+  virtual ~GetVideoPreviewURLRequest() = default;
 };
 class HostingCompleteFileRequest : public Darabonba::Model {
 public:
@@ -19649,12 +19587,11 @@ public:
           make_shared<bool>(boost::any_cast<bool>(m["forbid_overwrite"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -19671,7 +19608,7 @@ public:
     }
   }
 
-  ~HostingCompleteFileRequest() = default;
+  virtual ~HostingCompleteFileRequest() = default;
 };
 class HostingCopyFileRequest : public Darabonba::Model {
 public:
@@ -19780,7 +19717,7 @@ public:
     }
   }
 
-  ~HostingCopyFileRequest() = default;
+  virtual ~HostingCopyFileRequest() = default;
 };
 class HostingCreateFileRequest : public Darabonba::Model {
 public:
@@ -19920,12 +19857,11 @@ public:
           make_shared<string>(boost::any_cast<string>(m["parent_file_path"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -19945,7 +19881,7 @@ public:
     }
   }
 
-  ~HostingCreateFileRequest() = default;
+  virtual ~HostingCreateFileRequest() = default;
 };
 class HostingDeleteFileRequest : public Darabonba::Model {
 public:
@@ -20017,7 +19953,7 @@ public:
     }
   }
 
-  ~HostingDeleteFileRequest() = default;
+  virtual ~HostingDeleteFileRequest() = default;
 };
 class HostingDeleteFileResponse : public Darabonba::Model {
 public:
@@ -20079,7 +20015,7 @@ public:
     }
   }
 
-  ~HostingDeleteFileResponse() = default;
+  virtual ~HostingDeleteFileResponse() = default;
 };
 class HostingDeleteFilesResponse : public Darabonba::Model {
 public:
@@ -20123,8 +20059,7 @@ public:
     if (m.find("deleted_file_id_list") != m.end() &&
         !m["deleted_file_id_list"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() ==
-          m["deleted_file_id_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["deleted_file_id_list"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["deleted_file_id_list"]);
         for (auto item : vec1) {
@@ -20144,7 +20079,7 @@ public:
     }
   }
 
-  ~HostingDeleteFilesResponse() = default;
+  virtual ~HostingDeleteFilesResponse() = default;
 };
 class HostingGetDownloadUrlRequest : public Darabonba::Model {
 public:
@@ -20232,7 +20167,7 @@ public:
     }
   }
 
-  ~HostingGetDownloadUrlRequest() = default;
+  virtual ~HostingGetDownloadUrlRequest() = default;
 };
 class HostingGetFileRequest : public Darabonba::Model {
 public:
@@ -20331,7 +20266,7 @@ public:
     }
   }
 
-  ~HostingGetFileRequest() = default;
+  virtual ~HostingGetFileRequest() = default;
 };
 class HostingGetSecureUrlRequest : public Darabonba::Model {
 public:
@@ -20411,7 +20346,7 @@ public:
     }
   }
 
-  ~HostingGetSecureUrlRequest() = default;
+  virtual ~HostingGetSecureUrlRequest() = default;
 };
 class HostingGetUploadUrlRequest : public Darabonba::Model {
 public:
@@ -20496,12 +20431,11 @@ public:
       filePath = make_shared<string>(boost::any_cast<string>(m["file_path"]));
     }
     if (m.find("part_info_list") != m.end() && !m["part_info_list"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["part_info_list"].type().name()) {
+      if (typeid(vector<boost::any>) == m["part_info_list"].type()) {
         vector<UploadPartInfo> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["part_info_list"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             UploadPartInfo model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -20518,7 +20452,7 @@ public:
     }
   }
 
-  ~HostingGetUploadUrlRequest() = default;
+  virtual ~HostingGetUploadUrlRequest() = default;
 };
 class HostingListFileRequest : public Darabonba::Model {
 public:
@@ -20648,7 +20582,7 @@ public:
     }
   }
 
-  ~HostingListFileRequest() = default;
+  virtual ~HostingListFileRequest() = default;
 };
 class HostingListUploadedPartRequest : public Darabonba::Model {
 public:
@@ -20747,7 +20681,7 @@ public:
     }
   }
 
-  ~HostingListUploadedPartRequest() = default;
+  virtual ~HostingListUploadedPartRequest() = default;
 };
 class HostingMoveFileRequest : public Darabonba::Model {
 public:
@@ -20829,7 +20763,7 @@ public:
     }
   }
 
-  ~HostingMoveFileRequest() = default;
+  virtual ~HostingMoveFileRequest() = default;
 };
 class HostingSearchFileResponse : public Darabonba::Model {
 public:
@@ -20862,10 +20796,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseHostingFileResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseHostingFileResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -20880,7 +20814,7 @@ public:
     }
   }
 
-  ~HostingSearchFileResponse() = default;
+  virtual ~HostingSearchFileResponse() = default;
 };
 class HostingUpdateFileMetaResponse : public Darabonba::Model {
 public:
@@ -21087,7 +21021,7 @@ public:
     }
   }
 
-  ~HostingUpdateFileMetaResponse() = default;
+  virtual ~HostingUpdateFileMetaResponse() = default;
 };
 class HostingVideoDRMLicenseRequest : public Darabonba::Model {
 public:
@@ -21147,7 +21081,7 @@ public:
     }
   }
 
-  ~HostingVideoDRMLicenseRequest() = default;
+  virtual ~HostingVideoDRMLicenseRequest() = default;
 };
 class HostingVideoDefinitionRequest : public Darabonba::Model {
 public:
@@ -21222,7 +21156,7 @@ public:
     }
   }
 
-  ~HostingVideoDefinitionRequest() = default;
+  virtual ~HostingVideoDefinitionRequest() = default;
 };
 class HostingVideoM3U8Request : public Darabonba::Model {
 public:
@@ -21330,7 +21264,7 @@ public:
     }
   }
 
-  ~HostingVideoM3U8Request() = default;
+  virtual ~HostingVideoM3U8Request() = default;
 };
 class HostingVideoTranscodeRequest : public Darabonba::Model {
 public:
@@ -21426,7 +21360,7 @@ public:
     }
   }
 
-  ~HostingVideoTranscodeRequest() = default;
+  virtual ~HostingVideoTranscodeRequest() = default;
 };
 class ListByAnonymousRequest : public Darabonba::Model {
 public:
@@ -21498,7 +21432,7 @@ public:
     }
   }
 
-  ~ListByAnonymousRequest() = default;
+  virtual ~ListByAnonymousRequest() = default;
 };
 class ListDriveRequest : public Darabonba::Model {
 public:
@@ -21563,7 +21497,7 @@ public:
     }
   }
 
-  ~ListDriveRequest() = default;
+  virtual ~ListDriveRequest() = default;
 };
 class ListFileByCustomIndexKeyRequest : public Darabonba::Model {
 public:
@@ -21724,7 +21658,7 @@ public:
     }
   }
 
-  ~ListFileByCustomIndexKeyRequest() = default;
+  virtual ~ListFileByCustomIndexKeyRequest() = default;
 };
 class ListFileDeltaRequest : public Darabonba::Model {
 public:
@@ -21773,7 +21707,7 @@ public:
     }
   }
 
-  ~ListFileDeltaRequest() = default;
+  virtual ~ListFileDeltaRequest() = default;
 };
 class ListFileRequest : public Darabonba::Model {
 public:
@@ -21942,7 +21876,7 @@ public:
     }
   }
 
-  ~ListFileRequest() = default;
+  virtual ~ListFileRequest() = default;
 };
 class ListMyDriveRequest : public Darabonba::Model {
 public:
@@ -22000,7 +21934,7 @@ public:
     }
   }
 
-  ~ListMyDriveRequest() = default;
+  virtual ~ListMyDriveRequest() = default;
 };
 class ListShareLinkRequest : public Darabonba::Model {
 public:
@@ -22052,7 +21986,7 @@ public:
     }
   }
 
-  ~ListShareLinkRequest() = default;
+  virtual ~ListShareLinkRequest() = default;
 };
 class ListShareRequest : public Darabonba::Model {
 public:
@@ -22140,7 +22074,7 @@ public:
     }
   }
 
-  ~ListShareRequest() = default;
+  virtual ~ListShareRequest() = default;
 };
 class ListStoreFileRequest : public Darabonba::Model {
 public:
@@ -22221,7 +22155,7 @@ public:
     }
   }
 
-  ~ListStoreFileRequest() = default;
+  virtual ~ListStoreFileRequest() = default;
 };
 class ListStoreRequest : public Darabonba::Model {
 public:
@@ -22250,7 +22184,7 @@ public:
     }
   }
 
-  ~ListStoreRequest() = default;
+  virtual ~ListStoreRequest() = default;
 };
 class ListUploadedPartRequest : public Darabonba::Model {
 public:
@@ -22334,7 +22268,7 @@ public:
     }
   }
 
-  ~ListUploadedPartRequest() = default;
+  virtual ~ListUploadedPartRequest() = default;
 };
 class MoveFileRequest : public Darabonba::Model {
 public:
@@ -22414,7 +22348,7 @@ public:
     }
   }
 
-  ~MoveFileRequest() = default;
+  virtual ~MoveFileRequest() = default;
 };
 class PlayMediaRequest : public Darabonba::Model {
 public:
@@ -22475,7 +22409,7 @@ public:
     }
   }
 
-  ~PlayMediaRequest() = default;
+  virtual ~PlayMediaRequest() = default;
 };
 class ScanFileMetaRequest : public Darabonba::Model {
 public:
@@ -22539,7 +22473,7 @@ public:
     }
   }
 
-  ~ScanFileMetaRequest() = default;
+  virtual ~ScanFileMetaRequest() = default;
 };
 class SearchFileRequest : public Darabonba::Model {
 public:
@@ -22654,7 +22588,7 @@ public:
     }
   }
 
-  ~SearchFileRequest() = default;
+  virtual ~SearchFileRequest() = default;
 };
 class UCGetObjectInfoByObjectKeyRequest : public Darabonba::Model {
 public:
@@ -22684,7 +22618,7 @@ public:
     }
   }
 
-  ~UCGetObjectInfoByObjectKeyRequest() = default;
+  virtual ~UCGetObjectInfoByObjectKeyRequest() = default;
 };
 class UCGetObjectInfoBySha1Request : public Darabonba::Model {
 public:
@@ -22714,7 +22648,7 @@ public:
     }
   }
 
-  ~UCGetObjectInfoBySha1Request() = default;
+  virtual ~UCGetObjectInfoBySha1Request() = default;
 };
 class UpdateDriveRequest : public Darabonba::Model {
 public:
@@ -22809,7 +22743,7 @@ public:
     }
   }
 
-  ~UpdateDriveRequest() = default;
+  virtual ~UpdateDriveRequest() = default;
 };
 class UpdateFileMetaRequest : public Darabonba::Model {
 public:
@@ -22921,7 +22855,7 @@ public:
     }
     if (m.find("labels") != m.end() && !m["labels"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["labels"].type().name()) {
+      if (typeid(vector<boost::any>) == m["labels"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["labels"]);
         for (auto item : vec1) {
@@ -22944,7 +22878,7 @@ public:
     }
   }
 
-  ~UpdateFileMetaRequest() = default;
+  virtual ~UpdateFileMetaRequest() = default;
 };
 class UpdateShareRequest : public Darabonba::Model {
 public:
@@ -23025,7 +22959,7 @@ public:
     }
     if (m.find("permissions") != m.end() && !m["permissions"].empty()) {
       vector<string> toVec1;
-      if (typeid(vector<boost::any>).name() == m["permissions"].type().name()) {
+      if (typeid(vector<boost::any>) == m["permissions"].type()) {
         vector<boost::any> vec1 =
             boost::any_cast<vector<boost::any>>(m["permissions"]);
         for (auto item : vec1) {
@@ -23041,12 +22975,11 @@ public:
       shareName = make_shared<string>(boost::any_cast<string>(m["share_name"]));
     }
     if (m.find("share_policy") != m.end() && !m["share_policy"].empty()) {
-      if (typeid(vector<boost::any>).name() ==
-          m["share_policy"].type().name()) {
+      if (typeid(vector<boost::any>) == m["share_policy"].type()) {
         vector<SharePermissionPolicy> expect1;
         for (auto item1 :
              boost::any_cast<vector<boost::any>>(m["share_policy"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             SharePermissionPolicy model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -23060,7 +22993,7 @@ public:
     }
   }
 
-  ~UpdateShareRequest() = default;
+  virtual ~UpdateShareRequest() = default;
 };
 class CreateUserResponse : public Darabonba::Model {
 public:
@@ -23189,7 +23122,7 @@ public:
     }
   }
 
-  ~CreateUserResponse() = default;
+  virtual ~CreateUserResponse() = default;
 };
 class CreateUserModel : public Darabonba::Model {
 public:
@@ -23233,7 +23166,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         CreateUserResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<CreateUserResponse>(model1);
@@ -23241,7 +23174,7 @@ public:
     }
   }
 
-  ~CreateUserModel() = default;
+  virtual ~CreateUserModel() = default;
 };
 class DeleteUserModel : public Darabonba::Model {
 public:
@@ -23276,7 +23209,7 @@ public:
     }
   }
 
-  ~DeleteUserModel() = default;
+  virtual ~DeleteUserModel() = default;
 };
 class GetUserResponse : public Darabonba::Model {
 public:
@@ -23405,7 +23338,7 @@ public:
     }
   }
 
-  ~GetUserResponse() = default;
+  virtual ~GetUserResponse() = default;
 };
 class GetUserModel : public Darabonba::Model {
 public:
@@ -23449,7 +23382,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         GetUserResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<GetUserResponse>(model1);
@@ -23457,7 +23390,7 @@ public:
     }
   }
 
-  ~GetUserModel() = default;
+  virtual ~GetUserModel() = default;
 };
 class BaseUserResponse : public Darabonba::Model {
 public:
@@ -23586,7 +23519,7 @@ public:
     }
   }
 
-  ~BaseUserResponse() = default;
+  virtual ~BaseUserResponse() = default;
 };
 class ListUserResponse : public Darabonba::Model {
 public:
@@ -23619,10 +23552,10 @@ public:
 
   void fromMap(map<string, boost::any> m) override {
     if (m.find("items") != m.end() && !m["items"].empty()) {
-      if (typeid(vector<boost::any>).name() == m["items"].type().name()) {
+      if (typeid(vector<boost::any>) == m["items"].type()) {
         vector<BaseUserResponse> expect1;
         for (auto item1 : boost::any_cast<vector<boost::any>>(m["items"])) {
-          if (typeid(map<string, boost::any>).name() == item1.type().name()) {
+          if (typeid(map<string, boost::any>) == item1.type()) {
             BaseUserResponse model2;
             model2.fromMap(boost::any_cast<map<string, boost::any>>(item1));
             expect1.push_back(model2);
@@ -23637,7 +23570,7 @@ public:
     }
   }
 
-  ~ListUserResponse() = default;
+  virtual ~ListUserResponse() = default;
 };
 class ListUsersModel : public Darabonba::Model {
 public:
@@ -23681,7 +23614,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         ListUserResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<ListUserResponse>(model1);
@@ -23689,7 +23622,7 @@ public:
     }
   }
 
-  ~ListUsersModel() = default;
+  virtual ~ListUsersModel() = default;
 };
 class SearchUserModel : public Darabonba::Model {
 public:
@@ -23733,7 +23666,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         ListUserResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<ListUserResponse>(model1);
@@ -23741,7 +23674,7 @@ public:
     }
   }
 
-  ~SearchUserModel() = default;
+  virtual ~SearchUserModel() = default;
 };
 class UpdateUserResponse : public Darabonba::Model {
 public:
@@ -23870,7 +23803,7 @@ public:
     }
   }
 
-  ~UpdateUserResponse() = default;
+  virtual ~UpdateUserResponse() = default;
 };
 class UpdateUserModel : public Darabonba::Model {
 public:
@@ -23914,7 +23847,7 @@ public:
       headers = make_shared<map<string, string>>(toMap1);
     }
     if (m.find("body") != m.end() && !m["body"].empty()) {
-      if (typeid(map<string, boost::any>).name() == m["body"].type().name()) {
+      if (typeid(map<string, boost::any>) == m["body"].type()) {
         UpdateUserResponse model1;
         model1.fromMap(boost::any_cast<map<string, boost::any>>(m["body"]));
         body = make_shared<UpdateUserResponse>(model1);
@@ -23922,7 +23855,7 @@ public:
     }
   }
 
-  ~UpdateUserModel() = default;
+  virtual ~UpdateUserModel() = default;
 };
 class CreateUserRequest : public Darabonba::Model {
 public:
@@ -24040,7 +23973,7 @@ public:
     }
   }
 
-  ~CreateUserRequest() = default;
+  virtual ~CreateUserRequest() = default;
 };
 class DeleteUserRequest : public Darabonba::Model {
 public:
@@ -24087,7 +24020,7 @@ public:
     }
   }
 
-  ~DeleteUserRequest() = default;
+  virtual ~DeleteUserRequest() = default;
 };
 class DeleteUserResponse : public Darabonba::Model {
 public:
@@ -24106,6 +24039,8 @@ public:
   }
 
   void fromMap(map<string, boost::any> m) override {}
+
+  virtual ~DeleteUserResponse() = default;
 };
 class GetUserRequest : public Darabonba::Model {
 public:
@@ -24147,7 +24082,7 @@ public:
     }
   }
 
-  ~GetUserRequest() = default;
+  virtual ~GetUserRequest() = default;
 };
 class ListUserRequest : public Darabonba::Model {
 public:
@@ -24205,7 +24140,7 @@ public:
     }
   }
 
-  ~ListUserRequest() = default;
+  virtual ~ListUserRequest() = default;
 };
 class SearchUserRequest : public Darabonba::Model {
 public:
@@ -24305,7 +24240,7 @@ public:
     }
   }
 
-  ~SearchUserRequest() = default;
+  virtual ~SearchUserRequest() = default;
 };
 class UpdateUserRequest : public Darabonba::Model {
 public:
@@ -24416,7 +24351,7 @@ public:
     }
   }
 
-  ~UpdateUserRequest() = default;
+  virtual ~UpdateUserRequest() = default;
 };
 class Client {
 public:
@@ -24632,7 +24567,7 @@ public:
   string getAccessKeySecret();
   string getSecurityToken();
 
-  ~Client() = default;
+  virtual ~Client() = default;
 };
 } // namespace Alibabacloud_Hosting
 
