@@ -5,7 +5,6 @@
 #include <alibabacloud/hosting.hpp>
 #include <alibabacloud/roautil.hpp>
 #include <boost/any.hpp>
-#include <boost/lexical_cast.hpp>
 #include <boost/throw_exception.hpp>
 #include <darabonba/core.hpp>
 #include <darabonba/util.hpp>
@@ -157,16 +156,16 @@ CancelLinkModel Alibabacloud_Hosting::Client::cancelLinkEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -184,10 +183,10 @@ CancelLinkModel Alibabacloud_Hosting::Client::cancelLinkEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -330,16 +329,16 @@ ConfirmLinkModel Alibabacloud_Hosting::Client::confirmLinkEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -357,10 +356,10 @@ ConfirmLinkModel Alibabacloud_Hosting::Client::confirmLinkEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -504,16 +503,16 @@ ChangePasswordModel Alibabacloud_Hosting::Client::changePasswordEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -531,10 +530,10 @@ ChangePasswordModel Alibabacloud_Hosting::Client::changePasswordEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -678,16 +677,16 @@ SetPasswordModel Alibabacloud_Hosting::Client::setPasswordEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -705,10 +704,10 @@ SetPasswordModel Alibabacloud_Hosting::Client::setPasswordEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -845,16 +844,16 @@ VerifyCodeModel Alibabacloud_Hosting::Client::verifyCodeEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -872,10 +871,10 @@ VerifyCodeModel Alibabacloud_Hosting::Client::verifyCodeEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -1020,16 +1019,16 @@ Alibabacloud_Hosting::Client::getAccessTokenByLinkInfoEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -1047,10 +1046,10 @@ Alibabacloud_Hosting::Client::getAccessTokenByLinkInfoEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -1192,16 +1191,16 @@ GetCaptchaModel Alibabacloud_Hosting::Client::getCaptchaEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -1219,10 +1218,10 @@ GetCaptchaModel Alibabacloud_Hosting::Client::getCaptchaEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -1365,16 +1364,16 @@ GetLinkInfoModel Alibabacloud_Hosting::Client::getLinkInfoEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -1392,10 +1391,10 @@ GetLinkInfoModel Alibabacloud_Hosting::Client::getLinkInfoEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -1539,16 +1538,16 @@ GetLinkInfoByUserIdModel Alibabacloud_Hosting::Client::getLinkInfoByUserIdEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -1566,10 +1565,10 @@ GetLinkInfoByUserIdModel Alibabacloud_Hosting::Client::getLinkInfoByUserIdEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -1712,16 +1711,16 @@ GetPublicKeyModel Alibabacloud_Hosting::Client::getPublicKeyEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -1739,10 +1738,10 @@ GetPublicKeyModel Alibabacloud_Hosting::Client::getPublicKeyEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -1885,16 +1884,16 @@ Alibabacloud_Hosting::Client::linkEx(shared_ptr<AccountLinkRequest> request,
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -1912,10 +1911,10 @@ Alibabacloud_Hosting::Client::linkEx(shared_ptr<AccountLinkRequest> request,
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -2059,16 +2058,16 @@ CheckExistModel Alibabacloud_Hosting::Client::checkExistEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -2086,10 +2085,10 @@ CheckExistModel Alibabacloud_Hosting::Client::checkExistEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -2232,16 +2231,16 @@ Alibabacloud_Hosting::Client::loginEx(shared_ptr<MobileLoginRequest> request,
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -2259,10 +2258,10 @@ Alibabacloud_Hosting::Client::loginEx(shared_ptr<MobileLoginRequest> request,
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -2406,16 +2405,16 @@ RegisterModel Alibabacloud_Hosting::Client::registerEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -2433,10 +2432,10 @@ RegisterModel Alibabacloud_Hosting::Client::registerEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -2580,16 +2579,16 @@ MobileSendSmsCodeModel Alibabacloud_Hosting::Client::mobileSendSmsCodeEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -2607,10 +2606,10 @@ MobileSendSmsCodeModel Alibabacloud_Hosting::Client::mobileSendSmsCodeEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -2752,16 +2751,16 @@ AccountRevokeModel Alibabacloud_Hosting::Client::accountRevokeEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -2779,10 +2778,10 @@ AccountRevokeModel Alibabacloud_Hosting::Client::accountRevokeEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -2919,16 +2918,16 @@ AccountTokenModel Alibabacloud_Hosting::Client::accountTokenEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".auth.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint, make_shared<string>(
+                                           string(*_domainId) +
+                                           string(".auth.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -2946,10 +2945,10 @@ AccountTokenModel Alibabacloud_Hosting::Client::accountTokenEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -3092,16 +3091,16 @@ AdminListStoresModel Alibabacloud_Hosting::Client::adminListStoresEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -3119,10 +3118,10 @@ AdminListStoresModel Alibabacloud_Hosting::Client::adminListStoresEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -3265,16 +3264,16 @@ GetUserAccessTokenModel Alibabacloud_Hosting::Client::getUserAccessTokenEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -3292,10 +3291,10 @@ GetUserAccessTokenModel Alibabacloud_Hosting::Client::getUserAccessTokenEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -3438,16 +3437,16 @@ CreateDriveModel Alibabacloud_Hosting::Client::createDriveEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -3465,10 +3464,10 @@ CreateDriveModel Alibabacloud_Hosting::Client::createDriveEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -3611,16 +3610,16 @@ DeleteDriveModel Alibabacloud_Hosting::Client::deleteDriveEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -3638,10 +3637,10 @@ DeleteDriveModel Alibabacloud_Hosting::Client::deleteDriveEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -3778,16 +3777,16 @@ Alibabacloud_Hosting::Client::getDriveEx(shared_ptr<GetDriveRequest> request,
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -3805,10 +3804,10 @@ Alibabacloud_Hosting::Client::getDriveEx(shared_ptr<GetDriveRequest> request,
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -3952,16 +3951,16 @@ GetDefaultDriveModel Alibabacloud_Hosting::Client::getDefaultDriveEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -3979,10 +3978,10 @@ GetDefaultDriveModel Alibabacloud_Hosting::Client::getDefaultDriveEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -4125,16 +4124,16 @@ Alibabacloud_Hosting::Client::listDrivesEx(shared_ptr<ListDriveRequest> request,
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -4152,10 +4151,10 @@ Alibabacloud_Hosting::Client::listDrivesEx(shared_ptr<ListDriveRequest> request,
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -4298,16 +4297,16 @@ ListMyDrivesModel Alibabacloud_Hosting::Client::listMyDrivesEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -4325,10 +4324,10 @@ ListMyDrivesModel Alibabacloud_Hosting::Client::listMyDrivesEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -4471,16 +4470,16 @@ UpdateDriveModel Alibabacloud_Hosting::Client::updateDriveEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -4498,10 +4497,10 @@ UpdateDriveModel Alibabacloud_Hosting::Client::updateDriveEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -4644,16 +4643,16 @@ CompleteFileModel Alibabacloud_Hosting::Client::completeFileEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -4671,10 +4670,10 @@ CompleteFileModel Alibabacloud_Hosting::Client::completeFileEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -4817,16 +4816,16 @@ CopyFileModel Alibabacloud_Hosting::Client::copyFileEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -4844,10 +4843,10 @@ CopyFileModel Alibabacloud_Hosting::Client::copyFileEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -4990,16 +4989,16 @@ CreateFileModel Alibabacloud_Hosting::Client::createFileEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -5017,10 +5016,10 @@ CreateFileModel Alibabacloud_Hosting::Client::createFileEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -5163,16 +5162,16 @@ DeleteFileModel Alibabacloud_Hosting::Client::deleteFileEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -5190,10 +5189,10 @@ DeleteFileModel Alibabacloud_Hosting::Client::deleteFileEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -5330,16 +5329,16 @@ GetFileModel Alibabacloud_Hosting::Client::getFileEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -5357,10 +5356,10 @@ GetFileModel Alibabacloud_Hosting::Client::getFileEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -5504,16 +5503,16 @@ GetDownloadUrlModel Alibabacloud_Hosting::Client::getDownloadUrlEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -5531,10 +5530,10 @@ GetDownloadUrlModel Alibabacloud_Hosting::Client::getDownloadUrlEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -5678,16 +5677,16 @@ GetSecureUrlModel Alibabacloud_Hosting::Client::getSecureUrlEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -5705,10 +5704,10 @@ GetSecureUrlModel Alibabacloud_Hosting::Client::getSecureUrlEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -5852,16 +5851,16 @@ GetUploadUrlModel Alibabacloud_Hosting::Client::getUploadUrlEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -5879,10 +5878,10 @@ GetUploadUrlModel Alibabacloud_Hosting::Client::getUploadUrlEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -6025,16 +6024,16 @@ ListFileModel Alibabacloud_Hosting::Client::listFileEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -6052,10 +6051,10 @@ ListFileModel Alibabacloud_Hosting::Client::listFileEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -6199,16 +6198,16 @@ ListUploadedPartsModel Alibabacloud_Hosting::Client::listUploadedPartsEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -6226,10 +6225,10 @@ ListUploadedPartsModel Alibabacloud_Hosting::Client::listUploadedPartsEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -6372,16 +6371,16 @@ MoveFileModel Alibabacloud_Hosting::Client::moveFileEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -6399,10 +6398,10 @@ MoveFileModel Alibabacloud_Hosting::Client::moveFileEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -6546,16 +6545,16 @@ VideoDefinitionModel Alibabacloud_Hosting::Client::videoDefinitionEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -6573,10 +6572,10 @@ VideoDefinitionModel Alibabacloud_Hosting::Client::videoDefinitionEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -6720,16 +6719,16 @@ VideoLicenseModel Alibabacloud_Hosting::Client::videoLicenseEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -6747,10 +6746,10 @@ VideoLicenseModel Alibabacloud_Hosting::Client::videoLicenseEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -6894,16 +6893,16 @@ VideoM3u8Model Alibabacloud_Hosting::Client::videoM3u8Ex(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -6921,10 +6920,10 @@ VideoM3u8Model Alibabacloud_Hosting::Client::videoM3u8Ex(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -7065,16 +7064,16 @@ VideoTranscodeModel Alibabacloud_Hosting::Client::videoTranscodeEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -7092,10 +7091,10 @@ VideoTranscodeModel Alibabacloud_Hosting::Client::videoTranscodeEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -7243,16 +7242,16 @@ CreateShareModel Alibabacloud_Hosting::Client::createShareEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -7270,10 +7269,10 @@ CreateShareModel Alibabacloud_Hosting::Client::createShareEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -7416,16 +7415,16 @@ DeleteShareModel Alibabacloud_Hosting::Client::deleteShareEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -7443,10 +7442,10 @@ DeleteShareModel Alibabacloud_Hosting::Client::deleteShareEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -7583,16 +7582,16 @@ Alibabacloud_Hosting::Client::getShareEx(shared_ptr<GetShareRequest> request,
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -7610,10 +7609,10 @@ Alibabacloud_Hosting::Client::getShareEx(shared_ptr<GetShareRequest> request,
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -7756,16 +7755,16 @@ Alibabacloud_Hosting::Client::listShareEx(shared_ptr<ListShareRequest> request,
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -7783,10 +7782,10 @@ Alibabacloud_Hosting::Client::listShareEx(shared_ptr<ListShareRequest> request,
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -7929,16 +7928,16 @@ UpdateShareModel Alibabacloud_Hosting::Client::updateShareEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -7956,10 +7955,10 @@ UpdateShareModel Alibabacloud_Hosting::Client::updateShareEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -8103,16 +8102,16 @@ ListStorefileModel Alibabacloud_Hosting::Client::listStorefileEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -8130,10 +8129,10 @@ ListStorefileModel Alibabacloud_Hosting::Client::listStorefileEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -8275,16 +8274,16 @@ CreateUserModel Alibabacloud_Hosting::Client::createUserEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -8302,10 +8301,10 @@ CreateUserModel Alibabacloud_Hosting::Client::createUserEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -8447,16 +8446,16 @@ DeleteUserModel Alibabacloud_Hosting::Client::deleteUserEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -8474,10 +8473,10 @@ DeleteUserModel Alibabacloud_Hosting::Client::deleteUserEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -8614,16 +8613,16 @@ Alibabacloud_Hosting::Client::getUserEx(shared_ptr<GetUserRequest> request,
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -8641,10 +8640,10 @@ Alibabacloud_Hosting::Client::getUserEx(shared_ptr<GetUserRequest> request,
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -8787,16 +8786,16 @@ Alibabacloud_Hosting::Client::listUsersEx(shared_ptr<ListUserRequest> request,
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -8814,10 +8813,10 @@ Alibabacloud_Hosting::Client::listUsersEx(shared_ptr<ListUserRequest> request,
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -8959,16 +8958,16 @@ SearchUserModel Alibabacloud_Hosting::Client::searchUserEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -8986,10 +8985,10 @@ SearchUserModel Alibabacloud_Hosting::Client::searchUserEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -9131,16 +9130,16 @@ UpdateUserModel Alibabacloud_Hosting::Client::updateUserEx(
       request_->headers = Darabonba::Converter::merge(
           map<string, string>(
               {{"user-agent", getUserAgent()},
-               {"host",
-                Darabonba_Util::Client::defaultString(
-                    _endpoint, make_shared<string>(string(
-                                   "" + *_domainId + ".api.aliyunpds.com")))},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
                {"content-type", "application/json; charset=utf-8"}}),
           !request->headers ? map<string, string>() : *request->headers);
       (*realReq)["headers"] = nullptr;
       if (!Darabonba_Util::Client::empty(accessToken)) {
         request_->headers.insert(pair<string, string>(
-            "authorization", string("Bearer " + *accessToken + "")));
+            "authorization", string("Bearer ") + string(*accessToken)));
       } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
                  !Darabonba_Util::Client::empty(accessKeySecret)) {
         if (!Darabonba_Util::Client::empty(securityToken)) {
@@ -9158,10 +9157,10 @@ UpdateUserModel Alibabacloud_Hosting::Client::updateUserEx(
         shared_ptr<string> stringToSign = make_shared<string>(
             Alibabacloud_ROAUtil::Client::getStringToSign(request_));
         request_->headers.insert(pair<string, string>(
-            "authorization", string("acs " + *accesskeyId + ":" +
-                                    Alibabacloud_ROAUtil::Client::getSignature(
-                                        stringToSign, accessKeySecret) +
-                                    "")));
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
       }
       request_->body = Darabonba::Converter::toStream(
           Darabonba_Util::Client::toJSONString(realReq));
@@ -9546,7 +9545,7 @@ string Alibabacloud_Hosting::Client::getPathname(shared_ptr<string> nickname,
   if (Darabonba_Util::Client::empty(nickname)) {
     return *path;
   }
-  return string("/" + *nickname + "" + *path + "");
+  return string("/") + string(*nickname) + string(*path);
 }
 
 void Alibabacloud_Hosting::Client::setExpireTime(
@@ -9610,8 +9609,8 @@ void Alibabacloud_Hosting::Client::setUserAgent(shared_ptr<string> userAgent) {
 
 void Alibabacloud_Hosting::Client::appendUserAgent(
     shared_ptr<string> userAgent) {
-  _userAgent =
-      make_shared<string>(string("" + *_userAgent + " " + *userAgent + ""));
+  _userAgent = make_shared<string>(string(*_userAgent) + string(" ") +
+                                   string(*userAgent));
 }
 
 string Alibabacloud_Hosting::Client::getUserAgent() {
