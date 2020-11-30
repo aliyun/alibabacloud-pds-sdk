@@ -3383,7 +3383,7 @@ model UpdateShareResponse {
  */
 model UploadPartInfo {
   etag?: string(name='etag', description='etag', example='0CC175B9C0F1B6A831C399E269772661'),
-  partNumber?: int64(name='part_number', description='PartNumber', example=1, format='int64', maximum=10000, minimum=1),
+  partNumber?: int64(name='part_number', description='PartNumber', example=1, format='int64', maximum=10000, minimum=1, pattern='[0-9]+'),
   partSize?: int64(name='part_size', description='PartSize：', example=1024, format='int64', maximum=5368709120, minimum=102400),
   uploadUrl?: string(name='upload_url', description='upload_url', example='https://ccp.data.aliyuncs.com/xxx/xxx?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx&partNumber=1&uploadId=0CC175B9C0F1B6A831C399E269772661'),
 }
@@ -7773,7 +7773,7 @@ model HostingCopyFileRequest {
   headers?: map[string]string,
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   filePath: string(name='file_path', description='file_path', example='/a/b/c.jpg'),
-  newName?: string(name='new_name', description='new_name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
+  newName?: string(name='new_name', description='new_name', example='ccp.jpg'),
   overwrite?: boolean(name='overwrite', default=false, description='overwrite
 type: boolean'),
   shareId?: string(name='share_id', description='share_id', example='3d336314-63c8-4d96-bce0-17aefb6833b6', pattern='[0-9a-zA-Z-]+'),
@@ -8000,7 +8000,7 @@ model HostingListUploadedPartRequest {
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   filePath: string(name='file_path', description='file_path', example='/a/b/c.jpg'),
   limit?: int64(name='limit', default=1000, description='limit', example=1, format='int64', maximum=1000, minimum=1),
-  partNumberMarker?: int64(name='part_number_marker', description='part_number_marker', example=1, format='int64', minimum=1),
+  partNumberMarker?: int64(name='part_number_marker', description='part_number_marker', example=1, format='int64', minimum=1, pattern='[0-9]+'),
   shareId?: string(name='share_id', description='share_id', example='3d336314-63c8-4d96-bce0-17aefb6833b6', pattern='[0-9a-zA-Z-]+'),
   uploadId?: string(name='upload_id', description='upload_id', example='00668396C0814D818D90F0A92B04B355'),
 }
@@ -8289,8 +8289,8 @@ model ListStoreRequest {
 model ListUploadedPartRequest {
   driveId: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
-  limit?: int64(name='limit', default=1000, description='limit', example=1, format='int64', maximum=1000, minimum=1),
-  partNumberMarker?: int64(name='part_number_marker', description='part_number_marker', example=1, format='int64', minimum=1),
+  limit?: int64(name='limit', default=1000, description='limit', example=1, format='int64', maximum=1000, minimum=1, pattern='[0-9]+'),
+  partNumberMarker?: int64(name='part_number_marker', description='part_number_marker', example=1, format='int64', minimum=1, pattern='[0-9]+'),
   uploadId?: string(name='upload_id', description='upload_id', example='00668396C0814D818D90F0A92B04B355'),
 }
 
