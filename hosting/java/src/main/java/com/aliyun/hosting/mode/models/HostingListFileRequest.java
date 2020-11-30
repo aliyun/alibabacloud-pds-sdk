@@ -25,7 +25,6 @@ public class HostingListFileRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
-    @Validation(pattern = "[0-9]{1,3}")
     public Long limit;
 
     // marker

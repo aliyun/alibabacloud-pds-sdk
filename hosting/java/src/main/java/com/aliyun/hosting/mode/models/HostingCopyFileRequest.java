@@ -22,7 +22,6 @@ public class HostingCopyFileRequest extends TeaModel {
 
     // new_name
     @NameInMap("new_name")
-    @Validation(pattern = "[a-zA-Z0-9.-]{1,1000}")
     public String newName;
 
     // overwrite

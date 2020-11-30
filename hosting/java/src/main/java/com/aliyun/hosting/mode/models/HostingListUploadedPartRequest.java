@@ -22,7 +22,6 @@ public class HostingListUploadedPartRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
-    @Validation(pattern = "[0-9]+")
     public Long limit;
 
     // part_number_marker
