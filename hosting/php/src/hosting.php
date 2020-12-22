@@ -119,6 +119,7 @@ use Aliyun\Hosting\SDK\Models\VideoLicenseModel;
 use Aliyun\Hosting\SDK\Models\VideoM3u8Model;
 use Aliyun\Hosting\SDK\Models\VideoTranscodeModel;
 use Aliyun\PDS\Credentials\PDSCredentials;
+use Aliyun\PDS\Credentials\PDSCredentials\Config;
 use Exception;
 
 class hosting
@@ -147,7 +148,7 @@ class hosting
         }
         Utils::validateModel($config);
         if (!Utils::empty_($config->accessToken) || !Utils::empty_($config->refreshToken)) {
-            $accessConfig = new \Aliyun\PDS\Credentials\PDSCredentials\Config([
+            $accessConfig = new Config([
                 'accessToken'  => $config->accessToken,
                 'endpoint'     => $config->endpoint,
                 'domainId'     => $config->domainId,
@@ -275,14 +276,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -290,7 +291,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -412,14 +413,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -427,7 +428,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -548,14 +549,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -563,7 +564,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -680,14 +681,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -695,7 +696,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -816,14 +817,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -831,7 +832,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -952,14 +953,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -967,7 +968,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -1088,14 +1089,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -1103,7 +1104,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -1224,14 +1225,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -1239,7 +1240,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -1359,14 +1360,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -1374,7 +1375,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -1495,14 +1496,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -1510,7 +1511,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -1632,14 +1633,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -1647,7 +1648,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -1768,14 +1769,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -1783,7 +1784,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -1904,14 +1905,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -1919,7 +1920,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -2041,14 +2042,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -2056,7 +2057,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -2177,14 +2178,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -2192,7 +2193,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -2309,14 +2310,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -2324,7 +2325,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -2445,14 +2446,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -2460,7 +2461,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -2580,14 +2581,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -2595,7 +2596,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -2717,14 +2718,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -2732,7 +2733,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -2856,14 +2857,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -2871,7 +2872,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -2989,14 +2990,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -3004,7 +3005,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -3127,14 +3128,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -3142,7 +3143,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -3266,14 +3267,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -3281,7 +3282,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -3403,14 +3404,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -3418,7 +3419,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -3540,14 +3541,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -3555,7 +3556,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -3678,14 +3679,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -3693,7 +3694,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -3816,14 +3817,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -3831,7 +3832,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -3954,14 +3955,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -3969,7 +3970,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -4093,14 +4094,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -4108,7 +4109,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -4227,14 +4228,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -4242,7 +4243,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -4365,14 +4366,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -4380,7 +4381,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -4503,14 +4504,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -4518,7 +4519,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -4641,14 +4642,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -4656,7 +4657,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -4779,14 +4780,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -4794,7 +4795,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -4917,14 +4918,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -4932,7 +4933,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -5055,14 +5056,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -5070,7 +5071,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -5193,14 +5194,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -5208,7 +5209,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -5331,14 +5332,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -5346,7 +5347,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -5468,14 +5469,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -5483,7 +5484,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -5605,14 +5606,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -5620,7 +5621,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -5748,14 +5749,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -5763,7 +5764,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -5886,14 +5887,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -5901,7 +5902,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -6019,14 +6020,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -6034,7 +6035,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -6157,14 +6158,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -6172,7 +6173,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -6294,14 +6295,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -6309,7 +6310,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -6432,14 +6433,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -6447,7 +6448,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -6570,14 +6571,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -6585,7 +6586,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -6707,14 +6708,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -6722,7 +6723,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -6840,14 +6841,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -6855,7 +6856,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -6978,14 +6979,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -6993,7 +6994,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -7115,14 +7116,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -7130,7 +7131,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -7252,14 +7253,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -7267,7 +7268,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],
@@ -7392,14 +7393,14 @@ class hosting
                         'headers' => $_response->headers,
                     ]);
                 }
-                if (!Utils::empty_($_response->headers['x-ca-error-message'])) {
+                if (!Utils::empty_(@$_response->headers['x-ca-error-message'])) {
                     throw new TeaError([
                         'data' => [
-                            'requestId'     => $_response->headers['x-ca-request-id'],
+                            'requestId'     => @$_response->headers['x-ca-request-id'],
                             'statusCode'    => $_response->statusCode,
                             'statusMessage' => $_response->statusMessage,
                         ],
-                        'message' => $_response->headers['x-ca-error-message'],
+                        'message' => @$_response->headers['x-ca-error-message'],
                     ]);
                 }
                 $obj     = Utils::readAsJSON($_response->body);
@@ -7407,7 +7408,7 @@ class hosting
 
                 throw new TeaError(Tea::merge([
                     'data' => [
-                        'requestId'     => $_response->headers['x-ca-request-id'],
+                        'requestId'     => @$_response->headers['x-ca-request-id'],
                         'statusCode'    => $_response->statusCode,
                         'statusMessage' => $_response->statusMessage,
                     ],

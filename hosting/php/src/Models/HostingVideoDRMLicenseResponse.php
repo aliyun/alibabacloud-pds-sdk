@@ -28,9 +28,19 @@ class HostingVideoDRMLicenseResponse extends Model
      * @var int
      */
     public $states;
+
+    /**
+     * @description device_info
+     *
+     * @example xxx
+     *
+     * @var string
+     */
+    public $deviceInfo;
     protected $_name = [
-        'data'   => 'data',
-        'states' => 'states',
+        'data'       => 'data',
+        'states'     => 'states',
+        'deviceInfo' => 'device_info',
     ];
 
     public function validate()
@@ -47,6 +57,9 @@ class HostingVideoDRMLicenseResponse extends Model
         }
         if (null !== $this->states) {
             $res['states'] = $this->states;
+        }
+        if (null !== $this->deviceInfo) {
+            $res['device_info'] = $this->deviceInfo;
         }
 
         return $res;
@@ -65,6 +78,9 @@ class HostingVideoDRMLicenseResponse extends Model
         }
         if (isset($map['states'])) {
             $model->states = $map['states'];
+        }
+        if (isset($map['device_info'])) {
+            $model->deviceInfo = $map['device_info'];
         }
 
         return $model;

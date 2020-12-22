@@ -99,7 +99,6 @@ class HostingCopyFileRequest extends Model
     public function validate()
     {
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
-        Model::validatePattern('newName', $this->newName, '[a-zA-Z0-9.-]{1,1000}');
         Model::validatePattern('shareId', $this->shareId, '[0-9a-zA-Z-]+');
         Model::validatePattern('toDriveId', $this->toDriveId, '[0-9]+');
         Model::validateRequired('filePath', $this->filePath, true);

@@ -81,7 +81,6 @@ class HostingListUploadedPartRequest extends Model
     public function validate()
     {
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
-        Model::validatePattern('limit', $this->limit, '[0-9]+');
         Model::validatePattern('partNumberMarker', $this->partNumberMarker, '[0-9]+');
         Model::validatePattern('shareId', $this->shareId, '[0-9a-zA-Z-]+');
         Model::validateRequired('filePath', $this->filePath, true);
