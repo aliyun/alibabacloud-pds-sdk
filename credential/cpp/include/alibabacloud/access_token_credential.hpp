@@ -12,14 +12,25 @@ using namespace std;
 namespace Alibabacloud_AccessTokenCredential {
 class Config : public Darabonba::Model {
 public:
+  shared_ptr<string> endpoint{};
+  shared_ptr<string> domainId{};
+  shared_ptr<string> clientId{};
+  shared_ptr<string> refreshToken{};
+  shared_ptr<string> clientSecret{};
+  shared_ptr<string> accessToken{};
+  shared_ptr<string> expireTime{};
+
   Config() {}
-  explicit Config(const std::map<string, boost::any> &config) : Darabonba::Model(config) {
+
+  explicit Config(const std::map<string, boost::any> &config)
+      : Darabonba::Model(config) {
     fromMap(config);
   };
 
   void validate() override {
     if (!domainId) {
-      BOOST_THROW_EXCEPTION(boost::enable_error_info(std::runtime_error("domainId is required.")));
+      BOOST_THROW_EXCEPTION(boost::enable_error_info(
+          std::runtime_error("domainId is required.")));
     }
   }
 
@@ -60,28 +71,24 @@ public:
       clientId = make_shared<string>(boost::any_cast<string>(m["clientId"]));
     }
     if (m.find("refreshToken") != m.end() && !m["refreshToken"].empty()) {
-      refreshToken = make_shared<string>(boost::any_cast<string>(m["refreshToken"]));
+      refreshToken =
+          make_shared<string>(boost::any_cast<string>(m["refreshToken"]));
     }
     if (m.find("clientSecret") != m.end() && !m["clientSecret"].empty()) {
-      clientSecret = make_shared<string>(boost::any_cast<string>(m["clientSecret"]));
+      clientSecret =
+          make_shared<string>(boost::any_cast<string>(m["clientSecret"]));
     }
     if (m.find("accessToken") != m.end() && !m["accessToken"].empty()) {
-      accessToken = make_shared<string>(boost::any_cast<string>(m["accessToken"]));
+      accessToken =
+          make_shared<string>(boost::any_cast<string>(m["accessToken"]));
     }
     if (m.find("expireTime") != m.end() && !m["expireTime"].empty()) {
-      expireTime = make_shared<string>(boost::any_cast<string>(m["expireTime"]));
+      expireTime =
+          make_shared<string>(boost::any_cast<string>(m["expireTime"]));
     }
   }
 
-  shared_ptr<string> endpoint{};
-  shared_ptr<string> domainId{};
-  shared_ptr<string> clientId{};
-  shared_ptr<string> refreshToken{};
-  shared_ptr<string> clientSecret{};
-  shared_ptr<string> accessToken{};
-  shared_ptr<string> expireTime{};
-
-  ~Config() = default;
+  virtual ~Config() = default;
 };
 class Client {
 public:
@@ -92,7 +99,6 @@ public:
   shared_ptr<string> _clientSecret{};
   shared_ptr<string> _accessToken{};
   shared_ptr<string> _expireTime{};
-  Client() {};
   explicit Client(const shared_ptr<Config> &config);
   void setExpireTime(shared_ptr<string> expireTime);
   string getExpireTime();
@@ -100,15 +106,8 @@ public:
   void setRefreshToken(shared_ptr<string> refreshToken);
   void setAccessToken(shared_ptr<string> accessToken);
   string getAccessToken();
-  bool shouldRefresh(long now) const;
-
-  virtual Darabonba::Response doAction(Darabonba::Request req) {
-    return Darabonba::Core::doAction(req);
-  }
 
   virtual ~Client() = default;
-private:
-  void refreshAccessToken();
 };
 } // namespace Alibabacloud_AccessTokenCredential
 

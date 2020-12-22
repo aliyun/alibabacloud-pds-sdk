@@ -1,5 +1,5 @@
 
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.11 FATAL_ERROR)
 
 project(alibabacloud_access_token_credential VERSION "0.1.0")
 
@@ -41,40 +41,11 @@ set_target_properties(${PROJECT_NAME}
         MACOSX_RPATH ON
         WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-if (ENABLE_UNIT_TESTS)
-#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
-    OPTION(ENABLE_COVERAGE "Use gcov" OFF)
-    message(STATUS "Enable coverage: ${ENABLE_COVERAGE}")
-    if (ENABLE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-        set(CMAKE_BUILD_TYPE "Coverage")
-        set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
-        include(CodeCoverage)
-        setup_target_for_coverage(${PROJECT_NAME}_coverage ${PROJECT_NAME}_test coverage)
-    endif ()
-    include(CTest)
-    enable_testing()
-    add_executable(tests_alibabacloud_access_token_credential
-            tests/main.cpp)
-endif ()
-
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< External set up >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> #
 add_subdirectory(external)
 find_package(Boost REQUIRED COMPONENTS random system thread filesystem chrono atomic date_time regex)
 find_library(CPPREST_LIB cpprest)
 target_link_libraries(${PROJECT_NAME} PRIVATE crypto darabonba_core ${Boost_LIBRARIES} ${CPPREST_LIB})
-
-if (ENABLE_UNIT_TESTS)
-    target_include_directories(tests_alibabacloud_access_token_credential
-            PRIVATE
-            ${CMAKE_CURRENT_SOURCE_DIR}/include)
-    target_link_libraries(tests_alibabacloud_access_token_credential
-            PRIVATE
-            ${PROJECT_NAME}
-            gtest_main
-            gmock_main crypto darabonba_core ${Boost_LIBRARIES} ${CPPREST_LIB})
-    add_test(NAME google_test
-            COMMAND $<TARGET_FILE:tests_alibabacloud_access_token_credential>)
-endif ()
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Install set up >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> #
 message(STATUS "${PROJECT_NAME} : Project will be installed to ${CMAKE_INSTALL_PREFIX}")
