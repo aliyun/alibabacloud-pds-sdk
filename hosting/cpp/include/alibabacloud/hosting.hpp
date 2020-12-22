@@ -19635,8 +19635,6 @@ public:
       BOOST_THROW_EXCEPTION(boost::enable_error_info(
           std::runtime_error("filePath is required.")));
     }
-    Darabonba::Model::validatePattern("newName", newName,
-                                      "[a-zA-Z0-9.-]{1,1000}");
     Darabonba::Model::validatePattern("shareId", shareId, "[0-9a-zA-Z-]+");
     Darabonba::Model::validatePattern("toDriveId", toDriveId, "[0-9]+");
     if (!toParentFilePath) {
