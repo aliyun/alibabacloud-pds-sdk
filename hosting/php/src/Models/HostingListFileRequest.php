@@ -112,7 +112,6 @@ class HostingListFileRequest extends Model
     public function validate()
     {
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
-        Model::validatePattern('limit', $this->limit, '[0-9]{1,3}');
         Model::validatePattern('shareId', $this->shareId, '[0-9a-zA-Z-]+');
         Model::validateMaximum('limit', $this->limit, 100);
         Model::validateMaximum('urlExpireSec', $this->urlExpireSec, 14400);

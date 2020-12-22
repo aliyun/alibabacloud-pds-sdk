@@ -182,7 +182,6 @@ class ListFileRequest extends Model
     public function validate()
     {
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
-        Model::validatePattern('limit', $this->limit, '[0-9]{1,3}');
         Model::validatePattern('parentFileId', $this->parentFileId, '[a-z0-9.-_]{1,50}');
         Model::validateMaximum('limit', $this->limit, 100);
         Model::validateMaximum('urlExpireSec', $this->urlExpireSec, 14400);
