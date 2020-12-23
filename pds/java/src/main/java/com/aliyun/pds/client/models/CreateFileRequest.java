@@ -70,6 +70,10 @@ public class CreateFileRequest extends TeaModel {
     @NameInMap("last_updated_at")
     public String lastUpdatedAt;
 
+    // location
+    @NameInMap("location")
+    public String location;
+
     @NameInMap("meta")
     public String meta;
 
@@ -242,6 +246,14 @@ public class CreateFileRequest extends TeaModel {
     }
     public String getLastUpdatedAt() {
         return this.lastUpdatedAt;
+    }
+
+    public CreateFileRequest setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+    public String getLocation() {
+        return this.location;
     }
 
     public CreateFileRequest setMeta(String meta) {

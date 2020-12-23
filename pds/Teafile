@@ -1,7 +1,7 @@
 {
 	"scope": "alibabacloud",
-	"name": "pds",
-	"version": "1.0.6",
+	"name": "standard",
+	"version": "1.0.0",
 	"main": "./main.tea",
 	"maintainers": [
 		{
@@ -10,51 +10,42 @@
 		}
 	],
 	"releases": {
-		"go": "github.com/alibabacloud-go/pds-sdk/client:v1.0.3",
-		"ts": "@alicloud/pds-sdk:^1.0.0",
-		"java": "com.aliyun:aliyun-sdk-pds:0.0.2",
-		"csharp": "Aliyun.SDK.PDS.Client:1.0.1",
-		"php": "alibabacloud/pds-sdk:^0.2.0",
-		"python": "alibabacloud_pds_sdk:0.0.2",
-		"cpp": "alibabacloud-sdk-cpp/pds:master"
+		"go": "github.com/alibabacloud-go/standard-sdk/client:v1.0.0",
+		"ts": "@alicloud/standard-sdk:^1.0.0",
+		"java": "com.aliyun:standard-client:1.0.0",
+		"csharp": "Aliyun.SDK.standard.Client:1.0.",
+		"php": "alibabacloud/standard-sdk:^0.1.0",
+		"python": "alibabacloud_standard_sdk:0.0.1"
 	},
 	"java": {
-		"package": "com.aliyun.pds.client"
+		"package": "com.aliyun.standard.client"
 	},
 	"csharp": {
-		"namespace": "Aliyun.SDK.PDS.Client"
+		"namespace": "Aliyun.SDK.standard.Client"
 	},
 	"swift5": {
-		"package": "AliyunPDSSDK"
+		"package": "AliyunstandardSDK"
 	},
 	"python": {
-		"package": "alibabacloud_pds_sdk",
+		"package": "alibabacloud_standard_sdk",
 		"clientName": "client",
 		"packageInfo": {
-			"name": "alibabacloud_pds_sdk",
-			"desc": "Alibaba Cloud PDS SDK Library for Python",
-			"github": "https://github.com/aliyun/alibabacloud-pds-sdk",
+			"name": "alibabacloud_standard_sdk",
+			"desc": "Alibaba Cloud standard SDK Library for Python",
+			"github": "https://github.com/aliyun/aliyun-ccp",
 			"author": "Alibaba Cloud SDK",
 			"email": "sdk-team@alibabacloud.com"
 		}
 	},
 	"php": {
-		"package": "Aliyun.PDS.SDK",
-		"clientName": "pds",
+		"package": "Aliyun.standard.SDK",
+		"clientName": "standard",
 		"packageInfo": {
-			"name": "alibabacloud/pds-sdk",
-			"desc": "Alibaba Cloud PDS SDK Library for PHP",
-			"github": "https://github.com/aliyun/alibabacloud-pds-sdk",
+			"name": "alibabacloud/standard-sdk",
+			"desc": "Alibaba Cloud standard SDK Library for PHP",
+			"github": "https://github.com/aliyun/aliyun-ccp",
 			"files": {
 				"LICENSE": "../LICENSE"
-			}
-		}
-	},
-	"cpp": {
-		"packageInfo": {
-			"git": {
-				"scope": "alibabacloud-sdk-cpp",
-				"project": "pds"
 			}
 		}
 	},

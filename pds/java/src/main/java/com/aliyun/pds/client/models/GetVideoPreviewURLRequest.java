@@ -14,6 +14,10 @@ public class GetVideoPreviewURLRequest extends TeaModel {
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
+    // audio_template_id
+    @NameInMap("audio_template_id")
+    public String audioTemplateId;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
@@ -51,6 +55,14 @@ public class GetVideoPreviewURLRequest extends TeaModel {
     }
     public java.util.Map<String, ?> getAdditionData() {
         return this.additionData;
+    }
+
+    public GetVideoPreviewURLRequest setAudioTemplateId(String audioTemplateId) {
+        this.audioTemplateId = audioTemplateId;
+        return this;
+    }
+    public String getAudioTemplateId() {
+        return this.audioTemplateId;
     }
 
     public GetVideoPreviewURLRequest setDriveId(String driveId) {

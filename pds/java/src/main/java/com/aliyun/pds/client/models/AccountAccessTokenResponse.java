@@ -16,17 +16,21 @@ public class AccountAccessTokenResponse extends TeaModel {
     @NameInMap("avatar")
     public String avatar;
 
-    // 用户的数据密码是否保存服务端
-    @NameInMap("data_pin_saved")
-    public Boolean dataPinSaved;
-
-    // 用户的数据密码是否设置过
-    @NameInMap("data_pin_setup")
-    public Boolean dataPinSetup;
-
     // Default Drive ID
     @NameInMap("default_drive_id")
     public String defaultDriveId;
+
+    // Default Sbox Drive ID
+    @NameInMap("default_sbox_drive_id")
+    public String defaultSboxDriveId;
+
+    // device_id 通过device flow 绑定的设备ID
+    @NameInMap("device_id")
+    public String deviceId;
+
+    // device_name 通过device flow 绑定的设备名
+    @NameInMap("device_name")
+    public String deviceName;
 
     // 当前用户已存在的登录方式
     @NameInMap("exist_link")
@@ -49,9 +53,17 @@ public class AccountAccessTokenResponse extends TeaModel {
     @Validation(required = true)
     public Boolean needLink;
 
+    // 用户是否需要进行的实人认证
+    @NameInMap("need_rp_verify")
+    public Boolean needRpVerify;
+
     // 当前用户昵称
     @NameInMap("nick_name")
     public String nickName;
+
+    // 用户的数据密码是否设置过
+    @NameInMap("pin_setup")
+    public Boolean pinSetup;
 
     // 用于刷新accessToken
     @NameInMap("refresh_token")
@@ -102,28 +114,36 @@ public class AccountAccessTokenResponse extends TeaModel {
         return this.avatar;
     }
 
-    public AccountAccessTokenResponse setDataPinSaved(Boolean dataPinSaved) {
-        this.dataPinSaved = dataPinSaved;
-        return this;
-    }
-    public Boolean getDataPinSaved() {
-        return this.dataPinSaved;
-    }
-
-    public AccountAccessTokenResponse setDataPinSetup(Boolean dataPinSetup) {
-        this.dataPinSetup = dataPinSetup;
-        return this;
-    }
-    public Boolean getDataPinSetup() {
-        return this.dataPinSetup;
-    }
-
     public AccountAccessTokenResponse setDefaultDriveId(String defaultDriveId) {
         this.defaultDriveId = defaultDriveId;
         return this;
     }
     public String getDefaultDriveId() {
         return this.defaultDriveId;
+    }
+
+    public AccountAccessTokenResponse setDefaultSboxDriveId(String defaultSboxDriveId) {
+        this.defaultSboxDriveId = defaultSboxDriveId;
+        return this;
+    }
+    public String getDefaultSboxDriveId() {
+        return this.defaultSboxDriveId;
+    }
+
+    public AccountAccessTokenResponse setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+        return this;
+    }
+    public String getDeviceId() {
+        return this.deviceId;
+    }
+
+    public AccountAccessTokenResponse setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
+        return this;
+    }
+    public String getDeviceName() {
+        return this.deviceName;
     }
 
     public AccountAccessTokenResponse setExistLink(java.util.List<LinkInfo> existLink) {
@@ -166,12 +186,28 @@ public class AccountAccessTokenResponse extends TeaModel {
         return this.needLink;
     }
 
+    public AccountAccessTokenResponse setNeedRpVerify(Boolean needRpVerify) {
+        this.needRpVerify = needRpVerify;
+        return this;
+    }
+    public Boolean getNeedRpVerify() {
+        return this.needRpVerify;
+    }
+
     public AccountAccessTokenResponse setNickName(String nickName) {
         this.nickName = nickName;
         return this;
     }
     public String getNickName() {
         return this.nickName;
+    }
+
+    public AccountAccessTokenResponse setPinSetup(Boolean pinSetup) {
+        this.pinSetup = pinSetup;
+        return this;
+    }
+    public Boolean getPinSetup() {
+        return this.pinSetup;
     }
 
     public AccountAccessTokenResponse setRefreshToken(String refreshToken) {

@@ -27,6 +27,10 @@ public class BaseMediaResponse extends TeaModel {
     @NameInMap("height")
     public Long height;
 
+    // system_tags
+    @NameInMap("image_tags")
+    public java.util.List<SystemTag> imageTags;
+
     // location
     @NameInMap("location")
     public String location;
@@ -90,6 +94,14 @@ public class BaseMediaResponse extends TeaModel {
     }
     public Long getHeight() {
         return this.height;
+    }
+
+    public BaseMediaResponse setImageTags(java.util.List<SystemTag> imageTags) {
+        this.imageTags = imageTags;
+        return this;
+    }
+    public java.util.List<SystemTag> getImageTags() {
+        return this.imageTags;
     }
 
     public BaseMediaResponse setLocation(String location) {

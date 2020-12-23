@@ -10,33 +10,35 @@ public class GetFileByPathRequest extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // fields
-    @NameInMap("fields")
-    public String fields;
-
-    // file_id
-    @NameInMap("file_id")
-    @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
-    public String fileId;
-
     // file_path
     @NameInMap("file_path")
     public String filePath;
 
+    @NameInMap("image_cropping_aspect_ratios")
+    public java.util.List<String> imageCroppingAspectRatios;
+
     // image_thumbnail_process
-    // type:string
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
-    // image_thumbnail_process
-    // type:string
+    // image_url_process
     @NameInMap("image_url_process")
     public String imageUrlProcess;
+
+    @NameInMap("referer")
+    public String referer;
+
+    @NameInMap("sign_token")
+    public String signToken;
 
     // url_expire_sec
     @NameInMap("url_expire_sec")
@@ -60,6 +62,14 @@ public class GetFileByPathRequest extends TeaModel {
         return this.headers;
     }
 
+    public GetFileByPathRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
+    }
+
     public GetFileByPathRequest setDriveId(String driveId) {
         this.driveId = driveId;
         return this;
@@ -68,28 +78,20 @@ public class GetFileByPathRequest extends TeaModel {
         return this.driveId;
     }
 
-    public GetFileByPathRequest setFields(String fields) {
-        this.fields = fields;
-        return this;
-    }
-    public String getFields() {
-        return this.fields;
-    }
-
-    public GetFileByPathRequest setFileId(String fileId) {
-        this.fileId = fileId;
-        return this;
-    }
-    public String getFileId() {
-        return this.fileId;
-    }
-
     public GetFileByPathRequest setFilePath(String filePath) {
         this.filePath = filePath;
         return this;
     }
     public String getFilePath() {
         return this.filePath;
+    }
+
+    public GetFileByPathRequest setImageCroppingAspectRatios(java.util.List<String> imageCroppingAspectRatios) {
+        this.imageCroppingAspectRatios = imageCroppingAspectRatios;
+        return this;
+    }
+    public java.util.List<String> getImageCroppingAspectRatios() {
+        return this.imageCroppingAspectRatios;
     }
 
     public GetFileByPathRequest setImageThumbnailProcess(String imageThumbnailProcess) {
@@ -106,6 +108,22 @@ public class GetFileByPathRequest extends TeaModel {
     }
     public String getImageUrlProcess() {
         return this.imageUrlProcess;
+    }
+
+    public GetFileByPathRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
+    }
+
+    public GetFileByPathRequest setSignToken(String signToken) {
+        this.signToken = signToken;
+        return this;
+    }
+    public String getSignToken() {
+        return this.signToken;
     }
 
     public GetFileByPathRequest setUrlExpireSec(Long urlExpireSec) {

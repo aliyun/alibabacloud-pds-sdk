@@ -31,6 +31,14 @@ public class BaseShareLinkResponse extends TeaModel {
     @NameInMap("file_id")
     public String fileId;
 
+    // file_id_list
+    @NameInMap("file_id_list")
+    public java.util.List<String> fileIdList;
+
+    // file_id_list
+    @NameInMap("file_path_list")
+    public java.util.List<String> filePathList;
+
     // preview_count
     @NameInMap("preview_count")
     public Long previewCount;
@@ -114,6 +122,22 @@ public class BaseShareLinkResponse extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public BaseShareLinkResponse setFileIdList(java.util.List<String> fileIdList) {
+        this.fileIdList = fileIdList;
+        return this;
+    }
+    public java.util.List<String> getFileIdList() {
+        return this.fileIdList;
+    }
+
+    public BaseShareLinkResponse setFilePathList(java.util.List<String> filePathList) {
+        this.filePathList = filePathList;
+        return this;
+    }
+    public java.util.List<String> getFilePathList() {
+        return this.filePathList;
     }
 
     public BaseShareLinkResponse setPreviewCount(Long previewCount) {

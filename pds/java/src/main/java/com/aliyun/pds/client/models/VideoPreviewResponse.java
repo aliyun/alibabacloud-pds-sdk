@@ -7,9 +7,27 @@ import com.aliyun.tea.*;
  * 
  */
 public class VideoPreviewResponse extends TeaModel {
+    // audio_channels
+    @NameInMap("audio_channels")
+    public Long audioChannels;
+
     // audio_format
     @NameInMap("audio_format")
     public String audioFormat;
+
+    @NameInMap("audio_meta")
+    public VideoPreviewAudioMeta audioMeta;
+
+    @NameInMap("audio_music_meta")
+    public VideoPreviewAudioMusicMeta audioMusicMeta;
+
+    // audio_sample_rate
+    @NameInMap("audio_sample_rate")
+    public String audioSampleRate;
+
+    // audio_template_list
+    @NameInMap("audio_template_list")
+    public java.util.List<VideoPreviewTranscode> audioTemplateList;
 
     // bitrate
     @NameInMap("bitrate")
@@ -51,12 +69,52 @@ public class VideoPreviewResponse extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public VideoPreviewResponse setAudioChannels(Long audioChannels) {
+        this.audioChannels = audioChannels;
+        return this;
+    }
+    public Long getAudioChannels() {
+        return this.audioChannels;
+    }
+
     public VideoPreviewResponse setAudioFormat(String audioFormat) {
         this.audioFormat = audioFormat;
         return this;
     }
     public String getAudioFormat() {
         return this.audioFormat;
+    }
+
+    public VideoPreviewResponse setAudioMeta(VideoPreviewAudioMeta audioMeta) {
+        this.audioMeta = audioMeta;
+        return this;
+    }
+    public VideoPreviewAudioMeta getAudioMeta() {
+        return this.audioMeta;
+    }
+
+    public VideoPreviewResponse setAudioMusicMeta(VideoPreviewAudioMusicMeta audioMusicMeta) {
+        this.audioMusicMeta = audioMusicMeta;
+        return this;
+    }
+    public VideoPreviewAudioMusicMeta getAudioMusicMeta() {
+        return this.audioMusicMeta;
+    }
+
+    public VideoPreviewResponse setAudioSampleRate(String audioSampleRate) {
+        this.audioSampleRate = audioSampleRate;
+        return this;
+    }
+    public String getAudioSampleRate() {
+        return this.audioSampleRate;
+    }
+
+    public VideoPreviewResponse setAudioTemplateList(java.util.List<VideoPreviewTranscode> audioTemplateList) {
+        this.audioTemplateList = audioTemplateList;
+        return this;
+    }
+    public java.util.List<VideoPreviewTranscode> getAudioTemplateList() {
+        return this.audioTemplateList;
     }
 
     public VideoPreviewResponse setBitrate(String bitrate) {

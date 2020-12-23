@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * get_share_link_by_anonymous response
  */
 public class GetShareLinkByAnonymousResponse extends TeaModel {
+    // avatar
+    @NameInMap("avatar")
+    public String avatar;
+
     // creator_id
     @NameInMap("creator_id")
     public String creatorId;
@@ -14,6 +18,10 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     // creator_name
     @NameInMap("creator_name")
     public String creatorName;
+
+    // creator_phone
+    @NameInMap("creator_phone")
+    public String creatorPhone;
 
     // expiration
     @NameInMap("expiration")
@@ -26,6 +34,14 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     public static GetShareLinkByAnonymousResponse build(java.util.Map<String, ?> map) throws Exception {
         GetShareLinkByAnonymousResponse self = new GetShareLinkByAnonymousResponse();
         return TeaModel.build(map, self);
+    }
+
+    public GetShareLinkByAnonymousResponse setAvatar(String avatar) {
+        this.avatar = avatar;
+        return this;
+    }
+    public String getAvatar() {
+        return this.avatar;
     }
 
     public GetShareLinkByAnonymousResponse setCreatorId(String creatorId) {
@@ -42,6 +58,14 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     }
     public String getCreatorName() {
         return this.creatorName;
+    }
+
+    public GetShareLinkByAnonymousResponse setCreatorPhone(String creatorPhone) {
+        this.creatorPhone = creatorPhone;
+        return this;
+    }
+    public String getCreatorPhone() {
+        return this.creatorPhone;
     }
 
     public GetShareLinkByAnonymousResponse setExpiration(String expiration) {

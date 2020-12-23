@@ -16,7 +16,6 @@ public class ListImageAddressGroupsRequest extends TeaModel {
     public String driveId;
 
     // image_thumbnail_process
-    // type:string
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
@@ -27,6 +26,10 @@ public class ListImageAddressGroupsRequest extends TeaModel {
     // 翻页标记
     @NameInMap("marker")
     public String marker;
+
+    // video_thumbnail_process
+    @NameInMap("video_thumbnail_process")
+    public String videoThumbnailProcess;
 
     public static ListImageAddressGroupsRequest build(java.util.Map<String, ?> map) throws Exception {
         ListImageAddressGroupsRequest self = new ListImageAddressGroupsRequest();
@@ -71,6 +74,14 @@ public class ListImageAddressGroupsRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ListImageAddressGroupsRequest setVideoThumbnailProcess(String videoThumbnailProcess) {
+        this.videoThumbnailProcess = videoThumbnailProcess;
+        return this;
+    }
+    public String getVideoThumbnailProcess() {
+        return this.videoThumbnailProcess;
     }
 
 }
