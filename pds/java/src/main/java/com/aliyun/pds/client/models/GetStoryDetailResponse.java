@@ -17,7 +17,7 @@ public class GetStoryDetailResponse extends TeaModel {
 
     // items
     @NameInMap("items")
-    public java.util.List<BaseFileResponse> items;
+    public java.util.List<BaseCCPFileResponse> items;
 
     // score
     @NameInMap("score")
@@ -72,11 +72,11 @@ public class GetStoryDetailResponse extends TeaModel {
         return this.createdAt;
     }
 
-    public GetStoryDetailResponse setItems(java.util.List<BaseFileResponse> items) {
+    public GetStoryDetailResponse setItems(java.util.List<BaseCCPFileResponse> items) {
         this.items = items;
         return this;
     }
-    public java.util.List<BaseFileResponse> getItems() {
+    public java.util.List<BaseCCPFileResponse> getItems() {
         return this.items;
     }
 

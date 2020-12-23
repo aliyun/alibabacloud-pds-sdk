@@ -25,6 +25,9 @@ public class SystemTag extends TeaModel {
     @NameInMap("selected")
     public Boolean selected;
 
+    @NameInMap("source")
+    public String source;
+
     @NameInMap("tag_level")
     public Long tagLevel;
 
@@ -79,6 +82,14 @@ public class SystemTag extends TeaModel {
     }
     public Boolean getSelected() {
         return this.selected;
+    }
+
+    public SystemTag setSource(String source) {
+        this.source = source;
+        return this;
+    }
+    public String getSource() {
+        return this.source;
     }
 
     public SystemTag setTagLevel(Long tagLevel) {

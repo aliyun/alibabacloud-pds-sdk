@@ -11,6 +11,10 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("category")
     public String category;
 
+    // CharacteristicHash
+    @NameInMap("characteristic_hash")
+    public String characteristicHash;
+
     // Content Hash
     @NameInMap("content_hash")
     public String contentHash;
@@ -152,6 +156,14 @@ public class GetFileResponse extends TeaModel {
     }
     public String getCategory() {
         return this.category;
+    }
+
+    public GetFileResponse setCharacteristicHash(String characteristicHash) {
+        this.characteristicHash = characteristicHash;
+        return this;
+    }
+    public String getCharacteristicHash() {
+        return this.characteristicHash;
     }
 
     public GetFileResponse setContentHash(String contentHash) {

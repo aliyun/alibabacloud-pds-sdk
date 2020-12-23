@@ -34,6 +34,10 @@ public class AuthorizeRequest extends TeaModel {
     @NameInMap("State")
     public String State;
 
+    // 内部使用
+    @NameInMap("UserCode")
+    public String UserCode;
+
     public static AuthorizeRequest build(java.util.Map<String, ?> map) throws Exception {
         AuthorizeRequest self = new AuthorizeRequest();
         return TeaModel.build(map, self);
@@ -85,6 +89,14 @@ public class AuthorizeRequest extends TeaModel {
     }
     public String getState() {
         return this.State;
+    }
+
+    public AuthorizeRequest setUserCode(String UserCode) {
+        this.UserCode = UserCode;
+        return this;
+    }
+    public String getUserCode() {
+        return this.UserCode;
     }
 
 }

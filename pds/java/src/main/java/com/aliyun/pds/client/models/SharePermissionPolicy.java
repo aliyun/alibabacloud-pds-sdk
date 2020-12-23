@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class SharePermissionPolicy extends TeaModel {
+    @NameInMap("file_id")
+    public String fileId;
+
     @NameInMap("file_path")
     public String filePath;
 
@@ -22,6 +25,14 @@ public class SharePermissionPolicy extends TeaModel {
     public static SharePermissionPolicy build(java.util.Map<String, ?> map) throws Exception {
         SharePermissionPolicy self = new SharePermissionPolicy();
         return TeaModel.build(map, self);
+    }
+
+    public SharePermissionPolicy setFileId(String fileId) {
+        this.fileId = fileId;
+        return this;
+    }
+    public String getFileId() {
+        return this.fileId;
     }
 
     public SharePermissionPolicy setFilePath(String filePath) {

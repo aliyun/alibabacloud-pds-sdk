@@ -9,7 +9,7 @@ public class GetPublicKeyModel extends TeaModel {
 
     @NameInMap("body")
     @Validation(required = true)
-    public GetAppPublicKeyResponse body;
+    public GetPublicKeyResponse body;
 
     public static GetPublicKeyModel build(java.util.Map<String, ?> map) throws Exception {
         GetPublicKeyModel self = new GetPublicKeyModel();
@@ -24,11 +24,11 @@ public class GetPublicKeyModel extends TeaModel {
         return this.headers;
     }
 
-    public GetPublicKeyModel setBody(GetAppPublicKeyResponse body) {
+    public GetPublicKeyModel setBody(GetPublicKeyResponse body) {
         this.body = body;
         return this;
     }
-    public GetAppPublicKeyResponse getBody() {
+    public GetPublicKeyResponse getBody() {
         return this.body;
     }
 

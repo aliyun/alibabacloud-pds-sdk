@@ -30,6 +30,16 @@ public class DownloadRequest extends TeaModel {
     @NameInMap("VideoThumbnailProcess")
     public String VideoThumbnailProcess;
 
+    // location
+    @NameInMap("location")
+    public String location;
+
+    @NameInMap("referer")
+    public String referer;
+
+    @NameInMap("sign_token")
+    public String signToken;
+
     public static DownloadRequest build(java.util.Map<String, ?> map) throws Exception {
         DownloadRequest self = new DownloadRequest();
         return TeaModel.build(map, self);
@@ -73,6 +83,30 @@ public class DownloadRequest extends TeaModel {
     }
     public String getVideoThumbnailProcess() {
         return this.VideoThumbnailProcess;
+    }
+
+    public DownloadRequest setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+    public String getLocation() {
+        return this.location;
+    }
+
+    public DownloadRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
+    }
+
+    public DownloadRequest setSignToken(String signToken) {
+        this.signToken = signToken;
+        return this;
+    }
+    public String getSignToken() {
+        return this.signToken;
     }
 
 }

@@ -10,9 +10,9 @@ public class ListFileRequest extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
-    // starred
-    @NameInMap("Starred")
-    public Boolean Starred;
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
 
     // all
     @NameInMap("all")
@@ -31,6 +31,9 @@ public class ListFileRequest extends TeaModel {
     @NameInMap("fields")
     public String fields;
 
+    @NameInMap("image_cropping_aspect_ratios")
+    public java.util.List<String> imageCroppingAspectRatios;
+
     // image_thumbnail_process
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
@@ -41,8 +44,11 @@ public class ListFileRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
-    @Validation(pattern = "[0-9]{1,3}")
     public Long limit;
+
+    // location
+    @NameInMap("location")
+    public String location;
 
     // marker
     @NameInMap("marker")
@@ -60,6 +66,16 @@ public class ListFileRequest extends TeaModel {
     @NameInMap("parent_file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 4)
     public String parentFileId;
+
+    @NameInMap("referer")
+    public String referer;
+
+    @NameInMap("sign_token")
+    public String signToken;
+
+    // starred
+    @NameInMap("starred")
+    public Boolean starred;
 
     // status
     @NameInMap("status")
@@ -91,12 +107,12 @@ public class ListFileRequest extends TeaModel {
         return this.headers;
     }
 
-    public ListFileRequest setStarred(Boolean Starred) {
-        this.Starred = Starred;
+    public ListFileRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
         return this;
     }
-    public Boolean getStarred() {
-        return this.Starred;
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public ListFileRequest setAll(Boolean all) {
@@ -131,6 +147,14 @@ public class ListFileRequest extends TeaModel {
         return this.fields;
     }
 
+    public ListFileRequest setImageCroppingAspectRatios(java.util.List<String> imageCroppingAspectRatios) {
+        this.imageCroppingAspectRatios = imageCroppingAspectRatios;
+        return this;
+    }
+    public java.util.List<String> getImageCroppingAspectRatios() {
+        return this.imageCroppingAspectRatios;
+    }
+
     public ListFileRequest setImageThumbnailProcess(String imageThumbnailProcess) {
         this.imageThumbnailProcess = imageThumbnailProcess;
         return this;
@@ -153,6 +177,14 @@ public class ListFileRequest extends TeaModel {
     }
     public Long getLimit() {
         return this.limit;
+    }
+
+    public ListFileRequest setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+    public String getLocation() {
+        return this.location;
     }
 
     public ListFileRequest setMarker(String marker) {
@@ -185,6 +217,30 @@ public class ListFileRequest extends TeaModel {
     }
     public String getParentFileId() {
         return this.parentFileId;
+    }
+
+    public ListFileRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
+    }
+
+    public ListFileRequest setSignToken(String signToken) {
+        this.signToken = signToken;
+        return this;
+    }
+    public String getSignToken() {
+        return this.signToken;
+    }
+
+    public ListFileRequest setStarred(Boolean starred) {
+        this.starred = starred;
+        return this;
+    }
+    public Boolean getStarred() {
+        return this.starred;
     }
 
     public ListFileRequest setStatus(String status) {

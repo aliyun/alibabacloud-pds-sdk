@@ -7,9 +7,13 @@ import com.aliyun.tea.*;
  * base domain response
  */
 public class BaseDomainResponse extends TeaModel {
-    // Domain CName
+    // Domain APICName
     @NameInMap("api_cname")
     public String apiCname;
+
+    // Domain AppCName
+    @NameInMap("app_cname")
+    public String appCname;
 
     // 支付宝 App Id
     @NameInMap("auth_alipay_app_id")
@@ -22,6 +26,10 @@ public class BaseDomainResponse extends TeaModel {
     // 支付宝 App Secret
     @NameInMap("auth_alipay_private_key")
     public String authAlipayPrivateKey;
+
+    // Domain AuthCName
+    @NameInMap("auth_cname")
+    public String authCname;
 
     // 登录相关信息
     @NameInMap("auth_config")
@@ -146,6 +154,14 @@ public class BaseDomainResponse extends TeaModel {
         return this.apiCname;
     }
 
+    public BaseDomainResponse setAppCname(String appCname) {
+        this.appCname = appCname;
+        return this;
+    }
+    public String getAppCname() {
+        return this.appCname;
+    }
+
     public BaseDomainResponse setAuthAlipayAppId(String authAlipayAppId) {
         this.authAlipayAppId = authAlipayAppId;
         return this;
@@ -168,6 +184,14 @@ public class BaseDomainResponse extends TeaModel {
     }
     public String getAuthAlipayPrivateKey() {
         return this.authAlipayPrivateKey;
+    }
+
+    public BaseDomainResponse setAuthCname(String authCname) {
+        this.authCname = authCname;
+        return this;
+    }
+    public String getAuthCname() {
+        return this.authCname;
     }
 
     public BaseDomainResponse setAuthConfig(java.util.Map<String, ?> authConfig) {

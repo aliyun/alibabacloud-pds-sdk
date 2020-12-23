@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * 
  */
 public class StreamUploadInfo extends TeaModel {
+    // location
+    @NameInMap("location")
+    public String location;
+
     // part_info_list
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
@@ -28,6 +32,14 @@ public class StreamUploadInfo extends TeaModel {
     public static StreamUploadInfo build(java.util.Map<String, ?> map) throws Exception {
         StreamUploadInfo self = new StreamUploadInfo();
         return TeaModel.build(map, self);
+    }
+
+    public StreamUploadInfo setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+    public String getLocation() {
+        return this.location;
     }
 
     public StreamUploadInfo setPartInfoList(java.util.List<UploadPartInfo> partInfoList) {

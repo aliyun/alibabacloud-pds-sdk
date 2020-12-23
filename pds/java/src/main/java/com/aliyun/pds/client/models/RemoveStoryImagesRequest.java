@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * Remove story images request
  */
 public class RemoveStoryImagesRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     @NameInMap("drive_id")
     public String driveId;
 
@@ -19,6 +22,14 @@ public class RemoveStoryImagesRequest extends TeaModel {
     public static RemoveStoryImagesRequest build(java.util.Map<String, ?> map) throws Exception {
         RemoveStoryImagesRequest self = new RemoveStoryImagesRequest();
         return TeaModel.build(map, self);
+    }
+
+    public RemoveStoryImagesRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public RemoveStoryImagesRequest setDriveId(String driveId) {
