@@ -11,6 +11,10 @@ public class CompleteFileResponse extends TeaModel {
     @NameInMap("category")
     public String category;
 
+    // CharacteristicHash
+    @NameInMap("characteristic_hash")
+    public String characteristicHash;
+
     // Content Hash
     @NameInMap("content_hash")
     public String contentHash;
@@ -74,6 +78,10 @@ public class CompleteFileResponse extends TeaModel {
     @NameInMap("labels")
     public java.util.List<String> labels;
 
+    // location
+    @NameInMap("location")
+    public String location;
+
     @NameInMap("meta")
     public String meta;
 
@@ -102,6 +110,9 @@ public class CompleteFileResponse extends TeaModel {
     // status
     @NameInMap("status")
     public String status;
+
+    @NameInMap("stream_locations")
+    public java.util.Map<String, ?> streamLocations;
 
     // @Deprecated streams url info
     @NameInMap("streams_info")
@@ -152,6 +163,14 @@ public class CompleteFileResponse extends TeaModel {
     }
     public String getCategory() {
         return this.category;
+    }
+
+    public CompleteFileResponse setCharacteristicHash(String characteristicHash) {
+        this.characteristicHash = characteristicHash;
+        return this;
+    }
+    public String getCharacteristicHash() {
+        return this.characteristicHash;
     }
 
     public CompleteFileResponse setContentHash(String contentHash) {
@@ -274,6 +293,14 @@ public class CompleteFileResponse extends TeaModel {
         return this.labels;
     }
 
+    public CompleteFileResponse setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+    public String getLocation() {
+        return this.location;
+    }
+
     public CompleteFileResponse setMeta(String meta) {
         this.meta = meta;
         return this;
@@ -328,6 +355,14 @@ public class CompleteFileResponse extends TeaModel {
     }
     public String getStatus() {
         return this.status;
+    }
+
+    public CompleteFileResponse setStreamLocations(java.util.Map<String, ?> streamLocations) {
+        this.streamLocations = streamLocations;
+        return this;
+    }
+    public java.util.Map<String, ?> getStreamLocations() {
+        return this.streamLocations;
     }
 
     public CompleteFileResponse setStreamsInfo(java.util.Map<String, ?> streamsInfo) {

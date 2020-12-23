@@ -33,6 +33,16 @@ public class GetDownloadUrlRequest extends TeaModel {
     @Validation(maxLength = 1024, minLength = 1)
     public String fileName;
 
+    // location
+    @NameInMap("location")
+    public String location;
+
+    @NameInMap("referer")
+    public String referer;
+
+    @NameInMap("sign_token")
+    public String signToken;
+
     public static GetDownloadUrlRequest build(java.util.Map<String, ?> map) throws Exception {
         GetDownloadUrlRequest self = new GetDownloadUrlRequest();
         return TeaModel.build(map, self);
@@ -84,6 +94,30 @@ public class GetDownloadUrlRequest extends TeaModel {
     }
     public String getFileName() {
         return this.fileName;
+    }
+
+    public GetDownloadUrlRequest setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+    public String getLocation() {
+        return this.location;
+    }
+
+    public GetDownloadUrlRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
+    }
+
+    public GetDownloadUrlRequest setSignToken(String signToken) {
+        this.signToken = signToken;
+        return this;
+    }
+    public String getSignToken() {
+        return this.signToken;
     }
 
 }

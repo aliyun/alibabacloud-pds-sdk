@@ -25,6 +25,16 @@ public class CreateShareLinkRequest extends TeaModel {
     @Validation(required = true)
     public String fileId;
 
+    // file_id_list
+    @NameInMap("file_id_list")
+    @Validation(required = true)
+    public java.util.List<String> fileIdList;
+
+    // file_path_list
+    @NameInMap("file_path_list")
+    @Validation(required = true)
+    public java.util.List<String> filePathList;
+
     // share_pwd
     @NameInMap("share_pwd")
     public String sharePwd;
@@ -64,6 +74,22 @@ public class CreateShareLinkRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public CreateShareLinkRequest setFileIdList(java.util.List<String> fileIdList) {
+        this.fileIdList = fileIdList;
+        return this;
+    }
+    public java.util.List<String> getFileIdList() {
+        return this.fileIdList;
+    }
+
+    public CreateShareLinkRequest setFilePathList(java.util.List<String> filePathList) {
+        this.filePathList = filePathList;
+        return this;
+    }
+    public java.util.List<String> getFilePathList() {
+        return this.filePathList;
     }
 
     public CreateShareLinkRequest setSharePwd(String sharePwd) {

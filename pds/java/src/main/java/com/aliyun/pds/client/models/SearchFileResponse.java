@@ -9,7 +9,7 @@ import com.aliyun.tea.*;
 public class SearchFileResponse extends TeaModel {
     // items
     @NameInMap("items")
-    public java.util.List<BaseFileResponse> items;
+    public java.util.List<BaseCCPFileResponse> items;
 
     // next_marker
     @NameInMap("next_marker")
@@ -20,11 +20,11 @@ public class SearchFileResponse extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public SearchFileResponse setItems(java.util.List<BaseFileResponse> items) {
+    public SearchFileResponse setItems(java.util.List<BaseCCPFileResponse> items) {
         this.items = items;
         return this;
     }
-    public java.util.List<BaseFileResponse> getItems() {
+    public java.util.List<BaseCCPFileResponse> getItems() {
         return this.items;
     }
 

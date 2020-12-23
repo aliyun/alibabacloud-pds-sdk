@@ -16,9 +16,13 @@ public class ListImageTagsRequest extends TeaModel {
     public String driveId;
 
     // image_thumbnail_process
-    // type:string
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
+
+    // video_thumbnail_process
+    // type:string
+    @NameInMap("video_thumbnail_process")
+    public String videoThumbnailProcess;
 
     public static ListImageTagsRequest build(java.util.Map<String, ?> map) throws Exception {
         ListImageTagsRequest self = new ListImageTagsRequest();
@@ -47,6 +51,14 @@ public class ListImageTagsRequest extends TeaModel {
     }
     public String getImageThumbnailProcess() {
         return this.imageThumbnailProcess;
+    }
+
+    public ListImageTagsRequest setVideoThumbnailProcess(String videoThumbnailProcess) {
+        this.videoThumbnailProcess = videoThumbnailProcess;
+        return this;
+    }
+    public String getVideoThumbnailProcess() {
+        return this.videoThumbnailProcess;
     }
 
 }

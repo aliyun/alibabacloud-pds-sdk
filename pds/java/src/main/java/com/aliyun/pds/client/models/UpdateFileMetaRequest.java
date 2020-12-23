@@ -53,6 +53,12 @@ public class UpdateFileMetaRequest extends TeaModel {
     @Validation(maxLength = 1024, minLength = 1)
     public String name;
 
+    @NameInMap("referer")
+    public String referer;
+
+    @NameInMap("sign_token")
+    public String signToken;
+
     // starred
     // type: boolean
     @NameInMap("starred")
@@ -153,6 +159,22 @@ public class UpdateFileMetaRequest extends TeaModel {
     }
     public String getName() {
         return this.name;
+    }
+
+    public UpdateFileMetaRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
+    }
+
+    public UpdateFileMetaRequest setSignToken(String signToken) {
+        this.signToken = signToken;
+        return this;
+    }
+    public String getSignToken() {
+        return this.signToken;
     }
 
     public UpdateFileMetaRequest setStarred(Boolean starred) {

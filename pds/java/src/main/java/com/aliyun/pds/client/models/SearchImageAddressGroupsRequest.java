@@ -28,13 +28,16 @@ public class SearchImageAddressGroupsRequest extends TeaModel {
     public String driveId;
 
     // image_thumbnail_process
-    // type:string
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
     // tl_geo_point
     @NameInMap("tl_geo_point")
     public String tlGeoPoint;
+
+    // video_thumbnail_process
+    @NameInMap("video_thumbnail_process")
+    public String videoThumbnailProcess;
 
     public static SearchImageAddressGroupsRequest build(java.util.Map<String, ?> map) throws Exception {
         SearchImageAddressGroupsRequest self = new SearchImageAddressGroupsRequest();
@@ -95,6 +98,14 @@ public class SearchImageAddressGroupsRequest extends TeaModel {
     }
     public String getTlGeoPoint() {
         return this.tlGeoPoint;
+    }
+
+    public SearchImageAddressGroupsRequest setVideoThumbnailProcess(String videoThumbnailProcess) {
+        this.videoThumbnailProcess = videoThumbnailProcess;
+        return this;
+    }
+    public String getVideoThumbnailProcess() {
+        return this.videoThumbnailProcess;
     }
 
 }
