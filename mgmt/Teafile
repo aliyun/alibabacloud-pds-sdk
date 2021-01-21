@@ -1,0 +1,67 @@
+{
+	"scope": "alibabacloud",
+	"name": "mgmt",
+	"version": "1.0.5",
+	"main": "./main.tea",
+	"maintainers": [
+		{
+			"name": "Alibaba Cloud SDK",
+			"email": "sdk-team@alibabacloud.com"
+		}
+	],
+	"releases": {
+		"go": "github.com/alibabacloud-go/pds-mgmt-sdk/client:v1.0.0",
+		"ts": "@alicloud/pds-mgmt-sdk:^1.0.0",
+		"java": "com.aliyun:aliyun-sdk-pds-mgmt:0.0.1",
+		"csharp": "Aliyun.SDK.Mgmt.Client:1.0.0",
+		"php": "alibabacloud/pds-mgmt-sdk:^0.1.0",
+		"python": "alibabacloud_pds_mgmt_sdk:0.0.1",
+		"cpp": "alibabacloud-sdk-cpp/pds-mgmt:master"
+	},
+	"java": {
+		"package": "com.aliyun.mgmt.mode"
+	},
+	"csharp": {
+		"namespace": "Aliyun.SDK.Mgmt.Client"
+	},
+	"swift5": {
+		"package": "AliyunMgmtSDK"
+	},
+	"python": {
+		"package": "alibabacloud_pds_mgmt_sdk",
+		"clientName": "client",
+		"packageInfo": {
+			"name": "alibabacloud_pds_mgmt_sdk",
+			"desc": "Alibaba Cloud Mgmt SDK Library for Python",
+			"github": "https://github.com/aliyun/alibabacloud-pds-sdk",
+			"author": "Alibaba Cloud SDK",
+			"email": "sdk-team@alibabacloud.com"
+		}
+	},
+	"php": {
+		"package": "Aliyun.Mgmt.SDK",
+		"clientName": "mgmt",
+		"packageInfo": {
+			"name": "alibabacloud/pds-mgmt-sdk",
+			"desc": "Alibaba Cloud Mgmt SDK Library for PHP",
+			"github": "https://github.com/aliyun/alibabacloud-pds-sdk",
+			"files": {
+				"LICENSE": "../LICENSE"
+			}
+		}
+	},
+	"cpp": {
+		"packageInfo": {
+			"git": {
+				"scope": "alibabacloud-sdk-cpp",
+				"project": "pds-mgmt"
+			}
+		}
+	},
+	"libraries": {
+		"Util": "darabonba:Util:*",
+		"ROAUtil": "alibabacloud:ROAUtil:*",
+		"Credential": "alibabacloud:Credential:*",
+		"AccessTokenCredential": "alibabacloud:AccessTokenCredential:*"
+	}
+}
