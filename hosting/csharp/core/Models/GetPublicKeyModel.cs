@@ -15,7 +15,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
 
         [NameInMap("body")]
         [Validation(Required=true)]
-        public GetAppPublicKeyResponse Body { get; set; }
+        public GetPublicKeyResponse Body { get; set; }
 
     }
 

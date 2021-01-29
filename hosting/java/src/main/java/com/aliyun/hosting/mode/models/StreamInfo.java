@@ -15,6 +15,9 @@ public class StreamInfo extends TeaModel {
     @NameInMap("download_url")
     public String downloadUrl;
 
+    @NameInMap("size")
+    public Long size;
+
     // thumbnail
     @NameInMap("thumbnail")
     public String thumbnail;
@@ -42,6 +45,14 @@ public class StreamInfo extends TeaModel {
     }
     public String getDownloadUrl() {
         return this.downloadUrl;
+    }
+
+    public StreamInfo setSize(Long size) {
+        this.size = size;
+        return this;
+    }
+    public Long getSize() {
+        return this.size;
     }
 
     public StreamInfo setThumbnail(String thumbnail) {

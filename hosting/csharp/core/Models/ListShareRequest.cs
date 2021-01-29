@@ -49,6 +49,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         public string Owner { get; set; }
 
         /// <summary>
+        /// owner_type
+        /// </summary>
+        [NameInMap("owner_type")]
+        [Validation(Required=false)]
+        public string OwnerType { get; set; }
+
+        /// <summary>
         /// share_file_path
         /// </summary>
         [NameInMap("share_file_path")]

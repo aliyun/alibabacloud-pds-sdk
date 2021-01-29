@@ -12,6 +12,14 @@ public class GetAsyncTaskResponse extends TeaModel {
     @NameInMap("async_task_id")
     public String asyncTaskId;
 
+    // consumed_process
+    @NameInMap("consumed_process")
+    public Long consumedProcess;
+
+    // err_code
+    @NameInMap("err_code")
+    public Long errCode;
+
     // message
     @NameInMap("message")
     public String message;
@@ -19,6 +27,15 @@ public class GetAsyncTaskResponse extends TeaModel {
     // state
     @NameInMap("state")
     public String state;
+
+    // total_process
+    @NameInMap("total_process")
+    public Long totalProcess;
+
+    // download_url
+    // example
+    @NameInMap("url")
+    public String url;
 
     public static GetAsyncTaskResponse build(java.util.Map<String, ?> map) throws Exception {
         GetAsyncTaskResponse self = new GetAsyncTaskResponse();
@@ -31,6 +48,22 @@ public class GetAsyncTaskResponse extends TeaModel {
     }
     public String getAsyncTaskId() {
         return this.asyncTaskId;
+    }
+
+    public GetAsyncTaskResponse setConsumedProcess(Long consumedProcess) {
+        this.consumedProcess = consumedProcess;
+        return this;
+    }
+    public Long getConsumedProcess() {
+        return this.consumedProcess;
+    }
+
+    public GetAsyncTaskResponse setErrCode(Long errCode) {
+        this.errCode = errCode;
+        return this;
+    }
+    public Long getErrCode() {
+        return this.errCode;
     }
 
     public GetAsyncTaskResponse setMessage(String message) {
@@ -47,6 +80,22 @@ public class GetAsyncTaskResponse extends TeaModel {
     }
     public String getState() {
         return this.state;
+    }
+
+    public GetAsyncTaskResponse setTotalProcess(Long totalProcess) {
+        this.totalProcess = totalProcess;
+        return this;
+    }
+    public Long getTotalProcess() {
+        return this.totalProcess;
+    }
+
+    public GetAsyncTaskResponse setUrl(String url) {
+        this.url = url;
+        return this;
+    }
+    public String getUrl() {
+        return this.url;
     }
 
 }

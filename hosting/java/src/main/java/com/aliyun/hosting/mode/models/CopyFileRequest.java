@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 文件拷贝
  */
 public class CopyFileRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // auto_rename
     // type: boolean
     @NameInMap("auto_rename")
@@ -21,6 +24,9 @@ public class CopyFileRequest extends TeaModel {
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
+
+    @NameInMap("file_id_path")
+    public String fileIdPath;
 
     // new_name
     @NameInMap("new_name")
@@ -41,9 +47,22 @@ public class CopyFileRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 4)
     public String toParentFileId;
 
+    // to_drive_id
+    @NameInMap("to_share_id")
+    @Validation(pattern = "[0-9]+")
+    public String toShareId;
+
     public static CopyFileRequest build(java.util.Map<String, ?> map) throws Exception {
         CopyFileRequest self = new CopyFileRequest();
         return TeaModel.build(map, self);
+    }
+
+    public CopyFileRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public CopyFileRequest setAutoRename(Boolean autoRename) {
@@ -68,6 +87,14 @@ public class CopyFileRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public CopyFileRequest setFileIdPath(String fileIdPath) {
+        this.fileIdPath = fileIdPath;
+        return this;
+    }
+    public String getFileIdPath() {
+        return this.fileIdPath;
     }
 
     public CopyFileRequest setNewName(String newName) {
@@ -100,6 +127,14 @@ public class CopyFileRequest extends TeaModel {
     }
     public String getToParentFileId() {
         return this.toParentFileId;
+    }
+
+    public CopyFileRequest setToShareId(String toShareId) {
+        this.toShareId = toShareId;
+        return this;
+    }
+    public String getToShareId() {
+        return this.toShareId;
     }
 
 }

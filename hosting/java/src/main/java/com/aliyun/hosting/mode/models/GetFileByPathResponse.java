@@ -11,6 +11,10 @@ public class GetFileByPathResponse extends TeaModel {
     @NameInMap("category")
     public String category;
 
+    // CharacteristicHash
+    @NameInMap("characteristic_hash")
+    public String characteristicHash;
+
     // Content Hash
     @NameInMap("content_hash")
     public String contentHash;
@@ -90,6 +94,9 @@ public class GetFileByPathResponse extends TeaModel {
     @NameInMap("punish_flag")
     public Integer punishFlag;
 
+    @NameInMap("share_id")
+    public String shareId;
+
     // Size
     @NameInMap("size")
     public Long size;
@@ -152,6 +159,14 @@ public class GetFileByPathResponse extends TeaModel {
     }
     public String getCategory() {
         return this.category;
+    }
+
+    public GetFileByPathResponse setCharacteristicHash(String characteristicHash) {
+        this.characteristicHash = characteristicHash;
+        return this;
+    }
+    public String getCharacteristicHash() {
+        return this.characteristicHash;
     }
 
     public GetFileByPathResponse setContentHash(String contentHash) {
@@ -304,6 +319,14 @@ public class GetFileByPathResponse extends TeaModel {
     }
     public Integer getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public GetFileByPathResponse setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public GetFileByPathResponse setSize(Long size) {

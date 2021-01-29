@@ -7,24 +7,39 @@ import com.aliyun.tea.*;
  * 删除文件请求
  */
 public class DeleteFileRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // drive_id
     @NameInMap("drive_id")
-    @Validation(required = true, pattern = "[0-9]+")
+    @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
     @NameInMap("file_id")
-    @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
+
+    @NameInMap("file_id_path")
+    public String fileIdPath;
 
     // permanently
     // type: false
     @NameInMap("permanently")
     public Boolean permanently;
 
+    @NameInMap("share_id")
+    public String shareId;
+
     public static DeleteFileRequest build(java.util.Map<String, ?> map) throws Exception {
         DeleteFileRequest self = new DeleteFileRequest();
         return TeaModel.build(map, self);
+    }
+
+    public DeleteFileRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public DeleteFileRequest setDriveId(String driveId) {
@@ -43,12 +58,28 @@ public class DeleteFileRequest extends TeaModel {
         return this.fileId;
     }
 
+    public DeleteFileRequest setFileIdPath(String fileIdPath) {
+        this.fileIdPath = fileIdPath;
+        return this;
+    }
+    public String getFileIdPath() {
+        return this.fileIdPath;
+    }
+
     public DeleteFileRequest setPermanently(Boolean permanently) {
         this.permanently = permanently;
         return this;
     }
     public Boolean getPermanently() {
         return this.permanently;
+    }
+
+    public DeleteFileRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
 }

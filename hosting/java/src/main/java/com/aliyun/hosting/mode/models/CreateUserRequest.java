@@ -23,6 +23,10 @@ public class CreateUserRequest extends TeaModel {
     @NameInMap("email")
     public String email;
 
+    // 用户地域
+    @NameInMap("location")
+    public String location;
+
     // 昵称
     @NameInMap("nick_name")
     public String nickName;
@@ -87,6 +91,14 @@ public class CreateUserRequest extends TeaModel {
     }
     public String getEmail() {
         return this.email;
+    }
+
+    public CreateUserRequest setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+    public String getLocation() {
+        return this.location;
     }
 
     public CreateUserRequest setNickName(String nickName) {

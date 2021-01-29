@@ -7,9 +7,16 @@ import com.aliyun.tea.*;
  * 获取视频文件播放地址的请求body
  */
 public class GetVideoPreviewURLRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // addition_data
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
+
+    // audio_template_id
+    @NameInMap("audio_template_id")
+    public String audioTemplateId;
 
     // drive_id
     @NameInMap("drive_id")
@@ -25,6 +32,10 @@ public class GetVideoPreviewURLRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    // share_id, either share_id or drive_id is required
+    @NameInMap("share_id")
+    public String shareId;
+
     // template_id
     @NameInMap("template_id")
     public String templateId;
@@ -34,12 +45,28 @@ public class GetVideoPreviewURLRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public GetVideoPreviewURLRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
+    }
+
     public GetVideoPreviewURLRequest setAdditionData(java.util.Map<String, ?> additionData) {
         this.additionData = additionData;
         return this;
     }
     public java.util.Map<String, ?> getAdditionData() {
         return this.additionData;
+    }
+
+    public GetVideoPreviewURLRequest setAudioTemplateId(String audioTemplateId) {
+        this.audioTemplateId = audioTemplateId;
+        return this;
+    }
+    public String getAudioTemplateId() {
+        return this.audioTemplateId;
     }
 
     public GetVideoPreviewURLRequest setDriveId(String driveId) {
@@ -64,6 +91,14 @@ public class GetVideoPreviewURLRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public GetVideoPreviewURLRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public GetVideoPreviewURLRequest setTemplateId(String templateId) {

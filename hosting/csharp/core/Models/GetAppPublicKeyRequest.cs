@@ -12,15 +12,11 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 
      */
     public class GetAppPublicKeyRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// App ID
         /// </summary>
         [NameInMap("app_id")]
-        [Validation(Required=false)]
+        [Validation(Required=true)]
         public string AppId { get; set; }
 
     }

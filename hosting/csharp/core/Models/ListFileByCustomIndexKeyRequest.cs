@@ -12,12 +12,23 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 列举文件
      */
     public class ListFileByCustomIndexKeyRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// starred
         /// </summary>
         [NameInMap("Starred")]
         [Validation(Required=false)]
         public bool? Starred { get; set; }
+
+        /// <summary>
+        /// addition_data
+        /// </summary>
+        [NameInMap("addition_data")]
+        [Validation(Required=false)]
+        public Dictionary<string, object> AdditionData { get; set; }
 
         /// <summary>
         /// category
@@ -54,6 +65,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [Validation(Required=false)]
         public string Fields { get; set; }
 
+        [NameInMap("image_cropping_aspect_ratios")]
+        [Validation(Required=false)]
+        public List<string> ImageCroppingAspectRatios { get; set; }
+
         /// <summary>
         /// image_thumbnail_process
         /// </summary>
@@ -72,7 +87,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// limit
         /// </summary>
         [NameInMap("limit")]
-        [Validation(Required=false, Pattern="[0-9]{1,3}")]
+        [Validation(Required=false)]
         public long? Limit { get; set; }
 
         /// <summary>
@@ -88,6 +103,21 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("order_direction")]
         [Validation(Required=false)]
         public string OrderDirection { get; set; }
+
+        [NameInMap("referer")]
+        [Validation(Required=false)]
+        public string Referer { get; set; }
+
+        /// <summary>
+        /// share_id, either share_id or drive_id is required
+        /// </summary>
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
+
+        [NameInMap("sign_token")]
+        [Validation(Required=false)]
+        public string SignToken { get; set; }
 
         /// <summary>
         /// status

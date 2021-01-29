@@ -14,7 +14,7 @@ public class RuntimeOptions extends TeaModel {
 
     // maximum number of retries
     @NameInMap("maxAttempts")
-    public Integer maxAttempts;
+    public Number maxAttempts;
 
     // backoff policy
     @NameInMap("backoffPolicy")
@@ -22,15 +22,15 @@ public class RuntimeOptions extends TeaModel {
 
     // backoff period
     @NameInMap("backoffPeriod")
-    public Integer backoffPeriod;
+    public Number backoffPeriod;
 
     // read timeout
     @NameInMap("readTimeout")
-    public Integer readTimeout;
+    public Number readTimeout;
 
     // connect timeout
     @NameInMap("connectTimeout")
-    public Integer connectTimeout;
+    public Number connectTimeout;
 
     // http proxy url
     @NameInMap("httpProxy")
@@ -46,7 +46,7 @@ public class RuntimeOptions extends TeaModel {
 
     // maximum number of connections
     @NameInMap("maxIdleConns")
-    public Integer maxIdleConns;
+    public Number maxIdleConns;
 
     // local addr
     @NameInMap("localAddr")
@@ -81,11 +81,11 @@ public class RuntimeOptions extends TeaModel {
         return this.ignoreSSL;
     }
 
-    public RuntimeOptions setMaxAttempts(Integer maxAttempts) {
+    public RuntimeOptions setMaxAttempts(Number maxAttempts) {
         this.maxAttempts = maxAttempts;
         return this;
     }
-    public Integer getMaxAttempts() {
+    public Number getMaxAttempts() {
         return this.maxAttempts;
     }
 
@@ -97,27 +97,27 @@ public class RuntimeOptions extends TeaModel {
         return this.backoffPolicy;
     }
 
-    public RuntimeOptions setBackoffPeriod(Integer backoffPeriod) {
+    public RuntimeOptions setBackoffPeriod(Number backoffPeriod) {
         this.backoffPeriod = backoffPeriod;
         return this;
     }
-    public Integer getBackoffPeriod() {
+    public Number getBackoffPeriod() {
         return this.backoffPeriod;
     }
 
-    public RuntimeOptions setReadTimeout(Integer readTimeout) {
+    public RuntimeOptions setReadTimeout(Number readTimeout) {
         this.readTimeout = readTimeout;
         return this;
     }
-    public Integer getReadTimeout() {
+    public Number getReadTimeout() {
         return this.readTimeout;
     }
 
-    public RuntimeOptions setConnectTimeout(Integer connectTimeout) {
+    public RuntimeOptions setConnectTimeout(Number connectTimeout) {
         this.connectTimeout = connectTimeout;
         return this;
     }
-    public Integer getConnectTimeout() {
+    public Number getConnectTimeout() {
         return this.connectTimeout;
     }
 
@@ -145,11 +145,11 @@ public class RuntimeOptions extends TeaModel {
         return this.noProxy;
     }
 
-    public RuntimeOptions setMaxIdleConns(Integer maxIdleConns) {
+    public RuntimeOptions setMaxIdleConns(Number maxIdleConns) {
         this.maxIdleConns = maxIdleConns;
         return this;
     }
-    public Integer getMaxIdleConns() {
+    public Number getMaxIdleConns() {
         return this.maxIdleConns;
     }
 

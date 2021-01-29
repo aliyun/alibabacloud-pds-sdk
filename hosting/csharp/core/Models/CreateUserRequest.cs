@@ -38,6 +38,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         public string Email { get; set; }
 
         /// <summary>
+        /// 用户地域
+        /// </summary>
+        [NameInMap("location")]
+        [Validation(Required=false)]
+        public string Location { get; set; }
+
+        /// <summary>
         /// 昵称
         /// </summary>
         [NameInMap("nick_name")]

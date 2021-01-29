@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * get_media_play_url request
  */
 public class GetMediaPlayURLRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
@@ -20,6 +23,14 @@ public class GetMediaPlayURLRequest extends TeaModel {
     public static GetMediaPlayURLRequest build(java.util.Map<String, ?> map) throws Exception {
         GetMediaPlayURLRequest self = new GetMediaPlayURLRequest();
         return TeaModel.build(map, self);
+    }
+
+    public GetMediaPlayURLRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public GetMediaPlayURLRequest setDriveId(String driveId) {

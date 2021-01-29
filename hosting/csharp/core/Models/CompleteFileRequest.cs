@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 合并文件上传任务
      */
     public class CompleteFileRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// addition_data
         /// </summary>
@@ -39,6 +43,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("part_info_list")]
         [Validation(Required=false)]
         public List<UploadPartInfo> PartInfoList { get; set; }
+
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
 
         /// <summary>
         /// upload_id

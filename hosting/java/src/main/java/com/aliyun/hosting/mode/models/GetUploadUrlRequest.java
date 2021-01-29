@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 获取文件上传URL
  */
 public class GetUploadUrlRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // content_md5
     @NameInMap("content_md5")
     @Validation(maxLength = 32)
@@ -26,6 +29,9 @@ public class GetUploadUrlRequest extends TeaModel {
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
+    @NameInMap("share_id")
+    public String shareId;
+
     // upload_id
     @NameInMap("upload_id")
     @Validation(required = true)
@@ -34,6 +40,14 @@ public class GetUploadUrlRequest extends TeaModel {
     public static GetUploadUrlRequest build(java.util.Map<String, ?> map) throws Exception {
         GetUploadUrlRequest self = new GetUploadUrlRequest();
         return TeaModel.build(map, self);
+    }
+
+    public GetUploadUrlRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public GetUploadUrlRequest setContentMd5(String contentMd5) {
@@ -66,6 +80,14 @@ public class GetUploadUrlRequest extends TeaModel {
     }
     public java.util.List<UploadPartInfo> getPartInfoList() {
         return this.partInfoList;
+    }
+
+    public GetUploadUrlRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public GetUploadUrlRequest setUploadId(String uploadId) {

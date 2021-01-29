@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 更新文件元数据
  */
 public class UpdateFileMetaRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // check_name_mode
     @NameInMap("check_name_mode")
     public String checkNameMode;
@@ -33,6 +36,9 @@ public class UpdateFileMetaRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    @NameInMap("file_id_path")
+    public String fileIdPath;
+
     // hidden
     // type: boolean
     @NameInMap("hidden")
@@ -50,6 +56,15 @@ public class UpdateFileMetaRequest extends TeaModel {
     @Validation(maxLength = 1024, minLength = 1)
     public String name;
 
+    @NameInMap("referer")
+    public String referer;
+
+    @NameInMap("share_id")
+    public String shareId;
+
+    @NameInMap("sign_token")
+    public String signToken;
+
     // starred
     // type: boolean
     @NameInMap("starred")
@@ -62,6 +77,14 @@ public class UpdateFileMetaRequest extends TeaModel {
     public static UpdateFileMetaRequest build(java.util.Map<String, ?> map) throws Exception {
         UpdateFileMetaRequest self = new UpdateFileMetaRequest();
         return TeaModel.build(map, self);
+    }
+
+    public UpdateFileMetaRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public UpdateFileMetaRequest setCheckNameMode(String checkNameMode) {
@@ -112,6 +135,14 @@ public class UpdateFileMetaRequest extends TeaModel {
         return this.fileId;
     }
 
+    public UpdateFileMetaRequest setFileIdPath(String fileIdPath) {
+        this.fileIdPath = fileIdPath;
+        return this;
+    }
+    public String getFileIdPath() {
+        return this.fileIdPath;
+    }
+
     public UpdateFileMetaRequest setHidden(Boolean hidden) {
         this.hidden = hidden;
         return this;
@@ -142,6 +173,30 @@ public class UpdateFileMetaRequest extends TeaModel {
     }
     public String getName() {
         return this.name;
+    }
+
+    public UpdateFileMetaRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
+    }
+
+    public UpdateFileMetaRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
+    }
+
+    public UpdateFileMetaRequest setSignToken(String signToken) {
+        this.signToken = signToken;
+        return this;
+    }
+    public String getSignToken() {
+        return this.signToken;
     }
 
     public UpdateFileMetaRequest setStarred(Boolean starred) {

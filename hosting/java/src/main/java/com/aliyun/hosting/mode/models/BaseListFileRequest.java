@@ -7,10 +7,17 @@ import com.aliyun.tea.*;
  * list file request
  */
 public class BaseListFileRequest extends TeaModel {
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
+
+    @NameInMap("image_cropping_aspect_ratios")
+    public java.util.List<String> imageCroppingAspectRatios;
 
     // image_thumbnail_process
     @NameInMap("image_thumbnail_process")
@@ -28,6 +35,16 @@ public class BaseListFileRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    @NameInMap("referer")
+    public String referer;
+
+    // share_id, either share_id or drive_id is required
+    @NameInMap("share_id")
+    public String shareId;
+
+    @NameInMap("sign_token")
+    public String signToken;
+
     // video_thumbnail_process
     // type:string
     @NameInMap("video_thumbnail_process")
@@ -38,12 +55,28 @@ public class BaseListFileRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public BaseListFileRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
+    }
+
     public BaseListFileRequest setDriveId(String driveId) {
         this.driveId = driveId;
         return this;
     }
     public String getDriveId() {
         return this.driveId;
+    }
+
+    public BaseListFileRequest setImageCroppingAspectRatios(java.util.List<String> imageCroppingAspectRatios) {
+        this.imageCroppingAspectRatios = imageCroppingAspectRatios;
+        return this;
+    }
+    public java.util.List<String> getImageCroppingAspectRatios() {
+        return this.imageCroppingAspectRatios;
     }
 
     public BaseListFileRequest setImageThumbnailProcess(String imageThumbnailProcess) {
@@ -76,6 +109,30 @@ public class BaseListFileRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public BaseListFileRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
+    }
+
+    public BaseListFileRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
+    }
+
+    public BaseListFileRequest setSignToken(String signToken) {
+        this.signToken = signToken;
+        return this;
+    }
+    public String getSignToken() {
+        return this.signToken;
     }
 
     public BaseListFileRequest setVideoThumbnailProcess(String videoThumbnailProcess) {

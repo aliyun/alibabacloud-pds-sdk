@@ -7,6 +7,13 @@ import com.aliyun.tea.*;
  * 获取文件元数据
  */
 public class GetFileRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
@@ -21,15 +28,33 @@ public class GetFileRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    @NameInMap("file_id_path")
+    public String fileIdPath;
+
+    @NameInMap("image_cropping_aspect_ratios")
+    public java.util.List<String> imageCroppingAspectRatios;
+
     // image_thumbnail_process
-    // type:string
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
-    // image_thumbnail_process
-    // type:string
+    // image_url_process
     @NameInMap("image_url_process")
     public String imageUrlProcess;
+
+    // location
+    @NameInMap("location")
+    public String location;
+
+    @NameInMap("referer")
+    public String referer;
+
+    // share_id, either share_id or drive_id is required
+    @NameInMap("share_id")
+    public String shareId;
+
+    @NameInMap("sign_token")
+    public String signToken;
 
     // url_expire_sec
     @NameInMap("url_expire_sec")
@@ -43,6 +68,22 @@ public class GetFileRequest extends TeaModel {
     public static GetFileRequest build(java.util.Map<String, ?> map) throws Exception {
         GetFileRequest self = new GetFileRequest();
         return TeaModel.build(map, self);
+    }
+
+    public GetFileRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
+    }
+
+    public GetFileRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public GetFileRequest setDriveId(String driveId) {
@@ -69,6 +110,22 @@ public class GetFileRequest extends TeaModel {
         return this.fileId;
     }
 
+    public GetFileRequest setFileIdPath(String fileIdPath) {
+        this.fileIdPath = fileIdPath;
+        return this;
+    }
+    public String getFileIdPath() {
+        return this.fileIdPath;
+    }
+
+    public GetFileRequest setImageCroppingAspectRatios(java.util.List<String> imageCroppingAspectRatios) {
+        this.imageCroppingAspectRatios = imageCroppingAspectRatios;
+        return this;
+    }
+    public java.util.List<String> getImageCroppingAspectRatios() {
+        return this.imageCroppingAspectRatios;
+    }
+
     public GetFileRequest setImageThumbnailProcess(String imageThumbnailProcess) {
         this.imageThumbnailProcess = imageThumbnailProcess;
         return this;
@@ -83,6 +140,38 @@ public class GetFileRequest extends TeaModel {
     }
     public String getImageUrlProcess() {
         return this.imageUrlProcess;
+    }
+
+    public GetFileRequest setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+    public String getLocation() {
+        return this.location;
+    }
+
+    public GetFileRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
+    }
+
+    public GetFileRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
+    }
+
+    public GetFileRequest setSignToken(String signToken) {
+        this.signToken = signToken;
+        return this;
+    }
+    public String getSignToken() {
+        return this.signToken;
     }
 
     public GetFileRequest setUrlExpireSec(Long urlExpireSec) {

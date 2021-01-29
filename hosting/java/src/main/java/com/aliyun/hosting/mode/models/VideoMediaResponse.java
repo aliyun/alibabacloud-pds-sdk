@@ -31,6 +31,10 @@ public class VideoMediaResponse extends TeaModel {
     @NameInMap("height")
     public Long height;
 
+    // system_tags
+    @NameInMap("image_tags")
+    public java.util.List<SystemTag> imageTags;
+
     // location
     @NameInMap("location")
     public String location;
@@ -108,6 +112,14 @@ public class VideoMediaResponse extends TeaModel {
     }
     public Long getHeight() {
         return this.height;
+    }
+
+    public VideoMediaResponse setImageTags(java.util.List<SystemTag> imageTags) {
+        this.imageTags = imageTags;
+        return this;
+    }
+    public java.util.List<SystemTag> getImageTags() {
+        return this.imageTags;
     }
 
     public VideoMediaResponse setLocation(String location) {

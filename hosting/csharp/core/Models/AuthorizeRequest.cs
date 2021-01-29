@@ -54,6 +54,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [Validation(Required=false)]
         public string State { get; set; }
 
+        /// <summary>
+        /// 内部使用
+        /// </summary>
+        [NameInMap("UserCode")]
+        [Validation(Required=false)]
+        public string UserCode { get; set; }
+
     }
 
 }

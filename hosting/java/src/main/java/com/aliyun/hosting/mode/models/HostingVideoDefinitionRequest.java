@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 获取视频分辨率列表
  */
 public class HostingVideoDefinitionRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -32,14 +29,6 @@ public class HostingVideoDefinitionRequest extends TeaModel {
     public static HostingVideoDefinitionRequest build(java.util.Map<String, ?> map) throws Exception {
         HostingVideoDefinitionRequest self = new HostingVideoDefinitionRequest();
         return TeaModel.build(map, self);
-    }
-
-    public HostingVideoDefinitionRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public HostingVideoDefinitionRequest setDriveId(String driveId) {

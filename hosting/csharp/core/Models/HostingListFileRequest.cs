@@ -12,9 +12,12 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * list file request
      */
     public class HostingListFileRequest : TeaModel {
-        [NameInMap("headers")]
+        /// <summary>
+        /// addition_data
+        /// </summary>
+        [NameInMap("addition_data")]
         [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
+        public Dictionary<string, object> AdditionData { get; set; }
 
         /// <summary>
         /// drive_id
@@ -22,6 +25,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("drive_id")]
         [Validation(Required=false, Pattern="[0-9]+")]
         public string DriveId { get; set; }
+
+        [NameInMap("image_cropping_aspect_ratios")]
+        [Validation(Required=false)]
+        public List<string> ImageCroppingAspectRatios { get; set; }
 
         /// <summary>
         /// image_thumbnail_process
@@ -41,7 +48,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// limit
         /// </summary>
         [NameInMap("limit")]
-        [Validation(Required=false, Pattern="[0-9]{1,3}")]
+        [Validation(Required=false)]
         public long? Limit { get; set; }
 
         /// <summary>
@@ -58,12 +65,20 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [Validation(Required=true)]
         public string ParentFilePath { get; set; }
 
+        [NameInMap("referer")]
+        [Validation(Required=false)]
+        public string Referer { get; set; }
+
         /// <summary>
         /// share_id
         /// </summary>
         [NameInMap("share_id")]
         [Validation(Required=false, Pattern="[0-9a-zA-Z-]+")]
         public string ShareId { get; set; }
+
+        [NameInMap("sign_token")]
+        [Validation(Required=false)]
+        public string SignToken { get; set; }
 
         /// <summary>
         /// url_expire_sec

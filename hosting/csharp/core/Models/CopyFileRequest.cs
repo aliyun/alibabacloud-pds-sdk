@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 文件拷贝
      */
     public class CopyFileRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// auto_rename
         /// type: boolean
@@ -33,6 +37,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("file_id")]
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
         public string FileId { get; set; }
+
+        [NameInMap("file_id_path")]
+        [Validation(Required=false)]
+        public string FileIdPath { get; set; }
 
         /// <summary>
         /// new_name
@@ -61,6 +69,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("to_parent_file_id")]
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
         public string ToParentFileId { get; set; }
+
+        /// <summary>
+        /// to_drive_id
+        /// </summary>
+        [NameInMap("to_share_id")]
+        [Validation(Required=false, Pattern="[0-9]+")]
+        public string ToShareId { get; set; }
 
     }
 

@@ -13,6 +13,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
      */
     public class CreateShareLinkResponse : TeaModel {
         /// <summary>
+        /// description
+        /// </summary>
+        [NameInMap("description")]
+        [Validation(Required=false)]
+        public string Description { get; set; }
+
+        /// <summary>
         /// share_id
         /// </summary>
         [NameInMap("share_id")]
@@ -25,6 +32,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("share_msg")]
         [Validation(Required=false)]
         public string ShareMsg { get; set; }
+
+        /// <summary>
+        /// share_name
+        /// </summary>
+        [NameInMap("share_name")]
+        [Validation(Required=false)]
+        public string ShareName { get; set; }
 
         /// <summary>
         /// share_policy

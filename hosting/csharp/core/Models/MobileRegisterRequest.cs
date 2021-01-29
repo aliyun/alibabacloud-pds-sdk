@@ -24,6 +24,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         public string AppId { get; set; }
 
         /// <summary>
+        /// 环境参数
+        /// </summary>
+        [NameInMap("nvc_param")]
+        [Validation(Required=true)]
+        public string NvcParam { get; set; }
+
+        /// <summary>
         /// 待查询的手机号
         /// </summary>
         [NameInMap("phone_number")]

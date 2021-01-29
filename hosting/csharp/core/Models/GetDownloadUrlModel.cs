@@ -15,7 +15,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
 
         [NameInMap("body")]
         [Validation(Required=true)]
-        public HostingGetDownloadUrlResponse Body { get; set; }
+        public GetDownloadUrlResponse Body { get; set; }
 
     }
 

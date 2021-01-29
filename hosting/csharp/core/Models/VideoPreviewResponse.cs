@@ -13,11 +13,40 @@ namespace Aliyun.SDK.Hosting.Client.Models
      */
     public class VideoPreviewResponse : TeaModel {
         /// <summary>
+        /// audio_channels
+        /// </summary>
+        [NameInMap("audio_channels")]
+        [Validation(Required=false)]
+        public long? AudioChannels { get; set; }
+
+        /// <summary>
         /// audio_format
         /// </summary>
         [NameInMap("audio_format")]
         [Validation(Required=false)]
         public string AudioFormat { get; set; }
+
+        [NameInMap("audio_meta")]
+        [Validation(Required=false)]
+        public VideoPreviewAudioMeta AudioMeta { get; set; }
+
+        [NameInMap("audio_music_meta")]
+        [Validation(Required=false)]
+        public VideoPreviewAudioMusicMeta AudioMusicMeta { get; set; }
+
+        /// <summary>
+        /// audio_sample_rate
+        /// </summary>
+        [NameInMap("audio_sample_rate")]
+        [Validation(Required=false)]
+        public string AudioSampleRate { get; set; }
+
+        /// <summary>
+        /// audio_template_list
+        /// </summary>
+        [NameInMap("audio_template_list")]
+        [Validation(Required=false)]
+        public List<VideoPreviewTranscode> AudioTemplateList { get; set; }
 
         /// <summary>
         /// bitrate

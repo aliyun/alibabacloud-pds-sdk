@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 获取文件上传URL
  */
 public class HostingGetUploadUrlRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // content_md5
     @NameInMap("content_md5")
     @Validation(maxLength = 32)
@@ -42,14 +39,6 @@ public class HostingGetUploadUrlRequest extends TeaModel {
     public static HostingGetUploadUrlRequest build(java.util.Map<String, ?> map) throws Exception {
         HostingGetUploadUrlRequest self = new HostingGetUploadUrlRequest();
         return TeaModel.build(map, self);
-    }
-
-    public HostingGetUploadUrlRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public HostingGetUploadUrlRequest setContentMd5(String contentMd5) {

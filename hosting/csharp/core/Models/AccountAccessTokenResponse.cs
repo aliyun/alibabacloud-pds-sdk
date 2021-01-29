@@ -27,25 +27,32 @@ namespace Aliyun.SDK.Hosting.Client.Models
         public string Avatar { get; set; }
 
         /// <summary>
-        /// 用户的数据密码是否保存服务端
-        /// </summary>
-        [NameInMap("data_pin_saved")]
-        [Validation(Required=false)]
-        public bool? DataPinSaved { get; set; }
-
-        /// <summary>
-        /// 用户的数据密码是否设置过
-        /// </summary>
-        [NameInMap("data_pin_setup")]
-        [Validation(Required=false)]
-        public bool? DataPinSetup { get; set; }
-
-        /// <summary>
         /// Default Drive ID
         /// </summary>
         [NameInMap("default_drive_id")]
         [Validation(Required=false)]
         public string DefaultDriveId { get; set; }
+
+        /// <summary>
+        /// Default Sbox Drive ID
+        /// </summary>
+        [NameInMap("default_sbox_drive_id")]
+        [Validation(Required=false)]
+        public string DefaultSboxDriveId { get; set; }
+
+        /// <summary>
+        /// device_id 通过device flow 绑定的设备ID
+        /// </summary>
+        [NameInMap("device_id")]
+        [Validation(Required=false)]
+        public string DeviceId { get; set; }
+
+        /// <summary>
+        /// device_name 通过device flow 绑定的设备名
+        /// </summary>
+        [NameInMap("device_name")]
+        [Validation(Required=false)]
+        public string DeviceName { get; set; }
 
         /// <summary>
         /// 当前用户已存在的登录方式
@@ -83,11 +90,25 @@ namespace Aliyun.SDK.Hosting.Client.Models
         public bool? NeedLink { get; set; }
 
         /// <summary>
+        /// 用户是否需要进行的实人认证
+        /// </summary>
+        [NameInMap("need_rp_verify")]
+        [Validation(Required=false)]
+        public bool? NeedRpVerify { get; set; }
+
+        /// <summary>
         /// 当前用户昵称
         /// </summary>
         [NameInMap("nick_name")]
         [Validation(Required=false)]
         public string NickName { get; set; }
+
+        /// <summary>
+        /// 用户的数据密码是否设置过
+        /// </summary>
+        [NameInMap("pin_setup")]
+        [Validation(Required=false)]
+        public bool? PinSetup { get; set; }
 
         /// <summary>
         /// 用于刷新accessToken
