@@ -23,7 +23,7 @@ public class HostingListUploadedPartRequest extends TeaModel {
 
     // part_number_marker
     @NameInMap("part_number_marker")
-    @Validation(pattern = "[0-9]+")
+    @Validation(pattern = "[0-9]+", minimum = 1)
     public Long partNumberMarker;
 
     // share_id

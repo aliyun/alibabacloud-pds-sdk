@@ -67,8 +67,15 @@ public class ListFileRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 4)
     public String parentFileId;
 
+    @NameInMap("parent_file_id_path")
+    public String parentFileIdPath;
+
     @NameInMap("referer")
     public String referer;
+
+    // share_id, either share_id or drive_id is required
+    @NameInMap("share_id")
+    public String shareId;
 
     @NameInMap("sign_token")
     public String signToken;
@@ -219,12 +226,28 @@ public class ListFileRequest extends TeaModel {
         return this.parentFileId;
     }
 
+    public ListFileRequest setParentFileIdPath(String parentFileIdPath) {
+        this.parentFileIdPath = parentFileIdPath;
+        return this;
+    }
+    public String getParentFileIdPath() {
+        return this.parentFileIdPath;
+    }
+
     public ListFileRequest setReferer(String referer) {
         this.referer = referer;
         return this;
     }
     public String getReferer() {
         return this.referer;
+    }
+
+    public ListFileRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public ListFileRequest setSignToken(String signToken) {

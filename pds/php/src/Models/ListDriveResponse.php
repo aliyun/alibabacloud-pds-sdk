@@ -1,48 +1,28 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
-/**
- * list drive response.
- */
-class ListDriveResponse extends Model
-{
-    /**
-     * @description Drive 列表
-     *
-     * @var BaseDriveResponse[]
-     */
-    public $items;
+use Aliyun\PDS\SDK\Models\BaseDriveResponse;
 
-    /**
-     * @description 翻页标记
-     *
-     * @example marker
-     *
-     * @var string
-     */
-    public $nextMarker;
+/**
+ * list drive response
+ */
+class ListDriveResponse extends Model {
     protected $_name = [
-        'items'      => 'items',
+        'items' => 'items',
         'nextMarker' => 'next_marker',
     ];
-
-    public function validate()
-    {
-    }
-
-    public function toMap()
-    {
+    public function validate() {}
+    public function toMap() {
         $res = [];
         if (null !== $this->items) {
             $res['items'] = [];
-            if (null !== $this->items && \is_array($this->items)) {
+            if(null !== $this->items && is_array($this->items)){
                 $n = 0;
-                foreach ($this->items as $item) {
+                foreach($this->items as $item){
                     $res['items'][$n++] = null !== $item ? $item->toMap() : $item;
                 }
             }
@@ -50,31 +30,39 @@ class ListDriveResponse extends Model
         if (null !== $this->nextMarker) {
             $res['next_marker'] = $this->nextMarker;
         }
-
         return $res;
     }
-
     /**
      * @param array $map
-     *
      * @return ListDriveResponse
      */
-    public static function fromMap($map = [])
-    {
+    public static function fromMap($map = []) {
         $model = new self();
-        if (isset($map['items'])) {
-            if (!empty($map['items'])) {
+        if(isset($map['items'])){
+            if(!empty($map['items'])){
                 $model->items = [];
-                $n            = 0;
-                foreach ($map['items'] as $item) {
+                $n = 0;
+                foreach($map['items'] as $item) {
                     $model->items[$n++] = null !== $item ? BaseDriveResponse::fromMap($item) : $item;
                 }
             }
         }
-        if (isset($map['next_marker'])) {
+        if(isset($map['next_marker'])){
             $model->nextMarker = $map['next_marker'];
         }
-
         return $model;
     }
+    /**
+     * @description Drive 列表
+     * @var BaseDriveResponse[]
+     */
+    public $items;
+
+    /**
+     * @description 翻页标记
+     * @example marker
+     * @var string
+     */
+    public $nextMarker;
+
 }

@@ -76,6 +76,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public List<string> Permissions { get; set; }
 
         /// <summary>
+        /// share_file_id
+        /// </summary>
+        [NameInMap("share_file_id")]
+        [Validation(Required=false)]
+        public string ShareFileId { get; set; }
+
+        /// <summary>
         /// share_path
         /// </summary>
         [NameInMap("share_file_path")]

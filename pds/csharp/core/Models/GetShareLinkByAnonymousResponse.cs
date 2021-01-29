@@ -13,6 +13,13 @@ namespace Aliyun.SDK.PDS.Client.Models
      */
     public class GetShareLinkByAnonymousResponse : TeaModel {
         /// <summary>
+        /// avatar
+        /// </summary>
+        [NameInMap("avatar")]
+        [Validation(Required=false)]
+        public string Avatar { get; set; }
+
+        /// <summary>
         /// creator_id
         /// </summary>
         [NameInMap("creator_id")]
@@ -27,11 +34,25 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string CreatorName { get; set; }
 
         /// <summary>
+        /// creator_phone
+        /// </summary>
+        [NameInMap("creator_phone")]
+        [Validation(Required=false)]
+        public string CreatorPhone { get; set; }
+
+        /// <summary>
         /// expiration
         /// </summary>
         [NameInMap("expiration")]
         [Validation(Required=false)]
         public string Expiration { get; set; }
+
+        /// <summary>
+        /// share_name
+        /// </summary>
+        [NameInMap("share_name")]
+        [Validation(Required=false)]
+        public string ShareName { get; set; }
 
         /// <summary>
         /// updated_at

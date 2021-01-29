@@ -53,6 +53,10 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
         public string FileId { get; set; }
 
+        [NameInMap("file_id_path")]
+        [Validation(Required=false)]
+        public string FileIdPath { get; set; }
+
         /// <summary>
         /// hidden
         /// type: boolean
@@ -78,6 +82,18 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("name")]
         [Validation(Required=false, MaxLength=1024)]
         public string Name { get; set; }
+
+        [NameInMap("referer")]
+        [Validation(Required=false)]
+        public string Referer { get; set; }
+
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
+
+        [NameInMap("sign_token")]
+        [Validation(Required=false)]
+        public string SignToken { get; set; }
 
         /// <summary>
         /// starred

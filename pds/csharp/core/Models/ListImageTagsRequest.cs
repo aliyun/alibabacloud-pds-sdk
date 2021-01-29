@@ -25,11 +25,18 @@ namespace Aliyun.SDK.PDS.Client.Models
 
         /// <summary>
         /// image_thumbnail_process
-        /// type:string
         /// </summary>
         [NameInMap("image_thumbnail_process")]
         [Validation(Required=false)]
         public string ImageThumbnailProcess { get; set; }
+
+        /// <summary>
+        /// video_thumbnail_process
+        /// type:string
+        /// </summary>
+        [NameInMap("video_thumbnail_process")]
+        [Validation(Required=false)]
+        public string VideoThumbnailProcess { get; set; }
 
     }
 

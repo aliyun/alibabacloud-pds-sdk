@@ -25,6 +25,9 @@ public class AuthConfig extends TeaModel {
     @NameInMap("enterprise_id")
     public String enterpriseId;
 
+    @NameInMap("ldap_config")
+    public LdapConfig ldapConfig;
+
     @NameInMap("login_page_headers")
     public java.util.Map<String, ?> loginPageHeaders;
 
@@ -33,6 +36,12 @@ public class AuthConfig extends TeaModel {
 
     @NameInMap("login_page_vars")
     public java.util.Map<String, ?> loginPageVars;
+
+    @NameInMap("white_list_config")
+    public java.util.Map<String, ?> whiteListConfig;
+
+    @NameInMap("white_list_enable")
+    public Boolean whiteListEnable;
 
     public static AuthConfig build(java.util.Map<String, ?> map) throws Exception {
         AuthConfig self = new AuthConfig();
@@ -87,6 +96,14 @@ public class AuthConfig extends TeaModel {
         return this.enterpriseId;
     }
 
+    public AuthConfig setLdapConfig(LdapConfig ldapConfig) {
+        this.ldapConfig = ldapConfig;
+        return this;
+    }
+    public LdapConfig getLdapConfig() {
+        return this.ldapConfig;
+    }
+
     public AuthConfig setLoginPageHeaders(java.util.Map<String, ?> loginPageHeaders) {
         this.loginPageHeaders = loginPageHeaders;
         return this;
@@ -109,6 +126,22 @@ public class AuthConfig extends TeaModel {
     }
     public java.util.Map<String, ?> getLoginPageVars() {
         return this.loginPageVars;
+    }
+
+    public AuthConfig setWhiteListConfig(java.util.Map<String, ?> whiteListConfig) {
+        this.whiteListConfig = whiteListConfig;
+        return this;
+    }
+    public java.util.Map<String, ?> getWhiteListConfig() {
+        return this.whiteListConfig;
+    }
+
+    public AuthConfig setWhiteListEnable(Boolean whiteListEnable) {
+        this.whiteListEnable = whiteListEnable;
+        return this;
+    }
+    public Boolean getWhiteListEnable() {
+        return this.whiteListEnable;
     }
 
 }

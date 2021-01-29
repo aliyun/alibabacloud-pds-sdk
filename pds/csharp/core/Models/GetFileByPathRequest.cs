@@ -17,25 +17,18 @@ namespace Aliyun.SDK.PDS.Client.Models
         public Dictionary<string, string> Headers { get; set; }
 
         /// <summary>
+        /// addition_data
+        /// </summary>
+        [NameInMap("addition_data")]
+        [Validation(Required=false)]
+        public Dictionary<string, object> AdditionData { get; set; }
+
+        /// <summary>
         /// drive_id
         /// </summary>
         [NameInMap("drive_id")]
         [Validation(Required=true, Pattern="[0-9]+")]
         public string DriveId { get; set; }
-
-        /// <summary>
-        /// fields
-        /// </summary>
-        [NameInMap("fields")]
-        [Validation(Required=false)]
-        public string Fields { get; set; }
-
-        /// <summary>
-        /// file_id
-        /// </summary>
-        [NameInMap("file_id")]
-        [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
-        public string FileId { get; set; }
 
         /// <summary>
         /// file_path
@@ -44,21 +37,31 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public string FilePath { get; set; }
 
+        [NameInMap("image_cropping_aspect_ratios")]
+        [Validation(Required=false)]
+        public List<string> ImageCroppingAspectRatios { get; set; }
+
         /// <summary>
         /// image_thumbnail_process
-        /// type:string
         /// </summary>
         [NameInMap("image_thumbnail_process")]
         [Validation(Required=false)]
         public string ImageThumbnailProcess { get; set; }
 
         /// <summary>
-        /// image_thumbnail_process
-        /// type:string
+        /// image_url_process
         /// </summary>
         [NameInMap("image_url_process")]
         [Validation(Required=false)]
         public string ImageUrlProcess { get; set; }
+
+        [NameInMap("referer")]
+        [Validation(Required=false)]
+        public string Referer { get; set; }
+
+        [NameInMap("sign_token")]
+        [Validation(Required=false)]
+        public string SignToken { get; set; }
 
         /// <summary>
         /// url_expire_sec

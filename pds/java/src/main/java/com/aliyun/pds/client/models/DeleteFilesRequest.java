@@ -9,13 +9,17 @@ import com.aliyun.tea.*;
 public class DeleteFilesRequest extends TeaModel {
     // drive_id
     @NameInMap("drive_id")
-    @Validation(required = true, pattern = "[0-9]+")
+    @Validation(pattern = "[0-9]+")
     public String driveId;
 
     // file_id_list
     @NameInMap("file_id_list")
     @Validation(required = true)
     public java.util.List<String> fileIdList;
+
+    // share_id
+    @NameInMap("share_id")
+    public String shareId;
 
     public static DeleteFilesRequest build(java.util.Map<String, ?> map) throws Exception {
         DeleteFilesRequest self = new DeleteFilesRequest();
@@ -36,6 +40,14 @@ public class DeleteFilesRequest extends TeaModel {
     }
     public java.util.List<String> getFileIdList() {
         return this.fileIdList;
+    }
+
+    public DeleteFilesRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
 }

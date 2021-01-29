@@ -1,13 +1,71 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
-class SharePermissionPolicy extends Model
-{
+/**
+ * *
+ */
+class SharePermissionPolicy extends Model {
+    protected $_name = [
+        'fileId' => 'file_id',
+        'filePath' => 'file_path',
+        'permissionInheritable' => 'permission_inheritable',
+        'permissionList' => 'permission_list',
+        'permissionType' => 'permission_type',
+    ];
+    public function validate() {}
+    public function toMap() {
+        $res = [];
+        if (null !== $this->fileId) {
+            $res['file_id'] = $this->fileId;
+        }
+        if (null !== $this->filePath) {
+            $res['file_path'] = $this->filePath;
+        }
+        if (null !== $this->permissionInheritable) {
+            $res['permission_inheritable'] = $this->permissionInheritable;
+        }
+        if (null !== $this->permissionList) {
+            $res['permission_list'] = $this->permissionList;
+        }
+        if (null !== $this->permissionType) {
+            $res['permission_type'] = $this->permissionType;
+        }
+        return $res;
+    }
+    /**
+     * @param array $map
+     * @return SharePermissionPolicy
+     */
+    public static function fromMap($map = []) {
+        $model = new self();
+        if(isset($map['file_id'])){
+            $model->fileId = $map['file_id'];
+        }
+        if(isset($map['file_path'])){
+            $model->filePath = $map['file_path'];
+        }
+        if(isset($map['permission_inheritable'])){
+            $model->permissionInheritable = $map['permission_inheritable'];
+        }
+        if(isset($map['permission_list'])){
+            if(!empty($map['permission_list'])){
+                $model->permissionList = $map['permission_list'];
+            }
+        }
+        if(isset($map['permission_type'])){
+            $model->permissionType = $map['permission_type'];
+        }
+        return $model;
+    }
+    /**
+     * @var string
+     */
+    public $fileId;
+
     /**
      * @var string
      */
@@ -27,59 +85,5 @@ class SharePermissionPolicy extends Model
      * @var string
      */
     public $permissionType;
-    protected $_name = [
-        'filePath'              => 'file_path',
-        'permissionInheritable' => 'permission_inheritable',
-        'permissionList'        => 'permission_list',
-        'permissionType'        => 'permission_type',
-    ];
 
-    public function validate()
-    {
-    }
-
-    public function toMap()
-    {
-        $res = [];
-        if (null !== $this->filePath) {
-            $res['file_path'] = $this->filePath;
-        }
-        if (null !== $this->permissionInheritable) {
-            $res['permission_inheritable'] = $this->permissionInheritable;
-        }
-        if (null !== $this->permissionList) {
-            $res['permission_list'] = $this->permissionList;
-        }
-        if (null !== $this->permissionType) {
-            $res['permission_type'] = $this->permissionType;
-        }
-
-        return $res;
-    }
-
-    /**
-     * @param array $map
-     *
-     * @return SharePermissionPolicy
-     */
-    public static function fromMap($map = [])
-    {
-        $model = new self();
-        if (isset($map['file_path'])) {
-            $model->filePath = $map['file_path'];
-        }
-        if (isset($map['permission_inheritable'])) {
-            $model->permissionInheritable = $map['permission_inheritable'];
-        }
-        if (isset($map['permission_list'])) {
-            if (!empty($map['permission_list'])) {
-                $model->permissionList = $map['permission_list'];
-            }
-        }
-        if (isset($map['permission_type'])) {
-            $model->permissionType = $map['permission_type'];
-        }
-
-        return $model;
-    }
 }

@@ -30,6 +30,9 @@ public class DownloadRequest extends TeaModel {
     @NameInMap("VideoThumbnailProcess")
     public String VideoThumbnailProcess;
 
+    @NameInMap("file_id_path")
+    public String fileIdPath;
+
     // location
     @NameInMap("location")
     public String location;
@@ -83,6 +86,14 @@ public class DownloadRequest extends TeaModel {
     }
     public String getVideoThumbnailProcess() {
         return this.VideoThumbnailProcess;
+    }
+
+    public DownloadRequest setFileIdPath(String fileIdPath) {
+        this.fileIdPath = fileIdPath;
+        return this;
+    }
+    public String getFileIdPath() {
+        return this.fileIdPath;
     }
 
     public DownloadRequest setLocation(String location) {

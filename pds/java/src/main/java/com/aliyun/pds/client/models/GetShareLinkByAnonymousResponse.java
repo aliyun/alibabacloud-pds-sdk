@@ -27,6 +27,10 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     @NameInMap("expiration")
     public String expiration;
 
+    // share_name
+    @NameInMap("share_name")
+    public String shareName;
+
     // updated_at
     @NameInMap("updated_at")
     public String updatedAt;
@@ -74,6 +78,14 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     }
     public String getExpiration() {
         return this.expiration;
+    }
+
+    public GetShareLinkByAnonymousResponse setShareName(String shareName) {
+        this.shareName = shareName;
+        return this;
+    }
+    public String getShareName() {
+        return this.shareName;
     }
 
     public GetShareLinkByAnonymousResponse setUpdatedAt(String updatedAt) {

@@ -38,6 +38,10 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
         public string FileId { get; set; }
 
+        [NameInMap("file_id_path")]
+        [Validation(Required=false)]
+        public string FileIdPath { get; set; }
+
         /// <summary>
         /// new_name
         /// </summary>
@@ -65,6 +69,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("to_parent_file_id")]
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
         public string ToParentFileId { get; set; }
+
+        /// <summary>
+        /// to_drive_id
+        /// </summary>
+        [NameInMap("to_share_id")]
+        [Validation(Required=false, Pattern="[0-9]+")]
+        public string ToShareId { get; set; }
 
     }
 

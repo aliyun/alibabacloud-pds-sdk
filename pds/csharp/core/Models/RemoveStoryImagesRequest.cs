@@ -12,6 +12,10 @@ namespace Aliyun.SDK.PDS.Client.Models
      * Remove story images request
      */
     public class RemoveStoryImagesRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         [NameInMap("drive_id")]
         [Validation(Required=false)]
         public string DriveId { get; set; }

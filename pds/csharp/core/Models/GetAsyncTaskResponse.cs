@@ -21,6 +21,20 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string AsyncTaskId { get; set; }
 
         /// <summary>
+        /// consumed_process
+        /// </summary>
+        [NameInMap("consumed_process")]
+        [Validation(Required=false)]
+        public long? ConsumedProcess { get; set; }
+
+        /// <summary>
+        /// err_code
+        /// </summary>
+        [NameInMap("err_code")]
+        [Validation(Required=false)]
+        public long? ErrCode { get; set; }
+
+        /// <summary>
         /// message
         /// </summary>
         [NameInMap("message")]
@@ -33,6 +47,21 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("state")]
         [Validation(Required=false)]
         public string State { get; set; }
+
+        /// <summary>
+        /// total_process
+        /// </summary>
+        [NameInMap("total_process")]
+        [Validation(Required=false)]
+        public long? TotalProcess { get; set; }
+
+        /// <summary>
+        /// download_url
+        /// example
+        /// </summary>
+        [NameInMap("url")]
+        [Validation(Required=false)]
+        public string Url { get; set; }
 
     }
 

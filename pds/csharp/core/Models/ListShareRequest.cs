@@ -12,6 +12,10 @@ namespace Aliyun.SDK.PDS.Client.Models
      * list share request
      */
     public class ListShareRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// creator
         /// </summary>
@@ -43,6 +47,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("owner")]
         [Validation(Required=false)]
         public string Owner { get; set; }
+
+        /// <summary>
+        /// owner_type
+        /// </summary>
+        [NameInMap("owner_type")]
+        [Validation(Required=false)]
+        public string OwnerType { get; set; }
 
         /// <summary>
         /// share_file_path

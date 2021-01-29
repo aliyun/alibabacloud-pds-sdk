@@ -1,122 +1,34 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
 /**
- * Update user request.
+ * Update user request
  */
-class UpdateUserRequest extends Model
-{
-    public $headers;
-
-    /**
-     * @description 头像
-     *
-     * @example http://a.b.c/ccp.jpg
-     *
-     * @var string
-     */
-    public $avatar;
-
-    /**
-     * @description 描述信息
-     *
-     * @example ccp team user
-     *
-     * @var string
-     */
-    public $description;
-
-    /**
-     * @description 邮箱
-     *
-     * @example 123@ccp.com
-     *
-     * @var string
-     */
-    public $email;
-
-    /**
-     * @description 昵称
-     *
-     * @example ccpuser
-     *
-     * @var string
-     */
-    public $nickName;
-
-    /**
-     * @description 电话号码
-     *
-     * @example 13700000000
-     *
-     * @var string
-     */
-    public $phone;
-
-    /**
-     * @description 角色
-     *
-     * @example user
-     *
-     * @var string
-     */
-    public $role;
-
-    /**
-     * @description 状态
-     *
-     * @example enabled
-     *
-     * @var string
-     */
-    public $status;
-
-    /**
-     * @description 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
-     *
-     * @example { is_student: true }
-     *
-     * @var mixed[]
-     */
-    public $userData;
-
-    /**
-     * @description 用户 ID
-     *
-     * @example ccpuserid
-     *
-     * @var string
-     */
-    public $userId;
+class UpdateUserRequest extends Model {
     protected $_name = [
-        'avatar'      => 'avatar',
+        'avatar' => 'avatar',
         'description' => 'description',
-        'email'       => 'email',
-        'nickName'    => 'nick_name',
-        'phone'       => 'phone',
-        'role'        => 'role',
-        'status'      => 'status',
-        'userData'    => 'user_data',
-        'userId'      => 'user_id',
+        'email' => 'email',
+        'nickName' => 'nick_name',
+        'phone' => 'phone',
+        'role' => 'role',
+        'status' => 'status',
+        'userData' => 'user_data',
+        'userId' => 'user_id',
     ];
     protected $_default = [
-        'role'   => 'user',
+        'role' => 'user',
         'status' => 'enabled',
     ];
-
-    public function validate()
-    {
+    public function validate() {
         Model::validateMaxLength('description', $this->description, 1024);
         Model::validateRequired('userId', $this->userId, true);
     }
-
-    public function toMap()
-    {
+    public function toMap() {
         $res = [];
         if (null !== $this->headers) {
             $res['headers'] = $this->headers;
@@ -148,49 +60,109 @@ class UpdateUserRequest extends Model
         if (null !== $this->userId) {
             $res['user_id'] = $this->userId;
         }
-
         return $res;
     }
-
     /**
      * @param array $map
-     *
      * @return UpdateUserRequest
      */
-    public static function fromMap($map = [])
-    {
+    public static function fromMap($map = []) {
         $model = new self();
-        if (isset($map['headers'])) {
+        if(isset($map['headers'])){
             $model->headers = $map['headers'];
         }
-        if (isset($map['avatar'])) {
+        if(isset($map['avatar'])){
             $model->avatar = $map['avatar'];
         }
-        if (isset($map['description'])) {
+        if(isset($map['description'])){
             $model->description = $map['description'];
         }
-        if (isset($map['email'])) {
+        if(isset($map['email'])){
             $model->email = $map['email'];
         }
-        if (isset($map['nick_name'])) {
+        if(isset($map['nick_name'])){
             $model->nickName = $map['nick_name'];
         }
-        if (isset($map['phone'])) {
+        if(isset($map['phone'])){
             $model->phone = $map['phone'];
         }
-        if (isset($map['role'])) {
+        if(isset($map['role'])){
             $model->role = $map['role'];
         }
-        if (isset($map['status'])) {
+        if(isset($map['status'])){
             $model->status = $map['status'];
         }
-        if (isset($map['user_data'])) {
+        if(isset($map['user_data'])){
             $model->userData = $map['user_data'];
         }
-        if (isset($map['user_id'])) {
+        if(isset($map['user_id'])){
             $model->userId = $map['user_id'];
         }
-
         return $model;
     }
+    public $headers;
+
+    /**
+     * @description 头像
+     * @example http://a.b.c/ccp.jpg
+     * @var string
+     */
+    public $avatar;
+
+    /**
+     * @description 描述信息
+     * @example ccp team user
+     * @var string
+     */
+    public $description;
+
+    /**
+     * @description 邮箱
+     * @example 123@ccp.com
+     * @var string
+     */
+    public $email;
+
+    /**
+     * @description 昵称
+     * @example ccpuser
+     * @var string
+     */
+    public $nickName;
+
+    /**
+     * @description 电话号码
+     * @example 13700000000
+     * @var string
+     */
+    public $phone;
+
+    /**
+     * @description 角色
+     * @example user
+     * @var string
+     */
+    public $role;
+
+    /**
+     * @description 状态
+     * @example enabled
+     * @var string
+     */
+    public $status;
+
+    /**
+     * @description 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
+     * @example { is_student: true }
+     * @var mixed[]
+     */
+    public $userData;
+
+    /**
+     * @description 用户 ID
+     * @example ccpuserid
+     * @var string
+     */
+    public $userId;
+
 }

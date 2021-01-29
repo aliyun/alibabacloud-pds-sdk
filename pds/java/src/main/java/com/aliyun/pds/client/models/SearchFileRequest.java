@@ -51,9 +51,15 @@ public class SearchFileRequest extends TeaModel {
     @Validation(maxLength = 4096)
     public String query;
 
+    // referer
     @NameInMap("referer")
     public String referer;
 
+    // return_total_count 是否返回查询总数
+    @NameInMap("return_total_count")
+    public Boolean returnTotalCount;
+
+    // sign_token
     @NameInMap("sign_token")
     public String signToken;
 
@@ -165,6 +171,14 @@ public class SearchFileRequest extends TeaModel {
     }
     public String getReferer() {
         return this.referer;
+    }
+
+    public SearchFileRequest setReturnTotalCount(Boolean returnTotalCount) {
+        this.returnTotalCount = returnTotalCount;
+        return this;
+    }
+    public Boolean getReturnTotalCount() {
+        return this.returnTotalCount;
     }
 
     public SearchFileRequest setSignToken(String signToken) {

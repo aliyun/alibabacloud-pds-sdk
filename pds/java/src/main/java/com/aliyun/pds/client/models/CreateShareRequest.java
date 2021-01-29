@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * create share request
  */
 public class CreateShareRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // description
     @NameInMap("description")
     public String description;
@@ -20,18 +23,25 @@ public class CreateShareRequest extends TeaModel {
     @NameInMap("expiration")
     public String expiration;
 
-    // creator
+    // owner
     @NameInMap("owner")
     @Validation(required = true)
     public String owner;
+
+    // owner_type
+    @NameInMap("owner_type")
+    public String ownerType;
 
     // permissions
     @NameInMap("permissions")
     public java.util.List<String> permissions;
 
+    // share_file_id
+    @NameInMap("share_file_id")
+    public String shareFileId;
+
     // share_file_path
     @NameInMap("share_file_path")
-    @Validation(required = true)
     public String shareFilePath;
 
     // share_name
@@ -51,6 +61,14 @@ public class CreateShareRequest extends TeaModel {
     public static CreateShareRequest build(java.util.Map<String, ?> map) throws Exception {
         CreateShareRequest self = new CreateShareRequest();
         return TeaModel.build(map, self);
+    }
+
+    public CreateShareRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public CreateShareRequest setDescription(String description) {
@@ -85,12 +103,28 @@ public class CreateShareRequest extends TeaModel {
         return this.owner;
     }
 
+    public CreateShareRequest setOwnerType(String ownerType) {
+        this.ownerType = ownerType;
+        return this;
+    }
+    public String getOwnerType() {
+        return this.ownerType;
+    }
+
     public CreateShareRequest setPermissions(java.util.List<String> permissions) {
         this.permissions = permissions;
         return this;
     }
     public java.util.List<String> getPermissions() {
         return this.permissions;
+    }
+
+    public CreateShareRequest setShareFileId(String shareFileId) {
+        this.shareFileId = shareFileId;
+        return this;
+    }
+    public String getShareFileId() {
+        return this.shareFileId;
     }
 
     public CreateShareRequest setShareFilePath(String shareFilePath) {

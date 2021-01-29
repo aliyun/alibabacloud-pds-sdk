@@ -20,6 +20,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string Category { get; set; }
 
         /// <summary>
+        /// CharacteristicHash
+        /// </summary>
+        [NameInMap("characteristic_hash")]
+        [Validation(Required=false)]
+        public string CharacteristicHash { get; set; }
+
+        /// <summary>
         /// Content Hash
         /// </summary>
         [NameInMap("content_hash")]
@@ -143,6 +150,10 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("punish_flag")]
         [Validation(Required=false)]
         public int? PunishFlag { get; set; }
+
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
 
         /// <summary>
         /// Size

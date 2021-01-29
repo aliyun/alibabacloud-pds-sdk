@@ -17,6 +17,9 @@ public class BaseMoveFileRequest extends TeaModel {
     @Validation(maxLength = 1024, minLength = 1)
     public String newName;
 
+    @NameInMap("share_id")
+    public String shareId;
+
     public static BaseMoveFileRequest build(java.util.Map<String, ?> map) throws Exception {
         BaseMoveFileRequest self = new BaseMoveFileRequest();
         return TeaModel.build(map, self);
@@ -36,6 +39,14 @@ public class BaseMoveFileRequest extends TeaModel {
     }
     public String getNewName() {
         return this.newName;
+    }
+
+    public BaseMoveFileRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
 }

@@ -38,6 +38,10 @@ public class BaseListFileRequest extends TeaModel {
     @NameInMap("referer")
     public String referer;
 
+    // share_id, either share_id or drive_id is required
+    @NameInMap("share_id")
+    public String shareId;
+
     @NameInMap("sign_token")
     public String signToken;
 
@@ -113,6 +117,14 @@ public class BaseListFileRequest extends TeaModel {
     }
     public String getReferer() {
         return this.referer;
+    }
+
+    public BaseListFileRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public BaseListFileRequest setSignToken(String signToken) {

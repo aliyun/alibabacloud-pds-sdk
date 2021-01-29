@@ -36,6 +36,9 @@ public class UpdateFileMetaRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    @NameInMap("file_id_path")
+    public String fileIdPath;
+
     // hidden
     // type: boolean
     @NameInMap("hidden")
@@ -55,6 +58,9 @@ public class UpdateFileMetaRequest extends TeaModel {
 
     @NameInMap("referer")
     public String referer;
+
+    @NameInMap("share_id")
+    public String shareId;
 
     @NameInMap("sign_token")
     public String signToken;
@@ -129,6 +135,14 @@ public class UpdateFileMetaRequest extends TeaModel {
         return this.fileId;
     }
 
+    public UpdateFileMetaRequest setFileIdPath(String fileIdPath) {
+        this.fileIdPath = fileIdPath;
+        return this;
+    }
+    public String getFileIdPath() {
+        return this.fileIdPath;
+    }
+
     public UpdateFileMetaRequest setHidden(Boolean hidden) {
         this.hidden = hidden;
         return this;
@@ -167,6 +181,14 @@ public class UpdateFileMetaRequest extends TeaModel {
     }
     public String getReferer() {
         return this.referer;
+    }
+
+    public UpdateFileMetaRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public UpdateFileMetaRequest setSignToken(String signToken) {

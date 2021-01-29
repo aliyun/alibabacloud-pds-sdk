@@ -17,6 +17,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public Dictionary<string, string> Headers { get; set; }
 
         /// <summary>
+        /// addition_data
+        /// </summary>
+        [NameInMap("addition_data")]
+        [Validation(Required=false)]
+        public Dictionary<string, object> AdditionData { get; set; }
+
+        /// <summary>
         /// category
         /// </summary>
         [NameInMap("category")]
@@ -29,6 +36,24 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("drive_id")]
         [Validation(Required=true, Pattern="[0-9]+")]
         public string DriveId { get; set; }
+
+        [NameInMap("image_cropping_aspect_ratios")]
+        [Validation(Required=false)]
+        public List<string> ImageCroppingAspectRatios { get; set; }
+
+        /// <summary>
+        /// image_thumbnail_process
+        /// </summary>
+        [NameInMap("image_thumbnail_process")]
+        [Validation(Required=false)]
+        public string ImageThumbnailProcess { get; set; }
+
+        /// <summary>
+        /// image_url_process
+        /// </summary>
+        [NameInMap("image_url_process")]
+        [Validation(Required=false)]
+        public string ImageUrlProcess { get; set; }
 
         /// <summary>
         /// limit
@@ -43,6 +68,14 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("marker")]
         [Validation(Required=false)]
         public string Marker { get; set; }
+
+        /// <summary>
+        /// video_thumbnail_process
+        /// type:string
+        /// </summary>
+        [NameInMap("video_thumbnail_process")]
+        [Validation(Required=false)]
+        public string VideoThumbnailProcess { get; set; }
 
     }
 

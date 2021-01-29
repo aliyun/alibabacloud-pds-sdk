@@ -44,12 +44,38 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
         public string FileId { get; set; }
 
+        [NameInMap("file_id_path")]
+        [Validation(Required=false)]
+        public string FileIdPath { get; set; }
+
         /// <summary>
         /// file_name
         /// </summary>
         [NameInMap("file_name")]
         [Validation(Required=false, MaxLength=1024)]
         public string FileName { get; set; }
+
+        /// <summary>
+        /// location
+        /// </summary>
+        [NameInMap("location")]
+        [Validation(Required=false)]
+        public string Location { get; set; }
+
+        [NameInMap("referer")]
+        [Validation(Required=false)]
+        public string Referer { get; set; }
+
+        /// <summary>
+        /// share_id, either share_id or drive_id is required
+        /// </summary>
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
+
+        [NameInMap("sign_token")]
+        [Validation(Required=false)]
+        public string SignToken { get; set; }
 
     }
 

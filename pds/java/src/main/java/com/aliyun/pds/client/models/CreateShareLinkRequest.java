@@ -10,6 +10,10 @@ public class CreateShareLinkRequest extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
+    // description
+    @NameInMap("description")
+    public String description;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
@@ -27,13 +31,17 @@ public class CreateShareLinkRequest extends TeaModel {
 
     // file_id_list
     @NameInMap("file_id_list")
-    @Validation(required = true)
+    @Validation(required = true, maximum = 50, minimum = 1)
     public java.util.List<String> fileIdList;
 
     // file_path_list
     @NameInMap("file_path_list")
-    @Validation(required = true)
+    @Validation(required = true, maximum = 50, minimum = 1)
     public java.util.List<String> filePathList;
+
+    // share_name
+    @NameInMap("share_name")
+    public String shareName;
 
     // share_pwd
     @NameInMap("share_pwd")
@@ -50,6 +58,14 @@ public class CreateShareLinkRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHeaders() {
         return this.headers;
+    }
+
+    public CreateShareLinkRequest setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+    public String getDescription() {
+        return this.description;
     }
 
     public CreateShareLinkRequest setDriveId(String driveId) {
@@ -90,6 +106,14 @@ public class CreateShareLinkRequest extends TeaModel {
     }
     public java.util.List<String> getFilePathList() {
         return this.filePathList;
+    }
+
+    public CreateShareLinkRequest setShareName(String shareName) {
+        this.shareName = shareName;
+        return this;
+    }
+    public String getShareName() {
+        return this.shareName;
     }
 
     public CreateShareLinkRequest setSharePwd(String sharePwd) {

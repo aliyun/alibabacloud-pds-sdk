@@ -15,6 +15,10 @@ public class SearchFileResponse extends TeaModel {
     @NameInMap("next_marker")
     public String nextMarker;
 
+    // total_count
+    @NameInMap("total_count")
+    public Long totalCount;
+
     public static SearchFileResponse build(java.util.Map<String, ?> map) throws Exception {
         SearchFileResponse self = new SearchFileResponse();
         return TeaModel.build(map, self);
@@ -34,6 +38,14 @@ public class SearchFileResponse extends TeaModel {
     }
     public String getNextMarker() {
         return this.nextMarker;
+    }
+
+    public SearchFileResponse setTotalCount(Long totalCount) {
+        this.totalCount = totalCount;
+        return this;
+    }
+    public Long getTotalCount() {
+        return this.totalCount;
     }
 
 }

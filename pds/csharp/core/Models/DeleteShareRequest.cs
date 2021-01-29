@@ -12,6 +12,10 @@ namespace Aliyun.SDK.PDS.Client.Models
      * delete share request
      */
     public class DeleteShareRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// share_id
         /// </summary>

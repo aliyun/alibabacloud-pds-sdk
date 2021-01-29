@@ -13,6 +13,13 @@ namespace Aliyun.SDK.PDS.Client.Models
      */
     public class StreamUploadInfo : TeaModel {
         /// <summary>
+        /// location
+        /// </summary>
+        [NameInMap("location")]
+        [Validation(Required=false)]
+        public string Location { get; set; }
+
+        /// <summary>
         /// part_info_list
         /// </summary>
         [NameInMap("part_info_list")]

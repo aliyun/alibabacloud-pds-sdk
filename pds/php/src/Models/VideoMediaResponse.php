@@ -1,145 +1,40 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
-class VideoMediaResponse extends Model
-{
-    /**
-     * @description address_line
-     *
-     * @example 北京市昌平区白各庄新村路
-     *
-     * @var string
-     */
-    public $addressLine;
+use Aliyun\PDS\SDK\Models\SystemTag;
+use Aliyun\PDS\SDK\Models\VideoMediaAudioStream;
+use Aliyun\PDS\SDK\Models\VideoMediaVideoStream;
 
-    /**
-     * @description city
-     *
-     * @example 杭州
-     *
-     * @var string
-     */
-    public $city;
-
-    /**
-     * @description country
-     *
-     * @example 中国
-     *
-     * @var string
-     */
-    public $country;
-
-    /**
-     * @description district
-     *
-     * @example 余杭区
-     *
-     * @var string
-     */
-    public $district;
-
-    /**
-     * @description duration 单位 秒
-     *
-     * @example "7704.573000"
-     *
-     * @var string
-     */
-    public $duration;
-
-    /**
-     * @description height
-     *
-     * @example 720
-     *
-     * @var int
-     */
-    public $height;
-
-    /**
-     * @description location
-     *
-     * @example 40.110333,116.349311
-     *
-     * @var string
-     */
-    public $location;
-
-    /**
-     * @description province
-     *
-     * @example 浙江省
-     *
-     * @var string
-     */
-    public $province;
-
-    /**
-     * @description time
-     *
-     * @var string
-     */
-    public $time;
-
-    /**
-     * @description township
-     *
-     * @example 沙河镇
-     *
-     * @var string
-     */
-    public $township;
-
-    /**
-     * @var VideoMediaAudioStream[]
-     */
-    public $videoMediaAudioStream;
-
-    /**
-     * @var VideoMediaVideoStream[]
-     */
-    public $videoMediaVideoStream;
-
-    /**
-     * @description width
-     *
-     * @example 1024
-     *
-     * @var int
-     */
-    public $width;
+/**
+ * *
+ */
+class VideoMediaResponse extends Model {
     protected $_name = [
-        'addressLine'           => 'address_line',
-        'city'                  => 'city',
-        'country'               => 'country',
-        'district'              => 'district',
-        'duration'              => 'duration',
-        'height'                => 'height',
-        'location'              => 'location',
-        'province'              => 'province',
-        'time'                  => 'time',
-        'township'              => 'township',
+        'addressLine' => 'address_line',
+        'city' => 'city',
+        'country' => 'country',
+        'district' => 'district',
+        'duration' => 'duration',
+        'height' => 'height',
+        'imageTags' => 'image_tags',
+        'location' => 'location',
+        'province' => 'province',
+        'time' => 'time',
+        'township' => 'township',
         'videoMediaAudioStream' => 'video_media_audio_stream',
         'videoMediaVideoStream' => 'video_media_video_stream',
-        'width'                 => 'width',
+        'width' => 'width',
     ];
     protected $_default = [
         'height' => 0,
-        'width'  => 0,
+        'width' => 0,
     ];
-
-    public function validate()
-    {
-    }
-
-    public function toMap()
-    {
+    public function validate() {}
+    public function toMap() {
         $res = [];
         if (null !== $this->addressLine) {
             $res['address_line'] = $this->addressLine;
@@ -159,6 +54,15 @@ class VideoMediaResponse extends Model
         if (null !== $this->height) {
             $res['height'] = $this->height;
         }
+        if (null !== $this->imageTags) {
+            $res['image_tags'] = [];
+            if(null !== $this->imageTags && is_array($this->imageTags)){
+                $n = 0;
+                foreach($this->imageTags as $item){
+                    $res['image_tags'][$n++] = null !== $item ? $item->toMap() : $item;
+                }
+            }
+        }
         if (null !== $this->location) {
             $res['location'] = $this->location;
         }
@@ -173,18 +77,18 @@ class VideoMediaResponse extends Model
         }
         if (null !== $this->videoMediaAudioStream) {
             $res['video_media_audio_stream'] = [];
-            if (null !== $this->videoMediaAudioStream && \is_array($this->videoMediaAudioStream)) {
+            if(null !== $this->videoMediaAudioStream && is_array($this->videoMediaAudioStream)){
                 $n = 0;
-                foreach ($this->videoMediaAudioStream as $item) {
+                foreach($this->videoMediaAudioStream as $item){
                     $res['video_media_audio_stream'][$n++] = null !== $item ? $item->toMap() : $item;
                 }
             }
         }
         if (null !== $this->videoMediaVideoStream) {
             $res['video_media_video_stream'] = [];
-            if (null !== $this->videoMediaVideoStream && \is_array($this->videoMediaVideoStream)) {
+            if(null !== $this->videoMediaVideoStream && is_array($this->videoMediaVideoStream)){
                 $n = 0;
-                foreach ($this->videoMediaVideoStream as $item) {
+                foreach($this->videoMediaVideoStream as $item){
                     $res['video_media_video_stream'][$n++] = null !== $item ? $item->toMap() : $item;
                 }
             }
@@ -192,70 +96,166 @@ class VideoMediaResponse extends Model
         if (null !== $this->width) {
             $res['width'] = $this->width;
         }
-
         return $res;
     }
-
     /**
      * @param array $map
-     *
      * @return VideoMediaResponse
      */
-    public static function fromMap($map = [])
-    {
+    public static function fromMap($map = []) {
         $model = new self();
-        if (isset($map['address_line'])) {
+        if(isset($map['address_line'])){
             $model->addressLine = $map['address_line'];
         }
-        if (isset($map['city'])) {
+        if(isset($map['city'])){
             $model->city = $map['city'];
         }
-        if (isset($map['country'])) {
+        if(isset($map['country'])){
             $model->country = $map['country'];
         }
-        if (isset($map['district'])) {
+        if(isset($map['district'])){
             $model->district = $map['district'];
         }
-        if (isset($map['duration'])) {
+        if(isset($map['duration'])){
             $model->duration = $map['duration'];
         }
-        if (isset($map['height'])) {
+        if(isset($map['height'])){
             $model->height = $map['height'];
         }
-        if (isset($map['location'])) {
+        if(isset($map['image_tags'])){
+            if(!empty($map['image_tags'])){
+                $model->imageTags = [];
+                $n = 0;
+                foreach($map['image_tags'] as $item) {
+                    $model->imageTags[$n++] = null !== $item ? SystemTag::fromMap($item) : $item;
+                }
+            }
+        }
+        if(isset($map['location'])){
             $model->location = $map['location'];
         }
-        if (isset($map['province'])) {
+        if(isset($map['province'])){
             $model->province = $map['province'];
         }
-        if (isset($map['time'])) {
+        if(isset($map['time'])){
             $model->time = $map['time'];
         }
-        if (isset($map['township'])) {
+        if(isset($map['township'])){
             $model->township = $map['township'];
         }
-        if (isset($map['video_media_audio_stream'])) {
-            if (!empty($map['video_media_audio_stream'])) {
+        if(isset($map['video_media_audio_stream'])){
+            if(!empty($map['video_media_audio_stream'])){
                 $model->videoMediaAudioStream = [];
-                $n                            = 0;
-                foreach ($map['video_media_audio_stream'] as $item) {
+                $n = 0;
+                foreach($map['video_media_audio_stream'] as $item) {
                     $model->videoMediaAudioStream[$n++] = null !== $item ? VideoMediaAudioStream::fromMap($item) : $item;
                 }
             }
         }
-        if (isset($map['video_media_video_stream'])) {
-            if (!empty($map['video_media_video_stream'])) {
+        if(isset($map['video_media_video_stream'])){
+            if(!empty($map['video_media_video_stream'])){
                 $model->videoMediaVideoStream = [];
-                $n                            = 0;
-                foreach ($map['video_media_video_stream'] as $item) {
+                $n = 0;
+                foreach($map['video_media_video_stream'] as $item) {
                     $model->videoMediaVideoStream[$n++] = null !== $item ? VideoMediaVideoStream::fromMap($item) : $item;
                 }
             }
         }
-        if (isset($map['width'])) {
+        if(isset($map['width'])){
             $model->width = $map['width'];
         }
-
         return $model;
     }
+    /**
+     * @description address_line
+     * @example 北京市昌平区白各庄新村路
+     * @var string
+     */
+    public $addressLine;
+
+    /**
+     * @description city
+     * @example 杭州
+     * @var string
+     */
+    public $city;
+
+    /**
+     * @description country
+     * @example 中国
+     * @var string
+     */
+    public $country;
+
+    /**
+     * @description district
+     * @example 余杭区
+     * @var string
+     */
+    public $district;
+
+    /**
+     * @description duration 单位 秒
+     * @example "7704.573000"
+     * @var string
+     */
+    public $duration;
+
+    /**
+     * @description height
+     * @example 720
+     * @var int
+     */
+    public $height;
+
+    /**
+     * @description system_tags
+     * @var SystemTag[]
+     */
+    public $imageTags;
+
+    /**
+     * @description location
+     * @example 40.110333,116.349311
+     * @var string
+     */
+    public $location;
+
+    /**
+     * @description province
+     * @example 浙江省
+     * @var string
+     */
+    public $province;
+
+    /**
+     * @description time
+     * @var string
+     */
+    public $time;
+
+    /**
+     * @description township
+     * @example 沙河镇
+     * @var string
+     */
+    public $township;
+
+    /**
+     * @var VideoMediaAudioStream[]
+     */
+    public $videoMediaAudioStream;
+
+    /**
+     * @var VideoMediaVideoStream[]
+     */
+    public $videoMediaVideoStream;
+
+    /**
+     * @description width
+     * @example 1024
+     * @var int
+     */
+    public $width;
+
 }

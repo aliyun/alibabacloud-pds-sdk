@@ -24,10 +24,16 @@ public class MoveFileRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    @NameInMap("file_id_path")
+    public String fileIdPath;
+
     // new_name
     @NameInMap("new_name")
     @Validation(maxLength = 1024, minLength = 1)
     public String newName;
+
+    @NameInMap("share_id")
+    public String shareId;
 
     // to_drive_id
     @NameInMap("to_drive_id")
@@ -38,6 +44,10 @@ public class MoveFileRequest extends TeaModel {
     @NameInMap("to_parent_file_id")
     @Validation(required = true, maxLength = 50, minLength = 4)
     public String toParentFileId;
+
+    @NameInMap("to_share_id")
+    @Validation(pattern = "[0-9]+")
+    public String toShareId;
 
     public static MoveFileRequest build(java.util.Map<String, ?> map) throws Exception {
         MoveFileRequest self = new MoveFileRequest();
@@ -76,12 +86,28 @@ public class MoveFileRequest extends TeaModel {
         return this.fileId;
     }
 
+    public MoveFileRequest setFileIdPath(String fileIdPath) {
+        this.fileIdPath = fileIdPath;
+        return this;
+    }
+    public String getFileIdPath() {
+        return this.fileIdPath;
+    }
+
     public MoveFileRequest setNewName(String newName) {
         this.newName = newName;
         return this;
     }
     public String getNewName() {
         return this.newName;
+    }
+
+    public MoveFileRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public MoveFileRequest setToDriveId(String toDriveId) {
@@ -98,6 +124,14 @@ public class MoveFileRequest extends TeaModel {
     }
     public String getToParentFileId() {
         return this.toParentFileId;
+    }
+
+    public MoveFileRequest setToShareId(String toShareId) {
+        this.toShareId = toShareId;
+        return this;
+    }
+    public String getToShareId() {
+        return this.toShareId;
     }
 
 }

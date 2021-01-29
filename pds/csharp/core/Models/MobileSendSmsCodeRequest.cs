@@ -38,6 +38,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string CaptchaText { get; set; }
 
         /// <summary>
+        /// 环境参数
+        /// </summary>
+        [NameInMap("nvc_param")]
+        [Validation(Required=true)]
+        public string NvcParam { get; set; }
+
+        /// <summary>
         /// 待发送验证短信的手机号
         /// </summary>
         [NameInMap("phone_number")]

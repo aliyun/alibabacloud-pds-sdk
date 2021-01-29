@@ -12,6 +12,10 @@ namespace Aliyun.SDK.PDS.Client.Models
      * 
      */
     public class SharePermissionPolicy : TeaModel {
+        [NameInMap("file_id")]
+        [Validation(Required=false)]
+        public string FileId { get; set; }
+
         [NameInMap("file_path")]
         [Validation(Required=false)]
         public string FilePath { get; set; }

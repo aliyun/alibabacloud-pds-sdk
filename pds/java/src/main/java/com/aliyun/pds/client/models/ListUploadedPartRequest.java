@@ -20,15 +20,21 @@ public class ListUploadedPartRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    @NameInMap("file_id_path")
+    public String fileIdPath;
+
     // limit
     @NameInMap("limit")
-    @Validation(pattern = "[0-9]+")
+    @Validation(pattern = "[0-9]+", maximum = 1000, minimum = 1)
     public Long limit;
 
     // part_number_marker
     @NameInMap("part_number_marker")
-    @Validation(pattern = "[0-9]+")
+    @Validation(pattern = "[0-9]+", minimum = 1)
     public Long partNumberMarker;
+
+    @NameInMap("share_id")
+    public String shareId;
 
     // upload_id
     @NameInMap("upload_id")
@@ -63,6 +69,14 @@ public class ListUploadedPartRequest extends TeaModel {
         return this.fileId;
     }
 
+    public ListUploadedPartRequest setFileIdPath(String fileIdPath) {
+        this.fileIdPath = fileIdPath;
+        return this;
+    }
+    public String getFileIdPath() {
+        return this.fileIdPath;
+    }
+
     public ListUploadedPartRequest setLimit(Long limit) {
         this.limit = limit;
         return this;
@@ -77,6 +91,14 @@ public class ListUploadedPartRequest extends TeaModel {
     }
     public Long getPartNumberMarker() {
         return this.partNumberMarker;
+    }
+
+    public ListUploadedPartRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public ListUploadedPartRequest setUploadId(String uploadId) {

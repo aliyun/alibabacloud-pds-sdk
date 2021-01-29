@@ -37,6 +37,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
         public string FileId { get; set; }
 
+        /// <summary>
+        /// share_id, either share_id or drive_id is required
+        /// </summary>
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
+
     }
 
 }

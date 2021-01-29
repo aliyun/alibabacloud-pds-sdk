@@ -49,6 +49,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string EncryptMode { get; set; }
 
         /// <summary>
+        /// location
+        /// </summary>
+        [NameInMap("location")]
+        [Validation(Required=false)]
+        public string Location { get; set; }
+
+        /// <summary>
         /// 所属者
         /// </summary>
         [NameInMap("owner")]

@@ -43,6 +43,10 @@ public class UpdateShareResponse extends TeaModel {
     @NameInMap("permissions")
     public java.util.List<String> permissions;
 
+    // share_file_id
+    @NameInMap("share_file_id")
+    public String shareFileId;
+
     // share_path
     @NameInMap("share_file_path")
     public String shareFilePath;
@@ -141,6 +145,14 @@ public class UpdateShareResponse extends TeaModel {
     }
     public java.util.List<String> getPermissions() {
         return this.permissions;
+    }
+
+    public UpdateShareResponse setShareFileId(String shareFileId) {
+        this.shareFileId = shareFileId;
+        return this;
+    }
+    public String getShareFileId() {
+        return this.shareFileId;
     }
 
     public UpdateShareResponse setShareFilePath(String shareFilePath) {

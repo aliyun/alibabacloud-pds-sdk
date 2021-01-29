@@ -13,11 +13,18 @@ namespace Aliyun.SDK.PDS.Client.Models
      */
     public class CreateDomainResponse : TeaModel {
         /// <summary>
-        /// Domain CName
+        /// Domain APICName
         /// </summary>
         [NameInMap("api_cname")]
         [Validation(Required=false)]
         public string ApiCname { get; set; }
+
+        /// <summary>
+        /// Domain AppCName
+        /// </summary>
+        [NameInMap("app_cname")]
+        [Validation(Required=false)]
+        public string AppCname { get; set; }
 
         /// <summary>
         /// 支付宝 App Id
@@ -39,6 +46,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("auth_alipay_private_key")]
         [Validation(Required=false)]
         public string AuthAlipayPrivateKey { get; set; }
+
+        /// <summary>
+        /// Domain AuthCName
+        /// </summary>
+        [NameInMap("auth_cname")]
+        [Validation(Required=false)]
+        public string AuthCname { get; set; }
 
         /// <summary>
         /// 登录相关信息

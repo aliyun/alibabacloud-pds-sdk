@@ -12,6 +12,10 @@ namespace Aliyun.SDK.PDS.Client.Models
      * create share request
      */
     public class CreateShareRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// description
         /// </summary>
@@ -34,11 +38,18 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string Expiration { get; set; }
 
         /// <summary>
-        /// creator
+        /// owner
         /// </summary>
         [NameInMap("owner")]
         [Validation(Required=true)]
         public string Owner { get; set; }
+
+        /// <summary>
+        /// owner_type
+        /// </summary>
+        [NameInMap("owner_type")]
+        [Validation(Required=false)]
+        public string OwnerType { get; set; }
 
         /// <summary>
         /// permissions
@@ -48,10 +59,17 @@ namespace Aliyun.SDK.PDS.Client.Models
         public List<string> Permissions { get; set; }
 
         /// <summary>
+        /// share_file_id
+        /// </summary>
+        [NameInMap("share_file_id")]
+        [Validation(Required=false)]
+        public string ShareFileId { get; set; }
+
+        /// <summary>
         /// share_file_path
         /// </summary>
         [NameInMap("share_file_path")]
-        [Validation(Required=true)]
+        [Validation(Required=false)]
         public string ShareFilePath { get; set; }
 
         /// <summary>

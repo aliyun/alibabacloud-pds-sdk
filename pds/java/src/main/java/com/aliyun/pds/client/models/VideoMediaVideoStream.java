@@ -27,6 +27,10 @@ public class VideoMediaVideoStream extends TeaModel {
     @NameInMap("fps")
     public String fps;
 
+    // rotate 视频横屏 竖屏
+    @NameInMap("rotate")
+    public String rotate;
+
     public static VideoMediaVideoStream build(java.util.Map<String, ?> map) throws Exception {
         VideoMediaVideoStream self = new VideoMediaVideoStream();
         return TeaModel.build(map, self);
@@ -70,6 +74,14 @@ public class VideoMediaVideoStream extends TeaModel {
     }
     public String getFps() {
         return this.fps;
+    }
+
+    public VideoMediaVideoStream setRotate(String rotate) {
+        this.rotate = rotate;
+        return this;
+    }
+    public String getRotate() {
+        return this.rotate;
     }
 
 }

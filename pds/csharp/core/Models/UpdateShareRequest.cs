@@ -12,6 +12,10 @@ namespace Aliyun.SDK.PDS.Client.Models
      * update share request
      */
     public class UpdateShareRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// description
         /// </summary>

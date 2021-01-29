@@ -321,7 +321,7 @@ export class GetLinkInfoByUserIdModel extends $tea.Model {
 
 export class GetPublicKeyModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: GetAppPublicKeyResponse;
+  body: GetPublicKeyResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -332,7 +332,7 @@ export class GetPublicKeyModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetAppPublicKeyResponse,
+      body: GetPublicKeyResponse,
     };
   }
 
@@ -541,15 +541,18 @@ export class AccessTokenResponse extends $tea.Model {
 export class AccountAccessTokenResponse extends $tea.Model {
   accessToken: string;
   avatar?: string;
-  dataPinSaved?: boolean;
-  dataPinSetup?: boolean;
   defaultDriveId?: string;
+  defaultSboxDriveId?: string;
+  deviceId?: string;
+  deviceName?: string;
   existLink?: LinkInfo[];
   expireTime?: string;
   expiresIn?: number;
   isFirstLogin?: boolean;
   needLink: boolean;
+  needRpVerify?: boolean;
   nickName?: string;
+  pinSetup?: boolean;
   refreshToken?: string;
   role?: string;
   state?: string;
@@ -561,15 +564,18 @@ export class AccountAccessTokenResponse extends $tea.Model {
     return {
       accessToken: 'access_token',
       avatar: 'avatar',
-      dataPinSaved: 'data_pin_saved',
-      dataPinSetup: 'data_pin_setup',
       defaultDriveId: 'default_drive_id',
+      defaultSboxDriveId: 'default_sbox_drive_id',
+      deviceId: 'device_id',
+      deviceName: 'device_name',
       existLink: 'exist_link',
       expireTime: 'expire_time',
       expiresIn: 'expires_in',
       isFirstLogin: 'is_first_login',
       needLink: 'need_link',
+      needRpVerify: 'need_rp_verify',
       nickName: 'nick_name',
+      pinSetup: 'pin_setup',
       refreshToken: 'refresh_token',
       role: 'role',
       state: 'state',
@@ -584,15 +590,18 @@ export class AccountAccessTokenResponse extends $tea.Model {
     return {
       accessToken: 'string',
       avatar: 'string',
-      dataPinSaved: 'boolean',
-      dataPinSetup: 'boolean',
       defaultDriveId: 'string',
+      defaultSboxDriveId: 'string',
+      deviceId: 'string',
+      deviceName: 'string',
       existLink: { 'type': 'array', 'itemType': LinkInfo },
       expireTime: 'string',
       expiresIn: 'number',
       isFirstLogin: 'boolean',
       needLink: 'boolean',
+      needRpVerify: 'boolean',
       nickName: 'string',
+      pinSetup: 'boolean',
       refreshToken: 'string',
       role: 'string',
       state: 'string',
@@ -651,6 +660,126 @@ export class AccountLinkRequest extends $tea.Model {
 /**
  * 
  */
+export class AddStoreRequest extends $tea.Model {
+  basePath?: string;
+  bucket?: string;
+  domainId: string;
+  endpoint: string;
+  ownership?: string;
+  roleArn?: string;
+  type: string;
+  static names(): { [key: string]: string } {
+    return {
+      basePath: 'base_path',
+      bucket: 'bucket',
+      domainId: 'domain_id',
+      endpoint: 'endpoint',
+      ownership: 'ownership',
+      roleArn: 'role_arn',
+      type: 'type',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      basePath: 'string',
+      bucket: 'string',
+      domainId: 'string',
+      endpoint: 'string',
+      ownership: 'string',
+      roleArn: 'string',
+      type: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class AppAccessStrategy extends $tea.Model {
+  effect?: string;
+  exceptAppIdList?: string[];
+  static names(): { [key: string]: string } {
+    return {
+      effect: 'effect',
+      exceptAppIdList: 'except_app_id_list',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      effect: 'string',
+      exceptAppIdList: { 'type': 'array', 'itemType': 'string' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class AuthConfig extends $tea.Model {
+  appId?: string;
+  appSecret?: string;
+  callbackSecurity?: boolean;
+  enable?: boolean;
+  endpoint?: string;
+  enterpriseId?: string;
+  ldapConfig?: LdapConfig;
+  loginPageHeaders?: {[key: string]: any};
+  loginPageTemplate?: string;
+  loginPageVars?: {[key: string]: any};
+  whiteListConfig?: {[key: string]: any};
+  whiteListEnable?: boolean;
+  static names(): { [key: string]: string } {
+    return {
+      appId: 'app_id',
+      appSecret: 'app_secret',
+      callbackSecurity: 'callback_security',
+      enable: 'enable',
+      endpoint: 'endpoint',
+      enterpriseId: 'enterprise_id',
+      ldapConfig: 'ldap_config',
+      loginPageHeaders: 'login_page_headers',
+      loginPageTemplate: 'login_page_template',
+      loginPageVars: 'login_page_vars',
+      whiteListConfig: 'white_list_config',
+      whiteListEnable: 'white_list_enable',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      appId: 'string',
+      appSecret: 'string',
+      callbackSecurity: 'boolean',
+      enable: 'boolean',
+      endpoint: 'string',
+      enterpriseId: 'string',
+      ldapConfig: LdapConfig,
+      loginPageHeaders: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      loginPageTemplate: 'string',
+      loginPageVars: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      whiteListConfig: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      whiteListEnable: 'boolean',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class AuthorizeRequest extends $tea.Model {
   ClientID: string;
   LoginType?: string;
@@ -658,6 +787,7 @@ export class AuthorizeRequest extends $tea.Model {
   ResponseType: string;
   Scope?: string[];
   State?: string;
+  UserCode?: string;
   static names(): { [key: string]: string } {
     return {
       ClientID: 'ClientID',
@@ -666,6 +796,7 @@ export class AuthorizeRequest extends $tea.Model {
       ResponseType: 'ResponseType',
       Scope: 'Scope',
       State: 'State',
+      UserCode: 'UserCode',
     };
   }
 
@@ -677,6 +808,131 @@ export class AuthorizeRequest extends $tea.Model {
       ResponseType: 'string',
       Scope: { 'type': 'array', 'itemType': 'string' },
       State: 'string',
+      UserCode: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Base file response
+ */
+export class BaseCCPFileResponse extends $tea.Model {
+  category?: string;
+  characteristicHash?: string;
+  contentHash?: string;
+  contentHashName?: string;
+  contentType?: string;
+  crc64Hash?: string;
+  createdAt?: string;
+  description?: string;
+  domainId?: string;
+  downloadUrl?: string;
+  driveId?: string;
+  encryptMode?: string;
+  fileExtension?: string;
+  fileId?: string;
+  hidden?: boolean;
+  imageMediaMetadata?: ImageMediaResponse;
+  labels?: string[];
+  meta?: string;
+  name: string;
+  parentFileId?: string;
+  punishFlag?: number;
+  shareId?: string;
+  size?: number;
+  starred?: boolean;
+  status?: string;
+  streamsInfo?: {[key: string]: any};
+  thumbnail?: string;
+  trashedAt?: string;
+  type?: string;
+  updatedAt?: string;
+  uploadId?: string;
+  url?: string;
+  userMeta?: string;
+  videoMediaMetadata?: VideoMediaResponse;
+  videoPreviewMetadata?: VideoPreviewResponse;
+  static names(): { [key: string]: string } {
+    return {
+      category: 'category',
+      characteristicHash: 'characteristic_hash',
+      contentHash: 'content_hash',
+      contentHashName: 'content_hash_name',
+      contentType: 'content_type',
+      crc64Hash: 'crc64_hash',
+      createdAt: 'created_at',
+      description: 'description',
+      domainId: 'domain_id',
+      downloadUrl: 'download_url',
+      driveId: 'drive_id',
+      encryptMode: 'encrypt_mode',
+      fileExtension: 'file_extension',
+      fileId: 'file_id',
+      hidden: 'hidden',
+      imageMediaMetadata: 'image_media_metadata',
+      labels: 'labels',
+      meta: 'meta',
+      name: 'name',
+      parentFileId: 'parent_file_id',
+      punishFlag: 'punish_flag',
+      shareId: 'share_id',
+      size: 'size',
+      starred: 'starred',
+      status: 'status',
+      streamsInfo: 'streams_info',
+      thumbnail: 'thumbnail',
+      trashedAt: 'trashed_at',
+      type: 'type',
+      updatedAt: 'updated_at',
+      uploadId: 'upload_id',
+      url: 'url',
+      userMeta: 'user_meta',
+      videoMediaMetadata: 'video_media_metadata',
+      videoPreviewMetadata: 'video_preview_metadata',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      category: 'string',
+      characteristicHash: 'string',
+      contentHash: 'string',
+      contentHashName: 'string',
+      contentType: 'string',
+      crc64Hash: 'string',
+      createdAt: 'string',
+      description: 'string',
+      domainId: 'string',
+      downloadUrl: 'string',
+      driveId: 'string',
+      encryptMode: 'string',
+      fileExtension: 'string',
+      fileId: 'string',
+      hidden: 'boolean',
+      imageMediaMetadata: ImageMediaResponse,
+      labels: { 'type': 'array', 'itemType': 'string' },
+      meta: 'string',
+      name: 'string',
+      parentFileId: 'string',
+      punishFlag: 'number',
+      shareId: 'string',
+      size: 'number',
+      starred: 'boolean',
+      status: 'string',
+      streamsInfo: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      thumbnail: 'string',
+      trashedAt: 'string',
+      type: 'string',
+      updatedAt: 'string',
+      uploadId: 'string',
+      url: 'string',
+      userMeta: 'string',
+      videoMediaMetadata: VideoMediaResponse,
+      videoPreviewMetadata: VideoPreviewResponse,
     };
   }
 
@@ -786,174 +1042,7 @@ export class BaseFileAnonymousResponse extends $tea.Model {
 /**
  * Base file response
  */
-export class BaseFileResponse extends $tea.Model {
-  category?: string;
-  contentHash?: string;
-  contentHashName?: string;
-  contentType?: string;
-  crc64Hash?: string;
-  createdAt?: string;
-  description?: string;
-  domainId?: string;
-  downloadUrl?: string;
-  driveId?: string;
-  encryptMode?: string;
-  fileExtension?: string;
-  fileId?: string;
-  hidden?: boolean;
-  imageMediaMetadata?: ImageMediaResponse;
-  labels?: string[];
-  meta?: string;
-  name: string;
-  parentFileId?: string;
-  punishFlag?: number;
-  size?: number;
-  starred?: boolean;
-  status?: string;
-  streamsInfo?: {[key: string]: any};
-  thumbnail?: string;
-  trashedAt?: string;
-  type?: string;
-  updatedAt?: string;
-  uploadId?: string;
-  url?: string;
-  userMeta?: string;
-  videoMediaMetadata?: VideoMediaResponse;
-  videoPreviewMetadata?: VideoPreviewResponse;
-  static names(): { [key: string]: string } {
-    return {
-      category: 'category',
-      contentHash: 'content_hash',
-      contentHashName: 'content_hash_name',
-      contentType: 'content_type',
-      crc64Hash: 'crc64_hash',
-      createdAt: 'created_at',
-      description: 'description',
-      domainId: 'domain_id',
-      downloadUrl: 'download_url',
-      driveId: 'drive_id',
-      encryptMode: 'encrypt_mode',
-      fileExtension: 'file_extension',
-      fileId: 'file_id',
-      hidden: 'hidden',
-      imageMediaMetadata: 'image_media_metadata',
-      labels: 'labels',
-      meta: 'meta',
-      name: 'name',
-      parentFileId: 'parent_file_id',
-      punishFlag: 'punish_flag',
-      size: 'size',
-      starred: 'starred',
-      status: 'status',
-      streamsInfo: 'streams_info',
-      thumbnail: 'thumbnail',
-      trashedAt: 'trashed_at',
-      type: 'type',
-      updatedAt: 'updated_at',
-      uploadId: 'upload_id',
-      url: 'url',
-      userMeta: 'user_meta',
-      videoMediaMetadata: 'video_media_metadata',
-      videoPreviewMetadata: 'video_preview_metadata',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      category: 'string',
-      contentHash: 'string',
-      contentHashName: 'string',
-      contentType: 'string',
-      crc64Hash: 'string',
-      createdAt: 'string',
-      description: 'string',
-      domainId: 'string',
-      downloadUrl: 'string',
-      driveId: 'string',
-      encryptMode: 'string',
-      fileExtension: 'string',
-      fileId: 'string',
-      hidden: 'boolean',
-      imageMediaMetadata: ImageMediaResponse,
-      labels: { 'type': 'array', 'itemType': 'string' },
-      meta: 'string',
-      name: 'string',
-      parentFileId: 'string',
-      punishFlag: 'number',
-      size: 'number',
-      starred: 'boolean',
-      status: 'string',
-      streamsInfo: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      thumbnail: 'string',
-      trashedAt: 'string',
-      type: 'string',
-      updatedAt: 'string',
-      uploadId: 'string',
-      url: 'string',
-      userMeta: 'string',
-      videoMediaMetadata: VideoMediaResponse,
-      videoPreviewMetadata: VideoPreviewResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class BaseMediaResponse extends $tea.Model {
-  addressLine?: string;
-  city?: string;
-  country?: string;
-  district?: string;
-  height?: number;
-  location?: string;
-  province?: string;
-  time?: string;
-  township?: string;
-  width?: number;
-  static names(): { [key: string]: string } {
-    return {
-      addressLine: 'address_line',
-      city: 'city',
-      country: 'country',
-      district: 'district',
-      height: 'height',
-      location: 'location',
-      province: 'province',
-      time: 'time',
-      township: 'township',
-      width: 'width',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      addressLine: 'string',
-      city: 'string',
-      country: 'string',
-      district: 'string',
-      height: 'number',
-      location: 'string',
-      province: 'string',
-      time: 'string',
-      township: 'string',
-      width: 'number',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Base file response
- */
-export class BaseOSSFileResponse extends $tea.Model {
+export class BaseHostingFileResponse extends $tea.Model {
   contentHash?: string;
   contentHashName?: string;
   contentType?: string;
@@ -1036,19 +1125,76 @@ export class BaseOSSFileResponse extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class BaseMediaResponse extends $tea.Model {
+  addressLine?: string;
+  city?: string;
+  country?: string;
+  district?: string;
+  height?: number;
+  imageTags?: SystemTag[];
+  location?: string;
+  province?: string;
+  time?: string;
+  township?: string;
+  width?: number;
+  static names(): { [key: string]: string } {
+    return {
+      addressLine: 'address_line',
+      city: 'city',
+      country: 'country',
+      district: 'district',
+      height: 'height',
+      imageTags: 'image_tags',
+      location: 'location',
+      province: 'province',
+      time: 'time',
+      township: 'township',
+      width: 'width',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      addressLine: 'string',
+      city: 'string',
+      country: 'string',
+      district: 'string',
+      height: 'number',
+      imageTags: { 'type': 'array', 'itemType': SystemTag },
+      location: 'string',
+      province: 'string',
+      time: 'string',
+      township: 'string',
+      width: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * list_share_link response
  */
 export class BaseShareLinkResponse extends $tea.Model {
   createdAt?: string;
+  creator?: string;
+  description?: string;
   downloadCount?: number;
   driveId?: string;
   expiration?: string;
   expired?: boolean;
   fileId?: string;
+  fileIdList?: string[];
+  filePathList?: string[];
   previewCount?: number;
   saveCount?: number;
   shareId?: string;
   shareMsg?: string;
+  shareName?: string;
   sharePolicy?: string;
   sharePwd?: string;
   shareUrl?: string;
@@ -1056,15 +1202,20 @@ export class BaseShareLinkResponse extends $tea.Model {
   static names(): { [key: string]: string } {
     return {
       createdAt: 'created_at',
+      creator: 'creator',
+      description: 'description',
       downloadCount: 'download_count',
       driveId: 'drive_id',
       expiration: 'expiration',
       expired: 'expired',
       fileId: 'file_id',
+      fileIdList: 'file_id_list',
+      filePathList: 'file_path_list',
       previewCount: 'preview_count',
       saveCount: 'save_count',
       shareId: 'share_id',
       shareMsg: 'share_msg',
+      shareName: 'share_name',
       sharePolicy: 'share_policy',
       sharePwd: 'share_pwd',
       shareUrl: 'share_url',
@@ -1075,15 +1226,20 @@ export class BaseShareLinkResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       createdAt: 'string',
+      creator: 'string',
+      description: 'string',
       downloadCount: 'number',
       driveId: 'string',
       expiration: 'string',
       expired: 'boolean',
       fileId: 'string',
+      fileIdList: { 'type': 'array', 'itemType': 'string' },
+      filePathList: { 'type': 'array', 'itemType': 'string' },
       previewCount: 'number',
       saveCount: 'number',
       shareId: 'string',
       shareMsg: 'string',
+      shareName: 'string',
       sharePolicy: 'string',
       sharePwd: 'string',
       shareUrl: 'string',
@@ -1109,6 +1265,7 @@ export class BaseShareResponse extends $tea.Model {
   expired?: boolean;
   owner?: string;
   permissions?: string[];
+  shareFileId?: string;
   shareFilePath?: string;
   shareId?: string;
   shareName?: string;
@@ -1126,6 +1283,7 @@ export class BaseShareResponse extends $tea.Model {
       expired: 'expired',
       owner: 'owner',
       permissions: 'permissions',
+      shareFileId: 'share_file_id',
       shareFilePath: 'share_file_path',
       shareId: 'share_id',
       shareName: 'share_name',
@@ -1146,6 +1304,7 @@ export class BaseShareResponse extends $tea.Model {
       expired: 'boolean',
       owner: 'string',
       permissions: { 'type': 'array', 'itemType': 'string' },
+      shareFileId: 'string',
       shareFilePath: 'string',
       shareId: 'string',
       shareName: 'string',
@@ -1268,6 +1427,7 @@ export class Captcha extends $tea.Model {
  */
 export class CompleteFileResponse extends $tea.Model {
   category?: string;
+  characteristicHash?: string;
   contentHash?: string;
   contentHashName?: string;
   contentType?: string;
@@ -1283,13 +1443,16 @@ export class CompleteFileResponse extends $tea.Model {
   hidden?: boolean;
   imageMediaMetadata?: ImageMediaResponse;
   labels?: string[];
+  location?: string;
   meta?: string;
   name: string;
   parentFileId?: string;
   punishFlag?: number;
+  shareId?: string;
   size?: number;
   starred?: boolean;
   status?: string;
+  streamLocations?: {[key: string]: any};
   streamsInfo?: {[key: string]: any};
   thumbnail?: string;
   trashedAt?: string;
@@ -1303,6 +1466,7 @@ export class CompleteFileResponse extends $tea.Model {
   static names(): { [key: string]: string } {
     return {
       category: 'category',
+      characteristicHash: 'characteristic_hash',
       contentHash: 'content_hash',
       contentHashName: 'content_hash_name',
       contentType: 'content_type',
@@ -1318,13 +1482,16 @@ export class CompleteFileResponse extends $tea.Model {
       hidden: 'hidden',
       imageMediaMetadata: 'image_media_metadata',
       labels: 'labels',
+      location: 'location',
       meta: 'meta',
       name: 'name',
       parentFileId: 'parent_file_id',
       punishFlag: 'punish_flag',
+      shareId: 'share_id',
       size: 'size',
       starred: 'starred',
       status: 'status',
+      streamLocations: 'stream_locations',
       streamsInfo: 'streams_info',
       thumbnail: 'thumbnail',
       trashedAt: 'trashed_at',
@@ -1341,6 +1508,7 @@ export class CompleteFileResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       category: 'string',
+      characteristicHash: 'string',
       contentHash: 'string',
       contentHashName: 'string',
       contentType: 'string',
@@ -1356,13 +1524,16 @@ export class CompleteFileResponse extends $tea.Model {
       hidden: 'boolean',
       imageMediaMetadata: ImageMediaResponse,
       labels: { 'type': 'array', 'itemType': 'string' },
+      location: 'string',
       meta: 'string',
       name: 'string',
       parentFileId: 'string',
       punishFlag: 'number',
+      shareId: 'string',
       size: 'number',
       starred: 'boolean',
       status: 'string',
+      streamLocations: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       streamsInfo: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       thumbnail: 'string',
       trashedAt: 'string',
@@ -1472,6 +1643,140 @@ export class CorsRule extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class CreateAppRequest extends $tea.Model {
+  appName: string;
+  description?: string;
+  isThirdParty?: boolean;
+  logo: string;
+  publicKey: string;
+  redirectUri?: string;
+  scope: string[];
+  type: string;
+  static names(): { [key: string]: string } {
+    return {
+      appName: 'app_name',
+      description: 'description',
+      isThirdParty: 'is_third_party',
+      logo: 'logo',
+      publicKey: 'public_key',
+      redirectUri: 'redirect_uri',
+      scope: 'scope',
+      type: 'type',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      appName: 'string',
+      description: 'string',
+      isThirdParty: 'boolean',
+      logo: 'string',
+      publicKey: 'string',
+      redirectUri: 'string',
+      scope: { 'type': 'array', 'itemType': 'string' },
+      type: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * create domain request
+ */
+export class CreateDomainRequest extends $tea.Model {
+  authConfig?: {[key: string]: any};
+  authDingdingAppId?: string;
+  authDingdingAppSecret?: string;
+  authDingdingEnable?: boolean;
+  authEndpointEnable?: boolean;
+  authRamAppId?: string;
+  authRamAppSecret?: string;
+  authRamEnable?: boolean;
+  dataHashName?: string;
+  description?: string;
+  domainName: string;
+  eventFilenameMatches?: string;
+  eventMnsEndpoint?: string;
+  eventMnsTopic?: string;
+  eventNames?: string[];
+  eventRoleArn?: string;
+  initDriveEnable?: boolean;
+  initDriveSize?: number;
+  mode: string;
+  pathType?: string;
+  publishedAppAccessStrategy?: AppAccessStrategy;
+  sharable?: boolean;
+  storeLevel?: string;
+  storeRegionList: string[];
+  static names(): { [key: string]: string } {
+    return {
+      authConfig: 'auth_config',
+      authDingdingAppId: 'auth_dingding_app_id',
+      authDingdingAppSecret: 'auth_dingding_app_secret',
+      authDingdingEnable: 'auth_dingding_enable',
+      authEndpointEnable: 'auth_endpoint_enable',
+      authRamAppId: 'auth_ram_app_id',
+      authRamAppSecret: 'auth_ram_app_secret',
+      authRamEnable: 'auth_ram_enable',
+      dataHashName: 'data_hash_name',
+      description: 'description',
+      domainName: 'domain_name',
+      eventFilenameMatches: 'event_filename_matches',
+      eventMnsEndpoint: 'event_mns_endpoint',
+      eventMnsTopic: 'event_mns_topic',
+      eventNames: 'event_names',
+      eventRoleArn: 'event_role_arn',
+      initDriveEnable: 'init_drive_enable',
+      initDriveSize: 'init_drive_size',
+      mode: 'mode',
+      pathType: 'path_type',
+      publishedAppAccessStrategy: 'published_app_access_strategy',
+      sharable: 'sharable',
+      storeLevel: 'store_level',
+      storeRegionList: 'store_region_list',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      authConfig: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      authDingdingAppId: 'string',
+      authDingdingAppSecret: 'string',
+      authDingdingEnable: 'boolean',
+      authEndpointEnable: 'boolean',
+      authRamAppId: 'string',
+      authRamAppSecret: 'string',
+      authRamEnable: 'boolean',
+      dataHashName: 'string',
+      description: 'string',
+      domainName: 'string',
+      eventFilenameMatches: 'string',
+      eventMnsEndpoint: 'string',
+      eventMnsTopic: 'string',
+      eventNames: { 'type': 'array', 'itemType': 'string' },
+      eventRoleArn: 'string',
+      initDriveEnable: 'boolean',
+      initDriveSize: 'number',
+      mode: 'string',
+      pathType: 'string',
+      publishedAppAccessStrategy: AppAccessStrategy,
+      sharable: 'boolean',
+      storeLevel: 'string',
+      storeRegionList: { 'type': 'array', 'itemType': 'string' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Create drive response
  */
 export class CreateDriveResponse extends $tea.Model {
@@ -1506,6 +1811,7 @@ export class CreateFileResponse extends $tea.Model {
   exist?: boolean;
   fileId?: string;
   fileName?: string;
+  location?: string;
   parentFileId?: string;
   partInfoList?: UploadPartInfo[];
   rapidUpload?: boolean;
@@ -1521,6 +1827,7 @@ export class CreateFileResponse extends $tea.Model {
       exist: 'exist',
       fileId: 'file_id',
       fileName: 'file_name',
+      location: 'location',
       parentFileId: 'parent_file_id',
       partInfoList: 'part_info_list',
       rapidUpload: 'rapid_upload',
@@ -1539,6 +1846,7 @@ export class CreateFileResponse extends $tea.Model {
       exist: 'boolean',
       fileId: 'string',
       fileName: 'string',
+      location: 'string',
       parentFileId: 'string',
       partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
       rapidUpload: 'boolean',
@@ -1558,15 +1866,19 @@ export class CreateFileResponse extends $tea.Model {
  * create_share_link response
  */
 export class CreateShareLinkResponse extends $tea.Model {
+  description?: string;
   shareId?: string;
   shareMsg?: string;
+  shareName?: string;
   sharePolicy?: string;
   sharePwd?: string;
   shareUrl?: string;
   static names(): { [key: string]: string } {
     return {
+      description: 'description',
       shareId: 'share_id',
       shareMsg: 'share_msg',
+      shareName: 'share_name',
       sharePolicy: 'share_policy',
       sharePwd: 'share_pwd',
       shareUrl: 'share_url',
@@ -1575,8 +1887,10 @@ export class CreateShareLinkResponse extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      description: 'string',
       shareId: 'string',
       shareMsg: 'string',
+      shareName: 'string',
       sharePolicy: 'string',
       sharePwd: 'string',
       shareUrl: 'string',
@@ -1747,6 +2061,143 @@ export class DefaultSetPasswordRequest extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class DeleteAppRequest extends $tea.Model {
+  appId: string;
+  static names(): { [key: string]: string } {
+    return {
+      appId: 'app_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      appId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class DeleteBizCNameAndCertRequest extends $tea.Model {
+  bizCname?: string;
+  cnameType: string;
+  domainId: string;
+  isVpc?: boolean;
+  static names(): { [key: string]: string } {
+    return {
+      bizCname: 'biz_cname',
+      cnameType: 'cname_type',
+      domainId: 'domain_id',
+      isVpc: 'is_vpc',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      bizCname: 'string',
+      cnameType: 'string',
+      domainId: 'string',
+      isVpc: 'boolean',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class DeleteBizCNameCertRequest extends $tea.Model {
+  bizCname?: string;
+  certId?: string;
+  cnameType: string;
+  domainId: string;
+  isVpc?: boolean;
+  static names(): { [key: string]: string } {
+    return {
+      bizCname: 'biz_cname',
+      certId: 'cert_id',
+      cnameType: 'cname_type',
+      domainId: 'domain_id',
+      isVpc: 'is_vpc',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      bizCname: 'string',
+      certId: 'string',
+      cnameType: 'string',
+      domainId: 'string',
+      isVpc: 'boolean',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class DeleteDataCNameAndCertRequest extends $tea.Model {
+  dataCname: string;
+  domainId: string;
+  location: string;
+  static names(): { [key: string]: string } {
+    return {
+      dataCname: 'data_cname',
+      domainId: 'domain_id',
+      location: 'location',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      dataCname: 'string',
+      domainId: 'string',
+      location: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * delete domain request
+ */
+export class DeleteDomainRequest extends $tea.Model {
+  domainId: string;
+  static names(): { [key: string]: string } {
+    return {
+      domainId: 'domain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      domainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * delete drive response
  */
 export class DeleteDriveResponse extends $tea.Model {
@@ -1863,7 +2314,7 @@ export class DeviceAuthorizeRequest extends $tea.Model {
  */
 export class FileDeltaResponse extends $tea.Model {
   currentCategory?: string;
-  file?: BaseFileResponse;
+  file?: BaseCCPFileResponse;
   fileId?: string;
   op?: string;
   static names(): { [key: string]: string } {
@@ -1878,7 +2329,7 @@ export class FileDeltaResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       currentCategory: 'string',
-      file: BaseFileResponse,
+      file: BaseCCPFileResponse,
       fileId: 'string',
       op: 'string',
     };
@@ -1924,18 +2375,37 @@ export class GetAccessTokenByLinkInfoRequest extends $tea.Model {
  * 
  */
 export class GetAppPublicKeyRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  appId?: string;
+  appId: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       appId: 'app_id',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      appId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class GetAppRequest extends $tea.Model {
+  appId: string;
+  static names(): { [key: string]: string } {
+    return {
+      appId: 'app_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
       appId: 'string',
     };
   }
@@ -1950,21 +2420,61 @@ export class GetAppPublicKeyRequest extends $tea.Model {
  */
 export class GetAsyncTaskResponse extends $tea.Model {
   asyncTaskId?: string;
+  consumedProcess?: number;
+  errCode?: number;
   message?: string;
   state?: string;
+  totalProcess?: number;
+  url?: string;
   static names(): { [key: string]: string } {
     return {
       asyncTaskId: 'async_task_id',
+      consumedProcess: 'consumed_process',
+      errCode: 'err_code',
       message: 'message',
       state: 'state',
+      totalProcess: 'total_process',
+      url: 'url',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
       asyncTaskId: 'string',
+      consumedProcess: 'number',
+      errCode: 'number',
       message: 'string',
       state: 'string',
+      totalProcess: 'number',
+      url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class GetBizCNameInfoRequest extends $tea.Model {
+  cnameType: string;
+  domainId: string;
+  isVpc?: boolean;
+  static names(): { [key: string]: string } {
+    return {
+      cnameType: 'cname_type',
+      domainId: 'domain_id',
+      isVpc: 'is_vpc',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      cnameType: 'string',
+      domainId: 'string',
+      isVpc: 'boolean',
     };
   }
 
@@ -2021,6 +2531,100 @@ export class GetCaptchaRequest extends $tea.Model {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       appId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class GetCorsRuleListRequest extends $tea.Model {
+  domainId: string;
+  static names(): { [key: string]: string } {
+    return {
+      domainId: 'domain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      domainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class GetDataCNameInfoRequest extends $tea.Model {
+  domainId: string;
+  static names(): { [key: string]: string } {
+    return {
+      domainId: 'domain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      domainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取文件夹size信息
+ */
+export class GetDirSizeInfoResponse extends $tea.Model {
+  dirCount?: number;
+  fileCount?: number;
+  size?: number;
+  static names(): { [key: string]: string } {
+    return {
+      dirCount: 'dir_count',
+      fileCount: 'file_count',
+      size: 'size',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      dirCount: 'number',
+      fileCount: 'number',
+      size: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * get domain request
+ */
+export class GetDomainRequest extends $tea.Model {
+  domainId: string;
+  static names(): { [key: string]: string } {
+    return {
+      domainId: 'domain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      domainId: 'string',
     };
   }
 
@@ -2132,6 +2736,7 @@ export class GetDriveResponse extends $tea.Model {
  */
 export class GetFileByPathResponse extends $tea.Model {
   category?: string;
+  characteristicHash?: string;
   contentHash?: string;
   contentHashName?: string;
   contentType?: string;
@@ -2151,6 +2756,7 @@ export class GetFileByPathResponse extends $tea.Model {
   name: string;
   parentFileId?: string;
   punishFlag?: number;
+  shareId?: string;
   size?: number;
   starred?: boolean;
   status?: string;
@@ -2167,6 +2773,7 @@ export class GetFileByPathResponse extends $tea.Model {
   static names(): { [key: string]: string } {
     return {
       category: 'category',
+      characteristicHash: 'characteristic_hash',
       contentHash: 'content_hash',
       contentHashName: 'content_hash_name',
       contentType: 'content_type',
@@ -2186,6 +2793,7 @@ export class GetFileByPathResponse extends $tea.Model {
       name: 'name',
       parentFileId: 'parent_file_id',
       punishFlag: 'punish_flag',
+      shareId: 'share_id',
       size: 'size',
       starred: 'starred',
       status: 'status',
@@ -2205,6 +2813,7 @@ export class GetFileByPathResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       category: 'string',
+      characteristicHash: 'string',
       contentHash: 'string',
       contentHashName: 'string',
       contentType: 'string',
@@ -2224,6 +2833,7 @@ export class GetFileByPathResponse extends $tea.Model {
       name: 'string',
       parentFileId: 'string',
       punishFlag: 'number',
+      shareId: 'string',
       size: 'number',
       starred: 'boolean',
       status: 'string',
@@ -2250,6 +2860,7 @@ export class GetFileByPathResponse extends $tea.Model {
  */
 export class GetFileResponse extends $tea.Model {
   category?: string;
+  characteristicHash?: string;
   contentHash?: string;
   contentHashName?: string;
   contentType?: string;
@@ -2269,6 +2880,7 @@ export class GetFileResponse extends $tea.Model {
   name: string;
   parentFileId?: string;
   punishFlag?: number;
+  shareId?: string;
   size?: number;
   starred?: boolean;
   status?: string;
@@ -2285,6 +2897,7 @@ export class GetFileResponse extends $tea.Model {
   static names(): { [key: string]: string } {
     return {
       category: 'category',
+      characteristicHash: 'characteristic_hash',
       contentHash: 'content_hash',
       contentHashName: 'content_hash_name',
       contentType: 'content_type',
@@ -2304,6 +2917,7 @@ export class GetFileResponse extends $tea.Model {
       name: 'name',
       parentFileId: 'parent_file_id',
       punishFlag: 'punish_flag',
+      shareId: 'share_id',
       size: 'size',
       starred: 'starred',
       status: 'status',
@@ -2323,6 +2937,7 @@ export class GetFileResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       category: 'string',
+      characteristicHash: 'string',
       contentHash: 'string',
       contentHashName: 'string',
       contentType: 'string',
@@ -2342,6 +2957,7 @@ export class GetFileResponse extends $tea.Model {
       name: 'string',
       parentFileId: 'string',
       punishFlag: 'number',
+      shareId: 'string',
       size: 'number',
       starred: 'boolean',
       status: 'string',
@@ -2433,6 +3049,34 @@ export class GetMediaPlayURLResponse extends $tea.Model {
 }
 
 /**
+ * 获取office文档在线编辑地址 response
+ */
+export class GetOfficeEditUrlResponse extends $tea.Model {
+  editUrl?: string;
+  officeAccessToken?: string;
+  officeRefreshToken?: string;
+  static names(): { [key: string]: string } {
+    return {
+      editUrl: 'edit_url',
+      officeAccessToken: 'office_access_token',
+      officeRefreshToken: 'office_refresh_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      editUrl: 'string',
+      officeAccessToken: 'string',
+      officeRefreshToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 获取文档预览地址 response
  */
 export class GetOfficePreviewUrlResponse extends $tea.Model {
@@ -2449,6 +3093,31 @@ export class GetOfficePreviewUrlResponse extends $tea.Model {
     return {
       accessToken: 'string',
       previewUrl: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class GetPublicKeyRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  appId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      appId: 'app_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      appId: 'string',
     };
   }
 
@@ -2486,27 +3155,80 @@ export class GetPublicKeyResponse extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class GetRPVerifyResultRequest extends $tea.Model {
+  userId: string;
+  static names(): { [key: string]: string } {
+    return {
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class GetRPVerifyTokenRequest extends $tea.Model {
+  userId: string;
+  static names(): { [key: string]: string } {
+    return {
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * get_share_link_by_anonymous response
  */
 export class GetShareLinkByAnonymousResponse extends $tea.Model {
+  avatar?: string;
   creatorId?: string;
   creatorName?: string;
+  creatorPhone?: string;
   expiration?: string;
+  shareName?: string;
   updatedAt?: string;
   static names(): { [key: string]: string } {
     return {
+      avatar: 'avatar',
       creatorId: 'creator_id',
       creatorName: 'creator_name',
+      creatorPhone: 'creator_phone',
       expiration: 'expiration',
+      shareName: 'share_name',
       updatedAt: 'updated_at',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
+      avatar: 'string',
       creatorId: 'string',
       creatorName: 'string',
+      creatorPhone: 'string',
       expiration: 'string',
+      shareName: 'string',
       updatedAt: 'string',
     };
   }
@@ -2582,6 +3304,7 @@ export class GetShareResponse extends $tea.Model {
   expired?: boolean;
   owner?: string;
   permissions?: string[];
+  shareFileId?: string;
   shareFilePath?: string;
   shareId?: string;
   shareName?: string;
@@ -2599,6 +3322,7 @@ export class GetShareResponse extends $tea.Model {
       expired: 'expired',
       owner: 'owner',
       permissions: 'permissions',
+      shareFileId: 'share_file_id',
       shareFilePath: 'share_file_path',
       shareId: 'share_id',
       shareName: 'share_name',
@@ -2619,6 +3343,7 @@ export class GetShareResponse extends $tea.Model {
       expired: 'boolean',
       owner: 'string',
       permissions: { 'type': 'array', 'itemType': 'string' },
+      shareFileId: 'string',
       shareFilePath: 'string',
       shareId: 'string',
       shareName: 'string',
@@ -2724,6 +3449,689 @@ export class GetVideoPreviewURLResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       previewUrl: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * complete file response
+ */
+export class HostingCompleteFileResponse extends $tea.Model {
+  contentHash?: string;
+  contentHashName?: string;
+  contentType?: string;
+  crc?: string;
+  crc64Hash?: string;
+  createdAt?: string;
+  description?: string;
+  domainId?: string;
+  downloadUrl?: string;
+  driveId?: string;
+  fileExtension?: string;
+  filePath?: string;
+  name: string;
+  parentFilePath?: string;
+  shareId?: string;
+  size?: number;
+  status?: string;
+  thumbnail?: string;
+  trashedAt?: string;
+  type?: string;
+  updatedAt?: string;
+  uploadId?: string;
+  url?: string;
+  static names(): { [key: string]: string } {
+    return {
+      contentHash: 'content_hash',
+      contentHashName: 'content_hash_name',
+      contentType: 'content_type',
+      crc: 'crc',
+      crc64Hash: 'crc64_hash',
+      createdAt: 'created_at',
+      description: 'description',
+      domainId: 'domain_id',
+      downloadUrl: 'download_url',
+      driveId: 'drive_id',
+      fileExtension: 'file_extension',
+      filePath: 'file_path',
+      name: 'name',
+      parentFilePath: 'parent_file_path',
+      shareId: 'share_id',
+      size: 'size',
+      status: 'status',
+      thumbnail: 'thumbnail',
+      trashedAt: 'trashed_at',
+      type: 'type',
+      updatedAt: 'updated_at',
+      uploadId: 'upload_id',
+      url: 'url',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      contentHash: 'string',
+      contentHashName: 'string',
+      contentType: 'string',
+      crc: 'string',
+      crc64Hash: 'string',
+      createdAt: 'string',
+      description: 'string',
+      domainId: 'string',
+      downloadUrl: 'string',
+      driveId: 'string',
+      fileExtension: 'string',
+      filePath: 'string',
+      name: 'string',
+      parentFilePath: 'string',
+      shareId: 'string',
+      size: 'number',
+      status: 'string',
+      thumbnail: 'string',
+      trashedAt: 'string',
+      type: 'string',
+      updatedAt: 'string',
+      uploadId: 'string',
+      url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 文件拷贝 response
+ */
+export class HostingCopyFileResponse extends $tea.Model {
+  asyncTaskId?: string;
+  domainId?: string;
+  driveId?: string;
+  filePath?: string;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      asyncTaskId: 'async_task_id',
+      domainId: 'domain_id',
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      asyncTaskId: 'string',
+      domainId: 'string',
+      driveId: 'string',
+      filePath: 'string',
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Create file response
+ */
+export class HostingCreateFileResponse extends $tea.Model {
+  domainId?: string;
+  driveId?: string;
+  filePath?: string;
+  partInfoList?: UploadPartInfo[];
+  shareId?: string;
+  type?: string;
+  uploadId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      domainId: 'domain_id',
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      partInfoList: 'part_info_list',
+      shareId: 'share_id',
+      type: 'type',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      domainId: 'string',
+      driveId: 'string',
+      filePath: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
+      type: 'string',
+      uploadId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 删除文件 response
+ */
+export class HostingDeleteFileResponse extends $tea.Model {
+  asyncTaskId?: string;
+  domainId?: string;
+  driveId?: string;
+  filePath?: string;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      asyncTaskId: 'async_task_id',
+      domainId: 'domain_id',
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      asyncTaskId: 'string',
+      domainId: 'string',
+      driveId: 'string',
+      filePath: 'string',
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 批量删除文件 response
+ */
+export class HostingDeleteFilesResponse extends $tea.Model {
+  deletedFileIdList?: string[];
+  domainId?: string;
+  driveId?: string;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      deletedFileIdList: 'deleted_file_id_list',
+      domainId: 'domain_id',
+      driveId: 'drive_id',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      deletedFileIdList: { 'type': 'array', 'itemType': 'string' },
+      domainId: 'string',
+      driveId: 'string',
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取download url response
+ */
+export class HostingGetDownloadUrlResponse extends $tea.Model {
+  expiration?: string;
+  method?: string;
+  url?: string;
+  static names(): { [key: string]: string } {
+    return {
+      expiration: 'expiration',
+      method: 'method',
+      url: 'url',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      expiration: 'string',
+      method: 'string',
+      url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取文件元数据response
+ */
+export class HostingGetFileResponse extends $tea.Model {
+  contentHash?: string;
+  contentHashName?: string;
+  contentType?: string;
+  crc64Hash?: string;
+  createdAt?: string;
+  description?: string;
+  domainId?: string;
+  downloadUrl?: string;
+  driveId?: string;
+  fileExtension?: string;
+  filePath?: string;
+  name: string;
+  parentFilePath?: string;
+  shareId?: string;
+  size?: number;
+  status?: string;
+  thumbnail?: string;
+  trashedAt?: string;
+  type?: string;
+  updatedAt?: string;
+  uploadId?: string;
+  url?: string;
+  static names(): { [key: string]: string } {
+    return {
+      contentHash: 'content_hash',
+      contentHashName: 'content_hash_name',
+      contentType: 'content_type',
+      crc64Hash: 'crc64_hash',
+      createdAt: 'created_at',
+      description: 'description',
+      domainId: 'domain_id',
+      downloadUrl: 'download_url',
+      driveId: 'drive_id',
+      fileExtension: 'file_extension',
+      filePath: 'file_path',
+      name: 'name',
+      parentFilePath: 'parent_file_path',
+      shareId: 'share_id',
+      size: 'size',
+      status: 'status',
+      thumbnail: 'thumbnail',
+      trashedAt: 'trashed_at',
+      type: 'type',
+      updatedAt: 'updated_at',
+      uploadId: 'upload_id',
+      url: 'url',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      contentHash: 'string',
+      contentHashName: 'string',
+      contentType: 'string',
+      crc64Hash: 'string',
+      createdAt: 'string',
+      description: 'string',
+      domainId: 'string',
+      downloadUrl: 'string',
+      driveId: 'string',
+      fileExtension: 'string',
+      filePath: 'string',
+      name: 'string',
+      parentFilePath: 'string',
+      shareId: 'string',
+      size: 'number',
+      status: 'string',
+      thumbnail: 'string',
+      trashedAt: 'string',
+      type: 'string',
+      updatedAt: 'string',
+      uploadId: 'string',
+      url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取secure url response
+ */
+export class HostingGetSecureUrlResponse extends $tea.Model {
+  expiration?: string;
+  url?: string;
+  static names(): { [key: string]: string } {
+    return {
+      expiration: 'expiration',
+      url: 'url',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      expiration: 'string',
+      url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Get UploadUrl Response
+ */
+export class HostingGetUploadUrlResponse extends $tea.Model {
+  createAt?: string;
+  domainId?: string;
+  driveId?: string;
+  filePath?: string;
+  partInfoList?: UploadPartInfo[];
+  uploadId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      createAt: 'create_at',
+      domainId: 'domain_id',
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      partInfoList: 'part_info_list',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createAt: 'string',
+      domainId: 'string',
+      driveId: 'string',
+      filePath: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      uploadId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * List file response
+ */
+export class HostingListFileResponse extends $tea.Model {
+  items?: BaseHostingFileResponse[];
+  nextMarker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      items: 'items',
+      nextMarker: 'next_marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      items: { 'type': 'array', 'itemType': BaseHostingFileResponse },
+      nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取签名 response
+ */
+export class HostingListUploadedPartResponse extends $tea.Model {
+  filePath?: string;
+  nextPartNumberMarker?: string;
+  uploadId?: string;
+  uploadedParts?: UploadPartInfo[];
+  static names(): { [key: string]: string } {
+    return {
+      filePath: 'file_path',
+      nextPartNumberMarker: 'next_part_number_marker',
+      uploadId: 'upload_id',
+      uploadedParts: 'uploaded_parts',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      filePath: 'string',
+      nextPartNumberMarker: 'string',
+      uploadId: 'string',
+      uploadedParts: { 'type': 'array', 'itemType': UploadPartInfo },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 文件移动 response
+ */
+export class HostingMoveFileResponse extends $tea.Model {
+  asyncTaskId?: string;
+  domainId?: string;
+  driveId?: string;
+  filePath?: string;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      asyncTaskId: 'async_task_id',
+      domainId: 'domain_id',
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      asyncTaskId: 'string',
+      domainId: 'string',
+      driveId: 'string',
+      filePath: 'string',
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * search file response
+ */
+export class HostingSearchFileResponse extends $tea.Model {
+  items?: BaseHostingFileResponse[];
+  nextMarker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      items: 'items',
+      nextMarker: 'next_marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      items: { 'type': 'array', 'itemType': BaseHostingFileResponse },
+      nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 更新文件元数据 response
+ */
+export class HostingUpdateFileMetaResponse extends $tea.Model {
+  contentHash?: string;
+  contentHashName?: string;
+  contentType?: string;
+  crc64Hash?: string;
+  createdAt?: string;
+  description?: string;
+  domainId?: string;
+  downloadUrl?: string;
+  driveId?: string;
+  fileExtension?: string;
+  filePath?: string;
+  name: string;
+  parentFilePath?: string;
+  shareId?: string;
+  size?: number;
+  status?: string;
+  thumbnail?: string;
+  trashedAt?: string;
+  type?: string;
+  updatedAt?: string;
+  uploadId?: string;
+  url?: string;
+  static names(): { [key: string]: string } {
+    return {
+      contentHash: 'content_hash',
+      contentHashName: 'content_hash_name',
+      contentType: 'content_type',
+      crc64Hash: 'crc64_hash',
+      createdAt: 'created_at',
+      description: 'description',
+      domainId: 'domain_id',
+      downloadUrl: 'download_url',
+      driveId: 'drive_id',
+      fileExtension: 'file_extension',
+      filePath: 'file_path',
+      name: 'name',
+      parentFilePath: 'parent_file_path',
+      shareId: 'share_id',
+      size: 'size',
+      status: 'status',
+      thumbnail: 'thumbnail',
+      trashedAt: 'trashed_at',
+      type: 'type',
+      updatedAt: 'updated_at',
+      uploadId: 'upload_id',
+      url: 'url',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      contentHash: 'string',
+      contentHashName: 'string',
+      contentType: 'string',
+      crc64Hash: 'string',
+      createdAt: 'string',
+      description: 'string',
+      domainId: 'string',
+      downloadUrl: 'string',
+      driveId: 'string',
+      fileExtension: 'string',
+      filePath: 'string',
+      name: 'string',
+      parentFilePath: 'string',
+      shareId: 'string',
+      size: 'number',
+      status: 'string',
+      thumbnail: 'string',
+      trashedAt: 'string',
+      type: 'string',
+      updatedAt: 'string',
+      uploadId: 'string',
+      url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * DRM License response
+ */
+export class HostingVideoDRMLicenseResponse extends $tea.Model {
+  data: string;
+  deviceInfo: string;
+  states: number;
+  static names(): { [key: string]: string } {
+    return {
+      data: 'data',
+      deviceInfo: 'device_info',
+      states: 'states',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      data: 'string',
+      deviceInfo: 'string',
+      states: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 转码接口response
+ */
+export class HostingVideoDefinitionResponse extends $tea.Model {
+  definitionList?: string[];
+  frameRate?: string;
+  static names(): { [key: string]: string } {
+    return {
+      definitionList: 'definition_list',
+      frameRate: 'frame_rate',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      definitionList: { 'type': 'array', 'itemType': 'string' },
+      frameRate: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 转码接口response
+ */
+export class HostingVideoTranscodeResponse extends $tea.Model {
+  definitionList?: string[];
+  duration?: number;
+  hlsTime?: number;
+  static names(): { [key: string]: string } {
+    return {
+      definitionList: 'definition_list',
+      duration: 'duration',
+      hlsTime: 'hls_time',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      definitionList: { 'type': 'array', 'itemType': 'string' },
+      duration: 'number',
+      hlsTime: 'number',
     };
   }
 
@@ -2851,6 +4259,43 @@ export class ImageQuality extends $tea.Model {
 /**
  * 
  */
+export class LdapConfig extends $tea.Model {
+  adminDn?: string;
+  adminPassword?: string;
+  baseDn?: string;
+  host?: string;
+  port?: number;
+  uid?: string;
+  static names(): { [key: string]: string } {
+    return {
+      adminDn: 'admin_dn',
+      adminPassword: 'admin_password',
+      baseDn: 'base_dn',
+      host: 'host',
+      port: 'port',
+      uid: 'uid',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      adminDn: 'string',
+      adminPassword: 'string',
+      baseDn: 'string',
+      host: 'string',
+      port: 'number',
+      uid: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class LinkInfo extends $tea.Model {
   extra?: string;
   identity?: string;
@@ -2942,6 +4387,31 @@ export class LinkInfoResponse extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class ListAppsRequest extends $tea.Model {
+  limit?: number;
+  marker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      limit: 'limit',
+      marker: 'marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      limit: 'number',
+      marker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * list_file_by_anonymous response
  */
 export class ListByAnonymousResponse extends $tea.Model {
@@ -2958,6 +4428,31 @@ export class ListByAnonymousResponse extends $tea.Model {
     return {
       items: { 'type': 'array', 'itemType': BaseFileAnonymousResponse },
       nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * list domain request
+ */
+export class ListDomainsRequest extends $tea.Model {
+  limit?: number;
+  marker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      limit: 'limit',
+      marker: 'marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      limit: 'number',
+      marker: 'string',
     };
   }
 
@@ -3023,7 +4518,7 @@ export class ListFileDeltaResponse extends $tea.Model {
  * List file response
  */
 export class ListFileResponse extends $tea.Model {
-  items?: BaseFileResponse[];
+  items?: BaseCCPFileResponse[];
   nextMarker?: string;
   static names(): { [key: string]: string } {
     return {
@@ -3034,7 +4529,7 @@ export class ListFileResponse extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      items: { 'type': 'array', 'itemType': BaseFileResponse },
+      items: { 'type': 'array', 'itemType': BaseCCPFileResponse },
       nextMarker: 'string',
     };
   }
@@ -3142,6 +4637,28 @@ export class ListStoreResponse extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class ListStoresRequest extends $tea.Model {
+  domainId: string;
+  static names(): { [key: string]: string } {
+    return {
+      domainId: 'domain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      domainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 获取签名 response
  */
 export class ListUploadedPartResponse extends $tea.Model {
@@ -3195,6 +4712,34 @@ export class LoginByCodeRequest extends $tea.Model {
       appId: 'string',
       authCode: 'string',
       type: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class LogoutRequest extends $tea.Model {
+  BackUrl?: string;
+  ClientID: string;
+  LoginType?: string;
+  static names(): { [key: string]: string } {
+    return {
+      BackUrl: 'BackUrl',
+      ClientID: 'ClientID',
+      LoginType: 'LoginType',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      BackUrl: 'string',
+      ClientID: 'string',
+      LoginType: 'string',
     };
   }
 
@@ -3272,6 +4817,7 @@ export class MobileLoginRequest extends $tea.Model {
   captchaId?: string;
   captchaText?: string;
   encryptedKey?: string;
+  nvcParam: string;
   password?: string;
   phoneNumber: string;
   phoneRegion?: string;
@@ -3285,6 +4831,7 @@ export class MobileLoginRequest extends $tea.Model {
       captchaId: 'captcha_id',
       captchaText: 'captcha_text',
       encryptedKey: 'encrypted_key',
+      nvcParam: 'nvc_param',
       password: 'password',
       phoneNumber: 'phone_number',
       phoneRegion: 'phone_region',
@@ -3301,6 +4848,7 @@ export class MobileLoginRequest extends $tea.Model {
       captchaId: 'string',
       captchaText: 'string',
       encryptedKey: 'string',
+      nvcParam: 'string',
       password: 'string',
       phoneNumber: 'string',
       phoneRegion: 'string',
@@ -3320,6 +4868,7 @@ export class MobileLoginRequest extends $tea.Model {
 export class MobileRegisterRequest extends $tea.Model {
   headers?: { [key: string]: string };
   appId: string;
+  nvcParam: string;
   phoneNumber: string;
   phoneRegion?: string;
   smsCode: string;
@@ -3328,6 +4877,7 @@ export class MobileRegisterRequest extends $tea.Model {
     return {
       headers: 'headers',
       appId: 'app_id',
+      nvcParam: 'nvc_param',
       phoneNumber: 'phone_number',
       phoneRegion: 'phone_region',
       smsCode: 'sms_code',
@@ -3339,6 +4889,7 @@ export class MobileRegisterRequest extends $tea.Model {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       appId: 'string',
+      nvcParam: 'string',
       phoneNumber: 'string',
       phoneRegion: 'string',
       smsCode: 'string',
@@ -3359,6 +4910,7 @@ export class MobileSendSmsCodeRequest extends $tea.Model {
   appId: string;
   captchaId?: string;
   captchaText?: string;
+  nvcParam: string;
   phoneNumber: string;
   phoneRegion?: string;
   type: string;
@@ -3368,6 +4920,7 @@ export class MobileSendSmsCodeRequest extends $tea.Model {
       appId: 'app_id',
       captchaId: 'captcha_id',
       captchaText: 'captcha_text',
+      nvcParam: 'nvc_param',
       phoneNumber: 'phone_number',
       phoneRegion: 'phone_region',
       type: 'type',
@@ -3380,6 +4933,7 @@ export class MobileSendSmsCodeRequest extends $tea.Model {
       appId: 'string',
       captchaId: 'string',
       captchaText: 'string',
+      nvcParam: 'string',
       phoneNumber: 'string',
       phoneRegion: 'string',
       type: 'string',
@@ -3445,686 +4999,6 @@ export class MoveFileResponse extends $tea.Model {
 }
 
 /**
- * complete file response
- */
-export class OSSCompleteFileResponse extends $tea.Model {
-  contentHash?: string;
-  contentHashName?: string;
-  contentType?: string;
-  crc?: string;
-  crc64Hash?: string;
-  createdAt?: string;
-  description?: string;
-  domainId?: string;
-  downloadUrl?: string;
-  driveId?: string;
-  fileExtension?: string;
-  filePath?: string;
-  name: string;
-  parentFilePath?: string;
-  shareId?: string;
-  size?: number;
-  status?: string;
-  thumbnail?: string;
-  trashedAt?: string;
-  type?: string;
-  updatedAt?: string;
-  uploadId?: string;
-  url?: string;
-  static names(): { [key: string]: string } {
-    return {
-      contentHash: 'content_hash',
-      contentHashName: 'content_hash_name',
-      contentType: 'content_type',
-      crc: 'crc',
-      crc64Hash: 'crc64_hash',
-      createdAt: 'created_at',
-      description: 'description',
-      domainId: 'domain_id',
-      downloadUrl: 'download_url',
-      driveId: 'drive_id',
-      fileExtension: 'file_extension',
-      filePath: 'file_path',
-      name: 'name',
-      parentFilePath: 'parent_file_path',
-      shareId: 'share_id',
-      size: 'size',
-      status: 'status',
-      thumbnail: 'thumbnail',
-      trashedAt: 'trashed_at',
-      type: 'type',
-      updatedAt: 'updated_at',
-      uploadId: 'upload_id',
-      url: 'url',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      contentHash: 'string',
-      contentHashName: 'string',
-      contentType: 'string',
-      crc: 'string',
-      crc64Hash: 'string',
-      createdAt: 'string',
-      description: 'string',
-      domainId: 'string',
-      downloadUrl: 'string',
-      driveId: 'string',
-      fileExtension: 'string',
-      filePath: 'string',
-      name: 'string',
-      parentFilePath: 'string',
-      shareId: 'string',
-      size: 'number',
-      status: 'string',
-      thumbnail: 'string',
-      trashedAt: 'string',
-      type: 'string',
-      updatedAt: 'string',
-      uploadId: 'string',
-      url: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 文件拷贝 response
- */
-export class OSSCopyFileResponse extends $tea.Model {
-  asyncTaskId?: string;
-  domainId?: string;
-  driveId?: string;
-  filePath?: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      asyncTaskId: 'async_task_id',
-      domainId: 'domain_id',
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      asyncTaskId: 'string',
-      domainId: 'string',
-      driveId: 'string',
-      filePath: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Create file response
- */
-export class OSSCreateFileResponse extends $tea.Model {
-  domainId?: string;
-  driveId?: string;
-  filePath?: string;
-  partInfoList?: UploadPartInfo[];
-  shareId?: string;
-  type?: string;
-  uploadId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      domainId: 'domain_id',
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      partInfoList: 'part_info_list',
-      shareId: 'share_id',
-      type: 'type',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      domainId: 'string',
-      driveId: 'string',
-      filePath: 'string',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      shareId: 'string',
-      type: 'string',
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 删除文件 response
- */
-export class OSSDeleteFileResponse extends $tea.Model {
-  asyncTaskId?: string;
-  domainId?: string;
-  driveId?: string;
-  filePath?: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      asyncTaskId: 'async_task_id',
-      domainId: 'domain_id',
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      asyncTaskId: 'string',
-      domainId: 'string',
-      driveId: 'string',
-      filePath: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 批量删除文件 response
- */
-export class OSSDeleteFilesResponse extends $tea.Model {
-  deletedFileIdList?: string[];
-  domainId?: string;
-  driveId?: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      deletedFileIdList: 'deleted_file_id_list',
-      domainId: 'domain_id',
-      driveId: 'drive_id',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      deletedFileIdList: { 'type': 'array', 'itemType': 'string' },
-      domainId: 'string',
-      driveId: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取download url response
- */
-export class OSSGetDownloadUrlResponse extends $tea.Model {
-  expiration?: string;
-  method?: string;
-  url?: string;
-  static names(): { [key: string]: string } {
-    return {
-      expiration: 'expiration',
-      method: 'method',
-      url: 'url',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      expiration: 'string',
-      method: 'string',
-      url: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件元数据response
- */
-export class OSSGetFileResponse extends $tea.Model {
-  contentHash?: string;
-  contentHashName?: string;
-  contentType?: string;
-  crc64Hash?: string;
-  createdAt?: string;
-  description?: string;
-  domainId?: string;
-  downloadUrl?: string;
-  driveId?: string;
-  fileExtension?: string;
-  filePath?: string;
-  name: string;
-  parentFilePath?: string;
-  shareId?: string;
-  size?: number;
-  status?: string;
-  thumbnail?: string;
-  trashedAt?: string;
-  type?: string;
-  updatedAt?: string;
-  uploadId?: string;
-  url?: string;
-  static names(): { [key: string]: string } {
-    return {
-      contentHash: 'content_hash',
-      contentHashName: 'content_hash_name',
-      contentType: 'content_type',
-      crc64Hash: 'crc64_hash',
-      createdAt: 'created_at',
-      description: 'description',
-      domainId: 'domain_id',
-      downloadUrl: 'download_url',
-      driveId: 'drive_id',
-      fileExtension: 'file_extension',
-      filePath: 'file_path',
-      name: 'name',
-      parentFilePath: 'parent_file_path',
-      shareId: 'share_id',
-      size: 'size',
-      status: 'status',
-      thumbnail: 'thumbnail',
-      trashedAt: 'trashed_at',
-      type: 'type',
-      updatedAt: 'updated_at',
-      uploadId: 'upload_id',
-      url: 'url',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      contentHash: 'string',
-      contentHashName: 'string',
-      contentType: 'string',
-      crc64Hash: 'string',
-      createdAt: 'string',
-      description: 'string',
-      domainId: 'string',
-      downloadUrl: 'string',
-      driveId: 'string',
-      fileExtension: 'string',
-      filePath: 'string',
-      name: 'string',
-      parentFilePath: 'string',
-      shareId: 'string',
-      size: 'number',
-      status: 'string',
-      thumbnail: 'string',
-      trashedAt: 'string',
-      type: 'string',
-      updatedAt: 'string',
-      uploadId: 'string',
-      url: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取secure url response
- */
-export class OSSGetSecureUrlResponse extends $tea.Model {
-  expiration?: string;
-  url?: string;
-  static names(): { [key: string]: string } {
-    return {
-      expiration: 'expiration',
-      url: 'url',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      expiration: 'string',
-      url: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Get UploadUrl Response
- */
-export class OSSGetUploadUrlResponse extends $tea.Model {
-  createAt?: string;
-  domainId?: string;
-  driveId?: string;
-  filePath?: string;
-  partInfoList?: UploadPartInfo[];
-  uploadId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      createAt: 'create_at',
-      domainId: 'domain_id',
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      partInfoList: 'part_info_list',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      createAt: 'string',
-      domainId: 'string',
-      driveId: 'string',
-      filePath: 'string',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * List file response
- */
-export class OSSListFileResponse extends $tea.Model {
-  items?: BaseOSSFileResponse[];
-  nextMarker?: string;
-  static names(): { [key: string]: string } {
-    return {
-      items: 'items',
-      nextMarker: 'next_marker',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      items: { 'type': 'array', 'itemType': BaseOSSFileResponse },
-      nextMarker: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取签名 response
- */
-export class OSSListUploadedPartResponse extends $tea.Model {
-  filePath?: string;
-  nextPartNumberMarker?: string;
-  uploadId?: string;
-  uploadedParts?: UploadPartInfo[];
-  static names(): { [key: string]: string } {
-    return {
-      filePath: 'file_path',
-      nextPartNumberMarker: 'next_part_number_marker',
-      uploadId: 'upload_id',
-      uploadedParts: 'uploaded_parts',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      filePath: 'string',
-      nextPartNumberMarker: 'string',
-      uploadId: 'string',
-      uploadedParts: { 'type': 'array', 'itemType': UploadPartInfo },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 文件移动 response
- */
-export class OSSMoveFileResponse extends $tea.Model {
-  asyncTaskId?: string;
-  domainId?: string;
-  driveId?: string;
-  filePath?: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      asyncTaskId: 'async_task_id',
-      domainId: 'domain_id',
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      asyncTaskId: 'string',
-      domainId: 'string',
-      driveId: 'string',
-      filePath: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * search file response
- */
-export class OSSSearchFileResponse extends $tea.Model {
-  items?: BaseOSSFileResponse[];
-  nextMarker?: string;
-  static names(): { [key: string]: string } {
-    return {
-      items: 'items',
-      nextMarker: 'next_marker',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      items: { 'type': 'array', 'itemType': BaseOSSFileResponse },
-      nextMarker: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 更新文件元数据 response
- */
-export class OSSUpdateFileMetaResponse extends $tea.Model {
-  contentHash?: string;
-  contentHashName?: string;
-  contentType?: string;
-  crc64Hash?: string;
-  createdAt?: string;
-  description?: string;
-  domainId?: string;
-  downloadUrl?: string;
-  driveId?: string;
-  fileExtension?: string;
-  filePath?: string;
-  name: string;
-  parentFilePath?: string;
-  shareId?: string;
-  size?: number;
-  status?: string;
-  thumbnail?: string;
-  trashedAt?: string;
-  type?: string;
-  updatedAt?: string;
-  uploadId?: string;
-  url?: string;
-  static names(): { [key: string]: string } {
-    return {
-      contentHash: 'content_hash',
-      contentHashName: 'content_hash_name',
-      contentType: 'content_type',
-      crc64Hash: 'crc64_hash',
-      createdAt: 'created_at',
-      description: 'description',
-      domainId: 'domain_id',
-      downloadUrl: 'download_url',
-      driveId: 'drive_id',
-      fileExtension: 'file_extension',
-      filePath: 'file_path',
-      name: 'name',
-      parentFilePath: 'parent_file_path',
-      shareId: 'share_id',
-      size: 'size',
-      status: 'status',
-      thumbnail: 'thumbnail',
-      trashedAt: 'trashed_at',
-      type: 'type',
-      updatedAt: 'updated_at',
-      uploadId: 'upload_id',
-      url: 'url',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      contentHash: 'string',
-      contentHashName: 'string',
-      contentType: 'string',
-      crc64Hash: 'string',
-      createdAt: 'string',
-      description: 'string',
-      domainId: 'string',
-      downloadUrl: 'string',
-      driveId: 'string',
-      fileExtension: 'string',
-      filePath: 'string',
-      name: 'string',
-      parentFilePath: 'string',
-      shareId: 'string',
-      size: 'number',
-      status: 'string',
-      thumbnail: 'string',
-      trashedAt: 'string',
-      type: 'string',
-      updatedAt: 'string',
-      uploadId: 'string',
-      url: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * DRM License response
- */
-export class OSSVideoDRMLicenseResponse extends $tea.Model {
-  data: string;
-  states: number;
-  static names(): { [key: string]: string } {
-    return {
-      data: 'data',
-      states: 'states',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      data: 'string',
-      states: 'number',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 转码接口response
- */
-export class OSSVideoDefinitionResponse extends $tea.Model {
-  definitionList?: string[];
-  frameRate?: string;
-  static names(): { [key: string]: string } {
-    return {
-      definitionList: 'definition_list',
-      frameRate: 'frame_rate',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      definitionList: { 'type': 'array', 'itemType': 'string' },
-      frameRate: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 转码接口response
- */
-export class OSSVideoTranscodeResponse extends $tea.Model {
-  definitionList?: string[];
-  duration?: number;
-  hlsTime?: number;
-  static names(): { [key: string]: string } {
-    return {
-      definitionList: 'definition_list',
-      duration: 'duration',
-      hlsTime: 'hls_time',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      definitionList: { 'type': 'array', 'itemType': 'string' },
-      duration: 'number',
-      hlsTime: 'number',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
  * Pre hash check Response
  */
 export class PreHashCheckSuccessResponse extends $tea.Model {
@@ -4159,6 +5033,31 @@ export class PreHashCheckSuccessResponse extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class RPVerifyTokenResponse extends $tea.Model {
+  needRpVerify: boolean;
+  verifyToken: VerifyTokenResponse;
+  static names(): { [key: string]: string } {
+    return {
+      needRpVerify: 'need_rp_verify',
+      verifyToken: 'verify_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      needRpVerify: 'boolean',
+      verifyToken: VerifyTokenResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 下载限速配置
  */
 export class RateLimit extends $tea.Model {
@@ -4175,6 +5074,56 @@ export class RateLimit extends $tea.Model {
     return {
       partSize: 'number',
       partSpeed: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 刷新office文档在线编辑凭证 response
+ */
+export class RefreshOfficeEditTokenResponse extends $tea.Model {
+  officeAccessToken?: string;
+  officeRefreshToken?: string;
+  static names(): { [key: string]: string } {
+    return {
+      officeAccessToken: 'office_access_token',
+      officeRefreshToken: 'office_refresh_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      officeAccessToken: 'string',
+      officeRefreshToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class RemoveStoreRequest extends $tea.Model {
+  domainId: string;
+  storeId: string;
+  static names(): { [key: string]: string } {
+    return {
+      domainId: 'domain_id',
+      storeId: 'store_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      domainId: 'string',
+      storeId: 'string',
     };
   }
 
@@ -4215,7 +5164,7 @@ export class RevokeRequest extends $tea.Model {
  * scan file meta response
  */
 export class ScanFileMetaResponse extends $tea.Model {
-  items?: BaseFileResponse[];
+  items?: BaseCCPFileResponse[];
   nextMarker?: string;
   static names(): { [key: string]: string } {
     return {
@@ -4226,7 +5175,7 @@ export class ScanFileMetaResponse extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      items: { 'type': 'array', 'itemType': BaseFileResponse },
+      items: { 'type': 'array', 'itemType': BaseCCPFileResponse },
       nextMarker: 'string',
     };
   }
@@ -4240,19 +5189,174 @@ export class ScanFileMetaResponse extends $tea.Model {
  * search file response
  */
 export class SearchFileResponse extends $tea.Model {
-  items?: BaseFileResponse[];
+  items?: BaseCCPFileResponse[];
   nextMarker?: string;
+  totalCount?: number;
   static names(): { [key: string]: string } {
     return {
       items: 'items',
       nextMarker: 'next_marker',
+      totalCount: 'total_count',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
-      items: { 'type': 'array', 'itemType': BaseFileResponse },
+      items: { 'type': 'array', 'itemType': BaseCCPFileResponse },
       nextMarker: 'string',
+      totalCount: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class SetAppPublicKeyRequest extends $tea.Model {
+  appId: string;
+  publicKey: string;
+  static names(): { [key: string]: string } {
+    return {
+      appId: 'app_id',
+      publicKey: 'public_key',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      appId: 'string',
+      publicKey: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class SetBizCNameCertRequest extends $tea.Model {
+  CertID?: string;
+  bizCname?: string;
+  certBody: string;
+  certName: string;
+  certPrivatekey: string;
+  cnameType: string;
+  domainId: string;
+  isVpc?: boolean;
+  static names(): { [key: string]: string } {
+    return {
+      CertID: 'CertID',
+      bizCname: 'biz_cname',
+      certBody: 'cert_body',
+      certName: 'cert_name',
+      certPrivatekey: 'cert_privatekey',
+      cnameType: 'cname_type',
+      domainId: 'domain_id',
+      isVpc: 'is_vpc',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      CertID: 'string',
+      bizCname: 'string',
+      certBody: 'string',
+      certName: 'string',
+      certPrivatekey: 'string',
+      cnameType: 'string',
+      domainId: 'string',
+      isVpc: 'boolean',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class SetBizCNameRequest extends $tea.Model {
+  bizCname: string;
+  cnameType: string;
+  domainId: string;
+  isVpc?: boolean;
+  static names(): { [key: string]: string } {
+    return {
+      bizCname: 'biz_cname',
+      cnameType: 'cname_type',
+      domainId: 'domain_id',
+      isVpc: 'is_vpc',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      bizCname: 'string',
+      cnameType: 'string',
+      domainId: 'string',
+      isVpc: 'boolean',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * list cors rule request
+ */
+export class SetCorsRuleListRequest extends $tea.Model {
+  corsRuleList: CorsRule[];
+  domainId: string;
+  static names(): { [key: string]: string } {
+    return {
+      corsRuleList: 'cors_rule_list',
+      domainId: 'domain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      corsRuleList: { 'type': 'array', 'itemType': CorsRule },
+      domainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class SetDataCNameRequest extends $tea.Model {
+  dataCname: string;
+  domainId: string;
+  location: string;
+  static names(): { [key: string]: string } {
+    return {
+      dataCname: 'data_cname',
+      domainId: 'domain_id',
+      location: 'location',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      dataCname: 'string',
+      domainId: 'string',
+      location: 'string',
     };
   }
 
@@ -4265,12 +5369,14 @@ export class SearchFileResponse extends $tea.Model {
  * 
  */
 export class SharePermissionPolicy extends $tea.Model {
+  fileId?: string;
   filePath?: string;
   permissionInheritable?: boolean;
   permissionList?: string[];
   permissionType?: string;
   static names(): { [key: string]: string } {
     return {
+      fileId: 'file_id',
       filePath: 'file_path',
       permissionInheritable: 'permission_inheritable',
       permissionList: 'permission_list',
@@ -4280,6 +5386,7 @@ export class SharePermissionPolicy extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      fileId: 'string',
       filePath: 'string',
       permissionInheritable: 'boolean',
       permissionList: { 'type': 'array', 'itemType': 'string' },
@@ -4402,12 +5509,14 @@ export class StoreItemResponse extends $tea.Model {
 export class StreamInfo extends $tea.Model {
   crc64Hash?: string;
   downloadUrl?: string;
+  size?: number;
   thumbnail?: string;
   url?: string;
   static names(): { [key: string]: string } {
     return {
       crc64Hash: 'crc64_hash',
       downloadUrl: 'download_url',
+      size: 'size',
       thumbnail: 'thumbnail',
       url: 'url',
     };
@@ -4417,6 +5526,7 @@ export class StreamInfo extends $tea.Model {
     return {
       crc64Hash: 'string',
       downloadUrl: 'string',
+      size: 'number',
       thumbnail: 'string',
       url: 'string',
     };
@@ -4431,12 +5541,14 @@ export class StreamInfo extends $tea.Model {
  * 
  */
 export class StreamUploadInfo extends $tea.Model {
+  location?: string;
   partInfoList?: UploadPartInfo[];
   preRapidUpload?: boolean;
   rapidUpload?: boolean;
   uploadId?: string;
   static names(): { [key: string]: string } {
     return {
+      location: 'location',
       partInfoList: 'part_info_list',
       preRapidUpload: 'pre_rapid_upload',
       rapidUpload: 'rapid_upload',
@@ -4446,6 +5558,7 @@ export class StreamUploadInfo extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      location: 'string',
       partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
       preRapidUpload: 'boolean',
       rapidUpload: 'boolean',
@@ -4468,6 +5581,7 @@ export class SystemTag extends $tea.Model {
   parentEnName?: string;
   parentName?: string;
   selected?: boolean;
+  source?: string;
   tagLevel?: number;
   static names(): { [key: string]: string } {
     return {
@@ -4477,6 +5591,7 @@ export class SystemTag extends $tea.Model {
       parentEnName: 'parent_en_name',
       parentName: 'parent_name',
       selected: 'selected',
+      source: 'source',
       tagLevel: 'tag_level',
     };
   }
@@ -4489,6 +5604,7 @@ export class SystemTag extends $tea.Model {
       parentEnName: 'string',
       parentName: 'string',
       selected: 'boolean',
+      source: 'string',
       tagLevel: 'number',
     };
   }
@@ -4524,6 +5640,131 @@ export class TokenRequest extends $tea.Model {
       appId: 'string',
       grantType: 'string',
       refreshToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class UpdateAppRequest extends $tea.Model {
+  appId: string;
+  appName?: string;
+  description?: string;
+  logo?: string;
+  redirectUri?: string;
+  scope?: string[];
+  type?: string;
+  static names(): { [key: string]: string } {
+    return {
+      appId: 'app_id',
+      appName: 'app_name',
+      description: 'description',
+      logo: 'logo',
+      redirectUri: 'redirect_uri',
+      scope: 'scope',
+      type: 'type',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      appId: 'string',
+      appName: 'string',
+      description: 'string',
+      logo: 'string',
+      redirectUri: 'string',
+      scope: { 'type': 'array', 'itemType': 'string' },
+      type: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * update domain request
+ */
+export class UpdateDomainRequest extends $tea.Model {
+  authConfig?: {[key: string]: any};
+  authDingdingAppId?: string;
+  authDingdingAppSecret?: string;
+  authDingdingEnable?: boolean;
+  authEndpointEnable?: boolean;
+  authRamAppId?: string;
+  authRamAppSecret?: string;
+  authRamEnable?: boolean;
+  dataHashName?: string;
+  description?: string;
+  domainId: string;
+  domainName?: string;
+  eventFilenameMatches?: string;
+  eventMnsEndpoint?: string;
+  eventMnsTopic?: string;
+  eventNames?: string[];
+  eventRoleArn?: string;
+  initDriveEnable?: boolean;
+  initDriveSize?: number;
+  initDriveStoreId?: string;
+  publishedAppAccessStrategy?: AppAccessStrategy;
+  sharable?: boolean;
+  static names(): { [key: string]: string } {
+    return {
+      authConfig: 'auth_config',
+      authDingdingAppId: 'auth_dingding_app_id',
+      authDingdingAppSecret: 'auth_dingding_app_secret',
+      authDingdingEnable: 'auth_dingding_enable',
+      authEndpointEnable: 'auth_endpoint_enable',
+      authRamAppId: 'auth_ram_app_id',
+      authRamAppSecret: 'auth_ram_app_secret',
+      authRamEnable: 'auth_ram_enable',
+      dataHashName: 'data_hash_name',
+      description: 'description',
+      domainId: 'domain_id',
+      domainName: 'domain_name',
+      eventFilenameMatches: 'event_filename_matches',
+      eventMnsEndpoint: 'event_mns_endpoint',
+      eventMnsTopic: 'event_mns_topic',
+      eventNames: 'event_names',
+      eventRoleArn: 'event_role_arn',
+      initDriveEnable: 'init_drive_enable',
+      initDriveSize: 'init_drive_size',
+      initDriveStoreId: 'init_drive_store_id',
+      publishedAppAccessStrategy: 'published_app_access_strategy',
+      sharable: 'sharable',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      authConfig: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      authDingdingAppId: 'string',
+      authDingdingAppSecret: 'string',
+      authDingdingEnable: 'boolean',
+      authEndpointEnable: 'boolean',
+      authRamAppId: 'string',
+      authRamAppSecret: 'string',
+      authRamEnable: 'boolean',
+      dataHashName: 'string',
+      description: 'string',
+      domainId: 'string',
+      domainName: 'string',
+      eventFilenameMatches: 'string',
+      eventMnsEndpoint: 'string',
+      eventMnsTopic: 'string',
+      eventNames: { 'type': 'array', 'itemType': 'string' },
+      eventRoleArn: 'string',
+      initDriveEnable: 'boolean',
+      initDriveSize: 'number',
+      initDriveStoreId: 'string',
+      publishedAppAccessStrategy: AppAccessStrategy,
+      sharable: 'boolean',
     };
   }
 
@@ -4598,6 +5839,7 @@ export class UpdateDriveResponse extends $tea.Model {
  */
 export class UpdateFileMetaResponse extends $tea.Model {
   category?: string;
+  characteristicHash?: string;
   contentHash?: string;
   contentHashName?: string;
   contentType?: string;
@@ -4617,6 +5859,7 @@ export class UpdateFileMetaResponse extends $tea.Model {
   name: string;
   parentFileId?: string;
   punishFlag?: number;
+  shareId?: string;
   size?: number;
   starred?: boolean;
   status?: string;
@@ -4633,6 +5876,7 @@ export class UpdateFileMetaResponse extends $tea.Model {
   static names(): { [key: string]: string } {
     return {
       category: 'category',
+      characteristicHash: 'characteristic_hash',
       contentHash: 'content_hash',
       contentHashName: 'content_hash_name',
       contentType: 'content_type',
@@ -4652,6 +5896,7 @@ export class UpdateFileMetaResponse extends $tea.Model {
       name: 'name',
       parentFileId: 'parent_file_id',
       punishFlag: 'punish_flag',
+      shareId: 'share_id',
       size: 'size',
       starred: 'starred',
       status: 'status',
@@ -4671,6 +5916,7 @@ export class UpdateFileMetaResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       category: 'string',
+      characteristicHash: 'string',
       contentHash: 'string',
       contentHashName: 'string',
       contentType: 'string',
@@ -4690,6 +5936,7 @@ export class UpdateFileMetaResponse extends $tea.Model {
       name: 'string',
       parentFileId: 'string',
       punishFlag: 'number',
+      shareId: 'string',
       size: 'number',
       starred: 'boolean',
       status: 'string',
@@ -4724,6 +5971,7 @@ export class UpdateShareResponse extends $tea.Model {
   expired?: boolean;
   owner?: string;
   permissions?: string[];
+  shareFileId?: string;
   shareFilePath?: string;
   shareId?: string;
   shareName?: string;
@@ -4741,6 +5989,7 @@ export class UpdateShareResponse extends $tea.Model {
       expired: 'expired',
       owner: 'owner',
       permissions: 'permissions',
+      shareFileId: 'share_file_id',
       shareFilePath: 'share_file_path',
       shareId: 'share_id',
       shareName: 'share_name',
@@ -4761,6 +6010,7 @@ export class UpdateShareResponse extends $tea.Model {
       expired: 'boolean',
       owner: 'string',
       permissions: { 'type': 'array', 'itemType': 'string' },
+      shareFileId: 'string',
       shareFilePath: 'string',
       shareId: 'string',
       shareName: 'string',
@@ -4779,12 +6029,14 @@ export class UpdateShareResponse extends $tea.Model {
  * 
  */
 export class UploadPartInfo extends $tea.Model {
+  contentType?: string;
   etag?: string;
   partNumber?: number;
   partSize?: number;
   uploadUrl?: string;
   static names(): { [key: string]: string } {
     return {
+      contentType: 'content_type',
       etag: 'etag',
       partNumber: 'part_number',
       partSize: 'part_size',
@@ -4794,6 +6046,7 @@ export class UploadPartInfo extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      contentType: 'string',
       etag: 'string',
       partNumber: 'number',
       partSize: 'number',
@@ -4945,6 +6198,34 @@ export class VerifyCodeResponse extends $tea.Model {
 /**
  * 
  */
+export class VerifyTokenResponse extends $tea.Model {
+  token: string;
+  ttl: number;
+  url: string;
+  static names(): { [key: string]: string } {
+    return {
+      token: 'token',
+      ttl: 'ttl',
+      url: 'url',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      token: 'string',
+      ttl: 'number',
+      url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class VideoMediaAudioStream extends $tea.Model {
   bitRate?: string;
   channelLayout?: string;
@@ -4989,6 +6270,7 @@ export class VideoMediaResponse extends $tea.Model {
   district?: string;
   duration?: string;
   height?: number;
+  imageTags?: SystemTag[];
   location?: string;
   province?: string;
   time?: string;
@@ -5004,6 +6286,7 @@ export class VideoMediaResponse extends $tea.Model {
       district: 'district',
       duration: 'duration',
       height: 'height',
+      imageTags: 'image_tags',
       location: 'location',
       province: 'province',
       time: 'time',
@@ -5022,6 +6305,7 @@ export class VideoMediaResponse extends $tea.Model {
       district: 'string',
       duration: 'string',
       height: 'number',
+      imageTags: { 'type': 'array', 'itemType': SystemTag },
       location: 'string',
       province: 'string',
       time: 'string',
@@ -5046,6 +6330,7 @@ export class VideoMediaVideoStream extends $tea.Model {
   codeName?: string;
   duration?: string;
   fps?: string;
+  rotate?: string;
   static names(): { [key: string]: string } {
     return {
       bitrate: 'bitrate',
@@ -5053,6 +6338,7 @@ export class VideoMediaVideoStream extends $tea.Model {
       codeName: 'code_name',
       duration: 'duration',
       fps: 'fps',
+      rotate: 'rotate',
     };
   }
 
@@ -5063,6 +6349,69 @@ export class VideoMediaVideoStream extends $tea.Model {
       codeName: 'string',
       duration: 'string',
       fps: 'string',
+      rotate: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class VideoPreviewAudioMeta extends $tea.Model {
+  bitrate?: number;
+  channels?: number;
+  duration?: number;
+  sampleRate?: number;
+  static names(): { [key: string]: string } {
+    return {
+      bitrate: 'bitrate',
+      channels: 'channels',
+      duration: 'duration',
+      sampleRate: 'sample_rate',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      bitrate: 'number',
+      channels: 'number',
+      duration: 'number',
+      sampleRate: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class VideoPreviewAudioMusicMeta extends $tea.Model {
+  album?: string;
+  artist?: string;
+  coverUrl?: string;
+  title?: string;
+  static names(): { [key: string]: string } {
+    return {
+      album: 'album',
+      artist: 'artist',
+      coverUrl: 'cover_url',
+      title: 'title',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      album: 'string',
+      artist: 'string',
+      coverUrl: 'string',
+      title: 'string',
     };
   }
 
@@ -5075,7 +6424,12 @@ export class VideoMediaVideoStream extends $tea.Model {
  * 
  */
 export class VideoPreviewResponse extends $tea.Model {
+  audioChannels?: number;
   audioFormat?: string;
+  audioMeta?: VideoPreviewAudioMeta;
+  audioMusicMeta?: VideoPreviewAudioMusicMeta;
+  audioSampleRate?: string;
+  audioTemplateList?: VideoPreviewTranscode[];
   bitrate?: string;
   duration?: string;
   frameRate?: string;
@@ -5087,7 +6441,12 @@ export class VideoPreviewResponse extends $tea.Model {
   width?: number;
   static names(): { [key: string]: string } {
     return {
+      audioChannels: 'audio_channels',
       audioFormat: 'audio_format',
+      audioMeta: 'audio_meta',
+      audioMusicMeta: 'audio_music_meta',
+      audioSampleRate: 'audio_sample_rate',
+      audioTemplateList: 'audio_template_list',
       bitrate: 'bitrate',
       duration: 'duration',
       frameRate: 'frame_rate',
@@ -5102,7 +6461,12 @@ export class VideoPreviewResponse extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      audioChannels: 'number',
       audioFormat: 'string',
+      audioMeta: VideoPreviewAudioMeta,
+      audioMusicMeta: VideoPreviewAudioMusicMeta,
+      audioSampleRate: 'string',
+      audioTemplateList: { 'type': 'array', 'itemType': VideoPreviewTranscode },
       bitrate: 'string',
       duration: 'string',
       frameRate: 'string',
@@ -5322,84 +6686,15 @@ export class AdminListStoresRequest extends $tea.Model {
 }
 
 /**
- * 
- */
-export class AppAccessStrategy extends $tea.Model {
-  effect?: string;
-  exceptAppIdList?: string[];
-  static names(): { [key: string]: string } {
-    return {
-      effect: 'effect',
-      exceptAppIdList: 'except_app_id_list',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      effect: 'string',
-      exceptAppIdList: { 'type': 'array', 'itemType': 'string' },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class AuthConfig extends $tea.Model {
-  appId?: string;
-  appSecret?: string;
-  callbackSecurity?: boolean;
-  enable?: boolean;
-  endpoint?: string;
-  enterpriseId?: string;
-  loginPageHeaders?: {[key: string]: any};
-  loginPageTemplate?: string;
-  loginPageVars?: {[key: string]: any};
-  static names(): { [key: string]: string } {
-    return {
-      appId: 'app_id',
-      appSecret: 'app_secret',
-      callbackSecurity: 'callback_security',
-      enable: 'enable',
-      endpoint: 'endpoint',
-      enterpriseId: 'enterprise_id',
-      loginPageHeaders: 'login_page_headers',
-      loginPageTemplate: 'login_page_template',
-      loginPageVars: 'login_page_vars',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      appId: 'string',
-      appSecret: 'string',
-      callbackSecurity: 'boolean',
-      enable: 'boolean',
-      endpoint: 'string',
-      enterpriseId: 'string',
-      loginPageHeaders: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      loginPageTemplate: 'string',
-      loginPageVars: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
  * base domain response
  */
 export class BaseDomainResponse extends $tea.Model {
   apiCname?: string;
+  appCname?: string;
   authAlipayAppId?: string;
   authAlipayEnable?: boolean;
   authAlipayPrivateKey?: string;
+  authCname?: string;
   authConfig?: {[key: string]: any};
   authDingdingAppId?: string;
   authDingdingAppSecret?: string;
@@ -5431,9 +6726,11 @@ export class BaseDomainResponse extends $tea.Model {
   static names(): { [key: string]: string } {
     return {
       apiCname: 'api_cname',
+      appCname: 'app_cname',
       authAlipayAppId: 'auth_alipay_app_id',
       authAlipayEnable: 'auth_alipay_enable',
       authAlipayPrivateKey: 'auth_alipay_private_key',
+      authCname: 'auth_cname',
       authConfig: 'auth_config',
       authDingdingAppId: 'auth_dingding_app_id',
       authDingdingAppSecret: 'auth_dingding_app_secret',
@@ -5468,9 +6765,11 @@ export class BaseDomainResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       apiCname: 'string',
+      appCname: 'string',
       authAlipayAppId: 'string',
       authAlipayEnable: 'boolean',
       authAlipayPrivateKey: 'string',
+      authCname: 'string',
       authConfig: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       authDingdingAppId: 'string',
       authDingdingAppSecret: 'string',
@@ -5540,9 +6839,11 @@ export class CNameStatus extends $tea.Model {
  */
 export class CreateDomainResponse extends $tea.Model {
   apiCname?: string;
+  appCname?: string;
   authAlipayAppId?: string;
   authAlipayEnable?: boolean;
   authAlipayPrivateKey?: string;
+  authCname?: string;
   authConfig?: {[key: string]: any};
   authDingdingAppId?: string;
   authDingdingAppSecret?: string;
@@ -5574,9 +6875,11 @@ export class CreateDomainResponse extends $tea.Model {
   static names(): { [key: string]: string } {
     return {
       apiCname: 'api_cname',
+      appCname: 'app_cname',
       authAlipayAppId: 'auth_alipay_app_id',
       authAlipayEnable: 'auth_alipay_enable',
       authAlipayPrivateKey: 'auth_alipay_private_key',
+      authCname: 'auth_cname',
       authConfig: 'auth_config',
       authDingdingAppId: 'auth_dingding_app_id',
       authDingdingAppSecret: 'auth_dingding_app_secret',
@@ -5611,9 +6914,11 @@ export class CreateDomainResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       apiCname: 'string',
+      appCname: 'string',
       authAlipayAppId: 'string',
       authAlipayEnable: 'boolean',
       authAlipayPrivateKey: 'string',
+      authCname: 'string',
       authConfig: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       authDingdingAppId: 'string',
       authDingdingAppSecret: 'string',
@@ -5831,9 +7136,11 @@ export class GetBizCNameInfoResponse extends $tea.Model {
  */
 export class GetDomainResponse extends $tea.Model {
   apiCname?: string;
+  appCname?: string;
   authAlipayAppId?: string;
   authAlipayEnable?: boolean;
   authAlipayPrivateKey?: string;
+  authCname?: string;
   authConfig?: {[key: string]: any};
   authDingdingAppId?: string;
   authDingdingAppSecret?: string;
@@ -5865,9 +7172,11 @@ export class GetDomainResponse extends $tea.Model {
   static names(): { [key: string]: string } {
     return {
       apiCname: 'api_cname',
+      appCname: 'app_cname',
       authAlipayAppId: 'auth_alipay_app_id',
       authAlipayEnable: 'auth_alipay_enable',
       authAlipayPrivateKey: 'auth_alipay_private_key',
+      authCname: 'auth_cname',
       authConfig: 'auth_config',
       authDingdingAppId: 'auth_dingding_app_id',
       authDingdingAppSecret: 'auth_dingding_app_secret',
@@ -5902,9 +7211,11 @@ export class GetDomainResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       apiCname: 'string',
+      appCname: 'string',
       authAlipayAppId: 'string',
       authAlipayEnable: 'boolean',
       authAlipayPrivateKey: 'string',
+      authCname: 'string',
       authConfig: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       authDingdingAppId: 'string',
       authDingdingAppSecret: 'string',
@@ -6234,9 +7545,11 @@ export class Store extends $tea.Model {
  */
 export class UpdateDomainResponse extends $tea.Model {
   apiCname?: string;
+  appCname?: string;
   authAlipayAppId?: string;
   authAlipayEnable?: boolean;
   authAlipayPrivateKey?: string;
+  authCname?: string;
   authConfig?: {[key: string]: any};
   authDingdingAppId?: string;
   authDingdingAppSecret?: string;
@@ -6268,9 +7581,11 @@ export class UpdateDomainResponse extends $tea.Model {
   static names(): { [key: string]: string } {
     return {
       apiCname: 'api_cname',
+      appCname: 'app_cname',
       authAlipayAppId: 'auth_alipay_app_id',
       authAlipayEnable: 'auth_alipay_enable',
       authAlipayPrivateKey: 'auth_alipay_private_key',
+      authCname: 'auth_cname',
       authConfig: 'auth_config',
       authDingdingAppId: 'auth_dingding_app_id',
       authDingdingAppSecret: 'auth_dingding_app_secret',
@@ -6305,9 +7620,11 @@ export class UpdateDomainResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       apiCname: 'string',
+      appCname: 'string',
       authAlipayAppId: 'string',
       authAlipayEnable: 'boolean',
       authAlipayPrivateKey: 'string',
+      authCname: 'string',
       authConfig: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       authDingdingAppId: 'string',
       authDingdingAppSecret: 'string',
@@ -6737,6 +8054,28 @@ export class GetMediaPlayUrlModel extends $tea.Model {
   }
 }
 
+export class GetOfficeEditUrlModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetOfficeEditUrlResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetOfficeEditUrlResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
 export class GetOfficePreviewUrlModel extends $tea.Model {
   headers?: { [key: string]: string };
   body: GetOfficePreviewUrlResponse;
@@ -6957,6 +8296,28 @@ export class MoveFileModel extends $tea.Model {
   }
 }
 
+export class TokenModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: RefreshOfficeEditTokenResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: RefreshOfficeEditTokenResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
 export class ScanFileMetaModel extends $tea.Model {
   headers?: { [key: string]: string };
   body: ScanFileMetaResponse;
@@ -7023,6 +8384,113 @@ export class UpdateFileModel extends $tea.Model {
   }
 }
 
+export class CreateShareModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateShareResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateShareResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class DeleteShareModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetShareModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetShareResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetShareResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListShareModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListShareResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListShareResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateShareModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateShareResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateShareResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
 export class CancelShareLinkModel extends $tea.Model {
   headers?: { [key: string]: string };
   static names(): { [key: string]: string } {
@@ -7056,6 +8524,28 @@ export class CreateShareLinkModel extends $tea.Model {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       body: CreateShareLinkResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetShareByAnonymousModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetShareLinkByAnonymousResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetShareLinkByAnonymousResponse,
     };
   }
 
@@ -7137,12 +8627,14 @@ export class BaseCompleteFileRequest extends $tea.Model {
   additionData?: {[key: string]: any};
   driveId?: string;
   partInfoList?: UploadPartInfo[];
+  shareId?: string;
   uploadId?: string;
   static names(): { [key: string]: string } {
     return {
       additionData: 'addition_data',
       driveId: 'drive_id',
       partInfoList: 'part_info_list',
+      shareId: 'share_id',
       uploadId: 'upload_id',
     };
   }
@@ -7152,6 +8644,7 @@ export class BaseCompleteFileRequest extends $tea.Model {
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
       partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
       uploadId: 'string',
     };
   }
@@ -7202,40 +8695,20 @@ export class BaseCreateFileRequest extends $tea.Model {
 }
 
 /**
- * 
- */
-export class BaseFileRequest extends $tea.Model {
-  additionData?: {[key: string]: any};
-  static names(): { [key: string]: string } {
-    return {
-      additionData: 'addition_data',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
  * 获取文件上传URL
  */
 export class BaseGetUploadUrlRequest extends $tea.Model {
   contentMd5?: string;
   driveId?: string;
   partInfoList?: UploadPartInfo[];
+  shareId?: string;
   uploadId: string;
   static names(): { [key: string]: string } {
     return {
       contentMd5: 'content_md5',
       driveId: 'drive_id',
       partInfoList: 'part_info_list',
+      shareId: 'share_id',
       uploadId: 'upload_id',
     };
   }
@@ -7245,7 +8718,36 @@ export class BaseGetUploadUrlRequest extends $tea.Model {
       contentMd5: 'string',
       driveId: 'string',
       partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
       uploadId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Base image process
+ */
+export class BaseImageProcessRequest extends $tea.Model {
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      videoThumbnailProcess: 'string',
     };
   }
 
@@ -7258,30 +8760,45 @@ export class BaseGetUploadUrlRequest extends $tea.Model {
  * list file request
  */
 export class BaseListFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
   driveId?: string;
+  imageCroppingAspectRatios?: string[];
   imageThumbnailProcess?: string;
   imageUrlProcess?: string;
   limit?: number;
   marker?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
+      additionData: 'addition_data',
       driveId: 'drive_id',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
       imageThumbnailProcess: 'image_thumbnail_process',
       imageUrlProcess: 'image_url_process',
       limit: 'limit',
       marker: 'marker',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
       videoThumbnailProcess: 'video_thumbnail_process',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
       imageThumbnailProcess: 'string',
       imageUrlProcess: 'string',
       limit: 'number',
       marker: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
       videoThumbnailProcess: 'string',
     };
   }
@@ -7297,12 +8814,12 @@ export class BaseListFileRequest extends $tea.Model {
 export class BaseMoveFileRequest extends $tea.Model {
   driveId: string;
   newName?: string;
-  overwrite?: boolean;
+  shareId?: string;
   static names(): { [key: string]: string } {
     return {
       driveId: 'drive_id',
       newName: 'new_name',
-      overwrite: 'overwrite',
+      shareId: 'share_id',
     };
   }
 
@@ -7310,7 +8827,7 @@ export class BaseMoveFileRequest extends $tea.Model {
     return {
       driveId: 'string',
       newName: 'string',
-      overwrite: 'boolean',
+      shareId: 'string',
     };
   }
 
@@ -7382,6 +8899,34 @@ export class BatchSubRequest extends $tea.Model {
 }
 
 /**
+ * 获取文件夹size信息
+ */
+export class CCPGetDirSizeInfoRequest extends $tea.Model {
+  driveId?: string;
+  fileId: string;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      fileId: 'file_id',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      fileId: 'string',
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * cancel_share_link request
  */
 export class CancelShareLinkRequest extends $tea.Model {
@@ -7415,6 +8960,7 @@ export class CompleteFileRequest extends $tea.Model {
   driveId?: string;
   fileId: string;
   partInfoList?: UploadPartInfo[];
+  shareId?: string;
   uploadId?: string;
   static names(): { [key: string]: string } {
     return {
@@ -7423,6 +8969,7 @@ export class CompleteFileRequest extends $tea.Model {
       driveId: 'drive_id',
       fileId: 'file_id',
       partInfoList: 'part_info_list',
+      shareId: 'share_id',
       uploadId: 'upload_id',
     };
   }
@@ -7434,6 +8981,7 @@ export class CompleteFileRequest extends $tea.Model {
       driveId: 'string',
       fileId: 'string',
       partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
       uploadId: 'string',
     };
   }
@@ -7451,20 +8999,24 @@ export class CopyFileRequest extends $tea.Model {
   autoRename?: boolean;
   driveId?: string;
   fileId: string;
+  fileIdPath?: string;
   newName?: string;
   shareId?: string;
   toDriveId?: string;
   toParentFileId: string;
+  toShareId?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
       autoRename: 'auto_rename',
       driveId: 'drive_id',
       fileId: 'file_id',
+      fileIdPath: 'file_id_path',
       newName: 'new_name',
       shareId: 'share_id',
       toDriveId: 'to_drive_id',
       toParentFileId: 'to_parent_file_id',
+      toShareId: 'to_share_id',
     };
   }
 
@@ -7474,10 +9026,12 @@ export class CopyFileRequest extends $tea.Model {
       autoRename: 'boolean',
       driveId: 'string',
       fileId: 'string',
+      fileIdPath: 'string',
       newName: 'string',
       shareId: 'string',
       toDriveId: 'string',
       toParentFileId: 'string',
+      toShareId: 'string',
     };
   }
 
@@ -7496,6 +9050,7 @@ export class CreateDriveRequest extends $tea.Model {
   driveName: string;
   driveType?: string;
   encryptMode?: string;
+  location?: string;
   owner: string;
   relativePath?: string;
   status?: string;
@@ -7509,6 +9064,7 @@ export class CreateDriveRequest extends $tea.Model {
       driveName: 'drive_name',
       driveType: 'drive_type',
       encryptMode: 'encrypt_mode',
+      location: 'location',
       owner: 'owner',
       relativePath: 'relative_path',
       status: 'status',
@@ -7525,6 +9081,7 @@ export class CreateDriveRequest extends $tea.Model {
       driveName: 'string',
       driveType: 'string',
       encryptMode: 'string',
+      location: 'string',
       owner: 'string',
       relativePath: 'string',
       status: 'string',
@@ -7551,18 +9108,22 @@ export class CreateFileRequest extends $tea.Model {
   contentMd5?: string;
   contentType?: string;
   description?: string;
-  driveId: string;
+  driveId?: string;
   encryptMode?: string;
   fileId?: string;
+  forceUploadToLocation?: boolean;
   hidden?: boolean;
   imageMediaMetadata?: ImageMediaMetadata;
   labels?: string[];
   lastUpdatedAt?: string;
+  location?: string;
   meta?: string;
   name: string;
   parentFileId: string;
+  parentFileIdPath?: string;
   partInfoList?: UploadPartInfo[];
   preHash?: string;
+  shareId?: string;
   size?: number;
   streamsInfo?: {[key: string]: any};
   type: string;
@@ -7582,15 +9143,19 @@ export class CreateFileRequest extends $tea.Model {
       driveId: 'drive_id',
       encryptMode: 'encrypt_mode',
       fileId: 'file_id',
+      forceUploadToLocation: 'force_upload_to_location',
       hidden: 'hidden',
       imageMediaMetadata: 'image_media_metadata',
       labels: 'labels',
       lastUpdatedAt: 'last_updated_at',
+      location: 'location',
       meta: 'meta',
       name: 'name',
       parentFileId: 'parent_file_id',
+      parentFileIdPath: 'parent_file_id_path',
       partInfoList: 'part_info_list',
       preHash: 'pre_hash',
+      shareId: 'share_id',
       size: 'size',
       streamsInfo: 'streams_info',
       type: 'type',
@@ -7613,15 +9178,19 @@ export class CreateFileRequest extends $tea.Model {
       driveId: 'string',
       encryptMode: 'string',
       fileId: 'string',
+      forceUploadToLocation: 'boolean',
       hidden: 'boolean',
       imageMediaMetadata: ImageMediaMetadata,
       labels: { 'type': 'array', 'itemType': 'string' },
       lastUpdatedAt: 'string',
+      location: 'string',
       meta: 'string',
       name: 'string',
       parentFileId: 'string',
+      parentFileIdPath: 'string',
       partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
       preHash: 'string',
+      shareId: 'string',
       size: 'number',
       streamsInfo: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       type: 'string',
@@ -7640,16 +9209,24 @@ export class CreateFileRequest extends $tea.Model {
  */
 export class CreateShareLinkRequest extends $tea.Model {
   headers?: { [key: string]: string };
+  description?: string;
   driveId: string;
   expiration: string;
   fileId: string;
+  fileIdList: string[];
+  filePathList: string[];
+  shareName?: string;
   sharePwd?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
+      description: 'description',
       driveId: 'drive_id',
       expiration: 'expiration',
       fileId: 'file_id',
+      fileIdList: 'file_id_list',
+      filePathList: 'file_path_list',
+      shareName: 'share_name',
       sharePwd: 'share_pwd',
     };
   }
@@ -7657,9 +9234,13 @@ export class CreateShareLinkRequest extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      description: 'string',
       driveId: 'string',
       expiration: 'string',
       fileId: 'string',
+      fileIdList: { 'type': 'array', 'itemType': 'string' },
+      filePathList: { 'type': 'array', 'itemType': 'string' },
+      shareName: 'string',
       sharePwd: 'string',
     };
   }
@@ -7673,22 +9254,28 @@ export class CreateShareLinkRequest extends $tea.Model {
  * create share request
  */
 export class CreateShareRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   description?: string;
   driveId: string;
   expiration?: string;
   owner: string;
+  ownerType?: string;
   permissions?: string[];
-  shareFilePath: string;
+  shareFileId?: string;
+  shareFilePath?: string;
   shareName?: string;
   sharePolicy?: SharePermissionPolicy[];
   status?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       description: 'description',
       driveId: 'drive_id',
       expiration: 'expiration',
       owner: 'owner',
+      ownerType: 'owner_type',
       permissions: 'permissions',
+      shareFileId: 'share_file_id',
       shareFilePath: 'share_file_path',
       shareName: 'share_name',
       sharePolicy: 'share_policy',
@@ -7698,11 +9285,14 @@ export class CreateShareRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       description: 'string',
       driveId: 'string',
       expiration: 'string',
       owner: 'string',
+      ownerType: 'string',
       permissions: { 'type': 'array', 'itemType': 'string' },
+      shareFileId: 'string',
       shareFilePath: 'string',
       shareName: 'string',
       sharePolicy: { 'type': 'array', 'itemType': SharePermissionPolicy },
@@ -7745,15 +9335,19 @@ export class DeleteDriveRequest extends $tea.Model {
  */
 export class DeleteFileRequest extends $tea.Model {
   headers?: { [key: string]: string };
-  driveId: string;
-  fileId: string;
+  driveId?: string;
+  fileId?: string;
+  fileIdPath?: string;
   permanently?: boolean;
+  shareId?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
       driveId: 'drive_id',
       fileId: 'file_id',
+      fileIdPath: 'file_id_path',
       permanently: 'permanently',
+      shareId: 'share_id',
     };
   }
 
@@ -7762,7 +9356,9 @@ export class DeleteFileRequest extends $tea.Model {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       fileId: 'string',
+      fileIdPath: 'string',
       permanently: 'boolean',
+      shareId: 'string',
     };
   }
 
@@ -7775,12 +9371,14 @@ export class DeleteFileRequest extends $tea.Model {
  * 批量删除文件请求
  */
 export class DeleteFilesRequest extends $tea.Model {
-  driveId: string;
+  driveId?: string;
   fileIdList: string[];
+  shareId?: string;
   static names(): { [key: string]: string } {
     return {
       driveId: 'drive_id',
       fileIdList: 'file_id_list',
+      shareId: 'share_id',
     };
   }
 
@@ -7788,6 +9386,7 @@ export class DeleteFilesRequest extends $tea.Model {
     return {
       driveId: 'string',
       fileIdList: { 'type': 'array', 'itemType': 'string' },
+      shareId: 'string',
     };
   }
 
@@ -7800,15 +9399,18 @@ export class DeleteFilesRequest extends $tea.Model {
  * delete share request
  */
 export class DeleteShareRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   shareId: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       shareId: 'share_id',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       shareId: 'string',
     };
   }
@@ -7827,6 +9429,10 @@ export class DownloadRequest extends $tea.Model {
   ImageThumbnailProcess?: string;
   ShareID?: string;
   VideoThumbnailProcess?: string;
+  fileIdPath?: string;
+  location?: string;
+  referer?: string;
+  signToken?: string;
   static names(): { [key: string]: string } {
     return {
       DriveID: 'DriveID',
@@ -7834,6 +9440,10 @@ export class DownloadRequest extends $tea.Model {
       ImageThumbnailProcess: 'ImageThumbnailProcess',
       ShareID: 'ShareID',
       VideoThumbnailProcess: 'VideoThumbnailProcess',
+      fileIdPath: 'file_id_path',
+      location: 'location',
+      referer: 'referer',
+      signToken: 'sign_token',
     };
   }
 
@@ -7844,6 +9454,10 @@ export class DownloadRequest extends $tea.Model {
       ImageThumbnailProcess: 'string',
       ShareID: 'string',
       VideoThumbnailProcess: 'string',
+      fileIdPath: 'string',
+      location: 'string',
+      referer: 'string',
+      signToken: 'string',
     };
   }
 
@@ -7911,7 +9525,12 @@ export class GetDownloadUrlRequest extends $tea.Model {
   driveId: string;
   expireSec?: number;
   fileId: string;
+  fileIdPath?: string;
   fileName?: string;
+  location?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -7919,7 +9538,12 @@ export class GetDownloadUrlRequest extends $tea.Model {
       driveId: 'drive_id',
       expireSec: 'expire_sec',
       fileId: 'file_id',
+      fileIdPath: 'file_id_path',
       fileName: 'file_name',
+      location: 'location',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
     };
   }
 
@@ -7930,7 +9554,12 @@ export class GetDownloadUrlRequest extends $tea.Model {
       driveId: 'string',
       expireSec: 'number',
       fileId: 'string',
+      fileIdPath: 'string',
       fileName: 'string',
+      location: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
     };
   }
 
@@ -7969,23 +9598,27 @@ export class GetDriveRequest extends $tea.Model {
  */
 export class GetFileByPathRequest extends $tea.Model {
   headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
   driveId: string;
-  fields?: string;
-  fileId: string;
   filePath?: string;
+  imageCroppingAspectRatios?: string[];
   imageThumbnailProcess?: string;
   imageUrlProcess?: string;
+  referer?: string;
+  signToken?: string;
   urlExpireSec?: number;
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
+      additionData: 'addition_data',
       driveId: 'drive_id',
-      fields: 'fields',
-      fileId: 'file_id',
       filePath: 'file_path',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
       imageThumbnailProcess: 'image_thumbnail_process',
       imageUrlProcess: 'image_url_process',
+      referer: 'referer',
+      signToken: 'sign_token',
       urlExpireSec: 'url_expire_sec',
       videoThumbnailProcess: 'video_thumbnail_process',
     };
@@ -7994,12 +9627,14 @@ export class GetFileByPathRequest extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
-      fields: 'string',
-      fileId: 'string',
       filePath: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
       imageThumbnailProcess: 'string',
       imageUrlProcess: 'string',
+      referer: 'string',
+      signToken: 'string',
       urlExpireSec: 'number',
       videoThumbnailProcess: 'string',
     };
@@ -8015,21 +9650,35 @@ export class GetFileByPathRequest extends $tea.Model {
  */
 export class GetFileRequest extends $tea.Model {
   headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
   driveId: string;
   fields?: string;
   fileId: string;
+  fileIdPath?: string;
+  imageCroppingAspectRatios?: string[];
   imageThumbnailProcess?: string;
   imageUrlProcess?: string;
+  location?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
   urlExpireSec?: number;
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
+      additionData: 'addition_data',
       driveId: 'drive_id',
       fields: 'fields',
       fileId: 'file_id',
+      fileIdPath: 'file_id_path',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
       imageThumbnailProcess: 'image_thumbnail_process',
       imageUrlProcess: 'image_url_process',
+      location: 'location',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
       urlExpireSec: 'url_expire_sec',
       videoThumbnailProcess: 'video_thumbnail_process',
     };
@@ -8038,11 +9687,18 @@ export class GetFileRequest extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
       fields: 'string',
       fileId: 'string',
+      fileIdPath: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
       imageThumbnailProcess: 'string',
       imageUrlProcess: 'string',
+      location: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
       urlExpireSec: 'number',
       videoThumbnailProcess: 'string',
     };
@@ -8107,9 +9763,9 @@ export class GetMediaPlayURLRequest extends $tea.Model {
 }
 
 /**
- * 获取office文档预览地址
+ * 获取office文档在线编辑地址
  */
-export class GetOfficePreviewUrlRequest extends $tea.Model {
+export class GetOfficeEditUrlRequest extends $tea.Model {
   headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   driveId: string;
@@ -8138,18 +9794,55 @@ export class GetOfficePreviewUrlRequest extends $tea.Model {
 }
 
 /**
- * get_share_link_by_anonymous request
+ * 获取office文档预览地址
  */
-export class GetShareLinkByAnonymousRequest extends $tea.Model {
+export class GetOfficePreviewUrlRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  driveId: string;
+  fileId: string;
   shareId?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      fileId: 'file_id',
       shareId: 'share_id',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      fileId: 'string',
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * get_share_link_by_anonymous request
+ */
+export class GetShareLinkByAnonymousRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       shareId: 'string',
     };
   }
@@ -8216,15 +9909,18 @@ export class GetShareLinkTokenRequest extends $tea.Model {
  * get share request
  */
 export class GetShareRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   shareId?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       shareId: 'share_id',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       shareId: 'string',
     };
   }
@@ -8243,6 +9939,7 @@ export class GetUploadUrlRequest extends $tea.Model {
   driveId?: string;
   fileId: string;
   partInfoList?: UploadPartInfo[];
+  shareId?: string;
   uploadId: string;
   static names(): { [key: string]: string } {
     return {
@@ -8251,6 +9948,7 @@ export class GetUploadUrlRequest extends $tea.Model {
       driveId: 'drive_id',
       fileId: 'file_id',
       partInfoList: 'part_info_list',
+      shareId: 'share_id',
       uploadId: 'upload_id',
     };
   }
@@ -8262,6 +9960,7 @@ export class GetUploadUrlRequest extends $tea.Model {
       driveId: 'string',
       fileId: 'string',
       partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
       uploadId: 'string',
     };
   }
@@ -8279,12 +9978,14 @@ export class GetVideoPreviewSpriteURLRequest extends $tea.Model {
   driveId: string;
   expireSec?: number;
   fileId: string;
+  shareId?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
       driveId: 'drive_id',
       expireSec: 'expire_sec',
       fileId: 'file_id',
+      shareId: 'share_id',
     };
   }
 
@@ -8294,6 +9995,7 @@ export class GetVideoPreviewSpriteURLRequest extends $tea.Model {
       driveId: 'string',
       expireSec: 'number',
       fileId: 'string',
+      shareId: 'string',
     };
   }
 
@@ -8308,17 +10010,21 @@ export class GetVideoPreviewSpriteURLRequest extends $tea.Model {
 export class GetVideoPreviewURLRequest extends $tea.Model {
   headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
+  audioTemplateId?: string;
   driveId: string;
   expireSec?: number;
   fileId: string;
+  shareId?: string;
   templateId?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
       additionData: 'addition_data',
+      audioTemplateId: 'audio_template_id',
       driveId: 'drive_id',
       expireSec: 'expire_sec',
       fileId: 'file_id',
+      shareId: 'share_id',
       templateId: 'template_id',
     };
   }
@@ -8327,10 +10033,603 @@ export class GetVideoPreviewURLRequest extends $tea.Model {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      audioTemplateId: 'string',
       driveId: 'string',
       expireSec: 'number',
       fileId: 'string',
+      shareId: 'string',
       templateId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * complete file request
+ */
+export class HostingCompleteFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  filePath?: string;
+  forbidOverwrite?: boolean;
+  partInfoList?: UploadPartInfo[];
+  shareId?: string;
+  uploadId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      forbidOverwrite: 'forbid_overwrite',
+      partInfoList: 'part_info_list',
+      shareId: 'share_id',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      filePath: 'string',
+      forbidOverwrite: 'boolean',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
+      uploadId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * copy file request
+ */
+export class HostingCopyFileRequest extends $tea.Model {
+  driveId?: string;
+  filePath: string;
+  newName?: string;
+  overwrite?: boolean;
+  shareId?: string;
+  toDriveId?: string;
+  toParentFilePath: string;
+  toShareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      newName: 'new_name',
+      overwrite: 'overwrite',
+      shareId: 'share_id',
+      toDriveId: 'to_drive_id',
+      toParentFilePath: 'to_parent_file_path',
+      toShareId: 'to_share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      filePath: 'string',
+      newName: 'string',
+      overwrite: 'boolean',
+      shareId: 'string',
+      toDriveId: 'string',
+      toParentFilePath: 'string',
+      toShareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * create file request
+ */
+export class HostingCreateFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  contentMd5?: string;
+  contentType?: string;
+  driveId?: string;
+  forbidOverwrite?: boolean;
+  name: string;
+  parentFilePath: string;
+  partInfoList?: UploadPartInfo[];
+  shareId?: string;
+  size?: number;
+  type: string;
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+      contentMd5: 'content_md5',
+      contentType: 'content_type',
+      driveId: 'drive_id',
+      forbidOverwrite: 'forbid_overwrite',
+      name: 'name',
+      parentFilePath: 'parent_file_path',
+      partInfoList: 'part_info_list',
+      shareId: 'share_id',
+      size: 'size',
+      type: 'type',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      contentMd5: 'string',
+      contentType: 'string',
+      driveId: 'string',
+      forbidOverwrite: 'boolean',
+      name: 'string',
+      parentFilePath: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
+      size: 'number',
+      type: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 删除文件请求
+ */
+export class HostingDeleteFileRequest extends $tea.Model {
+  driveId?: string;
+  filePath: string;
+  permanently?: boolean;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      permanently: 'permanently',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      filePath: 'string',
+      permanently: 'boolean',
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取文件下载地址的请求body
+ */
+export class HostingGetDownloadUrlRequest extends $tea.Model {
+  driveId?: string;
+  expireSec?: number;
+  fileName?: string;
+  filePath: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      expireSec: 'expire_sec',
+      fileName: 'file_name',
+      filePath: 'file_path',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      expireSec: 'number',
+      fileName: 'string',
+      filePath: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取文件元数据
+ */
+export class HostingGetFileRequest extends $tea.Model {
+  driveId?: string;
+  filePath: string;
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  urlExpireSec?: number;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+      urlExpireSec: 'url_expire_sec',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      filePath: 'string',
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+      urlExpireSec: 'number',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取文件安全地址的请求body
+ */
+export class HostingGetSecureUrlRequest extends $tea.Model {
+  driveId?: string;
+  expireSec?: number;
+  filePath: string;
+  secureIp?: string;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      expireSec: 'expire_sec',
+      filePath: 'file_path',
+      secureIp: 'secure_ip',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      expireSec: 'number',
+      filePath: 'string',
+      secureIp: 'string',
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取文件上传URL
+ */
+export class HostingGetUploadUrlRequest extends $tea.Model {
+  contentMd5?: string;
+  driveId?: string;
+  filePath: string;
+  partInfoList?: UploadPartInfo[];
+  shareId?: string;
+  uploadId: string;
+  static names(): { [key: string]: string } {
+    return {
+      contentMd5: 'content_md5',
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      partInfoList: 'part_info_list',
+      shareId: 'share_id',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      contentMd5: 'string',
+      driveId: 'string',
+      filePath: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
+      uploadId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * list file request
+ */
+export class HostingListFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  limit?: number;
+  marker?: string;
+  parentFilePath: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  urlExpireSec?: number;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      limit: 'limit',
+      marker: 'marker',
+      parentFilePath: 'parent_file_path',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+      urlExpireSec: 'url_expire_sec',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      limit: 'number',
+      marker: 'string',
+      parentFilePath: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+      urlExpireSec: 'number',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 列举uploadID对应的已上传分片
+ */
+export class HostingListUploadedPartRequest extends $tea.Model {
+  driveId?: string;
+  filePath: string;
+  limit?: number;
+  partNumberMarker?: number;
+  shareId?: string;
+  uploadId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      limit: 'limit',
+      partNumberMarker: 'part_number_marker',
+      shareId: 'share_id',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      filePath: 'string',
+      limit: 'number',
+      partNumberMarker: 'number',
+      shareId: 'string',
+      uploadId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 文件移动请求
+ */
+export class HostingMoveFileRequest extends $tea.Model {
+  driveId?: string;
+  filePath?: string;
+  newName?: string;
+  overwrite?: boolean;
+  shareId?: string;
+  toParentFilePath?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      newName: 'new_name',
+      overwrite: 'overwrite',
+      shareId: 'share_id',
+      toParentFilePath: 'to_parent_file_path',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      filePath: 'string',
+      newName: 'string',
+      overwrite: 'boolean',
+      shareId: 'string',
+      toParentFilePath: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取视频DRM License
+ */
+export class HostingVideoDRMLicenseRequest extends $tea.Model {
+  drmType: string;
+  licenseRequest: string;
+  static names(): { [key: string]: string } {
+    return {
+      drmType: 'drmType',
+      licenseRequest: 'licenseRequest',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      drmType: 'string',
+      licenseRequest: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取视频分辨率列表
+ */
+export class HostingVideoDefinitionRequest extends $tea.Model {
+  driveId?: string;
+  filePath: string;
+  protectionScheme?: string;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      protectionScheme: 'protection_scheme',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      filePath: 'string',
+      protectionScheme: 'string',
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取视频的m3u8文件
+ */
+export class HostingVideoM3U8Request extends $tea.Model {
+  definition?: string;
+  driveId?: string;
+  expireSec?: number;
+  filePath: string;
+  protectionScheme?: string;
+  shareId?: string;
+  signToken: string;
+  static names(): { [key: string]: string } {
+    return {
+      definition: 'definition',
+      driveId: 'drive_id',
+      expireSec: 'expire_sec',
+      filePath: 'file_path',
+      protectionScheme: 'protection_scheme',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      definition: 'string',
+      driveId: 'string',
+      expireSec: 'number',
+      filePath: 'string',
+      protectionScheme: 'string',
+      shareId: 'string',
+      signToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 启动视频转码请求
+ */
+export class HostingVideoTranscodeRequest extends $tea.Model {
+  driveId?: string;
+  filePath: string;
+  hlsTime?: number;
+  protectionScheme?: string;
+  remarks?: string;
+  shareId?: string;
+  transcode?: boolean;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      hlsTime: 'hls_time',
+      protectionScheme: 'protection_scheme',
+      remarks: 'remarks',
+      shareId: 'share_id',
+      transcode: 'transcode',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      filePath: 'string',
+      hlsTime: 'number',
+      protectionScheme: 'string',
+      remarks: 'string',
+      shareId: 'string',
+      transcode: 'boolean',
     };
   }
 
@@ -8369,27 +10668,42 @@ export class ImageMediaMetadata extends $tea.Model {
  */
 export class ListByAnonymousRequest extends $tea.Model {
   headers?: { [key: string]: string };
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
   limit?: number;
   marker?: string;
   parentFileId: string;
+  referer?: string;
   shareId: string;
+  signToken?: string;
+  videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
       limit: 'limit',
       marker: 'marker',
       parentFileId: 'parent_file_id',
+      referer: 'referer',
       shareId: 'share_id',
+      signToken: 'sign_token',
+      videoThumbnailProcess: 'video_thumbnail_process',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
       limit: 'number',
       marker: 'string',
       parentFileId: 'string',
+      referer: 'string',
       shareId: 'string',
+      signToken: 'string',
+      videoThumbnailProcess: 'string',
     };
   }
 
@@ -8435,16 +10749,21 @@ export class ListDriveRequest extends $tea.Model {
 export class ListFileByCustomIndexKeyRequest extends $tea.Model {
   headers?: { [key: string]: string };
   Starred?: boolean;
+  additionData?: {[key: string]: any};
   category?: string;
   customIndexKey: string;
   driveId?: string;
   encryptMode?: string;
   fields?: string;
+  imageCroppingAspectRatios?: string[];
   imageThumbnailProcess?: string;
   imageUrlProcess?: string;
   limit?: number;
   marker?: string;
   orderDirection?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
   status?: string;
   type?: string;
   urlExpireSec?: number;
@@ -8453,16 +10772,21 @@ export class ListFileByCustomIndexKeyRequest extends $tea.Model {
     return {
       headers: 'headers',
       Starred: 'Starred',
+      additionData: 'addition_data',
       category: 'category',
       customIndexKey: 'custom_index_key',
       driveId: 'drive_id',
       encryptMode: 'encrypt_mode',
       fields: 'fields',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
       imageThumbnailProcess: 'image_thumbnail_process',
       imageUrlProcess: 'image_url_process',
       limit: 'limit',
       marker: 'marker',
       orderDirection: 'order_direction',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
       status: 'status',
       type: 'type',
       urlExpireSec: 'url_expire_sec',
@@ -8474,16 +10798,21 @@ export class ListFileByCustomIndexKeyRequest extends $tea.Model {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       Starred: 'boolean',
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       category: 'string',
       customIndexKey: 'string',
       driveId: 'string',
       encryptMode: 'string',
       fields: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
       imageThumbnailProcess: 'string',
       imageUrlProcess: 'string',
       limit: 'number',
       marker: 'string',
       orderDirection: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
       status: 'string',
       type: 'string',
       urlExpireSec: 'number',
@@ -8503,13 +10832,21 @@ export class ListFileDeltaRequest extends $tea.Model {
   headers?: { [key: string]: string };
   cursor?: string;
   driveId: string;
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
   limit?: number;
+  videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
       cursor: 'cursor',
       driveId: 'drive_id',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
       limit: 'limit',
+      videoThumbnailProcess: 'video_thumbnail_process',
     };
   }
 
@@ -8518,7 +10855,11 @@ export class ListFileDeltaRequest extends $tea.Model {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       cursor: 'string',
       driveId: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
       limit: 'number',
+      videoThumbnailProcess: 'string',
     };
   }
 
@@ -8532,18 +10873,25 @@ export class ListFileDeltaRequest extends $tea.Model {
  */
 export class ListFileRequest extends $tea.Model {
   headers?: { [key: string]: string };
-  Starred?: boolean;
+  additionData?: {[key: string]: any};
   all?: boolean;
   category?: string;
   driveId?: string;
   fields?: string;
+  imageCroppingAspectRatios?: string[];
   imageThumbnailProcess?: string;
   imageUrlProcess?: string;
   limit?: number;
+  location?: string;
   marker?: string;
   orderBy?: string;
   orderDirection?: string;
   parentFileId: string;
+  parentFileIdPath?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  starred?: boolean;
   status?: string;
   type?: string;
   urlExpireSec?: number;
@@ -8551,18 +10899,25 @@ export class ListFileRequest extends $tea.Model {
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
-      Starred: 'Starred',
+      additionData: 'addition_data',
       all: 'all',
       category: 'category',
       driveId: 'drive_id',
       fields: 'fields',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
       imageThumbnailProcess: 'image_thumbnail_process',
       imageUrlProcess: 'image_url_process',
       limit: 'limit',
+      location: 'location',
       marker: 'marker',
       orderBy: 'order_by',
       orderDirection: 'order_direction',
       parentFileId: 'parent_file_id',
+      parentFileIdPath: 'parent_file_id_path',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+      starred: 'starred',
       status: 'status',
       type: 'type',
       urlExpireSec: 'url_expire_sec',
@@ -8573,18 +10928,25 @@ export class ListFileRequest extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      Starred: 'boolean',
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       all: 'boolean',
       category: 'string',
       driveId: 'string',
       fields: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
       imageThumbnailProcess: 'string',
       imageUrlProcess: 'string',
       limit: 'number',
+      location: 'string',
       marker: 'string',
       orderBy: 'string',
       orderDirection: 'string',
       parentFileId: 'string',
+      parentFileIdPath: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+      starred: 'boolean',
       status: 'string',
       type: 'string',
       urlExpireSec: 'number',
@@ -8660,30 +11022,36 @@ export class ListShareLinkRequest extends $tea.Model {
  * list share request
  */
 export class ListShareRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   creator?: string;
   driveId?: string;
   limit?: number;
   marker?: string;
   owner?: string;
+  ownerType?: string;
   shareFilePath?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       creator: 'creator',
       driveId: 'drive_id',
       limit: 'limit',
       marker: 'marker',
       owner: 'owner',
+      ownerType: 'owner_type',
       shareFilePath: 'share_file_path',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       creator: 'string',
       driveId: 'string',
       limit: 'number',
       marker: 'string',
       owner: 'string',
+      ownerType: 'string',
       shareFilePath: 'string',
     };
   }
@@ -8756,16 +11124,20 @@ export class ListUploadedPartRequest extends $tea.Model {
   headers?: { [key: string]: string };
   driveId: string;
   fileId: string;
+  fileIdPath?: string;
   limit?: number;
   partNumberMarker?: number;
+  shareId?: string;
   uploadId?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
       driveId: 'drive_id',
       fileId: 'file_id',
+      fileIdPath: 'file_id_path',
       limit: 'limit',
       partNumberMarker: 'part_number_marker',
+      shareId: 'share_id',
       uploadId: 'upload_id',
     };
   }
@@ -8775,8 +11147,10 @@ export class ListUploadedPartRequest extends $tea.Model {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       fileId: 'string',
+      fileIdPath: 'string',
       limit: 'number',
       partNumberMarker: 'number',
+      shareId: 'string',
       uploadId: 'string',
     };
   }
@@ -8791,594 +11165,42 @@ export class ListUploadedPartRequest extends $tea.Model {
  */
 export class MoveFileRequest extends $tea.Model {
   headers?: { [key: string]: string };
+  autoRename?: boolean;
   driveId: string;
   fileId: string;
+  fileIdPath?: string;
   newName?: string;
-  overwrite?: boolean;
-  toParentFileId: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      fileId: 'file_id',
-      newName: 'new_name',
-      overwrite: 'overwrite',
-      toParentFileId: 'to_parent_file_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      fileId: 'string',
-      newName: 'string',
-      overwrite: 'boolean',
-      toParentFileId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * complete file request
- */
-export class OSSCompleteFileRequest extends $tea.Model {
-  additionData?: {[key: string]: any};
-  driveId?: string;
-  filePath?: string;
-  forbidOverwrite?: boolean;
-  partInfoList?: UploadPartInfo[];
-  shareId?: string;
-  uploadId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      additionData: 'addition_data',
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      forbidOverwrite: 'forbid_overwrite',
-      partInfoList: 'part_info_list',
-      shareId: 'share_id',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      driveId: 'string',
-      filePath: 'string',
-      forbidOverwrite: 'boolean',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      shareId: 'string',
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * copy file request
- */
-export class OSSCopyFileRequest extends $tea.Model {
-  driveId?: string;
-  filePath: string;
-  newName?: string;
-  overwrite?: boolean;
   shareId?: string;
   toDriveId?: string;
-  toParentFilePath: string;
+  toParentFileId: string;
   toShareId?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
+      autoRename: 'auto_rename',
       driveId: 'drive_id',
-      filePath: 'file_path',
+      fileId: 'file_id',
+      fileIdPath: 'file_id_path',
       newName: 'new_name',
-      overwrite: 'overwrite',
       shareId: 'share_id',
       toDriveId: 'to_drive_id',
-      toParentFilePath: 'to_parent_file_path',
+      toParentFileId: 'to_parent_file_id',
       toShareId: 'to_share_id',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      autoRename: 'boolean',
       driveId: 'string',
-      filePath: 'string',
+      fileId: 'string',
+      fileIdPath: 'string',
       newName: 'string',
-      overwrite: 'boolean',
       shareId: 'string',
       toDriveId: 'string',
-      toParentFilePath: 'string',
+      toParentFileId: 'string',
       toShareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * create file request
- */
-export class OSSCreateFileRequest extends $tea.Model {
-  additionData?: {[key: string]: any};
-  contentMd5?: string;
-  contentType?: string;
-  driveId?: string;
-  forbidOverwrite?: boolean;
-  name: string;
-  parentFilePath: string;
-  partInfoList?: UploadPartInfo[];
-  shareId?: string;
-  size?: number;
-  type: string;
-  static names(): { [key: string]: string } {
-    return {
-      additionData: 'addition_data',
-      contentMd5: 'content_md5',
-      contentType: 'content_type',
-      driveId: 'drive_id',
-      forbidOverwrite: 'forbid_overwrite',
-      name: 'name',
-      parentFilePath: 'parent_file_path',
-      partInfoList: 'part_info_list',
-      shareId: 'share_id',
-      size: 'size',
-      type: 'type',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      contentMd5: 'string',
-      contentType: 'string',
-      driveId: 'string',
-      forbidOverwrite: 'boolean',
-      name: 'string',
-      parentFilePath: 'string',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      shareId: 'string',
-      size: 'number',
-      type: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 删除文件请求
- */
-export class OSSDeleteFileRequest extends $tea.Model {
-  driveId?: string;
-  filePath: string;
-  permanently?: boolean;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      permanently: 'permanently',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      permanently: 'boolean',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件下载地址的请求body
- */
-export class OSSGetDownloadUrlRequest extends $tea.Model {
-  driveId?: string;
-  expireSec?: number;
-  fileName?: string;
-  filePath: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      expireSec: 'expire_sec',
-      fileName: 'file_name',
-      filePath: 'file_path',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      expireSec: 'number',
-      fileName: 'string',
-      filePath: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件元数据
- */
-export class OSSGetFileRequest extends $tea.Model {
-  driveId?: string;
-  filePath: string;
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  shareId?: string;
-  urlExpireSec?: number;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      shareId: 'share_id',
-      urlExpireSec: 'url_expire_sec',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      shareId: 'string',
-      urlExpireSec: 'number',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件安全地址的请求body
- */
-export class OSSGetSecureUrlRequest extends $tea.Model {
-  driveId?: string;
-  expireSec?: number;
-  filePath: string;
-  secureIp?: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      expireSec: 'expire_sec',
-      filePath: 'file_path',
-      secureIp: 'secure_ip',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      expireSec: 'number',
-      filePath: 'string',
-      secureIp: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件上传URL
- */
-export class OSSGetUploadUrlRequest extends $tea.Model {
-  contentMd5?: string;
-  driveId?: string;
-  filePath: string;
-  partInfoList?: UploadPartInfo[];
-  shareId?: string;
-  uploadId: string;
-  static names(): { [key: string]: string } {
-    return {
-      contentMd5: 'content_md5',
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      partInfoList: 'part_info_list',
-      shareId: 'share_id',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      contentMd5: 'string',
-      driveId: 'string',
-      filePath: 'string',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      shareId: 'string',
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * list file request
- */
-export class OSSListFileRequest extends $tea.Model {
-  driveId?: string;
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  limit?: number;
-  marker?: string;
-  parentFilePath: string;
-  shareId?: string;
-  urlExpireSec?: number;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      limit: 'limit',
-      marker: 'marker',
-      parentFilePath: 'parent_file_path',
-      shareId: 'share_id',
-      urlExpireSec: 'url_expire_sec',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      limit: 'number',
-      marker: 'string',
-      parentFilePath: 'string',
-      shareId: 'string',
-      urlExpireSec: 'number',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 列举uploadID对应的已上传分片
- */
-export class OSSListUploadedPartRequest extends $tea.Model {
-  driveId?: string;
-  filePath: string;
-  limit?: number;
-  partNumberMarker?: number;
-  shareId?: string;
-  uploadId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      limit: 'limit',
-      partNumberMarker: 'part_number_marker',
-      shareId: 'share_id',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      limit: 'number',
-      partNumberMarker: 'number',
-      shareId: 'string',
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 文件移动请求
- */
-export class OSSMoveFileRequest extends $tea.Model {
-  driveId?: string;
-  filePath?: string;
-  newName?: string;
-  overwrite?: boolean;
-  shareId?: string;
-  toParentFilePath?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      newName: 'new_name',
-      overwrite: 'overwrite',
-      shareId: 'share_id',
-      toParentFilePath: 'to_parent_file_path',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      newName: 'string',
-      overwrite: 'boolean',
-      shareId: 'string',
-      toParentFilePath: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取视频DRM License
- */
-export class OSSVideoDRMLicenseRequest extends $tea.Model {
-  drmType: string;
-  licenseRequest: string;
-  static names(): { [key: string]: string } {
-    return {
-      drmType: 'drmType',
-      licenseRequest: 'licenseRequest',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      drmType: 'string',
-      licenseRequest: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取视频分辨率列表
- */
-export class OSSVideoDefinitionRequest extends $tea.Model {
-  driveId?: string;
-  filePath: string;
-  protectionScheme?: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      protectionScheme: 'protection_scheme',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      protectionScheme: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取视频的m3u8文件
- */
-export class OSSVideoM3U8Request extends $tea.Model {
-  definition?: string;
-  driveId?: string;
-  expireSec?: number;
-  filePath: string;
-  protectionScheme?: string;
-  shareId?: string;
-  signToken: string;
-  static names(): { [key: string]: string } {
-    return {
-      definition: 'definition',
-      driveId: 'drive_id',
-      expireSec: 'expire_sec',
-      filePath: 'file_path',
-      protectionScheme: 'protection_scheme',
-      shareId: 'share_id',
-      signToken: 'sign_token',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      definition: 'string',
-      driveId: 'string',
-      expireSec: 'number',
-      filePath: 'string',
-      protectionScheme: 'string',
-      shareId: 'string',
-      signToken: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 启动视频转码请求
- */
-export class OSSVideoTranscodeRequest extends $tea.Model {
-  driveId?: string;
-  filePath: string;
-  hlsTime?: number;
-  protectionScheme?: string;
-  remarks?: string;
-  shareId?: string;
-  transcode?: boolean;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      hlsTime: 'hls_time',
-      protectionScheme: 'protection_scheme',
-      remarks: 'remarks',
-      shareId: 'share_id',
-      transcode: 'transcode',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      hlsTime: 'number',
-      protectionScheme: 'string',
-      remarks: 'string',
-      shareId: 'string',
-      transcode: 'boolean',
     };
   }
 
@@ -9416,31 +11238,80 @@ export class PlayMediaRequest extends $tea.Model {
 }
 
 /**
- * 全量获取file元信息的请求body
+ * 刷新office文档在线编辑凭证
  */
-export class ScanFileMetaRequest extends $tea.Model {
+export class RefreshOfficeEditTokenRequest extends $tea.Model {
   headers?: { [key: string]: string };
-  category?: string;
-  driveId: string;
-  limit?: number;
-  marker?: string;
+  additionData?: {[key: string]: any};
+  location?: string;
+  officeAccessToken: string;
+  officeRefreshToken: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
-      category: 'category',
-      driveId: 'drive_id',
-      limit: 'limit',
-      marker: 'marker',
+      additionData: 'addition_data',
+      location: 'location',
+      officeAccessToken: 'office_access_token',
+      officeRefreshToken: 'office_refresh_token',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      location: 'string',
+      officeAccessToken: 'string',
+      officeRefreshToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 全量获取file元信息的请求body
+ */
+export class ScanFileMetaRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  category?: string;
+  driveId: string;
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  limit?: number;
+  marker?: string;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      category: 'category',
+      driveId: 'drive_id',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      limit: 'limit',
+      marker: 'marker',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       category: 'string',
       driveId: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
       limit: 'number',
       marker: 'string',
+      videoThumbnailProcess: 'string',
     };
   }
 
@@ -9454,25 +11325,37 @@ export class ScanFileMetaRequest extends $tea.Model {
  */
 export class SearchFileRequest extends $tea.Model {
   headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
   driveId: string;
+  imageCroppingAspectRatios?: string[];
   imageThumbnailProcess?: string;
   imageUrlProcess?: string;
   limit?: number;
+  location?: string;
   marker?: string;
   orderBy?: string;
   query?: string;
+  referer?: string;
+  returnTotalCount?: boolean;
+  signToken?: string;
   urlExpireSec?: number;
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
+      additionData: 'addition_data',
       driveId: 'drive_id',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
       imageThumbnailProcess: 'image_thumbnail_process',
       imageUrlProcess: 'image_url_process',
       limit: 'limit',
+      location: 'location',
       marker: 'marker',
       orderBy: 'order_by',
       query: 'query',
+      referer: 'referer',
+      returnTotalCount: 'return_total_count',
+      signToken: 'sign_token',
       urlExpireSec: 'url_expire_sec',
       videoThumbnailProcess: 'video_thumbnail_process',
     };
@@ -9481,13 +11364,19 @@ export class SearchFileRequest extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
       imageThumbnailProcess: 'string',
       imageUrlProcess: 'string',
       limit: 'number',
+      location: 'string',
       marker: 'string',
       orderBy: 'string',
       query: 'string',
+      referer: 'string',
+      returnTotalCount: 'boolean',
+      signToken: 'string',
       urlExpireSec: 'number',
       videoThumbnailProcess: 'string',
     };
@@ -9596,10 +11485,14 @@ export class UpdateFileMetaRequest extends $tea.Model {
   driveId: string;
   encryptMode?: string;
   fileId: string;
+  fileIdPath?: string;
   hidden?: boolean;
   labels?: string[];
   meta?: string;
   name?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
   starred?: boolean;
   userMeta?: string;
   static names(): { [key: string]: string } {
@@ -9611,10 +11504,14 @@ export class UpdateFileMetaRequest extends $tea.Model {
       driveId: 'drive_id',
       encryptMode: 'encrypt_mode',
       fileId: 'file_id',
+      fileIdPath: 'file_id_path',
       hidden: 'hidden',
       labels: 'labels',
       meta: 'meta',
       name: 'name',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
       starred: 'starred',
       userMeta: 'user_meta',
     };
@@ -9629,10 +11526,14 @@ export class UpdateFileMetaRequest extends $tea.Model {
       driveId: 'string',
       encryptMode: 'string',
       fileId: 'string',
+      fileIdPath: 'string',
       hidden: 'boolean',
       labels: { 'type': 'array', 'itemType': 'string' },
       meta: 'string',
       name: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
       starred: 'boolean',
       userMeta: 'string',
     };
@@ -9647,6 +11548,7 @@ export class UpdateFileMetaRequest extends $tea.Model {
  * update share request
  */
 export class UpdateShareRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   description?: string;
   expiration?: string;
   permissions?: string[];
@@ -9656,6 +11558,7 @@ export class UpdateShareRequest extends $tea.Model {
   status?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       description: 'description',
       expiration: 'expiration',
       permissions: 'permissions',
@@ -9668,6 +11571,7 @@ export class UpdateShareRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       description: 'string',
       expiration: 'string',
       permissions: { 'type': 'array', 'itemType': 'string' },
@@ -9903,6 +11807,7 @@ export class CreateUserRequest extends $tea.Model {
   avatar?: string;
   description?: string;
   email?: string;
+  location?: string;
   nickName?: string;
   phone?: string;
   role?: string;
@@ -9916,6 +11821,7 @@ export class CreateUserRequest extends $tea.Model {
       avatar: 'avatar',
       description: 'description',
       email: 'email',
+      location: 'location',
       nickName: 'nick_name',
       phone: 'phone',
       role: 'role',
@@ -9932,6 +11838,7 @@ export class CreateUserRequest extends $tea.Model {
       avatar: 'string',
       description: 'string',
       email: 'string',
+      location: 'string',
       nickName: 'string',
       phone: 'string',
       role: 'string',
@@ -10413,28 +12320,6 @@ export class GetStoryDetailModel extends $tea.Model {
   }
 }
 
-export class GetStoryTaskModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetStoryTaskResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetStoryTaskResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
 export class ListAddressGroupsModel extends $tea.Model {
   headers?: { [key: string]: string };
   body: ListImageAddressGroupsResponse;
@@ -10515,6 +12400,50 @@ export class ListTagsModel extends $tea.Model {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       body: ListImageTagsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ParseKeywordsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ParseKeywordsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ParseKeywordsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class RemoveStoryImagesModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: RemoveStoryImagesResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: RemoveStoryImagesResponse,
     };
   }
 
@@ -10732,7 +12661,7 @@ export class GetStoryDetailRequest extends $tea.Model {
 export class GetStoryDetailResponse extends $tea.Model {
   coverFileId?: string;
   createdAt?: string;
-  items?: BaseFileResponse[];
+  items?: BaseCCPFileResponse[];
   score?: number;
   storyId?: string;
   storyImagesDateRange?: number[];
@@ -10761,7 +12690,7 @@ export class GetStoryDetailResponse extends $tea.Model {
     return {
       coverFileId: 'string',
       createdAt: 'string',
-      items: { 'type': 'array', 'itemType': BaseFileResponse },
+      items: { 'type': 'array', 'itemType': BaseCCPFileResponse },
       score: 'number',
       storyId: 'string',
       storyImagesDateRange: { 'type': 'array', 'itemType': 'number' },
@@ -10770,56 +12699,6 @@ export class GetStoryDetailResponse extends $tea.Model {
       updatedAt: 'string',
       videoStatus: 'string',
       videoUrl: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Get create story task request
- */
-export class GetStoryTaskRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 故事任务状态
- */
-export class GetStoryTaskResponse extends $tea.Model {
-  driveId?: string;
-  status?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      status: 'status',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      status: 'string',
     };
   }
 
@@ -10948,6 +12827,7 @@ export class ListImageAddressGroupsRequest extends $tea.Model {
   imageThumbnailProcess?: string;
   limit?: number;
   marker?: string;
+  videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -10955,6 +12835,7 @@ export class ListImageAddressGroupsRequest extends $tea.Model {
       imageThumbnailProcess: 'image_thumbnail_process',
       limit: 'limit',
       marker: 'marker',
+      videoThumbnailProcess: 'video_thumbnail_process',
     };
   }
 
@@ -10965,6 +12846,7 @@ export class ListImageAddressGroupsRequest extends $tea.Model {
       imageThumbnailProcess: 'string',
       limit: 'number',
       marker: 'string',
+      videoThumbnailProcess: 'string',
     };
   }
 
@@ -11061,11 +12943,13 @@ export class ListImageTagsRequest extends $tea.Model {
   headers?: { [key: string]: string };
   driveId: string;
   imageThumbnailProcess?: string;
+  videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
       driveId: 'drive_id',
       imageThumbnailProcess: 'image_thumbnail_process',
+      videoThumbnailProcess: 'video_thumbnail_process',
     };
   }
 
@@ -11074,6 +12958,7 @@ export class ListImageTagsRequest extends $tea.Model {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       imageThumbnailProcess: 'string',
+      videoThumbnailProcess: 'string',
     };
   }
 
@@ -11161,14 +13046,69 @@ export class ListStoryResponse extends $tea.Model {
 }
 
 /**
+ * Parse keywords request
+ */
+export class ParseKeywordsRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  keywords?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      keywords: 'keywords',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      keywords: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Parse keywords response
+ */
+export class ParseKeywordsResponse extends $tea.Model {
+  addressLine?: string;
+  tags?: SystemTag[];
+  timeRange?: TimeRange;
+  static names(): { [key: string]: string } {
+    return {
+      addressLine: 'address_line',
+      tags: 'tags',
+      timeRange: 'time_range',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      addressLine: 'string',
+      tags: { 'type': 'array', 'itemType': SystemTag },
+      timeRange: TimeRange,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Remove story images request
  */
 export class RemoveStoryImagesRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   driveId?: string;
   fileIds?: string[];
   storyId?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       driveId: 'drive_id',
       fileIds: 'file_ids',
       storyId: 'story_id',
@@ -11177,9 +13117,75 @@ export class RemoveStoryImagesRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       fileIds: { 'type': 'array', 'itemType': 'string' },
       storyId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Remove story images response
+ */
+export class RemoveStoryImagesResponse extends $tea.Model {
+  driveId?: string;
+  fileIds?: string[];
+  results?: RemoveStoryImagesResultItem[];
+  storyId?: string;
+  successFileIds?: string[];
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      fileIds: 'file_ids',
+      results: 'results',
+      storyId: 'story_id',
+      successFileIds: 'success_file_ids',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      fileIds: { 'type': 'array', 'itemType': 'string' },
+      results: { 'type': 'array', 'itemType': RemoveStoryImagesResultItem },
+      storyId: 'string',
+      successFileIds: { 'type': 'array', 'itemType': 'string' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class RemoveStoryImagesResultItem extends $tea.Model {
+  code?: string;
+  fileId?: string;
+  isSucceed?: boolean;
+  message?: string;
+  static names(): { [key: string]: string } {
+    return {
+      code: 'code',
+      fileId: 'file_id',
+      isSucceed: 'is_succeed',
+      message: 'message',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      code: 'string',
+      fileId: 'string',
+      isSucceed: 'boolean',
+      message: 'string',
     };
   }
 
@@ -11199,6 +13205,7 @@ export class SearchImageAddressGroupsRequest extends $tea.Model {
   driveId: string;
   imageThumbnailProcess?: string;
   tlGeoPoint?: string;
+  videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -11208,6 +13215,7 @@ export class SearchImageAddressGroupsRequest extends $tea.Model {
       driveId: 'drive_id',
       imageThumbnailProcess: 'image_thumbnail_process',
       tlGeoPoint: 'tl_geo_point',
+      videoThumbnailProcess: 'video_thumbnail_process',
     };
   }
 
@@ -11220,6 +13228,7 @@ export class SearchImageAddressGroupsRequest extends $tea.Model {
       driveId: 'string',
       imageThumbnailProcess: 'string',
       tlGeoPoint: 'string',
+      videoThumbnailProcess: 'string',
     };
   }
 
@@ -11291,6 +13300,31 @@ export class StoryResponse extends $tea.Model {
       updatedAt: 'string',
       videoStatus: 'string',
       videoUrl: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class TimeRange extends $tea.Model {
+  end?: string;
+  start?: string;
+  static names(): { [key: string]: string } {
+    return {
+      end: 'end',
+      start: 'start',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      end: 'string',
+      start: 'string',
     };
   }
 
@@ -12510,7 +14544,7 @@ export default class Client {
    * @error NotFound The resource {resource_name} cannot be found. Please check.
    * @error InternalError The request has been failed due to some unknown error.
    */
-  async getPublicKeyEx(request: GetAppPublicKeyRequest, runtime: RuntimeOptions): Promise<GetPublicKeyModel> {
+  async getPublicKeyEx(request: GetPublicKeyRequest, runtime: RuntimeOptions): Promise<GetPublicKeyModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -15967,6 +18001,130 @@ export default class Client {
   }
 
   /**
+   * 获取文档的在线编辑地址
+   * @tags file
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async getOfficeEditUrlEx(request: GetOfficeEditUrlRequest, runtime: RuntimeOptions): Promise<GetOfficeEditUrlModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/file/get_office_edit_url`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<GetOfficeEditUrlModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new GetOfficeEditUrlModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
    * 获取文档的预览地址（office文档）
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -17206,6 +19364,130 @@ export default class Client {
   }
 
   /**
+   * 刷新在线编辑Token
+   * @tags file, refresh, office, edit
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async tokenEx(request: RefreshOfficeEditTokenRequest, runtime: RuntimeOptions): Promise<TokenModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/file/refresh_office_edit_token`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<TokenModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new TokenModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
    * 在指定drive下全量获取文件元信息。
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -17579,6 +19861,621 @@ export default class Client {
   }
 
   /**
+   * 创建共享。
+   * @tags share
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async createShareEx(request: CreateShareRequest, runtime: RuntimeOptions): Promise<CreateShareModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/share/create`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 201)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<CreateShareModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new CreateShareModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 删除指定共享
+   * @tags share
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async deleteShareEx(request: DeleteShareRequest, runtime: RuntimeOptions): Promise<DeleteShareModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/share/delete`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 204)) {
+          return $tea.cast<DeleteShareModel>({
+            headers: response_.headers,
+          }, new DeleteShareModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 获取共享信息。
+   * @tags share
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async getShareEx(request: GetShareRequest, runtime: RuntimeOptions): Promise<GetShareModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/share/get`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<GetShareModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new GetShareModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 列举指定用户的共享
+   * @tags share
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async listShareEx(request: ListShareRequest, runtime: RuntimeOptions): Promise<ListShareModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/share/list`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<ListShareModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new ListShareModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 修改指定共享
+   * @tags share
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async updateShareEx(request: UpdateShareRequest, runtime: RuntimeOptions): Promise<UpdateShareModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/share/update`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<UpdateShareModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new UpdateShareModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
    * 取消指定分享
    * @tags share_link
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -17788,6 +20685,128 @@ export default class Client {
             body: respMap,
             headers: response_.headers,
           }, new CreateShareLinkModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 查看分享的基本信息，比如分享者、到期时间等
+   * @tags share_link
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async getShareByAnonymousEx(request: GetShareLinkByAnonymousRequest, runtime: RuntimeOptions): Promise<GetShareByAnonymousModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/share_link/get_by_anonymous`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<GetShareByAnonymousModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new GetShareByAnonymousModel({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -18930,7 +21949,7 @@ export default class Client {
   }
 
   /**
-   * 该接口将会获取故事列表
+   * 该接口将会创建故事
    * @tags image
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -19178,7 +22197,7 @@ export default class Client {
   }
 
   /**
-   * 该接口将会获取故事列表
+   * 该接口将会获取故事详情
    * @tags image
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -19267,130 +22286,6 @@ export default class Client {
             body: respMap,
             headers: response_.headers,
           }, new GetStoryDetailModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 该接口将会获取故事生成任务
-   * @tags image
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getStoryTaskEx(request: GetStoryTaskRequest, runtime: RuntimeOptions): Promise<GetStoryTaskModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/image/get_story_task`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<GetStoryTaskModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new GetStoryTaskModel({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -19922,6 +22817,253 @@ export default class Client {
   }
 
   /**
+   * 该接口将会对用户输入内容语义解析出标签，地点，时间
+   * @tags image
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async parseKeywordsEx(request: ParseKeywordsRequest, runtime: RuntimeOptions): Promise<ParseKeywordsModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/image/parse_keywords`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<ParseKeywordsModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new ParseKeywordsModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 该接口将会移除故事中的照片
+   * @tags image
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async removeStoryImagesEx(request: RemoveStoryImagesRequest, runtime: RuntimeOptions): Promise<RemoveStoryImagesModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/image/remove_story_images`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<RemoveStoryImagesModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new RemoveStoryImagesModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
    * 该接口将会展示用户图片的地点分组
    * @tags image
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -20293,7 +23435,7 @@ export default class Client {
    * @error NotFound The resource {resource_name} cannot be found. Please check.
    * @error InternalError The request has been failed due to some unknown error.
    */
-  async getPublicKey(request: GetAppPublicKeyRequest): Promise<GetPublicKeyModel> {
+  async getPublicKey(request: GetPublicKeyRequest): Promise<GetPublicKeyModel> {
     let runtime = new RuntimeOptions({ });
     return await this.getPublicKeyEx(request, runtime);
   }
@@ -20689,6 +23831,21 @@ export default class Client {
   }
 
   /**
+   * 获取文档的在线编辑地址
+   * @tags file
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async getOfficeEditUrl(request: GetOfficeEditUrlRequest): Promise<GetOfficeEditUrlModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.getOfficeEditUrlEx(request, runtime);
+  }
+
+  /**
    * 获取文档的预览地址（office文档）
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -20838,6 +23995,21 @@ export default class Client {
   }
 
   /**
+   * 刷新在线编辑Token
+   * @tags file, refresh, office, edit
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async token(request: RefreshOfficeEditTokenRequest): Promise<TokenModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.tokenEx(request, runtime);
+  }
+
+  /**
    * 在指定drive下全量获取文件元信息。
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -20884,6 +24056,79 @@ export default class Client {
   }
 
   /**
+   * 创建共享。
+   * @tags share
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async createShare(request: CreateShareRequest): Promise<CreateShareModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.createShareEx(request, runtime);
+  }
+
+  /**
+   * 删除指定共享
+   * @tags share
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async deleteShare(request: DeleteShareRequest): Promise<DeleteShareModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.deleteShareEx(request, runtime);
+  }
+
+  /**
+   * 获取共享信息。
+   * @tags share
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async getShare(request: GetShareRequest): Promise<GetShareModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.getShareEx(request, runtime);
+  }
+
+  /**
+   * 列举指定用户的共享
+   * @tags share
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async listShare(request: ListShareRequest): Promise<ListShareModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.listShareEx(request, runtime);
+  }
+
+  /**
+   * 修改指定共享
+   * @tags share
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async updateShare(request: UpdateShareRequest): Promise<UpdateShareModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.updateShareEx(request, runtime);
+  }
+
+  /**
    * 取消指定分享
    * @tags share_link
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -20910,6 +24155,19 @@ export default class Client {
   async createShareLink(request: CreateShareLinkRequest): Promise<CreateShareLinkModel> {
     let runtime = new RuntimeOptions({ });
     return await this.createShareLinkEx(request, runtime);
+  }
+
+  /**
+   * 查看分享的基本信息，比如分享者、到期时间等
+   * @tags share_link
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async getShareByAnonymous(request: GetShareLinkByAnonymousRequest): Promise<GetShareByAnonymousModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.getShareByAnonymousEx(request, runtime);
   }
 
   /**
@@ -21042,7 +24300,7 @@ export default class Client {
   }
 
   /**
-   * 该接口将会获取故事列表
+   * 该接口将会创建故事
    * @tags image
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21072,7 +24330,7 @@ export default class Client {
   }
 
   /**
-   * 该接口将会获取故事列表
+   * 该接口将会获取故事详情
    * @tags image
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21084,21 +24342,6 @@ export default class Client {
   async getStoryDetail(request: GetStoryDetailRequest): Promise<GetStoryDetailModel> {
     let runtime = new RuntimeOptions({ });
     return await this.getStoryDetailEx(request, runtime);
-  }
-
-  /**
-   * 该接口将会获取故事生成任务
-   * @tags image
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getStoryTask(request: GetStoryTaskRequest): Promise<GetStoryTaskModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.getStoryTaskEx(request, runtime);
   }
 
   /**
@@ -21159,6 +24402,35 @@ export default class Client {
   async listTags(request: ListImageTagsRequest): Promise<ListTagsModel> {
     let runtime = new RuntimeOptions({ });
     return await this.listTagsEx(request, runtime);
+  }
+
+  /**
+   * 该接口将会对用户输入内容语义解析出标签，地点，时间
+   * @tags image
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async parseKeywords(request: ParseKeywordsRequest): Promise<ParseKeywordsModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.parseKeywordsEx(request, runtime);
+  }
+
+  /**
+   * 该接口将会移除故事中的照片
+   * @tags image
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async removeStoryImages(request: RemoveStoryImagesRequest): Promise<RemoveStoryImagesModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.removeStoryImagesEx(request, runtime);
   }
 
   /**

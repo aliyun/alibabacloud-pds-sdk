@@ -98,6 +98,9 @@ public class CompleteFileResponse extends TeaModel {
     @NameInMap("punish_flag")
     public Integer punishFlag;
 
+    @NameInMap("share_id")
+    public String shareId;
+
     // Size
     @NameInMap("size")
     public Long size;
@@ -331,6 +334,14 @@ public class CompleteFileResponse extends TeaModel {
     }
     public Integer getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public CompleteFileResponse setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public CompleteFileResponse setSize(Long size) {

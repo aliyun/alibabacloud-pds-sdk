@@ -1,38 +1,22 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
 /**
- * Get photo count request.
+ * Get photo count request
  */
-class GetImageCountRequest extends Model
-{
-    public $headers;
-
-    /**
-     * @description drive_id
-     *
-     * @example 1
-     *
-     * @var string
-     */
-    public $driveId;
+class GetImageCountRequest extends Model {
     protected $_name = [
         'driveId' => 'drive_id',
     ];
-
-    public function validate()
-    {
+    public function validate() {
         Model::validateRequired('driveId', $this->driveId, true);
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
     }
-
-    public function toMap()
-    {
+    public function toMap() {
         $res = [];
         if (null !== $this->headers) {
             $res['headers'] = $this->headers;
@@ -40,25 +24,29 @@ class GetImageCountRequest extends Model
         if (null !== $this->driveId) {
             $res['drive_id'] = $this->driveId;
         }
-
         return $res;
     }
-
     /**
      * @param array $map
-     *
      * @return GetImageCountRequest
      */
-    public static function fromMap($map = [])
-    {
+    public static function fromMap($map = []) {
         $model = new self();
-        if (isset($map['headers'])) {
+        if(isset($map['headers'])){
             $model->headers = $map['headers'];
         }
-        if (isset($map['drive_id'])) {
+        if(isset($map['drive_id'])){
             $model->driveId = $map['drive_id'];
         }
-
         return $model;
     }
+    public $headers;
+
+    /**
+     * @description drive_id
+     * @example 1
+     * @var string
+     */
+    public $driveId;
+
 }
