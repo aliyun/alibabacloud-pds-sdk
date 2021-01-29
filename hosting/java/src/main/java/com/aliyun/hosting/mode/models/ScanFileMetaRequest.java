@@ -7,6 +7,13 @@ import com.aliyun.tea.*;
  * 全量获取file元信息的请求body
  */
 public class ScanFileMetaRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
     // category
     @NameInMap("category")
     public String category;
@@ -16,6 +23,17 @@ public class ScanFileMetaRequest extends TeaModel {
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
+    @NameInMap("image_cropping_aspect_ratios")
+    public java.util.List<String> imageCroppingAspectRatios;
+
+    // image_thumbnail_process
+    @NameInMap("image_thumbnail_process")
+    public String imageThumbnailProcess;
+
+    // image_url_process
+    @NameInMap("image_url_process")
+    public String imageUrlProcess;
+
     // limit
     @NameInMap("limit")
     public Integer limit;
@@ -24,9 +42,30 @@ public class ScanFileMetaRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    // video_thumbnail_process
+    // type:string
+    @NameInMap("video_thumbnail_process")
+    public String videoThumbnailProcess;
+
     public static ScanFileMetaRequest build(java.util.Map<String, ?> map) throws Exception {
         ScanFileMetaRequest self = new ScanFileMetaRequest();
         return TeaModel.build(map, self);
+    }
+
+    public ScanFileMetaRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
+    }
+
+    public ScanFileMetaRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public ScanFileMetaRequest setCategory(String category) {
@@ -45,6 +84,30 @@ public class ScanFileMetaRequest extends TeaModel {
         return this.driveId;
     }
 
+    public ScanFileMetaRequest setImageCroppingAspectRatios(java.util.List<String> imageCroppingAspectRatios) {
+        this.imageCroppingAspectRatios = imageCroppingAspectRatios;
+        return this;
+    }
+    public java.util.List<String> getImageCroppingAspectRatios() {
+        return this.imageCroppingAspectRatios;
+    }
+
+    public ScanFileMetaRequest setImageThumbnailProcess(String imageThumbnailProcess) {
+        this.imageThumbnailProcess = imageThumbnailProcess;
+        return this;
+    }
+    public String getImageThumbnailProcess() {
+        return this.imageThumbnailProcess;
+    }
+
+    public ScanFileMetaRequest setImageUrlProcess(String imageUrlProcess) {
+        this.imageUrlProcess = imageUrlProcess;
+        return this;
+    }
+    public String getImageUrlProcess() {
+        return this.imageUrlProcess;
+    }
+
     public ScanFileMetaRequest setLimit(Integer limit) {
         this.limit = limit;
         return this;
@@ -59,6 +122,14 @@ public class ScanFileMetaRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ScanFileMetaRequest setVideoThumbnailProcess(String videoThumbnailProcess) {
+        this.videoThumbnailProcess = videoThumbnailProcess;
+        return this;
+    }
+    public String getVideoThumbnailProcess() {
+        return this.videoThumbnailProcess;
     }
 
 }

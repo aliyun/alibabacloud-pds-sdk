@@ -9,7 +9,7 @@ public class CompleteFileModel extends TeaModel {
 
     @NameInMap("body")
     @Validation(required = true)
-    public HostingCompleteFileResponse body;
+    public CompleteFileResponse body;
 
     public static CompleteFileModel build(java.util.Map<String, ?> map) throws Exception {
         CompleteFileModel self = new CompleteFileModel();
@@ -24,11 +24,11 @@ public class CompleteFileModel extends TeaModel {
         return this.headers;
     }
 
-    public CompleteFileModel setBody(HostingCompleteFileResponse body) {
+    public CompleteFileModel setBody(CompleteFileResponse body) {
         this.body = body;
         return this;
     }
-    public HostingCompleteFileResponse getBody() {
+    public CompleteFileResponse getBody() {
         return this.body;
     }
 

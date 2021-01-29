@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * copy file request
      */
     public class HostingCopyFileRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// drive_id
         /// </summary>
@@ -34,7 +30,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// new_name
         /// </summary>
         [NameInMap("new_name")]
-        [Validation(Required=false, Pattern="[a-zA-Z0-9.-]{1,1000}")]
+        [Validation(Required=false, MaxLength=1024)]
         public string NewName { get; set; }
 
         /// <summary>

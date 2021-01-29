@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 获取文件下载地址的请求body
      */
     public class HostingGetDownloadUrlRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// drive_id
         /// </summary>
@@ -44,12 +40,20 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [Validation(Required=true, MaxLength=1000)]
         public string FilePath { get; set; }
 
+        [NameInMap("referer")]
+        [Validation(Required=false)]
+        public string Referer { get; set; }
+
         /// <summary>
         /// share_id
         /// </summary>
         [NameInMap("share_id")]
         [Validation(Required=false, Pattern="[0-9a-zA-Z-]+")]
         public string ShareId { get; set; }
+
+        [NameInMap("sign_token")]
+        [Validation(Required=false)]
+        public string SignToken { get; set; }
 
     }
 

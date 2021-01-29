@@ -15,7 +15,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
 
         [NameInMap("body")]
         [Validation(Required=true)]
-        public HostingMoveFileResponse Body { get; set; }
+        public MoveFileResponse Body { get; set; }
 
     }
 

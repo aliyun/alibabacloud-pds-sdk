@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 更新文件元数据
      */
     public class UpdateFileMetaRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// check_name_mode
         /// </summary>
@@ -49,6 +53,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
         public string FileId { get; set; }
 
+        [NameInMap("file_id_path")]
+        [Validation(Required=false)]
+        public string FileIdPath { get; set; }
+
         /// <summary>
         /// hidden
         /// type: boolean
@@ -74,6 +82,18 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("name")]
         [Validation(Required=false, MaxLength=1024)]
         public string Name { get; set; }
+
+        [NameInMap("referer")]
+        [Validation(Required=false)]
+        public string Referer { get; set; }
+
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
+
+        [NameInMap("sign_token")]
+        [Validation(Required=false)]
+        public string SignToken { get; set; }
 
         /// <summary>
         /// starred

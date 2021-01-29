@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 获取文件上传URL
      */
     public class GetUploadUrlRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// content_md5
         /// </summary>
@@ -39,6 +43,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("part_info_list")]
         [Validation(Required=false)]
         public List<UploadPartInfo> PartInfoList { get; set; }
+
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
 
         /// <summary>
         /// upload_id

@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 获取office文档预览地址
      */
     public class GetOfficePreviewUrlRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// addition_data
         /// </summary>
@@ -32,6 +36,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("file_id")]
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
         public string FileId { get; set; }
+
+        /// <summary>
+        /// share_id, either share_id or drive_id is required
+        /// </summary>
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
 
     }
 

@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * copy file request
  */
 public class HostingCopyFileRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -22,6 +19,7 @@ public class HostingCopyFileRequest extends TeaModel {
 
     // new_name
     @NameInMap("new_name")
+    @Validation(maxLength = 1024, minLength = 1)
     public String newName;
 
     // overwrite
@@ -51,14 +49,6 @@ public class HostingCopyFileRequest extends TeaModel {
     public static HostingCopyFileRequest build(java.util.Map<String, ?> map) throws Exception {
         HostingCopyFileRequest self = new HostingCopyFileRequest();
         return TeaModel.build(map, self);
-    }
-
-    public HostingCopyFileRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public HostingCopyFileRequest setDriveId(String driveId) {

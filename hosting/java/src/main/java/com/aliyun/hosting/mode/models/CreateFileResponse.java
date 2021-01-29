@@ -36,6 +36,10 @@ public class CreateFileResponse extends TeaModel {
     @Validation(maxLength = 255, minLength = 1)
     public String fileName;
 
+    // location
+    @NameInMap("location")
+    public String location;
+
     // parent_file_id
     @NameInMap("parent_file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
@@ -117,6 +121,14 @@ public class CreateFileResponse extends TeaModel {
     }
     public String getFileName() {
         return this.fileName;
+    }
+
+    public CreateFileResponse setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+    public String getLocation() {
+        return this.location;
     }
 
     public CreateFileResponse setParentFileId(String parentFileId) {

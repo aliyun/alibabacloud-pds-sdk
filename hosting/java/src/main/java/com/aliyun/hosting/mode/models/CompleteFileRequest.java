@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 合并文件上传任务
  */
 public class CompleteFileRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // addition_data
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
@@ -25,6 +28,9 @@ public class CompleteFileRequest extends TeaModel {
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
+    @NameInMap("share_id")
+    public String shareId;
+
     // upload_id
     @NameInMap("upload_id")
     public String uploadId;
@@ -32,6 +38,14 @@ public class CompleteFileRequest extends TeaModel {
     public static CompleteFileRequest build(java.util.Map<String, ?> map) throws Exception {
         CompleteFileRequest self = new CompleteFileRequest();
         return TeaModel.build(map, self);
+    }
+
+    public CompleteFileRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public CompleteFileRequest setAdditionData(java.util.Map<String, ?> additionData) {
@@ -64,6 +78,14 @@ public class CompleteFileRequest extends TeaModel {
     }
     public java.util.List<UploadPartInfo> getPartInfoList() {
         return this.partInfoList;
+    }
+
+    public CompleteFileRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public CompleteFileRequest setUploadId(String uploadId) {

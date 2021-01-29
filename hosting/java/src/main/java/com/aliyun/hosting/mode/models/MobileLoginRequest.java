@@ -31,6 +31,11 @@ public class MobileLoginRequest extends TeaModel {
     @NameInMap("encrypted_key")
     public String encryptedKey;
 
+    // 环境参数
+    @NameInMap("nvc_param")
+    @Validation(required = true)
+    public String nvcParam;
+
     // 登录密码, 传入此参数则忽略短信验证码，不传此参数则默认使用短信登录。
     @NameInMap("password")
     public String password;
@@ -103,6 +108,14 @@ public class MobileLoginRequest extends TeaModel {
     }
     public String getEncryptedKey() {
         return this.encryptedKey;
+    }
+
+    public MobileLoginRequest setNvcParam(String nvcParam) {
+        this.nvcParam = nvcParam;
+        return this;
+    }
+    public String getNvcParam() {
+        return this.nvcParam;
     }
 
     public MobileLoginRequest setPassword(String password) {

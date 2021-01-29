@@ -20,6 +20,20 @@ namespace Aliyun.SDK.Hosting.Client.Models
         public string CreatedAt { get; set; }
 
         /// <summary>
+        /// creator
+        /// </summary>
+        [NameInMap("creator")]
+        [Validation(Required=false)]
+        public string Creator { get; set; }
+
+        /// <summary>
+        /// description
+        /// </summary>
+        [NameInMap("description")]
+        [Validation(Required=false)]
+        public string Description { get; set; }
+
+        /// <summary>
         /// 下载次数
         /// </summary>
         [NameInMap("download_count")]
@@ -55,6 +69,20 @@ namespace Aliyun.SDK.Hosting.Client.Models
         public string FileId { get; set; }
 
         /// <summary>
+        /// file_id_list
+        /// </summary>
+        [NameInMap("file_id_list")]
+        [Validation(Required=false)]
+        public List<string> FileIdList { get; set; }
+
+        /// <summary>
+        /// file_id_list
+        /// </summary>
+        [NameInMap("file_path_list")]
+        [Validation(Required=false)]
+        public List<string> FilePathList { get; set; }
+
+        /// <summary>
         /// preview_count
         /// </summary>
         [NameInMap("preview_count")]
@@ -81,6 +109,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("share_msg")]
         [Validation(Required=false)]
         public string ShareMsg { get; set; }
+
+        /// <summary>
+        /// share_name
+        /// </summary>
+        [NameInMap("share_name")]
+        [Validation(Required=false)]
+        public string ShareName { get; set; }
 
         /// <summary>
         /// share_policy

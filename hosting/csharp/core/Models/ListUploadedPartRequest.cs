@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 列举uploadID对应的已上传分片
      */
     public class ListUploadedPartRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// drive_id
         /// </summary>
@@ -26,6 +30,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
         public string FileId { get; set; }
 
+        [NameInMap("file_id_path")]
+        [Validation(Required=false)]
+        public string FileIdPath { get; set; }
+
         /// <summary>
         /// limit
         /// </summary>
@@ -39,6 +47,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("part_number_marker")]
         [Validation(Required=false, Pattern="[0-9]+")]
         public long? PartNumberMarker { get; set; }
+
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
 
         /// <summary>
         /// upload_id

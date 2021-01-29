@@ -15,6 +15,11 @@ public class MobileRegisterRequest extends TeaModel {
     @Validation(required = true)
     public String appId;
 
+    // 环境参数
+    @NameInMap("nvc_param")
+    @Validation(required = true)
+    public String nvcParam;
+
     // 待查询的手机号
     @NameInMap("phone_number")
     @Validation(required = true)
@@ -53,6 +58,14 @@ public class MobileRegisterRequest extends TeaModel {
     }
     public String getAppId() {
         return this.appId;
+    }
+
+    public MobileRegisterRequest setNvcParam(String nvcParam) {
+        this.nvcParam = nvcParam;
+        return this;
+    }
+    public String getNvcParam() {
+        return this.nvcParam;
     }
 
     public MobileRegisterRequest setPhoneNumber(String phoneNumber) {

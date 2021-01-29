@@ -20,6 +20,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         public string Category { get; set; }
 
         /// <summary>
+        /// CharacteristicHash
+        /// </summary>
+        [NameInMap("characteristic_hash")]
+        [Validation(Required=false)]
+        public string CharacteristicHash { get; set; }
+
+        /// <summary>
         /// Content Hash
         /// </summary>
         [NameInMap("content_hash")]
@@ -122,6 +129,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [Validation(Required=false)]
         public List<string> Labels { get; set; }
 
+        /// <summary>
+        /// location
+        /// </summary>
+        [NameInMap("location")]
+        [Validation(Required=false)]
+        public string Location { get; set; }
+
         [NameInMap("meta")]
         [Validation(Required=false)]
         public string Meta { get; set; }
@@ -144,6 +158,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [Validation(Required=false)]
         public int? PunishFlag { get; set; }
 
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
+
         /// <summary>
         /// Size
         /// </summary>
@@ -165,6 +183,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("status")]
         [Validation(Required=false)]
         public string Status { get; set; }
+
+        [NameInMap("stream_locations")]
+        [Validation(Required=false)]
+        public Dictionary<string, object> StreamLocations { get; set; }
 
         /// <summary>
         /// @Deprecated streams url info

@@ -52,6 +52,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         public string EncryptedKey { get; set; }
 
         /// <summary>
+        /// 环境参数
+        /// </summary>
+        [NameInMap("nvc_param")]
+        [Validation(Required=true)]
+        public string NvcParam { get; set; }
+
+        /// <summary>
         /// 登录密码, 传入此参数则忽略短信验证码，不传此参数则默认使用短信登录。
         /// </summary>
         [NameInMap("password")]

@@ -49,6 +49,25 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [Validation(Required=false)]
         public string VideoThumbnailProcess { get; set; }
 
+        [NameInMap("file_id_path")]
+        [Validation(Required=false)]
+        public string FileIdPath { get; set; }
+
+        /// <summary>
+        /// location
+        /// </summary>
+        [NameInMap("location")]
+        [Validation(Required=false)]
+        public string Location { get; set; }
+
+        [NameInMap("referer")]
+        [Validation(Required=false)]
+        public string Referer { get; set; }
+
+        [NameInMap("sign_token")]
+        [Validation(Required=false)]
+        public string SignToken { get; set; }
+
     }
 
 }

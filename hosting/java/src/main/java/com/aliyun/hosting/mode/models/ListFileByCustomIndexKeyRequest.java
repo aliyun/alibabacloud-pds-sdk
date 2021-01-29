@@ -7,9 +7,16 @@ import com.aliyun.tea.*;
  * 列举文件
  */
 public class ListFileByCustomIndexKeyRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // starred
     @NameInMap("Starred")
     public Boolean Starred;
+
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
 
     // category
     @NameInMap("category")
@@ -33,6 +40,9 @@ public class ListFileByCustomIndexKeyRequest extends TeaModel {
     @NameInMap("fields")
     public String fields;
 
+    @NameInMap("image_cropping_aspect_ratios")
+    public java.util.List<String> imageCroppingAspectRatios;
+
     // image_thumbnail_process
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
@@ -52,6 +62,16 @@ public class ListFileByCustomIndexKeyRequest extends TeaModel {
     // order_direction
     @NameInMap("order_direction")
     public String orderDirection;
+
+    @NameInMap("referer")
+    public String referer;
+
+    // share_id, either share_id or drive_id is required
+    @NameInMap("share_id")
+    public String shareId;
+
+    @NameInMap("sign_token")
+    public String signToken;
 
     // status
     @NameInMap("status")
@@ -75,12 +95,28 @@ public class ListFileByCustomIndexKeyRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public ListFileByCustomIndexKeyRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
+    }
+
     public ListFileByCustomIndexKeyRequest setStarred(Boolean Starred) {
         this.Starred = Starred;
         return this;
     }
     public Boolean getStarred() {
         return this.Starred;
+    }
+
+    public ListFileByCustomIndexKeyRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public ListFileByCustomIndexKeyRequest setCategory(String category) {
@@ -123,6 +159,14 @@ public class ListFileByCustomIndexKeyRequest extends TeaModel {
         return this.fields;
     }
 
+    public ListFileByCustomIndexKeyRequest setImageCroppingAspectRatios(java.util.List<String> imageCroppingAspectRatios) {
+        this.imageCroppingAspectRatios = imageCroppingAspectRatios;
+        return this;
+    }
+    public java.util.List<String> getImageCroppingAspectRatios() {
+        return this.imageCroppingAspectRatios;
+    }
+
     public ListFileByCustomIndexKeyRequest setImageThumbnailProcess(String imageThumbnailProcess) {
         this.imageThumbnailProcess = imageThumbnailProcess;
         return this;
@@ -161,6 +205,30 @@ public class ListFileByCustomIndexKeyRequest extends TeaModel {
     }
     public String getOrderDirection() {
         return this.orderDirection;
+    }
+
+    public ListFileByCustomIndexKeyRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
+    }
+
+    public ListFileByCustomIndexKeyRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
+    }
+
+    public ListFileByCustomIndexKeyRequest setSignToken(String signToken) {
+        this.signToken = signToken;
+        return this;
+    }
+    public String getSignToken() {
+        return this.signToken;
     }
 
     public ListFileByCustomIndexKeyRequest setStatus(String status) {

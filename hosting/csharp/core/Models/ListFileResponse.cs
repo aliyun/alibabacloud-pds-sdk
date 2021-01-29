@@ -17,7 +17,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// </summary>
         [NameInMap("items")]
         [Validation(Required=false)]
-        public List<BaseFileResponse> Items { get; set; }
+        public List<BaseCCPFileResponse> Items { get; set; }
 
         /// <summary>
         /// next_marker

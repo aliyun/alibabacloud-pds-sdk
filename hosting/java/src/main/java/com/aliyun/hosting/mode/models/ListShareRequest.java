@@ -30,6 +30,10 @@ public class ListShareRequest extends TeaModel {
     @NameInMap("owner")
     public String owner;
 
+    // owner_type
+    @NameInMap("owner_type")
+    public String ownerType;
+
     // share_file_path
     @NameInMap("share_file_path")
     public String shareFilePath;
@@ -85,6 +89,14 @@ public class ListShareRequest extends TeaModel {
     }
     public String getOwner() {
         return this.owner;
+    }
+
+    public ListShareRequest setOwnerType(String ownerType) {
+        this.ownerType = ownerType;
+        return this;
+    }
+    public String getOwnerType() {
+        return this.ownerType;
     }
 
     public ListShareRequest setShareFilePath(String shareFilePath) {

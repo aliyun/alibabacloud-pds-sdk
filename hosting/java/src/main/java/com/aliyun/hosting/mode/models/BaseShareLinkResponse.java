@@ -11,6 +11,14 @@ public class BaseShareLinkResponse extends TeaModel {
     @NameInMap("created_at")
     public String createdAt;
 
+    // creator
+    @NameInMap("creator")
+    public String creator;
+
+    // description
+    @NameInMap("description")
+    public String description;
+
     // 下载次数
     @NameInMap("download_count")
     public Long downloadCount;
@@ -31,6 +39,14 @@ public class BaseShareLinkResponse extends TeaModel {
     @NameInMap("file_id")
     public String fileId;
 
+    // file_id_list
+    @NameInMap("file_id_list")
+    public java.util.List<String> fileIdList;
+
+    // file_id_list
+    @NameInMap("file_path_list")
+    public java.util.List<String> filePathList;
+
     // preview_count
     @NameInMap("preview_count")
     public Long previewCount;
@@ -46,6 +62,10 @@ public class BaseShareLinkResponse extends TeaModel {
     // share_msg
     @NameInMap("share_msg")
     public String shareMsg;
+
+    // share_name
+    @NameInMap("share_name")
+    public String shareName;
 
     // share_policy
     @NameInMap("share_policy")
@@ -74,6 +94,22 @@ public class BaseShareLinkResponse extends TeaModel {
     }
     public String getCreatedAt() {
         return this.createdAt;
+    }
+
+    public BaseShareLinkResponse setCreator(String creator) {
+        this.creator = creator;
+        return this;
+    }
+    public String getCreator() {
+        return this.creator;
+    }
+
+    public BaseShareLinkResponse setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+    public String getDescription() {
+        return this.description;
     }
 
     public BaseShareLinkResponse setDownloadCount(Long downloadCount) {
@@ -116,6 +152,22 @@ public class BaseShareLinkResponse extends TeaModel {
         return this.fileId;
     }
 
+    public BaseShareLinkResponse setFileIdList(java.util.List<String> fileIdList) {
+        this.fileIdList = fileIdList;
+        return this;
+    }
+    public java.util.List<String> getFileIdList() {
+        return this.fileIdList;
+    }
+
+    public BaseShareLinkResponse setFilePathList(java.util.List<String> filePathList) {
+        this.filePathList = filePathList;
+        return this;
+    }
+    public java.util.List<String> getFilePathList() {
+        return this.filePathList;
+    }
+
     public BaseShareLinkResponse setPreviewCount(Long previewCount) {
         this.previewCount = previewCount;
         return this;
@@ -146,6 +198,14 @@ public class BaseShareLinkResponse extends TeaModel {
     }
     public String getShareMsg() {
         return this.shareMsg;
+    }
+
+    public BaseShareLinkResponse setShareName(String shareName) {
+        this.shareName = shareName;
+        return this;
+    }
+    public String getShareName() {
+        return this.shareName;
     }
 
     public BaseShareLinkResponse setSharePolicy(String sharePolicy) {

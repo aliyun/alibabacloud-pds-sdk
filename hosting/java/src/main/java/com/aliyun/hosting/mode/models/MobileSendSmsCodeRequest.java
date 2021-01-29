@@ -23,6 +23,11 @@ public class MobileSendSmsCodeRequest extends TeaModel {
     @NameInMap("captcha_text")
     public String captchaText;
 
+    // 环境参数
+    @NameInMap("nvc_param")
+    @Validation(required = true)
+    public String nvcParam;
+
     // 待发送验证短信的手机号
     @NameInMap("phone_number")
     @Validation(required = true)
@@ -72,6 +77,14 @@ public class MobileSendSmsCodeRequest extends TeaModel {
     }
     public String getCaptchaText() {
         return this.captchaText;
+    }
+
+    public MobileSendSmsCodeRequest setNvcParam(String nvcParam) {
+        this.nvcParam = nvcParam;
+        return this;
+    }
+    public String getNvcParam() {
+        return this.nvcParam;
     }
 
     public MobileSendSmsCodeRequest setPhoneNumber(String phoneNumber) {

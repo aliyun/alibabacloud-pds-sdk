@@ -9,7 +9,7 @@ public class GetUploadUrlModel extends TeaModel {
 
     @NameInMap("body")
     @Validation(required = true)
-    public HostingGetUploadUrlResponse body;
+    public GetUploadUrlResponse body;
 
     public static GetUploadUrlModel build(java.util.Map<String, ?> map) throws Exception {
         GetUploadUrlModel self = new GetUploadUrlModel();
@@ -24,11 +24,11 @@ public class GetUploadUrlModel extends TeaModel {
         return this.headers;
     }
 
-    public GetUploadUrlModel setBody(HostingGetUploadUrlResponse body) {
+    public GetUploadUrlModel setBody(GetUploadUrlResponse body) {
         this.body = body;
         return this;
     }
-    public HostingGetUploadUrlResponse getBody() {
+    public GetUploadUrlResponse getBody() {
         return this.body;
     }
 

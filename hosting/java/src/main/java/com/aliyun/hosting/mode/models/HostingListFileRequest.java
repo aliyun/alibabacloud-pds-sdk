@@ -7,13 +7,17 @@ import com.aliyun.tea.*;
  * list file request
  */
 public class HostingListFileRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
 
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
+
+    @NameInMap("image_cropping_aspect_ratios")
+    public java.util.List<String> imageCroppingAspectRatios;
 
     // image_thumbnail_process
     @NameInMap("image_thumbnail_process")
@@ -36,10 +40,16 @@ public class HostingListFileRequest extends TeaModel {
     @Validation(required = true)
     public String parentFilePath;
 
+    @NameInMap("referer")
+    public String referer;
+
     // share_id
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;
+
+    @NameInMap("sign_token")
+    public String signToken;
 
     // url_expire_sec
     @NameInMap("url_expire_sec")
@@ -55,12 +65,12 @@ public class HostingListFileRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public HostingListFileRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public HostingListFileRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public HostingListFileRequest setDriveId(String driveId) {
@@ -69,6 +79,14 @@ public class HostingListFileRequest extends TeaModel {
     }
     public String getDriveId() {
         return this.driveId;
+    }
+
+    public HostingListFileRequest setImageCroppingAspectRatios(java.util.List<String> imageCroppingAspectRatios) {
+        this.imageCroppingAspectRatios = imageCroppingAspectRatios;
+        return this;
+    }
+    public java.util.List<String> getImageCroppingAspectRatios() {
+        return this.imageCroppingAspectRatios;
     }
 
     public HostingListFileRequest setImageThumbnailProcess(String imageThumbnailProcess) {
@@ -111,12 +129,28 @@ public class HostingListFileRequest extends TeaModel {
         return this.parentFilePath;
     }
 
+    public HostingListFileRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
+    }
+
     public HostingListFileRequest setShareId(String shareId) {
         this.shareId = shareId;
         return this;
     }
     public String getShareId() {
         return this.shareId;
+    }
+
+    public HostingListFileRequest setSignToken(String signToken) {
+        this.signToken = signToken;
+        return this;
+    }
+    public String getSignToken() {
+        return this.signToken;
     }
 
     public HostingListFileRequest setUrlExpireSec(Long urlExpireSec) {

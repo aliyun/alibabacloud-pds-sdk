@@ -20,6 +20,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         public string Data { get; set; }
 
         /// <summary>
+        /// device_info
+        /// </summary>
+        [NameInMap("device_info")]
+        [Validation(Required=true)]
+        public string DeviceInfo { get; set; }
+
+        /// <summary>
         /// states
         /// </summary>
         [NameInMap("states")]

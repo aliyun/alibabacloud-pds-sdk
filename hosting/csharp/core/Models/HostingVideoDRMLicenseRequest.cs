@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 获取视频DRM License
      */
     public class HostingVideoDRMLicenseRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// drmType
         /// </summary>

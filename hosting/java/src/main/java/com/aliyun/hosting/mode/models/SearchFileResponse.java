@@ -9,22 +9,26 @@ import com.aliyun.tea.*;
 public class SearchFileResponse extends TeaModel {
     // items
     @NameInMap("items")
-    public java.util.List<BaseFileResponse> items;
+    public java.util.List<BaseCCPFileResponse> items;
 
     // next_marker
     @NameInMap("next_marker")
     public String nextMarker;
+
+    // total_count
+    @NameInMap("total_count")
+    public Long totalCount;
 
     public static SearchFileResponse build(java.util.Map<String, ?> map) throws Exception {
         SearchFileResponse self = new SearchFileResponse();
         return TeaModel.build(map, self);
     }
 
-    public SearchFileResponse setItems(java.util.List<BaseFileResponse> items) {
+    public SearchFileResponse setItems(java.util.List<BaseCCPFileResponse> items) {
         this.items = items;
         return this;
     }
-    public java.util.List<BaseFileResponse> getItems() {
+    public java.util.List<BaseCCPFileResponse> getItems() {
         return this.items;
     }
 
@@ -34,6 +38,14 @@ public class SearchFileResponse extends TeaModel {
     }
     public String getNextMarker() {
         return this.nextMarker;
+    }
+
+    public SearchFileResponse setTotalCount(Long totalCount) {
+        this.totalCount = totalCount;
+        return this;
+    }
+    public Long getTotalCount() {
+        return this.totalCount;
     }
 
 }

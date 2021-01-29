@@ -31,6 +31,10 @@ public class CreateDriveRequest extends TeaModel {
     @NameInMap("encrypt_mode")
     public String encryptMode;
 
+    // location
+    @NameInMap("location")
+    public String location;
+
     // 所属者
     @NameInMap("owner")
     @Validation(required = true)
@@ -103,6 +107,14 @@ public class CreateDriveRequest extends TeaModel {
     }
     public String getEncryptMode() {
         return this.encryptMode;
+    }
+
+    public CreateDriveRequest setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+    public String getLocation() {
+        return this.location;
     }
 
     public CreateDriveRequest setOwner(String owner) {

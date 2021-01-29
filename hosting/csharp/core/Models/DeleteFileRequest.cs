@@ -12,19 +12,24 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 删除文件请求
      */
     public class DeleteFileRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// drive_id
         /// </summary>
         [NameInMap("drive_id")]
-        [Validation(Required=true, Pattern="[0-9]+")]
+        [Validation(Required=false, Pattern="[0-9]+")]
         public string DriveId { get; set; }
 
-        /// <summary>
-        /// file_id
-        /// </summary>
         [NameInMap("file_id")]
-        [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
+        [Validation(Required=false)]
         public string FileId { get; set; }
+
+        [NameInMap("file_id_path")]
+        [Validation(Required=false)]
+        public string FileIdPath { get; set; }
 
         /// <summary>
         /// permanently
@@ -33,6 +38,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("permanently")]
         [Validation(Required=false)]
         public bool? Permanently { get; set; }
+
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
 
     }
 

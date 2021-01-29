@@ -36,6 +36,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [Validation(Required=false)]
         public string EnterpriseId { get; set; }
 
+        [NameInMap("ldap_config")]
+        [Validation(Required=false)]
+        public LdapConfig LdapConfig { get; set; }
+
         [NameInMap("login_page_headers")]
         [Validation(Required=false)]
         public Dictionary<string, object> LoginPageHeaders { get; set; }
@@ -47,6 +51,14 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("login_page_vars")]
         [Validation(Required=false)]
         public Dictionary<string, object> LoginPageVars { get; set; }
+
+        [NameInMap("white_list_config")]
+        [Validation(Required=false)]
+        public Dictionary<string, object> WhiteListConfig { get; set; }
+
+        [NameInMap("white_list_enable")]
+        [Validation(Required=false)]
+        public bool? WhiteListEnable { get; set; }
 
     }
 

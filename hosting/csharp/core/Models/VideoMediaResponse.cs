@@ -55,6 +55,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         public long? Height { get; set; }
 
         /// <summary>
+        /// system_tags
+        /// </summary>
+        [NameInMap("image_tags")]
+        [Validation(Required=false)]
+        public List<SystemTag> ImageTags { get; set; }
+
+        /// <summary>
         /// location
         /// </summary>
         [NameInMap("location")]

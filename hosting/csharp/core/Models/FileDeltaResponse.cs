@@ -18,7 +18,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
 
         [NameInMap("file")]
         [Validation(Required=false)]
-        public BaseFileResponse File { get; set; }
+        public BaseCCPFileResponse File { get; set; }
 
         [NameInMap("file_id")]
         [Validation(Required=false)]

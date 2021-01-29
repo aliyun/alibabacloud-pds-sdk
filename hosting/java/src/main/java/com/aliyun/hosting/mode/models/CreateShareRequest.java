@@ -23,18 +23,25 @@ public class CreateShareRequest extends TeaModel {
     @NameInMap("expiration")
     public String expiration;
 
-    // creator
+    // owner
     @NameInMap("owner")
     @Validation(required = true)
     public String owner;
+
+    // owner_type
+    @NameInMap("owner_type")
+    public String ownerType;
 
     // permissions
     @NameInMap("permissions")
     public java.util.List<String> permissions;
 
+    // share_file_id
+    @NameInMap("share_file_id")
+    public String shareFileId;
+
     // share_file_path
     @NameInMap("share_file_path")
-    @Validation(required = true)
     public String shareFilePath;
 
     // share_name
@@ -96,12 +103,28 @@ public class CreateShareRequest extends TeaModel {
         return this.owner;
     }
 
+    public CreateShareRequest setOwnerType(String ownerType) {
+        this.ownerType = ownerType;
+        return this;
+    }
+    public String getOwnerType() {
+        return this.ownerType;
+    }
+
     public CreateShareRequest setPermissions(java.util.List<String> permissions) {
         this.permissions = permissions;
         return this;
     }
     public java.util.List<String> getPermissions() {
         return this.permissions;
+    }
+
+    public CreateShareRequest setShareFileId(String shareFileId) {
+        this.shareFileId = shareFileId;
+        return this;
+    }
+    public String getShareFileId() {
+        return this.shareFileId;
     }
 
     public CreateShareRequest setShareFilePath(String shareFilePath) {

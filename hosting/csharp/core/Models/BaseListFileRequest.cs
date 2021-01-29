@@ -13,11 +13,22 @@ namespace Aliyun.SDK.Hosting.Client.Models
      */
     public class BaseListFileRequest : TeaModel {
         /// <summary>
+        /// addition_data
+        /// </summary>
+        [NameInMap("addition_data")]
+        [Validation(Required=false)]
+        public Dictionary<string, object> AdditionData { get; set; }
+
+        /// <summary>
         /// drive_id
         /// </summary>
         [NameInMap("drive_id")]
         [Validation(Required=false, Pattern="[0-9]+")]
         public string DriveId { get; set; }
+
+        [NameInMap("image_cropping_aspect_ratios")]
+        [Validation(Required=false)]
+        public List<string> ImageCroppingAspectRatios { get; set; }
 
         /// <summary>
         /// image_thumbnail_process
@@ -37,7 +48,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// limit
         /// </summary>
         [NameInMap("limit")]
-        [Validation(Required=false, Pattern="[0-9]{1,3}")]
+        [Validation(Required=false)]
         public long? Limit { get; set; }
 
         /// <summary>
@@ -46,6 +57,21 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [NameInMap("marker")]
         [Validation(Required=false)]
         public string Marker { get; set; }
+
+        [NameInMap("referer")]
+        [Validation(Required=false)]
+        public string Referer { get; set; }
+
+        /// <summary>
+        /// share_id, either share_id or drive_id is required
+        /// </summary>
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
+
+        [NameInMap("sign_token")]
+        [Validation(Required=false)]
+        public string SignToken { get; set; }
 
         /// <summary>
         /// video_thumbnail_process

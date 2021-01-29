@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 获取视频分辨率列表
      */
     public class HostingVideoDefinitionRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// drive_id
         /// </summary>

@@ -47,6 +47,13 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [Validation(Required=false)]
         public string Fps { get; set; }
 
+        /// <summary>
+        /// rotate 视频横屏 竖屏
+        /// </summary>
+        [NameInMap("rotate")]
+        [Validation(Required=false)]
+        public string Rotate { get; set; }
+
     }
 
 }

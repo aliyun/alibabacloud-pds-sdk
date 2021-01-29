@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 
      */
     public class UploadPartInfo : TeaModel {
+        [NameInMap("content_type")]
+        [Validation(Required=false)]
+        public string ContentType { get; set; }
+
         /// <summary>
         /// etag
         /// </summary>
@@ -23,7 +27,7 @@ namespace Aliyun.SDK.Hosting.Client.Models
         /// PartNumber
         /// </summary>
         [NameInMap("part_number")]
-        [Validation(Required=false, Pattern="[0-9]+")]
+        [Validation(Required=false)]
         public long? PartNumber { get; set; }
 
         /// <summary>
