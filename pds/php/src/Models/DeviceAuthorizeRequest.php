@@ -1,70 +1,29 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
-class DeviceAuthorizeRequest extends Model
-{
-    /**
-     * @description Client ID, 此处填写创建App时返回的AppID
-     *
-     * @example aksjoiajsoias
-     *
-     * @var string
-     */
-    public $ClientID;
-
-    /**
-     * @description 设备信息，用于用户识别设备
-     *
-     * @var string
-     */
-    public $DeviceInfo;
-
-    /**
-     * @description 设备名，实现方需保证不同设备的设备名不重复（推荐用硬件名称+硬件型号作为设备名）
-     *
-     * @var string
-     */
-    public $DeviceName;
-
-    /**
-     * @description 鉴权方式，目前支持ding,ram鉴权
-     *
-     * @example ding
-     *
-     * @var string
-     */
-    public $LoginType;
-
-    /**
-     * @description 申请的权限列表, 默认为所有权限
-     *
-     * @var string[]
-     */
-    public $Scope;
+/**
+ * *
+ */
+class DeviceAuthorizeRequest extends Model {
     protected $_name = [
-        'ClientID'   => 'ClientID',
+        'ClientID' => 'ClientID',
         'DeviceInfo' => 'DeviceInfo',
         'DeviceName' => 'DeviceName',
-        'LoginType'  => 'LoginType',
-        'Scope'      => 'Scope',
+        'LoginType' => 'LoginType',
+        'Scope' => 'Scope',
     ];
     protected $_default = [
         'LoginType' => 'ding',
     ];
-
-    public function validate()
-    {
+    public function validate() {
         Model::validateRequired('ClientID', $this->ClientID, true);
         Model::validateRequired('DeviceName', $this->DeviceName, true);
     }
-
-    public function toMap()
-    {
+    public function toMap() {
         $res = [];
         if (null !== $this->ClientID) {
             $res['ClientID'] = $this->ClientID;
@@ -81,36 +40,63 @@ class DeviceAuthorizeRequest extends Model
         if (null !== $this->Scope) {
             $res['Scope'] = $this->Scope;
         }
-
         return $res;
     }
-
     /**
      * @param array $map
-     *
      * @return DeviceAuthorizeRequest
      */
-    public static function fromMap($map = [])
-    {
+    public static function fromMap($map = []) {
         $model = new self();
-        if (isset($map['ClientID'])) {
+        if(isset($map['ClientID'])){
             $model->ClientID = $map['ClientID'];
         }
-        if (isset($map['DeviceInfo'])) {
+        if(isset($map['DeviceInfo'])){
             $model->DeviceInfo = $map['DeviceInfo'];
         }
-        if (isset($map['DeviceName'])) {
+        if(isset($map['DeviceName'])){
             $model->DeviceName = $map['DeviceName'];
         }
-        if (isset($map['LoginType'])) {
+        if(isset($map['LoginType'])){
             $model->LoginType = $map['LoginType'];
         }
-        if (isset($map['Scope'])) {
-            if (!empty($map['Scope'])) {
+        if(isset($map['Scope'])){
+            if(!empty($map['Scope'])){
                 $model->Scope = $map['Scope'];
             }
         }
-
         return $model;
     }
+    /**
+     * @description Client ID, 此处填写创建App时返回的AppID
+     * @example aksjoiajsoias
+     * @var string
+     */
+    public $ClientID;
+
+    /**
+     * @description 设备信息，用于用户识别设备
+     * @var string
+     */
+    public $DeviceInfo;
+
+    /**
+     * @description 设备名，实现方需保证不同设备的设备名不重复（推荐用硬件名称+硬件型号作为设备名）
+     * @var string
+     */
+    public $DeviceName;
+
+    /**
+     * @description 鉴权方式，目前支持ding,ram鉴权
+     * @example ding
+     * @var string
+     */
+    public $LoginType;
+
+    /**
+     * @description 申请的权限列表, 默认为所有权限
+     * @var string[]
+     */
+    public $Scope;
+
 }

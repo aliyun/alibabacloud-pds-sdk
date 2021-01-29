@@ -1,32 +1,25 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
 /**
- * delete drive response.
+ * delete drive response
  */
-class DeleteDriveResponse extends Model
-{
-    public function validate()
-    {
+class DeleteDriveResponse extends Model {
+    public function validate() {}
+    public function toMap() {
+        $res = [];
+        return $res;
     }
-
-    public function toMap()
-    {
-        return [];
-    }
-
     /**
      * @param array $map
-     *
      * @return DeleteDriveResponse
      */
-    public static function fromMap($map = [])
-    {
-        return new self();
+    public static function fromMap($map = []) {
+        $model = new self();
+        return $model;
     }
 }

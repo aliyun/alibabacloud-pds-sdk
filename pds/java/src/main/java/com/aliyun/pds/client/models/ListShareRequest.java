@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * list share request
  */
 public class ListShareRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // creator
     @NameInMap("creator")
     public String creator;
@@ -27,6 +30,10 @@ public class ListShareRequest extends TeaModel {
     @NameInMap("owner")
     public String owner;
 
+    // owner_type
+    @NameInMap("owner_type")
+    public String ownerType;
+
     // share_file_path
     @NameInMap("share_file_path")
     public String shareFilePath;
@@ -34,6 +41,14 @@ public class ListShareRequest extends TeaModel {
     public static ListShareRequest build(java.util.Map<String, ?> map) throws Exception {
         ListShareRequest self = new ListShareRequest();
         return TeaModel.build(map, self);
+    }
+
+    public ListShareRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public ListShareRequest setCreator(String creator) {
@@ -74,6 +89,14 @@ public class ListShareRequest extends TeaModel {
     }
     public String getOwner() {
         return this.owner;
+    }
+
+    public ListShareRequest setOwnerType(String ownerType) {
+        this.ownerType = ownerType;
+        return this;
+    }
+    public String getOwnerType() {
+        return this.ownerType;
     }
 
     public ListShareRequest setShareFilePath(String shareFilePath) {

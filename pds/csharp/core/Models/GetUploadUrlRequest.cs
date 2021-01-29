@@ -44,6 +44,10 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public List<UploadPartInfo> PartInfoList { get; set; }
 
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
+
         /// <summary>
         /// upload_id
         /// </summary>

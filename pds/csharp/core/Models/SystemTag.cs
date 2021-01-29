@@ -36,6 +36,10 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public bool? Selected { get; set; }
 
+        [NameInMap("source")]
+        [Validation(Required=false)]
+        public string Source { get; set; }
+
         [NameInMap("tag_level")]
         [Validation(Required=false)]
         public long? TagLevel { get; set; }

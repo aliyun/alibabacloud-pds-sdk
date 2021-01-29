@@ -94,6 +94,9 @@ public class GetFileByPathResponse extends TeaModel {
     @NameInMap("punish_flag")
     public Integer punishFlag;
 
+    @NameInMap("share_id")
+    public String shareId;
+
     // Size
     @NameInMap("size")
     public Long size;
@@ -316,6 +319,14 @@ public class GetFileByPathResponse extends TeaModel {
     }
     public Integer getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public GetFileByPathResponse setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public GetFileByPathResponse setSize(Long size) {

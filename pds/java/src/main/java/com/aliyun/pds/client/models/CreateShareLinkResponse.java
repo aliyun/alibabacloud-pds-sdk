@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * create_share_link response
  */
 public class CreateShareLinkResponse extends TeaModel {
+    // description
+    @NameInMap("description")
+    public String description;
+
     // share_id
     @NameInMap("share_id")
     public String shareId;
@@ -14,6 +18,10 @@ public class CreateShareLinkResponse extends TeaModel {
     // share_msg
     @NameInMap("share_msg")
     public String shareMsg;
+
+    // share_name
+    @NameInMap("share_name")
+    public String shareName;
 
     // share_policy
     @NameInMap("share_policy")
@@ -32,6 +40,14 @@ public class CreateShareLinkResponse extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public CreateShareLinkResponse setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+    public String getDescription() {
+        return this.description;
+    }
+
     public CreateShareLinkResponse setShareId(String shareId) {
         this.shareId = shareId;
         return this;
@@ -46,6 +62,14 @@ public class CreateShareLinkResponse extends TeaModel {
     }
     public String getShareMsg() {
         return this.shareMsg;
+    }
+
+    public CreateShareLinkResponse setShareName(String shareName) {
+        this.shareName = shareName;
+        return this;
+    }
+    public String getShareName() {
+        return this.shareName;
     }
 
     public CreateShareLinkResponse setSharePolicy(String sharePolicy) {

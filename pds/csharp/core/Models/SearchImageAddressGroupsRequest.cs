@@ -46,7 +46,6 @@ namespace Aliyun.SDK.PDS.Client.Models
 
         /// <summary>
         /// image_thumbnail_process
-        /// type:string
         /// </summary>
         [NameInMap("image_thumbnail_process")]
         [Validation(Required=false)]
@@ -58,6 +57,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("tl_geo_point")]
         [Validation(Required=false)]
         public string TlGeoPoint { get; set; }
+
+        /// <summary>
+        /// video_thumbnail_process
+        /// </summary>
+        [NameInMap("video_thumbnail_process")]
+        [Validation(Required=false)]
+        public string VideoThumbnailProcess { get; set; }
 
     }
 

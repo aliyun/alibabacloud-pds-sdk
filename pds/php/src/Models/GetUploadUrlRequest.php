@@ -1,72 +1,25 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
+use Aliyun\PDS\SDK\Models\UploadPartInfo;
+
 /**
- * 获取文件上传URL.
+ * 获取文件上传URL
  */
-class GetUploadUrlRequest extends Model
-{
-    public $headers;
-
-    /**
-     * @description content_md5
-     *
-     * @example E10ADC3949BA59ABBE56E057F20F883E
-     *
-     * @var string
-     */
-    public $contentMd5;
-
-    /**
-     * @description drive_id
-     *
-     * @example 1
-     *
-     * @var string
-     */
-    public $driveId;
-
-    /**
-     * @description file_id
-     *
-     * @example 5d5b846942cf94fa72324c14a4bda34e81da635d
-     *
-     * @var string
-     */
-    public $fileId;
-
-    /**
-     * @description upload_part_list
-     *
-     * @example
-     *
-     * @var UploadPartInfo[]
-     */
-    public $partInfoList;
-
-    /**
-     * @description upload_id
-     *
-     * @example 3920F2BE4D9446D6967E2ED505A97EFD
-     *
-     * @var string
-     */
-    public $uploadId;
+class GetUploadUrlRequest extends Model {
     protected $_name = [
-        'contentMd5'   => 'content_md5',
-        'driveId'      => 'drive_id',
-        'fileId'       => 'file_id',
+        'contentMd5' => 'content_md5',
+        'driveId' => 'drive_id',
+        'fileId' => 'file_id',
         'partInfoList' => 'part_info_list',
-        'uploadId'     => 'upload_id',
+        'shareId' => 'share_id',
+        'uploadId' => 'upload_id',
     ];
-
-    public function validate()
-    {
+    public function validate() {
         Model::validateMaxLength('contentMd5', $this->contentMd5, 32);
         Model::validateMaxLength('fileId', $this->fileId, 50);
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
@@ -75,9 +28,7 @@ class GetUploadUrlRequest extends Model
         Model::validateRequired('uploadId', $this->uploadId, true);
         Model::validateMinLength('fileId', $this->fileId, 40);
     }
-
-    public function toMap()
-    {
+    public function toMap() {
         $res = [];
         if (null !== $this->headers) {
             $res['headers'] = $this->headers;
@@ -93,53 +44,96 @@ class GetUploadUrlRequest extends Model
         }
         if (null !== $this->partInfoList) {
             $res['part_info_list'] = [];
-            if (null !== $this->partInfoList && \is_array($this->partInfoList)) {
+            if(null !== $this->partInfoList && is_array($this->partInfoList)){
                 $n = 0;
-                foreach ($this->partInfoList as $item) {
+                foreach($this->partInfoList as $item){
                     $res['part_info_list'][$n++] = null !== $item ? $item->toMap() : $item;
                 }
             }
         }
+        if (null !== $this->shareId) {
+            $res['share_id'] = $this->shareId;
+        }
         if (null !== $this->uploadId) {
             $res['upload_id'] = $this->uploadId;
         }
-
         return $res;
     }
-
     /**
      * @param array $map
-     *
      * @return GetUploadUrlRequest
      */
-    public static function fromMap($map = [])
-    {
+    public static function fromMap($map = []) {
         $model = new self();
-        if (isset($map['headers'])) {
+        if(isset($map['headers'])){
             $model->headers = $map['headers'];
         }
-        if (isset($map['content_md5'])) {
+        if(isset($map['content_md5'])){
             $model->contentMd5 = $map['content_md5'];
         }
-        if (isset($map['drive_id'])) {
+        if(isset($map['drive_id'])){
             $model->driveId = $map['drive_id'];
         }
-        if (isset($map['file_id'])) {
+        if(isset($map['file_id'])){
             $model->fileId = $map['file_id'];
         }
-        if (isset($map['part_info_list'])) {
-            if (!empty($map['part_info_list'])) {
+        if(isset($map['part_info_list'])){
+            if(!empty($map['part_info_list'])){
                 $model->partInfoList = [];
-                $n                   = 0;
-                foreach ($map['part_info_list'] as $item) {
+                $n = 0;
+                foreach($map['part_info_list'] as $item) {
                     $model->partInfoList[$n++] = null !== $item ? UploadPartInfo::fromMap($item) : $item;
                 }
             }
         }
-        if (isset($map['upload_id'])) {
+        if(isset($map['share_id'])){
+            $model->shareId = $map['share_id'];
+        }
+        if(isset($map['upload_id'])){
             $model->uploadId = $map['upload_id'];
         }
-
         return $model;
     }
+    public $headers;
+
+    /**
+     * @description content_md5
+     * @example E10ADC3949BA59ABBE56E057F20F883E
+     * @var string
+     */
+    public $contentMd5;
+
+    /**
+     * @description drive_id
+     * @example 1
+     * @var string
+     */
+    public $driveId;
+
+    /**
+     * @description file_id
+     * @example 5d5b846942cf94fa72324c14a4bda34e81da635d
+     * @var string
+     */
+    public $fileId;
+
+    /**
+     * @description upload_part_list
+     * @example 
+     * @var UploadPartInfo[]
+     */
+    public $partInfoList;
+
+    /**
+     * @var string
+     */
+    public $shareId;
+
+    /**
+     * @description upload_id
+     * @example 3920F2BE4D9446D6967E2ED505A97EFD
+     * @var string
+     */
+    public $uploadId;
+
 }

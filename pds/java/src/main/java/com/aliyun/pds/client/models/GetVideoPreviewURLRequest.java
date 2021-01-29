@@ -32,6 +32,10 @@ public class GetVideoPreviewURLRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    // share_id, either share_id or drive_id is required
+    @NameInMap("share_id")
+    public String shareId;
+
     // template_id
     @NameInMap("template_id")
     public String templateId;
@@ -87,6 +91,14 @@ public class GetVideoPreviewURLRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public GetVideoPreviewURLRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public GetVideoPreviewURLRequest setTemplateId(String templateId) {

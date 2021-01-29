@@ -1,62 +1,53 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
+use Aliyun\PDS\SDK\Models\ImageTagResponse;
+
 /**
- * 展示标签集合.
+ * 展示标签集合
  */
-class ListImageTagsResponse extends Model
-{
-    /**
-     * @var ImageTagResponse[]
-     */
-    public $tags;
+class ListImageTagsResponse extends Model {
     protected $_name = [
         'tags' => 'tags',
     ];
-
-    public function validate()
-    {
-    }
-
-    public function toMap()
-    {
+    public function validate() {}
+    public function toMap() {
         $res = [];
         if (null !== $this->tags) {
             $res['tags'] = [];
-            if (null !== $this->tags && \is_array($this->tags)) {
+            if(null !== $this->tags && is_array($this->tags)){
                 $n = 0;
-                foreach ($this->tags as $item) {
+                foreach($this->tags as $item){
                     $res['tags'][$n++] = null !== $item ? $item->toMap() : $item;
                 }
             }
         }
-
         return $res;
     }
-
     /**
      * @param array $map
-     *
      * @return ListImageTagsResponse
      */
-    public static function fromMap($map = [])
-    {
+    public static function fromMap($map = []) {
         $model = new self();
-        if (isset($map['tags'])) {
-            if (!empty($map['tags'])) {
+        if(isset($map['tags'])){
+            if(!empty($map['tags'])){
                 $model->tags = [];
-                $n           = 0;
-                foreach ($map['tags'] as $item) {
+                $n = 0;
+                foreach($map['tags'] as $item) {
                     $model->tags[$n++] = null !== $item ? ImageTagResponse::fromMap($item) : $item;
                 }
             }
         }
-
         return $model;
     }
+    /**
+     * @var ImageTagResponse[]
+     */
+    public $tags;
+
 }

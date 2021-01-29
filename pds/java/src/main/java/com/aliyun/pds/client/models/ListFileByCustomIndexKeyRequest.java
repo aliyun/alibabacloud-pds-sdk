@@ -66,6 +66,10 @@ public class ListFileByCustomIndexKeyRequest extends TeaModel {
     @NameInMap("referer")
     public String referer;
 
+    // share_id, either share_id or drive_id is required
+    @NameInMap("share_id")
+    public String shareId;
+
     @NameInMap("sign_token")
     public String signToken;
 
@@ -209,6 +213,14 @@ public class ListFileByCustomIndexKeyRequest extends TeaModel {
     }
     public String getReferer() {
         return this.referer;
+    }
+
+    public ListFileByCustomIndexKeyRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public ListFileByCustomIndexKeyRequest setSignToken(String signToken) {

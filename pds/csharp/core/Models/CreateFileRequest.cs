@@ -73,7 +73,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// drive_id
         /// </summary>
         [NameInMap("drive_id")]
-        [Validation(Required=true, Pattern="[0-9]+")]
+        [Validation(Required=false, Pattern="[0-9]+")]
         public string DriveId { get; set; }
 
         /// <summary>
@@ -89,6 +89,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("file_id")]
         [Validation(Required=false)]
         public string FileId { get; set; }
+
+        /// <summary>
+        /// force_upload_to_location
+        /// </summary>
+        [NameInMap("force_upload_to_location")]
+        [Validation(Required=false)]
+        public bool? ForceUploadToLocation { get; set; }
 
         /// <summary>
         /// hidden
@@ -115,6 +122,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public string LastUpdatedAt { get; set; }
 
+        /// <summary>
+        /// location
+        /// </summary>
+        [NameInMap("location")]
+        [Validation(Required=false)]
+        public string Location { get; set; }
+
         [NameInMap("meta")]
         [Validation(Required=false)]
         public string Meta { get; set; }
@@ -133,6 +147,10 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9]{1,50}")]
         public string ParentFileId { get; set; }
 
+        [NameInMap("parent_file_id_path")]
+        [Validation(Required=false)]
+        public string ParentFileIdPath { get; set; }
+
         /// <summary>
         /// part_info_list
         /// </summary>
@@ -146,6 +164,14 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("pre_hash")]
         [Validation(Required=false)]
         public string PreHash { get; set; }
+
+        /// <summary>
+        /// share_id
+        /// example
+        /// </summary>
+        [NameInMap("share_id")]
+        [Validation(Required=false)]
+        public string ShareId { get; set; }
 
         /// <summary>
         /// Size

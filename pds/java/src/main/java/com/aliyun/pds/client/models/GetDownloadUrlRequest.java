@@ -28,6 +28,9 @@ public class GetDownloadUrlRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    @NameInMap("file_id_path")
+    public String fileIdPath;
+
     // file_name
     @NameInMap("file_name")
     @Validation(maxLength = 1024, minLength = 1)
@@ -39,6 +42,10 @@ public class GetDownloadUrlRequest extends TeaModel {
 
     @NameInMap("referer")
     public String referer;
+
+    // share_id, either share_id or drive_id is required
+    @NameInMap("share_id")
+    public String shareId;
 
     @NameInMap("sign_token")
     public String signToken;
@@ -88,6 +95,14 @@ public class GetDownloadUrlRequest extends TeaModel {
         return this.fileId;
     }
 
+    public GetDownloadUrlRequest setFileIdPath(String fileIdPath) {
+        this.fileIdPath = fileIdPath;
+        return this;
+    }
+    public String getFileIdPath() {
+        return this.fileIdPath;
+    }
+
     public GetDownloadUrlRequest setFileName(String fileName) {
         this.fileName = fileName;
         return this;
@@ -110,6 +125,14 @@ public class GetDownloadUrlRequest extends TeaModel {
     }
     public String getReferer() {
         return this.referer;
+    }
+
+    public GetDownloadUrlRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public GetDownloadUrlRequest setSignToken(String signToken) {

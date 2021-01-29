@@ -11,6 +11,14 @@ public class BaseShareLinkResponse extends TeaModel {
     @NameInMap("created_at")
     public String createdAt;
 
+    // creator
+    @NameInMap("creator")
+    public String creator;
+
+    // description
+    @NameInMap("description")
+    public String description;
+
     // 下载次数
     @NameInMap("download_count")
     public Long downloadCount;
@@ -55,6 +63,10 @@ public class BaseShareLinkResponse extends TeaModel {
     @NameInMap("share_msg")
     public String shareMsg;
 
+    // share_name
+    @NameInMap("share_name")
+    public String shareName;
+
     // share_policy
     @NameInMap("share_policy")
     public String sharePolicy;
@@ -82,6 +94,22 @@ public class BaseShareLinkResponse extends TeaModel {
     }
     public String getCreatedAt() {
         return this.createdAt;
+    }
+
+    public BaseShareLinkResponse setCreator(String creator) {
+        this.creator = creator;
+        return this;
+    }
+    public String getCreator() {
+        return this.creator;
+    }
+
+    public BaseShareLinkResponse setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+    public String getDescription() {
+        return this.description;
     }
 
     public BaseShareLinkResponse setDownloadCount(Long downloadCount) {
@@ -170,6 +198,14 @@ public class BaseShareLinkResponse extends TeaModel {
     }
     public String getShareMsg() {
         return this.shareMsg;
+    }
+
+    public BaseShareLinkResponse setShareName(String shareName) {
+        this.shareName = shareName;
+        return this;
+    }
+    public String getShareName() {
+        return this.shareName;
     }
 
     public BaseShareLinkResponse setSharePolicy(String sharePolicy) {

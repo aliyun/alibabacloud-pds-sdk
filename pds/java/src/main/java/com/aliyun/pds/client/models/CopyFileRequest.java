@@ -25,6 +25,9 @@ public class CopyFileRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    @NameInMap("file_id_path")
+    public String fileIdPath;
+
     // new_name
     @NameInMap("new_name")
     @Validation(maxLength = 1024, minLength = 1)
@@ -43,6 +46,11 @@ public class CopyFileRequest extends TeaModel {
     @NameInMap("to_parent_file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 4)
     public String toParentFileId;
+
+    // to_drive_id
+    @NameInMap("to_share_id")
+    @Validation(pattern = "[0-9]+")
+    public String toShareId;
 
     public static CopyFileRequest build(java.util.Map<String, ?> map) throws Exception {
         CopyFileRequest self = new CopyFileRequest();
@@ -81,6 +89,14 @@ public class CopyFileRequest extends TeaModel {
         return this.fileId;
     }
 
+    public CopyFileRequest setFileIdPath(String fileIdPath) {
+        this.fileIdPath = fileIdPath;
+        return this;
+    }
+    public String getFileIdPath() {
+        return this.fileIdPath;
+    }
+
     public CopyFileRequest setNewName(String newName) {
         this.newName = newName;
         return this;
@@ -111,6 +127,14 @@ public class CopyFileRequest extends TeaModel {
     }
     public String getToParentFileId() {
         return this.toParentFileId;
+    }
+
+    public CopyFileRequest setToShareId(String toShareId) {
+        this.toShareId = toShareId;
+        return this;
+    }
+    public String getToShareId() {
+        return this.toShareId;
     }
 
 }

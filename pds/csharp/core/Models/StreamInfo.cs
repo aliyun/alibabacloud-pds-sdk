@@ -26,6 +26,10 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public string DownloadUrl { get; set; }
 
+        [NameInMap("size")]
+        [Validation(Required=false)]
+        public long? Size { get; set; }
+
         /// <summary>
         /// thumbnail
         /// </summary>

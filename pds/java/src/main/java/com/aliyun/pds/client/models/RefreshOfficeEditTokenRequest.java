@@ -14,6 +14,10 @@ public class RefreshOfficeEditTokenRequest extends TeaModel {
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
+    // location
+    @NameInMap("location")
+    public String location;
+
     // AccessToken
     @NameInMap("office_access_token")
     @Validation(required = true)
@@ -43,6 +47,14 @@ public class RefreshOfficeEditTokenRequest extends TeaModel {
     }
     public java.util.Map<String, ?> getAdditionData() {
         return this.additionData;
+    }
+
+    public RefreshOfficeEditTokenRequest setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+    public String getLocation() {
+        return this.location;
     }
 
     public RefreshOfficeEditTokenRequest setOfficeAccessToken(String officeAccessToken) {

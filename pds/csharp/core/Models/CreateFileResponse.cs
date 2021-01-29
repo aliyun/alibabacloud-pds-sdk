@@ -56,6 +56,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string FileName { get; set; }
 
         /// <summary>
+        /// location
+        /// </summary>
+        [NameInMap("location")]
+        [Validation(Required=false)]
+        public string Location { get; set; }
+
+        /// <summary>
         /// parent_file_id
         /// </summary>
         [NameInMap("parent_file_id")]

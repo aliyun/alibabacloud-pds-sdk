@@ -44,7 +44,7 @@ public class CreateFileRequest extends TeaModel {
 
     // drive_id
     @NameInMap("drive_id")
-    @Validation(required = true, pattern = "[0-9]+")
+    @Validation(pattern = "[0-9]+")
     public String driveId;
 
     // encrypt_mode
@@ -54,6 +54,10 @@ public class CreateFileRequest extends TeaModel {
     // file_id
     @NameInMap("file_id")
     public String fileId;
+
+    // force_upload_to_location
+    @NameInMap("force_upload_to_location")
+    public Boolean forceUploadToLocation;
 
     // hidden
     @NameInMap("hidden")
@@ -87,6 +91,9 @@ public class CreateFileRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 4)
     public String parentFileId;
 
+    @NameInMap("parent_file_id_path")
+    public String parentFileIdPath;
+
     // part_info_list
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
@@ -94,6 +101,11 @@ public class CreateFileRequest extends TeaModel {
     // pre_hash
     @NameInMap("pre_hash")
     public String preHash;
+
+    // share_id
+    // example
+    @NameInMap("share_id")
+    public String shareId;
 
     // Size
     @NameInMap("size")
@@ -216,6 +228,14 @@ public class CreateFileRequest extends TeaModel {
         return this.fileId;
     }
 
+    public CreateFileRequest setForceUploadToLocation(Boolean forceUploadToLocation) {
+        this.forceUploadToLocation = forceUploadToLocation;
+        return this;
+    }
+    public Boolean getForceUploadToLocation() {
+        return this.forceUploadToLocation;
+    }
+
     public CreateFileRequest setHidden(Boolean hidden) {
         this.hidden = hidden;
         return this;
@@ -280,6 +300,14 @@ public class CreateFileRequest extends TeaModel {
         return this.parentFileId;
     }
 
+    public CreateFileRequest setParentFileIdPath(String parentFileIdPath) {
+        this.parentFileIdPath = parentFileIdPath;
+        return this;
+    }
+    public String getParentFileIdPath() {
+        return this.parentFileIdPath;
+    }
+
     public CreateFileRequest setPartInfoList(java.util.List<UploadPartInfo> partInfoList) {
         this.partInfoList = partInfoList;
         return this;
@@ -294,6 +322,14 @@ public class CreateFileRequest extends TeaModel {
     }
     public String getPreHash() {
         return this.preHash;
+    }
+
+    public CreateFileRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public CreateFileRequest setSize(Long size) {

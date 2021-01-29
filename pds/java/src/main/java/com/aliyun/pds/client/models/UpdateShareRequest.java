@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * update share request
  */
 public class UpdateShareRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // description
     @NameInMap("description")
     @Validation(maxLength = 1024)
@@ -40,6 +43,14 @@ public class UpdateShareRequest extends TeaModel {
     public static UpdateShareRequest build(java.util.Map<String, ?> map) throws Exception {
         UpdateShareRequest self = new UpdateShareRequest();
         return TeaModel.build(map, self);
+    }
+
+    public UpdateShareRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public UpdateShareRequest setDescription(String description) {

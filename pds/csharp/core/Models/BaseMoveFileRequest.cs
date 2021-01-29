@@ -26,13 +26,9 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false, MaxLength=1024)]
         public string NewName { get; set; }
 
-        /// <summary>
-        /// overwrite
-        /// type: boolean
-        /// </summary>
-        [NameInMap("overwrite")]
+        [NameInMap("share_id")]
         [Validation(Required=false)]
-        public bool? Overwrite { get; set; }
+        public string ShareId { get; set; }
 
     }
 

@@ -94,6 +94,9 @@ public class UpdateFileMetaResponse extends TeaModel {
     @NameInMap("punish_flag")
     public Integer punishFlag;
 
+    @NameInMap("share_id")
+    public String shareId;
+
     // Size
     @NameInMap("size")
     public Long size;
@@ -316,6 +319,14 @@ public class UpdateFileMetaResponse extends TeaModel {
     }
     public Integer getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public UpdateFileMetaResponse setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public UpdateFileMetaResponse setSize(Long size) {

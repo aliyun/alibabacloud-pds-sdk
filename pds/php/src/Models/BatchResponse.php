@@ -1,64 +1,54 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
+use Aliyun\PDS\SDK\Models\BatchSubResponse;
+
 /**
- * batch operation response.
+ * batch operation response
  */
-class BatchResponse extends Model
-{
-    /**
-     * @description responses 返回结果合集
-     *
-     * @var BatchSubResponse[]
-     */
-    public $responses;
+class BatchResponse extends Model {
     protected $_name = [
         'responses' => 'responses',
     ];
-
-    public function validate()
-    {
-    }
-
-    public function toMap()
-    {
+    public function validate() {}
+    public function toMap() {
         $res = [];
         if (null !== $this->responses) {
             $res['responses'] = [];
-            if (null !== $this->responses && \is_array($this->responses)) {
+            if(null !== $this->responses && is_array($this->responses)){
                 $n = 0;
-                foreach ($this->responses as $item) {
+                foreach($this->responses as $item){
                     $res['responses'][$n++] = null !== $item ? $item->toMap() : $item;
                 }
             }
         }
-
         return $res;
     }
-
     /**
      * @param array $map
-     *
      * @return BatchResponse
      */
-    public static function fromMap($map = [])
-    {
+    public static function fromMap($map = []) {
         $model = new self();
-        if (isset($map['responses'])) {
-            if (!empty($map['responses'])) {
+        if(isset($map['responses'])){
+            if(!empty($map['responses'])){
                 $model->responses = [];
-                $n                = 0;
-                foreach ($map['responses'] as $item) {
+                $n = 0;
+                foreach($map['responses'] as $item) {
                     $model->responses[$n++] = null !== $item ? BatchSubResponse::fromMap($item) : $item;
                 }
             }
         }
-
         return $model;
     }
+    /**
+     * @description responses 返回结果合集
+     * @var BatchSubResponse[]
+     */
+    public $responses;
+
 }

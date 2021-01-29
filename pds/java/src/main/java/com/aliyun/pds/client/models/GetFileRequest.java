@@ -28,6 +28,9 @@ public class GetFileRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    @NameInMap("file_id_path")
+    public String fileIdPath;
+
     @NameInMap("image_cropping_aspect_ratios")
     public java.util.List<String> imageCroppingAspectRatios;
 
@@ -45,6 +48,10 @@ public class GetFileRequest extends TeaModel {
 
     @NameInMap("referer")
     public String referer;
+
+    // share_id, either share_id or drive_id is required
+    @NameInMap("share_id")
+    public String shareId;
 
     @NameInMap("sign_token")
     public String signToken;
@@ -103,6 +110,14 @@ public class GetFileRequest extends TeaModel {
         return this.fileId;
     }
 
+    public GetFileRequest setFileIdPath(String fileIdPath) {
+        this.fileIdPath = fileIdPath;
+        return this;
+    }
+    public String getFileIdPath() {
+        return this.fileIdPath;
+    }
+
     public GetFileRequest setImageCroppingAspectRatios(java.util.List<String> imageCroppingAspectRatios) {
         this.imageCroppingAspectRatios = imageCroppingAspectRatios;
         return this;
@@ -141,6 +156,14 @@ public class GetFileRequest extends TeaModel {
     }
     public String getReferer() {
         return this.referer;
+    }
+
+    public GetFileRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public GetFileRequest setSignToken(String signToken) {
