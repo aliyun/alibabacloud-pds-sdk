@@ -119,7 +119,7 @@ public class Client {
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
-                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 201)) {
                     obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
                     respMap = com.aliyun.teautil.Common.assertAsMap(obj);
                     return TeaModel.toModel(TeaConverter.buildMap(
@@ -739,7 +739,7 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest);
     }
 
-    public SetPublicKeyModel setPublicKeyEx(GetAppPublicKeyRequest request, RuntimeOptions runtime) throws Exception {
+    public SetPublicKeyModel setPublicKeyEx(SetAppPublicKeyRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
         java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
@@ -812,11 +812,8 @@ public class Client {
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
-                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
-                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
-                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 204)) {
                     return TeaModel.toModel(TeaConverter.buildMap(
-                        new TeaPair("body", respMap),
                         new TeaPair("headers", response_.headers)
                     ), new SetPublicKeyModel());
                 }
@@ -3125,7 +3122,7 @@ public class Client {
      * @error Forbidden User not authorized to operate on the specified APIs.
      * @error InternalError The request has been failed due to some unknown error.
      */
-    public SetPublicKeyModel setPublicKey(GetAppPublicKeyRequest request) throws Exception {
+    public SetPublicKeyModel setPublicKey(SetAppPublicKeyRequest request) throws Exception {
         RuntimeOptions runtime = new RuntimeOptions();
         return this.setPublicKeyEx(request, runtime);
     }

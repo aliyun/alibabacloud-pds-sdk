@@ -89,7 +89,6 @@ public class CreateDomainRequest extends TeaModel {
 
     // Domain 类型
     @NameInMap("path_type")
-    @Validation(required = true)
     public String pathType;
 
     @NameInMap("published_app_access_strategy")
