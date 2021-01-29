@@ -7,10 +7,6 @@ public class SetPublicKeyModel extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
-    @NameInMap("body")
-    @Validation(required = true)
-    public GetAppPublicKeyResponse body;
-
     public static SetPublicKeyModel build(java.util.Map<String, ?> map) throws Exception {
         SetPublicKeyModel self = new SetPublicKeyModel();
         return TeaModel.build(map, self);
@@ -22,14 +18,6 @@ public class SetPublicKeyModel extends TeaModel {
     }
     public java.util.Map<String, String> getHeaders() {
         return this.headers;
-    }
-
-    public SetPublicKeyModel setBody(GetAppPublicKeyResponse body) {
-        this.body = body;
-        return this;
-    }
-    public GetAppPublicKeyResponse getBody() {
-        return this.body;
     }
 
 }

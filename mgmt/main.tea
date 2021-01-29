@@ -123,7 +123,7 @@ api createAppEx(request: CreateAppRequest, runtime: RuntimeOptions): CreateAppMo
 } returns {
   var respMap : object = null;
   var obj : any = null;
-  if (Util.equalNumber(__response.statusCode, 200)) {
+  if (Util.equalNumber(__response.statusCode, 201)) {
     obj = Util.readAsJSON(__response.body);
     respMap = Util.assertAsMap(obj);
     return {
@@ -706,7 +706,6 @@ api listPublishedAppEx(request: ListAppsRequest, runtime: RuntimeOptions): ListP
 
 model SetPublicKeyModel {
   headers?: map[string]string(name='headers'),
-  body: GetAppPublicKeyResponse(name='body'),
 }
 
 /**
@@ -716,7 +715,7 @@ model SetPublicKeyModel {
  * @error Forbidden User not authorized to operate on the specified APIs.
  * @error InternalError The request has been failed due to some unknown error.
  */
-async function setPublicKey(request: GetAppPublicKeyRequest) throws: SetPublicKeyModel  {
+async function setPublicKey(request: SetAppPublicKeyRequest) throws: SetPublicKeyModel  {
   var runtime = new RuntimeOptions{};
   return setPublicKeyEx(request, runtime);
 }
@@ -728,7 +727,7 @@ async function setPublicKey(request: GetAppPublicKeyRequest) throws: SetPublicKe
  * @error Forbidden User not authorized to operate on the specified APIs.
  * @error InternalError The request has been failed due to some unknown error.
  */
-api setPublicKeyEx(request: GetAppPublicKeyRequest, runtime: RuntimeOptions): SetPublicKeyModel  {
+api setPublicKeyEx(request: SetAppPublicKeyRequest, runtime: RuntimeOptions): SetPublicKeyModel  {
   var accesskeyId = getAccessKeyId();
   var accessKeySecret = getAccessKeySecret();
   var securityToken = getSecurityToken();
@@ -759,11 +758,8 @@ api setPublicKeyEx(request: GetAppPublicKeyRequest, runtime: RuntimeOptions): Se
 } returns {
   var respMap : object = null;
   var obj : any = null;
-  if (Util.equalNumber(__response.statusCode, 200)) {
-    obj = Util.readAsJSON(__response.body);
-    respMap = Util.assertAsMap(obj);
+  if (Util.equalNumber(__response.statusCode, 204)) {
     return {
-      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -2897,9 +2893,12 @@ model AuthConfig {
   enable?: boolean(name='enable'),
   endpoint?: string(name='endpoint'),
   enterpriseId?: string(name='enterprise_id'),
+  ldapConfig?: LdapConfig(name='ldap_config'),
   loginPageHeaders?: object(name='login_page_headers', additionalProperties='{"type":"string"}'),
   loginPageTemplate?: string(name='login_page_template'),
   loginPageVars?: object(name='login_page_vars', additionalProperties='{"type":"object"}'),
+  whiteListConfig?: object(name='white_list_config', additionalProperties='{"type":"object"}'),
+  whiteListEnable?: boolean(name='white_list_enable'),
 }
 
 /**
@@ -3010,7 +3009,7 @@ model CreateDomainRequest {
   initDriveEnable?: boolean(name='init_drive_enable', description='开启自动初始化 Drive', example=true),
   initDriveSize?: int64(name='init_drive_size', description='自动初始化 Drive 大小', example=1024, format='int64'),
   mode: string(name='mode', description='Domain 类型', example='StandardMode'),
-  pathType: string(name='path_type', description='Domain 类型', example='CCPPath'),
+  pathType?: string(name='path_type', description='Domain 类型', example='CCPPath'),
   publishedAppAccessStrategy?: AppAccessStrategy(name='published_app_access_strategy'),
   sharable?: boolean(name='sharable', description='开启分享', example=true),
   storeLevel?: string(name='store_level', description='存储级别', example='Standard'),
@@ -3256,6 +3255,18 @@ model GetDomainResponse {
 /**
  * 
  */
+model LdapConfig {
+  adminDn?: string(name='admin_dn'),
+  adminPassword?: string(name='admin_password'),
+  baseDn?: string(name='base_dn'),
+  host?: string(name='host'),
+  port?: int64(name='port', format='int64'),
+  uid?: string(name='uid'),
+}
+
+/**
+ * 
+ */
 model ListAppsRequest {
   headers?: map[string]string,
   limit?: int32(name='limit', default=50, description='返回结果数据', example=100, format='int32', maximum=100, minimum=1),
@@ -3323,6 +3334,7 @@ model RemoveStoreRequest {
  * 
  */
 model SetAppPublicKeyRequest {
+  headers?: map[string]string,
   appId: string(name='app_id', description='App ID', example='CNMrhxwPJHAReExa'),
   publicKey: string(name='public_key', description='RSA加密算法的公钥, PEM格式', example='-----BEGIN RSA PUBLIC KEY-----****-----END RSA PUBLIC KEY-----'),
 }
@@ -3431,12 +3443,12 @@ model Store {
 model UpdateAppRequest {
   headers?: map[string]string,
   appId: string(name='app_id', description='App ID', example='CNMrhxwPJHAReExa'),
-  appName: string(name='app_name', description='App名称', example='图片分享应用', maxLength=128, minLength=1),
-  description?: string(name='description', description='App描述', example='测试专用', maxLength=128, minLength=0),
-  logo: string(name='logo', description='App图标', example='https://app.com/logo.jpg'),
-  redirectUri: string(name='redirect_uri', description='App回调地址', example='https://app.com/callback'),
-  scope: [ string ](name='scope', description='App权限列表', enum='FILE.ALL, SHARE.ALL, STORAGEFILE.ALL, STORAGE.ALL, DRIVE.ALL, USER.ALL', items='{"type":"string"}'),
-  type: string(name='type', default='WebServer', description='App类型', enum='WebServer, WebBrowser, Native, JWT', example='WebServer'),
+  appName?: string(name='app_name', description='App名称', example='图片分享应用', maxLength=128, minLength=1),
+  description?: string(name='description', description='App描述', example='测试专用', maxLength=1024, minLength=0),
+  logo?: string(name='logo', description='App图标', example='https://app.com/logo.jpg'),
+  redirectUri?: string(name='redirect_uri', description='App回调地址', example='https://app.com/callback'),
+  scope?: [ string ](name='scope', description='App权限列表', enum='FILE.ALL, SHARE.ALL, STORAGEFILE.ALL, STORAGE.ALL, DRIVE.ALL, USER.ALL', items='{"type":"string"}'),
+  type?: string(name='type', default='WebServer', description='App类型', enum='WebServer, WebBrowser, Native, JWT', example='WebServer'),
 }
 
 /**

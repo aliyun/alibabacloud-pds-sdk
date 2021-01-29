@@ -17,32 +17,28 @@ public class UpdateAppRequest extends TeaModel {
 
     // App名称
     @NameInMap("app_name")
-    @Validation(required = true, maxLength = 128, minLength = 1)
+    @Validation(maxLength = 128, minLength = 1)
     public String appName;
 
     // App描述
     @NameInMap("description")
-    @Validation(maxLength = 128)
+    @Validation(maxLength = 1024)
     public String description;
 
     // App图标
     @NameInMap("logo")
-    @Validation(required = true)
     public String logo;
 
     // App回调地址
     @NameInMap("redirect_uri")
-    @Validation(required = true)
     public String redirectUri;
 
     // App权限列表
     @NameInMap("scope")
-    @Validation(required = true)
     public java.util.List<String> scope;
 
     // App类型
     @NameInMap("type")
-    @Validation(required = true)
     public String type;
 
     public static UpdateAppRequest build(java.util.Map<String, ?> map) throws Exception {
