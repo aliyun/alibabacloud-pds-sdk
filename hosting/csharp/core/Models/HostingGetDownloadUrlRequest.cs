@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 获取文件下载地址的请求body
      */
     public class HostingGetDownloadUrlRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// drive_id
         /// </summary>

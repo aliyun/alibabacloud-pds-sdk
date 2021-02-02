@@ -30,9 +30,6 @@ class GetVideoPreviewSpriteURLRequest extends Model {
     }
     public function toMap() {
         $res = [];
-        if (null !== $this->headers) {
-            $res['headers'] = $this->headers;
-        }
         if (null !== $this->driveId) {
             $res['drive_id'] = $this->driveId;
         }
@@ -53,9 +50,6 @@ class GetVideoPreviewSpriteURLRequest extends Model {
      */
     public static function fromMap($map = []) {
         $model = new self();
-        if(isset($map['headers'])){
-            $model->headers = $map['headers'];
-        }
         if(isset($map['drive_id'])){
             $model->driveId = $map['drive_id'];
         }
@@ -70,8 +64,6 @@ class GetVideoPreviewSpriteURLRequest extends Model {
         }
         return $model;
     }
-    public $headers;
-
     /**
      * @description drive_id
      * @example 1

@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 创建文件
  */
 public class CreateFileRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // addition_data
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
@@ -130,14 +127,6 @@ public class CreateFileRequest extends TeaModel {
     public static CreateFileRequest build(java.util.Map<String, ?> map) throws Exception {
         CreateFileRequest self = new CreateFileRequest();
         return TeaModel.build(map, self);
-    }
-
-    public CreateFileRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public CreateFileRequest setAdditionData(java.util.Map<String, ?> additionData) {

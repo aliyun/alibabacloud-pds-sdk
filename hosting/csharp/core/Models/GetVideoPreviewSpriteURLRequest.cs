@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 获取视频雪碧图地址的请求body
      */
     public class GetVideoPreviewSpriteURLRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// drive_id
         /// </summary>

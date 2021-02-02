@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 列举uploadID对应的已上传分片
  */
 public class HostingListUploadedPartRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -38,6 +41,14 @@ public class HostingListUploadedPartRequest extends TeaModel {
     public static HostingListUploadedPartRequest build(java.util.Map<String, ?> map) throws Exception {
         HostingListUploadedPartRequest self = new HostingListUploadedPartRequest();
         return TeaModel.build(map, self);
+    }
+
+    public HostingListUploadedPartRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public HostingListUploadedPartRequest setDriveId(String driveId) {

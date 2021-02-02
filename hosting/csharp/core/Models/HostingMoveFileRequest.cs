@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 文件移动请求
      */
     public class HostingMoveFileRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// drive_id
         /// </summary>

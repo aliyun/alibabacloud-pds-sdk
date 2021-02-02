@@ -9,7 +9,7 @@ public class GetDownloadUrlModel extends TeaModel {
 
     @NameInMap("body")
     @Validation(required = true)
-    public GetDownloadUrlResponse body;
+    public HostingGetDownloadUrlResponse body;
 
     public static GetDownloadUrlModel build(java.util.Map<String, ?> map) throws Exception {
         GetDownloadUrlModel self = new GetDownloadUrlModel();
@@ -24,11 +24,11 @@ public class GetDownloadUrlModel extends TeaModel {
         return this.headers;
     }
 
-    public GetDownloadUrlModel setBody(GetDownloadUrlResponse body) {
+    public GetDownloadUrlModel setBody(HostingGetDownloadUrlResponse body) {
         this.body = body;
         return this;
     }
-    public GetDownloadUrlResponse getBody() {
+    public HostingGetDownloadUrlResponse getBody() {
         return this.body;
     }
 

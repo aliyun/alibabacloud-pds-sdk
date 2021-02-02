@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 全量获取file元信息的请求body
      */
     public class ScanFileMetaRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// addition_data
         /// </summary>

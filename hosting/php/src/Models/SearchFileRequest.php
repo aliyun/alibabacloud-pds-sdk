@@ -42,9 +42,6 @@ class SearchFileRequest extends Model {
     }
     public function toMap() {
         $res = [];
-        if (null !== $this->headers) {
-            $res['headers'] = $this->headers;
-        }
         if (null !== $this->additionData) {
             $res['addition_data'] = $this->additionData;
         }
@@ -98,9 +95,6 @@ class SearchFileRequest extends Model {
      */
     public static function fromMap($map = []) {
         $model = new self();
-        if(isset($map['headers'])){
-            $model->headers = $map['headers'];
-        }
         if(isset($map['addition_data'])){
             $model->additionData = $map['addition_data'];
         }
@@ -150,8 +144,6 @@ class SearchFileRequest extends Model {
         }
         return $model;
     }
-    public $headers;
-
     /**
      * @description addition_data
      * @var mixed[]

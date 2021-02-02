@@ -5,7 +5,7 @@ namespace Aliyun\Hosting\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
-use Aliyun\Hosting\SDK\Models\ListUploadedPartResponse;
+use Aliyun\Hosting\SDK\Models\HostingListUploadedPartResponse;
 
 class ListUploadedPartsModel extends Model {
     protected $_name = [
@@ -35,7 +35,7 @@ class ListUploadedPartsModel extends Model {
             $model->headers = $map['headers'];
         }
         if(isset($map['body'])){
-            $model->body = ListUploadedPartResponse::fromMap($map['body']);
+            $model->body = HostingListUploadedPartResponse::fromMap($map['body']);
         }
         return $model;
     }
@@ -45,7 +45,7 @@ class ListUploadedPartsModel extends Model {
     public $headers;
 
     /**
-     * @var ListUploadedPartResponse
+     * @var HostingListUploadedPartResponse
      */
     public $body;
 

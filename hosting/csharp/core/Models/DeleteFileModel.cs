@@ -13,10 +13,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
         [Validation(Required=false)]
         public Dictionary<string, string> Headers { get; set; }
 
-        [NameInMap("body")]
-        [Validation(Required=true)]
-        public DeleteFileResponse Body { get; set; }
-
     }
 
 }

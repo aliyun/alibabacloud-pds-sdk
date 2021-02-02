@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * list store file
  */
 public class ListStoreFileRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // limit
     @NameInMap("limit")
     public Long limit;
@@ -30,6 +33,14 @@ public class ListStoreFileRequest extends TeaModel {
     public static ListStoreFileRequest build(java.util.Map<String, ?> map) throws Exception {
         ListStoreFileRequest self = new ListStoreFileRequest();
         return TeaModel.build(map, self);
+    }
+
+    public ListStoreFileRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public ListStoreFileRequest setLimit(Long limit) {

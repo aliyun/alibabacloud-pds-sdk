@@ -15,9 +15,6 @@ class GetAsyncTaskRequest extends Model {
     public function validate() {}
     public function toMap() {
         $res = [];
-        if (null !== $this->headers) {
-            $res['headers'] = $this->headers;
-        }
         if (null !== $this->asyncTaskId) {
             $res['async_task_id'] = $this->asyncTaskId;
         }
@@ -29,16 +26,11 @@ class GetAsyncTaskRequest extends Model {
      */
     public static function fromMap($map = []) {
         $model = new self();
-        if(isset($map['headers'])){
-            $model->headers = $map['headers'];
-        }
         if(isset($map['async_task_id'])){
             $model->asyncTaskId = $map['async_task_id'];
         }
         return $model;
     }
-    public $headers;
-
     /**
      * @description async_task_id
 type:string

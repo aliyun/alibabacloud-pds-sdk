@@ -5,7 +5,7 @@ namespace Aliyun\Hosting\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
-use Aliyun\Hosting\SDK\Models\GetUploadUrlResponse;
+use Aliyun\Hosting\SDK\Models\HostingGetUploadUrlResponse;
 
 class GetUploadUrlModel extends Model {
     protected $_name = [
@@ -35,7 +35,7 @@ class GetUploadUrlModel extends Model {
             $model->headers = $map['headers'];
         }
         if(isset($map['body'])){
-            $model->body = GetUploadUrlResponse::fromMap($map['body']);
+            $model->body = HostingGetUploadUrlResponse::fromMap($map['body']);
         }
         return $model;
     }
@@ -45,7 +45,7 @@ class GetUploadUrlModel extends Model {
     public $headers;
 
     /**
-     * @var GetUploadUrlResponse
+     * @var HostingGetUploadUrlResponse
      */
     public $body;
 

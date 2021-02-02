@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 获取异步人去信息
      */
     public class GetAsyncTaskRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// async_task_id
         /// type:string

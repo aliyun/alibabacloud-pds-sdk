@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 列举uploadID对应的已上传分片
      */
     public class HostingListUploadedPartRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// drive_id
         /// </summary>

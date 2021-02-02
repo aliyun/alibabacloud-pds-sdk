@@ -3640,7 +3640,7 @@ class Client:
 
     def account_token_ex(
         self,
-        request: hosting_models.TokenRequest,
+        request: hosting_models.AccountTokenRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.AccountTokenModel:
         """
@@ -3752,7 +3752,7 @@ class Client:
 
     async def account_token_ex_async(
         self,
-        request: hosting_models.TokenRequest,
+        request: hosting_models.AccountTokenRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.AccountTokenModel:
         """
@@ -4280,464 +4280,6 @@ class Client:
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return hosting_models.GetUserAccessTokenModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def get_async_task_info_ex(
-        self,
-        request: hosting_models.GetAsyncTaskRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetAsyncTaskInfoModel:
-        """
-        如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
-        通过此接口获取异步任务的信息，以确定任务是否执行成功。
-        @tags async_task
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/async_task/get')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetAsyncTaskInfoModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def get_async_task_info_ex_async(
-        self,
-        request: hosting_models.GetAsyncTaskRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetAsyncTaskInfoModel:
-        """
-        如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
-        通过此接口获取异步任务的信息，以确定任务是否执行成功。
-        @tags async_task
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/async_task/get')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetAsyncTaskInfoModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def batch_operation_ex(
-        self,
-        request: hosting_models.BatchRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.BatchOperationModel:
-        """
-        对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
-        支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
-        @tags batch
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/batch')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.BatchOperationModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def batch_operation_ex_async(
-        self,
-        request: hosting_models.BatchRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.BatchOperationModel:
-        """
-        对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
-        支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
-        @tags batch
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/batch')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.BatchOperationModel().from_map(
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -6358,11 +5900,11 @@ class Client:
 
     def complete_file_ex(
         self,
-        request: hosting_models.CompleteFileRequest,
+        request: hosting_models.HostingCompleteFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.CompleteFileModel:
         """
-        完成文件上传。
+        完成文件上传
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -6413,7 +5955,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/complete')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/complete')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -6472,11 +6014,11 @@ class Client:
 
     async def complete_file_ex_async(
         self,
-        request: hosting_models.CompleteFileRequest,
+        request: hosting_models.HostingCompleteFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.CompleteFileModel:
         """
-        完成文件上传。
+        完成文件上传
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -6527,7 +6069,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/complete')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/complete')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -6586,11 +6128,11 @@ class Client:
 
     def copy_file_ex(
         self,
-        request: hosting_models.CopyFileRequest,
+        request: hosting_models.HostingCopyFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.CopyFileModel:
         """
-        指定源文件或文件夹，拷贝到指定的文件夹。
+        指定源文件或文件夹路径，拷贝到指定的文件夹。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -6641,7 +6183,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/copy')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/copy')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -6665,15 +6207,6 @@ class Client:
                 resp_map = None
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 201):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.CopyFileModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if UtilClient.equal_number(_response.status_code, 202):
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return hosting_models.CopyFileModel().from_map(
@@ -6709,11 +6242,11 @@ class Client:
 
     async def copy_file_ex_async(
         self,
-        request: hosting_models.CopyFileRequest,
+        request: hosting_models.HostingCopyFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.CopyFileModel:
         """
-        指定源文件或文件夹，拷贝到指定的文件夹。
+        指定源文件或文件夹路径，拷贝到指定的文件夹。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -6764,7 +6297,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/copy')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/copy')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -6788,15 +6321,6 @@ class Client:
                 resp_map = None
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 201):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.CopyFileModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if UtilClient.equal_number(_response.status_code, 202):
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
                     return hosting_models.CopyFileModel().from_map(
@@ -6832,12 +6356,11 @@ class Client:
 
     def create_file_ex(
         self,
-        request: hosting_models.CreateFileRequest,
+        request: hosting_models.HostingCreateFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.CreateFileModel:
         """
-        在指定文件夹下创建文件或者文件夹，
-        根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+        创建文件或者文件夹。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -6889,7 +6412,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/create')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/create')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -6948,12 +6471,11 @@ class Client:
 
     async def create_file_ex_async(
         self,
-        request: hosting_models.CreateFileRequest,
+        request: hosting_models.HostingCreateFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.CreateFileModel:
         """
-        在指定文件夹下创建文件或者文件夹，
-        根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+        创建文件或者文件夹。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -7005,7 +6527,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/create')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/create')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -7064,11 +6586,11 @@ class Client:
 
     def delete_file_ex(
         self,
-        request: hosting_models.DeleteFileRequest,
+        request: hosting_models.HostingDeleteFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.DeleteFileModel:
         """
-        指定文件或文件夹ID，删除文件或者文件夹。
+        指定文件或文件夹路径，删除文件或文件夹
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -7119,7 +6641,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/delete')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/delete')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -7142,15 +6664,6 @@ class Client:
                 _response = TeaCore.do_action(_request, _runtime)
                 resp_map = None
                 obj = None
-                if UtilClient.equal_number(_response.status_code, 202):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.DeleteFileModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
                 if UtilClient.equal_number(_response.status_code, 204):
                     return hosting_models.DeleteFileModel().from_map(
                         {
@@ -7184,11 +6697,11 @@ class Client:
 
     async def delete_file_ex_async(
         self,
-        request: hosting_models.DeleteFileRequest,
+        request: hosting_models.HostingDeleteFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.DeleteFileModel:
         """
-        指定文件或文件夹ID，删除文件或者文件夹。
+        指定文件或文件夹路径，删除文件或文件夹
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -7239,7 +6752,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/delete')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/delete')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -7262,15 +6775,6 @@ class Client:
                 _response = await TeaCore.async_do_action(_request, _runtime)
                 resp_map = None
                 obj = None
-                if UtilClient.equal_number(_response.status_code, 202):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.DeleteFileModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
                 if UtilClient.equal_number(_response.status_code, 204):
                     return hosting_models.DeleteFileModel().from_map(
                         {
@@ -7304,11 +6808,11 @@ class Client:
 
     def get_file_ex(
         self,
-        request: hosting_models.GetFileRequest,
+        request: hosting_models.HostingGetFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.GetFileModel:
         """
-        获取指定文件或文件夹ID的信息。
+        获取指定文件或文件夹路径，获取文件或文件夹信息。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -7359,7 +6863,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/get')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -7418,11 +6922,11 @@ class Client:
 
     async def get_file_ex_async(
         self,
-        request: hosting_models.GetFileRequest,
+        request: hosting_models.HostingGetFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.GetFileModel:
         """
-        获取指定文件或文件夹ID的信息。
+        获取指定文件或文件夹路径，获取文件或文件夹信息。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -7473,7 +6977,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/get')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -7530,241 +7034,13 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    def get_file_by_path_ex(
-        self,
-        request: hosting_models.GetFileByPathRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetFileByPathModel:
-        """
-        根据路径获取指定文件或文件夹的信息。
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_by_path')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetFileByPathModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def get_file_by_path_ex_async(
-        self,
-        request: hosting_models.GetFileByPathRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetFileByPathModel:
-        """
-        根据路径获取指定文件或文件夹的信息。
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_by_path')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetFileByPathModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
     def get_download_url_ex(
         self,
-        request: hosting_models.GetDownloadUrlRequest,
+        request: hosting_models.HostingGetDownloadUrlRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.GetDownloadUrlModel:
         """
-        获取文件的下载地址，调用者可自己设置range头并发下载。
+        指定文件路径，获取文件下载地址
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -7815,7 +7091,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_download_url')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/get_download_url')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -7874,11 +7150,11 @@ class Client:
 
     async def get_download_url_ex_async(
         self,
-        request: hosting_models.GetDownloadUrlRequest,
+        request: hosting_models.HostingGetDownloadUrlRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.GetDownloadUrlModel:
         """
-        获取文件的下载地址，调用者可自己设置range头并发下载。
+        指定文件路径，获取文件下载地址
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -7929,7 +7205,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_download_url')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/get_download_url')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -7986,467 +7262,13 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    def get_last_cursor_ex(
+    def get_secure_url_ex(
         self,
-        request: hosting_models.GetLastCursorRequest,
+        request: hosting_models.HostingGetSecureUrlRequest,
         runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetLastCursorModel:
+    ) -> hosting_models.GetSecureUrlModel:
         """
-        获取drive内，增量数据最新的游标
-        @tags file_delta
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_last_cursor')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetLastCursorModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def get_last_cursor_ex_async(
-        self,
-        request: hosting_models.GetLastCursorRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetLastCursorModel:
-        """
-        获取drive内，增量数据最新的游标
-        @tags file_delta
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_last_cursor')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetLastCursorModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def get_media_play_url_ex(
-        self,
-        request: hosting_models.GetMediaPlayURLRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetMediaPlayUrlModel:
-        """
-        获取media文件播放URL地址（当前仅支持m3u8）
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_media_play_url')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetMediaPlayUrlModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def get_media_play_url_ex_async(
-        self,
-        request: hosting_models.GetMediaPlayURLRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetMediaPlayUrlModel:
-        """
-        获取media文件播放URL地址（当前仅支持m3u8）
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_media_play_url')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetMediaPlayUrlModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def get_office_edit_url_ex(
-        self,
-        request: hosting_models.GetOfficeEditUrlRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetOfficeEditUrlModel:
-        """
-        获取文档的在线编辑地址
+        指定文件路径，获取文件安全地址
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -8497,7 +7319,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_office_edit_url')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/get_secure_url')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -8523,7 +7345,7 @@ class Client:
                 if UtilClient.equal_number(_response.status_code, 200):
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetOfficeEditUrlModel().from_map(
+                    return hosting_models.GetSecureUrlModel().from_map(
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -8554,13 +7376,13 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    async def get_office_edit_url_ex_async(
+    async def get_secure_url_ex_async(
         self,
-        request: hosting_models.GetOfficeEditUrlRequest,
+        request: hosting_models.HostingGetSecureUrlRequest,
         runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetOfficeEditUrlModel:
+    ) -> hosting_models.GetSecureUrlModel:
         """
-        获取文档的在线编辑地址
+        指定文件路径，获取文件安全地址
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -8611,7 +7433,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_office_edit_url')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/get_secure_url')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -8637,235 +7459,7 @@ class Client:
                 if UtilClient.equal_number(_response.status_code, 200):
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetOfficeEditUrlModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def get_office_preview_url_ex(
-        self,
-        request: hosting_models.GetOfficePreviewUrlRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetOfficePreviewUrlModel:
-        """
-        获取文档的预览地址（office文档）
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_office_preview_url')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetOfficePreviewUrlModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def get_office_preview_url_ex_async(
-        self,
-        request: hosting_models.GetOfficePreviewUrlRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetOfficePreviewUrlModel:
-        """
-        获取文档的预览地址（office文档）
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_office_preview_url')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetOfficePreviewUrlModel().from_map(
+                    return hosting_models.GetSecureUrlModel().from_map(
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -8898,7 +7492,7 @@ class Client:
 
     def get_upload_url_ex(
         self,
-        request: hosting_models.GetUploadUrlRequest,
+        request: hosting_models.HostingGetUploadUrlRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.GetUploadUrlModel:
         """
@@ -8953,7 +7547,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_upload_url')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/get_upload_url')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -9012,7 +7606,7 @@ class Client:
 
     async def get_upload_url_ex_async(
         self,
-        request: hosting_models.GetUploadUrlRequest,
+        request: hosting_models.HostingGetUploadUrlRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.GetUploadUrlModel:
         """
@@ -9067,7 +7661,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_upload_url')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/get_upload_url')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -9124,469 +7718,13 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    def get_video_preview_sprite_url_ex(
-        self,
-        request: hosting_models.GetVideoPreviewSpriteURLRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetVideoPreviewSpriteUrlModel:
-        """
-        获取视频雪碧图地址
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_video_preview_sprite_url')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetVideoPreviewSpriteUrlModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def get_video_preview_sprite_url_ex_async(
-        self,
-        request: hosting_models.GetVideoPreviewSpriteURLRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetVideoPreviewSpriteUrlModel:
-        """
-        获取视频雪碧图地址
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_video_preview_sprite_url')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetVideoPreviewSpriteUrlModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def get_video_preview_url_ex(
-        self,
-        request: hosting_models.GetVideoPreviewURLRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetVideoPreviewUrlModel:
-        """
-        获取视频播放地址
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_video_preview_url')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetVideoPreviewUrlModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def get_video_preview_url_ex_async(
-        self,
-        request: hosting_models.GetVideoPreviewURLRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetVideoPreviewUrlModel:
-        """
-        获取视频播放地址
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/get_video_preview_url')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetVideoPreviewUrlModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
     def list_file_ex(
         self,
-        request: hosting_models.ListFileRequest,
+        request: hosting_models.HostingListFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.ListFileModel:
         """
-        列举指定目录下的文件或文件夹。
+        指定父文件夹路径，列举文件夹下的文件或者文件夹
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -9637,7 +7775,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/list')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/list')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -9696,11 +7834,11 @@ class Client:
 
     async def list_file_ex_async(
         self,
-        request: hosting_models.ListFileRequest,
+        request: hosting_models.HostingListFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.ListFileModel:
         """
-        列举指定目录下的文件或文件夹。
+        指定父文件夹路径，列举文件夹下的文件或者文件夹
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -9751,7 +7889,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/list')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/list')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -9808,695 +7946,13 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    def list_file_by_anonymous_ex(
-        self,
-        request: hosting_models.ListByAnonymousRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.ListFileByAnonymousModel:
-        """
-        查看分享中的文件列表
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error ShareLinkTokenInvalid ShareToken is invalid. {message}
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/list_by_anonymous')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.ListFileByAnonymousModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def list_file_by_anonymous_ex_async(
-        self,
-        request: hosting_models.ListByAnonymousRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.ListFileByAnonymousModel:
-        """
-        查看分享中的文件列表
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error ShareLinkTokenInvalid ShareToken is invalid. {message}
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/list_by_anonymous')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.ListFileByAnonymousModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def list_file_by_custom_index_key_ex(
-        self,
-        request: hosting_models.ListFileByCustomIndexKeyRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.ListFileByCustomIndexKeyModel:
-        """
-        根据自定义同步索引键列举文件或文件夹。
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/list_by_custom_index_key')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.ListFileByCustomIndexKeyModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def list_file_by_custom_index_key_ex_async(
-        self,
-        request: hosting_models.ListFileByCustomIndexKeyRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.ListFileByCustomIndexKeyModel:
-        """
-        根据自定义同步索引键列举文件或文件夹。
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/list_by_custom_index_key')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.ListFileByCustomIndexKeyModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def list_file_delta_ex(
-        self,
-        request: hosting_models.ListFileDeltaRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.ListFileDeltaModel:
-        """
-        获取drive内，增量数据列表
-        @tags file_delta
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/list_delta')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.ListFileDeltaModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def list_file_delta_ex_async(
-        self,
-        request: hosting_models.ListFileDeltaRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.ListFileDeltaModel:
-        """
-        获取drive内，增量数据列表
-        @tags file_delta
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/list_delta')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.ListFileDeltaModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
     def list_uploaded_parts_ex(
         self,
-        request: hosting_models.ListUploadedPartRequest,
+        request: hosting_models.HostingListUploadedPartRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.ListUploadedPartsModel:
         """
-        列举upload_id对应的已上传分片。
+        列举UploadID对应的已上传分片。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -10547,7 +8003,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/list_uploaded_parts')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/list_uploaded_parts')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -10606,11 +8062,11 @@ class Client:
 
     async def list_uploaded_parts_ex_async(
         self,
-        request: hosting_models.ListUploadedPartRequest,
+        request: hosting_models.HostingListUploadedPartRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.ListUploadedPartsModel:
         """
-        列举upload_id对应的已上传分片。
+        列举UploadID对应的已上传分片。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -10661,7 +8117,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/list_uploaded_parts')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/list_uploaded_parts')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -10720,11 +8176,11 @@ class Client:
 
     def move_file_ex(
         self,
-        request: hosting_models.MoveFileRequest,
+        request: hosting_models.HostingMoveFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.MoveFileModel:
         """
-        指定源文件或文件夹，移动到指定的文件夹。
+        指定源文件或文件夹路径，移动到指定的文件夹。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -10775,7 +8231,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/move')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/move')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -10834,11 +8290,11 @@ class Client:
 
     async def move_file_ex_async(
         self,
-        request: hosting_models.MoveFileRequest,
+        request: hosting_models.HostingMoveFileRequest,
         runtime: hosting_models.RuntimeOptions,
     ) -> hosting_models.MoveFileModel:
         """
-        指定源文件或文件夹，移动到指定的文件夹。
+        指定源文件或文件夹路径，移动到指定的文件夹。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -10889,7 +8345,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/move')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/move')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -10946,14 +8402,14 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    def token_ex(
+    def video_definition_ex(
         self,
-        request: hosting_models.RefreshOfficeEditTokenRequest,
+        request: hosting_models.HostingVideoDefinitionRequest,
         runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.TokenModel:
+    ) -> hosting_models.VideoDefinitionModel:
         """
-        刷新在线编辑Token
-        @tags file, refresh, office, edit
+        获取视频支持的分辨率
+        @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
         @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -11003,7 +8459,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/refresh_office_edit_token')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/video_definition')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -11029,7 +8485,7 @@ class Client:
                 if UtilClient.equal_number(_response.status_code, 200):
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.TokenModel().from_map(
+                    return hosting_models.VideoDefinitionModel().from_map(
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -11060,14 +8516,14 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    async def token_ex_async(
+    async def video_definition_ex_async(
         self,
-        request: hosting_models.RefreshOfficeEditTokenRequest,
+        request: hosting_models.HostingVideoDefinitionRequest,
         runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.TokenModel:
+    ) -> hosting_models.VideoDefinitionModel:
         """
-        刷新在线编辑Token
-        @tags file, refresh, office, edit
+        获取视频支持的分辨率
+        @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
         @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -11117,7 +8573,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/refresh_office_edit_token')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/video_definition')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -11143,7 +8599,7 @@ class Client:
                 if UtilClient.equal_number(_response.status_code, 200):
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.TokenModel().from_map(
+                    return hosting_models.VideoDefinitionModel().from_map(
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -11174,18 +8630,17 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    def scan_file_meta_ex(
+    def video_license_ex(
         self,
-        request: hosting_models.ScanFileMetaRequest,
+        request: hosting_models.HostingVideoDRMLicenseRequest,
         runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.ScanFileMetaModel:
+    ) -> hosting_models.VideoLicenseModel:
         """
-        在指定drive下全量获取文件元信息。
+        获取视频的DRM License
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
         @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
@@ -11231,7 +8686,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/scan')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/video_license')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -11257,7 +8712,7 @@ class Client:
                 if UtilClient.equal_number(_response.status_code, 200):
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.ScanFileMetaModel().from_map(
+                    return hosting_models.VideoLicenseModel().from_map(
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -11288,18 +8743,17 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    async def scan_file_meta_ex_async(
+    async def video_license_ex_async(
         self,
-        request: hosting_models.ScanFileMetaRequest,
+        request: hosting_models.HostingVideoDRMLicenseRequest,
         runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.ScanFileMetaModel:
+    ) -> hosting_models.VideoLicenseModel:
         """
-        在指定drive下全量获取文件元信息。
+        获取视频的DRM License
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
         @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
@@ -11345,7 +8799,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/scan')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/video_license')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -11371,7 +8825,7 @@ class Client:
                 if UtilClient.equal_number(_response.status_code, 200):
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.ScanFileMetaModel().from_map(
+                    return hosting_models.VideoLicenseModel().from_map(
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -11402,13 +8856,13 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    def search_file_ex(
+    def video_m3u_8ex(
         self,
-        request: hosting_models.SearchFileRequest,
+        request: hosting_models.HostingVideoM3U8Request,
         runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.SearchFileModel:
+    ) -> hosting_models.VideoM3u8Model:
         """
-        根据筛选条件，在指定drive下搜索文件。
+        获取视频转码后的m3u8文件
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -11459,7 +8913,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/search')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/video_m3u8')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -11483,11 +8937,10 @@ class Client:
                 resp_map = None
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.SearchFileModel().from_map(
+                    byt = UtilClient.read_as_bytes(_response.body)
+                    return hosting_models.VideoM3u8Model().from_map(
                         {
-                            'body': resp_map,
+                            'body': byt,
                             'headers': _response.headers
                         }
                     )
@@ -11516,13 +8969,13 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    async def search_file_ex_async(
+    async def video_m3u_8ex_async(
         self,
-        request: hosting_models.SearchFileRequest,
+        request: hosting_models.HostingVideoM3U8Request,
         runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.SearchFileModel:
+    ) -> hosting_models.VideoM3u8Model:
         """
-        根据筛选条件，在指定drive下搜索文件。
+        获取视频转码后的m3u8文件
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -11573,7 +9026,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/search')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/video_m3u8')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -11597,11 +9050,10 @@ class Client:
                 resp_map = None
                 obj = None
                 if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.SearchFileModel().from_map(
+                    byt = await UtilClient.read_as_bytes_async(_response.body)
+                    return hosting_models.VideoM3u8Model().from_map(
                         {
-                            'body': resp_map,
+                            'body': byt,
                             'headers': _response.headers
                         }
                     )
@@ -11630,19 +9082,18 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    def update_file_ex(
+    def video_transcode_ex(
         self,
-        request: hosting_models.UpdateFileMetaRequest,
+        request: hosting_models.HostingVideoTranscodeRequest,
         runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.UpdateFileModel:
+    ) -> hosting_models.VideoTranscodeModel:
         """
-        对指定的文件或文件夹更新信息。
+        将mp4格式的视频文件，转为m3u8
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
         @error ForbiddenNoPermission No Permission to access resource {resource_name}.
         @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error AlreadyExist {resource} has already exists. {extra_msg}
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
@@ -11688,7 +9139,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/update')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/video_transcode')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -11714,9 +9165,15 @@ class Client:
                 if UtilClient.equal_number(_response.status_code, 200):
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.UpdateFileModel().from_map(
+                    return hosting_models.VideoTranscodeModel().from_map(
                         {
                             'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if UtilClient.equal_number(_response.status_code, 204):
+                    return hosting_models.VideoTranscodeModel().from_map(
+                        {
                             'headers': _response.headers
                         }
                     )
@@ -11745,19 +9202,18 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    async def update_file_ex_async(
+    async def video_transcode_ex_async(
         self,
-        request: hosting_models.UpdateFileMetaRequest,
+        request: hosting_models.HostingVideoTranscodeRequest,
         runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.UpdateFileModel:
+    ) -> hosting_models.VideoTranscodeModel:
         """
-        对指定的文件或文件夹更新信息。
+        将mp4格式的视频文件，转为m3u8
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
         @error ForbiddenNoPermission No Permission to access resource {resource_name}.
         @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error AlreadyExist {resource} has already exists. {extra_msg}
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
@@ -11803,7 +9259,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/file/update')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/file/video_transcode')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -11829,9 +9285,15 @@ class Client:
                 if UtilClient.equal_number(_response.status_code, 200):
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.UpdateFileModel().from_map(
+                    return hosting_models.VideoTranscodeModel().from_map(
                         {
                             'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if UtilClient.equal_number(_response.status_code, 204):
+                    return hosting_models.VideoTranscodeModel().from_map(
+                        {
                             'headers': _response.headers
                         }
                     )
@@ -11917,7 +9379,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share/create')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/share/create')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -12031,7 +9493,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share/create')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/share/create')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -12144,7 +9606,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share/delete')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/share/delete')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -12254,7 +9716,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share/delete')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/share/delete')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -12365,7 +9827,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share/get')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/share/get')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -12479,7 +9941,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share/get')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/share/get')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -12592,7 +10054,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share/list')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/share/list')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -12705,7 +10167,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share/list')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/share/list')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -12819,7 +10281,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share/update')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/share/update')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -12933,7 +10395,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share/update')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/share/update')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -12990,234 +10452,14 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    def cancel_share_link_ex(
+    def list_storefile_ex(
         self,
-        request: hosting_models.CancelShareLinkRequest,
+        request: hosting_models.ListStoreFileRequest,
         runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.CancelShareLinkModel:
+    ) -> hosting_models.ListStorefileModel:
         """
-        取消指定分享
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share_link/cancel')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 204):
-                    return hosting_models.CancelShareLinkModel().from_map(
-                        {
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def cancel_share_link_ex_async(
-        self,
-        request: hosting_models.CancelShareLinkRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.CancelShareLinkModel:
-        """
-        取消指定分享
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share_link/cancel')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 204):
-                    return hosting_models.CancelShareLinkModel().from_map(
-                        {
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def create_share_link_ex(
-        self,
-        request: hosting_models.CreateShareLinkRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.CreateShareLinkModel:
-        """
-        创建分享。
-        @tags share_link
+        列举指定store下的所有文件。
+        @tags store
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
         @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -13267,7 +10509,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share_link/create')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/store_file/list')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -13290,10 +10532,10 @@ class Client:
                 _response = TeaCore.do_action(_request, _runtime)
                 resp_map = None
                 obj = None
-                if UtilClient.equal_number(_response.status_code, 201):
+                if UtilClient.equal_number(_response.status_code, 200):
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.CreateShareLinkModel().from_map(
+                    return hosting_models.ListStorefileModel().from_map(
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -13324,14 +10566,14 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    async def create_share_link_ex_async(
+    async def list_storefile_ex_async(
         self,
-        request: hosting_models.CreateShareLinkRequest,
+        request: hosting_models.ListStoreFileRequest,
         runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.CreateShareLinkModel:
+    ) -> hosting_models.ListStorefileModel:
         """
-        创建分享。
-        @tags share_link
+        列举指定store下的所有文件。
+        @tags store
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
         @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -13381,231 +10623,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share_link/create')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 201):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.CreateShareLinkModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def get_share_by_anonymous_ex(
-        self,
-        request: hosting_models.GetShareLinkByAnonymousRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetShareByAnonymousModel:
-        """
-        查看分享的基本信息，比如分享者、到期时间等
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share_link/get_by_anonymous')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetShareByAnonymousModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def get_share_by_anonymous_ex_async(
-        self,
-        request: hosting_models.GetShareLinkByAnonymousRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetShareByAnonymousModel:
-        """
-        查看分享的基本信息，比如分享者、到期时间等
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share_link/get_by_anonymous')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/hosting/store_file/list')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -13631,683 +10649,7 @@ class Client:
                 if UtilClient.equal_number(_response.status_code, 200):
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetShareByAnonymousModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def get_share_id_ex(
-        self,
-        request: hosting_models.GetShareLinkIDRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetShareIdModel:
-        """
-        使用分享口令换取分享id
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share_link/get_share_id')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetShareIdModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def get_share_id_ex_async(
-        self,
-        request: hosting_models.GetShareLinkIDRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetShareIdModel:
-        """
-        使用分享口令换取分享id
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share_link/get_share_id')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetShareIdModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def get_share_token_ex(
-        self,
-        request: hosting_models.GetShareLinkTokenRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetShareTokenModel:
-        """
-        使用分享码+提取码换取分享token
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share_link/get_share_token')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetShareTokenModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def get_share_token_ex_async(
-        self,
-        request: hosting_models.GetShareLinkTokenRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.GetShareTokenModel:
-        """
-        使用分享码+提取码换取分享token
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share_link/get_share_token')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.GetShareTokenModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = await UtilClient.read_as_json_async(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    def list_share_link_ex(
-        self,
-        request: hosting_models.ListShareLinkRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.ListShareLinkModel:
-        """
-        列举指定用户的分享
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = self.get_access_key_id()
-                access_key_secret = self.get_access_key_secret()
-                security_token = self.get_security_token()
-                access_token = self.get_access_token()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share_link/list')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = UtilClient.read_as_json(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.ListShareLinkModel().from_map(
-                        {
-                            'body': resp_map,
-                            'headers': _response.headers
-                        }
-                    )
-                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
-                    raise TeaException({
-                        'data': {
-                            'requestId': _response.headers.get('x-ca-request-id'),
-                            'statusCode': _response.status_code,
-                            'statusMessage': _response.status_message
-                        },
-                        'message': _response.headers.get('x-ca-error-message')
-                    })
-                obj = UtilClient.read_as_json(_response.body)
-                resp_map = UtilClient.assert_as_map(obj)
-                raise TeaException(TeaCore.merge({
-                    'data': {
-                        'requestId': _response.headers.get('x-ca-request-id'),
-                        'statusCode': _response.status_code,
-                        'statusMessage': _response.status_message
-                    }
-                }, resp_map))
-            except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
-
-    async def list_share_link_ex_async(
-        self,
-        request: hosting_models.ListShareLinkRequest,
-        runtime: hosting_models.RuntimeOptions,
-    ) -> hosting_models.ListShareLinkModel:
-        """
-        列举指定用户的分享
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        request.validate()
-        runtime.validate()
-        _runtime = {
-            'timeouted': 'retry',
-            'readTimeout': runtime.read_timeout,
-            'connectTimeout': runtime.connect_timeout,
-            'localAddr': runtime.local_addr,
-            'httpProxy': runtime.http_proxy,
-            'httpsProxy': runtime.https_proxy,
-            'noProxy': runtime.no_proxy,
-            'maxIdleConns': runtime.max_idle_conns,
-            'socks5Proxy': runtime.socks_5proxy,
-            'socks5NetWork': runtime.socks_5net_work,
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': runtime.ignore_ssl
-        }
-        _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
-                if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
-            try:
-                _request = TeaRequest()
-                accesskey_id = await self.get_access_key_id_async()
-                access_key_secret = await self.get_access_key_secret_async()
-                security_token = await self.get_security_token_async()
-                access_token = await self.get_access_token_async()
-                real_req = UtilClient.to_map(request)
-                _request.protocol = UtilClient.default_string(self._protocol, 'https')
-                _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/share_link/list')
-                _request.headers = TeaCore.merge({
-                    'user-agent': self.get_user_agent(),
-                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
-                    'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
-                if not UtilClient.empty(access_token):
-                    _request.headers['authorization'] = f'Bearer {access_token}'
-                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
-                    if not UtilClient.empty(security_token):
-                        _request.headers['x-acs-security-token'] = security_token
-                    _request.headers['date'] = UtilClient.get_date_utcstring()
-                    _request.headers['accept'] = 'application/json'
-                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
-                    _request.headers['x-acs-signature-version'] = '1.0'
-                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
-                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
-                _request.body = UtilClient.to_jsonstring(real_req)
-                _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
-                resp_map = None
-                obj = None
-                if UtilClient.equal_number(_response.status_code, 200):
-                    obj = await UtilClient.read_as_json_async(_response.body)
-                    resp_map = UtilClient.assert_as_map(obj)
-                    return hosting_models.ListShareLinkModel().from_map(
+                    return hosting_models.ListStorefileModel().from_map(
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -16180,7 +12522,7 @@ class Client:
 
     def account_token(
         self,
-        request: hosting_models.TokenRequest,
+        request: hosting_models.AccountTokenRequest,
     ) -> hosting_models.AccountTokenModel:
         """
         用户通过刷新令牌（refresh_token）获取访问令牌（access_token）
@@ -16195,7 +12537,7 @@ class Client:
 
     async def account_token_async(
         self,
-        request: hosting_models.TokenRequest,
+        request: hosting_models.AccountTokenRequest,
     ) -> hosting_models.AccountTokenModel:
         """
         用户通过刷新令牌（refresh_token）获取访问令牌（access_token）
@@ -16267,76 +12609,6 @@ class Client:
         """
         runtime = hosting_models.RuntimeOptions()
         return await self.get_user_access_token_ex_async(request, runtime)
-
-    def get_async_task_info(
-        self,
-        request: hosting_models.GetAsyncTaskRequest,
-    ) -> hosting_models.GetAsyncTaskInfoModel:
-        """
-        如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
-        通过此接口获取异步任务的信息，以确定任务是否执行成功。
-        @tags async_task
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.get_async_task_info_ex(request, runtime)
-
-    async def get_async_task_info_async(
-        self,
-        request: hosting_models.GetAsyncTaskRequest,
-    ) -> hosting_models.GetAsyncTaskInfoModel:
-        """
-        如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
-        通过此接口获取异步任务的信息，以确定任务是否执行成功。
-        @tags async_task
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.get_async_task_info_ex_async(request, runtime)
-
-    def batch_operation(
-        self,
-        request: hosting_models.BatchRequest,
-    ) -> hosting_models.BatchOperationModel:
-        """
-        对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
-        支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
-        @tags batch
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.batch_operation_ex(request, runtime)
-
-    async def batch_operation_async(
-        self,
-        request: hosting_models.BatchRequest,
-    ) -> hosting_models.BatchOperationModel:
-        """
-        对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
-        支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
-        @tags batch
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.batch_operation_ex_async(request, runtime)
 
     def create_drive(
         self,
@@ -16576,10 +12848,10 @@ class Client:
 
     def complete_file(
         self,
-        request: hosting_models.CompleteFileRequest,
+        request: hosting_models.HostingCompleteFileRequest,
     ) -> hosting_models.CompleteFileModel:
         """
-        完成文件上传。
+        完成文件上传
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16593,10 +12865,10 @@ class Client:
 
     async def complete_file_async(
         self,
-        request: hosting_models.CompleteFileRequest,
+        request: hosting_models.HostingCompleteFileRequest,
     ) -> hosting_models.CompleteFileModel:
         """
-        完成文件上传。
+        完成文件上传
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16610,10 +12882,10 @@ class Client:
 
     def copy_file(
         self,
-        request: hosting_models.CopyFileRequest,
+        request: hosting_models.HostingCopyFileRequest,
     ) -> hosting_models.CopyFileModel:
         """
-        指定源文件或文件夹，拷贝到指定的文件夹。
+        指定源文件或文件夹路径，拷贝到指定的文件夹。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16627,10 +12899,10 @@ class Client:
 
     async def copy_file_async(
         self,
-        request: hosting_models.CopyFileRequest,
+        request: hosting_models.HostingCopyFileRequest,
     ) -> hosting_models.CopyFileModel:
         """
-        指定源文件或文件夹，拷贝到指定的文件夹。
+        指定源文件或文件夹路径，拷贝到指定的文件夹。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16644,11 +12916,10 @@ class Client:
 
     def create_file(
         self,
-        request: hosting_models.CreateFileRequest,
+        request: hosting_models.HostingCreateFileRequest,
     ) -> hosting_models.CreateFileModel:
         """
-        在指定文件夹下创建文件或者文件夹，
-        根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+        创建文件或者文件夹。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16663,11 +12934,10 @@ class Client:
 
     async def create_file_async(
         self,
-        request: hosting_models.CreateFileRequest,
+        request: hosting_models.HostingCreateFileRequest,
     ) -> hosting_models.CreateFileModel:
         """
-        在指定文件夹下创建文件或者文件夹，
-        根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+        创建文件或者文件夹。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16682,10 +12952,10 @@ class Client:
 
     def delete_file(
         self,
-        request: hosting_models.DeleteFileRequest,
+        request: hosting_models.HostingDeleteFileRequest,
     ) -> hosting_models.DeleteFileModel:
         """
-        指定文件或文件夹ID，删除文件或者文件夹。
+        指定文件或文件夹路径，删除文件或文件夹
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16699,10 +12969,10 @@ class Client:
 
     async def delete_file_async(
         self,
-        request: hosting_models.DeleteFileRequest,
+        request: hosting_models.HostingDeleteFileRequest,
     ) -> hosting_models.DeleteFileModel:
         """
-        指定文件或文件夹ID，删除文件或者文件夹。
+        指定文件或文件夹路径，删除文件或文件夹
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16716,10 +12986,10 @@ class Client:
 
     def get_file(
         self,
-        request: hosting_models.GetFileRequest,
+        request: hosting_models.HostingGetFileRequest,
     ) -> hosting_models.GetFileModel:
         """
-        获取指定文件或文件夹ID的信息。
+        获取指定文件或文件夹路径，获取文件或文件夹信息。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16733,10 +13003,10 @@ class Client:
 
     async def get_file_async(
         self,
-        request: hosting_models.GetFileRequest,
+        request: hosting_models.HostingGetFileRequest,
     ) -> hosting_models.GetFileModel:
         """
-        获取指定文件或文件夹ID的信息。
+        获取指定文件或文件夹路径，获取文件或文件夹信息。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16748,46 +13018,12 @@ class Client:
         runtime = hosting_models.RuntimeOptions()
         return await self.get_file_ex_async(request, runtime)
 
-    def get_file_by_path(
-        self,
-        request: hosting_models.GetFileByPathRequest,
-    ) -> hosting_models.GetFileByPathModel:
-        """
-        根据路径获取指定文件或文件夹的信息。
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.get_file_by_path_ex(request, runtime)
-
-    async def get_file_by_path_async(
-        self,
-        request: hosting_models.GetFileByPathRequest,
-    ) -> hosting_models.GetFileByPathModel:
-        """
-        根据路径获取指定文件或文件夹的信息。
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.get_file_by_path_ex_async(request, runtime)
-
     def get_download_url(
         self,
-        request: hosting_models.GetDownloadUrlRequest,
+        request: hosting_models.HostingGetDownloadUrlRequest,
     ) -> hosting_models.GetDownloadUrlModel:
         """
-        获取文件的下载地址，调用者可自己设置range头并发下载。
+        指定文件路径，获取文件下载地址
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16801,10 +13037,10 @@ class Client:
 
     async def get_download_url_async(
         self,
-        request: hosting_models.GetDownloadUrlRequest,
+        request: hosting_models.HostingGetDownloadUrlRequest,
     ) -> hosting_models.GetDownloadUrlModel:
         """
-        获取文件的下载地址，调用者可自己设置range头并发下载。
+        指定文件路径，获取文件下载地址
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16816,78 +13052,12 @@ class Client:
         runtime = hosting_models.RuntimeOptions()
         return await self.get_download_url_ex_async(request, runtime)
 
-    def get_last_cursor(
+    def get_secure_url(
         self,
-        request: hosting_models.GetLastCursorRequest,
-    ) -> hosting_models.GetLastCursorModel:
+        request: hosting_models.HostingGetSecureUrlRequest,
+    ) -> hosting_models.GetSecureUrlModel:
         """
-        获取drive内，增量数据最新的游标
-        @tags file_delta
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.get_last_cursor_ex(request, runtime)
-
-    async def get_last_cursor_async(
-        self,
-        request: hosting_models.GetLastCursorRequest,
-    ) -> hosting_models.GetLastCursorModel:
-        """
-        获取drive内，增量数据最新的游标
-        @tags file_delta
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.get_last_cursor_ex_async(request, runtime)
-
-    def get_media_play_url(
-        self,
-        request: hosting_models.GetMediaPlayURLRequest,
-    ) -> hosting_models.GetMediaPlayUrlModel:
-        """
-        获取media文件播放URL地址（当前仅支持m3u8）
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.get_media_play_url_ex(request, runtime)
-
-    async def get_media_play_url_async(
-        self,
-        request: hosting_models.GetMediaPlayURLRequest,
-    ) -> hosting_models.GetMediaPlayUrlModel:
-        """
-        获取media文件播放URL地址（当前仅支持m3u8）
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.get_media_play_url_ex_async(request, runtime)
-
-    def get_office_edit_url(
-        self,
-        request: hosting_models.GetOfficeEditUrlRequest,
-    ) -> hosting_models.GetOfficeEditUrlModel:
-        """
-        获取文档的在线编辑地址
+        指定文件路径，获取文件安全地址
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16897,14 +13067,14 @@ class Client:
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
         runtime = hosting_models.RuntimeOptions()
-        return self.get_office_edit_url_ex(request, runtime)
+        return self.get_secure_url_ex(request, runtime)
 
-    async def get_office_edit_url_async(
+    async def get_secure_url_async(
         self,
-        request: hosting_models.GetOfficeEditUrlRequest,
-    ) -> hosting_models.GetOfficeEditUrlModel:
+        request: hosting_models.HostingGetSecureUrlRequest,
+    ) -> hosting_models.GetSecureUrlModel:
         """
-        获取文档的在线编辑地址
+        指定文件路径，获取文件安全地址
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16914,45 +13084,11 @@ class Client:
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
         runtime = hosting_models.RuntimeOptions()
-        return await self.get_office_edit_url_ex_async(request, runtime)
-
-    def get_office_preview_url(
-        self,
-        request: hosting_models.GetOfficePreviewUrlRequest,
-    ) -> hosting_models.GetOfficePreviewUrlModel:
-        """
-        获取文档的预览地址（office文档）
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.get_office_preview_url_ex(request, runtime)
-
-    async def get_office_preview_url_async(
-        self,
-        request: hosting_models.GetOfficePreviewUrlRequest,
-    ) -> hosting_models.GetOfficePreviewUrlModel:
-        """
-        获取文档的预览地址（office文档）
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.get_office_preview_url_ex_async(request, runtime)
+        return await self.get_secure_url_ex_async(request, runtime)
 
     def get_upload_url(
         self,
-        request: hosting_models.GetUploadUrlRequest,
+        request: hosting_models.HostingGetUploadUrlRequest,
     ) -> hosting_models.GetUploadUrlModel:
         """
         可指定分片信息，一次获取多个分片的上传地址。
@@ -16969,7 +13105,7 @@ class Client:
 
     async def get_upload_url_async(
         self,
-        request: hosting_models.GetUploadUrlRequest,
+        request: hosting_models.HostingGetUploadUrlRequest,
     ) -> hosting_models.GetUploadUrlModel:
         """
         可指定分片信息，一次获取多个分片的上传地址。
@@ -16984,80 +13120,12 @@ class Client:
         runtime = hosting_models.RuntimeOptions()
         return await self.get_upload_url_ex_async(request, runtime)
 
-    def get_video_preview_sprite_url(
-        self,
-        request: hosting_models.GetVideoPreviewSpriteURLRequest,
-    ) -> hosting_models.GetVideoPreviewSpriteUrlModel:
-        """
-        获取视频雪碧图地址
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.get_video_preview_sprite_url_ex(request, runtime)
-
-    async def get_video_preview_sprite_url_async(
-        self,
-        request: hosting_models.GetVideoPreviewSpriteURLRequest,
-    ) -> hosting_models.GetVideoPreviewSpriteUrlModel:
-        """
-        获取视频雪碧图地址
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.get_video_preview_sprite_url_ex_async(request, runtime)
-
-    def get_video_preview_url(
-        self,
-        request: hosting_models.GetVideoPreviewURLRequest,
-    ) -> hosting_models.GetVideoPreviewUrlModel:
-        """
-        获取视频播放地址
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.get_video_preview_url_ex(request, runtime)
-
-    async def get_video_preview_url_async(
-        self,
-        request: hosting_models.GetVideoPreviewURLRequest,
-    ) -> hosting_models.GetVideoPreviewUrlModel:
-        """
-        获取视频播放地址
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.get_video_preview_url_ex_async(request, runtime)
-
     def list_file(
         self,
-        request: hosting_models.ListFileRequest,
+        request: hosting_models.HostingListFileRequest,
     ) -> hosting_models.ListFileModel:
         """
-        列举指定目录下的文件或文件夹。
+        指定父文件夹路径，列举文件夹下的文件或者文件夹
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -17071,10 +13139,10 @@ class Client:
 
     async def list_file_async(
         self,
-        request: hosting_models.ListFileRequest,
+        request: hosting_models.HostingListFileRequest,
     ) -> hosting_models.ListFileModel:
         """
-        列举指定目录下的文件或文件夹。
+        指定父文件夹路径，列举文件夹下的文件或者文件夹
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -17086,112 +13154,12 @@ class Client:
         runtime = hosting_models.RuntimeOptions()
         return await self.list_file_ex_async(request, runtime)
 
-    def list_file_by_anonymous(
-        self,
-        request: hosting_models.ListByAnonymousRequest,
-    ) -> hosting_models.ListFileByAnonymousModel:
-        """
-        查看分享中的文件列表
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error ShareLinkTokenInvalid ShareToken is invalid. {message}
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.list_file_by_anonymous_ex(request, runtime)
-
-    async def list_file_by_anonymous_async(
-        self,
-        request: hosting_models.ListByAnonymousRequest,
-    ) -> hosting_models.ListFileByAnonymousModel:
-        """
-        查看分享中的文件列表
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error ShareLinkTokenInvalid ShareToken is invalid. {message}
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.list_file_by_anonymous_ex_async(request, runtime)
-
-    def list_file_by_custom_index_key(
-        self,
-        request: hosting_models.ListFileByCustomIndexKeyRequest,
-    ) -> hosting_models.ListFileByCustomIndexKeyModel:
-        """
-        根据自定义同步索引键列举文件或文件夹。
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.list_file_by_custom_index_key_ex(request, runtime)
-
-    async def list_file_by_custom_index_key_async(
-        self,
-        request: hosting_models.ListFileByCustomIndexKeyRequest,
-    ) -> hosting_models.ListFileByCustomIndexKeyModel:
-        """
-        根据自定义同步索引键列举文件或文件夹。
-        @tags file
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.list_file_by_custom_index_key_ex_async(request, runtime)
-
-    def list_file_delta(
-        self,
-        request: hosting_models.ListFileDeltaRequest,
-    ) -> hosting_models.ListFileDeltaModel:
-        """
-        获取drive内，增量数据列表
-        @tags file_delta
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.list_file_delta_ex(request, runtime)
-
-    async def list_file_delta_async(
-        self,
-        request: hosting_models.ListFileDeltaRequest,
-    ) -> hosting_models.ListFileDeltaModel:
-        """
-        获取drive内，增量数据列表
-        @tags file_delta
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.list_file_delta_ex_async(request, runtime)
-
     def list_uploaded_parts(
         self,
-        request: hosting_models.ListUploadedPartRequest,
+        request: hosting_models.HostingListUploadedPartRequest,
     ) -> hosting_models.ListUploadedPartsModel:
         """
-        列举upload_id对应的已上传分片。
+        列举UploadID对应的已上传分片。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -17205,10 +13173,10 @@ class Client:
 
     async def list_uploaded_parts_async(
         self,
-        request: hosting_models.ListUploadedPartRequest,
+        request: hosting_models.HostingListUploadedPartRequest,
     ) -> hosting_models.ListUploadedPartsModel:
         """
-        列举upload_id对应的已上传分片。
+        列举UploadID对应的已上传分片。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -17222,10 +13190,10 @@ class Client:
 
     def move_file(
         self,
-        request: hosting_models.MoveFileRequest,
+        request: hosting_models.HostingMoveFileRequest,
     ) -> hosting_models.MoveFileModel:
         """
-        指定源文件或文件夹，移动到指定的文件夹。
+        指定源文件或文件夹路径，移动到指定的文件夹。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -17239,10 +13207,10 @@ class Client:
 
     async def move_file_async(
         self,
-        request: hosting_models.MoveFileRequest,
+        request: hosting_models.HostingMoveFileRequest,
     ) -> hosting_models.MoveFileModel:
         """
-        指定源文件或文件夹，移动到指定的文件夹。
+        指定源文件或文件夹路径，移动到指定的文件夹。
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -17254,46 +13222,12 @@ class Client:
         runtime = hosting_models.RuntimeOptions()
         return await self.move_file_ex_async(request, runtime)
 
-    def token(
+    def video_definition(
         self,
-        request: hosting_models.RefreshOfficeEditTokenRequest,
-    ) -> hosting_models.TokenModel:
+        request: hosting_models.HostingVideoDefinitionRequest,
+    ) -> hosting_models.VideoDefinitionModel:
         """
-        刷新在线编辑Token
-        @tags file, refresh, office, edit
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.token_ex(request, runtime)
-
-    async def token_async(
-        self,
-        request: hosting_models.RefreshOfficeEditTokenRequest,
-    ) -> hosting_models.TokenModel:
-        """
-        刷新在线编辑Token
-        @tags file, refresh, office, edit
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.token_ex_async(request, runtime)
-
-    def scan_file_meta(
-        self,
-        request: hosting_models.ScanFileMetaRequest,
-    ) -> hosting_models.ScanFileMetaModel:
-        """
-        在指定drive下全量获取文件元信息。
+        获取视频支持的分辨率
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -17303,14 +13237,14 @@ class Client:
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
         runtime = hosting_models.RuntimeOptions()
-        return self.scan_file_meta_ex(request, runtime)
+        return self.video_definition_ex(request, runtime)
 
-    async def scan_file_meta_async(
+    async def video_definition_async(
         self,
-        request: hosting_models.ScanFileMetaRequest,
-    ) -> hosting_models.ScanFileMetaModel:
+        request: hosting_models.HostingVideoDefinitionRequest,
+    ) -> hosting_models.VideoDefinitionModel:
         """
-        在指定drive下全量获取文件元信息。
+        获取视频支持的分辨率
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -17320,14 +13254,46 @@ class Client:
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
         runtime = hosting_models.RuntimeOptions()
-        return await self.scan_file_meta_ex_async(request, runtime)
+        return await self.video_definition_ex_async(request, runtime)
 
-    def search_file(
+    def video_license(
         self,
-        request: hosting_models.SearchFileRequest,
-    ) -> hosting_models.SearchFileModel:
+        request: hosting_models.HostingVideoDRMLicenseRequest,
+    ) -> hosting_models.VideoLicenseModel:
         """
-        根据筛选条件，在指定drive下搜索文件。
+        获取视频的DRM License
+        @tags file
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = hosting_models.RuntimeOptions()
+        return self.video_license_ex(request, runtime)
+
+    async def video_license_async(
+        self,
+        request: hosting_models.HostingVideoDRMLicenseRequest,
+    ) -> hosting_models.VideoLicenseModel:
+        """
+        获取视频的DRM License
+        @tags file
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = hosting_models.RuntimeOptions()
+        return await self.video_license_ex_async(request, runtime)
+
+    def video_m3u_8(
+        self,
+        request: hosting_models.HostingVideoM3U8Request,
+    ) -> hosting_models.VideoM3u8Model:
+        """
+        获取视频转码后的m3u8文件
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -17337,14 +13303,14 @@ class Client:
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
         runtime = hosting_models.RuntimeOptions()
-        return self.search_file_ex(request, runtime)
+        return self.video_m3u_8ex(request, runtime)
 
-    async def search_file_async(
+    async def video_m3u_8_async(
         self,
-        request: hosting_models.SearchFileRequest,
-    ) -> hosting_models.SearchFileModel:
+        request: hosting_models.HostingVideoM3U8Request,
+    ) -> hosting_models.VideoM3u8Model:
         """
-        根据筛选条件，在指定drive下搜索文件。
+        获取视频转码后的m3u8文件
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -17354,43 +13320,41 @@ class Client:
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
         runtime = hosting_models.RuntimeOptions()
-        return await self.search_file_ex_async(request, runtime)
+        return await self.video_m3u_8ex_async(request, runtime)
 
-    def update_file(
+    def video_transcode(
         self,
-        request: hosting_models.UpdateFileMetaRequest,
-    ) -> hosting_models.UpdateFileModel:
+        request: hosting_models.HostingVideoTranscodeRequest,
+    ) -> hosting_models.VideoTranscodeModel:
         """
-        对指定的文件或文件夹更新信息。
+        将mp4格式的视频文件，转为m3u8
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
         @error ForbiddenNoPermission No Permission to access resource {resource_name}.
         @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error AlreadyExist {resource} has already exists. {extra_msg}
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
         runtime = hosting_models.RuntimeOptions()
-        return self.update_file_ex(request, runtime)
+        return self.video_transcode_ex(request, runtime)
 
-    async def update_file_async(
+    async def video_transcode_async(
         self,
-        request: hosting_models.UpdateFileMetaRequest,
-    ) -> hosting_models.UpdateFileModel:
+        request: hosting_models.HostingVideoTranscodeRequest,
+    ) -> hosting_models.VideoTranscodeModel:
         """
-        对指定的文件或文件夹更新信息。
+        将mp4格式的视频文件，转为m3u8
         @tags file
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
         @error ForbiddenNoPermission No Permission to access resource {resource_name}.
         @error NotFound The resource {resource_name} cannot be found. Please check.
-        @error AlreadyExist {resource} has already exists. {extra_msg}
         @error InternalError The request has been failed due to some unknown error.
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
         runtime = hosting_models.RuntimeOptions()
-        return await self.update_file_ex_async(request, runtime)
+        return await self.video_transcode_ex_async(request, runtime)
 
     def create_share(
         self,
@@ -17558,45 +13522,13 @@ class Client:
         runtime = hosting_models.RuntimeOptions()
         return await self.update_share_ex_async(request, runtime)
 
-    def cancel_share_link(
+    def list_storefile(
         self,
-        request: hosting_models.CancelShareLinkRequest,
-    ) -> hosting_models.CancelShareLinkModel:
+        request: hosting_models.ListStoreFileRequest,
+    ) -> hosting_models.ListStorefileModel:
         """
-        取消指定分享
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.cancel_share_link_ex(request, runtime)
-
-    async def cancel_share_link_async(
-        self,
-        request: hosting_models.CancelShareLinkRequest,
-    ) -> hosting_models.CancelShareLinkModel:
-        """
-        取消指定分享
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.cancel_share_link_ex_async(request, runtime)
-
-    def create_share_link(
-        self,
-        request: hosting_models.CreateShareLinkRequest,
-    ) -> hosting_models.CreateShareLinkModel:
-        """
-        创建分享。
-        @tags share_link
+        列举指定store下的所有文件。
+        @tags store
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
         @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -17605,15 +13537,15 @@ class Client:
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
         runtime = hosting_models.RuntimeOptions()
-        return self.create_share_link_ex(request, runtime)
+        return self.list_storefile_ex(request, runtime)
 
-    async def create_share_link_async(
+    async def list_storefile_async(
         self,
-        request: hosting_models.CreateShareLinkRequest,
-    ) -> hosting_models.CreateShareLinkModel:
+        request: hosting_models.ListStoreFileRequest,
+    ) -> hosting_models.ListStorefileModel:
         """
-        创建分享。
-        @tags share_link
+        列举指定store下的所有文件。
+        @tags store
         @error InvalidParameter The input parameter {parameter_name} is not valid.
         @error AccessTokenInvalid AccessToken is invalid. {message}
         @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -17622,131 +13554,7 @@ class Client:
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
         runtime = hosting_models.RuntimeOptions()
-        return await self.create_share_link_ex_async(request, runtime)
-
-    def get_share_by_anonymous(
-        self,
-        request: hosting_models.GetShareLinkByAnonymousRequest,
-    ) -> hosting_models.GetShareByAnonymousModel:
-        """
-        查看分享的基本信息，比如分享者、到期时间等
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.get_share_by_anonymous_ex(request, runtime)
-
-    async def get_share_by_anonymous_async(
-        self,
-        request: hosting_models.GetShareLinkByAnonymousRequest,
-    ) -> hosting_models.GetShareByAnonymousModel:
-        """
-        查看分享的基本信息，比如分享者、到期时间等
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.get_share_by_anonymous_ex_async(request, runtime)
-
-    def get_share_id(
-        self,
-        request: hosting_models.GetShareLinkIDRequest,
-    ) -> hosting_models.GetShareIdModel:
-        """
-        使用分享口令换取分享id
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.get_share_id_ex(request, runtime)
-
-    async def get_share_id_async(
-        self,
-        request: hosting_models.GetShareLinkIDRequest,
-    ) -> hosting_models.GetShareIdModel:
-        """
-        使用分享口令换取分享id
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.get_share_id_ex_async(request, runtime)
-
-    def get_share_token(
-        self,
-        request: hosting_models.GetShareLinkTokenRequest,
-    ) -> hosting_models.GetShareTokenModel:
-        """
-        使用分享码+提取码换取分享token
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.get_share_token_ex(request, runtime)
-
-    async def get_share_token_async(
-        self,
-        request: hosting_models.GetShareLinkTokenRequest,
-    ) -> hosting_models.GetShareTokenModel:
-        """
-        使用分享码+提取码换取分享token
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.get_share_token_ex_async(request, runtime)
-
-    def list_share_link(
-        self,
-        request: hosting_models.ListShareLinkRequest,
-    ) -> hosting_models.ListShareLinkModel:
-        """
-        列举指定用户的分享
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return self.list_share_link_ex(request, runtime)
-
-    async def list_share_link_async(
-        self,
-        request: hosting_models.ListShareLinkRequest,
-    ) -> hosting_models.ListShareLinkModel:
-        """
-        列举指定用户的分享
-        @tags share_link
-        @error InvalidParameter The input parameter {parameter_name} is not valid.
-        @error AccessTokenInvalid AccessToken is invalid. {message}
-        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-        @error InternalError The request has been failed due to some unknown error.
-        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-        """
-        runtime = hosting_models.RuntimeOptions()
-        return await self.list_share_link_ex_async(request, runtime)
+        return await self.list_storefile_ex_async(request, runtime)
 
     def create_user(
         self,

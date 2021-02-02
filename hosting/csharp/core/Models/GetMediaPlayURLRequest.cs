@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * get_media_play_url request
      */
     public class GetMediaPlayURLRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// drive_id
         /// </summary>

@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 获取增量文件操作记录
  */
 public class ListFileDeltaRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // cursor 游标
     @NameInMap("cursor")
     public String cursor;
@@ -43,14 +40,6 @@ public class ListFileDeltaRequest extends TeaModel {
     public static ListFileDeltaRequest build(java.util.Map<String, ?> map) throws Exception {
         ListFileDeltaRequest self = new ListFileDeltaRequest();
         return TeaModel.build(map, self);
-    }
-
-    public ListFileDeltaRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public ListFileDeltaRequest setCursor(String cursor) {

@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 更新文件元数据
      */
     public class UpdateFileMetaRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// check_name_mode
         /// </summary>

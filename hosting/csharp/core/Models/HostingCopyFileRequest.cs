@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * copy file request
      */
     public class HostingCopyFileRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// drive_id
         /// </summary>

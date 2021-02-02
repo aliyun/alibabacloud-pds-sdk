@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * get_share_token request
      */
     public class GetShareLinkTokenRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// share_id
         /// </summary>

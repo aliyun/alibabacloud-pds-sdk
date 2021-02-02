@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 启动视频转码请求
      */
     public class HostingVideoTranscodeRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// drive_id
         /// </summary>

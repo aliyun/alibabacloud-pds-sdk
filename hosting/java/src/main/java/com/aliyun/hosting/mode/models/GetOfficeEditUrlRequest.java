@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 获取office文档在线编辑地址
  */
 public class GetOfficeEditUrlRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // addition_data
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
@@ -27,14 +24,6 @@ public class GetOfficeEditUrlRequest extends TeaModel {
     public static GetOfficeEditUrlRequest build(java.util.Map<String, ?> map) throws Exception {
         GetOfficeEditUrlRequest self = new GetOfficeEditUrlRequest();
         return TeaModel.build(map, self);
-    }
-
-    public GetOfficeEditUrlRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public GetOfficeEditUrlRequest setAdditionData(java.util.Map<String, ?> additionData) {

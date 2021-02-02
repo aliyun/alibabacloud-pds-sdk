@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * list store file
      */
     public class ListStoreFileRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// limit
         /// </summary>

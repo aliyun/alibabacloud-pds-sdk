@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 根据路径获取 File 接口 body
  */
 public class GetFileByPathRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // addition_data
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
@@ -52,14 +49,6 @@ public class GetFileByPathRequest extends TeaModel {
     public static GetFileByPathRequest build(java.util.Map<String, ?> map) throws Exception {
         GetFileByPathRequest self = new GetFileByPathRequest();
         return TeaModel.build(map, self);
-    }
-
-    public GetFileByPathRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public GetFileByPathRequest setAdditionData(java.util.Map<String, ?> additionData) {

@@ -24,9 +24,6 @@ class ListFileDeltaRequest extends Model {
     }
     public function toMap() {
         $res = [];
-        if (null !== $this->headers) {
-            $res['headers'] = $this->headers;
-        }
         if (null !== $this->cursor) {
             $res['cursor'] = $this->cursor;
         }
@@ -56,9 +53,6 @@ class ListFileDeltaRequest extends Model {
      */
     public static function fromMap($map = []) {
         $model = new self();
-        if(isset($map['headers'])){
-            $model->headers = $map['headers'];
-        }
         if(isset($map['cursor'])){
             $model->cursor = $map['cursor'];
         }
@@ -84,8 +78,6 @@ class ListFileDeltaRequest extends Model {
         }
         return $model;
     }
-    public $headers;
-
     /**
      * @description cursor 游标
      * @example abc

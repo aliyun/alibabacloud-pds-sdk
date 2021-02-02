@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 批处理
      */
     public class BatchRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// Requests 请求合集
         /// </summary>

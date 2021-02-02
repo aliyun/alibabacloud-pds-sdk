@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 创建文件
      */
     public class CreateFileRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// addition_data
         /// </summary>

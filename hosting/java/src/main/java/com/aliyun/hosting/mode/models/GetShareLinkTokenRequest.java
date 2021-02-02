@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * get_share_token request
  */
 public class GetShareLinkTokenRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // share_id
     @NameInMap("share_id")
     public String shareId;
@@ -21,14 +18,6 @@ public class GetShareLinkTokenRequest extends TeaModel {
     public static GetShareLinkTokenRequest build(java.util.Map<String, ?> map) throws Exception {
         GetShareLinkTokenRequest self = new GetShareLinkTokenRequest();
         return TeaModel.build(map, self);
-    }
-
-    public GetShareLinkTokenRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public GetShareLinkTokenRequest setShareId(String shareId) {

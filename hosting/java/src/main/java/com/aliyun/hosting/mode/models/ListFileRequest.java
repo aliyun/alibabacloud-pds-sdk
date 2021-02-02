@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 列举文件
  */
 public class ListFileRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // addition_data
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
@@ -104,14 +101,6 @@ public class ListFileRequest extends TeaModel {
     public static ListFileRequest build(java.util.Map<String, ?> map) throws Exception {
         ListFileRequest self = new ListFileRequest();
         return TeaModel.build(map, self);
-    }
-
-    public ListFileRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public ListFileRequest setAdditionData(java.util.Map<String, ?> additionData) {

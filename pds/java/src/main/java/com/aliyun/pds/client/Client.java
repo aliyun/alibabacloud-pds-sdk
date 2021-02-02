@@ -1960,7 +1960,7 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest);
     }
 
-    public AccountTokenModel accountTokenEx(TokenRequest request, RuntimeOptions runtime) throws Exception {
+    public AccountTokenModel accountTokenEx(AccountTokenRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
         java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
@@ -9796,7 +9796,7 @@ public class Client {
      * @error NotFound The resource {resource_name} cannot be found. Please check.
      * @error InternalError The request has been failed due to some unknown error.
      */
-    public AccountTokenModel accountToken(TokenRequest request) throws Exception {
+    public AccountTokenModel accountToken(AccountTokenRequest request) throws Exception {
         RuntimeOptions runtime = new RuntimeOptions();
         return this.accountTokenEx(request, runtime);
     }

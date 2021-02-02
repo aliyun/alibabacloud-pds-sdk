@@ -4868,7 +4868,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error NotFound The resource {resource_name} cannot be found. Please check.
          * @error InternalError The request has been failed due to some unknown error.
          */
-        public AccountTokenModel AccountTokenEx(TokenRequest request, RuntimeOptions runtime)
+        public AccountTokenModel AccountTokenEx(AccountTokenRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -5018,7 +5018,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error NotFound The resource {resource_name} cannot be found. Please check.
          * @error InternalError The request has been failed due to some unknown error.
          */
-        public async Task<AccountTokenModel> AccountTokenExAsync(TokenRequest request, RuntimeOptions runtime)
+        public async Task<AccountTokenModel> AccountTokenExAsync(AccountTokenRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -5712,616 +5712,6 @@ namespace Aliyun.SDK.Hosting.Client
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
                         return TeaModel.ToObject<GetUserAccessTokenModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
-         * 通过此接口获取异步任务的信息，以确定任务是否执行成功。
-         * @tags async_task
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetAsyncTaskInfoModel GetAsyncTaskInfoEx(GetAsyncTaskRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/async_task/get");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetAsyncTaskInfoModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
-         * 通过此接口获取异步任务的信息，以确定任务是否执行成功。
-         * @tags async_task
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetAsyncTaskInfoModel> GetAsyncTaskInfoExAsync(GetAsyncTaskRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/async_task/get");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetAsyncTaskInfoModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
-         * 支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
-         * @tags batch
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public BatchOperationModel BatchOperationEx(BatchRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/batch");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<BatchOperationModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
-         * 支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
-         * @tags batch
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<BatchOperationModel> BatchOperationExAsync(BatchRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/batch");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<BatchOperationModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -8491,7 +7881,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 完成文件上传。
+         * 完成文件上传
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -8500,7 +7890,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public CompleteFileModel CompleteFileEx(CompleteFileRequest request, RuntimeOptions runtime)
+        public CompleteFileModel CompleteFileEx(HostingCompleteFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -8554,7 +7944,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/complete");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/complete");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -8643,7 +8033,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 完成文件上传。
+         * 完成文件上传
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -8652,7 +8042,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<CompleteFileModel> CompleteFileExAsync(CompleteFileRequest request, RuntimeOptions runtime)
+        public async Task<CompleteFileModel> CompleteFileExAsync(HostingCompleteFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -8706,7 +8096,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/complete");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/complete");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -8795,7 +8185,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 指定源文件或文件夹，拷贝到指定的文件夹。
+         * 指定源文件或文件夹路径，拷贝到指定的文件夹。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -8804,7 +8194,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public CopyFileModel CopyFileEx(CopyFileRequest request, RuntimeOptions runtime)
+        public CopyFileModel CopyFileEx(HostingCopyFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -8858,7 +8248,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/copy");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/copy");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -8894,16 +8284,6 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> respMap = null;
                     object obj = null;
                     if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 201))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<CopyFileModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 202))
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
@@ -8957,7 +8337,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 指定源文件或文件夹，拷贝到指定的文件夹。
+         * 指定源文件或文件夹路径，拷贝到指定的文件夹。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -8966,7 +8346,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<CopyFileModel> CopyFileExAsync(CopyFileRequest request, RuntimeOptions runtime)
+        public async Task<CopyFileModel> CopyFileExAsync(HostingCopyFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -9020,7 +8400,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/copy");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/copy");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -9056,16 +8436,6 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> respMap = null;
                     object obj = null;
                     if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 201))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<CopyFileModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 202))
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
@@ -9119,8 +8489,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 在指定文件夹下创建文件或者文件夹，
-         * 根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+         * 创建文件或者文件夹。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -9130,7 +8499,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public CreateFileModel CreateFileEx(CreateFileRequest request, RuntimeOptions runtime)
+        public CreateFileModel CreateFileEx(HostingCreateFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -9184,7 +8553,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/create");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/create");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -9273,8 +8642,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 在指定文件夹下创建文件或者文件夹，
-         * 根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+         * 创建文件或者文件夹。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -9284,7 +8652,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<CreateFileModel> CreateFileExAsync(CreateFileRequest request, RuntimeOptions runtime)
+        public async Task<CreateFileModel> CreateFileExAsync(HostingCreateFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -9338,7 +8706,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/create");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/create");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -9427,7 +8795,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 指定文件或文件夹ID，删除文件或者文件夹。
+         * 指定文件或文件夹路径，删除文件或文件夹
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -9436,7 +8804,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public DeleteFileModel DeleteFileEx(DeleteFileRequest request, RuntimeOptions runtime)
+        public DeleteFileModel DeleteFileEx(HostingDeleteFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -9490,7 +8858,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/delete");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/delete");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -9525,16 +8893,6 @@ namespace Aliyun.SDK.Hosting.Client
 
                     Dictionary<string, object> respMap = null;
                     object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 202))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<DeleteFileModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
                     if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 204))
                     {
                         return TeaModel.ToObject<DeleteFileModel>(new Dictionary<string, Dictionary<string, string>>
@@ -9586,7 +8944,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 指定文件或文件夹ID，删除文件或者文件夹。
+         * 指定文件或文件夹路径，删除文件或文件夹
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -9595,7 +8953,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<DeleteFileModel> DeleteFileExAsync(DeleteFileRequest request, RuntimeOptions runtime)
+        public async Task<DeleteFileModel> DeleteFileExAsync(HostingDeleteFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -9649,7 +9007,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/delete");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/delete");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -9684,16 +9042,6 @@ namespace Aliyun.SDK.Hosting.Client
 
                     Dictionary<string, object> respMap = null;
                     object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 202))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<DeleteFileModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
                     if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 204))
                     {
                         return TeaModel.ToObject<DeleteFileModel>(new Dictionary<string, Dictionary<string, string>>
@@ -9745,7 +9093,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 获取指定文件或文件夹ID的信息。
+         * 获取指定文件或文件夹路径，获取文件或文件夹信息。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -9754,7 +9102,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public GetFileModel GetFileEx(GetFileRequest request, RuntimeOptions runtime)
+        public GetFileModel GetFileEx(HostingGetFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -9808,7 +9156,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/get");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -9897,7 +9245,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 获取指定文件或文件夹ID的信息。
+         * 获取指定文件或文件夹路径，获取文件或文件夹信息。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -9906,7 +9254,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<GetFileModel> GetFileExAsync(GetFileRequest request, RuntimeOptions runtime)
+        public async Task<GetFileModel> GetFileExAsync(HostingGetFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -9960,7 +9308,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/get");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -10049,7 +9397,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 根据路径获取指定文件或文件夹的信息。
+         * 指定文件路径，获取文件下载地址
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -10058,7 +9406,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public GetFileByPathModel GetFileByPathEx(GetFileByPathRequest request, RuntimeOptions runtime)
+        public GetDownloadUrlModel GetDownloadUrlEx(HostingGetDownloadUrlRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -10112,311 +9460,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_by_path");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetFileByPathModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 根据路径获取指定文件或文件夹的信息。
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetFileByPathModel> GetFileByPathExAsync(GetFileByPathRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_by_path");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetFileByPathModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 获取文件的下载地址，调用者可自己设置range头并发下载。
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetDownloadUrlModel GetDownloadUrlEx(GetDownloadUrlRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_download_url");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/get_download_url");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -10505,7 +9549,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 获取文件的下载地址，调用者可自己设置range头并发下载。
+         * 指定文件路径，获取文件下载地址
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -10514,7 +9558,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<GetDownloadUrlModel> GetDownloadUrlExAsync(GetDownloadUrlRequest request, RuntimeOptions runtime)
+        public async Task<GetDownloadUrlModel> GetDownloadUrlExAsync(HostingGetDownloadUrlRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -10568,7 +9612,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_download_url");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/get_download_url");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -10657,8 +9701,8 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 获取drive内，增量数据最新的游标
-         * @tags file_delta
+         * 指定文件路径，获取文件安全地址
+         * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -10666,7 +9710,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public GetLastCursorModel GetLastCursorEx(GetLastCursorRequest request, RuntimeOptions runtime)
+        public GetSecureUrlModel GetSecureUrlEx(HostingGetSecureUrlRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -10720,7 +9764,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_last_cursor");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/get_secure_url");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -10759,7 +9803,7 @@ namespace Aliyun.SDK.Hosting.Client
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetLastCursorModel>(new Dictionary<string, object>
+                        return TeaModel.ToObject<GetSecureUrlModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -10809,8 +9853,8 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 获取drive内，增量数据最新的游标
-         * @tags file_delta
+         * 指定文件路径，获取文件安全地址
+         * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -10818,7 +9862,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<GetLastCursorModel> GetLastCursorExAsync(GetLastCursorRequest request, RuntimeOptions runtime)
+        public async Task<GetSecureUrlModel> GetSecureUrlExAsync(HostingGetSecureUrlRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -10872,7 +9916,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_last_cursor");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/get_secure_url");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -10911,917 +9955,7 @@ namespace Aliyun.SDK.Hosting.Client
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetLastCursorModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 获取media文件播放URL地址（当前仅支持m3u8）
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetMediaPlayUrlModel GetMediaPlayUrlEx(GetMediaPlayURLRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_media_play_url");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetMediaPlayUrlModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 获取media文件播放URL地址（当前仅支持m3u8）
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetMediaPlayUrlModel> GetMediaPlayUrlExAsync(GetMediaPlayURLRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_media_play_url");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetMediaPlayUrlModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 获取文档的在线编辑地址
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetOfficeEditUrlModel GetOfficeEditUrlEx(GetOfficeEditUrlRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_office_edit_url");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetOfficeEditUrlModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 获取文档的在线编辑地址
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetOfficeEditUrlModel> GetOfficeEditUrlExAsync(GetOfficeEditUrlRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_office_edit_url");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetOfficeEditUrlModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 获取文档的预览地址（office文档）
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetOfficePreviewUrlModel GetOfficePreviewUrlEx(GetOfficePreviewUrlRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_office_preview_url");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetOfficePreviewUrlModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 获取文档的预览地址（office文档）
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetOfficePreviewUrlModel> GetOfficePreviewUrlExAsync(GetOfficePreviewUrlRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_office_preview_url");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetOfficePreviewUrlModel>(new Dictionary<string, object>
+                        return TeaModel.ToObject<GetSecureUrlModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -11880,7 +10014,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public GetUploadUrlModel GetUploadUrlEx(GetUploadUrlRequest request, RuntimeOptions runtime)
+        public GetUploadUrlModel GetUploadUrlEx(HostingGetUploadUrlRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -11934,7 +10068,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_upload_url");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/get_upload_url");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -12032,7 +10166,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<GetUploadUrlModel> GetUploadUrlExAsync(GetUploadUrlRequest request, RuntimeOptions runtime)
+        public async Task<GetUploadUrlModel> GetUploadUrlExAsync(HostingGetUploadUrlRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -12086,7 +10220,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_upload_url");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/get_upload_url");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -12175,7 +10309,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 获取视频雪碧图地址
+         * 指定父文件夹路径，列举文件夹下的文件或者文件夹
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -12184,7 +10318,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public GetVideoPreviewSpriteUrlModel GetVideoPreviewSpriteUrlEx(GetVideoPreviewSpriteURLRequest request, RuntimeOptions runtime)
+        public ListFileModel ListFileEx(HostingListFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -12238,615 +10372,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_video_preview_sprite_url");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetVideoPreviewSpriteUrlModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 获取视频雪碧图地址
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetVideoPreviewSpriteUrlModel> GetVideoPreviewSpriteUrlExAsync(GetVideoPreviewSpriteURLRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_video_preview_sprite_url");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetVideoPreviewSpriteUrlModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 获取视频播放地址
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetVideoPreviewUrlModel GetVideoPreviewUrlEx(GetVideoPreviewURLRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_video_preview_url");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetVideoPreviewUrlModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 获取视频播放地址
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetVideoPreviewUrlModel> GetVideoPreviewUrlExAsync(GetVideoPreviewURLRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/get_video_preview_url");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetVideoPreviewUrlModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 列举指定目录下的文件或文件夹。
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public ListFileModel ListFileEx(ListFileRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/list");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/list");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -12935,7 +10461,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 列举指定目录下的文件或文件夹。
+         * 指定父文件夹路径，列举文件夹下的文件或者文件夹
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -12944,7 +10470,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<ListFileModel> ListFileExAsync(ListFileRequest request, RuntimeOptions runtime)
+        public async Task<ListFileModel> ListFileExAsync(HostingListFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -12998,7 +10524,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/list");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/list");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -13087,309 +10613,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 查看分享中的文件列表
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error ShareLinkTokenInvalid ShareToken is invalid. {message}
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public ListFileByAnonymousModel ListFileByAnonymousEx(ListByAnonymousRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/list_by_anonymous");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<ListFileByAnonymousModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 查看分享中的文件列表
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error ShareLinkTokenInvalid ShareToken is invalid. {message}
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<ListFileByAnonymousModel> ListFileByAnonymousExAsync(ListByAnonymousRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/list_by_anonymous");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<ListFileByAnonymousModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 根据自定义同步索引键列举文件或文件夹。
+         * 列举UploadID对应的已上传分片。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -13398,7 +10622,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public ListFileByCustomIndexKeyModel ListFileByCustomIndexKeyEx(ListFileByCustomIndexKeyRequest request, RuntimeOptions runtime)
+        public ListUploadedPartsModel ListUploadedPartsEx(HostingListUploadedPartRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -13452,615 +10676,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/list_by_custom_index_key");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<ListFileByCustomIndexKeyModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 根据自定义同步索引键列举文件或文件夹。
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<ListFileByCustomIndexKeyModel> ListFileByCustomIndexKeyExAsync(ListFileByCustomIndexKeyRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/list_by_custom_index_key");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<ListFileByCustomIndexKeyModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 获取drive内，增量数据列表
-         * @tags file_delta
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public ListFileDeltaModel ListFileDeltaEx(ListFileDeltaRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/list_delta");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<ListFileDeltaModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 获取drive内，增量数据列表
-         * @tags file_delta
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<ListFileDeltaModel> ListFileDeltaExAsync(ListFileDeltaRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/list_delta");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<ListFileDeltaModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 列举upload_id对应的已上传分片。
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public ListUploadedPartsModel ListUploadedPartsEx(ListUploadedPartRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/list_uploaded_parts");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/list_uploaded_parts");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -14149,7 +10765,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 列举upload_id对应的已上传分片。
+         * 列举UploadID对应的已上传分片。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -14158,7 +10774,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<ListUploadedPartsModel> ListUploadedPartsExAsync(ListUploadedPartRequest request, RuntimeOptions runtime)
+        public async Task<ListUploadedPartsModel> ListUploadedPartsExAsync(HostingListUploadedPartRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -14212,7 +10828,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/list_uploaded_parts");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/list_uploaded_parts");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -14301,7 +10917,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 指定源文件或文件夹，移动到指定的文件夹。
+         * 指定源文件或文件夹路径，移动到指定的文件夹。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -14310,7 +10926,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public MoveFileModel MoveFileEx(MoveFileRequest request, RuntimeOptions runtime)
+        public MoveFileModel MoveFileEx(HostingMoveFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -14364,7 +10980,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/move");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/move");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -14453,7 +11069,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 指定源文件或文件夹，移动到指定的文件夹。
+         * 指定源文件或文件夹路径，移动到指定的文件夹。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -14462,7 +11078,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<MoveFileModel> MoveFileExAsync(MoveFileRequest request, RuntimeOptions runtime)
+        public async Task<MoveFileModel> MoveFileExAsync(HostingMoveFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -14516,7 +11132,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/move");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/move");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -14605,8 +11221,8 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 刷新在线编辑Token
-         * @tags file, refresh, office, edit
+         * 获取视频支持的分辨率
+         * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -14614,7 +11230,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public TokenModel TokenEx(RefreshOfficeEditTokenRequest request, RuntimeOptions runtime)
+        public VideoDefinitionModel VideoDefinitionEx(HostingVideoDefinitionRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -14668,7 +11284,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/refresh_office_edit_token");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/video_definition");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -14707,7 +11323,7 @@ namespace Aliyun.SDK.Hosting.Client
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<TokenModel>(new Dictionary<string, object>
+                        return TeaModel.ToObject<VideoDefinitionModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -14757,8 +11373,8 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 刷新在线编辑Token
-         * @tags file, refresh, office, edit
+         * 获取视频支持的分辨率
+         * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -14766,7 +11382,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<TokenModel> TokenExAsync(RefreshOfficeEditTokenRequest request, RuntimeOptions runtime)
+        public async Task<VideoDefinitionModel> VideoDefinitionExAsync(HostingVideoDefinitionRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -14820,7 +11436,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/refresh_office_edit_token");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/video_definition");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -14859,7 +11475,7 @@ namespace Aliyun.SDK.Hosting.Client
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<TokenModel>(new Dictionary<string, object>
+                        return TeaModel.ToObject<VideoDefinitionModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -14909,16 +11525,15 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 在指定drive下全量获取文件元信息。
+         * 获取视频的DRM License
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public ScanFileMetaModel ScanFileMetaEx(ScanFileMetaRequest request, RuntimeOptions runtime)
+        public VideoLicenseModel VideoLicenseEx(HostingVideoDRMLicenseRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -14972,7 +11587,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/scan");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/video_license");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -15011,7 +11626,7 @@ namespace Aliyun.SDK.Hosting.Client
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<ScanFileMetaModel>(new Dictionary<string, object>
+                        return TeaModel.ToObject<VideoLicenseModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -15061,16 +11676,15 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 在指定drive下全量获取文件元信息。
+         * 获取视频的DRM License
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<ScanFileMetaModel> ScanFileMetaExAsync(ScanFileMetaRequest request, RuntimeOptions runtime)
+        public async Task<VideoLicenseModel> VideoLicenseExAsync(HostingVideoDRMLicenseRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -15124,7 +11738,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/scan");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/video_license");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -15163,7 +11777,7 @@ namespace Aliyun.SDK.Hosting.Client
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<ScanFileMetaModel>(new Dictionary<string, object>
+                        return TeaModel.ToObject<VideoLicenseModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -15213,7 +11827,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 根据筛选条件，在指定drive下搜索文件。
+         * 获取视频转码后的m3u8文件
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -15222,7 +11836,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public SearchFileModel SearchFileEx(SearchFileRequest request, RuntimeOptions runtime)
+        public VideoM3u8Model VideoM3u8Ex(HostingVideoM3U8Request request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -15276,7 +11890,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/search");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/video_m3u8");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -15313,11 +11927,10 @@ namespace Aliyun.SDK.Hosting.Client
                     object obj = null;
                     if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
                     {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<SearchFileModel>(new Dictionary<string, object>
+                        byte[] byt = AlibabaCloud.TeaUtil.Common.ReadAsBytes(response_.Body);
+                        return TeaModel.ToObject<VideoM3u8Model>(new Dictionary<string, object>
                         {
-                            {"body", respMap},
+                            {"body", byt},
                             {"headers", response_.Headers},
                         });
                     }
@@ -15365,7 +11978,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 根据筛选条件，在指定drive下搜索文件。
+         * 获取视频转码后的m3u8文件
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -15374,7 +11987,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<SearchFileModel> SearchFileExAsync(SearchFileRequest request, RuntimeOptions runtime)
+        public async Task<VideoM3u8Model> VideoM3u8ExAsync(HostingVideoM3U8Request request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -15428,7 +12041,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/search");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/video_m3u8");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -15465,11 +12078,10 @@ namespace Aliyun.SDK.Hosting.Client
                     object obj = null;
                     if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
                     {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<SearchFileModel>(new Dictionary<string, object>
+                        byte[] byt = AlibabaCloud.TeaUtil.Common.ReadAsBytes(response_.Body);
+                        return TeaModel.ToObject<VideoM3u8Model>(new Dictionary<string, object>
                         {
-                            {"body", respMap},
+                            {"body", byt},
                             {"headers", response_.Headers},
                         });
                     }
@@ -15517,17 +12129,16 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 对指定的文件或文件夹更新信息。
+         * 将mp4格式的视频文件，转为m3u8
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
          * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error AlreadyExist {resource} has already exists. {extra_msg}
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public UpdateFileModel UpdateFileEx(UpdateFileMetaRequest request, RuntimeOptions runtime)
+        public VideoTranscodeModel VideoTranscodeEx(HostingVideoTranscodeRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -15581,7 +12192,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/update");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/video_transcode");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -15620,9 +12231,16 @@ namespace Aliyun.SDK.Hosting.Client
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<UpdateFileModel>(new Dictionary<string, object>
+                        return TeaModel.ToObject<VideoTranscodeModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 204))
+                    {
+                        return TeaModel.ToObject<VideoTranscodeModel>(new Dictionary<string, Dictionary<string, string>>
+                        {
                             {"headers", response_.Headers},
                         });
                     }
@@ -15670,17 +12288,16 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 对指定的文件或文件夹更新信息。
+         * 将mp4格式的视频文件，转为m3u8
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
          * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error AlreadyExist {resource} has already exists. {extra_msg}
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<UpdateFileModel> UpdateFileExAsync(UpdateFileMetaRequest request, RuntimeOptions runtime)
+        public async Task<VideoTranscodeModel> VideoTranscodeExAsync(HostingVideoTranscodeRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -15734,7 +12351,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/file/update");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/file/video_transcode");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -15773,9 +12390,16 @@ namespace Aliyun.SDK.Hosting.Client
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<UpdateFileModel>(new Dictionary<string, object>
+                        return TeaModel.ToObject<VideoTranscodeModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 204))
+                    {
+                        return TeaModel.ToObject<VideoTranscodeModel>(new Dictionary<string, Dictionary<string, string>>
+                        {
                             {"headers", response_.Headers},
                         });
                     }
@@ -15886,7 +12510,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share/create");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/share/create");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -16038,7 +12662,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share/create");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/share/create");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -16189,7 +12813,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share/delete");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/share/delete");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -16337,7 +12961,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share/delete");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/share/delete");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -16486,7 +13110,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share/get");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/share/get");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -16638,7 +13262,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share/get");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/share/get");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -16789,7 +13413,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share/list");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/share/list");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -16940,7 +13564,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share/list");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/share/list");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -17092,7 +13716,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share/update");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/share/update");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -17244,7 +13868,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share/update");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/share/update");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -17333,304 +13957,8 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 取消指定分享
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public CancelShareLinkModel CancelShareLinkEx(CancelShareLinkRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/cancel");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 204))
-                    {
-                        return TeaModel.ToObject<CancelShareLinkModel>(new Dictionary<string, Dictionary<string, string>>
-                        {
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 取消指定分享
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<CancelShareLinkModel> CancelShareLinkExAsync(CancelShareLinkRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/cancel");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 204))
-                    {
-                        return TeaModel.ToObject<CancelShareLinkModel>(new Dictionary<string, Dictionary<string, string>>
-                        {
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 创建分享。
-         * @tags share_link
+         * 列举指定store下的所有文件。
+         * @tags store
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -17638,7 +13966,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public CreateShareLinkModel CreateShareLinkEx(CreateShareLinkRequest request, RuntimeOptions runtime)
+        public ListStorefileModel ListStorefileEx(ListStoreFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -17692,7 +14020,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/create");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/store_file/list");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -17727,11 +14055,11 @@ namespace Aliyun.SDK.Hosting.Client
 
                     Dictionary<string, object> respMap = null;
                     object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 201))
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<CreateShareLinkModel>(new Dictionary<string, object>
+                        return TeaModel.ToObject<ListStorefileModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -17781,8 +14109,8 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 创建分享。
-         * @tags share_link
+         * 列举指定store下的所有文件。
+         * @tags store
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -17790,7 +14118,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<CreateShareLinkModel> CreateShareLinkExAsync(CreateShareLinkRequest request, RuntimeOptions runtime)
+        public async Task<ListStorefileModel> ListStorefileExAsync(ListStoreFileRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -17844,307 +14172,7 @@ namespace Aliyun.SDK.Hosting.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/create");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 201))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<CreateShareLinkModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 查看分享的基本信息，比如分享者、到期时间等
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetShareByAnonymousModel GetShareByAnonymousEx(GetShareLinkByAnonymousRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/get_by_anonymous");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetShareByAnonymousModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 查看分享的基本信息，比如分享者、到期时间等
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetShareByAnonymousModel> GetShareByAnonymousExAsync(GetShareLinkByAnonymousRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/get_by_anonymous");
+                    request_.Pathname = GetPathname(_nickname, "/v2/hosting/store_file/list");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -18183,911 +14211,7 @@ namespace Aliyun.SDK.Hosting.Client
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetShareByAnonymousModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 使用分享口令换取分享id
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetShareIdModel GetShareIdEx(GetShareLinkIDRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/get_share_id");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetShareIdModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 使用分享口令换取分享id
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetShareIdModel> GetShareIdExAsync(GetShareLinkIDRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/get_share_id");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetShareIdModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 使用分享码+提取码换取分享token
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetShareTokenModel GetShareTokenEx(GetShareLinkTokenRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/get_share_token");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetShareTokenModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 使用分享码+提取码换取分享token
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetShareTokenModel> GetShareTokenExAsync(GetShareLinkTokenRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/get_share_token");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<GetShareTokenModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 列举指定用户的分享
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public ListShareLinkModel ListShareLinkEx(ListShareLinkRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = GetAccessKeyId();
-                    string accessKeySecret = GetAccessKeySecret();
-                    string securityToken = GetSecurityToken();
-                    string accessToken = GetAccessToken();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/list");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<ListShareLinkModel>(new Dictionary<string, object>
-                        {
-                            {"body", respMap},
-                            {"headers", response_.Headers},
-                        });
-                    }
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
-                    {
-                        throw new TeaException(new Dictionary<string, object>
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                            {"message", response_.Headers.Get("x-ca-error-message")},
-                        });
-                    }
-                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                    throw new TeaException(TeaConverter.merge<object>
-                    (
-                        new Dictionary<string, object>()
-                        {
-                            {"data", new Dictionary<string, object>
-                            {
-                                {"requestId", response_.Headers.Get("x-ca-request-id")},
-                                {"statusCode", response_.StatusCode},
-                                {"statusMessage", response_.StatusMessage},
-                            }},
-                        },
-                        respMap
-                    ));
-                }
-                catch (Exception e)
-                {
-                    if (TeaCore.IsRetryable(e))
-                    {
-                        _lastException = e;
-                        continue;
-                    }
-                    throw e;
-                }
-            }
-
-            throw new TeaUnretryableException(_lastRequest, _lastException);
-        }
-
-        /**
-         * 列举指定用户的分享
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<ListShareLinkModel> ListShareLinkExAsync(ListShareLinkRequest request, RuntimeOptions runtime)
-        {
-            request.Validate();
-            runtime.Validate();
-            Dictionary<string, object> runtime_ = new Dictionary<string, object>
-            {
-                {"timeouted", "retry"},
-                {"readTimeout", runtime.ReadTimeout},
-                {"connectTimeout", runtime.ConnectTimeout},
-                {"localAddr", runtime.LocalAddr},
-                {"httpProxy", runtime.HttpProxy},
-                {"httpsProxy", runtime.HttpsProxy},
-                {"noProxy", runtime.NoProxy},
-                {"maxIdleConns", runtime.MaxIdleConns},
-                {"socks5Proxy", runtime.Socks5Proxy},
-                {"socks5NetWork", runtime.Socks5NetWork},
-                {"retry", new Dictionary<string, object>
-                {
-                    {"retryable", runtime.Autoretry},
-                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
-                }},
-                {"backoff", new Dictionary<string, object>
-                {
-                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
-                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
-                }},
-                {"ignoreSSL", runtime.IgnoreSSL},
-            };
-
-            TeaRequest _lastRequest = null;
-            Exception _lastException = null;
-            long _now = System.DateTime.Now.Millisecond;
-            int _retryTimes = 0;
-            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
-            {
-                if (_retryTimes > 0)
-                {
-                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
-                    if (backoffTime > 0)
-                    {
-                        TeaCore.Sleep(backoffTime);
-                    }
-                }
-                _retryTimes = _retryTimes + 1;
-                try
-                {
-                    TeaRequest request_ = new TeaRequest();
-                    string accesskeyId = await GetAccessKeyIdAsync();
-                    string accessKeySecret = await GetAccessKeySecretAsync();
-                    string securityToken = await GetSecurityTokenAsync();
-                    string accessToken = await GetAccessTokenAsync();
-                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
-                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
-                    request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/list");
-                    request_.Headers = TeaConverter.merge<string>
-                    (
-                        new Dictionary<string, string>()
-                        {
-                            {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
-                            {"content-type", "application/json; charset=utf-8"},
-                        },
-                        request.Headers
-                    );
-                    realReq["headers"] = null;
-                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
-                    {
-                        request_.Headers["authorization"] = "Bearer " + accessToken;
-                    }
-                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
-                    {
-                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
-                        {
-                            request_.Headers["x-acs-security-token"] = securityToken;
-                        }
-                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
-                        request_.Headers["accept"] = "application/json";
-                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
-                        request_.Headers["x-acs-signature-version"] = "1.0";
-                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
-                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
-                    }
-                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
-                    _lastRequest = request_;
-                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
-
-                    Dictionary<string, object> respMap = null;
-                    object obj = null;
-                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
-                    {
-                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
-                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<ListShareLinkModel>(new Dictionary<string, object>
+                        return TeaModel.ToObject<ListStorefileModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -21408,7 +16532,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error NotFound The resource {resource_name} cannot be found. Please check.
          * @error InternalError The request has been failed due to some unknown error.
          */
-        public AccountTokenModel AccountToken(TokenRequest request)
+        public AccountTokenModel AccountToken(AccountTokenRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return AccountTokenEx(request, runtime);
@@ -21422,7 +16546,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error NotFound The resource {resource_name} cannot be found. Please check.
          * @error InternalError The request has been failed due to some unknown error.
          */
-        public async Task<AccountTokenModel> AccountTokenAsync(TokenRequest request)
+        public async Task<AccountTokenModel> AccountTokenAsync(AccountTokenRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await AccountTokenExAsync(request, runtime);
@@ -21482,72 +16606,6 @@ namespace Aliyun.SDK.Hosting.Client
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await GetUserAccessTokenExAsync(request, runtime);
-        }
-
-        /**
-         * 如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
-         * 通过此接口获取异步任务的信息，以确定任务是否执行成功。
-         * @tags async_task
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetAsyncTaskInfoModel GetAsyncTaskInfo(GetAsyncTaskRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return GetAsyncTaskInfoEx(request, runtime);
-        }
-
-        /**
-         * 如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
-         * 通过此接口获取异步任务的信息，以确定任务是否执行成功。
-         * @tags async_task
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetAsyncTaskInfoModel> GetAsyncTaskInfoAsync(GetAsyncTaskRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await GetAsyncTaskInfoExAsync(request, runtime);
-        }
-
-        /**
-         * 对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
-         * 支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
-         * @tags batch
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public BatchOperationModel BatchOperation(BatchRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return BatchOperationEx(request, runtime);
-        }
-
-        /**
-         * 对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
-         * 支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
-         * @tags batch
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<BatchOperationModel> BatchOperationAsync(BatchRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await BatchOperationExAsync(request, runtime);
         }
 
         /**
@@ -21773,7 +16831,7 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 完成文件上传。
+         * 完成文件上传
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21782,14 +16840,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public CompleteFileModel CompleteFile(CompleteFileRequest request)
+        public CompleteFileModel CompleteFile(HostingCompleteFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return CompleteFileEx(request, runtime);
         }
 
         /**
-         * 完成文件上传。
+         * 完成文件上传
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21798,14 +16856,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<CompleteFileModel> CompleteFileAsync(CompleteFileRequest request)
+        public async Task<CompleteFileModel> CompleteFileAsync(HostingCompleteFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await CompleteFileExAsync(request, runtime);
         }
 
         /**
-         * 指定源文件或文件夹，拷贝到指定的文件夹。
+         * 指定源文件或文件夹路径，拷贝到指定的文件夹。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21814,14 +16872,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public CopyFileModel CopyFile(CopyFileRequest request)
+        public CopyFileModel CopyFile(HostingCopyFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return CopyFileEx(request, runtime);
         }
 
         /**
-         * 指定源文件或文件夹，拷贝到指定的文件夹。
+         * 指定源文件或文件夹路径，拷贝到指定的文件夹。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21830,15 +16888,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<CopyFileModel> CopyFileAsync(CopyFileRequest request)
+        public async Task<CopyFileModel> CopyFileAsync(HostingCopyFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await CopyFileExAsync(request, runtime);
         }
 
         /**
-         * 在指定文件夹下创建文件或者文件夹，
-         * 根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+         * 创建文件或者文件夹。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21848,15 +16905,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public CreateFileModel CreateFile(CreateFileRequest request)
+        public CreateFileModel CreateFile(HostingCreateFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return CreateFileEx(request, runtime);
         }
 
         /**
-         * 在指定文件夹下创建文件或者文件夹，
-         * 根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+         * 创建文件或者文件夹。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21866,14 +16922,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<CreateFileModel> CreateFileAsync(CreateFileRequest request)
+        public async Task<CreateFileModel> CreateFileAsync(HostingCreateFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await CreateFileExAsync(request, runtime);
         }
 
         /**
-         * 指定文件或文件夹ID，删除文件或者文件夹。
+         * 指定文件或文件夹路径，删除文件或文件夹
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21882,14 +16938,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public DeleteFileModel DeleteFile(DeleteFileRequest request)
+        public DeleteFileModel DeleteFile(HostingDeleteFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return DeleteFileEx(request, runtime);
         }
 
         /**
-         * 指定文件或文件夹ID，删除文件或者文件夹。
+         * 指定文件或文件夹路径，删除文件或文件夹
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21898,14 +16954,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<DeleteFileModel> DeleteFileAsync(DeleteFileRequest request)
+        public async Task<DeleteFileModel> DeleteFileAsync(HostingDeleteFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await DeleteFileExAsync(request, runtime);
         }
 
         /**
-         * 获取指定文件或文件夹ID的信息。
+         * 获取指定文件或文件夹路径，获取文件或文件夹信息。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21914,14 +16970,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public GetFileModel GetFile(GetFileRequest request)
+        public GetFileModel GetFile(HostingGetFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return GetFileEx(request, runtime);
         }
 
         /**
-         * 获取指定文件或文件夹ID的信息。
+         * 获取指定文件或文件夹路径，获取文件或文件夹信息。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21930,14 +16986,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<GetFileModel> GetFileAsync(GetFileRequest request)
+        public async Task<GetFileModel> GetFileAsync(HostingGetFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await GetFileExAsync(request, runtime);
         }
 
         /**
-         * 根据路径获取指定文件或文件夹的信息。
+         * 指定文件路径，获取文件下载地址
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21946,46 +17002,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public GetFileByPathModel GetFileByPath(GetFileByPathRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return GetFileByPathEx(request, runtime);
-        }
-
-        /**
-         * 根据路径获取指定文件或文件夹的信息。
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetFileByPathModel> GetFileByPathAsync(GetFileByPathRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await GetFileByPathExAsync(request, runtime);
-        }
-
-        /**
-         * 获取文件的下载地址，调用者可自己设置range头并发下载。
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetDownloadUrlModel GetDownloadUrl(GetDownloadUrlRequest request)
+        public GetDownloadUrlModel GetDownloadUrl(HostingGetDownloadUrlRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return GetDownloadUrlEx(request, runtime);
         }
 
         /**
-         * 获取文件的下载地址，调用者可自己设置range头并发下载。
+         * 指定文件路径，获取文件下载地址
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21994,76 +17018,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<GetDownloadUrlModel> GetDownloadUrlAsync(GetDownloadUrlRequest request)
+        public async Task<GetDownloadUrlModel> GetDownloadUrlAsync(HostingGetDownloadUrlRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await GetDownloadUrlExAsync(request, runtime);
         }
 
         /**
-         * 获取drive内，增量数据最新的游标
-         * @tags file_delta
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetLastCursorModel GetLastCursor(GetLastCursorRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return GetLastCursorEx(request, runtime);
-        }
-
-        /**
-         * 获取drive内，增量数据最新的游标
-         * @tags file_delta
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetLastCursorModel> GetLastCursorAsync(GetLastCursorRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await GetLastCursorExAsync(request, runtime);
-        }
-
-        /**
-         * 获取media文件播放URL地址（当前仅支持m3u8）
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetMediaPlayUrlModel GetMediaPlayUrl(GetMediaPlayURLRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return GetMediaPlayUrlEx(request, runtime);
-        }
-
-        /**
-         * 获取media文件播放URL地址（当前仅支持m3u8）
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetMediaPlayUrlModel> GetMediaPlayUrlAsync(GetMediaPlayURLRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await GetMediaPlayUrlExAsync(request, runtime);
-        }
-
-        /**
-         * 获取文档的在线编辑地址
+         * 指定文件路径，获取文件安全地址
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -22072,14 +17034,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public GetOfficeEditUrlModel GetOfficeEditUrl(GetOfficeEditUrlRequest request)
+        public GetSecureUrlModel GetSecureUrl(HostingGetSecureUrlRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
-            return GetOfficeEditUrlEx(request, runtime);
+            return GetSecureUrlEx(request, runtime);
         }
 
         /**
-         * 获取文档的在线编辑地址
+         * 指定文件路径，获取文件安全地址
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -22088,42 +17050,10 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<GetOfficeEditUrlModel> GetOfficeEditUrlAsync(GetOfficeEditUrlRequest request)
+        public async Task<GetSecureUrlModel> GetSecureUrlAsync(HostingGetSecureUrlRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
-            return await GetOfficeEditUrlExAsync(request, runtime);
-        }
-
-        /**
-         * 获取文档的预览地址（office文档）
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetOfficePreviewUrlModel GetOfficePreviewUrl(GetOfficePreviewUrlRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return GetOfficePreviewUrlEx(request, runtime);
-        }
-
-        /**
-         * 获取文档的预览地址（office文档）
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetOfficePreviewUrlModel> GetOfficePreviewUrlAsync(GetOfficePreviewUrlRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await GetOfficePreviewUrlExAsync(request, runtime);
+            return await GetSecureUrlExAsync(request, runtime);
         }
 
         /**
@@ -22136,7 +17066,7 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public GetUploadUrlModel GetUploadUrl(GetUploadUrlRequest request)
+        public GetUploadUrlModel GetUploadUrl(HostingGetUploadUrlRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return GetUploadUrlEx(request, runtime);
@@ -22152,14 +17082,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<GetUploadUrlModel> GetUploadUrlAsync(GetUploadUrlRequest request)
+        public async Task<GetUploadUrlModel> GetUploadUrlAsync(HostingGetUploadUrlRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await GetUploadUrlExAsync(request, runtime);
         }
 
         /**
-         * 获取视频雪碧图地址
+         * 指定父文件夹路径，列举文件夹下的文件或者文件夹
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -22168,78 +17098,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public GetVideoPreviewSpriteUrlModel GetVideoPreviewSpriteUrl(GetVideoPreviewSpriteURLRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return GetVideoPreviewSpriteUrlEx(request, runtime);
-        }
-
-        /**
-         * 获取视频雪碧图地址
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetVideoPreviewSpriteUrlModel> GetVideoPreviewSpriteUrlAsync(GetVideoPreviewSpriteURLRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await GetVideoPreviewSpriteUrlExAsync(request, runtime);
-        }
-
-        /**
-         * 获取视频播放地址
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetVideoPreviewUrlModel GetVideoPreviewUrl(GetVideoPreviewURLRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return GetVideoPreviewUrlEx(request, runtime);
-        }
-
-        /**
-         * 获取视频播放地址
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetVideoPreviewUrlModel> GetVideoPreviewUrlAsync(GetVideoPreviewURLRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await GetVideoPreviewUrlExAsync(request, runtime);
-        }
-
-        /**
-         * 列举指定目录下的文件或文件夹。
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public ListFileModel ListFile(ListFileRequest request)
+        public ListFileModel ListFile(HostingListFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return ListFileEx(request, runtime);
         }
 
         /**
-         * 列举指定目录下的文件或文件夹。
+         * 指定父文件夹路径，列举文件夹下的文件或者文件夹
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -22248,44 +17114,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<ListFileModel> ListFileAsync(ListFileRequest request)
+        public async Task<ListFileModel> ListFileAsync(HostingListFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await ListFileExAsync(request, runtime);
         }
 
         /**
-         * 查看分享中的文件列表
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error ShareLinkTokenInvalid ShareToken is invalid. {message}
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public ListFileByAnonymousModel ListFileByAnonymous(ListByAnonymousRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return ListFileByAnonymousEx(request, runtime);
-        }
-
-        /**
-         * 查看分享中的文件列表
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error ShareLinkTokenInvalid ShareToken is invalid. {message}
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<ListFileByAnonymousModel> ListFileByAnonymousAsync(ListByAnonymousRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await ListFileByAnonymousExAsync(request, runtime);
-        }
-
-        /**
-         * 根据自定义同步索引键列举文件或文件夹。
+         * 列举UploadID对应的已上传分片。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -22294,78 +17130,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public ListFileByCustomIndexKeyModel ListFileByCustomIndexKey(ListFileByCustomIndexKeyRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return ListFileByCustomIndexKeyEx(request, runtime);
-        }
-
-        /**
-         * 根据自定义同步索引键列举文件或文件夹。
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<ListFileByCustomIndexKeyModel> ListFileByCustomIndexKeyAsync(ListFileByCustomIndexKeyRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await ListFileByCustomIndexKeyExAsync(request, runtime);
-        }
-
-        /**
-         * 获取drive内，增量数据列表
-         * @tags file_delta
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public ListFileDeltaModel ListFileDelta(ListFileDeltaRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return ListFileDeltaEx(request, runtime);
-        }
-
-        /**
-         * 获取drive内，增量数据列表
-         * @tags file_delta
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<ListFileDeltaModel> ListFileDeltaAsync(ListFileDeltaRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await ListFileDeltaExAsync(request, runtime);
-        }
-
-        /**
-         * 列举upload_id对应的已上传分片。
-         * @tags file
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public ListUploadedPartsModel ListUploadedParts(ListUploadedPartRequest request)
+        public ListUploadedPartsModel ListUploadedParts(HostingListUploadedPartRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return ListUploadedPartsEx(request, runtime);
         }
 
         /**
-         * 列举upload_id对应的已上传分片。
+         * 列举UploadID对应的已上传分片。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -22374,14 +17146,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<ListUploadedPartsModel> ListUploadedPartsAsync(ListUploadedPartRequest request)
+        public async Task<ListUploadedPartsModel> ListUploadedPartsAsync(HostingListUploadedPartRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await ListUploadedPartsExAsync(request, runtime);
         }
 
         /**
-         * 指定源文件或文件夹，移动到指定的文件夹。
+         * 指定源文件或文件夹路径，移动到指定的文件夹。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -22390,14 +17162,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public MoveFileModel MoveFile(MoveFileRequest request)
+        public MoveFileModel MoveFile(HostingMoveFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return MoveFileEx(request, runtime);
         }
 
         /**
-         * 指定源文件或文件夹，移动到指定的文件夹。
+         * 指定源文件或文件夹路径，移动到指定的文件夹。
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -22406,46 +17178,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<MoveFileModel> MoveFileAsync(MoveFileRequest request)
+        public async Task<MoveFileModel> MoveFileAsync(HostingMoveFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await MoveFileExAsync(request, runtime);
         }
 
         /**
-         * 刷新在线编辑Token
-         * @tags file, refresh, office, edit
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public TokenModel Token(RefreshOfficeEditTokenRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return TokenEx(request, runtime);
-        }
-
-        /**
-         * 刷新在线编辑Token
-         * @tags file, refresh, office, edit
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<TokenModel> TokenAsync(RefreshOfficeEditTokenRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await TokenExAsync(request, runtime);
-        }
-
-        /**
-         * 在指定drive下全量获取文件元信息。
+         * 获取视频支持的分辨率
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -22454,14 +17194,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public ScanFileMetaModel ScanFileMeta(ScanFileMetaRequest request)
+        public VideoDefinitionModel VideoDefinition(HostingVideoDefinitionRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
-            return ScanFileMetaEx(request, runtime);
+            return VideoDefinitionEx(request, runtime);
         }
 
         /**
-         * 在指定drive下全量获取文件元信息。
+         * 获取视频支持的分辨率
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -22470,14 +17210,44 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<ScanFileMetaModel> ScanFileMetaAsync(ScanFileMetaRequest request)
+        public async Task<VideoDefinitionModel> VideoDefinitionAsync(HostingVideoDefinitionRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
-            return await ScanFileMetaExAsync(request, runtime);
+            return await VideoDefinitionExAsync(request, runtime);
         }
 
         /**
-         * 根据筛选条件，在指定drive下搜索文件。
+         * 获取视频的DRM License
+         * @tags file
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public VideoLicenseModel VideoLicense(HostingVideoDRMLicenseRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return VideoLicenseEx(request, runtime);
+        }
+
+        /**
+         * 获取视频的DRM License
+         * @tags file
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<VideoLicenseModel> VideoLicenseAsync(HostingVideoDRMLicenseRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await VideoLicenseExAsync(request, runtime);
+        }
+
+        /**
+         * 获取视频转码后的m3u8文件
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -22486,14 +17256,14 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public SearchFileModel SearchFile(SearchFileRequest request)
+        public VideoM3u8Model VideoM3u8(HostingVideoM3U8Request request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
-            return SearchFileEx(request, runtime);
+            return VideoM3u8Ex(request, runtime);
         }
 
         /**
-         * 根据筛选条件，在指定drive下搜索文件。
+         * 获取视频转码后的m3u8文件
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -22502,44 +17272,42 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<SearchFileModel> SearchFileAsync(SearchFileRequest request)
+        public async Task<VideoM3u8Model> VideoM3u8Async(HostingVideoM3U8Request request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
-            return await SearchFileExAsync(request, runtime);
+            return await VideoM3u8ExAsync(request, runtime);
         }
 
         /**
-         * 对指定的文件或文件夹更新信息。
+         * 将mp4格式的视频文件，转为m3u8
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
          * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error AlreadyExist {resource} has already exists. {extra_msg}
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public UpdateFileModel UpdateFile(UpdateFileMetaRequest request)
+        public VideoTranscodeModel VideoTranscode(HostingVideoTranscodeRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
-            return UpdateFileEx(request, runtime);
+            return VideoTranscodeEx(request, runtime);
         }
 
         /**
-         * 对指定的文件或文件夹更新信息。
+         * 将mp4格式的视频文件，转为m3u8
          * @tags file
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
          * @error NotFound The resource {resource_name} cannot be found. Please check.
-         * @error AlreadyExist {resource} has already exists. {extra_msg}
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<UpdateFileModel> UpdateFileAsync(UpdateFileMetaRequest request)
+        public async Task<VideoTranscodeModel> VideoTranscodeAsync(HostingVideoTranscodeRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
-            return await UpdateFileExAsync(request, runtime);
+            return await VideoTranscodeExAsync(request, runtime);
         }
 
         /**
@@ -22699,38 +17467,8 @@ namespace Aliyun.SDK.Hosting.Client
         }
 
         /**
-         * 取消指定分享
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public CancelShareLinkModel CancelShareLink(CancelShareLinkRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return CancelShareLinkEx(request, runtime);
-        }
-
-        /**
-         * 取消指定分享
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<CancelShareLinkModel> CancelShareLinkAsync(CancelShareLinkRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await CancelShareLinkExAsync(request, runtime);
-        }
-
-        /**
-         * 创建分享。
-         * @tags share_link
+         * 列举指定store下的所有文件。
+         * @tags store
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -22738,15 +17476,15 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public CreateShareLinkModel CreateShareLink(CreateShareLinkRequest request)
+        public ListStorefileModel ListStorefile(ListStoreFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
-            return CreateShareLinkEx(request, runtime);
+            return ListStorefileEx(request, runtime);
         }
 
         /**
-         * 创建分享。
-         * @tags share_link
+         * 列举指定store下的所有文件。
+         * @tags store
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
          * @error AccessTokenInvalid AccessToken is invalid. {message}
          * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -22754,126 +17492,10 @@ namespace Aliyun.SDK.Hosting.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<CreateShareLinkModel> CreateShareLinkAsync(CreateShareLinkRequest request)
+        public async Task<ListStorefileModel> ListStorefileAsync(ListStoreFileRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
-            return await CreateShareLinkExAsync(request, runtime);
-        }
-
-        /**
-         * 查看分享的基本信息，比如分享者、到期时间等
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetShareByAnonymousModel GetShareByAnonymous(GetShareLinkByAnonymousRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return GetShareByAnonymousEx(request, runtime);
-        }
-
-        /**
-         * 查看分享的基本信息，比如分享者、到期时间等
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetShareByAnonymousModel> GetShareByAnonymousAsync(GetShareLinkByAnonymousRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await GetShareByAnonymousExAsync(request, runtime);
-        }
-
-        /**
-         * 使用分享口令换取分享id
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetShareIdModel GetShareId(GetShareLinkIDRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return GetShareIdEx(request, runtime);
-        }
-
-        /**
-         * 使用分享口令换取分享id
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetShareIdModel> GetShareIdAsync(GetShareLinkIDRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await GetShareIdExAsync(request, runtime);
-        }
-
-        /**
-         * 使用分享码+提取码换取分享token
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public GetShareTokenModel GetShareToken(GetShareLinkTokenRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return GetShareTokenEx(request, runtime);
-        }
-
-        /**
-         * 使用分享码+提取码换取分享token
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<GetShareTokenModel> GetShareTokenAsync(GetShareLinkTokenRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await GetShareTokenExAsync(request, runtime);
-        }
-
-        /**
-         * 列举指定用户的分享
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public ListShareLinkModel ListShareLink(ListShareLinkRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return ListShareLinkEx(request, runtime);
-        }
-
-        /**
-         * 列举指定用户的分享
-         * @tags share_link
-         * @error InvalidParameter The input parameter {parameter_name} is not valid.
-         * @error AccessTokenInvalid AccessToken is invalid. {message}
-         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-         * @error InternalError The request has been failed due to some unknown error.
-         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-         */
-        public async Task<ListShareLinkModel> ListShareLinkAsync(ListShareLinkRequest request)
-        {
-            RuntimeOptions runtime = new RuntimeOptions();
-            return await ListShareLinkExAsync(request, runtime);
+            return await ListStorefileExAsync(request, runtime);
         }
 
         /**

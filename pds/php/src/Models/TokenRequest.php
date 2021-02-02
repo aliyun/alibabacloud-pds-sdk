@@ -10,32 +10,45 @@ use AlibabaCloud\Tea\Model;
  */
 class TokenRequest extends Model {
     protected $_name = [
-        'additionData' => 'addition_data',
-        'appId' => 'app_id',
-        'grantType' => 'grant_type',
-        'refreshToken' => 'refresh_token',
+        'Assertion' => 'Assertion',
+        'ClientID' => 'ClientID',
+        'ClientSecret' => 'ClientSecret',
+        'Code' => 'Code',
+        'DeviceCode' => 'DeviceCode',
+        'GrantType' => 'GrantType',
+        'RedirectUri' => 'RedirectUri',
+        'RefreshToken' => 'RefreshToken',
     ];
     public function validate() {
-        Model::validateRequired('appId', $this->appId, true);
-        Model::validateRequired('grantType', $this->grantType, true);
-        Model::validateRequired('refreshToken', $this->refreshToken, true);
+        Model::validateRequired('ClientID', $this->ClientID, true);
+        Model::validateRequired('ClientSecret', $this->ClientSecret, true);
+        Model::validateRequired('GrantType', $this->GrantType, true);
     }
     public function toMap() {
         $res = [];
-        if (null !== $this->headers) {
-            $res['headers'] = $this->headers;
+        if (null !== $this->Assertion) {
+            $res['Assertion'] = $this->Assertion;
         }
-        if (null !== $this->additionData) {
-            $res['addition_data'] = $this->additionData;
+        if (null !== $this->ClientID) {
+            $res['ClientID'] = $this->ClientID;
         }
-        if (null !== $this->appId) {
-            $res['app_id'] = $this->appId;
+        if (null !== $this->ClientSecret) {
+            $res['ClientSecret'] = $this->ClientSecret;
         }
-        if (null !== $this->grantType) {
-            $res['grant_type'] = $this->grantType;
+        if (null !== $this->Code) {
+            $res['Code'] = $this->Code;
         }
-        if (null !== $this->refreshToken) {
-            $res['refresh_token'] = $this->refreshToken;
+        if (null !== $this->DeviceCode) {
+            $res['DeviceCode'] = $this->DeviceCode;
+        }
+        if (null !== $this->GrantType) {
+            $res['GrantType'] = $this->GrantType;
+        }
+        if (null !== $this->RedirectUri) {
+            $res['RedirectUri'] = $this->RedirectUri;
+        }
+        if (null !== $this->RefreshToken) {
+            $res['RefreshToken'] = $this->RefreshToken;
         }
         return $res;
     }
@@ -45,50 +58,86 @@ class TokenRequest extends Model {
      */
     public static function fromMap($map = []) {
         $model = new self();
-        if(isset($map['headers'])){
-            $model->headers = $map['headers'];
+        if(isset($map['Assertion'])){
+            $model->Assertion = $map['Assertion'];
         }
-        if(isset($map['addition_data'])){
-            $model->additionData = $map['addition_data'];
+        if(isset($map['ClientID'])){
+            $model->ClientID = $map['ClientID'];
         }
-        if(isset($map['app_id'])){
-            $model->appId = $map['app_id'];
+        if(isset($map['ClientSecret'])){
+            $model->ClientSecret = $map['ClientSecret'];
         }
-        if(isset($map['grant_type'])){
-            $model->grantType = $map['grant_type'];
+        if(isset($map['Code'])){
+            $model->Code = $map['Code'];
         }
-        if(isset($map['refresh_token'])){
-            $model->refreshToken = $map['refresh_token'];
+        if(isset($map['DeviceCode'])){
+            $model->DeviceCode = $map['DeviceCode'];
+        }
+        if(isset($map['GrantType'])){
+            $model->GrantType = $map['GrantType'];
+        }
+        if(isset($map['RedirectUri'])){
+            $model->RedirectUri = $map['RedirectUri'];
+        }
+        if(isset($map['RefreshToken'])){
+            $model->RefreshToken = $map['RefreshToken'];
         }
         return $model;
     }
-    public $headers;
-
     /**
-     * @description addition_data
-     * @var mixed[]
-     */
-    public $additionData;
-
-    /**
-     * @description App ID, 当前访问的App
-     * @example csaklidwasdhjwid
+     * @description JWT方式授权需要传此参数，传入JWT签名的声明，用于更换accessToken
+     * @example ak******asd==
      * @var string
      */
-    public $appId;
+    public $Assertion;
 
     /**
-     * @description 只能填refresh_token
-     * @example refresh_token
+     * @description Client ID, 此处填写创建App时返回的AppID
+     * @example aksjoiajsoias
      * @var string
      */
-    public $grantType;
+    public $ClientID;
 
     /**
-     * @description refresh token, 登录时返回的
-     * @example ybb3WJy2CwXHoM6hBcydGlvzMoJkFpkk
+     * @description Client ID, 此处填写创建App时返回的AppSecret
+     * @example alsdklajdkxlawalwknq
      * @var string
      */
-    public $refreshToken;
+    public $ClientSecret;
+
+    /**
+     * @description 认证后回调参数中的code
+     * @example cjajksadhw
+     * @var string
+     */
+    public $Code;
+
+    /**
+     * @description OAuth2.0 device flow换取token参数
+     * @example cjajksadhw
+     * @var string
+     */
+    public $DeviceCode;
+
+    /**
+     * @description 通过code获取accessToken或者通过refresh_token获取accessToken
+     * @example authorization_code
+     * @var string
+     */
+    public $GrantType;
+
+    /**
+     * @description 回调地址, 此处填写创建App时填写的回调地址，OAuth方式登录时需要传入
+     * @example https://app.com/callback
+     * @var string
+     */
+    public $RedirectUri;
+
+    /**
+     * @description 刷新accessToken使用的refreshToken
+     * @example aksbcjhwhq
+     * @var string
+     */
+    public $RefreshToken;
 
 }

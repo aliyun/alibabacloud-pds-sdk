@@ -1416,6 +1416,62 @@ class AccountLinkRequest(TeaModel):
         return self
 
 
+class AccountTokenRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        addition_data: dict = None,
+        app_id: str = None,
+        grant_type: str = None,
+        refresh_token: str = None,
+    ):
+        self.headers = headers
+        # addition_data
+        self.addition_data = addition_data
+        # App ID, 当前访问的App
+        self.app_id = app_id
+        # 只能填refresh_token
+        self.grant_type = grant_type
+        # refresh token, 登录时返回的
+        self.refresh_token = refresh_token
+
+    def validate(self):
+        self.validate_required(self.app_id, 'app_id')
+        self.validate_required(self.grant_type, 'grant_type')
+        self.validate_required(self.refresh_token, 'refresh_token')
+
+    def to_map(self):
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.grant_type is not None:
+            result['grant_type'] = self.grant_type
+        if self.refresh_token is not None:
+            result['refresh_token'] = self.refresh_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('addition_data') is not None:
+            self.addition_data = m.get('addition_data')
+        if m.get('app_id') is not None:
+            self.app_id = m.get('app_id')
+        if m.get('grant_type') is not None:
+            self.grant_type = m.get('grant_type')
+        if m.get('refresh_token') is not None:
+            self.refresh_token = m.get('refresh_token')
+        return self
+
+
 class AddStoreRequest(TeaModel):
     """
     *\
@@ -2807,7 +2863,7 @@ class BaseCCPFileResponse(TeaModel):
         # file_id
         self.file_id = file_id
         # Hidden
-        # type: boolean
+type: boolean
         self.hidden = hidden
         self.image_media_metadata = image_media_metadata
         # labels
@@ -2822,7 +2878,7 @@ class BaseCCPFileResponse(TeaModel):
         # Size
         self.size = size
         # starred
-        # type: boolean
+type: boolean
         self.starred = starred
         # status
         self.status = status
@@ -3394,111 +3450,6 @@ class BaseHostingFileResponse(TeaModel):
         return self
 
 
-class BaseMediaResponse(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        address_line: str = None,
-        city: str = None,
-        country: str = None,
-        district: str = None,
-        height: int = None,
-        image_tags: List[SystemTag] = None,
-        location: str = None,
-        province: str = None,
-        time: str = None,
-        township: str = None,
-        width: int = None,
-    ):
-        # address_line
-        self.address_line = address_line
-        # city
-        self.city = city
-        # country
-        self.country = country
-        # district
-        self.district = district
-        # height
-        self.height = height
-        # system_tags
-        self.image_tags = image_tags
-        # location
-        self.location = location
-        # province
-        self.province = province
-        # time
-        self.time = time
-        # township
-        self.township = township
-        # width
-        self.width = width
-
-    def validate(self):
-        if self.image_tags:
-            for k in self.image_tags:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        result = dict()
-        if self.address_line is not None:
-            result['address_line'] = self.address_line
-        if self.city is not None:
-            result['city'] = self.city
-        if self.country is not None:
-            result['country'] = self.country
-        if self.district is not None:
-            result['district'] = self.district
-        if self.height is not None:
-            result['height'] = self.height
-        result['image_tags'] = []
-        if self.image_tags is not None:
-            for k in self.image_tags:
-                result['image_tags'].append(k.to_map() if k else None)
-        if self.location is not None:
-            result['location'] = self.location
-        if self.province is not None:
-            result['province'] = self.province
-        if self.time is not None:
-            result['time'] = self.time
-        if self.township is not None:
-            result['township'] = self.township
-        if self.width is not None:
-            result['width'] = self.width
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('address_line') is not None:
-            self.address_line = m.get('address_line')
-        if m.get('city') is not None:
-            self.city = m.get('city')
-        if m.get('country') is not None:
-            self.country = m.get('country')
-        if m.get('district') is not None:
-            self.district = m.get('district')
-        if m.get('height') is not None:
-            self.height = m.get('height')
-        self.image_tags = []
-        if m.get('image_tags') is not None:
-            for k in m.get('image_tags'):
-                temp_model = SystemTag()
-                self.image_tags.append(temp_model.from_map(k))
-        if m.get('location') is not None:
-            self.location = m.get('location')
-        if m.get('province') is not None:
-            self.province = m.get('province')
-        if m.get('time') is not None:
-            self.time = m.get('time')
-        if m.get('township') is not None:
-            self.township = m.get('township')
-        if m.get('width') is not None:
-            self.width = m.get('width')
-        return self
-
-
 class BaseShareLinkResponse(TeaModel):
     """
     list_share_link response
@@ -4023,7 +3974,7 @@ class CompleteFileResponse(TeaModel):
         # file_id
         self.file_id = file_id
         # Hidden
-        # type: boolean
+type: boolean
         self.hidden = hidden
         self.image_media_metadata = image_media_metadata
         # labels
@@ -4040,7 +3991,7 @@ class CompleteFileResponse(TeaModel):
         # Size
         self.size = size
         # starred
-        # type: boolean
+type: boolean
         self.starred = starred
         # status
         self.status = status
@@ -4786,7 +4737,7 @@ class CreateFileResponse(TeaModel):
         # encrypt_mode
         self.encrypt_mode = encrypt_mode
         # exist
-        # type: boolean
+type: boolean
         self.exist = exist
         # file_id
         self.file_id = file_id
@@ -4799,7 +4750,7 @@ class CreateFileResponse(TeaModel):
         # part_info_list
         self.part_info_list = part_info_list
         # rapid_upload
-        # type: boolean
+type: boolean
         self.rapid_upload = rapid_upload
         # status
         self.status = status
@@ -5669,7 +5620,7 @@ class GetAsyncTaskResponse(TeaModel):
         url: str = None,
     ):
         # async_task_id
-        # type:string
+type:string
         self.async_task_id = async_task_id
         # consumed_process
         self.consumed_process = consumed_process
@@ -5682,7 +5633,7 @@ class GetAsyncTaskResponse(TeaModel):
         # total_process
         self.total_process = total_process
         # download_url
-        # example
+example
         self.url = url
 
     def validate(self):
@@ -6252,7 +6203,7 @@ class GetFileByPathResponse(TeaModel):
         # file_id
         self.file_id = file_id
         # Hidden
-        # type: boolean
+type: boolean
         self.hidden = hidden
         self.image_media_metadata = image_media_metadata
         # labels
@@ -6267,7 +6218,7 @@ class GetFileByPathResponse(TeaModel):
         # Size
         self.size = size
         # starred
-        # type: boolean
+type: boolean
         self.starred = starred
         # status
         self.status = status
@@ -6537,7 +6488,7 @@ class GetFileResponse(TeaModel):
         # file_id
         self.file_id = file_id
         # Hidden
-        # type: boolean
+type: boolean
         self.hidden = hidden
         self.image_media_metadata = image_media_metadata
         # labels
@@ -6552,7 +6503,7 @@ class GetFileResponse(TeaModel):
         # Size
         self.size = size
         # starred
-        # type: boolean
+type: boolean
         self.starred = starred
         # status
         self.status = status
@@ -9143,7 +9094,7 @@ class ListStoreFileResponse(TeaModel):
         next_marker: str = None,
     ):
         # items
-        # file list
+file list
         self.items = items
         self.next_marker = next_marker
 
@@ -10547,10 +10498,10 @@ class StreamUploadInfo(TeaModel):
         # part_info_list
         self.part_info_list = part_info_list
         # pre_rapid_upload
-        # type: boolean
+type: boolean
         self.pre_rapid_upload = pre_rapid_upload
         # rapid_upload
-        # type: boolean
+type: boolean
         self.rapid_upload = rapid_upload
         # upload_id
         self.upload_id = upload_id
@@ -10601,53 +10552,75 @@ class TokenRequest(TeaModel):
     """
     def __init__(
         self,
-        headers: Dict[str, str] = None,
-        addition_data: dict = None,
-        app_id: str = None,
+        assertion: str = None,
+        client_id: str = None,
+        client_secret: str = None,
+        code: str = None,
+        device_code: str = None,
         grant_type: str = None,
+        redirect_uri: str = None,
         refresh_token: str = None,
     ):
-        self.headers = headers
-        # addition_data
-        self.addition_data = addition_data
-        # App ID, 当前访问的App
-        self.app_id = app_id
-        # 只能填refresh_token
+        # JWT方式授权需要传此参数，传入JWT签名的声明，用于更换accessToken
+        self.assertion = assertion
+        # Client ID, 此处填写创建App时返回的AppID
+        self.client_id = client_id
+        # Client ID, 此处填写创建App时返回的AppSecret
+        self.client_secret = client_secret
+        # 认证后回调参数中的code
+        self.code = code
+        # OAuth2.0 device flow换取token参数
+        self.device_code = device_code
+        # 通过code获取accessToken或者通过refresh_token获取accessToken
         self.grant_type = grant_type
-        # refresh token, 登录时返回的
+        # 回调地址, 此处填写创建App时填写的回调地址，OAuth方式登录时需要传入
+        self.redirect_uri = redirect_uri
+        # 刷新accessToken使用的refreshToken
         self.refresh_token = refresh_token
 
     def validate(self):
-        self.validate_required(self.app_id, 'app_id')
+        self.validate_required(self.client_id, 'client_id')
+        self.validate_required(self.client_secret, 'client_secret')
         self.validate_required(self.grant_type, 'grant_type')
-        self.validate_required(self.refresh_token, 'refresh_token')
 
     def to_map(self):
         result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.addition_data is not None:
-            result['addition_data'] = self.addition_data
-        if self.app_id is not None:
-            result['app_id'] = self.app_id
+        if self.assertion is not None:
+            result['Assertion'] = self.assertion
+        if self.client_id is not None:
+            result['ClientID'] = self.client_id
+        if self.client_secret is not None:
+            result['ClientSecret'] = self.client_secret
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.device_code is not None:
+            result['DeviceCode'] = self.device_code
         if self.grant_type is not None:
-            result['grant_type'] = self.grant_type
+            result['GrantType'] = self.grant_type
+        if self.redirect_uri is not None:
+            result['RedirectUri'] = self.redirect_uri
         if self.refresh_token is not None:
-            result['refresh_token'] = self.refresh_token
+            result['RefreshToken'] = self.refresh_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('addition_data') is not None:
-            self.addition_data = m.get('addition_data')
-        if m.get('app_id') is not None:
-            self.app_id = m.get('app_id')
-        if m.get('grant_type') is not None:
-            self.grant_type = m.get('grant_type')
-        if m.get('refresh_token') is not None:
-            self.refresh_token = m.get('refresh_token')
+        if m.get('Assertion') is not None:
+            self.assertion = m.get('Assertion')
+        if m.get('ClientID') is not None:
+            self.client_id = m.get('ClientID')
+        if m.get('ClientSecret') is not None:
+            self.client_secret = m.get('ClientSecret')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DeviceCode') is not None:
+            self.device_code = m.get('DeviceCode')
+        if m.get('GrantType') is not None:
+            self.grant_type = m.get('GrantType')
+        if m.get('RedirectUri') is not None:
+            self.redirect_uri = m.get('RedirectUri')
+        if m.get('RefreshToken') is not None:
+            self.refresh_token = m.get('RefreshToken')
         return self
 
 
@@ -11085,7 +11058,7 @@ class UpdateFileMetaResponse(TeaModel):
         # file_id
         self.file_id = file_id
         # Hidden
-        # type: boolean
+type: boolean
         self.hidden = hidden
         self.image_media_metadata = image_media_metadata
         # labels
@@ -11100,7 +11073,7 @@ class UpdateFileMetaResponse(TeaModel):
         # Size
         self.size = size
         # starred
-        # type: boolean
+type: boolean
         self.starred = starred
         # status
         self.status = status
@@ -11435,47 +11408,6 @@ class UpdateShareResponse(TeaModel):
             self.status = m.get('status')
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
-        return self
-
-
-class UrlInfo(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        download_url: str = None,
-        thumbnail: str = None,
-        url: str = None,
-    ):
-        # download_url
-        self.download_url = download_url
-        # thumbnail
-        self.thumbnail = thumbnail
-        # url
-        self.url = url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        if self.download_url is not None:
-            result['download_url'] = self.download_url
-        if self.thumbnail is not None:
-            result['thumbnail'] = self.thumbnail
-        if self.url is not None:
-            result['url'] = self.url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('download_url') is not None:
-            self.download_url = m.get('download_url')
-        if m.get('thumbnail') is not None:
-            self.thumbnail = m.get('thumbnail')
-        if m.get('url') is not None:
-            self.url = m.get('url')
         return self
 
 
@@ -12303,6 +12235,111 @@ class BaseDomainResponse(TeaModel):
             self.store_region_list = m.get('store_region_list')
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
+        return self
+
+
+class BaseMediaResponse(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        address_line: str = None,
+        city: str = None,
+        country: str = None,
+        district: str = None,
+        height: int = None,
+        image_tags: List[SystemTag] = None,
+        location: str = None,
+        province: str = None,
+        time: str = None,
+        township: str = None,
+        width: int = None,
+    ):
+        # address_line
+        self.address_line = address_line
+        # city
+        self.city = city
+        # country
+        self.country = country
+        # district
+        self.district = district
+        # height
+        self.height = height
+        # system_tags
+        self.image_tags = image_tags
+        # location
+        self.location = location
+        # province
+        self.province = province
+        # time
+        self.time = time
+        # township
+        self.township = township
+        # width
+        self.width = width
+
+    def validate(self):
+        if self.image_tags:
+            for k in self.image_tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        result = dict()
+        if self.address_line is not None:
+            result['address_line'] = self.address_line
+        if self.city is not None:
+            result['city'] = self.city
+        if self.country is not None:
+            result['country'] = self.country
+        if self.district is not None:
+            result['district'] = self.district
+        if self.height is not None:
+            result['height'] = self.height
+        result['image_tags'] = []
+        if self.image_tags is not None:
+            for k in self.image_tags:
+                result['image_tags'].append(k.to_map() if k else None)
+        if self.location is not None:
+            result['location'] = self.location
+        if self.province is not None:
+            result['province'] = self.province
+        if self.time is not None:
+            result['time'] = self.time
+        if self.township is not None:
+            result['township'] = self.township
+        if self.width is not None:
+            result['width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('address_line') is not None:
+            self.address_line = m.get('address_line')
+        if m.get('city') is not None:
+            self.city = m.get('city')
+        if m.get('country') is not None:
+            self.country = m.get('country')
+        if m.get('district') is not None:
+            self.district = m.get('district')
+        if m.get('height') is not None:
+            self.height = m.get('height')
+        self.image_tags = []
+        if m.get('image_tags') is not None:
+            for k in m.get('image_tags'):
+                temp_model = SystemTag()
+                self.image_tags.append(temp_model.from_map(k))
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('province') is not None:
+            self.province = m.get('province')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        if m.get('township') is not None:
+            self.township = m.get('township')
+        if m.get('width') is not None:
+            self.width = m.get('width')
         return self
 
 
@@ -15295,6 +15332,81 @@ class BaseCreateFileRequest(TeaModel):
         return self
 
 
+class BaseFileProcessRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        image_cropping_aspect_ratios: List[str] = None,
+        image_thumbnail_process: str = None,
+        image_url_process: str = None,
+        video_thumbnail_process: str = None,
+    ):
+        self.image_cropping_aspect_ratios = image_cropping_aspect_ratios
+        # image_thumbnail_process
+        self.image_thumbnail_process = image_thumbnail_process
+        # image_url_process
+        self.image_url_process = image_url_process
+        # video_thumbnail_process
+type:string
+        self.video_thumbnail_process = video_thumbnail_process
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.image_cropping_aspect_ratios is not None:
+            result['image_cropping_aspect_ratios'] = self.image_cropping_aspect_ratios
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.image_url_process is not None:
+            result['image_url_process'] = self.image_url_process
+        if self.video_thumbnail_process is not None:
+            result['video_thumbnail_process'] = self.video_thumbnail_process
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('image_cropping_aspect_ratios') is not None:
+            self.image_cropping_aspect_ratios = m.get('image_cropping_aspect_ratios')
+        if m.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = m.get('image_thumbnail_process')
+        if m.get('image_url_process') is not None:
+            self.image_url_process = m.get('image_url_process')
+        if m.get('video_thumbnail_process') is not None:
+            self.video_thumbnail_process = m.get('video_thumbnail_process')
+        return self
+
+
+class BaseFileRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        addition_data: dict = None,
+    ):
+        # addition_data
+        self.addition_data = addition_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addition_data') is not None:
+            self.addition_data = m.get('addition_data')
+        return self
+
+
 class BaseGetUploadUrlRequest(TeaModel):
     """
     获取文件上传URL
@@ -15377,7 +15489,7 @@ class BaseImageProcessRequest(TeaModel):
         # image_url_process
         self.image_url_process = image_url_process
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -15440,7 +15552,7 @@ class BaseListFileRequest(TeaModel):
         self.share_id = share_id
         self.sign_token = sign_token
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -15833,7 +15945,7 @@ class CopyFileRequest(TeaModel):
     ):
         self.headers = headers
         # auto_rename
-        # type: boolean
+type: boolean
         self.auto_rename = auto_rename
         # drive_id
         self.drive_id = drive_id
@@ -16167,7 +16279,7 @@ class CreateFileRequest(TeaModel):
         # pre_hash
         self.pre_hash = pre_hash
         # share_id
-        # example
+example
         self.share_id = share_id
         # Size
         self.size = size
@@ -16476,8 +16588,8 @@ class CreateShareRequest(TeaModel):
         # share_name
         self.share_name = share_name
         # share create policy
-        # 
-        # share_policy
+
+share_policy
         self.share_policy = share_policy
         # status
         self.status = status
@@ -16606,7 +16718,7 @@ class DeleteFileRequest(TeaModel):
         self.file_id = file_id
         self.file_id_path = file_id_path
         # permanently
-        # type: false
+type: false
         self.permanently = permanently
         self.share_id = share_id
 
@@ -16744,12 +16856,12 @@ class DownloadRequest(TeaModel):
         # file id
         self.file_id = file_id
         # in: query
-        # image_thumbnail_process
+image_thumbnail_process
         self.image_thumbnail_process = image_thumbnail_process
         # share_id, either share_id or drive_id is required
         self.share_id = share_id
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
         self.file_id_path = file_id_path
         # location
@@ -16816,7 +16928,7 @@ class GetAsyncTaskRequest(TeaModel):
     ):
         self.headers = headers
         # async_task_id
-        # type:string
+type:string
         self.async_task_id = async_task_id
 
     def validate(self):
@@ -17044,7 +17156,7 @@ class GetFileByPathRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -17154,7 +17266,7 @@ class GetFileRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -17822,7 +17934,7 @@ class HostingCompleteFileRequest(TeaModel):
         self.drive_id = drive_id
         self.file_path = file_path
         # forbid_overwrite
-        # type: boolean
+type: boolean
         self.forbid_overwrite = forbid_overwrite
         # part_info_list
         self.part_info_list = part_info_list
@@ -17902,7 +18014,7 @@ class HostingCopyFileRequest(TeaModel):
         # new_name
         self.new_name = new_name
         # overwrite
-        # type: boolean
+type: boolean
         self.overwrite = overwrite
         # share_id
         self.share_id = share_id
@@ -17993,7 +18105,7 @@ class HostingCreateFileRequest(TeaModel):
         # drive_id
         self.drive_id = drive_id
         # forbid_overwrite
-        # type: boolean
+type: boolean
         self.forbid_overwrite = forbid_overwrite
         # Name
         self.name = name
@@ -18100,7 +18212,7 @@ class HostingDeleteFileRequest(TeaModel):
         # file_path
         self.file_path = file_path
         # permanently
-        # type: false
+type: false
         self.permanently = permanently
         # share_id
         self.share_id = share_id
@@ -18246,7 +18358,7 @@ class HostingGetFileRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -18487,7 +18599,7 @@ class HostingListFileRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -18656,7 +18768,7 @@ class HostingMoveFileRequest(TeaModel):
         # new_name
         self.new_name = new_name
         # overwrite
-        # type: boolean
+type: boolean
         self.overwrite = overwrite
         # share_id
         self.share_id = share_id
@@ -18978,7 +19090,7 @@ class ListByAnonymousRequest(TeaModel):
         self.share_id = share_id
         self.sign_token = sign_token
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -19154,7 +19266,7 @@ class ListFileByCustomIndexKeyRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -19287,10 +19399,10 @@ class ListFileDeltaRequest(TeaModel):
         # image_url_process
         self.image_url_process = image_url_process
         # limit
-        # default 100
+default 100
         self.limit = limit
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -19412,7 +19524,7 @@ class ListFileRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -20113,7 +20225,7 @@ class ScanFileMetaRequest(TeaModel):
         # marker
         self.marker = marker
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -20225,7 +20337,7 @@ class SearchFileRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -20474,7 +20586,7 @@ class UpdateFileMetaRequest(TeaModel):
         self.check_name_mode = check_name_mode
         self.custom_index_key = custom_index_key
         # description
-        # type: string
+type: string
         self.description = description
         # drive_id
         self.drive_id = drive_id
@@ -20483,7 +20595,7 @@ class UpdateFileMetaRequest(TeaModel):
         self.file_id = file_id
         self.file_id_path = file_id_path
         # hidden
-        # type: boolean
+type: boolean
         self.hidden = hidden
         # labels
         self.labels = labels
@@ -20494,7 +20606,7 @@ class UpdateFileMetaRequest(TeaModel):
         self.share_id = share_id
         self.sign_token = sign_token
         # starred
-        # type: boolean
+type: boolean
         self.starred = starred
         # user_meta
         self.user_meta = user_meta
@@ -21539,7 +21651,7 @@ class GetUserRequest(TeaModel):
     ):
         self.headers = headers
         # 用户 ID, 使用ak方式访问，该项必传, access_token访问如果不传，默认取自己的user信息
-        # example
+example
         self.user_id = user_id
 
     def validate(self):
@@ -23286,7 +23398,7 @@ class ListImageTagsRequest(TeaModel):
         # image_thumbnail_process
         self.image_thumbnail_process = image_thumbnail_process
         # video_thumbnail_process
-        # type:string
+type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):

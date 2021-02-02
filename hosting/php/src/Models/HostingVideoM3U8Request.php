@@ -35,6 +35,9 @@ class HostingVideoM3U8Request extends Model {
     }
     public function toMap() {
         $res = [];
+        if (null !== $this->headers) {
+            $res['headers'] = $this->headers;
+        }
         if (null !== $this->definition) {
             $res['definition'] = $this->definition;
         }
@@ -64,6 +67,9 @@ class HostingVideoM3U8Request extends Model {
      */
     public static function fromMap($map = []) {
         $model = new self();
+        if(isset($map['headers'])){
+            $model->headers = $map['headers'];
+        }
         if(isset($map['definition'])){
             $model->definition = $map['definition'];
         }
@@ -87,6 +93,8 @@ class HostingVideoM3U8Request extends Model {
         }
         return $model;
     }
+    public $headers;
+
     /**
      * @description definition
      * @example Original
