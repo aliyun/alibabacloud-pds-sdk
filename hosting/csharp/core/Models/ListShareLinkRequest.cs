@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * list_share_link request
      */
     public class ListShareLinkRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// creator
         /// </summary>

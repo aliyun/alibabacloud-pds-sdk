@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 批处理
  */
 public class BatchRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // Requests 请求合集
     @NameInMap("requests")
     @Validation(required = true)
@@ -23,14 +20,6 @@ public class BatchRequest extends TeaModel {
     public static BatchRequest build(java.util.Map<String, ?> map) throws Exception {
         BatchRequest self = new BatchRequest();
         return TeaModel.build(map, self);
-    }
-
-    public BatchRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public BatchRequest setRequests(java.util.List<BatchSubRequest> requests) {

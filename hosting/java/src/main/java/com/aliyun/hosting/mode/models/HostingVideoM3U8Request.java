@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 获取视频的m3u8文件
  */
 public class HostingVideoM3U8Request extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // definition
     @NameInMap("definition")
     public String definition;
@@ -42,6 +45,14 @@ public class HostingVideoM3U8Request extends TeaModel {
     public static HostingVideoM3U8Request build(java.util.Map<String, ?> map) throws Exception {
         HostingVideoM3U8Request self = new HostingVideoM3U8Request();
         return TeaModel.build(map, self);
+    }
+
+    public HostingVideoM3U8Request setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public HostingVideoM3U8Request setDefinition(String definition) {

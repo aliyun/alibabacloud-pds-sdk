@@ -4868,7 +4868,7 @@ namespace Aliyun.SDK.PDS.Client
          * @error NotFound The resource {resource_name} cannot be found. Please check.
          * @error InternalError The request has been failed due to some unknown error.
          */
-        public AccountTokenModel AccountTokenEx(TokenRequest request, RuntimeOptions runtime)
+        public AccountTokenModel AccountTokenEx(AccountTokenRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -5018,7 +5018,7 @@ namespace Aliyun.SDK.PDS.Client
          * @error NotFound The resource {resource_name} cannot be found. Please check.
          * @error InternalError The request has been failed due to some unknown error.
          */
-        public async Task<AccountTokenModel> AccountTokenExAsync(TokenRequest request, RuntimeOptions runtime)
+        public async Task<AccountTokenModel> AccountTokenExAsync(AccountTokenRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -24750,7 +24750,7 @@ namespace Aliyun.SDK.PDS.Client
          * @error NotFound The resource {resource_name} cannot be found. Please check.
          * @error InternalError The request has been failed due to some unknown error.
          */
-        public AccountTokenModel AccountToken(TokenRequest request)
+        public AccountTokenModel AccountToken(AccountTokenRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return AccountTokenEx(request, runtime);
@@ -24764,7 +24764,7 @@ namespace Aliyun.SDK.PDS.Client
          * @error NotFound The resource {resource_name} cannot be found. Please check.
          * @error InternalError The request has been failed due to some unknown error.
          */
-        public async Task<AccountTokenModel> AccountTokenAsync(TokenRequest request)
+        public async Task<AccountTokenModel> AccountTokenAsync(AccountTokenRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await AccountTokenExAsync(request, runtime);

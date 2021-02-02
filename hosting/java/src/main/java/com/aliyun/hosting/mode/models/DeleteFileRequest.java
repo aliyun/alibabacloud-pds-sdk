@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 删除文件请求
  */
 public class DeleteFileRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -32,14 +29,6 @@ public class DeleteFileRequest extends TeaModel {
     public static DeleteFileRequest build(java.util.Map<String, ?> map) throws Exception {
         DeleteFileRequest self = new DeleteFileRequest();
         return TeaModel.build(map, self);
-    }
-
-    public DeleteFileRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public DeleteFileRequest setDriveId(String driveId) {

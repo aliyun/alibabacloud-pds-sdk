@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 获取文件元数据
  */
 public class HostingGetFileRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -48,6 +51,14 @@ public class HostingGetFileRequest extends TeaModel {
     public static HostingGetFileRequest build(java.util.Map<String, ?> map) throws Exception {
         HostingGetFileRequest self = new HostingGetFileRequest();
         return TeaModel.build(map, self);
+    }
+
+    public HostingGetFileRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public HostingGetFileRequest setDriveId(String driveId) {

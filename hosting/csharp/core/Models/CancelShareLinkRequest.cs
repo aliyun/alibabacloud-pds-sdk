@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * cancel_share_link request
      */
     public class CancelShareLinkRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// share_id
         /// </summary>

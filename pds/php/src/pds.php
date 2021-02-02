@@ -47,7 +47,7 @@ use Aliyun\PDS\SDK\Models\MobileSendSmsCodeRequest;
 use Aliyun\PDS\SDK\Models\MobileSendSmsCodeModel;
 use Aliyun\PDS\SDK\Models\RevokeRequest;
 use Aliyun\PDS\SDK\Models\AccountRevokeModel;
-use Aliyun\PDS\SDK\Models\TokenRequest;
+use Aliyun\PDS\SDK\Models\AccountTokenRequest;
 use Aliyun\PDS\SDK\Models\AccountTokenModel;
 use Aliyun\PDS\SDK\Models\AdminListStoresRequest;
 use Aliyun\PDS\SDK\Models\AdminListStoresModel;
@@ -2267,7 +2267,7 @@ class pds {
      * @error Forbidden User not authorized to operate on the specified APIs.
      * @error NotFound The resource {resource_name} cannot be found. Please check.
      * @error InternalError The request has been failed due to some unknown error.
-     * @param TokenRequest $request
+     * @param AccountTokenRequest $request
      * @param RuntimeOptions $runtime
      * @return AccountTokenModel
      * @throws TeaError
@@ -10748,7 +10748,7 @@ class pds {
      * @error Forbidden User not authorized to operate on the specified APIs.
      * @error NotFound The resource {resource_name} cannot be found. Please check.
      * @error InternalError The request has been failed due to some unknown error.
-     * @param TokenRequest $request
+     * @param AccountTokenRequest $request
      * @return AccountTokenModel
      */
     public function accountToken($request){

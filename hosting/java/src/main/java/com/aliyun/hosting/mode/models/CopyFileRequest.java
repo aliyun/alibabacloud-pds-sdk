@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 文件拷贝
  */
 public class CopyFileRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // auto_rename
     // type: boolean
     @NameInMap("auto_rename")
@@ -55,14 +52,6 @@ public class CopyFileRequest extends TeaModel {
     public static CopyFileRequest build(java.util.Map<String, ?> map) throws Exception {
         CopyFileRequest self = new CopyFileRequest();
         return TeaModel.build(map, self);
-    }
-
-    public CopyFileRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public CopyFileRequest setAutoRename(Boolean autoRename) {

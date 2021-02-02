@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 合并文件上传任务
      */
     public class CompleteFileRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// addition_data
         /// </summary>

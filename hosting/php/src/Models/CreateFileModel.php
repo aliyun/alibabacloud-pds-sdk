@@ -5,7 +5,7 @@ namespace Aliyun\Hosting\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
-use Aliyun\Hosting\SDK\Models\CreateFileResponse;
+use Aliyun\Hosting\SDK\Models\HostingCreateFileResponse;
 
 class CreateFileModel extends Model {
     protected $_name = [
@@ -35,7 +35,7 @@ class CreateFileModel extends Model {
             $model->headers = $map['headers'];
         }
         if(isset($map['body'])){
-            $model->body = CreateFileResponse::fromMap($map['body']);
+            $model->body = HostingCreateFileResponse::fromMap($map['body']);
         }
         return $model;
     }
@@ -45,7 +45,7 @@ class CreateFileModel extends Model {
     public $headers;
 
     /**
-     * @var CreateFileResponse
+     * @var HostingCreateFileResponse
      */
     public $body;
 

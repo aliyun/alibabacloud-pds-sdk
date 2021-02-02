@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 列举文件
  */
 public class ListFileByCustomIndexKeyRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // starred
     @NameInMap("Starred")
     public Boolean Starred;
@@ -93,14 +90,6 @@ public class ListFileByCustomIndexKeyRequest extends TeaModel {
     public static ListFileByCustomIndexKeyRequest build(java.util.Map<String, ?> map) throws Exception {
         ListFileByCustomIndexKeyRequest self = new ListFileByCustomIndexKeyRequest();
         return TeaModel.build(map, self);
-    }
-
-    public ListFileByCustomIndexKeyRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public ListFileByCustomIndexKeyRequest setStarred(Boolean Starred) {

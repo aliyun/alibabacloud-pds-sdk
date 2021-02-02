@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * complete file request
      */
     public class HostingCompleteFileRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// addition_data
         /// </summary>

@@ -21,9 +21,6 @@ class BatchRequest extends Model {
     }
     public function toMap() {
         $res = [];
-        if (null !== $this->headers) {
-            $res['headers'] = $this->headers;
-        }
         if (null !== $this->requests) {
             $res['requests'] = [];
             if(null !== $this->requests && is_array($this->requests)){
@@ -44,9 +41,6 @@ class BatchRequest extends Model {
      */
     public static function fromMap($map = []) {
         $model = new self();
-        if(isset($map['headers'])){
-            $model->headers = $map['headers'];
-        }
         if(isset($map['requests'])){
             if(!empty($map['requests'])){
                 $model->requests = [];
@@ -61,8 +55,6 @@ class BatchRequest extends Model {
         }
         return $model;
     }
-    public $headers;
-
     /**
      * @description Requests 请求合集
      * @var BatchSubRequest[]

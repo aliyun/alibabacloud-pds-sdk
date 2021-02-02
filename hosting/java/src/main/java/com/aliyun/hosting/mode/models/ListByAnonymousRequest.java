@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * list_file_by_anonymous request
  */
 public class ListByAnonymousRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // image_thumbnail_process
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
@@ -50,14 +47,6 @@ public class ListByAnonymousRequest extends TeaModel {
     public static ListByAnonymousRequest build(java.util.Map<String, ?> map) throws Exception {
         ListByAnonymousRequest self = new ListByAnonymousRequest();
         return TeaModel.build(map, self);
-    }
-
-    public ListByAnonymousRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public ListByAnonymousRequest setImageThumbnailProcess(String imageThumbnailProcess) {

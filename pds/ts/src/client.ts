@@ -660,6 +660,40 @@ export class AccountLinkRequest extends $tea.Model {
 /**
  * 
  */
+export class AccountTokenRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  appId: string;
+  grantType: string;
+  refreshToken: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      appId: 'app_id',
+      grantType: 'grant_type',
+      refreshToken: 'refresh_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      appId: 'string',
+      grantType: 'string',
+      refreshToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class AddStoreRequest extends $tea.Model {
   basePath?: string;
   bucket?: string;
@@ -1116,58 +1150,6 @@ export class BaseHostingFileResponse extends $tea.Model {
       updatedAt: 'string',
       uploadId: 'string',
       url: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class BaseMediaResponse extends $tea.Model {
-  addressLine?: string;
-  city?: string;
-  country?: string;
-  district?: string;
-  height?: number;
-  imageTags?: SystemTag[];
-  location?: string;
-  province?: string;
-  time?: string;
-  township?: string;
-  width?: number;
-  static names(): { [key: string]: string } {
-    return {
-      addressLine: 'address_line',
-      city: 'city',
-      country: 'country',
-      district: 'district',
-      height: 'height',
-      imageTags: 'image_tags',
-      location: 'location',
-      province: 'province',
-      time: 'time',
-      township: 'township',
-      width: 'width',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      addressLine: 'string',
-      city: 'string',
-      country: 'string',
-      district: 'string',
-      height: 'number',
-      imageTags: { 'type': 'array', 'itemType': SystemTag },
-      location: 'string',
-      province: 'string',
-      time: 'string',
-      township: 'string',
-      width: 'number',
     };
   }
 
@@ -5618,28 +5600,37 @@ export class SystemTag extends $tea.Model {
  * 
  */
 export class TokenRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  appId: string;
-  grantType: string;
-  refreshToken: string;
+  Assertion?: string;
+  ClientID: string;
+  ClientSecret: string;
+  Code?: string;
+  DeviceCode?: string;
+  GrantType: string;
+  RedirectUri?: string;
+  RefreshToken?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      appId: 'app_id',
-      grantType: 'grant_type',
-      refreshToken: 'refresh_token',
+      Assertion: 'Assertion',
+      ClientID: 'ClientID',
+      ClientSecret: 'ClientSecret',
+      Code: 'Code',
+      DeviceCode: 'DeviceCode',
+      GrantType: 'GrantType',
+      RedirectUri: 'RedirectUri',
+      RefreshToken: 'RefreshToken',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      appId: 'string',
-      grantType: 'string',
-      refreshToken: 'string',
+      Assertion: 'string',
+      ClientID: 'string',
+      ClientSecret: 'string',
+      Code: 'string',
+      DeviceCode: 'string',
+      GrantType: 'string',
+      RedirectUri: 'string',
+      RefreshToken: 'string',
     };
   }
 
@@ -6051,34 +6042,6 @@ export class UploadPartInfo extends $tea.Model {
       partNumber: 'number',
       partSize: 'number',
       uploadUrl: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class UrlInfo extends $tea.Model {
-  downloadUrl?: string;
-  thumbnail?: string;
-  url?: string;
-  static names(): { [key: string]: string } {
-    return {
-      downloadUrl: 'download_url',
-      thumbnail: 'thumbnail',
-      url: 'url',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      downloadUrl: 'string',
-      thumbnail: 'string',
-      url: 'string',
     };
   }
 
@@ -6798,6 +6761,58 @@ export class BaseDomainResponse extends $tea.Model {
       storeLevel: 'string',
       storeRegionList: { 'type': 'array', 'itemType': 'string' },
       updatedAt: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class BaseMediaResponse extends $tea.Model {
+  addressLine?: string;
+  city?: string;
+  country?: string;
+  district?: string;
+  height?: number;
+  imageTags?: SystemTag[];
+  location?: string;
+  province?: string;
+  time?: string;
+  township?: string;
+  width?: number;
+  static names(): { [key: string]: string } {
+    return {
+      addressLine: 'address_line',
+      city: 'city',
+      country: 'country',
+      district: 'district',
+      height: 'height',
+      imageTags: 'image_tags',
+      location: 'location',
+      province: 'province',
+      time: 'time',
+      township: 'township',
+      width: 'width',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      addressLine: 'string',
+      city: 'string',
+      country: 'string',
+      district: 'string',
+      height: 'number',
+      imageTags: { 'type': 'array', 'itemType': SystemTag },
+      location: 'string',
+      province: 'string',
+      time: 'string',
+      township: 'string',
+      width: 'number',
     };
   }
 
@@ -8686,6 +8701,59 @@ export class BaseCreateFileRequest extends $tea.Model {
       partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
       size: 'number',
       type: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class BaseFileProcessRequest extends $tea.Model {
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class BaseFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
     };
   }
 
@@ -15397,7 +15465,7 @@ export default class Client {
    * @error NotFound The resource {resource_name} cannot be found. Please check.
    * @error InternalError The request has been failed due to some unknown error.
    */
-  async accountTokenEx(request: TokenRequest, runtime: RuntimeOptions): Promise<AccountTokenModel> {
+  async accountTokenEx(request: AccountTokenRequest, runtime: RuntimeOptions): Promise<AccountTokenModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -23528,7 +23596,7 @@ export default class Client {
    * @error NotFound The resource {resource_name} cannot be found. Please check.
    * @error InternalError The request has been failed due to some unknown error.
    */
-  async accountToken(request: TokenRequest): Promise<AccountTokenModel> {
+  async accountToken(request: AccountTokenRequest): Promise<AccountTokenModel> {
     let runtime = new RuntimeOptions({ });
     return await this.accountTokenEx(request, runtime);
   }

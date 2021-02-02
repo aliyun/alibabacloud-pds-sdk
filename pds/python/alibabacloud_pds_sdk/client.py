@@ -3640,7 +3640,7 @@ class Client:
 
     def account_token_ex(
         self,
-        request: pds_models.TokenRequest,
+        request: pds_models.AccountTokenRequest,
         runtime: pds_models.RuntimeOptions,
     ) -> pds_models.AccountTokenModel:
         """
@@ -3752,7 +3752,7 @@ class Client:
 
     async def account_token_ex_async(
         self,
-        request: pds_models.TokenRequest,
+        request: pds_models.AccountTokenRequest,
         runtime: pds_models.RuntimeOptions,
     ) -> pds_models.AccountTokenModel:
         """
@@ -18686,7 +18686,7 @@ class Client:
 
     def account_token(
         self,
-        request: pds_models.TokenRequest,
+        request: pds_models.AccountTokenRequest,
     ) -> pds_models.AccountTokenModel:
         """
         用户通过刷新令牌（refresh_token）获取访问令牌（access_token）
@@ -18701,7 +18701,7 @@ class Client:
 
     async def account_token_async(
         self,
-        request: pds_models.TokenRequest,
+        request: pds_models.AccountTokenRequest,
     ) -> pds_models.AccountTokenModel:
         """
         用户通过刷新令牌（refresh_token）获取访问令牌（access_token）

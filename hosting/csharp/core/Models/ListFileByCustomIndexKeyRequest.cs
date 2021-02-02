@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 列举文件
      */
     public class ListFileByCustomIndexKeyRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// starred
         /// </summary>

@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * list_share_link request
  */
 public class ListShareLinkRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // creator
     @NameInMap("creator")
     public String creator;
@@ -25,14 +22,6 @@ public class ListShareLinkRequest extends TeaModel {
     public static ListShareLinkRequest build(java.util.Map<String, ?> map) throws Exception {
         ListShareLinkRequest self = new ListShareLinkRequest();
         return TeaModel.build(map, self);
-    }
-
-    public ListShareLinkRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public ListShareLinkRequest setCreator(String creator) {

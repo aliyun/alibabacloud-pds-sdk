@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 搜索文件元数据
      */
     public class SearchFileRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// addition_data
         /// </summary>

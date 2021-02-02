@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * list_file_by_anonymous request
      */
     public class ListByAnonymousRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// image_thumbnail_process
         /// </summary>

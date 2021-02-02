@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 获取视频的m3u8文件
      */
     public class HostingVideoM3U8Request : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// definition
         /// </summary>

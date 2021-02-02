@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * create_share_link request
      */
     public class CreateShareLinkRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// description
         /// </summary>

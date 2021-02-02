@@ -12,6 +12,10 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 删除文件请求
      */
     public class HostingDeleteFileRequest : TeaModel {
+        [NameInMap("headers")]
+        [Validation(Required=false)]
+        public Dictionary<string, string> Headers { get; set; }
+
         /// <summary>
         /// drive_id
         /// </summary>

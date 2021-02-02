@@ -30,9 +30,6 @@ class GetUploadUrlRequest extends Model {
     }
     public function toMap() {
         $res = [];
-        if (null !== $this->headers) {
-            $res['headers'] = $this->headers;
-        }
         if (null !== $this->contentMd5) {
             $res['content_md5'] = $this->contentMd5;
         }
@@ -65,9 +62,6 @@ class GetUploadUrlRequest extends Model {
      */
     public static function fromMap($map = []) {
         $model = new self();
-        if(isset($map['headers'])){
-            $model->headers = $map['headers'];
-        }
         if(isset($map['content_md5'])){
             $model->contentMd5 = $map['content_md5'];
         }
@@ -94,8 +88,6 @@ class GetUploadUrlRequest extends Model {
         }
         return $model;
     }
-    public $headers;
-
     /**
      * @description content_md5
      * @example E10ADC3949BA59ABBE56E057F20F883E

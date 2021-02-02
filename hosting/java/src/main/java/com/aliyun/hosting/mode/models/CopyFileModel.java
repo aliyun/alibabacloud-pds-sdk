@@ -9,7 +9,7 @@ public class CopyFileModel extends TeaModel {
 
     @NameInMap("body")
     @Validation(required = true)
-    public CopyFileResponse body;
+    public HostingCopyFileResponse body;
 
     public static CopyFileModel build(java.util.Map<String, ?> map) throws Exception {
         CopyFileModel self = new CopyFileModel();
@@ -24,11 +24,11 @@ public class CopyFileModel extends TeaModel {
         return this.headers;
     }
 
-    public CopyFileModel setBody(CopyFileResponse body) {
+    public CopyFileModel setBody(HostingCopyFileResponse body) {
         this.body = body;
         return this;
     }
-    public CopyFileResponse getBody() {
+    public HostingCopyFileResponse getBody() {
         return this.body;
     }
 

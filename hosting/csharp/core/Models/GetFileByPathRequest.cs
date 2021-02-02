@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 根据路径获取 File 接口 body
      */
     public class GetFileByPathRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// addition_data
         /// </summary>

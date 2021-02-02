@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 文件移动请求
      */
     public class MoveFileRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// auto_rename
         /// </summary>

@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 获取视频雪碧图地址的请求body
  */
 public class GetVideoPreviewSpriteURLRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // drive_id
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
@@ -31,14 +28,6 @@ public class GetVideoPreviewSpriteURLRequest extends TeaModel {
     public static GetVideoPreviewSpriteURLRequest build(java.util.Map<String, ?> map) throws Exception {
         GetVideoPreviewSpriteURLRequest self = new GetVideoPreviewSpriteURLRequest();
         return TeaModel.build(map, self);
-    }
-
-    public GetVideoPreviewSpriteURLRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public GetVideoPreviewSpriteURLRequest setDriveId(String driveId) {

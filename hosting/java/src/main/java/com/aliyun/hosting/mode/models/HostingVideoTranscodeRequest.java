@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 启动视频转码请求
  */
 public class HostingVideoTranscodeRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -41,6 +44,14 @@ public class HostingVideoTranscodeRequest extends TeaModel {
     public static HostingVideoTranscodeRequest build(java.util.Map<String, ?> map) throws Exception {
         HostingVideoTranscodeRequest self = new HostingVideoTranscodeRequest();
         return TeaModel.build(map, self);
+    }
+
+    public HostingVideoTranscodeRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public HostingVideoTranscodeRequest setDriveId(String driveId) {

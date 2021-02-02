@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 全量获取file元信息的请求body
  */
 public class ScanFileMetaRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // addition_data
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
@@ -50,14 +47,6 @@ public class ScanFileMetaRequest extends TeaModel {
     public static ScanFileMetaRequest build(java.util.Map<String, ?> map) throws Exception {
         ScanFileMetaRequest self = new ScanFileMetaRequest();
         return TeaModel.build(map, self);
-    }
-
-    public ScanFileMetaRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public ScanFileMetaRequest setAdditionData(java.util.Map<String, ?> additionData) {

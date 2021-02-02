@@ -45,9 +45,6 @@ class UpdateFileMetaRequest extends Model {
     }
     public function toMap() {
         $res = [];
-        if (null !== $this->headers) {
-            $res['headers'] = $this->headers;
-        }
         if (null !== $this->checkNameMode) {
             $res['check_name_mode'] = $this->checkNameMode;
         }
@@ -104,9 +101,6 @@ class UpdateFileMetaRequest extends Model {
      */
     public static function fromMap($map = []) {
         $model = new self();
-        if(isset($map['headers'])){
-            $model->headers = $map['headers'];
-        }
         if(isset($map['check_name_mode'])){
             $model->checkNameMode = $map['check_name_mode'];
         }
@@ -159,8 +153,6 @@ class UpdateFileMetaRequest extends Model {
         }
         return $model;
     }
-    public $headers;
-
     /**
      * @description check_name_mode
      * @var string

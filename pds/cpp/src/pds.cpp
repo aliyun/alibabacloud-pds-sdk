@@ -1825,7 +1825,7 @@ AccountRevokeModel Alibabacloud_Pds::Client::accountRevokeEx(shared_ptr<RevokeRe
   BOOST_THROW_EXCEPTION(Darabonba::UnretryableError(_lastRequest, _lastException));
 }
 
-AccountTokenModel Alibabacloud_Pds::Client::accountTokenEx(shared_ptr<TokenRequest> request, shared_ptr<RuntimeOptions> runtime) {
+AccountTokenModel Alibabacloud_Pds::Client::accountTokenEx(shared_ptr<AccountTokenRequest> request, shared_ptr<RuntimeOptions> runtime) {
   request->validate();
   runtime->validate();
   shared_ptr<map<string, boost::any>> runtime_ = make_shared<map<string, boost::any>>(map<string, boost::any>({
@@ -9010,7 +9010,7 @@ AccountRevokeModel Alibabacloud_Pds::Client::accountRevoke(shared_ptr<RevokeRequ
   return accountRevokeEx(request, runtime);
 }
 
-AccountTokenModel Alibabacloud_Pds::Client::accountToken(shared_ptr<TokenRequest> request) {
+AccountTokenModel Alibabacloud_Pds::Client::accountToken(shared_ptr<AccountTokenRequest> request) {
   shared_ptr<RuntimeOptions> runtime = make_shared<RuntimeOptions>();
   return accountTokenEx(request, runtime);
 }

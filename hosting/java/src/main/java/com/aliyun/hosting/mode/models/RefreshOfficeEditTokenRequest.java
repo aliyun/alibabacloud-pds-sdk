@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 刷新office文档在线编辑凭证
  */
 public class RefreshOfficeEditTokenRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // addition_data
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
@@ -31,14 +28,6 @@ public class RefreshOfficeEditTokenRequest extends TeaModel {
     public static RefreshOfficeEditTokenRequest build(java.util.Map<String, ?> map) throws Exception {
         RefreshOfficeEditTokenRequest self = new RefreshOfficeEditTokenRequest();
         return TeaModel.build(map, self);
-    }
-
-    public RefreshOfficeEditTokenRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public RefreshOfficeEditTokenRequest setAdditionData(java.util.Map<String, ?> additionData) {

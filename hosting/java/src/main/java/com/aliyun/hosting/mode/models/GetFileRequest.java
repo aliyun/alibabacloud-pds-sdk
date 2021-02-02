@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 获取文件元数据
  */
 public class GetFileRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // addition_data
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
@@ -68,14 +65,6 @@ public class GetFileRequest extends TeaModel {
     public static GetFileRequest build(java.util.Map<String, ?> map) throws Exception {
         GetFileRequest self = new GetFileRequest();
         return TeaModel.build(map, self);
-    }
-
-    public GetFileRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public GetFileRequest setAdditionData(java.util.Map<String, ?> additionData) {

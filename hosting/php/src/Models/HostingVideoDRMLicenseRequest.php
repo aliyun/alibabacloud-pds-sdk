@@ -19,6 +19,9 @@ class HostingVideoDRMLicenseRequest extends Model {
     }
     public function toMap() {
         $res = [];
+        if (null !== $this->headers) {
+            $res['headers'] = $this->headers;
+        }
         if (null !== $this->drmType) {
             $res['drmType'] = $this->drmType;
         }
@@ -33,6 +36,9 @@ class HostingVideoDRMLicenseRequest extends Model {
      */
     public static function fromMap($map = []) {
         $model = new self();
+        if(isset($map['headers'])){
+            $model->headers = $map['headers'];
+        }
         if(isset($map['drmType'])){
             $model->drmType = $map['drmType'];
         }
@@ -41,6 +47,8 @@ class HostingVideoDRMLicenseRequest extends Model {
         }
         return $model;
     }
+    public $headers;
+
     /**
      * @description drmType
      * @example widevine,fairplay

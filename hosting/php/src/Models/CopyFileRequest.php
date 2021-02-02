@@ -40,9 +40,6 @@ class CopyFileRequest extends Model {
     }
     public function toMap() {
         $res = [];
-        if (null !== $this->headers) {
-            $res['headers'] = $this->headers;
-        }
         if (null !== $this->autoRename) {
             $res['auto_rename'] = $this->autoRename;
         }
@@ -78,9 +75,6 @@ class CopyFileRequest extends Model {
      */
     public static function fromMap($map = []) {
         $model = new self();
-        if(isset($map['headers'])){
-            $model->headers = $map['headers'];
-        }
         if(isset($map['auto_rename'])){
             $model->autoRename = $map['auto_rename'];
         }
@@ -110,8 +104,6 @@ class CopyFileRequest extends Model {
         }
         return $model;
     }
-    public $headers;
-
     /**
      * @description auto_rename
 type: boolean

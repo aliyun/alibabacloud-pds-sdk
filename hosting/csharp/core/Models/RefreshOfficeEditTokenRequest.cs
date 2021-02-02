@@ -12,10 +12,6 @@ namespace Aliyun.SDK.Hosting.Client.Models
      * 刷新office文档在线编辑凭证
      */
     public class RefreshOfficeEditTokenRequest : TeaModel {
-        [NameInMap("headers")]
-        [Validation(Required=false)]
-        public Dictionary<string, string> Headers { get; set; }
-
         /// <summary>
         /// addition_data
         /// </summary>

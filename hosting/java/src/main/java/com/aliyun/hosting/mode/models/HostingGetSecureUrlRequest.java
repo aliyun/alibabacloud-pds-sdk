@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 获取文件安全地址的请求body
  */
 public class HostingGetSecureUrlRequest extends TeaModel {
+    @NameInMap("headers")
+    public java.util.Map<String, String> headers;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -33,6 +36,14 @@ public class HostingGetSecureUrlRequest extends TeaModel {
     public static HostingGetSecureUrlRequest build(java.util.Map<String, ?> map) throws Exception {
         HostingGetSecureUrlRequest self = new HostingGetSecureUrlRequest();
         return TeaModel.build(map, self);
+    }
+
+    public HostingGetSecureUrlRequest setHeaders(java.util.Map<String, String> headers) {
+        this.headers = headers;
+        return this;
+    }
+    public java.util.Map<String, String> getHeaders() {
+        return this.headers;
     }
 
     public HostingGetSecureUrlRequest setDriveId(String driveId) {

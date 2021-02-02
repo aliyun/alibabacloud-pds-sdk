@@ -15,9 +15,6 @@ class GetShareLinkIDRequest extends Model {
     public function validate() {}
     public function toMap() {
         $res = [];
-        if (null !== $this->headers) {
-            $res['headers'] = $this->headers;
-        }
         if (null !== $this->shareMsg) {
             $res['share_msg'] = $this->shareMsg;
         }
@@ -29,16 +26,11 @@ class GetShareLinkIDRequest extends Model {
      */
     public static function fromMap($map = []) {
         $model = new self();
-        if(isset($map['headers'])){
-            $model->headers = $map['headers'];
-        }
         if(isset($map['share_msg'])){
             $model->shareMsg = $map['share_msg'];
         }
         return $model;
     }
-    public $headers;
-
     /**
      * @description share_msg
      * @example 复制这段话¢oJ311MvRD8R¢打開阿里云宝App【来自xxx的分享】

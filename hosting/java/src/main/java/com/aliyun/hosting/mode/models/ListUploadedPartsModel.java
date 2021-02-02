@@ -9,7 +9,7 @@ public class ListUploadedPartsModel extends TeaModel {
 
     @NameInMap("body")
     @Validation(required = true)
-    public ListUploadedPartResponse body;
+    public HostingListUploadedPartResponse body;
 
     public static ListUploadedPartsModel build(java.util.Map<String, ?> map) throws Exception {
         ListUploadedPartsModel self = new ListUploadedPartsModel();
@@ -24,11 +24,11 @@ public class ListUploadedPartsModel extends TeaModel {
         return this.headers;
     }
 
-    public ListUploadedPartsModel setBody(ListUploadedPartResponse body) {
+    public ListUploadedPartsModel setBody(HostingListUploadedPartResponse body) {
         this.body = body;
         return this;
     }
-    public ListUploadedPartResponse getBody() {
+    public HostingListUploadedPartResponse getBody() {
         return this.body;
     }
 

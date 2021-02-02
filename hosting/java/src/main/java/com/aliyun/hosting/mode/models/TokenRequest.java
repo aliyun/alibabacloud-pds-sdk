@@ -7,71 +7,108 @@ import com.aliyun.tea.*;
  * 
  */
 public class TokenRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    // JWT方式授权需要传此参数，传入JWT签名的声明，用于更换accessToken
+    @NameInMap("Assertion")
+    public String Assertion;
 
-    // addition_data
-    @NameInMap("addition_data")
-    public java.util.Map<String, ?> additionData;
-
-    // App ID, 当前访问的App
-    @NameInMap("app_id")
+    // Client ID, 此处填写创建App时返回的AppID
+    @NameInMap("ClientID")
     @Validation(required = true)
-    public String appId;
+    public String ClientID;
 
-    // 只能填refresh_token
-    @NameInMap("grant_type")
+    // Client ID, 此处填写创建App时返回的AppSecret
+    @NameInMap("ClientSecret")
     @Validation(required = true)
-    public String grantType;
+    public String ClientSecret;
 
-    // refresh token, 登录时返回的
-    @NameInMap("refresh_token")
+    // 认证后回调参数中的code
+    @NameInMap("Code")
+    public String Code;
+
+    // OAuth2.0 device flow换取token参数
+    @NameInMap("DeviceCode")
+    public String DeviceCode;
+
+    // 通过code获取accessToken或者通过refresh_token获取accessToken
+    @NameInMap("GrantType")
     @Validation(required = true)
-    public String refreshToken;
+    public String GrantType;
+
+    // 回调地址, 此处填写创建App时填写的回调地址，OAuth方式登录时需要传入
+    @NameInMap("RedirectUri")
+    public String RedirectUri;
+
+    // 刷新accessToken使用的refreshToken
+    @NameInMap("RefreshToken")
+    public String RefreshToken;
 
     public static TokenRequest build(java.util.Map<String, ?> map) throws Exception {
         TokenRequest self = new TokenRequest();
         return TeaModel.build(map, self);
     }
 
-    public TokenRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public TokenRequest setAssertion(String Assertion) {
+        this.Assertion = Assertion;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public String getAssertion() {
+        return this.Assertion;
     }
 
-    public TokenRequest setAdditionData(java.util.Map<String, ?> additionData) {
-        this.additionData = additionData;
+    public TokenRequest setClientID(String ClientID) {
+        this.ClientID = ClientID;
         return this;
     }
-    public java.util.Map<String, ?> getAdditionData() {
-        return this.additionData;
+    public String getClientID() {
+        return this.ClientID;
     }
 
-    public TokenRequest setAppId(String appId) {
-        this.appId = appId;
+    public TokenRequest setClientSecret(String ClientSecret) {
+        this.ClientSecret = ClientSecret;
         return this;
     }
-    public String getAppId() {
-        return this.appId;
+    public String getClientSecret() {
+        return this.ClientSecret;
     }
 
-    public TokenRequest setGrantType(String grantType) {
-        this.grantType = grantType;
+    public TokenRequest setCode(String Code) {
+        this.Code = Code;
+        return this;
+    }
+    public String getCode() {
+        return this.Code;
+    }
+
+    public TokenRequest setDeviceCode(String DeviceCode) {
+        this.DeviceCode = DeviceCode;
+        return this;
+    }
+    public String getDeviceCode() {
+        return this.DeviceCode;
+    }
+
+    public TokenRequest setGrantType(String GrantType) {
+        this.GrantType = GrantType;
         return this;
     }
     public String getGrantType() {
-        return this.grantType;
+        return this.GrantType;
     }
 
-    public TokenRequest setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
+    public TokenRequest setRedirectUri(String RedirectUri) {
+        this.RedirectUri = RedirectUri;
+        return this;
+    }
+    public String getRedirectUri() {
+        return this.RedirectUri;
+    }
+
+    public TokenRequest setRefreshToken(String RefreshToken) {
+        this.RefreshToken = RefreshToken;
         return this;
     }
     public String getRefreshToken() {
-        return this.refreshToken;
+        return this.RefreshToken;
     }
 
 }

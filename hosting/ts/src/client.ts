@@ -660,6 +660,40 @@ export class AccountLinkRequest extends $tea.Model {
 /**
  * 
  */
+export class AccountTokenRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  appId: string;
+  grantType: string;
+  refreshToken: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      appId: 'app_id',
+      grantType: 'grant_type',
+      refreshToken: 'refresh_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      appId: 'string',
+      grantType: 'string',
+      refreshToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class AddStoreRequest extends $tea.Model {
   basePath?: string;
   bucket?: string;
@@ -1116,58 +1150,6 @@ export class BaseHostingFileResponse extends $tea.Model {
       updatedAt: 'string',
       uploadId: 'string',
       url: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class BaseMediaResponse extends $tea.Model {
-  addressLine?: string;
-  city?: string;
-  country?: string;
-  district?: string;
-  height?: number;
-  imageTags?: SystemTag[];
-  location?: string;
-  province?: string;
-  time?: string;
-  township?: string;
-  width?: number;
-  static names(): { [key: string]: string } {
-    return {
-      addressLine: 'address_line',
-      city: 'city',
-      country: 'country',
-      district: 'district',
-      height: 'height',
-      imageTags: 'image_tags',
-      location: 'location',
-      province: 'province',
-      time: 'time',
-      township: 'township',
-      width: 'width',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      addressLine: 'string',
-      city: 'string',
-      country: 'string',
-      district: 'string',
-      height: 'number',
-      imageTags: { 'type': 'array', 'itemType': SystemTag },
-      location: 'string',
-      province: 'string',
-      time: 'string',
-      township: 'string',
-      width: 'number',
     };
   }
 
@@ -5618,28 +5600,37 @@ export class SystemTag extends $tea.Model {
  * 
  */
 export class TokenRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  appId: string;
-  grantType: string;
-  refreshToken: string;
+  Assertion?: string;
+  ClientID: string;
+  ClientSecret: string;
+  Code?: string;
+  DeviceCode?: string;
+  GrantType: string;
+  RedirectUri?: string;
+  RefreshToken?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      appId: 'app_id',
-      grantType: 'grant_type',
-      refreshToken: 'refresh_token',
+      Assertion: 'Assertion',
+      ClientID: 'ClientID',
+      ClientSecret: 'ClientSecret',
+      Code: 'Code',
+      DeviceCode: 'DeviceCode',
+      GrantType: 'GrantType',
+      RedirectUri: 'RedirectUri',
+      RefreshToken: 'RefreshToken',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      appId: 'string',
-      grantType: 'string',
-      refreshToken: 'string',
+      Assertion: 'string',
+      ClientID: 'string',
+      ClientSecret: 'string',
+      Code: 'string',
+      DeviceCode: 'string',
+      GrantType: 'string',
+      RedirectUri: 'string',
+      RefreshToken: 'string',
     };
   }
 
@@ -6051,34 +6042,6 @@ export class UploadPartInfo extends $tea.Model {
       partNumber: 'number',
       partSize: 'number',
       uploadUrl: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class UrlInfo extends $tea.Model {
-  downloadUrl?: string;
-  thumbnail?: string;
-  url?: string;
-  static names(): { [key: string]: string } {
-    return {
-      downloadUrl: 'download_url',
-      thumbnail: 'thumbnail',
-      url: 'url',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      downloadUrl: 'string',
-      thumbnail: 'string',
-      url: 'string',
     };
   }
 
@@ -6798,6 +6761,58 @@ export class BaseDomainResponse extends $tea.Model {
       storeLevel: 'string',
       storeRegionList: { 'type': 'array', 'itemType': 'string' },
       updatedAt: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class BaseMediaResponse extends $tea.Model {
+  addressLine?: string;
+  city?: string;
+  country?: string;
+  district?: string;
+  height?: number;
+  imageTags?: SystemTag[];
+  location?: string;
+  province?: string;
+  time?: string;
+  township?: string;
+  width?: number;
+  static names(): { [key: string]: string } {
+    return {
+      addressLine: 'address_line',
+      city: 'city',
+      country: 'country',
+      district: 'district',
+      height: 'height',
+      imageTags: 'image_tags',
+      location: 'location',
+      province: 'province',
+      time: 'time',
+      township: 'township',
+      width: 'width',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      addressLine: 'string',
+      city: 'string',
+      country: 'string',
+      district: 'string',
+      height: 'number',
+      imageTags: { 'type': 'array', 'itemType': SystemTag },
+      location: 'string',
+      province: 'string',
+      time: 'string',
+      township: 'string',
+      width: 'number',
     };
   }
 
@@ -7661,50 +7676,6 @@ export class UpdateDomainResponse extends $tea.Model {
   }
 }
 
-export class GetAsyncTaskInfoModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetAsyncTaskResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetAsyncTaskResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class BatchOperationModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: BatchResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: BatchResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
 export class CreateDriveModel extends $tea.Model {
   headers?: { [key: string]: string };
   body: CreateDriveResponse;
@@ -7858,7 +7829,7 @@ export class UpdateDriveModel extends $tea.Model {
 
 export class CompleteFileModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: CompleteFileResponse;
+  body: HostingCompleteFileResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -7869,7 +7840,7 @@ export class CompleteFileModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CompleteFileResponse,
+      body: HostingCompleteFileResponse,
     };
   }
 
@@ -7880,7 +7851,7 @@ export class CompleteFileModel extends $tea.Model {
 
 export class CopyFileModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: CopyFileResponse;
+  body: HostingCopyFileResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -7891,7 +7862,7 @@ export class CopyFileModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CopyFileResponse,
+      body: HostingCopyFileResponse,
     };
   }
 
@@ -7902,7 +7873,7 @@ export class CopyFileModel extends $tea.Model {
 
 export class CreateFileModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: CreateFileResponse;
+  body: HostingCreateFileResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -7913,7 +7884,7 @@ export class CreateFileModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CreateFileResponse,
+      body: HostingCreateFileResponse,
     };
   }
 
@@ -7924,18 +7895,15 @@ export class CreateFileModel extends $tea.Model {
 
 export class DeleteFileModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: DeleteFileResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
-      body: 'body',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: DeleteFileResponse,
     };
   }
 
@@ -7946,7 +7914,7 @@ export class DeleteFileModel extends $tea.Model {
 
 export class GetFileModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: GetFileResponse;
+  body: HostingGetFileResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -7957,29 +7925,7 @@ export class GetFileModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetFileResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetFileByPathModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetFileByPathResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetFileByPathResponse,
+      body: HostingGetFileResponse,
     };
   }
 
@@ -7990,7 +7936,7 @@ export class GetFileByPathModel extends $tea.Model {
 
 export class GetDownloadUrlModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: GetDownloadUrlResponse;
+  body: HostingGetDownloadUrlResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -8001,7 +7947,7 @@ export class GetDownloadUrlModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetDownloadUrlResponse,
+      body: HostingGetDownloadUrlResponse,
     };
   }
 
@@ -8010,9 +7956,9 @@ export class GetDownloadUrlModel extends $tea.Model {
   }
 }
 
-export class GetLastCursorModel extends $tea.Model {
+export class GetSecureUrlModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: GetLastCursorResponse;
+  body: HostingGetSecureUrlResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -8023,73 +7969,7 @@ export class GetLastCursorModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetLastCursorResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetMediaPlayUrlModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetMediaPlayURLResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetMediaPlayURLResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetOfficeEditUrlModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetOfficeEditUrlResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetOfficeEditUrlResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetOfficePreviewUrlModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetOfficePreviewUrlResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetOfficePreviewUrlResponse,
+      body: HostingGetSecureUrlResponse,
     };
   }
 
@@ -8100,7 +7980,7 @@ export class GetOfficePreviewUrlModel extends $tea.Model {
 
 export class GetUploadUrlModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: GetUploadUrlResponse;
+  body: HostingGetUploadUrlResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -8111,51 +7991,7 @@ export class GetUploadUrlModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetUploadUrlResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetVideoPreviewSpriteUrlModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetVideoPreviewSpriteURLResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetVideoPreviewSpriteURLResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetVideoPreviewUrlModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetVideoPreviewURLResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetVideoPreviewURLResponse,
+      body: HostingGetUploadUrlResponse,
     };
   }
 
@@ -8166,7 +8002,7 @@ export class GetVideoPreviewUrlModel extends $tea.Model {
 
 export class ListFileModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: ListFileResponse;
+  body: HostingListFileResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -8177,73 +8013,7 @@ export class ListFileModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListFileResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListFileByAnonymousModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListByAnonymousResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListByAnonymousResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListFileByCustomIndexKeyModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListFileResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListFileResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListFileDeltaModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListFileDeltaResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListFileDeltaResponse,
+      body: HostingListFileResponse,
     };
   }
 
@@ -8254,7 +8024,7 @@ export class ListFileDeltaModel extends $tea.Model {
 
 export class ListUploadedPartsModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: ListUploadedPartResponse;
+  body: HostingListUploadedPartResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -8265,7 +8035,7 @@ export class ListUploadedPartsModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListUploadedPartResponse,
+      body: HostingListUploadedPartResponse,
     };
   }
 
@@ -8276,7 +8046,7 @@ export class ListUploadedPartsModel extends $tea.Model {
 
 export class MoveFileModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: MoveFileResponse;
+  body: HostingMoveFileResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -8287,7 +8057,7 @@ export class MoveFileModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: MoveFileResponse,
+      body: HostingMoveFileResponse,
     };
   }
 
@@ -8296,9 +8066,9 @@ export class MoveFileModel extends $tea.Model {
   }
 }
 
-export class TokenModel extends $tea.Model {
+export class VideoDefinitionModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: RefreshOfficeEditTokenResponse;
+  body: HostingVideoDefinitionResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -8309,7 +8079,7 @@ export class TokenModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: RefreshOfficeEditTokenResponse,
+      body: HostingVideoDefinitionResponse,
     };
   }
 
@@ -8318,9 +8088,9 @@ export class TokenModel extends $tea.Model {
   }
 }
 
-export class ScanFileMetaModel extends $tea.Model {
+export class VideoLicenseModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: ScanFileMetaResponse;
+  body: HostingVideoDRMLicenseResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -8331,7 +8101,7 @@ export class ScanFileMetaModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ScanFileMetaResponse,
+      body: HostingVideoDRMLicenseResponse,
     };
   }
 
@@ -8340,9 +8110,9 @@ export class ScanFileMetaModel extends $tea.Model {
   }
 }
 
-export class SearchFileModel extends $tea.Model {
+export class VideoM3u8Model extends $tea.Model {
   headers?: { [key: string]: string };
-  body: SearchFileResponse;
+  body: Buffer;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -8353,7 +8123,7 @@ export class SearchFileModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: SearchFileResponse,
+      body: 'Buffer',
     };
   }
 
@@ -8362,9 +8132,9 @@ export class SearchFileModel extends $tea.Model {
   }
 }
 
-export class UpdateFileModel extends $tea.Model {
+export class VideoTranscodeModel extends $tea.Model {
   headers?: { [key: string]: string };
-  body: UpdateFileMetaResponse;
+  body: HostingVideoTranscodeResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -8375,7 +8145,7 @@ export class UpdateFileModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: UpdateFileMetaResponse,
+      body: HostingVideoTranscodeResponse,
     };
   }
 
@@ -8491,28 +8261,9 @@ export class UpdateShareModel extends $tea.Model {
   }
 }
 
-export class CancelShareLinkModel extends $tea.Model {
+export class ListStorefileModel extends $tea.Model {
   headers?: { [key: string]: string };
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CreateShareLinkModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: CreateShareLinkResponse;
+  body: ListStoreFileResponse;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
@@ -8523,95 +8274,7 @@ export class CreateShareLinkModel extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CreateShareLinkResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetShareByAnonymousModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetShareLinkByAnonymousResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetShareLinkByAnonymousResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetShareIdModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetShareLinkIDResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetShareLinkIDResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetShareTokenModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetShareLinkTokenResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetShareLinkTokenResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListShareLinkModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListShareLinkResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListShareLinkResponse,
+      body: ListStoreFileResponse,
     };
   }
 
@@ -8686,6 +8349,59 @@ export class BaseCreateFileRequest extends $tea.Model {
       partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
       size: 'number',
       type: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class BaseFileProcessRequest extends $tea.Model {
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class BaseFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
     };
   }
 
@@ -8840,12 +8556,10 @@ export class BaseMoveFileRequest extends $tea.Model {
  * 批处理
  */
 export class BatchRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   requests: BatchSubRequest[];
   resource: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       requests: 'requests',
       resource: 'resource',
     };
@@ -8853,7 +8567,6 @@ export class BatchRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       requests: { 'type': 'array', 'itemType': BatchSubRequest },
       resource: 'string',
     };
@@ -8930,18 +8643,15 @@ export class CCPGetDirSizeInfoRequest extends $tea.Model {
  * cancel_share_link request
  */
 export class CancelShareLinkRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   shareId?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       shareId: 'share_id',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       shareId: 'string',
     };
   }
@@ -8955,7 +8665,6 @@ export class CancelShareLinkRequest extends $tea.Model {
  * 合并文件上传任务
  */
 export class CompleteFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   driveId?: string;
   fileId: string;
@@ -8964,7 +8673,6 @@ export class CompleteFileRequest extends $tea.Model {
   uploadId?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       additionData: 'addition_data',
       driveId: 'drive_id',
       fileId: 'file_id',
@@ -8976,7 +8684,6 @@ export class CompleteFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
       fileId: 'string',
@@ -8995,7 +8702,6 @@ export class CompleteFileRequest extends $tea.Model {
  * 文件拷贝
  */
 export class CopyFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   autoRename?: boolean;
   driveId?: string;
   fileId: string;
@@ -9007,7 +8713,6 @@ export class CopyFileRequest extends $tea.Model {
   toShareId?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       autoRename: 'auto_rename',
       driveId: 'drive_id',
       fileId: 'file_id',
@@ -9022,7 +8727,6 @@ export class CopyFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       autoRename: 'boolean',
       driveId: 'string',
       fileId: 'string',
@@ -9099,7 +8803,6 @@ export class CreateDriveRequest extends $tea.Model {
  * 创建文件
  */
 export class CreateFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   autoRename?: boolean;
   checkNameMode?: string;
@@ -9131,7 +8834,6 @@ export class CreateFileRequest extends $tea.Model {
   videoMediaMetadata?: VideoMediaMetadata;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       additionData: 'addition_data',
       autoRename: 'auto_rename',
       checkNameMode: 'check_name_mode',
@@ -9166,7 +8868,6 @@ export class CreateFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       autoRename: 'boolean',
       checkNameMode: 'string',
@@ -9208,7 +8909,6 @@ export class CreateFileRequest extends $tea.Model {
  * create_share_link request
  */
 export class CreateShareLinkRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   description?: string;
   driveId: string;
   expiration: string;
@@ -9219,7 +8919,6 @@ export class CreateShareLinkRequest extends $tea.Model {
   sharePwd?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       description: 'description',
       driveId: 'drive_id',
       expiration: 'expiration',
@@ -9233,7 +8932,6 @@ export class CreateShareLinkRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       description: 'string',
       driveId: 'string',
       expiration: 'string',
@@ -9334,7 +9032,6 @@ export class DeleteDriveRequest extends $tea.Model {
  * 删除文件请求
  */
 export class DeleteFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   driveId?: string;
   fileId?: string;
   fileIdPath?: string;
@@ -9342,7 +9039,6 @@ export class DeleteFileRequest extends $tea.Model {
   shareId?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       driveId: 'drive_id',
       fileId: 'file_id',
       fileIdPath: 'file_id_path',
@@ -9353,7 +9049,6 @@ export class DeleteFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       fileId: 'string',
       fileIdPath: 'string',
@@ -9470,18 +9165,15 @@ export class DownloadRequest extends $tea.Model {
  * 获取异步人去信息
  */
 export class GetAsyncTaskRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   asyncTaskId?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       asyncTaskId: 'async_task_id',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       asyncTaskId: 'string',
     };
   }
@@ -9520,7 +9212,6 @@ export class GetDefaultDriveRequest extends $tea.Model {
  * 获取文件下载地址的请求body
  */
 export class GetDownloadUrlRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   driveId: string;
   expireSec?: number;
@@ -9533,7 +9224,6 @@ export class GetDownloadUrlRequest extends $tea.Model {
   signToken?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       additionData: 'addition_data',
       driveId: 'drive_id',
       expireSec: 'expire_sec',
@@ -9549,7 +9239,6 @@ export class GetDownloadUrlRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
       expireSec: 'number',
@@ -9597,7 +9286,6 @@ export class GetDriveRequest extends $tea.Model {
  * 根据路径获取 File 接口 body
  */
 export class GetFileByPathRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   driveId: string;
   filePath?: string;
@@ -9610,7 +9298,6 @@ export class GetFileByPathRequest extends $tea.Model {
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       additionData: 'addition_data',
       driveId: 'drive_id',
       filePath: 'file_path',
@@ -9626,7 +9313,6 @@ export class GetFileByPathRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
       filePath: 'string',
@@ -9649,7 +9335,6 @@ export class GetFileByPathRequest extends $tea.Model {
  * 获取文件元数据
  */
 export class GetFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   driveId: string;
   fields?: string;
@@ -9666,7 +9351,6 @@ export class GetFileRequest extends $tea.Model {
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       additionData: 'addition_data',
       driveId: 'drive_id',
       fields: 'fields',
@@ -9686,7 +9370,6 @@ export class GetFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
       fields: 'string',
@@ -9713,18 +9396,15 @@ export class GetFileRequest extends $tea.Model {
  * 获取最新游标
  */
 export class GetLastCursorRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   driveId: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       driveId: 'drive_id',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
     };
   }
@@ -9738,12 +9418,10 @@ export class GetLastCursorRequest extends $tea.Model {
  * get_media_play_url request
  */
 export class GetMediaPlayURLRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   driveId: string;
   fileId: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       driveId: 'drive_id',
       fileId: 'file_id',
     };
@@ -9751,7 +9429,6 @@ export class GetMediaPlayURLRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       fileId: 'string',
     };
@@ -9766,13 +9443,11 @@ export class GetMediaPlayURLRequest extends $tea.Model {
  * 获取office文档在线编辑地址
  */
 export class GetOfficeEditUrlRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   driveId: string;
   fileId: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       additionData: 'addition_data',
       driveId: 'drive_id',
       fileId: 'file_id',
@@ -9781,7 +9456,6 @@ export class GetOfficeEditUrlRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
       fileId: 'string',
@@ -9797,14 +9471,12 @@ export class GetOfficeEditUrlRequest extends $tea.Model {
  * 获取office文档预览地址
  */
 export class GetOfficePreviewUrlRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   driveId: string;
   fileId: string;
   shareId?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       additionData: 'addition_data',
       driveId: 'drive_id',
       fileId: 'file_id',
@@ -9814,7 +9486,6 @@ export class GetOfficePreviewUrlRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
       fileId: 'string',
@@ -9831,18 +9502,15 @@ export class GetOfficePreviewUrlRequest extends $tea.Model {
  * get_share_link_by_anonymous request
  */
 export class GetShareLinkByAnonymousRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   shareId?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       shareId: 'share_id',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       shareId: 'string',
     };
   }
@@ -9856,18 +9524,15 @@ export class GetShareLinkByAnonymousRequest extends $tea.Model {
  * get_share_id request
  */
 export class GetShareLinkIDRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   shareMsg?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       shareMsg: 'share_msg',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       shareMsg: 'string',
     };
   }
@@ -9881,12 +9546,10 @@ export class GetShareLinkIDRequest extends $tea.Model {
  * get_share_token request
  */
 export class GetShareLinkTokenRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   shareId?: string;
   sharePwd?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       shareId: 'share_id',
       sharePwd: 'share_pwd',
     };
@@ -9894,7 +9557,6 @@ export class GetShareLinkTokenRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       shareId: 'string',
       sharePwd: 'string',
     };
@@ -9934,7 +9596,6 @@ export class GetShareRequest extends $tea.Model {
  * 获取文件上传URL
  */
 export class GetUploadUrlRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   contentMd5?: string;
   driveId?: string;
   fileId: string;
@@ -9943,7 +9604,6 @@ export class GetUploadUrlRequest extends $tea.Model {
   uploadId: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       contentMd5: 'content_md5',
       driveId: 'drive_id',
       fileId: 'file_id',
@@ -9955,7 +9615,6 @@ export class GetUploadUrlRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       contentMd5: 'string',
       driveId: 'string',
       fileId: 'string',
@@ -9974,14 +9633,12 @@ export class GetUploadUrlRequest extends $tea.Model {
  * 获取视频雪碧图地址的请求body
  */
 export class GetVideoPreviewSpriteURLRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   driveId: string;
   expireSec?: number;
   fileId: string;
   shareId?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       driveId: 'drive_id',
       expireSec: 'expire_sec',
       fileId: 'file_id',
@@ -9991,7 +9648,6 @@ export class GetVideoPreviewSpriteURLRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       expireSec: 'number',
       fileId: 'string',
@@ -10008,7 +9664,6 @@ export class GetVideoPreviewSpriteURLRequest extends $tea.Model {
  * 获取视频文件播放地址的请求body
  */
 export class GetVideoPreviewURLRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   audioTemplateId?: string;
   driveId: string;
@@ -10018,7 +9673,6 @@ export class GetVideoPreviewURLRequest extends $tea.Model {
   templateId?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       additionData: 'addition_data',
       audioTemplateId: 'audio_template_id',
       driveId: 'drive_id',
@@ -10031,7 +9685,6 @@ export class GetVideoPreviewURLRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       audioTemplateId: 'string',
       driveId: 'string',
@@ -10051,6 +9704,7 @@ export class GetVideoPreviewURLRequest extends $tea.Model {
  * complete file request
  */
 export class HostingCompleteFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   driveId?: string;
   filePath?: string;
@@ -10060,6 +9714,7 @@ export class HostingCompleteFileRequest extends $tea.Model {
   uploadId?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       additionData: 'addition_data',
       driveId: 'drive_id',
       filePath: 'file_path',
@@ -10072,6 +9727,7 @@ export class HostingCompleteFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
       filePath: 'string',
@@ -10091,6 +9747,7 @@ export class HostingCompleteFileRequest extends $tea.Model {
  * copy file request
  */
 export class HostingCopyFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   driveId?: string;
   filePath: string;
   newName?: string;
@@ -10101,6 +9758,7 @@ export class HostingCopyFileRequest extends $tea.Model {
   toShareId?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       driveId: 'drive_id',
       filePath: 'file_path',
       newName: 'new_name',
@@ -10114,6 +9772,7 @@ export class HostingCopyFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       filePath: 'string',
       newName: 'string',
@@ -10134,6 +9793,7 @@ export class HostingCopyFileRequest extends $tea.Model {
  * create file request
  */
 export class HostingCreateFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   contentMd5?: string;
   contentType?: string;
@@ -10147,6 +9807,7 @@ export class HostingCreateFileRequest extends $tea.Model {
   type: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       additionData: 'addition_data',
       contentMd5: 'content_md5',
       contentType: 'content_type',
@@ -10163,6 +9824,7 @@ export class HostingCreateFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       contentMd5: 'string',
       contentType: 'string',
@@ -10186,12 +9848,14 @@ export class HostingCreateFileRequest extends $tea.Model {
  * 删除文件请求
  */
 export class HostingDeleteFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   driveId?: string;
   filePath: string;
   permanently?: boolean;
   shareId?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       driveId: 'drive_id',
       filePath: 'file_path',
       permanently: 'permanently',
@@ -10201,6 +9865,7 @@ export class HostingDeleteFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       filePath: 'string',
       permanently: 'boolean',
@@ -10217,6 +9882,7 @@ export class HostingDeleteFileRequest extends $tea.Model {
  * 获取文件下载地址的请求body
  */
 export class HostingGetDownloadUrlRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   driveId?: string;
   expireSec?: number;
   fileName?: string;
@@ -10226,6 +9892,7 @@ export class HostingGetDownloadUrlRequest extends $tea.Model {
   signToken?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       driveId: 'drive_id',
       expireSec: 'expire_sec',
       fileName: 'file_name',
@@ -10238,6 +9905,7 @@ export class HostingGetDownloadUrlRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       expireSec: 'number',
       fileName: 'string',
@@ -10257,6 +9925,7 @@ export class HostingGetDownloadUrlRequest extends $tea.Model {
  * 获取文件元数据
  */
 export class HostingGetFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   driveId?: string;
   filePath: string;
   imageThumbnailProcess?: string;
@@ -10268,6 +9937,7 @@ export class HostingGetFileRequest extends $tea.Model {
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       driveId: 'drive_id',
       filePath: 'file_path',
       imageThumbnailProcess: 'image_thumbnail_process',
@@ -10282,6 +9952,7 @@ export class HostingGetFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       filePath: 'string',
       imageThumbnailProcess: 'string',
@@ -10303,6 +9974,7 @@ export class HostingGetFileRequest extends $tea.Model {
  * 获取文件安全地址的请求body
  */
 export class HostingGetSecureUrlRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   driveId?: string;
   expireSec?: number;
   filePath: string;
@@ -10310,6 +9982,7 @@ export class HostingGetSecureUrlRequest extends $tea.Model {
   shareId?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       driveId: 'drive_id',
       expireSec: 'expire_sec',
       filePath: 'file_path',
@@ -10320,6 +9993,7 @@ export class HostingGetSecureUrlRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       expireSec: 'number',
       filePath: 'string',
@@ -10337,6 +10011,7 @@ export class HostingGetSecureUrlRequest extends $tea.Model {
  * 获取文件上传URL
  */
 export class HostingGetUploadUrlRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   contentMd5?: string;
   driveId?: string;
   filePath: string;
@@ -10345,6 +10020,7 @@ export class HostingGetUploadUrlRequest extends $tea.Model {
   uploadId: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       contentMd5: 'content_md5',
       driveId: 'drive_id',
       filePath: 'file_path',
@@ -10356,6 +10032,7 @@ export class HostingGetUploadUrlRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       contentMd5: 'string',
       driveId: 'string',
       filePath: 'string',
@@ -10374,6 +10051,7 @@ export class HostingGetUploadUrlRequest extends $tea.Model {
  * list file request
  */
 export class HostingListFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   driveId?: string;
   imageCroppingAspectRatios?: string[];
@@ -10389,6 +10067,7 @@ export class HostingListFileRequest extends $tea.Model {
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       additionData: 'addition_data',
       driveId: 'drive_id',
       imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
@@ -10407,6 +10086,7 @@ export class HostingListFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
       imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
@@ -10432,6 +10112,7 @@ export class HostingListFileRequest extends $tea.Model {
  * 列举uploadID对应的已上传分片
  */
 export class HostingListUploadedPartRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   driveId?: string;
   filePath: string;
   limit?: number;
@@ -10440,6 +10121,7 @@ export class HostingListUploadedPartRequest extends $tea.Model {
   uploadId?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       driveId: 'drive_id',
       filePath: 'file_path',
       limit: 'limit',
@@ -10451,6 +10133,7 @@ export class HostingListUploadedPartRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       filePath: 'string',
       limit: 'number',
@@ -10469,6 +10152,7 @@ export class HostingListUploadedPartRequest extends $tea.Model {
  * 文件移动请求
  */
 export class HostingMoveFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   driveId?: string;
   filePath?: string;
   newName?: string;
@@ -10477,6 +10161,7 @@ export class HostingMoveFileRequest extends $tea.Model {
   toParentFilePath?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       driveId: 'drive_id',
       filePath: 'file_path',
       newName: 'new_name',
@@ -10488,6 +10173,7 @@ export class HostingMoveFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       filePath: 'string',
       newName: 'string',
@@ -10506,10 +10192,12 @@ export class HostingMoveFileRequest extends $tea.Model {
  * 获取视频DRM License
  */
 export class HostingVideoDRMLicenseRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   drmType: string;
   licenseRequest: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       drmType: 'drmType',
       licenseRequest: 'licenseRequest',
     };
@@ -10517,6 +10205,7 @@ export class HostingVideoDRMLicenseRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       drmType: 'string',
       licenseRequest: 'string',
     };
@@ -10531,12 +10220,14 @@ export class HostingVideoDRMLicenseRequest extends $tea.Model {
  * 获取视频分辨率列表
  */
 export class HostingVideoDefinitionRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   driveId?: string;
   filePath: string;
   protectionScheme?: string;
   shareId?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       driveId: 'drive_id',
       filePath: 'file_path',
       protectionScheme: 'protection_scheme',
@@ -10546,6 +10237,7 @@ export class HostingVideoDefinitionRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       filePath: 'string',
       protectionScheme: 'string',
@@ -10562,6 +10254,7 @@ export class HostingVideoDefinitionRequest extends $tea.Model {
  * 获取视频的m3u8文件
  */
 export class HostingVideoM3U8Request extends $tea.Model {
+  headers?: { [key: string]: string };
   definition?: string;
   driveId?: string;
   expireSec?: number;
@@ -10571,6 +10264,7 @@ export class HostingVideoM3U8Request extends $tea.Model {
   signToken: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       definition: 'definition',
       driveId: 'drive_id',
       expireSec: 'expire_sec',
@@ -10583,6 +10277,7 @@ export class HostingVideoM3U8Request extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       definition: 'string',
       driveId: 'string',
       expireSec: 'number',
@@ -10602,6 +10297,7 @@ export class HostingVideoM3U8Request extends $tea.Model {
  * 启动视频转码请求
  */
 export class HostingVideoTranscodeRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   driveId?: string;
   filePath: string;
   hlsTime?: number;
@@ -10611,6 +10307,7 @@ export class HostingVideoTranscodeRequest extends $tea.Model {
   transcode?: boolean;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       driveId: 'drive_id',
       filePath: 'file_path',
       hlsTime: 'hls_time',
@@ -10623,6 +10320,7 @@ export class HostingVideoTranscodeRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       filePath: 'string',
       hlsTime: 'number',
@@ -10667,7 +10365,6 @@ export class ImageMediaMetadata extends $tea.Model {
  * list_file_by_anonymous request
  */
 export class ListByAnonymousRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   imageThumbnailProcess?: string;
   imageUrlProcess?: string;
   limit?: number;
@@ -10679,7 +10376,6 @@ export class ListByAnonymousRequest extends $tea.Model {
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       imageThumbnailProcess: 'image_thumbnail_process',
       imageUrlProcess: 'image_url_process',
       limit: 'limit',
@@ -10694,7 +10390,6 @@ export class ListByAnonymousRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       imageThumbnailProcess: 'string',
       imageUrlProcess: 'string',
       limit: 'number',
@@ -10747,7 +10442,6 @@ export class ListDriveRequest extends $tea.Model {
  * 列举文件
  */
 export class ListFileByCustomIndexKeyRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   Starred?: boolean;
   additionData?: {[key: string]: any};
   category?: string;
@@ -10770,7 +10464,6 @@ export class ListFileByCustomIndexKeyRequest extends $tea.Model {
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       Starred: 'Starred',
       additionData: 'addition_data',
       category: 'category',
@@ -10796,7 +10489,6 @@ export class ListFileByCustomIndexKeyRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       Starred: 'boolean',
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       category: 'string',
@@ -10829,7 +10521,6 @@ export class ListFileByCustomIndexKeyRequest extends $tea.Model {
  * 获取增量文件操作记录
  */
 export class ListFileDeltaRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   cursor?: string;
   driveId: string;
   imageCroppingAspectRatios?: string[];
@@ -10839,7 +10530,6 @@ export class ListFileDeltaRequest extends $tea.Model {
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       cursor: 'cursor',
       driveId: 'drive_id',
       imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
@@ -10852,7 +10542,6 @@ export class ListFileDeltaRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       cursor: 'string',
       driveId: 'string',
       imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
@@ -10872,7 +10561,6 @@ export class ListFileDeltaRequest extends $tea.Model {
  * 列举文件
  */
 export class ListFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   all?: boolean;
   category?: string;
@@ -10898,7 +10586,6 @@ export class ListFileRequest extends $tea.Model {
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       additionData: 'addition_data',
       all: 'all',
       category: 'category',
@@ -10927,7 +10614,6 @@ export class ListFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       all: 'boolean',
       category: 'string',
@@ -10991,13 +10677,11 @@ export class ListMyDriveRequest extends $tea.Model {
  * list_share_link request
  */
 export class ListShareLinkRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   creator?: string;
   limit?: number;
   marker?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       creator: 'creator',
       limit: 'limit',
       marker: 'marker',
@@ -11006,7 +10690,6 @@ export class ListShareLinkRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       creator: 'string',
       limit: 'number',
       marker: 'string',
@@ -11065,6 +10748,7 @@ export class ListShareRequest extends $tea.Model {
  * list store file
  */
 export class ListStoreFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
   limit?: number;
   marker?: string;
   parentFilePath?: string;
@@ -11072,6 +10756,7 @@ export class ListStoreFileRequest extends $tea.Model {
   type?: string;
   static names(): { [key: string]: string } {
     return {
+      headers: 'headers',
       limit: 'limit',
       marker: 'marker',
       parentFilePath: 'parent_file_path',
@@ -11082,6 +10767,7 @@ export class ListStoreFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       limit: 'number',
       marker: 'string',
       parentFilePath: 'string',
@@ -11121,7 +10807,6 @@ export class ListStoreRequest extends $tea.Model {
  * 列举uploadID对应的已上传分片
  */
 export class ListUploadedPartRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   driveId: string;
   fileId: string;
   fileIdPath?: string;
@@ -11131,7 +10816,6 @@ export class ListUploadedPartRequest extends $tea.Model {
   uploadId?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       driveId: 'drive_id',
       fileId: 'file_id',
       fileIdPath: 'file_id_path',
@@ -11144,7 +10828,6 @@ export class ListUploadedPartRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
       fileId: 'string',
       fileIdPath: 'string',
@@ -11164,7 +10847,6 @@ export class ListUploadedPartRequest extends $tea.Model {
  * 文件移动请求
  */
 export class MoveFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   autoRename?: boolean;
   driveId: string;
   fileId: string;
@@ -11176,7 +10858,6 @@ export class MoveFileRequest extends $tea.Model {
   toShareId?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       autoRename: 'auto_rename',
       driveId: 'drive_id',
       fileId: 'file_id',
@@ -11191,7 +10872,6 @@ export class MoveFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       autoRename: 'boolean',
       driveId: 'string',
       fileId: 'string',
@@ -11241,14 +10921,12 @@ export class PlayMediaRequest extends $tea.Model {
  * 刷新office文档在线编辑凭证
  */
 export class RefreshOfficeEditTokenRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   location?: string;
   officeAccessToken: string;
   officeRefreshToken: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       additionData: 'addition_data',
       location: 'location',
       officeAccessToken: 'office_access_token',
@@ -11258,7 +10936,6 @@ export class RefreshOfficeEditTokenRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       location: 'string',
       officeAccessToken: 'string',
@@ -11275,7 +10952,6 @@ export class RefreshOfficeEditTokenRequest extends $tea.Model {
  * 全量获取file元信息的请求body
  */
 export class ScanFileMetaRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   category?: string;
   driveId: string;
@@ -11287,7 +10963,6 @@ export class ScanFileMetaRequest extends $tea.Model {
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       additionData: 'addition_data',
       category: 'category',
       driveId: 'drive_id',
@@ -11302,7 +10977,6 @@ export class ScanFileMetaRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       category: 'string',
       driveId: 'string',
@@ -11324,7 +10998,6 @@ export class ScanFileMetaRequest extends $tea.Model {
  * 搜索文件元数据
  */
 export class SearchFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   additionData?: {[key: string]: any};
   driveId: string;
   imageCroppingAspectRatios?: string[];
@@ -11342,7 +11015,6 @@ export class SearchFileRequest extends $tea.Model {
   videoThumbnailProcess?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       additionData: 'addition_data',
       driveId: 'drive_id',
       imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
@@ -11363,7 +11035,6 @@ export class SearchFileRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       driveId: 'string',
       imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
@@ -11478,7 +11149,6 @@ export class UpdateDriveRequest extends $tea.Model {
  * 更新文件元数据
  */
 export class UpdateFileMetaRequest extends $tea.Model {
-  headers?: { [key: string]: string };
   checkNameMode?: string;
   customIndexKey?: string;
   description?: string;
@@ -11497,7 +11167,6 @@ export class UpdateFileMetaRequest extends $tea.Model {
   userMeta?: string;
   static names(): { [key: string]: string } {
     return {
-      headers: 'headers',
       checkNameMode: 'check_name_mode',
       customIndexKey: 'custom_index_key',
       description: 'description',
@@ -11519,7 +11188,6 @@ export class UpdateFileMetaRequest extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       checkNameMode: 'string',
       customIndexKey: 'string',
       description: 'string',
@@ -14262,7 +13930,7 @@ export default class Client {
    * @error NotFound The resource {resource_name} cannot be found. Please check.
    * @error InternalError The request has been failed due to some unknown error.
    */
-  async accountTokenEx(request: TokenRequest, runtime: RuntimeOptions): Promise<AccountTokenModel> {
+  async accountTokenEx(request: AccountTokenRequest, runtime: RuntimeOptions): Promise<AccountTokenModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -14586,255 +14254,6 @@ export default class Client {
             body: respMap,
             headers: response_.headers,
           }, new GetUserAccessTokenModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
-   * 通过此接口获取异步任务的信息，以确定任务是否执行成功。
-   * @tags async_task
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getAsyncTaskInfoEx(request: GetAsyncTaskRequest, runtime: RuntimeOptions): Promise<GetAsyncTaskInfoModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/async_task/get`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<GetAsyncTaskInfoModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new GetAsyncTaskInfoModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
-   * 支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
-   * @tags batch
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async batchOperationEx(request: BatchRequest, runtime: RuntimeOptions): Promise<BatchOperationModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/batch`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<BatchOperationModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new BatchOperationModel({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -15734,7 +15153,7 @@ export default class Client {
   }
 
   /**
-   * 完成文件上传。
+   * 完成文件上传
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -15743,7 +15162,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async completeFileEx(request: CompleteFileRequest, runtime: RuntimeOptions): Promise<CompleteFileModel> {
+  async completeFileEx(request: HostingCompleteFileRequest, runtime: RuntimeOptions): Promise<CompleteFileModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -15787,7 +15206,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/complete`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/complete`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -15858,7 +15277,7 @@ export default class Client {
   }
 
   /**
-   * 指定源文件或文件夹，拷贝到指定的文件夹。
+   * 指定源文件或文件夹路径，拷贝到指定的文件夹。
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -15867,7 +15286,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async copyFileEx(request: CopyFileRequest, runtime: RuntimeOptions): Promise<CopyFileModel> {
+  async copyFileEx(request: HostingCopyFileRequest, runtime: RuntimeOptions): Promise<CopyFileModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -15911,7 +15330,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/copy`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/copy`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -15941,15 +15360,6 @@ export default class Client {
         let respMap : {[key: string]: any} = null;
         let obj : any = null;
         if (Util.equalNumber(response_.statusCode, 201)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<CopyFileModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new CopyFileModel({}));
-        }
-
-        if (Util.equalNumber(response_.statusCode, 202)) {
           obj = await Util.readAsJSON(response_.body);
           respMap = Util.assertAsMap(obj);
           return $tea.cast<CopyFileModel>({
@@ -15991,8 +15401,7 @@ export default class Client {
   }
 
   /**
-   * 在指定文件夹下创建文件或者文件夹，
-   * 根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+   * 创建文件或者文件夹。
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16002,7 +15411,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async createFileEx(request: CreateFileRequest, runtime: RuntimeOptions): Promise<CreateFileModel> {
+  async createFileEx(request: HostingCreateFileRequest, runtime: RuntimeOptions): Promise<CreateFileModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -16046,7 +15455,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/create`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/create`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -16117,7 +15526,7 @@ export default class Client {
   }
 
   /**
-   * 指定文件或文件夹ID，删除文件或者文件夹。
+   * 指定文件或文件夹路径，删除文件或文件夹
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16126,7 +15535,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async deleteFileEx(request: DeleteFileRequest, runtime: RuntimeOptions): Promise<DeleteFileModel> {
+  async deleteFileEx(request: HostingDeleteFileRequest, runtime: RuntimeOptions): Promise<DeleteFileModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -16170,7 +15579,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/delete`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/delete`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -16199,15 +15608,6 @@ export default class Client {
 
         let respMap : {[key: string]: any} = null;
         let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 202)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<DeleteFileModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new DeleteFileModel({}));
-        }
-
         if (Util.equalNumber(response_.statusCode, 204)) {
           return $tea.cast<DeleteFileModel>({
             headers: response_.headers,
@@ -16247,7 +15647,7 @@ export default class Client {
   }
 
   /**
-   * 获取指定文件或文件夹ID的信息。
+   * 获取指定文件或文件夹路径，获取文件或文件夹信息。
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16256,7 +15656,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async getFileEx(request: GetFileRequest, runtime: RuntimeOptions): Promise<GetFileModel> {
+  async getFileEx(request: HostingGetFileRequest, runtime: RuntimeOptions): Promise<GetFileModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -16300,7 +15700,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/get`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/get`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -16371,7 +15771,7 @@ export default class Client {
   }
 
   /**
-   * 根据路径获取指定文件或文件夹的信息。
+   * 指定文件路径，获取文件下载地址
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16380,7 +15780,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async getFileByPathEx(request: GetFileByPathRequest, runtime: RuntimeOptions): Promise<GetFileByPathModel> {
+  async getDownloadUrlEx(request: HostingGetDownloadUrlRequest, runtime: RuntimeOptions): Promise<GetDownloadUrlModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -16424,131 +15824,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/get_by_path`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<GetFileByPathModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new GetFileByPathModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 获取文件的下载地址，调用者可自己设置range头并发下载。
-   * @tags file
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getDownloadUrlEx(request: GetDownloadUrlRequest, runtime: RuntimeOptions): Promise<GetDownloadUrlModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/get_download_url`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/get_download_url`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -16619,254 +15895,7 @@ export default class Client {
   }
 
   /**
-   * 获取drive内，增量数据最新的游标
-   * @tags file_delta
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getLastCursorEx(request: GetLastCursorRequest, runtime: RuntimeOptions): Promise<GetLastCursorModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/get_last_cursor`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<GetLastCursorModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new GetLastCursorModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 获取media文件播放URL地址（当前仅支持m3u8）
-   * @tags file
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getMediaPlayUrlEx(request: GetMediaPlayURLRequest, runtime: RuntimeOptions): Promise<GetMediaPlayUrlModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/get_media_play_url`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<GetMediaPlayUrlModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new GetMediaPlayUrlModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 获取文档的在线编辑地址
+   * 指定文件路径，获取文件安全地址
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -16875,7 +15904,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async getOfficeEditUrlEx(request: GetOfficeEditUrlRequest, runtime: RuntimeOptions): Promise<GetOfficeEditUrlModel> {
+  async getSecureUrlEx(request: HostingGetSecureUrlRequest, runtime: RuntimeOptions): Promise<GetSecureUrlModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -16919,7 +15948,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/get_office_edit_url`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/get_secure_url`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -16951,134 +15980,10 @@ export default class Client {
         if (Util.equalNumber(response_.statusCode, 200)) {
           obj = await Util.readAsJSON(response_.body);
           respMap = Util.assertAsMap(obj);
-          return $tea.cast<GetOfficeEditUrlModel>({
+          return $tea.cast<GetSecureUrlModel>({
             body: respMap,
             headers: response_.headers,
-          }, new GetOfficeEditUrlModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 获取文档的预览地址（office文档）
-   * @tags file
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getOfficePreviewUrlEx(request: GetOfficePreviewUrlRequest, runtime: RuntimeOptions): Promise<GetOfficePreviewUrlModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/get_office_preview_url`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<GetOfficePreviewUrlModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new GetOfficePreviewUrlModel({}));
+          }, new GetSecureUrlModel({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -17123,7 +16028,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async getUploadUrlEx(request: GetUploadUrlRequest, runtime: RuntimeOptions): Promise<GetUploadUrlModel> {
+  async getUploadUrlEx(request: HostingGetUploadUrlRequest, runtime: RuntimeOptions): Promise<GetUploadUrlModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -17167,7 +16072,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/get_upload_url`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/get_upload_url`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -17238,7 +16143,7 @@ export default class Client {
   }
 
   /**
-   * 获取视频雪碧图地址
+   * 指定父文件夹路径，列举文件夹下的文件或者文件夹
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -17247,7 +16152,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async getVideoPreviewSpriteUrlEx(request: GetVideoPreviewSpriteURLRequest, runtime: RuntimeOptions): Promise<GetVideoPreviewSpriteUrlModel> {
+  async listFileEx(request: HostingListFileRequest, runtime: RuntimeOptions): Promise<ListFileModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -17291,255 +16196,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/get_video_preview_sprite_url`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<GetVideoPreviewSpriteUrlModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new GetVideoPreviewSpriteUrlModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 获取视频播放地址
-   * @tags file
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getVideoPreviewUrlEx(request: GetVideoPreviewURLRequest, runtime: RuntimeOptions): Promise<GetVideoPreviewUrlModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/get_video_preview_url`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<GetVideoPreviewUrlModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new GetVideoPreviewUrlModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 列举指定目录下的文件或文件夹。
-   * @tags file
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async listFileEx(request: ListFileRequest, runtime: RuntimeOptions): Promise<ListFileModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/list`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/list`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -17610,130 +16267,7 @@ export default class Client {
   }
 
   /**
-   * 查看分享中的文件列表
-   * @tags share_link
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error ShareLinkTokenInvalid ShareToken is invalid. {message}
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async listFileByAnonymousEx(request: ListByAnonymousRequest, runtime: RuntimeOptions): Promise<ListFileByAnonymousModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/list_by_anonymous`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<ListFileByAnonymousModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new ListFileByAnonymousModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 根据自定义同步索引键列举文件或文件夹。
+   * 列举UploadID对应的已上传分片。
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -17742,7 +16276,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async listFileByCustomIndexKeyEx(request: ListFileByCustomIndexKeyRequest, runtime: RuntimeOptions): Promise<ListFileByCustomIndexKeyModel> {
+  async listUploadedPartsEx(request: HostingListUploadedPartRequest, runtime: RuntimeOptions): Promise<ListUploadedPartsModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -17786,255 +16320,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/list_by_custom_index_key`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<ListFileByCustomIndexKeyModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new ListFileByCustomIndexKeyModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 获取drive内，增量数据列表
-   * @tags file_delta
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async listFileDeltaEx(request: ListFileDeltaRequest, runtime: RuntimeOptions): Promise<ListFileDeltaModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/list_delta`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<ListFileDeltaModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new ListFileDeltaModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 列举upload_id对应的已上传分片。
-   * @tags file
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async listUploadedPartsEx(request: ListUploadedPartRequest, runtime: RuntimeOptions): Promise<ListUploadedPartsModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/list_uploaded_parts`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/list_uploaded_parts`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -18105,7 +16391,7 @@ export default class Client {
   }
 
   /**
-   * 指定源文件或文件夹，移动到指定的文件夹。
+   * 指定源文件或文件夹路径，移动到指定的文件夹。
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -18114,7 +16400,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async moveFileEx(request: MoveFileRequest, runtime: RuntimeOptions): Promise<MoveFileModel> {
+  async moveFileEx(request: HostingMoveFileRequest, runtime: RuntimeOptions): Promise<MoveFileModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -18158,7 +16444,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/move`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/move`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -18229,8 +16515,8 @@ export default class Client {
   }
 
   /**
-   * 刷新在线编辑Token
-   * @tags file, refresh, office, edit
+   * 获取视频支持的分辨率
+   * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
    * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -18238,7 +16524,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async tokenEx(request: RefreshOfficeEditTokenRequest, runtime: RuntimeOptions): Promise<TokenModel> {
+  async videoDefinitionEx(request: HostingVideoDefinitionRequest, runtime: RuntimeOptions): Promise<VideoDefinitionModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -18282,7 +16568,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/refresh_office_edit_token`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/video_definition`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -18314,10 +16600,10 @@ export default class Client {
         if (Util.equalNumber(response_.statusCode, 200)) {
           obj = await Util.readAsJSON(response_.body);
           respMap = Util.assertAsMap(obj);
-          return $tea.cast<TokenModel>({
+          return $tea.cast<VideoDefinitionModel>({
             body: respMap,
             headers: response_.headers,
-          }, new TokenModel({}));
+          }, new VideoDefinitionModel({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -18353,16 +16639,15 @@ export default class Client {
   }
 
   /**
-   * 在指定drive下全量获取文件元信息。
+   * 获取视频的DRM License
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
    * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async scanFileMetaEx(request: ScanFileMetaRequest, runtime: RuntimeOptions): Promise<ScanFileMetaModel> {
+  async videoLicenseEx(request: HostingVideoDRMLicenseRequest, runtime: RuntimeOptions): Promise<VideoLicenseModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -18406,7 +16691,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/scan`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/video_license`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -18438,10 +16723,10 @@ export default class Client {
         if (Util.equalNumber(response_.statusCode, 200)) {
           obj = await Util.readAsJSON(response_.body);
           respMap = Util.assertAsMap(obj);
-          return $tea.cast<ScanFileMetaModel>({
+          return $tea.cast<VideoLicenseModel>({
             body: respMap,
             headers: response_.headers,
-          }, new ScanFileMetaModel({}));
+          }, new VideoLicenseModel({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -18477,7 +16762,7 @@ export default class Client {
   }
 
   /**
-   * 根据筛选条件，在指定drive下搜索文件。
+   * 获取视频转码后的m3u8文件
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -18486,7 +16771,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async searchFileEx(request: SearchFileRequest, runtime: RuntimeOptions): Promise<SearchFileModel> {
+  async videoM3u8Ex(request: HostingVideoM3U8Request, runtime: RuntimeOptions): Promise<VideoM3u8Model> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -18530,7 +16815,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/search`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/video_m3u8`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -18560,12 +16845,11 @@ export default class Client {
         let respMap : {[key: string]: any} = null;
         let obj : any = null;
         if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<SearchFileModel>({
-            body: respMap,
+          let byt = await Util.readAsBytes(response_.body);
+          return $tea.cast<VideoM3u8Model>({
+            body: byt,
             headers: response_.headers,
-          }, new SearchFileModel({}));
+          }, new VideoM3u8Model({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -18601,17 +16885,16 @@ export default class Client {
   }
 
   /**
-   * 对指定的文件或文件夹更新信息。
+   * 将mp4格式的视频文件，转为m3u8
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
    * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
    * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error AlreadyExist {resource} has already exists. {extra_msg}
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async updateFileEx(request: UpdateFileMetaRequest, runtime: RuntimeOptions): Promise<UpdateFileModel> {
+  async videoTranscodeEx(request: HostingVideoTranscodeRequest, runtime: RuntimeOptions): Promise<VideoTranscodeModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -18655,7 +16938,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/file/update`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/file/video_transcode`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -18687,10 +16970,16 @@ export default class Client {
         if (Util.equalNumber(response_.statusCode, 200)) {
           obj = await Util.readAsJSON(response_.body);
           respMap = Util.assertAsMap(obj);
-          return $tea.cast<UpdateFileModel>({
+          return $tea.cast<VideoTranscodeModel>({
             body: respMap,
             headers: response_.headers,
-          }, new UpdateFileModel({}));
+          }, new VideoTranscodeModel({}));
+        }
+
+        if (Util.equalNumber(response_.statusCode, 204)) {
+          return $tea.cast<VideoTranscodeModel>({
+            headers: response_.headers,
+          }, new VideoTranscodeModel({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -18779,7 +17068,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/share/create`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/share/create`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -18902,7 +17191,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/share/delete`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/share/delete`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -19023,7 +17312,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/share/get`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/share/get`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -19146,7 +17435,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/share/list`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/share/list`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -19270,7 +17559,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/share/update`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/share/update`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -19341,128 +17630,8 @@ export default class Client {
   }
 
   /**
-   * 取消指定分享
-   * @tags share_link
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async cancelShareLinkEx(request: CancelShareLinkRequest, runtime: RuntimeOptions): Promise<CancelShareLinkModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/share_link/cancel`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 204)) {
-          return $tea.cast<CancelShareLinkModel>({
-            headers: response_.headers,
-          }, new CancelShareLinkModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 创建分享。
-   * @tags share_link
+   * 列举指定store下的所有文件。
+   * @tags store
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
    * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -19470,7 +17639,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async createShareLinkEx(request: CreateShareLinkRequest, runtime: RuntimeOptions): Promise<CreateShareLinkModel> {
+  async listStorefileEx(request: ListStoreFileRequest, runtime: RuntimeOptions): Promise<ListStorefileModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -19514,129 +17683,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/share_link/create`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 201)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<CreateShareLinkModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new CreateShareLinkModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 查看分享的基本信息，比如分享者、到期时间等
-   * @tags share_link
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getShareByAnonymousEx(request: GetShareLinkByAnonymousRequest, runtime: RuntimeOptions): Promise<GetShareByAnonymousModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/share_link/get_by_anonymous`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/hosting/store_file/list`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -19668,378 +17715,10 @@ export default class Client {
         if (Util.equalNumber(response_.statusCode, 200)) {
           obj = await Util.readAsJSON(response_.body);
           respMap = Util.assertAsMap(obj);
-          return $tea.cast<GetShareByAnonymousModel>({
+          return $tea.cast<ListStorefileModel>({
             body: respMap,
             headers: response_.headers,
-          }, new GetShareByAnonymousModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 使用分享口令换取分享id
-   * @tags share_link
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getShareIdEx(request: GetShareLinkIDRequest, runtime: RuntimeOptions): Promise<GetShareIdModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/share_link/get_share_id`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<GetShareIdModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new GetShareIdModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 使用分享码+提取码换取分享token
-   * @tags share_link
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getShareTokenEx(request: GetShareLinkTokenRequest, runtime: RuntimeOptions): Promise<GetShareTokenModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/share_link/get_share_token`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<GetShareTokenModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new GetShareTokenModel({}));
-        }
-
-        if (!Util.empty(response_.headers["x-ca-error-message"])) {
-          throw $tea.newError({
-            data: {
-              requestId: response_.headers["x-ca-request-id"],
-              statusCode: response_.statusCode,
-              statusMessage: response_.statusMessage,
-            },
-            message: response_.headers["x-ca-error-message"],
-          });
-        }
-
-        obj = await Util.readAsJSON(response_.body);
-        respMap = Util.assertAsMap(obj);
-        throw $tea.newError({
-          data: {
-            requestId: response_.headers["x-ca-request-id"],
-            statusCode: response_.statusCode,
-            statusMessage: response_.statusMessage,
-          },
-          ...respMap,
-        });
-      } catch (ex) {
-        if ($tea.isRetryable(ex)) {
-          continue;
-        }
-        throw ex;
-      }
-    }
-
-    throw $tea.newUnretryableError(_lastRequest);
-  }
-
-  /**
-   * 列举指定用户的分享
-   * @tags share_link
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async listShareLinkEx(request: ListShareLinkRequest, runtime: RuntimeOptions): Promise<ListShareLinkModel> {
-    let _runtime: { [key: string]: any } = {
-      timeouted: "retry",
-      readTimeout: runtime.readTimeout,
-      connectTimeout: runtime.connectTimeout,
-      localAddr: runtime.localAddr,
-      httpProxy: runtime.httpProxy,
-      httpsProxy: runtime.httpsProxy,
-      noProxy: runtime.noProxy,
-      maxIdleConns: runtime.maxIdleConns,
-      socks5Proxy: runtime.socks5Proxy,
-      socks5NetWork: runtime.socks5NetWork,
-      retry: {
-        retryable: runtime.autoretry,
-        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
-      },
-      backoff: {
-        policy: Util.defaultString(runtime.backoffPolicy, "no"),
-        period: Util.defaultNumber(runtime.backoffPeriod, 1),
-      },
-      ignoreSSL: runtime.ignoreSSL,
-    }
-
-    let _lastRequest = null;
-    let _now = Date.now();
-    let _retryTimes = 0;
-    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
-      if (_retryTimes > 0) {
-        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
-        if (_backoffTime > 0) {
-          await $tea.sleep(_backoffTime);
-        }
-      }
-
-      _retryTimes = _retryTimes + 1;
-      try {
-        let request_ = new $tea.Request();
-        let accesskeyId = await this.getAccessKeyId();
-        let accessKeySecret = await this.getAccessKeySecret();
-        let securityToken = await this.getSecurityToken();
-        let accessToken = await this.getAccessToken();
-        let realReq = Util.toMap(request);
-        request_.protocol = Util.defaultString(this._protocol, "https");
-        request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/share_link/list`);
-        request_.headers = {
-          'user-agent': this.getUserAgent(),
-          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
-          'content-type': "application/json; charset=utf-8",
-          ...request.headers,
-        };
-        realReq["headers"] = null;
-        if (!Util.empty(accessToken)) {
-          request_.headers["authorization"] = `Bearer ${accessToken}`;
-        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-          if (!Util.empty(securityToken)) {
-            request_.headers["x-acs-security-token"] = securityToken;
-          }
-
-          request_.headers["date"] = Util.getDateUTCString();
-          request_.headers["accept"] = "application/json";
-          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
-          request_.headers["x-acs-signature-version"] = "1.0";
-          let stringToSign = ROAUtil.getStringToSign(request_);
-          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-        }
-
-        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
-        _lastRequest = request_;
-        let response_ = await $tea.doAction(request_, _runtime);
-
-        let respMap : {[key: string]: any} = null;
-        let obj : any = null;
-        if (Util.equalNumber(response_.statusCode, 200)) {
-          obj = await Util.readAsJSON(response_.body);
-          respMap = Util.assertAsMap(obj);
-          return $tea.cast<ListShareLinkModel>({
-            body: respMap,
-            headers: response_.headers,
-          }, new ListShareLinkModel({}));
+          }, new ListStorefileModel({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -21030,7 +18709,7 @@ export default class Client {
    * @error NotFound The resource {resource_name} cannot be found. Please check.
    * @error InternalError The request has been failed due to some unknown error.
    */
-  async accountToken(request: TokenRequest): Promise<AccountTokenModel> {
+  async accountToken(request: AccountTokenRequest): Promise<AccountTokenModel> {
     let runtime = new RuntimeOptions({ });
     return await this.accountTokenEx(request, runtime);
   }
@@ -21059,37 +18738,6 @@ export default class Client {
   async getUserAccessToken(request: GetUserAccessTokenRequest): Promise<GetUserAccessTokenModel> {
     let runtime = new RuntimeOptions({ });
     return await this.getUserAccessTokenEx(request, runtime);
-  }
-
-  /**
-   * 如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
-   * 通过此接口获取异步任务的信息，以确定任务是否执行成功。
-   * @tags async_task
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getAsyncTaskInfo(request: GetAsyncTaskRequest): Promise<GetAsyncTaskInfoModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.getAsyncTaskInfoEx(request, runtime);
-  }
-
-  /**
-   * 对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
-   * 支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
-   * @tags batch
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async batchOperation(request: BatchRequest): Promise<BatchOperationModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.batchOperationEx(request, runtime);
   }
 
   /**
@@ -21197,7 +18845,7 @@ export default class Client {
   }
 
   /**
-   * 完成文件上传。
+   * 完成文件上传
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21206,13 +18854,13 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async completeFile(request: CompleteFileRequest): Promise<CompleteFileModel> {
+  async completeFile(request: HostingCompleteFileRequest): Promise<CompleteFileModel> {
     let runtime = new RuntimeOptions({ });
     return await this.completeFileEx(request, runtime);
   }
 
   /**
-   * 指定源文件或文件夹，拷贝到指定的文件夹。
+   * 指定源文件或文件夹路径，拷贝到指定的文件夹。
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21221,14 +18869,13 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async copyFile(request: CopyFileRequest): Promise<CopyFileModel> {
+  async copyFile(request: HostingCopyFileRequest): Promise<CopyFileModel> {
     let runtime = new RuntimeOptions({ });
     return await this.copyFileEx(request, runtime);
   }
 
   /**
-   * 在指定文件夹下创建文件或者文件夹，
-   * 根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+   * 创建文件或者文件夹。
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21238,13 +18885,13 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async createFile(request: CreateFileRequest): Promise<CreateFileModel> {
+  async createFile(request: HostingCreateFileRequest): Promise<CreateFileModel> {
     let runtime = new RuntimeOptions({ });
     return await this.createFileEx(request, runtime);
   }
 
   /**
-   * 指定文件或文件夹ID，删除文件或者文件夹。
+   * 指定文件或文件夹路径，删除文件或文件夹
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21253,13 +18900,13 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async deleteFile(request: DeleteFileRequest): Promise<DeleteFileModel> {
+  async deleteFile(request: HostingDeleteFileRequest): Promise<DeleteFileModel> {
     let runtime = new RuntimeOptions({ });
     return await this.deleteFileEx(request, runtime);
   }
 
   /**
-   * 获取指定文件或文件夹ID的信息。
+   * 获取指定文件或文件夹路径，获取文件或文件夹信息。
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21268,13 +18915,13 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async getFile(request: GetFileRequest): Promise<GetFileModel> {
+  async getFile(request: HostingGetFileRequest): Promise<GetFileModel> {
     let runtime = new RuntimeOptions({ });
     return await this.getFileEx(request, runtime);
   }
 
   /**
-   * 根据路径获取指定文件或文件夹的信息。
+   * 指定文件路径，获取文件下载地址
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21283,57 +18930,13 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async getFileByPath(request: GetFileByPathRequest): Promise<GetFileByPathModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.getFileByPathEx(request, runtime);
-  }
-
-  /**
-   * 获取文件的下载地址，调用者可自己设置range头并发下载。
-   * @tags file
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getDownloadUrl(request: GetDownloadUrlRequest): Promise<GetDownloadUrlModel> {
+  async getDownloadUrl(request: HostingGetDownloadUrlRequest): Promise<GetDownloadUrlModel> {
     let runtime = new RuntimeOptions({ });
     return await this.getDownloadUrlEx(request, runtime);
   }
 
   /**
-   * 获取drive内，增量数据最新的游标
-   * @tags file_delta
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getLastCursor(request: GetLastCursorRequest): Promise<GetLastCursorModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.getLastCursorEx(request, runtime);
-  }
-
-  /**
-   * 获取media文件播放URL地址（当前仅支持m3u8）
-   * @tags file
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getMediaPlayUrl(request: GetMediaPlayURLRequest): Promise<GetMediaPlayUrlModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.getMediaPlayUrlEx(request, runtime);
-  }
-
-  /**
-   * 获取文档的在线编辑地址
+   * 指定文件路径，获取文件安全地址
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21342,24 +18945,9 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async getOfficeEditUrl(request: GetOfficeEditUrlRequest): Promise<GetOfficeEditUrlModel> {
+  async getSecureUrl(request: HostingGetSecureUrlRequest): Promise<GetSecureUrlModel> {
     let runtime = new RuntimeOptions({ });
-    return await this.getOfficeEditUrlEx(request, runtime);
-  }
-
-  /**
-   * 获取文档的预览地址（office文档）
-   * @tags file
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getOfficePreviewUrl(request: GetOfficePreviewUrlRequest): Promise<GetOfficePreviewUrlModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.getOfficePreviewUrlEx(request, runtime);
+    return await this.getSecureUrlEx(request, runtime);
   }
 
   /**
@@ -21372,13 +18960,13 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async getUploadUrl(request: GetUploadUrlRequest): Promise<GetUploadUrlModel> {
+  async getUploadUrl(request: HostingGetUploadUrlRequest): Promise<GetUploadUrlModel> {
     let runtime = new RuntimeOptions({ });
     return await this.getUploadUrlEx(request, runtime);
   }
 
   /**
-   * 获取视频雪碧图地址
+   * 指定父文件夹路径，列举文件夹下的文件或者文件夹
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21387,57 +18975,13 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async getVideoPreviewSpriteUrl(request: GetVideoPreviewSpriteURLRequest): Promise<GetVideoPreviewSpriteUrlModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.getVideoPreviewSpriteUrlEx(request, runtime);
-  }
-
-  /**
-   * 获取视频播放地址
-   * @tags file
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getVideoPreviewUrl(request: GetVideoPreviewURLRequest): Promise<GetVideoPreviewUrlModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.getVideoPreviewUrlEx(request, runtime);
-  }
-
-  /**
-   * 列举指定目录下的文件或文件夹。
-   * @tags file
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async listFile(request: ListFileRequest): Promise<ListFileModel> {
+  async listFile(request: HostingListFileRequest): Promise<ListFileModel> {
     let runtime = new RuntimeOptions({ });
     return await this.listFileEx(request, runtime);
   }
 
   /**
-   * 查看分享中的文件列表
-   * @tags share_link
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error ShareLinkTokenInvalid ShareToken is invalid. {message}
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async listFileByAnonymous(request: ListByAnonymousRequest): Promise<ListFileByAnonymousModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.listFileByAnonymousEx(request, runtime);
-  }
-
-  /**
-   * 根据自定义同步索引键列举文件或文件夹。
+   * 列举UploadID对应的已上传分片。
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21446,43 +18990,13 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async listFileByCustomIndexKey(request: ListFileByCustomIndexKeyRequest): Promise<ListFileByCustomIndexKeyModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.listFileByCustomIndexKeyEx(request, runtime);
-  }
-
-  /**
-   * 获取drive内，增量数据列表
-   * @tags file_delta
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async listFileDelta(request: ListFileDeltaRequest): Promise<ListFileDeltaModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.listFileDeltaEx(request, runtime);
-  }
-
-  /**
-   * 列举upload_id对应的已上传分片。
-   * @tags file
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async listUploadedParts(request: ListUploadedPartRequest): Promise<ListUploadedPartsModel> {
+  async listUploadedParts(request: HostingListUploadedPartRequest): Promise<ListUploadedPartsModel> {
     let runtime = new RuntimeOptions({ });
     return await this.listUploadedPartsEx(request, runtime);
   }
 
   /**
-   * 指定源文件或文件夹，移动到指定的文件夹。
+   * 指定源文件或文件夹路径，移动到指定的文件夹。
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21491,28 +19005,13 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async moveFile(request: MoveFileRequest): Promise<MoveFileModel> {
+  async moveFile(request: HostingMoveFileRequest): Promise<MoveFileModel> {
     let runtime = new RuntimeOptions({ });
     return await this.moveFileEx(request, runtime);
   }
 
   /**
-   * 刷新在线编辑Token
-   * @tags file, refresh, office, edit
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async token(request: RefreshOfficeEditTokenRequest): Promise<TokenModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.tokenEx(request, runtime);
-  }
-
-  /**
-   * 在指定drive下全量获取文件元信息。
+   * 获取视频支持的分辨率
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21521,13 +19020,27 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async scanFileMeta(request: ScanFileMetaRequest): Promise<ScanFileMetaModel> {
+  async videoDefinition(request: HostingVideoDefinitionRequest): Promise<VideoDefinitionModel> {
     let runtime = new RuntimeOptions({ });
-    return await this.scanFileMetaEx(request, runtime);
+    return await this.videoDefinitionEx(request, runtime);
   }
 
   /**
-   * 根据筛选条件，在指定drive下搜索文件。
+   * 获取视频的DRM License
+   * @tags file
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async videoLicense(request: HostingVideoDRMLicenseRequest): Promise<VideoLicenseModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.videoLicenseEx(request, runtime);
+  }
+
+  /**
+   * 获取视频转码后的m3u8文件
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -21536,25 +19049,24 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async searchFile(request: SearchFileRequest): Promise<SearchFileModel> {
+  async videoM3u8(request: HostingVideoM3U8Request): Promise<VideoM3u8Model> {
     let runtime = new RuntimeOptions({ });
-    return await this.searchFileEx(request, runtime);
+    return await this.videoM3u8Ex(request, runtime);
   }
 
   /**
-   * 对指定的文件或文件夹更新信息。
+   * 将mp4格式的视频文件，转为m3u8
    * @tags file
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
    * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
    * @error NotFound The resource {resource_name} cannot be found. Please check.
-   * @error AlreadyExist {resource} has already exists. {extra_msg}
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async updateFile(request: UpdateFileMetaRequest): Promise<UpdateFileModel> {
+  async videoTranscode(request: HostingVideoTranscodeRequest): Promise<VideoTranscodeModel> {
     let runtime = new RuntimeOptions({ });
-    return await this.updateFileEx(request, runtime);
+    return await this.videoTranscodeEx(request, runtime);
   }
 
   /**
@@ -21631,22 +19143,8 @@ export default class Client {
   }
 
   /**
-   * 取消指定分享
-   * @tags share_link
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async cancelShareLink(request: CancelShareLinkRequest): Promise<CancelShareLinkModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.cancelShareLinkEx(request, runtime);
-  }
-
-  /**
-   * 创建分享。
-   * @tags share_link
+   * 列举指定store下的所有文件。
+   * @tags store
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
    * @error AccessTokenInvalid AccessToken is invalid. {message}
    * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -21654,63 +19152,9 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async createShareLink(request: CreateShareLinkRequest): Promise<CreateShareLinkModel> {
+  async listStorefile(request: ListStoreFileRequest): Promise<ListStorefileModel> {
     let runtime = new RuntimeOptions({ });
-    return await this.createShareLinkEx(request, runtime);
-  }
-
-  /**
-   * 查看分享的基本信息，比如分享者、到期时间等
-   * @tags share_link
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getShareByAnonymous(request: GetShareLinkByAnonymousRequest): Promise<GetShareByAnonymousModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.getShareByAnonymousEx(request, runtime);
-  }
-
-  /**
-   * 使用分享口令换取分享id
-   * @tags share_link
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getShareId(request: GetShareLinkIDRequest): Promise<GetShareIdModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.getShareIdEx(request, runtime);
-  }
-
-  /**
-   * 使用分享码+提取码换取分享token
-   * @tags share_link
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async getShareToken(request: GetShareLinkTokenRequest): Promise<GetShareTokenModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.getShareTokenEx(request, runtime);
-  }
-
-  /**
-   * 列举指定用户的分享
-   * @tags share_link
-   * @error InvalidParameter The input parameter {parameter_name} is not valid.
-   * @error AccessTokenInvalid AccessToken is invalid. {message}
-   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
-   * @error InternalError The request has been failed due to some unknown error.
-   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
-   */
-  async listShareLink(request: ListShareLinkRequest): Promise<ListShareLinkModel> {
-    let runtime = new RuntimeOptions({ });
-    return await this.listShareLinkEx(request, runtime);
+    return await this.listStorefileEx(request, runtime);
   }
 
   /**

@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * create_share_link request
  */
 public class CreateShareLinkRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // description
     @NameInMap("description")
     public String description;
@@ -50,14 +47,6 @@ public class CreateShareLinkRequest extends TeaModel {
     public static CreateShareLinkRequest build(java.util.Map<String, ?> map) throws Exception {
         CreateShareLinkRequest self = new CreateShareLinkRequest();
         return TeaModel.build(map, self);
-    }
-
-    public CreateShareLinkRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public CreateShareLinkRequest setDescription(String description) {
