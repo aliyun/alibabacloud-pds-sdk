@@ -13,7 +13,7 @@
 ```xml
 <dependency>
     <groupId>com.aliyun</groupId>
-    <artifactId>aliyun-sdk-pds-mgmt-mode</artifactId>
+    <artifactId>aliyun-sdk-pds-mgmt</artifactId>
     <version>使用maven标签所示版本</version>
 </dependency>
 ```
