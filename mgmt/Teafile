@@ -12,14 +12,14 @@
 	"releases": {
 		"go": "github.com/alibabacloud-go/pds-mgmt-sdk/client:v1.0.0",
 		"ts": "@alicloud/pds-mgmt-sdk:^1.0.0",
-		"java": "com.aliyun:aliyun-sdk-pds-mgmt:0.0.1",
+		"java": "com.aliyun:aliyun-sdk-pds-mgmt:0.0.7",
 		"csharp": "Aliyun.SDK.Mgmt.Client:1.0.0",
 		"php": "alibabacloud/pds-mgmt-sdk:^0.1.0",
 		"python": "alibabacloud_pds_mgmt_sdk:0.0.1",
 		"cpp": "alibabacloud-sdk-cpp/pds-mgmt:master"
 	},
 	"java": {
-		"package": "com.aliyun.mgmt.mode"
+		"package": "com.aliyun.pds.mgmt.client"
 	},
 	"csharp": {
 		"namespace": "Aliyun.SDK.Mgmt.Client"

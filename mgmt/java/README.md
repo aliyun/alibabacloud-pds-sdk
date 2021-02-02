@@ -12,7 +12,7 @@ English | [简体中文](README-CN.md)
 ```xml
 <dependency>
     <groupId>com.aliyun</groupId>
-    <artifactId>aliyun-sdk-pds-mgmt-mode</artifactId>
+    <artifactId>aliyun-sdk-pds-mgmt</artifactId>
     <version>Use the version shown in the maven badge</version>
 </dependency>
 ```
