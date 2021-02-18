@@ -1,22 +1,61 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
+
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
-/**
- * *
- */
-class VideoPreviewAudioMusicMeta extends Model {
+class VideoPreviewAudioMusicMeta extends Model
+{
+    /**
+     * @description album
+     *
+     * @example "范特西"
+     *
+     * @var string
+     */
+    public $album;
+
+    /**
+     * @description artist
+     *
+     * @example "周杰伦"
+     *
+     * @var string
+     */
+    public $artist;
+
+    /**
+     * @description cover_url
+     *
+     * @example https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
+     *
+     * @var string
+     */
+    public $coverUrl;
+
+    /**
+     * @description title
+     *
+     * @example "爱在西元前"
+     *
+     * @var string
+     */
+    public $title;
     protected $_name = [
-        'album' => 'album',
-        'artist' => 'artist',
+        'album'    => 'album',
+        'artist'   => 'artist',
         'coverUrl' => 'cover_url',
-        'title' => 'title',
+        'title'    => 'title',
     ];
-    public function validate() {}
-    public function toMap() {
+
+    public function validate()
+    {
+    }
+
+    public function toMap()
+    {
         $res = [];
         if (null !== $this->album) {
             $res['album'] = $this->album;
@@ -30,54 +69,31 @@ class VideoPreviewAudioMusicMeta extends Model {
         if (null !== $this->title) {
             $res['title'] = $this->title;
         }
+
         return $res;
     }
+
     /**
      * @param array $map
+     *
      * @return VideoPreviewAudioMusicMeta
      */
-    public static function fromMap($map = []) {
+    public static function fromMap($map = [])
+    {
         $model = new self();
-        if(isset($map['album'])){
+        if (isset($map['album'])) {
             $model->album = $map['album'];
         }
-        if(isset($map['artist'])){
+        if (isset($map['artist'])) {
             $model->artist = $map['artist'];
         }
-        if(isset($map['cover_url'])){
+        if (isset($map['cover_url'])) {
             $model->coverUrl = $map['cover_url'];
         }
-        if(isset($map['title'])){
+        if (isset($map['title'])) {
             $model->title = $map['title'];
         }
+
         return $model;
     }
-    /**
-     * @description album
-     * @example "范特西"
-     * @var string
-     */
-    public $album;
-
-    /**
-     * @description artist
-     * @example "周杰伦"
-     * @var string
-     */
-    public $artist;
-
-    /**
-     * @description cover_url
-     * @example https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
-     * @var string
-     */
-    public $coverUrl;
-
-    /**
-     * @description title
-     * @example "爱在西元前"
-     * @var string
-     */
-    public $title;
-
 }

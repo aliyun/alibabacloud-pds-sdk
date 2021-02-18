@@ -1,27 +1,74 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
+
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
-/**
- * *
- */
-class BatchSubRequest extends Model {
+class BatchSubRequest extends Model
+{
+    /**
+     * @description body 子请求的请求参数 json 字符串，可参考对于子请求文档, 当指定了body 必须传headers ： "Content-Type" 对应的类型，目前子请求入参是"application/json"
+     *
+     * @example {"drive_id":"101","file_id":"xxxxxx"}
+     *
+     * @var mixed[]
+     */
+    public $body;
+
+    /**
+     * @description headers 请求头，表示body传入数据的类型
+     *
+     * @example {"Content-Type":"application/json"}
+     *
+     * @var mixed[]
+     */
+    public $headers;
+
+    /**
+     * @description id 用于request 和 response关联， 不允许重复
+     *
+     * @example "1"
+     *
+     * @var string
+     */
+    public $id;
+
+    /**
+     * @description method
+     *
+     * @example "POST"
+     *
+     * @var string
+     */
+    public $method;
+
+    /**
+     * @description url 子请求的api path路径， 可参考对于子请求文档
+     *
+     * @example /file/get
+     *
+     * @var string
+     */
+    public $url;
     protected $_name = [
-        'body' => 'body',
+        'body'    => 'body',
         'headers' => 'headers',
-        'id' => 'id',
-        'method' => 'method',
-        'url' => 'url',
+        'id'      => 'id',
+        'method'  => 'method',
+        'url'     => 'url',
     ];
-    public function validate() {
+
+    public function validate()
+    {
         Model::validateRequired('id', $this->id, true);
         Model::validateRequired('method', $this->method, true);
         Model::validateRequired('url', $this->url, true);
     }
-    public function toMap() {
+
+    public function toMap()
+    {
         $res = [];
         if (null !== $this->body) {
             $res['body'] = $this->body;
@@ -38,64 +85,34 @@ class BatchSubRequest extends Model {
         if (null !== $this->url) {
             $res['url'] = $this->url;
         }
+
         return $res;
     }
+
     /**
      * @param array $map
+     *
      * @return BatchSubRequest
      */
-    public static function fromMap($map = []) {
+    public static function fromMap($map = [])
+    {
         $model = new self();
-        if(isset($map['body'])){
+        if (isset($map['body'])) {
             $model->body = $map['body'];
         }
-        if(isset($map['headers'])){
+        if (isset($map['headers'])) {
             $model->headers = $map['headers'];
         }
-        if(isset($map['id'])){
+        if (isset($map['id'])) {
             $model->id = $map['id'];
         }
-        if(isset($map['method'])){
+        if (isset($map['method'])) {
             $model->method = $map['method'];
         }
-        if(isset($map['url'])){
+        if (isset($map['url'])) {
             $model->url = $map['url'];
         }
+
         return $model;
     }
-    /**
-     * @description body 子请求的请求参数 json 字符串，可参考对于子请求文档, 当指定了body 必须传headers ： "Content-Type" 对应的类型，目前子请求入参是"application/json"
-     * @example {"drive_id":"101","file_id":"xxxxxx"}
-     * @var mixed[]
-     */
-    public $body;
-
-    /**
-     * @description headers 请求头，表示body传入数据的类型
-     * @example {"Content-Type":"application/json"}
-     * @var mixed[]
-     */
-    public $headers;
-
-    /**
-     * @description id 用于request 和 response关联， 不允许重复
-     * @example "1"
-     * @var string
-     */
-    public $id;
-
-    /**
-     * @description method
-     * @example "POST"
-     * @var string
-     */
-    public $method;
-
-    /**
-     * @description url 子请求的api path路径， 可参考对于子请求文档
-     * @example /file/get
-     * @var string
-     */
-    public $url;
-
 }

@@ -1,25 +1,72 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
+
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
-/**
- * *
- */
-class SetBizCNameCertResponse extends Model {
+class SetBizCNameCertResponse extends Model
+{
+    /**
+     * @description biz cname
+     *
+     * @example api.yoursite.com
+     *
+     * @var string
+     */
+    public $bizCname;
+
+    /**
+     * @description cert name
+     *
+     * @example xdrv2020cert
+     *
+     * @var string
+     */
+    public $certName;
+
+    /**
+     * @description cname type
+     *
+     * @example api
+     *
+     * @var string
+     */
+    public $cnameType;
+
+    /**
+     * @description domain ID
+     *
+     * @example sz100
+     *
+     * @var string
+     */
+    public $domainId;
+
+    /**
+     * @description is vpc
+     *
+     * @example false
+     *
+     * @var bool
+     */
+    public $isVpc;
     protected $_name = [
-        'bizCname' => 'biz_cname',
-        'certName' => 'cert_name',
+        'bizCname'  => 'biz_cname',
+        'certName'  => 'cert_name',
         'cnameType' => 'cname_type',
-        'domainId' => 'domain_id',
-        'isVpc' => 'is_vpc',
+        'domainId'  => 'domain_id',
+        'isVpc'     => 'is_vpc',
     ];
-    public function validate() {
+
+    public function validate()
+    {
         Model::validateRequired('domainId', $this->domainId, true);
     }
-    public function toMap() {
+
+    public function toMap()
+    {
         $res = [];
         if (null !== $this->bizCname) {
             $res['biz_cname'] = $this->bizCname;
@@ -36,64 +83,34 @@ class SetBizCNameCertResponse extends Model {
         if (null !== $this->isVpc) {
             $res['is_vpc'] = $this->isVpc;
         }
+
         return $res;
     }
+
     /**
      * @param array $map
+     *
      * @return SetBizCNameCertResponse
      */
-    public static function fromMap($map = []) {
+    public static function fromMap($map = [])
+    {
         $model = new self();
-        if(isset($map['biz_cname'])){
+        if (isset($map['biz_cname'])) {
             $model->bizCname = $map['biz_cname'];
         }
-        if(isset($map['cert_name'])){
+        if (isset($map['cert_name'])) {
             $model->certName = $map['cert_name'];
         }
-        if(isset($map['cname_type'])){
+        if (isset($map['cname_type'])) {
             $model->cnameType = $map['cname_type'];
         }
-        if(isset($map['domain_id'])){
+        if (isset($map['domain_id'])) {
             $model->domainId = $map['domain_id'];
         }
-        if(isset($map['is_vpc'])){
+        if (isset($map['is_vpc'])) {
             $model->isVpc = $map['is_vpc'];
         }
+
         return $model;
     }
-    /**
-     * @description biz cname
-     * @example api.yoursite.com
-     * @var string
-     */
-    public $bizCname;
-
-    /**
-     * @description cert name
-     * @example xdrv2020cert
-     * @var string
-     */
-    public $certName;
-
-    /**
-     * @description cname type
-     * @example api
-     * @var string
-     */
-    public $cnameType;
-
-    /**
-     * @description domain ID
-     * @example sz100
-     * @var string
-     */
-    public $domainId;
-
-    /**
-     * @description is vpc
-     * @example false
-     * @var bool
-     */
-    public $isVpc;
-
 }

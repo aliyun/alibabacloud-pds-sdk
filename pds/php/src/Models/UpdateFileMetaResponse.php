@@ -1,56 +1,336 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
+
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
-use Aliyun\PDS\SDK\Models\ImageMediaResponse;
-use Aliyun\PDS\SDK\Models\VideoMediaResponse;
-use Aliyun\PDS\SDK\Models\VideoPreviewResponse;
-
 /**
- * 更新文件元数据 response
+ * 更新文件元数据 response.
  */
-class UpdateFileMetaResponse extends Model {
+class UpdateFileMetaResponse extends Model
+{
+    /**
+     * @description category
+     *
+     * @example doc
+     *
+     * @var string
+     */
+    public $category;
+
+    /**
+     * @description CharacteristicHash
+     *
+     * @var string
+     */
+    public $characteristicHash;
+
+    /**
+     * @description Content Hash
+     *
+     * @example EA4942AA8761213890A5C386F88E6464D2C31CA3
+     *
+     * @var string
+     */
+    public $contentHash;
+
+    /**
+     * @description content_hash_name
+     *
+     * @example sha1
+     *
+     * @var string
+     */
+    public $contentHashName;
+
+    /**
+     * @description content_type
+     *
+     * @example application/json
+     *
+     * @var string
+     */
+    public $contentType;
+
+    /**
+     * @description crc64_hash
+     *
+     * @var string
+     */
+    public $crc64Hash;
+
+    /**
+     * @description created_at
+     *
+     * @example 2019-08-20T06:51:27.292Z
+     *
+     * @var string
+     */
+    public $createdAt;
+
+    /**
+     * @description description
+     *
+     * @example file description
+     *
+     * @var string
+     */
+    public $description;
+
+    /**
+     * @description DomainID
+     *
+     * @example test001
+     *
+     * @var string
+     */
+    public $domainId;
+
+    /**
+     * @description download_url
+     *
+     * @example https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
+     *
+     * @var string
+     */
+    public $downloadUrl;
+
+    /**
+     * @description drive_id
+     *
+     * @example 1
+     *
+     * @var string
+     */
+    public $driveId;
+
+    /**
+     * @description encrypt_mode
+     *
+     * @example pin
+     *
+     * @var string
+     */
+    public $encryptMode;
+
+    /**
+     * @description file_extension
+     *
+     * @example jpg
+     *
+     * @var string
+     */
+    public $fileExtension;
+
+    /**
+     * @description file_id
+     *
+     * @example 5d5b846942cf94fa72324c14a4bda34e81da635d
+     *
+     * @var string
+     */
+    public $fileId;
+
+    /**
+     * @description Hidden
+     * type: boolean
+     * @example false
+     *
+     * @var bool
+     */
+    public $hidden;
+
+    /**
+     * @var ImageMediaResponse
+     */
+    public $imageMediaMetadata;
+
+    /**
+     * @description labels
+     *
+     * @example label1:1, label2:2
+     *
+     * @var string[]
+     */
+    public $labels;
+
+    /**
+     * @var string
+     */
+    public $meta;
+
+    /**
+     * @description name
+     *
+     * @example ccp.jpg
+     *
+     * @var string
+     */
+    public $name;
+
+    /**
+     * @description parent_file_id
+     *
+     * @example root
+     *
+     * @var string
+     */
+    public $parentFileId;
+
+    /**
+     * @var int
+     */
+    public $punishFlag;
+
+    /**
+     * @var string
+     */
+    public $shareId;
+
+    /**
+     * @description Size
+     *
+     * @example 1024
+     *
+     * @var int
+     */
+    public $size;
+
+    /**
+     * @description starred
+     * type: boolean
+     * @example false
+     *
+     * @var bool
+     */
+    public $starred;
+
+    /**
+     * @description status
+     *
+     * @example available
+     *
+     * @var string
+     */
+    public $status;
+
+    /**
+     * @description @Deprecated streams url info
+     *
+     * @var mixed[]
+     */
+    public $streamsInfo;
+
+    /**
+     * @description thumbnail
+     *
+     * @example https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
+     *
+     * @var string
+     */
+    public $thumbnail;
+
+    /**
+     * @description trashed_at
+     *
+     * @var string
+     */
+    public $trashedAt;
+
+    /**
+     * @description type
+     *
+     * @example file
+     *
+     * @var string
+     */
+    public $type;
+
+    /**
+     * @description updated_at
+     *
+     * @var string
+     */
+    public $updatedAt;
+
+    /**
+     * @description upload_id
+     *
+     * @example C9DCFE5A82644AC7A02DB74C30C934A6
+     *
+     * @var string
+     */
+    public $uploadId;
+
+    /**
+     * @description url
+     *
+     * @example https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
+     *
+     * @var string
+     */
+    public $url;
+
+    /**
+     * @description user_meta
+     *
+     * @example user_meta
+     *
+     * @var string
+     */
+    public $userMeta;
+
+    /**
+     * @var VideoMediaResponse
+     */
+    public $videoMediaMetadata;
+
+    /**
+     * @var VideoPreviewResponse
+     */
+    public $videoPreviewMetadata;
     protected $_name = [
-        'category' => 'category',
-        'characteristicHash' => 'characteristic_hash',
-        'contentHash' => 'content_hash',
-        'contentHashName' => 'content_hash_name',
-        'contentType' => 'content_type',
-        'crc64Hash' => 'crc64_hash',
-        'createdAt' => 'created_at',
-        'description' => 'description',
-        'domainId' => 'domain_id',
-        'downloadUrl' => 'download_url',
-        'driveId' => 'drive_id',
-        'encryptMode' => 'encrypt_mode',
-        'fileExtension' => 'file_extension',
-        'fileId' => 'file_id',
-        'hidden' => 'hidden',
-        'imageMediaMetadata' => 'image_media_metadata',
-        'labels' => 'labels',
-        'meta' => 'meta',
-        'name' => 'name',
-        'parentFileId' => 'parent_file_id',
-        'punishFlag' => 'punish_flag',
-        'shareId' => 'share_id',
-        'size' => 'size',
-        'starred' => 'starred',
-        'status' => 'status',
-        'streamsInfo' => 'streams_info',
-        'thumbnail' => 'thumbnail',
-        'trashedAt' => 'trashed_at',
-        'type' => 'type',
-        'updatedAt' => 'updated_at',
-        'uploadId' => 'upload_id',
-        'url' => 'url',
-        'userMeta' => 'user_meta',
-        'videoMediaMetadata' => 'video_media_metadata',
+        'category'             => 'category',
+        'characteristicHash'   => 'characteristic_hash',
+        'contentHash'          => 'content_hash',
+        'contentHashName'      => 'content_hash_name',
+        'contentType'          => 'content_type',
+        'crc64Hash'            => 'crc64_hash',
+        'createdAt'            => 'created_at',
+        'description'          => 'description',
+        'domainId'             => 'domain_id',
+        'downloadUrl'          => 'download_url',
+        'driveId'              => 'drive_id',
+        'encryptMode'          => 'encrypt_mode',
+        'fileExtension'        => 'file_extension',
+        'fileId'               => 'file_id',
+        'hidden'               => 'hidden',
+        'imageMediaMetadata'   => 'image_media_metadata',
+        'labels'               => 'labels',
+        'meta'                 => 'meta',
+        'name'                 => 'name',
+        'parentFileId'         => 'parent_file_id',
+        'punishFlag'           => 'punish_flag',
+        'shareId'              => 'share_id',
+        'size'                 => 'size',
+        'starred'              => 'starred',
+        'status'               => 'status',
+        'streamsInfo'          => 'streams_info',
+        'thumbnail'            => 'thumbnail',
+        'trashedAt'            => 'trashed_at',
+        'type'                 => 'type',
+        'updatedAt'            => 'updated_at',
+        'uploadId'             => 'upload_id',
+        'url'                  => 'url',
+        'userMeta'             => 'user_meta',
+        'videoMediaMetadata'   => 'video_media_metadata',
         'videoPreviewMetadata' => 'video_preview_metadata',
     ];
-    public function validate() {
+
+    public function validate()
+    {
         Model::validatePattern('domainId', $this->domainId, '[a-z0-9A-Z]+');
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
         Model::validatePattern('fileId', $this->fileId, '[a-z0-9]{1,50}');
@@ -64,7 +344,9 @@ class UpdateFileMetaResponse extends Model {
         Model::validateMaximum('size', $this->size, 53687091200);
         Model::validateMinimum('size', $this->size, 0);
     }
-    public function toMap() {
+
+    public function toMap()
+    {
         $res = [];
         if (null !== $this->category) {
             $res['category'] = $this->category;
@@ -171,351 +453,126 @@ class UpdateFileMetaResponse extends Model {
         if (null !== $this->videoPreviewMetadata) {
             $res['video_preview_metadata'] = null !== $this->videoPreviewMetadata ? $this->videoPreviewMetadata->toMap() : null;
         }
+
         return $res;
     }
+
     /**
      * @param array $map
+     *
      * @return UpdateFileMetaResponse
      */
-    public static function fromMap($map = []) {
+    public static function fromMap($map = [])
+    {
         $model = new self();
-        if(isset($map['category'])){
+        if (isset($map['category'])) {
             $model->category = $map['category'];
         }
-        if(isset($map['characteristic_hash'])){
+        if (isset($map['characteristic_hash'])) {
             $model->characteristicHash = $map['characteristic_hash'];
         }
-        if(isset($map['content_hash'])){
+        if (isset($map['content_hash'])) {
             $model->contentHash = $map['content_hash'];
         }
-        if(isset($map['content_hash_name'])){
+        if (isset($map['content_hash_name'])) {
             $model->contentHashName = $map['content_hash_name'];
         }
-        if(isset($map['content_type'])){
+        if (isset($map['content_type'])) {
             $model->contentType = $map['content_type'];
         }
-        if(isset($map['crc64_hash'])){
+        if (isset($map['crc64_hash'])) {
             $model->crc64Hash = $map['crc64_hash'];
         }
-        if(isset($map['created_at'])){
+        if (isset($map['created_at'])) {
             $model->createdAt = $map['created_at'];
         }
-        if(isset($map['description'])){
+        if (isset($map['description'])) {
             $model->description = $map['description'];
         }
-        if(isset($map['domain_id'])){
+        if (isset($map['domain_id'])) {
             $model->domainId = $map['domain_id'];
         }
-        if(isset($map['download_url'])){
+        if (isset($map['download_url'])) {
             $model->downloadUrl = $map['download_url'];
         }
-        if(isset($map['drive_id'])){
+        if (isset($map['drive_id'])) {
             $model->driveId = $map['drive_id'];
         }
-        if(isset($map['encrypt_mode'])){
+        if (isset($map['encrypt_mode'])) {
             $model->encryptMode = $map['encrypt_mode'];
         }
-        if(isset($map['file_extension'])){
+        if (isset($map['file_extension'])) {
             $model->fileExtension = $map['file_extension'];
         }
-        if(isset($map['file_id'])){
+        if (isset($map['file_id'])) {
             $model->fileId = $map['file_id'];
         }
-        if(isset($map['hidden'])){
+        if (isset($map['hidden'])) {
             $model->hidden = $map['hidden'];
         }
-        if(isset($map['image_media_metadata'])){
+        if (isset($map['image_media_metadata'])) {
             $model->imageMediaMetadata = ImageMediaResponse::fromMap($map['image_media_metadata']);
         }
-        if(isset($map['labels'])){
-            if(!empty($map['labels'])){
+        if (isset($map['labels'])) {
+            if (!empty($map['labels'])) {
                 $model->labels = $map['labels'];
             }
         }
-        if(isset($map['meta'])){
+        if (isset($map['meta'])) {
             $model->meta = $map['meta'];
         }
-        if(isset($map['name'])){
+        if (isset($map['name'])) {
             $model->name = $map['name'];
         }
-        if(isset($map['parent_file_id'])){
+        if (isset($map['parent_file_id'])) {
             $model->parentFileId = $map['parent_file_id'];
         }
-        if(isset($map['punish_flag'])){
+        if (isset($map['punish_flag'])) {
             $model->punishFlag = $map['punish_flag'];
         }
-        if(isset($map['share_id'])){
+        if (isset($map['share_id'])) {
             $model->shareId = $map['share_id'];
         }
-        if(isset($map['size'])){
+        if (isset($map['size'])) {
             $model->size = $map['size'];
         }
-        if(isset($map['starred'])){
+        if (isset($map['starred'])) {
             $model->starred = $map['starred'];
         }
-        if(isset($map['status'])){
+        if (isset($map['status'])) {
             $model->status = $map['status'];
         }
-        if(isset($map['streams_info'])){
+        if (isset($map['streams_info'])) {
             $model->streamsInfo = $map['streams_info'];
         }
-        if(isset($map['thumbnail'])){
+        if (isset($map['thumbnail'])) {
             $model->thumbnail = $map['thumbnail'];
         }
-        if(isset($map['trashed_at'])){
+        if (isset($map['trashed_at'])) {
             $model->trashedAt = $map['trashed_at'];
         }
-        if(isset($map['type'])){
+        if (isset($map['type'])) {
             $model->type = $map['type'];
         }
-        if(isset($map['updated_at'])){
+        if (isset($map['updated_at'])) {
             $model->updatedAt = $map['updated_at'];
         }
-        if(isset($map['upload_id'])){
+        if (isset($map['upload_id'])) {
             $model->uploadId = $map['upload_id'];
         }
-        if(isset($map['url'])){
+        if (isset($map['url'])) {
             $model->url = $map['url'];
         }
-        if(isset($map['user_meta'])){
+        if (isset($map['user_meta'])) {
             $model->userMeta = $map['user_meta'];
         }
-        if(isset($map['video_media_metadata'])){
+        if (isset($map['video_media_metadata'])) {
             $model->videoMediaMetadata = VideoMediaResponse::fromMap($map['video_media_metadata']);
         }
-        if(isset($map['video_preview_metadata'])){
+        if (isset($map['video_preview_metadata'])) {
             $model->videoPreviewMetadata = VideoPreviewResponse::fromMap($map['video_preview_metadata']);
         }
+
         return $model;
     }
-    /**
-     * @description category
-     * @example doc
-     * @var string
-     */
-    public $category;
-
-    /**
-     * @description CharacteristicHash
-     * @var string
-     */
-    public $characteristicHash;
-
-    /**
-     * @description Content Hash
-     * @example EA4942AA8761213890A5C386F88E6464D2C31CA3
-     * @var string
-     */
-    public $contentHash;
-
-    /**
-     * @description content_hash_name
-     * @example sha1
-     * @var string
-     */
-    public $contentHashName;
-
-    /**
-     * @description content_type
-     * @example application/json
-     * @var string
-     */
-    public $contentType;
-
-    /**
-     * @description crc64_hash
-     * @var string
-     */
-    public $crc64Hash;
-
-    /**
-     * @description created_at
-     * @example 2019-08-20T06:51:27.292Z
-     * @var string
-     */
-    public $createdAt;
-
-    /**
-     * @description description
-     * @example file description
-     * @var string
-     */
-    public $description;
-
-    /**
-     * @description DomainID
-     * @example test001
-     * @var string
-     */
-    public $domainId;
-
-    /**
-     * @description download_url
-     * @example https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
-     * @var string
-     */
-    public $downloadUrl;
-
-    /**
-     * @description drive_id
-     * @example 1
-     * @var string
-     */
-    public $driveId;
-
-    /**
-     * @description encrypt_mode
-     * @example pin
-     * @var string
-     */
-    public $encryptMode;
-
-    /**
-     * @description file_extension
-     * @example jpg
-     * @var string
-     */
-    public $fileExtension;
-
-    /**
-     * @description file_id
-     * @example 5d5b846942cf94fa72324c14a4bda34e81da635d
-     * @var string
-     */
-    public $fileId;
-
-    /**
-     * @description Hidden
-type: boolean
-     * @example false
-     * @var bool
-     */
-    public $hidden;
-
-    /**
-     * @var ImageMediaResponse
-     */
-    public $imageMediaMetadata;
-
-    /**
-     * @description labels
-     * @example label1:1, label2:2
-     * @var string[]
-     */
-    public $labels;
-
-    /**
-     * @var string
-     */
-    public $meta;
-
-    /**
-     * @description name
-     * @example ccp.jpg
-     * @var string
-     */
-    public $name;
-
-    /**
-     * @description parent_file_id
-     * @example root
-     * @var string
-     */
-    public $parentFileId;
-
-    /**
-     * @var int
-     */
-    public $punishFlag;
-
-    /**
-     * @var string
-     */
-    public $shareId;
-
-    /**
-     * @description Size
-     * @example 1024
-     * @var int
-     */
-    public $size;
-
-    /**
-     * @description starred
-type: boolean
-     * @example false
-     * @var bool
-     */
-    public $starred;
-
-    /**
-     * @description status
-     * @example available
-     * @var string
-     */
-    public $status;
-
-    /**
-     * @description @Deprecated streams url info
-     * @var mixed[]
-     */
-    public $streamsInfo;
-
-    /**
-     * @description thumbnail
-     * @example https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
-     * @var string
-     */
-    public $thumbnail;
-
-    /**
-     * @description trashed_at
-     * @var string
-     */
-    public $trashedAt;
-
-    /**
-     * @description type
-     * @example file
-     * @var string
-     */
-    public $type;
-
-    /**
-     * @description updated_at
-     * @var string
-     */
-    public $updatedAt;
-
-    /**
-     * @description upload_id
-     * @example C9DCFE5A82644AC7A02DB74C30C934A6
-     * @var string
-     */
-    public $uploadId;
-
-    /**
-     * @description url
-     * @example https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
-     * @var string
-     */
-    public $url;
-
-    /**
-     * @description user_meta
-     * @example user_meta
-     * @var string
-     */
-    public $userMeta;
-
-    /**
-     * @var VideoMediaResponse
-     */
-    public $videoMediaMetadata;
-
-    /**
-     * @var VideoPreviewResponse
-     */
-    public $videoPreviewMetadata;
-
 }

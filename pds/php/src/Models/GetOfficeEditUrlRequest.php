@@ -1,6 +1,7 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
+
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
@@ -8,13 +9,40 @@ use AlibabaCloud\Tea\Model;
 /**
  * 获取office文档在线编辑地址
  */
-class GetOfficeEditUrlRequest extends Model {
+class GetOfficeEditUrlRequest extends Model
+{
+    public $headers;
+
+    /**
+     * @description addition_data
+     *
+     * @var mixed[]
+     */
+    public $additionData;
+
+    /**
+     * @description drive_id
+     *
+     * @example 1
+     *
+     * @var string
+     */
+    public $driveId;
+
+    /**
+     * @description file_id
+     *
+     * @var string
+     */
+    public $fileId;
     protected $_name = [
         'additionData' => 'addition_data',
-        'driveId' => 'drive_id',
-        'fileId' => 'file_id',
+        'driveId'      => 'drive_id',
+        'fileId'       => 'file_id',
     ];
-    public function validate() {
+
+    public function validate()
+    {
         Model::validateRequired('driveId', $this->driveId, true);
         Model::validateRequired('fileId', $this->fileId, true);
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
@@ -22,7 +50,9 @@ class GetOfficeEditUrlRequest extends Model {
         Model::validateMaxLength('fileId', $this->fileId, 50);
         Model::validateMinLength('fileId', $this->fileId, 40);
     }
-    public function toMap() {
+
+    public function toMap()
+    {
         $res = [];
         if (null !== $this->headers) {
             $res['headers'] = $this->headers;
@@ -36,47 +66,31 @@ class GetOfficeEditUrlRequest extends Model {
         if (null !== $this->fileId) {
             $res['file_id'] = $this->fileId;
         }
+
         return $res;
     }
+
     /**
      * @param array $map
+     *
      * @return GetOfficeEditUrlRequest
      */
-    public static function fromMap($map = []) {
+    public static function fromMap($map = [])
+    {
         $model = new self();
-        if(isset($map['headers'])){
+        if (isset($map['headers'])) {
             $model->headers = $map['headers'];
         }
-        if(isset($map['addition_data'])){
+        if (isset($map['addition_data'])) {
             $model->additionData = $map['addition_data'];
         }
-        if(isset($map['drive_id'])){
+        if (isset($map['drive_id'])) {
             $model->driveId = $map['drive_id'];
         }
-        if(isset($map['file_id'])){
+        if (isset($map['file_id'])) {
             $model->fileId = $map['file_id'];
         }
+
         return $model;
     }
-    public $headers;
-
-    /**
-     * @description addition_data
-     * @var mixed[]
-     */
-    public $additionData;
-
-    /**
-     * @description drive_id
-     * @example 1
-     * @var string
-     */
-    public $driveId;
-
-    /**
-     * @description file_id
-     * @var string
-     */
-    public $fileId;
-
 }

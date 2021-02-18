@@ -1,20 +1,48 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
+
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
 /**
- * play_media request
+ * play_media request.
  */
-class PlayMediaRequest extends Model {
+class PlayMediaRequest extends Model
+{
+    /**
+     * @description auth_key
+     *
+     * @example zzsdfwiskaksfeewasdf001
+     *
+     * @var string
+     */
+    public $AuthKey;
+
+    /**
+     * @description drive_id
+     *
+     * @example 1
+     *
+     * @var string
+     */
+    public $DriveID;
+
+    /**
+     * @description file_id
+     *
+     * @var string
+     */
+    public $FileID;
     protected $_name = [
         'AuthKey' => 'AuthKey',
         'DriveID' => 'DriveID',
-        'FileID' => 'FileID',
+        'FileID'  => 'FileID',
     ];
-    public function validate() {
+
+    public function validate()
+    {
         Model::validateRequired('AuthKey', $this->AuthKey, true);
         Model::validateRequired('DriveID', $this->DriveID, true);
         Model::validateRequired('FileID', $this->FileID, true);
@@ -24,7 +52,9 @@ class PlayMediaRequest extends Model {
         Model::validateMaxLength('FileID', $this->FileID, 50);
         Model::validateMinLength('FileID', $this->FileID, 40);
     }
-    public function toMap() {
+
+    public function toMap()
+    {
         $res = [];
         if (null !== $this->AuthKey) {
             $res['AuthKey'] = $this->AuthKey;
@@ -35,43 +65,28 @@ class PlayMediaRequest extends Model {
         if (null !== $this->FileID) {
             $res['FileID'] = $this->FileID;
         }
+
         return $res;
     }
+
     /**
      * @param array $map
+     *
      * @return PlayMediaRequest
      */
-    public static function fromMap($map = []) {
+    public static function fromMap($map = [])
+    {
         $model = new self();
-        if(isset($map['AuthKey'])){
+        if (isset($map['AuthKey'])) {
             $model->AuthKey = $map['AuthKey'];
         }
-        if(isset($map['DriveID'])){
+        if (isset($map['DriveID'])) {
             $model->DriveID = $map['DriveID'];
         }
-        if(isset($map['FileID'])){
+        if (isset($map['FileID'])) {
             $model->FileID = $map['FileID'];
         }
+
         return $model;
     }
-    /**
-     * @description auth_key
-     * @example zzsdfwiskaksfeewasdf001
-     * @var string
-     */
-    public $AuthKey;
-
-    /**
-     * @description drive_id
-     * @example 1
-     * @var string
-     */
-    public $DriveID;
-
-    /**
-     * @description file_id
-     * @var string
-     */
-    public $FileID;
-
 }

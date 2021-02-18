@@ -1,33 +1,121 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
+
 namespace Aliyun\PDS\SDK\Models;
 
 use AlibabaCloud\Tea\Model;
 
-use Aliyun\PDS\SDK\Models\UploadPartInfo;
-
 /**
- * create file request
+ * create file request.
  */
-class HostingCreateFileRequest extends Model {
+class HostingCreateFileRequest extends Model
+{
+    /**
+     * @description addition_data
+     *
+     * @var mixed[]
+     */
+    public $additionData;
+
+    /**
+     * @description ContentMd5
+     *
+     * @example E10ADC3949BA59ABBE56E057F20F883E
+     *
+     * @var string
+     */
+    public $contentMd5;
+
+    /**
+     * @description ContentType
+     *
+     * @example application/json
+     *
+     * @var string
+     */
+    public $contentType;
+
+    /**
+     * @description drive_id
+     *
+     * @example 1
+     *
+     * @var string
+     */
+    public $driveId;
+
+    /**
+     * @description forbid_overwrite
+     * type: boolean
+     * @var bool
+     */
+    public $forbidOverwrite;
+
+    /**
+     * @description Name
+     *
+     * @example ccp.jpg
+     *
+     * @var string
+     */
+    public $name;
+
+    /**
+     * @description parent_file_path
+     *
+     * @var string
+     */
+    public $parentFilePath;
+
+    /**
+     * @description part_info_list
+     *
+     * @var UploadPartInfo[]
+     */
+    public $partInfoList;
+
+    /**
+     * @description share_id
+     *
+     * @var string
+     */
+    public $shareId;
+
+    /**
+     * @description Size
+     *
+     * @var int
+     */
+    public $size;
+
+    /**
+     * @description Type
+     *
+     * @example file
+     *
+     * @var string
+     */
+    public $type;
     protected $_name = [
-        'additionData' => 'addition_data',
-        'contentMd5' => 'content_md5',
-        'contentType' => 'content_type',
-        'driveId' => 'drive_id',
+        'additionData'    => 'addition_data',
+        'contentMd5'      => 'content_md5',
+        'contentType'     => 'content_type',
+        'driveId'         => 'drive_id',
         'forbidOverwrite' => 'forbid_overwrite',
-        'name' => 'name',
-        'parentFilePath' => 'parent_file_path',
-        'partInfoList' => 'part_info_list',
-        'shareId' => 'share_id',
-        'size' => 'size',
-        'type' => 'type',
+        'name'            => 'name',
+        'parentFilePath'  => 'parent_file_path',
+        'partInfoList'    => 'part_info_list',
+        'shareId'         => 'share_id',
+        'size'            => 'size',
+        'type'            => 'type',
     ];
     protected $_default = [
         'forbidOverwrite' => 'false',
     ];
-    public function validate() {
+
+    public function validate()
+    {
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
         Model::validatePattern('shareId', $this->shareId, '[0-9a-zA-Z-]+');
         Model::validateRequired('name', $this->name, true);
@@ -38,7 +126,9 @@ class HostingCreateFileRequest extends Model {
         Model::validateMaximum('size', $this->size, 53687091200);
         Model::validateMinimum('size', $this->size, 0);
     }
-    public function toMap() {
+
+    public function toMap()
+    {
         $res = [];
         if (null !== $this->additionData) {
             $res['addition_data'] = $this->additionData;
@@ -63,9 +153,9 @@ class HostingCreateFileRequest extends Model {
         }
         if (null !== $this->partInfoList) {
             $res['part_info_list'] = [];
-            if(null !== $this->partInfoList && is_array($this->partInfoList)){
+            if (null !== $this->partInfoList && \is_array($this->partInfoList)) {
                 $n = 0;
-                foreach($this->partInfoList as $item){
+                foreach ($this->partInfoList as $item) {
                     $res['part_info_list'][$n++] = null !== $item ? $item->toMap() : $item;
                 }
             }
@@ -79,125 +169,58 @@ class HostingCreateFileRequest extends Model {
         if (null !== $this->type) {
             $res['type'] = $this->type;
         }
+
         return $res;
     }
+
     /**
      * @param array $map
+     *
      * @return HostingCreateFileRequest
      */
-    public static function fromMap($map = []) {
+    public static function fromMap($map = [])
+    {
         $model = new self();
-        if(isset($map['addition_data'])){
+        if (isset($map['addition_data'])) {
             $model->additionData = $map['addition_data'];
         }
-        if(isset($map['content_md5'])){
+        if (isset($map['content_md5'])) {
             $model->contentMd5 = $map['content_md5'];
         }
-        if(isset($map['content_type'])){
+        if (isset($map['content_type'])) {
             $model->contentType = $map['content_type'];
         }
-        if(isset($map['drive_id'])){
+        if (isset($map['drive_id'])) {
             $model->driveId = $map['drive_id'];
         }
-        if(isset($map['forbid_overwrite'])){
+        if (isset($map['forbid_overwrite'])) {
             $model->forbidOverwrite = $map['forbid_overwrite'];
         }
-        if(isset($map['name'])){
+        if (isset($map['name'])) {
             $model->name = $map['name'];
         }
-        if(isset($map['parent_file_path'])){
+        if (isset($map['parent_file_path'])) {
             $model->parentFilePath = $map['parent_file_path'];
         }
-        if(isset($map['part_info_list'])){
-            if(!empty($map['part_info_list'])){
+        if (isset($map['part_info_list'])) {
+            if (!empty($map['part_info_list'])) {
                 $model->partInfoList = [];
-                $n = 0;
-                foreach($map['part_info_list'] as $item) {
+                $n                   = 0;
+                foreach ($map['part_info_list'] as $item) {
                     $model->partInfoList[$n++] = null !== $item ? UploadPartInfo::fromMap($item) : $item;
                 }
             }
         }
-        if(isset($map['share_id'])){
+        if (isset($map['share_id'])) {
             $model->shareId = $map['share_id'];
         }
-        if(isset($map['size'])){
+        if (isset($map['size'])) {
             $model->size = $map['size'];
         }
-        if(isset($map['type'])){
+        if (isset($map['type'])) {
             $model->type = $map['type'];
         }
+
         return $model;
     }
-    /**
-     * @description addition_data
-     * @var mixed[]
-     */
-    public $additionData;
-
-    /**
-     * @description ContentMd5
-     * @example E10ADC3949BA59ABBE56E057F20F883E
-     * @var string
-     */
-    public $contentMd5;
-
-    /**
-     * @description ContentType
-     * @example application/json
-     * @var string
-     */
-    public $contentType;
-
-    /**
-     * @description drive_id
-     * @example 1
-     * @var string
-     */
-    public $driveId;
-
-    /**
-     * @description forbid_overwrite
-type: boolean
-     * @var bool
-     */
-    public $forbidOverwrite;
-
-    /**
-     * @description Name
-     * @example ccp.jpg
-     * @var string
-     */
-    public $name;
-
-    /**
-     * @description parent_file_path
-     * @var string
-     */
-    public $parentFilePath;
-
-    /**
-     * @description part_info_list
-     * @var UploadPartInfo[]
-     */
-    public $partInfoList;
-
-    /**
-     * @description share_id
-     * @var string
-     */
-    public $shareId;
-
-    /**
-     * @description Size
-     * @var int
-     */
-    public $size;
-
-    /**
-     * @description Type
-     * @example file
-     * @var string
-     */
-    public $type;
-
 }
