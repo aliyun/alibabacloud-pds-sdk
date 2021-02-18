@@ -26749,14 +26749,14 @@ public:
 
   virtual ~ListImageFaceGroupsResponse() = default;
 };
-class ListFaceGroupsModel : public Darabonba::Model {
+class ListFacegroupsModel : public Darabonba::Model {
 public:
   shared_ptr<map<string, string>> headers{};
   shared_ptr<ListImageFaceGroupsResponse> body{};
 
-  ListFaceGroupsModel() {}
+  ListFacegroupsModel() {}
 
-  explicit ListFaceGroupsModel(const std::map<string, boost::any> &config) : Darabonba::Model(config) {
+  explicit ListFacegroupsModel(const std::map<string, boost::any> &config) : Darabonba::Model(config) {
     fromMap(config);
   };
 
@@ -26796,7 +26796,7 @@ public:
   }
 
 
-  virtual ~ListFaceGroupsModel() = default;
+  virtual ~ListFacegroupsModel() = default;
 };
 class StoryResponse : public Darabonba::Model {
 public:
@@ -28418,7 +28418,7 @@ public:
   GetPhotoCountModel getPhotoCountEx(shared_ptr<GetImageCountRequest> request, shared_ptr<RuntimeOptions> runtime);
   GetStoryDetailModel getStoryDetailEx(shared_ptr<GetStoryDetailRequest> request, shared_ptr<RuntimeOptions> runtime);
   ListAddressGroupsModel listAddressGroupsEx(shared_ptr<ListImageAddressGroupsRequest> request, shared_ptr<RuntimeOptions> runtime);
-  ListFaceGroupsModel listFaceGroupsEx(shared_ptr<ListImageFaceGroupsRequest> request, shared_ptr<RuntimeOptions> runtime);
+  ListFacegroupsModel listFacegroupsEx(shared_ptr<ListImageFaceGroupsRequest> request, shared_ptr<RuntimeOptions> runtime);
   ListStoryModel listStoryEx(shared_ptr<ListStoryRequest> request, shared_ptr<RuntimeOptions> runtime);
   ListTagsModel listTagsEx(shared_ptr<ListImageTagsRequest> request, shared_ptr<RuntimeOptions> runtime);
   ParseKeywordsModel parseKeywordsEx(shared_ptr<ParseKeywordsRequest> request, shared_ptr<RuntimeOptions> runtime);
@@ -28498,7 +28498,7 @@ public:
   GetPhotoCountModel getPhotoCount(shared_ptr<GetImageCountRequest> request);
   GetStoryDetailModel getStoryDetail(shared_ptr<GetStoryDetailRequest> request);
   ListAddressGroupsModel listAddressGroups(shared_ptr<ListImageAddressGroupsRequest> request);
-  ListFaceGroupsModel listFaceGroups(shared_ptr<ListImageFaceGroupsRequest> request);
+  ListFacegroupsModel listFacegroups(shared_ptr<ListImageFaceGroupsRequest> request);
   ListStoryModel listStory(shared_ptr<ListStoryRequest> request);
   ListTagsModel listTags(shared_ptr<ListImageTagsRequest> request);
   ParseKeywordsModel parseKeywords(shared_ptr<ParseKeywordsRequest> request);

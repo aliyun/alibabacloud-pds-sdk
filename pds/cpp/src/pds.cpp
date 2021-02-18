@@ -8153,7 +8153,7 @@ ListAddressGroupsModel Alibabacloud_Pds::Client::listAddressGroupsEx(shared_ptr<
   BOOST_THROW_EXCEPTION(Darabonba::UnretryableError(_lastRequest, _lastException));
 }
 
-ListFaceGroupsModel Alibabacloud_Pds::Client::listFaceGroupsEx(shared_ptr<ListImageFaceGroupsRequest> request, shared_ptr<RuntimeOptions> runtime) {
+ListFacegroupsModel Alibabacloud_Pds::Client::listFacegroupsEx(shared_ptr<ListImageFaceGroupsRequest> request, shared_ptr<RuntimeOptions> runtime) {
   request->validate();
   runtime->validate();
   shared_ptr<map<string, boost::any>> runtime_ = make_shared<map<string, boost::any>>(map<string, boost::any>({
@@ -8199,7 +8199,7 @@ ListFaceGroupsModel Alibabacloud_Pds::Client::listFaceGroupsEx(shared_ptr<ListIm
       shared_ptr<map<string, boost::any>> realReq = make_shared<map<string, boost::any>>(Darabonba_Util::Client::toMap(request));
       request_->protocol = Darabonba_Util::Client::defaultString(_protocol, make_shared<string>("https"));
       request_->method = "POST";
-      request_->pathname = getPathname(_nickname, make_shared<string>(string("/v2/image/list_face_groups")));
+      request_->pathname = getPathname(_nickname, make_shared<string>(string("/v2/image/list_facegroups")));
       request_->headers = Darabonba::Converter::merge(map<string, string>({
         {"user-agent", getUserAgent()},
         {"host", Darabonba_Util::Client::defaultString(_endpoint, make_shared<string>(string(*_domainId) + string(".api.aliyunpds.com")))},
@@ -8228,7 +8228,7 @@ ListFaceGroupsModel Alibabacloud_Pds::Client::listFaceGroupsEx(shared_ptr<ListIm
       if (Darabonba_Util::Client::equalNumber(make_shared<int>(response_->statusCode), make_shared<int>(200))) {
         obj = make_shared<boost::any>(Darabonba_Util::Client::readAsJSON(response_->body));
         respMap = make_shared<map<string, boost::any>>(Darabonba_Util::Client::assertAsMap(obj));
-        return ListFaceGroupsModel({
+        return ListFacegroupsModel({
           {"body", !respMap ? boost::any() : boost::any(*respMap)},
           {"headers", boost::any(response_->headers)}
         });
@@ -9295,9 +9295,9 @@ ListAddressGroupsModel Alibabacloud_Pds::Client::listAddressGroups(shared_ptr<Li
   return listAddressGroupsEx(request, runtime);
 }
 
-ListFaceGroupsModel Alibabacloud_Pds::Client::listFaceGroups(shared_ptr<ListImageFaceGroupsRequest> request) {
+ListFacegroupsModel Alibabacloud_Pds::Client::listFacegroups(shared_ptr<ListImageFaceGroupsRequest> request) {
   shared_ptr<RuntimeOptions> runtime = make_shared<RuntimeOptions>();
-  return listFaceGroupsEx(request, runtime);
+  return listFacegroupsEx(request, runtime);
 }
 
 ListStoryModel Alibabacloud_Pds::Client::listStory(shared_ptr<ListStoryRequest> request) {
