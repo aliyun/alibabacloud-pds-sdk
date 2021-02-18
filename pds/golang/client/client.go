@@ -15610,7 +15610,7 @@ type HostingListUploadedPartRequest struct {
   // limit
   Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"1000" minimum:"1"`
   // part_number_marker
-  PartNumberMarker *int64 `json:"part_number_marker,omitempty" xml:"part_number_marker,omitempty" minimum:"1" pattern:"[0-9]+"`
+  PartNumberMarker *int64 `json:"part_number_marker,omitempty" xml:"part_number_marker,omitempty" minimum:"1"`
   // share_id
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
   // upload_id
@@ -16689,9 +16689,9 @@ type ListUploadedPartRequest struct {
   FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
   FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
   // limit
-  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"1000" minimum:"1" pattern:"[0-9]+"`
+  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"1000" minimum:"1"`
   // part_number_marker
-  PartNumberMarker *int64 `json:"part_number_marker,omitempty" xml:"part_number_marker,omitempty" minimum:"1" pattern:"[0-9]+"`
+  PartNumberMarker *int64 `json:"part_number_marker,omitempty" xml:"part_number_marker,omitempty" minimum:"1"`
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
   // upload_id
   UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
@@ -18501,25 +18501,25 @@ func (s *ListAddressGroupsModel) SetBody(v *ListImageAddressGroupsResponse) *Lis
   return s
 }
 
-type ListFaceGroupsModel struct {
+type ListFacegroupsModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *ListImageFaceGroupsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s ListFaceGroupsModel) String() string {
+func (s ListFacegroupsModel) String() string {
   return tea.Prettify(s)
 }
 
-func (s ListFaceGroupsModel) GoString() string {
+func (s ListFacegroupsModel) GoString() string {
   return s.String()
 }
 
-func (s *ListFaceGroupsModel) SetHeaders(v map[string]*string) *ListFaceGroupsModel {
+func (s *ListFacegroupsModel) SetHeaders(v map[string]*string) *ListFacegroupsModel {
   s.Headers = v
   return s
 }
 
-func (s *ListFaceGroupsModel) SetBody(v *ListImageFaceGroupsResponse) *ListFaceGroupsModel {
+func (s *ListFacegroupsModel) SetBody(v *ListImageFaceGroupsResponse) *ListFacegroupsModel {
   s.Body = v
   return s
 }
@@ -31093,7 +31093,7 @@ func (client *Client) ListAddressGroupsEx(request *ListImageAddressGroupsRequest
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
-func (client *Client) ListFaceGroupsEx(request *ListImageFaceGroupsRequest, runtime *RuntimeOptions) (_result *ListFaceGroupsModel, _err error) {
+func (client *Client) ListFacegroupsEx(request *ListImageFaceGroupsRequest, runtime *RuntimeOptions) (_result *ListFacegroupsModel, _err error) {
   _err = tea.Validate(request)
   if _err != nil {
     return _result, _err
@@ -31124,7 +31124,7 @@ func (client *Client) ListFaceGroupsEx(request *ListImageFaceGroupsRequest, runt
     "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
   }
 
-  _resp := &ListFaceGroupsModel{}
+  _resp := &ListFacegroupsModel{}
   for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
     if _retryTimes > 0 {
       _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
@@ -31133,7 +31133,7 @@ func (client *Client) ListFaceGroupsEx(request *ListImageFaceGroupsRequest, runt
       }
     }
 
-    _resp, _err = func()(*ListFaceGroupsModel, error){
+    _resp, _err = func()(*ListFacegroupsModel, error){
       request_ := tea.NewRequest()
       accesskeyId, _err := client.GetAccessKeyId()
       if _err != nil {
@@ -31158,7 +31158,7 @@ func (client *Client) ListFaceGroupsEx(request *ListImageFaceGroupsRequest, runt
       realReq := util.ToMap(request)
       request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
       request_.Method = tea.String("POST")
-      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/image/list_face_groups"))
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/image/list_facegroups"))
       request_.Headers = tea.Merge(map[string]*string{
         "user-agent": client.GetUserAgent(),
         "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
@@ -31194,7 +31194,7 @@ func (client *Client) ListFaceGroupsEx(request *ListImageFaceGroupsRequest, runt
         }
 
         respMap = util.AssertAsMap(obj)
-        _result = &ListFaceGroupsModel{}
+        _result = &ListFacegroupsModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
           "headers": response_.Headers,
@@ -33657,10 +33657,10 @@ func (client *Client) ListAddressGroups (request *ListImageAddressGroupsRequest)
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
-func (client *Client) ListFaceGroups (request *ListImageFaceGroupsRequest) (_result *ListFaceGroupsModel, _err error) {
+func (client *Client) ListFacegroups (request *ListImageFaceGroupsRequest) (_result *ListFacegroupsModel, _err error) {
   runtime := &RuntimeOptions{}
-  _result = &ListFaceGroupsModel{}
-  _body, _err := client.ListFaceGroupsEx(request, runtime)
+  _result = &ListFacegroupsModel{}
+  _body, _err := client.ListFacegroupsEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
