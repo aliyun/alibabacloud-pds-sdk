@@ -11906,7 +11906,7 @@ api listAddressGroupsEx(request: ListImageAddressGroupsRequest, runtime: Runtime
   ignoreSSL = runtime.ignoreSSL
 }
 
-model ListFaceGroupsModel {
+model ListFacegroupsModel {
   headers?: map[string]string(name='headers'),
   body: ListImageFaceGroupsResponse(name='body'),
 }
@@ -11921,9 +11921,9 @@ model ListFaceGroupsModel {
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
-async function listFaceGroups(request: ListImageFaceGroupsRequest) throws: ListFaceGroupsModel  {
+async function listFacegroups(request: ListImageFaceGroupsRequest) throws: ListFacegroupsModel  {
   var runtime = new RuntimeOptions{};
-  return listFaceGroupsEx(request, runtime);
+  return listFacegroupsEx(request, runtime);
 }
 
 /**
@@ -11936,7 +11936,7 @@ async function listFaceGroups(request: ListImageFaceGroupsRequest) throws: ListF
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
-api listFaceGroupsEx(request: ListImageFaceGroupsRequest, runtime: RuntimeOptions): ListFaceGroupsModel  {
+api listFacegroupsEx(request: ListImageFaceGroupsRequest, runtime: RuntimeOptions): ListFacegroupsModel  {
   var accesskeyId = getAccessKeyId();
   var accessKeySecret = getAccessKeySecret();
   var securityToken = getSecurityToken();
@@ -11944,7 +11944,7 @@ api listFaceGroupsEx(request: ListImageFaceGroupsRequest, runtime: RuntimeOption
   var realReq = Util.toMap(request);
   __request.protocol = Util.defaultString(@protocol, 'https');
   __request.method = 'POST';
-  __request.pathname = getPathname(@nickname, `/v2/image/list_face_groups`);
+  __request.pathname = getPathname(@nickname, `/v2/image/list_facegroups`);
   __request.headers = {
     user-agent = getUserAgent(),
     host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
