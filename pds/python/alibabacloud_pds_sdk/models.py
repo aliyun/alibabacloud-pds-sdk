@@ -2863,7 +2863,7 @@ class BaseCCPFileResponse(TeaModel):
         # file_id
         self.file_id = file_id
         # Hidden
-type: boolean
+        # type: boolean
         self.hidden = hidden
         self.image_media_metadata = image_media_metadata
         # labels
@@ -2878,7 +2878,7 @@ type: boolean
         # Size
         self.size = size
         # starred
-type: boolean
+        # type: boolean
         self.starred = starred
         # status
         self.status = status
@@ -3974,7 +3974,7 @@ class CompleteFileResponse(TeaModel):
         # file_id
         self.file_id = file_id
         # Hidden
-type: boolean
+        # type: boolean
         self.hidden = hidden
         self.image_media_metadata = image_media_metadata
         # labels
@@ -3991,7 +3991,7 @@ type: boolean
         # Size
         self.size = size
         # starred
-type: boolean
+        # type: boolean
         self.starred = starred
         # status
         self.status = status
@@ -4737,7 +4737,7 @@ class CreateFileResponse(TeaModel):
         # encrypt_mode
         self.encrypt_mode = encrypt_mode
         # exist
-type: boolean
+        # type: boolean
         self.exist = exist
         # file_id
         self.file_id = file_id
@@ -4750,7 +4750,7 @@ type: boolean
         # part_info_list
         self.part_info_list = part_info_list
         # rapid_upload
-type: boolean
+        # type: boolean
         self.rapid_upload = rapid_upload
         # status
         self.status = status
@@ -5620,7 +5620,7 @@ class GetAsyncTaskResponse(TeaModel):
         url: str = None,
     ):
         # async_task_id
-type:string
+        # type:string
         self.async_task_id = async_task_id
         # consumed_process
         self.consumed_process = consumed_process
@@ -5633,7 +5633,7 @@ type:string
         # total_process
         self.total_process = total_process
         # download_url
-example
+        # example
         self.url = url
 
     def validate(self):
@@ -6203,7 +6203,7 @@ class GetFileByPathResponse(TeaModel):
         # file_id
         self.file_id = file_id
         # Hidden
-type: boolean
+        # type: boolean
         self.hidden = hidden
         self.image_media_metadata = image_media_metadata
         # labels
@@ -6218,7 +6218,7 @@ type: boolean
         # Size
         self.size = size
         # starred
-type: boolean
+        # type: boolean
         self.starred = starred
         # status
         self.status = status
@@ -6488,7 +6488,7 @@ class GetFileResponse(TeaModel):
         # file_id
         self.file_id = file_id
         # Hidden
-type: boolean
+        # type: boolean
         self.hidden = hidden
         self.image_media_metadata = image_media_metadata
         # labels
@@ -6503,7 +6503,7 @@ type: boolean
         # Size
         self.size = size
         # starred
-type: boolean
+        # type: boolean
         self.starred = starred
         # status
         self.status = status
@@ -9094,7 +9094,7 @@ class ListStoreFileResponse(TeaModel):
         next_marker: str = None,
     ):
         # items
-file list
+        # file list
         self.items = items
         self.next_marker = next_marker
 
@@ -10498,10 +10498,10 @@ class StreamUploadInfo(TeaModel):
         # part_info_list
         self.part_info_list = part_info_list
         # pre_rapid_upload
-type: boolean
+        # type: boolean
         self.pre_rapid_upload = pre_rapid_upload
         # rapid_upload
-type: boolean
+        # type: boolean
         self.rapid_upload = rapid_upload
         # upload_id
         self.upload_id = upload_id
@@ -11058,7 +11058,7 @@ class UpdateFileMetaResponse(TeaModel):
         # file_id
         self.file_id = file_id
         # Hidden
-type: boolean
+        # type: boolean
         self.hidden = hidden
         self.image_media_metadata = image_media_metadata
         # labels
@@ -11073,7 +11073,7 @@ type: boolean
         # Size
         self.size = size
         # starred
-type: boolean
+        # type: boolean
         self.starred = starred
         # status
         self.status = status
@@ -15349,7 +15349,7 @@ class BaseFileProcessRequest(TeaModel):
         # image_url_process
         self.image_url_process = image_url_process
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -15489,7 +15489,7 @@ class BaseImageProcessRequest(TeaModel):
         # image_url_process
         self.image_url_process = image_url_process
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -15552,7 +15552,7 @@ class BaseListFileRequest(TeaModel):
         self.share_id = share_id
         self.sign_token = sign_token
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -15945,7 +15945,7 @@ class CopyFileRequest(TeaModel):
     ):
         self.headers = headers
         # auto_rename
-type: boolean
+        # type: boolean
         self.auto_rename = auto_rename
         # drive_id
         self.drive_id = drive_id
@@ -16279,7 +16279,7 @@ class CreateFileRequest(TeaModel):
         # pre_hash
         self.pre_hash = pre_hash
         # share_id
-example
+        # example
         self.share_id = share_id
         # Size
         self.size = size
@@ -16588,8 +16588,8 @@ class CreateShareRequest(TeaModel):
         # share_name
         self.share_name = share_name
         # share create policy
-
-share_policy
+        # 
+        # share_policy
         self.share_policy = share_policy
         # status
         self.status = status
@@ -16718,7 +16718,7 @@ class DeleteFileRequest(TeaModel):
         self.file_id = file_id
         self.file_id_path = file_id_path
         # permanently
-type: false
+        # type: false
         self.permanently = permanently
         self.share_id = share_id
 
@@ -16856,12 +16856,12 @@ class DownloadRequest(TeaModel):
         # file id
         self.file_id = file_id
         # in: query
-image_thumbnail_process
+        # image_thumbnail_process
         self.image_thumbnail_process = image_thumbnail_process
         # share_id, either share_id or drive_id is required
         self.share_id = share_id
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
         self.file_id_path = file_id_path
         # location
@@ -16928,7 +16928,7 @@ class GetAsyncTaskRequest(TeaModel):
     ):
         self.headers = headers
         # async_task_id
-type:string
+        # type:string
         self.async_task_id = async_task_id
 
     def validate(self):
@@ -17156,7 +17156,7 @@ class GetFileByPathRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -17266,7 +17266,7 @@ class GetFileRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -17934,7 +17934,7 @@ class HostingCompleteFileRequest(TeaModel):
         self.drive_id = drive_id
         self.file_path = file_path
         # forbid_overwrite
-type: boolean
+        # type: boolean
         self.forbid_overwrite = forbid_overwrite
         # part_info_list
         self.part_info_list = part_info_list
@@ -18014,7 +18014,7 @@ class HostingCopyFileRequest(TeaModel):
         # new_name
         self.new_name = new_name
         # overwrite
-type: boolean
+        # type: boolean
         self.overwrite = overwrite
         # share_id
         self.share_id = share_id
@@ -18105,7 +18105,7 @@ class HostingCreateFileRequest(TeaModel):
         # drive_id
         self.drive_id = drive_id
         # forbid_overwrite
-type: boolean
+        # type: boolean
         self.forbid_overwrite = forbid_overwrite
         # Name
         self.name = name
@@ -18212,7 +18212,7 @@ class HostingDeleteFileRequest(TeaModel):
         # file_path
         self.file_path = file_path
         # permanently
-type: false
+        # type: false
         self.permanently = permanently
         # share_id
         self.share_id = share_id
@@ -18358,7 +18358,7 @@ class HostingGetFileRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -18599,7 +18599,7 @@ class HostingListFileRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -18710,7 +18710,6 @@ class HostingListUploadedPartRequest(TeaModel):
             self.validate_maximum(self.limit, 'limit', 1000)
             self.validate_minimum(self.limit, 'limit', 1)
         if self.part_number_marker is not None:
-            self.validate_pattern(self.part_number_marker, 'part_number_marker', '[0-9]+')
             self.validate_minimum(self.part_number_marker, 'part_number_marker', 1)
         if self.share_id is not None:
             self.validate_pattern(self.share_id, 'share_id', '[0-9a-zA-Z-]+')
@@ -18768,7 +18767,7 @@ class HostingMoveFileRequest(TeaModel):
         # new_name
         self.new_name = new_name
         # overwrite
-type: boolean
+        # type: boolean
         self.overwrite = overwrite
         # share_id
         self.share_id = share_id
@@ -19090,7 +19089,7 @@ class ListByAnonymousRequest(TeaModel):
         self.share_id = share_id
         self.sign_token = sign_token
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -19266,7 +19265,7 @@ class ListFileByCustomIndexKeyRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -19399,10 +19398,10 @@ class ListFileDeltaRequest(TeaModel):
         # image_url_process
         self.image_url_process = image_url_process
         # limit
-default 100
+        # default 100
         self.limit = limit
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -19524,7 +19523,7 @@ class ListFileRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -19937,11 +19936,9 @@ class ListUploadedPartRequest(TeaModel):
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
         if self.limit is not None:
-            self.validate_pattern(self.limit, 'limit', '[0-9]+')
             self.validate_maximum(self.limit, 'limit', 1000)
             self.validate_minimum(self.limit, 'limit', 1)
         if self.part_number_marker is not None:
-            self.validate_pattern(self.part_number_marker, 'part_number_marker', '[0-9]+')
             self.validate_minimum(self.part_number_marker, 'part_number_marker', 1)
 
     def to_map(self):
@@ -20225,7 +20222,7 @@ class ScanFileMetaRequest(TeaModel):
         # marker
         self.marker = marker
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -20337,7 +20334,7 @@ class SearchFileRequest(TeaModel):
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
@@ -20586,7 +20583,7 @@ class UpdateFileMetaRequest(TeaModel):
         self.check_name_mode = check_name_mode
         self.custom_index_key = custom_index_key
         # description
-type: string
+        # type: string
         self.description = description
         # drive_id
         self.drive_id = drive_id
@@ -20595,7 +20592,7 @@ type: string
         self.file_id = file_id
         self.file_id_path = file_id_path
         # hidden
-type: boolean
+        # type: boolean
         self.hidden = hidden
         # labels
         self.labels = labels
@@ -20606,7 +20603,7 @@ type: boolean
         self.share_id = share_id
         self.sign_token = sign_token
         # starred
-type: boolean
+        # type: boolean
         self.starred = starred
         # user_meta
         self.user_meta = user_meta
@@ -21651,7 +21648,7 @@ class GetUserRequest(TeaModel):
     ):
         self.headers = headers
         # 用户 ID, 使用ak方式访问，该项必传, access_token访问如果不传，默认取自己的user信息
-example
+        # example
         self.user_id = user_id
 
     def validate(self):
@@ -22446,7 +22443,7 @@ class ListImageFaceGroupsResponse(TeaModel):
         return self
 
 
-class ListFaceGroupsModel(TeaModel):
+class ListFacegroupsModel(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -23398,7 +23395,7 @@ class ListImageTagsRequest(TeaModel):
         # image_thumbnail_process
         self.image_thumbnail_process = image_thumbnail_process
         # video_thumbnail_process
-type:string
+        # type:string
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
