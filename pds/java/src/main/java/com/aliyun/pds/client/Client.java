@@ -8746,7 +8746,7 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest);
     }
 
-    public ListFaceGroupsModel listFaceGroupsEx(ListImageFaceGroupsRequest request, RuntimeOptions runtime) throws Exception {
+    public ListFacegroupsModel listFacegroupsEx(ListImageFaceGroupsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
         java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
@@ -8791,7 +8791,7 @@ public class Client {
                 java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
                 request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
                 request_.method = "POST";
-                request_.pathname = this.getPathname(_nickname, "/v2/image/list_face_groups");
+                request_.pathname = this.getPathname(_nickname, "/v2/image/list_facegroups");
                 request_.headers = TeaConverter.merge(String.class,
                     TeaConverter.buildMap(
                         new TeaPair("user-agent", this.getUserAgent()),
@@ -8828,7 +8828,7 @@ public class Client {
                     return TeaModel.toModel(TeaConverter.buildMap(
                         new TeaPair("body", respMap),
                         new TeaPair("headers", response_.headers)
-                    ), new ListFaceGroupsModel());
+                    ), new ListFacegroupsModel());
                 }
 
                 if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
@@ -10637,9 +10637,9 @@ public class Client {
      * @error InternalError The request has been failed due to some unknown error.
      * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
      */
-    public ListFaceGroupsModel listFaceGroups(ListImageFaceGroupsRequest request) throws Exception {
+    public ListFacegroupsModel listFacegroups(ListImageFaceGroupsRequest request) throws Exception {
         RuntimeOptions runtime = new RuntimeOptions();
-        return this.listFaceGroupsEx(request, runtime);
+        return this.listFacegroupsEx(request, runtime);
     }
 
     /**
