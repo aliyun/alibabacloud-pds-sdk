@@ -10,9 +10,9 @@
 		}
 	],
 	"releases": {
-		"go": "github.com/alibabacloud-go/pds-sdk/client:v1.0.3",
-		"ts": "@alicloud/pds-sdk:^1.0.0",
-		"java": "com.aliyun:aliyun-sdk-pds:0.0.6",
+		"go": "github.com/alibabacloud-go/pds-sdk/client:v1.0.5",
+		"ts": "@alicloud/pds-sdk:^1.1.1",
+		"java": "com.aliyun:aliyun-sdk-pds:0.0.7",
 		"csharp": "Aliyun.SDK.PDS.Client:1.0.1",
 		"php": "alibabacloud/pds-sdk:^0.2.0",
 		"python": "alibabacloud_pds_sdk:0.0.2",

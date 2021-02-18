@@ -12410,7 +12410,7 @@ export class ListAddressGroupsModel extends $tea.Model {
   }
 }
 
-export class ListFaceGroupsModel extends $tea.Model {
+export class ListFacegroupsModel extends $tea.Model {
   headers?: { [key: string]: string };
   body: ListImageFaceGroupsResponse;
   static names(): { [key: string]: string } {
@@ -22522,7 +22522,7 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async listFaceGroupsEx(request: ListImageFaceGroupsRequest, runtime: RuntimeOptions): Promise<ListFaceGroupsModel> {
+  async listFacegroupsEx(request: ListImageFaceGroupsRequest, runtime: RuntimeOptions): Promise<ListFacegroupsModel> {
     let _runtime: { [key: string]: any } = {
       timeouted: "retry",
       readTimeout: runtime.readTimeout,
@@ -22566,7 +22566,7 @@ export default class Client {
         let realReq = Util.toMap(request);
         request_.protocol = Util.defaultString(this._protocol, "https");
         request_.method = "POST";
-        request_.pathname = this.getPathname(this._nickname, `/v2/image/list_face_groups`);
+        request_.pathname = this.getPathname(this._nickname, `/v2/image/list_facegroups`);
         request_.headers = {
           'user-agent': this.getUserAgent(),
           host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
@@ -22598,10 +22598,10 @@ export default class Client {
         if (Util.equalNumber(response_.statusCode, 200)) {
           obj = await Util.readAsJSON(response_.body);
           respMap = Util.assertAsMap(obj);
-          return $tea.cast<ListFaceGroupsModel>({
+          return $tea.cast<ListFacegroupsModel>({
             body: respMap,
             headers: response_.headers,
-          }, new ListFaceGroupsModel({}));
+          }, new ListFacegroupsModel({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -24437,9 +24437,9 @@ export default class Client {
    * @error InternalError The request has been failed due to some unknown error.
    * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
    */
-  async listFaceGroups(request: ListImageFaceGroupsRequest): Promise<ListFaceGroupsModel> {
+  async listFacegroups(request: ListImageFaceGroupsRequest): Promise<ListFacegroupsModel> {
     let runtime = new RuntimeOptions({ });
-    return await this.listFaceGroupsEx(request, runtime);
+    return await this.listFacegroupsEx(request, runtime);
   }
 
   /**
