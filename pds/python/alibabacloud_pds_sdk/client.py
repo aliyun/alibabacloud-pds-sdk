@@ -16608,11 +16608,11 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    def list_face_groups_ex(
+    def list_facegroups_ex(
         self,
         request: pds_models.ListImageFaceGroupsRequest,
         runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFaceGroupsModel:
+    ) -> pds_models.ListFacegroupsModel:
         """
         该接口将会列举人脸分组
         @tags image
@@ -16665,7 +16665,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/image/list_face_groups')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/image/list_facegroups')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -16691,7 +16691,7 @@ class Client:
                 if UtilClient.equal_number(_response.status_code, 200):
                     obj = UtilClient.read_as_json(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
-                    return pds_models.ListFaceGroupsModel().from_map(
+                    return pds_models.ListFacegroupsModel().from_map(
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -16722,11 +16722,11 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
-    async def list_face_groups_ex_async(
+    async def list_facegroups_ex_async(
         self,
         request: pds_models.ListImageFaceGroupsRequest,
         runtime: pds_models.RuntimeOptions,
-    ) -> pds_models.ListFaceGroupsModel:
+    ) -> pds_models.ListFacegroupsModel:
         """
         该接口将会列举人脸分组
         @tags image
@@ -16779,7 +16779,7 @@ class Client:
                 real_req = UtilClient.to_map(request)
                 _request.protocol = UtilClient.default_string(self._protocol, 'https')
                 _request.method = 'POST'
-                _request.pathname = self.get_pathname(self._nickname, f'/v2/image/list_face_groups')
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/image/list_facegroups')
                 _request.headers = TeaCore.merge({
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
@@ -16805,7 +16805,7 @@ class Client:
                 if UtilClient.equal_number(_response.status_code, 200):
                     obj = await UtilClient.read_as_json_async(_response.body)
                     resp_map = UtilClient.assert_as_map(obj)
-                    return pds_models.ListFaceGroupsModel().from_map(
+                    return pds_models.ListFacegroupsModel().from_map(
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -20590,10 +20590,10 @@ class Client:
         runtime = pds_models.RuntimeOptions()
         return await self.list_address_groups_ex_async(request, runtime)
 
-    def list_face_groups(
+    def list_facegroups(
         self,
         request: pds_models.ListImageFaceGroupsRequest,
-    ) -> pds_models.ListFaceGroupsModel:
+    ) -> pds_models.ListFacegroupsModel:
         """
         该接口将会列举人脸分组
         @tags image
@@ -20605,12 +20605,12 @@ class Client:
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
         runtime = pds_models.RuntimeOptions()
-        return self.list_face_groups_ex(request, runtime)
+        return self.list_facegroups_ex(request, runtime)
 
-    async def list_face_groups_async(
+    async def list_facegroups_async(
         self,
         request: pds_models.ListImageFaceGroupsRequest,
-    ) -> pds_models.ListFaceGroupsModel:
+    ) -> pds_models.ListFacegroupsModel:
         """
         该接口将会列举人脸分组
         @tags image
@@ -20622,7 +20622,7 @@ class Client:
         @error ServiceUnavailable The request has failed due to a temporary failure of the server.
         """
         runtime = pds_models.RuntimeOptions()
-        return await self.list_face_groups_ex_async(request, runtime)
+        return await self.list_facegroups_ex_async(request, runtime)
 
     def list_story(
         self,

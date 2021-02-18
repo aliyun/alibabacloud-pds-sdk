@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_pds_sdk.
 
-Created on 01/02/2021
+Created on 18/02/2021
 
 @author: Alibaba Cloud SDK
 """
@@ -37,7 +37,7 @@ AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
 URL = "https://github.com/aliyun/alibabacloud-pds-sdk"
 VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
-    "alibabacloud_tea_util>=0.3.1, <1.0.0",
+    "alibabacloud_tea_util>=0.3.3, <1.0.0",
     "alibabacloud_roa_util>=0.1.2, <1.0.0",
     "alibabacloud_credentials>=0.1.2, <1.0.0",
     "alibabacloud_pds_credentials>=0.0.2, <1.0.0"
