@@ -37,7 +37,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// part_number_marker
         /// </summary>
         [NameInMap("part_number_marker")]
-        [Validation(Required=false, Pattern="[0-9]+")]
+        [Validation(Required=false)]
         public long? PartNumberMarker { get; set; }
 
         /// <summary>

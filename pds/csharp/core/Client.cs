@@ -22176,7 +22176,7 @@ namespace Aliyun.SDK.PDS.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public ListFaceGroupsModel ListFaceGroupsEx(ListImageFaceGroupsRequest request, RuntimeOptions runtime)
+        public ListFacegroupsModel ListFacegroupsEx(ListImageFaceGroupsRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -22230,7 +22230,7 @@ namespace Aliyun.SDK.PDS.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/image/list_face_groups");
+                    request_.Pathname = GetPathname(_nickname, "/v2/image/list_facegroups");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -22269,7 +22269,7 @@ namespace Aliyun.SDK.PDS.Client
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<ListFaceGroupsModel>(new Dictionary<string, object>
+                        return TeaModel.ToObject<ListFacegroupsModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -22328,7 +22328,7 @@ namespace Aliyun.SDK.PDS.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<ListFaceGroupsModel> ListFaceGroupsExAsync(ListImageFaceGroupsRequest request, RuntimeOptions runtime)
+        public async Task<ListFacegroupsModel> ListFacegroupsExAsync(ListImageFaceGroupsRequest request, RuntimeOptions runtime)
         {
             request.Validate();
             runtime.Validate();
@@ -22382,7 +22382,7 @@ namespace Aliyun.SDK.PDS.Client
                     Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
                     request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
                     request_.Method = "POST";
-                    request_.Pathname = GetPathname(_nickname, "/v2/image/list_face_groups");
+                    request_.Pathname = GetPathname(_nickname, "/v2/image/list_facegroups");
                     request_.Headers = TeaConverter.merge<string>
                     (
                         new Dictionary<string, string>()
@@ -22421,7 +22421,7 @@ namespace Aliyun.SDK.PDS.Client
                     {
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
-                        return TeaModel.ToObject<ListFaceGroupsModel>(new Dictionary<string, object>
+                        return TeaModel.ToObject<ListFacegroupsModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -26544,10 +26544,10 @@ namespace Aliyun.SDK.PDS.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public ListFaceGroupsModel ListFaceGroups(ListImageFaceGroupsRequest request)
+        public ListFacegroupsModel ListFacegroups(ListImageFaceGroupsRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
-            return ListFaceGroupsEx(request, runtime);
+            return ListFacegroupsEx(request, runtime);
         }
 
         /**
@@ -26560,10 +26560,10 @@ namespace Aliyun.SDK.PDS.Client
          * @error InternalError The request has been failed due to some unknown error.
          * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
          */
-        public async Task<ListFaceGroupsModel> ListFaceGroupsAsync(ListImageFaceGroupsRequest request)
+        public async Task<ListFacegroupsModel> ListFacegroupsAsync(ListImageFaceGroupsRequest request)
         {
             RuntimeOptions runtime = new RuntimeOptions();
-            return await ListFaceGroupsExAsync(request, runtime);
+            return await ListFacegroupsExAsync(request, runtime);
         }
 
         /**
