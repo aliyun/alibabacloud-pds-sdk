@@ -7,10 +7,6 @@ import com.aliyun.tea.*;
  * 
  */
 public class ImageFaceGroupResponse extends TeaModel {
-    // cover_file_id
-    @NameInMap("cover_file_id")
-    public String coverFileId;
-
     // 人脸分组生成时间
     @NameInMap("created_at")
     public String createdAt;
@@ -42,14 +38,6 @@ public class ImageFaceGroupResponse extends TeaModel {
     public static ImageFaceGroupResponse build(java.util.Map<String, ?> map) throws Exception {
         ImageFaceGroupResponse self = new ImageFaceGroupResponse();
         return TeaModel.build(map, self);
-    }
-
-    public ImageFaceGroupResponse setCoverFileId(String coverFileId) {
-        this.coverFileId = coverFileId;
-        return this;
-    }
-    public String getCoverFileId() {
-        return this.coverFileId;
     }
 
     public ImageFaceGroupResponse setCreatedAt(String createdAt) {

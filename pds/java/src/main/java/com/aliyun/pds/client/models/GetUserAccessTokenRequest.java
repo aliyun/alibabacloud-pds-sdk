@@ -10,9 +10,9 @@ public class GetUserAccessTokenRequest extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
-    // 角色
-    @NameInMap("role")
-    public String role;
+    // subdomain ID
+    @NameInMap("subdomain_id")
+    public String subdomainId;
 
     // 用户 ID
     @NameInMap("user_id")
@@ -32,12 +32,12 @@ public class GetUserAccessTokenRequest extends TeaModel {
         return this.headers;
     }
 
-    public GetUserAccessTokenRequest setRole(String role) {
-        this.role = role;
+    public GetUserAccessTokenRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
         return this;
     }
-    public String getRole() {
-        return this.role;
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
     public GetUserAccessTokenRequest setUserId(String userId) {

@@ -132,6 +132,20 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string State { get; set; }
 
         /// <summary>
+        /// 当前用户状态
+        /// </summary>
+        [NameInMap("status")]
+        [Validation(Required=false)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// subdomain_id 用户登录的subdomain_id
+        /// </summary>
+        [NameInMap("subdomain_id")]
+        [Validation(Required=false)]
+        public string SubdomainId { get; set; }
+
+        /// <summary>
         /// accessToken类型，Bearer
         /// </summary>
         [NameInMap("token_type")]

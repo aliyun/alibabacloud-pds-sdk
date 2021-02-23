@@ -77,6 +77,14 @@ public class AccountAccessTokenResponse extends TeaModel {
     @NameInMap("state")
     public String state;
 
+    // 当前用户状态
+    @NameInMap("status")
+    public String status;
+
+    // subdomain_id 用户登录的subdomain_id
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     // accessToken类型，Bearer
     @NameInMap("token_type")
     public String tokenType;
@@ -232,6 +240,22 @@ public class AccountAccessTokenResponse extends TeaModel {
     }
     public String getState() {
         return this.state;
+    }
+
+    public AccountAccessTokenResponse setStatus(String status) {
+        this.status = status;
+        return this;
+    }
+    public String getStatus() {
+        return this.status;
+    }
+
+    public AccountAccessTokenResponse setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
     public AccountAccessTokenResponse setTokenType(String tokenType) {

@@ -22,6 +22,14 @@ public class ListShareLinkRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    // order_by
+    @NameInMap("order_by")
+    public String orderBy;
+
+    // order_direction
+    @NameInMap("order_direction")
+    public String orderDirection;
+
     public static ListShareLinkRequest build(java.util.Map<String, ?> map) throws Exception {
         ListShareLinkRequest self = new ListShareLinkRequest();
         return TeaModel.build(map, self);
@@ -57,6 +65,22 @@ public class ListShareLinkRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ListShareLinkRequest setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
+        return this;
+    }
+    public String getOrderBy() {
+        return this.orderBy;
+    }
+
+    public ListShareLinkRequest setOrderDirection(String orderDirection) {
+        this.orderDirection = orderDirection;
+        return this;
+    }
+    public String getOrderDirection() {
+        return this.orderDirection;
     }
 
 }

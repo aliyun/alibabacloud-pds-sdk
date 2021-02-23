@@ -18,6 +18,10 @@ public class ListUserRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    // subdomain id
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     public static ListUserRequest build(java.util.Map<String, ?> map) throws Exception {
         ListUserRequest self = new ListUserRequest();
         return TeaModel.build(map, self);
@@ -45,6 +49,14 @@ public class ListUserRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ListUserRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
 }

@@ -38,6 +38,10 @@ public class SearchUserRequest extends TeaModel {
     @NameInMap("status")
     public String status;
 
+    // subdomain id
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     // 用户名
     @NameInMap("user_name")
     public String userName;
@@ -109,6 +113,14 @@ public class SearchUserRequest extends TeaModel {
     }
     public String getStatus() {
         return this.status;
+    }
+
+    public SearchUserRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
     public SearchUserRequest setUserName(String userName) {

@@ -556,6 +556,8 @@ export class AccountAccessTokenResponse extends $tea.Model {
   refreshToken?: string;
   role?: string;
   state?: string;
+  status?: string;
+  subdomainId?: string;
   tokenType?: string;
   userData?: {[key: string]: any};
   userId?: string;
@@ -579,6 +581,8 @@ export class AccountAccessTokenResponse extends $tea.Model {
       refreshToken: 'refresh_token',
       role: 'role',
       state: 'state',
+      status: 'status',
+      subdomainId: 'subdomain_id',
       tokenType: 'token_type',
       userData: 'user_data',
       userId: 'user_id',
@@ -605,6 +609,8 @@ export class AccountAccessTokenResponse extends $tea.Model {
       refreshToken: 'string',
       role: 'string',
       state: 'string',
+      status: 'string',
+      subdomainId: 'string',
       tokenType: 'string',
       userData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       userId: 'string',
@@ -988,6 +994,7 @@ export class BaseDriveResponse extends $tea.Model {
   encryptDataAccess?: boolean;
   encryptMode?: string;
   owner?: string;
+  ownerType?: string;
   relativePath?: string;
   status?: string;
   storeId?: string;
@@ -1004,6 +1011,7 @@ export class BaseDriveResponse extends $tea.Model {
       encryptDataAccess: 'encrypt_data_access',
       encryptMode: 'encrypt_mode',
       owner: 'owner',
+      ownerType: 'owner_type',
       relativePath: 'relative_path',
       status: 'status',
       storeId: 'store_id',
@@ -1023,6 +1031,7 @@ export class BaseDriveResponse extends $tea.Model {
       encryptDataAccess: 'boolean',
       encryptMode: 'string',
       owner: 'string',
+      ownerType: 'string',
       relativePath: 'string',
       status: 'string',
       storeId: 'string',
@@ -1159,6 +1168,58 @@ export class BaseHostingFileResponse extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class BaseMediaResponse extends $tea.Model {
+  addressLine?: string;
+  city?: string;
+  country?: string;
+  district?: string;
+  height?: number;
+  imageTags?: SystemTag[];
+  location?: string;
+  province?: string;
+  time?: string;
+  township?: string;
+  width?: number;
+  static names(): { [key: string]: string } {
+    return {
+      addressLine: 'address_line',
+      city: 'city',
+      country: 'country',
+      district: 'district',
+      height: 'height',
+      imageTags: 'image_tags',
+      location: 'location',
+      province: 'province',
+      time: 'time',
+      township: 'township',
+      width: 'width',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      addressLine: 'string',
+      city: 'string',
+      country: 'string',
+      district: 'string',
+      height: 'number',
+      imageTags: { 'type': 'array', 'itemType': SystemTag },
+      location: 'string',
+      province: 'string',
+      time: 'string',
+      township: 'string',
+      width: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * list_share_link response
  */
 export class BaseShareLinkResponse extends $tea.Model {
@@ -1246,6 +1307,7 @@ export class BaseShareResponse extends $tea.Model {
   expiration?: string;
   expired?: boolean;
   owner?: string;
+  ownerType?: string;
   permissions?: string[];
   shareFileId?: string;
   shareFilePath?: string;
@@ -1264,6 +1326,7 @@ export class BaseShareResponse extends $tea.Model {
       expiration: 'expiration',
       expired: 'expired',
       owner: 'owner',
+      ownerType: 'owner_type',
       permissions: 'permissions',
       shareFileId: 'share_file_id',
       shareFilePath: 'share_file_path',
@@ -1285,6 +1348,7 @@ export class BaseShareResponse extends $tea.Model {
       expiration: 'string',
       expired: 'boolean',
       owner: 'string',
+      ownerType: 'string',
       permissions: { 'type': 'array', 'itemType': 'string' },
       shareFileId: 'string',
       shareFilePath: 'string',
@@ -1396,6 +1460,37 @@ export class Captcha extends $tea.Model {
       captcha: 'string',
       captchaFormat: 'string',
       captchaId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class CertInfo extends $tea.Model {
+  CertID?: string;
+  certBody: string;
+  certName: string;
+  certPrivatekey: string;
+  static names(): { [key: string]: string } {
+    return {
+      CertID: 'CertID',
+      certBody: 'cert_body',
+      certName: 'cert_name',
+      certPrivatekey: 'cert_privatekey',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      CertID: 'string',
+      certBody: 'string',
+      certName: 'string',
+      certPrivatekey: 'string',
     };
   }
 
@@ -1848,34 +1943,70 @@ export class CreateFileResponse extends $tea.Model {
  * create_share_link response
  */
 export class CreateShareLinkResponse extends $tea.Model {
+  createdAt?: string;
+  creator?: string;
   description?: string;
+  downloadCount?: number;
+  driveId?: string;
+  expiration?: string;
+  expired?: boolean;
+  fileId?: string;
+  fileIdList?: string[];
+  filePathList?: string[];
+  previewCount?: number;
+  saveCount?: number;
   shareId?: string;
   shareMsg?: string;
   shareName?: string;
   sharePolicy?: string;
   sharePwd?: string;
   shareUrl?: string;
+  updatedAt?: string;
   static names(): { [key: string]: string } {
     return {
+      createdAt: 'created_at',
+      creator: 'creator',
       description: 'description',
+      downloadCount: 'download_count',
+      driveId: 'drive_id',
+      expiration: 'expiration',
+      expired: 'expired',
+      fileId: 'file_id',
+      fileIdList: 'file_id_list',
+      filePathList: 'file_path_list',
+      previewCount: 'preview_count',
+      saveCount: 'save_count',
       shareId: 'share_id',
       shareMsg: 'share_msg',
       shareName: 'share_name',
       sharePolicy: 'share_policy',
       sharePwd: 'share_pwd',
       shareUrl: 'share_url',
+      updatedAt: 'updated_at',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
+      createdAt: 'string',
+      creator: 'string',
       description: 'string',
+      downloadCount: 'number',
+      driveId: 'string',
+      expiration: 'string',
+      expired: 'boolean',
+      fileId: 'string',
+      fileIdList: { 'type': 'array', 'itemType': 'string' },
+      filePathList: { 'type': 'array', 'itemType': 'string' },
+      previewCount: 'number',
+      saveCount: 'number',
       shareId: 'string',
       shareMsg: 'string',
       shareName: 'string',
       sharePolicy: 'string',
       sharePwd: 'string',
       shareUrl: 'string',
+      updatedAt: 'string',
     };
   }
 
@@ -2665,6 +2796,7 @@ export class GetDriveResponse extends $tea.Model {
   encryptDataAccess?: boolean;
   encryptMode?: string;
   owner?: string;
+  ownerType?: string;
   relativePath?: string;
   status?: string;
   storeId?: string;
@@ -2681,6 +2813,7 @@ export class GetDriveResponse extends $tea.Model {
       encryptDataAccess: 'encrypt_data_access',
       encryptMode: 'encrypt_mode',
       owner: 'owner',
+      ownerType: 'owner_type',
       relativePath: 'relative_path',
       status: 'status',
       storeId: 'store_id',
@@ -2700,6 +2833,7 @@ export class GetDriveResponse extends $tea.Model {
       encryptDataAccess: 'boolean',
       encryptMode: 'string',
       owner: 'string',
+      ownerType: 'string',
       relativePath: 'string',
       status: 'string',
       storeId: 'string',
@@ -3285,6 +3419,7 @@ export class GetShareResponse extends $tea.Model {
   expiration?: string;
   expired?: boolean;
   owner?: string;
+  ownerType?: string;
   permissions?: string[];
   shareFileId?: string;
   shareFilePath?: string;
@@ -3303,6 +3438,7 @@ export class GetShareResponse extends $tea.Model {
       expiration: 'expiration',
       expired: 'expired',
       owner: 'owner',
+      ownerType: 'owner_type',
       permissions: 'permissions',
       shareFileId: 'share_file_id',
       shareFilePath: 'share_file_path',
@@ -3324,6 +3460,7 @@ export class GetShareResponse extends $tea.Model {
       expiration: 'string',
       expired: 'boolean',
       owner: 'string',
+      ownerType: 'string',
       permissions: { 'type': 'array', 'itemType': 'string' },
       shareFileId: 'string',
       shareFilePath: 'string',
@@ -5384,6 +5521,73 @@ export class SharePermissionPolicy extends $tea.Model {
 /**
  * 
  */
+export class Store extends $tea.Model {
+  accelerateEndpoint?: string;
+  basePath?: string;
+  bucket: string;
+  cdnEndpoint?: string;
+  customizedAccelerateEndpoint?: string;
+  customizedCdnEndpoint?: string;
+  customizedEndpoint?: string;
+  customizedInternalEndpoint?: string;
+  endpoint: string;
+  internalEndpoint?: string;
+  location?: string;
+  ownership: string;
+  policy: string;
+  roleArn?: string;
+  storeId: string;
+  type: string;
+  static names(): { [key: string]: string } {
+    return {
+      accelerateEndpoint: 'accelerate_endpoint',
+      basePath: 'base_path',
+      bucket: 'bucket',
+      cdnEndpoint: 'cdn_endpoint',
+      customizedAccelerateEndpoint: 'customized_accelerate_endpoint',
+      customizedCdnEndpoint: 'customized_cdn_endpoint',
+      customizedEndpoint: 'customized_endpoint',
+      customizedInternalEndpoint: 'customized_internal_endpoint',
+      endpoint: 'endpoint',
+      internalEndpoint: 'internal_endpoint',
+      location: 'location',
+      ownership: 'ownership',
+      policy: 'policy',
+      roleArn: 'role_arn',
+      storeId: 'store_id',
+      type: 'type',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      accelerateEndpoint: 'string',
+      basePath: 'string',
+      bucket: 'string',
+      cdnEndpoint: 'string',
+      customizedAccelerateEndpoint: 'string',
+      customizedCdnEndpoint: 'string',
+      customizedEndpoint: 'string',
+      customizedInternalEndpoint: 'string',
+      endpoint: 'string',
+      internalEndpoint: 'string',
+      location: 'string',
+      ownership: 'string',
+      policy: 'string',
+      roleArn: 'string',
+      storeId: 'string',
+      type: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class StoreFile extends $tea.Model {
   domainId?: string;
   name?: string;
@@ -5608,6 +5812,7 @@ export class TokenRequest extends $tea.Model {
   GrantType: string;
   RedirectUri?: string;
   RefreshToken?: string;
+  SubDomainID?: string;
   static names(): { [key: string]: string } {
     return {
       Assertion: 'Assertion',
@@ -5618,6 +5823,7 @@ export class TokenRequest extends $tea.Model {
       GrantType: 'GrantType',
       RedirectUri: 'RedirectUri',
       RefreshToken: 'RefreshToken',
+      SubDomainID: 'SubDomainID',
     };
   }
 
@@ -5631,6 +5837,7 @@ export class TokenRequest extends $tea.Model {
       GrantType: 'string',
       RedirectUri: 'string',
       RefreshToken: 'string',
+      SubDomainID: 'string',
     };
   }
 
@@ -5777,6 +5984,7 @@ export class UpdateDriveResponse extends $tea.Model {
   encryptDataAccess?: boolean;
   encryptMode?: string;
   owner?: string;
+  ownerType?: string;
   relativePath?: string;
   status?: string;
   storeId?: string;
@@ -5793,6 +6001,7 @@ export class UpdateDriveResponse extends $tea.Model {
       encryptDataAccess: 'encrypt_data_access',
       encryptMode: 'encrypt_mode',
       owner: 'owner',
+      ownerType: 'owner_type',
       relativePath: 'relative_path',
       status: 'status',
       storeId: 'store_id',
@@ -5812,6 +6021,7 @@ export class UpdateDriveResponse extends $tea.Model {
       encryptDataAccess: 'boolean',
       encryptMode: 'string',
       owner: 'string',
+      ownerType: 'string',
       relativePath: 'string',
       status: 'string',
       storeId: 'string',
@@ -5950,6 +6160,82 @@ export class UpdateFileMetaResponse extends $tea.Model {
 }
 
 /**
+ * update_share_link response
+ */
+export class UpdateShareLinkResponse extends $tea.Model {
+  createdAt?: string;
+  creator?: string;
+  description?: string;
+  downloadCount?: number;
+  driveId?: string;
+  expiration?: string;
+  expired?: boolean;
+  fileId?: string;
+  fileIdList?: string[];
+  filePathList?: string[];
+  previewCount?: number;
+  saveCount?: number;
+  shareId?: string;
+  shareMsg?: string;
+  shareName?: string;
+  sharePolicy?: string;
+  sharePwd?: string;
+  shareUrl?: string;
+  updatedAt?: string;
+  static names(): { [key: string]: string } {
+    return {
+      createdAt: 'created_at',
+      creator: 'creator',
+      description: 'description',
+      downloadCount: 'download_count',
+      driveId: 'drive_id',
+      expiration: 'expiration',
+      expired: 'expired',
+      fileId: 'file_id',
+      fileIdList: 'file_id_list',
+      filePathList: 'file_path_list',
+      previewCount: 'preview_count',
+      saveCount: 'save_count',
+      shareId: 'share_id',
+      shareMsg: 'share_msg',
+      shareName: 'share_name',
+      sharePolicy: 'share_policy',
+      sharePwd: 'share_pwd',
+      shareUrl: 'share_url',
+      updatedAt: 'updated_at',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createdAt: 'string',
+      creator: 'string',
+      description: 'string',
+      downloadCount: 'number',
+      driveId: 'string',
+      expiration: 'string',
+      expired: 'boolean',
+      fileId: 'string',
+      fileIdList: { 'type': 'array', 'itemType': 'string' },
+      filePathList: { 'type': 'array', 'itemType': 'string' },
+      previewCount: 'number',
+      saveCount: 'number',
+      shareId: 'string',
+      shareMsg: 'string',
+      shareName: 'string',
+      sharePolicy: 'string',
+      sharePwd: 'string',
+      shareUrl: 'string',
+      updatedAt: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Update share response
  */
 export class UpdateShareResponse extends $tea.Model {
@@ -5961,6 +6247,7 @@ export class UpdateShareResponse extends $tea.Model {
   expiration?: string;
   expired?: boolean;
   owner?: string;
+  ownerType?: string;
   permissions?: string[];
   shareFileId?: string;
   shareFilePath?: string;
@@ -5979,6 +6266,7 @@ export class UpdateShareResponse extends $tea.Model {
       expiration: 'expiration',
       expired: 'expired',
       owner: 'owner',
+      ownerType: 'owner_type',
       permissions: 'permissions',
       shareFileId: 'share_file_id',
       shareFilePath: 'share_file_path',
@@ -6000,6 +6288,7 @@ export class UpdateShareResponse extends $tea.Model {
       expiration: 'string',
       expired: 'boolean',
       owner: 'string',
+      ownerType: 'string',
       permissions: { 'type': 'array', 'itemType': 'string' },
       shareFileId: 'string',
       shareFilePath: 'string',
@@ -6053,6 +6342,34 @@ export class UploadPartInfo extends $tea.Model {
 /**
  * 
  */
+export class UrlInfo extends $tea.Model {
+  downloadUrl?: string;
+  thumbnail?: string;
+  url?: string;
+  static names(): { [key: string]: string } {
+    return {
+      downloadUrl: 'download_url',
+      thumbnail: 'thumbnail',
+      url: 'url',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      downloadUrl: 'string',
+      thumbnail: 'string',
+      url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class UserAuthentication extends $tea.Model {
   AuthenticationType: string;
   CreatedAt: number;
@@ -6063,6 +6380,7 @@ export class UserAuthentication extends $tea.Model {
   Status: string;
   UserID: string;
   extra?: string;
+  subdomainId?: string;
   static names(): { [key: string]: string } {
     return {
       AuthenticationType: 'AuthenticationType',
@@ -6074,6 +6392,7 @@ export class UserAuthentication extends $tea.Model {
       Status: 'Status',
       UserID: 'UserID',
       extra: 'extra',
+      subdomainId: 'subdomain_id',
     };
   }
 
@@ -6088,6 +6407,7 @@ export class UserAuthentication extends $tea.Model {
       Status: 'string',
       UserID: 'string',
       extra: 'string',
+      subdomainId: 'string',
     };
   }
 
@@ -6534,6 +6854,116 @@ export class AdminListStoresModel extends $tea.Model {
   }
 }
 
+export class CreateSubdomainModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateSubdomainResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateSubdomainResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class DeleteSubdomainModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: DeleteSubdomainResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: DeleteSubdomainResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetSubdomainModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetSubdomainResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetSubdomainResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListSubdomainsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListSubdomainsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListSubdomainsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateSubdomainModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateSubdomainResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateSubdomainResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
 export class GetUserAccessTokenModel extends $tea.Model {
   headers?: { [key: string]: string };
   body: AccessTokenResponse;
@@ -6772,47 +7202,35 @@ export class BaseDomainResponse extends $tea.Model {
 /**
  * 
  */
-export class BaseMediaResponse extends $tea.Model {
-  addressLine?: string;
-  city?: string;
-  country?: string;
-  district?: string;
-  height?: number;
-  imageTags?: SystemTag[];
-  location?: string;
-  province?: string;
-  time?: string;
-  township?: string;
-  width?: number;
+export class BaseSubdomainResponse extends $tea.Model {
+  createdAt: string;
+  description: string;
+  name: string;
+  subdomainId: string;
+  totalSize: number;
+  updatedAt: string;
+  userQuota: number;
   static names(): { [key: string]: string } {
     return {
-      addressLine: 'address_line',
-      city: 'city',
-      country: 'country',
-      district: 'district',
-      height: 'height',
-      imageTags: 'image_tags',
-      location: 'location',
-      province: 'province',
-      time: 'time',
-      township: 'township',
-      width: 'width',
+      createdAt: 'created_at',
+      description: 'description',
+      name: 'name',
+      subdomainId: 'subdomain_id',
+      totalSize: 'total_size',
+      updatedAt: 'updated_at',
+      userQuota: 'user_quota',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
-      addressLine: 'string',
-      city: 'string',
-      country: 'string',
-      district: 'string',
-      height: 'number',
-      imageTags: { 'type': 'array', 'itemType': SystemTag },
-      location: 'string',
-      province: 'string',
-      time: 'string',
-      township: 'string',
-      width: 'number',
+      createdAt: 'string',
+      description: 'string',
+      name: 'string',
+      subdomainId: 'string',
+      totalSize: 'number',
+      updatedAt: 'string',
+      userQuota: 'number',
     };
   }
 
@@ -6973,6 +7391,62 @@ export class CreateDomainResponse extends $tea.Model {
 /**
  * 
  */
+export class CreateSubdomainRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  description?: string;
+  name: string;
+  totalSize?: number;
+  userQuota?: number;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      description: 'description',
+      name: 'name',
+      totalSize: 'total_size',
+      userQuota: 'user_quota',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      description: 'string',
+      name: 'string',
+      totalSize: 'number',
+      userQuota: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class CreateSubdomainResponse extends $tea.Model {
+  subdomainId: string;
+  static names(): { [key: string]: string } {
+    return {
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class DataCName extends $tea.Model {
   dataCname: string;
   location: string;
@@ -6987,6 +7461,50 @@ export class DataCName extends $tea.Model {
     return {
       dataCname: 'string',
       location: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class DeleteSubdomainRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  subdomainId: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class DeleteSubdomainResponse extends $tea.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
     };
   }
 
@@ -7270,14 +7788,79 @@ export class GetDomainResponse extends $tea.Model {
 /**
  * 
  */
+export class GetSubdomainRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  subdomainId: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class GetSubdomainResponse extends $tea.Model {
+  createdAt: string;
+  description: string;
+  name: string;
+  subdomainId: string;
+  totalSize: number;
+  updatedAt: string;
+  userQuota: number;
+  static names(): { [key: string]: string } {
+    return {
+      createdAt: 'created_at',
+      description: 'description',
+      name: 'name',
+      subdomainId: 'subdomain_id',
+      totalSize: 'total_size',
+      updatedAt: 'updated_at',
+      userQuota: 'user_quota',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createdAt: 'string',
+      description: 'string',
+      name: 'string',
+      subdomainId: 'string',
+      totalSize: 'number',
+      updatedAt: 'string',
+      userQuota: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class GetUserAccessTokenRequest extends $tea.Model {
   headers?: { [key: string]: string };
-  role?: string;
+  subdomainId?: string;
   userId: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
-      role: 'role',
+      subdomainId: 'subdomain_id',
       userId: 'user_id',
     };
   }
@@ -7285,7 +7868,7 @@ export class GetUserAccessTokenRequest extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      role: 'string',
+      subdomainId: 'string',
       userId: 'string',
     };
   }
@@ -7395,6 +7978,59 @@ export class ListStoresResponse extends $tea.Model {
 /**
  * 
  */
+export class ListSubdomainsRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  limit?: number;
+  marker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      limit: 'limit',
+      marker: 'marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      limit: 'number',
+      marker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ListSubdomainsResponse extends $tea.Model {
+  items: BaseSubdomainResponse[];
+  nextMarker: string;
+  static names(): { [key: string]: string } {
+    return {
+      items: 'items',
+      nextMarker: 'next_marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      items: { 'type': 'array', 'itemType': BaseSubdomainResponse },
+      nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class SetBizCNameCertResponse extends $tea.Model {
   bizCname?: string;
   certName?: string;
@@ -7480,73 +8116,6 @@ export class SetDataCNameResponse extends $tea.Model {
       dataCname: 'string',
       domainId: 'string',
       location: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class Store extends $tea.Model {
-  accelerateEndpoint?: string;
-  basePath?: string;
-  bucket: string;
-  cdnEndpoint?: string;
-  customizedAccelerateEndpoint?: string;
-  customizedCdnEndpoint?: string;
-  customizedEndpoint?: string;
-  customizedInternalEndpoint?: string;
-  endpoint: string;
-  internalEndpoint?: string;
-  location?: string;
-  ownership: string;
-  policy: string;
-  roleArn?: string;
-  storeId: string;
-  type: string;
-  static names(): { [key: string]: string } {
-    return {
-      accelerateEndpoint: 'accelerate_endpoint',
-      basePath: 'base_path',
-      bucket: 'bucket',
-      cdnEndpoint: 'cdn_endpoint',
-      customizedAccelerateEndpoint: 'customized_accelerate_endpoint',
-      customizedCdnEndpoint: 'customized_cdn_endpoint',
-      customizedEndpoint: 'customized_endpoint',
-      customizedInternalEndpoint: 'customized_internal_endpoint',
-      endpoint: 'endpoint',
-      internalEndpoint: 'internal_endpoint',
-      location: 'location',
-      ownership: 'ownership',
-      policy: 'policy',
-      roleArn: 'role_arn',
-      storeId: 'store_id',
-      type: 'type',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      accelerateEndpoint: 'string',
-      basePath: 'string',
-      bucket: 'string',
-      cdnEndpoint: 'string',
-      customizedAccelerateEndpoint: 'string',
-      customizedCdnEndpoint: 'string',
-      customizedEndpoint: 'string',
-      customizedInternalEndpoint: 'string',
-      endpoint: 'string',
-      internalEndpoint: 'string',
-      location: 'string',
-      ownership: 'string',
-      policy: 'string',
-      roleArn: 'string',
-      storeId: 'string',
-      type: 'string',
     };
   }
 
@@ -7668,6 +8237,62 @@ export class UpdateDomainResponse extends $tea.Model {
       storeLevel: 'string',
       storeRegionList: { 'type': 'array', 'itemType': 'string' },
       updatedAt: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class UpdateSubdomainRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  description?: string;
+  name?: string;
+  subdomainId: string;
+  totalSize?: number;
+  userQuota?: number;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      description: 'description',
+      name: 'name',
+      subdomainId: 'subdomain_id',
+      totalSize: 'total_size',
+      userQuota: 'user_quota',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      description: 'string',
+      name: 'string',
+      subdomainId: 'string',
+      totalSize: 'number',
+      userQuota: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class UpdateSubdomainResponse extends $tea.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
     };
   }
 
@@ -8635,6 +9260,28 @@ export class ListShareLinkModel extends $tea.Model {
   }
 }
 
+export class UpdateShareLinkModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateShareLinkResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateShareLinkResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
 /**
  * complete file request
  */
@@ -9120,9 +9767,11 @@ export class CreateDriveRequest extends $tea.Model {
   encryptMode?: string;
   location?: string;
   owner: string;
+  ownerType: string;
   relativePath?: string;
   status?: string;
   storeId?: string;
+  subdomainId?: string;
   totalSize?: number;
   static names(): { [key: string]: string } {
     return {
@@ -9134,9 +9783,11 @@ export class CreateDriveRequest extends $tea.Model {
       encryptMode: 'encrypt_mode',
       location: 'location',
       owner: 'owner',
+      ownerType: 'owner_type',
       relativePath: 'relative_path',
       status: 'status',
       storeId: 'store_id',
+      subdomainId: 'subdomain_id',
       totalSize: 'total_size',
     };
   }
@@ -9151,9 +9802,11 @@ export class CreateDriveRequest extends $tea.Model {
       encryptMode: 'string',
       location: 'string',
       owner: 'string',
+      ownerType: 'string',
       relativePath: 'string',
       status: 'string',
       storeId: 'string',
+      subdomainId: 'string',
       totalSize: 'number',
     };
   }
@@ -9379,10 +10032,12 @@ export class CreateShareRequest extends $tea.Model {
 export class DeleteDriveRequest extends $tea.Model {
   headers?: { [key: string]: string };
   driveId: string;
+  subdomainId?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
       driveId: 'drive_id',
+      subdomainId: 'subdomain_id',
     };
   }
 
@@ -9390,6 +10045,7 @@ export class DeleteDriveRequest extends $tea.Model {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
+      subdomainId: 'string',
     };
   }
 
@@ -9564,10 +10220,12 @@ export class GetAsyncTaskRequest extends $tea.Model {
  */
 export class GetDefaultDriveRequest extends $tea.Model {
   headers?: { [key: string]: string };
+  subdomainId?: string;
   userId?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
+      subdomainId: 'subdomain_id',
       userId: 'user_id',
     };
   }
@@ -9575,6 +10233,7 @@ export class GetDefaultDriveRequest extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      subdomainId: 'string',
       userId: 'string',
     };
   }
@@ -9642,10 +10301,12 @@ export class GetDownloadUrlRequest extends $tea.Model {
 export class GetDriveRequest extends $tea.Model {
   headers?: { [key: string]: string };
   driveId: string;
+  subdomainId?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
       driveId: 'drive_id',
+      subdomainId: 'subdomain_id',
     };
   }
 
@@ -9653,6 +10314,7 @@ export class GetDriveRequest extends $tea.Model {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       driveId: 'string',
+      subdomainId: 'string',
     };
   }
 
@@ -10788,12 +11450,16 @@ export class ListDriveRequest extends $tea.Model {
   limit?: number;
   marker?: string;
   owner?: string;
+  ownerType?: string;
+  subdomainId?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
       limit: 'limit',
       marker: 'marker',
       owner: 'owner',
+      ownerType: 'owner_type',
+      subdomainId: 'subdomain_id',
     };
   }
 
@@ -10803,6 +11469,8 @@ export class ListDriveRequest extends $tea.Model {
       limit: 'number',
       marker: 'string',
       owner: 'string',
+      ownerType: 'string',
+      subdomainId: 'string',
     };
   }
 
@@ -11063,12 +11731,16 @@ export class ListShareLinkRequest extends $tea.Model {
   creator?: string;
   limit?: number;
   marker?: string;
+  orderBy?: string;
+  orderDirection?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
       creator: 'creator',
       limit: 'limit',
       marker: 'marker',
+      orderBy: 'order_by',
+      orderDirection: 'order_direction',
     };
   }
 
@@ -11078,6 +11750,8 @@ export class ListShareLinkRequest extends $tea.Model {
       creator: 'string',
       limit: 'number',
       marker: 'string',
+      orderBy: 'string',
+      orderDirection: 'string',
     };
   }
 
@@ -11510,6 +12184,7 @@ export class UpdateDriveRequest extends $tea.Model {
   encryptDataAccess?: boolean;
   encryptMode?: string;
   status?: string;
+  subdomainId?: string;
   totalSize?: number;
   static names(): { [key: string]: string } {
     return {
@@ -11520,6 +12195,7 @@ export class UpdateDriveRequest extends $tea.Model {
       encryptDataAccess: 'encrypt_data_access',
       encryptMode: 'encrypt_mode',
       status: 'status',
+      subdomainId: 'subdomain_id',
       totalSize: 'total_size',
     };
   }
@@ -11533,6 +12209,7 @@ export class UpdateDriveRequest extends $tea.Model {
       encryptDataAccess: 'boolean',
       encryptMode: 'string',
       status: 'string',
+      subdomainId: 'string',
       totalSize: 'number',
     };
   }
@@ -11613,6 +12290,43 @@ export class UpdateFileMetaRequest extends $tea.Model {
 }
 
 /**
+ * update_share_link request
+ */
+export class UpdateShareLinkRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  description?: string;
+  expiration?: string;
+  shareId?: string;
+  shareName?: string;
+  sharePwd?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      description: 'description',
+      expiration: 'expiration',
+      shareId: 'share_id',
+      shareName: 'share_name',
+      sharePwd: 'share_pwd',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      description: 'string',
+      expiration: 'string',
+      shareId: 'string',
+      shareName: 'string',
+      sharePwd: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * update share request
  */
 export class UpdateShareRequest extends $tea.Model {
@@ -11669,6 +12383,333 @@ export class VideoMediaMetadata extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       duration: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CreateGroupModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateGroupResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateGroupResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class DeleteGroupModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: DeleteGroupResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: DeleteGroupResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetGroupModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetGroupResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetGroupResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListGroupModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListGroupResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListGroupResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class SearchGroupModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: SearchGroupResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: SearchGroupResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateGroupModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateGroupResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateGroupResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CreateMembershipModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateMembershipResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateMembershipResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class DeleteMembershipModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: DeleteMembershipResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: DeleteMembershipResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetMembershipModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetMembershipResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetMembershipResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class HasMemberModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: HasMembershipResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: HasMembershipResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListDirectChildMembershipsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListDirectChildMembershipsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListDirectChildMembershipsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListDirectMembershipsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListDirectParentMembershipsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListDirectParentMembershipsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListDirectParentMembershipsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListDirectParentMembershipsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListDirectParentMembershipsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateMembershipModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateMembershipResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateMembershipResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class AddUserToSubdomainModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
     };
   }
 
@@ -11762,6 +12803,25 @@ export class ListUsersModel extends $tea.Model {
   }
 }
 
+export class RemoveUserFromSubdomainModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
 export class SearchUserModel extends $tea.Model {
   headers?: { [key: string]: string };
   body: ListUserResponse;
@@ -11798,6 +12858,170 @@ export class UpdateUserModel extends $tea.Model {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       body: UpdateUserResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Add user to subdomain request
+ */
+export class AddUserToSubdomainRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  subdomainId?: string;
+  userId: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      subdomainId: 'subdomain_id',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      subdomainId: 'string',
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class BaseGroupIDRequest extends $tea.Model {
+  groupId?: string;
+  subdomainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      groupId: 'group_id',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      groupId: 'string',
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class BaseGroupRequest extends $tea.Model {
+  description?: string;
+  groupName: string;
+  isRoot?: boolean;
+  static names(): { [key: string]: string } {
+    return {
+      description: 'description',
+      groupName: 'group_name',
+      isRoot: 'is_root',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      description: 'string',
+      groupName: 'string',
+      isRoot: 'boolean',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class BaseGroupResponse extends $tea.Model {
+  createdAt?: number;
+  description?: string;
+  domainId?: string;
+  groupId?: string;
+  groupName?: string;
+  updatedAt?: number;
+  static names(): { [key: string]: string } {
+    return {
+      createdAt: 'created_at',
+      description: 'description',
+      domainId: 'domain_id',
+      groupId: 'group_id',
+      groupName: 'group_name',
+      updatedAt: 'updated_at',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createdAt: 'number',
+      description: 'string',
+      domainId: 'string',
+      groupId: 'string',
+      groupName: 'string',
+      updatedAt: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class BaseMembershipResponse extends $tea.Model {
+  createdAt?: number;
+  description?: string;
+  domainId?: string;
+  groupId?: string;
+  memberRole?: string;
+  memberType?: string;
+  subGroupId?: string;
+  updatedAt?: number;
+  userId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      createdAt: 'created_at',
+      description: 'description',
+      domainId: 'domain_id',
+      groupId: 'group_id',
+      memberRole: 'member_role',
+      memberType: 'member_type',
+      subGroupId: 'sub_group_id',
+      updatedAt: 'updated_at',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createdAt: 'number',
+      description: 'string',
+      domainId: 'string',
+      groupId: 'string',
+      memberRole: 'string',
+      memberType: 'string',
+      subGroupId: 'string',
+      updatedAt: 'number',
+      userId: 'string',
     };
   }
 
@@ -11868,6 +13092,166 @@ export class BaseUserResponse extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class CreateGroupRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  description?: string;
+  groupName: string;
+  isRoot?: boolean;
+  subdomainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      description: 'description',
+      groupName: 'group_name',
+      isRoot: 'is_root',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      description: 'string',
+      groupName: 'string',
+      isRoot: 'boolean',
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class CreateGroupResponse extends $tea.Model {
+  createdAt?: number;
+  description?: string;
+  domainId?: string;
+  groupId?: string;
+  groupName?: string;
+  updatedAt?: number;
+  static names(): { [key: string]: string } {
+    return {
+      createdAt: 'created_at',
+      description: 'description',
+      domainId: 'domain_id',
+      groupId: 'group_id',
+      groupName: 'group_name',
+      updatedAt: 'updated_at',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createdAt: 'number',
+      description: 'string',
+      domainId: 'string',
+      groupId: 'string',
+      groupName: 'string',
+      updatedAt: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class CreateMembershipRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  description?: string;
+  groupId?: string;
+  memberRole?: string;
+  memberType?: string;
+  subGroupId?: string;
+  subdomainId?: string;
+  userId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      description: 'description',
+      groupId: 'group_id',
+      memberRole: 'member_role',
+      memberType: 'member_type',
+      subGroupId: 'sub_group_id',
+      subdomainId: 'subdomain_id',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      description: 'string',
+      groupId: 'string',
+      memberRole: 'string',
+      memberType: 'string',
+      subGroupId: 'string',
+      subdomainId: 'string',
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class CreateMembershipResponse extends $tea.Model {
+  createdAt?: number;
+  description?: string;
+  domainId?: string;
+  groupId?: string;
+  memberRole?: string;
+  memberType?: string;
+  subGroupId?: string;
+  updatedAt?: number;
+  userId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      createdAt: 'created_at',
+      description: 'description',
+      domainId: 'domain_id',
+      groupId: 'group_id',
+      memberRole: 'member_role',
+      memberType: 'member_type',
+      subGroupId: 'sub_group_id',
+      updatedAt: 'updated_at',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createdAt: 'number',
+      description: 'string',
+      domainId: 'string',
+      groupId: 'string',
+      memberRole: 'string',
+      memberType: 'string',
+      subGroupId: 'string',
+      updatedAt: 'number',
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Create user request
  */
 export class CreateUserRequest extends $tea.Model {
@@ -11880,6 +13264,7 @@ export class CreateUserRequest extends $tea.Model {
   phone?: string;
   role?: string;
   status?: string;
+  subdomainId?: string;
   userData?: {[key: string]: any};
   userId: string;
   userName?: string;
@@ -11894,6 +13279,7 @@ export class CreateUserRequest extends $tea.Model {
       phone: 'phone',
       role: 'role',
       status: 'status',
+      subdomainId: 'subdomain_id',
       userData: 'user_data',
       userId: 'user_id',
       userName: 'user_name',
@@ -11911,6 +13297,7 @@ export class CreateUserRequest extends $tea.Model {
       phone: 'string',
       role: 'string',
       status: 'string',
+      subdomainId: 'string',
       userData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       userId: 'string',
       userName: 'string',
@@ -11984,6 +13371,109 @@ export class CreateUserResponse extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class DeleteGroupRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  groupId?: string;
+  subdomainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      groupId: 'group_id',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      groupId: 'string',
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class DeleteGroupResponse extends $tea.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class DeleteMembershipRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  groupId?: string;
+  memberType?: string;
+  subGroupId?: string;
+  subdomainId?: string;
+  userId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      groupId: 'group_id',
+      memberType: 'member_type',
+      subGroupId: 'sub_group_id',
+      subdomainId: 'subdomain_id',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      groupId: 'string',
+      memberType: 'string',
+      subGroupId: 'string',
+      subdomainId: 'string',
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class DeleteMembershipResponse extends $tea.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Delete user request
  */
 export class DeleteUserRequest extends $tea.Model {
@@ -12019,6 +13509,154 @@ export class DeleteUserResponse extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class GetGroupRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  groupId?: string;
+  subdomainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      groupId: 'group_id',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      groupId: 'string',
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class GetGroupResponse extends $tea.Model {
+  createdAt?: number;
+  description?: string;
+  domainId?: string;
+  groupId?: string;
+  groupName?: string;
+  updatedAt?: number;
+  static names(): { [key: string]: string } {
+    return {
+      createdAt: 'created_at',
+      description: 'description',
+      domainId: 'domain_id',
+      groupId: 'group_id',
+      groupName: 'group_name',
+      updatedAt: 'updated_at',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createdAt: 'number',
+      description: 'string',
+      domainId: 'string',
+      groupId: 'string',
+      groupName: 'string',
+      updatedAt: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class GetMembershipRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  groupId?: string;
+  memberType?: string;
+  subGroupId?: string;
+  subdomainId?: string;
+  userId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      groupId: 'group_id',
+      memberType: 'member_type',
+      subGroupId: 'sub_group_id',
+      subdomainId: 'subdomain_id',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      groupId: 'string',
+      memberType: 'string',
+      subGroupId: 'string',
+      subdomainId: 'string',
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class GetMembershipResponse extends $tea.Model {
+  createdAt?: number;
+  description?: string;
+  domainId?: string;
+  groupId?: string;
+  memberRole?: string;
+  memberType?: string;
+  subGroupId?: string;
+  updatedAt?: number;
+  userId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      createdAt: 'created_at',
+      description: 'description',
+      domainId: 'domain_id',
+      groupId: 'group_id',
+      memberRole: 'member_role',
+      memberType: 'member_type',
+      subGroupId: 'sub_group_id',
+      updatedAt: 'updated_at',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createdAt: 'number',
+      description: 'string',
+      domainId: 'string',
+      groupId: 'string',
+      memberRole: 'string',
+      memberType: 'string',
+      subGroupId: 'string',
+      updatedAt: 'number',
+      userId: 'string',
     };
   }
 
@@ -12114,17 +13752,146 @@ export class GetUserResponse extends $tea.Model {
 }
 
 /**
- * List user request
+ * 
  */
-export class ListUserRequest extends $tea.Model {
+export class HasMemberRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  groupId?: string;
+  memberType?: string;
+  subGroupId?: string;
+  subdomainId?: string;
+  userId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      groupId: 'group_id',
+      memberType: 'member_type',
+      subGroupId: 'sub_group_id',
+      subdomainId: 'subdomain_id',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      groupId: 'string',
+      memberType: 'string',
+      subGroupId: 'string',
+      subdomainId: 'string',
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class HasMembershipResponse extends $tea.Model {
+  result?: boolean;
+  static names(): { [key: string]: string } {
+    return {
+      result: 'result',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      result: 'boolean',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ListDirectChildMembershipsRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  groupId?: string;
+  limit?: number;
+  marker?: string;
+  memberType?: string;
+  subdomainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      groupId: 'group_id',
+      limit: 'limit',
+      marker: 'marker',
+      memberType: 'member_type',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      groupId: 'string',
+      limit: 'number',
+      marker: 'string',
+      memberType: 'string',
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ListDirectChildMembershipsResponse extends $tea.Model {
+  items?: BaseMembershipResponse[];
+  nextMarker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      items: 'items',
+      nextMarker: 'next_marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      items: { 'type': 'array', 'itemType': BaseMembershipResponse },
+      nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ListDirectParentMembershipsRequest extends $tea.Model {
   headers?: { [key: string]: string };
   limit?: number;
   marker?: string;
+  memberType?: string;
+  subGroupId?: string;
+  subdomainId?: string;
+  userId?: string;
   static names(): { [key: string]: string } {
     return {
       headers: 'headers',
       limit: 'limit',
       marker: 'marker',
+      memberType: 'member_type',
+      subGroupId: 'sub_group_id',
+      subdomainId: 'subdomain_id',
+      userId: 'user_id',
     };
   }
 
@@ -12133,6 +13900,122 @@ export class ListUserRequest extends $tea.Model {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       limit: 'number',
       marker: 'string',
+      memberType: 'string',
+      subGroupId: 'string',
+      subdomainId: 'string',
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ListDirectParentMembershipsResponse extends $tea.Model {
+  items?: BaseMembershipResponse[];
+  nextMarker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      items: 'items',
+      nextMarker: 'next_marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      items: { 'type': 'array', 'itemType': BaseMembershipResponse },
+      nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ListGroupRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  limit?: number;
+  marker?: string;
+  subdomainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      limit: 'limit',
+      marker: 'marker',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      limit: 'number',
+      marker: 'string',
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ListGroupResponse extends $tea.Model {
+  items?: BaseGroupResponse[];
+  nextMarker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      items: 'items',
+      nextMarker: 'next_marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      items: { 'type': 'array', 'itemType': BaseGroupResponse },
+      nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * List user request
+ */
+export class ListUserRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  limit?: number;
+  marker?: string;
+  subdomainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      limit: 'limit',
+      marker: 'marker',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      limit: 'number',
+      marker: 'string',
+      subdomainId: 'string',
     };
   }
 
@@ -12167,6 +14050,121 @@ export class ListUserResponse extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class MemberIDInfo extends $tea.Model {
+  memberType?: string;
+  subGroupId?: string;
+  userId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      memberType: 'member_type',
+      subGroupId: 'sub_group_id',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      memberType: 'string',
+      subGroupId: 'string',
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Remove user to subdomain request
+ */
+export class RemoveUserFromSubdomainRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  subdomainId?: string;
+  userId: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      subdomainId: 'subdomain_id',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      subdomainId: 'string',
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class SearchGroupRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  groupName?: string;
+  limit?: number;
+  marker?: string;
+  subdomainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      groupName: 'group_name',
+      limit: 'limit',
+      marker: 'marker',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      groupName: 'string',
+      limit: 'number',
+      marker: 'string',
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class SearchGroupResponse extends $tea.Model {
+  items?: BaseGroupResponse[];
+  nextMarker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      items: 'items',
+      nextMarker: 'next_marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      items: { 'type': 'array', 'itemType': BaseGroupResponse },
+      nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Search user request
  */
 export class SearchUserRequest extends $tea.Model {
@@ -12178,6 +14176,7 @@ export class SearchUserRequest extends $tea.Model {
   phone?: string;
   role?: string;
   status?: string;
+  subdomainId?: string;
   userName?: string;
   static names(): { [key: string]: string } {
     return {
@@ -12189,6 +14188,7 @@ export class SearchUserRequest extends $tea.Model {
       phone: 'phone',
       role: 'role',
       status: 'status',
+      subdomainId: 'subdomain_id',
       userName: 'user_name',
     };
   }
@@ -12203,7 +14203,171 @@ export class SearchUserRequest extends $tea.Model {
       phone: 'string',
       role: 'string',
       status: 'string',
+      subdomainId: 'string',
       userName: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class UpdateGroupRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  description?: string;
+  groupId?: string;
+  groupName: string;
+  isRoot?: boolean;
+  subdomainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      description: 'description',
+      groupId: 'group_id',
+      groupName: 'group_name',
+      isRoot: 'is_root',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      description: 'string',
+      groupId: 'string',
+      groupName: 'string',
+      isRoot: 'boolean',
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class UpdateGroupResponse extends $tea.Model {
+  createdAt?: number;
+  description?: string;
+  domainId?: string;
+  groupId?: string;
+  groupName?: string;
+  updatedAt?: number;
+  static names(): { [key: string]: string } {
+    return {
+      createdAt: 'created_at',
+      description: 'description',
+      domainId: 'domain_id',
+      groupId: 'group_id',
+      groupName: 'group_name',
+      updatedAt: 'updated_at',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createdAt: 'number',
+      description: 'string',
+      domainId: 'string',
+      groupId: 'string',
+      groupName: 'string',
+      updatedAt: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class UpdateMembershipRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  description?: string;
+  groupId?: string;
+  memberRole?: string;
+  memberType?: string;
+  subGroupId?: string;
+  subdomainId?: string;
+  userId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      description: 'description',
+      groupId: 'group_id',
+      memberRole: 'member_role',
+      memberType: 'member_type',
+      subGroupId: 'sub_group_id',
+      subdomainId: 'subdomain_id',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      description: 'string',
+      groupId: 'string',
+      memberRole: 'string',
+      memberType: 'string',
+      subGroupId: 'string',
+      subdomainId: 'string',
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class UpdateMembershipResponse extends $tea.Model {
+  createdAt?: number;
+  description?: string;
+  domainId?: string;
+  groupId?: string;
+  memberRole?: string;
+  memberType?: string;
+  subGroupId?: string;
+  updatedAt?: number;
+  userId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      createdAt: 'created_at',
+      description: 'description',
+      domainId: 'domain_id',
+      groupId: 'group_id',
+      memberRole: 'member_role',
+      memberType: 'member_type',
+      subGroupId: 'sub_group_id',
+      updatedAt: 'updated_at',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createdAt: 'number',
+      description: 'string',
+      domainId: 'string',
+      groupId: 'string',
+      memberRole: 'string',
+      memberType: 'string',
+      subGroupId: 'string',
+      updatedAt: 'number',
+      userId: 'string',
     };
   }
 
@@ -12816,7 +14980,6 @@ export class ImageAddressResponse extends $tea.Model {
  * 
  */
 export class ImageFaceGroupResponse extends $tea.Model {
-  coverFileId?: string;
   createdAt?: string;
   faceCount?: number;
   groupCoverUrl?: string;
@@ -12826,7 +14989,6 @@ export class ImageFaceGroupResponse extends $tea.Model {
   updatedAt?: string;
   static names(): { [key: string]: string } {
     return {
-      coverFileId: 'cover_file_id',
       createdAt: 'created_at',
       faceCount: 'face_count',
       groupCoverUrl: 'group_cover_url',
@@ -12839,7 +15001,6 @@ export class ImageFaceGroupResponse extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
-      coverFileId: 'string',
       createdAt: 'string',
       faceCount: 'number',
       groupCoverUrl: 'string',
@@ -15666,6 +17827,611 @@ export default class Client {
             body: respMap,
             headers: response_.headers,
           }, new AdminListStoresModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * create subdomain
+   * @tags subdomain
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error Forbidden User not authorized to operate on the specified APIs.
+   * @error InternalError The request has been failed due to some unknown error.
+   */
+  async createSubdomainEx(request: CreateSubdomainRequest, runtime: RuntimeOptions): Promise<CreateSubdomainModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/subdomain/create`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<CreateSubdomainModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new CreateSubdomainModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * delete subdomain
+   * @tags subdomain
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error Forbidden User not authorized to operate on the specified APIs.
+   * @error InternalError The request has been failed due to some unknown error.
+   */
+  async deleteSubdomainEx(request: DeleteSubdomainRequest, runtime: RuntimeOptions): Promise<DeleteSubdomainModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/subdomain/delete`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<DeleteSubdomainModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new DeleteSubdomainModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * get subdomain
+   * @tags subdomain
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error Forbidden User not authorized to operate on the specified APIs.
+   * @error InternalError The request has been failed due to some unknown error.
+   */
+  async getSubdomainEx(request: GetSubdomainRequest, runtime: RuntimeOptions): Promise<GetSubdomainModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/subdomain/get`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<GetSubdomainModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new GetSubdomainModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * list subdomain
+   * @tags subdomain
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error Forbidden User not authorized to operate on the specified APIs.
+   * @error InternalError The request has been failed due to some unknown error.
+   */
+  async listSubdomainsEx(request: ListSubdomainsRequest, runtime: RuntimeOptions): Promise<ListSubdomainsModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/subdomain/list`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<ListSubdomainsModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new ListSubdomainsModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * update subdomain
+   * @tags subdomain
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error Forbidden User not authorized to operate on the specified APIs.
+   * @error InternalError The request has been failed due to some unknown error.
+   */
+  async updateSubdomainEx(request: UpdateSubdomainRequest, runtime: RuntimeOptions): Promise<UpdateSubdomainModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/subdomain/update`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<UpdateSubdomainModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new UpdateSubdomainModel({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -21278,6 +24044,1968 @@ export default class Client {
   }
 
   /**
+   * 更新分享。
+   * @tags share_link
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async updateShareLinkEx(request: UpdateShareLinkRequest, runtime: RuntimeOptions): Promise<UpdateShareLinkModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/share_link/update`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<UpdateShareLinkModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new UpdateShareLinkModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 创建用户组
+   * @tags group
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async createGroupEx(request: CreateGroupRequest, runtime: RuntimeOptions): Promise<CreateGroupModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/group/create`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 201)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<CreateGroupModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new CreateGroupModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 删除用户组
+   * @tags group
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async deleteGroupEx(request: DeleteGroupRequest, runtime: RuntimeOptions): Promise<DeleteGroupModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/group/delete`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<DeleteGroupModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new DeleteGroupModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 获取用户组
+   * @tags group
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async getGroupEx(request: GetGroupRequest, runtime: RuntimeOptions): Promise<GetGroupModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/group/get`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<GetGroupModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new GetGroupModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 列举用户组
+   * @tags group
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async listGroupEx(request: ListGroupRequest, runtime: RuntimeOptions): Promise<ListGroupModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/group/list`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<ListGroupModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new ListGroupModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 搜索用户组
+   * @tags group
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async searchGroupEx(request: SearchGroupRequest, runtime: RuntimeOptions): Promise<SearchGroupModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/group/search`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<SearchGroupModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new SearchGroupModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 更新用户组
+   * @tags group
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async updateGroupEx(request: UpdateGroupRequest, runtime: RuntimeOptions): Promise<UpdateGroupModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/group/update`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<UpdateGroupModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new UpdateGroupModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 创建membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async createMembershipEx(request: CreateMembershipRequest, runtime: RuntimeOptions): Promise<CreateMembershipModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/membership/create`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 201)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<CreateMembershipModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new CreateMembershipModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 删除membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async deleteMembershipEx(request: DeleteMembershipRequest, runtime: RuntimeOptions): Promise<DeleteMembershipModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/membership/delete`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 204)) {
+          return $tea.cast<DeleteMembershipModel>({
+            headers: response_.headers,
+          }, new DeleteMembershipModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 获取membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async getMembershipEx(request: GetMembershipRequest, runtime: RuntimeOptions): Promise<GetMembershipModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/membership/get`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<GetMembershipModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new GetMembershipModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 检查group是否包含某个member
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async hasMemberEx(request: HasMemberRequest, runtime: RuntimeOptions): Promise<HasMemberModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/membership/has_member`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<HasMemberModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new HasMemberModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 列举直属的子membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async listDirectChildMembershipsEx(request: ListDirectChildMembershipsRequest, runtime: RuntimeOptions): Promise<ListDirectChildMembershipsModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/membership/list_direct_child_memberships`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<ListDirectChildMembershipsModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new ListDirectChildMembershipsModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 列举直属的membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async listDirectMembershipsEx(request: ListDirectParentMembershipsRequest, runtime: RuntimeOptions): Promise<ListDirectMembershipsModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/membership/list_direct_memberships`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<ListDirectMembershipsModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new ListDirectMembershipsModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 列举直属的父membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async listDirectParentMembershipsEx(request: ListDirectParentMembershipsRequest, runtime: RuntimeOptions): Promise<ListDirectParentMembershipsModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/membership/list_direct_parent_memberships`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<ListDirectParentMembershipsModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new ListDirectParentMembershipsModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 更新membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async updateMembershipEx(request: UpdateMembershipRequest, runtime: RuntimeOptions): Promise<UpdateMembershipModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/membership/update`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<UpdateMembershipModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new UpdateMembershipModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 只有管理员可以调用
+   * @tags user
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async addUserToSubdomainEx(request: AddUserToSubdomainRequest, runtime: RuntimeOptions): Promise<AddUserToSubdomainModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/user/add_user_to_subdomain`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          return $tea.cast<AddUserToSubdomainModel>({
+            headers: response_.headers,
+          }, new AddUserToSubdomainModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
    * 创建用户，只有管理员可以调用
    * @tags user
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -21733,6 +26461,126 @@ export default class Client {
             body: respMap,
             headers: response_.headers,
           }, new ListUsersModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 只有管理员可以调用
+   * @tags user
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async removeUserFromSubdomainEx(request: RemoveUserFromSubdomainRequest, runtime: RuntimeOptions): Promise<RemoveUserFromSubdomainModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/user/remove_user_from_subdomain`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          return $tea.cast<RemoveUserFromSubdomainModel>({
+            headers: response_.headers,
+          }, new RemoveUserFromSubdomainModel({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -23614,6 +28462,66 @@ export default class Client {
   }
 
   /**
+   * create subdomain
+   * @tags subdomain
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error Forbidden User not authorized to operate on the specified APIs.
+   * @error InternalError The request has been failed due to some unknown error.
+   */
+  async createSubdomain(request: CreateSubdomainRequest): Promise<CreateSubdomainModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.createSubdomainEx(request, runtime);
+  }
+
+  /**
+   * delete subdomain
+   * @tags subdomain
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error Forbidden User not authorized to operate on the specified APIs.
+   * @error InternalError The request has been failed due to some unknown error.
+   */
+  async deleteSubdomain(request: DeleteSubdomainRequest): Promise<DeleteSubdomainModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.deleteSubdomainEx(request, runtime);
+  }
+
+  /**
+   * get subdomain
+   * @tags subdomain
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error Forbidden User not authorized to operate on the specified APIs.
+   * @error InternalError The request has been failed due to some unknown error.
+   */
+  async getSubdomain(request: GetSubdomainRequest): Promise<GetSubdomainModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.getSubdomainEx(request, runtime);
+  }
+
+  /**
+   * list subdomain
+   * @tags subdomain
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error Forbidden User not authorized to operate on the specified APIs.
+   * @error InternalError The request has been failed due to some unknown error.
+   */
+  async listSubdomains(request: ListSubdomainsRequest): Promise<ListSubdomainsModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.listSubdomainsEx(request, runtime);
+  }
+
+  /**
+   * update subdomain
+   * @tags subdomain
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error Forbidden User not authorized to operate on the specified APIs.
+   * @error InternalError The request has been failed due to some unknown error.
+   */
+  async updateSubdomain(request: UpdateSubdomainRequest): Promise<UpdateSubdomainModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.updateSubdomainEx(request, runtime);
+  }
+
+  /**
    * 获取用户的accessToken
    * @tags admin
    * @error undefined undefined
@@ -24280,6 +29188,230 @@ export default class Client {
   }
 
   /**
+   * 更新分享。
+   * @tags share_link
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async updateShareLink(request: UpdateShareLinkRequest): Promise<UpdateShareLinkModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.updateShareLinkEx(request, runtime);
+  }
+
+  /**
+   * 创建用户组
+   * @tags group
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async createGroup(request: CreateGroupRequest): Promise<CreateGroupModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.createGroupEx(request, runtime);
+  }
+
+  /**
+   * 删除用户组
+   * @tags group
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async deleteGroup(request: DeleteGroupRequest): Promise<DeleteGroupModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.deleteGroupEx(request, runtime);
+  }
+
+  /**
+   * 获取用户组
+   * @tags group
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async getGroup(request: GetGroupRequest): Promise<GetGroupModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.getGroupEx(request, runtime);
+  }
+
+  /**
+   * 列举用户组
+   * @tags group
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async listGroup(request: ListGroupRequest): Promise<ListGroupModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.listGroupEx(request, runtime);
+  }
+
+  /**
+   * 搜索用户组
+   * @tags group
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async searchGroup(request: SearchGroupRequest): Promise<SearchGroupModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.searchGroupEx(request, runtime);
+  }
+
+  /**
+   * 更新用户组
+   * @tags group
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async updateGroup(request: UpdateGroupRequest): Promise<UpdateGroupModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.updateGroupEx(request, runtime);
+  }
+
+  /**
+   * 创建membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async createMembership(request: CreateMembershipRequest): Promise<CreateMembershipModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.createMembershipEx(request, runtime);
+  }
+
+  /**
+   * 删除membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async deleteMembership(request: DeleteMembershipRequest): Promise<DeleteMembershipModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.deleteMembershipEx(request, runtime);
+  }
+
+  /**
+   * 获取membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async getMembership(request: GetMembershipRequest): Promise<GetMembershipModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.getMembershipEx(request, runtime);
+  }
+
+  /**
+   * 检查group是否包含某个member
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async hasMember(request: HasMemberRequest): Promise<HasMemberModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.hasMemberEx(request, runtime);
+  }
+
+  /**
+   * 列举直属的子membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async listDirectChildMemberships(request: ListDirectChildMembershipsRequest): Promise<ListDirectChildMembershipsModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.listDirectChildMembershipsEx(request, runtime);
+  }
+
+  /**
+   * 列举直属的membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async listDirectMemberships(request: ListDirectParentMembershipsRequest): Promise<ListDirectMembershipsModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.listDirectMembershipsEx(request, runtime);
+  }
+
+  /**
+   * 列举直属的父membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async listDirectParentMemberships(request: ListDirectParentMembershipsRequest): Promise<ListDirectParentMembershipsModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.listDirectParentMembershipsEx(request, runtime);
+  }
+
+  /**
+   * 更新membership
+   * @tags membership
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async updateMembership(request: UpdateMembershipRequest): Promise<UpdateMembershipModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.updateMembershipEx(request, runtime);
+  }
+
+  /**
+   * 只有管理员可以调用
+   * @tags user
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async addUserToSubdomain(request: AddUserToSubdomainRequest): Promise<AddUserToSubdomainModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.addUserToSubdomainEx(request, runtime);
+  }
+
+  /**
    * 创建用户，只有管理员可以调用
    * @tags user
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -24334,6 +29466,20 @@ export default class Client {
   async listUsers(request: ListUserRequest): Promise<ListUsersModel> {
     let runtime = new RuntimeOptions({ });
     return await this.listUsersEx(request, runtime);
+  }
+
+  /**
+   * 只有管理员可以调用
+   * @tags user
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async removeUserFromSubdomain(request: RemoveUserFromSubdomainRequest): Promise<RemoveUserFromSubdomainModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.removeUserFromSubdomainEx(request, runtime);
   }
 
   /**

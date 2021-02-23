@@ -68,6 +68,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public string RefreshToken { get; set; }
 
+        /// <summary>
+        /// SubDomainID
+        /// </summary>
+        [NameInMap("SubDomainID")]
+        [Validation(Required=false)]
+        public string SubDomainID { get; set; }
+
     }
 
 }

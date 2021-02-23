@@ -41,6 +41,10 @@ public class BaseDriveResponse extends TeaModel {
     @NameInMap("owner")
     public String owner;
 
+    // Drive 所有者类型
+    @NameInMap("owner_type")
+    public String ownerType;
+
     // Drive存储基于store的相对路径，domain的PathType为OSSPath时返回
     @NameInMap("relative_path")
     public String relativePath;
@@ -136,6 +140,14 @@ public class BaseDriveResponse extends TeaModel {
     }
     public String getOwner() {
         return this.owner;
+    }
+
+    public BaseDriveResponse setOwnerType(String ownerType) {
+        this.ownerType = ownerType;
+        return this;
+    }
+    public String getOwnerType() {
+        return this.ownerType;
     }
 
     public BaseDriveResponse setRelativePath(String relativePath) {

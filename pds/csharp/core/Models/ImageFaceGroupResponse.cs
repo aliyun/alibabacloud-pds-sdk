@@ -13,13 +13,6 @@ namespace Aliyun.SDK.PDS.Client.Models
      */
     public class ImageFaceGroupResponse : TeaModel {
         /// <summary>
-        /// cover_file_id
-        /// </summary>
-        [NameInMap("cover_file_id")]
-        [Validation(Required=false)]
-        public string CoverFileId { get; set; }
-
-        /// <summary>
         /// 人脸分组生成时间
         /// </summary>
         [NameInMap("created_at")]

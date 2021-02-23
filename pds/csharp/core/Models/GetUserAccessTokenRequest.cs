@@ -17,11 +17,11 @@ namespace Aliyun.SDK.PDS.Client.Models
         public Dictionary<string, string> Headers { get; set; }
 
         /// <summary>
-        /// 角色
+        /// subdomain ID
         /// </summary>
-        [NameInMap("role")]
+        [NameInMap("subdomain_id")]
         [Validation(Required=false)]
-        public string Role { get; set; }
+        public string SubdomainId { get; set; }
 
         /// <summary>
         /// 用户 ID

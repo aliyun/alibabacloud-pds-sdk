@@ -30,6 +30,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public string Marker { get; set; }
 
+        /// <summary>
+        /// subdomain id
+        /// </summary>
+        [NameInMap("subdomain_id")]
+        [Validation(Required=false)]
+        public string SubdomainId { get; set; }
+
     }
 
 }

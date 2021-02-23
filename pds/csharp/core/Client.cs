@@ -5459,6 +5459,1496 @@ namespace Aliyun.SDK.PDS.Client
         }
 
         /**
+         * create subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public CreateSubdomainModel CreateSubdomainEx(CreateSubdomainRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/subdomain/create");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<CreateSubdomainModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * create subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public async Task<CreateSubdomainModel> CreateSubdomainExAsync(CreateSubdomainRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/subdomain/create");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<CreateSubdomainModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * delete subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public DeleteSubdomainModel DeleteSubdomainEx(DeleteSubdomainRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/subdomain/delete");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<DeleteSubdomainModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * delete subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public async Task<DeleteSubdomainModel> DeleteSubdomainExAsync(DeleteSubdomainRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/subdomain/delete");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<DeleteSubdomainModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * get subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public GetSubdomainModel GetSubdomainEx(GetSubdomainRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/subdomain/get");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<GetSubdomainModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * get subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public async Task<GetSubdomainModel> GetSubdomainExAsync(GetSubdomainRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/subdomain/get");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<GetSubdomainModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * list subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public ListSubdomainsModel ListSubdomainsEx(ListSubdomainsRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/subdomain/list");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<ListSubdomainsModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * list subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public async Task<ListSubdomainsModel> ListSubdomainsExAsync(ListSubdomainsRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/subdomain/list");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<ListSubdomainsModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * update subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public UpdateSubdomainModel UpdateSubdomainEx(UpdateSubdomainRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/subdomain/update");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<UpdateSubdomainModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * update subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public async Task<UpdateSubdomainModel> UpdateSubdomainExAsync(UpdateSubdomainRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/subdomain/update");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<UpdateSubdomainModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
          * 获取用户的accessToken
          * @tags admin
          * @error undefined undefined
@@ -19137,6 +20627,4826 @@ namespace Aliyun.SDK.PDS.Client
         }
 
         /**
+         * 更新分享。
+         * @tags share_link
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public UpdateShareLinkModel UpdateShareLinkEx(UpdateShareLinkRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/update");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<UpdateShareLinkModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 更新分享。
+         * @tags share_link
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<UpdateShareLinkModel> UpdateShareLinkExAsync(UpdateShareLinkRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/update");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<UpdateShareLinkModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 创建用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public CreateGroupModel CreateGroupEx(CreateGroupRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/group/create");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 201))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<CreateGroupModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 创建用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<CreateGroupModel> CreateGroupExAsync(CreateGroupRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/group/create");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 201))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<CreateGroupModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 删除用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public DeleteGroupModel DeleteGroupEx(DeleteGroupRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/group/delete");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<DeleteGroupModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 删除用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<DeleteGroupModel> DeleteGroupExAsync(DeleteGroupRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/group/delete");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<DeleteGroupModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 获取用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public GetGroupModel GetGroupEx(GetGroupRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/group/get");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<GetGroupModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 获取用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<GetGroupModel> GetGroupExAsync(GetGroupRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/group/get");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<GetGroupModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 列举用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public ListGroupModel ListGroupEx(ListGroupRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/group/list");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<ListGroupModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 列举用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<ListGroupModel> ListGroupExAsync(ListGroupRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/group/list");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<ListGroupModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 搜索用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public SearchGroupModel SearchGroupEx(SearchGroupRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/group/search");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<SearchGroupModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 搜索用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<SearchGroupModel> SearchGroupExAsync(SearchGroupRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/group/search");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<SearchGroupModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 更新用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public UpdateGroupModel UpdateGroupEx(UpdateGroupRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/group/update");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<UpdateGroupModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 更新用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<UpdateGroupModel> UpdateGroupExAsync(UpdateGroupRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/group/update");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<UpdateGroupModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 创建membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public CreateMembershipModel CreateMembershipEx(CreateMembershipRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/create");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 201))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<CreateMembershipModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 创建membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<CreateMembershipModel> CreateMembershipExAsync(CreateMembershipRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/create");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 201))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<CreateMembershipModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 删除membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public DeleteMembershipModel DeleteMembershipEx(DeleteMembershipRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/delete");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 204))
+                    {
+                        return TeaModel.ToObject<DeleteMembershipModel>(new Dictionary<string, Dictionary<string, string>>
+                        {
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 删除membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<DeleteMembershipModel> DeleteMembershipExAsync(DeleteMembershipRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/delete");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 204))
+                    {
+                        return TeaModel.ToObject<DeleteMembershipModel>(new Dictionary<string, Dictionary<string, string>>
+                        {
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 获取membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public GetMembershipModel GetMembershipEx(GetMembershipRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/get");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<GetMembershipModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 获取membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<GetMembershipModel> GetMembershipExAsync(GetMembershipRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/get");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<GetMembershipModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 检查group是否包含某个member
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public HasMemberModel HasMemberEx(HasMemberRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/has_member");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<HasMemberModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 检查group是否包含某个member
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<HasMemberModel> HasMemberExAsync(HasMemberRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/has_member");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<HasMemberModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 列举直属的子membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public ListDirectChildMembershipsModel ListDirectChildMembershipsEx(ListDirectChildMembershipsRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/list_direct_child_memberships");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<ListDirectChildMembershipsModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 列举直属的子membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<ListDirectChildMembershipsModel> ListDirectChildMembershipsExAsync(ListDirectChildMembershipsRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/list_direct_child_memberships");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<ListDirectChildMembershipsModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 列举直属的membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public ListDirectMembershipsModel ListDirectMembershipsEx(ListDirectParentMembershipsRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/list_direct_memberships");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<ListDirectMembershipsModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 列举直属的membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<ListDirectMembershipsModel> ListDirectMembershipsExAsync(ListDirectParentMembershipsRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/list_direct_memberships");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<ListDirectMembershipsModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 列举直属的父membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public ListDirectParentMembershipsModel ListDirectParentMembershipsEx(ListDirectParentMembershipsRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/list_direct_parent_memberships");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<ListDirectParentMembershipsModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 列举直属的父membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<ListDirectParentMembershipsModel> ListDirectParentMembershipsExAsync(ListDirectParentMembershipsRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/list_direct_parent_memberships");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<ListDirectParentMembershipsModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 更新membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public UpdateMembershipModel UpdateMembershipEx(UpdateMembershipRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/update");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<UpdateMembershipModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 更新membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<UpdateMembershipModel> UpdateMembershipExAsync(UpdateMembershipRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/membership/update");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<UpdateMembershipModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 只有管理员可以调用
+         * @tags user
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public AddUserToSubdomainModel AddUserToSubdomainEx(AddUserToSubdomainRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/user/add_user_to_subdomain");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        return TeaModel.ToObject<AddUserToSubdomainModel>(new Dictionary<string, Dictionary<string, string>>
+                        {
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 只有管理员可以调用
+         * @tags user
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<AddUserToSubdomainModel> AddUserToSubdomainExAsync(AddUserToSubdomainRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/user/add_user_to_subdomain");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        return TeaModel.ToObject<AddUserToSubdomainModel>(new Dictionary<string, Dictionary<string, string>>
+                        {
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
          * 创建用户，只有管理员可以调用
          * @tags user
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -20294,6 +26604,302 @@ namespace Aliyun.SDK.PDS.Client
                         return TeaModel.ToObject<ListUsersModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 只有管理员可以调用
+         * @tags user
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public RemoveUserFromSubdomainModel RemoveUserFromSubdomainEx(RemoveUserFromSubdomainRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/user/remove_user_from_subdomain");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        return TeaModel.ToObject<RemoveUserFromSubdomainModel>(new Dictionary<string, Dictionary<string, string>>
+                        {
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 只有管理员可以调用
+         * @tags user
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<RemoveUserFromSubdomainModel> RemoveUserFromSubdomainExAsync(RemoveUserFromSubdomainRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/user/remove_user_from_subdomain");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        return TeaModel.ToObject<RemoveUserFromSubdomainModel>(new Dictionary<string, Dictionary<string, string>>
+                        {
                             {"headers", response_.Headers},
                         });
                     }
@@ -24797,6 +31403,136 @@ namespace Aliyun.SDK.PDS.Client
         }
 
         /**
+         * create subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public CreateSubdomainModel CreateSubdomain(CreateSubdomainRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return CreateSubdomainEx(request, runtime);
+        }
+
+        /**
+         * create subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public async Task<CreateSubdomainModel> CreateSubdomainAsync(CreateSubdomainRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await CreateSubdomainExAsync(request, runtime);
+        }
+
+        /**
+         * delete subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public DeleteSubdomainModel DeleteSubdomain(DeleteSubdomainRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return DeleteSubdomainEx(request, runtime);
+        }
+
+        /**
+         * delete subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public async Task<DeleteSubdomainModel> DeleteSubdomainAsync(DeleteSubdomainRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await DeleteSubdomainExAsync(request, runtime);
+        }
+
+        /**
+         * get subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public GetSubdomainModel GetSubdomain(GetSubdomainRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return GetSubdomainEx(request, runtime);
+        }
+
+        /**
+         * get subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public async Task<GetSubdomainModel> GetSubdomainAsync(GetSubdomainRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await GetSubdomainExAsync(request, runtime);
+        }
+
+        /**
+         * list subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public ListSubdomainsModel ListSubdomains(ListSubdomainsRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return ListSubdomainsEx(request, runtime);
+        }
+
+        /**
+         * list subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public async Task<ListSubdomainsModel> ListSubdomainsAsync(ListSubdomainsRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await ListSubdomainsExAsync(request, runtime);
+        }
+
+        /**
+         * update subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public UpdateSubdomainModel UpdateSubdomain(UpdateSubdomainRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return UpdateSubdomainEx(request, runtime);
+        }
+
+        /**
+         * update subdomain
+         * @tags subdomain
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error Forbidden User not authorized to operate on the specified APIs.
+         * @error InternalError The request has been failed due to some unknown error.
+         */
+        public async Task<UpdateSubdomainModel> UpdateSubdomainAsync(UpdateSubdomainRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await UpdateSubdomainExAsync(request, runtime);
+        }
+
+        /**
          * 获取用户的accessToken
          * @tags admin
          * @error undefined undefined
@@ -26219,6 +32955,486 @@ namespace Aliyun.SDK.PDS.Client
         }
 
         /**
+         * 更新分享。
+         * @tags share_link
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public UpdateShareLinkModel UpdateShareLink(UpdateShareLinkRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return UpdateShareLinkEx(request, runtime);
+        }
+
+        /**
+         * 更新分享。
+         * @tags share_link
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<UpdateShareLinkModel> UpdateShareLinkAsync(UpdateShareLinkRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await UpdateShareLinkExAsync(request, runtime);
+        }
+
+        /**
+         * 创建用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public CreateGroupModel CreateGroup(CreateGroupRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return CreateGroupEx(request, runtime);
+        }
+
+        /**
+         * 创建用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<CreateGroupModel> CreateGroupAsync(CreateGroupRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await CreateGroupExAsync(request, runtime);
+        }
+
+        /**
+         * 删除用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public DeleteGroupModel DeleteGroup(DeleteGroupRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return DeleteGroupEx(request, runtime);
+        }
+
+        /**
+         * 删除用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<DeleteGroupModel> DeleteGroupAsync(DeleteGroupRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await DeleteGroupExAsync(request, runtime);
+        }
+
+        /**
+         * 获取用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public GetGroupModel GetGroup(GetGroupRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return GetGroupEx(request, runtime);
+        }
+
+        /**
+         * 获取用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<GetGroupModel> GetGroupAsync(GetGroupRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await GetGroupExAsync(request, runtime);
+        }
+
+        /**
+         * 列举用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public ListGroupModel ListGroup(ListGroupRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return ListGroupEx(request, runtime);
+        }
+
+        /**
+         * 列举用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<ListGroupModel> ListGroupAsync(ListGroupRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await ListGroupExAsync(request, runtime);
+        }
+
+        /**
+         * 搜索用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public SearchGroupModel SearchGroup(SearchGroupRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return SearchGroupEx(request, runtime);
+        }
+
+        /**
+         * 搜索用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<SearchGroupModel> SearchGroupAsync(SearchGroupRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await SearchGroupExAsync(request, runtime);
+        }
+
+        /**
+         * 更新用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public UpdateGroupModel UpdateGroup(UpdateGroupRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return UpdateGroupEx(request, runtime);
+        }
+
+        /**
+         * 更新用户组
+         * @tags group
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<UpdateGroupModel> UpdateGroupAsync(UpdateGroupRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await UpdateGroupExAsync(request, runtime);
+        }
+
+        /**
+         * 创建membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public CreateMembershipModel CreateMembership(CreateMembershipRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return CreateMembershipEx(request, runtime);
+        }
+
+        /**
+         * 创建membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<CreateMembershipModel> CreateMembershipAsync(CreateMembershipRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await CreateMembershipExAsync(request, runtime);
+        }
+
+        /**
+         * 删除membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public DeleteMembershipModel DeleteMembership(DeleteMembershipRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return DeleteMembershipEx(request, runtime);
+        }
+
+        /**
+         * 删除membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<DeleteMembershipModel> DeleteMembershipAsync(DeleteMembershipRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await DeleteMembershipExAsync(request, runtime);
+        }
+
+        /**
+         * 获取membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public GetMembershipModel GetMembership(GetMembershipRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return GetMembershipEx(request, runtime);
+        }
+
+        /**
+         * 获取membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<GetMembershipModel> GetMembershipAsync(GetMembershipRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await GetMembershipExAsync(request, runtime);
+        }
+
+        /**
+         * 检查group是否包含某个member
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public HasMemberModel HasMember(HasMemberRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return HasMemberEx(request, runtime);
+        }
+
+        /**
+         * 检查group是否包含某个member
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<HasMemberModel> HasMemberAsync(HasMemberRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await HasMemberExAsync(request, runtime);
+        }
+
+        /**
+         * 列举直属的子membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public ListDirectChildMembershipsModel ListDirectChildMemberships(ListDirectChildMembershipsRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return ListDirectChildMembershipsEx(request, runtime);
+        }
+
+        /**
+         * 列举直属的子membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<ListDirectChildMembershipsModel> ListDirectChildMembershipsAsync(ListDirectChildMembershipsRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await ListDirectChildMembershipsExAsync(request, runtime);
+        }
+
+        /**
+         * 列举直属的membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public ListDirectMembershipsModel ListDirectMemberships(ListDirectParentMembershipsRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return ListDirectMembershipsEx(request, runtime);
+        }
+
+        /**
+         * 列举直属的membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<ListDirectMembershipsModel> ListDirectMembershipsAsync(ListDirectParentMembershipsRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await ListDirectMembershipsExAsync(request, runtime);
+        }
+
+        /**
+         * 列举直属的父membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public ListDirectParentMembershipsModel ListDirectParentMemberships(ListDirectParentMembershipsRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return ListDirectParentMembershipsEx(request, runtime);
+        }
+
+        /**
+         * 列举直属的父membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<ListDirectParentMembershipsModel> ListDirectParentMembershipsAsync(ListDirectParentMembershipsRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await ListDirectParentMembershipsExAsync(request, runtime);
+        }
+
+        /**
+         * 更新membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public UpdateMembershipModel UpdateMembership(UpdateMembershipRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return UpdateMembershipEx(request, runtime);
+        }
+
+        /**
+         * 更新membership
+         * @tags membership
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<UpdateMembershipModel> UpdateMembershipAsync(UpdateMembershipRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await UpdateMembershipExAsync(request, runtime);
+        }
+
+        /**
+         * 只有管理员可以调用
+         * @tags user
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public AddUserToSubdomainModel AddUserToSubdomain(AddUserToSubdomainRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return AddUserToSubdomainEx(request, runtime);
+        }
+
+        /**
+         * 只有管理员可以调用
+         * @tags user
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<AddUserToSubdomainModel> AddUserToSubdomainAsync(AddUserToSubdomainRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await AddUserToSubdomainExAsync(request, runtime);
+        }
+
+        /**
          * 创建用户，只有管理员可以调用
          * @tags user
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -26338,6 +33554,36 @@ namespace Aliyun.SDK.PDS.Client
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await ListUsersExAsync(request, runtime);
+        }
+
+        /**
+         * 只有管理员可以调用
+         * @tags user
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public RemoveUserFromSubdomainModel RemoveUserFromSubdomain(RemoveUserFromSubdomainRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return RemoveUserFromSubdomainEx(request, runtime);
+        }
+
+        /**
+         * 只有管理员可以调用
+         * @tags user
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<RemoveUserFromSubdomainModel> RemoveUserFromSubdomainAsync(RemoveUserFromSubdomainRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await RemoveUserFromSubdomainExAsync(request, runtime);
         }
 
         /**

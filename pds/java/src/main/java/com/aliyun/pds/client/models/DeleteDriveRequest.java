@@ -15,6 +15,10 @@ public class DeleteDriveRequest extends TeaModel {
     @Validation(required = true)
     public String driveId;
 
+    // Subdomain ID
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     public static DeleteDriveRequest build(java.util.Map<String, ?> map) throws Exception {
         DeleteDriveRequest self = new DeleteDriveRequest();
         return TeaModel.build(map, self);
@@ -34,6 +38,14 @@ public class DeleteDriveRequest extends TeaModel {
     }
     public String getDriveId() {
         return this.driveId;
+    }
+
+    public DeleteDriveRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
 }
