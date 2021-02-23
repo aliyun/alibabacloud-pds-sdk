@@ -70,6 +70,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string Owner { get; set; }
 
         /// <summary>
+        /// Drive 所有者类型
+        /// </summary>
+        [NameInMap("owner_type")]
+        [Validation(Required=false)]
+        public string OwnerType { get; set; }
+
+        /// <summary>
         /// Drive存储基于store的相对路径，domain的PathType为OSSPath时返回
         /// </summary>
         [NameInMap("relative_path")]

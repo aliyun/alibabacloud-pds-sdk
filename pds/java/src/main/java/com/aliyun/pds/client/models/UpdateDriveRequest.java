@@ -37,6 +37,10 @@ public class UpdateDriveRequest extends TeaModel {
     @NameInMap("status")
     public String status;
 
+    // Subdomain ID
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     // 总大小,单位Byte [如果设置 -1 代表不限制]
     @NameInMap("total_size")
     public Long totalSize;
@@ -100,6 +104,14 @@ public class UpdateDriveRequest extends TeaModel {
     }
     public String getStatus() {
         return this.status;
+    }
+
+    public UpdateDriveRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
     public UpdateDriveRequest setTotalSize(Long totalSize) {

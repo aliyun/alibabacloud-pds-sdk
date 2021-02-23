@@ -15,6 +15,10 @@ public class GetDriveRequest extends TeaModel {
     @Validation(required = true)
     public String driveId;
 
+    // Subdomain ID
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     public static GetDriveRequest build(java.util.Map<String, ?> map) throws Exception {
         GetDriveRequest self = new GetDriveRequest();
         return TeaModel.build(map, self);
@@ -34,6 +38,14 @@ public class GetDriveRequest extends TeaModel {
     }
     public String getDriveId() {
         return this.driveId;
+    }
+
+    public GetDriveRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
 }

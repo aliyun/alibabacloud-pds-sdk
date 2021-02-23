@@ -22,6 +22,15 @@ public class ListDriveRequest extends TeaModel {
     @NameInMap("owner")
     public String owner;
 
+    // owner_type
+    // 所述者类型
+    @NameInMap("owner_type")
+    public String ownerType;
+
+    // Subdomain ID
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     public static ListDriveRequest build(java.util.Map<String, ?> map) throws Exception {
         ListDriveRequest self = new ListDriveRequest();
         return TeaModel.build(map, self);
@@ -57,6 +66,22 @@ public class ListDriveRequest extends TeaModel {
     }
     public String getOwner() {
         return this.owner;
+    }
+
+    public ListDriveRequest setOwnerType(String ownerType) {
+        this.ownerType = ownerType;
+        return this;
+    }
+    public String getOwnerType() {
+        return this.ownerType;
+    }
+
+    public ListDriveRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
 }

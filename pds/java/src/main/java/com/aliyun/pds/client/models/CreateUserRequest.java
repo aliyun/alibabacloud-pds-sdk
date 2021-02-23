@@ -43,6 +43,10 @@ public class CreateUserRequest extends TeaModel {
     @NameInMap("status")
     public String status;
 
+    // subdomain id
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     // 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
     @NameInMap("user_data")
     public java.util.Map<String, ?> userData;
@@ -131,6 +135,14 @@ public class CreateUserRequest extends TeaModel {
     }
     public String getStatus() {
         return this.status;
+    }
+
+    public CreateUserRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
     public CreateUserRequest setUserData(java.util.Map<String, ?> userData) {

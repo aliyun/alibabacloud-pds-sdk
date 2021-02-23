@@ -703,6 +703,10 @@ type AccountAccessTokenResponse struct {
   Role *string `json:"role,omitempty" xml:"role,omitempty"`
   // 临时权限，用于登录成功后设置密码
   State *string `json:"state,omitempty" xml:"state,omitempty"`
+  // 当前用户状态
+  Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // subdomain_id 用户登录的subdomain_id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
   // accessToken类型，Bearer
   TokenType *string `json:"token_type,omitempty" xml:"token_type,omitempty"`
   // 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
@@ -803,6 +807,16 @@ func (s *AccountAccessTokenResponse) SetRole(v string) *AccountAccessTokenRespon
 
 func (s *AccountAccessTokenResponse) SetState(v string) *AccountAccessTokenResponse {
   s.State = &v
+  return s
+}
+
+func (s *AccountAccessTokenResponse) SetStatus(v string) *AccountAccessTokenResponse {
+  s.Status = &v
+  return s
+}
+
+func (s *AccountAccessTokenResponse) SetSubdomainId(v string) *AccountAccessTokenResponse {
+  s.SubdomainId = &v
   return s
 }
 
@@ -1449,6 +1463,8 @@ type BaseDriveResponse struct {
   EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
   // Drive 所有者
   Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+  // Drive 所有者类型
+  OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
   // Drive存储基于store的相对路径，domain的PathType为OSSPath时返回
   RelativePath *string `json:"relative_path,omitempty" xml:"relative_path,omitempty"`
   // Drive 状态
@@ -1511,6 +1527,11 @@ func (s *BaseDriveResponse) SetEncryptMode(v string) *BaseDriveResponse {
 
 func (s *BaseDriveResponse) SetOwner(v string) *BaseDriveResponse {
   s.Owner = &v
+  return s
+}
+
+func (s *BaseDriveResponse) SetOwnerType(v string) *BaseDriveResponse {
+  s.OwnerType = &v
   return s
 }
 
@@ -1764,6 +1785,97 @@ func (s *BaseHostingFileResponse) SetUrl(v string) *BaseHostingFileResponse {
 }
 
 /**
+ * 
+ */
+type BaseMediaResponse struct {
+  // address_line
+  AddressLine *string `json:"address_line,omitempty" xml:"address_line,omitempty"`
+  // city
+  City *string `json:"city,omitempty" xml:"city,omitempty"`
+  // country
+  Country *string `json:"country,omitempty" xml:"country,omitempty"`
+  // district
+  District *string `json:"district,omitempty" xml:"district,omitempty"`
+  // height
+  Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
+  // system_tags
+  ImageTags []*SystemTag `json:"image_tags,omitempty" xml:"image_tags,omitempty" type:"Repeated"`
+  // location
+  Location *string `json:"location,omitempty" xml:"location,omitempty"`
+  // province
+  Province *string `json:"province,omitempty" xml:"province,omitempty"`
+  // time
+  Time *string `json:"time,omitempty" xml:"time,omitempty"`
+  // township
+  Township *string `json:"township,omitempty" xml:"township,omitempty"`
+  // width
+  Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
+}
+
+func (s BaseMediaResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BaseMediaResponse) GoString() string {
+  return s.String()
+}
+
+func (s *BaseMediaResponse) SetAddressLine(v string) *BaseMediaResponse {
+  s.AddressLine = &v
+  return s
+}
+
+func (s *BaseMediaResponse) SetCity(v string) *BaseMediaResponse {
+  s.City = &v
+  return s
+}
+
+func (s *BaseMediaResponse) SetCountry(v string) *BaseMediaResponse {
+  s.Country = &v
+  return s
+}
+
+func (s *BaseMediaResponse) SetDistrict(v string) *BaseMediaResponse {
+  s.District = &v
+  return s
+}
+
+func (s *BaseMediaResponse) SetHeight(v int64) *BaseMediaResponse {
+  s.Height = &v
+  return s
+}
+
+func (s *BaseMediaResponse) SetImageTags(v []*SystemTag) *BaseMediaResponse {
+  s.ImageTags = v
+  return s
+}
+
+func (s *BaseMediaResponse) SetLocation(v string) *BaseMediaResponse {
+  s.Location = &v
+  return s
+}
+
+func (s *BaseMediaResponse) SetProvince(v string) *BaseMediaResponse {
+  s.Province = &v
+  return s
+}
+
+func (s *BaseMediaResponse) SetTime(v string) *BaseMediaResponse {
+  s.Time = &v
+  return s
+}
+
+func (s *BaseMediaResponse) SetTownship(v string) *BaseMediaResponse {
+  s.Township = &v
+  return s
+}
+
+func (s *BaseMediaResponse) SetWidth(v int64) *BaseMediaResponse {
+  s.Width = &v
+  return s
+}
+
+/**
  * list_share_link response
  */
 type BaseShareLinkResponse struct {
@@ -1930,6 +2042,8 @@ type BaseShareResponse struct {
   Expired *bool `json:"expired,omitempty" xml:"expired,omitempty"`
   // owner
   Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+  // owner
+  OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
   // permissions
   Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
   // share_file_id
@@ -1992,6 +2106,11 @@ func (s *BaseShareResponse) SetExpired(v bool) *BaseShareResponse {
 
 func (s *BaseShareResponse) SetOwner(v string) *BaseShareResponse {
   s.Owner = &v
+  return s
+}
+
+func (s *BaseShareResponse) SetOwnerType(v string) *BaseShareResponse {
+  s.OwnerType = &v
   return s
 }
 
@@ -2150,6 +2269,47 @@ func (s *Captcha) SetCaptchaFormat(v string) *Captcha {
 
 func (s *Captcha) SetCaptchaId(v string) *Captcha {
   s.CaptchaId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type CertInfo struct {
+  CertID *string `json:"CertID,omitempty" xml:"CertID,omitempty"`
+  // cert body
+  CertBody *string `json:"cert_body,omitempty" xml:"cert_body,omitempty" require:"true"`
+  // cert name
+  CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty" require:"true"`
+  // cert privatekey
+  CertPrivatekey *string `json:"cert_privatekey,omitempty" xml:"cert_privatekey,omitempty" require:"true"`
+}
+
+func (s CertInfo) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CertInfo) GoString() string {
+  return s.String()
+}
+
+func (s *CertInfo) SetCertID(v string) *CertInfo {
+  s.CertID = &v
+  return s
+}
+
+func (s *CertInfo) SetCertBody(v string) *CertInfo {
+  s.CertBody = &v
+  return s
+}
+
+func (s *CertInfo) SetCertName(v string) *CertInfo {
+  s.CertName = &v
+  return s
+}
+
+func (s *CertInfo) SetCertPrivatekey(v string) *CertInfo {
+  s.CertPrivatekey = &v
   return s
 }
 
@@ -2935,8 +3095,30 @@ func (s *CreateFileResponse) SetUploadId(v string) *CreateFileResponse {
  * create_share_link response
  */
 type CreateShareLinkResponse struct {
+  // created_at
+  CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  // creator
+  Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
   // description
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // 下载次数
+  DownloadCount *int64 `json:"download_count,omitempty" xml:"download_count,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  // expiration
+  Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+  // expired
+  Expired *bool `json:"expired,omitempty" xml:"expired,omitempty"`
+  // file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+  // file_id_list
+  FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
+  // file_id_list
+  FilePathList []*string `json:"file_path_list,omitempty" xml:"file_path_list,omitempty" type:"Repeated"`
+  // preview_count
+  PreviewCount *int64 `json:"preview_count,omitempty" xml:"preview_count,omitempty"`
+  // 转存次数
+  SaveCount *int64 `json:"save_count,omitempty" xml:"save_count,omitempty"`
   // share_id
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
   // share_msg
@@ -2949,6 +3131,8 @@ type CreateShareLinkResponse struct {
   SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
   // share_url
   ShareUrl *string `json:"share_url,omitempty" xml:"share_url,omitempty"`
+  // updated_at
+  UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
 }
 
 func (s CreateShareLinkResponse) String() string {
@@ -2959,8 +3143,63 @@ func (s CreateShareLinkResponse) GoString() string {
   return s.String()
 }
 
+func (s *CreateShareLinkResponse) SetCreatedAt(v string) *CreateShareLinkResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetCreator(v string) *CreateShareLinkResponse {
+  s.Creator = &v
+  return s
+}
+
 func (s *CreateShareLinkResponse) SetDescription(v string) *CreateShareLinkResponse {
   s.Description = &v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetDownloadCount(v int64) *CreateShareLinkResponse {
+  s.DownloadCount = &v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetDriveId(v string) *CreateShareLinkResponse {
+  s.DriveId = &v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetExpiration(v string) *CreateShareLinkResponse {
+  s.Expiration = &v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetExpired(v bool) *CreateShareLinkResponse {
+  s.Expired = &v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetFileId(v string) *CreateShareLinkResponse {
+  s.FileId = &v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetFileIdList(v []*string) *CreateShareLinkResponse {
+  s.FileIdList = v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetFilePathList(v []*string) *CreateShareLinkResponse {
+  s.FilePathList = v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetPreviewCount(v int64) *CreateShareLinkResponse {
+  s.PreviewCount = &v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetSaveCount(v int64) *CreateShareLinkResponse {
+  s.SaveCount = &v
   return s
 }
 
@@ -2991,6 +3230,11 @@ func (s *CreateShareLinkResponse) SetSharePwd(v string) *CreateShareLinkResponse
 
 func (s *CreateShareLinkResponse) SetShareUrl(v string) *CreateShareLinkResponse {
   s.ShareUrl = &v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetUpdatedAt(v string) *CreateShareLinkResponse {
+  s.UpdatedAt = &v
   return s
 }
 
@@ -3972,6 +4216,8 @@ type GetDriveResponse struct {
   EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
   // Drive 所有者
   Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+  // Drive 所有者类型
+  OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
   // Drive存储基于store的相对路径，domain的PathType为OSSPath时返回
   RelativePath *string `json:"relative_path,omitempty" xml:"relative_path,omitempty"`
   // Drive 状态
@@ -4034,6 +4280,11 @@ func (s *GetDriveResponse) SetEncryptMode(v string) *GetDriveResponse {
 
 func (s *GetDriveResponse) SetOwner(v string) *GetDriveResponse {
   s.Owner = &v
+  return s
+}
+
+func (s *GetDriveResponse) SetOwnerType(v string) *GetDriveResponse {
+  s.OwnerType = &v
   return s
 }
 
@@ -4952,6 +5203,8 @@ type GetShareResponse struct {
   Expired *bool `json:"expired,omitempty" xml:"expired,omitempty"`
   // owner
   Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+  // owner
+  OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
   // permissions
   Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
   // share_file_id
@@ -5014,6 +5267,11 @@ func (s *GetShareResponse) SetExpired(v bool) *GetShareResponse {
 
 func (s *GetShareResponse) SetOwner(v string) *GetShareResponse {
   s.Owner = &v
+  return s
+}
+
+func (s *GetShareResponse) SetOwnerType(v string) *GetShareResponse {
+  s.OwnerType = &v
   return s
 }
 
@@ -7941,6 +8199,132 @@ func (s *SharePermissionPolicy) SetPermissionType(v string) *SharePermissionPoli
 /**
  * 
  */
+type Store struct {
+  // 全球加速地址
+  AccelerateEndpoint *string `json:"accelerate_endpoint,omitempty" xml:"accelerate_endpoint,omitempty"`
+  // 存储公共前缀
+  BasePath *string `json:"base_path,omitempty" xml:"base_path,omitempty"`
+  // bucket名称
+  Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty" require:"true"`
+  // 内容分发地址
+  CdnEndpoint *string `json:"cdn_endpoint,omitempty" xml:"cdn_endpoint,omitempty"`
+  // 自定义全球加速地址
+  CustomizedAccelerateEndpoint *string `json:"customized_accelerate_endpoint,omitempty" xml:"customized_accelerate_endpoint,omitempty"`
+  // 自定义内容分发地址
+  CustomizedCdnEndpoint *string `json:"customized_cdn_endpoint,omitempty" xml:"customized_cdn_endpoint,omitempty"`
+  // 自定义Public访问地址
+  CustomizedEndpoint *string `json:"customized_endpoint,omitempty" xml:"customized_endpoint,omitempty"`
+  // 自定义vpc访问地址
+  CustomizedInternalEndpoint *string `json:"customized_internal_endpoint,omitempty" xml:"customized_internal_endpoint,omitempty"`
+  // Public访问地址
+  Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty" require:"true"`
+  // vpc访问地址
+  InternalEndpoint *string `json:"internal_endpoint,omitempty" xml:"internal_endpoint,omitempty"`
+  // 地点
+  Location *string `json:"location,omitempty" xml:"location,omitempty"`
+  // 存储归属，system表示系统提供，custom表示使用自己的存储
+  Ownership *string `json:"ownership,omitempty" xml:"ownership,omitempty" require:"true"`
+  // Policy授权,system类型store会将bucket权限授予当前云账号
+  Policy *string `json:"policy,omitempty" xml:"policy,omitempty" require:"true"`
+  // 访问Bucket的角色ARN
+  RoleArn *string `json:"role_arn,omitempty" xml:"role_arn,omitempty"`
+  // store ID
+  StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty" require:"true"`
+  // 存储类型，当前只支持oss
+  Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+}
+
+func (s Store) String() string {
+  return tea.Prettify(s)
+}
+
+func (s Store) GoString() string {
+  return s.String()
+}
+
+func (s *Store) SetAccelerateEndpoint(v string) *Store {
+  s.AccelerateEndpoint = &v
+  return s
+}
+
+func (s *Store) SetBasePath(v string) *Store {
+  s.BasePath = &v
+  return s
+}
+
+func (s *Store) SetBucket(v string) *Store {
+  s.Bucket = &v
+  return s
+}
+
+func (s *Store) SetCdnEndpoint(v string) *Store {
+  s.CdnEndpoint = &v
+  return s
+}
+
+func (s *Store) SetCustomizedAccelerateEndpoint(v string) *Store {
+  s.CustomizedAccelerateEndpoint = &v
+  return s
+}
+
+func (s *Store) SetCustomizedCdnEndpoint(v string) *Store {
+  s.CustomizedCdnEndpoint = &v
+  return s
+}
+
+func (s *Store) SetCustomizedEndpoint(v string) *Store {
+  s.CustomizedEndpoint = &v
+  return s
+}
+
+func (s *Store) SetCustomizedInternalEndpoint(v string) *Store {
+  s.CustomizedInternalEndpoint = &v
+  return s
+}
+
+func (s *Store) SetEndpoint(v string) *Store {
+  s.Endpoint = &v
+  return s
+}
+
+func (s *Store) SetInternalEndpoint(v string) *Store {
+  s.InternalEndpoint = &v
+  return s
+}
+
+func (s *Store) SetLocation(v string) *Store {
+  s.Location = &v
+  return s
+}
+
+func (s *Store) SetOwnership(v string) *Store {
+  s.Ownership = &v
+  return s
+}
+
+func (s *Store) SetPolicy(v string) *Store {
+  s.Policy = &v
+  return s
+}
+
+func (s *Store) SetRoleArn(v string) *Store {
+  s.RoleArn = &v
+  return s
+}
+
+func (s *Store) SetStoreId(v string) *Store {
+  s.StoreId = &v
+  return s
+}
+
+func (s *Store) SetType(v string) *Store {
+  s.Type = &v
+  return s
+}
+
+/**
+ * 
+ */
 type StoreFile struct {
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -8295,6 +8679,8 @@ type TokenRequest struct {
   RedirectUri *string `json:"RedirectUri,omitempty" xml:"RedirectUri,omitempty"`
   // 刷新accessToken使用的refreshToken
   RefreshToken *string `json:"RefreshToken,omitempty" xml:"RefreshToken,omitempty"`
+  // SubDomainID
+  SubDomainID *string `json:"SubDomainID,omitempty" xml:"SubDomainID,omitempty"`
 }
 
 func (s TokenRequest) String() string {
@@ -8342,6 +8728,11 @@ func (s *TokenRequest) SetRedirectUri(v string) *TokenRequest {
 
 func (s *TokenRequest) SetRefreshToken(v string) *TokenRequest {
   s.RefreshToken = &v
+  return s
+}
+
+func (s *TokenRequest) SetSubDomainID(v string) *TokenRequest {
+  s.SubDomainID = &v
   return s
 }
 
@@ -8593,6 +8984,8 @@ type UpdateDriveResponse struct {
   EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
   // Drive 所有者
   Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+  // Drive 所有者类型
+  OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
   // Drive存储基于store的相对路径，domain的PathType为OSSPath时返回
   RelativePath *string `json:"relative_path,omitempty" xml:"relative_path,omitempty"`
   // Drive 状态
@@ -8655,6 +9048,11 @@ func (s *UpdateDriveResponse) SetEncryptMode(v string) *UpdateDriveResponse {
 
 func (s *UpdateDriveResponse) SetOwner(v string) *UpdateDriveResponse {
   s.Owner = &v
+  return s
+}
+
+func (s *UpdateDriveResponse) SetOwnerType(v string) *UpdateDriveResponse {
+  s.OwnerType = &v
   return s
 }
 
@@ -8939,6 +9337,153 @@ func (s *UpdateFileMetaResponse) SetVideoPreviewMetadata(v *VideoPreviewResponse
 }
 
 /**
+ * update_share_link response
+ */
+type UpdateShareLinkResponse struct {
+  // created_at
+  CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  // creator
+  Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+  // description
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // 下载次数
+  DownloadCount *int64 `json:"download_count,omitempty" xml:"download_count,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  // expiration
+  Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+  // expired
+  Expired *bool `json:"expired,omitempty" xml:"expired,omitempty"`
+  // file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+  // file_id_list
+  FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
+  // file_id_list
+  FilePathList []*string `json:"file_path_list,omitempty" xml:"file_path_list,omitempty" type:"Repeated"`
+  // preview_count
+  PreviewCount *int64 `json:"preview_count,omitempty" xml:"preview_count,omitempty"`
+  // 转存次数
+  SaveCount *int64 `json:"save_count,omitempty" xml:"save_count,omitempty"`
+  // share_id
+  ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+  // share_msg
+  ShareMsg *string `json:"share_msg,omitempty" xml:"share_msg,omitempty"`
+  // share_name
+  ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
+  // share_policy
+  SharePolicy *string `json:"share_policy,omitempty" xml:"share_policy,omitempty"`
+  // share_pwd
+  SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
+  // share_url
+  ShareUrl *string `json:"share_url,omitempty" xml:"share_url,omitempty"`
+  // updated_at
+  UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s UpdateShareLinkResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateShareLinkResponse) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateShareLinkResponse) SetCreatedAt(v string) *UpdateShareLinkResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetCreator(v string) *UpdateShareLinkResponse {
+  s.Creator = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetDescription(v string) *UpdateShareLinkResponse {
+  s.Description = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetDownloadCount(v int64) *UpdateShareLinkResponse {
+  s.DownloadCount = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetDriveId(v string) *UpdateShareLinkResponse {
+  s.DriveId = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetExpiration(v string) *UpdateShareLinkResponse {
+  s.Expiration = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetExpired(v bool) *UpdateShareLinkResponse {
+  s.Expired = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetFileId(v string) *UpdateShareLinkResponse {
+  s.FileId = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetFileIdList(v []*string) *UpdateShareLinkResponse {
+  s.FileIdList = v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetFilePathList(v []*string) *UpdateShareLinkResponse {
+  s.FilePathList = v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetPreviewCount(v int64) *UpdateShareLinkResponse {
+  s.PreviewCount = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetSaveCount(v int64) *UpdateShareLinkResponse {
+  s.SaveCount = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetShareId(v string) *UpdateShareLinkResponse {
+  s.ShareId = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetShareMsg(v string) *UpdateShareLinkResponse {
+  s.ShareMsg = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetShareName(v string) *UpdateShareLinkResponse {
+  s.ShareName = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetSharePolicy(v string) *UpdateShareLinkResponse {
+  s.SharePolicy = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetSharePwd(v string) *UpdateShareLinkResponse {
+  s.SharePwd = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetShareUrl(v string) *UpdateShareLinkResponse {
+  s.ShareUrl = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetUpdatedAt(v string) *UpdateShareLinkResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+/**
  * Update share response
  */
 type UpdateShareResponse struct {
@@ -8958,6 +9503,8 @@ type UpdateShareResponse struct {
   Expired *bool `json:"expired,omitempty" xml:"expired,omitempty"`
   // owner
   Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+  // owner
+  OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
   // permissions
   Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
   // share_file_id
@@ -9020,6 +9567,11 @@ func (s *UpdateShareResponse) SetExpired(v bool) *UpdateShareResponse {
 
 func (s *UpdateShareResponse) SetOwner(v string) *UpdateShareResponse {
   s.Owner = &v
+  return s
+}
+
+func (s *UpdateShareResponse) SetOwnerType(v string) *UpdateShareResponse {
+  s.OwnerType = &v
   return s
 }
 
@@ -9114,6 +9666,41 @@ func (s *UploadPartInfo) SetUploadUrl(v string) *UploadPartInfo {
 /**
  * 
  */
+type UrlInfo struct {
+  // download_url
+  DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
+  // thumbnail
+  Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+  // url
+  Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s UrlInfo) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UrlInfo) GoString() string {
+  return s.String()
+}
+
+func (s *UrlInfo) SetDownloadUrl(v string) *UrlInfo {
+  s.DownloadUrl = &v
+  return s
+}
+
+func (s *UrlInfo) SetThumbnail(v string) *UrlInfo {
+  s.Thumbnail = &v
+  return s
+}
+
+func (s *UrlInfo) SetUrl(v string) *UrlInfo {
+  s.Url = &v
+  return s
+}
+
+/**
+ * 
+ */
 type UserAuthentication struct {
   // 认证类型
   AuthenticationType *string `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty" require:"true"`
@@ -9133,6 +9720,8 @@ type UserAuthentication struct {
   UserID *string `json:"UserID,omitempty" xml:"UserID,omitempty" require:"true"`
   // 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
   Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
 }
 
 func (s UserAuthentication) String() string {
@@ -9185,6 +9774,11 @@ func (s *UserAuthentication) SetUserID(v string) *UserAuthentication {
 
 func (s *UserAuthentication) SetExtra(v string) *UserAuthentication {
   s.Extra = &v
+  return s
+}
+
+func (s *UserAuthentication) SetSubdomainId(v string) *UserAuthentication {
+  s.SubdomainId = &v
   return s
 }
 
@@ -9842,6 +10436,121 @@ func (s *AdminListStoresModel) SetBody(v *ListStoresResponse) *AdminListStoresMo
   return s
 }
 
+type CreateSubdomainModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *CreateSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSubdomainModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateSubdomainModel) GoString() string {
+  return s.String()
+}
+
+func (s *CreateSubdomainModel) SetHeaders(v map[string]*string) *CreateSubdomainModel {
+  s.Headers = v
+  return s
+}
+
+func (s *CreateSubdomainModel) SetBody(v *CreateSubdomainResponse) *CreateSubdomainModel {
+  s.Body = v
+  return s
+}
+
+type DeleteSubdomainModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *DeleteSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSubdomainModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteSubdomainModel) GoString() string {
+  return s.String()
+}
+
+func (s *DeleteSubdomainModel) SetHeaders(v map[string]*string) *DeleteSubdomainModel {
+  s.Headers = v
+  return s
+}
+
+func (s *DeleteSubdomainModel) SetBody(v *DeleteSubdomainResponse) *DeleteSubdomainModel {
+  s.Body = v
+  return s
+}
+
+type GetSubdomainModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *GetSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSubdomainModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetSubdomainModel) GoString() string {
+  return s.String()
+}
+
+func (s *GetSubdomainModel) SetHeaders(v map[string]*string) *GetSubdomainModel {
+  s.Headers = v
+  return s
+}
+
+func (s *GetSubdomainModel) SetBody(v *GetSubdomainResponse) *GetSubdomainModel {
+  s.Body = v
+  return s
+}
+
+type ListSubdomainsModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ListSubdomainsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSubdomainsModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListSubdomainsModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListSubdomainsModel) SetHeaders(v map[string]*string) *ListSubdomainsModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListSubdomainsModel) SetBody(v *ListSubdomainsResponse) *ListSubdomainsModel {
+  s.Body = v
+  return s
+}
+
+type UpdateSubdomainModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *UpdateSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSubdomainModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateSubdomainModel) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateSubdomainModel) SetHeaders(v map[string]*string) *UpdateSubdomainModel {
+  s.Headers = v
+  return s
+}
+
+func (s *UpdateSubdomainModel) SetBody(v *UpdateSubdomainResponse) *UpdateSubdomainModel {
+  s.Body = v
+  return s
+}
+
 type GetUserAccessTokenModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *AccessTokenResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -10271,91 +10980,63 @@ func (s *BaseDomainResponse) SetUpdatedAt(v string) *BaseDomainResponse {
 /**
  * 
  */
-type BaseMediaResponse struct {
-  // address_line
-  AddressLine *string `json:"address_line,omitempty" xml:"address_line,omitempty"`
-  // city
-  City *string `json:"city,omitempty" xml:"city,omitempty"`
-  // country
-  Country *string `json:"country,omitempty" xml:"country,omitempty"`
-  // district
-  District *string `json:"district,omitempty" xml:"district,omitempty"`
-  // height
-  Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
-  // system_tags
-  ImageTags []*SystemTag `json:"image_tags,omitempty" xml:"image_tags,omitempty" type:"Repeated"`
-  // location
-  Location *string `json:"location,omitempty" xml:"location,omitempty"`
-  // province
-  Province *string `json:"province,omitempty" xml:"province,omitempty"`
-  // time
-  Time *string `json:"time,omitempty" xml:"time,omitempty"`
-  // township
-  Township *string `json:"township,omitempty" xml:"township,omitempty"`
-  // width
-  Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
+type BaseSubdomainResponse struct {
+  // 创建时间
+  CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty" require:"true"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty" require:"true"`
+  // 名称
+  Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
+  // 用以唯一标识subdomain
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty" require:"true"`
+  // 逻辑空间quota，-1表示无限制，单位为字节
+  TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty" require:"true"`
+  // 更新时间
+  UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty" require:"true"`
+  // 用户数quota，-1表示无限制
+  UserQuota *int64 `json:"user_quota,omitempty" xml:"user_quota,omitempty" require:"true"`
 }
 
-func (s BaseMediaResponse) String() string {
+func (s BaseSubdomainResponse) String() string {
   return tea.Prettify(s)
 }
 
-func (s BaseMediaResponse) GoString() string {
+func (s BaseSubdomainResponse) GoString() string {
   return s.String()
 }
 
-func (s *BaseMediaResponse) SetAddressLine(v string) *BaseMediaResponse {
-  s.AddressLine = &v
+func (s *BaseSubdomainResponse) SetCreatedAt(v string) *BaseSubdomainResponse {
+  s.CreatedAt = &v
   return s
 }
 
-func (s *BaseMediaResponse) SetCity(v string) *BaseMediaResponse {
-  s.City = &v
+func (s *BaseSubdomainResponse) SetDescription(v string) *BaseSubdomainResponse {
+  s.Description = &v
   return s
 }
 
-func (s *BaseMediaResponse) SetCountry(v string) *BaseMediaResponse {
-  s.Country = &v
+func (s *BaseSubdomainResponse) SetName(v string) *BaseSubdomainResponse {
+  s.Name = &v
   return s
 }
 
-func (s *BaseMediaResponse) SetDistrict(v string) *BaseMediaResponse {
-  s.District = &v
+func (s *BaseSubdomainResponse) SetSubdomainId(v string) *BaseSubdomainResponse {
+  s.SubdomainId = &v
   return s
 }
 
-func (s *BaseMediaResponse) SetHeight(v int64) *BaseMediaResponse {
-  s.Height = &v
+func (s *BaseSubdomainResponse) SetTotalSize(v int64) *BaseSubdomainResponse {
+  s.TotalSize = &v
   return s
 }
 
-func (s *BaseMediaResponse) SetImageTags(v []*SystemTag) *BaseMediaResponse {
-  s.ImageTags = v
+func (s *BaseSubdomainResponse) SetUpdatedAt(v string) *BaseSubdomainResponse {
+  s.UpdatedAt = &v
   return s
 }
 
-func (s *BaseMediaResponse) SetLocation(v string) *BaseMediaResponse {
-  s.Location = &v
-  return s
-}
-
-func (s *BaseMediaResponse) SetProvince(v string) *BaseMediaResponse {
-  s.Province = &v
-  return s
-}
-
-func (s *BaseMediaResponse) SetTime(v string) *BaseMediaResponse {
-  s.Time = &v
-  return s
-}
-
-func (s *BaseMediaResponse) SetTownship(v string) *BaseMediaResponse {
-  s.Township = &v
-  return s
-}
-
-func (s *BaseMediaResponse) SetWidth(v int64) *BaseMediaResponse {
-  s.Width = &v
+func (s *BaseSubdomainResponse) SetUserQuota(v int64) *BaseSubdomainResponse {
+  s.UserQuota = &v
   return s
 }
 
@@ -10647,6 +11328,75 @@ func (s *CreateDomainResponse) SetUpdatedAt(v string) *CreateDomainResponse {
 /**
  * 
  */
+type CreateSubdomainRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // 名称，注意该字段会校验重名的subdomain
+  Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
+  // 逻辑空间quota，默认为-1，无限制，单位为字节
+  TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
+  // 用户数quota，默认为-1，无限制
+  UserQuota *int64 `json:"user_quota,omitempty" xml:"user_quota,omitempty"`
+}
+
+func (s CreateSubdomainRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateSubdomainRequest) GoString() string {
+  return s.String()
+}
+
+func (s *CreateSubdomainRequest) SetHeaders(v map[string]*string) *CreateSubdomainRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *CreateSubdomainRequest) SetDescription(v string) *CreateSubdomainRequest {
+  s.Description = &v
+  return s
+}
+
+func (s *CreateSubdomainRequest) SetName(v string) *CreateSubdomainRequest {
+  s.Name = &v
+  return s
+}
+
+func (s *CreateSubdomainRequest) SetTotalSize(v int64) *CreateSubdomainRequest {
+  s.TotalSize = &v
+  return s
+}
+
+func (s *CreateSubdomainRequest) SetUserQuota(v int64) *CreateSubdomainRequest {
+  s.UserQuota = &v
+  return s
+}
+
+/**
+ * 
+ */
+type CreateSubdomainResponse struct {
+  // 用以唯一标识subdomain
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty" require:"true"`
+}
+
+func (s CreateSubdomainResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateSubdomainResponse) GoString() string {
+  return s.String()
+}
+
+func (s *CreateSubdomainResponse) SetSubdomainId(v string) *CreateSubdomainResponse {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * 
+ */
 type DataCName struct {
   // datacname
   DataCname *string `json:"data_cname,omitempty" xml:"data_cname,omitempty" require:"true"`
@@ -10670,6 +11420,47 @@ func (s *DataCName) SetDataCname(v string) *DataCName {
 func (s *DataCName) SetLocation(v string) *DataCName {
   s.Location = &v
   return s
+}
+
+/**
+ * 
+ */
+type DeleteSubdomainRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // 用以唯一标识subdomain
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty" require:"true"`
+}
+
+func (s DeleteSubdomainRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteSubdomainRequest) GoString() string {
+  return s.String()
+}
+
+func (s *DeleteSubdomainRequest) SetHeaders(v map[string]*string) *DeleteSubdomainRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *DeleteSubdomainRequest) SetSubdomainId(v string) *DeleteSubdomainRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type DeleteSubdomainResponse struct {
+}
+
+func (s DeleteSubdomainResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteSubdomainResponse) GoString() string {
+  return s.String()
 }
 
 /**
@@ -11155,10 +11946,100 @@ func (s *GetDomainResponse) SetUpdatedAt(v string) *GetDomainResponse {
 /**
  * 
  */
+type GetSubdomainRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // 用以唯一标识subdomain
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty" require:"true"`
+}
+
+func (s GetSubdomainRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetSubdomainRequest) GoString() string {
+  return s.String()
+}
+
+func (s *GetSubdomainRequest) SetHeaders(v map[string]*string) *GetSubdomainRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *GetSubdomainRequest) SetSubdomainId(v string) *GetSubdomainRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type GetSubdomainResponse struct {
+  // 创建时间
+  CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty" require:"true"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty" require:"true"`
+  // 名称
+  Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
+  // 用以唯一标识subdomain
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty" require:"true"`
+  // 逻辑空间quota，-1表示无限制，单位为字节
+  TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty" require:"true"`
+  // 更新时间
+  UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty" require:"true"`
+  // 用户数quota，-1表示无限制
+  UserQuota *int64 `json:"user_quota,omitempty" xml:"user_quota,omitempty" require:"true"`
+}
+
+func (s GetSubdomainResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetSubdomainResponse) GoString() string {
+  return s.String()
+}
+
+func (s *GetSubdomainResponse) SetCreatedAt(v string) *GetSubdomainResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *GetSubdomainResponse) SetDescription(v string) *GetSubdomainResponse {
+  s.Description = &v
+  return s
+}
+
+func (s *GetSubdomainResponse) SetName(v string) *GetSubdomainResponse {
+  s.Name = &v
+  return s
+}
+
+func (s *GetSubdomainResponse) SetSubdomainId(v string) *GetSubdomainResponse {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *GetSubdomainResponse) SetTotalSize(v int64) *GetSubdomainResponse {
+  s.TotalSize = &v
+  return s
+}
+
+func (s *GetSubdomainResponse) SetUpdatedAt(v string) *GetSubdomainResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+func (s *GetSubdomainResponse) SetUserQuota(v int64) *GetSubdomainResponse {
+  s.UserQuota = &v
+  return s
+}
+
+/**
+ * 
+ */
 type GetUserAccessTokenRequest struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-  // 角色
-  Role *string `json:"role,omitempty" xml:"role,omitempty"`
+  // subdomain ID
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
   // 用户 ID
   UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
 }
@@ -11176,8 +12057,8 @@ func (s *GetUserAccessTokenRequest) SetHeaders(v map[string]*string) *GetUserAcc
   return s
 }
 
-func (s *GetUserAccessTokenRequest) SetRole(v string) *GetUserAccessTokenRequest {
-  s.Role = &v
+func (s *GetUserAccessTokenRequest) SetSubdomainId(v string) *GetUserAccessTokenRequest {
+  s.SubdomainId = &v
   return s
 }
 
@@ -11288,6 +12169,68 @@ func (s ListStoresResponse) GoString() string {
 
 func (s *ListStoresResponse) SetItems(v []*Store) *ListStoresResponse {
   s.Items = v
+  return s
+}
+
+/**
+ * 
+ */
+type ListSubdomainsRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // 数量，默认为50
+  Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+  // 分页游标，可从 response 中获取
+  Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+}
+
+func (s ListSubdomainsRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListSubdomainsRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ListSubdomainsRequest) SetHeaders(v map[string]*string) *ListSubdomainsRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *ListSubdomainsRequest) SetLimit(v int32) *ListSubdomainsRequest {
+  s.Limit = &v
+  return s
+}
+
+func (s *ListSubdomainsRequest) SetMarker(v string) *ListSubdomainsRequest {
+  s.Marker = &v
+  return s
+}
+
+/**
+ * 
+ */
+type ListSubdomainsResponse struct {
+  // 分页的 subdomain 数据
+  Items []*BaseSubdomainResponse `json:"items,omitempty" xml:"items,omitempty" require:"true" type:"Repeated"`
+  // 分页游标，可以用作下次list的起点
+  NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty" require:"true"`
+}
+
+func (s ListSubdomainsResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListSubdomainsResponse) GoString() string {
+  return s.String()
+}
+
+func (s *ListSubdomainsResponse) SetItems(v []*BaseSubdomainResponse) *ListSubdomainsResponse {
+  s.Items = v
+  return s
+}
+
+func (s *ListSubdomainsResponse) SetNextMarker(v string) *ListSubdomainsResponse {
+  s.NextMarker = &v
   return s
 }
 
@@ -11420,132 +12363,6 @@ func (s *SetDataCNameResponse) SetDomainId(v string) *SetDataCNameResponse {
 
 func (s *SetDataCNameResponse) SetLocation(v string) *SetDataCNameResponse {
   s.Location = &v
-  return s
-}
-
-/**
- * 
- */
-type Store struct {
-  // 全球加速地址
-  AccelerateEndpoint *string `json:"accelerate_endpoint,omitempty" xml:"accelerate_endpoint,omitempty"`
-  // 存储公共前缀
-  BasePath *string `json:"base_path,omitempty" xml:"base_path,omitempty"`
-  // bucket名称
-  Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty" require:"true"`
-  // 内容分发地址
-  CdnEndpoint *string `json:"cdn_endpoint,omitempty" xml:"cdn_endpoint,omitempty"`
-  // 自定义全球加速地址
-  CustomizedAccelerateEndpoint *string `json:"customized_accelerate_endpoint,omitempty" xml:"customized_accelerate_endpoint,omitempty"`
-  // 自定义内容分发地址
-  CustomizedCdnEndpoint *string `json:"customized_cdn_endpoint,omitempty" xml:"customized_cdn_endpoint,omitempty"`
-  // 自定义Public访问地址
-  CustomizedEndpoint *string `json:"customized_endpoint,omitempty" xml:"customized_endpoint,omitempty"`
-  // 自定义vpc访问地址
-  CustomizedInternalEndpoint *string `json:"customized_internal_endpoint,omitempty" xml:"customized_internal_endpoint,omitempty"`
-  // Public访问地址
-  Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty" require:"true"`
-  // vpc访问地址
-  InternalEndpoint *string `json:"internal_endpoint,omitempty" xml:"internal_endpoint,omitempty"`
-  // 地点
-  Location *string `json:"location,omitempty" xml:"location,omitempty"`
-  // 存储归属，system表示系统提供，custom表示使用自己的存储
-  Ownership *string `json:"ownership,omitempty" xml:"ownership,omitempty" require:"true"`
-  // Policy授权,system类型store会将bucket权限授予当前云账号
-  Policy *string `json:"policy,omitempty" xml:"policy,omitempty" require:"true"`
-  // 访问Bucket的角色ARN
-  RoleArn *string `json:"role_arn,omitempty" xml:"role_arn,omitempty"`
-  // store ID
-  StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty" require:"true"`
-  // 存储类型，当前只支持oss
-  Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
-}
-
-func (s Store) String() string {
-  return tea.Prettify(s)
-}
-
-func (s Store) GoString() string {
-  return s.String()
-}
-
-func (s *Store) SetAccelerateEndpoint(v string) *Store {
-  s.AccelerateEndpoint = &v
-  return s
-}
-
-func (s *Store) SetBasePath(v string) *Store {
-  s.BasePath = &v
-  return s
-}
-
-func (s *Store) SetBucket(v string) *Store {
-  s.Bucket = &v
-  return s
-}
-
-func (s *Store) SetCdnEndpoint(v string) *Store {
-  s.CdnEndpoint = &v
-  return s
-}
-
-func (s *Store) SetCustomizedAccelerateEndpoint(v string) *Store {
-  s.CustomizedAccelerateEndpoint = &v
-  return s
-}
-
-func (s *Store) SetCustomizedCdnEndpoint(v string) *Store {
-  s.CustomizedCdnEndpoint = &v
-  return s
-}
-
-func (s *Store) SetCustomizedEndpoint(v string) *Store {
-  s.CustomizedEndpoint = &v
-  return s
-}
-
-func (s *Store) SetCustomizedInternalEndpoint(v string) *Store {
-  s.CustomizedInternalEndpoint = &v
-  return s
-}
-
-func (s *Store) SetEndpoint(v string) *Store {
-  s.Endpoint = &v
-  return s
-}
-
-func (s *Store) SetInternalEndpoint(v string) *Store {
-  s.InternalEndpoint = &v
-  return s
-}
-
-func (s *Store) SetLocation(v string) *Store {
-  s.Location = &v
-  return s
-}
-
-func (s *Store) SetOwnership(v string) *Store {
-  s.Ownership = &v
-  return s
-}
-
-func (s *Store) SetPolicy(v string) *Store {
-  s.Policy = &v
-  return s
-}
-
-func (s *Store) SetRoleArn(v string) *Store {
-  s.RoleArn = &v
-  return s
-}
-
-func (s *Store) SetStoreId(v string) *Store {
-  s.StoreId = &v
-  return s
-}
-
-func (s *Store) SetType(v string) *Store {
-  s.Type = &v
   return s
 }
 
@@ -11797,6 +12614,75 @@ func (s *UpdateDomainResponse) SetStoreRegionList(v []*string) *UpdateDomainResp
 func (s *UpdateDomainResponse) SetUpdatedAt(v string) *UpdateDomainResponse {
   s.UpdatedAt = &v
   return s
+}
+
+/**
+ * 
+ */
+type UpdateSubdomainRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // 名称
+  Name *string `json:"name,omitempty" xml:"name,omitempty"`
+  // 用以唯一标识subdomain
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty" require:"true"`
+  // 逻辑空间quota，-1表示无限制，单位为字节
+  TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
+  // 用户数quota，-1表示无限制
+  UserQuota *int64 `json:"user_quota,omitempty" xml:"user_quota,omitempty"`
+}
+
+func (s UpdateSubdomainRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateSubdomainRequest) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateSubdomainRequest) SetHeaders(v map[string]*string) *UpdateSubdomainRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetDescription(v string) *UpdateSubdomainRequest {
+  s.Description = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetName(v string) *UpdateSubdomainRequest {
+  s.Name = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetSubdomainId(v string) *UpdateSubdomainRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetTotalSize(v int64) *UpdateSubdomainRequest {
+  s.TotalSize = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetUserQuota(v int64) *UpdateSubdomainRequest {
+  s.UserQuota = &v
+  return s
+}
+
+/**
+ * 
+ */
+type UpdateSubdomainResponse struct {
+}
+
+func (s UpdateSubdomainResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateSubdomainResponse) GoString() string {
+  return s.String()
 }
 
 type GetAsyncTaskInfoModel struct {
@@ -12793,6 +13679,29 @@ func (s *ListShareLinkModel) SetBody(v *ListShareLinkResponse) *ListShareLinkMod
   return s
 }
 
+type UpdateShareLinkModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *UpdateShareLinkResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateShareLinkModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateShareLinkModel) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateShareLinkModel) SetHeaders(v map[string]*string) *UpdateShareLinkModel {
+  s.Headers = v
+  return s
+}
+
+func (s *UpdateShareLinkModel) SetBody(v *UpdateShareLinkResponse) *UpdateShareLinkModel {
+  s.Body = v
+  return s
+}
+
 /**
  * complete file request
  */
@@ -13481,12 +14390,16 @@ type CreateDriveRequest struct {
   Location *string `json:"location,omitempty" xml:"location,omitempty"`
   // 所属者
   Owner *string `json:"owner,omitempty" xml:"owner,omitempty" require:"true"`
+  // 所属者
+  OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty" require:"true"`
   // domain的PathType为OSSPath时必选。 Drive存储基于store的相对路径
   RelativePath *string `json:"relative_path,omitempty" xml:"relative_path,omitempty"`
   // 状态
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
   // StoreID , domain的PathType为OSSPath时必选
   StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty"`
+  // Subdomain ID
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
   // 总大小,单位Byte [如果设置 -1 代表不限制]
   TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
 }
@@ -13539,6 +14452,11 @@ func (s *CreateDriveRequest) SetOwner(v string) *CreateDriveRequest {
   return s
 }
 
+func (s *CreateDriveRequest) SetOwnerType(v string) *CreateDriveRequest {
+  s.OwnerType = &v
+  return s
+}
+
 func (s *CreateDriveRequest) SetRelativePath(v string) *CreateDriveRequest {
   s.RelativePath = &v
   return s
@@ -13551,6 +14469,11 @@ func (s *CreateDriveRequest) SetStatus(v string) *CreateDriveRequest {
 
 func (s *CreateDriveRequest) SetStoreId(v string) *CreateDriveRequest {
   s.StoreId = &v
+  return s
+}
+
+func (s *CreateDriveRequest) SetSubdomainId(v string) *CreateDriveRequest {
+  s.SubdomainId = &v
   return s
 }
 
@@ -13960,6 +14883,8 @@ type DeleteDriveRequest struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   // Drive ID
   DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
+  // Subdomain ID
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
 }
 
 func (s DeleteDriveRequest) String() string {
@@ -13977,6 +14902,11 @@ func (s *DeleteDriveRequest) SetHeaders(v map[string]*string) *DeleteDriveReques
 
 func (s *DeleteDriveRequest) SetDriveId(v string) *DeleteDriveRequest {
   s.DriveId = &v
+  return s
+}
+
+func (s *DeleteDriveRequest) SetSubdomainId(v string) *DeleteDriveRequest {
+  s.SubdomainId = &v
   return s
 }
 
@@ -14204,6 +15134,8 @@ func (s *GetAsyncTaskRequest) SetAsyncTaskId(v string) *GetAsyncTaskRequest {
  */
 type GetDefaultDriveRequest struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // Subdomain ID
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
   // 用户ID
   UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
@@ -14218,6 +15150,11 @@ func (s GetDefaultDriveRequest) GoString() string {
 
 func (s *GetDefaultDriveRequest) SetHeaders(v map[string]*string) *GetDefaultDriveRequest {
   s.Headers = v
+  return s
+}
+
+func (s *GetDefaultDriveRequest) SetSubdomainId(v string) *GetDefaultDriveRequest {
+  s.SubdomainId = &v
   return s
 }
 
@@ -14320,6 +15257,8 @@ type GetDriveRequest struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   // Drive ID
   DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
+  // Subdomain ID
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
 }
 
 func (s GetDriveRequest) String() string {
@@ -14337,6 +15276,11 @@ func (s *GetDriveRequest) SetHeaders(v map[string]*string) *GetDriveRequest {
 
 func (s *GetDriveRequest) SetDriveId(v string) *GetDriveRequest {
   s.DriveId = &v
+  return s
+}
+
+func (s *GetDriveRequest) SetSubdomainId(v string) *GetDriveRequest {
+  s.SubdomainId = &v
   return s
 }
 
@@ -16029,6 +16973,11 @@ type ListDriveRequest struct {
   Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
   // 所属者
   Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+  // owner_type
+  // 所述者类型
+  OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
+  // Subdomain ID
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
 }
 
 func (s ListDriveRequest) String() string {
@@ -16056,6 +17005,16 @@ func (s *ListDriveRequest) SetMarker(v string) *ListDriveRequest {
 
 func (s *ListDriveRequest) SetOwner(v string) *ListDriveRequest {
   s.Owner = &v
+  return s
+}
+
+func (s *ListDriveRequest) SetOwnerType(v string) *ListDriveRequest {
+  s.OwnerType = &v
+  return s
+}
+
+func (s *ListDriveRequest) SetSubdomainId(v string) *ListDriveRequest {
+  s.SubdomainId = &v
   return s
 }
 
@@ -16510,6 +17469,10 @@ type ListShareLinkRequest struct {
   Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
   // marker
   Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+  // order_by
+  OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
+  // order_direction
+  OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
 }
 
 func (s ListShareLinkRequest) String() string {
@@ -16537,6 +17500,16 @@ func (s *ListShareLinkRequest) SetLimit(v int32) *ListShareLinkRequest {
 
 func (s *ListShareLinkRequest) SetMarker(v string) *ListShareLinkRequest {
   s.Marker = &v
+  return s
+}
+
+func (s *ListShareLinkRequest) SetOrderBy(v string) *ListShareLinkRequest {
+  s.OrderBy = &v
+  return s
+}
+
+func (s *ListShareLinkRequest) SetOrderDirection(v string) *ListShareLinkRequest {
+  s.OrderDirection = &v
   return s
 }
 
@@ -17173,6 +18146,8 @@ type UpdateDriveRequest struct {
   EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
   // 状态
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // Subdomain ID
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
   // 总大小,单位Byte [如果设置 -1 代表不限制]
   TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
 }
@@ -17217,6 +18192,11 @@ func (s *UpdateDriveRequest) SetEncryptMode(v string) *UpdateDriveRequest {
 
 func (s *UpdateDriveRequest) SetStatus(v string) *UpdateDriveRequest {
   s.Status = &v
+  return s
+}
+
+func (s *UpdateDriveRequest) SetSubdomainId(v string) *UpdateDriveRequest {
+  s.SubdomainId = &v
   return s
 }
 
@@ -17354,6 +18334,61 @@ func (s *UpdateFileMetaRequest) SetUserMeta(v string) *UpdateFileMetaRequest {
 }
 
 /**
+ * update_share_link request
+ */
+type UpdateShareLinkRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // description
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // expiration
+  Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+  // share_id
+  ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+  // share_name
+  ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
+  // share_pwd
+  SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty" maximum:"64" minimum:"0"`
+}
+
+func (s UpdateShareLinkRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateShareLinkRequest) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateShareLinkRequest) SetHeaders(v map[string]*string) *UpdateShareLinkRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *UpdateShareLinkRequest) SetDescription(v string) *UpdateShareLinkRequest {
+  s.Description = &v
+  return s
+}
+
+func (s *UpdateShareLinkRequest) SetExpiration(v string) *UpdateShareLinkRequest {
+  s.Expiration = &v
+  return s
+}
+
+func (s *UpdateShareLinkRequest) SetShareId(v string) *UpdateShareLinkRequest {
+  s.ShareId = &v
+  return s
+}
+
+func (s *UpdateShareLinkRequest) SetShareName(v string) *UpdateShareLinkRequest {
+  s.ShareName = &v
+  return s
+}
+
+func (s *UpdateShareLinkRequest) SetSharePwd(v string) *UpdateShareLinkRequest {
+  s.SharePwd = &v
+  return s
+}
+
+/**
  * update share request
  */
 type UpdateShareRequest struct {
@@ -17443,6 +18478,345 @@ func (s *VideoMediaMetadata) SetDuration(v string) *VideoMediaMetadata {
   return s
 }
 
+type CreateGroupModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *CreateGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGroupModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateGroupModel) GoString() string {
+  return s.String()
+}
+
+func (s *CreateGroupModel) SetHeaders(v map[string]*string) *CreateGroupModel {
+  s.Headers = v
+  return s
+}
+
+func (s *CreateGroupModel) SetBody(v *CreateGroupResponse) *CreateGroupModel {
+  s.Body = v
+  return s
+}
+
+type DeleteGroupModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *DeleteGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGroupModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteGroupModel) GoString() string {
+  return s.String()
+}
+
+func (s *DeleteGroupModel) SetHeaders(v map[string]*string) *DeleteGroupModel {
+  s.Headers = v
+  return s
+}
+
+func (s *DeleteGroupModel) SetBody(v *DeleteGroupResponse) *DeleteGroupModel {
+  s.Body = v
+  return s
+}
+
+type GetGroupModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *GetGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGroupModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetGroupModel) GoString() string {
+  return s.String()
+}
+
+func (s *GetGroupModel) SetHeaders(v map[string]*string) *GetGroupModel {
+  s.Headers = v
+  return s
+}
+
+func (s *GetGroupModel) SetBody(v *GetGroupResponse) *GetGroupModel {
+  s.Body = v
+  return s
+}
+
+type ListGroupModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ListGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGroupModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListGroupModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListGroupModel) SetHeaders(v map[string]*string) *ListGroupModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListGroupModel) SetBody(v *ListGroupResponse) *ListGroupModel {
+  s.Body = v
+  return s
+}
+
+type SearchGroupModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *SearchGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchGroupModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SearchGroupModel) GoString() string {
+  return s.String()
+}
+
+func (s *SearchGroupModel) SetHeaders(v map[string]*string) *SearchGroupModel {
+  s.Headers = v
+  return s
+}
+
+func (s *SearchGroupModel) SetBody(v *SearchGroupResponse) *SearchGroupModel {
+  s.Body = v
+  return s
+}
+
+type UpdateGroupModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *UpdateGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGroupModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateGroupModel) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateGroupModel) SetHeaders(v map[string]*string) *UpdateGroupModel {
+  s.Headers = v
+  return s
+}
+
+func (s *UpdateGroupModel) SetBody(v *UpdateGroupResponse) *UpdateGroupModel {
+  s.Body = v
+  return s
+}
+
+type CreateMembershipModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *CreateMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateMembershipModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateMembershipModel) GoString() string {
+  return s.String()
+}
+
+func (s *CreateMembershipModel) SetHeaders(v map[string]*string) *CreateMembershipModel {
+  s.Headers = v
+  return s
+}
+
+func (s *CreateMembershipModel) SetBody(v *CreateMembershipResponse) *CreateMembershipModel {
+  s.Body = v
+  return s
+}
+
+type DeleteMembershipModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *DeleteMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMembershipModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteMembershipModel) GoString() string {
+  return s.String()
+}
+
+func (s *DeleteMembershipModel) SetHeaders(v map[string]*string) *DeleteMembershipModel {
+  s.Headers = v
+  return s
+}
+
+func (s *DeleteMembershipModel) SetBody(v *DeleteMembershipResponse) *DeleteMembershipModel {
+  s.Body = v
+  return s
+}
+
+type GetMembershipModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *GetMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMembershipModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetMembershipModel) GoString() string {
+  return s.String()
+}
+
+func (s *GetMembershipModel) SetHeaders(v map[string]*string) *GetMembershipModel {
+  s.Headers = v
+  return s
+}
+
+func (s *GetMembershipModel) SetBody(v *GetMembershipResponse) *GetMembershipModel {
+  s.Body = v
+  return s
+}
+
+type HasMemberModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *HasMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s HasMemberModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s HasMemberModel) GoString() string {
+  return s.String()
+}
+
+func (s *HasMemberModel) SetHeaders(v map[string]*string) *HasMemberModel {
+  s.Headers = v
+  return s
+}
+
+func (s *HasMemberModel) SetBody(v *HasMembershipResponse) *HasMemberModel {
+  s.Body = v
+  return s
+}
+
+type ListDirectChildMembershipsModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ListDirectChildMembershipsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDirectChildMembershipsModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListDirectChildMembershipsModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListDirectChildMembershipsModel) SetHeaders(v map[string]*string) *ListDirectChildMembershipsModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListDirectChildMembershipsModel) SetBody(v *ListDirectChildMembershipsResponse) *ListDirectChildMembershipsModel {
+  s.Body = v
+  return s
+}
+
+type ListDirectMembershipsModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ListDirectParentMembershipsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDirectMembershipsModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListDirectMembershipsModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListDirectMembershipsModel) SetHeaders(v map[string]*string) *ListDirectMembershipsModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListDirectMembershipsModel) SetBody(v *ListDirectParentMembershipsResponse) *ListDirectMembershipsModel {
+  s.Body = v
+  return s
+}
+
+type ListDirectParentMembershipsModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ListDirectParentMembershipsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDirectParentMembershipsModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListDirectParentMembershipsModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListDirectParentMembershipsModel) SetHeaders(v map[string]*string) *ListDirectParentMembershipsModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListDirectParentMembershipsModel) SetBody(v *ListDirectParentMembershipsResponse) *ListDirectParentMembershipsModel {
+  s.Body = v
+  return s
+}
+
+type UpdateMembershipModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *UpdateMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMembershipModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateMembershipModel) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateMembershipModel) SetHeaders(v map[string]*string) *UpdateMembershipModel {
+  s.Headers = v
+  return s
+}
+
+func (s *UpdateMembershipModel) SetBody(v *UpdateMembershipResponse) *UpdateMembershipModel {
+  s.Body = v
+  return s
+}
+
+type AddUserToSubdomainModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+}
+
+func (s AddUserToSubdomainModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s AddUserToSubdomainModel) GoString() string {
+  return s.String()
+}
+
+func (s *AddUserToSubdomainModel) SetHeaders(v map[string]*string) *AddUserToSubdomainModel {
+  s.Headers = v
+  return s
+}
+
 type CreateUserModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *CreateUserResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -17529,6 +18903,23 @@ func (s *ListUsersModel) SetBody(v *ListUserResponse) *ListUsersModel {
   return s
 }
 
+type RemoveUserFromSubdomainModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+}
+
+func (s RemoveUserFromSubdomainModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s RemoveUserFromSubdomainModel) GoString() string {
+  return s.String()
+}
+
+func (s *RemoveUserFromSubdomainModel) SetHeaders(v map[string]*string) *RemoveUserFromSubdomainModel {
+  s.Headers = v
+  return s
+}
+
 type SearchUserModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *ListUserResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -17572,6 +18963,233 @@ func (s *UpdateUserModel) SetHeaders(v map[string]*string) *UpdateUserModel {
 
 func (s *UpdateUserModel) SetBody(v *UpdateUserResponse) *UpdateUserModel {
   s.Body = v
+  return s
+}
+
+/**
+ * Add user to subdomain request
+ */
+type AddUserToSubdomainRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+  // 用户 ID
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+}
+
+func (s AddUserToSubdomainRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s AddUserToSubdomainRequest) GoString() string {
+  return s.String()
+}
+
+func (s *AddUserToSubdomainRequest) SetHeaders(v map[string]*string) *AddUserToSubdomainRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *AddUserToSubdomainRequest) SetSubdomainId(v string) *AddUserToSubdomainRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *AddUserToSubdomainRequest) SetUserId(v string) *AddUserToSubdomainRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type BaseGroupIDRequest struct {
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s BaseGroupIDRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BaseGroupIDRequest) GoString() string {
+  return s.String()
+}
+
+func (s *BaseGroupIDRequest) SetGroupId(v string) *BaseGroupIDRequest {
+  s.GroupId = &v
+  return s
+}
+
+func (s *BaseGroupIDRequest) SetSubdomainId(v string) *BaseGroupIDRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type BaseGroupRequest struct {
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // 名称
+  GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty" require:"true"`
+  // 是否是根group
+  IsRoot *bool `json:"is_root,omitempty" xml:"is_root,omitempty"`
+}
+
+func (s BaseGroupRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BaseGroupRequest) GoString() string {
+  return s.String()
+}
+
+func (s *BaseGroupRequest) SetDescription(v string) *BaseGroupRequest {
+  s.Description = &v
+  return s
+}
+
+func (s *BaseGroupRequest) SetGroupName(v string) *BaseGroupRequest {
+  s.GroupName = &v
+  return s
+}
+
+func (s *BaseGroupRequest) SetIsRoot(v bool) *BaseGroupRequest {
+  s.IsRoot = &v
+  return s
+}
+
+/**
+ * 
+ */
+type BaseGroupResponse struct {
+  // created_at
+  CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  // description
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // domain id
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // group name
+  GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
+  // updated_at
+  UpdatedAt *int64 `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s BaseGroupResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BaseGroupResponse) GoString() string {
+  return s.String()
+}
+
+func (s *BaseGroupResponse) SetCreatedAt(v int64) *BaseGroupResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *BaseGroupResponse) SetDescription(v string) *BaseGroupResponse {
+  s.Description = &v
+  return s
+}
+
+func (s *BaseGroupResponse) SetDomainId(v string) *BaseGroupResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *BaseGroupResponse) SetGroupId(v string) *BaseGroupResponse {
+  s.GroupId = &v
+  return s
+}
+
+func (s *BaseGroupResponse) SetGroupName(v string) *BaseGroupResponse {
+  s.GroupName = &v
+  return s
+}
+
+func (s *BaseGroupResponse) SetUpdatedAt(v int64) *BaseGroupResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+/**
+ * 
+ */
+type BaseMembershipResponse struct {
+  // created_at
+  CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // domain id
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // 角色， member or admin
+  MemberRole *string `json:"member_role,omitempty" xml:"member_role,omitempty"`
+  MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+  SubGroupId *string `json:"sub_group_id,omitempty" xml:"sub_group_id,omitempty"`
+  // updated_at
+  UpdatedAt *int64 `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s BaseMembershipResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BaseMembershipResponse) GoString() string {
+  return s.String()
+}
+
+func (s *BaseMembershipResponse) SetCreatedAt(v int64) *BaseMembershipResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *BaseMembershipResponse) SetDescription(v string) *BaseMembershipResponse {
+  s.Description = &v
+  return s
+}
+
+func (s *BaseMembershipResponse) SetDomainId(v string) *BaseMembershipResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *BaseMembershipResponse) SetGroupId(v string) *BaseMembershipResponse {
+  s.GroupId = &v
+  return s
+}
+
+func (s *BaseMembershipResponse) SetMemberRole(v string) *BaseMembershipResponse {
+  s.MemberRole = &v
+  return s
+}
+
+func (s *BaseMembershipResponse) SetMemberType(v string) *BaseMembershipResponse {
+  s.MemberType = &v
+  return s
+}
+
+func (s *BaseMembershipResponse) SetSubGroupId(v string) *BaseMembershipResponse {
+  s.SubGroupId = &v
+  return s
+}
+
+func (s *BaseMembershipResponse) SetUpdatedAt(v int64) *BaseMembershipResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+func (s *BaseMembershipResponse) SetUserId(v string) *BaseMembershipResponse {
+  s.UserId = &v
   return s
 }
 
@@ -17688,6 +19306,249 @@ func (s *BaseUserResponse) SetUserName(v string) *BaseUserResponse {
 }
 
 /**
+ * 
+ */
+type CreateGroupRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // 名称
+  GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty" require:"true"`
+  // 是否是根group
+  IsRoot *bool `json:"is_root,omitempty" xml:"is_root,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s CreateGroupRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateGroupRequest) GoString() string {
+  return s.String()
+}
+
+func (s *CreateGroupRequest) SetHeaders(v map[string]*string) *CreateGroupRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *CreateGroupRequest) SetDescription(v string) *CreateGroupRequest {
+  s.Description = &v
+  return s
+}
+
+func (s *CreateGroupRequest) SetGroupName(v string) *CreateGroupRequest {
+  s.GroupName = &v
+  return s
+}
+
+func (s *CreateGroupRequest) SetIsRoot(v bool) *CreateGroupRequest {
+  s.IsRoot = &v
+  return s
+}
+
+func (s *CreateGroupRequest) SetSubdomainId(v string) *CreateGroupRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type CreateGroupResponse struct {
+  // created_at
+  CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  // description
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // domain id
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // group name
+  GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
+  // updated_at
+  UpdatedAt *int64 `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s CreateGroupResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateGroupResponse) GoString() string {
+  return s.String()
+}
+
+func (s *CreateGroupResponse) SetCreatedAt(v int64) *CreateGroupResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *CreateGroupResponse) SetDescription(v string) *CreateGroupResponse {
+  s.Description = &v
+  return s
+}
+
+func (s *CreateGroupResponse) SetDomainId(v string) *CreateGroupResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *CreateGroupResponse) SetGroupId(v string) *CreateGroupResponse {
+  s.GroupId = &v
+  return s
+}
+
+func (s *CreateGroupResponse) SetGroupName(v string) *CreateGroupResponse {
+  s.GroupName = &v
+  return s
+}
+
+func (s *CreateGroupResponse) SetUpdatedAt(v int64) *CreateGroupResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+/**
+ * 
+ */
+type CreateMembershipRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // 角色， member or admin
+  MemberRole *string `json:"member_role,omitempty" xml:"member_role,omitempty"`
+  MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+  SubGroupId *string `json:"sub_group_id,omitempty" xml:"sub_group_id,omitempty"`
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s CreateMembershipRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateMembershipRequest) GoString() string {
+  return s.String()
+}
+
+func (s *CreateMembershipRequest) SetHeaders(v map[string]*string) *CreateMembershipRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *CreateMembershipRequest) SetDescription(v string) *CreateMembershipRequest {
+  s.Description = &v
+  return s
+}
+
+func (s *CreateMembershipRequest) SetGroupId(v string) *CreateMembershipRequest {
+  s.GroupId = &v
+  return s
+}
+
+func (s *CreateMembershipRequest) SetMemberRole(v string) *CreateMembershipRequest {
+  s.MemberRole = &v
+  return s
+}
+
+func (s *CreateMembershipRequest) SetMemberType(v string) *CreateMembershipRequest {
+  s.MemberType = &v
+  return s
+}
+
+func (s *CreateMembershipRequest) SetSubGroupId(v string) *CreateMembershipRequest {
+  s.SubGroupId = &v
+  return s
+}
+
+func (s *CreateMembershipRequest) SetSubdomainId(v string) *CreateMembershipRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *CreateMembershipRequest) SetUserId(v string) *CreateMembershipRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type CreateMembershipResponse struct {
+  // created_at
+  CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // domain id
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // 角色， member or admin
+  MemberRole *string `json:"member_role,omitempty" xml:"member_role,omitempty"`
+  MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+  SubGroupId *string `json:"sub_group_id,omitempty" xml:"sub_group_id,omitempty"`
+  // updated_at
+  UpdatedAt *int64 `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s CreateMembershipResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateMembershipResponse) GoString() string {
+  return s.String()
+}
+
+func (s *CreateMembershipResponse) SetCreatedAt(v int64) *CreateMembershipResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *CreateMembershipResponse) SetDescription(v string) *CreateMembershipResponse {
+  s.Description = &v
+  return s
+}
+
+func (s *CreateMembershipResponse) SetDomainId(v string) *CreateMembershipResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *CreateMembershipResponse) SetGroupId(v string) *CreateMembershipResponse {
+  s.GroupId = &v
+  return s
+}
+
+func (s *CreateMembershipResponse) SetMemberRole(v string) *CreateMembershipResponse {
+  s.MemberRole = &v
+  return s
+}
+
+func (s *CreateMembershipResponse) SetMemberType(v string) *CreateMembershipResponse {
+  s.MemberType = &v
+  return s
+}
+
+func (s *CreateMembershipResponse) SetSubGroupId(v string) *CreateMembershipResponse {
+  s.SubGroupId = &v
+  return s
+}
+
+func (s *CreateMembershipResponse) SetUpdatedAt(v int64) *CreateMembershipResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+func (s *CreateMembershipResponse) SetUserId(v string) *CreateMembershipResponse {
+  s.UserId = &v
+  return s
+}
+
+/**
  * Create user request
  */
 type CreateUserRequest struct {
@@ -17708,6 +19569,8 @@ type CreateUserRequest struct {
   Role *string `json:"role,omitempty" xml:"role,omitempty"`
   // 状态
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
   // 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
   UserData map[string]interface{} `json:"user_data,omitempty" xml:"user_data,omitempty"`
   // 用户 ID
@@ -17766,6 +19629,11 @@ func (s *CreateUserRequest) SetRole(v string) *CreateUserRequest {
 
 func (s *CreateUserRequest) SetStatus(v string) *CreateUserRequest {
   s.Status = &v
+  return s
+}
+
+func (s *CreateUserRequest) SetSubdomainId(v string) *CreateUserRequest {
+  s.SubdomainId = &v
   return s
 }
 
@@ -17897,6 +19765,120 @@ func (s *CreateUserResponse) SetUserName(v string) *CreateUserResponse {
 }
 
 /**
+ * 
+ */
+type DeleteGroupRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s DeleteGroupRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteGroupRequest) GoString() string {
+  return s.String()
+}
+
+func (s *DeleteGroupRequest) SetHeaders(v map[string]*string) *DeleteGroupRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *DeleteGroupRequest) SetGroupId(v string) *DeleteGroupRequest {
+  s.GroupId = &v
+  return s
+}
+
+func (s *DeleteGroupRequest) SetSubdomainId(v string) *DeleteGroupRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type DeleteGroupResponse struct {
+}
+
+func (s DeleteGroupResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteGroupResponse) GoString() string {
+  return s.String()
+}
+
+/**
+ * 
+ */
+type DeleteMembershipRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+  SubGroupId *string `json:"sub_group_id,omitempty" xml:"sub_group_id,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s DeleteMembershipRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteMembershipRequest) GoString() string {
+  return s.String()
+}
+
+func (s *DeleteMembershipRequest) SetHeaders(v map[string]*string) *DeleteMembershipRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *DeleteMembershipRequest) SetGroupId(v string) *DeleteMembershipRequest {
+  s.GroupId = &v
+  return s
+}
+
+func (s *DeleteMembershipRequest) SetMemberType(v string) *DeleteMembershipRequest {
+  s.MemberType = &v
+  return s
+}
+
+func (s *DeleteMembershipRequest) SetSubGroupId(v string) *DeleteMembershipRequest {
+  s.SubGroupId = &v
+  return s
+}
+
+func (s *DeleteMembershipRequest) SetSubdomainId(v string) *DeleteMembershipRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *DeleteMembershipRequest) SetUserId(v string) *DeleteMembershipRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type DeleteMembershipResponse struct {
+}
+
+func (s DeleteMembershipResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteMembershipResponse) GoString() string {
+  return s.String()
+}
+
+/**
  * Delete user request
  */
 type DeleteUserRequest struct {
@@ -17935,6 +19917,222 @@ func (s DeleteUserResponse) String() string {
 
 func (s DeleteUserResponse) GoString() string {
   return s.String()
+}
+
+/**
+ * 
+ */
+type GetGroupRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s GetGroupRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetGroupRequest) GoString() string {
+  return s.String()
+}
+
+func (s *GetGroupRequest) SetHeaders(v map[string]*string) *GetGroupRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *GetGroupRequest) SetGroupId(v string) *GetGroupRequest {
+  s.GroupId = &v
+  return s
+}
+
+func (s *GetGroupRequest) SetSubdomainId(v string) *GetGroupRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type GetGroupResponse struct {
+  // created_at
+  CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  // description
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // domain id
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // group name
+  GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
+  // updated_at
+  UpdatedAt *int64 `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s GetGroupResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetGroupResponse) GoString() string {
+  return s.String()
+}
+
+func (s *GetGroupResponse) SetCreatedAt(v int64) *GetGroupResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *GetGroupResponse) SetDescription(v string) *GetGroupResponse {
+  s.Description = &v
+  return s
+}
+
+func (s *GetGroupResponse) SetDomainId(v string) *GetGroupResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *GetGroupResponse) SetGroupId(v string) *GetGroupResponse {
+  s.GroupId = &v
+  return s
+}
+
+func (s *GetGroupResponse) SetGroupName(v string) *GetGroupResponse {
+  s.GroupName = &v
+  return s
+}
+
+func (s *GetGroupResponse) SetUpdatedAt(v int64) *GetGroupResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+/**
+ * 
+ */
+type GetMembershipRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+  SubGroupId *string `json:"sub_group_id,omitempty" xml:"sub_group_id,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s GetMembershipRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetMembershipRequest) GoString() string {
+  return s.String()
+}
+
+func (s *GetMembershipRequest) SetHeaders(v map[string]*string) *GetMembershipRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *GetMembershipRequest) SetGroupId(v string) *GetMembershipRequest {
+  s.GroupId = &v
+  return s
+}
+
+func (s *GetMembershipRequest) SetMemberType(v string) *GetMembershipRequest {
+  s.MemberType = &v
+  return s
+}
+
+func (s *GetMembershipRequest) SetSubGroupId(v string) *GetMembershipRequest {
+  s.SubGroupId = &v
+  return s
+}
+
+func (s *GetMembershipRequest) SetSubdomainId(v string) *GetMembershipRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *GetMembershipRequest) SetUserId(v string) *GetMembershipRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type GetMembershipResponse struct {
+  // created_at
+  CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // domain id
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // 角色， member or admin
+  MemberRole *string `json:"member_role,omitempty" xml:"member_role,omitempty"`
+  MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+  SubGroupId *string `json:"sub_group_id,omitempty" xml:"sub_group_id,omitempty"`
+  // updated_at
+  UpdatedAt *int64 `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s GetMembershipResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetMembershipResponse) GoString() string {
+  return s.String()
+}
+
+func (s *GetMembershipResponse) SetCreatedAt(v int64) *GetMembershipResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *GetMembershipResponse) SetDescription(v string) *GetMembershipResponse {
+  s.Description = &v
+  return s
+}
+
+func (s *GetMembershipResponse) SetDomainId(v string) *GetMembershipResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *GetMembershipResponse) SetGroupId(v string) *GetMembershipResponse {
+  s.GroupId = &v
+  return s
+}
+
+func (s *GetMembershipResponse) SetMemberRole(v string) *GetMembershipResponse {
+  s.MemberRole = &v
+  return s
+}
+
+func (s *GetMembershipResponse) SetMemberType(v string) *GetMembershipResponse {
+  s.MemberType = &v
+  return s
+}
+
+func (s *GetMembershipResponse) SetSubGroupId(v string) *GetMembershipResponse {
+  s.SubGroupId = &v
+  return s
+}
+
+func (s *GetMembershipResponse) SetUpdatedAt(v int64) *GetMembershipResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+func (s *GetMembershipResponse) SetUserId(v string) *GetMembershipResponse {
+  s.UserId = &v
+  return s
 }
 
 /**
@@ -18078,6 +20276,317 @@ func (s *GetUserResponse) SetUserName(v string) *GetUserResponse {
 }
 
 /**
+ * 
+ */
+type HasMemberRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+  SubGroupId *string `json:"sub_group_id,omitempty" xml:"sub_group_id,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s HasMemberRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s HasMemberRequest) GoString() string {
+  return s.String()
+}
+
+func (s *HasMemberRequest) SetHeaders(v map[string]*string) *HasMemberRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *HasMemberRequest) SetGroupId(v string) *HasMemberRequest {
+  s.GroupId = &v
+  return s
+}
+
+func (s *HasMemberRequest) SetMemberType(v string) *HasMemberRequest {
+  s.MemberType = &v
+  return s
+}
+
+func (s *HasMemberRequest) SetSubGroupId(v string) *HasMemberRequest {
+  s.SubGroupId = &v
+  return s
+}
+
+func (s *HasMemberRequest) SetSubdomainId(v string) *HasMemberRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *HasMemberRequest) SetUserId(v string) *HasMemberRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type HasMembershipResponse struct {
+  Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s HasMembershipResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s HasMembershipResponse) GoString() string {
+  return s.String()
+}
+
+func (s *HasMembershipResponse) SetResult(v bool) *HasMembershipResponse {
+  s.Result = &v
+  return s
+}
+
+/**
+ * 
+ */
+type ListDirectChildMembershipsRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // 分页获取的数量，默认为100
+  Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+  // 游标
+  Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+  // 角色，可选值，["", "member", "admin"], ""表示获取所有类型
+  MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s ListDirectChildMembershipsRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListDirectChildMembershipsRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ListDirectChildMembershipsRequest) SetHeaders(v map[string]*string) *ListDirectChildMembershipsRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *ListDirectChildMembershipsRequest) SetGroupId(v string) *ListDirectChildMembershipsRequest {
+  s.GroupId = &v
+  return s
+}
+
+func (s *ListDirectChildMembershipsRequest) SetLimit(v int32) *ListDirectChildMembershipsRequest {
+  s.Limit = &v
+  return s
+}
+
+func (s *ListDirectChildMembershipsRequest) SetMarker(v string) *ListDirectChildMembershipsRequest {
+  s.Marker = &v
+  return s
+}
+
+func (s *ListDirectChildMembershipsRequest) SetMemberType(v string) *ListDirectChildMembershipsRequest {
+  s.MemberType = &v
+  return s
+}
+
+func (s *ListDirectChildMembershipsRequest) SetSubdomainId(v string) *ListDirectChildMembershipsRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type ListDirectChildMembershipsResponse struct {
+  // items
+  Items []*BaseMembershipResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+  // 翻页标记
+  NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s ListDirectChildMembershipsResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListDirectChildMembershipsResponse) GoString() string {
+  return s.String()
+}
+
+func (s *ListDirectChildMembershipsResponse) SetItems(v []*BaseMembershipResponse) *ListDirectChildMembershipsResponse {
+  s.Items = v
+  return s
+}
+
+func (s *ListDirectChildMembershipsResponse) SetNextMarker(v string) *ListDirectChildMembershipsResponse {
+  s.NextMarker = &v
+  return s
+}
+
+/**
+ * 
+ */
+type ListDirectParentMembershipsRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // 分页获取的数量，默认为100
+  Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+  // 游标
+  Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+  MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+  SubGroupId *string `json:"sub_group_id,omitempty" xml:"sub_group_id,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s ListDirectParentMembershipsRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListDirectParentMembershipsRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ListDirectParentMembershipsRequest) SetHeaders(v map[string]*string) *ListDirectParentMembershipsRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *ListDirectParentMembershipsRequest) SetLimit(v int32) *ListDirectParentMembershipsRequest {
+  s.Limit = &v
+  return s
+}
+
+func (s *ListDirectParentMembershipsRequest) SetMarker(v string) *ListDirectParentMembershipsRequest {
+  s.Marker = &v
+  return s
+}
+
+func (s *ListDirectParentMembershipsRequest) SetMemberType(v string) *ListDirectParentMembershipsRequest {
+  s.MemberType = &v
+  return s
+}
+
+func (s *ListDirectParentMembershipsRequest) SetSubGroupId(v string) *ListDirectParentMembershipsRequest {
+  s.SubGroupId = &v
+  return s
+}
+
+func (s *ListDirectParentMembershipsRequest) SetSubdomainId(v string) *ListDirectParentMembershipsRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *ListDirectParentMembershipsRequest) SetUserId(v string) *ListDirectParentMembershipsRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type ListDirectParentMembershipsResponse struct {
+  // items
+  Items []*BaseMembershipResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+  // 翻页标记
+  NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s ListDirectParentMembershipsResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListDirectParentMembershipsResponse) GoString() string {
+  return s.String()
+}
+
+func (s *ListDirectParentMembershipsResponse) SetItems(v []*BaseMembershipResponse) *ListDirectParentMembershipsResponse {
+  s.Items = v
+  return s
+}
+
+func (s *ListDirectParentMembershipsResponse) SetNextMarker(v string) *ListDirectParentMembershipsResponse {
+  s.NextMarker = &v
+  return s
+}
+
+/**
+ * 
+ */
+type ListGroupRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // 分页获取的数量，默认为100
+  Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+  // 游标
+  Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+  // 列举 subdomain 下的group
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s ListGroupRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListGroupRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ListGroupRequest) SetHeaders(v map[string]*string) *ListGroupRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *ListGroupRequest) SetLimit(v int32) *ListGroupRequest {
+  s.Limit = &v
+  return s
+}
+
+func (s *ListGroupRequest) SetMarker(v string) *ListGroupRequest {
+  s.Marker = &v
+  return s
+}
+
+func (s *ListGroupRequest) SetSubdomainId(v string) *ListGroupRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type ListGroupResponse struct {
+  // items
+  Items []*BaseGroupResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+  // 翻页标记
+  NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s ListGroupResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListGroupResponse) GoString() string {
+  return s.String()
+}
+
+func (s *ListGroupResponse) SetItems(v []*BaseGroupResponse) *ListGroupResponse {
+  s.Items = v
+  return s
+}
+
+func (s *ListGroupResponse) SetNextMarker(v string) *ListGroupResponse {
+  s.NextMarker = &v
+  return s
+}
+
+/**
  * List user request
  */
 type ListUserRequest struct {
@@ -18086,6 +20595,8 @@ type ListUserRequest struct {
   Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
   // 翻页标记
   Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
 }
 
 func (s ListUserRequest) String() string {
@@ -18108,6 +20619,11 @@ func (s *ListUserRequest) SetLimit(v int32) *ListUserRequest {
 
 func (s *ListUserRequest) SetMarker(v string) *ListUserRequest {
   s.Marker = &v
+  return s
+}
+
+func (s *ListUserRequest) SetSubdomainId(v string) *ListUserRequest {
+  s.SubdomainId = &v
   return s
 }
 
@@ -18139,6 +20655,148 @@ func (s *ListUserResponse) SetNextMarker(v string) *ListUserResponse {
 }
 
 /**
+ * 
+ */
+type MemberIDInfo struct {
+  MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+  SubGroupId *string `json:"sub_group_id,omitempty" xml:"sub_group_id,omitempty"`
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s MemberIDInfo) String() string {
+  return tea.Prettify(s)
+}
+
+func (s MemberIDInfo) GoString() string {
+  return s.String()
+}
+
+func (s *MemberIDInfo) SetMemberType(v string) *MemberIDInfo {
+  s.MemberType = &v
+  return s
+}
+
+func (s *MemberIDInfo) SetSubGroupId(v string) *MemberIDInfo {
+  s.SubGroupId = &v
+  return s
+}
+
+func (s *MemberIDInfo) SetUserId(v string) *MemberIDInfo {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * Remove user to subdomain request
+ */
+type RemoveUserFromSubdomainRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+  // 用户 ID
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+}
+
+func (s RemoveUserFromSubdomainRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s RemoveUserFromSubdomainRequest) GoString() string {
+  return s.String()
+}
+
+func (s *RemoveUserFromSubdomainRequest) SetHeaders(v map[string]*string) *RemoveUserFromSubdomainRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *RemoveUserFromSubdomainRequest) SetSubdomainId(v string) *RemoveUserFromSubdomainRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *RemoveUserFromSubdomainRequest) SetUserId(v string) *RemoveUserFromSubdomainRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type SearchGroupRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // group_name
+  GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
+  // 分页获取的数量，默认为100
+  Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+  // 游标
+  Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+  // 列举 subdomain 下的group
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s SearchGroupRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SearchGroupRequest) GoString() string {
+  return s.String()
+}
+
+func (s *SearchGroupRequest) SetHeaders(v map[string]*string) *SearchGroupRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *SearchGroupRequest) SetGroupName(v string) *SearchGroupRequest {
+  s.GroupName = &v
+  return s
+}
+
+func (s *SearchGroupRequest) SetLimit(v int32) *SearchGroupRequest {
+  s.Limit = &v
+  return s
+}
+
+func (s *SearchGroupRequest) SetMarker(v string) *SearchGroupRequest {
+  s.Marker = &v
+  return s
+}
+
+func (s *SearchGroupRequest) SetSubdomainId(v string) *SearchGroupRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type SearchGroupResponse struct {
+  // items
+  Items []*BaseGroupResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+  // next_marker
+  NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s SearchGroupResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SearchGroupResponse) GoString() string {
+  return s.String()
+}
+
+func (s *SearchGroupResponse) SetItems(v []*BaseGroupResponse) *SearchGroupResponse {
+  s.Items = v
+  return s
+}
+
+func (s *SearchGroupResponse) SetNextMarker(v string) *SearchGroupResponse {
+  s.NextMarker = &v
+  return s
+}
+
+/**
  * Search user request
  */
 type SearchUserRequest struct {
@@ -18157,6 +20815,8 @@ type SearchUserRequest struct {
   Role *string `json:"role,omitempty" xml:"role,omitempty"`
   // 状态
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
   // 用户名
   UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
@@ -18209,8 +20869,264 @@ func (s *SearchUserRequest) SetStatus(v string) *SearchUserRequest {
   return s
 }
 
+func (s *SearchUserRequest) SetSubdomainId(v string) *SearchUserRequest {
+  s.SubdomainId = &v
+  return s
+}
+
 func (s *SearchUserRequest) SetUserName(v string) *SearchUserRequest {
   s.UserName = &v
+  return s
+}
+
+/**
+ * 
+ */
+type UpdateGroupRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // 名称
+  GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty" require:"true"`
+  // 是否是根group
+  IsRoot *bool `json:"is_root,omitempty" xml:"is_root,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s UpdateGroupRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateGroupRequest) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateGroupRequest) SetHeaders(v map[string]*string) *UpdateGroupRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *UpdateGroupRequest) SetDescription(v string) *UpdateGroupRequest {
+  s.Description = &v
+  return s
+}
+
+func (s *UpdateGroupRequest) SetGroupId(v string) *UpdateGroupRequest {
+  s.GroupId = &v
+  return s
+}
+
+func (s *UpdateGroupRequest) SetGroupName(v string) *UpdateGroupRequest {
+  s.GroupName = &v
+  return s
+}
+
+func (s *UpdateGroupRequest) SetIsRoot(v bool) *UpdateGroupRequest {
+  s.IsRoot = &v
+  return s
+}
+
+func (s *UpdateGroupRequest) SetSubdomainId(v string) *UpdateGroupRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type UpdateGroupResponse struct {
+  // created_at
+  CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  // description
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // domain id
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // group name
+  GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
+  // updated_at
+  UpdatedAt *int64 `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s UpdateGroupResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateGroupResponse) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateGroupResponse) SetCreatedAt(v int64) *UpdateGroupResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *UpdateGroupResponse) SetDescription(v string) *UpdateGroupResponse {
+  s.Description = &v
+  return s
+}
+
+func (s *UpdateGroupResponse) SetDomainId(v string) *UpdateGroupResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *UpdateGroupResponse) SetGroupId(v string) *UpdateGroupResponse {
+  s.GroupId = &v
+  return s
+}
+
+func (s *UpdateGroupResponse) SetGroupName(v string) *UpdateGroupResponse {
+  s.GroupName = &v
+  return s
+}
+
+func (s *UpdateGroupResponse) SetUpdatedAt(v int64) *UpdateGroupResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+/**
+ * 
+ */
+type UpdateMembershipRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // 角色， member or admin
+  MemberRole *string `json:"member_role,omitempty" xml:"member_role,omitempty"`
+  MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+  SubGroupId *string `json:"sub_group_id,omitempty" xml:"sub_group_id,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s UpdateMembershipRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateMembershipRequest) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateMembershipRequest) SetHeaders(v map[string]*string) *UpdateMembershipRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *UpdateMembershipRequest) SetDescription(v string) *UpdateMembershipRequest {
+  s.Description = &v
+  return s
+}
+
+func (s *UpdateMembershipRequest) SetGroupId(v string) *UpdateMembershipRequest {
+  s.GroupId = &v
+  return s
+}
+
+func (s *UpdateMembershipRequest) SetMemberRole(v string) *UpdateMembershipRequest {
+  s.MemberRole = &v
+  return s
+}
+
+func (s *UpdateMembershipRequest) SetMemberType(v string) *UpdateMembershipRequest {
+  s.MemberType = &v
+  return s
+}
+
+func (s *UpdateMembershipRequest) SetSubGroupId(v string) *UpdateMembershipRequest {
+  s.SubGroupId = &v
+  return s
+}
+
+func (s *UpdateMembershipRequest) SetSubdomainId(v string) *UpdateMembershipRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *UpdateMembershipRequest) SetUserId(v string) *UpdateMembershipRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type UpdateMembershipResponse struct {
+  // created_at
+  CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // domain id
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // group id
+  GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+  // 角色， member or admin
+  MemberRole *string `json:"member_role,omitempty" xml:"member_role,omitempty"`
+  MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+  SubGroupId *string `json:"sub_group_id,omitempty" xml:"sub_group_id,omitempty"`
+  // updated_at
+  UpdatedAt *int64 `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s UpdateMembershipResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateMembershipResponse) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateMembershipResponse) SetCreatedAt(v int64) *UpdateMembershipResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *UpdateMembershipResponse) SetDescription(v string) *UpdateMembershipResponse {
+  s.Description = &v
+  return s
+}
+
+func (s *UpdateMembershipResponse) SetDomainId(v string) *UpdateMembershipResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *UpdateMembershipResponse) SetGroupId(v string) *UpdateMembershipResponse {
+  s.GroupId = &v
+  return s
+}
+
+func (s *UpdateMembershipResponse) SetMemberRole(v string) *UpdateMembershipResponse {
+  s.MemberRole = &v
+  return s
+}
+
+func (s *UpdateMembershipResponse) SetMemberType(v string) *UpdateMembershipResponse {
+  s.MemberType = &v
+  return s
+}
+
+func (s *UpdateMembershipResponse) SetSubGroupId(v string) *UpdateMembershipResponse {
+  s.SubGroupId = &v
+  return s
+}
+
+func (s *UpdateMembershipResponse) SetUpdatedAt(v int64) *UpdateMembershipResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+func (s *UpdateMembershipResponse) SetUserId(v string) *UpdateMembershipResponse {
+  s.UserId = &v
   return s
 }
 
@@ -18992,8 +21908,6 @@ func (s *ImageAddressResponse) SetName(v string) *ImageAddressResponse {
  * 
  */
 type ImageFaceGroupResponse struct {
-  // cover_file_id
-  CoverFileId *string `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
   // 人脸分组生成时间
   CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
   // 人脸个数
@@ -19016,11 +21930,6 @@ func (s ImageFaceGroupResponse) String() string {
 
 func (s ImageFaceGroupResponse) GoString() string {
   return s.String()
-}
-
-func (s *ImageFaceGroupResponse) SetCoverFileId(v string) *ImageFaceGroupResponse {
-  s.CoverFileId = &v
-  return s
 }
 
 func (s *ImageFaceGroupResponse) SetCreatedAt(v string) *ImageFaceGroupResponse {
@@ -22587,6 +25496,761 @@ func (client *Client) AdminListStoresEx(request *AdminListStoresRequest, runtime
 
         respMap = util.AssertAsMap(obj)
         _result = &AdminListStoresModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * create subdomain
+ * @tags subdomain
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) CreateSubdomainEx(request *CreateSubdomainRequest, runtime *RuntimeOptions) (_result *CreateSubdomainModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &CreateSubdomainModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*CreateSubdomainModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/subdomain/create"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &CreateSubdomainModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * delete subdomain
+ * @tags subdomain
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) DeleteSubdomainEx(request *DeleteSubdomainRequest, runtime *RuntimeOptions) (_result *DeleteSubdomainModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &DeleteSubdomainModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*DeleteSubdomainModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/subdomain/delete"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &DeleteSubdomainModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * get subdomain
+ * @tags subdomain
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) GetSubdomainEx(request *GetSubdomainRequest, runtime *RuntimeOptions) (_result *GetSubdomainModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &GetSubdomainModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*GetSubdomainModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/subdomain/get"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &GetSubdomainModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * list subdomain
+ * @tags subdomain
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) ListSubdomainsEx(request *ListSubdomainsRequest, runtime *RuntimeOptions) (_result *ListSubdomainsModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListSubdomainsModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListSubdomainsModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/subdomain/list"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListSubdomainsModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * update subdomain
+ * @tags subdomain
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) UpdateSubdomainEx(request *UpdateSubdomainRequest, runtime *RuntimeOptions) (_result *UpdateSubdomainModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &UpdateSubdomainModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*UpdateSubdomainModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/subdomain/update"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &UpdateSubdomainModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
           "headers": response_.Headers,
@@ -29553,6 +33217,2440 @@ func (client *Client) ListShareLinkEx(request *ListShareLinkRequest, runtime *Ru
 }
 
 /**
+ * 更新分享。
+ * @tags share_link
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) UpdateShareLinkEx(request *UpdateShareLinkRequest, runtime *RuntimeOptions) (_result *UpdateShareLinkModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &UpdateShareLinkModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*UpdateShareLinkModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/share_link/update"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &UpdateShareLinkModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 创建用户组
+ * @tags group
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) CreateGroupEx(request *CreateGroupRequest, runtime *RuntimeOptions) (_result *CreateGroupModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &CreateGroupModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*CreateGroupModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/group/create"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(201))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &CreateGroupModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 删除用户组
+ * @tags group
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) DeleteGroupEx(request *DeleteGroupRequest, runtime *RuntimeOptions) (_result *DeleteGroupModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &DeleteGroupModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*DeleteGroupModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/group/delete"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &DeleteGroupModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 获取用户组
+ * @tags group
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) GetGroupEx(request *GetGroupRequest, runtime *RuntimeOptions) (_result *GetGroupModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &GetGroupModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*GetGroupModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/group/get"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &GetGroupModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 列举用户组
+ * @tags group
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListGroupEx(request *ListGroupRequest, runtime *RuntimeOptions) (_result *ListGroupModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListGroupModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListGroupModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/group/list"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListGroupModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 搜索用户组
+ * @tags group
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) SearchGroupEx(request *SearchGroupRequest, runtime *RuntimeOptions) (_result *SearchGroupModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &SearchGroupModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*SearchGroupModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/group/search"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &SearchGroupModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 更新用户组
+ * @tags group
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) UpdateGroupEx(request *UpdateGroupRequest, runtime *RuntimeOptions) (_result *UpdateGroupModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &UpdateGroupModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*UpdateGroupModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/group/update"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &UpdateGroupModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 创建membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) CreateMembershipEx(request *CreateMembershipRequest, runtime *RuntimeOptions) (_result *CreateMembershipModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &CreateMembershipModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*CreateMembershipModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/membership/create"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(201))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &CreateMembershipModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 删除membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) DeleteMembershipEx(request *DeleteMembershipRequest, runtime *RuntimeOptions) (_result *DeleteMembershipModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &DeleteMembershipModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*DeleteMembershipModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/membership/delete"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
+        _result = &DeleteMembershipModel{}
+        _err = tea.Convert(map[string]map[string]*string{
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 获取membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) GetMembershipEx(request *GetMembershipRequest, runtime *RuntimeOptions) (_result *GetMembershipModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &GetMembershipModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*GetMembershipModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/membership/get"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &GetMembershipModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 检查group是否包含某个member
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) HasMemberEx(request *HasMemberRequest, runtime *RuntimeOptions) (_result *HasMemberModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &HasMemberModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*HasMemberModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/membership/has_member"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &HasMemberModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 列举直属的子membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListDirectChildMembershipsEx(request *ListDirectChildMembershipsRequest, runtime *RuntimeOptions) (_result *ListDirectChildMembershipsModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListDirectChildMembershipsModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListDirectChildMembershipsModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/membership/list_direct_child_memberships"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListDirectChildMembershipsModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 列举直属的membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListDirectMembershipsEx(request *ListDirectParentMembershipsRequest, runtime *RuntimeOptions) (_result *ListDirectMembershipsModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListDirectMembershipsModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListDirectMembershipsModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/membership/list_direct_memberships"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListDirectMembershipsModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 列举直属的父membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListDirectParentMembershipsEx(request *ListDirectParentMembershipsRequest, runtime *RuntimeOptions) (_result *ListDirectParentMembershipsModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListDirectParentMembershipsModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListDirectParentMembershipsModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/membership/list_direct_parent_memberships"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListDirectParentMembershipsModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 更新membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) UpdateMembershipEx(request *UpdateMembershipRequest, runtime *RuntimeOptions) (_result *UpdateMembershipModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &UpdateMembershipModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*UpdateMembershipModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/membership/update"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &UpdateMembershipModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 只有管理员可以调用
+ * @tags user
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) AddUserToSubdomainEx(request *AddUserToSubdomainRequest, runtime *RuntimeOptions) (_result *AddUserToSubdomainModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &AddUserToSubdomainModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*AddUserToSubdomainModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/user/add_user_to_subdomain"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        _result = &AddUserToSubdomainModel{}
+        _err = tea.Convert(map[string]map[string]*string{
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
  * 创建用户，只有管理员可以调用
  * @tags user
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -30118,6 +36216,152 @@ func (client *Client) ListUsersEx(request *ListUserRequest, runtime *RuntimeOpti
         _result = &ListUsersModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 只有管理员可以调用
+ * @tags user
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) RemoveUserFromSubdomainEx(request *RemoveUserFromSubdomainRequest, runtime *RuntimeOptions) (_result *RemoveUserFromSubdomainModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &RemoveUserFromSubdomainModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*RemoveUserFromSubdomainModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/user/remove_user_from_subdomain"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        _result = &RemoveUserFromSubdomainModel{}
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -32504,6 +38748,96 @@ func (client *Client) AdminListStores (request *AdminListStoresRequest) (_result
 }
 
 /**
+ * create subdomain
+ * @tags subdomain
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) CreateSubdomain (request *CreateSubdomainRequest) (_result *CreateSubdomainModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &CreateSubdomainModel{}
+  _body, _err := client.CreateSubdomainEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * delete subdomain
+ * @tags subdomain
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) DeleteSubdomain (request *DeleteSubdomainRequest) (_result *DeleteSubdomainModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &DeleteSubdomainModel{}
+  _body, _err := client.DeleteSubdomainEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * get subdomain
+ * @tags subdomain
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) GetSubdomain (request *GetSubdomainRequest) (_result *GetSubdomainModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &GetSubdomainModel{}
+  _body, _err := client.GetSubdomainEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * list subdomain
+ * @tags subdomain
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) ListSubdomains (request *ListSubdomainsRequest) (_result *ListSubdomainsModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListSubdomainsModel{}
+  _body, _err := client.ListSubdomainsEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * update subdomain
+ * @tags subdomain
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) UpdateSubdomain (request *UpdateSubdomainRequest) (_result *UpdateSubdomainModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &UpdateSubdomainModel{}
+  _body, _err := client.UpdateSubdomainEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
  * 获取用户的accessToken
  * @tags admin
  * @error undefined undefined
@@ -33440,6 +39774,326 @@ func (client *Client) ListShareLink (request *ListShareLinkRequest) (_result *Li
 }
 
 /**
+ * 更新分享。
+ * @tags share_link
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) UpdateShareLink (request *UpdateShareLinkRequest) (_result *UpdateShareLinkModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &UpdateShareLinkModel{}
+  _body, _err := client.UpdateShareLinkEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 创建用户组
+ * @tags group
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) CreateGroup (request *CreateGroupRequest) (_result *CreateGroupModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &CreateGroupModel{}
+  _body, _err := client.CreateGroupEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 删除用户组
+ * @tags group
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) DeleteGroup (request *DeleteGroupRequest) (_result *DeleteGroupModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &DeleteGroupModel{}
+  _body, _err := client.DeleteGroupEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 获取用户组
+ * @tags group
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) GetGroup (request *GetGroupRequest) (_result *GetGroupModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &GetGroupModel{}
+  _body, _err := client.GetGroupEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 列举用户组
+ * @tags group
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListGroup (request *ListGroupRequest) (_result *ListGroupModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListGroupModel{}
+  _body, _err := client.ListGroupEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 搜索用户组
+ * @tags group
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) SearchGroup (request *SearchGroupRequest) (_result *SearchGroupModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &SearchGroupModel{}
+  _body, _err := client.SearchGroupEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 更新用户组
+ * @tags group
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) UpdateGroup (request *UpdateGroupRequest) (_result *UpdateGroupModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &UpdateGroupModel{}
+  _body, _err := client.UpdateGroupEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 创建membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) CreateMembership (request *CreateMembershipRequest) (_result *CreateMembershipModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &CreateMembershipModel{}
+  _body, _err := client.CreateMembershipEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 删除membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) DeleteMembership (request *DeleteMembershipRequest) (_result *DeleteMembershipModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &DeleteMembershipModel{}
+  _body, _err := client.DeleteMembershipEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 获取membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) GetMembership (request *GetMembershipRequest) (_result *GetMembershipModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &GetMembershipModel{}
+  _body, _err := client.GetMembershipEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 检查group是否包含某个member
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) HasMember (request *HasMemberRequest) (_result *HasMemberModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &HasMemberModel{}
+  _body, _err := client.HasMemberEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 列举直属的子membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListDirectChildMemberships (request *ListDirectChildMembershipsRequest) (_result *ListDirectChildMembershipsModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListDirectChildMembershipsModel{}
+  _body, _err := client.ListDirectChildMembershipsEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 列举直属的membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListDirectMemberships (request *ListDirectParentMembershipsRequest) (_result *ListDirectMembershipsModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListDirectMembershipsModel{}
+  _body, _err := client.ListDirectMembershipsEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 列举直属的父membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListDirectParentMemberships (request *ListDirectParentMembershipsRequest) (_result *ListDirectParentMembershipsModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListDirectParentMembershipsModel{}
+  _body, _err := client.ListDirectParentMembershipsEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 更新membership
+ * @tags membership
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) UpdateMembership (request *UpdateMembershipRequest) (_result *UpdateMembershipModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &UpdateMembershipModel{}
+  _body, _err := client.UpdateMembershipEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 只有管理员可以调用
+ * @tags user
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) AddUserToSubdomain (request *AddUserToSubdomainRequest) (_result *AddUserToSubdomainModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &AddUserToSubdomainModel{}
+  _body, _err := client.AddUserToSubdomainEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
  * 创建用户，只有管理员可以调用
  * @tags user
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -33513,6 +40167,26 @@ func (client *Client) ListUsers (request *ListUserRequest) (_result *ListUsersMo
   runtime := &RuntimeOptions{}
   _result = &ListUsersModel{}
   _body, _err := client.ListUsersEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 只有管理员可以调用
+ * @tags user
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) RemoveUserFromSubdomain (request *RemoveUserFromSubdomainRequest) (_result *RemoveUserFromSubdomainModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &RemoveUserFromSubdomainModel{}
+  _body, _err := client.RemoveUserFromSubdomainEx(request, runtime)
   if _err != nil {
     return _result, _err
   }

@@ -7,9 +7,53 @@ import com.aliyun.tea.*;
  * create_share_link response
  */
 public class CreateShareLinkResponse extends TeaModel {
+    // created_at
+    @NameInMap("created_at")
+    public String createdAt;
+
+    // creator
+    @NameInMap("creator")
+    public String creator;
+
     // description
     @NameInMap("description")
     public String description;
+
+    // 下载次数
+    @NameInMap("download_count")
+    public Long downloadCount;
+
+    // drive_id
+    @NameInMap("drive_id")
+    public String driveId;
+
+    // expiration
+    @NameInMap("expiration")
+    public String expiration;
+
+    // expired
+    @NameInMap("expired")
+    public Boolean expired;
+
+    // file_id
+    @NameInMap("file_id")
+    public String fileId;
+
+    // file_id_list
+    @NameInMap("file_id_list")
+    public java.util.List<String> fileIdList;
+
+    // file_id_list
+    @NameInMap("file_path_list")
+    public java.util.List<String> filePathList;
+
+    // preview_count
+    @NameInMap("preview_count")
+    public Long previewCount;
+
+    // 转存次数
+    @NameInMap("save_count")
+    public Long saveCount;
 
     // share_id
     @NameInMap("share_id")
@@ -35,9 +79,29 @@ public class CreateShareLinkResponse extends TeaModel {
     @NameInMap("share_url")
     public String shareUrl;
 
+    // updated_at
+    @NameInMap("updated_at")
+    public String updatedAt;
+
     public static CreateShareLinkResponse build(java.util.Map<String, ?> map) throws Exception {
         CreateShareLinkResponse self = new CreateShareLinkResponse();
         return TeaModel.build(map, self);
+    }
+
+    public CreateShareLinkResponse setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+    public String getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public CreateShareLinkResponse setCreator(String creator) {
+        this.creator = creator;
+        return this;
+    }
+    public String getCreator() {
+        return this.creator;
     }
 
     public CreateShareLinkResponse setDescription(String description) {
@@ -46,6 +110,78 @@ public class CreateShareLinkResponse extends TeaModel {
     }
     public String getDescription() {
         return this.description;
+    }
+
+    public CreateShareLinkResponse setDownloadCount(Long downloadCount) {
+        this.downloadCount = downloadCount;
+        return this;
+    }
+    public Long getDownloadCount() {
+        return this.downloadCount;
+    }
+
+    public CreateShareLinkResponse setDriveId(String driveId) {
+        this.driveId = driveId;
+        return this;
+    }
+    public String getDriveId() {
+        return this.driveId;
+    }
+
+    public CreateShareLinkResponse setExpiration(String expiration) {
+        this.expiration = expiration;
+        return this;
+    }
+    public String getExpiration() {
+        return this.expiration;
+    }
+
+    public CreateShareLinkResponse setExpired(Boolean expired) {
+        this.expired = expired;
+        return this;
+    }
+    public Boolean getExpired() {
+        return this.expired;
+    }
+
+    public CreateShareLinkResponse setFileId(String fileId) {
+        this.fileId = fileId;
+        return this;
+    }
+    public String getFileId() {
+        return this.fileId;
+    }
+
+    public CreateShareLinkResponse setFileIdList(java.util.List<String> fileIdList) {
+        this.fileIdList = fileIdList;
+        return this;
+    }
+    public java.util.List<String> getFileIdList() {
+        return this.fileIdList;
+    }
+
+    public CreateShareLinkResponse setFilePathList(java.util.List<String> filePathList) {
+        this.filePathList = filePathList;
+        return this;
+    }
+    public java.util.List<String> getFilePathList() {
+        return this.filePathList;
+    }
+
+    public CreateShareLinkResponse setPreviewCount(Long previewCount) {
+        this.previewCount = previewCount;
+        return this;
+    }
+    public Long getPreviewCount() {
+        return this.previewCount;
+    }
+
+    public CreateShareLinkResponse setSaveCount(Long saveCount) {
+        this.saveCount = saveCount;
+        return this;
+    }
+    public Long getSaveCount() {
+        return this.saveCount;
     }
 
     public CreateShareLinkResponse setShareId(String shareId) {
@@ -94,6 +230,14 @@ public class CreateShareLinkResponse extends TeaModel {
     }
     public String getShareUrl() {
         return this.shareUrl;
+    }
+
+    public CreateShareLinkResponse setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+        return this;
+    }
+    public String getUpdatedAt() {
+        return this.updatedAt;
     }
 
 }

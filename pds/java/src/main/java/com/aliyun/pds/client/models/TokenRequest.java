@@ -42,6 +42,10 @@ public class TokenRequest extends TeaModel {
     @NameInMap("RefreshToken")
     public String RefreshToken;
 
+    // SubDomainID
+    @NameInMap("SubDomainID")
+    public String SubDomainID;
+
     public static TokenRequest build(java.util.Map<String, ?> map) throws Exception {
         TokenRequest self = new TokenRequest();
         return TeaModel.build(map, self);
@@ -109,6 +113,14 @@ public class TokenRequest extends TeaModel {
     }
     public String getRefreshToken() {
         return this.RefreshToken;
+    }
+
+    public TokenRequest setSubDomainID(String SubDomainID) {
+        this.SubDomainID = SubDomainID;
+        return this;
+    }
+    public String getSubDomainID() {
+        return this.SubDomainID;
     }
 
 }

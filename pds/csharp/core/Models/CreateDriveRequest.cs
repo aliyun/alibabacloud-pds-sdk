@@ -63,6 +63,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string Owner { get; set; }
 
         /// <summary>
+        /// 所属者
+        /// </summary>
+        [NameInMap("owner_type")]
+        [Validation(Required=true)]
+        public string OwnerType { get; set; }
+
+        /// <summary>
         /// domain的PathType为OSSPath时必选。 Drive存储基于store的相对路径
         /// </summary>
         [NameInMap("relative_path")]
@@ -82,6 +89,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("store_id")]
         [Validation(Required=false)]
         public string StoreId { get; set; }
+
+        /// <summary>
+        /// Subdomain ID
+        /// </summary>
+        [NameInMap("subdomain_id")]
+        [Validation(Required=false)]
+        public string SubdomainId { get; set; }
 
         /// <summary>
         /// 总大小,单位Byte [如果设置 -1 代表不限制]

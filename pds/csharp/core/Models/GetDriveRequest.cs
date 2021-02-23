@@ -23,6 +23,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=true)]
         public string DriveId { get; set; }
 
+        /// <summary>
+        /// Subdomain ID
+        /// </summary>
+        [NameInMap("subdomain_id")]
+        [Validation(Required=false)]
+        public string SubdomainId { get; set; }
+
     }
 
 }

@@ -17,6 +17,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public Dictionary<string, string> Headers { get; set; }
 
         /// <summary>
+        /// Subdomain ID
+        /// </summary>
+        [NameInMap("subdomain_id")]
+        [Validation(Required=false)]
+        public string SubdomainId { get; set; }
+
+        /// <summary>
         /// 用户ID
         /// </summary>
         [NameInMap("user_id")]

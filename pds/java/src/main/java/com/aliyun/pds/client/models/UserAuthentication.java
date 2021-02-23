@@ -51,6 +51,10 @@ public class UserAuthentication extends TeaModel {
     @NameInMap("extra")
     public String extra;
 
+    // subdomain id
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     public static UserAuthentication build(java.util.Map<String, ?> map) throws Exception {
         UserAuthentication self = new UserAuthentication();
         return TeaModel.build(map, self);
@@ -126,6 +130,14 @@ public class UserAuthentication extends TeaModel {
     }
     public String getExtra() {
         return this.extra;
+    }
+
+    public UserAuthentication setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
 }

@@ -69,6 +69,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string Owner { get; set; }
 
         /// <summary>
+        /// owner
+        /// </summary>
+        [NameInMap("owner_type")]
+        [Validation(Required=false)]
+        public string OwnerType { get; set; }
+
+        /// <summary>
         /// permissions
         /// </summary>
         [NameInMap("permissions")]

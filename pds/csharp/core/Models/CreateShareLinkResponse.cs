@@ -13,11 +13,88 @@ namespace Aliyun.SDK.PDS.Client.Models
      */
     public class CreateShareLinkResponse : TeaModel {
         /// <summary>
+        /// created_at
+        /// </summary>
+        [NameInMap("created_at")]
+        [Validation(Required=false)]
+        public string CreatedAt { get; set; }
+
+        /// <summary>
+        /// creator
+        /// </summary>
+        [NameInMap("creator")]
+        [Validation(Required=false)]
+        public string Creator { get; set; }
+
+        /// <summary>
         /// description
         /// </summary>
         [NameInMap("description")]
         [Validation(Required=false)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// 下载次数
+        /// </summary>
+        [NameInMap("download_count")]
+        [Validation(Required=false)]
+        public long? DownloadCount { get; set; }
+
+        /// <summary>
+        /// drive_id
+        /// </summary>
+        [NameInMap("drive_id")]
+        [Validation(Required=false)]
+        public string DriveId { get; set; }
+
+        /// <summary>
+        /// expiration
+        /// </summary>
+        [NameInMap("expiration")]
+        [Validation(Required=false)]
+        public string Expiration { get; set; }
+
+        /// <summary>
+        /// expired
+        /// </summary>
+        [NameInMap("expired")]
+        [Validation(Required=false)]
+        public bool? Expired { get; set; }
+
+        /// <summary>
+        /// file_id
+        /// </summary>
+        [NameInMap("file_id")]
+        [Validation(Required=false)]
+        public string FileId { get; set; }
+
+        /// <summary>
+        /// file_id_list
+        /// </summary>
+        [NameInMap("file_id_list")]
+        [Validation(Required=false)]
+        public List<string> FileIdList { get; set; }
+
+        /// <summary>
+        /// file_id_list
+        /// </summary>
+        [NameInMap("file_path_list")]
+        [Validation(Required=false)]
+        public List<string> FilePathList { get; set; }
+
+        /// <summary>
+        /// preview_count
+        /// </summary>
+        [NameInMap("preview_count")]
+        [Validation(Required=false)]
+        public long? PreviewCount { get; set; }
+
+        /// <summary>
+        /// 转存次数
+        /// </summary>
+        [NameInMap("save_count")]
+        [Validation(Required=false)]
+        public long? SaveCount { get; set; }
 
         /// <summary>
         /// share_id
@@ -60,6 +137,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("share_url")]
         [Validation(Required=false)]
         public string ShareUrl { get; set; }
+
+        /// <summary>
+        /// updated_at
+        /// </summary>
+        [NameInMap("updated_at")]
+        [Validation(Required=false)]
+        public string UpdatedAt { get; set; }
 
     }
 

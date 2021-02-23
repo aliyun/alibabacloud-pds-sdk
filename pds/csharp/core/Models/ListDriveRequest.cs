@@ -37,6 +37,21 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public string Owner { get; set; }
 
+        /// <summary>
+        /// owner_type
+        /// 所述者类型
+        /// </summary>
+        [NameInMap("owner_type")]
+        [Validation(Required=false)]
+        public string OwnerType { get; set; }
+
+        /// <summary>
+        /// Subdomain ID
+        /// </summary>
+        [NameInMap("subdomain_id")]
+        [Validation(Required=false)]
+        public string SubdomainId { get; set; }
+
     }
 
 }

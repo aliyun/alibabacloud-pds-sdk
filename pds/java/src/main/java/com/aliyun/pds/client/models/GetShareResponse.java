@@ -39,6 +39,10 @@ public class GetShareResponse extends TeaModel {
     @NameInMap("owner")
     public String owner;
 
+    // owner
+    @NameInMap("owner_type")
+    public String ownerType;
+
     // permissions
     @NameInMap("permissions")
     public java.util.List<String> permissions;
@@ -137,6 +141,14 @@ public class GetShareResponse extends TeaModel {
     }
     public String getOwner() {
         return this.owner;
+    }
+
+    public GetShareResponse setOwnerType(String ownerType) {
+        this.ownerType = ownerType;
+        return this;
+    }
+    public String getOwnerType() {
+        return this.ownerType;
     }
 
     public GetShareResponse setPermissions(java.util.List<String> permissions) {

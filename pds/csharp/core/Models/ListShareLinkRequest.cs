@@ -37,6 +37,20 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public string Marker { get; set; }
 
+        /// <summary>
+        /// order_by
+        /// </summary>
+        [NameInMap("order_by")]
+        [Validation(Required=false)]
+        public string OrderBy { get; set; }
+
+        /// <summary>
+        /// order_direction
+        /// </summary>
+        [NameInMap("order_direction")]
+        [Validation(Required=false)]
+        public string OrderDirection { get; set; }
+
     }
 
 }

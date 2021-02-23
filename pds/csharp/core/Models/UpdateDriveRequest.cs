@@ -59,6 +59,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string Status { get; set; }
 
         /// <summary>
+        /// Subdomain ID
+        /// </summary>
+        [NameInMap("subdomain_id")]
+        [Validation(Required=false)]
+        public string SubdomainId { get; set; }
+
+        /// <summary>
         /// 总大小,单位Byte [如果设置 -1 代表不限制]
         /// </summary>
         [NameInMap("total_size")]

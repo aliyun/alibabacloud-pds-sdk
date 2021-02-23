@@ -73,6 +73,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string Status { get; set; }
 
         /// <summary>
+        /// subdomain id
+        /// </summary>
+        [NameInMap("subdomain_id")]
+        [Validation(Required=false)]
+        public string SubdomainId { get; set; }
+
+        /// <summary>
         /// 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
         /// </summary>
         [NameInMap("user_data")]

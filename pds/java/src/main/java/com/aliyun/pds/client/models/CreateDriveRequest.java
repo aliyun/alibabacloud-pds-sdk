@@ -40,6 +40,11 @@ public class CreateDriveRequest extends TeaModel {
     @Validation(required = true)
     public String owner;
 
+    // 所属者
+    @NameInMap("owner_type")
+    @Validation(required = true)
+    public String ownerType;
+
     // domain的PathType为OSSPath时必选。 Drive存储基于store的相对路径
     @NameInMap("relative_path")
     public String relativePath;
@@ -51,6 +56,10 @@ public class CreateDriveRequest extends TeaModel {
     // StoreID , domain的PathType为OSSPath时必选
     @NameInMap("store_id")
     public String storeId;
+
+    // Subdomain ID
+    @NameInMap("subdomain_id")
+    public String subdomainId;
 
     // 总大小,单位Byte [如果设置 -1 代表不限制]
     @NameInMap("total_size")
@@ -125,6 +134,14 @@ public class CreateDriveRequest extends TeaModel {
         return this.owner;
     }
 
+    public CreateDriveRequest setOwnerType(String ownerType) {
+        this.ownerType = ownerType;
+        return this;
+    }
+    public String getOwnerType() {
+        return this.ownerType;
+    }
+
     public CreateDriveRequest setRelativePath(String relativePath) {
         this.relativePath = relativePath;
         return this;
@@ -147,6 +164,14 @@ public class CreateDriveRequest extends TeaModel {
     }
     public String getStoreId() {
         return this.storeId;
+    }
+
+    public CreateDriveRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
     public CreateDriveRequest setTotalSize(Long totalSize) {
