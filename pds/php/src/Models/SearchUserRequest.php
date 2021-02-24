@@ -77,6 +77,13 @@ class SearchUserRequest extends Model
     public $status;
 
     /**
+     * @description subdomain id
+     *
+     * @var string
+     */
+    public $subdomainId;
+
+    /**
      * @description 用户名
      *
      * @example abc
@@ -85,14 +92,15 @@ class SearchUserRequest extends Model
      */
     public $userName;
     protected $_name = [
-        'email'    => 'email',
-        'limit'    => 'limit',
-        'marker'   => 'marker',
-        'nickName' => 'nick_name',
-        'phone'    => 'phone',
-        'role'     => 'role',
-        'status'   => 'status',
-        'userName' => 'user_name',
+        'email'       => 'email',
+        'limit'       => 'limit',
+        'marker'      => 'marker',
+        'nickName'    => 'nick_name',
+        'phone'       => 'phone',
+        'role'        => 'role',
+        'status'      => 'status',
+        'subdomainId' => 'subdomain_id',
+        'userName'    => 'user_name',
     ];
     protected $_default = [
         'limit'  => 100,
@@ -133,6 +141,9 @@ class SearchUserRequest extends Model
         if (null !== $this->status) {
             $res['status'] = $this->status;
         }
+        if (null !== $this->subdomainId) {
+            $res['subdomain_id'] = $this->subdomainId;
+        }
         if (null !== $this->userName) {
             $res['user_name'] = $this->userName;
         }
@@ -171,6 +182,9 @@ class SearchUserRequest extends Model
         }
         if (isset($map['status'])) {
             $model->status = $map['status'];
+        }
+        if (isset($map['subdomain_id'])) {
+            $model->subdomainId = $map['subdomain_id'];
         }
         if (isset($map['user_name'])) {
             $model->userName = $map['user_name'];

@@ -79,6 +79,15 @@ class TokenRequest extends Model
      * @var string
      */
     public $RefreshToken;
+
+    /**
+     * @description SubDomainID
+     *
+     * @example null
+     *
+     * @var string
+     */
+    public $SubDomainID;
     protected $_name = [
         'Assertion'    => 'Assertion',
         'ClientID'     => 'ClientID',
@@ -88,6 +97,7 @@ class TokenRequest extends Model
         'GrantType'    => 'GrantType',
         'RedirectUri'  => 'RedirectUri',
         'RefreshToken' => 'RefreshToken',
+        'SubDomainID'  => 'SubDomainID',
     ];
 
     public function validate()
@@ -124,6 +134,9 @@ class TokenRequest extends Model
         if (null !== $this->RefreshToken) {
             $res['RefreshToken'] = $this->RefreshToken;
         }
+        if (null !== $this->SubDomainID) {
+            $res['SubDomainID'] = $this->SubDomainID;
+        }
 
         return $res;
     }
@@ -159,6 +172,9 @@ class TokenRequest extends Model
         }
         if (isset($map['RefreshToken'])) {
             $model->RefreshToken = $map['RefreshToken'];
+        }
+        if (isset($map['SubDomainID'])) {
+            $model->SubDomainID = $map['SubDomainID'];
         }
 
         return $model;

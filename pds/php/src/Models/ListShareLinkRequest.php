@@ -39,10 +39,30 @@ class ListShareLinkRequest extends Model
      * @var string
      */
     public $marker;
+
+    /**
+     * @description order_by
+     *
+     * @example share_name
+     *
+     * @var string
+     */
+    public $orderBy;
+
+    /**
+     * @description order_direction
+     *
+     * @example ASC
+     *
+     * @var string
+     */
+    public $orderDirection;
     protected $_name = [
-        'creator' => 'creator',
-        'limit'   => 'limit',
-        'marker'  => 'marker',
+        'creator'        => 'creator',
+        'limit'          => 'limit',
+        'marker'         => 'marker',
+        'orderBy'        => 'order_by',
+        'orderDirection' => 'order_direction',
     ];
 
     public function validate()
@@ -65,6 +85,12 @@ class ListShareLinkRequest extends Model
         }
         if (null !== $this->marker) {
             $res['marker'] = $this->marker;
+        }
+        if (null !== $this->orderBy) {
+            $res['order_by'] = $this->orderBy;
+        }
+        if (null !== $this->orderDirection) {
+            $res['order_direction'] = $this->orderDirection;
         }
 
         return $res;
@@ -89,6 +115,12 @@ class ListShareLinkRequest extends Model
         }
         if (isset($map['marker'])) {
             $model->marker = $map['marker'];
+        }
+        if (isset($map['order_by'])) {
+            $model->orderBy = $map['order_by'];
+        }
+        if (isset($map['order_direction'])) {
+            $model->orderDirection = $map['order_direction'];
         }
 
         return $model;

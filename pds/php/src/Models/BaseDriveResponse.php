@@ -85,6 +85,15 @@ class BaseDriveResponse extends Model
     public $owner;
 
     /**
+     * @description Drive 所有者类型
+     *
+     * @example user
+     *
+     * @var string
+     */
+    public $ownerType;
+
+    /**
      * @description Drive存储基于store的相对路径，domain的PathType为OSSPath时返回
      *
      * @example /a/b/e/
@@ -138,6 +147,7 @@ class BaseDriveResponse extends Model
         'encryptDataAccess' => 'encrypt_data_access',
         'encryptMode'       => 'encrypt_mode',
         'owner'             => 'owner',
+        'ownerType'         => 'owner_type',
         'relativePath'      => 'relative_path',
         'status'            => 'status',
         'storeId'           => 'store_id',
@@ -178,6 +188,9 @@ class BaseDriveResponse extends Model
         }
         if (null !== $this->owner) {
             $res['owner'] = $this->owner;
+        }
+        if (null !== $this->ownerType) {
+            $res['owner_type'] = $this->ownerType;
         }
         if (null !== $this->relativePath) {
             $res['relative_path'] = $this->relativePath;
@@ -232,6 +245,9 @@ class BaseDriveResponse extends Model
         }
         if (isset($map['owner'])) {
             $model->owner = $map['owner'];
+        }
+        if (isset($map['owner_type'])) {
+            $model->ownerType = $map['owner_type'];
         }
         if (isset($map['relative_path'])) {
             $model->relativePath = $map['relative_path'];

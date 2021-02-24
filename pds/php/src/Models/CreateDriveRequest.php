@@ -73,6 +73,15 @@ class CreateDriveRequest extends Model
     public $owner;
 
     /**
+     * @description 所属者
+     *
+     * @example ccp-001
+     *
+     * @var string
+     */
+    public $ownerType;
+
+    /**
      * @description domain的PathType为OSSPath时必选。 Drive存储基于store的相对路径
      *
      * @example /d/e/f/
@@ -100,6 +109,15 @@ class CreateDriveRequest extends Model
     public $storeId;
 
     /**
+     * @description Subdomain ID
+     *
+     * @example hz-123
+     *
+     * @var string
+     */
+    public $subdomainId;
+
+    /**
      * @description 总大小,单位Byte [如果设置 -1 代表不限制]
      *
      * @example 1024
@@ -115,9 +133,11 @@ class CreateDriveRequest extends Model
         'encryptMode'  => 'encrypt_mode',
         'location'     => 'location',
         'owner'        => 'owner',
+        'ownerType'    => 'owner_type',
         'relativePath' => 'relative_path',
         'status'       => 'status',
         'storeId'      => 'store_id',
+        'subdomainId'  => 'subdomain_id',
         'totalSize'    => 'total_size',
     ];
     protected $_default = [
@@ -133,6 +153,7 @@ class CreateDriveRequest extends Model
         Model::validateMaxLength('driveName', $this->driveName, 1024);
         Model::validateRequired('driveName', $this->driveName, true);
         Model::validateRequired('owner', $this->owner, true);
+        Model::validateRequired('ownerType', $this->ownerType, true);
     }
 
     public function toMap()
@@ -162,6 +183,9 @@ class CreateDriveRequest extends Model
         if (null !== $this->owner) {
             $res['owner'] = $this->owner;
         }
+        if (null !== $this->ownerType) {
+            $res['owner_type'] = $this->ownerType;
+        }
         if (null !== $this->relativePath) {
             $res['relative_path'] = $this->relativePath;
         }
@@ -170,6 +194,9 @@ class CreateDriveRequest extends Model
         }
         if (null !== $this->storeId) {
             $res['store_id'] = $this->storeId;
+        }
+        if (null !== $this->subdomainId) {
+            $res['subdomain_id'] = $this->subdomainId;
         }
         if (null !== $this->totalSize) {
             $res['total_size'] = $this->totalSize;
@@ -210,6 +237,9 @@ class CreateDriveRequest extends Model
         if (isset($map['owner'])) {
             $model->owner = $map['owner'];
         }
+        if (isset($map['owner_type'])) {
+            $model->ownerType = $map['owner_type'];
+        }
         if (isset($map['relative_path'])) {
             $model->relativePath = $map['relative_path'];
         }
@@ -218,6 +248,9 @@ class CreateDriveRequest extends Model
         }
         if (isset($map['store_id'])) {
             $model->storeId = $map['store_id'];
+        }
+        if (isset($map['subdomain_id'])) {
+            $model->subdomainId = $map['subdomain_id'];
         }
         if (isset($map['total_size'])) {
             $model->totalSize = $map['total_size'];

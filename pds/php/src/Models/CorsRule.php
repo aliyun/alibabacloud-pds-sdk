@@ -11,7 +11,7 @@ class CorsRule extends Model
     /**
      * @description AllowedHeader
      *
-     * @example h*
+     * @example *
      *
      * @var string[]
      */

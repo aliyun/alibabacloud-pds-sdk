@@ -14,6 +14,15 @@ class GetDefaultDriveRequest extends Model
     public $headers;
 
     /**
+     * @description Subdomain ID
+     *
+     * @example hz-123
+     *
+     * @var string
+     */
+    public $subdomainId;
+
+    /**
      * @description 用户ID
      *
      * @example abc
@@ -22,7 +31,8 @@ class GetDefaultDriveRequest extends Model
      */
     public $userId;
     protected $_name = [
-        'userId' => 'user_id',
+        'subdomainId' => 'subdomain_id',
+        'userId'      => 'user_id',
     ];
 
     public function validate()
@@ -34,6 +44,9 @@ class GetDefaultDriveRequest extends Model
         $res = [];
         if (null !== $this->headers) {
             $res['headers'] = $this->headers;
+        }
+        if (null !== $this->subdomainId) {
+            $res['subdomain_id'] = $this->subdomainId;
         }
         if (null !== $this->userId) {
             $res['user_id'] = $this->userId;
@@ -52,6 +65,9 @@ class GetDefaultDriveRequest extends Model
         $model = new self();
         if (isset($map['headers'])) {
             $model->headers = $map['headers'];
+        }
+        if (isset($map['subdomain_id'])) {
+            $model->subdomainId = $map['subdomain_id'];
         }
         if (isset($map['user_id'])) {
             $model->userId = $map['user_id'];

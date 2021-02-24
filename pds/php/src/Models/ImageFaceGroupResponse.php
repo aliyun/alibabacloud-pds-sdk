@@ -9,13 +9,6 @@ use AlibabaCloud\Tea\Model;
 class ImageFaceGroupResponse extends Model
 {
     /**
-     * @description cover_file_id
-     *
-     * @var string
-     */
-    public $coverFileId;
-
-    /**
      * @description 人脸分组生成时间
      *
      * @example 2019-02-20T09:35:51.057Z
@@ -78,7 +71,6 @@ class ImageFaceGroupResponse extends Model
      */
     public $updatedAt;
     protected $_name = [
-        'coverFileId'   => 'cover_file_id',
         'createdAt'     => 'created_at',
         'faceCount'     => 'face_count',
         'groupCoverUrl' => 'group_cover_url',
@@ -95,9 +87,6 @@ class ImageFaceGroupResponse extends Model
     public function toMap()
     {
         $res = [];
-        if (null !== $this->coverFileId) {
-            $res['cover_file_id'] = $this->coverFileId;
-        }
         if (null !== $this->createdAt) {
             $res['created_at'] = $this->createdAt;
         }
@@ -131,9 +120,6 @@ class ImageFaceGroupResponse extends Model
     public static function fromMap($map = [])
     {
         $model = new self();
-        if (isset($map['cover_file_id'])) {
-            $model->coverFileId = $map['cover_file_id'];
-        }
         if (isset($map['created_at'])) {
             $model->createdAt = $map['created_at'];
         }

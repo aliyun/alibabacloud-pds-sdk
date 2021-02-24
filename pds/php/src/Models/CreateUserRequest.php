@@ -84,6 +84,13 @@ class CreateUserRequest extends Model
     public $status;
 
     /**
+     * @description subdomain id
+     *
+     * @var string
+     */
+    public $subdomainId;
+
+    /**
      * @description 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
      *
      * @example { is_student: true }
@@ -118,6 +125,7 @@ class CreateUserRequest extends Model
         'phone'       => 'phone',
         'role'        => 'role',
         'status'      => 'status',
+        'subdomainId' => 'subdomain_id',
         'userData'    => 'user_data',
         'userId'      => 'user_id',
         'userName'    => 'user_name',
@@ -162,6 +170,9 @@ class CreateUserRequest extends Model
         }
         if (null !== $this->status) {
             $res['status'] = $this->status;
+        }
+        if (null !== $this->subdomainId) {
+            $res['subdomain_id'] = $this->subdomainId;
         }
         if (null !== $this->userData) {
             $res['user_data'] = $this->userData;
@@ -210,6 +221,9 @@ class CreateUserRequest extends Model
         }
         if (isset($map['status'])) {
             $model->status = $map['status'];
+        }
+        if (isset($map['subdomain_id'])) {
+            $model->subdomainId = $map['subdomain_id'];
         }
         if (isset($map['user_data'])) {
             $model->userData = $map['user_data'];

@@ -162,6 +162,24 @@ class AccountAccessTokenResponse extends Model
     public $state;
 
     /**
+     * @description 当前用户状态
+     *
+     * @example enabled
+     *
+     * @var string
+     */
+    public $status;
+
+    /**
+     * @description subdomain_id 用户登录的subdomain_id
+     *
+     * @example xxx
+     *
+     * @var string
+     */
+    public $subdomainId;
+
+    /**
      * @description accessToken类型，Bearer
      *
      * @example Bearer
@@ -214,6 +232,8 @@ class AccountAccessTokenResponse extends Model
         'refreshToken'       => 'refresh_token',
         'role'               => 'role',
         'state'              => 'state',
+        'status'             => 'status',
+        'subdomainId'        => 'subdomain_id',
         'tokenType'          => 'token_type',
         'userData'           => 'user_data',
         'userId'             => 'user_id',
@@ -285,6 +305,12 @@ class AccountAccessTokenResponse extends Model
         }
         if (null !== $this->state) {
             $res['state'] = $this->state;
+        }
+        if (null !== $this->status) {
+            $res['status'] = $this->status;
+        }
+        if (null !== $this->subdomainId) {
+            $res['subdomain_id'] = $this->subdomainId;
         }
         if (null !== $this->tokenType) {
             $res['token_type'] = $this->tokenType;
@@ -366,6 +392,12 @@ class AccountAccessTokenResponse extends Model
         }
         if (isset($map['state'])) {
             $model->state = $map['state'];
+        }
+        if (isset($map['status'])) {
+            $model->status = $map['status'];
+        }
+        if (isset($map['subdomain_id'])) {
+            $model->subdomainId = $map['subdomain_id'];
         }
         if (isset($map['token_type'])) {
             $model->tokenType = $map['token_type'];

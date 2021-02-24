@@ -88,6 +88,13 @@ class UserAuthentication extends Model
      * @var string
      */
     public $extra;
+
+    /**
+     * @description subdomain id
+     *
+     * @var string
+     */
+    public $subdomainId;
     protected $_name = [
         'AuthenticationType' => 'AuthenticationType',
         'CreatedAt'          => 'CreatedAt',
@@ -98,6 +105,7 @@ class UserAuthentication extends Model
         'Status'             => 'Status',
         'UserID'             => 'UserID',
         'extra'              => 'extra',
+        'subdomainId'        => 'subdomain_id',
     ];
 
     public function validate()
@@ -142,6 +150,9 @@ class UserAuthentication extends Model
         if (null !== $this->extra) {
             $res['extra'] = $this->extra;
         }
+        if (null !== $this->subdomainId) {
+            $res['subdomain_id'] = $this->subdomainId;
+        }
 
         return $res;
     }
@@ -180,6 +191,9 @@ class UserAuthentication extends Model
         }
         if (isset($map['extra'])) {
             $model->extra = $map['extra'];
+        }
+        if (isset($map['subdomain_id'])) {
+            $model->subdomainId = $map['subdomain_id'];
         }
 
         return $model;

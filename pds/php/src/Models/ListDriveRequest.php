@@ -39,10 +39,31 @@ class ListDriveRequest extends Model
      * @var string
      */
     public $owner;
+
+    /**
+     * @description owner_type
+     * 所述者类型
+     *
+     * @example user
+     *
+     * @var string
+     */
+    public $ownerType;
+
+    /**
+     * @description Subdomain ID
+     *
+     * @example hz-123
+     *
+     * @var string
+     */
+    public $subdomainId;
     protected $_name = [
-        'limit'  => 'limit',
-        'marker' => 'marker',
-        'owner'  => 'owner',
+        'limit'       => 'limit',
+        'marker'      => 'marker',
+        'owner'       => 'owner',
+        'ownerType'   => 'owner_type',
+        'subdomainId' => 'subdomain_id',
     ];
     protected $_default = [
         'limit' => 100,
@@ -69,6 +90,12 @@ class ListDriveRequest extends Model
         if (null !== $this->owner) {
             $res['owner'] = $this->owner;
         }
+        if (null !== $this->ownerType) {
+            $res['owner_type'] = $this->ownerType;
+        }
+        if (null !== $this->subdomainId) {
+            $res['subdomain_id'] = $this->subdomainId;
+        }
 
         return $res;
     }
@@ -92,6 +119,12 @@ class ListDriveRequest extends Model
         }
         if (isset($map['owner'])) {
             $model->owner = $map['owner'];
+        }
+        if (isset($map['owner_type'])) {
+            $model->ownerType = $map['owner_type'];
+        }
+        if (isset($map['subdomain_id'])) {
+            $model->subdomainId = $map['subdomain_id'];
         }
 
         return $model;

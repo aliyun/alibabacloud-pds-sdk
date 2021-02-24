@@ -84,6 +84,15 @@ class GetShareResponse extends Model
     public $owner;
 
     /**
+     * @description owner
+     *
+     * @example xxx
+     *
+     * @var string
+     */
+    public $ownerType;
+
+    /**
      * @description permissions
      *
      * @example
@@ -157,6 +166,7 @@ class GetShareResponse extends Model
         'expiration'    => 'expiration',
         'expired'       => 'expired',
         'owner'         => 'owner',
+        'ownerType'     => 'owner_type',
         'permissions'   => 'permissions',
         'shareFileId'   => 'share_file_id',
         'shareFilePath' => 'share_file_path',
@@ -197,6 +207,9 @@ class GetShareResponse extends Model
         }
         if (null !== $this->owner) {
             $res['owner'] = $this->owner;
+        }
+        if (null !== $this->ownerType) {
+            $res['owner_type'] = $this->ownerType;
         }
         if (null !== $this->permissions) {
             $res['permissions'] = $this->permissions;
@@ -263,6 +276,9 @@ class GetShareResponse extends Model
         }
         if (isset($map['owner'])) {
             $model->owner = $map['owner'];
+        }
+        if (isset($map['owner_type'])) {
+            $model->ownerType = $map['owner_type'];
         }
         if (isset($map['permissions'])) {
             if (!empty($map['permissions'])) {

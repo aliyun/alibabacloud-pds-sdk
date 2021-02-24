@@ -21,8 +21,18 @@ class DeleteDriveRequest extends Model
      * @var string
      */
     public $driveId;
+
+    /**
+     * @description Subdomain ID
+     *
+     * @example hz-123
+     *
+     * @var string
+     */
+    public $subdomainId;
     protected $_name = [
-        'driveId' => 'drive_id',
+        'driveId'     => 'drive_id',
+        'subdomainId' => 'subdomain_id',
     ];
 
     public function validate()
@@ -38,6 +48,9 @@ class DeleteDriveRequest extends Model
         }
         if (null !== $this->driveId) {
             $res['drive_id'] = $this->driveId;
+        }
+        if (null !== $this->subdomainId) {
+            $res['subdomain_id'] = $this->subdomainId;
         }
 
         return $res;
@@ -56,6 +69,9 @@ class DeleteDriveRequest extends Model
         }
         if (isset($map['drive_id'])) {
             $model->driveId = $map['drive_id'];
+        }
+        if (isset($map['subdomain_id'])) {
+            $model->subdomainId = $map['subdomain_id'];
         }
 
         return $model;

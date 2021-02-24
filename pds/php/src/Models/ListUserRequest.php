@@ -30,9 +30,17 @@ class ListUserRequest extends Model
      * @var string
      */
     public $marker;
+
+    /**
+     * @description subdomain id
+     *
+     * @var string
+     */
+    public $subdomainId;
     protected $_name = [
-        'limit'  => 'limit',
-        'marker' => 'marker',
+        'limit'       => 'limit',
+        'marker'      => 'marker',
+        'subdomainId' => 'subdomain_id',
     ];
     protected $_default = [
         'limit' => 100,
@@ -56,6 +64,9 @@ class ListUserRequest extends Model
         if (null !== $this->marker) {
             $res['marker'] = $this->marker;
         }
+        if (null !== $this->subdomainId) {
+            $res['subdomain_id'] = $this->subdomainId;
+        }
 
         return $res;
     }
@@ -76,6 +87,9 @@ class ListUserRequest extends Model
         }
         if (isset($map['marker'])) {
             $model->marker = $map['marker'];
+        }
+        if (isset($map['subdomain_id'])) {
+            $model->subdomainId = $map['subdomain_id'];
         }
 
         return $model;

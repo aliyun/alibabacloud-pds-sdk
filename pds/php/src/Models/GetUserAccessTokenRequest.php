@@ -11,28 +11,25 @@ class GetUserAccessTokenRequest extends Model
     public $headers;
 
     /**
-     * @description 角色
+     * @description subdomain ID
      *
-     * @example user
+     * @example "9fd34986bd30489f8dbf2208d41c66c2"
      *
      * @var string
      */
-    public $role;
+    public $subdomainId;
 
     /**
      * @description 用户 ID
      *
-     * @example ccpuserid
+     * @example "user-xxx"
      *
      * @var string
      */
     public $userId;
     protected $_name = [
-        'role'   => 'role',
-        'userId' => 'user_id',
-    ];
-    protected $_default = [
-        'role' => 'user',
+        'subdomainId' => 'subdomain_id',
+        'userId'      => 'user_id',
     ];
 
     public function validate()
@@ -46,8 +43,8 @@ class GetUserAccessTokenRequest extends Model
         if (null !== $this->headers) {
             $res['headers'] = $this->headers;
         }
-        if (null !== $this->role) {
-            $res['role'] = $this->role;
+        if (null !== $this->subdomainId) {
+            $res['subdomain_id'] = $this->subdomainId;
         }
         if (null !== $this->userId) {
             $res['user_id'] = $this->userId;
@@ -67,8 +64,8 @@ class GetUserAccessTokenRequest extends Model
         if (isset($map['headers'])) {
             $model->headers = $map['headers'];
         }
-        if (isset($map['role'])) {
-            $model->role = $map['role'];
+        if (isset($map['subdomain_id'])) {
+            $model->subdomainId = $map['subdomain_id'];
         }
         if (isset($map['user_id'])) {
             $model->userId = $map['user_id'];
