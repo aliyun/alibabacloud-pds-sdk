@@ -10,6 +10,10 @@ public class CreateShareLinkRequest extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
     // description
     @NameInMap("description")
     public String description;
@@ -39,6 +43,9 @@ public class CreateShareLinkRequest extends TeaModel {
     @Validation(required = true, maximum = 50, minimum = 1)
     public java.util.List<String> filePathList;
 
+    @NameInMap("referer")
+    public String referer;
+
     // share_name
     @NameInMap("share_name")
     public String shareName;
@@ -58,6 +65,14 @@ public class CreateShareLinkRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHeaders() {
         return this.headers;
+    }
+
+    public CreateShareLinkRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public CreateShareLinkRequest setDescription(String description) {
@@ -106,6 +121,14 @@ public class CreateShareLinkRequest extends TeaModel {
     }
     public java.util.List<String> getFilePathList() {
         return this.filePathList;
+    }
+
+    public CreateShareLinkRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
     }
 
     public CreateShareLinkRequest setShareName(String shareName) {

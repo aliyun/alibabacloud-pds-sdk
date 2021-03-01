@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * copy file request
  */
 public class HostingCopyFileRequest extends TeaModel {
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -26,6 +30,9 @@ public class HostingCopyFileRequest extends TeaModel {
     // type: boolean
     @NameInMap("overwrite")
     public Boolean overwrite;
+
+    @NameInMap("referer")
+    public String referer;
 
     // share_id
     @NameInMap("share_id")
@@ -49,6 +56,14 @@ public class HostingCopyFileRequest extends TeaModel {
     public static HostingCopyFileRequest build(java.util.Map<String, ?> map) throws Exception {
         HostingCopyFileRequest self = new HostingCopyFileRequest();
         return TeaModel.build(map, self);
+    }
+
+    public HostingCopyFileRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public HostingCopyFileRequest setDriveId(String driveId) {
@@ -81,6 +96,14 @@ public class HostingCopyFileRequest extends TeaModel {
     }
     public Boolean getOverwrite() {
         return this.overwrite;
+    }
+
+    public HostingCopyFileRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
     }
 
     public HostingCopyFileRequest setShareId(String shareId) {

@@ -32,6 +32,9 @@ public class GetVideoPreviewURLRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    @NameInMap("referer")
+    public String referer;
+
     // share_id, either share_id or drive_id is required
     @NameInMap("share_id")
     public String shareId;
@@ -91,6 +94,14 @@ public class GetVideoPreviewURLRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public GetVideoPreviewURLRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
     }
 
     public GetVideoPreviewURLRequest setShareId(String shareId) {
