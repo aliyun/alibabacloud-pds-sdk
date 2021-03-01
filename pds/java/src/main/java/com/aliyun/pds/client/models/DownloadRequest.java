@@ -30,6 +30,10 @@ public class DownloadRequest extends TeaModel {
     @NameInMap("VideoThumbnailProcess")
     public String VideoThumbnailProcess;
 
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
     @NameInMap("file_id_path")
     public String fileIdPath;
 
@@ -86,6 +90,14 @@ public class DownloadRequest extends TeaModel {
     }
     public String getVideoThumbnailProcess() {
         return this.VideoThumbnailProcess;
+    }
+
+    public DownloadRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public DownloadRequest setFileIdPath(String fileIdPath) {

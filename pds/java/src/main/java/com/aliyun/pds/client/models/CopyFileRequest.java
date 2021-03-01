@@ -10,6 +10,10 @@ public class CopyFileRequest extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
     // auto_rename
     // type: boolean
     @NameInMap("auto_rename")
@@ -32,6 +36,9 @@ public class CopyFileRequest extends TeaModel {
     @NameInMap("new_name")
     @Validation(maxLength = 1024, minLength = 1)
     public String newName;
+
+    @NameInMap("referer")
+    public String referer;
 
     // share_id, either share_id or drive_id is required
     @NameInMap("share_id")
@@ -63,6 +70,14 @@ public class CopyFileRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHeaders() {
         return this.headers;
+    }
+
+    public CopyFileRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public CopyFileRequest setAutoRename(Boolean autoRename) {
@@ -103,6 +118,14 @@ public class CopyFileRequest extends TeaModel {
     }
     public String getNewName() {
         return this.newName;
+    }
+
+    public CopyFileRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
     }
 
     public CopyFileRequest setShareId(String shareId) {

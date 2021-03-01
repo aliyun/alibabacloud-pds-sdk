@@ -10,6 +10,13 @@ public class GetShareLinkTokenRequest extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
+    @NameInMap("referer")
+    public String referer;
+
     // share_id
     @NameInMap("share_id")
     public String shareId;
@@ -29,6 +36,22 @@ public class GetShareLinkTokenRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHeaders() {
         return this.headers;
+    }
+
+    public GetShareLinkTokenRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
+    }
+
+    public GetShareLinkTokenRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
     }
 
     public GetShareLinkTokenRequest setShareId(String shareId) {

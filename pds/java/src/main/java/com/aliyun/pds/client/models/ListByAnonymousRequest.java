@@ -10,6 +10,10 @@ public class ListByAnonymousRequest extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
     // image_thumbnail_process
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
@@ -58,6 +62,14 @@ public class ListByAnonymousRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHeaders() {
         return this.headers;
+    }
+
+    public ListByAnonymousRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public ListByAnonymousRequest setImageThumbnailProcess(String imageThumbnailProcess) {

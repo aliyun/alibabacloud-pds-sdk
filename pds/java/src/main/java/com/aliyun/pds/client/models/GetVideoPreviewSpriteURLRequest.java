@@ -10,6 +10,10 @@ public class GetVideoPreviewSpriteURLRequest extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
+    // addition_data
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
@@ -23,6 +27,9 @@ public class GetVideoPreviewSpriteURLRequest extends TeaModel {
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
+
+    @NameInMap("referer")
+    public String referer;
 
     // share_id, either share_id or drive_id is required
     @NameInMap("share_id")
@@ -39,6 +46,14 @@ public class GetVideoPreviewSpriteURLRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHeaders() {
         return this.headers;
+    }
+
+    public GetVideoPreviewSpriteURLRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public GetVideoPreviewSpriteURLRequest setDriveId(String driveId) {
@@ -63,6 +78,14 @@ public class GetVideoPreviewSpriteURLRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public GetVideoPreviewSpriteURLRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
     }
 
     public GetVideoPreviewSpriteURLRequest setShareId(String shareId) {
