@@ -16,7 +16,7 @@ public class GetFileRequest extends TeaModel {
 
     // drive_id
     @NameInMap("drive_id")
-    @Validation(required = true, pattern = "[0-9]+")
+    @Validation(pattern = "[0-9]+")
     public String driveId;
 
     // fields
