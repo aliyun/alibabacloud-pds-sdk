@@ -118,6 +118,11 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("thumbnail")
     public String thumbnail;
 
+    // Trashed
+    // type: boolean
+    @NameInMap("trashed")
+    public Boolean trashed;
+
     // trashed_at
     @NameInMap("trashed_at")
     public String trashedAt;
@@ -367,6 +372,14 @@ public class GetFileResponse extends TeaModel {
     }
     public String getThumbnail() {
         return this.thumbnail;
+    }
+
+    public GetFileResponse setTrashed(Boolean trashed) {
+        this.trashed = trashed;
+        return this;
+    }
+    public Boolean getTrashed() {
+        return this.trashed;
     }
 
     public GetFileResponse setTrashedAt(String trashedAt) {
