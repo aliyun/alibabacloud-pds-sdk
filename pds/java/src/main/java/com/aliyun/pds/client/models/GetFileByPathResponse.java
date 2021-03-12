@@ -91,8 +91,9 @@ public class GetFileByPathResponse extends TeaModel {
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String parentFileId;
 
+    // PunishFlag
     @NameInMap("punish_flag")
-    public Integer punishFlag;
+    public Long punishFlag;
 
     @NameInMap("share_id")
     public String shareId;
@@ -318,11 +319,11 @@ public class GetFileByPathResponse extends TeaModel {
         return this.parentFileId;
     }
 
-    public GetFileByPathResponse setPunishFlag(Integer punishFlag) {
+    public GetFileByPathResponse setPunishFlag(Long punishFlag) {
         this.punishFlag = punishFlag;
         return this;
     }
-    public Integer getPunishFlag() {
+    public Long getPunishFlag() {
         return this.punishFlag;
     }
 

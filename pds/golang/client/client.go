@@ -1416,8 +1416,9 @@ type BaseCCPFileResponse struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
 	// parent_file_id
 	ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
-	PunishFlag   *int    `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
-	ShareId      *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// PunishFlag
+	PunishFlag *int64  `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
+	ShareId    *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// Size
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
 	// starred
@@ -1553,7 +1554,7 @@ func (s *BaseCCPFileResponse) SetParentFileId(v string) *BaseCCPFileResponse {
 	return s
 }
 
-func (s *BaseCCPFileResponse) SetPunishFlag(v int) *BaseCCPFileResponse {
+func (s *BaseCCPFileResponse) SetPunishFlag(v int64) *BaseCCPFileResponse {
 	s.PunishFlag = &v
 	return s
 }
@@ -1970,97 +1971,6 @@ func (s *BaseHostingFileResponse) SetUrl(v string) *BaseHostingFileResponse {
 }
 
 /**
- *
- */
-type BaseMediaResponse struct {
-	// address_line
-	AddressLine *string `json:"address_line,omitempty" xml:"address_line,omitempty"`
-	// city
-	City *string `json:"city,omitempty" xml:"city,omitempty"`
-	// country
-	Country *string `json:"country,omitempty" xml:"country,omitempty"`
-	// district
-	District *string `json:"district,omitempty" xml:"district,omitempty"`
-	// height
-	Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
-	// system_tags
-	ImageTags []*SystemTag `json:"image_tags,omitempty" xml:"image_tags,omitempty" type:"Repeated"`
-	// location
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// province
-	Province *string `json:"province,omitempty" xml:"province,omitempty"`
-	// time
-	Time *string `json:"time,omitempty" xml:"time,omitempty"`
-	// township
-	Township *string `json:"township,omitempty" xml:"township,omitempty"`
-	// width
-	Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
-}
-
-func (s BaseMediaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BaseMediaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BaseMediaResponse) SetAddressLine(v string) *BaseMediaResponse {
-	s.AddressLine = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetCity(v string) *BaseMediaResponse {
-	s.City = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetCountry(v string) *BaseMediaResponse {
-	s.Country = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetDistrict(v string) *BaseMediaResponse {
-	s.District = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetHeight(v int64) *BaseMediaResponse {
-	s.Height = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetImageTags(v []*SystemTag) *BaseMediaResponse {
-	s.ImageTags = v
-	return s
-}
-
-func (s *BaseMediaResponse) SetLocation(v string) *BaseMediaResponse {
-	s.Location = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetProvince(v string) *BaseMediaResponse {
-	s.Province = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetTime(v string) *BaseMediaResponse {
-	s.Time = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetTownship(v string) *BaseMediaResponse {
-	s.Township = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetWidth(v int64) *BaseMediaResponse {
-	s.Width = &v
-	return s
-}
-
-/**
  * list_share_link response
  */
 type BaseShareLinkResponse struct {
@@ -2465,47 +2375,6 @@ func (s *Captcha) SetCaptchaId(v string) *Captcha {
 }
 
 /**
- *
- */
-type CertInfo struct {
-	CertID *string `json:"CertID,omitempty" xml:"CertID,omitempty"`
-	// cert body
-	CertBody *string `json:"cert_body,omitempty" xml:"cert_body,omitempty" require:"true"`
-	// cert name
-	CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty" require:"true"`
-	// cert privatekey
-	CertPrivatekey *string `json:"cert_privatekey,omitempty" xml:"cert_privatekey,omitempty" require:"true"`
-}
-
-func (s CertInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CertInfo) GoString() string {
-	return s.String()
-}
-
-func (s *CertInfo) SetCertID(v string) *CertInfo {
-	s.CertID = &v
-	return s
-}
-
-func (s *CertInfo) SetCertBody(v string) *CertInfo {
-	s.CertBody = &v
-	return s
-}
-
-func (s *CertInfo) SetCertName(v string) *CertInfo {
-	s.CertName = &v
-	return s
-}
-
-func (s *CertInfo) SetCertPrivatekey(v string) *CertInfo {
-	s.CertPrivatekey = &v
-	return s
-}
-
-/**
  * complete file response
  */
 type CompleteFileResponse struct {
@@ -2550,8 +2419,9 @@ type CompleteFileResponse struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
 	// parent_file_id
 	ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
-	PunishFlag   *int    `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
-	ShareId      *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// PunishFlag
+	PunishFlag *int64  `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
+	ShareId    *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// Size
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
 	// starred
@@ -2693,7 +2563,7 @@ func (s *CompleteFileResponse) SetParentFileId(v string) *CompleteFileResponse {
 	return s
 }
 
-func (s *CompleteFileResponse) SetPunishFlag(v int) *CompleteFileResponse {
+func (s *CompleteFileResponse) SetPunishFlag(v int64) *CompleteFileResponse {
 	s.PunishFlag = &v
 	return s
 }
@@ -4658,8 +4528,9 @@ type GetFileByPathResponse struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
 	// parent_file_id
 	ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
-	PunishFlag   *int    `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
-	ShareId      *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// PunishFlag
+	PunishFlag *int64  `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
+	ShareId    *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// Size
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
 	// starred
@@ -4798,7 +4669,7 @@ func (s *GetFileByPathResponse) SetParentFileId(v string) *GetFileByPathResponse
 	return s
 }
 
-func (s *GetFileByPathResponse) SetPunishFlag(v int) *GetFileByPathResponse {
+func (s *GetFileByPathResponse) SetPunishFlag(v int64) *GetFileByPathResponse {
 	s.PunishFlag = &v
 	return s
 }
@@ -4921,8 +4792,9 @@ type GetFileResponse struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
 	// parent_file_id
 	ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
-	PunishFlag   *int    `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
-	ShareId      *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// PunishFlag
+	PunishFlag *int64  `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
+	ShareId    *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// Size
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
 	// starred
@@ -5061,7 +4933,7 @@ func (s *GetFileResponse) SetParentFileId(v string) *GetFileResponse {
 	return s
 }
 
-func (s *GetFileResponse) SetPunishFlag(v int) *GetFileResponse {
+func (s *GetFileResponse) SetPunishFlag(v int64) *GetFileResponse {
 	s.PunishFlag = &v
 	return s
 }
@@ -8615,132 +8487,6 @@ func (s *SharePermissionPolicy) SetPermissionType(v string) *SharePermissionPoli
 /**
  *
  */
-type Store struct {
-	// 全球加速地址
-	AccelerateEndpoint *string `json:"accelerate_endpoint,omitempty" xml:"accelerate_endpoint,omitempty"`
-	// 存储公共前缀
-	BasePath *string `json:"base_path,omitempty" xml:"base_path,omitempty"`
-	// bucket名称
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty" require:"true"`
-	// 内容分发地址
-	CdnEndpoint *string `json:"cdn_endpoint,omitempty" xml:"cdn_endpoint,omitempty"`
-	// 自定义全球加速地址
-	CustomizedAccelerateEndpoint *string `json:"customized_accelerate_endpoint,omitempty" xml:"customized_accelerate_endpoint,omitempty"`
-	// 自定义内容分发地址
-	CustomizedCdnEndpoint *string `json:"customized_cdn_endpoint,omitempty" xml:"customized_cdn_endpoint,omitempty"`
-	// 自定义Public访问地址
-	CustomizedEndpoint *string `json:"customized_endpoint,omitempty" xml:"customized_endpoint,omitempty"`
-	// 自定义vpc访问地址
-	CustomizedInternalEndpoint *string `json:"customized_internal_endpoint,omitempty" xml:"customized_internal_endpoint,omitempty"`
-	// Public访问地址
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty" require:"true"`
-	// vpc访问地址
-	InternalEndpoint *string `json:"internal_endpoint,omitempty" xml:"internal_endpoint,omitempty"`
-	// 地点
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// 存储归属，system表示系统提供，custom表示使用自己的存储
-	Ownership *string `json:"ownership,omitempty" xml:"ownership,omitempty" require:"true"`
-	// Policy授权,system类型store会将bucket权限授予当前云账号
-	Policy *string `json:"policy,omitempty" xml:"policy,omitempty" require:"true"`
-	// 访问Bucket的角色ARN
-	RoleArn *string `json:"role_arn,omitempty" xml:"role_arn,omitempty"`
-	// store ID
-	StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty" require:"true"`
-	// 存储类型，当前只支持oss
-	Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
-}
-
-func (s Store) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Store) GoString() string {
-	return s.String()
-}
-
-func (s *Store) SetAccelerateEndpoint(v string) *Store {
-	s.AccelerateEndpoint = &v
-	return s
-}
-
-func (s *Store) SetBasePath(v string) *Store {
-	s.BasePath = &v
-	return s
-}
-
-func (s *Store) SetBucket(v string) *Store {
-	s.Bucket = &v
-	return s
-}
-
-func (s *Store) SetCdnEndpoint(v string) *Store {
-	s.CdnEndpoint = &v
-	return s
-}
-
-func (s *Store) SetCustomizedAccelerateEndpoint(v string) *Store {
-	s.CustomizedAccelerateEndpoint = &v
-	return s
-}
-
-func (s *Store) SetCustomizedCdnEndpoint(v string) *Store {
-	s.CustomizedCdnEndpoint = &v
-	return s
-}
-
-func (s *Store) SetCustomizedEndpoint(v string) *Store {
-	s.CustomizedEndpoint = &v
-	return s
-}
-
-func (s *Store) SetCustomizedInternalEndpoint(v string) *Store {
-	s.CustomizedInternalEndpoint = &v
-	return s
-}
-
-func (s *Store) SetEndpoint(v string) *Store {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *Store) SetInternalEndpoint(v string) *Store {
-	s.InternalEndpoint = &v
-	return s
-}
-
-func (s *Store) SetLocation(v string) *Store {
-	s.Location = &v
-	return s
-}
-
-func (s *Store) SetOwnership(v string) *Store {
-	s.Ownership = &v
-	return s
-}
-
-func (s *Store) SetPolicy(v string) *Store {
-	s.Policy = &v
-	return s
-}
-
-func (s *Store) SetRoleArn(v string) *Store {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *Store) SetStoreId(v string) *Store {
-	s.StoreId = &v
-	return s
-}
-
-func (s *Store) SetType(v string) *Store {
-	s.Type = &v
-	return s
-}
-
-/**
- *
- */
 type StoreFile struct {
 	DomainId       *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -9624,8 +9370,9 @@ type UpdateFileMetaResponse struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
 	// parent_file_id
 	ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
-	PunishFlag   *int    `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
-	ShareId      *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// PunishFlag
+	PunishFlag *int64  `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
+	ShareId    *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// Size
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
 	// starred
@@ -9761,7 +9508,7 @@ func (s *UpdateFileMetaResponse) SetParentFileId(v string) *UpdateFileMetaRespon
 	return s
 }
 
-func (s *UpdateFileMetaResponse) SetPunishFlag(v int) *UpdateFileMetaResponse {
+func (s *UpdateFileMetaResponse) SetPunishFlag(v int64) *UpdateFileMetaResponse {
 	s.PunishFlag = &v
 	return s
 }
@@ -10167,41 +9914,6 @@ func (s *UploadPartInfo) SetPartSize(v int64) *UploadPartInfo {
 
 func (s *UploadPartInfo) SetUploadUrl(v string) *UploadPartInfo {
 	s.UploadUrl = &v
-	return s
-}
-
-/**
- *
- */
-type UrlInfo struct {
-	// download_url
-	DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
-	// thumbnail
-	Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
-	// url
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
-}
-
-func (s UrlInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UrlInfo) GoString() string {
-	return s.String()
-}
-
-func (s *UrlInfo) SetDownloadUrl(v string) *UrlInfo {
-	s.DownloadUrl = &v
-	return s
-}
-
-func (s *UrlInfo) SetThumbnail(v string) *UrlInfo {
-	s.Thumbnail = &v
-	return s
-}
-
-func (s *UrlInfo) SetUrl(v string) *UrlInfo {
-	s.Url = &v
 	return s
 }
 
@@ -12874,6 +12586,132 @@ func (s *SetDataCNameResponse) SetLocation(v string) *SetDataCNameResponse {
 }
 
 /**
+ *
+ */
+type Store struct {
+	// 全球加速地址
+	AccelerateEndpoint *string `json:"accelerate_endpoint,omitempty" xml:"accelerate_endpoint,omitempty"`
+	// 存储公共前缀
+	BasePath *string `json:"base_path,omitempty" xml:"base_path,omitempty"`
+	// bucket名称
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty" require:"true"`
+	// 内容分发地址
+	CdnEndpoint *string `json:"cdn_endpoint,omitempty" xml:"cdn_endpoint,omitempty"`
+	// 自定义全球加速地址
+	CustomizedAccelerateEndpoint *string `json:"customized_accelerate_endpoint,omitempty" xml:"customized_accelerate_endpoint,omitempty"`
+	// 自定义内容分发地址
+	CustomizedCdnEndpoint *string `json:"customized_cdn_endpoint,omitempty" xml:"customized_cdn_endpoint,omitempty"`
+	// 自定义Public访问地址
+	CustomizedEndpoint *string `json:"customized_endpoint,omitempty" xml:"customized_endpoint,omitempty"`
+	// 自定义vpc访问地址
+	CustomizedInternalEndpoint *string `json:"customized_internal_endpoint,omitempty" xml:"customized_internal_endpoint,omitempty"`
+	// Public访问地址
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty" require:"true"`
+	// vpc访问地址
+	InternalEndpoint *string `json:"internal_endpoint,omitempty" xml:"internal_endpoint,omitempty"`
+	// 地点
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// 存储归属，system表示系统提供，custom表示使用自己的存储
+	Ownership *string `json:"ownership,omitempty" xml:"ownership,omitempty" require:"true"`
+	// Policy授权,system类型store会将bucket权限授予当前云账号
+	Policy *string `json:"policy,omitempty" xml:"policy,omitempty" require:"true"`
+	// 访问Bucket的角色ARN
+	RoleArn *string `json:"role_arn,omitempty" xml:"role_arn,omitempty"`
+	// store ID
+	StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty" require:"true"`
+	// 存储类型，当前只支持oss
+	Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+}
+
+func (s Store) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Store) GoString() string {
+	return s.String()
+}
+
+func (s *Store) SetAccelerateEndpoint(v string) *Store {
+	s.AccelerateEndpoint = &v
+	return s
+}
+
+func (s *Store) SetBasePath(v string) *Store {
+	s.BasePath = &v
+	return s
+}
+
+func (s *Store) SetBucket(v string) *Store {
+	s.Bucket = &v
+	return s
+}
+
+func (s *Store) SetCdnEndpoint(v string) *Store {
+	s.CdnEndpoint = &v
+	return s
+}
+
+func (s *Store) SetCustomizedAccelerateEndpoint(v string) *Store {
+	s.CustomizedAccelerateEndpoint = &v
+	return s
+}
+
+func (s *Store) SetCustomizedCdnEndpoint(v string) *Store {
+	s.CustomizedCdnEndpoint = &v
+	return s
+}
+
+func (s *Store) SetCustomizedEndpoint(v string) *Store {
+	s.CustomizedEndpoint = &v
+	return s
+}
+
+func (s *Store) SetCustomizedInternalEndpoint(v string) *Store {
+	s.CustomizedInternalEndpoint = &v
+	return s
+}
+
+func (s *Store) SetEndpoint(v string) *Store {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *Store) SetInternalEndpoint(v string) *Store {
+	s.InternalEndpoint = &v
+	return s
+}
+
+func (s *Store) SetLocation(v string) *Store {
+	s.Location = &v
+	return s
+}
+
+func (s *Store) SetOwnership(v string) *Store {
+	s.Ownership = &v
+	return s
+}
+
+func (s *Store) SetPolicy(v string) *Store {
+	s.Policy = &v
+	return s
+}
+
+func (s *Store) SetRoleArn(v string) *Store {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *Store) SetStoreId(v string) *Store {
+	s.StoreId = &v
+	return s
+}
+
+func (s *Store) SetType(v string) *Store {
+	s.Type = &v
+	return s
+}
+
+/**
  * create domain response
  */
 type UpdateDomainResponse struct {
@@ -14599,6 +14437,97 @@ func (s *BaseListFileRequest) SetSignToken(v string) *BaseListFileRequest {
 
 func (s *BaseListFileRequest) SetVideoThumbnailProcess(v string) *BaseListFileRequest {
 	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
+ *
+ */
+type BaseMediaResponse struct {
+	// address_line
+	AddressLine *string `json:"address_line,omitempty" xml:"address_line,omitempty"`
+	// city
+	City *string `json:"city,omitempty" xml:"city,omitempty"`
+	// country
+	Country *string `json:"country,omitempty" xml:"country,omitempty"`
+	// district
+	District *string `json:"district,omitempty" xml:"district,omitempty"`
+	// height
+	Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
+	// system_tags
+	ImageTags []*SystemTag `json:"image_tags,omitempty" xml:"image_tags,omitempty" type:"Repeated"`
+	// location
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// province
+	Province *string `json:"province,omitempty" xml:"province,omitempty"`
+	// time
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// township
+	Township *string `json:"township,omitempty" xml:"township,omitempty"`
+	// width
+	Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
+}
+
+func (s BaseMediaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseMediaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BaseMediaResponse) SetAddressLine(v string) *BaseMediaResponse {
+	s.AddressLine = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetCity(v string) *BaseMediaResponse {
+	s.City = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetCountry(v string) *BaseMediaResponse {
+	s.Country = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetDistrict(v string) *BaseMediaResponse {
+	s.District = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetHeight(v int64) *BaseMediaResponse {
+	s.Height = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetImageTags(v []*SystemTag) *BaseMediaResponse {
+	s.ImageTags = v
+	return s
+}
+
+func (s *BaseMediaResponse) SetLocation(v string) *BaseMediaResponse {
+	s.Location = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetProvince(v string) *BaseMediaResponse {
+	s.Province = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetTime(v string) *BaseMediaResponse {
+	s.Time = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetTownship(v string) *BaseMediaResponse {
+	s.Township = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetWidth(v int64) *BaseMediaResponse {
+	s.Width = &v
 	return s
 }
 
@@ -23500,6 +23429,41 @@ func (s *UpdateFaceGroupInfoResponse) SetDriveId(v string) *UpdateFaceGroupInfoR
 
 func (s *UpdateFaceGroupInfoResponse) SetGroupId(v string) *UpdateFaceGroupInfoResponse {
 	s.GroupId = &v
+	return s
+}
+
+/**
+ *
+ */
+type UrlInfo struct {
+	// download_url
+	DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
+	// thumbnail
+	Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	// url
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s UrlInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UrlInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UrlInfo) SetDownloadUrl(v string) *UrlInfo {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *UrlInfo) SetThumbnail(v string) *UrlInfo {
+	s.Thumbnail = &v
+	return s
+}
+
+func (s *UrlInfo) SetUrl(v string) *UrlInfo {
+	s.Url = &v
 	return s
 }
 
