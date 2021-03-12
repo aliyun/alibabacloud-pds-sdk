@@ -1,3 +1,6 @@
+2021-03-12 Version: v1.0.10
+- Update apis
+
 2021-03-11 Version: v1.0.9
 - Update apis
 
