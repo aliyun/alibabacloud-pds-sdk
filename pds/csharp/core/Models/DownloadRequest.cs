@@ -49,6 +49,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public string VideoThumbnailProcess { get; set; }
 
+        /// <summary>
+        /// addition_data
+        /// </summary>
+        [NameInMap("addition_data")]
+        [Validation(Required=false)]
+        public Dictionary<string, object> AdditionData { get; set; }
+
         [NameInMap("file_id_path")]
         [Validation(Required=false)]
         public string FileIdPath { get; set; }

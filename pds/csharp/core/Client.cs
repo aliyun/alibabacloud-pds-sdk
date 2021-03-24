@@ -137,7 +137,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -286,7 +286,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -437,7 +437,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -588,7 +588,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -738,7 +738,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -888,7 +888,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -1038,7 +1038,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -1185,7 +1185,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -1332,7 +1332,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -1482,7 +1482,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -1632,7 +1632,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -1782,7 +1782,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -1932,7 +1932,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -2082,7 +2082,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -2232,7 +2232,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -2382,7 +2382,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -2531,7 +2531,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -2680,7 +2680,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -2830,7 +2830,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -2980,7 +2980,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -3131,7 +3131,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -3282,7 +3282,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -3432,7 +3432,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -3582,7 +3582,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -3732,7 +3732,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -3882,7 +3882,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -4033,7 +4033,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -4184,7 +4184,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -4334,7 +4334,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -4484,7 +4484,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -4634,7 +4634,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -4781,7 +4781,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -4928,7 +4928,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -5078,7 +5078,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".auth.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -5227,7 +5227,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -5376,7 +5376,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -5525,7 +5525,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -5674,7 +5674,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -5823,7 +5823,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -5972,7 +5972,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -6121,7 +6121,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -6270,7 +6270,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -6419,7 +6419,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -6568,7 +6568,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -6717,7 +6717,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -6866,7 +6866,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -7017,7 +7017,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -7168,7 +7168,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -7321,7 +7321,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -7474,7 +7474,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -7626,7 +7626,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -7778,7 +7778,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -7931,7 +7931,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -8084,7 +8084,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -8235,7 +8235,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -8383,7 +8383,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -8532,7 +8532,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -8684,7 +8684,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -8837,7 +8837,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -8990,7 +8990,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -9141,7 +9141,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -9292,7 +9292,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -9443,7 +9443,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -9594,7 +9594,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -9746,7 +9746,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -9898,7 +9898,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -10050,7 +10050,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -10202,7 +10202,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -10354,7 +10354,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -10516,7 +10516,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -10680,7 +10680,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -10834,7 +10834,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -10986,7 +10986,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -11145,7 +11145,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -11304,7 +11304,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -11456,7 +11456,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -11608,7 +11608,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -11760,7 +11760,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -11912,7 +11912,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -12064,7 +12064,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -12216,7 +12216,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -12368,7 +12368,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -12519,7 +12519,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -12670,7 +12670,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -12822,7 +12822,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -12974,7 +12974,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -13126,7 +13126,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -13278,7 +13278,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -13430,7 +13430,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -13582,7 +13582,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -13734,7 +13734,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -13886,7 +13886,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -14038,7 +14038,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -14190,7 +14190,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -14342,7 +14342,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -14494,7 +14494,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -14528,6 +14528,310 @@ namespace Aliyun.SDK.PDS.Client
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
                         return TeaModel.ToObject<ListFileModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * list file activity
+         * @tags file
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error NotFound The resource {resource_name} cannot be found. Please check.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public ListFileActivityModel ListFileActivityEx(ListFileActivityRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/file/list_activity");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<ListFileActivityModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * list file activity
+         * @tags file
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error NotFound The resource {resource_name} cannot be found. Please check.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<ListFileActivityModel> ListFileActivityExAsync(ListFileActivityRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/file/list_activity");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<ListFileActivityModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -14645,7 +14949,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -14796,7 +15100,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -14948,7 +15252,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -15100,7 +15404,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -15252,7 +15556,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -15404,7 +15708,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -15556,7 +15860,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -15708,7 +16012,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -15860,7 +16164,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -16012,7 +16316,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -16164,7 +16468,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -16316,7 +16620,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -16468,7 +16772,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -16620,7 +16924,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -16772,7 +17076,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -16924,7 +17228,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -17077,7 +17381,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -17230,7 +17534,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -17382,7 +17686,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -17534,7 +17838,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -17685,7 +17989,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -17833,7 +18137,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -17982,7 +18286,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -18134,7 +18438,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -18285,7 +18589,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -18436,7 +18740,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -18588,7 +18892,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -18740,7 +19044,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -18891,7 +19195,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -19039,7 +19343,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -19188,7 +19492,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -19340,7 +19644,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -19374,6 +19678,304 @@ namespace Aliyun.SDK.PDS.Client
                         obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
                         respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
                         return TeaModel.ToObject<CreateShareLinkModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 查看分享的所有信息
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public GetShareLinkModel GetShareLinkEx(GetShareLinkRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = GetAccessKeyId();
+                    string accessKeySecret = GetAccessKeySecret();
+                    string securityToken = GetSecurityToken();
+                    string accessToken = GetAccessToken();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/get");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = TeaCore.DoAction(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<GetShareLinkModel>(new Dictionary<string, object>
+                        {
+                            {"body", respMap},
+                            {"headers", response_.Headers},
+                        });
+                    }
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(response_.Headers.Get("x-ca-error-message")))
+                    {
+                        throw new TeaException(new Dictionary<string, object>
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                            {"message", response_.Headers.Get("x-ca-error-message")},
+                        });
+                    }
+                    obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                    respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                    throw new TeaException(TeaConverter.merge<object>
+                    (
+                        new Dictionary<string, object>()
+                        {
+                            {"data", new Dictionary<string, object>
+                            {
+                                {"requestId", response_.Headers.Get("x-ca-request-id")},
+                                {"statusCode", response_.StatusCode},
+                                {"statusMessage", response_.StatusMessage},
+                            }},
+                        },
+                        respMap
+                    ));
+                }
+                catch (Exception e)
+                {
+                    if (TeaCore.IsRetryable(e))
+                    {
+                        _lastException = e;
+                        continue;
+                    }
+                    throw e;
+                }
+            }
+
+            throw new TeaUnretryableException(_lastRequest, _lastException);
+        }
+
+        /**
+         * 查看分享的所有信息
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<GetShareLinkModel> GetShareLinkExAsync(GetShareLinkRequest request, RuntimeOptions runtime)
+        {
+            request.Validate();
+            runtime.Validate();
+            Dictionary<string, object> runtime_ = new Dictionary<string, object>
+            {
+                {"timeouted", "retry"},
+                {"readTimeout", runtime.ReadTimeout},
+                {"connectTimeout", runtime.ConnectTimeout},
+                {"localAddr", runtime.LocalAddr},
+                {"httpProxy", runtime.HttpProxy},
+                {"httpsProxy", runtime.HttpsProxy},
+                {"noProxy", runtime.NoProxy},
+                {"maxIdleConns", runtime.MaxIdleConns},
+                {"socks5Proxy", runtime.Socks5Proxy},
+                {"socks5NetWork", runtime.Socks5NetWork},
+                {"retry", new Dictionary<string, object>
+                {
+                    {"retryable", runtime.Autoretry},
+                    {"maxAttempts", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.MaxAttempts, 3)},
+                }},
+                {"backoff", new Dictionary<string, object>
+                {
+                    {"policy", AlibabaCloud.TeaUtil.Common.DefaultString(runtime.BackoffPolicy, "no")},
+                    {"period", AlibabaCloud.TeaUtil.Common.DefaultNumber(runtime.BackoffPeriod, 1)},
+                }},
+                {"ignoreSSL", runtime.IgnoreSSL},
+            };
+
+            TeaRequest _lastRequest = null;
+            Exception _lastException = null;
+            long _now = System.DateTime.Now.Millisecond;
+            int _retryTimes = 0;
+            while (TeaCore.AllowRetry((IDictionary) runtime_["retry"], _retryTimes, _now))
+            {
+                if (_retryTimes > 0)
+                {
+                    int backoffTime = TeaCore.GetBackoffTime((IDictionary)runtime_["backoff"], _retryTimes);
+                    if (backoffTime > 0)
+                    {
+                        TeaCore.Sleep(backoffTime);
+                    }
+                }
+                _retryTimes = _retryTimes + 1;
+                try
+                {
+                    TeaRequest request_ = new TeaRequest();
+                    string accesskeyId = await GetAccessKeyIdAsync();
+                    string accessKeySecret = await GetAccessKeySecretAsync();
+                    string securityToken = await GetSecurityTokenAsync();
+                    string accessToken = await GetAccessTokenAsync();
+                    Dictionary<string, object> realReq = AlibabaCloud.TeaUtil.Common.ToMap(request);
+                    request_.Protocol = AlibabaCloud.TeaUtil.Common.DefaultString(_protocol, "https");
+                    request_.Method = "POST";
+                    request_.Pathname = GetPathname(_nickname, "/v2/share_link/get");
+                    request_.Headers = TeaConverter.merge<string>
+                    (
+                        new Dictionary<string, string>()
+                        {
+                            {"user-agent", GetUserAgent()},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
+                            {"content-type", "application/json; charset=utf-8"},
+                        },
+                        request.Headers
+                    );
+                    realReq["headers"] = null;
+                    if (!AlibabaCloud.TeaUtil.Common.Empty(accessToken))
+                    {
+                        request_.Headers["authorization"] = "Bearer " + accessToken;
+                    }
+                    else if (!AlibabaCloud.TeaUtil.Common.Empty(accesskeyId) && !AlibabaCloud.TeaUtil.Common.Empty(accessKeySecret))
+                    {
+                        if (!AlibabaCloud.TeaUtil.Common.Empty(securityToken))
+                        {
+                            request_.Headers["x-acs-security-token"] = securityToken;
+                        }
+                        request_.Headers["date"] = AlibabaCloud.TeaUtil.Common.GetDateUTCString();
+                        request_.Headers["accept"] = "application/json";
+                        request_.Headers["x-acs-signature-method"] = "HMAC-SHA1";
+                        request_.Headers["x-acs-signature-version"] = "1.0";
+                        string stringToSign = AlibabaCloud.ROAUtil.Common.GetStringToSign(request_);
+                        request_.Headers["authorization"] = "acs " + accesskeyId + ":" + AlibabaCloud.ROAUtil.Common.GetSignature(stringToSign, accessKeySecret);
+                    }
+                    request_.Body = TeaCore.BytesReadable(AlibabaCloud.TeaUtil.Common.ToJSONString(realReq));
+                    _lastRequest = request_;
+                    TeaResponse response_ = await TeaCore.DoActionAsync(request_, runtime_);
+
+                    Dictionary<string, object> respMap = null;
+                    object obj = null;
+                    if (AlibabaCloud.TeaUtil.Common.EqualNumber(response_.StatusCode, 200))
+                    {
+                        obj = AlibabaCloud.TeaUtil.Common.ReadAsJSON(response_.Body);
+                        respMap = AlibabaCloud.TeaUtil.Common.AssertAsMap(obj);
+                        return TeaModel.ToObject<GetShareLinkModel>(new Dictionary<string, object>
                         {
                             {"body", respMap},
                             {"headers", response_.Headers},
@@ -19490,7 +20092,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -19640,7 +20242,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -19791,7 +20393,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -19942,7 +20544,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -20092,7 +20694,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -20242,7 +20844,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -20393,7 +20995,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -20544,7 +21146,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -20695,7 +21297,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -20846,7 +21448,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -20997,7 +21599,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -21148,7 +21750,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -21299,7 +21901,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -21450,7 +22052,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -21601,7 +22203,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -21752,7 +22354,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -21903,7 +22505,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -22054,7 +22656,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -22205,7 +22807,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -22356,7 +22958,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -22507,7 +23109,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -22658,7 +23260,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -22809,7 +23411,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -22960,7 +23562,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -23111,7 +23713,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -23259,7 +23861,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -23407,7 +24009,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -23558,7 +24160,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -23709,7 +24311,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -23860,7 +24462,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -24011,7 +24613,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -24162,7 +24764,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -24313,7 +24915,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -24464,7 +25066,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -24615,7 +25217,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -24766,7 +25368,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -24917,7 +25519,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -25068,7 +25670,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -25219,7 +25821,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -25367,7 +25969,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -25515,7 +26117,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -25666,7 +26268,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -25817,7 +26419,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -25965,7 +26567,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -26114,7 +26716,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -26266,7 +26868,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -26417,7 +27019,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -26568,7 +27170,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -26719,7 +27321,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -26867,7 +27469,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -27015,7 +27617,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -27166,7 +27768,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -27320,7 +27922,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -27474,7 +28076,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -27626,7 +28228,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -27778,7 +28380,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -27930,7 +28532,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -28082,7 +28684,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -28234,7 +28836,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -28386,7 +28988,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -28538,7 +29140,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -28690,7 +29292,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -28842,7 +29444,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -28994,7 +29596,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -29146,7 +29748,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -29298,7 +29900,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -29450,7 +30052,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -29602,7 +30204,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -29753,7 +30355,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -29904,7 +30506,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -30056,7 +30658,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -30208,7 +30810,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -30360,7 +30962,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -30512,7 +31114,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -30664,7 +31266,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -30816,7 +31418,7 @@ namespace Aliyun.SDK.PDS.Client
                         new Dictionary<string, string>()
                         {
                             {"user-agent", GetUserAgent()},
-                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, _domainId + ".api.aliyunpds.com")},
+                            {"host", AlibabaCloud.TeaUtil.Common.DefaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")},
                             {"content-type", "application/json; charset=utf-8"},
                         },
                         request.Headers
@@ -32333,6 +32935,38 @@ namespace Aliyun.SDK.PDS.Client
         }
 
         /**
+         * list file activity
+         * @tags file
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error NotFound The resource {resource_name} cannot be found. Please check.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public ListFileActivityModel ListFileActivity(ListFileActivityRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return ListFileActivityEx(request, runtime);
+        }
+
+        /**
+         * list file activity
+         * @tags file
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error AccessTokenInvalid AccessToken is invalid. {message}
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error NotFound The resource {resource_name} cannot be found. Please check.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<ListFileActivityModel> ListFileActivityAsync(ListFileActivityRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await ListFileActivityExAsync(request, runtime);
+        }
+
+        /**
          * 查看分享中的文件列表
          * @tags share_link
          * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -32836,6 +33470,32 @@ namespace Aliyun.SDK.PDS.Client
         {
             RuntimeOptions runtime = new RuntimeOptions();
             return await CreateShareLinkExAsync(request, runtime);
+        }
+
+        /**
+         * 查看分享的所有信息
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public GetShareLinkModel GetShareLink(GetShareLinkRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return GetShareLinkEx(request, runtime);
+        }
+
+        /**
+         * 查看分享的所有信息
+         * @error InvalidParameter The input parameter {parameter_name} is not valid.
+         * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+         * @error InternalError The request has been failed due to some unknown error.
+         * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+         */
+        public async Task<GetShareLinkModel> GetShareLinkAsync(GetShareLinkRequest request)
+        {
+            RuntimeOptions runtime = new RuntimeOptions();
+            return await GetShareLinkExAsync(request, runtime);
         }
 
         /**
@@ -34094,7 +34754,7 @@ namespace Aliyun.SDK.PDS.Client
 
         public void AppendUserAgent(string userAgent)
         {
-            this._userAgent = _userAgent + " " + userAgent;
+            this._userAgent = "" + _userAgent + " " + userAgent;
         }
 
         public string GetUserAgent()

@@ -180,6 +180,8 @@ class UpdateFileMetaResponse extends Model
     public $parentFileId;
 
     /**
+     * @description PunishFlag
+     *
      * @var int
      */
     public $punishFlag;

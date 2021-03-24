@@ -11,13 +11,13 @@ namespace Aliyun.SDK.PDS.Client.Models
     /**
      * 
      */
-    public class BaseFileRequest : TeaModel {
+    public class ActorSystem : TeaModel {
         /// <summary>
-        /// addition_data
+        /// EventType
         /// </summary>
-        [NameInMap("addition_data")]
+        [NameInMap("event_type")]
         [Validation(Required=false)]
-        public Dictionary<string, object> AdditionData { get; set; }
+        public string EventType { get; set; }
 
     }
 

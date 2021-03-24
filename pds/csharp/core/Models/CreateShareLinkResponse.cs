@@ -139,6 +139,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string ShareUrl { get; set; }
 
         /// <summary>
+        /// status
+        /// </summary>
+        [NameInMap("status")]
+        [Validation(Required=false)]
+        public string Status { get; set; }
+
+        /// <summary>
         /// updated_at
         /// </summary>
         [NameInMap("updated_at")]

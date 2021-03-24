@@ -11,7 +11,7 @@ namespace Aliyun.SDK.PDS.Client.Models
     /**
      * 
      */
-    public class AccessTokenResponse : TeaModel {
+    public class GetUserAccessTokenResponse : TeaModel {
         /// <summary>
         /// 用于调用业务接口的accessToken
         /// </summary>
@@ -44,7 +44,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// 用于刷新accessToken
         /// </summary>
         [NameInMap("refresh_token")]
-        [Validation(Required=true)]
+        [Validation(Required=false)]
         public string RefreshToken { get; set; }
 
         /// <summary>

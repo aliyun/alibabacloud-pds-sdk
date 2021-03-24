@@ -12,13 +12,19 @@ namespace Aliyun.SDK.PDS.Client.Models
      * 
      */
     public class TimeRange : TeaModel {
-        [NameInMap("end")]
+        /// <summary>
+        /// EndTime
+        /// </summary>
+        [NameInMap("end_time")]
         [Validation(Required=false)]
-        public string End { get; set; }
+        public string EndTime { get; set; }
 
-        [NameInMap("start")]
+        /// <summary>
+        /// StartTime
+        /// </summary>
+        [NameInMap("start_time")]
         [Validation(Required=false)]
-        public string Start { get; set; }
+        public string StartTime { get; set; }
 
     }
 

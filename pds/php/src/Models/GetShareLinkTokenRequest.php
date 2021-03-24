@@ -14,6 +14,18 @@ class GetShareLinkTokenRequest extends Model
     public $headers;
 
     /**
+     * @description addition_data
+     *
+     * @var mixed[]
+     */
+    public $additionData;
+
+    /**
+     * @var string
+     */
+    public $referer;
+
+    /**
      * @description share_id
      *
      * @example z6e81Up4u3GDBoJ741dm8z8fZBc2dh8gW
@@ -31,8 +43,10 @@ class GetShareLinkTokenRequest extends Model
      */
     public $sharePwd;
     protected $_name = [
-        'shareId'  => 'share_id',
-        'sharePwd' => 'share_pwd',
+        'additionData' => 'addition_data',
+        'referer'      => 'referer',
+        'shareId'      => 'share_id',
+        'sharePwd'     => 'share_pwd',
     ];
 
     public function validate()
@@ -44,6 +58,12 @@ class GetShareLinkTokenRequest extends Model
         $res = [];
         if (null !== $this->headers) {
             $res['headers'] = $this->headers;
+        }
+        if (null !== $this->additionData) {
+            $res['addition_data'] = $this->additionData;
+        }
+        if (null !== $this->referer) {
+            $res['referer'] = $this->referer;
         }
         if (null !== $this->shareId) {
             $res['share_id'] = $this->shareId;
@@ -65,6 +85,12 @@ class GetShareLinkTokenRequest extends Model
         $model = new self();
         if (isset($map['headers'])) {
             $model->headers = $map['headers'];
+        }
+        if (isset($map['addition_data'])) {
+            $model->additionData = $map['addition_data'];
+        }
+        if (isset($map['referer'])) {
+            $model->referer = $map['referer'];
         }
         if (isset($map['share_id'])) {
             $model->shareId = $map['share_id'];

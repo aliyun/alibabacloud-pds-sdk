@@ -180,6 +180,8 @@ class BaseCCPFileResponse extends Model
     public $parentFileId;
 
     /**
+     * @description PunishFlag
+     *
      * @var int
      */
     public $punishFlag;

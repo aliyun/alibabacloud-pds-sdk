@@ -12,6 +12,13 @@ use AlibabaCloud\Tea\Model;
 class HostingGetFileRequest extends Model
 {
     /**
+     * @description addition_data
+     *
+     * @var mixed[]
+     */
+    public $additionData;
+
+    /**
      * @description drive_id
      *
      * @example 1
@@ -82,6 +89,7 @@ class HostingGetFileRequest extends Model
      */
     public $videoThumbnailProcess;
     protected $_name = [
+        'additionData'          => 'addition_data',
         'driveId'               => 'drive_id',
         'filePath'              => 'file_path',
         'imageThumbnailProcess' => 'image_thumbnail_process',
@@ -110,6 +118,9 @@ class HostingGetFileRequest extends Model
     public function toMap()
     {
         $res = [];
+        if (null !== $this->additionData) {
+            $res['addition_data'] = $this->additionData;
+        }
         if (null !== $this->driveId) {
             $res['drive_id'] = $this->driveId;
         }
@@ -149,6 +160,9 @@ class HostingGetFileRequest extends Model
     public static function fromMap($map = [])
     {
         $model = new self();
+        if (isset($map['addition_data'])) {
+            $model->additionData = $map['addition_data'];
+        }
         if (isset($map['drive_id'])) {
             $model->driveId = $map['drive_id'];
         }

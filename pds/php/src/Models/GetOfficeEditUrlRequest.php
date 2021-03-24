@@ -35,10 +35,22 @@ class GetOfficeEditUrlRequest extends Model
      * @var string
      */
     public $fileId;
+
+    /**
+     * @var GetOfficeEditUrlOption
+     */
+    public $option;
+
+    /**
+     * @var GetOfficeEditUrlWatermark
+     */
+    public $watermark;
     protected $_name = [
         'additionData' => 'addition_data',
         'driveId'      => 'drive_id',
         'fileId'       => 'file_id',
+        'option'       => 'option',
+        'watermark'    => 'watermark',
     ];
 
     public function validate()
@@ -66,6 +78,12 @@ class GetOfficeEditUrlRequest extends Model
         if (null !== $this->fileId) {
             $res['file_id'] = $this->fileId;
         }
+        if (null !== $this->option) {
+            $res['option'] = null !== $this->option ? $this->option->toMap() : null;
+        }
+        if (null !== $this->watermark) {
+            $res['watermark'] = null !== $this->watermark ? $this->watermark->toMap() : null;
+        }
 
         return $res;
     }
@@ -89,6 +107,12 @@ class GetOfficeEditUrlRequest extends Model
         }
         if (isset($map['file_id'])) {
             $model->fileId = $map['file_id'];
+        }
+        if (isset($map['option'])) {
+            $model->option = GetOfficeEditUrlOption::fromMap($map['option']);
+        }
+        if (isset($map['watermark'])) {
+            $model->watermark = GetOfficeEditUrlWatermark::fromMap($map['watermark']);
         }
 
         return $model;

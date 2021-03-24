@@ -57,6 +57,13 @@ class DownloadRequest extends Model
     public $VideoThumbnailProcess;
 
     /**
+     * @description addition_data
+     *
+     * @var mixed[]
+     */
+    public $additionData;
+
+    /**
      * @var string
      */
     public $fileIdPath;
@@ -85,6 +92,7 @@ class DownloadRequest extends Model
         'ImageThumbnailProcess' => 'ImageThumbnailProcess',
         'ShareID'               => 'ShareID',
         'VideoThumbnailProcess' => 'VideoThumbnailProcess',
+        'additionData'          => 'addition_data',
         'fileIdPath'            => 'file_id_path',
         'location'              => 'location',
         'referer'               => 'referer',
@@ -113,6 +121,9 @@ class DownloadRequest extends Model
         }
         if (null !== $this->VideoThumbnailProcess) {
             $res['VideoThumbnailProcess'] = $this->VideoThumbnailProcess;
+        }
+        if (null !== $this->additionData) {
+            $res['addition_data'] = $this->additionData;
         }
         if (null !== $this->fileIdPath) {
             $res['file_id_path'] = $this->fileIdPath;
@@ -152,6 +163,9 @@ class DownloadRequest extends Model
         }
         if (isset($map['VideoThumbnailProcess'])) {
             $model->VideoThumbnailProcess = $map['VideoThumbnailProcess'];
+        }
+        if (isset($map['addition_data'])) {
+            $model->additionData = $map['addition_data'];
         }
         if (isset($map['file_id_path'])) {
             $model->fileIdPath = $map['file_id_path'];

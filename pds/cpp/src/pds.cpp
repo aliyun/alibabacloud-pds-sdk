@@ -8392,6 +8392,179 @@ Alibabacloud_Pds::Client::listFileEx(shared_ptr<ListFileRequest> request,
       Darabonba::UnretryableError(_lastRequest, _lastException));
 }
 
+ListFileActivityModel Alibabacloud_Pds::Client::listFileActivityEx(
+    shared_ptr<ListFileActivityRequest> request,
+    shared_ptr<RuntimeOptions> runtime) {
+  request->validate();
+  runtime->validate();
+  shared_ptr<map<string, boost::any>> runtime_ = make_shared<
+      map<string, boost::any>>(map<string, boost::any>(
+      {{"timeouted", boost::any(string("retry"))},
+       {"readTimeout", !runtime->readTimeout
+                           ? boost::any()
+                           : boost::any(*runtime->readTimeout)},
+       {"connectTimeout", !runtime->connectTimeout
+                              ? boost::any()
+                              : boost::any(*runtime->connectTimeout)},
+       {"localAddr",
+        !runtime->localAddr ? boost::any() : boost::any(*runtime->localAddr)},
+       {"httpProxy",
+        !runtime->httpProxy ? boost::any() : boost::any(*runtime->httpProxy)},
+       {"httpsProxy",
+        !runtime->httpsProxy ? boost::any() : boost::any(*runtime->httpsProxy)},
+       {"noProxy", !runtime->noProxy ? boost::any()
+                                     : boost::any(*runtime->noProxy)},
+       {"maxIdleConns", !runtime->maxIdleConns
+                            ? boost::any()
+                            : boost::any(*runtime->maxIdleConns)},
+       {"socks5Proxy", !runtime->socks5Proxy
+                           ? boost::any()
+                           : boost::any(*runtime->socks5Proxy)},
+       {"socks5NetWork", !runtime->socks5NetWork
+                             ? boost::any()
+                             : boost::any(*runtime->socks5NetWork)},
+       {"retry", boost::any(map<string, boost::any>(
+                     {{"retryable", !runtime->autoretry
+                                        ? boost::any()
+                                        : boost::any(*runtime->autoretry)},
+                      {"maxAttempts",
+                       boost::any(Darabonba_Util::Client::defaultNumber(
+                           runtime->maxAttempts, make_shared<int>(3)))}}))},
+       {"backoff",
+        boost::any(map<string, boost::any>(
+            {{"policy",
+              boost::any(string(Darabonba_Util::Client::defaultString(
+                  runtime->backoffPolicy, make_shared<string>("no"))))},
+             {"period", boost::any(Darabonba_Util::Client::defaultNumber(
+                            runtime->backoffPeriod, make_shared<int>(1)))}}))},
+       {"ignoreSSL", !runtime->ignoreSSL ? boost::any()
+                                         : boost::any(*runtime->ignoreSSL)}}));
+  shared_ptr<Darabonba::Request> _lastRequest;
+  shared_ptr<std::exception> _lastException;
+  shared_ptr<int> _now = make_shared<int>(0);
+  shared_ptr<int> _retryTimes = make_shared<int>(0);
+  while (Darabonba::Core::allowRetry(
+      make_shared<boost::any>((*runtime_)["retry"]), _retryTimes, _now)) {
+    if (*_retryTimes > 0) {
+      shared_ptr<int> _backoffTime =
+          make_shared<int>(Darabonba::Core::getBackoffTime(
+              make_shared<boost::any>((*runtime_)["backoff"]), _retryTimes));
+      if (*_backoffTime > 0) {
+        Darabonba::Core::sleep(_backoffTime);
+      }
+    }
+    _retryTimes = make_shared<int>(*_retryTimes + 1);
+    try {
+      shared_ptr<Darabonba::Request> request_ =
+          make_shared<Darabonba::Request>();
+      shared_ptr<string> accesskeyId = make_shared<string>(getAccessKeyId());
+      shared_ptr<string> accessKeySecret =
+          make_shared<string>(getAccessKeySecret());
+      shared_ptr<string> securityToken =
+          make_shared<string>(getSecurityToken());
+      shared_ptr<string> accessToken = make_shared<string>(getAccessToken());
+      shared_ptr<map<string, boost::any>> realReq =
+          make_shared<map<string, boost::any>>(
+              Darabonba_Util::Client::toMap(request));
+      request_->protocol = Darabonba_Util::Client::defaultString(
+          _protocol, make_shared<string>("https"));
+      request_->method = "POST";
+      request_->pathname = getPathname(
+          _nickname, make_shared<string>(string("/v2/file/list_activity")));
+      request_->headers = Darabonba::Converter::merge(
+          map<string, string>(
+              {{"user-agent", getUserAgent()},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
+               {"content-type", "application/json; charset=utf-8"}}),
+          !request->headers ? map<string, string>() : *request->headers);
+      (*realReq)["headers"] = nullptr;
+      if (!Darabonba_Util::Client::empty(accessToken)) {
+        request_->headers.insert(pair<string, string>(
+            "authorization", string("Bearer ") + string(*accessToken)));
+      } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
+                 !Darabonba_Util::Client::empty(accessKeySecret)) {
+        if (!Darabonba_Util::Client::empty(securityToken)) {
+          request_->headers.insert(
+              pair<string, string>("x-acs-security-token", *securityToken));
+        }
+        request_->headers.insert(pair<string, string>(
+            "date", Darabonba_Util::Client::getDateUTCString()));
+        request_->headers.insert(
+            pair<string, string>("accept", "application/json"));
+        request_->headers.insert(
+            pair<string, string>("x-acs-signature-method", "HMAC-SHA1"));
+        request_->headers.insert(
+            pair<string, string>("x-acs-signature-version", "1.0"));
+        shared_ptr<string> stringToSign = make_shared<string>(
+            Alibabacloud_ROAUtil::Client::getStringToSign(request_));
+        request_->headers.insert(pair<string, string>(
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
+      }
+      request_->body = Darabonba::Converter::toStream(
+          Darabonba_Util::Client::toJSONString(realReq));
+      _lastRequest = request_;
+      shared_ptr<Darabonba::Response> response_ =
+          make_shared<Darabonba::Response>(
+              Darabonba::Core::doAction(request_, runtime_));
+      shared_ptr<map<string, boost::any>> respMap;
+      shared_ptr<boost::any> obj;
+      if (Darabonba_Util::Client::equalNumber(
+              make_shared<int>(response_->statusCode), make_shared<int>(200))) {
+        obj = make_shared<boost::any>(
+            Darabonba_Util::Client::readAsJSON(response_->body));
+        respMap = make_shared<map<string, boost::any>>(
+            Darabonba_Util::Client::assertAsMap(obj));
+        return ListFileActivityModel(
+            {{"body", !respMap ? boost::any() : boost::any(*respMap)},
+             {"headers", boost::any(response_->headers)}});
+      }
+      if (!Darabonba_Util::Client::empty(
+              make_shared<string>(response_->headers["x-ca-error-message"]))) {
+        BOOST_THROW_EXCEPTION(Darabonba::Error(map<string, boost::any>(
+            {{"data",
+              boost::any(map<string, boost::any>(
+                  {{"requestId",
+                    boost::any(string(response_->headers["x-ca-request-id"]))},
+                   {"statusCode", boost::any(response_->statusCode)},
+                   {"statusMessage",
+                    boost::any(string(response_->statusMessage))}}))},
+             {"message",
+              boost::any(string(response_->headers["x-ca-error-message"]))}})));
+      }
+      obj = make_shared<boost::any>(
+          Darabonba_Util::Client::readAsJSON(response_->body));
+      respMap = make_shared<map<string, boost::any>>(
+          Darabonba_Util::Client::assertAsMap(obj));
+      BOOST_THROW_EXCEPTION(
+          Darabonba::Error(map<string, boost::any>(Darabonba::Converter::merge(
+              map<string, boost::any>(
+                  {{"data",
+                    boost::any(map<string, boost::any>(
+                        {{"requestId",
+                          boost::any(
+                              string(response_->headers["x-ca-request-id"]))},
+                         {"statusCode", boost::any(response_->statusCode)},
+                         {"statusMessage",
+                          boost::any(string(response_->statusMessage))}}))}}),
+              !respMap ? map<string, boost::any>() : *respMap))));
+    } catch (std::exception &e) {
+      if (Darabonba::Core::isRetryable(e)) {
+        _lastException = make_shared<std::exception>(e);
+        continue;
+      }
+      BOOST_THROW_EXCEPTION(e);
+    }
+  }
+  BOOST_THROW_EXCEPTION(
+      Darabonba::UnretryableError(_lastRequest, _lastException));
+}
+
 ListFileByAnonymousModel Alibabacloud_Pds::Client::listFileByAnonymousEx(
     shared_ptr<ListByAnonymousRequest> request,
     shared_ptr<RuntimeOptions> runtime) {
@@ -11109,6 +11282,179 @@ CreateShareLinkModel Alibabacloud_Pds::Client::createShareLinkEx(
         respMap = make_shared<map<string, boost::any>>(
             Darabonba_Util::Client::assertAsMap(obj));
         return CreateShareLinkModel(
+            {{"body", !respMap ? boost::any() : boost::any(*respMap)},
+             {"headers", boost::any(response_->headers)}});
+      }
+      if (!Darabonba_Util::Client::empty(
+              make_shared<string>(response_->headers["x-ca-error-message"]))) {
+        BOOST_THROW_EXCEPTION(Darabonba::Error(map<string, boost::any>(
+            {{"data",
+              boost::any(map<string, boost::any>(
+                  {{"requestId",
+                    boost::any(string(response_->headers["x-ca-request-id"]))},
+                   {"statusCode", boost::any(response_->statusCode)},
+                   {"statusMessage",
+                    boost::any(string(response_->statusMessage))}}))},
+             {"message",
+              boost::any(string(response_->headers["x-ca-error-message"]))}})));
+      }
+      obj = make_shared<boost::any>(
+          Darabonba_Util::Client::readAsJSON(response_->body));
+      respMap = make_shared<map<string, boost::any>>(
+          Darabonba_Util::Client::assertAsMap(obj));
+      BOOST_THROW_EXCEPTION(
+          Darabonba::Error(map<string, boost::any>(Darabonba::Converter::merge(
+              map<string, boost::any>(
+                  {{"data",
+                    boost::any(map<string, boost::any>(
+                        {{"requestId",
+                          boost::any(
+                              string(response_->headers["x-ca-request-id"]))},
+                         {"statusCode", boost::any(response_->statusCode)},
+                         {"statusMessage",
+                          boost::any(string(response_->statusMessage))}}))}}),
+              !respMap ? map<string, boost::any>() : *respMap))));
+    } catch (std::exception &e) {
+      if (Darabonba::Core::isRetryable(e)) {
+        _lastException = make_shared<std::exception>(e);
+        continue;
+      }
+      BOOST_THROW_EXCEPTION(e);
+    }
+  }
+  BOOST_THROW_EXCEPTION(
+      Darabonba::UnretryableError(_lastRequest, _lastException));
+}
+
+GetShareLinkModel Alibabacloud_Pds::Client::getShareLinkEx(
+    shared_ptr<GetShareLinkRequest> request,
+    shared_ptr<RuntimeOptions> runtime) {
+  request->validate();
+  runtime->validate();
+  shared_ptr<map<string, boost::any>> runtime_ = make_shared<
+      map<string, boost::any>>(map<string, boost::any>(
+      {{"timeouted", boost::any(string("retry"))},
+       {"readTimeout", !runtime->readTimeout
+                           ? boost::any()
+                           : boost::any(*runtime->readTimeout)},
+       {"connectTimeout", !runtime->connectTimeout
+                              ? boost::any()
+                              : boost::any(*runtime->connectTimeout)},
+       {"localAddr",
+        !runtime->localAddr ? boost::any() : boost::any(*runtime->localAddr)},
+       {"httpProxy",
+        !runtime->httpProxy ? boost::any() : boost::any(*runtime->httpProxy)},
+       {"httpsProxy",
+        !runtime->httpsProxy ? boost::any() : boost::any(*runtime->httpsProxy)},
+       {"noProxy", !runtime->noProxy ? boost::any()
+                                     : boost::any(*runtime->noProxy)},
+       {"maxIdleConns", !runtime->maxIdleConns
+                            ? boost::any()
+                            : boost::any(*runtime->maxIdleConns)},
+       {"socks5Proxy", !runtime->socks5Proxy
+                           ? boost::any()
+                           : boost::any(*runtime->socks5Proxy)},
+       {"socks5NetWork", !runtime->socks5NetWork
+                             ? boost::any()
+                             : boost::any(*runtime->socks5NetWork)},
+       {"retry", boost::any(map<string, boost::any>(
+                     {{"retryable", !runtime->autoretry
+                                        ? boost::any()
+                                        : boost::any(*runtime->autoretry)},
+                      {"maxAttempts",
+                       boost::any(Darabonba_Util::Client::defaultNumber(
+                           runtime->maxAttempts, make_shared<int>(3)))}}))},
+       {"backoff",
+        boost::any(map<string, boost::any>(
+            {{"policy",
+              boost::any(string(Darabonba_Util::Client::defaultString(
+                  runtime->backoffPolicy, make_shared<string>("no"))))},
+             {"period", boost::any(Darabonba_Util::Client::defaultNumber(
+                            runtime->backoffPeriod, make_shared<int>(1)))}}))},
+       {"ignoreSSL", !runtime->ignoreSSL ? boost::any()
+                                         : boost::any(*runtime->ignoreSSL)}}));
+  shared_ptr<Darabonba::Request> _lastRequest;
+  shared_ptr<std::exception> _lastException;
+  shared_ptr<int> _now = make_shared<int>(0);
+  shared_ptr<int> _retryTimes = make_shared<int>(0);
+  while (Darabonba::Core::allowRetry(
+      make_shared<boost::any>((*runtime_)["retry"]), _retryTimes, _now)) {
+    if (*_retryTimes > 0) {
+      shared_ptr<int> _backoffTime =
+          make_shared<int>(Darabonba::Core::getBackoffTime(
+              make_shared<boost::any>((*runtime_)["backoff"]), _retryTimes));
+      if (*_backoffTime > 0) {
+        Darabonba::Core::sleep(_backoffTime);
+      }
+    }
+    _retryTimes = make_shared<int>(*_retryTimes + 1);
+    try {
+      shared_ptr<Darabonba::Request> request_ =
+          make_shared<Darabonba::Request>();
+      shared_ptr<string> accesskeyId = make_shared<string>(getAccessKeyId());
+      shared_ptr<string> accessKeySecret =
+          make_shared<string>(getAccessKeySecret());
+      shared_ptr<string> securityToken =
+          make_shared<string>(getSecurityToken());
+      shared_ptr<string> accessToken = make_shared<string>(getAccessToken());
+      shared_ptr<map<string, boost::any>> realReq =
+          make_shared<map<string, boost::any>>(
+              Darabonba_Util::Client::toMap(request));
+      request_->protocol = Darabonba_Util::Client::defaultString(
+          _protocol, make_shared<string>("https"));
+      request_->method = "POST";
+      request_->pathname = getPathname(
+          _nickname, make_shared<string>(string("/v2/share_link/get")));
+      request_->headers = Darabonba::Converter::merge(
+          map<string, string>(
+              {{"user-agent", getUserAgent()},
+               {"host", Darabonba_Util::Client::defaultString(
+                            _endpoint,
+                            make_shared<string>(string(*_domainId) +
+                                                string(".api.aliyunpds.com")))},
+               {"content-type", "application/json; charset=utf-8"}}),
+          !request->headers ? map<string, string>() : *request->headers);
+      (*realReq)["headers"] = nullptr;
+      if (!Darabonba_Util::Client::empty(accessToken)) {
+        request_->headers.insert(pair<string, string>(
+            "authorization", string("Bearer ") + string(*accessToken)));
+      } else if (!Darabonba_Util::Client::empty(accesskeyId) &&
+                 !Darabonba_Util::Client::empty(accessKeySecret)) {
+        if (!Darabonba_Util::Client::empty(securityToken)) {
+          request_->headers.insert(
+              pair<string, string>("x-acs-security-token", *securityToken));
+        }
+        request_->headers.insert(pair<string, string>(
+            "date", Darabonba_Util::Client::getDateUTCString()));
+        request_->headers.insert(
+            pair<string, string>("accept", "application/json"));
+        request_->headers.insert(
+            pair<string, string>("x-acs-signature-method", "HMAC-SHA1"));
+        request_->headers.insert(
+            pair<string, string>("x-acs-signature-version", "1.0"));
+        shared_ptr<string> stringToSign = make_shared<string>(
+            Alibabacloud_ROAUtil::Client::getStringToSign(request_));
+        request_->headers.insert(pair<string, string>(
+            "authorization",
+            string("acs ") + string(*accesskeyId) + string(":") +
+                string(Alibabacloud_ROAUtil::Client::getSignature(
+                    stringToSign, accessKeySecret))));
+      }
+      request_->body = Darabonba::Converter::toStream(
+          Darabonba_Util::Client::toJSONString(realReq));
+      _lastRequest = request_;
+      shared_ptr<Darabonba::Response> response_ =
+          make_shared<Darabonba::Response>(
+              Darabonba::Core::doAction(request_, runtime_));
+      shared_ptr<map<string, boost::any>> respMap;
+      shared_ptr<boost::any> obj;
+      if (Darabonba_Util::Client::equalNumber(
+              make_shared<int>(response_->statusCode), make_shared<int>(200))) {
+        obj = make_shared<boost::any>(
+            Darabonba_Util::Client::readAsJSON(response_->body));
+        respMap = make_shared<map<string, boost::any>>(
+            Darabonba_Util::Client::assertAsMap(obj));
+        return GetShareLinkModel(
             {{"body", !respMap ? boost::any() : boost::any(*respMap)},
              {"headers", boost::any(response_->headers)}});
       }
@@ -18011,6 +18357,12 @@ Alibabacloud_Pds::Client::listFile(shared_ptr<ListFileRequest> request) {
   return listFileEx(request, runtime);
 }
 
+ListFileActivityModel Alibabacloud_Pds::Client::listFileActivity(
+    shared_ptr<ListFileActivityRequest> request) {
+  shared_ptr<RuntimeOptions> runtime = make_shared<RuntimeOptions>();
+  return listFileActivityEx(request, runtime);
+}
+
 ListFileByAnonymousModel Alibabacloud_Pds::Client::listFileByAnonymous(
     shared_ptr<ListByAnonymousRequest> request) {
   shared_ptr<RuntimeOptions> runtime = make_shared<RuntimeOptions>();
@@ -18106,6 +18458,12 @@ CreateShareLinkModel Alibabacloud_Pds::Client::createShareLink(
     shared_ptr<CreateShareLinkRequest> request) {
   shared_ptr<RuntimeOptions> runtime = make_shared<RuntimeOptions>();
   return createShareLinkEx(request, runtime);
+}
+
+GetShareLinkModel Alibabacloud_Pds::Client::getShareLink(
+    shared_ptr<GetShareLinkRequest> request) {
+  shared_ptr<RuntimeOptions> runtime = make_shared<RuntimeOptions>();
+  return getShareLinkEx(request, runtime);
 }
 
 GetShareByAnonymousModel Alibabacloud_Pds::Client::getShareByAnonymous(

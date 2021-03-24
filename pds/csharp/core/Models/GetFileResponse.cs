@@ -147,9 +147,12 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false, MaxLength=50, Pattern="[a-z0-9]{1,50}")]
         public string ParentFileId { get; set; }
 
+        /// <summary>
+        /// PunishFlag
+        /// </summary>
         [NameInMap("punish_flag")]
         [Validation(Required=false)]
-        public int? PunishFlag { get; set; }
+        public long? PunishFlag { get; set; }
 
         [NameInMap("share_id")]
         [Validation(Required=false)]
@@ -190,6 +193,14 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("thumbnail")]
         [Validation(Required=false)]
         public string Thumbnail { get; set; }
+
+        /// <summary>
+        /// Trashed
+        /// type: boolean
+        /// </summary>
+        [NameInMap("trashed")]
+        [Validation(Required=false)]
+        public bool? Trashed { get; set; }
 
         /// <summary>
         /// trashed_at

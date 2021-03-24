@@ -14,6 +14,13 @@ class ListByAnonymousRequest extends Model
     public $headers;
 
     /**
+     * @description addition_data
+     *
+     * @var mixed[]
+     */
+    public $additionData;
+
+    /**
      * @description image_thumbnail_process
      *
      * @example image/resize,w_200
@@ -86,6 +93,7 @@ class ListByAnonymousRequest extends Model
      */
     public $videoThumbnailProcess;
     protected $_name = [
+        'additionData'          => 'addition_data',
         'imageThumbnailProcess' => 'image_thumbnail_process',
         'imageUrlProcess'       => 'image_url_process',
         'limit'                 => 'limit',
@@ -113,6 +121,9 @@ class ListByAnonymousRequest extends Model
         $res = [];
         if (null !== $this->headers) {
             $res['headers'] = $this->headers;
+        }
+        if (null !== $this->additionData) {
+            $res['addition_data'] = $this->additionData;
         }
         if (null !== $this->imageThumbnailProcess) {
             $res['image_thumbnail_process'] = $this->imageThumbnailProcess;
@@ -155,6 +166,9 @@ class ListByAnonymousRequest extends Model
         $model = new self();
         if (isset($map['headers'])) {
             $model->headers = $map['headers'];
+        }
+        if (isset($map['addition_data'])) {
+            $model->additionData = $map['addition_data'];
         }
         if (isset($map['image_thumbnail_process'])) {
             $model->imageThumbnailProcess = $map['image_thumbnail_process'];

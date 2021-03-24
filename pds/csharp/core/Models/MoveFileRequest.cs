@@ -23,6 +23,10 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public bool? AutoRename { get; set; }
 
+        [NameInMap("category_list")]
+        [Validation(Required=false)]
+        public List<string> CategoryList { get; set; }
+
         /// <summary>
         /// drive_id
         /// </summary>

@@ -24,6 +24,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public string Creator { get; set; }
 
         /// <summary>
+        /// include_cancelled
+        /// </summary>
+        [NameInMap("include_cancelled")]
+        [Validation(Required=false)]
+        public bool? IncludeCancelled { get; set; }
+
+        /// <summary>
         /// limit
         /// </summary>
         [NameInMap("limit")]

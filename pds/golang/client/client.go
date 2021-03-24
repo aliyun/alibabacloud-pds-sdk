@@ -595,73 +595,1967 @@ func (s *AccountTokenModel) SetBody(v *AccountAccessTokenResponse) *AccountToken
 	return s
 }
 
-/**
- *
- */
-type AccessTokenResponse struct {
-	// 用于调用业务接口的accessToken
-	AccessToken *string `json:"access_token,omitempty" xml:"access_token,omitempty" require:"true"`
-	// Default Drive ID
-	DefaultDriveId *string `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty" require:"true"`
-	// accessToken过期时间，ISO时间
-	ExpireTime *string `json:"expire_time,omitempty" xml:"expire_time,omitempty" require:"true"`
-	// accessToken过期时间，单位秒
-	ExpiresIn *int64 `json:"expires_in,omitempty" xml:"expires_in,omitempty" require:"true"`
-	// 用于刷新accessToken
-	RefreshToken *string `json:"refresh_token,omitempty" xml:"refresh_token,omitempty" require:"true"`
-	// 当前用户角色
-	Role *string `json:"role,omitempty" xml:"role,omitempty" require:"true"`
-	// accessToken类型，Bearer
-	TokenType *string `json:"token_type,omitempty" xml:"token_type,omitempty" require:"true"`
-	// 当前用户ID
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+type AdminListStoresModel struct {
+	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListStoresResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s AccessTokenResponse) String() string {
+func (s AdminListStoresModel) String() string {
 	return tea.Prettify(s)
 }
 
-func (s AccessTokenResponse) GoString() string {
+func (s AdminListStoresModel) GoString() string {
 	return s.String()
 }
 
-func (s *AccessTokenResponse) SetAccessToken(v string) *AccessTokenResponse {
-	s.AccessToken = &v
+func (s *AdminListStoresModel) SetHeaders(v map[string]*string) *AdminListStoresModel {
+	s.Headers = v
 	return s
 }
 
-func (s *AccessTokenResponse) SetDefaultDriveId(v string) *AccessTokenResponse {
-	s.DefaultDriveId = &v
+func (s *AdminListStoresModel) SetBody(v *ListStoresResponse) *AdminListStoresModel {
+	s.Body = v
 	return s
 }
 
-func (s *AccessTokenResponse) SetExpireTime(v string) *AccessTokenResponse {
-	s.ExpireTime = &v
+type CreateSubdomainModel struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *CreateSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSubdomainModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSubdomainModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSubdomainModel) SetHeaders(v map[string]*string) *CreateSubdomainModel {
+	s.Headers = v
 	return s
 }
 
-func (s *AccessTokenResponse) SetExpiresIn(v int64) *AccessTokenResponse {
-	s.ExpiresIn = &v
+func (s *CreateSubdomainModel) SetBody(v *CreateSubdomainResponse) *CreateSubdomainModel {
+	s.Body = v
 	return s
 }
 
-func (s *AccessTokenResponse) SetRefreshToken(v string) *AccessTokenResponse {
-	s.RefreshToken = &v
+type DeleteSubdomainModel struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *DeleteSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSubdomainModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSubdomainModel) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSubdomainModel) SetHeaders(v map[string]*string) *DeleteSubdomainModel {
+	s.Headers = v
 	return s
 }
 
-func (s *AccessTokenResponse) SetRole(v string) *AccessTokenResponse {
-	s.Role = &v
+func (s *DeleteSubdomainModel) SetBody(v *DeleteSubdomainResponse) *DeleteSubdomainModel {
+	s.Body = v
 	return s
 }
 
-func (s *AccessTokenResponse) SetTokenType(v string) *AccessTokenResponse {
-	s.TokenType = &v
+type GetSubdomainModel struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSubdomainModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSubdomainModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetSubdomainModel) SetHeaders(v map[string]*string) *GetSubdomainModel {
+	s.Headers = v
 	return s
 }
 
-func (s *AccessTokenResponse) SetUserId(v string) *AccessTokenResponse {
-	s.UserId = &v
+func (s *GetSubdomainModel) SetBody(v *GetSubdomainResponse) *GetSubdomainModel {
+	s.Body = v
+	return s
+}
+
+type ListSubdomainsModel struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListSubdomainsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSubdomainsModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSubdomainsModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListSubdomainsModel) SetHeaders(v map[string]*string) *ListSubdomainsModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSubdomainsModel) SetBody(v *ListSubdomainsResponse) *ListSubdomainsModel {
+	s.Body = v
+	return s
+}
+
+type UpdateSubdomainModel struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *UpdateSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSubdomainModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSubdomainModel) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSubdomainModel) SetHeaders(v map[string]*string) *UpdateSubdomainModel {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSubdomainModel) SetBody(v *UpdateSubdomainResponse) *UpdateSubdomainModel {
+	s.Body = v
+	return s
+}
+
+type GetUserAccessTokenModel struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetUserAccessTokenResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserAccessTokenModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserAccessTokenModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserAccessTokenModel) SetHeaders(v map[string]*string) *GetUserAccessTokenModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserAccessTokenModel) SetBody(v *GetUserAccessTokenResponse) *GetUserAccessTokenModel {
+	s.Body = v
+	return s
+}
+
+type GetAsyncTaskInfoModel struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetAsyncTaskResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAsyncTaskInfoModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncTaskInfoModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncTaskInfoModel) SetHeaders(v map[string]*string) *GetAsyncTaskInfoModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncTaskInfoModel) SetBody(v *GetAsyncTaskResponse) *GetAsyncTaskInfoModel {
+	s.Body = v
+	return s
+}
+
+type BatchOperationModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *BatchResponse     `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchOperationModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchOperationModel) GoString() string {
+	return s.String()
+}
+
+func (s *BatchOperationModel) SetHeaders(v map[string]*string) *BatchOperationModel {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchOperationModel) SetBody(v *BatchResponse) *BatchOperationModel {
+	s.Body = v
+	return s
+}
+
+type CreateDriveModel struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *CreateDriveResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDriveModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDriveModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDriveModel) SetHeaders(v map[string]*string) *CreateDriveModel {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDriveModel) SetBody(v *CreateDriveResponse) *CreateDriveModel {
+	s.Body = v
+	return s
+}
+
+type DeleteDriveModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+}
+
+func (s DeleteDriveModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveModel) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveModel) SetHeaders(v map[string]*string) *DeleteDriveModel {
+	s.Headers = v
+	return s
+}
+
+type GetDriveModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetDriveResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDriveModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDriveModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetDriveModel) SetHeaders(v map[string]*string) *GetDriveModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDriveModel) SetBody(v *GetDriveResponse) *GetDriveModel {
+	s.Body = v
+	return s
+}
+
+type GetDefaultDriveModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetDriveResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDefaultDriveModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDefaultDriveModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetDefaultDriveModel) SetHeaders(v map[string]*string) *GetDefaultDriveModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDefaultDriveModel) SetBody(v *GetDriveResponse) *GetDefaultDriveModel {
+	s.Body = v
+	return s
+}
+
+type ListDrivesModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListDriveResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDrivesModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDrivesModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListDrivesModel) SetHeaders(v map[string]*string) *ListDrivesModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDrivesModel) SetBody(v *ListDriveResponse) *ListDrivesModel {
+	s.Body = v
+	return s
+}
+
+type ListMyDrivesModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListDriveResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMyDrivesModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMyDrivesModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListMyDrivesModel) SetHeaders(v map[string]*string) *ListMyDrivesModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMyDrivesModel) SetBody(v *ListDriveResponse) *ListMyDrivesModel {
+	s.Body = v
+	return s
+}
+
+type UpdateDriveModel struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *UpdateDriveResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDriveModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDriveModel) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDriveModel) SetHeaders(v map[string]*string) *UpdateDriveModel {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDriveModel) SetBody(v *UpdateDriveResponse) *UpdateDriveModel {
+	s.Body = v
+	return s
+}
+
+type CompleteFileModel struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *CompleteFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CompleteFileModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompleteFileModel) GoString() string {
+	return s.String()
+}
+
+func (s *CompleteFileModel) SetHeaders(v map[string]*string) *CompleteFileModel {
+	s.Headers = v
+	return s
+}
+
+func (s *CompleteFileModel) SetBody(v *CompleteFileResponse) *CompleteFileModel {
+	s.Body = v
+	return s
+}
+
+type CopyFileModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *CopyFileResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CopyFileModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyFileModel) GoString() string {
+	return s.String()
+}
+
+func (s *CopyFileModel) SetHeaders(v map[string]*string) *CopyFileModel {
+	s.Headers = v
+	return s
+}
+
+func (s *CopyFileModel) SetBody(v *CopyFileResponse) *CopyFileModel {
+	s.Body = v
+	return s
+}
+
+type CreateFileModel struct {
+	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *CreateFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFileModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileModel) SetHeaders(v map[string]*string) *CreateFileModel {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFileModel) SetBody(v *CreateFileResponse) *CreateFileModel {
+	s.Body = v
+	return s
+}
+
+type DeleteFileModel struct {
+	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *DeleteFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFileModel) String() string {
+	return tea.Prettify(s)
+}
+func (s DeleteFileModel) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFileModel) SetHeaders(v map[string]*string) *DeleteFileModel {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFileModel) SetBody(v *DeleteFileResponse) *DeleteFileModel {
+	s.Body = v
+	return s
+}
+
+type GetFileModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetFileResponse   `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFileModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileModel) SetHeaders(v map[string]*string) *GetFileModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileModel) SetBody(v *GetFileResponse) *GetFileModel {
+	s.Body = v
+	return s
+}
+
+type GetFileByPathModel struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetFileByPathResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFileByPathModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileByPathModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileByPathModel) SetHeaders(v map[string]*string) *GetFileByPathModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileByPathModel) SetBody(v *GetFileByPathResponse) *GetFileByPathModel {
+	s.Body = v
+	return s
+}
+
+type GetDownloadUrlModel struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetDownloadUrlResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDownloadUrlModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDownloadUrlModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetDownloadUrlModel) SetHeaders(v map[string]*string) *GetDownloadUrlModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDownloadUrlModel) SetBody(v *GetDownloadUrlResponse) *GetDownloadUrlModel {
+	s.Body = v
+	return s
+}
+
+type GetLastCursorModel struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetLastCursorResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLastCursorModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLastCursorModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetLastCursorModel) SetHeaders(v map[string]*string) *GetLastCursorModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLastCursorModel) SetBody(v *GetLastCursorResponse) *GetLastCursorModel {
+	s.Body = v
+	return s
+}
+
+type GetMediaPlayUrlModel struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetMediaPlayURLResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMediaPlayUrlModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaPlayUrlModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaPlayUrlModel) SetHeaders(v map[string]*string) *GetMediaPlayUrlModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMediaPlayUrlModel) SetBody(v *GetMediaPlayURLResponse) *GetMediaPlayUrlModel {
+	s.Body = v
+	return s
+}
+
+type GetOfficeEditUrlModel struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetOfficeEditUrlResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOfficeEditUrlModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOfficeEditUrlModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetOfficeEditUrlModel) SetHeaders(v map[string]*string) *GetOfficeEditUrlModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOfficeEditUrlModel) SetBody(v *GetOfficeEditUrlResponse) *GetOfficeEditUrlModel {
+	s.Body = v
+	return s
+}
+
+type GetOfficePreviewUrlModel struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetOfficePreviewUrlResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOfficePreviewUrlModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOfficePreviewUrlModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetOfficePreviewUrlModel) SetHeaders(v map[string]*string) *GetOfficePreviewUrlModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOfficePreviewUrlModel) SetBody(v *GetOfficePreviewUrlResponse) *GetOfficePreviewUrlModel {
+	s.Body = v
+	return s
+}
+
+type GetUploadUrlModel struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetUploadUrlResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUploadUrlModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadUrlModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadUrlModel) SetHeaders(v map[string]*string) *GetUploadUrlModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUploadUrlModel) SetBody(v *GetUploadUrlResponse) *GetUploadUrlModel {
+	s.Body = v
+	return s
+}
+
+type GetVideoPreviewSpriteUrlModel struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetVideoPreviewSpriteURLResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVideoPreviewSpriteUrlModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPreviewSpriteUrlModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPreviewSpriteUrlModel) SetHeaders(v map[string]*string) *GetVideoPreviewSpriteUrlModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoPreviewSpriteUrlModel) SetBody(v *GetVideoPreviewSpriteURLResponse) *GetVideoPreviewSpriteUrlModel {
+	s.Body = v
+	return s
+}
+
+type GetVideoPreviewUrlModel struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetVideoPreviewURLResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVideoPreviewUrlModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPreviewUrlModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPreviewUrlModel) SetHeaders(v map[string]*string) *GetVideoPreviewUrlModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoPreviewUrlModel) SetBody(v *GetVideoPreviewURLResponse) *GetVideoPreviewUrlModel {
+	s.Body = v
+	return s
+}
+
+type ListFileModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListFileResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFileModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileModel) SetHeaders(v map[string]*string) *ListFileModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFileModel) SetBody(v *ListFileResponse) *ListFileModel {
+	s.Body = v
+	return s
+}
+
+type ListFileActivityModel struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListFileActivityResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFileActivityModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileActivityModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileActivityModel) SetHeaders(v map[string]*string) *ListFileActivityModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFileActivityModel) SetBody(v *ListFileActivityResponse) *ListFileActivityModel {
+	s.Body = v
+	return s
+}
+
+type ListFileByAnonymousModel struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListByAnonymousResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFileByAnonymousModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileByAnonymousModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileByAnonymousModel) SetHeaders(v map[string]*string) *ListFileByAnonymousModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFileByAnonymousModel) SetBody(v *ListByAnonymousResponse) *ListFileByAnonymousModel {
+	s.Body = v
+	return s
+}
+
+type ListFileByCustomIndexKeyModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListFileResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFileByCustomIndexKeyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileByCustomIndexKeyModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileByCustomIndexKeyModel) SetHeaders(v map[string]*string) *ListFileByCustomIndexKeyModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyModel) SetBody(v *ListFileResponse) *ListFileByCustomIndexKeyModel {
+	s.Body = v
+	return s
+}
+
+type ListFileDeltaModel struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListFileDeltaResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFileDeltaModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileDeltaModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileDeltaModel) SetHeaders(v map[string]*string) *ListFileDeltaModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFileDeltaModel) SetBody(v *ListFileDeltaResponse) *ListFileDeltaModel {
+	s.Body = v
+	return s
+}
+
+type ListUploadedPartsModel struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListUploadedPartResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUploadedPartsModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUploadedPartsModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListUploadedPartsModel) SetHeaders(v map[string]*string) *ListUploadedPartsModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUploadedPartsModel) SetBody(v *ListUploadedPartResponse) *ListUploadedPartsModel {
+	s.Body = v
+	return s
+}
+
+type MoveFileModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *MoveFileResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MoveFileModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveFileModel) GoString() string {
+	return s.String()
+}
+
+func (s *MoveFileModel) SetHeaders(v map[string]*string) *MoveFileModel {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveFileModel) SetBody(v *MoveFileResponse) *MoveFileModel {
+	s.Body = v
+	return s
+}
+
+type TokenModel struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *RefreshOfficeEditTokenResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TokenModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TokenModel) GoString() string {
+	return s.String()
+}
+
+func (s *TokenModel) SetHeaders(v map[string]*string) *TokenModel {
+	s.Headers = v
+	return s
+}
+
+func (s *TokenModel) SetBody(v *RefreshOfficeEditTokenResponse) *TokenModel {
+	s.Body = v
+	return s
+}
+
+type ScanFileMetaModel struct {
+	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ScanFileMetaResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ScanFileMetaModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanFileMetaModel) GoString() string {
+	return s.String()
+}
+
+func (s *ScanFileMetaModel) SetHeaders(v map[string]*string) *ScanFileMetaModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ScanFileMetaModel) SetBody(v *ScanFileMetaResponse) *ScanFileMetaModel {
+	s.Body = v
+	return s
+}
+
+type SearchFileModel struct {
+	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *SearchFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchFileModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFileModel) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFileModel) SetHeaders(v map[string]*string) *SearchFileModel {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchFileModel) SetBody(v *SearchFileResponse) *SearchFileModel {
+	s.Body = v
+	return s
+}
+
+type UpdateFileModel struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *UpdateFileMetaResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFileModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFileModel) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFileModel) SetHeaders(v map[string]*string) *UpdateFileModel {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFileModel) SetBody(v *UpdateFileMetaResponse) *UpdateFileModel {
+	s.Body = v
+	return s
+}
+
+type CreateShareModel struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *CreateShareResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateShareModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateShareModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateShareModel) SetHeaders(v map[string]*string) *CreateShareModel {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateShareModel) SetBody(v *CreateShareResponse) *CreateShareModel {
+	s.Body = v
+	return s
+}
+
+type DeleteShareModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+}
+
+func (s DeleteShareModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteShareModel) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteShareModel) SetHeaders(v map[string]*string) *DeleteShareModel {
+	s.Headers = v
+	return s
+}
+
+type GetShareModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetShareResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetShareModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareModel) SetHeaders(v map[string]*string) *GetShareModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShareModel) SetBody(v *GetShareResponse) *GetShareModel {
+	s.Body = v
+	return s
+}
+
+type ListShareModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListShareResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListShareModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShareModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListShareModel) SetHeaders(v map[string]*string) *ListShareModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListShareModel) SetBody(v *ListShareResponse) *ListShareModel {
+	s.Body = v
+	return s
+}
+
+type UpdateShareModel struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *UpdateShareResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateShareModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateShareModel) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateShareModel) SetHeaders(v map[string]*string) *UpdateShareModel {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateShareModel) SetBody(v *UpdateShareResponse) *UpdateShareModel {
+	s.Body = v
+	return s
+}
+
+type CancelShareLinkModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+}
+
+func (s CancelShareLinkModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelShareLinkModel) GoString() string {
+	return s.String()
+}
+
+func (s *CancelShareLinkModel) SetHeaders(v map[string]*string) *CancelShareLinkModel {
+	s.Headers = v
+	return s
+}
+
+type CreateShareLinkModel struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *CreateShareLinkResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateShareLinkModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateShareLinkModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateShareLinkModel) SetHeaders(v map[string]*string) *CreateShareLinkModel {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateShareLinkModel) SetBody(v *CreateShareLinkResponse) *CreateShareLinkModel {
+	s.Body = v
+	return s
+}
+
+type GetShareLinkModel struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *BaseShareLinkResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetShareLinkModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareLinkModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareLinkModel) SetHeaders(v map[string]*string) *GetShareLinkModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShareLinkModel) SetBody(v *BaseShareLinkResponse) *GetShareLinkModel {
+	s.Body = v
+	return s
+}
+
+type GetShareByAnonymousModel struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetShareLinkByAnonymousResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetShareByAnonymousModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareByAnonymousModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareByAnonymousModel) SetHeaders(v map[string]*string) *GetShareByAnonymousModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShareByAnonymousModel) SetBody(v *GetShareLinkByAnonymousResponse) *GetShareByAnonymousModel {
+	s.Body = v
+	return s
+}
+
+type GetShareIdModel struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetShareLinkIDResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetShareIdModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareIdModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareIdModel) SetHeaders(v map[string]*string) *GetShareIdModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShareIdModel) SetBody(v *GetShareLinkIDResponse) *GetShareIdModel {
+	s.Body = v
+	return s
+}
+
+type GetShareTokenModel struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetShareLinkTokenResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetShareTokenModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareTokenModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareTokenModel) SetHeaders(v map[string]*string) *GetShareTokenModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShareTokenModel) SetBody(v *GetShareLinkTokenResponse) *GetShareTokenModel {
+	s.Body = v
+	return s
+}
+
+type ListShareLinkModel struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListShareLinkResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListShareLinkModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShareLinkModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListShareLinkModel) SetHeaders(v map[string]*string) *ListShareLinkModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListShareLinkModel) SetBody(v *ListShareLinkResponse) *ListShareLinkModel {
+	s.Body = v
+	return s
+}
+
+type UpdateShareLinkModel struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *UpdateShareLinkResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateShareLinkModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateShareLinkModel) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateShareLinkModel) SetHeaders(v map[string]*string) *UpdateShareLinkModel {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateShareLinkModel) SetBody(v *UpdateShareLinkResponse) *UpdateShareLinkModel {
+	s.Body = v
+	return s
+}
+
+type CreateGroupModel struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *CreateGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGroupModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupModel) SetHeaders(v map[string]*string) *CreateGroupModel {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupModel) SetBody(v *CreateGroupResponse) *CreateGroupModel {
+	s.Body = v
+	return s
+}
+
+type DeleteGroupModel struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *DeleteGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGroupModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGroupModel) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGroupModel) SetHeaders(v map[string]*string) *DeleteGroupModel {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupModel) SetBody(v *DeleteGroupResponse) *DeleteGroupModel {
+	s.Body = v
+	return s
+}
+
+type GetGroupModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetGroupResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGroupModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGroupModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetGroupModel) SetHeaders(v map[string]*string) *GetGroupModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGroupModel) SetBody(v *GetGroupResponse) *GetGroupModel {
+	s.Body = v
+	return s
+}
+
+type ListGroupModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGroupModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupModel) SetHeaders(v map[string]*string) *ListGroupModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupModel) SetBody(v *ListGroupResponse) *ListGroupModel {
+	s.Body = v
+	return s
+}
+
+type SearchGroupModel struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *SearchGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchGroupModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchGroupModel) GoString() string {
+	return s.String()
+}
+
+func (s *SearchGroupModel) SetHeaders(v map[string]*string) *SearchGroupModel {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchGroupModel) SetBody(v *SearchGroupResponse) *SearchGroupModel {
+	s.Body = v
+	return s
+}
+
+type UpdateGroupModel struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *UpdateGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGroupModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupModel) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupModel) SetHeaders(v map[string]*string) *UpdateGroupModel {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGroupModel) SetBody(v *UpdateGroupResponse) *UpdateGroupModel {
+	s.Body = v
+	return s
+}
+
+type CreateMembershipModel struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *CreateMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateMembershipModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMembershipModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMembershipModel) SetHeaders(v map[string]*string) *CreateMembershipModel {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMembershipModel) SetBody(v *CreateMembershipResponse) *CreateMembershipModel {
+	s.Body = v
+	return s
+}
+
+type DeleteMembershipModel struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *DeleteMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMembershipModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMembershipModel) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMembershipModel) SetHeaders(v map[string]*string) *DeleteMembershipModel {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMembershipModel) SetBody(v *DeleteMembershipResponse) *DeleteMembershipModel {
+	s.Body = v
+	return s
+}
+
+type GetMembershipModel struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMembershipModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMembershipModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetMembershipModel) SetHeaders(v map[string]*string) *GetMembershipModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMembershipModel) SetBody(v *GetMembershipResponse) *GetMembershipModel {
+	s.Body = v
+	return s
+}
+
+type HasMemberModel struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *HasMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s HasMemberModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HasMemberModel) GoString() string {
+	return s.String()
+}
+
+func (s *HasMemberModel) SetHeaders(v map[string]*string) *HasMemberModel {
+	s.Headers = v
+	return s
+}
+
+func (s *HasMemberModel) SetBody(v *HasMembershipResponse) *HasMemberModel {
+	s.Body = v
+	return s
+}
+
+type ListDirectChildMembershipsModel struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListDirectChildMembershipsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDirectChildMembershipsModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectChildMembershipsModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectChildMembershipsModel) SetHeaders(v map[string]*string) *ListDirectChildMembershipsModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDirectChildMembershipsModel) SetBody(v *ListDirectChildMembershipsResponse) *ListDirectChildMembershipsModel {
+	s.Body = v
+	return s
+}
+
+type ListDirectMembershipsModel struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListDirectParentMembershipsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDirectMembershipsModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectMembershipsModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectMembershipsModel) SetHeaders(v map[string]*string) *ListDirectMembershipsModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDirectMembershipsModel) SetBody(v *ListDirectParentMembershipsResponse) *ListDirectMembershipsModel {
+	s.Body = v
+	return s
+}
+
+type ListDirectParentMembershipsModel struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListDirectParentMembershipsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDirectParentMembershipsModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDirectParentMembershipsModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListDirectParentMembershipsModel) SetHeaders(v map[string]*string) *ListDirectParentMembershipsModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDirectParentMembershipsModel) SetBody(v *ListDirectParentMembershipsResponse) *ListDirectParentMembershipsModel {
+	s.Body = v
+	return s
+}
+
+type UpdateMembershipModel struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *UpdateMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMembershipModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMembershipModel) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMembershipModel) SetHeaders(v map[string]*string) *UpdateMembershipModel {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMembershipModel) SetBody(v *UpdateMembershipResponse) *UpdateMembershipModel {
+	s.Body = v
+	return s
+}
+
+type AddUserToSubdomainModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+}
+
+func (s AddUserToSubdomainModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUserToSubdomainModel) GoString() string {
+	return s.String()
+}
+
+func (s *AddUserToSubdomainModel) SetHeaders(v map[string]*string) *AddUserToSubdomainModel {
+	s.Headers = v
+	return s
+}
+
+type CreateUserModel struct {
+	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *CreateUserResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateUserModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserModel) SetHeaders(v map[string]*string) *CreateUserModel {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateUserModel) SetBody(v *CreateUserResponse) *CreateUserModel {
+	s.Body = v
+	return s
+}
+
+type DeleteUserModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+}
+
+func (s DeleteUserModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserModel) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserModel) SetHeaders(v map[string]*string) *DeleteUserModel {
+	s.Headers = v
+	return s
+}
+
+type GetUserModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetUserResponse   `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserModel) SetHeaders(v map[string]*string) *GetUserModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserModel) SetBody(v *GetUserResponse) *GetUserModel {
+	s.Body = v
+	return s
+}
+
+type ListUsersModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListUserResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUsersModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersModel) SetHeaders(v map[string]*string) *ListUsersModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUsersModel) SetBody(v *ListUserResponse) *ListUsersModel {
+	s.Body = v
+	return s
+}
+
+type RemoveUserFromSubdomainModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+}
+
+func (s RemoveUserFromSubdomainModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUserFromSubdomainModel) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUserFromSubdomainModel) SetHeaders(v map[string]*string) *RemoveUserFromSubdomainModel {
+	s.Headers = v
+	return s
+}
+
+type SearchUserModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListUserResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchUserModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchUserModel) GoString() string {
+	return s.String()
+}
+
+func (s *SearchUserModel) SetHeaders(v map[string]*string) *SearchUserModel {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchUserModel) SetBody(v *ListUserResponse) *SearchUserModel {
+	s.Body = v
+	return s
+}
+
+type UpdateUserModel struct {
+	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *UpdateUserResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateUserModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserModel) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserModel) SetHeaders(v map[string]*string) *UpdateUserModel {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserModel) SetBody(v *UpdateUserResponse) *UpdateUserModel {
+	s.Body = v
+	return s
+}
+
+type CreateStoryModel struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *CreateStoryResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateStoryModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStoryModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStoryModel) SetHeaders(v map[string]*string) *CreateStoryModel {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateStoryModel) SetBody(v *CreateStoryResponse) *CreateStoryModel {
+	s.Body = v
+	return s
+}
+
+type GetPhotoCountModel struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetImageCountResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPhotoCountModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhotoCountModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhotoCountModel) SetHeaders(v map[string]*string) *GetPhotoCountModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPhotoCountModel) SetBody(v *GetImageCountResponse) *GetPhotoCountModel {
+	s.Body = v
+	return s
+}
+
+type GetStoryDetailModel struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *GetStoryDetailResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetStoryDetailModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStoryDetailModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetStoryDetailModel) SetHeaders(v map[string]*string) *GetStoryDetailModel {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStoryDetailModel) SetBody(v *GetStoryDetailResponse) *GetStoryDetailModel {
+	s.Body = v
+	return s
+}
+
+type ListAddressGroupsModel struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListImageAddressGroupsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAddressGroupsModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddressGroupsModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddressGroupsModel) SetHeaders(v map[string]*string) *ListAddressGroupsModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAddressGroupsModel) SetBody(v *ListImageAddressGroupsResponse) *ListAddressGroupsModel {
+	s.Body = v
+	return s
+}
+
+type ListFacegroupsModel struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListImageFaceGroupsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFacegroupsModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFacegroupsModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListFacegroupsModel) SetHeaders(v map[string]*string) *ListFacegroupsModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFacegroupsModel) SetBody(v *ListImageFaceGroupsResponse) *ListFacegroupsModel {
+	s.Body = v
+	return s
+}
+
+type ListStoryModel struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListStoryResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListStoryModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStoryModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListStoryModel) SetHeaders(v map[string]*string) *ListStoryModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListStoryModel) SetBody(v *ListStoryResponse) *ListStoryModel {
+	s.Body = v
+	return s
+}
+
+type ListTagsModel struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ListImageTagsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagsModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagsModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagsModel) SetHeaders(v map[string]*string) *ListTagsModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagsModel) SetBody(v *ListImageTagsResponse) *ListTagsModel {
+	s.Body = v
+	return s
+}
+
+type ParseKeywordsModel struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *ParseKeywordsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ParseKeywordsModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ParseKeywordsModel) GoString() string {
+	return s.String()
+}
+
+func (s *ParseKeywordsModel) SetHeaders(v map[string]*string) *ParseKeywordsModel {
+	s.Headers = v
+	return s
+}
+
+func (s *ParseKeywordsModel) SetBody(v *ParseKeywordsResponse) *ParseKeywordsModel {
+	s.Body = v
+	return s
+}
+
+type RemoveStoryImagesModel struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *RemoveStoryImagesResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveStoryImagesModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryImagesModel) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryImagesModel) SetHeaders(v map[string]*string) *RemoveStoryImagesModel {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveStoryImagesModel) SetBody(v *RemoveStoryImagesResponse) *RemoveStoryImagesModel {
+	s.Body = v
+	return s
+}
+
+type SearchAddressGroupsModel struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *SearchImageAddressGroupsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchAddressGroupsModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchAddressGroupsModel) GoString() string {
+	return s.String()
+}
+
+func (s *SearchAddressGroupsModel) SetHeaders(v map[string]*string) *SearchAddressGroupsModel {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchAddressGroupsModel) SetBody(v *SearchImageAddressGroupsResponse) *SearchAddressGroupsModel {
+	s.Body = v
+	return s
+}
+
+type UpdateFacegroupInfoModel struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	Body    *UpdateFaceGroupInfoResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFacegroupInfoModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFacegroupInfoModel) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFacegroupInfoModel) SetHeaders(v map[string]*string) *UpdateFacegroupInfoModel {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFacegroupInfoModel) SetBody(v *UpdateFaceGroupInfoResponse) *UpdateFacegroupInfoModel {
+	s.Body = v
 	return s
 }
 
@@ -1374,6 +3268,27 @@ func (s *AuthorizeRequest) SetUserCode(v string) *AuthorizeRequest {
 }
 
 /**
+ *
+ */
+type BaseAdditionDataRequest struct {
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+}
+
+func (s BaseAdditionDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseAdditionDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BaseAdditionDataRequest) SetAdditionData(v map[string]interface{}) *BaseAdditionDataRequest {
+	s.AdditionData = v
+	return s
+}
+
+/**
  * Base file response
  */
 type BaseCCPFileResponse struct {
@@ -1630,6 +3545,117 @@ func (s *BaseCCPFileResponse) SetVideoPreviewMetadata(v *VideoPreviewResponse) *
 }
 
 /**
+ * complete file request
+ */
+type BaseCompleteFileRequest struct {
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// part_info_list
+	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+	ShareId      *string           `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// upload_id
+	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+}
+
+func (s BaseCompleteFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseCompleteFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BaseCompleteFileRequest) SetAdditionData(v map[string]interface{}) *BaseCompleteFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *BaseCompleteFileRequest) SetDriveId(v string) *BaseCompleteFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *BaseCompleteFileRequest) SetPartInfoList(v []*UploadPartInfo) *BaseCompleteFileRequest {
+	s.PartInfoList = v
+	return s
+}
+
+func (s *BaseCompleteFileRequest) SetShareId(v string) *BaseCompleteFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *BaseCompleteFileRequest) SetUploadId(v string) *BaseCompleteFileRequest {
+	s.UploadId = &v
+	return s
+}
+
+/**
+ * create file request
+ */
+type BaseCreateFileRequest struct {
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// ContentMd5
+	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
+	// ContentType
+	ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	// Name
+	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
+	// part_info_list
+	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+	// Size
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+	// Type
+	Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+}
+
+func (s BaseCreateFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseCreateFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BaseCreateFileRequest) SetAdditionData(v map[string]interface{}) *BaseCreateFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *BaseCreateFileRequest) SetContentMd5(v string) *BaseCreateFileRequest {
+	s.ContentMd5 = &v
+	return s
+}
+
+func (s *BaseCreateFileRequest) SetContentType(v string) *BaseCreateFileRequest {
+	s.ContentType = &v
+	return s
+}
+
+func (s *BaseCreateFileRequest) SetName(v string) *BaseCreateFileRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *BaseCreateFileRequest) SetPartInfoList(v []*UploadPartInfo) *BaseCreateFileRequest {
+	s.PartInfoList = v
+	return s
+}
+
+func (s *BaseCreateFileRequest) SetSize(v int64) *BaseCreateFileRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *BaseCreateFileRequest) SetType(v string) *BaseCreateFileRequest {
+	s.Type = &v
+	return s
+}
+
+/**
  * Base drive response
  */
 type BaseDriveResponse struct {
@@ -1803,6 +3829,96 @@ func (s *BaseFileAnonymousResponse) SetUpdatedAt(v string) *BaseFileAnonymousRes
 }
 
 /**
+ *
+ */
+type BaseFileProcessRequest struct {
+	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s BaseFileProcessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseFileProcessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BaseFileProcessRequest) SetImageCroppingAspectRatios(v []*string) *BaseFileProcessRequest {
+	s.ImageCroppingAspectRatios = v
+	return s
+}
+
+func (s *BaseFileProcessRequest) SetImageThumbnailProcess(v string) *BaseFileProcessRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *BaseFileProcessRequest) SetImageUrlProcess(v string) *BaseFileProcessRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *BaseFileProcessRequest) SetVideoThumbnailProcess(v string) *BaseFileProcessRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
+ * 获取文件上传URL
+ */
+type BaseGetUploadUrlRequest struct {
+	// content_md5
+	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty" maxLength:"32"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// upload_part_list
+	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+	ShareId      *string           `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// upload_id
+	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty" require:"true"`
+}
+
+func (s BaseGetUploadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseGetUploadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BaseGetUploadUrlRequest) SetContentMd5(v string) *BaseGetUploadUrlRequest {
+	s.ContentMd5 = &v
+	return s
+}
+
+func (s *BaseGetUploadUrlRequest) SetDriveId(v string) *BaseGetUploadUrlRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *BaseGetUploadUrlRequest) SetPartInfoList(v []*UploadPartInfo) *BaseGetUploadUrlRequest {
+	s.PartInfoList = v
+	return s
+}
+
+func (s *BaseGetUploadUrlRequest) SetShareId(v string) *BaseGetUploadUrlRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *BaseGetUploadUrlRequest) SetUploadId(v string) *BaseGetUploadUrlRequest {
+	s.UploadId = &v
+	return s
+}
+
+/**
  * Base file response
  */
 type BaseHostingFileResponse struct {
@@ -1967,6 +4083,256 @@ func (s *BaseHostingFileResponse) SetUploadId(v string) *BaseHostingFileResponse
 
 func (s *BaseHostingFileResponse) SetUrl(v string) *BaseHostingFileResponse {
 	s.Url = &v
+	return s
+}
+
+/**
+ * Base image process
+ */
+type BaseImageProcessRequest struct {
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s BaseImageProcessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseImageProcessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BaseImageProcessRequest) SetImageThumbnailProcess(v string) *BaseImageProcessRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *BaseImageProcessRequest) SetImageUrlProcess(v string) *BaseImageProcessRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *BaseImageProcessRequest) SetVideoThumbnailProcess(v string) *BaseImageProcessRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
+ * list file request
+ */
+type BaseListFileRequest struct {
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId                   *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	// limit
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
+	// marker
+	Marker  *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id, either share_id or drive_id is required
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s BaseListFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseListFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BaseListFileRequest) SetAdditionData(v map[string]interface{}) *BaseListFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *BaseListFileRequest) SetDriveId(v string) *BaseListFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *BaseListFileRequest) SetImageCroppingAspectRatios(v []*string) *BaseListFileRequest {
+	s.ImageCroppingAspectRatios = v
+	return s
+}
+
+func (s *BaseListFileRequest) SetImageThumbnailProcess(v string) *BaseListFileRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *BaseListFileRequest) SetImageUrlProcess(v string) *BaseListFileRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *BaseListFileRequest) SetLimit(v int64) *BaseListFileRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *BaseListFileRequest) SetMarker(v string) *BaseListFileRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *BaseListFileRequest) SetReferer(v string) *BaseListFileRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *BaseListFileRequest) SetShareId(v string) *BaseListFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *BaseListFileRequest) SetSignToken(v string) *BaseListFileRequest {
+	s.SignToken = &v
+	return s
+}
+
+func (s *BaseListFileRequest) SetVideoThumbnailProcess(v string) *BaseListFileRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
+ *
+ */
+type BaseMediaResponse struct {
+	// address_line
+	AddressLine *string `json:"address_line,omitempty" xml:"address_line,omitempty"`
+	// city
+	City *string `json:"city,omitempty" xml:"city,omitempty"`
+	// country
+	Country *string `json:"country,omitempty" xml:"country,omitempty"`
+	// district
+	District *string `json:"district,omitempty" xml:"district,omitempty"`
+	// height
+	Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
+	// system_tags
+	ImageTags []*SystemTag `json:"image_tags,omitempty" xml:"image_tags,omitempty" type:"Repeated"`
+	// location
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// province
+	Province *string `json:"province,omitempty" xml:"province,omitempty"`
+	// time
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// township
+	Township *string `json:"township,omitempty" xml:"township,omitempty"`
+	// width
+	Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
+}
+
+func (s BaseMediaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseMediaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BaseMediaResponse) SetAddressLine(v string) *BaseMediaResponse {
+	s.AddressLine = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetCity(v string) *BaseMediaResponse {
+	s.City = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetCountry(v string) *BaseMediaResponse {
+	s.Country = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetDistrict(v string) *BaseMediaResponse {
+	s.District = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetHeight(v int64) *BaseMediaResponse {
+	s.Height = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetImageTags(v []*SystemTag) *BaseMediaResponse {
+	s.ImageTags = v
+	return s
+}
+
+func (s *BaseMediaResponse) SetLocation(v string) *BaseMediaResponse {
+	s.Location = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetProvince(v string) *BaseMediaResponse {
+	s.Province = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetTime(v string) *BaseMediaResponse {
+	s.Time = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetTownship(v string) *BaseMediaResponse {
+	s.Township = &v
+	return s
+}
+
+func (s *BaseMediaResponse) SetWidth(v int64) *BaseMediaResponse {
+	s.Width = &v
+	return s
+}
+
+/**
+ * 文件移动请求
+ */
+type BaseMoveFileRequest struct {
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	// new_name
+	NewName *string `json:"new_name,omitempty" xml:"new_name,omitempty" maxLength:"1024" minLength:"1"`
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+}
+
+func (s BaseMoveFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseMoveFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BaseMoveFileRequest) SetDriveId(v string) *BaseMoveFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *BaseMoveFileRequest) SetNewName(v string) *BaseMoveFileRequest {
+	s.NewName = &v
+	return s
+}
+
+func (s *BaseMoveFileRequest) SetShareId(v string) *BaseMoveFileRequest {
+	s.ShareId = &v
 	return s
 }
 
@@ -2257,6 +4623,40 @@ func (s *BaseShareResponse) SetUpdatedAt(v string) *BaseShareResponse {
 }
 
 /**
+ * 批处理
+ */
+type BatchRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// Requests 请求合集
+	Requests []*BatchSubRequest `json:"requests,omitempty" xml:"requests,omitempty" require:"true" type:"Repeated"`
+	// 支持的资源类型
+	Resource *string `json:"resource,omitempty" xml:"resource,omitempty" require:"true"`
+}
+
+func (s BatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchRequest) SetHeaders(v map[string]*string) *BatchRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchRequest) SetRequests(v []*BatchSubRequest) *BatchRequest {
+	s.Requests = v
+	return s
+}
+
+func (s *BatchRequest) SetResource(v string) *BatchRequest {
+	s.Resource = &v
+	return s
+}
+
+/**
  * batch operation response
  */
 type BatchResponse struct {
@@ -2274,6 +4674,55 @@ func (s BatchResponse) GoString() string {
 
 func (s *BatchResponse) SetResponses(v []*BatchSubResponse) *BatchResponse {
 	s.Responses = v
+	return s
+}
+
+/**
+ *
+ */
+type BatchSubRequest struct {
+	// body 子请求的请求参数 json 字符串，可参考对于子请求文档, 当指定了body 必须传headers ： "Content-Type" 对应的类型，目前子请求入参是"application/json"
+	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
+	// headers 请求头，表示body传入数据的类型
+	Headers map[string]interface{} `json:"headers,omitempty" xml:"headers,omitempty"`
+	// id 用于request 和 response关联， 不允许重复
+	Id *string `json:"id,omitempty" xml:"id,omitempty" require:"true"`
+	// method
+	Method *string `json:"method,omitempty" xml:"method,omitempty" require:"true"`
+	// url 子请求的api path路径， 可参考对于子请求文档
+	Url *string `json:"url,omitempty" xml:"url,omitempty" require:"true"`
+}
+
+func (s BatchSubRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSubRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSubRequest) SetBody(v map[string]interface{}) *BatchSubRequest {
+	s.Body = v
+	return s
+}
+
+func (s *BatchSubRequest) SetHeaders(v map[string]interface{}) *BatchSubRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchSubRequest) SetId(v string) *BatchSubRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *BatchSubRequest) SetMethod(v string) *BatchSubRequest {
+	s.Method = &v
+	return s
+}
+
+func (s *BatchSubRequest) SetUrl(v string) *BatchSubRequest {
+	s.Url = &v
 	return s
 }
 
@@ -2313,6 +4762,41 @@ func (s *BatchSubResponse) SetStatus(v int64) *BatchSubResponse {
 }
 
 /**
+ * 获取文件夹size信息
+ */
+type CCPGetDirSizeInfoRequest struct {
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_id
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+	// share_id, either share_id or drive_id is required
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+}
+
+func (s CCPGetDirSizeInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CCPGetDirSizeInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CCPGetDirSizeInfoRequest) SetDriveId(v string) *CCPGetDirSizeInfoRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CCPGetDirSizeInfoRequest) SetFileId(v string) *CCPGetDirSizeInfoRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *CCPGetDirSizeInfoRequest) SetShareId(v string) *CCPGetDirSizeInfoRequest {
+	s.ShareId = &v
+	return s
+}
+
+/**
  *
  */
 type CancelLinkRequest struct {
@@ -2336,6 +4820,33 @@ func (s *CancelLinkRequest) SetHeaders(v map[string]*string) *CancelLinkRequest 
 
 func (s *CancelLinkRequest) SetTemporaryToken(v string) *CancelLinkRequest {
 	s.TemporaryToken = &v
+	return s
+}
+
+/**
+ * cancel_share_link request
+ */
+type CancelShareLinkRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+}
+
+func (s CancelShareLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelShareLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelShareLinkRequest) SetHeaders(v map[string]*string) *CancelShareLinkRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelShareLinkRequest) SetShareId(v string) *CancelShareLinkRequest {
+	s.ShareId = &v
 	return s
 }
 
@@ -2371,6 +4882,108 @@ func (s *Captcha) SetCaptchaFormat(v string) *Captcha {
 
 func (s *Captcha) SetCaptchaId(v string) *Captcha {
 	s.CaptchaId = &v
+	return s
+}
+
+/**
+ *
+ */
+type CertInfo struct {
+	CertID *string `json:"CertID,omitempty" xml:"CertID,omitempty"`
+	// cert body
+	CertBody *string `json:"cert_body,omitempty" xml:"cert_body,omitempty" require:"true"`
+	// cert name
+	CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty" require:"true"`
+	// cert privatekey
+	CertPrivatekey *string `json:"cert_privatekey,omitempty" xml:"cert_privatekey,omitempty" require:"true"`
+}
+
+func (s CertInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CertInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CertInfo) SetCertID(v string) *CertInfo {
+	s.CertID = &v
+	return s
+}
+
+func (s *CertInfo) SetCertBody(v string) *CertInfo {
+	s.CertBody = &v
+	return s
+}
+
+func (s *CertInfo) SetCertName(v string) *CertInfo {
+	s.CertName = &v
+	return s
+}
+
+func (s *CertInfo) SetCertPrivatekey(v string) *CertInfo {
+	s.CertPrivatekey = &v
+	return s
+}
+
+/**
+ * 合并文件上传任务
+ */
+type CompleteFileRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_id
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+	// part_info_list
+	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+	ShareId      *string           `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// upload_id
+	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+}
+
+func (s CompleteFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CompleteFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CompleteFileRequest) SetHeaders(v map[string]*string) *CompleteFileRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *CompleteFileRequest) SetAdditionData(v map[string]interface{}) *CompleteFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *CompleteFileRequest) SetDriveId(v string) *CompleteFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CompleteFileRequest) SetFileId(v string) *CompleteFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *CompleteFileRequest) SetPartInfoList(v []*UploadPartInfo) *CompleteFileRequest {
+	s.PartInfoList = v
+	return s
+}
+
+func (s *CompleteFileRequest) SetShareId(v string) *CompleteFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *CompleteFileRequest) SetUploadId(v string) *CompleteFileRequest {
+	s.UploadId = &v
 	return s
 }
 
@@ -2667,6 +5280,108 @@ func (s *ConfirmLinkRequest) SetHeaders(v map[string]*string) *ConfirmLinkReques
 
 func (s *ConfirmLinkRequest) SetTemporaryToken(v string) *ConfirmLinkRequest {
 	s.TemporaryToken = &v
+	return s
+}
+
+/**
+ * 文件拷贝
+ */
+type CopyFileRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// auto_rename
+	// type: boolean
+	AutoRename *bool   `json:"auto_rename,omitempty" xml:"auto_rename,omitempty"`
+	BatchId    *string `json:"batch_id,omitempty" xml:"batch_id,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_id
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+	FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
+	// new_name
+	NewName *string `json:"new_name,omitempty" xml:"new_name,omitempty" maxLength:"1024" minLength:"1"`
+	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id, either share_id or drive_id is required
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// to_drive_id
+	ToDriveId *string `json:"to_drive_id,omitempty" xml:"to_drive_id,omitempty" pattern:"[0-9]+"`
+	// to_parent_file_id
+	ToParentFileId *string `json:"to_parent_file_id,omitempty" xml:"to_parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4" pattern:"[a-z0-9.-_]{1,50}"`
+	// to_drive_id
+	ToShareId *string `json:"to_share_id,omitempty" xml:"to_share_id,omitempty" pattern:"[0-9]+"`
+}
+
+func (s CopyFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopyFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CopyFileRequest) SetHeaders(v map[string]*string) *CopyFileRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *CopyFileRequest) SetAdditionData(v map[string]interface{}) *CopyFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *CopyFileRequest) SetAutoRename(v bool) *CopyFileRequest {
+	s.AutoRename = &v
+	return s
+}
+
+func (s *CopyFileRequest) SetBatchId(v string) *CopyFileRequest {
+	s.BatchId = &v
+	return s
+}
+
+func (s *CopyFileRequest) SetDriveId(v string) *CopyFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CopyFileRequest) SetFileId(v string) *CopyFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *CopyFileRequest) SetFileIdPath(v string) *CopyFileRequest {
+	s.FileIdPath = &v
+	return s
+}
+
+func (s *CopyFileRequest) SetNewName(v string) *CopyFileRequest {
+	s.NewName = &v
+	return s
+}
+
+func (s *CopyFileRequest) SetReferer(v string) *CopyFileRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *CopyFileRequest) SetShareId(v string) *CopyFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *CopyFileRequest) SetToDriveId(v string) *CopyFileRequest {
+	s.ToDriveId = &v
+	return s
+}
+
+func (s *CopyFileRequest) SetToParentFileId(v string) *CopyFileRequest {
+	s.ToParentFileId = &v
+	return s
+}
+
+func (s *CopyFileRequest) SetToShareId(v string) *CopyFileRequest {
+	s.ToShareId = &v
 	return s
 }
 
@@ -3040,6 +5755,116 @@ func (s *CreateDomainRequest) SetStoreRegionList(v []*string) *CreateDomainReque
 }
 
 /**
+ * create drive request
+ */
+type CreateDriveRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// 是否默认drive, 只允许设置一个默认drive
+	Default *bool `json:"default,omitempty" xml:"default,omitempty"`
+	// 描述信息
+	Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024"`
+	// Drive 名称
+	DriveName *string `json:"drive_name,omitempty" xml:"drive_name,omitempty" require:"true" maxLength:"1024"`
+	// Drive类型
+	DriveType   *string `json:"drive_type,omitempty" xml:"drive_type,omitempty"`
+	EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
+	// location
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// 所属者
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty" require:"true"`
+	// 所属者
+	OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty" require:"true"`
+	// domain的PathType为OSSPath时必选。 Drive存储基于store的相对路径
+	RelativePath *string `json:"relative_path,omitempty" xml:"relative_path,omitempty"`
+	// 状态
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// StoreID , domain的PathType为OSSPath时必选
+	StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty"`
+	// Subdomain ID
+	SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+	// 总大小,单位Byte [如果设置 -1 代表不限制]
+	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
+}
+
+func (s CreateDriveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDriveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDriveRequest) SetHeaders(v map[string]*string) *CreateDriveRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDriveRequest) SetDefault(v bool) *CreateDriveRequest {
+	s.Default = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetDescription(v string) *CreateDriveRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetDriveName(v string) *CreateDriveRequest {
+	s.DriveName = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetDriveType(v string) *CreateDriveRequest {
+	s.DriveType = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetEncryptMode(v string) *CreateDriveRequest {
+	s.EncryptMode = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetLocation(v string) *CreateDriveRequest {
+	s.Location = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetOwner(v string) *CreateDriveRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetOwnerType(v string) *CreateDriveRequest {
+	s.OwnerType = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetRelativePath(v string) *CreateDriveRequest {
+	s.RelativePath = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetStatus(v string) *CreateDriveRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetStoreId(v string) *CreateDriveRequest {
+	s.StoreId = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetSubdomainId(v string) *CreateDriveRequest {
+	s.SubdomainId = &v
+	return s
+}
+
+func (s *CreateDriveRequest) SetTotalSize(v int64) *CreateDriveRequest {
+	s.TotalSize = &v
+	return s
+}
+
+/**
  * Create drive response
  */
 type CreateDriveResponse struct {
@@ -3064,6 +5889,225 @@ func (s *CreateDriveResponse) SetDomainId(v string) *CreateDriveResponse {
 
 func (s *CreateDriveResponse) SetDriveId(v string) *CreateDriveResponse {
 	s.DriveId = &v
+	return s
+}
+
+/**
+ * 创建文件
+ */
+type CreateFileRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	AutoRename   *bool                  `json:"auto_rename,omitempty" xml:"auto_rename,omitempty"`
+	// check_name_mode
+	CheckNameMode *string `json:"check_name_mode,omitempty" xml:"check_name_mode,omitempty"`
+	// content_hash
+	ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+	// content_hash_name
+	ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+	// ContentMd5
+	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
+	// ContentType
+	ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	// description
+	Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024" minLength:"0"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// encrypt_mode
+	EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
+	// file_id
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// force_upload_to_location
+	ForceUploadToLocation *bool `json:"force_upload_to_location,omitempty" xml:"force_upload_to_location,omitempty"`
+	// hidden
+	Hidden             *bool               `json:"hidden,omitempty" xml:"hidden,omitempty"`
+	ImageMediaMetadata *ImageMediaMetadata `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
+	// labels
+	Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	// last_updated_at
+	LastUpdatedAt *string `json:"last_updated_at,omitempty" xml:"last_updated_at,omitempty"`
+	// location
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	Meta     *string `json:"meta,omitempty" xml:"meta,omitempty"`
+	// Name
+	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
+	// parent_file_id
+	ParentFileId     *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4" pattern:"[a-z0-9]{1,50}"`
+	ParentFileIdPath *string `json:"parent_file_id_path,omitempty" xml:"parent_file_id_path,omitempty"`
+	// part_info_list
+	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+	// pre_hash
+	PreHash *string `json:"pre_hash,omitempty" xml:"pre_hash,omitempty"`
+	// share_id
+	// example
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// Size
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+	// streams_info
+	StreamsInfo map[string]interface{} `json:"streams_info,omitempty" xml:"streams_info,omitempty"`
+	// Type
+	Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+	// user_meta
+	UserMeta           *string             `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
+	VideoMediaMetadata *VideoMediaMetadata `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
+}
+
+func (s CreateFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileRequest) SetHeaders(v map[string]*string) *CreateFileRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFileRequest) SetAdditionData(v map[string]interface{}) *CreateFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *CreateFileRequest) SetAutoRename(v bool) *CreateFileRequest {
+	s.AutoRename = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetCheckNameMode(v string) *CreateFileRequest {
+	s.CheckNameMode = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetContentHash(v string) *CreateFileRequest {
+	s.ContentHash = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetContentHashName(v string) *CreateFileRequest {
+	s.ContentHashName = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetContentMd5(v string) *CreateFileRequest {
+	s.ContentMd5 = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetContentType(v string) *CreateFileRequest {
+	s.ContentType = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetDescription(v string) *CreateFileRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetDriveId(v string) *CreateFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetEncryptMode(v string) *CreateFileRequest {
+	s.EncryptMode = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetFileId(v string) *CreateFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetForceUploadToLocation(v bool) *CreateFileRequest {
+	s.ForceUploadToLocation = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetHidden(v bool) *CreateFileRequest {
+	s.Hidden = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetImageMediaMetadata(v *ImageMediaMetadata) *CreateFileRequest {
+	s.ImageMediaMetadata = v
+	return s
+}
+
+func (s *CreateFileRequest) SetLabels(v []*string) *CreateFileRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *CreateFileRequest) SetLastUpdatedAt(v string) *CreateFileRequest {
+	s.LastUpdatedAt = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetLocation(v string) *CreateFileRequest {
+	s.Location = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetMeta(v string) *CreateFileRequest {
+	s.Meta = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetName(v string) *CreateFileRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetParentFileId(v string) *CreateFileRequest {
+	s.ParentFileId = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetParentFileIdPath(v string) *CreateFileRequest {
+	s.ParentFileIdPath = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetPartInfoList(v []*UploadPartInfo) *CreateFileRequest {
+	s.PartInfoList = v
+	return s
+}
+
+func (s *CreateFileRequest) SetPreHash(v string) *CreateFileRequest {
+	s.PreHash = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetShareId(v string) *CreateFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetSize(v int64) *CreateFileRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetStreamsInfo(v map[string]interface{}) *CreateFileRequest {
+	s.StreamsInfo = v
+	return s
+}
+
+func (s *CreateFileRequest) SetType(v string) *CreateFileRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetUserMeta(v string) *CreateFileRequest {
+	s.UserMeta = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetVideoMediaMetadata(v *VideoMediaMetadata) *CreateFileRequest {
+	s.VideoMediaMetadata = v
 	return s
 }
 
@@ -3178,6 +6222,95 @@ func (s *CreateFileResponse) SetType(v string) *CreateFileResponse {
 
 func (s *CreateFileResponse) SetUploadId(v string) *CreateFileResponse {
 	s.UploadId = &v
+	return s
+}
+
+/**
+ * create_share_link request
+ */
+type CreateShareLinkRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// expiration
+	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+	// file_id
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// file_id_list
+	FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" maximum:"100" minimum:"1" type:"Repeated"`
+	// file_path_list
+	FilePathList []*string `json:"file_path_list,omitempty" xml:"file_path_list,omitempty" maximum:"100" minimum:"1" type:"Repeated"`
+	Referer      *string   `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_name
+	ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
+	// share_pwd
+	SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty" maximum:"64" minimum:"0"`
+}
+
+func (s CreateShareLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateShareLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateShareLinkRequest) SetHeaders(v map[string]*string) *CreateShareLinkRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetAdditionData(v map[string]interface{}) *CreateShareLinkRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetDescription(v string) *CreateShareLinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetDriveId(v string) *CreateShareLinkRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetExpiration(v string) *CreateShareLinkRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetFileId(v string) *CreateShareLinkRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetFileIdList(v []*string) *CreateShareLinkRequest {
+	s.FileIdList = v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetFilePathList(v []*string) *CreateShareLinkRequest {
+	s.FilePathList = v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetReferer(v string) *CreateShareLinkRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetShareName(v string) *CreateShareLinkRequest {
+	s.ShareName = &v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetSharePwd(v string) *CreateShareLinkRequest {
+	s.SharePwd = &v
 	return s
 }
 
@@ -3332,6 +6465,105 @@ func (s *CreateShareLinkResponse) SetStatus(v string) *CreateShareLinkResponse {
 
 func (s *CreateShareLinkResponse) SetUpdatedAt(v string) *CreateShareLinkResponse {
 	s.UpdatedAt = &v
+	return s
+}
+
+/**
+ * create share request
+ */
+type CreateShareRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	// expiration
+	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+	// owner
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty" require:"true"`
+	// owner_type
+	OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
+	// permissions
+	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
+	// share_file_id
+	ShareFileId *string `json:"share_file_id,omitempty" xml:"share_file_id,omitempty"`
+	// share_file_path
+	ShareFilePath *string `json:"share_file_path,omitempty" xml:"share_file_path,omitempty"`
+	// share_name
+	ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
+	// share create policy
+	//
+	// share_policy
+	SharePolicy []*SharePermissionPolicy `json:"share_policy,omitempty" xml:"share_policy,omitempty" type:"Repeated"`
+	// status
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s CreateShareRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateShareRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateShareRequest) SetHeaders(v map[string]*string) *CreateShareRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateShareRequest) SetDescription(v string) *CreateShareRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateShareRequest) SetDriveId(v string) *CreateShareRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CreateShareRequest) SetExpiration(v string) *CreateShareRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *CreateShareRequest) SetOwner(v string) *CreateShareRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateShareRequest) SetOwnerType(v string) *CreateShareRequest {
+	s.OwnerType = &v
+	return s
+}
+
+func (s *CreateShareRequest) SetPermissions(v []*string) *CreateShareRequest {
+	s.Permissions = v
+	return s
+}
+
+func (s *CreateShareRequest) SetShareFileId(v string) *CreateShareRequest {
+	s.ShareFileId = &v
+	return s
+}
+
+func (s *CreateShareRequest) SetShareFilePath(v string) *CreateShareRequest {
+	s.ShareFilePath = &v
+	return s
+}
+
+func (s *CreateShareRequest) SetShareName(v string) *CreateShareRequest {
+	s.ShareName = &v
+	return s
+}
+
+func (s *CreateShareRequest) SetSharePolicy(v []*SharePermissionPolicy) *CreateShareRequest {
+	s.SharePolicy = v
+	return s
+}
+
+func (s *CreateShareRequest) SetStatus(v string) *CreateShareRequest {
+	s.Status = &v
 	return s
 }
 
@@ -3726,6 +6958,40 @@ func (s *DeleteDomainRequest) SetDomainId(v string) *DeleteDomainRequest {
 }
 
 /**
+ * Delete drive request
+ */
+type DeleteDriveRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// Drive ID
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
+	// Subdomain ID
+	SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s DeleteDriveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDriveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDriveRequest) SetHeaders(v map[string]*string) *DeleteDriveRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDriveRequest) SetDriveId(v string) *DeleteDriveRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *DeleteDriveRequest) SetSubdomainId(v string) *DeleteDriveRequest {
+	s.SubdomainId = &v
+	return s
+}
+
+/**
  * delete drive response
  */
 type DeleteDriveResponse struct {
@@ -3737,6 +7003,59 @@ func (s DeleteDriveResponse) String() string {
 
 func (s DeleteDriveResponse) GoString() string {
 	return s.String()
+}
+
+/**
+ * 删除文件请求
+ */
+type DeleteFileRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// drive_id
+	DriveId    *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
+	// permanently
+	// type: false
+	Permanently *bool   `json:"permanently,omitempty" xml:"permanently,omitempty"`
+	ShareId     *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+}
+
+func (s DeleteFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFileRequest) SetHeaders(v map[string]*string) *DeleteFileRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFileRequest) SetDriveId(v string) *DeleteFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *DeleteFileRequest) SetFileId(v string) *DeleteFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *DeleteFileRequest) SetFileIdPath(v string) *DeleteFileRequest {
+	s.FileIdPath = &v
+	return s
+}
+
+func (s *DeleteFileRequest) SetPermanently(v bool) *DeleteFileRequest {
+	s.Permanently = &v
+	return s
+}
+
+func (s *DeleteFileRequest) SetShareId(v string) *DeleteFileRequest {
+	s.ShareId = &v
+	return s
 }
 
 /**
@@ -3782,6 +7101,41 @@ func (s *DeleteFileResponse) SetFileId(v string) *DeleteFileResponse {
 }
 
 /**
+ * 批量删除文件请求
+ */
+type DeleteFilesRequest struct {
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_id_list
+	FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" require:"true" type:"Repeated"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+}
+
+func (s DeleteFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFilesRequest) SetDriveId(v string) *DeleteFilesRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *DeleteFilesRequest) SetFileIdList(v []*string) *DeleteFilesRequest {
+	s.FileIdList = v
+	return s
+}
+
+func (s *DeleteFilesRequest) SetShareId(v string) *DeleteFilesRequest {
+	s.ShareId = &v
+	return s
+}
+
+/**
  * 批量删除文件 response
  */
 type DeleteFilesResponse struct {
@@ -3813,6 +7167,33 @@ func (s *DeleteFilesResponse) SetDomainId(v string) *DeleteFilesResponse {
 
 func (s *DeleteFilesResponse) SetDriveId(v string) *DeleteFilesResponse {
 	s.DriveId = &v
+	return s
+}
+
+/**
+ * delete share request
+ */
+type DeleteShareRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" require:"true"`
+}
+
+func (s DeleteShareRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteShareRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteShareRequest) SetHeaders(v map[string]*string) *DeleteShareRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteShareRequest) SetShareId(v string) *DeleteShareRequest {
+	s.ShareId = &v
 	return s
 }
 
@@ -3862,6 +7243,89 @@ func (s *DeviceAuthorizeRequest) SetLoginType(v string) *DeviceAuthorizeRequest 
 
 func (s *DeviceAuthorizeRequest) SetScope(v []*string) *DeviceAuthorizeRequest {
 	s.Scope = v
+	return s
+}
+
+/**
+ * 下载文件请求body
+ */
+type DownloadRequest struct {
+	// drive id
+	DriveID *string `json:"DriveID,omitempty" xml:"DriveID,omitempty"`
+	// file id
+	FileID *string `json:"FileID,omitempty" xml:"FileID,omitempty" require:"true"`
+	// in: query
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"ImageThumbnailProcess,omitempty" xml:"ImageThumbnailProcess,omitempty"`
+	// share_id, either share_id or drive_id is required
+	ShareID *string `json:"ShareID,omitempty" xml:"ShareID,omitempty"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"VideoThumbnailProcess,omitempty" xml:"VideoThumbnailProcess,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	FileIdPath   *string                `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
+	// location
+	Location  *string `json:"location,omitempty" xml:"location,omitempty"`
+	Referer   *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+}
+
+func (s DownloadRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadRequest) SetDriveID(v string) *DownloadRequest {
+	s.DriveID = &v
+	return s
+}
+
+func (s *DownloadRequest) SetFileID(v string) *DownloadRequest {
+	s.FileID = &v
+	return s
+}
+
+func (s *DownloadRequest) SetImageThumbnailProcess(v string) *DownloadRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *DownloadRequest) SetShareID(v string) *DownloadRequest {
+	s.ShareID = &v
+	return s
+}
+
+func (s *DownloadRequest) SetVideoThumbnailProcess(v string) *DownloadRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+func (s *DownloadRequest) SetAdditionData(v map[string]interface{}) *DownloadRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *DownloadRequest) SetFileIdPath(v string) *DownloadRequest {
+	s.FileIdPath = &v
+	return s
+}
+
+func (s *DownloadRequest) SetLocation(v string) *DownloadRequest {
+	s.Location = &v
+	return s
+}
+
+func (s *DownloadRequest) SetReferer(v string) *DownloadRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *DownloadRequest) SetSignToken(v string) *DownloadRequest {
+	s.SignToken = &v
 	return s
 }
 
@@ -3967,6 +7431,62 @@ func (s *FileDeltaResponse) SetOp(v string) *FileDeltaResponse {
 /**
  *
  */
+type FileStreamInfo struct {
+	// content_hash
+	ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+	// content_hash_name
+	ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+	// ContentMd5
+	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty" require:"true"`
+	// part_info_list
+	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+	// pre_hash
+	PreHash *string `json:"pre_hash,omitempty" xml:"pre_hash,omitempty"`
+	// Size
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty" require:"true" maximum:"53687091200" minimum:"0"`
+}
+
+func (s FileStreamInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileStreamInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FileStreamInfo) SetContentHash(v string) *FileStreamInfo {
+	s.ContentHash = &v
+	return s
+}
+
+func (s *FileStreamInfo) SetContentHashName(v string) *FileStreamInfo {
+	s.ContentHashName = &v
+	return s
+}
+
+func (s *FileStreamInfo) SetContentMd5(v string) *FileStreamInfo {
+	s.ContentMd5 = &v
+	return s
+}
+
+func (s *FileStreamInfo) SetPartInfoList(v []*UploadPartInfo) *FileStreamInfo {
+	s.PartInfoList = v
+	return s
+}
+
+func (s *FileStreamInfo) SetPreHash(v string) *FileStreamInfo {
+	s.PreHash = &v
+	return s
+}
+
+func (s *FileStreamInfo) SetSize(v int64) *FileStreamInfo {
+	s.Size = &v
+	return s
+}
+
+/**
+ *
+ */
 type GetAccessTokenByLinkInfoRequest struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
@@ -4044,6 +7564,34 @@ func (s GetAppRequest) GoString() string {
 
 func (s *GetAppRequest) SetAppId(v string) *GetAppRequest {
 	s.AppId = &v
+	return s
+}
+
+/**
+ * 获取异步人去信息
+ */
+type GetAsyncTaskRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// async_task_id
+	// type:string
+	AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
+}
+
+func (s GetAsyncTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncTaskRequest) SetHeaders(v map[string]*string) *GetAsyncTaskRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncTaskRequest) SetAsyncTaskId(v string) *GetAsyncTaskRequest {
+	s.AsyncTaskId = &v
 	return s
 }
 
@@ -4258,6 +7806,40 @@ func (s *GetDataCNameInfoRequest) SetDomainId(v string) *GetDataCNameInfoRequest
 }
 
 /**
+ * Get default drive request
+ */
+type GetDefaultDriveRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// Subdomain ID
+	SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+	// 用户ID
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s GetDefaultDriveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDefaultDriveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDefaultDriveRequest) SetHeaders(v map[string]*string) *GetDefaultDriveRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDefaultDriveRequest) SetSubdomainId(v string) *GetDefaultDriveRequest {
+	s.SubdomainId = &v
+	return s
+}
+
+func (s *GetDefaultDriveRequest) SetUserId(v string) *GetDefaultDriveRequest {
+	s.UserId = &v
+	return s
+}
+
+/**
  * 获取文件夹size信息
  */
 type GetDirSizeInfoResponse struct {
@@ -4314,6 +7896,93 @@ func (s *GetDomainRequest) SetDomainId(v string) *GetDomainRequest {
 }
 
 /**
+ * 获取文件下载地址的请求body
+ */
+type GetDownloadUrlRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// expire_sec
+	ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty" maximum:"14400" minimum:"1"`
+	// file_id
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+	FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
+	// file_name
+	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty" maxLength:"1024" minLength:"1"`
+	// location
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	Referer  *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id, either share_id or drive_id is required
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+}
+
+func (s GetDownloadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDownloadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDownloadUrlRequest) SetHeaders(v map[string]*string) *GetDownloadUrlRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDownloadUrlRequest) SetAdditionData(v map[string]interface{}) *GetDownloadUrlRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *GetDownloadUrlRequest) SetDriveId(v string) *GetDownloadUrlRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetDownloadUrlRequest) SetExpireSec(v int64) *GetDownloadUrlRequest {
+	s.ExpireSec = &v
+	return s
+}
+
+func (s *GetDownloadUrlRequest) SetFileId(v string) *GetDownloadUrlRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetDownloadUrlRequest) SetFileIdPath(v string) *GetDownloadUrlRequest {
+	s.FileIdPath = &v
+	return s
+}
+
+func (s *GetDownloadUrlRequest) SetFileName(v string) *GetDownloadUrlRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetDownloadUrlRequest) SetLocation(v string) *GetDownloadUrlRequest {
+	s.Location = &v
+	return s
+}
+
+func (s *GetDownloadUrlRequest) SetReferer(v string) *GetDownloadUrlRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *GetDownloadUrlRequest) SetShareId(v string) *GetDownloadUrlRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *GetDownloadUrlRequest) SetSignToken(v string) *GetDownloadUrlRequest {
+	s.SignToken = &v
+	return s
+}
+
+/**
  * 获取download url response
  */
 type GetDownloadUrlResponse struct {
@@ -4365,6 +8034,40 @@ func (s *GetDownloadUrlResponse) SetStreamsUrl(v map[string]interface{}) *GetDow
 
 func (s *GetDownloadUrlResponse) SetUrl(v string) *GetDownloadUrlResponse {
 	s.Url = &v
+	return s
+}
+
+/**
+ * Get drive request
+ */
+type GetDriveRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// Drive ID
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
+	// Subdomain ID
+	SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s GetDriveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDriveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDriveRequest) SetHeaders(v map[string]*string) *GetDriveRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDriveRequest) SetDriveId(v string) *GetDriveRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetDriveRequest) SetSubdomainId(v string) *GetDriveRequest {
+	s.SubdomainId = &v
 	return s
 }
 
@@ -4482,6 +8185,94 @@ func (s *GetDriveResponse) SetTotalSize(v int64) *GetDriveResponse {
 
 func (s *GetDriveResponse) SetUsedSize(v int64) *GetDriveResponse {
 	s.UsedSize = &v
+	return s
+}
+
+/**
+ * 根据路径获取 File 接口 body
+ */
+type GetFileByPathRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	// file_path
+	FilePath                  *string   `json:"file_path,omitempty" xml:"file_path,omitempty"`
+	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	Referer         *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	SignToken       *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+	// url_expire_sec
+	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s GetFileByPathRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileByPathRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileByPathRequest) SetHeaders(v map[string]*string) *GetFileByPathRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileByPathRequest) SetAdditionData(v map[string]interface{}) *GetFileByPathRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *GetFileByPathRequest) SetDriveId(v string) *GetFileByPathRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetFileByPathRequest) SetFilePath(v string) *GetFileByPathRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *GetFileByPathRequest) SetImageCroppingAspectRatios(v []*string) *GetFileByPathRequest {
+	s.ImageCroppingAspectRatios = v
+	return s
+}
+
+func (s *GetFileByPathRequest) SetImageThumbnailProcess(v string) *GetFileByPathRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *GetFileByPathRequest) SetImageUrlProcess(v string) *GetFileByPathRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *GetFileByPathRequest) SetReferer(v string) *GetFileByPathRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *GetFileByPathRequest) SetSignToken(v string) *GetFileByPathRequest {
+	s.SignToken = &v
+	return s
+}
+
+func (s *GetFileByPathRequest) SetUrlExpireSec(v int64) *GetFileByPathRequest {
+	s.UrlExpireSec = &v
+	return s
+}
+
+func (s *GetFileByPathRequest) SetVideoThumbnailProcess(v string) *GetFileByPathRequest {
+	s.VideoThumbnailProcess = &v
 	return s
 }
 
@@ -4750,6 +8541,121 @@ func (s *GetFileByPathResponse) SetVideoPreviewMetadata(v *VideoPreviewResponse)
 }
 
 /**
+ * 获取文件元数据
+ */
+type GetFileRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// fields
+	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
+	// file_id
+	FileId                    *string   `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+	FileIdPath                *string   `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
+	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	// location
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	Referer  *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id, either share_id or drive_id is required
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+	// url_expire_sec
+	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s GetFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileRequest) SetHeaders(v map[string]*string) *GetFileRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileRequest) SetAdditionData(v map[string]interface{}) *GetFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *GetFileRequest) SetDriveId(v string) *GetFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetFileRequest) SetFields(v string) *GetFileRequest {
+	s.Fields = &v
+	return s
+}
+
+func (s *GetFileRequest) SetFileId(v string) *GetFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetFileRequest) SetFileIdPath(v string) *GetFileRequest {
+	s.FileIdPath = &v
+	return s
+}
+
+func (s *GetFileRequest) SetImageCroppingAspectRatios(v []*string) *GetFileRequest {
+	s.ImageCroppingAspectRatios = v
+	return s
+}
+
+func (s *GetFileRequest) SetImageThumbnailProcess(v string) *GetFileRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *GetFileRequest) SetImageUrlProcess(v string) *GetFileRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *GetFileRequest) SetLocation(v string) *GetFileRequest {
+	s.Location = &v
+	return s
+}
+
+func (s *GetFileRequest) SetReferer(v string) *GetFileRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *GetFileRequest) SetShareId(v string) *GetFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *GetFileRequest) SetSignToken(v string) *GetFileRequest {
+	s.SignToken = &v
+	return s
+}
+
+func (s *GetFileRequest) SetUrlExpireSec(v int64) *GetFileRequest {
+	s.UrlExpireSec = &v
+	return s
+}
+
+func (s *GetFileRequest) SetVideoThumbnailProcess(v string) *GetFileRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
  * 获取文件元数据response
  */
 type GetFileResponse struct {
@@ -5014,6 +8920,33 @@ func (s *GetFileResponse) SetVideoPreviewMetadata(v *VideoPreviewResponse) *GetF
 }
 
 /**
+ * 获取最新游标
+ */
+type GetLastCursorRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+}
+
+func (s GetLastCursorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLastCursorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLastCursorRequest) SetHeaders(v map[string]*string) *GetLastCursorRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLastCursorRequest) SetDriveId(v string) *GetLastCursorRequest {
+	s.DriveId = &v
+	return s
+}
+
+/**
  * get last file op cursor response
  */
 type GetLastCursorResponse struct {
@@ -5061,6 +8994,40 @@ func (s *GetLinkInfoByUserIDRequest) SetUserId(v string) *GetLinkInfoByUserIDReq
 }
 
 /**
+ * get_media_play_url request
+ */
+type GetMediaPlayURLRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	// file_id
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+}
+
+func (s GetMediaPlayURLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaPlayURLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaPlayURLRequest) SetHeaders(v map[string]*string) *GetMediaPlayURLRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMediaPlayURLRequest) SetDriveId(v string) *GetMediaPlayURLRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetMediaPlayURLRequest) SetFileId(v string) *GetMediaPlayURLRequest {
+	s.FileId = &v
+	return s
+}
+
+/**
  * get_media_play_url response
  */
 type GetMediaPlayURLResponse struct {
@@ -5078,6 +9045,86 @@ func (s GetMediaPlayURLResponse) GoString() string {
 
 func (s *GetMediaPlayURLResponse) SetUrl(v string) *GetMediaPlayURLResponse {
 	s.Url = &v
+	return s
+}
+
+/**
+ * GetOfficeEditUrlOption 权限控制
+ */
+type GetOfficeEditUrlOption struct {
+	// Copy
+	Copy     *bool `json:"copy,omitempty" xml:"copy,omitempty"`
+	Readonly *bool `json:"readonly,omitempty" xml:"readonly,omitempty"`
+}
+
+func (s GetOfficeEditUrlOption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOfficeEditUrlOption) GoString() string {
+	return s.String()
+}
+
+func (s *GetOfficeEditUrlOption) SetCopy(v bool) *GetOfficeEditUrlOption {
+	s.Copy = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlOption) SetReadonly(v bool) *GetOfficeEditUrlOption {
+	s.Readonly = &v
+	return s
+}
+
+/**
+ * 获取office文档在线编辑地址
+ */
+type GetOfficeEditUrlRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	// file_id
+	FileId    *string                    `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+	Option    *GetOfficeEditUrlOption    `json:"option,omitempty" xml:"option,omitempty"`
+	Watermark *GetOfficeEditUrlWatermark `json:"watermark,omitempty" xml:"watermark,omitempty"`
+}
+
+func (s GetOfficeEditUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOfficeEditUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOfficeEditUrlRequest) SetHeaders(v map[string]*string) *GetOfficeEditUrlRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOfficeEditUrlRequest) SetAdditionData(v map[string]interface{}) *GetOfficeEditUrlRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *GetOfficeEditUrlRequest) SetDriveId(v string) *GetOfficeEditUrlRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlRequest) SetFileId(v string) *GetOfficeEditUrlRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlRequest) SetOption(v *GetOfficeEditUrlOption) *GetOfficeEditUrlRequest {
+	s.Option = v
+	return s
+}
+
+func (s *GetOfficeEditUrlRequest) SetWatermark(v *GetOfficeEditUrlWatermark) *GetOfficeEditUrlRequest {
+	s.Watermark = v
 	return s
 }
 
@@ -5113,6 +9160,123 @@ func (s *GetOfficeEditUrlResponse) SetOfficeAccessToken(v string) *GetOfficeEdit
 
 func (s *GetOfficeEditUrlResponse) SetOfficeRefreshToken(v string) *GetOfficeEditUrlResponse {
 	s.OfficeRefreshToken = &v
+	return s
+}
+
+/**
+ * GetOfficeEditUrlWatermark 水印配置
+ */
+type GetOfficeEditUrlWatermark struct {
+	// FillStyle
+	Fillstyle *string `json:"fillstyle,omitempty" xml:"fillstyle,omitempty"`
+	// Font
+	Font *string `json:"font,omitempty" xml:"font,omitempty"`
+	// Horizontal
+	Horizontal *int64 `json:"horizontal,omitempty" xml:"horizontal,omitempty"`
+	// Rotate
+	Rotate *float64 `json:"rotate,omitempty" xml:"rotate,omitempty"`
+	// Type
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	// Value
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// Vertical
+	Vertical *int64 `json:"vertical,omitempty" xml:"vertical,omitempty"`
+}
+
+func (s GetOfficeEditUrlWatermark) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOfficeEditUrlWatermark) GoString() string {
+	return s.String()
+}
+
+func (s *GetOfficeEditUrlWatermark) SetFillstyle(v string) *GetOfficeEditUrlWatermark {
+	s.Fillstyle = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlWatermark) SetFont(v string) *GetOfficeEditUrlWatermark {
+	s.Font = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlWatermark) SetHorizontal(v int64) *GetOfficeEditUrlWatermark {
+	s.Horizontal = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlWatermark) SetRotate(v float64) *GetOfficeEditUrlWatermark {
+	s.Rotate = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlWatermark) SetType(v int32) *GetOfficeEditUrlWatermark {
+	s.Type = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlWatermark) SetValue(v string) *GetOfficeEditUrlWatermark {
+	s.Value = &v
+	return s
+}
+
+func (s *GetOfficeEditUrlWatermark) SetVertical(v int64) *GetOfficeEditUrlWatermark {
+	s.Vertical = &v
+	return s
+}
+
+/**
+ * 获取office文档预览地址
+ */
+type GetOfficePreviewUrlRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_id
+	FileId  *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id, either share_id or drive_id is required
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+}
+
+func (s GetOfficePreviewUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOfficePreviewUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOfficePreviewUrlRequest) SetHeaders(v map[string]*string) *GetOfficePreviewUrlRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOfficePreviewUrlRequest) SetAdditionData(v map[string]interface{}) *GetOfficePreviewUrlRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *GetOfficePreviewUrlRequest) SetDriveId(v string) *GetOfficePreviewUrlRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetOfficePreviewUrlRequest) SetFileId(v string) *GetOfficePreviewUrlRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetOfficePreviewUrlRequest) SetReferer(v string) *GetOfficePreviewUrlRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *GetOfficePreviewUrlRequest) SetShareId(v string) *GetOfficePreviewUrlRequest {
+	s.ShareId = &v
 	return s
 }
 
@@ -5209,6 +9373,8 @@ func (s *GetPublicKeyResponse) SetPublicKey(v string) *GetPublicKeyResponse {
  *
  */
 type GetRPVerifyResultRequest struct {
+	// During Verify Process, 是否在实人认证流程中调用
+	DuringVerifyProcess *bool `json:"during_verify_process,omitempty" xml:"during_verify_process,omitempty"`
 	// User ID, 当前访问的用户
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
 }
@@ -5219,6 +9385,11 @@ func (s GetRPVerifyResultRequest) String() string {
 
 func (s GetRPVerifyResultRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetRPVerifyResultRequest) SetDuringVerifyProcess(v bool) *GetRPVerifyResultRequest {
+	s.DuringVerifyProcess = &v
+	return s
 }
 
 func (s *GetRPVerifyResultRequest) SetUserId(v string) *GetRPVerifyResultRequest {
@@ -5244,6 +9415,33 @@ func (s GetRPVerifyTokenRequest) GoString() string {
 
 func (s *GetRPVerifyTokenRequest) SetUserId(v string) *GetRPVerifyTokenRequest {
 	s.UserId = &v
+	return s
+}
+
+/**
+ * get_share_link_by_anonymous request
+ */
+type GetShareLinkByAnonymousRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+}
+
+func (s GetShareLinkByAnonymousRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareLinkByAnonymousRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareLinkByAnonymousRequest) SetHeaders(v map[string]*string) *GetShareLinkByAnonymousRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShareLinkByAnonymousRequest) SetShareId(v string) *GetShareLinkByAnonymousRequest {
+	s.ShareId = &v
 	return s
 }
 
@@ -5311,6 +9509,33 @@ func (s *GetShareLinkByAnonymousResponse) SetUpdatedAt(v string) *GetShareLinkBy
 }
 
 /**
+ * get_share_id request
+ */
+type GetShareLinkIDRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// share_msg
+	ShareMsg *string `json:"share_msg,omitempty" xml:"share_msg,omitempty"`
+}
+
+func (s GetShareLinkIDRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareLinkIDRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareLinkIDRequest) SetHeaders(v map[string]*string) *GetShareLinkIDRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShareLinkIDRequest) SetShareMsg(v string) *GetShareLinkIDRequest {
+	s.ShareMsg = &v
+	return s
+}
+
+/**
  * get_share_id response
  */
 type GetShareLinkIDResponse struct {
@@ -5334,6 +9559,80 @@ func (s *GetShareLinkIDResponse) SetShareId(v string) *GetShareLinkIDResponse {
 }
 
 func (s *GetShareLinkIDResponse) SetSharePwd(v string) *GetShareLinkIDResponse {
+	s.SharePwd = &v
+	return s
+}
+
+/**
+ * get_share request
+ */
+type GetShareLinkRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+}
+
+func (s GetShareLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareLinkRequest) SetHeaders(v map[string]*string) *GetShareLinkRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShareLinkRequest) SetShareId(v string) *GetShareLinkRequest {
+	s.ShareId = &v
+	return s
+}
+
+/**
+ * get_share_token request
+ */
+type GetShareLinkTokenRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	Referer      *string                `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// share_pwd
+	SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
+}
+
+func (s GetShareLinkTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareLinkTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareLinkTokenRequest) SetHeaders(v map[string]*string) *GetShareLinkTokenRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShareLinkTokenRequest) SetAdditionData(v map[string]interface{}) *GetShareLinkTokenRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *GetShareLinkTokenRequest) SetReferer(v string) *GetShareLinkTokenRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *GetShareLinkTokenRequest) SetShareId(v string) *GetShareLinkTokenRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *GetShareLinkTokenRequest) SetSharePwd(v string) *GetShareLinkTokenRequest {
 	s.SharePwd = &v
 	return s
 }
@@ -5370,6 +9669,33 @@ func (s *GetShareLinkTokenResponse) SetExpiresIn(v int64) *GetShareLinkTokenResp
 
 func (s *GetShareLinkTokenResponse) SetShareToken(v string) *GetShareLinkTokenResponse {
 	s.ShareToken = &v
+	return s
+}
+
+/**
+ * get share request
+ */
+type GetShareRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+}
+
+func (s GetShareRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetShareRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetShareRequest) SetHeaders(v map[string]*string) *GetShareRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetShareRequest) SetShareId(v string) *GetShareRequest {
+	s.ShareId = &v
 	return s
 }
 
@@ -5506,6 +9832,67 @@ func (s *GetShareResponse) SetUpdatedAt(v string) *GetShareResponse {
 }
 
 /**
+ * 获取文件上传URL
+ */
+type GetUploadUrlRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// content_md5
+	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty" maxLength:"32"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_id
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+	// upload_part_list
+	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+	ShareId      *string           `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// upload_id
+	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty" require:"true"`
+}
+
+func (s GetUploadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadUrlRequest) SetHeaders(v map[string]*string) *GetUploadUrlRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUploadUrlRequest) SetContentMd5(v string) *GetUploadUrlRequest {
+	s.ContentMd5 = &v
+	return s
+}
+
+func (s *GetUploadUrlRequest) SetDriveId(v string) *GetUploadUrlRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetUploadUrlRequest) SetFileId(v string) *GetUploadUrlRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetUploadUrlRequest) SetPartInfoList(v []*UploadPartInfo) *GetUploadUrlRequest {
+	s.PartInfoList = v
+	return s
+}
+
+func (s *GetUploadUrlRequest) SetShareId(v string) *GetUploadUrlRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *GetUploadUrlRequest) SetUploadId(v string) *GetUploadUrlRequest {
+	s.UploadId = &v
+	return s
+}
+
+/**
  * Get UploadUrl Response
  */
 type GetUploadUrlResponse struct {
@@ -5558,6 +9945,73 @@ func (s *GetUploadUrlResponse) SetPartInfoList(v []*UploadPartInfo) *GetUploadUr
 
 func (s *GetUploadUrlResponse) SetUploadId(v string) *GetUploadUrlResponse {
 	s.UploadId = &v
+	return s
+}
+
+/**
+ * 获取视频雪碧图地址的请求body
+ */
+type GetVideoPreviewSpriteURLRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// expire_sec
+	ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty" maximum:"14400" minimum:"1"`
+	// file_id
+	FileId  *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id, either share_id or drive_id is required
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+}
+
+func (s GetVideoPreviewSpriteURLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPreviewSpriteURLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPreviewSpriteURLRequest) SetHeaders(v map[string]*string) *GetVideoPreviewSpriteURLRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoPreviewSpriteURLRequest) SetAdditionData(v map[string]interface{}) *GetVideoPreviewSpriteURLRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *GetVideoPreviewSpriteURLRequest) SetDriveId(v string) *GetVideoPreviewSpriteURLRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetVideoPreviewSpriteURLRequest) SetExpireSec(v int64) *GetVideoPreviewSpriteURLRequest {
+	s.ExpireSec = &v
+	return s
+}
+
+func (s *GetVideoPreviewSpriteURLRequest) SetFileId(v string) *GetVideoPreviewSpriteURLRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetVideoPreviewSpriteURLRequest) SetReferer(v string) *GetVideoPreviewSpriteURLRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *GetVideoPreviewSpriteURLRequest) SetShareId(v string) *GetVideoPreviewSpriteURLRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *GetVideoPreviewSpriteURLRequest) SetSignToken(v string) *GetVideoPreviewSpriteURLRequest {
+	s.SignToken = &v
 	return s
 }
 
@@ -5625,6 +10079,87 @@ func (s *GetVideoPreviewSpriteURLResponse) SetSpriteUrlList(v []*string) *GetVid
 }
 
 /**
+ * 获取视频文件播放地址的请求body
+ */
+type GetVideoPreviewURLRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// audio_template_id
+	AudioTemplateId *string `json:"audio_template_id,omitempty" xml:"audio_template_id,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// expire_sec
+	ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty" maximum:"14400" minimum:"1"`
+	// file_id
+	FileId  *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id, either share_id or drive_id is required
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+	// template_id
+	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
+}
+
+func (s GetVideoPreviewURLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPreviewURLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPreviewURLRequest) SetHeaders(v map[string]*string) *GetVideoPreviewURLRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoPreviewURLRequest) SetAdditionData(v map[string]interface{}) *GetVideoPreviewURLRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *GetVideoPreviewURLRequest) SetAudioTemplateId(v string) *GetVideoPreviewURLRequest {
+	s.AudioTemplateId = &v
+	return s
+}
+
+func (s *GetVideoPreviewURLRequest) SetDriveId(v string) *GetVideoPreviewURLRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetVideoPreviewURLRequest) SetExpireSec(v int64) *GetVideoPreviewURLRequest {
+	s.ExpireSec = &v
+	return s
+}
+
+func (s *GetVideoPreviewURLRequest) SetFileId(v string) *GetVideoPreviewURLRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetVideoPreviewURLRequest) SetReferer(v string) *GetVideoPreviewURLRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *GetVideoPreviewURLRequest) SetShareId(v string) *GetVideoPreviewURLRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *GetVideoPreviewURLRequest) SetSignToken(v string) *GetVideoPreviewURLRequest {
+	s.SignToken = &v
+	return s
+}
+
+func (s *GetVideoPreviewURLRequest) SetTemplateId(v string) *GetVideoPreviewURLRequest {
+	s.TemplateId = &v
+	return s
+}
+
+/**
  * 获取视频文件播放 url response
  */
 type GetVideoPreviewURLResponse struct {
@@ -5642,6 +10177,68 @@ func (s GetVideoPreviewURLResponse) GoString() string {
 
 func (s *GetVideoPreviewURLResponse) SetPreviewUrl(v string) *GetVideoPreviewURLResponse {
 	s.PreviewUrl = &v
+	return s
+}
+
+/**
+ * complete file request
+ */
+type HostingCompleteFileRequest struct {
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId  *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty"`
+	// forbid_overwrite
+	// type: boolean
+	ForbidOverwrite *bool `json:"forbid_overwrite,omitempty" xml:"forbid_overwrite,omitempty"`
+	// part_info_list
+	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+	ShareId      *string           `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// upload_id
+	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+}
+
+func (s HostingCompleteFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingCompleteFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingCompleteFileRequest) SetAdditionData(v map[string]interface{}) *HostingCompleteFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *HostingCompleteFileRequest) SetDriveId(v string) *HostingCompleteFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingCompleteFileRequest) SetFilePath(v string) *HostingCompleteFileRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *HostingCompleteFileRequest) SetForbidOverwrite(v bool) *HostingCompleteFileRequest {
+	s.ForbidOverwrite = &v
+	return s
+}
+
+func (s *HostingCompleteFileRequest) SetPartInfoList(v []*UploadPartInfo) *HostingCompleteFileRequest {
+	s.PartInfoList = v
+	return s
+}
+
+func (s *HostingCompleteFileRequest) SetShareId(v string) *HostingCompleteFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *HostingCompleteFileRequest) SetUploadId(v string) *HostingCompleteFileRequest {
+	s.UploadId = &v
 	return s
 }
 
@@ -5821,6 +10418,90 @@ func (s *HostingCompleteFileResponse) SetUrl(v string) *HostingCompleteFileRespo
 }
 
 /**
+ * copy file request
+ */
+type HostingCopyFileRequest struct {
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_path
+	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true"`
+	// new_name
+	NewName *string `json:"new_name,omitempty" xml:"new_name,omitempty" maxLength:"1024" minLength:"1"`
+	// overwrite
+	// type: boolean
+	Overwrite *bool   `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
+	Referer   *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+	// to_drive_id
+	ToDriveId *string `json:"to_drive_id,omitempty" xml:"to_drive_id,omitempty" pattern:"[0-9]+"`
+	// to_parent_file_path
+	ToParentFilePath *string `json:"to_parent_file_path,omitempty" xml:"to_parent_file_path,omitempty" require:"true"`
+	// share_id
+	ToShareId *string `json:"to_share_id,omitempty" xml:"to_share_id,omitempty"`
+}
+
+func (s HostingCopyFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingCopyFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingCopyFileRequest) SetAdditionData(v map[string]interface{}) *HostingCopyFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *HostingCopyFileRequest) SetDriveId(v string) *HostingCopyFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingCopyFileRequest) SetFilePath(v string) *HostingCopyFileRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *HostingCopyFileRequest) SetNewName(v string) *HostingCopyFileRequest {
+	s.NewName = &v
+	return s
+}
+
+func (s *HostingCopyFileRequest) SetOverwrite(v bool) *HostingCopyFileRequest {
+	s.Overwrite = &v
+	return s
+}
+
+func (s *HostingCopyFileRequest) SetReferer(v string) *HostingCopyFileRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *HostingCopyFileRequest) SetShareId(v string) *HostingCopyFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *HostingCopyFileRequest) SetToDriveId(v string) *HostingCopyFileRequest {
+	s.ToDriveId = &v
+	return s
+}
+
+func (s *HostingCopyFileRequest) SetToParentFilePath(v string) *HostingCopyFileRequest {
+	s.ToParentFilePath = &v
+	return s
+}
+
+func (s *HostingCopyFileRequest) SetToShareId(v string) *HostingCopyFileRequest {
+	s.ToShareId = &v
+	return s
+}
+
+/**
  * 文件拷贝 response
  */
 type HostingCopyFileResponse struct {
@@ -5866,6 +10547,98 @@ func (s *HostingCopyFileResponse) SetFilePath(v string) *HostingCopyFileResponse
 
 func (s *HostingCopyFileResponse) SetShareId(v string) *HostingCopyFileResponse {
 	s.ShareId = &v
+	return s
+}
+
+/**
+ * create file request
+ */
+type HostingCreateFileRequest struct {
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// ContentMd5
+	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
+	// ContentType
+	ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// forbid_overwrite
+	// type: boolean
+	ForbidOverwrite *bool `json:"forbid_overwrite,omitempty" xml:"forbid_overwrite,omitempty"`
+	// Name
+	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
+	// parent_file_path
+	ParentFilePath *string `json:"parent_file_path,omitempty" xml:"parent_file_path,omitempty" require:"true"`
+	// part_info_list
+	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+	// Size
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+	// Type
+	Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+}
+
+func (s HostingCreateFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingCreateFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingCreateFileRequest) SetAdditionData(v map[string]interface{}) *HostingCreateFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *HostingCreateFileRequest) SetContentMd5(v string) *HostingCreateFileRequest {
+	s.ContentMd5 = &v
+	return s
+}
+
+func (s *HostingCreateFileRequest) SetContentType(v string) *HostingCreateFileRequest {
+	s.ContentType = &v
+	return s
+}
+
+func (s *HostingCreateFileRequest) SetDriveId(v string) *HostingCreateFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingCreateFileRequest) SetForbidOverwrite(v bool) *HostingCreateFileRequest {
+	s.ForbidOverwrite = &v
+	return s
+}
+
+func (s *HostingCreateFileRequest) SetName(v string) *HostingCreateFileRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *HostingCreateFileRequest) SetParentFilePath(v string) *HostingCreateFileRequest {
+	s.ParentFilePath = &v
+	return s
+}
+
+func (s *HostingCreateFileRequest) SetPartInfoList(v []*UploadPartInfo) *HostingCreateFileRequest {
+	s.PartInfoList = v
+	return s
+}
+
+func (s *HostingCreateFileRequest) SetShareId(v string) *HostingCreateFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *HostingCreateFileRequest) SetSize(v int64) *HostingCreateFileRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *HostingCreateFileRequest) SetType(v string) *HostingCreateFileRequest {
+	s.Type = &v
 	return s
 }
 
@@ -5929,6 +10702,49 @@ func (s *HostingCreateFileResponse) SetType(v string) *HostingCreateFileResponse
 
 func (s *HostingCreateFileResponse) SetUploadId(v string) *HostingCreateFileResponse {
 	s.UploadId = &v
+	return s
+}
+
+/**
+ * 删除文件请求
+ */
+type HostingDeleteFileRequest struct {
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_path
+	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
+	// permanently
+	// type: false
+	Permanently *bool `json:"permanently,omitempty" xml:"permanently,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+}
+
+func (s HostingDeleteFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingDeleteFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingDeleteFileRequest) SetDriveId(v string) *HostingDeleteFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingDeleteFileRequest) SetFilePath(v string) *HostingDeleteFileRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *HostingDeleteFileRequest) SetPermanently(v bool) *HostingDeleteFileRequest {
+	s.Permanently = &v
+	return s
+}
+
+func (s *HostingDeleteFileRequest) SetShareId(v string) *HostingDeleteFileRequest {
+	s.ShareId = &v
 	return s
 }
 
@@ -6024,6 +10840,74 @@ func (s *HostingDeleteFilesResponse) SetShareId(v string) *HostingDeleteFilesRes
 }
 
 /**
+ * 获取文件下载地址的请求body
+ */
+type HostingGetDownloadUrlRequest struct {
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// expire_sec
+	ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty" maximum:"14400" minimum:"10"`
+	// file_name
+	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
+	// file_path
+	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
+	Referer  *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+}
+
+func (s HostingGetDownloadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingGetDownloadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingGetDownloadUrlRequest) SetAdditionData(v map[string]interface{}) *HostingGetDownloadUrlRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *HostingGetDownloadUrlRequest) SetDriveId(v string) *HostingGetDownloadUrlRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingGetDownloadUrlRequest) SetExpireSec(v int64) *HostingGetDownloadUrlRequest {
+	s.ExpireSec = &v
+	return s
+}
+
+func (s *HostingGetDownloadUrlRequest) SetFileName(v string) *HostingGetDownloadUrlRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *HostingGetDownloadUrlRequest) SetFilePath(v string) *HostingGetDownloadUrlRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *HostingGetDownloadUrlRequest) SetReferer(v string) *HostingGetDownloadUrlRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *HostingGetDownloadUrlRequest) SetShareId(v string) *HostingGetDownloadUrlRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *HostingGetDownloadUrlRequest) SetSignToken(v string) *HostingGetDownloadUrlRequest {
+	s.SignToken = &v
+	return s
+}
+
+/**
  * 获取download url response
  */
 type HostingGetDownloadUrlResponse struct {
@@ -6055,6 +10939,89 @@ func (s *HostingGetDownloadUrlResponse) SetMethod(v string) *HostingGetDownloadU
 
 func (s *HostingGetDownloadUrlResponse) SetUrl(v string) *HostingGetDownloadUrlResponse {
 	s.Url = &v
+	return s
+}
+
+/**
+ * 获取文件元数据
+ */
+type HostingGetFileRequest struct {
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_id
+	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	Referer         *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+	// url_expire_sec
+	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s HostingGetFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingGetFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingGetFileRequest) SetAdditionData(v map[string]interface{}) *HostingGetFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *HostingGetFileRequest) SetDriveId(v string) *HostingGetFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingGetFileRequest) SetFilePath(v string) *HostingGetFileRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *HostingGetFileRequest) SetImageThumbnailProcess(v string) *HostingGetFileRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *HostingGetFileRequest) SetImageUrlProcess(v string) *HostingGetFileRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *HostingGetFileRequest) SetReferer(v string) *HostingGetFileRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *HostingGetFileRequest) SetShareId(v string) *HostingGetFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *HostingGetFileRequest) SetSignToken(v string) *HostingGetFileRequest {
+	s.SignToken = &v
+	return s
+}
+
+func (s *HostingGetFileRequest) SetUrlExpireSec(v int64) *HostingGetFileRequest {
+	s.UrlExpireSec = &v
+	return s
+}
+
+func (s *HostingGetFileRequest) SetVideoThumbnailProcess(v string) *HostingGetFileRequest {
+	s.VideoThumbnailProcess = &v
 	return s
 }
 
@@ -6227,6 +11194,55 @@ func (s *HostingGetFileResponse) SetUrl(v string) *HostingGetFileResponse {
 }
 
 /**
+ * 获取文件安全地址的请求body
+ */
+type HostingGetSecureUrlRequest struct {
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// expire_sec 单位秒
+	ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty"`
+	// file_path
+	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
+	// secure_ip
+	SecureIp *string `json:"secure_ip,omitempty" xml:"secure_ip,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+}
+
+func (s HostingGetSecureUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingGetSecureUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingGetSecureUrlRequest) SetDriveId(v string) *HostingGetSecureUrlRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingGetSecureUrlRequest) SetExpireSec(v int64) *HostingGetSecureUrlRequest {
+	s.ExpireSec = &v
+	return s
+}
+
+func (s *HostingGetSecureUrlRequest) SetFilePath(v string) *HostingGetSecureUrlRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *HostingGetSecureUrlRequest) SetSecureIp(v string) *HostingGetSecureUrlRequest {
+	s.SecureIp = &v
+	return s
+}
+
+func (s *HostingGetSecureUrlRequest) SetShareId(v string) *HostingGetSecureUrlRequest {
+	s.ShareId = &v
+	return s
+}
+
+/**
  * 获取secure url response
  */
 type HostingGetSecureUrlResponse struct {
@@ -6251,6 +11267,62 @@ func (s *HostingGetSecureUrlResponse) SetExpiration(v string) *HostingGetSecureU
 
 func (s *HostingGetSecureUrlResponse) SetUrl(v string) *HostingGetSecureUrlResponse {
 	s.Url = &v
+	return s
+}
+
+/**
+ * 获取文件上传URL
+ */
+type HostingGetUploadUrlRequest struct {
+	// content_md5
+	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty" maxLength:"32"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_path
+	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true"`
+	// upload_part_list
+	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+	// upload_id
+	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty" require:"true"`
+}
+
+func (s HostingGetUploadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingGetUploadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingGetUploadUrlRequest) SetContentMd5(v string) *HostingGetUploadUrlRequest {
+	s.ContentMd5 = &v
+	return s
+}
+
+func (s *HostingGetUploadUrlRequest) SetDriveId(v string) *HostingGetUploadUrlRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingGetUploadUrlRequest) SetFilePath(v string) *HostingGetUploadUrlRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *HostingGetUploadUrlRequest) SetPartInfoList(v []*UploadPartInfo) *HostingGetUploadUrlRequest {
+	s.PartInfoList = v
+	return s
+}
+
+func (s *HostingGetUploadUrlRequest) SetShareId(v string) *HostingGetUploadUrlRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *HostingGetUploadUrlRequest) SetUploadId(v string) *HostingGetUploadUrlRequest {
+	s.UploadId = &v
 	return s
 }
 
@@ -6311,6 +11383,109 @@ func (s *HostingGetUploadUrlResponse) SetUploadId(v string) *HostingGetUploadUrl
 }
 
 /**
+ * list file request
+ */
+type HostingListFileRequest struct {
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId                   *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	// limit
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
+	// marker
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// ParentFilePath
+	ParentFilePath *string `json:"parent_file_path,omitempty" xml:"parent_file_path,omitempty" require:"true"`
+	Referer        *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+	// url_expire_sec
+	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s HostingListFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingListFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingListFileRequest) SetAdditionData(v map[string]interface{}) *HostingListFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *HostingListFileRequest) SetDriveId(v string) *HostingListFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingListFileRequest) SetImageCroppingAspectRatios(v []*string) *HostingListFileRequest {
+	s.ImageCroppingAspectRatios = v
+	return s
+}
+
+func (s *HostingListFileRequest) SetImageThumbnailProcess(v string) *HostingListFileRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *HostingListFileRequest) SetImageUrlProcess(v string) *HostingListFileRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *HostingListFileRequest) SetLimit(v int64) *HostingListFileRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *HostingListFileRequest) SetMarker(v string) *HostingListFileRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *HostingListFileRequest) SetParentFilePath(v string) *HostingListFileRequest {
+	s.ParentFilePath = &v
+	return s
+}
+
+func (s *HostingListFileRequest) SetReferer(v string) *HostingListFileRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *HostingListFileRequest) SetShareId(v string) *HostingListFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *HostingListFileRequest) SetSignToken(v string) *HostingListFileRequest {
+	s.SignToken = &v
+	return s
+}
+
+func (s *HostingListFileRequest) SetUrlExpireSec(v int64) *HostingListFileRequest {
+	s.UrlExpireSec = &v
+	return s
+}
+
+func (s *HostingListFileRequest) SetVideoThumbnailProcess(v string) *HostingListFileRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
  * List file response
  */
 type HostingListFileResponse struct {
@@ -6335,6 +11510,62 @@ func (s *HostingListFileResponse) SetItems(v []*BaseHostingFileResponse) *Hostin
 
 func (s *HostingListFileResponse) SetNextMarker(v string) *HostingListFileResponse {
 	s.NextMarker = &v
+	return s
+}
+
+/**
+ * 列举uploadID对应的已上传分片
+ */
+type HostingListUploadedPartRequest struct {
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_path
+	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true"`
+	// limit
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"1000" minimum:"1"`
+	// part_number_marker
+	PartNumberMarker *int64 `json:"part_number_marker,omitempty" xml:"part_number_marker,omitempty" minimum:"1"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+	// upload_id
+	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+}
+
+func (s HostingListUploadedPartRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingListUploadedPartRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingListUploadedPartRequest) SetDriveId(v string) *HostingListUploadedPartRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingListUploadedPartRequest) SetFilePath(v string) *HostingListUploadedPartRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *HostingListUploadedPartRequest) SetLimit(v int64) *HostingListUploadedPartRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *HostingListUploadedPartRequest) SetPartNumberMarker(v int64) *HostingListUploadedPartRequest {
+	s.PartNumberMarker = &v
+	return s
+}
+
+func (s *HostingListUploadedPartRequest) SetShareId(v string) *HostingListUploadedPartRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *HostingListUploadedPartRequest) SetUploadId(v string) *HostingListUploadedPartRequest {
+	s.UploadId = &v
 	return s
 }
 
@@ -6377,6 +11608,63 @@ func (s *HostingListUploadedPartResponse) SetUploadId(v string) *HostingListUplo
 
 func (s *HostingListUploadedPartResponse) SetUploadedParts(v []*UploadPartInfo) *HostingListUploadedPartResponse {
 	s.UploadedParts = v
+	return s
+}
+
+/**
+ * 文件移动请求
+ */
+type HostingMoveFileRequest struct {
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_path
+	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty"`
+	// new_name
+	NewName *string `json:"new_name,omitempty" xml:"new_name,omitempty"`
+	// overwrite
+	// type: boolean
+	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+	// file_path
+	ToParentFilePath *string `json:"to_parent_file_path,omitempty" xml:"to_parent_file_path,omitempty"`
+}
+
+func (s HostingMoveFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingMoveFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingMoveFileRequest) SetDriveId(v string) *HostingMoveFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingMoveFileRequest) SetFilePath(v string) *HostingMoveFileRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *HostingMoveFileRequest) SetNewName(v string) *HostingMoveFileRequest {
+	s.NewName = &v
+	return s
+}
+
+func (s *HostingMoveFileRequest) SetOverwrite(v bool) *HostingMoveFileRequest {
+	s.Overwrite = &v
+	return s
+}
+
+func (s *HostingMoveFileRequest) SetShareId(v string) *HostingMoveFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *HostingMoveFileRequest) SetToParentFilePath(v string) *HostingMoveFileRequest {
+	s.ToParentFilePath = &v
 	return s
 }
 
@@ -6626,6 +11914,34 @@ func (s *HostingUpdateFileMetaResponse) SetUrl(v string) *HostingUpdateFileMetaR
 }
 
 /**
+ * 获取视频DRM License
+ */
+type HostingVideoDRMLicenseRequest struct {
+	// drmType
+	DrmType *string `json:"drmType,omitempty" xml:"drmType,omitempty" require:"true"`
+	// licenseRequest
+	LicenseRequest *string `json:"licenseRequest,omitempty" xml:"licenseRequest,omitempty" require:"true"`
+}
+
+func (s HostingVideoDRMLicenseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingVideoDRMLicenseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingVideoDRMLicenseRequest) SetDrmType(v string) *HostingVideoDRMLicenseRequest {
+	s.DrmType = &v
+	return s
+}
+
+func (s *HostingVideoDRMLicenseRequest) SetLicenseRequest(v string) *HostingVideoDRMLicenseRequest {
+	s.LicenseRequest = &v
+	return s
+}
+
+/**
  * DRM License response
  */
 type HostingVideoDRMLicenseResponse struct {
@@ -6661,6 +11977,48 @@ func (s *HostingVideoDRMLicenseResponse) SetStates(v int64) *HostingVideoDRMLice
 }
 
 /**
+ * 获取视频分辨率列表
+ */
+type HostingVideoDefinitionRequest struct {
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_path
+	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
+	// protection_scheme
+	ProtectionScheme *string `json:"protection_scheme,omitempty" xml:"protection_scheme,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+}
+
+func (s HostingVideoDefinitionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingVideoDefinitionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingVideoDefinitionRequest) SetDriveId(v string) *HostingVideoDefinitionRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingVideoDefinitionRequest) SetFilePath(v string) *HostingVideoDefinitionRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *HostingVideoDefinitionRequest) SetProtectionScheme(v string) *HostingVideoDefinitionRequest {
+	s.ProtectionScheme = &v
+	return s
+}
+
+func (s *HostingVideoDefinitionRequest) SetShareId(v string) *HostingVideoDefinitionRequest {
+	s.ShareId = &v
+	return s
+}
+
+/**
  * 转码接口response
  */
 type HostingVideoDefinitionResponse struct {
@@ -6685,6 +12043,132 @@ func (s *HostingVideoDefinitionResponse) SetDefinitionList(v []*string) *Hosting
 
 func (s *HostingVideoDefinitionResponse) SetFrameRate(v string) *HostingVideoDefinitionResponse {
 	s.FrameRate = &v
+	return s
+}
+
+/**
+ * 获取视频的m3u8文件
+ */
+type HostingVideoM3U8Request struct {
+	// definition
+	Definition *string `json:"definition,omitempty" xml:"definition,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// expire_sec
+	ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty" maximum:"86400" minimum:"60"`
+	// file_path
+	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
+	// protection_scheme
+	ProtectionScheme *string `json:"protection_scheme,omitempty" xml:"protection_scheme,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+	// sign_token
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty" require:"true"`
+}
+
+func (s HostingVideoM3U8Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingVideoM3U8Request) GoString() string {
+	return s.String()
+}
+
+func (s *HostingVideoM3U8Request) SetDefinition(v string) *HostingVideoM3U8Request {
+	s.Definition = &v
+	return s
+}
+
+func (s *HostingVideoM3U8Request) SetDriveId(v string) *HostingVideoM3U8Request {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingVideoM3U8Request) SetExpireSec(v int64) *HostingVideoM3U8Request {
+	s.ExpireSec = &v
+	return s
+}
+
+func (s *HostingVideoM3U8Request) SetFilePath(v string) *HostingVideoM3U8Request {
+	s.FilePath = &v
+	return s
+}
+
+func (s *HostingVideoM3U8Request) SetProtectionScheme(v string) *HostingVideoM3U8Request {
+	s.ProtectionScheme = &v
+	return s
+}
+
+func (s *HostingVideoM3U8Request) SetShareId(v string) *HostingVideoM3U8Request {
+	s.ShareId = &v
+	return s
+}
+
+func (s *HostingVideoM3U8Request) SetSignToken(v string) *HostingVideoM3U8Request {
+	s.SignToken = &v
+	return s
+}
+
+/**
+ * 启动视频转码请求
+ */
+type HostingVideoTranscodeRequest struct {
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// file_path
+	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
+	// hls_time
+	HlsTime *int64 `json:"hls_time,omitempty" xml:"hls_time,omitempty"`
+	// protection_scheme
+	ProtectionScheme *string `json:"protection_scheme,omitempty" xml:"protection_scheme,omitempty"`
+	// remarks
+	Remarks *string `json:"remarks,omitempty" xml:"remarks,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
+	// transcode
+	Transcode *bool `json:"transcode,omitempty" xml:"transcode,omitempty"`
+}
+
+func (s HostingVideoTranscodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HostingVideoTranscodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HostingVideoTranscodeRequest) SetDriveId(v string) *HostingVideoTranscodeRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HostingVideoTranscodeRequest) SetFilePath(v string) *HostingVideoTranscodeRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *HostingVideoTranscodeRequest) SetHlsTime(v int64) *HostingVideoTranscodeRequest {
+	s.HlsTime = &v
+	return s
+}
+
+func (s *HostingVideoTranscodeRequest) SetProtectionScheme(v string) *HostingVideoTranscodeRequest {
+	s.ProtectionScheme = &v
+	return s
+}
+
+func (s *HostingVideoTranscodeRequest) SetRemarks(v string) *HostingVideoTranscodeRequest {
+	s.Remarks = &v
+	return s
+}
+
+func (s *HostingVideoTranscodeRequest) SetShareId(v string) *HostingVideoTranscodeRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *HostingVideoTranscodeRequest) SetTranscode(v bool) *HostingVideoTranscodeRequest {
+	s.Transcode = &v
 	return s
 }
 
@@ -6720,6 +12204,34 @@ func (s *HostingVideoTranscodeResponse) SetDuration(v int64) *HostingVideoTransc
 
 func (s *HostingVideoTranscodeResponse) SetHlsTime(v int64) *HostingVideoTranscodeResponse {
 	s.HlsTime = &v
+	return s
+}
+
+/**
+ *
+ */
+type ImageMediaMetadata struct {
+	// height
+	Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
+	// width：
+	Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
+}
+
+func (s ImageMediaMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageMediaMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ImageMediaMetadata) SetHeight(v int64) *ImageMediaMetadata {
+	s.Height = &v
+	return s
+}
+
+func (s *ImageMediaMetadata) SetWidth(v int64) *ImageMediaMetadata {
+	s.Width = &v
 	return s
 }
 
@@ -7127,6 +12639,95 @@ func (s *ListAppsRequest) SetMarker(v string) *ListAppsRequest {
 }
 
 /**
+ * list_file_by_anonymous request
+ */
+type ListByAnonymousRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	// limit
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	// marker
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// parent_file_id
+	ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4" pattern:"[a-z0-9]{1,50}"`
+	Referer      *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty" require:"true"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s ListByAnonymousRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListByAnonymousRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListByAnonymousRequest) SetHeaders(v map[string]*string) *ListByAnonymousRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListByAnonymousRequest) SetAdditionData(v map[string]interface{}) *ListByAnonymousRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *ListByAnonymousRequest) SetImageThumbnailProcess(v string) *ListByAnonymousRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *ListByAnonymousRequest) SetImageUrlProcess(v string) *ListByAnonymousRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *ListByAnonymousRequest) SetLimit(v int64) *ListByAnonymousRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListByAnonymousRequest) SetMarker(v string) *ListByAnonymousRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListByAnonymousRequest) SetParentFileId(v string) *ListByAnonymousRequest {
+	s.ParentFileId = &v
+	return s
+}
+
+func (s *ListByAnonymousRequest) SetReferer(v string) *ListByAnonymousRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *ListByAnonymousRequest) SetShareId(v string) *ListByAnonymousRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *ListByAnonymousRequest) SetSignToken(v string) *ListByAnonymousRequest {
+	s.SignToken = &v
+	return s
+}
+
+func (s *ListByAnonymousRequest) SetVideoThumbnailProcess(v string) *ListByAnonymousRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
  * list_file_by_anonymous response
  */
 type ListByAnonymousResponse struct {
@@ -7183,6 +12784,62 @@ func (s *ListDomainsRequest) SetMarker(v string) *ListDomainsRequest {
 }
 
 /**
+ * List drive request
+ */
+type ListDriveRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// 每页大小限制
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	// 翻页标记, 接口返回的标记值
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// 所属者
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// owner_type
+	// 所述者类型
+	OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
+	// Subdomain ID
+	SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s ListDriveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDriveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDriveRequest) SetHeaders(v map[string]*string) *ListDriveRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDriveRequest) SetLimit(v int32) *ListDriveRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListDriveRequest) SetMarker(v string) *ListDriveRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListDriveRequest) SetOwner(v string) *ListDriveRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListDriveRequest) SetOwnerType(v string) *ListDriveRequest {
+	s.OwnerType = &v
+	return s
+}
+
+func (s *ListDriveRequest) SetSubdomainId(v string) *ListDriveRequest {
+	s.SubdomainId = &v
+	return s
+}
+
+/**
  * list drive response
  */
 type ListDriveResponse struct {
@@ -7211,6 +12868,61 @@ func (s *ListDriveResponse) SetNextMarker(v string) *ListDriveResponse {
 }
 
 /**
+ *
+ */
+type ListFileActivityRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// DriveID
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// FileID
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// Limit, default
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// Marker
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+}
+
+func (s ListFileActivityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileActivityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileActivityRequest) SetHeaders(v map[string]*string) *ListFileActivityRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFileActivityRequest) SetAdditionData(v map[string]interface{}) *ListFileActivityRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *ListFileActivityRequest) SetDriveId(v string) *ListFileActivityRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *ListFileActivityRequest) SetFileId(v string) *ListFileActivityRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListFileActivityRequest) SetLimit(v int32) *ListFileActivityRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListFileActivityRequest) SetMarker(v string) *ListFileActivityRequest {
+	s.Marker = &v
+	return s
+}
+
+/**
  * list file activity response
  */
 type ListFileActivityResponse struct {
@@ -7235,6 +12947,234 @@ func (s *ListFileActivityResponse) SetActivities(v []*FileActivity) *ListFileAct
 
 func (s *ListFileActivityResponse) SetNextMarker(v string) *ListFileActivityResponse {
 	s.NextMarker = &v
+	return s
+}
+
+/**
+ * 列举文件
+ */
+type ListFileByCustomIndexKeyRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// starred
+	Starred *bool `json:"Starred,omitempty" xml:"Starred,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// category
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// custom_index_key
+	CustomIndexKey *string `json:"custom_index_key,omitempty" xml:"custom_index_key,omitempty" require:"true"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// encrypt_mode
+	EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
+	// fields
+	Fields                    *string   `json:"fields,omitempty" xml:"fields,omitempty"`
+	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	// limit
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
+	// marker
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// order_direction
+	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
+	Referer        *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id, either share_id or drive_id is required
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+	// status
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// type
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// url_expire_sec
+	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s ListFileByCustomIndexKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileByCustomIndexKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetHeaders(v map[string]*string) *ListFileByCustomIndexKeyRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetStarred(v bool) *ListFileByCustomIndexKeyRequest {
+	s.Starred = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetAdditionData(v map[string]interface{}) *ListFileByCustomIndexKeyRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetCategory(v string) *ListFileByCustomIndexKeyRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetCustomIndexKey(v string) *ListFileByCustomIndexKeyRequest {
+	s.CustomIndexKey = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetDriveId(v string) *ListFileByCustomIndexKeyRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetEncryptMode(v string) *ListFileByCustomIndexKeyRequest {
+	s.EncryptMode = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetFields(v string) *ListFileByCustomIndexKeyRequest {
+	s.Fields = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetImageCroppingAspectRatios(v []*string) *ListFileByCustomIndexKeyRequest {
+	s.ImageCroppingAspectRatios = v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetImageThumbnailProcess(v string) *ListFileByCustomIndexKeyRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetImageUrlProcess(v string) *ListFileByCustomIndexKeyRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetLimit(v int64) *ListFileByCustomIndexKeyRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetMarker(v string) *ListFileByCustomIndexKeyRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetOrderDirection(v string) *ListFileByCustomIndexKeyRequest {
+	s.OrderDirection = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetReferer(v string) *ListFileByCustomIndexKeyRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetShareId(v string) *ListFileByCustomIndexKeyRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetSignToken(v string) *ListFileByCustomIndexKeyRequest {
+	s.SignToken = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetStatus(v string) *ListFileByCustomIndexKeyRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetType(v string) *ListFileByCustomIndexKeyRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetUrlExpireSec(v int64) *ListFileByCustomIndexKeyRequest {
+	s.UrlExpireSec = &v
+	return s
+}
+
+func (s *ListFileByCustomIndexKeyRequest) SetVideoThumbnailProcess(v string) *ListFileByCustomIndexKeyRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
+ * 获取增量文件操作记录
+ */
+type ListFileDeltaRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// cursor 游标
+	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
+	// drive_id
+	DriveId                   *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	// limit
+	// default 100
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s ListFileDeltaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileDeltaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileDeltaRequest) SetHeaders(v map[string]*string) *ListFileDeltaRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFileDeltaRequest) SetCursor(v string) *ListFileDeltaRequest {
+	s.Cursor = &v
+	return s
+}
+
+func (s *ListFileDeltaRequest) SetDriveId(v string) *ListFileDeltaRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *ListFileDeltaRequest) SetImageCroppingAspectRatios(v []*string) *ListFileDeltaRequest {
+	s.ImageCroppingAspectRatios = v
+	return s
+}
+
+func (s *ListFileDeltaRequest) SetImageThumbnailProcess(v string) *ListFileDeltaRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *ListFileDeltaRequest) SetImageUrlProcess(v string) *ListFileDeltaRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *ListFileDeltaRequest) SetLimit(v int32) *ListFileDeltaRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListFileDeltaRequest) SetVideoThumbnailProcess(v string) *ListFileDeltaRequest {
+	s.VideoThumbnailProcess = &v
 	return s
 }
 
@@ -7274,6 +13214,184 @@ func (s *ListFileDeltaResponse) SetItems(v []*FileDeltaResponse) *ListFileDeltaR
 }
 
 /**
+ * 列举文件
+ */
+type ListFileRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// all
+	All *bool `json:"all,omitempty" xml:"all,omitempty"`
+	// category
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// fields
+	Fields                    *string   `json:"fields,omitempty" xml:"fields,omitempty"`
+	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	// limit
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
+	// location
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// marker
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// order_by
+	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
+	// order_direction
+	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
+	// ParentFileID
+	ParentFileId     *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4" pattern:"[a-z0-9.-_]{1,50}"`
+	ParentFileIdPath *string `json:"parent_file_id_path,omitempty" xml:"parent_file_id_path,omitempty"`
+	Referer          *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// share_id, either share_id or drive_id is required
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+	// starred
+	Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
+	// status
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// type
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// url_expire_sec
+	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s ListFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileRequest) SetHeaders(v map[string]*string) *ListFileRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFileRequest) SetAdditionData(v map[string]interface{}) *ListFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *ListFileRequest) SetAll(v bool) *ListFileRequest {
+	s.All = &v
+	return s
+}
+
+func (s *ListFileRequest) SetCategory(v string) *ListFileRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListFileRequest) SetDriveId(v string) *ListFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *ListFileRequest) SetFields(v string) *ListFileRequest {
+	s.Fields = &v
+	return s
+}
+
+func (s *ListFileRequest) SetImageCroppingAspectRatios(v []*string) *ListFileRequest {
+	s.ImageCroppingAspectRatios = v
+	return s
+}
+
+func (s *ListFileRequest) SetImageThumbnailProcess(v string) *ListFileRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *ListFileRequest) SetImageUrlProcess(v string) *ListFileRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *ListFileRequest) SetLimit(v int64) *ListFileRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListFileRequest) SetLocation(v string) *ListFileRequest {
+	s.Location = &v
+	return s
+}
+
+func (s *ListFileRequest) SetMarker(v string) *ListFileRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListFileRequest) SetOrderBy(v string) *ListFileRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListFileRequest) SetOrderDirection(v string) *ListFileRequest {
+	s.OrderDirection = &v
+	return s
+}
+
+func (s *ListFileRequest) SetParentFileId(v string) *ListFileRequest {
+	s.ParentFileId = &v
+	return s
+}
+
+func (s *ListFileRequest) SetParentFileIdPath(v string) *ListFileRequest {
+	s.ParentFileIdPath = &v
+	return s
+}
+
+func (s *ListFileRequest) SetReferer(v string) *ListFileRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *ListFileRequest) SetShareId(v string) *ListFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *ListFileRequest) SetSignToken(v string) *ListFileRequest {
+	s.SignToken = &v
+	return s
+}
+
+func (s *ListFileRequest) SetStarred(v bool) *ListFileRequest {
+	s.Starred = &v
+	return s
+}
+
+func (s *ListFileRequest) SetStatus(v string) *ListFileRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListFileRequest) SetType(v string) *ListFileRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ListFileRequest) SetUrlExpireSec(v int64) *ListFileRequest {
+	s.UrlExpireSec = &v
+	return s
+}
+
+func (s *ListFileRequest) SetVideoThumbnailProcess(v string) *ListFileRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
  * List file response
  */
 type ListFileResponse struct {
@@ -7298,6 +13416,102 @@ func (s *ListFileResponse) SetItems(v []*BaseCCPFileResponse) *ListFileResponse 
 
 func (s *ListFileResponse) SetNextMarker(v string) *ListFileResponse {
 	s.NextMarker = &v
+	return s
+}
+
+/**
+ * List my drive request
+ */
+type ListMyDriveRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// 每页大小限制
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	// 翻页标记, 接口返回的标记值
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+}
+
+func (s ListMyDriveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMyDriveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMyDriveRequest) SetHeaders(v map[string]*string) *ListMyDriveRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMyDriveRequest) SetLimit(v int32) *ListMyDriveRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListMyDriveRequest) SetMarker(v string) *ListMyDriveRequest {
+	s.Marker = &v
+	return s
+}
+
+/**
+ * list_share_link request
+ */
+type ListShareLinkRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// creator
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// include_cancelled
+	IncludeCancelled *bool `json:"include_cancelled,omitempty" xml:"include_cancelled,omitempty"`
+	// limit
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	// marker
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// order_by
+	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
+	// order_direction
+	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
+}
+
+func (s ListShareLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShareLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListShareLinkRequest) SetHeaders(v map[string]*string) *ListShareLinkRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListShareLinkRequest) SetCreator(v string) *ListShareLinkRequest {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListShareLinkRequest) SetIncludeCancelled(v bool) *ListShareLinkRequest {
+	s.IncludeCancelled = &v
+	return s
+}
+
+func (s *ListShareLinkRequest) SetLimit(v int32) *ListShareLinkRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListShareLinkRequest) SetMarker(v string) *ListShareLinkRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListShareLinkRequest) SetOrderBy(v string) *ListShareLinkRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListShareLinkRequest) SetOrderDirection(v string) *ListShareLinkRequest {
+	s.OrderDirection = &v
 	return s
 }
 
@@ -7330,6 +13544,74 @@ func (s *ListShareLinkResponse) SetNextMarker(v string) *ListShareLinkResponse {
 }
 
 /**
+ * list share request
+ */
+type ListShareRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// creator
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+	// limit
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	// marker
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// Owner
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// owner_type
+	OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
+	// share_file_path
+	ShareFilePath *string `json:"share_file_path,omitempty" xml:"share_file_path,omitempty"`
+}
+
+func (s ListShareRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShareRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListShareRequest) SetHeaders(v map[string]*string) *ListShareRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListShareRequest) SetCreator(v string) *ListShareRequest {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListShareRequest) SetDriveId(v string) *ListShareRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *ListShareRequest) SetLimit(v int32) *ListShareRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListShareRequest) SetMarker(v string) *ListShareRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListShareRequest) SetOwner(v string) *ListShareRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListShareRequest) SetOwnerType(v string) *ListShareRequest {
+	s.OwnerType = &v
+	return s
+}
+
+func (s *ListShareRequest) SetShareFilePath(v string) *ListShareRequest {
+	s.ShareFilePath = &v
+	return s
+}
+
+/**
  * List share response
  */
 type ListShareResponse struct {
@@ -7358,6 +13640,55 @@ func (s *ListShareResponse) SetNextMarker(v string) *ListShareResponse {
 }
 
 /**
+ * list store file
+ */
+type ListStoreFileRequest struct {
+	// limit
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"1000" minimum:"1"`
+	// marker
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// parent_file_path
+	ParentFilePath *string `json:"parent_file_path,omitempty" xml:"parent_file_path,omitempty"`
+	// store_id
+	StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty"`
+	// type
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListStoreFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStoreFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListStoreFileRequest) SetLimit(v int64) *ListStoreFileRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListStoreFileRequest) SetMarker(v string) *ListStoreFileRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListStoreFileRequest) SetParentFilePath(v string) *ListStoreFileRequest {
+	s.ParentFilePath = &v
+	return s
+}
+
+func (s *ListStoreFileRequest) SetStoreId(v string) *ListStoreFileRequest {
+	s.StoreId = &v
+	return s
+}
+
+func (s *ListStoreFileRequest) SetType(v string) *ListStoreFileRequest {
+	s.Type = &v
+	return s
+}
+
+/**
  * List storage file
  */
 type ListStoreFileResponse struct {
@@ -7382,6 +13713,27 @@ func (s *ListStoreFileResponse) SetItems(v []*StoreFile) *ListStoreFileResponse 
 
 func (s *ListStoreFileResponse) SetNextMarker(v string) *ListStoreFileResponse {
 	s.NextMarker = &v
+	return s
+}
+
+/**
+ * list storage file
+ */
+type ListStoreRequest struct {
+	// domain_id
+	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+}
+
+func (s ListStoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListStoreRequest) SetDomainId(v string) *ListStoreRequest {
+	s.DomainId = &v
 	return s
 }
 
@@ -7424,6 +13776,73 @@ func (s ListStoresRequest) GoString() string {
 
 func (s *ListStoresRequest) SetDomainId(v string) *ListStoresRequest {
 	s.DomainId = &v
+	return s
+}
+
+/**
+ * 列举uploadID对应的已上传分片
+ */
+type ListUploadedPartRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	// file_id
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+	FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
+	// limit
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"1000" minimum:"1"`
+	// part_number_marker
+	PartNumberMarker *int64  `json:"part_number_marker,omitempty" xml:"part_number_marker,omitempty" minimum:"1"`
+	ShareId          *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// upload_id
+	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+}
+
+func (s ListUploadedPartRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUploadedPartRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUploadedPartRequest) SetHeaders(v map[string]*string) *ListUploadedPartRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUploadedPartRequest) SetDriveId(v string) *ListUploadedPartRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *ListUploadedPartRequest) SetFileId(v string) *ListUploadedPartRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListUploadedPartRequest) SetFileIdPath(v string) *ListUploadedPartRequest {
+	s.FileIdPath = &v
+	return s
+}
+
+func (s *ListUploadedPartRequest) SetLimit(v int64) *ListUploadedPartRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListUploadedPartRequest) SetPartNumberMarker(v int64) *ListUploadedPartRequest {
+	s.PartNumberMarker = &v
+	return s
+}
+
+func (s *ListUploadedPartRequest) SetShareId(v string) *ListUploadedPartRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *ListUploadedPartRequest) SetUploadId(v string) *ListUploadedPartRequest {
+	s.UploadId = &v
 	return s
 }
 
@@ -7900,6 +14319,92 @@ func (s *MoveDetail) SetTgtParentFileId(v string) *MoveDetail {
 }
 
 /**
+ * 文件移动请求
+ */
+type MoveFileRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// auto_rename
+	AutoRename   *bool     `json:"auto_rename,omitempty" xml:"auto_rename,omitempty"`
+	CategoryList []*string `json:"category_list,omitempty" xml:"category_list,omitempty" type:"Repeated"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	// file_id
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+	FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
+	// new_name
+	NewName *string `json:"new_name,omitempty" xml:"new_name,omitempty" maxLength:"1024" minLength:"1"`
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// to_drive_id
+	ToDriveId *string `json:"to_drive_id,omitempty" xml:"to_drive_id,omitempty" pattern:"[0-9]+"`
+	// to_parent_file_id
+	ToParentFileId *string `json:"to_parent_file_id,omitempty" xml:"to_parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4"`
+	ToShareId      *string `json:"to_share_id,omitempty" xml:"to_share_id,omitempty" pattern:"[0-9]+"`
+}
+
+func (s MoveFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MoveFileRequest) SetHeaders(v map[string]*string) *MoveFileRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveFileRequest) SetAutoRename(v bool) *MoveFileRequest {
+	s.AutoRename = &v
+	return s
+}
+
+func (s *MoveFileRequest) SetCategoryList(v []*string) *MoveFileRequest {
+	s.CategoryList = v
+	return s
+}
+
+func (s *MoveFileRequest) SetDriveId(v string) *MoveFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *MoveFileRequest) SetFileId(v string) *MoveFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *MoveFileRequest) SetFileIdPath(v string) *MoveFileRequest {
+	s.FileIdPath = &v
+	return s
+}
+
+func (s *MoveFileRequest) SetNewName(v string) *MoveFileRequest {
+	s.NewName = &v
+	return s
+}
+
+func (s *MoveFileRequest) SetShareId(v string) *MoveFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *MoveFileRequest) SetToDriveId(v string) *MoveFileRequest {
+	s.ToDriveId = &v
+	return s
+}
+
+func (s *MoveFileRequest) SetToParentFileId(v string) *MoveFileRequest {
+	s.ToParentFileId = &v
+	return s
+}
+
+func (s *MoveFileRequest) SetToShareId(v string) *MoveFileRequest {
+	s.ToShareId = &v
+	return s
+}
+
+/**
  * 文件移动 response
  */
 type MoveFileResponse struct {
@@ -7938,6 +14443,41 @@ func (s *MoveFileResponse) SetDriveId(v string) *MoveFileResponse {
 
 func (s *MoveFileResponse) SetFileId(v string) *MoveFileResponse {
 	s.FileId = &v
+	return s
+}
+
+/**
+ * play_media request
+ */
+type PlayMediaRequest struct {
+	// auth_key
+	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty" require:"true" pattern:"[a-z0-9]+"`
+	// drive_id
+	DriveID *string `json:"DriveID,omitempty" xml:"DriveID,omitempty" require:"true" pattern:"[0-9]+"`
+	// file_id
+	FileID *string `json:"FileID,omitempty" xml:"FileID,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+}
+
+func (s PlayMediaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PlayMediaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PlayMediaRequest) SetAuthKey(v string) *PlayMediaRequest {
+	s.AuthKey = &v
+	return s
+}
+
+func (s *PlayMediaRequest) SetDriveID(v string) *PlayMediaRequest {
+	s.DriveID = &v
+	return s
+}
+
+func (s *PlayMediaRequest) SetFileID(v string) *PlayMediaRequest {
+	s.FileID = &v
 	return s
 }
 
@@ -8040,6 +14580,54 @@ func (s *RateLimit) SetPartSize(v int64) *RateLimit {
 
 func (s *RateLimit) SetPartSpeed(v int64) *RateLimit {
 	s.PartSpeed = &v
+	return s
+}
+
+/**
+ * 刷新office文档在线编辑凭证
+ */
+type RefreshOfficeEditTokenRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// location
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// AccessToken
+	OfficeAccessToken *string `json:"office_access_token,omitempty" xml:"office_access_token,omitempty" require:"true"`
+	// RefreshToken
+	OfficeRefreshToken *string `json:"office_refresh_token,omitempty" xml:"office_refresh_token,omitempty" require:"true"`
+}
+
+func (s RefreshOfficeEditTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshOfficeEditTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshOfficeEditTokenRequest) SetHeaders(v map[string]*string) *RefreshOfficeEditTokenRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshOfficeEditTokenRequest) SetAdditionData(v map[string]interface{}) *RefreshOfficeEditTokenRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *RefreshOfficeEditTokenRequest) SetLocation(v string) *RefreshOfficeEditTokenRequest {
+	s.Location = &v
+	return s
+}
+
+func (s *RefreshOfficeEditTokenRequest) SetOfficeAccessToken(v string) *RefreshOfficeEditTokenRequest {
+	s.OfficeAccessToken = &v
+	return s
+}
+
+func (s *RefreshOfficeEditTokenRequest) SetOfficeRefreshToken(v string) *RefreshOfficeEditTokenRequest {
+	s.OfficeRefreshToken = &v
 	return s
 }
 
@@ -8176,6 +14764,89 @@ func (s *RevokeRequest) SetRefreshToken(v string) *RevokeRequest {
 }
 
 /**
+ * 全量获取file元信息的请求body
+ */
+type ScanFileMetaRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// category
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// drive_id
+	DriveId                   *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	// limit
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"5000" minimum:"1"`
+	// marker
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s ScanFileMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScanFileMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScanFileMetaRequest) SetHeaders(v map[string]*string) *ScanFileMetaRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ScanFileMetaRequest) SetAdditionData(v map[string]interface{}) *ScanFileMetaRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *ScanFileMetaRequest) SetCategory(v string) *ScanFileMetaRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ScanFileMetaRequest) SetDriveId(v string) *ScanFileMetaRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *ScanFileMetaRequest) SetImageCroppingAspectRatios(v []*string) *ScanFileMetaRequest {
+	s.ImageCroppingAspectRatios = v
+	return s
+}
+
+func (s *ScanFileMetaRequest) SetImageThumbnailProcess(v string) *ScanFileMetaRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *ScanFileMetaRequest) SetImageUrlProcess(v string) *ScanFileMetaRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *ScanFileMetaRequest) SetLimit(v int32) *ScanFileMetaRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ScanFileMetaRequest) SetMarker(v string) *ScanFileMetaRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ScanFileMetaRequest) SetVideoThumbnailProcess(v string) *ScanFileMetaRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
  * scan file meta response
  */
 type ScanFileMetaResponse struct {
@@ -8200,6 +14871,131 @@ func (s *ScanFileMetaResponse) SetItems(v []*BaseCCPFileResponse) *ScanFileMetaR
 
 func (s *ScanFileMetaResponse) SetNextMarker(v string) *ScanFileMetaResponse {
 	s.NextMarker = &v
+	return s
+}
+
+/**
+ * 搜索文件元数据
+ */
+type SearchFileRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// addition_data
+	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+	// drive_id
+	DriveId                   *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// image_url_process
+	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	// limit
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	// location
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// Marker
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// order_by
+	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
+	// query
+	Query *string `json:"query,omitempty" xml:"query,omitempty" maxLength:"4096"`
+	// referer
+	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// return_total_count 是否返回查询总数
+	ReturnTotalCount *bool `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
+	// sign_token
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+	// url_expire_sec
+	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s SearchFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFileRequest) SetHeaders(v map[string]*string) *SearchFileRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchFileRequest) SetAdditionData(v map[string]interface{}) *SearchFileRequest {
+	s.AdditionData = v
+	return s
+}
+
+func (s *SearchFileRequest) SetDriveId(v string) *SearchFileRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetImageCroppingAspectRatios(v []*string) *SearchFileRequest {
+	s.ImageCroppingAspectRatios = v
+	return s
+}
+
+func (s *SearchFileRequest) SetImageThumbnailProcess(v string) *SearchFileRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetImageUrlProcess(v string) *SearchFileRequest {
+	s.ImageUrlProcess = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetLimit(v int32) *SearchFileRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetLocation(v string) *SearchFileRequest {
+	s.Location = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetMarker(v string) *SearchFileRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetOrderBy(v string) *SearchFileRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetQuery(v string) *SearchFileRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetReferer(v string) *SearchFileRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetReturnTotalCount(v bool) *SearchFileRequest {
+	s.ReturnTotalCount = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetSignToken(v string) *SearchFileRequest {
+	s.SignToken = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetUrlExpireSec(v int64) *SearchFileRequest {
+	s.UrlExpireSec = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetVideoThumbnailProcess(v string) *SearchFileRequest {
+	s.VideoThumbnailProcess = &v
 	return s
 }
 
@@ -8487,6 +15283,181 @@ func (s *SharePermissionPolicy) SetPermissionType(v string) *SharePermissionPoli
 /**
  *
  */
+type SimpleStreamInfo struct {
+	// crc64_hash
+	Crc64Hash *string `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
+	// download_url
+	DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
+	// size
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// thumbnail
+	Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	// url
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s SimpleStreamInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SimpleStreamInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SimpleStreamInfo) SetCrc64Hash(v string) *SimpleStreamInfo {
+	s.Crc64Hash = &v
+	return s
+}
+
+func (s *SimpleStreamInfo) SetDownloadUrl(v string) *SimpleStreamInfo {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *SimpleStreamInfo) SetSize(v int64) *SimpleStreamInfo {
+	s.Size = &v
+	return s
+}
+
+func (s *SimpleStreamInfo) SetThumbnail(v string) *SimpleStreamInfo {
+	s.Thumbnail = &v
+	return s
+}
+
+func (s *SimpleStreamInfo) SetUrl(v string) *SimpleStreamInfo {
+	s.Url = &v
+	return s
+}
+
+/**
+ *
+ */
+type Store struct {
+	// 全球加速地址
+	AccelerateEndpoint *string `json:"accelerate_endpoint,omitempty" xml:"accelerate_endpoint,omitempty"`
+	// 存储公共前缀
+	BasePath *string `json:"base_path,omitempty" xml:"base_path,omitempty"`
+	// bucket名称
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty" require:"true"`
+	// 内容分发地址
+	CdnEndpoint *string `json:"cdn_endpoint,omitempty" xml:"cdn_endpoint,omitempty"`
+	// 自定义全球加速地址
+	CustomizedAccelerateEndpoint *string `json:"customized_accelerate_endpoint,omitempty" xml:"customized_accelerate_endpoint,omitempty"`
+	// 自定义内容分发地址
+	CustomizedCdnEndpoint *string `json:"customized_cdn_endpoint,omitempty" xml:"customized_cdn_endpoint,omitempty"`
+	// 自定义Public访问地址
+	CustomizedEndpoint *string `json:"customized_endpoint,omitempty" xml:"customized_endpoint,omitempty"`
+	// 自定义vpc访问地址
+	CustomizedInternalEndpoint *string `json:"customized_internal_endpoint,omitempty" xml:"customized_internal_endpoint,omitempty"`
+	// Public访问地址
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty" require:"true"`
+	// vpc访问地址
+	InternalEndpoint *string `json:"internal_endpoint,omitempty" xml:"internal_endpoint,omitempty"`
+	// 地点
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// 存储归属，system表示系统提供，custom表示使用自己的存储
+	Ownership *string `json:"ownership,omitempty" xml:"ownership,omitempty" require:"true"`
+	// Policy授权,system类型store会将bucket权限授予当前云账号
+	Policy *string `json:"policy,omitempty" xml:"policy,omitempty" require:"true"`
+	// 访问Bucket的角色ARN
+	RoleArn *string `json:"role_arn,omitempty" xml:"role_arn,omitempty"`
+	// store ID
+	StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty" require:"true"`
+	// 存储类型，当前只支持oss
+	Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+}
+
+func (s Store) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Store) GoString() string {
+	return s.String()
+}
+
+func (s *Store) SetAccelerateEndpoint(v string) *Store {
+	s.AccelerateEndpoint = &v
+	return s
+}
+
+func (s *Store) SetBasePath(v string) *Store {
+	s.BasePath = &v
+	return s
+}
+
+func (s *Store) SetBucket(v string) *Store {
+	s.Bucket = &v
+	return s
+}
+
+func (s *Store) SetCdnEndpoint(v string) *Store {
+	s.CdnEndpoint = &v
+	return s
+}
+
+func (s *Store) SetCustomizedAccelerateEndpoint(v string) *Store {
+	s.CustomizedAccelerateEndpoint = &v
+	return s
+}
+
+func (s *Store) SetCustomizedCdnEndpoint(v string) *Store {
+	s.CustomizedCdnEndpoint = &v
+	return s
+}
+
+func (s *Store) SetCustomizedEndpoint(v string) *Store {
+	s.CustomizedEndpoint = &v
+	return s
+}
+
+func (s *Store) SetCustomizedInternalEndpoint(v string) *Store {
+	s.CustomizedInternalEndpoint = &v
+	return s
+}
+
+func (s *Store) SetEndpoint(v string) *Store {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *Store) SetInternalEndpoint(v string) *Store {
+	s.InternalEndpoint = &v
+	return s
+}
+
+func (s *Store) SetLocation(v string) *Store {
+	s.Location = &v
+	return s
+}
+
+func (s *Store) SetOwnership(v string) *Store {
+	s.Ownership = &v
+	return s
+}
+
+func (s *Store) SetPolicy(v string) *Store {
+	s.Policy = &v
+	return s
+}
+
+func (s *Store) SetRoleArn(v string) *Store {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *Store) SetStoreId(v string) *Store {
+	s.StoreId = &v
+	return s
+}
+
+func (s *Store) SetType(v string) *Store {
+	s.Type = &v
+	return s
+}
+
+/**
+ *
+ */
 type StoreFile struct {
 	DomainId       *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -8657,54 +15628,6 @@ func (s *StoreItemResponse) SetStoreId(v string) *StoreItemResponse {
 
 func (s *StoreItemResponse) SetType(v string) *StoreItemResponse {
 	s.Type = &v
-	return s
-}
-
-/**
- *
- */
-type StreamInfo struct {
-	// crc64_hash
-	Crc64Hash *string `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
-	// download_url
-	DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
-	Size        *int64  `json:"size,omitempty" xml:"size,omitempty"`
-	// thumbnail
-	Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
-	// url
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
-}
-
-func (s StreamInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StreamInfo) GoString() string {
-	return s.String()
-}
-
-func (s *StreamInfo) SetCrc64Hash(v string) *StreamInfo {
-	s.Crc64Hash = &v
-	return s
-}
-
-func (s *StreamInfo) SetDownloadUrl(v string) *StreamInfo {
-	s.DownloadUrl = &v
-	return s
-}
-
-func (s *StreamInfo) SetSize(v int64) *StreamInfo {
-	s.Size = &v
-	return s
-}
-
-func (s *StreamInfo) SetThumbnail(v string) *StreamInfo {
-	s.Thumbnail = &v
-	return s
-}
-
-func (s *StreamInfo) SetUrl(v string) *StreamInfo {
-	s.Url = &v
 	return s
 }
 
@@ -8983,6 +15906,46 @@ func (s *TrashDetail) SetParentFileId(v string) *TrashDetail {
 }
 
 /**
+ * UCGetObjectInfoByObjectKeyRequest
+ */
+type UCGetObjectInfoByObjectKeyRequest struct {
+	ObjectKey *string `json:"object_key,omitempty" xml:"object_key,omitempty"`
+}
+
+func (s UCGetObjectInfoByObjectKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UCGetObjectInfoByObjectKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UCGetObjectInfoByObjectKeyRequest) SetObjectKey(v string) *UCGetObjectInfoByObjectKeyRequest {
+	s.ObjectKey = &v
+	return s
+}
+
+/**
+ * UCGetObjectInfoBySha1Request
+ */
+type UCGetObjectInfoBySha1Request struct {
+	Sha1 *string `json:"sha1,omitempty" xml:"sha1,omitempty"`
+}
+
+func (s UCGetObjectInfoBySha1Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UCGetObjectInfoBySha1Request) GoString() string {
+	return s.String()
+}
+
+func (s *UCGetObjectInfoBySha1Request) SetSha1(v string) *UCGetObjectInfoBySha1Request {
+	s.Sha1 = &v
+	return s
+}
+
+/**
  *
  */
 type UpdateAppRequest struct {
@@ -9211,6 +16174,82 @@ func (s *UpdateDomainRequest) SetSharable(v bool) *UpdateDomainRequest {
 }
 
 /**
+ * Update drive request
+ */
+type UpdateDriveRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// 描述信息
+	Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024"`
+	// Drive ID
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
+	// Drive 名称
+	DriveName *string `json:"drive_name,omitempty" xml:"drive_name,omitempty" maxLength:"1024"`
+	// 授权访问加密数据
+	EncryptDataAccess *bool `json:"encrypt_data_access,omitempty" xml:"encrypt_data_access,omitempty"`
+	// 加密模式
+	EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
+	// 状态
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Subdomain ID
+	SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+	// 总大小,单位Byte [如果设置 -1 代表不限制]
+	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
+}
+
+func (s UpdateDriveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDriveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDriveRequest) SetHeaders(v map[string]*string) *UpdateDriveRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDriveRequest) SetDescription(v string) *UpdateDriveRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDriveRequest) SetDriveId(v string) *UpdateDriveRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *UpdateDriveRequest) SetDriveName(v string) *UpdateDriveRequest {
+	s.DriveName = &v
+	return s
+}
+
+func (s *UpdateDriveRequest) SetEncryptDataAccess(v bool) *UpdateDriveRequest {
+	s.EncryptDataAccess = &v
+	return s
+}
+
+func (s *UpdateDriveRequest) SetEncryptMode(v string) *UpdateDriveRequest {
+	s.EncryptMode = &v
+	return s
+}
+
+func (s *UpdateDriveRequest) SetStatus(v string) *UpdateDriveRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateDriveRequest) SetSubdomainId(v string) *UpdateDriveRequest {
+	s.SubdomainId = &v
+	return s
+}
+
+func (s *UpdateDriveRequest) SetTotalSize(v int64) *UpdateDriveRequest {
+	s.TotalSize = &v
+	return s
+}
+
+/**
  * Update drive response
  */
 type UpdateDriveResponse struct {
@@ -9324,6 +16363,134 @@ func (s *UpdateDriveResponse) SetTotalSize(v int64) *UpdateDriveResponse {
 
 func (s *UpdateDriveResponse) SetUsedSize(v int64) *UpdateDriveResponse {
 	s.UsedSize = &v
+	return s
+}
+
+/**
+ * 更新文件元数据
+ */
+type UpdateFileMetaRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// check_name_mode
+	CheckNameMode  *string `json:"check_name_mode,omitempty" xml:"check_name_mode,omitempty"`
+	CustomIndexKey *string `json:"custom_index_key,omitempty" xml:"custom_index_key,omitempty"`
+	// description
+	// type: string
+	Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024"`
+	// drive_id
+	DriveId     *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
+	// file_id
+	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
+	FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
+	// hidden
+	// type: boolean
+	Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
+	// labels
+	Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	Meta   *string   `json:"meta,omitempty" xml:"meta,omitempty"`
+	// name
+	Name      *string `json:"name,omitempty" xml:"name,omitempty" maxLength:"1024" minLength:"1"`
+	Referer   *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+	// starred
+	// type: boolean
+	Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
+	// user_meta
+	UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
+}
+
+func (s UpdateFileMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFileMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFileMetaRequest) SetHeaders(v map[string]*string) *UpdateFileMetaRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetCheckNameMode(v string) *UpdateFileMetaRequest {
+	s.CheckNameMode = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetCustomIndexKey(v string) *UpdateFileMetaRequest {
+	s.CustomIndexKey = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetDescription(v string) *UpdateFileMetaRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetDriveId(v string) *UpdateFileMetaRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetEncryptMode(v string) *UpdateFileMetaRequest {
+	s.EncryptMode = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetFileId(v string) *UpdateFileMetaRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetFileIdPath(v string) *UpdateFileMetaRequest {
+	s.FileIdPath = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetHidden(v bool) *UpdateFileMetaRequest {
+	s.Hidden = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetLabels(v []*string) *UpdateFileMetaRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetMeta(v string) *UpdateFileMetaRequest {
+	s.Meta = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetName(v string) *UpdateFileMetaRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetReferer(v string) *UpdateFileMetaRequest {
+	s.Referer = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetShareId(v string) *UpdateFileMetaRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetSignToken(v string) *UpdateFileMetaRequest {
+	s.SignToken = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetStarred(v bool) *UpdateFileMetaRequest {
+	s.Starred = &v
+	return s
+}
+
+func (s *UpdateFileMetaRequest) SetUserMeta(v string) *UpdateFileMetaRequest {
+	s.UserMeta = &v
 	return s
 }
 
@@ -9584,6 +16751,68 @@ func (s *UpdateFileMetaResponse) SetVideoPreviewMetadata(v *VideoPreviewResponse
 }
 
 /**
+ * update_share_link request
+ */
+type UpdateShareLinkRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// expiration
+	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	// share_name
+	ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
+	// share_pwd
+	SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty" maximum:"64" minimum:"0"`
+	// status
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s UpdateShareLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateShareLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateShareLinkRequest) SetHeaders(v map[string]*string) *UpdateShareLinkRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateShareLinkRequest) SetDescription(v string) *UpdateShareLinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateShareLinkRequest) SetExpiration(v string) *UpdateShareLinkRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *UpdateShareLinkRequest) SetShareId(v string) *UpdateShareLinkRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *UpdateShareLinkRequest) SetShareName(v string) *UpdateShareLinkRequest {
+	s.ShareName = &v
+	return s
+}
+
+func (s *UpdateShareLinkRequest) SetSharePwd(v string) *UpdateShareLinkRequest {
+	s.SharePwd = &v
+	return s
+}
+
+func (s *UpdateShareLinkRequest) SetStatus(v string) *UpdateShareLinkRequest {
+	s.Status = &v
+	return s
+}
+
+/**
  * update_share_link response
  */
 type UpdateShareLinkResponse struct {
@@ -9734,6 +16963,75 @@ func (s *UpdateShareLinkResponse) SetStatus(v string) *UpdateShareLinkResponse {
 
 func (s *UpdateShareLinkResponse) SetUpdatedAt(v string) *UpdateShareLinkResponse {
 	s.UpdatedAt = &v
+	return s
+}
+
+/**
+ * update share request
+ */
+type UpdateShareRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// description
+	Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024"`
+	// expiration
+	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+	// permissions
+	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
+	// share_id
+	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" require:"true"`
+	// share_name
+	ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
+	// share_policy
+	SharePolicy []*SharePermissionPolicy `json:"share_policy,omitempty" xml:"share_policy,omitempty" type:"Repeated"`
+	// status
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s UpdateShareRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateShareRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateShareRequest) SetHeaders(v map[string]*string) *UpdateShareRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateShareRequest) SetDescription(v string) *UpdateShareRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateShareRequest) SetExpiration(v string) *UpdateShareRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *UpdateShareRequest) SetPermissions(v []*string) *UpdateShareRequest {
+	s.Permissions = v
+	return s
+}
+
+func (s *UpdateShareRequest) SetShareId(v string) *UpdateShareRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *UpdateShareRequest) SetShareName(v string) *UpdateShareRequest {
+	s.ShareName = &v
+	return s
+}
+
+func (s *UpdateShareRequest) SetSharePolicy(v []*SharePermissionPolicy) *UpdateShareRequest {
+	s.SharePolicy = v
+	return s
+}
+
+func (s *UpdateShareRequest) SetStatus(v string) *UpdateShareRequest {
+	s.Status = &v
 	return s
 }
 
@@ -9914,6 +17212,41 @@ func (s *UploadPartInfo) SetPartSize(v int64) *UploadPartInfo {
 
 func (s *UploadPartInfo) SetUploadUrl(v string) *UploadPartInfo {
 	s.UploadUrl = &v
+	return s
+}
+
+/**
+ *
+ */
+type UrlInfo struct {
+	// download_url
+	DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
+	// thumbnail
+	Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	// url
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s UrlInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UrlInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UrlInfo) SetDownloadUrl(v string) *UrlInfo {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *UrlInfo) SetThumbnail(v string) *UrlInfo {
+	s.Thumbnail = &v
+	return s
+}
+
+func (s *UrlInfo) SetUrl(v string) *UrlInfo {
+	s.Url = &v
 	return s
 }
 
@@ -10172,6 +17505,27 @@ func (s *VideoMediaAudioStream) SetDuration(v string) *VideoMediaAudioStream {
 
 func (s *VideoMediaAudioStream) SetSampleRate(v string) *VideoMediaAudioStream {
 	s.SampleRate = &v
+	return s
+}
+
+/**
+ *
+ */
+type VideoMediaMetadata struct {
+	// Duration
+	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
+}
+
+func (s VideoMediaMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoMediaMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *VideoMediaMetadata) SetDuration(v string) *VideoMediaMetadata {
+	s.Duration = &v
 	return s
 }
 
@@ -10629,167 +17983,6 @@ func (s *VideoPreviewTranscode) SetStatus(v string) *VideoPreviewTranscode {
 
 func (s *VideoPreviewTranscode) SetTemplateId(v string) *VideoPreviewTranscode {
 	s.TemplateId = &v
-	return s
-}
-
-type AdminListStoresModel struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListStoresResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AdminListStoresModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AdminListStoresModel) GoString() string {
-	return s.String()
-}
-
-func (s *AdminListStoresModel) SetHeaders(v map[string]*string) *AdminListStoresModel {
-	s.Headers = v
-	return s
-}
-
-func (s *AdminListStoresModel) SetBody(v *ListStoresResponse) *AdminListStoresModel {
-	s.Body = v
-	return s
-}
-
-type CreateSubdomainModel struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *CreateSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateSubdomainModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSubdomainModel) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSubdomainModel) SetHeaders(v map[string]*string) *CreateSubdomainModel {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateSubdomainModel) SetBody(v *CreateSubdomainResponse) *CreateSubdomainModel {
-	s.Body = v
-	return s
-}
-
-type DeleteSubdomainModel struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *DeleteSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteSubdomainModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSubdomainModel) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSubdomainModel) SetHeaders(v map[string]*string) *DeleteSubdomainModel {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteSubdomainModel) SetBody(v *DeleteSubdomainResponse) *DeleteSubdomainModel {
-	s.Body = v
-	return s
-}
-
-type GetSubdomainModel struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSubdomainModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSubdomainModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetSubdomainModel) SetHeaders(v map[string]*string) *GetSubdomainModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSubdomainModel) SetBody(v *GetSubdomainResponse) *GetSubdomainModel {
-	s.Body = v
-	return s
-}
-
-type ListSubdomainsModel struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListSubdomainsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListSubdomainsModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSubdomainsModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListSubdomainsModel) SetHeaders(v map[string]*string) *ListSubdomainsModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListSubdomainsModel) SetBody(v *ListSubdomainsResponse) *ListSubdomainsModel {
-	s.Body = v
-	return s
-}
-
-type UpdateSubdomainModel struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *UpdateSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateSubdomainModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateSubdomainModel) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateSubdomainModel) SetHeaders(v map[string]*string) *UpdateSubdomainModel {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateSubdomainModel) SetBody(v *UpdateSubdomainResponse) *UpdateSubdomainModel {
-	s.Body = v
-	return s
-}
-
-type GetUserAccessTokenModel struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *AccessTokenResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserAccessTokenModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserAccessTokenModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserAccessTokenModel) SetHeaders(v map[string]*string) *GetUserAccessTokenModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserAccessTokenModel) SetBody(v *AccessTokenResponse) *GetUserAccessTokenModel {
-	s.Body = v
 	return s
 }
 
@@ -12289,6 +19482,76 @@ func (s *GetUserAccessTokenRequest) SetUserId(v string) *GetUserAccessTokenReque
 /**
  *
  */
+type GetUserAccessTokenResponse struct {
+	// 用于调用业务接口的accessToken
+	AccessToken *string `json:"access_token,omitempty" xml:"access_token,omitempty" require:"true"`
+	// Default Drive ID
+	DefaultDriveId *string `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty" require:"true"`
+	// accessToken过期时间，ISO时间
+	ExpireTime *string `json:"expire_time,omitempty" xml:"expire_time,omitempty" require:"true"`
+	// accessToken过期时间，单位秒
+	ExpiresIn *int64 `json:"expires_in,omitempty" xml:"expires_in,omitempty" require:"true"`
+	// 用于刷新accessToken
+	RefreshToken *string `json:"refresh_token,omitempty" xml:"refresh_token,omitempty"`
+	// 当前用户角色
+	Role *string `json:"role,omitempty" xml:"role,omitempty" require:"true"`
+	// accessToken类型，Bearer
+	TokenType *string `json:"token_type,omitempty" xml:"token_type,omitempty" require:"true"`
+	// 当前用户ID
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+}
+
+func (s GetUserAccessTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserAccessTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserAccessTokenResponse) SetAccessToken(v string) *GetUserAccessTokenResponse {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetUserAccessTokenResponse) SetDefaultDriveId(v string) *GetUserAccessTokenResponse {
+	s.DefaultDriveId = &v
+	return s
+}
+
+func (s *GetUserAccessTokenResponse) SetExpireTime(v string) *GetUserAccessTokenResponse {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetUserAccessTokenResponse) SetExpiresIn(v int64) *GetUserAccessTokenResponse {
+	s.ExpiresIn = &v
+	return s
+}
+
+func (s *GetUserAccessTokenResponse) SetRefreshToken(v string) *GetUserAccessTokenResponse {
+	s.RefreshToken = &v
+	return s
+}
+
+func (s *GetUserAccessTokenResponse) SetRole(v string) *GetUserAccessTokenResponse {
+	s.Role = &v
+	return s
+}
+
+func (s *GetUserAccessTokenResponse) SetTokenType(v string) *GetUserAccessTokenResponse {
+	s.TokenType = &v
+	return s
+}
+
+func (s *GetUserAccessTokenResponse) SetUserId(v string) *GetUserAccessTokenResponse {
+	s.UserId = &v
+	return s
+}
+
+/**
+ *
+ */
 type ListAppsResponse struct {
 	// App 列表
 	Items []*GetAppResponse `json:"items,omitempty" xml:"items,omitempty" require:"true" type:"Repeated"`
@@ -12582,132 +19845,6 @@ func (s *SetDataCNameResponse) SetDomainId(v string) *SetDataCNameResponse {
 
 func (s *SetDataCNameResponse) SetLocation(v string) *SetDataCNameResponse {
 	s.Location = &v
-	return s
-}
-
-/**
- *
- */
-type Store struct {
-	// 全球加速地址
-	AccelerateEndpoint *string `json:"accelerate_endpoint,omitempty" xml:"accelerate_endpoint,omitempty"`
-	// 存储公共前缀
-	BasePath *string `json:"base_path,omitempty" xml:"base_path,omitempty"`
-	// bucket名称
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty" require:"true"`
-	// 内容分发地址
-	CdnEndpoint *string `json:"cdn_endpoint,omitempty" xml:"cdn_endpoint,omitempty"`
-	// 自定义全球加速地址
-	CustomizedAccelerateEndpoint *string `json:"customized_accelerate_endpoint,omitempty" xml:"customized_accelerate_endpoint,omitempty"`
-	// 自定义内容分发地址
-	CustomizedCdnEndpoint *string `json:"customized_cdn_endpoint,omitempty" xml:"customized_cdn_endpoint,omitempty"`
-	// 自定义Public访问地址
-	CustomizedEndpoint *string `json:"customized_endpoint,omitempty" xml:"customized_endpoint,omitempty"`
-	// 自定义vpc访问地址
-	CustomizedInternalEndpoint *string `json:"customized_internal_endpoint,omitempty" xml:"customized_internal_endpoint,omitempty"`
-	// Public访问地址
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty" require:"true"`
-	// vpc访问地址
-	InternalEndpoint *string `json:"internal_endpoint,omitempty" xml:"internal_endpoint,omitempty"`
-	// 地点
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// 存储归属，system表示系统提供，custom表示使用自己的存储
-	Ownership *string `json:"ownership,omitempty" xml:"ownership,omitempty" require:"true"`
-	// Policy授权,system类型store会将bucket权限授予当前云账号
-	Policy *string `json:"policy,omitempty" xml:"policy,omitempty" require:"true"`
-	// 访问Bucket的角色ARN
-	RoleArn *string `json:"role_arn,omitempty" xml:"role_arn,omitempty"`
-	// store ID
-	StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty" require:"true"`
-	// 存储类型，当前只支持oss
-	Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
-}
-
-func (s Store) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Store) GoString() string {
-	return s.String()
-}
-
-func (s *Store) SetAccelerateEndpoint(v string) *Store {
-	s.AccelerateEndpoint = &v
-	return s
-}
-
-func (s *Store) SetBasePath(v string) *Store {
-	s.BasePath = &v
-	return s
-}
-
-func (s *Store) SetBucket(v string) *Store {
-	s.Bucket = &v
-	return s
-}
-
-func (s *Store) SetCdnEndpoint(v string) *Store {
-	s.CdnEndpoint = &v
-	return s
-}
-
-func (s *Store) SetCustomizedAccelerateEndpoint(v string) *Store {
-	s.CustomizedAccelerateEndpoint = &v
-	return s
-}
-
-func (s *Store) SetCustomizedCdnEndpoint(v string) *Store {
-	s.CustomizedCdnEndpoint = &v
-	return s
-}
-
-func (s *Store) SetCustomizedEndpoint(v string) *Store {
-	s.CustomizedEndpoint = &v
-	return s
-}
-
-func (s *Store) SetCustomizedInternalEndpoint(v string) *Store {
-	s.CustomizedInternalEndpoint = &v
-	return s
-}
-
-func (s *Store) SetEndpoint(v string) *Store {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *Store) SetInternalEndpoint(v string) *Store {
-	s.InternalEndpoint = &v
-	return s
-}
-
-func (s *Store) SetLocation(v string) *Store {
-	s.Location = &v
-	return s
-}
-
-func (s *Store) SetOwnership(v string) *Store {
-	s.Ownership = &v
-	return s
-}
-
-func (s *Store) SetPolicy(v string) *Store {
-	s.Policy = &v
-	return s
-}
-
-func (s *Store) SetRoleArn(v string) *Store {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *Store) SetStoreId(v string) *Store {
-	s.StoreId = &v
-	return s
-}
-
-func (s *Store) SetType(v string) *Store {
-	s.Type = &v
 	return s
 }
 
@@ -13030,6636 +20167,6 @@ func (s UpdateSubdomainResponse) GoString() string {
 	return s.String()
 }
 
-type GetAsyncTaskInfoModel struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetAsyncTaskResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetAsyncTaskInfoModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAsyncTaskInfoModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetAsyncTaskInfoModel) SetHeaders(v map[string]*string) *GetAsyncTaskInfoModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetAsyncTaskInfoModel) SetBody(v *GetAsyncTaskResponse) *GetAsyncTaskInfoModel {
-	s.Body = v
-	return s
-}
-
-type BatchOperationModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *BatchResponse     `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BatchOperationModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchOperationModel) GoString() string {
-	return s.String()
-}
-
-func (s *BatchOperationModel) SetHeaders(v map[string]*string) *BatchOperationModel {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchOperationModel) SetBody(v *BatchResponse) *BatchOperationModel {
-	s.Body = v
-	return s
-}
-
-type CreateDriveModel struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *CreateDriveResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDriveModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDriveModel) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDriveModel) SetHeaders(v map[string]*string) *CreateDriveModel {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDriveModel) SetBody(v *CreateDriveResponse) *CreateDriveModel {
-	s.Body = v
-	return s
-}
-
-type DeleteDriveModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-}
-
-func (s DeleteDriveModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDriveModel) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDriveModel) SetHeaders(v map[string]*string) *DeleteDriveModel {
-	s.Headers = v
-	return s
-}
-
-type GetDriveModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetDriveResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDriveModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDriveModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetDriveModel) SetHeaders(v map[string]*string) *GetDriveModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDriveModel) SetBody(v *GetDriveResponse) *GetDriveModel {
-	s.Body = v
-	return s
-}
-
-type GetDefaultDriveModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetDriveResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDefaultDriveModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDefaultDriveModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetDefaultDriveModel) SetHeaders(v map[string]*string) *GetDefaultDriveModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDefaultDriveModel) SetBody(v *GetDriveResponse) *GetDefaultDriveModel {
-	s.Body = v
-	return s
-}
-
-type ListDrivesModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListDriveResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDrivesModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDrivesModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListDrivesModel) SetHeaders(v map[string]*string) *ListDrivesModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDrivesModel) SetBody(v *ListDriveResponse) *ListDrivesModel {
-	s.Body = v
-	return s
-}
-
-type ListMyDrivesModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListDriveResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListMyDrivesModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMyDrivesModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListMyDrivesModel) SetHeaders(v map[string]*string) *ListMyDrivesModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListMyDrivesModel) SetBody(v *ListDriveResponse) *ListMyDrivesModel {
-	s.Body = v
-	return s
-}
-
-type UpdateDriveModel struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *UpdateDriveResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateDriveModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDriveModel) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDriveModel) SetHeaders(v map[string]*string) *UpdateDriveModel {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateDriveModel) SetBody(v *UpdateDriveResponse) *UpdateDriveModel {
-	s.Body = v
-	return s
-}
-
-type CompleteFileModel struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *CompleteFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CompleteFileModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CompleteFileModel) GoString() string {
-	return s.String()
-}
-
-func (s *CompleteFileModel) SetHeaders(v map[string]*string) *CompleteFileModel {
-	s.Headers = v
-	return s
-}
-
-func (s *CompleteFileModel) SetBody(v *CompleteFileResponse) *CompleteFileModel {
-	s.Body = v
-	return s
-}
-
-type CopyFileModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *CopyFileResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CopyFileModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CopyFileModel) GoString() string {
-	return s.String()
-}
-
-func (s *CopyFileModel) SetHeaders(v map[string]*string) *CopyFileModel {
-	s.Headers = v
-	return s
-}
-
-func (s *CopyFileModel) SetBody(v *CopyFileResponse) *CopyFileModel {
-	s.Body = v
-	return s
-}
-
-type CreateFileModel struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *CreateFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateFileModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateFileModel) GoString() string {
-	return s.String()
-}
-
-func (s *CreateFileModel) SetHeaders(v map[string]*string) *CreateFileModel {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateFileModel) SetBody(v *CreateFileResponse) *CreateFileModel {
-	s.Body = v
-	return s
-}
-
-type DeleteFileModel struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *DeleteFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteFileModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFileModel) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFileModel) SetHeaders(v map[string]*string) *DeleteFileModel {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteFileModel) SetBody(v *DeleteFileResponse) *DeleteFileModel {
-	s.Body = v
-	return s
-}
-
-type GetFileModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetFileResponse   `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetFileModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileModel) SetHeaders(v map[string]*string) *GetFileModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetFileModel) SetBody(v *GetFileResponse) *GetFileModel {
-	s.Body = v
-	return s
-}
-
-type GetFileByPathModel struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetFileByPathResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetFileByPathModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileByPathModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileByPathModel) SetHeaders(v map[string]*string) *GetFileByPathModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetFileByPathModel) SetBody(v *GetFileByPathResponse) *GetFileByPathModel {
-	s.Body = v
-	return s
-}
-
-type GetDownloadUrlModel struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetDownloadUrlResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDownloadUrlModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDownloadUrlModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetDownloadUrlModel) SetHeaders(v map[string]*string) *GetDownloadUrlModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDownloadUrlModel) SetBody(v *GetDownloadUrlResponse) *GetDownloadUrlModel {
-	s.Body = v
-	return s
-}
-
-type GetLastCursorModel struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetLastCursorResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetLastCursorModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLastCursorModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetLastCursorModel) SetHeaders(v map[string]*string) *GetLastCursorModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetLastCursorModel) SetBody(v *GetLastCursorResponse) *GetLastCursorModel {
-	s.Body = v
-	return s
-}
-
-type GetMediaPlayUrlModel struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetMediaPlayURLResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetMediaPlayUrlModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaPlayUrlModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaPlayUrlModel) SetHeaders(v map[string]*string) *GetMediaPlayUrlModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMediaPlayUrlModel) SetBody(v *GetMediaPlayURLResponse) *GetMediaPlayUrlModel {
-	s.Body = v
-	return s
-}
-
-type GetOfficeEditUrlModel struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetOfficeEditUrlResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetOfficeEditUrlModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetOfficeEditUrlModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetOfficeEditUrlModel) SetHeaders(v map[string]*string) *GetOfficeEditUrlModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetOfficeEditUrlModel) SetBody(v *GetOfficeEditUrlResponse) *GetOfficeEditUrlModel {
-	s.Body = v
-	return s
-}
-
-type GetOfficePreviewUrlModel struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetOfficePreviewUrlResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetOfficePreviewUrlModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetOfficePreviewUrlModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetOfficePreviewUrlModel) SetHeaders(v map[string]*string) *GetOfficePreviewUrlModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetOfficePreviewUrlModel) SetBody(v *GetOfficePreviewUrlResponse) *GetOfficePreviewUrlModel {
-	s.Body = v
-	return s
-}
-
-type GetUploadUrlModel struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetUploadUrlResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUploadUrlModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUploadUrlModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetUploadUrlModel) SetHeaders(v map[string]*string) *GetUploadUrlModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUploadUrlModel) SetBody(v *GetUploadUrlResponse) *GetUploadUrlModel {
-	s.Body = v
-	return s
-}
-
-type GetVideoPreviewSpriteUrlModel struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetVideoPreviewSpriteURLResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetVideoPreviewSpriteUrlModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVideoPreviewSpriteUrlModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetVideoPreviewSpriteUrlModel) SetHeaders(v map[string]*string) *GetVideoPreviewSpriteUrlModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetVideoPreviewSpriteUrlModel) SetBody(v *GetVideoPreviewSpriteURLResponse) *GetVideoPreviewSpriteUrlModel {
-	s.Body = v
-	return s
-}
-
-type GetVideoPreviewUrlModel struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetVideoPreviewURLResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetVideoPreviewUrlModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVideoPreviewUrlModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetVideoPreviewUrlModel) SetHeaders(v map[string]*string) *GetVideoPreviewUrlModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetVideoPreviewUrlModel) SetBody(v *GetVideoPreviewURLResponse) *GetVideoPreviewUrlModel {
-	s.Body = v
-	return s
-}
-
-type ListFileModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListFileResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListFileModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFileModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListFileModel) SetHeaders(v map[string]*string) *ListFileModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFileModel) SetBody(v *ListFileResponse) *ListFileModel {
-	s.Body = v
-	return s
-}
-
-type ListFileActivityModel struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListFileActivityResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListFileActivityModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFileActivityModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListFileActivityModel) SetHeaders(v map[string]*string) *ListFileActivityModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFileActivityModel) SetBody(v *ListFileActivityResponse) *ListFileActivityModel {
-	s.Body = v
-	return s
-}
-
-type ListFileByAnonymousModel struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListByAnonymousResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListFileByAnonymousModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFileByAnonymousModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListFileByAnonymousModel) SetHeaders(v map[string]*string) *ListFileByAnonymousModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFileByAnonymousModel) SetBody(v *ListByAnonymousResponse) *ListFileByAnonymousModel {
-	s.Body = v
-	return s
-}
-
-type ListFileByCustomIndexKeyModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListFileResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListFileByCustomIndexKeyModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFileByCustomIndexKeyModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListFileByCustomIndexKeyModel) SetHeaders(v map[string]*string) *ListFileByCustomIndexKeyModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyModel) SetBody(v *ListFileResponse) *ListFileByCustomIndexKeyModel {
-	s.Body = v
-	return s
-}
-
-type ListFileDeltaModel struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListFileDeltaResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListFileDeltaModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFileDeltaModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListFileDeltaModel) SetHeaders(v map[string]*string) *ListFileDeltaModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFileDeltaModel) SetBody(v *ListFileDeltaResponse) *ListFileDeltaModel {
-	s.Body = v
-	return s
-}
-
-type ListUploadedPartsModel struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListUploadedPartResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListUploadedPartsModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUploadedPartsModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListUploadedPartsModel) SetHeaders(v map[string]*string) *ListUploadedPartsModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUploadedPartsModel) SetBody(v *ListUploadedPartResponse) *ListUploadedPartsModel {
-	s.Body = v
-	return s
-}
-
-type MoveFileModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *MoveFileResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s MoveFileModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s MoveFileModel) GoString() string {
-	return s.String()
-}
-
-func (s *MoveFileModel) SetHeaders(v map[string]*string) *MoveFileModel {
-	s.Headers = v
-	return s
-}
-
-func (s *MoveFileModel) SetBody(v *MoveFileResponse) *MoveFileModel {
-	s.Body = v
-	return s
-}
-
-type TokenModel struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *RefreshOfficeEditTokenResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s TokenModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TokenModel) GoString() string {
-	return s.String()
-}
-
-func (s *TokenModel) SetHeaders(v map[string]*string) *TokenModel {
-	s.Headers = v
-	return s
-}
-
-func (s *TokenModel) SetBody(v *RefreshOfficeEditTokenResponse) *TokenModel {
-	s.Body = v
-	return s
-}
-
-type ScanFileMetaModel struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ScanFileMetaResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ScanFileMetaModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanFileMetaModel) GoString() string {
-	return s.String()
-}
-
-func (s *ScanFileMetaModel) SetHeaders(v map[string]*string) *ScanFileMetaModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ScanFileMetaModel) SetBody(v *ScanFileMetaResponse) *ScanFileMetaModel {
-	s.Body = v
-	return s
-}
-
-type SearchFileModel struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *SearchFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SearchFileModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchFileModel) GoString() string {
-	return s.String()
-}
-
-func (s *SearchFileModel) SetHeaders(v map[string]*string) *SearchFileModel {
-	s.Headers = v
-	return s
-}
-
-func (s *SearchFileModel) SetBody(v *SearchFileResponse) *SearchFileModel {
-	s.Body = v
-	return s
-}
-
-type UpdateFileModel struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *UpdateFileMetaResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateFileModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateFileModel) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateFileModel) SetHeaders(v map[string]*string) *UpdateFileModel {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateFileModel) SetBody(v *UpdateFileMetaResponse) *UpdateFileModel {
-	s.Body = v
-	return s
-}
-
-type CreateShareModel struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *CreateShareResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateShareModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateShareModel) GoString() string {
-	return s.String()
-}
-
-func (s *CreateShareModel) SetHeaders(v map[string]*string) *CreateShareModel {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateShareModel) SetBody(v *CreateShareResponse) *CreateShareModel {
-	s.Body = v
-	return s
-}
-
-type DeleteShareModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-}
-
-func (s DeleteShareModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteShareModel) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteShareModel) SetHeaders(v map[string]*string) *DeleteShareModel {
-	s.Headers = v
-	return s
-}
-
-type GetShareModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetShareResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetShareModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShareModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetShareModel) SetHeaders(v map[string]*string) *GetShareModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetShareModel) SetBody(v *GetShareResponse) *GetShareModel {
-	s.Body = v
-	return s
-}
-
-type ListShareModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListShareResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListShareModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListShareModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListShareModel) SetHeaders(v map[string]*string) *ListShareModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListShareModel) SetBody(v *ListShareResponse) *ListShareModel {
-	s.Body = v
-	return s
-}
-
-type UpdateShareModel struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *UpdateShareResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateShareModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateShareModel) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateShareModel) SetHeaders(v map[string]*string) *UpdateShareModel {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateShareModel) SetBody(v *UpdateShareResponse) *UpdateShareModel {
-	s.Body = v
-	return s
-}
-
-type CancelShareLinkModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-}
-
-func (s CancelShareLinkModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelShareLinkModel) GoString() string {
-	return s.String()
-}
-
-func (s *CancelShareLinkModel) SetHeaders(v map[string]*string) *CancelShareLinkModel {
-	s.Headers = v
-	return s
-}
-
-type CreateShareLinkModel struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *CreateShareLinkResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateShareLinkModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateShareLinkModel) GoString() string {
-	return s.String()
-}
-
-func (s *CreateShareLinkModel) SetHeaders(v map[string]*string) *CreateShareLinkModel {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateShareLinkModel) SetBody(v *CreateShareLinkResponse) *CreateShareLinkModel {
-	s.Body = v
-	return s
-}
-
-type GetShareLinkModel struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *BaseShareLinkResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetShareLinkModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShareLinkModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetShareLinkModel) SetHeaders(v map[string]*string) *GetShareLinkModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetShareLinkModel) SetBody(v *BaseShareLinkResponse) *GetShareLinkModel {
-	s.Body = v
-	return s
-}
-
-type GetShareByAnonymousModel struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetShareLinkByAnonymousResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetShareByAnonymousModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShareByAnonymousModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetShareByAnonymousModel) SetHeaders(v map[string]*string) *GetShareByAnonymousModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetShareByAnonymousModel) SetBody(v *GetShareLinkByAnonymousResponse) *GetShareByAnonymousModel {
-	s.Body = v
-	return s
-}
-
-type GetShareIdModel struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetShareLinkIDResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetShareIdModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShareIdModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetShareIdModel) SetHeaders(v map[string]*string) *GetShareIdModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetShareIdModel) SetBody(v *GetShareLinkIDResponse) *GetShareIdModel {
-	s.Body = v
-	return s
-}
-
-type GetShareTokenModel struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetShareLinkTokenResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetShareTokenModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShareTokenModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetShareTokenModel) SetHeaders(v map[string]*string) *GetShareTokenModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetShareTokenModel) SetBody(v *GetShareLinkTokenResponse) *GetShareTokenModel {
-	s.Body = v
-	return s
-}
-
-type ListShareLinkModel struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListShareLinkResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListShareLinkModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListShareLinkModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListShareLinkModel) SetHeaders(v map[string]*string) *ListShareLinkModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListShareLinkModel) SetBody(v *ListShareLinkResponse) *ListShareLinkModel {
-	s.Body = v
-	return s
-}
-
-type UpdateShareLinkModel struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *UpdateShareLinkResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateShareLinkModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateShareLinkModel) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateShareLinkModel) SetHeaders(v map[string]*string) *UpdateShareLinkModel {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateShareLinkModel) SetBody(v *UpdateShareLinkResponse) *UpdateShareLinkModel {
-	s.Body = v
-	return s
-}
-
-/**
- *
- */
-type BaseAdditionDataRequest struct {
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-}
-
-func (s BaseAdditionDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BaseAdditionDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BaseAdditionDataRequest) SetAdditionData(v map[string]interface{}) *BaseAdditionDataRequest {
-	s.AdditionData = v
-	return s
-}
-
-/**
- * complete file request
- */
-type BaseCompleteFileRequest struct {
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// part_info_list
-	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
-	ShareId      *string           `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// upload_id
-	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
-}
-
-func (s BaseCompleteFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BaseCompleteFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BaseCompleteFileRequest) SetAdditionData(v map[string]interface{}) *BaseCompleteFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *BaseCompleteFileRequest) SetDriveId(v string) *BaseCompleteFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *BaseCompleteFileRequest) SetPartInfoList(v []*UploadPartInfo) *BaseCompleteFileRequest {
-	s.PartInfoList = v
-	return s
-}
-
-func (s *BaseCompleteFileRequest) SetShareId(v string) *BaseCompleteFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *BaseCompleteFileRequest) SetUploadId(v string) *BaseCompleteFileRequest {
-	s.UploadId = &v
-	return s
-}
-
-/**
- * create file request
- */
-type BaseCreateFileRequest struct {
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// ContentMd5
-	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
-	// ContentType
-	ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
-	// Name
-	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
-	// part_info_list
-	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
-	// Size
-	Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
-	// Type
-	Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
-}
-
-func (s BaseCreateFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BaseCreateFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BaseCreateFileRequest) SetAdditionData(v map[string]interface{}) *BaseCreateFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *BaseCreateFileRequest) SetContentMd5(v string) *BaseCreateFileRequest {
-	s.ContentMd5 = &v
-	return s
-}
-
-func (s *BaseCreateFileRequest) SetContentType(v string) *BaseCreateFileRequest {
-	s.ContentType = &v
-	return s
-}
-
-func (s *BaseCreateFileRequest) SetName(v string) *BaseCreateFileRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *BaseCreateFileRequest) SetPartInfoList(v []*UploadPartInfo) *BaseCreateFileRequest {
-	s.PartInfoList = v
-	return s
-}
-
-func (s *BaseCreateFileRequest) SetSize(v int64) *BaseCreateFileRequest {
-	s.Size = &v
-	return s
-}
-
-func (s *BaseCreateFileRequest) SetType(v string) *BaseCreateFileRequest {
-	s.Type = &v
-	return s
-}
-
-/**
- *
- */
-type BaseFileProcessRequest struct {
-	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s BaseFileProcessRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BaseFileProcessRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BaseFileProcessRequest) SetImageCroppingAspectRatios(v []*string) *BaseFileProcessRequest {
-	s.ImageCroppingAspectRatios = v
-	return s
-}
-
-func (s *BaseFileProcessRequest) SetImageThumbnailProcess(v string) *BaseFileProcessRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *BaseFileProcessRequest) SetImageUrlProcess(v string) *BaseFileProcessRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *BaseFileProcessRequest) SetVideoThumbnailProcess(v string) *BaseFileProcessRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * 获取文件上传URL
- */
-type BaseGetUploadUrlRequest struct {
-	// content_md5
-	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty" maxLength:"32"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// upload_part_list
-	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
-	ShareId      *string           `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// upload_id
-	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty" require:"true"`
-}
-
-func (s BaseGetUploadUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BaseGetUploadUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BaseGetUploadUrlRequest) SetContentMd5(v string) *BaseGetUploadUrlRequest {
-	s.ContentMd5 = &v
-	return s
-}
-
-func (s *BaseGetUploadUrlRequest) SetDriveId(v string) *BaseGetUploadUrlRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *BaseGetUploadUrlRequest) SetPartInfoList(v []*UploadPartInfo) *BaseGetUploadUrlRequest {
-	s.PartInfoList = v
-	return s
-}
-
-func (s *BaseGetUploadUrlRequest) SetShareId(v string) *BaseGetUploadUrlRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *BaseGetUploadUrlRequest) SetUploadId(v string) *BaseGetUploadUrlRequest {
-	s.UploadId = &v
-	return s
-}
-
-/**
- * Base image process
- */
-type BaseImageProcessRequest struct {
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s BaseImageProcessRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BaseImageProcessRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BaseImageProcessRequest) SetImageThumbnailProcess(v string) *BaseImageProcessRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *BaseImageProcessRequest) SetImageUrlProcess(v string) *BaseImageProcessRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *BaseImageProcessRequest) SetVideoThumbnailProcess(v string) *BaseImageProcessRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * list file request
- */
-type BaseListFileRequest struct {
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId                   *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	// limit
-	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
-	// marker
-	Marker  *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id, either share_id or drive_id is required
-	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s BaseListFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BaseListFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BaseListFileRequest) SetAdditionData(v map[string]interface{}) *BaseListFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *BaseListFileRequest) SetDriveId(v string) *BaseListFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *BaseListFileRequest) SetImageCroppingAspectRatios(v []*string) *BaseListFileRequest {
-	s.ImageCroppingAspectRatios = v
-	return s
-}
-
-func (s *BaseListFileRequest) SetImageThumbnailProcess(v string) *BaseListFileRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *BaseListFileRequest) SetImageUrlProcess(v string) *BaseListFileRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *BaseListFileRequest) SetLimit(v int64) *BaseListFileRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *BaseListFileRequest) SetMarker(v string) *BaseListFileRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *BaseListFileRequest) SetReferer(v string) *BaseListFileRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *BaseListFileRequest) SetShareId(v string) *BaseListFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *BaseListFileRequest) SetSignToken(v string) *BaseListFileRequest {
-	s.SignToken = &v
-	return s
-}
-
-func (s *BaseListFileRequest) SetVideoThumbnailProcess(v string) *BaseListFileRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- *
- */
-type BaseMediaResponse struct {
-	// address_line
-	AddressLine *string `json:"address_line,omitempty" xml:"address_line,omitempty"`
-	// city
-	City *string `json:"city,omitempty" xml:"city,omitempty"`
-	// country
-	Country *string `json:"country,omitempty" xml:"country,omitempty"`
-	// district
-	District *string `json:"district,omitempty" xml:"district,omitempty"`
-	// height
-	Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
-	// system_tags
-	ImageTags []*SystemTag `json:"image_tags,omitempty" xml:"image_tags,omitempty" type:"Repeated"`
-	// location
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// province
-	Province *string `json:"province,omitempty" xml:"province,omitempty"`
-	// time
-	Time *string `json:"time,omitempty" xml:"time,omitempty"`
-	// township
-	Township *string `json:"township,omitempty" xml:"township,omitempty"`
-	// width
-	Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
-}
-
-func (s BaseMediaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BaseMediaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BaseMediaResponse) SetAddressLine(v string) *BaseMediaResponse {
-	s.AddressLine = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetCity(v string) *BaseMediaResponse {
-	s.City = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetCountry(v string) *BaseMediaResponse {
-	s.Country = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetDistrict(v string) *BaseMediaResponse {
-	s.District = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetHeight(v int64) *BaseMediaResponse {
-	s.Height = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetImageTags(v []*SystemTag) *BaseMediaResponse {
-	s.ImageTags = v
-	return s
-}
-
-func (s *BaseMediaResponse) SetLocation(v string) *BaseMediaResponse {
-	s.Location = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetProvince(v string) *BaseMediaResponse {
-	s.Province = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetTime(v string) *BaseMediaResponse {
-	s.Time = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetTownship(v string) *BaseMediaResponse {
-	s.Township = &v
-	return s
-}
-
-func (s *BaseMediaResponse) SetWidth(v int64) *BaseMediaResponse {
-	s.Width = &v
-	return s
-}
-
-/**
- * 文件移动请求
- */
-type BaseMoveFileRequest struct {
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	// new_name
-	NewName *string `json:"new_name,omitempty" xml:"new_name,omitempty" maxLength:"1024" minLength:"1"`
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-}
-
-func (s BaseMoveFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BaseMoveFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BaseMoveFileRequest) SetDriveId(v string) *BaseMoveFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *BaseMoveFileRequest) SetNewName(v string) *BaseMoveFileRequest {
-	s.NewName = &v
-	return s
-}
-
-func (s *BaseMoveFileRequest) SetShareId(v string) *BaseMoveFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * 批处理
- */
-type BatchRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// Requests 请求合集
-	Requests []*BatchSubRequest `json:"requests,omitempty" xml:"requests,omitempty" require:"true" type:"Repeated"`
-	// 支持的资源类型
-	Resource *string `json:"resource,omitempty" xml:"resource,omitempty" require:"true"`
-}
-
-func (s BatchRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchRequest) SetHeaders(v map[string]*string) *BatchRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchRequest) SetRequests(v []*BatchSubRequest) *BatchRequest {
-	s.Requests = v
-	return s
-}
-
-func (s *BatchRequest) SetResource(v string) *BatchRequest {
-	s.Resource = &v
-	return s
-}
-
-/**
- *
- */
-type BatchSubRequest struct {
-	// body 子请求的请求参数 json 字符串，可参考对于子请求文档, 当指定了body 必须传headers ： "Content-Type" 对应的类型，目前子请求入参是"application/json"
-	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
-	// headers 请求头，表示body传入数据的类型
-	Headers map[string]interface{} `json:"headers,omitempty" xml:"headers,omitempty"`
-	// id 用于request 和 response关联， 不允许重复
-	Id *string `json:"id,omitempty" xml:"id,omitempty" require:"true"`
-	// method
-	Method *string `json:"method,omitempty" xml:"method,omitempty" require:"true"`
-	// url 子请求的api path路径， 可参考对于子请求文档
-	Url *string `json:"url,omitempty" xml:"url,omitempty" require:"true"`
-}
-
-func (s BatchSubRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchSubRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchSubRequest) SetBody(v map[string]interface{}) *BatchSubRequest {
-	s.Body = v
-	return s
-}
-
-func (s *BatchSubRequest) SetHeaders(v map[string]interface{}) *BatchSubRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchSubRequest) SetId(v string) *BatchSubRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *BatchSubRequest) SetMethod(v string) *BatchSubRequest {
-	s.Method = &v
-	return s
-}
-
-func (s *BatchSubRequest) SetUrl(v string) *BatchSubRequest {
-	s.Url = &v
-	return s
-}
-
-/**
- * 获取文件夹size信息
- */
-type CCPGetDirSizeInfoRequest struct {
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_id
-	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-	// share_id, either share_id or drive_id is required
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-}
-
-func (s CCPGetDirSizeInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CCPGetDirSizeInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CCPGetDirSizeInfoRequest) SetDriveId(v string) *CCPGetDirSizeInfoRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *CCPGetDirSizeInfoRequest) SetFileId(v string) *CCPGetDirSizeInfoRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *CCPGetDirSizeInfoRequest) SetShareId(v string) *CCPGetDirSizeInfoRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * cancel_share_link request
- */
-type CancelShareLinkRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-}
-
-func (s CancelShareLinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelShareLinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CancelShareLinkRequest) SetHeaders(v map[string]*string) *CancelShareLinkRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *CancelShareLinkRequest) SetShareId(v string) *CancelShareLinkRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * 合并文件上传任务
- */
-type CompleteFileRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_id
-	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
-	// part_info_list
-	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
-	ShareId      *string           `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// upload_id
-	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
-}
-
-func (s CompleteFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CompleteFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CompleteFileRequest) SetHeaders(v map[string]*string) *CompleteFileRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *CompleteFileRequest) SetAdditionData(v map[string]interface{}) *CompleteFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *CompleteFileRequest) SetDriveId(v string) *CompleteFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *CompleteFileRequest) SetFileId(v string) *CompleteFileRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *CompleteFileRequest) SetPartInfoList(v []*UploadPartInfo) *CompleteFileRequest {
-	s.PartInfoList = v
-	return s
-}
-
-func (s *CompleteFileRequest) SetShareId(v string) *CompleteFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *CompleteFileRequest) SetUploadId(v string) *CompleteFileRequest {
-	s.UploadId = &v
-	return s
-}
-
-/**
- * 文件拷贝
- */
-type CopyFileRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// auto_rename
-	// type: boolean
-	AutoRename *bool   `json:"auto_rename,omitempty" xml:"auto_rename,omitempty"`
-	BatchId    *string `json:"batch_id,omitempty" xml:"batch_id,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_id
-	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-	FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
-	// new_name
-	NewName *string `json:"new_name,omitempty" xml:"new_name,omitempty" maxLength:"1024" minLength:"1"`
-	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id, either share_id or drive_id is required
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// to_drive_id
-	ToDriveId *string `json:"to_drive_id,omitempty" xml:"to_drive_id,omitempty" pattern:"[0-9]+"`
-	// to_parent_file_id
-	ToParentFileId *string `json:"to_parent_file_id,omitempty" xml:"to_parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4" pattern:"[a-z0-9.-_]{1,50}"`
-	// to_drive_id
-	ToShareId *string `json:"to_share_id,omitempty" xml:"to_share_id,omitempty" pattern:"[0-9]+"`
-}
-
-func (s CopyFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CopyFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CopyFileRequest) SetHeaders(v map[string]*string) *CopyFileRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *CopyFileRequest) SetAdditionData(v map[string]interface{}) *CopyFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *CopyFileRequest) SetAutoRename(v bool) *CopyFileRequest {
-	s.AutoRename = &v
-	return s
-}
-
-func (s *CopyFileRequest) SetBatchId(v string) *CopyFileRequest {
-	s.BatchId = &v
-	return s
-}
-
-func (s *CopyFileRequest) SetDriveId(v string) *CopyFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *CopyFileRequest) SetFileId(v string) *CopyFileRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *CopyFileRequest) SetFileIdPath(v string) *CopyFileRequest {
-	s.FileIdPath = &v
-	return s
-}
-
-func (s *CopyFileRequest) SetNewName(v string) *CopyFileRequest {
-	s.NewName = &v
-	return s
-}
-
-func (s *CopyFileRequest) SetReferer(v string) *CopyFileRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *CopyFileRequest) SetShareId(v string) *CopyFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *CopyFileRequest) SetToDriveId(v string) *CopyFileRequest {
-	s.ToDriveId = &v
-	return s
-}
-
-func (s *CopyFileRequest) SetToParentFileId(v string) *CopyFileRequest {
-	s.ToParentFileId = &v
-	return s
-}
-
-func (s *CopyFileRequest) SetToShareId(v string) *CopyFileRequest {
-	s.ToShareId = &v
-	return s
-}
-
-/**
- * create drive request
- */
-type CreateDriveRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// 是否默认drive, 只允许设置一个默认drive
-	Default *bool `json:"default,omitempty" xml:"default,omitempty"`
-	// 描述信息
-	Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024"`
-	// Drive 名称
-	DriveName *string `json:"drive_name,omitempty" xml:"drive_name,omitempty" require:"true" maxLength:"1024"`
-	// Drive类型
-	DriveType   *string `json:"drive_type,omitempty" xml:"drive_type,omitempty"`
-	EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
-	// location
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// 所属者
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty" require:"true"`
-	// 所属者
-	OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty" require:"true"`
-	// domain的PathType为OSSPath时必选。 Drive存储基于store的相对路径
-	RelativePath *string `json:"relative_path,omitempty" xml:"relative_path,omitempty"`
-	// 状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// StoreID , domain的PathType为OSSPath时必选
-	StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty"`
-	// Subdomain ID
-	SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
-	// 总大小,单位Byte [如果设置 -1 代表不限制]
-	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
-}
-
-func (s CreateDriveRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDriveRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDriveRequest) SetHeaders(v map[string]*string) *CreateDriveRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDriveRequest) SetDefault(v bool) *CreateDriveRequest {
-	s.Default = &v
-	return s
-}
-
-func (s *CreateDriveRequest) SetDescription(v string) *CreateDriveRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateDriveRequest) SetDriveName(v string) *CreateDriveRequest {
-	s.DriveName = &v
-	return s
-}
-
-func (s *CreateDriveRequest) SetDriveType(v string) *CreateDriveRequest {
-	s.DriveType = &v
-	return s
-}
-
-func (s *CreateDriveRequest) SetEncryptMode(v string) *CreateDriveRequest {
-	s.EncryptMode = &v
-	return s
-}
-
-func (s *CreateDriveRequest) SetLocation(v string) *CreateDriveRequest {
-	s.Location = &v
-	return s
-}
-
-func (s *CreateDriveRequest) SetOwner(v string) *CreateDriveRequest {
-	s.Owner = &v
-	return s
-}
-
-func (s *CreateDriveRequest) SetOwnerType(v string) *CreateDriveRequest {
-	s.OwnerType = &v
-	return s
-}
-
-func (s *CreateDriveRequest) SetRelativePath(v string) *CreateDriveRequest {
-	s.RelativePath = &v
-	return s
-}
-
-func (s *CreateDriveRequest) SetStatus(v string) *CreateDriveRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *CreateDriveRequest) SetStoreId(v string) *CreateDriveRequest {
-	s.StoreId = &v
-	return s
-}
-
-func (s *CreateDriveRequest) SetSubdomainId(v string) *CreateDriveRequest {
-	s.SubdomainId = &v
-	return s
-}
-
-func (s *CreateDriveRequest) SetTotalSize(v int64) *CreateDriveRequest {
-	s.TotalSize = &v
-	return s
-}
-
-/**
- * 创建文件
- */
-type CreateFileRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	AutoRename   *bool                  `json:"auto_rename,omitempty" xml:"auto_rename,omitempty"`
-	// check_name_mode
-	CheckNameMode *string `json:"check_name_mode,omitempty" xml:"check_name_mode,omitempty"`
-	// content_hash
-	ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
-	// content_hash_name
-	ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
-	// ContentMd5
-	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
-	// ContentType
-	ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
-	// description
-	Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024" minLength:"0"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// encrypt_mode
-	EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
-	// file_id
-	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	// force_upload_to_location
-	ForceUploadToLocation *bool `json:"force_upload_to_location,omitempty" xml:"force_upload_to_location,omitempty"`
-	// hidden
-	Hidden             *bool               `json:"hidden,omitempty" xml:"hidden,omitempty"`
-	ImageMediaMetadata *ImageMediaMetadata `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
-	// labels
-	Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	// last_updated_at
-	LastUpdatedAt *string `json:"last_updated_at,omitempty" xml:"last_updated_at,omitempty"`
-	// location
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	Meta     *string `json:"meta,omitempty" xml:"meta,omitempty"`
-	// Name
-	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
-	// parent_file_id
-	ParentFileId     *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4" pattern:"[a-z0-9]{1,50}"`
-	ParentFileIdPath *string `json:"parent_file_id_path,omitempty" xml:"parent_file_id_path,omitempty"`
-	// part_info_list
-	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
-	// pre_hash
-	PreHash *string `json:"pre_hash,omitempty" xml:"pre_hash,omitempty"`
-	// share_id
-	// example
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// Size
-	Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
-	// streams_info
-	StreamsInfo map[string]interface{} `json:"streams_info,omitempty" xml:"streams_info,omitempty"`
-	// Type
-	Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
-	// user_meta
-	UserMeta           *string             `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
-	VideoMediaMetadata *VideoMediaMetadata `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
-}
-
-func (s CreateFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateFileRequest) SetHeaders(v map[string]*string) *CreateFileRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateFileRequest) SetAdditionData(v map[string]interface{}) *CreateFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *CreateFileRequest) SetAutoRename(v bool) *CreateFileRequest {
-	s.AutoRename = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetCheckNameMode(v string) *CreateFileRequest {
-	s.CheckNameMode = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetContentHash(v string) *CreateFileRequest {
-	s.ContentHash = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetContentHashName(v string) *CreateFileRequest {
-	s.ContentHashName = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetContentMd5(v string) *CreateFileRequest {
-	s.ContentMd5 = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetContentType(v string) *CreateFileRequest {
-	s.ContentType = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetDescription(v string) *CreateFileRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetDriveId(v string) *CreateFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetEncryptMode(v string) *CreateFileRequest {
-	s.EncryptMode = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetFileId(v string) *CreateFileRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetForceUploadToLocation(v bool) *CreateFileRequest {
-	s.ForceUploadToLocation = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetHidden(v bool) *CreateFileRequest {
-	s.Hidden = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetImageMediaMetadata(v *ImageMediaMetadata) *CreateFileRequest {
-	s.ImageMediaMetadata = v
-	return s
-}
-
-func (s *CreateFileRequest) SetLabels(v []*string) *CreateFileRequest {
-	s.Labels = v
-	return s
-}
-
-func (s *CreateFileRequest) SetLastUpdatedAt(v string) *CreateFileRequest {
-	s.LastUpdatedAt = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetLocation(v string) *CreateFileRequest {
-	s.Location = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetMeta(v string) *CreateFileRequest {
-	s.Meta = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetName(v string) *CreateFileRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetParentFileId(v string) *CreateFileRequest {
-	s.ParentFileId = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetParentFileIdPath(v string) *CreateFileRequest {
-	s.ParentFileIdPath = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetPartInfoList(v []*UploadPartInfo) *CreateFileRequest {
-	s.PartInfoList = v
-	return s
-}
-
-func (s *CreateFileRequest) SetPreHash(v string) *CreateFileRequest {
-	s.PreHash = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetShareId(v string) *CreateFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetSize(v int64) *CreateFileRequest {
-	s.Size = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetStreamsInfo(v map[string]interface{}) *CreateFileRequest {
-	s.StreamsInfo = v
-	return s
-}
-
-func (s *CreateFileRequest) SetType(v string) *CreateFileRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetUserMeta(v string) *CreateFileRequest {
-	s.UserMeta = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetVideoMediaMetadata(v *VideoMediaMetadata) *CreateFileRequest {
-	s.VideoMediaMetadata = v
-	return s
-}
-
-/**
- * create_share_link request
- */
-type CreateShareLinkRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// description
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// expiration
-	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
-	// file_id
-	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	// file_id_list
-	FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" maximum:"100" minimum:"1" type:"Repeated"`
-	// file_path_list
-	FilePathList []*string `json:"file_path_list,omitempty" xml:"file_path_list,omitempty" maximum:"100" minimum:"1" type:"Repeated"`
-	Referer      *string   `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_name
-	ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
-	// share_pwd
-	SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty" maximum:"64" minimum:"0"`
-}
-
-func (s CreateShareLinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateShareLinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateShareLinkRequest) SetHeaders(v map[string]*string) *CreateShareLinkRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateShareLinkRequest) SetAdditionData(v map[string]interface{}) *CreateShareLinkRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *CreateShareLinkRequest) SetDescription(v string) *CreateShareLinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateShareLinkRequest) SetDriveId(v string) *CreateShareLinkRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *CreateShareLinkRequest) SetExpiration(v string) *CreateShareLinkRequest {
-	s.Expiration = &v
-	return s
-}
-
-func (s *CreateShareLinkRequest) SetFileId(v string) *CreateShareLinkRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *CreateShareLinkRequest) SetFileIdList(v []*string) *CreateShareLinkRequest {
-	s.FileIdList = v
-	return s
-}
-
-func (s *CreateShareLinkRequest) SetFilePathList(v []*string) *CreateShareLinkRequest {
-	s.FilePathList = v
-	return s
-}
-
-func (s *CreateShareLinkRequest) SetReferer(v string) *CreateShareLinkRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *CreateShareLinkRequest) SetShareName(v string) *CreateShareLinkRequest {
-	s.ShareName = &v
-	return s
-}
-
-func (s *CreateShareLinkRequest) SetSharePwd(v string) *CreateShareLinkRequest {
-	s.SharePwd = &v
-	return s
-}
-
-/**
- * create share request
- */
-type CreateShareRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// description
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	// expiration
-	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
-	// owner
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty" require:"true"`
-	// owner_type
-	OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
-	// permissions
-	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
-	// share_file_id
-	ShareFileId *string `json:"share_file_id,omitempty" xml:"share_file_id,omitempty"`
-	// share_file_path
-	ShareFilePath *string `json:"share_file_path,omitempty" xml:"share_file_path,omitempty"`
-	// share_name
-	ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
-	// share create policy
-	//
-	// share_policy
-	SharePolicy []*SharePermissionPolicy `json:"share_policy,omitempty" xml:"share_policy,omitempty" type:"Repeated"`
-	// status
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-}
-
-func (s CreateShareRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateShareRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateShareRequest) SetHeaders(v map[string]*string) *CreateShareRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateShareRequest) SetDescription(v string) *CreateShareRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateShareRequest) SetDriveId(v string) *CreateShareRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *CreateShareRequest) SetExpiration(v string) *CreateShareRequest {
-	s.Expiration = &v
-	return s
-}
-
-func (s *CreateShareRequest) SetOwner(v string) *CreateShareRequest {
-	s.Owner = &v
-	return s
-}
-
-func (s *CreateShareRequest) SetOwnerType(v string) *CreateShareRequest {
-	s.OwnerType = &v
-	return s
-}
-
-func (s *CreateShareRequest) SetPermissions(v []*string) *CreateShareRequest {
-	s.Permissions = v
-	return s
-}
-
-func (s *CreateShareRequest) SetShareFileId(v string) *CreateShareRequest {
-	s.ShareFileId = &v
-	return s
-}
-
-func (s *CreateShareRequest) SetShareFilePath(v string) *CreateShareRequest {
-	s.ShareFilePath = &v
-	return s
-}
-
-func (s *CreateShareRequest) SetShareName(v string) *CreateShareRequest {
-	s.ShareName = &v
-	return s
-}
-
-func (s *CreateShareRequest) SetSharePolicy(v []*SharePermissionPolicy) *CreateShareRequest {
-	s.SharePolicy = v
-	return s
-}
-
-func (s *CreateShareRequest) SetStatus(v string) *CreateShareRequest {
-	s.Status = &v
-	return s
-}
-
-/**
- * Delete drive request
- */
-type DeleteDriveRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// Drive ID
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
-	// Subdomain ID
-	SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
-}
-
-func (s DeleteDriveRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteDriveRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteDriveRequest) SetHeaders(v map[string]*string) *DeleteDriveRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteDriveRequest) SetDriveId(v string) *DeleteDriveRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *DeleteDriveRequest) SetSubdomainId(v string) *DeleteDriveRequest {
-	s.SubdomainId = &v
-	return s
-}
-
-/**
- * 删除文件请求
- */
-type DeleteFileRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// drive_id
-	DriveId    *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
-	// permanently
-	// type: false
-	Permanently *bool   `json:"permanently,omitempty" xml:"permanently,omitempty"`
-	ShareId     *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-}
-
-func (s DeleteFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFileRequest) SetHeaders(v map[string]*string) *DeleteFileRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteFileRequest) SetDriveId(v string) *DeleteFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *DeleteFileRequest) SetFileId(v string) *DeleteFileRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *DeleteFileRequest) SetFileIdPath(v string) *DeleteFileRequest {
-	s.FileIdPath = &v
-	return s
-}
-
-func (s *DeleteFileRequest) SetPermanently(v bool) *DeleteFileRequest {
-	s.Permanently = &v
-	return s
-}
-
-func (s *DeleteFileRequest) SetShareId(v string) *DeleteFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * 批量删除文件请求
- */
-type DeleteFilesRequest struct {
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_id_list
-	FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" require:"true" type:"Repeated"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-}
-
-func (s DeleteFilesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFilesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFilesRequest) SetDriveId(v string) *DeleteFilesRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *DeleteFilesRequest) SetFileIdList(v []*string) *DeleteFilesRequest {
-	s.FileIdList = v
-	return s
-}
-
-func (s *DeleteFilesRequest) SetShareId(v string) *DeleteFilesRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * delete share request
- */
-type DeleteShareRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" require:"true"`
-}
-
-func (s DeleteShareRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteShareRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteShareRequest) SetHeaders(v map[string]*string) *DeleteShareRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteShareRequest) SetShareId(v string) *DeleteShareRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * 下载文件请求body
- */
-type DownloadRequest struct {
-	// drive id
-	DriveID *string `json:"DriveID,omitempty" xml:"DriveID,omitempty"`
-	// file id
-	FileID *string `json:"FileID,omitempty" xml:"FileID,omitempty" require:"true"`
-	// in: query
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"ImageThumbnailProcess,omitempty" xml:"ImageThumbnailProcess,omitempty"`
-	// share_id, either share_id or drive_id is required
-	ShareID *string `json:"ShareID,omitempty" xml:"ShareID,omitempty"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"VideoThumbnailProcess,omitempty" xml:"VideoThumbnailProcess,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	FileIdPath   *string                `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
-	// location
-	Location  *string `json:"location,omitempty" xml:"location,omitempty"`
-	Referer   *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-}
-
-func (s DownloadRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DownloadRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DownloadRequest) SetDriveID(v string) *DownloadRequest {
-	s.DriveID = &v
-	return s
-}
-
-func (s *DownloadRequest) SetFileID(v string) *DownloadRequest {
-	s.FileID = &v
-	return s
-}
-
-func (s *DownloadRequest) SetImageThumbnailProcess(v string) *DownloadRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *DownloadRequest) SetShareID(v string) *DownloadRequest {
-	s.ShareID = &v
-	return s
-}
-
-func (s *DownloadRequest) SetVideoThumbnailProcess(v string) *DownloadRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-func (s *DownloadRequest) SetAdditionData(v map[string]interface{}) *DownloadRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *DownloadRequest) SetFileIdPath(v string) *DownloadRequest {
-	s.FileIdPath = &v
-	return s
-}
-
-func (s *DownloadRequest) SetLocation(v string) *DownloadRequest {
-	s.Location = &v
-	return s
-}
-
-func (s *DownloadRequest) SetReferer(v string) *DownloadRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *DownloadRequest) SetSignToken(v string) *DownloadRequest {
-	s.SignToken = &v
-	return s
-}
-
-/**
- * 获取异步人去信息
- */
-type GetAsyncTaskRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// async_task_id
-	// type:string
-	AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
-}
-
-func (s GetAsyncTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAsyncTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetAsyncTaskRequest) SetHeaders(v map[string]*string) *GetAsyncTaskRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetAsyncTaskRequest) SetAsyncTaskId(v string) *GetAsyncTaskRequest {
-	s.AsyncTaskId = &v
-	return s
-}
-
-/**
- * Get default drive request
- */
-type GetDefaultDriveRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// Subdomain ID
-	SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
-	// 用户ID
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-}
-
-func (s GetDefaultDriveRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDefaultDriveRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDefaultDriveRequest) SetHeaders(v map[string]*string) *GetDefaultDriveRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDefaultDriveRequest) SetSubdomainId(v string) *GetDefaultDriveRequest {
-	s.SubdomainId = &v
-	return s
-}
-
-func (s *GetDefaultDriveRequest) SetUserId(v string) *GetDefaultDriveRequest {
-	s.UserId = &v
-	return s
-}
-
-/**
- * 获取文件下载地址的请求body
- */
-type GetDownloadUrlRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// expire_sec
-	ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty" maximum:"14400" minimum:"1"`
-	// file_id
-	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-	FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
-	// file_name
-	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty" maxLength:"1024" minLength:"1"`
-	// location
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	Referer  *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id, either share_id or drive_id is required
-	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-}
-
-func (s GetDownloadUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDownloadUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDownloadUrlRequest) SetHeaders(v map[string]*string) *GetDownloadUrlRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDownloadUrlRequest) SetAdditionData(v map[string]interface{}) *GetDownloadUrlRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *GetDownloadUrlRequest) SetDriveId(v string) *GetDownloadUrlRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *GetDownloadUrlRequest) SetExpireSec(v int64) *GetDownloadUrlRequest {
-	s.ExpireSec = &v
-	return s
-}
-
-func (s *GetDownloadUrlRequest) SetFileId(v string) *GetDownloadUrlRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *GetDownloadUrlRequest) SetFileIdPath(v string) *GetDownloadUrlRequest {
-	s.FileIdPath = &v
-	return s
-}
-
-func (s *GetDownloadUrlRequest) SetFileName(v string) *GetDownloadUrlRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *GetDownloadUrlRequest) SetLocation(v string) *GetDownloadUrlRequest {
-	s.Location = &v
-	return s
-}
-
-func (s *GetDownloadUrlRequest) SetReferer(v string) *GetDownloadUrlRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *GetDownloadUrlRequest) SetShareId(v string) *GetDownloadUrlRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *GetDownloadUrlRequest) SetSignToken(v string) *GetDownloadUrlRequest {
-	s.SignToken = &v
-	return s
-}
-
-/**
- * Get drive request
- */
-type GetDriveRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// Drive ID
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
-	// Subdomain ID
-	SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
-}
-
-func (s GetDriveRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDriveRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDriveRequest) SetHeaders(v map[string]*string) *GetDriveRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDriveRequest) SetDriveId(v string) *GetDriveRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *GetDriveRequest) SetSubdomainId(v string) *GetDriveRequest {
-	s.SubdomainId = &v
-	return s
-}
-
-/**
- * 根据路径获取 File 接口 body
- */
-type GetFileByPathRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	// file_path
-	FilePath                  *string   `json:"file_path,omitempty" xml:"file_path,omitempty"`
-	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	Referer         *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	SignToken       *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-	// url_expire_sec
-	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s GetFileByPathRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileByPathRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileByPathRequest) SetHeaders(v map[string]*string) *GetFileByPathRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetFileByPathRequest) SetAdditionData(v map[string]interface{}) *GetFileByPathRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *GetFileByPathRequest) SetDriveId(v string) *GetFileByPathRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *GetFileByPathRequest) SetFilePath(v string) *GetFileByPathRequest {
-	s.FilePath = &v
-	return s
-}
-
-func (s *GetFileByPathRequest) SetImageCroppingAspectRatios(v []*string) *GetFileByPathRequest {
-	s.ImageCroppingAspectRatios = v
-	return s
-}
-
-func (s *GetFileByPathRequest) SetImageThumbnailProcess(v string) *GetFileByPathRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *GetFileByPathRequest) SetImageUrlProcess(v string) *GetFileByPathRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *GetFileByPathRequest) SetReferer(v string) *GetFileByPathRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *GetFileByPathRequest) SetSignToken(v string) *GetFileByPathRequest {
-	s.SignToken = &v
-	return s
-}
-
-func (s *GetFileByPathRequest) SetUrlExpireSec(v int64) *GetFileByPathRequest {
-	s.UrlExpireSec = &v
-	return s
-}
-
-func (s *GetFileByPathRequest) SetVideoThumbnailProcess(v string) *GetFileByPathRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * 获取文件元数据
- */
-type GetFileRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// fields
-	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
-	// file_id
-	FileId                    *string   `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-	FileIdPath                *string   `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
-	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	// location
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	Referer  *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id, either share_id or drive_id is required
-	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-	// url_expire_sec
-	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s GetFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetFileRequest) SetHeaders(v map[string]*string) *GetFileRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetFileRequest) SetAdditionData(v map[string]interface{}) *GetFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *GetFileRequest) SetDriveId(v string) *GetFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *GetFileRequest) SetFields(v string) *GetFileRequest {
-	s.Fields = &v
-	return s
-}
-
-func (s *GetFileRequest) SetFileId(v string) *GetFileRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *GetFileRequest) SetFileIdPath(v string) *GetFileRequest {
-	s.FileIdPath = &v
-	return s
-}
-
-func (s *GetFileRequest) SetImageCroppingAspectRatios(v []*string) *GetFileRequest {
-	s.ImageCroppingAspectRatios = v
-	return s
-}
-
-func (s *GetFileRequest) SetImageThumbnailProcess(v string) *GetFileRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *GetFileRequest) SetImageUrlProcess(v string) *GetFileRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *GetFileRequest) SetLocation(v string) *GetFileRequest {
-	s.Location = &v
-	return s
-}
-
-func (s *GetFileRequest) SetReferer(v string) *GetFileRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *GetFileRequest) SetShareId(v string) *GetFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *GetFileRequest) SetSignToken(v string) *GetFileRequest {
-	s.SignToken = &v
-	return s
-}
-
-func (s *GetFileRequest) SetUrlExpireSec(v int64) *GetFileRequest {
-	s.UrlExpireSec = &v
-	return s
-}
-
-func (s *GetFileRequest) SetVideoThumbnailProcess(v string) *GetFileRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * 获取最新游标
- */
-type GetLastCursorRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-}
-
-func (s GetLastCursorRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLastCursorRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetLastCursorRequest) SetHeaders(v map[string]*string) *GetLastCursorRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetLastCursorRequest) SetDriveId(v string) *GetLastCursorRequest {
-	s.DriveId = &v
-	return s
-}
-
-/**
- * get_media_play_url request
- */
-type GetMediaPlayURLRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	// file_id
-	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-}
-
-func (s GetMediaPlayURLRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMediaPlayURLRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetMediaPlayURLRequest) SetHeaders(v map[string]*string) *GetMediaPlayURLRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMediaPlayURLRequest) SetDriveId(v string) *GetMediaPlayURLRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *GetMediaPlayURLRequest) SetFileId(v string) *GetMediaPlayURLRequest {
-	s.FileId = &v
-	return s
-}
-
-/**
- * 获取office文档在线编辑地址
- */
-type GetOfficeEditUrlRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	// file_id
-	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-}
-
-func (s GetOfficeEditUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetOfficeEditUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetOfficeEditUrlRequest) SetHeaders(v map[string]*string) *GetOfficeEditUrlRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetOfficeEditUrlRequest) SetAdditionData(v map[string]interface{}) *GetOfficeEditUrlRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *GetOfficeEditUrlRequest) SetDriveId(v string) *GetOfficeEditUrlRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *GetOfficeEditUrlRequest) SetFileId(v string) *GetOfficeEditUrlRequest {
-	s.FileId = &v
-	return s
-}
-
-/**
- * 获取office文档预览地址
- */
-type GetOfficePreviewUrlRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_id
-	FileId  *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id, either share_id or drive_id is required
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-}
-
-func (s GetOfficePreviewUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetOfficePreviewUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetOfficePreviewUrlRequest) SetHeaders(v map[string]*string) *GetOfficePreviewUrlRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetOfficePreviewUrlRequest) SetAdditionData(v map[string]interface{}) *GetOfficePreviewUrlRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *GetOfficePreviewUrlRequest) SetDriveId(v string) *GetOfficePreviewUrlRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *GetOfficePreviewUrlRequest) SetFileId(v string) *GetOfficePreviewUrlRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *GetOfficePreviewUrlRequest) SetReferer(v string) *GetOfficePreviewUrlRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *GetOfficePreviewUrlRequest) SetShareId(v string) *GetOfficePreviewUrlRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * get_share_link_by_anonymous request
- */
-type GetShareLinkByAnonymousRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-}
-
-func (s GetShareLinkByAnonymousRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShareLinkByAnonymousRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetShareLinkByAnonymousRequest) SetHeaders(v map[string]*string) *GetShareLinkByAnonymousRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetShareLinkByAnonymousRequest) SetShareId(v string) *GetShareLinkByAnonymousRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * get_share_id request
- */
-type GetShareLinkIDRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// share_msg
-	ShareMsg *string `json:"share_msg,omitempty" xml:"share_msg,omitempty"`
-}
-
-func (s GetShareLinkIDRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShareLinkIDRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetShareLinkIDRequest) SetHeaders(v map[string]*string) *GetShareLinkIDRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetShareLinkIDRequest) SetShareMsg(v string) *GetShareLinkIDRequest {
-	s.ShareMsg = &v
-	return s
-}
-
-/**
- * get_share request
- */
-type GetShareLinkRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-}
-
-func (s GetShareLinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShareLinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetShareLinkRequest) SetHeaders(v map[string]*string) *GetShareLinkRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetShareLinkRequest) SetShareId(v string) *GetShareLinkRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * get_share_token request
- */
-type GetShareLinkTokenRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	Referer      *string                `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// share_pwd
-	SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
-}
-
-func (s GetShareLinkTokenRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShareLinkTokenRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetShareLinkTokenRequest) SetHeaders(v map[string]*string) *GetShareLinkTokenRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetShareLinkTokenRequest) SetAdditionData(v map[string]interface{}) *GetShareLinkTokenRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *GetShareLinkTokenRequest) SetReferer(v string) *GetShareLinkTokenRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *GetShareLinkTokenRequest) SetShareId(v string) *GetShareLinkTokenRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *GetShareLinkTokenRequest) SetSharePwd(v string) *GetShareLinkTokenRequest {
-	s.SharePwd = &v
-	return s
-}
-
-/**
- * get share request
- */
-type GetShareRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-}
-
-func (s GetShareRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShareRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetShareRequest) SetHeaders(v map[string]*string) *GetShareRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetShareRequest) SetShareId(v string) *GetShareRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * 获取文件上传URL
- */
-type GetUploadUrlRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// content_md5
-	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty" maxLength:"32"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_id
-	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
-	// upload_part_list
-	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
-	ShareId      *string           `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// upload_id
-	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty" require:"true"`
-}
-
-func (s GetUploadUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUploadUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetUploadUrlRequest) SetHeaders(v map[string]*string) *GetUploadUrlRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUploadUrlRequest) SetContentMd5(v string) *GetUploadUrlRequest {
-	s.ContentMd5 = &v
-	return s
-}
-
-func (s *GetUploadUrlRequest) SetDriveId(v string) *GetUploadUrlRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *GetUploadUrlRequest) SetFileId(v string) *GetUploadUrlRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *GetUploadUrlRequest) SetPartInfoList(v []*UploadPartInfo) *GetUploadUrlRequest {
-	s.PartInfoList = v
-	return s
-}
-
-func (s *GetUploadUrlRequest) SetShareId(v string) *GetUploadUrlRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *GetUploadUrlRequest) SetUploadId(v string) *GetUploadUrlRequest {
-	s.UploadId = &v
-	return s
-}
-
-/**
- * 获取视频雪碧图地址的请求body
- */
-type GetVideoPreviewSpriteURLRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// expire_sec
-	ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty" maximum:"14400" minimum:"1"`
-	// file_id
-	FileId  *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id, either share_id or drive_id is required
-	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-}
-
-func (s GetVideoPreviewSpriteURLRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVideoPreviewSpriteURLRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetVideoPreviewSpriteURLRequest) SetHeaders(v map[string]*string) *GetVideoPreviewSpriteURLRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetVideoPreviewSpriteURLRequest) SetAdditionData(v map[string]interface{}) *GetVideoPreviewSpriteURLRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *GetVideoPreviewSpriteURLRequest) SetDriveId(v string) *GetVideoPreviewSpriteURLRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *GetVideoPreviewSpriteURLRequest) SetExpireSec(v int64) *GetVideoPreviewSpriteURLRequest {
-	s.ExpireSec = &v
-	return s
-}
-
-func (s *GetVideoPreviewSpriteURLRequest) SetFileId(v string) *GetVideoPreviewSpriteURLRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *GetVideoPreviewSpriteURLRequest) SetReferer(v string) *GetVideoPreviewSpriteURLRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *GetVideoPreviewSpriteURLRequest) SetShareId(v string) *GetVideoPreviewSpriteURLRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *GetVideoPreviewSpriteURLRequest) SetSignToken(v string) *GetVideoPreviewSpriteURLRequest {
-	s.SignToken = &v
-	return s
-}
-
-/**
- * 获取视频文件播放地址的请求body
- */
-type GetVideoPreviewURLRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// audio_template_id
-	AudioTemplateId *string `json:"audio_template_id,omitempty" xml:"audio_template_id,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// expire_sec
-	ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty" maximum:"14400" minimum:"1"`
-	// file_id
-	FileId  *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id, either share_id or drive_id is required
-	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-	// template_id
-	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
-}
-
-func (s GetVideoPreviewURLRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVideoPreviewURLRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetVideoPreviewURLRequest) SetHeaders(v map[string]*string) *GetVideoPreviewURLRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetVideoPreviewURLRequest) SetAdditionData(v map[string]interface{}) *GetVideoPreviewURLRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *GetVideoPreviewURLRequest) SetAudioTemplateId(v string) *GetVideoPreviewURLRequest {
-	s.AudioTemplateId = &v
-	return s
-}
-
-func (s *GetVideoPreviewURLRequest) SetDriveId(v string) *GetVideoPreviewURLRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *GetVideoPreviewURLRequest) SetExpireSec(v int64) *GetVideoPreviewURLRequest {
-	s.ExpireSec = &v
-	return s
-}
-
-func (s *GetVideoPreviewURLRequest) SetFileId(v string) *GetVideoPreviewURLRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *GetVideoPreviewURLRequest) SetReferer(v string) *GetVideoPreviewURLRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *GetVideoPreviewURLRequest) SetShareId(v string) *GetVideoPreviewURLRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *GetVideoPreviewURLRequest) SetSignToken(v string) *GetVideoPreviewURLRequest {
-	s.SignToken = &v
-	return s
-}
-
-func (s *GetVideoPreviewURLRequest) SetTemplateId(v string) *GetVideoPreviewURLRequest {
-	s.TemplateId = &v
-	return s
-}
-
-/**
- * complete file request
- */
-type HostingCompleteFileRequest struct {
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId  *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty"`
-	// forbid_overwrite
-	// type: boolean
-	ForbidOverwrite *bool `json:"forbid_overwrite,omitempty" xml:"forbid_overwrite,omitempty"`
-	// part_info_list
-	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
-	ShareId      *string           `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// upload_id
-	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
-}
-
-func (s HostingCompleteFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingCompleteFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingCompleteFileRequest) SetAdditionData(v map[string]interface{}) *HostingCompleteFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *HostingCompleteFileRequest) SetDriveId(v string) *HostingCompleteFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingCompleteFileRequest) SetFilePath(v string) *HostingCompleteFileRequest {
-	s.FilePath = &v
-	return s
-}
-
-func (s *HostingCompleteFileRequest) SetForbidOverwrite(v bool) *HostingCompleteFileRequest {
-	s.ForbidOverwrite = &v
-	return s
-}
-
-func (s *HostingCompleteFileRequest) SetPartInfoList(v []*UploadPartInfo) *HostingCompleteFileRequest {
-	s.PartInfoList = v
-	return s
-}
-
-func (s *HostingCompleteFileRequest) SetShareId(v string) *HostingCompleteFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *HostingCompleteFileRequest) SetUploadId(v string) *HostingCompleteFileRequest {
-	s.UploadId = &v
-	return s
-}
-
-/**
- * copy file request
- */
-type HostingCopyFileRequest struct {
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_path
-	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true"`
-	// new_name
-	NewName *string `json:"new_name,omitempty" xml:"new_name,omitempty" maxLength:"1024" minLength:"1"`
-	// overwrite
-	// type: boolean
-	Overwrite *bool   `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
-	Referer   *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-	// to_drive_id
-	ToDriveId *string `json:"to_drive_id,omitempty" xml:"to_drive_id,omitempty" pattern:"[0-9]+"`
-	// to_parent_file_path
-	ToParentFilePath *string `json:"to_parent_file_path,omitempty" xml:"to_parent_file_path,omitempty" require:"true"`
-	// share_id
-	ToShareId *string `json:"to_share_id,omitempty" xml:"to_share_id,omitempty"`
-}
-
-func (s HostingCopyFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingCopyFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingCopyFileRequest) SetAdditionData(v map[string]interface{}) *HostingCopyFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *HostingCopyFileRequest) SetDriveId(v string) *HostingCopyFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingCopyFileRequest) SetFilePath(v string) *HostingCopyFileRequest {
-	s.FilePath = &v
-	return s
-}
-
-func (s *HostingCopyFileRequest) SetNewName(v string) *HostingCopyFileRequest {
-	s.NewName = &v
-	return s
-}
-
-func (s *HostingCopyFileRequest) SetOverwrite(v bool) *HostingCopyFileRequest {
-	s.Overwrite = &v
-	return s
-}
-
-func (s *HostingCopyFileRequest) SetReferer(v string) *HostingCopyFileRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *HostingCopyFileRequest) SetShareId(v string) *HostingCopyFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *HostingCopyFileRequest) SetToDriveId(v string) *HostingCopyFileRequest {
-	s.ToDriveId = &v
-	return s
-}
-
-func (s *HostingCopyFileRequest) SetToParentFilePath(v string) *HostingCopyFileRequest {
-	s.ToParentFilePath = &v
-	return s
-}
-
-func (s *HostingCopyFileRequest) SetToShareId(v string) *HostingCopyFileRequest {
-	s.ToShareId = &v
-	return s
-}
-
-/**
- * create file request
- */
-type HostingCreateFileRequest struct {
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// ContentMd5
-	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
-	// ContentType
-	ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// forbid_overwrite
-	// type: boolean
-	ForbidOverwrite *bool `json:"forbid_overwrite,omitempty" xml:"forbid_overwrite,omitempty"`
-	// Name
-	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
-	// parent_file_path
-	ParentFilePath *string `json:"parent_file_path,omitempty" xml:"parent_file_path,omitempty" require:"true"`
-	// part_info_list
-	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-	// Size
-	Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
-	// Type
-	Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
-}
-
-func (s HostingCreateFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingCreateFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingCreateFileRequest) SetAdditionData(v map[string]interface{}) *HostingCreateFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *HostingCreateFileRequest) SetContentMd5(v string) *HostingCreateFileRequest {
-	s.ContentMd5 = &v
-	return s
-}
-
-func (s *HostingCreateFileRequest) SetContentType(v string) *HostingCreateFileRequest {
-	s.ContentType = &v
-	return s
-}
-
-func (s *HostingCreateFileRequest) SetDriveId(v string) *HostingCreateFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingCreateFileRequest) SetForbidOverwrite(v bool) *HostingCreateFileRequest {
-	s.ForbidOverwrite = &v
-	return s
-}
-
-func (s *HostingCreateFileRequest) SetName(v string) *HostingCreateFileRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *HostingCreateFileRequest) SetParentFilePath(v string) *HostingCreateFileRequest {
-	s.ParentFilePath = &v
-	return s
-}
-
-func (s *HostingCreateFileRequest) SetPartInfoList(v []*UploadPartInfo) *HostingCreateFileRequest {
-	s.PartInfoList = v
-	return s
-}
-
-func (s *HostingCreateFileRequest) SetShareId(v string) *HostingCreateFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *HostingCreateFileRequest) SetSize(v int64) *HostingCreateFileRequest {
-	s.Size = &v
-	return s
-}
-
-func (s *HostingCreateFileRequest) SetType(v string) *HostingCreateFileRequest {
-	s.Type = &v
-	return s
-}
-
-/**
- * 删除文件请求
- */
-type HostingDeleteFileRequest struct {
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_path
-	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
-	// permanently
-	// type: false
-	Permanently *bool `json:"permanently,omitempty" xml:"permanently,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-}
-
-func (s HostingDeleteFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingDeleteFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingDeleteFileRequest) SetDriveId(v string) *HostingDeleteFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingDeleteFileRequest) SetFilePath(v string) *HostingDeleteFileRequest {
-	s.FilePath = &v
-	return s
-}
-
-func (s *HostingDeleteFileRequest) SetPermanently(v bool) *HostingDeleteFileRequest {
-	s.Permanently = &v
-	return s
-}
-
-func (s *HostingDeleteFileRequest) SetShareId(v string) *HostingDeleteFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * 获取文件下载地址的请求body
- */
-type HostingGetDownloadUrlRequest struct {
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// expire_sec
-	ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty" maximum:"14400" minimum:"10"`
-	// file_name
-	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
-	// file_path
-	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
-	Referer  *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id
-	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-}
-
-func (s HostingGetDownloadUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingGetDownloadUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingGetDownloadUrlRequest) SetAdditionData(v map[string]interface{}) *HostingGetDownloadUrlRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *HostingGetDownloadUrlRequest) SetDriveId(v string) *HostingGetDownloadUrlRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingGetDownloadUrlRequest) SetExpireSec(v int64) *HostingGetDownloadUrlRequest {
-	s.ExpireSec = &v
-	return s
-}
-
-func (s *HostingGetDownloadUrlRequest) SetFileName(v string) *HostingGetDownloadUrlRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *HostingGetDownloadUrlRequest) SetFilePath(v string) *HostingGetDownloadUrlRequest {
-	s.FilePath = &v
-	return s
-}
-
-func (s *HostingGetDownloadUrlRequest) SetReferer(v string) *HostingGetDownloadUrlRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *HostingGetDownloadUrlRequest) SetShareId(v string) *HostingGetDownloadUrlRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *HostingGetDownloadUrlRequest) SetSignToken(v string) *HostingGetDownloadUrlRequest {
-	s.SignToken = &v
-	return s
-}
-
-/**
- * 获取文件元数据
- */
-type HostingGetFileRequest struct {
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_id
-	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	Referer         *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id
-	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-	// url_expire_sec
-	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s HostingGetFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingGetFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingGetFileRequest) SetAdditionData(v map[string]interface{}) *HostingGetFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *HostingGetFileRequest) SetDriveId(v string) *HostingGetFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingGetFileRequest) SetFilePath(v string) *HostingGetFileRequest {
-	s.FilePath = &v
-	return s
-}
-
-func (s *HostingGetFileRequest) SetImageThumbnailProcess(v string) *HostingGetFileRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *HostingGetFileRequest) SetImageUrlProcess(v string) *HostingGetFileRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *HostingGetFileRequest) SetReferer(v string) *HostingGetFileRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *HostingGetFileRequest) SetShareId(v string) *HostingGetFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *HostingGetFileRequest) SetSignToken(v string) *HostingGetFileRequest {
-	s.SignToken = &v
-	return s
-}
-
-func (s *HostingGetFileRequest) SetUrlExpireSec(v int64) *HostingGetFileRequest {
-	s.UrlExpireSec = &v
-	return s
-}
-
-func (s *HostingGetFileRequest) SetVideoThumbnailProcess(v string) *HostingGetFileRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * 获取文件安全地址的请求body
- */
-type HostingGetSecureUrlRequest struct {
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// expire_sec 单位秒
-	ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty"`
-	// file_path
-	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
-	// secure_ip
-	SecureIp *string `json:"secure_ip,omitempty" xml:"secure_ip,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-}
-
-func (s HostingGetSecureUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingGetSecureUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingGetSecureUrlRequest) SetDriveId(v string) *HostingGetSecureUrlRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingGetSecureUrlRequest) SetExpireSec(v int64) *HostingGetSecureUrlRequest {
-	s.ExpireSec = &v
-	return s
-}
-
-func (s *HostingGetSecureUrlRequest) SetFilePath(v string) *HostingGetSecureUrlRequest {
-	s.FilePath = &v
-	return s
-}
-
-func (s *HostingGetSecureUrlRequest) SetSecureIp(v string) *HostingGetSecureUrlRequest {
-	s.SecureIp = &v
-	return s
-}
-
-func (s *HostingGetSecureUrlRequest) SetShareId(v string) *HostingGetSecureUrlRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * 获取文件上传URL
- */
-type HostingGetUploadUrlRequest struct {
-	// content_md5
-	ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty" maxLength:"32"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_path
-	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true"`
-	// upload_part_list
-	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-	// upload_id
-	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty" require:"true"`
-}
-
-func (s HostingGetUploadUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingGetUploadUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingGetUploadUrlRequest) SetContentMd5(v string) *HostingGetUploadUrlRequest {
-	s.ContentMd5 = &v
-	return s
-}
-
-func (s *HostingGetUploadUrlRequest) SetDriveId(v string) *HostingGetUploadUrlRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingGetUploadUrlRequest) SetFilePath(v string) *HostingGetUploadUrlRequest {
-	s.FilePath = &v
-	return s
-}
-
-func (s *HostingGetUploadUrlRequest) SetPartInfoList(v []*UploadPartInfo) *HostingGetUploadUrlRequest {
-	s.PartInfoList = v
-	return s
-}
-
-func (s *HostingGetUploadUrlRequest) SetShareId(v string) *HostingGetUploadUrlRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *HostingGetUploadUrlRequest) SetUploadId(v string) *HostingGetUploadUrlRequest {
-	s.UploadId = &v
-	return s
-}
-
-/**
- * list file request
- */
-type HostingListFileRequest struct {
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId                   *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	// limit
-	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
-	// marker
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// ParentFilePath
-	ParentFilePath *string `json:"parent_file_path,omitempty" xml:"parent_file_path,omitempty" require:"true"`
-	Referer        *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id
-	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-	// url_expire_sec
-	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s HostingListFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingListFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingListFileRequest) SetAdditionData(v map[string]interface{}) *HostingListFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *HostingListFileRequest) SetDriveId(v string) *HostingListFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingListFileRequest) SetImageCroppingAspectRatios(v []*string) *HostingListFileRequest {
-	s.ImageCroppingAspectRatios = v
-	return s
-}
-
-func (s *HostingListFileRequest) SetImageThumbnailProcess(v string) *HostingListFileRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *HostingListFileRequest) SetImageUrlProcess(v string) *HostingListFileRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *HostingListFileRequest) SetLimit(v int64) *HostingListFileRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *HostingListFileRequest) SetMarker(v string) *HostingListFileRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *HostingListFileRequest) SetParentFilePath(v string) *HostingListFileRequest {
-	s.ParentFilePath = &v
-	return s
-}
-
-func (s *HostingListFileRequest) SetReferer(v string) *HostingListFileRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *HostingListFileRequest) SetShareId(v string) *HostingListFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *HostingListFileRequest) SetSignToken(v string) *HostingListFileRequest {
-	s.SignToken = &v
-	return s
-}
-
-func (s *HostingListFileRequest) SetUrlExpireSec(v int64) *HostingListFileRequest {
-	s.UrlExpireSec = &v
-	return s
-}
-
-func (s *HostingListFileRequest) SetVideoThumbnailProcess(v string) *HostingListFileRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * 列举uploadID对应的已上传分片
- */
-type HostingListUploadedPartRequest struct {
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_path
-	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true"`
-	// limit
-	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"1000" minimum:"1"`
-	// part_number_marker
-	PartNumberMarker *int64 `json:"part_number_marker,omitempty" xml:"part_number_marker,omitempty" minimum:"1"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-	// upload_id
-	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
-}
-
-func (s HostingListUploadedPartRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingListUploadedPartRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingListUploadedPartRequest) SetDriveId(v string) *HostingListUploadedPartRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingListUploadedPartRequest) SetFilePath(v string) *HostingListUploadedPartRequest {
-	s.FilePath = &v
-	return s
-}
-
-func (s *HostingListUploadedPartRequest) SetLimit(v int64) *HostingListUploadedPartRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *HostingListUploadedPartRequest) SetPartNumberMarker(v int64) *HostingListUploadedPartRequest {
-	s.PartNumberMarker = &v
-	return s
-}
-
-func (s *HostingListUploadedPartRequest) SetShareId(v string) *HostingListUploadedPartRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *HostingListUploadedPartRequest) SetUploadId(v string) *HostingListUploadedPartRequest {
-	s.UploadId = &v
-	return s
-}
-
-/**
- * 文件移动请求
- */
-type HostingMoveFileRequest struct {
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_path
-	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty"`
-	// new_name
-	NewName *string `json:"new_name,omitempty" xml:"new_name,omitempty"`
-	// overwrite
-	// type: boolean
-	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-	// file_path
-	ToParentFilePath *string `json:"to_parent_file_path,omitempty" xml:"to_parent_file_path,omitempty"`
-}
-
-func (s HostingMoveFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingMoveFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingMoveFileRequest) SetDriveId(v string) *HostingMoveFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingMoveFileRequest) SetFilePath(v string) *HostingMoveFileRequest {
-	s.FilePath = &v
-	return s
-}
-
-func (s *HostingMoveFileRequest) SetNewName(v string) *HostingMoveFileRequest {
-	s.NewName = &v
-	return s
-}
-
-func (s *HostingMoveFileRequest) SetOverwrite(v bool) *HostingMoveFileRequest {
-	s.Overwrite = &v
-	return s
-}
-
-func (s *HostingMoveFileRequest) SetShareId(v string) *HostingMoveFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *HostingMoveFileRequest) SetToParentFilePath(v string) *HostingMoveFileRequest {
-	s.ToParentFilePath = &v
-	return s
-}
-
-/**
- * 获取视频DRM License
- */
-type HostingVideoDRMLicenseRequest struct {
-	// drmType
-	DrmType *string `json:"drmType,omitempty" xml:"drmType,omitempty" require:"true"`
-	// licenseRequest
-	LicenseRequest *string `json:"licenseRequest,omitempty" xml:"licenseRequest,omitempty" require:"true"`
-}
-
-func (s HostingVideoDRMLicenseRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingVideoDRMLicenseRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingVideoDRMLicenseRequest) SetDrmType(v string) *HostingVideoDRMLicenseRequest {
-	s.DrmType = &v
-	return s
-}
-
-func (s *HostingVideoDRMLicenseRequest) SetLicenseRequest(v string) *HostingVideoDRMLicenseRequest {
-	s.LicenseRequest = &v
-	return s
-}
-
-/**
- * 获取视频分辨率列表
- */
-type HostingVideoDefinitionRequest struct {
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_path
-	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
-	// protection_scheme
-	ProtectionScheme *string `json:"protection_scheme,omitempty" xml:"protection_scheme,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-}
-
-func (s HostingVideoDefinitionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingVideoDefinitionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingVideoDefinitionRequest) SetDriveId(v string) *HostingVideoDefinitionRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingVideoDefinitionRequest) SetFilePath(v string) *HostingVideoDefinitionRequest {
-	s.FilePath = &v
-	return s
-}
-
-func (s *HostingVideoDefinitionRequest) SetProtectionScheme(v string) *HostingVideoDefinitionRequest {
-	s.ProtectionScheme = &v
-	return s
-}
-
-func (s *HostingVideoDefinitionRequest) SetShareId(v string) *HostingVideoDefinitionRequest {
-	s.ShareId = &v
-	return s
-}
-
-/**
- * 获取视频的m3u8文件
- */
-type HostingVideoM3U8Request struct {
-	// definition
-	Definition *string `json:"definition,omitempty" xml:"definition,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// expire_sec
-	ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty" maximum:"86400" minimum:"60"`
-	// file_path
-	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
-	// protection_scheme
-	ProtectionScheme *string `json:"protection_scheme,omitempty" xml:"protection_scheme,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-	// sign_token
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty" require:"true"`
-}
-
-func (s HostingVideoM3U8Request) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingVideoM3U8Request) GoString() string {
-	return s.String()
-}
-
-func (s *HostingVideoM3U8Request) SetDefinition(v string) *HostingVideoM3U8Request {
-	s.Definition = &v
-	return s
-}
-
-func (s *HostingVideoM3U8Request) SetDriveId(v string) *HostingVideoM3U8Request {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingVideoM3U8Request) SetExpireSec(v int64) *HostingVideoM3U8Request {
-	s.ExpireSec = &v
-	return s
-}
-
-func (s *HostingVideoM3U8Request) SetFilePath(v string) *HostingVideoM3U8Request {
-	s.FilePath = &v
-	return s
-}
-
-func (s *HostingVideoM3U8Request) SetProtectionScheme(v string) *HostingVideoM3U8Request {
-	s.ProtectionScheme = &v
-	return s
-}
-
-func (s *HostingVideoM3U8Request) SetShareId(v string) *HostingVideoM3U8Request {
-	s.ShareId = &v
-	return s
-}
-
-func (s *HostingVideoM3U8Request) SetSignToken(v string) *HostingVideoM3U8Request {
-	s.SignToken = &v
-	return s
-}
-
-/**
- * 启动视频转码请求
- */
-type HostingVideoTranscodeRequest struct {
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// file_path
-	FilePath *string `json:"file_path,omitempty" xml:"file_path,omitempty" require:"true" maxLength:"1000" minLength:"1"`
-	// hls_time
-	HlsTime *int64 `json:"hls_time,omitempty" xml:"hls_time,omitempty"`
-	// protection_scheme
-	ProtectionScheme *string `json:"protection_scheme,omitempty" xml:"protection_scheme,omitempty"`
-	// remarks
-	Remarks *string `json:"remarks,omitempty" xml:"remarks,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
-	// transcode
-	Transcode *bool `json:"transcode,omitempty" xml:"transcode,omitempty"`
-}
-
-func (s HostingVideoTranscodeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HostingVideoTranscodeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HostingVideoTranscodeRequest) SetDriveId(v string) *HostingVideoTranscodeRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *HostingVideoTranscodeRequest) SetFilePath(v string) *HostingVideoTranscodeRequest {
-	s.FilePath = &v
-	return s
-}
-
-func (s *HostingVideoTranscodeRequest) SetHlsTime(v int64) *HostingVideoTranscodeRequest {
-	s.HlsTime = &v
-	return s
-}
-
-func (s *HostingVideoTranscodeRequest) SetProtectionScheme(v string) *HostingVideoTranscodeRequest {
-	s.ProtectionScheme = &v
-	return s
-}
-
-func (s *HostingVideoTranscodeRequest) SetRemarks(v string) *HostingVideoTranscodeRequest {
-	s.Remarks = &v
-	return s
-}
-
-func (s *HostingVideoTranscodeRequest) SetShareId(v string) *HostingVideoTranscodeRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *HostingVideoTranscodeRequest) SetTranscode(v bool) *HostingVideoTranscodeRequest {
-	s.Transcode = &v
-	return s
-}
-
-/**
- *
- */
-type ImageMediaMetadata struct {
-	// height
-	Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
-	// width：
-	Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
-}
-
-func (s ImageMediaMetadata) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImageMediaMetadata) GoString() string {
-	return s.String()
-}
-
-func (s *ImageMediaMetadata) SetHeight(v int64) *ImageMediaMetadata {
-	s.Height = &v
-	return s
-}
-
-func (s *ImageMediaMetadata) SetWidth(v int64) *ImageMediaMetadata {
-	s.Width = &v
-	return s
-}
-
-/**
- * list_file_by_anonymous request
- */
-type ListByAnonymousRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	// limit
-	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
-	// marker
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// parent_file_id
-	ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4" pattern:"[a-z0-9]{1,50}"`
-	Referer      *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id
-	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty" require:"true"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s ListByAnonymousRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListByAnonymousRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListByAnonymousRequest) SetHeaders(v map[string]*string) *ListByAnonymousRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListByAnonymousRequest) SetAdditionData(v map[string]interface{}) *ListByAnonymousRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *ListByAnonymousRequest) SetImageThumbnailProcess(v string) *ListByAnonymousRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *ListByAnonymousRequest) SetImageUrlProcess(v string) *ListByAnonymousRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *ListByAnonymousRequest) SetLimit(v int64) *ListByAnonymousRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListByAnonymousRequest) SetMarker(v string) *ListByAnonymousRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *ListByAnonymousRequest) SetParentFileId(v string) *ListByAnonymousRequest {
-	s.ParentFileId = &v
-	return s
-}
-
-func (s *ListByAnonymousRequest) SetReferer(v string) *ListByAnonymousRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *ListByAnonymousRequest) SetShareId(v string) *ListByAnonymousRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *ListByAnonymousRequest) SetSignToken(v string) *ListByAnonymousRequest {
-	s.SignToken = &v
-	return s
-}
-
-func (s *ListByAnonymousRequest) SetVideoThumbnailProcess(v string) *ListByAnonymousRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * List drive request
- */
-type ListDriveRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// 每页大小限制
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
-	// 翻页标记, 接口返回的标记值
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// 所属者
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// owner_type
-	// 所述者类型
-	OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
-	// Subdomain ID
-	SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
-}
-
-func (s ListDriveRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDriveRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDriveRequest) SetHeaders(v map[string]*string) *ListDriveRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDriveRequest) SetLimit(v int32) *ListDriveRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListDriveRequest) SetMarker(v string) *ListDriveRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *ListDriveRequest) SetOwner(v string) *ListDriveRequest {
-	s.Owner = &v
-	return s
-}
-
-func (s *ListDriveRequest) SetOwnerType(v string) *ListDriveRequest {
-	s.OwnerType = &v
-	return s
-}
-
-func (s *ListDriveRequest) SetSubdomainId(v string) *ListDriveRequest {
-	s.SubdomainId = &v
-	return s
-}
-
-/**
- *
- */
-type ListFileActivityRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// DriveID
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	// FileID
-	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	// Limit, default
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// Marker
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-}
-
-func (s ListFileActivityRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFileActivityRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListFileActivityRequest) SetHeaders(v map[string]*string) *ListFileActivityRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFileActivityRequest) SetAdditionData(v map[string]interface{}) *ListFileActivityRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *ListFileActivityRequest) SetDriveId(v string) *ListFileActivityRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *ListFileActivityRequest) SetFileId(v string) *ListFileActivityRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *ListFileActivityRequest) SetLimit(v int32) *ListFileActivityRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListFileActivityRequest) SetMarker(v string) *ListFileActivityRequest {
-	s.Marker = &v
-	return s
-}
-
-/**
- * 列举文件
- */
-type ListFileByCustomIndexKeyRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// starred
-	Starred *bool `json:"Starred,omitempty" xml:"Starred,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// category
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// custom_index_key
-	CustomIndexKey *string `json:"custom_index_key,omitempty" xml:"custom_index_key,omitempty" require:"true"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// encrypt_mode
-	EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
-	// fields
-	Fields                    *string   `json:"fields,omitempty" xml:"fields,omitempty"`
-	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	// limit
-	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
-	// marker
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// order_direction
-	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
-	Referer        *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id, either share_id or drive_id is required
-	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-	// status
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// type
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// url_expire_sec
-	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s ListFileByCustomIndexKeyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFileByCustomIndexKeyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetHeaders(v map[string]*string) *ListFileByCustomIndexKeyRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetStarred(v bool) *ListFileByCustomIndexKeyRequest {
-	s.Starred = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetAdditionData(v map[string]interface{}) *ListFileByCustomIndexKeyRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetCategory(v string) *ListFileByCustomIndexKeyRequest {
-	s.Category = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetCustomIndexKey(v string) *ListFileByCustomIndexKeyRequest {
-	s.CustomIndexKey = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetDriveId(v string) *ListFileByCustomIndexKeyRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetEncryptMode(v string) *ListFileByCustomIndexKeyRequest {
-	s.EncryptMode = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetFields(v string) *ListFileByCustomIndexKeyRequest {
-	s.Fields = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetImageCroppingAspectRatios(v []*string) *ListFileByCustomIndexKeyRequest {
-	s.ImageCroppingAspectRatios = v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetImageThumbnailProcess(v string) *ListFileByCustomIndexKeyRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetImageUrlProcess(v string) *ListFileByCustomIndexKeyRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetLimit(v int64) *ListFileByCustomIndexKeyRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetMarker(v string) *ListFileByCustomIndexKeyRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetOrderDirection(v string) *ListFileByCustomIndexKeyRequest {
-	s.OrderDirection = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetReferer(v string) *ListFileByCustomIndexKeyRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetShareId(v string) *ListFileByCustomIndexKeyRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetSignToken(v string) *ListFileByCustomIndexKeyRequest {
-	s.SignToken = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetStatus(v string) *ListFileByCustomIndexKeyRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetType(v string) *ListFileByCustomIndexKeyRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetUrlExpireSec(v int64) *ListFileByCustomIndexKeyRequest {
-	s.UrlExpireSec = &v
-	return s
-}
-
-func (s *ListFileByCustomIndexKeyRequest) SetVideoThumbnailProcess(v string) *ListFileByCustomIndexKeyRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * 获取增量文件操作记录
- */
-type ListFileDeltaRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// cursor 游标
-	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
-	// drive_id
-	DriveId                   *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	// limit
-	// default 100
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s ListFileDeltaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFileDeltaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListFileDeltaRequest) SetHeaders(v map[string]*string) *ListFileDeltaRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFileDeltaRequest) SetCursor(v string) *ListFileDeltaRequest {
-	s.Cursor = &v
-	return s
-}
-
-func (s *ListFileDeltaRequest) SetDriveId(v string) *ListFileDeltaRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *ListFileDeltaRequest) SetImageCroppingAspectRatios(v []*string) *ListFileDeltaRequest {
-	s.ImageCroppingAspectRatios = v
-	return s
-}
-
-func (s *ListFileDeltaRequest) SetImageThumbnailProcess(v string) *ListFileDeltaRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *ListFileDeltaRequest) SetImageUrlProcess(v string) *ListFileDeltaRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *ListFileDeltaRequest) SetLimit(v int32) *ListFileDeltaRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListFileDeltaRequest) SetVideoThumbnailProcess(v string) *ListFileDeltaRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * 列举文件
- */
-type ListFileRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// all
-	All *bool `json:"all,omitempty" xml:"all,omitempty"`
-	// category
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// fields
-	Fields                    *string   `json:"fields,omitempty" xml:"fields,omitempty"`
-	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	// limit
-	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
-	// location
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// marker
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// order_by
-	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
-	// order_direction
-	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
-	// ParentFileID
-	ParentFileId     *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4" pattern:"[a-z0-9.-_]{1,50}"`
-	ParentFileIdPath *string `json:"parent_file_id_path,omitempty" xml:"parent_file_id_path,omitempty"`
-	Referer          *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// share_id, either share_id or drive_id is required
-	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-	// starred
-	Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
-	// status
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// type
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// url_expire_sec
-	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s ListFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListFileRequest) SetHeaders(v map[string]*string) *ListFileRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFileRequest) SetAdditionData(v map[string]interface{}) *ListFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *ListFileRequest) SetAll(v bool) *ListFileRequest {
-	s.All = &v
-	return s
-}
-
-func (s *ListFileRequest) SetCategory(v string) *ListFileRequest {
-	s.Category = &v
-	return s
-}
-
-func (s *ListFileRequest) SetDriveId(v string) *ListFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *ListFileRequest) SetFields(v string) *ListFileRequest {
-	s.Fields = &v
-	return s
-}
-
-func (s *ListFileRequest) SetImageCroppingAspectRatios(v []*string) *ListFileRequest {
-	s.ImageCroppingAspectRatios = v
-	return s
-}
-
-func (s *ListFileRequest) SetImageThumbnailProcess(v string) *ListFileRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *ListFileRequest) SetImageUrlProcess(v string) *ListFileRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *ListFileRequest) SetLimit(v int64) *ListFileRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListFileRequest) SetLocation(v string) *ListFileRequest {
-	s.Location = &v
-	return s
-}
-
-func (s *ListFileRequest) SetMarker(v string) *ListFileRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *ListFileRequest) SetOrderBy(v string) *ListFileRequest {
-	s.OrderBy = &v
-	return s
-}
-
-func (s *ListFileRequest) SetOrderDirection(v string) *ListFileRequest {
-	s.OrderDirection = &v
-	return s
-}
-
-func (s *ListFileRequest) SetParentFileId(v string) *ListFileRequest {
-	s.ParentFileId = &v
-	return s
-}
-
-func (s *ListFileRequest) SetParentFileIdPath(v string) *ListFileRequest {
-	s.ParentFileIdPath = &v
-	return s
-}
-
-func (s *ListFileRequest) SetReferer(v string) *ListFileRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *ListFileRequest) SetShareId(v string) *ListFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *ListFileRequest) SetSignToken(v string) *ListFileRequest {
-	s.SignToken = &v
-	return s
-}
-
-func (s *ListFileRequest) SetStarred(v bool) *ListFileRequest {
-	s.Starred = &v
-	return s
-}
-
-func (s *ListFileRequest) SetStatus(v string) *ListFileRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *ListFileRequest) SetType(v string) *ListFileRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *ListFileRequest) SetUrlExpireSec(v int64) *ListFileRequest {
-	s.UrlExpireSec = &v
-	return s
-}
-
-func (s *ListFileRequest) SetVideoThumbnailProcess(v string) *ListFileRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * List my drive request
- */
-type ListMyDriveRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// 每页大小限制
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
-	// 翻页标记, 接口返回的标记值
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-}
-
-func (s ListMyDriveRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMyDriveRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListMyDriveRequest) SetHeaders(v map[string]*string) *ListMyDriveRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListMyDriveRequest) SetLimit(v int32) *ListMyDriveRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListMyDriveRequest) SetMarker(v string) *ListMyDriveRequest {
-	s.Marker = &v
-	return s
-}
-
-/**
- * list_share_link request
- */
-type ListShareLinkRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// creator
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// include_cancelled
-	IncludeCancelled *bool `json:"include_cancelled,omitempty" xml:"include_cancelled,omitempty"`
-	// limit
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
-	// marker
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// order_by
-	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
-	// order_direction
-	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
-}
-
-func (s ListShareLinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListShareLinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListShareLinkRequest) SetHeaders(v map[string]*string) *ListShareLinkRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListShareLinkRequest) SetCreator(v string) *ListShareLinkRequest {
-	s.Creator = &v
-	return s
-}
-
-func (s *ListShareLinkRequest) SetIncludeCancelled(v bool) *ListShareLinkRequest {
-	s.IncludeCancelled = &v
-	return s
-}
-
-func (s *ListShareLinkRequest) SetLimit(v int32) *ListShareLinkRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListShareLinkRequest) SetMarker(v string) *ListShareLinkRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *ListShareLinkRequest) SetOrderBy(v string) *ListShareLinkRequest {
-	s.OrderBy = &v
-	return s
-}
-
-func (s *ListShareLinkRequest) SetOrderDirection(v string) *ListShareLinkRequest {
-	s.OrderDirection = &v
-	return s
-}
-
-/**
- * list share request
- */
-type ListShareRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// creator
-	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
-	// limit
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
-	// marker
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// Owner
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// owner_type
-	OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
-	// share_file_path
-	ShareFilePath *string `json:"share_file_path,omitempty" xml:"share_file_path,omitempty"`
-}
-
-func (s ListShareRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListShareRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListShareRequest) SetHeaders(v map[string]*string) *ListShareRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListShareRequest) SetCreator(v string) *ListShareRequest {
-	s.Creator = &v
-	return s
-}
-
-func (s *ListShareRequest) SetDriveId(v string) *ListShareRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *ListShareRequest) SetLimit(v int32) *ListShareRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListShareRequest) SetMarker(v string) *ListShareRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *ListShareRequest) SetOwner(v string) *ListShareRequest {
-	s.Owner = &v
-	return s
-}
-
-func (s *ListShareRequest) SetOwnerType(v string) *ListShareRequest {
-	s.OwnerType = &v
-	return s
-}
-
-func (s *ListShareRequest) SetShareFilePath(v string) *ListShareRequest {
-	s.ShareFilePath = &v
-	return s
-}
-
-/**
- * list store file
- */
-type ListStoreFileRequest struct {
-	// limit
-	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"1000" minimum:"1"`
-	// marker
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// parent_file_path
-	ParentFilePath *string `json:"parent_file_path,omitempty" xml:"parent_file_path,omitempty"`
-	// store_id
-	StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty"`
-	// type
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s ListStoreFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListStoreFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListStoreFileRequest) SetLimit(v int64) *ListStoreFileRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListStoreFileRequest) SetMarker(v string) *ListStoreFileRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *ListStoreFileRequest) SetParentFilePath(v string) *ListStoreFileRequest {
-	s.ParentFilePath = &v
-	return s
-}
-
-func (s *ListStoreFileRequest) SetStoreId(v string) *ListStoreFileRequest {
-	s.StoreId = &v
-	return s
-}
-
-func (s *ListStoreFileRequest) SetType(v string) *ListStoreFileRequest {
-	s.Type = &v
-	return s
-}
-
-/**
- * list storage file
- */
-type ListStoreRequest struct {
-	// domain_id
-	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-}
-
-func (s ListStoreRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListStoreRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListStoreRequest) SetDomainId(v string) *ListStoreRequest {
-	s.DomainId = &v
-	return s
-}
-
-/**
- * 列举uploadID对应的已上传分片
- */
-type ListUploadedPartRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	// file_id
-	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-	FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
-	// limit
-	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"1000" minimum:"1"`
-	// part_number_marker
-	PartNumberMarker *int64  `json:"part_number_marker,omitempty" xml:"part_number_marker,omitempty" minimum:"1"`
-	ShareId          *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// upload_id
-	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
-}
-
-func (s ListUploadedPartRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUploadedPartRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUploadedPartRequest) SetHeaders(v map[string]*string) *ListUploadedPartRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUploadedPartRequest) SetDriveId(v string) *ListUploadedPartRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *ListUploadedPartRequest) SetFileId(v string) *ListUploadedPartRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *ListUploadedPartRequest) SetFileIdPath(v string) *ListUploadedPartRequest {
-	s.FileIdPath = &v
-	return s
-}
-
-func (s *ListUploadedPartRequest) SetLimit(v int64) *ListUploadedPartRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListUploadedPartRequest) SetPartNumberMarker(v int64) *ListUploadedPartRequest {
-	s.PartNumberMarker = &v
-	return s
-}
-
-func (s *ListUploadedPartRequest) SetShareId(v string) *ListUploadedPartRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *ListUploadedPartRequest) SetUploadId(v string) *ListUploadedPartRequest {
-	s.UploadId = &v
-	return s
-}
-
-/**
- * 文件移动请求
- */
-type MoveFileRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// auto_rename
-	AutoRename *bool `json:"auto_rename,omitempty" xml:"auto_rename,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	// file_id
-	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-	FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
-	// new_name
-	NewName *string `json:"new_name,omitempty" xml:"new_name,omitempty" maxLength:"1024" minLength:"1"`
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// to_drive_id
-	ToDriveId *string `json:"to_drive_id,omitempty" xml:"to_drive_id,omitempty" pattern:"[0-9]+"`
-	// to_parent_file_id
-	ToParentFileId *string `json:"to_parent_file_id,omitempty" xml:"to_parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4"`
-	ToShareId      *string `json:"to_share_id,omitempty" xml:"to_share_id,omitempty" pattern:"[0-9]+"`
-}
-
-func (s MoveFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s MoveFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *MoveFileRequest) SetHeaders(v map[string]*string) *MoveFileRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *MoveFileRequest) SetAutoRename(v bool) *MoveFileRequest {
-	s.AutoRename = &v
-	return s
-}
-
-func (s *MoveFileRequest) SetDriveId(v string) *MoveFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *MoveFileRequest) SetFileId(v string) *MoveFileRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *MoveFileRequest) SetFileIdPath(v string) *MoveFileRequest {
-	s.FileIdPath = &v
-	return s
-}
-
-func (s *MoveFileRequest) SetNewName(v string) *MoveFileRequest {
-	s.NewName = &v
-	return s
-}
-
-func (s *MoveFileRequest) SetShareId(v string) *MoveFileRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *MoveFileRequest) SetToDriveId(v string) *MoveFileRequest {
-	s.ToDriveId = &v
-	return s
-}
-
-func (s *MoveFileRequest) SetToParentFileId(v string) *MoveFileRequest {
-	s.ToParentFileId = &v
-	return s
-}
-
-func (s *MoveFileRequest) SetToShareId(v string) *MoveFileRequest {
-	s.ToShareId = &v
-	return s
-}
-
-/**
- * play_media request
- */
-type PlayMediaRequest struct {
-	// auth_key
-	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty" require:"true" pattern:"[a-z0-9]+"`
-	// drive_id
-	DriveID *string `json:"DriveID,omitempty" xml:"DriveID,omitempty" require:"true" pattern:"[0-9]+"`
-	// file_id
-	FileID *string `json:"FileID,omitempty" xml:"FileID,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-}
-
-func (s PlayMediaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PlayMediaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PlayMediaRequest) SetAuthKey(v string) *PlayMediaRequest {
-	s.AuthKey = &v
-	return s
-}
-
-func (s *PlayMediaRequest) SetDriveID(v string) *PlayMediaRequest {
-	s.DriveID = &v
-	return s
-}
-
-func (s *PlayMediaRequest) SetFileID(v string) *PlayMediaRequest {
-	s.FileID = &v
-	return s
-}
-
-/**
- * 刷新office文档在线编辑凭证
- */
-type RefreshOfficeEditTokenRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// location
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// AccessToken
-	OfficeAccessToken *string `json:"office_access_token,omitempty" xml:"office_access_token,omitempty" require:"true"`
-	// RefreshToken
-	OfficeRefreshToken *string `json:"office_refresh_token,omitempty" xml:"office_refresh_token,omitempty" require:"true"`
-}
-
-func (s RefreshOfficeEditTokenRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RefreshOfficeEditTokenRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RefreshOfficeEditTokenRequest) SetHeaders(v map[string]*string) *RefreshOfficeEditTokenRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *RefreshOfficeEditTokenRequest) SetAdditionData(v map[string]interface{}) *RefreshOfficeEditTokenRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *RefreshOfficeEditTokenRequest) SetLocation(v string) *RefreshOfficeEditTokenRequest {
-	s.Location = &v
-	return s
-}
-
-func (s *RefreshOfficeEditTokenRequest) SetOfficeAccessToken(v string) *RefreshOfficeEditTokenRequest {
-	s.OfficeAccessToken = &v
-	return s
-}
-
-func (s *RefreshOfficeEditTokenRequest) SetOfficeRefreshToken(v string) *RefreshOfficeEditTokenRequest {
-	s.OfficeRefreshToken = &v
-	return s
-}
-
-/**
- * 全量获取file元信息的请求body
- */
-type ScanFileMetaRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// category
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// drive_id
-	DriveId                   *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	// limit
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"5000" minimum:"1"`
-	// marker
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s ScanFileMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScanFileMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ScanFileMetaRequest) SetHeaders(v map[string]*string) *ScanFileMetaRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ScanFileMetaRequest) SetAdditionData(v map[string]interface{}) *ScanFileMetaRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *ScanFileMetaRequest) SetCategory(v string) *ScanFileMetaRequest {
-	s.Category = &v
-	return s
-}
-
-func (s *ScanFileMetaRequest) SetDriveId(v string) *ScanFileMetaRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *ScanFileMetaRequest) SetImageCroppingAspectRatios(v []*string) *ScanFileMetaRequest {
-	s.ImageCroppingAspectRatios = v
-	return s
-}
-
-func (s *ScanFileMetaRequest) SetImageThumbnailProcess(v string) *ScanFileMetaRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *ScanFileMetaRequest) SetImageUrlProcess(v string) *ScanFileMetaRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *ScanFileMetaRequest) SetLimit(v int32) *ScanFileMetaRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ScanFileMetaRequest) SetMarker(v string) *ScanFileMetaRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *ScanFileMetaRequest) SetVideoThumbnailProcess(v string) *ScanFileMetaRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * 搜索文件元数据
- */
-type SearchFileRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// addition_data
-	AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
-	// drive_id
-	DriveId                   *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// image_url_process
-	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
-	// limit
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
-	// location
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// Marker
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// order_by
-	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
-	// query
-	Query *string `json:"query,omitempty" xml:"query,omitempty" maxLength:"4096"`
-	// referer
-	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// return_total_count 是否返回查询总数
-	ReturnTotalCount *bool `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
-	// sign_token
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-	// url_expire_sec
-	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s SearchFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SearchFileRequest) SetHeaders(v map[string]*string) *SearchFileRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *SearchFileRequest) SetAdditionData(v map[string]interface{}) *SearchFileRequest {
-	s.AdditionData = v
-	return s
-}
-
-func (s *SearchFileRequest) SetDriveId(v string) *SearchFileRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *SearchFileRequest) SetImageCroppingAspectRatios(v []*string) *SearchFileRequest {
-	s.ImageCroppingAspectRatios = v
-	return s
-}
-
-func (s *SearchFileRequest) SetImageThumbnailProcess(v string) *SearchFileRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *SearchFileRequest) SetImageUrlProcess(v string) *SearchFileRequest {
-	s.ImageUrlProcess = &v
-	return s
-}
-
-func (s *SearchFileRequest) SetLimit(v int32) *SearchFileRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *SearchFileRequest) SetLocation(v string) *SearchFileRequest {
-	s.Location = &v
-	return s
-}
-
-func (s *SearchFileRequest) SetMarker(v string) *SearchFileRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *SearchFileRequest) SetOrderBy(v string) *SearchFileRequest {
-	s.OrderBy = &v
-	return s
-}
-
-func (s *SearchFileRequest) SetQuery(v string) *SearchFileRequest {
-	s.Query = &v
-	return s
-}
-
-func (s *SearchFileRequest) SetReferer(v string) *SearchFileRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *SearchFileRequest) SetReturnTotalCount(v bool) *SearchFileRequest {
-	s.ReturnTotalCount = &v
-	return s
-}
-
-func (s *SearchFileRequest) SetSignToken(v string) *SearchFileRequest {
-	s.SignToken = &v
-	return s
-}
-
-func (s *SearchFileRequest) SetUrlExpireSec(v int64) *SearchFileRequest {
-	s.UrlExpireSec = &v
-	return s
-}
-
-func (s *SearchFileRequest) SetVideoThumbnailProcess(v string) *SearchFileRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * UCGetObjectInfoByObjectKeyRequest
- */
-type UCGetObjectInfoByObjectKeyRequest struct {
-	ObjectKey *string `json:"object_key,omitempty" xml:"object_key,omitempty"`
-}
-
-func (s UCGetObjectInfoByObjectKeyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UCGetObjectInfoByObjectKeyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UCGetObjectInfoByObjectKeyRequest) SetObjectKey(v string) *UCGetObjectInfoByObjectKeyRequest {
-	s.ObjectKey = &v
-	return s
-}
-
-/**
- * UCGetObjectInfoBySha1Request
- */
-type UCGetObjectInfoBySha1Request struct {
-	Sha1 *string `json:"sha1,omitempty" xml:"sha1,omitempty"`
-}
-
-func (s UCGetObjectInfoBySha1Request) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UCGetObjectInfoBySha1Request) GoString() string {
-	return s.String()
-}
-
-func (s *UCGetObjectInfoBySha1Request) SetSha1(v string) *UCGetObjectInfoBySha1Request {
-	s.Sha1 = &v
-	return s
-}
-
-/**
- * Update drive request
- */
-type UpdateDriveRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// 描述信息
-	Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024"`
-	// Drive ID
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
-	// Drive 名称
-	DriveName *string `json:"drive_name,omitempty" xml:"drive_name,omitempty" maxLength:"1024"`
-	// 授权访问加密数据
-	EncryptDataAccess *bool `json:"encrypt_data_access,omitempty" xml:"encrypt_data_access,omitempty"`
-	// 加密模式
-	EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
-	// 状态
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Subdomain ID
-	SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
-	// 总大小,单位Byte [如果设置 -1 代表不限制]
-	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
-}
-
-func (s UpdateDriveRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateDriveRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateDriveRequest) SetHeaders(v map[string]*string) *UpdateDriveRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateDriveRequest) SetDescription(v string) *UpdateDriveRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateDriveRequest) SetDriveId(v string) *UpdateDriveRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *UpdateDriveRequest) SetDriveName(v string) *UpdateDriveRequest {
-	s.DriveName = &v
-	return s
-}
-
-func (s *UpdateDriveRequest) SetEncryptDataAccess(v bool) *UpdateDriveRequest {
-	s.EncryptDataAccess = &v
-	return s
-}
-
-func (s *UpdateDriveRequest) SetEncryptMode(v string) *UpdateDriveRequest {
-	s.EncryptMode = &v
-	return s
-}
-
-func (s *UpdateDriveRequest) SetStatus(v string) *UpdateDriveRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *UpdateDriveRequest) SetSubdomainId(v string) *UpdateDriveRequest {
-	s.SubdomainId = &v
-	return s
-}
-
-func (s *UpdateDriveRequest) SetTotalSize(v int64) *UpdateDriveRequest {
-	s.TotalSize = &v
-	return s
-}
-
-/**
- * 更新文件元数据
- */
-type UpdateFileMetaRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// check_name_mode
-	CheckNameMode  *string `json:"check_name_mode,omitempty" xml:"check_name_mode,omitempty"`
-	CustomIndexKey *string `json:"custom_index_key,omitempty" xml:"custom_index_key,omitempty"`
-	// description
-	// type: string
-	Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024"`
-	// drive_id
-	DriveId     *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
-	// file_id
-	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
-	FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
-	// hidden
-	// type: boolean
-	Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
-	// labels
-	Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	Meta   *string   `json:"meta,omitempty" xml:"meta,omitempty"`
-	// name
-	Name      *string `json:"name,omitempty" xml:"name,omitempty" maxLength:"1024" minLength:"1"`
-	Referer   *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
-	// starred
-	// type: boolean
-	Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
-	// user_meta
-	UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
-}
-
-func (s UpdateFileMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateFileMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateFileMetaRequest) SetHeaders(v map[string]*string) *UpdateFileMetaRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetCheckNameMode(v string) *UpdateFileMetaRequest {
-	s.CheckNameMode = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetCustomIndexKey(v string) *UpdateFileMetaRequest {
-	s.CustomIndexKey = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetDescription(v string) *UpdateFileMetaRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetDriveId(v string) *UpdateFileMetaRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetEncryptMode(v string) *UpdateFileMetaRequest {
-	s.EncryptMode = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetFileId(v string) *UpdateFileMetaRequest {
-	s.FileId = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetFileIdPath(v string) *UpdateFileMetaRequest {
-	s.FileIdPath = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetHidden(v bool) *UpdateFileMetaRequest {
-	s.Hidden = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetLabels(v []*string) *UpdateFileMetaRequest {
-	s.Labels = v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetMeta(v string) *UpdateFileMetaRequest {
-	s.Meta = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetName(v string) *UpdateFileMetaRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetReferer(v string) *UpdateFileMetaRequest {
-	s.Referer = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetShareId(v string) *UpdateFileMetaRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetSignToken(v string) *UpdateFileMetaRequest {
-	s.SignToken = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetStarred(v bool) *UpdateFileMetaRequest {
-	s.Starred = &v
-	return s
-}
-
-func (s *UpdateFileMetaRequest) SetUserMeta(v string) *UpdateFileMetaRequest {
-	s.UserMeta = &v
-	return s
-}
-
-/**
- * update_share_link request
- */
-type UpdateShareLinkRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// description
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// expiration
-	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// share_name
-	ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
-	// share_pwd
-	SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty" maximum:"64" minimum:"0"`
-}
-
-func (s UpdateShareLinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateShareLinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateShareLinkRequest) SetHeaders(v map[string]*string) *UpdateShareLinkRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateShareLinkRequest) SetDescription(v string) *UpdateShareLinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateShareLinkRequest) SetExpiration(v string) *UpdateShareLinkRequest {
-	s.Expiration = &v
-	return s
-}
-
-func (s *UpdateShareLinkRequest) SetShareId(v string) *UpdateShareLinkRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *UpdateShareLinkRequest) SetShareName(v string) *UpdateShareLinkRequest {
-	s.ShareName = &v
-	return s
-}
-
-func (s *UpdateShareLinkRequest) SetSharePwd(v string) *UpdateShareLinkRequest {
-	s.SharePwd = &v
-	return s
-}
-
-/**
- * update share request
- */
-type UpdateShareRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// description
-	Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024"`
-	// expiration
-	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
-	// permissions
-	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
-	// share_id
-	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" require:"true"`
-	// share_name
-	ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
-	// share_policy
-	SharePolicy []*SharePermissionPolicy `json:"share_policy,omitempty" xml:"share_policy,omitempty" type:"Repeated"`
-	// status
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-}
-
-func (s UpdateShareRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateShareRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateShareRequest) SetHeaders(v map[string]*string) *UpdateShareRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateShareRequest) SetDescription(v string) *UpdateShareRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateShareRequest) SetExpiration(v string) *UpdateShareRequest {
-	s.Expiration = &v
-	return s
-}
-
-func (s *UpdateShareRequest) SetPermissions(v []*string) *UpdateShareRequest {
-	s.Permissions = v
-	return s
-}
-
-func (s *UpdateShareRequest) SetShareId(v string) *UpdateShareRequest {
-	s.ShareId = &v
-	return s
-}
-
-func (s *UpdateShareRequest) SetShareName(v string) *UpdateShareRequest {
-	s.ShareName = &v
-	return s
-}
-
-func (s *UpdateShareRequest) SetSharePolicy(v []*SharePermissionPolicy) *UpdateShareRequest {
-	s.SharePolicy = v
-	return s
-}
-
-func (s *UpdateShareRequest) SetStatus(v string) *UpdateShareRequest {
-	s.Status = &v
-	return s
-}
-
-/**
- *
- */
-type VideoMediaMetadata struct {
-	// Duration
-	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
-}
-
-func (s VideoMediaMetadata) String() string {
-	return tea.Prettify(s)
-}
-
-func (s VideoMediaMetadata) GoString() string {
-	return s.String()
-}
-
-func (s *VideoMediaMetadata) SetDuration(v string) *VideoMediaMetadata {
-	s.Duration = &v
-	return s
-}
-
-type CreateGroupModel struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *CreateGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateGroupModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGroupModel) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGroupModel) SetHeaders(v map[string]*string) *CreateGroupModel {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateGroupModel) SetBody(v *CreateGroupResponse) *CreateGroupModel {
-	s.Body = v
-	return s
-}
-
-type DeleteGroupModel struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *DeleteGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteGroupModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteGroupModel) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteGroupModel) SetHeaders(v map[string]*string) *DeleteGroupModel {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteGroupModel) SetBody(v *DeleteGroupResponse) *DeleteGroupModel {
-	s.Body = v
-	return s
-}
-
-type GetGroupModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetGroupResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetGroupModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetGroupModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetGroupModel) SetHeaders(v map[string]*string) *GetGroupModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetGroupModel) SetBody(v *GetGroupResponse) *GetGroupModel {
-	s.Body = v
-	return s
-}
-
-type ListGroupModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListGroupModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGroupModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListGroupModel) SetHeaders(v map[string]*string) *ListGroupModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListGroupModel) SetBody(v *ListGroupResponse) *ListGroupModel {
-	s.Body = v
-	return s
-}
-
-type SearchGroupModel struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *SearchGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SearchGroupModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchGroupModel) GoString() string {
-	return s.String()
-}
-
-func (s *SearchGroupModel) SetHeaders(v map[string]*string) *SearchGroupModel {
-	s.Headers = v
-	return s
-}
-
-func (s *SearchGroupModel) SetBody(v *SearchGroupResponse) *SearchGroupModel {
-	s.Body = v
-	return s
-}
-
-type UpdateGroupModel struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *UpdateGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateGroupModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGroupModel) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGroupModel) SetHeaders(v map[string]*string) *UpdateGroupModel {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateGroupModel) SetBody(v *UpdateGroupResponse) *UpdateGroupModel {
-	s.Body = v
-	return s
-}
-
-type CreateMembershipModel struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *CreateMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateMembershipModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMembershipModel) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMembershipModel) SetHeaders(v map[string]*string) *CreateMembershipModel {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateMembershipModel) SetBody(v *CreateMembershipResponse) *CreateMembershipModel {
-	s.Body = v
-	return s
-}
-
-type DeleteMembershipModel struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *DeleteMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteMembershipModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMembershipModel) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMembershipModel) SetHeaders(v map[string]*string) *DeleteMembershipModel {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteMembershipModel) SetBody(v *DeleteMembershipResponse) *DeleteMembershipModel {
-	s.Body = v
-	return s
-}
-
-type GetMembershipModel struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetMembershipModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetMembershipModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetMembershipModel) SetHeaders(v map[string]*string) *GetMembershipModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetMembershipModel) SetBody(v *GetMembershipResponse) *GetMembershipModel {
-	s.Body = v
-	return s
-}
-
-type HasMemberModel struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *HasMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s HasMemberModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HasMemberModel) GoString() string {
-	return s.String()
-}
-
-func (s *HasMemberModel) SetHeaders(v map[string]*string) *HasMemberModel {
-	s.Headers = v
-	return s
-}
-
-func (s *HasMemberModel) SetBody(v *HasMembershipResponse) *HasMemberModel {
-	s.Body = v
-	return s
-}
-
-type ListDirectChildMembershipsModel struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListDirectChildMembershipsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDirectChildMembershipsModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDirectChildMembershipsModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListDirectChildMembershipsModel) SetHeaders(v map[string]*string) *ListDirectChildMembershipsModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDirectChildMembershipsModel) SetBody(v *ListDirectChildMembershipsResponse) *ListDirectChildMembershipsModel {
-	s.Body = v
-	return s
-}
-
-type ListDirectMembershipsModel struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListDirectParentMembershipsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDirectMembershipsModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDirectMembershipsModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListDirectMembershipsModel) SetHeaders(v map[string]*string) *ListDirectMembershipsModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDirectMembershipsModel) SetBody(v *ListDirectParentMembershipsResponse) *ListDirectMembershipsModel {
-	s.Body = v
-	return s
-}
-
-type ListDirectParentMembershipsModel struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListDirectParentMembershipsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDirectParentMembershipsModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDirectParentMembershipsModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListDirectParentMembershipsModel) SetHeaders(v map[string]*string) *ListDirectParentMembershipsModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDirectParentMembershipsModel) SetBody(v *ListDirectParentMembershipsResponse) *ListDirectParentMembershipsModel {
-	s.Body = v
-	return s
-}
-
-type UpdateMembershipModel struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *UpdateMembershipResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateMembershipModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMembershipModel) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMembershipModel) SetHeaders(v map[string]*string) *UpdateMembershipModel {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateMembershipModel) SetBody(v *UpdateMembershipResponse) *UpdateMembershipModel {
-	s.Body = v
-	return s
-}
-
-type AddUserToSubdomainModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-}
-
-func (s AddUserToSubdomainModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddUserToSubdomainModel) GoString() string {
-	return s.String()
-}
-
-func (s *AddUserToSubdomainModel) SetHeaders(v map[string]*string) *AddUserToSubdomainModel {
-	s.Headers = v
-	return s
-}
-
-type CreateUserModel struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *CreateUserResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateUserModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateUserModel) GoString() string {
-	return s.String()
-}
-
-func (s *CreateUserModel) SetHeaders(v map[string]*string) *CreateUserModel {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateUserModel) SetBody(v *CreateUserResponse) *CreateUserModel {
-	s.Body = v
-	return s
-}
-
-type DeleteUserModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-}
-
-func (s DeleteUserModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteUserModel) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteUserModel) SetHeaders(v map[string]*string) *DeleteUserModel {
-	s.Headers = v
-	return s
-}
-
-type GetUserModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetUserResponse   `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserModel) SetHeaders(v map[string]*string) *GetUserModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserModel) SetBody(v *GetUserResponse) *GetUserModel {
-	s.Body = v
-	return s
-}
-
-type ListUsersModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListUserResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListUsersModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUsersModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListUsersModel) SetHeaders(v map[string]*string) *ListUsersModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUsersModel) SetBody(v *ListUserResponse) *ListUsersModel {
-	s.Body = v
-	return s
-}
-
-type RemoveUserFromSubdomainModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-}
-
-func (s RemoveUserFromSubdomainModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveUserFromSubdomainModel) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveUserFromSubdomainModel) SetHeaders(v map[string]*string) *RemoveUserFromSubdomainModel {
-	s.Headers = v
-	return s
-}
-
-type SearchUserModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListUserResponse  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SearchUserModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchUserModel) GoString() string {
-	return s.String()
-}
-
-func (s *SearchUserModel) SetHeaders(v map[string]*string) *SearchUserModel {
-	s.Headers = v
-	return s
-}
-
-func (s *SearchUserModel) SetBody(v *ListUserResponse) *SearchUserModel {
-	s.Body = v
-	return s
-}
-
-type UpdateUserModel struct {
-	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *UpdateUserResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateUserModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateUserModel) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateUserModel) SetHeaders(v map[string]*string) *UpdateUserModel {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateUserModel) SetBody(v *UpdateUserResponse) *UpdateUserModel {
-	s.Body = v
-	return s
-}
-
 /**
  * Add user to subdomain request
  */
@@ -19691,6 +20198,50 @@ func (s *AddUserToSubdomainRequest) SetSubdomainId(v string) *AddUserToSubdomain
 
 func (s *AddUserToSubdomainRequest) SetUserId(v string) *AddUserToSubdomainRequest {
 	s.UserId = &v
+	return s
+}
+
+/**
+ *
+ */
+type Address struct {
+	City     *string `json:"city,omitempty" xml:"city,omitempty"`
+	Country  *string `json:"country,omitempty" xml:"country,omitempty"`
+	District *string `json:"district,omitempty" xml:"district,omitempty"`
+	Province *string `json:"province,omitempty" xml:"province,omitempty"`
+	Township *string `json:"township,omitempty" xml:"township,omitempty"`
+}
+
+func (s Address) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Address) GoString() string {
+	return s.String()
+}
+
+func (s *Address) SetCity(v string) *Address {
+	s.City = &v
+	return s
+}
+
+func (s *Address) SetCountry(v string) *Address {
+	s.Country = &v
+	return s
+}
+
+func (s *Address) SetDistrict(v string) *Address {
+	s.District = &v
+	return s
+}
+
+func (s *Address) SetProvince(v string) *Address {
+	s.Province = &v
+	return s
+}
+
+func (s *Address) SetTownship(v string) *Address {
+	s.Township = &v
 	return s
 }
 
@@ -20243,6 +20794,53 @@ func (s *CreateMembershipResponse) SetUserId(v string) *CreateMembershipResponse
 }
 
 /**
+ * Create story request
+ */
+type CreateStoryRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+}
+
+func (s CreateStoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStoryRequest) SetHeaders(v map[string]*string) *CreateStoryRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateStoryRequest) SetDriveId(v string) *CreateStoryRequest {
+	s.DriveId = &v
+	return s
+}
+
+/**
+ * 生成故事
+ */
+type CreateStoryResponse struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+}
+
+func (s CreateStoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStoryResponse) SetDriveId(v string) *CreateStoryResponse {
+	s.DriveId = &v
+	return s
+}
+
+/**
  * Create user request
  */
 type CreateUserRequest struct {
@@ -20704,6 +21302,54 @@ func (s *GetGroupResponse) SetUpdatedAt(v int64) *GetGroupResponse {
 }
 
 /**
+ * Get photo count request
+ */
+type GetImageCountRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+}
+
+func (s GetImageCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageCountRequest) SetHeaders(v map[string]*string) *GetImageCountRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetImageCountRequest) SetDriveId(v string) *GetImageCountRequest {
+	s.DriveId = &v
+	return s
+}
+
+/**
+ * 获取云照片个数结果
+ */
+type GetImageCountResponse struct {
+	// image_count
+	ImageCount *int64 `json:"image_count,omitempty" xml:"image_count,omitempty"`
+}
+
+func (s GetImageCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageCountResponse) SetImageCount(v int64) *GetImageCountResponse {
+	s.ImageCount = &v
+	return s
+}
+
+/**
  *
  */
 type GetMembershipRequest struct {
@@ -20826,6 +21472,138 @@ func (s *GetMembershipResponse) SetUpdatedAt(v int64) *GetMembershipResponse {
 
 func (s *GetMembershipResponse) SetUserId(v string) *GetMembershipResponse {
 	s.UserId = &v
+	return s
+}
+
+/**
+ * Get story detail request
+ */
+type GetStoryDetailRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	// story_id
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty" require:"true"`
+	// url_expire_sec
+	VideoUrlExpireSec *int64 `json:"video_url_expire_sec,omitempty" xml:"video_url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
+}
+
+func (s GetStoryDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStoryDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStoryDetailRequest) SetHeaders(v map[string]*string) *GetStoryDetailRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStoryDetailRequest) SetDriveId(v string) *GetStoryDetailRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *GetStoryDetailRequest) SetStoryId(v string) *GetStoryDetailRequest {
+	s.StoryId = &v
+	return s
+}
+
+func (s *GetStoryDetailRequest) SetVideoUrlExpireSec(v int64) *GetStoryDetailRequest {
+	s.VideoUrlExpireSec = &v
+	return s
+}
+
+/**
+ * 故事详情
+ */
+type GetStoryDetailResponse struct {
+	// cover_file_id
+	CoverFileId *string `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
+	// created_at
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// items
+	Items []*BaseCCPFileResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// score
+	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
+	// story_id
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	// story_images_date_range
+	StoryImagesDateRange []*int `json:"story_images_date_range,omitempty" xml:"story_images_date_range,omitempty" type:"Repeated"`
+	// sub_title
+	SubTitle *string `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+	// title
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// updated_at
+	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	// video_status
+	VideoStatus *string `json:"video_status,omitempty" xml:"video_status,omitempty"`
+	// video_url
+	VideoUrl *string `json:"video_url,omitempty" xml:"video_url,omitempty"`
+}
+
+func (s GetStoryDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStoryDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStoryDetailResponse) SetCoverFileId(v string) *GetStoryDetailResponse {
+	s.CoverFileId = &v
+	return s
+}
+
+func (s *GetStoryDetailResponse) SetCreatedAt(v string) *GetStoryDetailResponse {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetStoryDetailResponse) SetItems(v []*BaseCCPFileResponse) *GetStoryDetailResponse {
+	s.Items = v
+	return s
+}
+
+func (s *GetStoryDetailResponse) SetScore(v float64) *GetStoryDetailResponse {
+	s.Score = &v
+	return s
+}
+
+func (s *GetStoryDetailResponse) SetStoryId(v string) *GetStoryDetailResponse {
+	s.StoryId = &v
+	return s
+}
+
+func (s *GetStoryDetailResponse) SetStoryImagesDateRange(v []*int) *GetStoryDetailResponse {
+	s.StoryImagesDateRange = v
+	return s
+}
+
+func (s *GetStoryDetailResponse) SetSubTitle(v string) *GetStoryDetailResponse {
+	s.SubTitle = &v
+	return s
+}
+
+func (s *GetStoryDetailResponse) SetTitle(v string) *GetStoryDetailResponse {
+	s.Title = &v
+	return s
+}
+
+func (s *GetStoryDetailResponse) SetUpdatedAt(v string) *GetStoryDetailResponse {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *GetStoryDetailResponse) SetVideoStatus(v string) *GetStoryDetailResponse {
+	s.VideoStatus = &v
+	return s
+}
+
+func (s *GetStoryDetailResponse) SetVideoUrl(v string) *GetStoryDetailResponse {
+	s.VideoUrl = &v
 	return s
 }
 
@@ -21038,6 +21816,187 @@ func (s HasMembershipResponse) GoString() string {
 
 func (s *HasMembershipResponse) SetResult(v bool) *HasMembershipResponse {
 	s.Result = &v
+	return s
+}
+
+/**
+ *
+ */
+type ImageAddressResponse struct {
+	AddressDetail *Address `json:"address_detail,omitempty" xml:"address_detail,omitempty"`
+	// 聚类地点计数
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// cover_file_id
+	CoverFileId *string `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
+	// 聚类地点封面图片地址
+	CoverUrl *string `json:"cover_url,omitempty" xml:"cover_url,omitempty"`
+	// 经纬度
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// 聚类地点名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ImageAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImageAddressResponse) SetAddressDetail(v *Address) *ImageAddressResponse {
+	s.AddressDetail = v
+	return s
+}
+
+func (s *ImageAddressResponse) SetCount(v int64) *ImageAddressResponse {
+	s.Count = &v
+	return s
+}
+
+func (s *ImageAddressResponse) SetCoverFileId(v string) *ImageAddressResponse {
+	s.CoverFileId = &v
+	return s
+}
+
+func (s *ImageAddressResponse) SetCoverUrl(v string) *ImageAddressResponse {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *ImageAddressResponse) SetLocation(v string) *ImageAddressResponse {
+	s.Location = &v
+	return s
+}
+
+func (s *ImageAddressResponse) SetName(v string) *ImageAddressResponse {
+	s.Name = &v
+	return s
+}
+
+/**
+ *
+ */
+type ImageFaceGroupResponse struct {
+	// 人脸分组生成时间
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// 人脸个数
+	FaceCount *int64 `json:"face_count,omitempty" xml:"face_count,omitempty"`
+	// 人脸分组封面头像地址
+	GroupCoverUrl *string `json:"group_cover_url,omitempty" xml:"group_cover_url,omitempty"`
+	// 人脸分组 ID
+	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+	// 人脸分组名称
+	GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
+	// 照片个数
+	ImageCount *int64 `json:"image_count,omitempty" xml:"image_count,omitempty"`
+	// 人脸分组修改时间
+	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s ImageFaceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageFaceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImageFaceGroupResponse) SetCreatedAt(v string) *ImageFaceGroupResponse {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ImageFaceGroupResponse) SetFaceCount(v int64) *ImageFaceGroupResponse {
+	s.FaceCount = &v
+	return s
+}
+
+func (s *ImageFaceGroupResponse) SetGroupCoverUrl(v string) *ImageFaceGroupResponse {
+	s.GroupCoverUrl = &v
+	return s
+}
+
+func (s *ImageFaceGroupResponse) SetGroupId(v string) *ImageFaceGroupResponse {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ImageFaceGroupResponse) SetGroupName(v string) *ImageFaceGroupResponse {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ImageFaceGroupResponse) SetImageCount(v int64) *ImageFaceGroupResponse {
+	s.ImageCount = &v
+	return s
+}
+
+func (s *ImageFaceGroupResponse) SetUpdatedAt(v string) *ImageFaceGroupResponse {
+	s.UpdatedAt = &v
+	return s
+}
+
+/**
+ *
+ */
+type ImageTagResponse struct {
+	// 聚类标签计数
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// cover_file_category
+	CoverFileCategory *string `json:"cover_file_category,omitempty" xml:"cover_file_category,omitempty"`
+	// cover_file_id
+	CoverFileId *string `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
+	// cover_score
+	CoverOverallScore *float64 `json:"cover_overall_score,omitempty" xml:"cover_overall_score,omitempty"`
+	// cover_tag_confidence
+	CoverTagConfidence *float64 `json:"cover_tag_confidence,omitempty" xml:"cover_tag_confidence,omitempty"`
+	// 聚类标签封面图片地址
+	CoverUrl *string `json:"cover_url,omitempty" xml:"cover_url,omitempty"`
+	// 聚类标签名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ImageTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImageTagResponse) SetCount(v int64) *ImageTagResponse {
+	s.Count = &v
+	return s
+}
+
+func (s *ImageTagResponse) SetCoverFileCategory(v string) *ImageTagResponse {
+	s.CoverFileCategory = &v
+	return s
+}
+
+func (s *ImageTagResponse) SetCoverFileId(v string) *ImageTagResponse {
+	s.CoverFileId = &v
+	return s
+}
+
+func (s *ImageTagResponse) SetCoverOverallScore(v float64) *ImageTagResponse {
+	s.CoverOverallScore = &v
+	return s
+}
+
+func (s *ImageTagResponse) SetCoverTagConfidence(v float64) *ImageTagResponse {
+	s.CoverTagConfidence = &v
+	return s
+}
+
+func (s *ImageTagResponse) SetCoverUrl(v string) *ImageTagResponse {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *ImageTagResponse) SetName(v string) *ImageTagResponse {
+	s.Name = &v
 	return s
 }
 
@@ -21281,6 +22240,285 @@ func (s *ListGroupResponse) SetNextMarker(v string) *ListGroupResponse {
 }
 
 /**
+ * List image address groups request
+ */
+type ListImageAddressGroupsRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// Drive ID
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// 每页大小限制
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	// 翻页标记
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// video_thumbnail_process
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s ListImageAddressGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImageAddressGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListImageAddressGroupsRequest) SetHeaders(v map[string]*string) *ListImageAddressGroupsRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListImageAddressGroupsRequest) SetDriveId(v string) *ListImageAddressGroupsRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *ListImageAddressGroupsRequest) SetImageThumbnailProcess(v string) *ListImageAddressGroupsRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *ListImageAddressGroupsRequest) SetLimit(v int32) *ListImageAddressGroupsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListImageAddressGroupsRequest) SetMarker(v string) *ListImageAddressGroupsRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListImageAddressGroupsRequest) SetVideoThumbnailProcess(v string) *ListImageAddressGroupsRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
+ * 展示地点分组集合
+ */
+type ListImageAddressGroupsResponse struct {
+	Items      []*ImageAddressResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	NextMarker *string                 `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s ListImageAddressGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImageAddressGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListImageAddressGroupsResponse) SetItems(v []*ImageAddressResponse) *ListImageAddressGroupsResponse {
+	s.Items = v
+	return s
+}
+
+func (s *ListImageAddressGroupsResponse) SetNextMarker(v string) *ListImageAddressGroupsResponse {
+	s.NextMarker = &v
+	return s
+}
+
+/**
+ * List image face groups request
+ */
+type ListImageFaceGroupsRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// Drive ID
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
+	// 每页大小限制
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	// 翻页标记
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+}
+
+func (s ListImageFaceGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImageFaceGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListImageFaceGroupsRequest) SetHeaders(v map[string]*string) *ListImageFaceGroupsRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListImageFaceGroupsRequest) SetDriveId(v string) *ListImageFaceGroupsRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *ListImageFaceGroupsRequest) SetLimit(v int64) *ListImageFaceGroupsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListImageFaceGroupsRequest) SetMarker(v string) *ListImageFaceGroupsRequest {
+	s.Marker = &v
+	return s
+}
+
+/**
+ * 展示人脸分组集合
+ */
+type ListImageFaceGroupsResponse struct {
+	Items      []*ImageFaceGroupResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	NextMarker *string                   `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s ListImageFaceGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImageFaceGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListImageFaceGroupsResponse) SetItems(v []*ImageFaceGroupResponse) *ListImageFaceGroupsResponse {
+	s.Items = v
+	return s
+}
+
+func (s *ListImageFaceGroupsResponse) SetNextMarker(v string) *ListImageFaceGroupsResponse {
+	s.NextMarker = &v
+	return s
+}
+
+/**
+ * List image tags request
+ */
+type ListImageTagsRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// Drive ID
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// video_thumbnail_process
+	// type:string
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s ListImageTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImageTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListImageTagsRequest) SetHeaders(v map[string]*string) *ListImageTagsRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListImageTagsRequest) SetDriveId(v string) *ListImageTagsRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *ListImageTagsRequest) SetImageThumbnailProcess(v string) *ListImageTagsRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *ListImageTagsRequest) SetVideoThumbnailProcess(v string) *ListImageTagsRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
+ * 展示标签集合
+ */
+type ListImageTagsResponse struct {
+	Tags []*ImageTagResponse `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+}
+
+func (s ListImageTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImageTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListImageTagsResponse) SetTags(v []*ImageTagResponse) *ListImageTagsResponse {
+	s.Tags = v
+	return s
+}
+
+/**
+ * List story request
+ */
+type ListStoryRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	// 每页大小限制
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+	// 翻页标记
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+}
+
+func (s ListStoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListStoryRequest) SetHeaders(v map[string]*string) *ListStoryRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ListStoryRequest) SetDriveId(v string) *ListStoryRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *ListStoryRequest) SetLimit(v int32) *ListStoryRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListStoryRequest) SetMarker(v string) *ListStoryRequest {
+	s.Marker = &v
+	return s
+}
+
+/**
+ * 故事列表
+ */
+type ListStoryResponse struct {
+	// items
+	Items []*StoryResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// next_marker
+	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s ListStoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListStoryResponse) SetItems(v []*StoryResponse) *ListStoryResponse {
+	s.Items = v
+	return s
+}
+
+func (s *ListStoryResponse) SetNextMarker(v string) *ListStoryResponse {
+	s.NextMarker = &v
+	return s
+}
+
+/**
  * List user request
  */
 type ListUserRequest struct {
@@ -21377,6 +22615,193 @@ func (s *MemberIDInfo) SetSubGroupId(v string) *MemberIDInfo {
 
 func (s *MemberIDInfo) SetUserId(v string) *MemberIDInfo {
 	s.UserId = &v
+	return s
+}
+
+/**
+ * Parse keywords request
+ */
+type ParseKeywordsRequest struct {
+	Headers  map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	Keywords *string            `json:"keywords,omitempty" xml:"keywords,omitempty"`
+}
+
+func (s ParseKeywordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ParseKeywordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ParseKeywordsRequest) SetHeaders(v map[string]*string) *ParseKeywordsRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *ParseKeywordsRequest) SetKeywords(v string) *ParseKeywordsRequest {
+	s.Keywords = &v
+	return s
+}
+
+/**
+ * Parse keywords response
+ */
+type ParseKeywordsResponse struct {
+	// AddressLine
+	AddressLine *string      `json:"address_line,omitempty" xml:"address_line,omitempty"`
+	Tags        []*SystemTag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	TimeRange   *TimeRange   `json:"time_range,omitempty" xml:"time_range,omitempty"`
+}
+
+func (s ParseKeywordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ParseKeywordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ParseKeywordsResponse) SetAddressLine(v string) *ParseKeywordsResponse {
+	s.AddressLine = &v
+	return s
+}
+
+func (s *ParseKeywordsResponse) SetTags(v []*SystemTag) *ParseKeywordsResponse {
+	s.Tags = v
+	return s
+}
+
+func (s *ParseKeywordsResponse) SetTimeRange(v *TimeRange) *ParseKeywordsResponse {
+	s.TimeRange = v
+	return s
+}
+
+/**
+ * Remove story images request
+ */
+type RemoveStoryImagesRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	DriveId *string            `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileIds []*string          `json:"file_ids,omitempty" xml:"file_ids,omitempty" type:"Repeated"`
+	StoryId *string            `json:"story_id,omitempty" xml:"story_id,omitempty"`
+}
+
+func (s RemoveStoryImagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryImagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryImagesRequest) SetHeaders(v map[string]*string) *RemoveStoryImagesRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveStoryImagesRequest) SetDriveId(v string) *RemoveStoryImagesRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *RemoveStoryImagesRequest) SetFileIds(v []*string) *RemoveStoryImagesRequest {
+	s.FileIds = v
+	return s
+}
+
+func (s *RemoveStoryImagesRequest) SetStoryId(v string) *RemoveStoryImagesRequest {
+	s.StoryId = &v
+	return s
+}
+
+/**
+ * Remove story images response
+ */
+type RemoveStoryImagesResponse struct {
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// file_ids
+	FileIds []*string                      `json:"file_ids,omitempty" xml:"file_ids,omitempty" type:"Repeated"`
+	Results []*RemoveStoryImagesResultItem `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// story_id
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	// success_file_ids
+	SuccessFileIds []*string `json:"success_file_ids,omitempty" xml:"success_file_ids,omitempty" type:"Repeated"`
+}
+
+func (s RemoveStoryImagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryImagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryImagesResponse) SetDriveId(v string) *RemoveStoryImagesResponse {
+	s.DriveId = &v
+	return s
+}
+
+func (s *RemoveStoryImagesResponse) SetFileIds(v []*string) *RemoveStoryImagesResponse {
+	s.FileIds = v
+	return s
+}
+
+func (s *RemoveStoryImagesResponse) SetResults(v []*RemoveStoryImagesResultItem) *RemoveStoryImagesResponse {
+	s.Results = v
+	return s
+}
+
+func (s *RemoveStoryImagesResponse) SetStoryId(v string) *RemoveStoryImagesResponse {
+	s.StoryId = &v
+	return s
+}
+
+func (s *RemoveStoryImagesResponse) SetSuccessFileIds(v []*string) *RemoveStoryImagesResponse {
+	s.SuccessFileIds = v
+	return s
+}
+
+/**
+ *
+ */
+type RemoveStoryImagesResultItem struct {
+	// code
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// file_id
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// is_succeed
+	IsSucceed *bool `json:"is_succeed,omitempty" xml:"is_succeed,omitempty"`
+	// message
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+}
+
+func (s RemoveStoryImagesResultItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryImagesResultItem) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryImagesResultItem) SetCode(v string) *RemoveStoryImagesResultItem {
+	s.Code = &v
+	return s
+}
+
+func (s *RemoveStoryImagesResultItem) SetFileId(v string) *RemoveStoryImagesResultItem {
+	s.FileId = &v
+	return s
+}
+
+func (s *RemoveStoryImagesResultItem) SetIsSucceed(v bool) *RemoveStoryImagesResultItem {
+	s.IsSucceed = &v
+	return s
+}
+
+func (s *RemoveStoryImagesResultItem) SetMessage(v string) *RemoveStoryImagesResultItem {
+	s.Message = &v
 	return s
 }
 
@@ -21491,6 +22916,95 @@ func (s *SearchGroupResponse) SetNextMarker(v string) *SearchGroupResponse {
 }
 
 /**
+ * Search image address groups request
+ */
+type SearchImageAddressGroupsRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// 查询的地点级别
+	AddressLevel *string `json:"address_level,omitempty" xml:"address_level,omitempty"`
+	// 查询的地点数组
+	AddressNames []*string `json:"address_names,omitempty" xml:"address_names,omitempty" type:"Repeated"`
+	// br_geo_point
+	BrGeoPoint *string `json:"br_geo_point,omitempty" xml:"br_geo_point,omitempty"`
+	// Drive ID
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
+	// image_thumbnail_process
+	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+	// tl_geo_point
+	TlGeoPoint *string `json:"tl_geo_point,omitempty" xml:"tl_geo_point,omitempty"`
+	// video_thumbnail_process
+	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s SearchImageAddressGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageAddressGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageAddressGroupsRequest) SetHeaders(v map[string]*string) *SearchImageAddressGroupsRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchImageAddressGroupsRequest) SetAddressLevel(v string) *SearchImageAddressGroupsRequest {
+	s.AddressLevel = &v
+	return s
+}
+
+func (s *SearchImageAddressGroupsRequest) SetAddressNames(v []*string) *SearchImageAddressGroupsRequest {
+	s.AddressNames = v
+	return s
+}
+
+func (s *SearchImageAddressGroupsRequest) SetBrGeoPoint(v string) *SearchImageAddressGroupsRequest {
+	s.BrGeoPoint = &v
+	return s
+}
+
+func (s *SearchImageAddressGroupsRequest) SetDriveId(v string) *SearchImageAddressGroupsRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *SearchImageAddressGroupsRequest) SetImageThumbnailProcess(v string) *SearchImageAddressGroupsRequest {
+	s.ImageThumbnailProcess = &v
+	return s
+}
+
+func (s *SearchImageAddressGroupsRequest) SetTlGeoPoint(v string) *SearchImageAddressGroupsRequest {
+	s.TlGeoPoint = &v
+	return s
+}
+
+func (s *SearchImageAddressGroupsRequest) SetVideoThumbnailProcess(v string) *SearchImageAddressGroupsRequest {
+	s.VideoThumbnailProcess = &v
+	return s
+}
+
+/**
+ * 展示地点分组列表
+ */
+type SearchImageAddressGroupsResponse struct {
+	Items []*ImageAddressResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+}
+
+func (s SearchImageAddressGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageAddressGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageAddressGroupsResponse) SetItems(v []*ImageAddressResponse) *SearchImageAddressGroupsResponse {
+	s.Items = v
+	return s
+}
+
+/**
  * Search user request
  */
 type SearchUserRequest struct {
@@ -21570,6 +23084,159 @@ func (s *SearchUserRequest) SetSubdomainId(v string) *SearchUserRequest {
 
 func (s *SearchUserRequest) SetUserName(v string) *SearchUserRequest {
 	s.UserName = &v
+	return s
+}
+
+/**
+ *
+ */
+type StoryResponse struct {
+	// cover_file_id
+	CoverFileId *string `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
+	// created_at
+	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	// score
+	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
+	// story_id
+	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	// story_images_date_range
+	StoryImagesDateRange []*int `json:"story_images_date_range,omitempty" xml:"story_images_date_range,omitempty" type:"Repeated"`
+	// sub_title
+	SubTitle *string `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+	// title
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// updated_at
+	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	// video_status
+	VideoStatus *string `json:"video_status,omitempty" xml:"video_status,omitempty"`
+	// video_url
+	VideoUrl *string `json:"video_url,omitempty" xml:"video_url,omitempty"`
+}
+
+func (s StoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StoryResponse) SetCoverFileId(v string) *StoryResponse {
+	s.CoverFileId = &v
+	return s
+}
+
+func (s *StoryResponse) SetCreatedAt(v string) *StoryResponse {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *StoryResponse) SetScore(v float64) *StoryResponse {
+	s.Score = &v
+	return s
+}
+
+func (s *StoryResponse) SetStoryId(v string) *StoryResponse {
+	s.StoryId = &v
+	return s
+}
+
+func (s *StoryResponse) SetStoryImagesDateRange(v []*int) *StoryResponse {
+	s.StoryImagesDateRange = v
+	return s
+}
+
+func (s *StoryResponse) SetSubTitle(v string) *StoryResponse {
+	s.SubTitle = &v
+	return s
+}
+
+func (s *StoryResponse) SetTitle(v string) *StoryResponse {
+	s.Title = &v
+	return s
+}
+
+func (s *StoryResponse) SetUpdatedAt(v string) *StoryResponse {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *StoryResponse) SetVideoStatus(v string) *StoryResponse {
+	s.VideoStatus = &v
+	return s
+}
+
+func (s *StoryResponse) SetVideoUrl(v string) *StoryResponse {
+	s.VideoUrl = &v
+	return s
+}
+
+/**
+ * Update face group info request
+ */
+type UpdateFaceGroupInfoRequest struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+	// group_id 列举人脸分组接口中获取
+	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty" require:"true"`
+	// group_name
+	GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
+}
+
+func (s UpdateFaceGroupInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFaceGroupInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFaceGroupInfoRequest) SetHeaders(v map[string]*string) *UpdateFaceGroupInfoRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFaceGroupInfoRequest) SetDriveId(v string) *UpdateFaceGroupInfoRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *UpdateFaceGroupInfoRequest) SetGroupId(v string) *UpdateFaceGroupInfoRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateFaceGroupInfoRequest) SetGroupName(v string) *UpdateFaceGroupInfoRequest {
+	s.GroupName = &v
+	return s
+}
+
+/**
+ * 更新人脸分组信息结果
+ */
+type UpdateFaceGroupInfoResponse struct {
+	// drive_id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// group_id
+	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+}
+
+func (s UpdateFaceGroupInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFaceGroupInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFaceGroupInfoResponse) SetDriveId(v string) *UpdateFaceGroupInfoResponse {
+	s.DriveId = &v
+	return s
+}
+
+func (s *UpdateFaceGroupInfoResponse) SetGroupId(v string) *UpdateFaceGroupInfoResponse {
+	s.GroupId = &v
 	return s
 }
 
@@ -22016,1454 +23683,6 @@ func (s *UpdateUserResponse) SetUserId(v string) *UpdateUserResponse {
 
 func (s *UpdateUserResponse) SetUserName(v string) *UpdateUserResponse {
 	s.UserName = &v
-	return s
-}
-
-type CreateStoryModel struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *CreateStoryResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateStoryModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStoryModel) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStoryModel) SetHeaders(v map[string]*string) *CreateStoryModel {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateStoryModel) SetBody(v *CreateStoryResponse) *CreateStoryModel {
-	s.Body = v
-	return s
-}
-
-type GetPhotoCountModel struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetImageCountResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPhotoCountModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPhotoCountModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetPhotoCountModel) SetHeaders(v map[string]*string) *GetPhotoCountModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPhotoCountModel) SetBody(v *GetImageCountResponse) *GetPhotoCountModel {
-	s.Body = v
-	return s
-}
-
-type GetStoryDetailModel struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *GetStoryDetailResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetStoryDetailModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStoryDetailModel) GoString() string {
-	return s.String()
-}
-
-func (s *GetStoryDetailModel) SetHeaders(v map[string]*string) *GetStoryDetailModel {
-	s.Headers = v
-	return s
-}
-
-func (s *GetStoryDetailModel) SetBody(v *GetStoryDetailResponse) *GetStoryDetailModel {
-	s.Body = v
-	return s
-}
-
-type ListAddressGroupsModel struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListImageAddressGroupsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListAddressGroupsModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAddressGroupsModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListAddressGroupsModel) SetHeaders(v map[string]*string) *ListAddressGroupsModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListAddressGroupsModel) SetBody(v *ListImageAddressGroupsResponse) *ListAddressGroupsModel {
-	s.Body = v
-	return s
-}
-
-type ListFacegroupsModel struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListImageFaceGroupsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListFacegroupsModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListFacegroupsModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListFacegroupsModel) SetHeaders(v map[string]*string) *ListFacegroupsModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListFacegroupsModel) SetBody(v *ListImageFaceGroupsResponse) *ListFacegroupsModel {
-	s.Body = v
-	return s
-}
-
-type ListStoryModel struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListStoryResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListStoryModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListStoryModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListStoryModel) SetHeaders(v map[string]*string) *ListStoryModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListStoryModel) SetBody(v *ListStoryResponse) *ListStoryModel {
-	s.Body = v
-	return s
-}
-
-type ListTagsModel struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ListImageTagsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListTagsModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagsModel) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagsModel) SetHeaders(v map[string]*string) *ListTagsModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ListTagsModel) SetBody(v *ListImageTagsResponse) *ListTagsModel {
-	s.Body = v
-	return s
-}
-
-type ParseKeywordsModel struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *ParseKeywordsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ParseKeywordsModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ParseKeywordsModel) GoString() string {
-	return s.String()
-}
-
-func (s *ParseKeywordsModel) SetHeaders(v map[string]*string) *ParseKeywordsModel {
-	s.Headers = v
-	return s
-}
-
-func (s *ParseKeywordsModel) SetBody(v *ParseKeywordsResponse) *ParseKeywordsModel {
-	s.Body = v
-	return s
-}
-
-type RemoveStoryImagesModel struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *RemoveStoryImagesResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RemoveStoryImagesModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveStoryImagesModel) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveStoryImagesModel) SetHeaders(v map[string]*string) *RemoveStoryImagesModel {
-	s.Headers = v
-	return s
-}
-
-func (s *RemoveStoryImagesModel) SetBody(v *RemoveStoryImagesResponse) *RemoveStoryImagesModel {
-	s.Body = v
-	return s
-}
-
-type SearchAddressGroupsModel struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *SearchImageAddressGroupsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SearchAddressGroupsModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchAddressGroupsModel) GoString() string {
-	return s.String()
-}
-
-func (s *SearchAddressGroupsModel) SetHeaders(v map[string]*string) *SearchAddressGroupsModel {
-	s.Headers = v
-	return s
-}
-
-func (s *SearchAddressGroupsModel) SetBody(v *SearchImageAddressGroupsResponse) *SearchAddressGroupsModel {
-	s.Body = v
-	return s
-}
-
-type UpdateFacegroupInfoModel struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
-	Body    *UpdateFaceGroupInfoResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateFacegroupInfoModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateFacegroupInfoModel) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateFacegroupInfoModel) SetHeaders(v map[string]*string) *UpdateFacegroupInfoModel {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateFacegroupInfoModel) SetBody(v *UpdateFaceGroupInfoResponse) *UpdateFacegroupInfoModel {
-	s.Body = v
-	return s
-}
-
-/**
- *
- */
-type Address struct {
-	City     *string `json:"city,omitempty" xml:"city,omitempty"`
-	Country  *string `json:"country,omitempty" xml:"country,omitempty"`
-	District *string `json:"district,omitempty" xml:"district,omitempty"`
-	Province *string `json:"province,omitempty" xml:"province,omitempty"`
-	Township *string `json:"township,omitempty" xml:"township,omitempty"`
-}
-
-func (s Address) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Address) GoString() string {
-	return s.String()
-}
-
-func (s *Address) SetCity(v string) *Address {
-	s.City = &v
-	return s
-}
-
-func (s *Address) SetCountry(v string) *Address {
-	s.Country = &v
-	return s
-}
-
-func (s *Address) SetDistrict(v string) *Address {
-	s.District = &v
-	return s
-}
-
-func (s *Address) SetProvince(v string) *Address {
-	s.Province = &v
-	return s
-}
-
-func (s *Address) SetTownship(v string) *Address {
-	s.Township = &v
-	return s
-}
-
-/**
- * Create story request
- */
-type CreateStoryRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-}
-
-func (s CreateStoryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStoryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStoryRequest) SetHeaders(v map[string]*string) *CreateStoryRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateStoryRequest) SetDriveId(v string) *CreateStoryRequest {
-	s.DriveId = &v
-	return s
-}
-
-/**
- * 生成故事
- */
-type CreateStoryResponse struct {
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-}
-
-func (s CreateStoryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateStoryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateStoryResponse) SetDriveId(v string) *CreateStoryResponse {
-	s.DriveId = &v
-	return s
-}
-
-/**
- * Get photo count request
- */
-type GetImageCountRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-}
-
-func (s GetImageCountRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetImageCountRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetImageCountRequest) SetHeaders(v map[string]*string) *GetImageCountRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetImageCountRequest) SetDriveId(v string) *GetImageCountRequest {
-	s.DriveId = &v
-	return s
-}
-
-/**
- * 获取云照片个数结果
- */
-type GetImageCountResponse struct {
-	// image_count
-	ImageCount *int64 `json:"image_count,omitempty" xml:"image_count,omitempty"`
-}
-
-func (s GetImageCountResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetImageCountResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetImageCountResponse) SetImageCount(v int64) *GetImageCountResponse {
-	s.ImageCount = &v
-	return s
-}
-
-/**
- * Get story detail request
- */
-type GetStoryDetailRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	// story_id
-	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty" require:"true"`
-	// url_expire_sec
-	VideoUrlExpireSec *int64 `json:"video_url_expire_sec,omitempty" xml:"video_url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
-}
-
-func (s GetStoryDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStoryDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetStoryDetailRequest) SetHeaders(v map[string]*string) *GetStoryDetailRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *GetStoryDetailRequest) SetDriveId(v string) *GetStoryDetailRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *GetStoryDetailRequest) SetStoryId(v string) *GetStoryDetailRequest {
-	s.StoryId = &v
-	return s
-}
-
-func (s *GetStoryDetailRequest) SetVideoUrlExpireSec(v int64) *GetStoryDetailRequest {
-	s.VideoUrlExpireSec = &v
-	return s
-}
-
-/**
- * 故事详情
- */
-type GetStoryDetailResponse struct {
-	// cover_file_id
-	CoverFileId *string `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
-	// created_at
-	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// items
-	Items []*BaseCCPFileResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// score
-	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
-	// story_id
-	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
-	// story_images_date_range
-	StoryImagesDateRange []*int `json:"story_images_date_range,omitempty" xml:"story_images_date_range,omitempty" type:"Repeated"`
-	// sub_title
-	SubTitle *string `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
-	// title
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// updated_at
-	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// video_status
-	VideoStatus *string `json:"video_status,omitempty" xml:"video_status,omitempty"`
-	// video_url
-	VideoUrl *string `json:"video_url,omitempty" xml:"video_url,omitempty"`
-}
-
-func (s GetStoryDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetStoryDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetStoryDetailResponse) SetCoverFileId(v string) *GetStoryDetailResponse {
-	s.CoverFileId = &v
-	return s
-}
-
-func (s *GetStoryDetailResponse) SetCreatedAt(v string) *GetStoryDetailResponse {
-	s.CreatedAt = &v
-	return s
-}
-
-func (s *GetStoryDetailResponse) SetItems(v []*BaseCCPFileResponse) *GetStoryDetailResponse {
-	s.Items = v
-	return s
-}
-
-func (s *GetStoryDetailResponse) SetScore(v float64) *GetStoryDetailResponse {
-	s.Score = &v
-	return s
-}
-
-func (s *GetStoryDetailResponse) SetStoryId(v string) *GetStoryDetailResponse {
-	s.StoryId = &v
-	return s
-}
-
-func (s *GetStoryDetailResponse) SetStoryImagesDateRange(v []*int) *GetStoryDetailResponse {
-	s.StoryImagesDateRange = v
-	return s
-}
-
-func (s *GetStoryDetailResponse) SetSubTitle(v string) *GetStoryDetailResponse {
-	s.SubTitle = &v
-	return s
-}
-
-func (s *GetStoryDetailResponse) SetTitle(v string) *GetStoryDetailResponse {
-	s.Title = &v
-	return s
-}
-
-func (s *GetStoryDetailResponse) SetUpdatedAt(v string) *GetStoryDetailResponse {
-	s.UpdatedAt = &v
-	return s
-}
-
-func (s *GetStoryDetailResponse) SetVideoStatus(v string) *GetStoryDetailResponse {
-	s.VideoStatus = &v
-	return s
-}
-
-func (s *GetStoryDetailResponse) SetVideoUrl(v string) *GetStoryDetailResponse {
-	s.VideoUrl = &v
-	return s
-}
-
-/**
- *
- */
-type ImageAddressResponse struct {
-	AddressDetail *Address `json:"address_detail,omitempty" xml:"address_detail,omitempty"`
-	// 聚类地点计数
-	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// cover_file_id
-	CoverFileId *string `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
-	// 聚类地点封面图片地址
-	CoverUrl *string `json:"cover_url,omitempty" xml:"cover_url,omitempty"`
-	// 经纬度
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// 聚类地点名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-}
-
-func (s ImageAddressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImageAddressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ImageAddressResponse) SetAddressDetail(v *Address) *ImageAddressResponse {
-	s.AddressDetail = v
-	return s
-}
-
-func (s *ImageAddressResponse) SetCount(v int64) *ImageAddressResponse {
-	s.Count = &v
-	return s
-}
-
-func (s *ImageAddressResponse) SetCoverFileId(v string) *ImageAddressResponse {
-	s.CoverFileId = &v
-	return s
-}
-
-func (s *ImageAddressResponse) SetCoverUrl(v string) *ImageAddressResponse {
-	s.CoverUrl = &v
-	return s
-}
-
-func (s *ImageAddressResponse) SetLocation(v string) *ImageAddressResponse {
-	s.Location = &v
-	return s
-}
-
-func (s *ImageAddressResponse) SetName(v string) *ImageAddressResponse {
-	s.Name = &v
-	return s
-}
-
-/**
- *
- */
-type ImageFaceGroupResponse struct {
-	// 人脸分组生成时间
-	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// 人脸个数
-	FaceCount *int64 `json:"face_count,omitempty" xml:"face_count,omitempty"`
-	// 人脸分组封面头像地址
-	GroupCoverUrl *string `json:"group_cover_url,omitempty" xml:"group_cover_url,omitempty"`
-	// 人脸分组 ID
-	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
-	// 人脸分组名称
-	GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
-	// 照片个数
-	ImageCount *int64 `json:"image_count,omitempty" xml:"image_count,omitempty"`
-	// 人脸分组修改时间
-	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-}
-
-func (s ImageFaceGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImageFaceGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ImageFaceGroupResponse) SetCreatedAt(v string) *ImageFaceGroupResponse {
-	s.CreatedAt = &v
-	return s
-}
-
-func (s *ImageFaceGroupResponse) SetFaceCount(v int64) *ImageFaceGroupResponse {
-	s.FaceCount = &v
-	return s
-}
-
-func (s *ImageFaceGroupResponse) SetGroupCoverUrl(v string) *ImageFaceGroupResponse {
-	s.GroupCoverUrl = &v
-	return s
-}
-
-func (s *ImageFaceGroupResponse) SetGroupId(v string) *ImageFaceGroupResponse {
-	s.GroupId = &v
-	return s
-}
-
-func (s *ImageFaceGroupResponse) SetGroupName(v string) *ImageFaceGroupResponse {
-	s.GroupName = &v
-	return s
-}
-
-func (s *ImageFaceGroupResponse) SetImageCount(v int64) *ImageFaceGroupResponse {
-	s.ImageCount = &v
-	return s
-}
-
-func (s *ImageFaceGroupResponse) SetUpdatedAt(v string) *ImageFaceGroupResponse {
-	s.UpdatedAt = &v
-	return s
-}
-
-/**
- *
- */
-type ImageTagResponse struct {
-	// 聚类标签计数
-	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// cover_file_category
-	CoverFileCategory *string `json:"cover_file_category,omitempty" xml:"cover_file_category,omitempty"`
-	// cover_file_id
-	CoverFileId *string `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
-	// cover_score
-	CoverOverallScore *float64 `json:"cover_overall_score,omitempty" xml:"cover_overall_score,omitempty"`
-	// cover_tag_confidence
-	CoverTagConfidence *float64 `json:"cover_tag_confidence,omitempty" xml:"cover_tag_confidence,omitempty"`
-	// 聚类标签封面图片地址
-	CoverUrl *string `json:"cover_url,omitempty" xml:"cover_url,omitempty"`
-	// 聚类标签名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-}
-
-func (s ImageTagResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImageTagResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ImageTagResponse) SetCount(v int64) *ImageTagResponse {
-	s.Count = &v
-	return s
-}
-
-func (s *ImageTagResponse) SetCoverFileCategory(v string) *ImageTagResponse {
-	s.CoverFileCategory = &v
-	return s
-}
-
-func (s *ImageTagResponse) SetCoverFileId(v string) *ImageTagResponse {
-	s.CoverFileId = &v
-	return s
-}
-
-func (s *ImageTagResponse) SetCoverOverallScore(v float64) *ImageTagResponse {
-	s.CoverOverallScore = &v
-	return s
-}
-
-func (s *ImageTagResponse) SetCoverTagConfidence(v float64) *ImageTagResponse {
-	s.CoverTagConfidence = &v
-	return s
-}
-
-func (s *ImageTagResponse) SetCoverUrl(v string) *ImageTagResponse {
-	s.CoverUrl = &v
-	return s
-}
-
-func (s *ImageTagResponse) SetName(v string) *ImageTagResponse {
-	s.Name = &v
-	return s
-}
-
-/**
- * List image address groups request
- */
-type ListImageAddressGroupsRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// Drive ID
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// 每页大小限制
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
-	// 翻页标记
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// video_thumbnail_process
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s ListImageAddressGroupsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImageAddressGroupsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListImageAddressGroupsRequest) SetHeaders(v map[string]*string) *ListImageAddressGroupsRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListImageAddressGroupsRequest) SetDriveId(v string) *ListImageAddressGroupsRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *ListImageAddressGroupsRequest) SetImageThumbnailProcess(v string) *ListImageAddressGroupsRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *ListImageAddressGroupsRequest) SetLimit(v int32) *ListImageAddressGroupsRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListImageAddressGroupsRequest) SetMarker(v string) *ListImageAddressGroupsRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *ListImageAddressGroupsRequest) SetVideoThumbnailProcess(v string) *ListImageAddressGroupsRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * 展示地点分组集合
- */
-type ListImageAddressGroupsResponse struct {
-	Items      []*ImageAddressResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	NextMarker *string                 `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
-}
-
-func (s ListImageAddressGroupsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImageAddressGroupsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListImageAddressGroupsResponse) SetItems(v []*ImageAddressResponse) *ListImageAddressGroupsResponse {
-	s.Items = v
-	return s
-}
-
-func (s *ListImageAddressGroupsResponse) SetNextMarker(v string) *ListImageAddressGroupsResponse {
-	s.NextMarker = &v
-	return s
-}
-
-/**
- * List image face groups request
- */
-type ListImageFaceGroupsRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// Drive ID
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
-	// 每页大小限制
-	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
-	// 翻页标记
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-}
-
-func (s ListImageFaceGroupsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImageFaceGroupsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListImageFaceGroupsRequest) SetHeaders(v map[string]*string) *ListImageFaceGroupsRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListImageFaceGroupsRequest) SetDriveId(v string) *ListImageFaceGroupsRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *ListImageFaceGroupsRequest) SetLimit(v int64) *ListImageFaceGroupsRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListImageFaceGroupsRequest) SetMarker(v string) *ListImageFaceGroupsRequest {
-	s.Marker = &v
-	return s
-}
-
-/**
- * 展示人脸分组集合
- */
-type ListImageFaceGroupsResponse struct {
-	Items      []*ImageFaceGroupResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	NextMarker *string                   `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
-}
-
-func (s ListImageFaceGroupsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImageFaceGroupsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListImageFaceGroupsResponse) SetItems(v []*ImageFaceGroupResponse) *ListImageFaceGroupsResponse {
-	s.Items = v
-	return s
-}
-
-func (s *ListImageFaceGroupsResponse) SetNextMarker(v string) *ListImageFaceGroupsResponse {
-	s.NextMarker = &v
-	return s
-}
-
-/**
- * List image tags request
- */
-type ListImageTagsRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// Drive ID
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// video_thumbnail_process
-	// type:string
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s ListImageTagsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImageTagsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListImageTagsRequest) SetHeaders(v map[string]*string) *ListImageTagsRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListImageTagsRequest) SetDriveId(v string) *ListImageTagsRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *ListImageTagsRequest) SetImageThumbnailProcess(v string) *ListImageTagsRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *ListImageTagsRequest) SetVideoThumbnailProcess(v string) *ListImageTagsRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * 展示标签集合
- */
-type ListImageTagsResponse struct {
-	Tags []*ImageTagResponse `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-}
-
-func (s ListImageTagsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListImageTagsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListImageTagsResponse) SetTags(v []*ImageTagResponse) *ListImageTagsResponse {
-	s.Tags = v
-	return s
-}
-
-/**
- * List story request
- */
-type ListStoryRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	// 每页大小限制
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
-	// 翻页标记
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-}
-
-func (s ListStoryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListStoryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListStoryRequest) SetHeaders(v map[string]*string) *ListStoryRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ListStoryRequest) SetDriveId(v string) *ListStoryRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *ListStoryRequest) SetLimit(v int32) *ListStoryRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListStoryRequest) SetMarker(v string) *ListStoryRequest {
-	s.Marker = &v
-	return s
-}
-
-/**
- * 故事列表
- */
-type ListStoryResponse struct {
-	// items
-	Items []*StoryResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// next_marker
-	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
-}
-
-func (s ListStoryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListStoryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListStoryResponse) SetItems(v []*StoryResponse) *ListStoryResponse {
-	s.Items = v
-	return s
-}
-
-func (s *ListStoryResponse) SetNextMarker(v string) *ListStoryResponse {
-	s.NextMarker = &v
-	return s
-}
-
-/**
- * Parse keywords request
- */
-type ParseKeywordsRequest struct {
-	Headers  map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	Keywords *string            `json:"keywords,omitempty" xml:"keywords,omitempty"`
-}
-
-func (s ParseKeywordsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ParseKeywordsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ParseKeywordsRequest) SetHeaders(v map[string]*string) *ParseKeywordsRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *ParseKeywordsRequest) SetKeywords(v string) *ParseKeywordsRequest {
-	s.Keywords = &v
-	return s
-}
-
-/**
- * Parse keywords response
- */
-type ParseKeywordsResponse struct {
-	// AddressLine
-	AddressLine *string      `json:"address_line,omitempty" xml:"address_line,omitempty"`
-	Tags        []*SystemTag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	TimeRange   *TimeRange   `json:"time_range,omitempty" xml:"time_range,omitempty"`
-}
-
-func (s ParseKeywordsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ParseKeywordsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ParseKeywordsResponse) SetAddressLine(v string) *ParseKeywordsResponse {
-	s.AddressLine = &v
-	return s
-}
-
-func (s *ParseKeywordsResponse) SetTags(v []*SystemTag) *ParseKeywordsResponse {
-	s.Tags = v
-	return s
-}
-
-func (s *ParseKeywordsResponse) SetTimeRange(v *TimeRange) *ParseKeywordsResponse {
-	s.TimeRange = v
-	return s
-}
-
-/**
- * Remove story images request
- */
-type RemoveStoryImagesRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	DriveId *string            `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileIds []*string          `json:"file_ids,omitempty" xml:"file_ids,omitempty" type:"Repeated"`
-	StoryId *string            `json:"story_id,omitempty" xml:"story_id,omitempty"`
-}
-
-func (s RemoveStoryImagesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveStoryImagesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveStoryImagesRequest) SetHeaders(v map[string]*string) *RemoveStoryImagesRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *RemoveStoryImagesRequest) SetDriveId(v string) *RemoveStoryImagesRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *RemoveStoryImagesRequest) SetFileIds(v []*string) *RemoveStoryImagesRequest {
-	s.FileIds = v
-	return s
-}
-
-func (s *RemoveStoryImagesRequest) SetStoryId(v string) *RemoveStoryImagesRequest {
-	s.StoryId = &v
-	return s
-}
-
-/**
- * Remove story images response
- */
-type RemoveStoryImagesResponse struct {
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	// file_ids
-	FileIds []*string                      `json:"file_ids,omitempty" xml:"file_ids,omitempty" type:"Repeated"`
-	Results []*RemoveStoryImagesResultItem `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	// story_id
-	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
-	// success_file_ids
-	SuccessFileIds []*string `json:"success_file_ids,omitempty" xml:"success_file_ids,omitempty" type:"Repeated"`
-}
-
-func (s RemoveStoryImagesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveStoryImagesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveStoryImagesResponse) SetDriveId(v string) *RemoveStoryImagesResponse {
-	s.DriveId = &v
-	return s
-}
-
-func (s *RemoveStoryImagesResponse) SetFileIds(v []*string) *RemoveStoryImagesResponse {
-	s.FileIds = v
-	return s
-}
-
-func (s *RemoveStoryImagesResponse) SetResults(v []*RemoveStoryImagesResultItem) *RemoveStoryImagesResponse {
-	s.Results = v
-	return s
-}
-
-func (s *RemoveStoryImagesResponse) SetStoryId(v string) *RemoveStoryImagesResponse {
-	s.StoryId = &v
-	return s
-}
-
-func (s *RemoveStoryImagesResponse) SetSuccessFileIds(v []*string) *RemoveStoryImagesResponse {
-	s.SuccessFileIds = v
-	return s
-}
-
-/**
- *
- */
-type RemoveStoryImagesResultItem struct {
-	// code
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// file_id
-	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	// is_succeed
-	IsSucceed *bool `json:"is_succeed,omitempty" xml:"is_succeed,omitempty"`
-	// message
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-}
-
-func (s RemoveStoryImagesResultItem) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RemoveStoryImagesResultItem) GoString() string {
-	return s.String()
-}
-
-func (s *RemoveStoryImagesResultItem) SetCode(v string) *RemoveStoryImagesResultItem {
-	s.Code = &v
-	return s
-}
-
-func (s *RemoveStoryImagesResultItem) SetFileId(v string) *RemoveStoryImagesResultItem {
-	s.FileId = &v
-	return s
-}
-
-func (s *RemoveStoryImagesResultItem) SetIsSucceed(v bool) *RemoveStoryImagesResultItem {
-	s.IsSucceed = &v
-	return s
-}
-
-func (s *RemoveStoryImagesResultItem) SetMessage(v string) *RemoveStoryImagesResultItem {
-	s.Message = &v
-	return s
-}
-
-/**
- * Search image address groups request
- */
-type SearchImageAddressGroupsRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// 查询的地点级别
-	AddressLevel *string `json:"address_level,omitempty" xml:"address_level,omitempty"`
-	// 查询的地点数组
-	AddressNames []*string `json:"address_names,omitempty" xml:"address_names,omitempty" type:"Repeated"`
-	// br_geo_point
-	BrGeoPoint *string `json:"br_geo_point,omitempty" xml:"br_geo_point,omitempty"`
-	// Drive ID
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
-	// image_thumbnail_process
-	ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
-	// tl_geo_point
-	TlGeoPoint *string `json:"tl_geo_point,omitempty" xml:"tl_geo_point,omitempty"`
-	// video_thumbnail_process
-	VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
-}
-
-func (s SearchImageAddressGroupsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchImageAddressGroupsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SearchImageAddressGroupsRequest) SetHeaders(v map[string]*string) *SearchImageAddressGroupsRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *SearchImageAddressGroupsRequest) SetAddressLevel(v string) *SearchImageAddressGroupsRequest {
-	s.AddressLevel = &v
-	return s
-}
-
-func (s *SearchImageAddressGroupsRequest) SetAddressNames(v []*string) *SearchImageAddressGroupsRequest {
-	s.AddressNames = v
-	return s
-}
-
-func (s *SearchImageAddressGroupsRequest) SetBrGeoPoint(v string) *SearchImageAddressGroupsRequest {
-	s.BrGeoPoint = &v
-	return s
-}
-
-func (s *SearchImageAddressGroupsRequest) SetDriveId(v string) *SearchImageAddressGroupsRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *SearchImageAddressGroupsRequest) SetImageThumbnailProcess(v string) *SearchImageAddressGroupsRequest {
-	s.ImageThumbnailProcess = &v
-	return s
-}
-
-func (s *SearchImageAddressGroupsRequest) SetTlGeoPoint(v string) *SearchImageAddressGroupsRequest {
-	s.TlGeoPoint = &v
-	return s
-}
-
-func (s *SearchImageAddressGroupsRequest) SetVideoThumbnailProcess(v string) *SearchImageAddressGroupsRequest {
-	s.VideoThumbnailProcess = &v
-	return s
-}
-
-/**
- * 展示地点分组列表
- */
-type SearchImageAddressGroupsResponse struct {
-	Items []*ImageAddressResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-}
-
-func (s SearchImageAddressGroupsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SearchImageAddressGroupsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SearchImageAddressGroupsResponse) SetItems(v []*ImageAddressResponse) *SearchImageAddressGroupsResponse {
-	s.Items = v
-	return s
-}
-
-/**
- *
- */
-type StoryResponse struct {
-	// cover_file_id
-	CoverFileId *string `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
-	// created_at
-	CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	// score
-	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
-	// story_id
-	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
-	// story_images_date_range
-	StoryImagesDateRange []*int `json:"story_images_date_range,omitempty" xml:"story_images_date_range,omitempty" type:"Repeated"`
-	// sub_title
-	SubTitle *string `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
-	// title
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// updated_at
-	UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	// video_status
-	VideoStatus *string `json:"video_status,omitempty" xml:"video_status,omitempty"`
-	// video_url
-	VideoUrl *string `json:"video_url,omitempty" xml:"video_url,omitempty"`
-}
-
-func (s StoryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StoryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *StoryResponse) SetCoverFileId(v string) *StoryResponse {
-	s.CoverFileId = &v
-	return s
-}
-
-func (s *StoryResponse) SetCreatedAt(v string) *StoryResponse {
-	s.CreatedAt = &v
-	return s
-}
-
-func (s *StoryResponse) SetScore(v float64) *StoryResponse {
-	s.Score = &v
-	return s
-}
-
-func (s *StoryResponse) SetStoryId(v string) *StoryResponse {
-	s.StoryId = &v
-	return s
-}
-
-func (s *StoryResponse) SetStoryImagesDateRange(v []*int) *StoryResponse {
-	s.StoryImagesDateRange = v
-	return s
-}
-
-func (s *StoryResponse) SetSubTitle(v string) *StoryResponse {
-	s.SubTitle = &v
-	return s
-}
-
-func (s *StoryResponse) SetTitle(v string) *StoryResponse {
-	s.Title = &v
-	return s
-}
-
-func (s *StoryResponse) SetUpdatedAt(v string) *StoryResponse {
-	s.UpdatedAt = &v
-	return s
-}
-
-func (s *StoryResponse) SetVideoStatus(v string) *StoryResponse {
-	s.VideoStatus = &v
-	return s
-}
-
-func (s *StoryResponse) SetVideoUrl(v string) *StoryResponse {
-	s.VideoUrl = &v
-	return s
-}
-
-/**
- * Update face group info request
- */
-type UpdateFaceGroupInfoRequest struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-	// group_id 列举人脸分组接口中获取
-	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty" require:"true"`
-	// group_name
-	GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
-}
-
-func (s UpdateFaceGroupInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateFaceGroupInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateFaceGroupInfoRequest) SetHeaders(v map[string]*string) *UpdateFaceGroupInfoRequest {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateFaceGroupInfoRequest) SetDriveId(v string) *UpdateFaceGroupInfoRequest {
-	s.DriveId = &v
-	return s
-}
-
-func (s *UpdateFaceGroupInfoRequest) SetGroupId(v string) *UpdateFaceGroupInfoRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *UpdateFaceGroupInfoRequest) SetGroupName(v string) *UpdateFaceGroupInfoRequest {
-	s.GroupName = &v
-	return s
-}
-
-/**
- * 更新人脸分组信息结果
- */
-type UpdateFaceGroupInfoResponse struct {
-	// drive_id
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	// group_id
-	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
-}
-
-func (s UpdateFaceGroupInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateFaceGroupInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateFaceGroupInfoResponse) SetDriveId(v string) *UpdateFaceGroupInfoResponse {
-	s.DriveId = &v
-	return s
-}
-
-func (s *UpdateFaceGroupInfoResponse) SetGroupId(v string) *UpdateFaceGroupInfoResponse {
-	s.GroupId = &v
-	return s
-}
-
-/**
- *
- */
-type UrlInfo struct {
-	// download_url
-	DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
-	// thumbnail
-	Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
-	// url
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
-}
-
-func (s UrlInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UrlInfo) GoString() string {
-	return s.String()
-}
-
-func (s *UrlInfo) SetDownloadUrl(v string) *UrlInfo {
-	s.DownloadUrl = &v
-	return s
-}
-
-func (s *UrlInfo) SetThumbnail(v string) *UrlInfo {
-	s.Thumbnail = &v
-	return s
-}
-
-func (s *UrlInfo) SetUrl(v string) *UrlInfo {
-	s.Url = &v
 	return s
 }
 

@@ -9,17 +9,25 @@ use AlibabaCloud\Tea\Model;
 class TimeRange extends Model
 {
     /**
+     * @description EndTime
+     *
+     * @example ""
+     *
      * @var string
      */
-    public $end;
+    public $endTime;
 
     /**
+     * @description StartTime
+     *
+     * @example ""
+     *
      * @var string
      */
-    public $start;
+    public $startTime;
     protected $_name = [
-        'end'   => 'end',
-        'start' => 'start',
+        'endTime'   => 'end_time',
+        'startTime' => 'start_time',
     ];
 
     public function validate()
@@ -29,11 +37,11 @@ class TimeRange extends Model
     public function toMap()
     {
         $res = [];
-        if (null !== $this->end) {
-            $res['end'] = $this->end;
+        if (null !== $this->endTime) {
+            $res['end_time'] = $this->endTime;
         }
-        if (null !== $this->start) {
-            $res['start'] = $this->start;
+        if (null !== $this->startTime) {
+            $res['start_time'] = $this->startTime;
         }
 
         return $res;
@@ -47,11 +55,11 @@ class TimeRange extends Model
     public static function fromMap($map = [])
     {
         $model = new self();
-        if (isset($map['end'])) {
-            $model->end = $map['end'];
+        if (isset($map['end_time'])) {
+            $model->endTime = $map['end_time'];
         }
-        if (isset($map['start'])) {
-            $model->start = $map['start'];
+        if (isset($map['start_time'])) {
+            $model->startTime = $map['start_time'];
         }
 
         return $model;

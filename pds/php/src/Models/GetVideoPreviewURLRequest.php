@@ -55,6 +55,11 @@ class GetVideoPreviewURLRequest extends Model
     public $fileId;
 
     /**
+     * @var string
+     */
+    public $referer;
+
+    /**
      * @description share_id, either share_id or drive_id is required
      *
      * @example 0018d25b-faed-4f5c-a67b-414e160b7953
@@ -62,6 +67,11 @@ class GetVideoPreviewURLRequest extends Model
      * @var string
      */
     public $shareId;
+
+    /**
+     * @var string
+     */
+    public $signToken;
 
     /**
      * @description template_id
@@ -77,7 +87,9 @@ class GetVideoPreviewURLRequest extends Model
         'driveId'         => 'drive_id',
         'expireSec'       => 'expire_sec',
         'fileId'          => 'file_id',
+        'referer'         => 'referer',
         'shareId'         => 'share_id',
+        'signToken'       => 'sign_token',
         'templateId'      => 'template_id',
     ];
     protected $_default = [
@@ -86,12 +98,11 @@ class GetVideoPreviewURLRequest extends Model
 
     public function validate()
     {
-        Model::validateRequired('driveId', $this->driveId, true);
-        Model::validateRequired('fileId', $this->fileId, true);
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
         Model::validatePattern('fileId', $this->fileId, '[a-z0-9.-_]{1,50}');
         Model::validateMaximum('expireSec', $this->expireSec, 14400);
         Model::validateMinimum('expireSec', $this->expireSec, 1);
+        Model::validateRequired('fileId', $this->fileId, true);
         Model::validateMaxLength('fileId', $this->fileId, 50);
         Model::validateMinLength('fileId', $this->fileId, 40);
     }
@@ -117,8 +128,14 @@ class GetVideoPreviewURLRequest extends Model
         if (null !== $this->fileId) {
             $res['file_id'] = $this->fileId;
         }
+        if (null !== $this->referer) {
+            $res['referer'] = $this->referer;
+        }
         if (null !== $this->shareId) {
             $res['share_id'] = $this->shareId;
+        }
+        if (null !== $this->signToken) {
+            $res['sign_token'] = $this->signToken;
         }
         if (null !== $this->templateId) {
             $res['template_id'] = $this->templateId;
@@ -153,8 +170,14 @@ class GetVideoPreviewURLRequest extends Model
         if (isset($map['file_id'])) {
             $model->fileId = $map['file_id'];
         }
+        if (isset($map['referer'])) {
+            $model->referer = $map['referer'];
+        }
         if (isset($map['share_id'])) {
             $model->shareId = $map['share_id'];
+        }
+        if (isset($map['sign_token'])) {
+            $model->signToken = $map['sign_token'];
         }
         if (isset($map['template_id'])) {
             $model->templateId = $map['template_id'];

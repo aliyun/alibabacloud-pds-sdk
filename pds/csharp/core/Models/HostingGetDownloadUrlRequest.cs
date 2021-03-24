@@ -13,6 +13,13 @@ namespace Aliyun.SDK.PDS.Client.Models
      */
     public class HostingGetDownloadUrlRequest : TeaModel {
         /// <summary>
+        /// addition_data
+        /// </summary>
+        [NameInMap("addition_data")]
+        [Validation(Required=false)]
+        public Dictionary<string, object> AdditionData { get; set; }
+
+        /// <summary>
         /// drive_id
         /// </summary>
         [NameInMap("drive_id")]

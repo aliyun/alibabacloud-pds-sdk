@@ -14,6 +14,13 @@ class CreateShareLinkRequest extends Model
     public $headers;
 
     /**
+     * @description addition_data
+     *
+     * @var mixed[]
+     */
+    public $additionData;
+
+    /**
      * @description description
      *
      * @example desc
@@ -68,6 +75,11 @@ class CreateShareLinkRequest extends Model
     public $filePathList;
 
     /**
+     * @var string
+     */
+    public $referer;
+
+    /**
      * @description share_name
      *
      * @example name
@@ -85,26 +97,23 @@ class CreateShareLinkRequest extends Model
      */
     public $sharePwd;
     protected $_name = [
+        'additionData' => 'addition_data',
         'description'  => 'description',
         'driveId'      => 'drive_id',
         'expiration'   => 'expiration',
         'fileId'       => 'file_id',
         'fileIdList'   => 'file_id_list',
         'filePathList' => 'file_path_list',
+        'referer'      => 'referer',
         'shareName'    => 'share_name',
         'sharePwd'     => 'share_pwd',
     ];
 
     public function validate()
     {
-        Model::validateRequired('driveId', $this->driveId, true);
-        Model::validateRequired('expiration', $this->expiration, true);
-        Model::validateRequired('fileId', $this->fileId, true);
-        Model::validateRequired('fileIdList', $this->fileIdList, true);
-        Model::validateRequired('filePathList', $this->filePathList, true);
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
-        Model::validateMaximum('fileIdList', $this->fileIdList, 50);
-        Model::validateMaximum('filePathList', $this->filePathList, 50);
+        Model::validateMaximum('fileIdList', $this->fileIdList, 100);
+        Model::validateMaximum('filePathList', $this->filePathList, 100);
         Model::validateMaximum('sharePwd', $this->sharePwd, 64);
         Model::validateMinimum('fileIdList', $this->fileIdList, 1);
         Model::validateMinimum('filePathList', $this->filePathList, 1);
@@ -116,6 +125,9 @@ class CreateShareLinkRequest extends Model
         $res = [];
         if (null !== $this->headers) {
             $res['headers'] = $this->headers;
+        }
+        if (null !== $this->additionData) {
+            $res['addition_data'] = $this->additionData;
         }
         if (null !== $this->description) {
             $res['description'] = $this->description;
@@ -134,6 +146,9 @@ class CreateShareLinkRequest extends Model
         }
         if (null !== $this->filePathList) {
             $res['file_path_list'] = $this->filePathList;
+        }
+        if (null !== $this->referer) {
+            $res['referer'] = $this->referer;
         }
         if (null !== $this->shareName) {
             $res['share_name'] = $this->shareName;
@@ -156,6 +171,9 @@ class CreateShareLinkRequest extends Model
         if (isset($map['headers'])) {
             $model->headers = $map['headers'];
         }
+        if (isset($map['addition_data'])) {
+            $model->additionData = $map['addition_data'];
+        }
         if (isset($map['description'])) {
             $model->description = $map['description'];
         }
@@ -177,6 +195,9 @@ class CreateShareLinkRequest extends Model
             if (!empty($map['file_path_list'])) {
                 $model->filePathList = $map['file_path_list'];
             }
+        }
+        if (isset($map['referer'])) {
+            $model->referer = $map['referer'];
         }
         if (isset($map['share_name'])) {
             $model->shareName = $map['share_name'];

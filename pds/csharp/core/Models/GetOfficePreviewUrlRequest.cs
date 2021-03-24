@@ -27,7 +27,7 @@ namespace Aliyun.SDK.PDS.Client.Models
         /// drive_id
         /// </summary>
         [NameInMap("drive_id")]
-        [Validation(Required=true, Pattern="[0-9]+")]
+        [Validation(Required=false, Pattern="[0-9]+")]
         public string DriveId { get; set; }
 
         /// <summary>
@@ -36,6 +36,10 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("file_id")]
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
         public string FileId { get; set; }
+
+        [NameInMap("referer")]
+        [Validation(Required=false)]
+        public string Referer { get; set; }
 
         /// <summary>
         /// share_id, either share_id or drive_id is required

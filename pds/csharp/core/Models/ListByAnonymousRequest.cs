@@ -17,6 +17,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         public Dictionary<string, string> Headers { get; set; }
 
         /// <summary>
+        /// addition_data
+        /// </summary>
+        [NameInMap("addition_data")]
+        [Validation(Required=false)]
+        public Dictionary<string, object> AdditionData { get; set; }
+
+        /// <summary>
         /// image_thumbnail_process
         /// </summary>
         [NameInMap("image_thumbnail_process")]

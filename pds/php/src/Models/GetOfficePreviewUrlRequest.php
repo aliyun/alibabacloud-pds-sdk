@@ -37,6 +37,11 @@ class GetOfficePreviewUrlRequest extends Model
     public $fileId;
 
     /**
+     * @var string
+     */
+    public $referer;
+
+    /**
      * @description share_id, either share_id or drive_id is required
      *
      * @example 0018d25b-faed-4f5c-a67b-414e160b7953
@@ -48,15 +53,15 @@ class GetOfficePreviewUrlRequest extends Model
         'additionData' => 'addition_data',
         'driveId'      => 'drive_id',
         'fileId'       => 'file_id',
+        'referer'      => 'referer',
         'shareId'      => 'share_id',
     ];
 
     public function validate()
     {
-        Model::validateRequired('driveId', $this->driveId, true);
-        Model::validateRequired('fileId', $this->fileId, true);
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
         Model::validatePattern('fileId', $this->fileId, '[a-z0-9.-_]{1,50}');
+        Model::validateRequired('fileId', $this->fileId, true);
         Model::validateMaxLength('fileId', $this->fileId, 50);
         Model::validateMinLength('fileId', $this->fileId, 40);
     }
@@ -75,6 +80,9 @@ class GetOfficePreviewUrlRequest extends Model
         }
         if (null !== $this->fileId) {
             $res['file_id'] = $this->fileId;
+        }
+        if (null !== $this->referer) {
+            $res['referer'] = $this->referer;
         }
         if (null !== $this->shareId) {
             $res['share_id'] = $this->shareId;
@@ -102,6 +110,9 @@ class GetOfficePreviewUrlRequest extends Model
         }
         if (isset($map['file_id'])) {
             $model->fileId = $map['file_id'];
+        }
+        if (isset($map['referer'])) {
+            $model->referer = $map['referer'];
         }
         if (isset($map['share_id'])) {
             $model->shareId = $map['share_id'];

@@ -12,6 +12,13 @@ use AlibabaCloud\Tea\Model;
 class HostingCopyFileRequest extends Model
 {
     /**
+     * @description addition_data
+     *
+     * @var mixed[]
+     */
+    public $additionData;
+
+    /**
      * @description drive_id
      *
      * @example 1
@@ -44,6 +51,11 @@ class HostingCopyFileRequest extends Model
      * @var bool
      */
     public $overwrite;
+
+    /**
+     * @var string
+     */
+    public $referer;
 
     /**
      * @description share_id
@@ -81,10 +93,12 @@ class HostingCopyFileRequest extends Model
      */
     public $toShareId;
     protected $_name = [
+        'additionData'     => 'addition_data',
         'driveId'          => 'drive_id',
         'filePath'         => 'file_path',
         'newName'          => 'new_name',
         'overwrite'        => 'overwrite',
+        'referer'          => 'referer',
         'shareId'          => 'share_id',
         'toDriveId'        => 'to_drive_id',
         'toParentFilePath' => 'to_parent_file_path',
@@ -108,6 +122,9 @@ class HostingCopyFileRequest extends Model
     public function toMap()
     {
         $res = [];
+        if (null !== $this->additionData) {
+            $res['addition_data'] = $this->additionData;
+        }
         if (null !== $this->driveId) {
             $res['drive_id'] = $this->driveId;
         }
@@ -119,6 +136,9 @@ class HostingCopyFileRequest extends Model
         }
         if (null !== $this->overwrite) {
             $res['overwrite'] = $this->overwrite;
+        }
+        if (null !== $this->referer) {
+            $res['referer'] = $this->referer;
         }
         if (null !== $this->shareId) {
             $res['share_id'] = $this->shareId;
@@ -144,6 +164,9 @@ class HostingCopyFileRequest extends Model
     public static function fromMap($map = [])
     {
         $model = new self();
+        if (isset($map['addition_data'])) {
+            $model->additionData = $map['addition_data'];
+        }
         if (isset($map['drive_id'])) {
             $model->driveId = $map['drive_id'];
         }
@@ -155,6 +178,9 @@ class HostingCopyFileRequest extends Model
         }
         if (isset($map['overwrite'])) {
             $model->overwrite = $map['overwrite'];
+        }
+        if (isset($map['referer'])) {
+            $model->referer = $map['referer'];
         }
         if (isset($map['share_id'])) {
             $model->shareId = $map['share_id'];

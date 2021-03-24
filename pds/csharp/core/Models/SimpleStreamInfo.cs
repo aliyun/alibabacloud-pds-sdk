@@ -11,7 +11,7 @@ namespace Aliyun.SDK.PDS.Client.Models
     /**
      * 
      */
-    public class StreamInfo : TeaModel {
+    public class SimpleStreamInfo : TeaModel {
         /// <summary>
         /// crc64_hash
         /// </summary>
@@ -26,6 +26,9 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public string DownloadUrl { get; set; }
 
+        /// <summary>
+        /// size
+        /// </summary>
         [NameInMap("size")]
         [Validation(Required=false)]
         public long? Size { get; set; }

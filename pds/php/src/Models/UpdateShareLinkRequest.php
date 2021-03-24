@@ -57,12 +57,22 @@ class UpdateShareLinkRequest extends Model
      * @var string
      */
     public $sharePwd;
+
+    /**
+     * @description status
+     *
+     * @example enabled
+     *
+     * @var string
+     */
+    public $status;
     protected $_name = [
         'description' => 'description',
         'expiration'  => 'expiration',
         'shareId'     => 'share_id',
         'shareName'   => 'share_name',
         'sharePwd'    => 'share_pwd',
+        'status'      => 'status',
     ];
 
     public function validate()
@@ -91,6 +101,9 @@ class UpdateShareLinkRequest extends Model
         }
         if (null !== $this->sharePwd) {
             $res['share_pwd'] = $this->sharePwd;
+        }
+        if (null !== $this->status) {
+            $res['status'] = $this->status;
         }
 
         return $res;
@@ -121,6 +134,9 @@ class UpdateShareLinkRequest extends Model
         }
         if (isset($map['share_pwd'])) {
             $model->sharePwd = $map['share_pwd'];
+        }
+        if (isset($map['status'])) {
+            $model->status = $map['status'];
         }
 
         return $model;

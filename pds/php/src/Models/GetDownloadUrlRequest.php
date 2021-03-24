@@ -104,12 +104,11 @@ class GetDownloadUrlRequest extends Model
 
     public function validate()
     {
-        Model::validateRequired('driveId', $this->driveId, true);
-        Model::validateRequired('fileId', $this->fileId, true);
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
         Model::validatePattern('fileId', $this->fileId, '[a-z0-9.-_]{1,50}');
         Model::validateMaximum('expireSec', $this->expireSec, 14400);
         Model::validateMinimum('expireSec', $this->expireSec, 1);
+        Model::validateRequired('fileId', $this->fileId, true);
         Model::validateMaxLength('fileId', $this->fileId, 50);
         Model::validateMaxLength('fileName', $this->fileName, 1024);
         Model::validateMinLength('fileId', $this->fileId, 40);

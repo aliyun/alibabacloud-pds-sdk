@@ -187,6 +187,8 @@ class CompleteFileResponse extends Model
     public $parentFileId;
 
     /**
+     * @description PunishFlag
+     *
      * @var int
      */
     public $punishFlag;

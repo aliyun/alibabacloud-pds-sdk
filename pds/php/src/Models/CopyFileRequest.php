@@ -14,6 +14,13 @@ class CopyFileRequest extends Model
     public $headers;
 
     /**
+     * @description addition_data
+     *
+     * @var mixed[]
+     */
+    public $additionData;
+
+    /**
      * @description auto_rename
      * type: boolean
      * @example false
@@ -21,6 +28,11 @@ class CopyFileRequest extends Model
      * @var bool
      */
     public $autoRename;
+
+    /**
+     * @var string
+     */
+    public $batchId;
 
     /**
      * @description drive_id
@@ -53,6 +65,11 @@ class CopyFileRequest extends Model
      * @var string
      */
     public $newName;
+
+    /**
+     * @var string
+     */
+    public $referer;
 
     /**
      * @description share_id, either share_id or drive_id is required
@@ -90,11 +107,14 @@ class CopyFileRequest extends Model
      */
     public $toShareId;
     protected $_name = [
+        'additionData'   => 'addition_data',
         'autoRename'     => 'auto_rename',
+        'batchId'        => 'batch_id',
         'driveId'        => 'drive_id',
         'fileId'         => 'file_id',
         'fileIdPath'     => 'file_id_path',
         'newName'        => 'new_name',
+        'referer'        => 'referer',
         'shareId'        => 'share_id',
         'toDriveId'      => 'to_drive_id',
         'toParentFileId' => 'to_parent_file_id',
@@ -127,8 +147,14 @@ class CopyFileRequest extends Model
         if (null !== $this->headers) {
             $res['headers'] = $this->headers;
         }
+        if (null !== $this->additionData) {
+            $res['addition_data'] = $this->additionData;
+        }
         if (null !== $this->autoRename) {
             $res['auto_rename'] = $this->autoRename;
+        }
+        if (null !== $this->batchId) {
+            $res['batch_id'] = $this->batchId;
         }
         if (null !== $this->driveId) {
             $res['drive_id'] = $this->driveId;
@@ -141,6 +167,9 @@ class CopyFileRequest extends Model
         }
         if (null !== $this->newName) {
             $res['new_name'] = $this->newName;
+        }
+        if (null !== $this->referer) {
+            $res['referer'] = $this->referer;
         }
         if (null !== $this->shareId) {
             $res['share_id'] = $this->shareId;
@@ -169,8 +198,14 @@ class CopyFileRequest extends Model
         if (isset($map['headers'])) {
             $model->headers = $map['headers'];
         }
+        if (isset($map['addition_data'])) {
+            $model->additionData = $map['addition_data'];
+        }
         if (isset($map['auto_rename'])) {
             $model->autoRename = $map['auto_rename'];
+        }
+        if (isset($map['batch_id'])) {
+            $model->batchId = $map['batch_id'];
         }
         if (isset($map['drive_id'])) {
             $model->driveId = $map['drive_id'];
@@ -183,6 +218,9 @@ class CopyFileRequest extends Model
         }
         if (isset($map['new_name'])) {
             $model->newName = $map['new_name'];
+        }
+        if (isset($map['referer'])) {
+            $model->referer = $map['referer'];
         }
         if (isset($map['share_id'])) {
             $model->shareId = $map['share_id'];

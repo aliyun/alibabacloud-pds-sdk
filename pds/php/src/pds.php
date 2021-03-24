@@ -111,6 +111,8 @@ use Aliyun\PDS\SDK\Models\GetVideoPreviewURLRequest;
 use Aliyun\PDS\SDK\Models\GetVideoPreviewUrlModel;
 use Aliyun\PDS\SDK\Models\ListFileRequest;
 use Aliyun\PDS\SDK\Models\ListFileModel;
+use Aliyun\PDS\SDK\Models\ListFileActivityRequest;
+use Aliyun\PDS\SDK\Models\ListFileActivityModel;
 use Aliyun\PDS\SDK\Models\ListByAnonymousRequest;
 use Aliyun\PDS\SDK\Models\ListFileByAnonymousModel;
 use Aliyun\PDS\SDK\Models\ListFileByCustomIndexKeyRequest;
@@ -143,6 +145,8 @@ use Aliyun\PDS\SDK\Models\CancelShareLinkRequest;
 use Aliyun\PDS\SDK\Models\CancelShareLinkModel;
 use Aliyun\PDS\SDK\Models\CreateShareLinkRequest;
 use Aliyun\PDS\SDK\Models\CreateShareLinkModel;
+use Aliyun\PDS\SDK\Models\GetShareLinkRequest;
+use Aliyun\PDS\SDK\Models\GetShareLinkModel;
 use Aliyun\PDS\SDK\Models\GetShareLinkByAnonymousRequest;
 use Aliyun\PDS\SDK\Models\GetShareByAnonymousModel;
 use Aliyun\PDS\SDK\Models\GetShareLinkIDRequest;
@@ -6422,6 +6426,135 @@ class pds {
     }
 
     /**
+     * list file activity
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     * @param ListFileActivityRequest $request
+     * @param RuntimeOptions $runtime
+     * @return ListFileActivityModel
+     * @throws TeaError
+     * @throws Exception
+     * @throws TeaUnableRetryError
+     */
+    public function listFileActivityEx($request, $runtime){
+        $request->validate();
+        $runtime->validate();
+        $_runtime = [
+            "timeouted" => "retry",
+            "readTimeout" => $runtime->readTimeout,
+            "connectTimeout" => $runtime->connectTimeout,
+            "localAddr" => $runtime->localAddr,
+            "httpProxy" => $runtime->httpProxy,
+            "httpsProxy" => $runtime->httpsProxy,
+            "noProxy" => $runtime->noProxy,
+            "maxIdleConns" => $runtime->maxIdleConns,
+            "socks5Proxy" => $runtime->socks5Proxy,
+            "socks5NetWork" => $runtime->socks5NetWork,
+            "retry" => [
+                "retryable" => $runtime->autoretry,
+                "maxAttempts" => Utils::defaultNumber($runtime->maxAttempts, 3)
+            ],
+            "backoff" => [
+                "policy" => Utils::defaultString($runtime->backoffPolicy, "no"),
+                "period" => Utils::defaultNumber($runtime->backoffPeriod, 1)
+            ],
+            "ignoreSSL" => $runtime->ignoreSSL
+        ];
+        $_lastRequest = null;
+        $_lastException = null;
+        $_now = time();
+        $_retryTimes = 0;
+        while (Tea::allowRetry(@$_runtime["retry"], $_retryTimes, $_now)) {
+            if ($_retryTimes > 0) {
+                $_backoffTime = Tea::getBackoffTime(@$_runtime["backoff"], $_retryTimes);
+                if ($_backoffTime > 0) {
+                    Tea::sleep($_backoffTime);
+                }
+            }
+            $_retryTimes = $_retryTimes + 1;
+            try {
+                $_request = new Request();
+                $accesskeyId = $this->getAccessKeyId();
+                $accessKeySecret = $this->getAccessKeySecret();
+                $securityToken = $this->getSecurityToken();
+                $accessToken = $this->getAccessToken();
+                $realReq = Utils::toMap($request);
+                $_request->protocol = Utils::defaultString($this->_protocol, "https");
+                $_request->method = "POST";
+                $_request->pathname = $this->getPathname($this->_nickname, "/v2/file/list_activity");
+                $_request->headers = Tea::merge([
+                    "user-agent" => $this->getUserAgent(),
+                    "host" => Utils::defaultString($this->_endpoint, "" . $this->_domainId . ".api.aliyunpds.com"),
+                    "content-type" => "application/json; charset=utf-8"
+                ], $request->headers);
+                @$realReq["headers"] = null;
+                if (!Utils::empty_($accessToken)) {
+                    $_request->headers["authorization"] = "Bearer " . $accessToken . "";
+                }
+                else if (!Utils::empty_($accesskeyId) && !Utils::empty_($accessKeySecret)) {
+                    if (!Utils::empty_($securityToken)) {
+                        $_request->headers["x-acs-security-token"] = $securityToken;
+                    }
+                    $_request->headers["date"] = Utils::getDateUTCString();
+                    $_request->headers["accept"] = "application/json";
+                    $_request->headers["x-acs-signature-method"] = "HMAC-SHA1";
+                    $_request->headers["x-acs-signature-version"] = "1.0";
+                    $stringToSign = RoaUtils::getStringToSign($_request);
+                    $_request->headers["authorization"] = "acs " . $accesskeyId . ":" . RoaUtils::getSignature($stringToSign, $accessKeySecret) . "";
+                }
+                $_request->body = Utils::toJSONString($realReq);
+                $_lastRequest = $_request;
+                $_response= Tea::send($_request, $_runtime);
+                $respMap = null;
+                $obj = null;
+                if (Utils::equalNumber($_response->statusCode, 200)) {
+                    $obj = Utils::readAsJSON($_response->body);
+                    $respMap = Utils::assertAsMap($obj);
+                    return ListFileActivityModel::fromMap([
+                        "body" => $respMap,
+                        "headers" => $_response->headers
+                    ]);
+                }
+                if (!Utils::empty_(@$_response->headers["x-ca-error-message"])) {
+                    throw new TeaError([
+                        "data" => [
+                            "requestId" => @$_response->headers["x-ca-request-id"],
+                            "statusCode" => $_response->statusCode,
+                            "statusMessage" => $_response->statusMessage
+                        ],
+                        "message" => @$_response->headers["x-ca-error-message"]
+                    ]);
+                }
+                $obj = Utils::readAsJSON($_response->body);
+                $respMap = Utils::assertAsMap($obj);
+                throw new TeaError(Tea::merge([
+                    "data" => [
+                        "requestId" => @$_response->headers["x-ca-request-id"],
+                        "statusCode" => $_response->statusCode,
+                        "statusMessage" => $_response->statusMessage
+                    ]
+                ], $respMap));
+            }
+            catch (Exception $e) {
+                if (!($e instanceof TeaError)) {
+                    $e = new TeaError([], $e->getMessage(), $e->getCode(), $e);
+                }
+                if (Tea::isRetryable($e)) {
+                    $_lastException = $e;
+                    continue;
+                }
+                throw $e;
+            }
+        }
+        throw new TeaUnableRetryError($_lastRequest, $_lastException);
+    }
+
+    /**
      * 查看分享中的文件列表
      * @tags share_link
      * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -8438,6 +8571,132 @@ class pds {
                     $obj = Utils::readAsJSON($_response->body);
                     $respMap = Utils::assertAsMap($obj);
                     return CreateShareLinkModel::fromMap([
+                        "body" => $respMap,
+                        "headers" => $_response->headers
+                    ]);
+                }
+                if (!Utils::empty_(@$_response->headers["x-ca-error-message"])) {
+                    throw new TeaError([
+                        "data" => [
+                            "requestId" => @$_response->headers["x-ca-request-id"],
+                            "statusCode" => $_response->statusCode,
+                            "statusMessage" => $_response->statusMessage
+                        ],
+                        "message" => @$_response->headers["x-ca-error-message"]
+                    ]);
+                }
+                $obj = Utils::readAsJSON($_response->body);
+                $respMap = Utils::assertAsMap($obj);
+                throw new TeaError(Tea::merge([
+                    "data" => [
+                        "requestId" => @$_response->headers["x-ca-request-id"],
+                        "statusCode" => $_response->statusCode,
+                        "statusMessage" => $_response->statusMessage
+                    ]
+                ], $respMap));
+            }
+            catch (Exception $e) {
+                if (!($e instanceof TeaError)) {
+                    $e = new TeaError([], $e->getMessage(), $e->getCode(), $e);
+                }
+                if (Tea::isRetryable($e)) {
+                    $_lastException = $e;
+                    continue;
+                }
+                throw $e;
+            }
+        }
+        throw new TeaUnableRetryError($_lastRequest, $_lastException);
+    }
+
+    /**
+     * 查看分享的所有信息
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     * @param GetShareLinkRequest $request
+     * @param RuntimeOptions $runtime
+     * @return GetShareLinkModel
+     * @throws TeaError
+     * @throws Exception
+     * @throws TeaUnableRetryError
+     */
+    public function getShareLinkEx($request, $runtime){
+        $request->validate();
+        $runtime->validate();
+        $_runtime = [
+            "timeouted" => "retry",
+            "readTimeout" => $runtime->readTimeout,
+            "connectTimeout" => $runtime->connectTimeout,
+            "localAddr" => $runtime->localAddr,
+            "httpProxy" => $runtime->httpProxy,
+            "httpsProxy" => $runtime->httpsProxy,
+            "noProxy" => $runtime->noProxy,
+            "maxIdleConns" => $runtime->maxIdleConns,
+            "socks5Proxy" => $runtime->socks5Proxy,
+            "socks5NetWork" => $runtime->socks5NetWork,
+            "retry" => [
+                "retryable" => $runtime->autoretry,
+                "maxAttempts" => Utils::defaultNumber($runtime->maxAttempts, 3)
+            ],
+            "backoff" => [
+                "policy" => Utils::defaultString($runtime->backoffPolicy, "no"),
+                "period" => Utils::defaultNumber($runtime->backoffPeriod, 1)
+            ],
+            "ignoreSSL" => $runtime->ignoreSSL
+        ];
+        $_lastRequest = null;
+        $_lastException = null;
+        $_now = time();
+        $_retryTimes = 0;
+        while (Tea::allowRetry(@$_runtime["retry"], $_retryTimes, $_now)) {
+            if ($_retryTimes > 0) {
+                $_backoffTime = Tea::getBackoffTime(@$_runtime["backoff"], $_retryTimes);
+                if ($_backoffTime > 0) {
+                    Tea::sleep($_backoffTime);
+                }
+            }
+            $_retryTimes = $_retryTimes + 1;
+            try {
+                $_request = new Request();
+                $accesskeyId = $this->getAccessKeyId();
+                $accessKeySecret = $this->getAccessKeySecret();
+                $securityToken = $this->getSecurityToken();
+                $accessToken = $this->getAccessToken();
+                $realReq = Utils::toMap($request);
+                $_request->protocol = Utils::defaultString($this->_protocol, "https");
+                $_request->method = "POST";
+                $_request->pathname = $this->getPathname($this->_nickname, "/v2/share_link/get");
+                $_request->headers = Tea::merge([
+                    "user-agent" => $this->getUserAgent(),
+                    "host" => Utils::defaultString($this->_endpoint, "" . $this->_domainId . ".api.aliyunpds.com"),
+                    "content-type" => "application/json; charset=utf-8"
+                ], $request->headers);
+                @$realReq["headers"] = null;
+                if (!Utils::empty_($accessToken)) {
+                    $_request->headers["authorization"] = "Bearer " . $accessToken . "";
+                }
+                else if (!Utils::empty_($accesskeyId) && !Utils::empty_($accessKeySecret)) {
+                    if (!Utils::empty_($securityToken)) {
+                        $_request->headers["x-acs-security-token"] = $securityToken;
+                    }
+                    $_request->headers["date"] = Utils::getDateUTCString();
+                    $_request->headers["accept"] = "application/json";
+                    $_request->headers["x-acs-signature-method"] = "HMAC-SHA1";
+                    $_request->headers["x-acs-signature-version"] = "1.0";
+                    $stringToSign = RoaUtils::getStringToSign($_request);
+                    $_request->headers["authorization"] = "acs " . $accesskeyId . ":" . RoaUtils::getSignature($stringToSign, $accessKeySecret) . "";
+                }
+                $_request->body = Utils::toJSONString($realReq);
+                $_lastRequest = $_request;
+                $_response= Tea::send($_request, $_runtime);
+                $respMap = null;
+                $obj = null;
+                if (Utils::equalNumber($_response->statusCode, 200)) {
+                    $obj = Utils::readAsJSON($_response->body);
+                    $respMap = Utils::assertAsMap($obj);
+                    return GetShareLinkModel::fromMap([
                         "body" => $respMap,
                         "headers" => $_response->headers
                     ]);
@@ -14106,6 +14365,23 @@ class pds {
     }
 
     /**
+     * list file activity
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     * @param ListFileActivityRequest $request
+     * @return ListFileActivityModel
+     */
+    public function listFileActivity($request){
+        $runtime = new RuntimeOptions([]);
+        return $this->listFileActivityEx($request, $runtime);
+    }
+
+    /**
      * 查看分享中的文件列表
      * @tags share_link
      * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -14372,6 +14648,20 @@ class pds {
     public function createShareLink($request){
         $runtime = new RuntimeOptions([]);
         return $this->createShareLinkEx($request, $runtime);
+    }
+
+    /**
+     * 查看分享的所有信息
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     * @param GetShareLinkRequest $request
+     * @return GetShareLinkModel
+     */
+    public function getShareLink($request){
+        $runtime = new RuntimeOptions([]);
+        return $this->getShareLinkEx($request, $runtime);
     }
 
     /**

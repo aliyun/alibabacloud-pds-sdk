@@ -37,6 +37,14 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=true, MaxLength=50, Pattern="[a-z0-9.-_]{1,50}")]
         public string FileId { get; set; }
 
+        [NameInMap("option")]
+        [Validation(Required=false)]
+        public GetOfficeEditUrlOption Option { get; set; }
+
+        [NameInMap("watermark")]
+        [Validation(Required=false)]
+        public GetOfficeEditUrlWatermark Watermark { get; set; }
+
     }
 
 }

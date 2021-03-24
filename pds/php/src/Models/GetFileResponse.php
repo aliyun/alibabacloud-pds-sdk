@@ -180,6 +180,8 @@ class GetFileResponse extends Model
     public $parentFileId;
 
     /**
+     * @description PunishFlag
+     *
      * @var int
      */
     public $punishFlag;
@@ -231,6 +233,15 @@ class GetFileResponse extends Model
      * @var string
      */
     public $thumbnail;
+
+    /**
+     * @description Trashed
+     * type: boolean
+     * @example false
+     *
+     * @var bool
+     */
+    public $trashed;
 
     /**
      * @description trashed_at
@@ -319,6 +330,7 @@ class GetFileResponse extends Model
         'status'               => 'status',
         'streamsInfo'          => 'streams_info',
         'thumbnail'            => 'thumbnail',
+        'trashed'              => 'trashed',
         'trashedAt'            => 'trashed_at',
         'type'                 => 'type',
         'updatedAt'            => 'updated_at',
@@ -428,6 +440,9 @@ class GetFileResponse extends Model
         }
         if (null !== $this->thumbnail) {
             $res['thumbnail'] = $this->thumbnail;
+        }
+        if (null !== $this->trashed) {
+            $res['trashed'] = $this->trashed;
         }
         if (null !== $this->trashedAt) {
             $res['trashed_at'] = $this->trashedAt;
@@ -547,6 +562,9 @@ class GetFileResponse extends Model
         }
         if (isset($map['thumbnail'])) {
             $model->thumbnail = $map['thumbnail'];
+        }
+        if (isset($map['trashed'])) {
+            $model->trashed = $map['trashed'];
         }
         if (isset($map['trashed_at'])) {
             $model->trashedAt = $map['trashed_at'];

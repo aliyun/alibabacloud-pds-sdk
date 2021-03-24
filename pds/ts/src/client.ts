@@ -492,41 +492,1894 @@ export class AccountTokenModel extends $tea.Model {
   }
 }
 
-/**
- * 
- */
-export class AccessTokenResponse extends $tea.Model {
-  accessToken: string;
-  defaultDriveId: string;
-  expireTime: string;
-  expiresIn: number;
-  refreshToken: string;
-  role: string;
-  tokenType: string;
-  userId: string;
+export class AdminListStoresModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListStoresResponse;
   static names(): { [key: string]: string } {
     return {
-      accessToken: 'access_token',
-      defaultDriveId: 'default_drive_id',
-      expireTime: 'expire_time',
-      expiresIn: 'expires_in',
-      refreshToken: 'refresh_token',
-      role: 'role',
-      tokenType: 'token_type',
-      userId: 'user_id',
+      headers: 'headers',
+      body: 'body',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
-      accessToken: 'string',
-      defaultDriveId: 'string',
-      expireTime: 'string',
-      expiresIn: 'number',
-      refreshToken: 'string',
-      role: 'string',
-      tokenType: 'string',
-      userId: 'string',
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListStoresResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CreateSubdomainModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateSubdomainResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateSubdomainResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class DeleteSubdomainModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: DeleteSubdomainResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: DeleteSubdomainResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetSubdomainModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetSubdomainResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetSubdomainResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListSubdomainsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListSubdomainsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListSubdomainsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateSubdomainModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateSubdomainResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateSubdomainResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetUserAccessTokenModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetUserAccessTokenResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetUserAccessTokenResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetAsyncTaskInfoModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetAsyncTaskResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetAsyncTaskResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class BatchOperationModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: BatchResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: BatchResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CreateDriveModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateDriveResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateDriveResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class DeleteDriveModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetDriveModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetDriveResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetDriveResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetDefaultDriveModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetDriveResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetDriveResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListDrivesModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListDriveResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListDriveResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListMyDrivesModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListDriveResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListDriveResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateDriveModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateDriveResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateDriveResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CompleteFileModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CompleteFileResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CompleteFileResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CopyFileModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CopyFileResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CopyFileResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CreateFileModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateFileResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateFileResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class DeleteFileModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: DeleteFileResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: DeleteFileResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetFileModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetFileResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetFileResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetFileByPathModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetFileByPathResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetFileByPathResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetDownloadUrlModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetDownloadUrlResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetDownloadUrlResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetLastCursorModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetLastCursorResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetLastCursorResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetMediaPlayUrlModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetMediaPlayURLResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetMediaPlayURLResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetOfficeEditUrlModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetOfficeEditUrlResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetOfficeEditUrlResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetOfficePreviewUrlModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetOfficePreviewUrlResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetOfficePreviewUrlResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetUploadUrlModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetUploadUrlResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetUploadUrlResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetVideoPreviewSpriteUrlModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetVideoPreviewSpriteURLResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetVideoPreviewSpriteURLResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetVideoPreviewUrlModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetVideoPreviewURLResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetVideoPreviewURLResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListFileModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListFileResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListFileResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListFileActivityModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListFileActivityResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListFileActivityResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListFileByAnonymousModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListByAnonymousResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListByAnonymousResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListFileByCustomIndexKeyModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListFileResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListFileResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListFileDeltaModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListFileDeltaResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListFileDeltaResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListUploadedPartsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListUploadedPartResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListUploadedPartResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class MoveFileModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: MoveFileResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: MoveFileResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class TokenModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: RefreshOfficeEditTokenResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: RefreshOfficeEditTokenResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ScanFileMetaModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ScanFileMetaResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ScanFileMetaResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class SearchFileModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: SearchFileResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: SearchFileResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateFileModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateFileMetaResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateFileMetaResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CreateShareModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateShareResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateShareResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class DeleteShareModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetShareModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetShareResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetShareResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListShareModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListShareResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListShareResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateShareModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateShareResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateShareResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CancelShareLinkModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CreateShareLinkModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateShareLinkResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateShareLinkResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetShareLinkModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: BaseShareLinkResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: BaseShareLinkResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetShareByAnonymousModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetShareLinkByAnonymousResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetShareLinkByAnonymousResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetShareIdModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetShareLinkIDResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetShareLinkIDResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetShareTokenModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetShareLinkTokenResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetShareLinkTokenResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListShareLinkModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListShareLinkResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListShareLinkResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateShareLinkModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateShareLinkResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateShareLinkResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CreateGroupModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateGroupResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateGroupResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class DeleteGroupModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: DeleteGroupResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: DeleteGroupResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetGroupModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetGroupResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetGroupResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListGroupModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListGroupResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListGroupResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class SearchGroupModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: SearchGroupResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: SearchGroupResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateGroupModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateGroupResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateGroupResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CreateMembershipModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateMembershipResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateMembershipResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class DeleteMembershipModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: DeleteMembershipResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: DeleteMembershipResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetMembershipModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetMembershipResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetMembershipResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class HasMemberModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: HasMembershipResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: HasMembershipResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListDirectChildMembershipsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListDirectChildMembershipsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListDirectChildMembershipsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListDirectMembershipsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListDirectParentMembershipsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListDirectParentMembershipsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListDirectParentMembershipsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListDirectParentMembershipsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListDirectParentMembershipsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateMembershipModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateMembershipResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateMembershipResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class AddUserToSubdomainModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CreateUserModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateUserResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateUserResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class DeleteUserModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetUserModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetUserResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetUserResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListUsersModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListUserResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListUserResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class RemoveUserFromSubdomainModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class SearchUserModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListUserResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListUserResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateUserModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateUserResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateUserResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class CreateStoryModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: CreateStoryResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: CreateStoryResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetPhotoCountModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetImageCountResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetImageCountResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class GetStoryDetailModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: GetStoryDetailResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: GetStoryDetailResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListAddressGroupsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListImageAddressGroupsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListImageAddressGroupsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListFacegroupsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListImageFaceGroupsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListImageFaceGroupsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListStoryModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListStoryResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListStoryResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ListTagsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ListImageTagsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ListImageTagsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class ParseKeywordsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: ParseKeywordsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: ParseKeywordsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class RemoveStoryImagesModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: RemoveStoryImagesResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: RemoveStoryImagesResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class SearchAddressGroupsModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: SearchImageAddressGroupsResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: SearchImageAddressGroupsResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+export class UpdateFacegroupInfoModel extends $tea.Model {
+  headers?: { [key: string]: string };
+  body: UpdateFaceGroupInfoResponse;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      body: 'body',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      body: UpdateFaceGroupInfoResponse,
     };
   }
 
@@ -700,6 +2553,168 @@ export class AccountTokenRequest extends $tea.Model {
 /**
  * 
  */
+export class ActionDetail extends $tea.Model {
+  create?: CreateDetail;
+  delete?: DeleteDetail;
+  edit?: EditDetail;
+  move?: MoveDetail;
+  rename?: RenameDetail;
+  restore?: RestoreDetail;
+  trash?: TrashDetail;
+  static names(): { [key: string]: string } {
+    return {
+      create: 'create',
+      delete: 'delete',
+      edit: 'edit',
+      move: 'move',
+      rename: 'rename',
+      restore: 'restore',
+      trash: 'trash',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      create: CreateDetail,
+      delete: DeleteDetail,
+      edit: EditDetail,
+      move: MoveDetail,
+      rename: RenameDetail,
+      restore: RestoreDetail,
+      trash: TrashDetail,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class Actor extends $tea.Model {
+  aliUser?: ActorAliUser;
+  anonymousUser?: ActorAnonymousUser;
+  system?: ActorSystem;
+  user?: ActorUser;
+  static names(): { [key: string]: string } {
+    return {
+      aliUser: 'ali_user',
+      anonymousUser: 'anonymous_user',
+      system: 'system',
+      user: 'user',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      aliUser: ActorAliUser,
+      anonymousUser: ActorAnonymousUser,
+      system: ActorSystem,
+      user: ActorUser,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ActorAliUser extends $tea.Model {
+  aliUserId?: string;
+  aliUserType?: string;
+  static names(): { [key: string]: string } {
+    return {
+      aliUserId: 'ali_user_id',
+      aliUserType: 'ali_user_type',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      aliUserId: 'string',
+      aliUserType: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ActorAnonymousUser extends $tea.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ActorSystem extends $tea.Model {
+  eventType?: string;
+  static names(): { [key: string]: string } {
+    return {
+      eventType: 'event_type',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      eventType: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ActorUser extends $tea.Model {
+  userId?: string;
+  userName?: string;
+  static names(): { [key: string]: string } {
+    return {
+      userId: 'user_id',
+      userName: 'user_name',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      userId: 'string',
+      userName: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class AddStoreRequest extends $tea.Model {
   basePath?: string;
   bucket?: string;
@@ -858,6 +2873,28 @@ export class AuthorizeRequest extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class BaseAdditionDataRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Base file response
  */
 export class BaseCCPFileResponse extends $tea.Model {
@@ -982,6 +3019,80 @@ export class BaseCCPFileResponse extends $tea.Model {
 }
 
 /**
+ * complete file request
+ */
+export class BaseCompleteFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  partInfoList?: UploadPartInfo[];
+  shareId?: string;
+  uploadId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      partInfoList: 'part_info_list',
+      shareId: 'share_id',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
+      uploadId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * create file request
+ */
+export class BaseCreateFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  contentMd5?: string;
+  contentType?: string;
+  name: string;
+  partInfoList?: UploadPartInfo[];
+  size?: number;
+  type: string;
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+      contentMd5: 'content_md5',
+      contentType: 'content_type',
+      name: 'name',
+      partInfoList: 'part_info_list',
+      size: 'size',
+      type: 'type',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      contentMd5: 'string',
+      contentType: 'string',
+      name: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      size: 'number',
+      type: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Base drive response
  */
 export class BaseDriveResponse extends $tea.Model {
@@ -1083,6 +3194,71 @@ export class BaseFileAnonymousResponse extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class BaseFileProcessRequest extends $tea.Model {
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取文件上传URL
+ */
+export class BaseGetUploadUrlRequest extends $tea.Model {
+  contentMd5?: string;
+  driveId?: string;
+  partInfoList?: UploadPartInfo[];
+  shareId?: string;
+  uploadId: string;
+  static names(): { [key: string]: string } {
+    return {
+      contentMd5: 'content_md5',
+      driveId: 'drive_id',
+      partInfoList: 'part_info_list',
+      shareId: 'share_id',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      contentMd5: 'string',
+      driveId: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
+      uploadId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Base file response
  */
 export class BaseHostingFileResponse extends $tea.Model {
@@ -1168,6 +3344,86 @@ export class BaseHostingFileResponse extends $tea.Model {
 }
 
 /**
+ * Base image process
+ */
+export class BaseImageProcessRequest extends $tea.Model {
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * list file request
+ */
+export class BaseListFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  limit?: number;
+  marker?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      limit: 'limit',
+      marker: 'marker',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      limit: 'number',
+      marker: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 
  */
 export class BaseMediaResponse extends $tea.Model {
@@ -1220,6 +3476,34 @@ export class BaseMediaResponse extends $tea.Model {
 }
 
 /**
+ * 文件移动请求
+ */
+export class BaseMoveFileRequest extends $tea.Model {
+  driveId: string;
+  newName?: string;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      newName: 'new_name',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      newName: 'string',
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * list_share_link response
  */
 export class BaseShareLinkResponse extends $tea.Model {
@@ -1241,6 +3525,7 @@ export class BaseShareLinkResponse extends $tea.Model {
   sharePolicy?: string;
   sharePwd?: string;
   shareUrl?: string;
+  status?: string;
   updatedAt?: string;
   static names(): { [key: string]: string } {
     return {
@@ -1262,6 +3547,7 @@ export class BaseShareLinkResponse extends $tea.Model {
       sharePolicy: 'share_policy',
       sharePwd: 'share_pwd',
       shareUrl: 'share_url',
+      status: 'status',
       updatedAt: 'updated_at',
     };
   }
@@ -1286,6 +3572,7 @@ export class BaseShareLinkResponse extends $tea.Model {
       sharePolicy: 'string',
       sharePwd: 'string',
       shareUrl: 'string',
+      status: 'string',
       updatedAt: 'string',
     };
   }
@@ -1366,6 +3653,34 @@ export class BaseShareResponse extends $tea.Model {
 }
 
 /**
+ * 批处理
+ */
+export class BatchRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  requests: BatchSubRequest[];
+  resource: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      requests: 'requests',
+      resource: 'resource',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      requests: { 'type': 'array', 'itemType': BatchSubRequest },
+      resource: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * batch operation response
  */
 export class BatchResponse extends $tea.Model {
@@ -1379,6 +3694,40 @@ export class BatchResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       responses: { 'type': 'array', 'itemType': BatchSubResponse },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class BatchSubRequest extends $tea.Model {
+  body?: {[key: string]: any};
+  headers?: {[key: string]: any};
+  id: string;
+  method: string;
+  url: string;
+  static names(): { [key: string]: string } {
+    return {
+      body: 'body',
+      headers: 'headers',
+      id: 'id',
+      method: 'method',
+      url: 'url',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      body: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      id: 'string',
+      method: 'string',
+      url: 'string',
     };
   }
 
@@ -1416,6 +3765,34 @@ export class BatchSubResponse extends $tea.Model {
 }
 
 /**
+ * 获取文件夹size信息
+ */
+export class CCPGetDirSizeInfoRequest extends $tea.Model {
+  driveId?: string;
+  fileId: string;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      fileId: 'file_id',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      fileId: 'string',
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 
  */
 export class CancelLinkRequest extends $tea.Model {
@@ -1432,6 +3809,31 @@ export class CancelLinkRequest extends $tea.Model {
     return {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       temporaryToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * cancel_share_link request
+ */
+export class CancelShareLinkRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      shareId: 'string',
     };
   }
 
@@ -1491,6 +3893,46 @@ export class CertInfo extends $tea.Model {
       certBody: 'string',
       certName: 'string',
       certPrivatekey: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 合并文件上传任务
+ */
+export class CompleteFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  fileId: string;
+  partInfoList?: UploadPartInfo[];
+  shareId?: string;
+  uploadId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      fileId: 'file_id',
+      partInfoList: 'part_info_list',
+      shareId: 'share_id',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      fileId: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
+      uploadId: 'string',
     };
   }
 
@@ -1655,6 +4097,64 @@ export class ConfirmLinkRequest extends $tea.Model {
 }
 
 /**
+ * 文件拷贝
+ */
+export class CopyFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  autoRename?: boolean;
+  batchId?: string;
+  driveId?: string;
+  fileId: string;
+  fileIdPath?: string;
+  newName?: string;
+  referer?: string;
+  shareId?: string;
+  toDriveId?: string;
+  toParentFileId: string;
+  toShareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      autoRename: 'auto_rename',
+      batchId: 'batch_id',
+      driveId: 'drive_id',
+      fileId: 'file_id',
+      fileIdPath: 'file_id_path',
+      newName: 'new_name',
+      referer: 'referer',
+      shareId: 'share_id',
+      toDriveId: 'to_drive_id',
+      toParentFileId: 'to_parent_file_id',
+      toShareId: 'to_share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      autoRename: 'boolean',
+      batchId: 'string',
+      driveId: 'string',
+      fileId: 'string',
+      fileIdPath: 'string',
+      newName: 'string',
+      referer: 'string',
+      shareId: 'string',
+      toDriveId: 'string',
+      toParentFileId: 'string',
+      toShareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 文件拷贝 response
  */
 export class CopyFileResponse extends $tea.Model {
@@ -1763,6 +4263,31 @@ export class CreateAppRequest extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class CreateDetail extends $tea.Model {
+  createType?: string;
+  srcFileId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      createType: 'create_type',
+      srcFileId: 'src_file_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createType: 'string',
+      srcFileId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * create domain request
  */
 export class CreateDomainRequest extends $tea.Model {
@@ -1854,6 +4379,67 @@ export class CreateDomainRequest extends $tea.Model {
 }
 
 /**
+ * create drive request
+ */
+export class CreateDriveRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  default?: boolean;
+  description?: string;
+  driveName: string;
+  driveType?: string;
+  encryptMode?: string;
+  location?: string;
+  owner: string;
+  ownerType: string;
+  relativePath?: string;
+  status?: string;
+  storeId?: string;
+  subdomainId?: string;
+  totalSize?: number;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      default: 'default',
+      description: 'description',
+      driveName: 'drive_name',
+      driveType: 'drive_type',
+      encryptMode: 'encrypt_mode',
+      location: 'location',
+      owner: 'owner',
+      ownerType: 'owner_type',
+      relativePath: 'relative_path',
+      status: 'status',
+      storeId: 'store_id',
+      subdomainId: 'subdomain_id',
+      totalSize: 'total_size',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      default: 'boolean',
+      description: 'string',
+      driveName: 'string',
+      driveType: 'string',
+      encryptMode: 'string',
+      location: 'string',
+      owner: 'string',
+      ownerType: 'string',
+      relativePath: 'string',
+      status: 'string',
+      storeId: 'string',
+      subdomainId: 'string',
+      totalSize: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Create drive response
  */
 export class CreateDriveResponse extends $tea.Model {
@@ -1870,6 +4456,115 @@ export class CreateDriveResponse extends $tea.Model {
     return {
       domainId: 'string',
       driveId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 创建文件
+ */
+export class CreateFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  autoRename?: boolean;
+  checkNameMode?: string;
+  contentHash?: string;
+  contentHashName?: string;
+  contentMd5?: string;
+  contentType?: string;
+  description?: string;
+  driveId?: string;
+  encryptMode?: string;
+  fileId?: string;
+  forceUploadToLocation?: boolean;
+  hidden?: boolean;
+  imageMediaMetadata?: ImageMediaMetadata;
+  labels?: string[];
+  lastUpdatedAt?: string;
+  location?: string;
+  meta?: string;
+  name: string;
+  parentFileId: string;
+  parentFileIdPath?: string;
+  partInfoList?: UploadPartInfo[];
+  preHash?: string;
+  shareId?: string;
+  size?: number;
+  streamsInfo?: {[key: string]: any};
+  type: string;
+  userMeta?: string;
+  videoMediaMetadata?: VideoMediaMetadata;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      autoRename: 'auto_rename',
+      checkNameMode: 'check_name_mode',
+      contentHash: 'content_hash',
+      contentHashName: 'content_hash_name',
+      contentMd5: 'content_md5',
+      contentType: 'content_type',
+      description: 'description',
+      driveId: 'drive_id',
+      encryptMode: 'encrypt_mode',
+      fileId: 'file_id',
+      forceUploadToLocation: 'force_upload_to_location',
+      hidden: 'hidden',
+      imageMediaMetadata: 'image_media_metadata',
+      labels: 'labels',
+      lastUpdatedAt: 'last_updated_at',
+      location: 'location',
+      meta: 'meta',
+      name: 'name',
+      parentFileId: 'parent_file_id',
+      parentFileIdPath: 'parent_file_id_path',
+      partInfoList: 'part_info_list',
+      preHash: 'pre_hash',
+      shareId: 'share_id',
+      size: 'size',
+      streamsInfo: 'streams_info',
+      type: 'type',
+      userMeta: 'user_meta',
+      videoMediaMetadata: 'video_media_metadata',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      autoRename: 'boolean',
+      checkNameMode: 'string',
+      contentHash: 'string',
+      contentHashName: 'string',
+      contentMd5: 'string',
+      contentType: 'string',
+      description: 'string',
+      driveId: 'string',
+      encryptMode: 'string',
+      fileId: 'string',
+      forceUploadToLocation: 'boolean',
+      hidden: 'boolean',
+      imageMediaMetadata: ImageMediaMetadata,
+      labels: { 'type': 'array', 'itemType': 'string' },
+      lastUpdatedAt: 'string',
+      location: 'string',
+      meta: 'string',
+      name: 'string',
+      parentFileId: 'string',
+      parentFileIdPath: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      preHash: 'string',
+      shareId: 'string',
+      size: 'number',
+      streamsInfo: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      type: 'string',
+      userMeta: 'string',
+      videoMediaMetadata: VideoMediaMetadata,
     };
   }
 
@@ -1940,6 +4635,58 @@ export class CreateFileResponse extends $tea.Model {
 }
 
 /**
+ * create_share_link request
+ */
+export class CreateShareLinkRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  description?: string;
+  driveId?: string;
+  expiration?: string;
+  fileId?: string;
+  fileIdList?: string[];
+  filePathList?: string[];
+  referer?: string;
+  shareName?: string;
+  sharePwd?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      description: 'description',
+      driveId: 'drive_id',
+      expiration: 'expiration',
+      fileId: 'file_id',
+      fileIdList: 'file_id_list',
+      filePathList: 'file_path_list',
+      referer: 'referer',
+      shareName: 'share_name',
+      sharePwd: 'share_pwd',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      description: 'string',
+      driveId: 'string',
+      expiration: 'string',
+      fileId: 'string',
+      fileIdList: { 'type': 'array', 'itemType': 'string' },
+      filePathList: { 'type': 'array', 'itemType': 'string' },
+      referer: 'string',
+      shareName: 'string',
+      sharePwd: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * create_share_link response
  */
 export class CreateShareLinkResponse extends $tea.Model {
@@ -1961,6 +4708,7 @@ export class CreateShareLinkResponse extends $tea.Model {
   sharePolicy?: string;
   sharePwd?: string;
   shareUrl?: string;
+  status?: string;
   updatedAt?: string;
   static names(): { [key: string]: string } {
     return {
@@ -1982,6 +4730,7 @@ export class CreateShareLinkResponse extends $tea.Model {
       sharePolicy: 'share_policy',
       sharePwd: 'share_pwd',
       shareUrl: 'share_url',
+      status: 'status',
       updatedAt: 'updated_at',
     };
   }
@@ -2006,7 +4755,63 @@ export class CreateShareLinkResponse extends $tea.Model {
       sharePolicy: 'string',
       sharePwd: 'string',
       shareUrl: 'string',
+      status: 'string',
       updatedAt: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * create share request
+ */
+export class CreateShareRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  description?: string;
+  driveId: string;
+  expiration?: string;
+  owner: string;
+  ownerType?: string;
+  permissions?: string[];
+  shareFileId?: string;
+  shareFilePath?: string;
+  shareName?: string;
+  sharePolicy?: SharePermissionPolicy[];
+  status?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      description: 'description',
+      driveId: 'drive_id',
+      expiration: 'expiration',
+      owner: 'owner',
+      ownerType: 'owner_type',
+      permissions: 'permissions',
+      shareFileId: 'share_file_id',
+      shareFilePath: 'share_file_path',
+      shareName: 'share_name',
+      sharePolicy: 'share_policy',
+      status: 'status',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      description: 'string',
+      driveId: 'string',
+      expiration: 'string',
+      owner: 'string',
+      ownerType: 'string',
+      permissions: { 'type': 'array', 'itemType': 'string' },
+      shareFileId: 'string',
+      shareFilePath: 'string',
+      shareName: 'string',
+      sharePolicy: { 'type': 'array', 'itemType': SharePermissionPolicy },
+      status: 'string',
     };
   }
 
@@ -2289,6 +5094,25 @@ export class DeleteDataCNameAndCertRequest extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class DeleteDetail extends $tea.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * delete domain request
  */
 export class DeleteDomainRequest extends $tea.Model {
@@ -2311,6 +5135,34 @@ export class DeleteDomainRequest extends $tea.Model {
 }
 
 /**
+ * Delete drive request
+ */
+export class DeleteDriveRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  subdomainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * delete drive response
  */
 export class DeleteDriveResponse extends $tea.Model {
@@ -2321,6 +5173,43 @@ export class DeleteDriveResponse extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 删除文件请求
+ */
+export class DeleteFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId?: string;
+  fileId?: string;
+  fileIdPath?: string;
+  permanently?: boolean;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+      fileId: 'file_id',
+      fileIdPath: 'file_id_path',
+      permanently: 'permanently',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+      fileId: 'string',
+      fileIdPath: 'string',
+      permanently: 'boolean',
+      shareId: 'string',
     };
   }
 
@@ -2361,6 +5250,34 @@ export class DeleteFileResponse extends $tea.Model {
 }
 
 /**
+ * 批量删除文件请求
+ */
+export class DeleteFilesRequest extends $tea.Model {
+  driveId?: string;
+  fileIdList: string[];
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      fileIdList: 'file_id_list',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      fileIdList: { 'type': 'array', 'itemType': 'string' },
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 批量删除文件 response
  */
 export class DeleteFilesResponse extends $tea.Model {
@@ -2380,6 +5297,31 @@ export class DeleteFilesResponse extends $tea.Model {
       deletedFileIdList: { 'type': 'array', 'itemType': 'string' },
       domainId: 'string',
       driveId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * delete share request
+ */
+export class DeleteShareRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  shareId: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      shareId: 'string',
     };
   }
 
@@ -2423,6 +5365,108 @@ export class DeviceAuthorizeRequest extends $tea.Model {
 }
 
 /**
+ * 下载文件请求body
+ */
+export class DownloadRequest extends $tea.Model {
+  DriveID?: string;
+  FileID: string;
+  ImageThumbnailProcess?: string;
+  ShareID?: string;
+  VideoThumbnailProcess?: string;
+  additionData?: {[key: string]: any};
+  fileIdPath?: string;
+  location?: string;
+  referer?: string;
+  signToken?: string;
+  static names(): { [key: string]: string } {
+    return {
+      DriveID: 'DriveID',
+      FileID: 'FileID',
+      ImageThumbnailProcess: 'ImageThumbnailProcess',
+      ShareID: 'ShareID',
+      VideoThumbnailProcess: 'VideoThumbnailProcess',
+      additionData: 'addition_data',
+      fileIdPath: 'file_id_path',
+      location: 'location',
+      referer: 'referer',
+      signToken: 'sign_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      DriveID: 'string',
+      FileID: 'string',
+      ImageThumbnailProcess: 'string',
+      ShareID: 'string',
+      VideoThumbnailProcess: 'string',
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      fileIdPath: 'string',
+      location: 'string',
+      referer: 'string',
+      signToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class EditDetail extends $tea.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class FileActivity extends $tea.Model {
+  actors?: Actor[];
+  primaryActionDetail?: ActionDetail;
+  targets?: Target[];
+  timeRange?: TimeRange;
+  timestamp?: string;
+  static names(): { [key: string]: string } {
+    return {
+      actors: 'actors',
+      primaryActionDetail: 'primary_action_detail',
+      targets: 'targets',
+      timeRange: 'time_range',
+      timestamp: 'timestamp',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      actors: { 'type': 'array', 'itemType': Actor },
+      primaryActionDetail: ActionDetail,
+      targets: { 'type': 'array', 'itemType': Target },
+      timeRange: TimeRange,
+      timestamp: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * the file op info
  */
 export class FileDeltaResponse extends $tea.Model {
@@ -2445,6 +5489,43 @@ export class FileDeltaResponse extends $tea.Model {
       file: BaseCCPFileResponse,
       fileId: 'string',
       op: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class FileStreamInfo extends $tea.Model {
+  contentHash?: string;
+  contentHashName?: string;
+  contentMd5: string;
+  partInfoList?: UploadPartInfo[];
+  preHash?: string;
+  size: number;
+  static names(): { [key: string]: string } {
+    return {
+      contentHash: 'content_hash',
+      contentHashName: 'content_hash_name',
+      contentMd5: 'content_md5',
+      partInfoList: 'part_info_list',
+      preHash: 'pre_hash',
+      size: 'size',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      contentHash: 'string',
+      contentHashName: 'string',
+      contentMd5: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      preHash: 'string',
+      size: 'number',
     };
   }
 
@@ -2520,6 +5601,31 @@ export class GetAppRequest extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       appId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取异步人去信息
+ */
+export class GetAsyncTaskRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  asyncTaskId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      asyncTaskId: 'async_task_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      asyncTaskId: 'string',
     };
   }
 
@@ -2697,6 +5803,34 @@ export class GetDataCNameInfoRequest extends $tea.Model {
 }
 
 /**
+ * Get default drive request
+ */
+export class GetDefaultDriveRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  subdomainId?: string;
+  userId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      subdomainId: 'subdomain_id',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      subdomainId: 'string',
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 获取文件夹size信息
  */
 export class GetDirSizeInfoResponse extends $tea.Model {
@@ -2747,6 +5881,58 @@ export class GetDomainRequest extends $tea.Model {
 }
 
 /**
+ * 获取文件下载地址的请求body
+ */
+export class GetDownloadUrlRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  expireSec?: number;
+  fileId: string;
+  fileIdPath?: string;
+  fileName?: string;
+  location?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      expireSec: 'expire_sec',
+      fileId: 'file_id',
+      fileIdPath: 'file_id_path',
+      fileName: 'file_name',
+      location: 'location',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      expireSec: 'number',
+      fileId: 'string',
+      fileIdPath: 'string',
+      fileName: 'string',
+      location: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 获取download url response
  */
 export class GetDownloadUrlResponse extends $tea.Model {
@@ -2775,6 +5961,34 @@ export class GetDownloadUrlResponse extends $tea.Model {
       size: 'number',
       streamsUrl: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Get drive request
+ */
+export class GetDriveRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  subdomainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+      subdomainId: 'string',
     };
   }
 
@@ -2848,6 +6062,58 @@ export class GetDriveResponse extends $tea.Model {
 }
 
 /**
+ * 根据路径获取 File 接口 body
+ */
+export class GetFileByPathRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  driveId: string;
+  filePath?: string;
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  referer?: string;
+  signToken?: string;
+  urlExpireSec?: number;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      referer: 'referer',
+      signToken: 'sign_token',
+      urlExpireSec: 'url_expire_sec',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      filePath: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      referer: 'string',
+      signToken: 'string',
+      urlExpireSec: 'number',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 根据路径获取文件元数据response
  */
 export class GetFileByPathResponse extends $tea.Model {
@@ -2878,6 +6144,7 @@ export class GetFileByPathResponse extends $tea.Model {
   status?: string;
   streamsInfo?: {[key: string]: any};
   thumbnail?: string;
+  trashed?: boolean;
   trashedAt?: string;
   type?: string;
   updatedAt?: string;
@@ -2915,6 +6182,7 @@ export class GetFileByPathResponse extends $tea.Model {
       status: 'status',
       streamsInfo: 'streams_info',
       thumbnail: 'thumbnail',
+      trashed: 'trashed',
       trashedAt: 'trashed_at',
       type: 'type',
       updatedAt: 'updated_at',
@@ -2955,6 +6223,7 @@ export class GetFileByPathResponse extends $tea.Model {
       status: 'string',
       streamsInfo: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       thumbnail: 'string',
+      trashed: 'boolean',
       trashedAt: 'string',
       type: 'string',
       updatedAt: 'string',
@@ -2963,6 +6232,70 @@ export class GetFileByPathResponse extends $tea.Model {
       userMeta: 'string',
       videoMediaMetadata: VideoMediaResponse,
       videoPreviewMetadata: VideoPreviewResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取文件元数据
+ */
+export class GetFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  fields?: string;
+  fileId: string;
+  fileIdPath?: string;
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  location?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  urlExpireSec?: number;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      fields: 'fields',
+      fileId: 'file_id',
+      fileIdPath: 'file_id_path',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      location: 'location',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+      urlExpireSec: 'url_expire_sec',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      fields: 'string',
+      fileId: 'string',
+      fileIdPath: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      location: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+      urlExpireSec: 'number',
+      videoThumbnailProcess: 'string',
     };
   }
 
@@ -3002,6 +6335,7 @@ export class GetFileResponse extends $tea.Model {
   status?: string;
   streamsInfo?: {[key: string]: any};
   thumbnail?: string;
+  trashed?: boolean;
   trashedAt?: string;
   type?: string;
   updatedAt?: string;
@@ -3039,6 +6373,7 @@ export class GetFileResponse extends $tea.Model {
       status: 'status',
       streamsInfo: 'streams_info',
       thumbnail: 'thumbnail',
+      trashed: 'trashed',
       trashedAt: 'trashed_at',
       type: 'type',
       updatedAt: 'updated_at',
@@ -3079,6 +6414,7 @@ export class GetFileResponse extends $tea.Model {
       status: 'string',
       streamsInfo: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       thumbnail: 'string',
+      trashed: 'boolean',
       trashedAt: 'string',
       type: 'string',
       updatedAt: 'string',
@@ -3087,6 +6423,31 @@ export class GetFileResponse extends $tea.Model {
       userMeta: 'string',
       videoMediaMetadata: VideoMediaResponse,
       videoPreviewMetadata: VideoPreviewResponse,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取最新游标
+ */
+export class GetLastCursorRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
     };
   }
 
@@ -3143,6 +6504,34 @@ export class GetLinkInfoByUserIDRequest extends $tea.Model {
 }
 
 /**
+ * get_media_play_url request
+ */
+export class GetMediaPlayURLRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  fileId: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+      fileId: 'file_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+      fileId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * get_media_play_url response
  */
 export class GetMediaPlayURLResponse extends $tea.Model {
@@ -3156,6 +6545,68 @@ export class GetMediaPlayURLResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * GetOfficeEditUrlOption 权限控制
+ */
+export class GetOfficeEditUrlOption extends $tea.Model {
+  copy?: boolean;
+  readonly?: boolean;
+  static names(): { [key: string]: string } {
+    return {
+      copy: 'copy',
+      readonly: 'readonly',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      copy: 'boolean',
+      readonly: 'boolean',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取office文档在线编辑地址
+ */
+export class GetOfficeEditUrlRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  driveId: string;
+  fileId: string;
+  option?: GetOfficeEditUrlOption;
+  watermark?: GetOfficeEditUrlWatermark;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      fileId: 'file_id',
+      option: 'option',
+      watermark: 'watermark',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      fileId: 'string',
+      option: GetOfficeEditUrlOption,
+      watermark: GetOfficeEditUrlWatermark,
     };
   }
 
@@ -3184,6 +6635,83 @@ export class GetOfficeEditUrlResponse extends $tea.Model {
       editUrl: 'string',
       officeAccessToken: 'string',
       officeRefreshToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * GetOfficeEditUrlWatermark 水印配置
+ */
+export class GetOfficeEditUrlWatermark extends $tea.Model {
+  fillstyle?: string;
+  font?: string;
+  horizontal?: number;
+  rotate?: number;
+  type?: number;
+  value?: string;
+  vertical?: number;
+  static names(): { [key: string]: string } {
+    return {
+      fillstyle: 'fillstyle',
+      font: 'font',
+      horizontal: 'horizontal',
+      rotate: 'rotate',
+      type: 'type',
+      value: 'value',
+      vertical: 'vertical',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      fillstyle: 'string',
+      font: 'string',
+      horizontal: 'number',
+      rotate: 'number',
+      type: 'number',
+      value: 'string',
+      vertical: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取office文档预览地址
+ */
+export class GetOfficePreviewUrlRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  fileId: string;
+  referer?: string;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      fileId: 'file_id',
+      referer: 'referer',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      fileId: 'string',
+      referer: 'string',
+      shareId: 'string',
     };
   }
 
@@ -3274,15 +6802,18 @@ export class GetPublicKeyResponse extends $tea.Model {
  * 
  */
 export class GetRPVerifyResultRequest extends $tea.Model {
+  duringVerifyProcess?: boolean;
   userId: string;
   static names(): { [key: string]: string } {
     return {
+      duringVerifyProcess: 'during_verify_process',
       userId: 'user_id',
     };
   }
 
   static types(): { [key: string]: any } {
     return {
+      duringVerifyProcess: 'boolean',
       userId: 'string',
     };
   }
@@ -3306,6 +6837,31 @@ export class GetRPVerifyTokenRequest extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * get_share_link_by_anonymous request
+ */
+export class GetShareLinkByAnonymousRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      shareId: 'string',
     };
   }
 
@@ -3355,6 +6911,31 @@ export class GetShareLinkByAnonymousResponse extends $tea.Model {
 }
 
 /**
+ * get_share_id request
+ */
+export class GetShareLinkIDRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  shareMsg?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      shareMsg: 'share_msg',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      shareMsg: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * get_share_id response
  */
 export class GetShareLinkIDResponse extends $tea.Model {
@@ -3369,6 +6950,65 @@ export class GetShareLinkIDResponse extends $tea.Model {
 
   static types(): { [key: string]: any } {
     return {
+      shareId: 'string',
+      sharePwd: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * get_share request
+ */
+export class GetShareLinkRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * get_share_token request
+ */
+export class GetShareLinkTokenRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  referer?: string;
+  shareId?: string;
+  sharePwd?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      referer: 'referer',
+      shareId: 'share_id',
+      sharePwd: 'share_pwd',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      referer: 'string',
       shareId: 'string',
       sharePwd: 'string',
     };
@@ -3399,6 +7039,31 @@ export class GetShareLinkTokenResponse extends $tea.Model {
       expireTime: 'string',
       expiresIn: 'number',
       shareToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * get share request
+ */
+export class GetShareRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      shareId: 'string',
     };
   }
 
@@ -3478,6 +7143,46 @@ export class GetShareResponse extends $tea.Model {
 }
 
 /**
+ * 获取文件上传URL
+ */
+export class GetUploadUrlRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  contentMd5?: string;
+  driveId?: string;
+  fileId: string;
+  partInfoList?: UploadPartInfo[];
+  shareId?: string;
+  uploadId: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      contentMd5: 'content_md5',
+      driveId: 'drive_id',
+      fileId: 'file_id',
+      partInfoList: 'part_info_list',
+      shareId: 'share_id',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      contentMd5: 'string',
+      driveId: 'string',
+      fileId: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
+      uploadId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Get UploadUrl Response
  */
 export class GetUploadUrlResponse extends $tea.Model {
@@ -3506,6 +7211,49 @@ export class GetUploadUrlResponse extends $tea.Model {
       fileId: 'string',
       partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
       uploadId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取视频雪碧图地址的请求body
+ */
+export class GetVideoPreviewSpriteURLRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  expireSec?: number;
+  fileId: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      expireSec: 'expire_sec',
+      fileId: 'file_id',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      expireSec: 'number',
+      fileId: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
     };
   }
 
@@ -3555,6 +7303,55 @@ export class GetVideoPreviewSpriteURLResponse extends $tea.Model {
 }
 
 /**
+ * 获取视频文件播放地址的请求body
+ */
+export class GetVideoPreviewURLRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  audioTemplateId?: string;
+  driveId?: string;
+  expireSec?: number;
+  fileId: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  templateId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      audioTemplateId: 'audio_template_id',
+      driveId: 'drive_id',
+      expireSec: 'expire_sec',
+      fileId: 'file_id',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+      templateId: 'template_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      audioTemplateId: 'string',
+      driveId: 'string',
+      expireSec: 'number',
+      fileId: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+      templateId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 获取视频文件播放 url response
  */
 export class GetVideoPreviewURLResponse extends $tea.Model {
@@ -3568,6 +7365,46 @@ export class GetVideoPreviewURLResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       previewUrl: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * complete file request
+ */
+export class HostingCompleteFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  filePath?: string;
+  forbidOverwrite?: boolean;
+  partInfoList?: UploadPartInfo[];
+  shareId?: string;
+  uploadId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      forbidOverwrite: 'forbid_overwrite',
+      partInfoList: 'part_info_list',
+      shareId: 'share_id',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      filePath: 'string',
+      forbidOverwrite: 'boolean',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
+      uploadId: 'string',
     };
   }
 
@@ -3665,6 +7502,55 @@ export class HostingCompleteFileResponse extends $tea.Model {
 }
 
 /**
+ * copy file request
+ */
+export class HostingCopyFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  filePath: string;
+  newName?: string;
+  overwrite?: boolean;
+  referer?: string;
+  shareId?: string;
+  toDriveId?: string;
+  toParentFilePath: string;
+  toShareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      newName: 'new_name',
+      overwrite: 'overwrite',
+      referer: 'referer',
+      shareId: 'share_id',
+      toDriveId: 'to_drive_id',
+      toParentFilePath: 'to_parent_file_path',
+      toShareId: 'to_share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      filePath: 'string',
+      newName: 'string',
+      overwrite: 'boolean',
+      referer: 'string',
+      shareId: 'string',
+      toDriveId: 'string',
+      toParentFilePath: 'string',
+      toShareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 文件拷贝 response
  */
 export class HostingCopyFileResponse extends $tea.Model {
@@ -3690,6 +7576,58 @@ export class HostingCopyFileResponse extends $tea.Model {
       driveId: 'string',
       filePath: 'string',
       shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * create file request
+ */
+export class HostingCreateFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  contentMd5?: string;
+  contentType?: string;
+  driveId?: string;
+  forbidOverwrite?: boolean;
+  name: string;
+  parentFilePath: string;
+  partInfoList?: UploadPartInfo[];
+  shareId?: string;
+  size?: number;
+  type: string;
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+      contentMd5: 'content_md5',
+      contentType: 'content_type',
+      driveId: 'drive_id',
+      forbidOverwrite: 'forbid_overwrite',
+      name: 'name',
+      parentFilePath: 'parent_file_path',
+      partInfoList: 'part_info_list',
+      shareId: 'share_id',
+      size: 'size',
+      type: 'type',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      contentMd5: 'string',
+      contentType: 'string',
+      driveId: 'string',
+      forbidOverwrite: 'boolean',
+      name: 'string',
+      parentFilePath: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
+      size: 'number',
+      type: 'string',
     };
   }
 
@@ -3730,6 +7668,37 @@ export class HostingCreateFileResponse extends $tea.Model {
       shareId: 'string',
       type: 'string',
       uploadId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 删除文件请求
+ */
+export class HostingDeleteFileRequest extends $tea.Model {
+  driveId?: string;
+  filePath: string;
+  permanently?: boolean;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      permanently: 'permanently',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      filePath: 'string',
+      permanently: 'boolean',
+      shareId: 'string',
     };
   }
 
@@ -3804,6 +7773,49 @@ export class HostingDeleteFilesResponse extends $tea.Model {
 }
 
 /**
+ * 获取文件下载地址的请求body
+ */
+export class HostingGetDownloadUrlRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  expireSec?: number;
+  fileName?: string;
+  filePath: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      expireSec: 'expire_sec',
+      fileName: 'file_name',
+      filePath: 'file_path',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      expireSec: 'number',
+      fileName: 'string',
+      filePath: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 获取download url response
  */
 export class HostingGetDownloadUrlResponse extends $tea.Model {
@@ -3823,6 +7835,55 @@ export class HostingGetDownloadUrlResponse extends $tea.Model {
       expiration: 'string',
       method: 'string',
       url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取文件元数据
+ */
+export class HostingGetFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  filePath: string;
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  urlExpireSec?: number;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+      urlExpireSec: 'url_expire_sec',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      filePath: 'string',
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+      urlExpireSec: 'number',
+      videoThumbnailProcess: 'string',
     };
   }
 
@@ -3917,6 +7978,40 @@ export class HostingGetFileResponse extends $tea.Model {
 }
 
 /**
+ * 获取文件安全地址的请求body
+ */
+export class HostingGetSecureUrlRequest extends $tea.Model {
+  driveId?: string;
+  expireSec?: number;
+  filePath: string;
+  secureIp?: string;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      expireSec: 'expire_sec',
+      filePath: 'file_path',
+      secureIp: 'secure_ip',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      expireSec: 'number',
+      filePath: 'string',
+      secureIp: 'string',
+      shareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 获取secure url response
  */
 export class HostingGetSecureUrlResponse extends $tea.Model {
@@ -3933,6 +8028,43 @@ export class HostingGetSecureUrlResponse extends $tea.Model {
     return {
       expiration: 'string',
       url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取文件上传URL
+ */
+export class HostingGetUploadUrlRequest extends $tea.Model {
+  contentMd5?: string;
+  driveId?: string;
+  filePath: string;
+  partInfoList?: UploadPartInfo[];
+  shareId?: string;
+  uploadId: string;
+  static names(): { [key: string]: string } {
+    return {
+      contentMd5: 'content_md5',
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      partInfoList: 'part_info_list',
+      shareId: 'share_id',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      contentMd5: 'string',
+      driveId: 'string',
+      filePath: 'string',
+      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
+      shareId: 'string',
+      uploadId: 'string',
     };
   }
 
@@ -3979,6 +8111,64 @@ export class HostingGetUploadUrlResponse extends $tea.Model {
 }
 
 /**
+ * list file request
+ */
+export class HostingListFileRequest extends $tea.Model {
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  limit?: number;
+  marker?: string;
+  parentFilePath: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  urlExpireSec?: number;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      limit: 'limit',
+      marker: 'marker',
+      parentFilePath: 'parent_file_path',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+      urlExpireSec: 'url_expire_sec',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      limit: 'number',
+      marker: 'string',
+      parentFilePath: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+      urlExpireSec: 'number',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * List file response
  */
 export class HostingListFileResponse extends $tea.Model {
@@ -3995,6 +8185,43 @@ export class HostingListFileResponse extends $tea.Model {
     return {
       items: { 'type': 'array', 'itemType': BaseHostingFileResponse },
       nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 列举uploadID对应的已上传分片
+ */
+export class HostingListUploadedPartRequest extends $tea.Model {
+  driveId?: string;
+  filePath: string;
+  limit?: number;
+  partNumberMarker?: number;
+  shareId?: string;
+  uploadId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      limit: 'limit',
+      partNumberMarker: 'part_number_marker',
+      shareId: 'share_id',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      filePath: 'string',
+      limit: 'number',
+      partNumberMarker: 'number',
+      shareId: 'string',
+      uploadId: 'string',
     };
   }
 
@@ -4026,6 +8253,43 @@ export class HostingListUploadedPartResponse extends $tea.Model {
       nextPartNumberMarker: 'string',
       uploadId: 'string',
       uploadedParts: { 'type': 'array', 'itemType': UploadPartInfo },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 文件移动请求
+ */
+export class HostingMoveFileRequest extends $tea.Model {
+  driveId?: string;
+  filePath?: string;
+  newName?: string;
+  overwrite?: boolean;
+  shareId?: string;
+  toParentFilePath?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      newName: 'new_name',
+      overwrite: 'overwrite',
+      shareId: 'share_id',
+      toParentFilePath: 'to_parent_file_path',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      filePath: 'string',
+      newName: 'string',
+      overwrite: 'boolean',
+      shareId: 'string',
+      toParentFilePath: 'string',
     };
   }
 
@@ -4179,6 +8443,31 @@ export class HostingUpdateFileMetaResponse extends $tea.Model {
 }
 
 /**
+ * 获取视频DRM License
+ */
+export class HostingVideoDRMLicenseRequest extends $tea.Model {
+  drmType: string;
+  licenseRequest: string;
+  static names(): { [key: string]: string } {
+    return {
+      drmType: 'drmType',
+      licenseRequest: 'licenseRequest',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      drmType: 'string',
+      licenseRequest: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * DRM License response
  */
 export class HostingVideoDRMLicenseResponse extends $tea.Model {
@@ -4198,6 +8487,37 @@ export class HostingVideoDRMLicenseResponse extends $tea.Model {
       data: 'string',
       deviceInfo: 'string',
       states: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取视频分辨率列表
+ */
+export class HostingVideoDefinitionRequest extends $tea.Model {
+  driveId?: string;
+  filePath: string;
+  protectionScheme?: string;
+  shareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      protectionScheme: 'protection_scheme',
+      shareId: 'share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      filePath: 'string',
+      protectionScheme: 'string',
+      shareId: 'string',
     };
   }
 
@@ -4232,6 +8552,86 @@ export class HostingVideoDefinitionResponse extends $tea.Model {
 }
 
 /**
+ * 获取视频的m3u8文件
+ */
+export class HostingVideoM3U8Request extends $tea.Model {
+  definition?: string;
+  driveId?: string;
+  expireSec?: number;
+  filePath: string;
+  protectionScheme?: string;
+  shareId?: string;
+  signToken: string;
+  static names(): { [key: string]: string } {
+    return {
+      definition: 'definition',
+      driveId: 'drive_id',
+      expireSec: 'expire_sec',
+      filePath: 'file_path',
+      protectionScheme: 'protection_scheme',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      definition: 'string',
+      driveId: 'string',
+      expireSec: 'number',
+      filePath: 'string',
+      protectionScheme: 'string',
+      shareId: 'string',
+      signToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 启动视频转码请求
+ */
+export class HostingVideoTranscodeRequest extends $tea.Model {
+  driveId?: string;
+  filePath: string;
+  hlsTime?: number;
+  protectionScheme?: string;
+  remarks?: string;
+  shareId?: string;
+  transcode?: boolean;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      filePath: 'file_path',
+      hlsTime: 'hls_time',
+      protectionScheme: 'protection_scheme',
+      remarks: 'remarks',
+      shareId: 'share_id',
+      transcode: 'transcode',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      filePath: 'string',
+      hlsTime: 'number',
+      protectionScheme: 'string',
+      remarks: 'string',
+      shareId: 'string',
+      transcode: 'boolean',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 转码接口response
  */
 export class HostingVideoTranscodeResponse extends $tea.Model {
@@ -4251,6 +8651,31 @@ export class HostingVideoTranscodeResponse extends $tea.Model {
       definitionList: { 'type': 'array', 'itemType': 'string' },
       duration: 'number',
       hlsTime: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ImageMediaMetadata extends $tea.Model {
+  height?: number;
+  width?: number;
+  static names(): { [key: string]: string } {
+    return {
+      height: 'height',
+      width: 'width',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      height: 'number',
+      width: 'number',
     };
   }
 
@@ -4531,6 +8956,58 @@ export class ListAppsRequest extends $tea.Model {
 }
 
 /**
+ * list_file_by_anonymous request
+ */
+export class ListByAnonymousRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  limit?: number;
+  marker?: string;
+  parentFileId: string;
+  referer?: string;
+  shareId: string;
+  signToken?: string;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      limit: 'limit',
+      marker: 'marker',
+      parentFileId: 'parent_file_id',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      limit: 'number',
+      marker: 'string',
+      parentFileId: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * list_file_by_anonymous response
  */
 export class ListByAnonymousResponse extends $tea.Model {
@@ -4581,6 +9058,43 @@ export class ListDomainsRequest extends $tea.Model {
 }
 
 /**
+ * List drive request
+ */
+export class ListDriveRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  limit?: number;
+  marker?: string;
+  owner?: string;
+  ownerType?: string;
+  subdomainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      limit: 'limit',
+      marker: 'marker',
+      owner: 'owner',
+      ownerType: 'owner_type',
+      subdomainId: 'subdomain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      limit: 'number',
+      marker: 'string',
+      owner: 'string',
+      ownerType: 'string',
+      subdomainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * list drive response
  */
 export class ListDriveResponse extends $tea.Model {
@@ -4597,6 +9111,193 @@ export class ListDriveResponse extends $tea.Model {
     return {
       items: { 'type': 'array', 'itemType': BaseDriveResponse },
       nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ListFileActivityRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  driveId?: string;
+  fileId?: string;
+  limit?: number;
+  marker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      fileId: 'file_id',
+      limit: 'limit',
+      marker: 'marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      fileId: 'string',
+      limit: 'number',
+      marker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * list file activity response
+ */
+export class ListFileActivityResponse extends $tea.Model {
+  activities?: FileActivity[];
+  nextMarker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      activities: 'activities',
+      nextMarker: 'next_marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      activities: { 'type': 'array', 'itemType': FileActivity },
+      nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 列举文件
+ */
+export class ListFileByCustomIndexKeyRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  Starred?: boolean;
+  additionData?: {[key: string]: any};
+  category?: string;
+  customIndexKey: string;
+  driveId?: string;
+  encryptMode?: string;
+  fields?: string;
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  limit?: number;
+  marker?: string;
+  orderDirection?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  status?: string;
+  type?: string;
+  urlExpireSec?: number;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      Starred: 'Starred',
+      additionData: 'addition_data',
+      category: 'category',
+      customIndexKey: 'custom_index_key',
+      driveId: 'drive_id',
+      encryptMode: 'encrypt_mode',
+      fields: 'fields',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      limit: 'limit',
+      marker: 'marker',
+      orderDirection: 'order_direction',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+      status: 'status',
+      type: 'type',
+      urlExpireSec: 'url_expire_sec',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      Starred: 'boolean',
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      category: 'string',
+      customIndexKey: 'string',
+      driveId: 'string',
+      encryptMode: 'string',
+      fields: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      limit: 'number',
+      marker: 'string',
+      orderDirection: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+      status: 'string',
+      type: 'string',
+      urlExpireSec: 'number',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取增量文件操作记录
+ */
+export class ListFileDeltaRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  cursor?: string;
+  driveId: string;
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  limit?: number;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      cursor: 'cursor',
+      driveId: 'drive_id',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      limit: 'limit',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      cursor: 'string',
+      driveId: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      limit: 'number',
+      videoThumbnailProcess: 'string',
     };
   }
 
@@ -4634,6 +9335,97 @@ export class ListFileDeltaResponse extends $tea.Model {
 }
 
 /**
+ * 列举文件
+ */
+export class ListFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  all?: boolean;
+  category?: string;
+  driveId?: string;
+  fields?: string;
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  limit?: number;
+  location?: string;
+  marker?: string;
+  orderBy?: string;
+  orderDirection?: string;
+  parentFileId: string;
+  parentFileIdPath?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  starred?: boolean;
+  status?: string;
+  type?: string;
+  urlExpireSec?: number;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      all: 'all',
+      category: 'category',
+      driveId: 'drive_id',
+      fields: 'fields',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      limit: 'limit',
+      location: 'location',
+      marker: 'marker',
+      orderBy: 'order_by',
+      orderDirection: 'order_direction',
+      parentFileId: 'parent_file_id',
+      parentFileIdPath: 'parent_file_id_path',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+      starred: 'starred',
+      status: 'status',
+      type: 'type',
+      urlExpireSec: 'url_expire_sec',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      all: 'boolean',
+      category: 'string',
+      driveId: 'string',
+      fields: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      limit: 'number',
+      location: 'string',
+      marker: 'string',
+      orderBy: 'string',
+      orderDirection: 'string',
+      parentFileId: 'string',
+      parentFileIdPath: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+      starred: 'boolean',
+      status: 'string',
+      type: 'string',
+      urlExpireSec: 'number',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * List file response
  */
 export class ListFileResponse extends $tea.Model {
@@ -4650,6 +9442,74 @@ export class ListFileResponse extends $tea.Model {
     return {
       items: { 'type': 'array', 'itemType': BaseCCPFileResponse },
       nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * List my drive request
+ */
+export class ListMyDriveRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  limit?: number;
+  marker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      limit: 'limit',
+      marker: 'marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      limit: 'number',
+      marker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * list_share_link request
+ */
+export class ListShareLinkRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  creator?: string;
+  includeCancelled?: boolean;
+  limit?: number;
+  marker?: string;
+  orderBy?: string;
+  orderDirection?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      creator: 'creator',
+      includeCancelled: 'include_cancelled',
+      limit: 'limit',
+      marker: 'marker',
+      orderBy: 'order_by',
+      orderDirection: 'order_direction',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      creator: 'string',
+      includeCancelled: 'boolean',
+      limit: 'number',
+      marker: 'string',
+      orderBy: 'string',
+      orderDirection: 'string',
     };
   }
 
@@ -4684,6 +9544,49 @@ export class ListShareLinkResponse extends $tea.Model {
 }
 
 /**
+ * list share request
+ */
+export class ListShareRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  creator?: string;
+  driveId?: string;
+  limit?: number;
+  marker?: string;
+  owner?: string;
+  ownerType?: string;
+  shareFilePath?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      creator: 'creator',
+      driveId: 'drive_id',
+      limit: 'limit',
+      marker: 'marker',
+      owner: 'owner',
+      ownerType: 'owner_type',
+      shareFilePath: 'share_file_path',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      creator: 'string',
+      driveId: 'string',
+      limit: 'number',
+      marker: 'string',
+      owner: 'string',
+      ownerType: 'string',
+      shareFilePath: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * List share response
  */
 export class ListShareResponse extends $tea.Model {
@@ -4709,6 +9612,40 @@ export class ListShareResponse extends $tea.Model {
 }
 
 /**
+ * list store file
+ */
+export class ListStoreFileRequest extends $tea.Model {
+  limit?: number;
+  marker?: string;
+  parentFilePath?: string;
+  storeId?: string;
+  type?: string;
+  static names(): { [key: string]: string } {
+    return {
+      limit: 'limit',
+      marker: 'marker',
+      parentFilePath: 'parent_file_path',
+      storeId: 'store_id',
+      type: 'type',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      limit: 'number',
+      marker: 'string',
+      parentFilePath: 'string',
+      storeId: 'string',
+      type: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * List storage file
  */
 export class ListStoreFileResponse extends $tea.Model {
@@ -4725,6 +9662,28 @@ export class ListStoreFileResponse extends $tea.Model {
     return {
       items: { 'type': 'array', 'itemType': StoreFile },
       nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * list storage file
+ */
+export class ListStoreRequest extends $tea.Model {
+  domainId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      domainId: 'domain_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      domainId: 'string',
     };
   }
 
@@ -4769,6 +9728,49 @@ export class ListStoresRequest extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       domainId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 列举uploadID对应的已上传分片
+ */
+export class ListUploadedPartRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  fileId: string;
+  fileIdPath?: string;
+  limit?: number;
+  partNumberMarker?: number;
+  shareId?: string;
+  uploadId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+      fileId: 'file_id',
+      fileIdPath: 'file_id_path',
+      limit: 'limit',
+      partNumberMarker: 'part_number_marker',
+      shareId: 'share_id',
+      uploadId: 'upload_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+      fileId: 'string',
+      fileIdPath: 'string',
+      limit: 'number',
+      partNumberMarker: 'number',
+      shareId: 'string',
+      uploadId: 'string',
     };
   }
 
@@ -5087,6 +10089,83 @@ export class MobileSendSmsCodeResponse extends $tea.Model {
 }
 
 /**
+ * 
+ */
+export class MoveDetail extends $tea.Model {
+  srcParentFileId?: string;
+  tgtParentFileId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      srcParentFileId: 'src_parent_file_id',
+      tgtParentFileId: 'tgt_parent_file_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      srcParentFileId: 'string',
+      tgtParentFileId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 文件移动请求
+ */
+export class MoveFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  autoRename?: boolean;
+  categoryList?: string[];
+  driveId: string;
+  fileId: string;
+  fileIdPath?: string;
+  newName?: string;
+  shareId?: string;
+  toDriveId?: string;
+  toParentFileId: string;
+  toShareId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      autoRename: 'auto_rename',
+      categoryList: 'category_list',
+      driveId: 'drive_id',
+      fileId: 'file_id',
+      fileIdPath: 'file_id_path',
+      newName: 'new_name',
+      shareId: 'share_id',
+      toDriveId: 'to_drive_id',
+      toParentFileId: 'to_parent_file_id',
+      toShareId: 'to_share_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      autoRename: 'boolean',
+      categoryList: { 'type': 'array', 'itemType': 'string' },
+      driveId: 'string',
+      fileId: 'string',
+      fileIdPath: 'string',
+      newName: 'string',
+      shareId: 'string',
+      toDriveId: 'string',
+      toParentFileId: 'string',
+      toShareId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 文件移动 response
  */
 export class MoveFileResponse extends $tea.Model {
@@ -5109,6 +10188,34 @@ export class MoveFileResponse extends $tea.Model {
       domainId: 'string',
       driveId: 'string',
       fileId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * play_media request
+ */
+export class PlayMediaRequest extends $tea.Model {
+  AuthKey: string;
+  DriveID: string;
+  FileID: string;
+  static names(): { [key: string]: string } {
+    return {
+      AuthKey: 'AuthKey',
+      DriveID: 'DriveID',
+      FileID: 'FileID',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      AuthKey: 'string',
+      DriveID: 'string',
+      FileID: 'string',
     };
   }
 
@@ -5202,6 +10309,40 @@ export class RateLimit extends $tea.Model {
 }
 
 /**
+ * 刷新office文档在线编辑凭证
+ */
+export class RefreshOfficeEditTokenRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  location?: string;
+  officeAccessToken: string;
+  officeRefreshToken: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      location: 'location',
+      officeAccessToken: 'office_access_token',
+      officeRefreshToken: 'office_refresh_token',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      location: 'string',
+      officeAccessToken: 'string',
+      officeRefreshToken: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 刷新office文档在线编辑凭证 response
  */
 export class RefreshOfficeEditTokenResponse extends $tea.Model {
@@ -5254,6 +10395,50 @@ export class RemoveStoreRequest extends $tea.Model {
 /**
  * 
  */
+export class RenameDetail extends $tea.Model {
+  newName?: string;
+  oldName?: string;
+  static names(): { [key: string]: string } {
+    return {
+      newName: 'new_name',
+      oldName: 'old_name',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      newName: 'string',
+      oldName: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class RestoreDetail extends $tea.Model {
+  static names(): { [key: string]: string } {
+    return {
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class RevokeRequest extends $tea.Model {
   headers?: { [key: string]: string };
   appId: string;
@@ -5280,6 +10465,55 @@ export class RevokeRequest extends $tea.Model {
 }
 
 /**
+ * 全量获取file元信息的请求body
+ */
+export class ScanFileMetaRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  category?: string;
+  driveId: string;
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  limit?: number;
+  marker?: string;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      category: 'category',
+      driveId: 'drive_id',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      limit: 'limit',
+      marker: 'marker',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      category: 'string',
+      driveId: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      limit: 'number',
+      marker: 'string',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * scan file meta response
  */
 export class ScanFileMetaResponse extends $tea.Model {
@@ -5296,6 +10530,73 @@ export class ScanFileMetaResponse extends $tea.Model {
     return {
       items: { 'type': 'array', 'itemType': BaseCCPFileResponse },
       nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 搜索文件元数据
+ */
+export class SearchFileRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  additionData?: {[key: string]: any};
+  driveId: string;
+  imageCroppingAspectRatios?: string[];
+  imageThumbnailProcess?: string;
+  imageUrlProcess?: string;
+  limit?: number;
+  location?: string;
+  marker?: string;
+  orderBy?: string;
+  query?: string;
+  referer?: string;
+  returnTotalCount?: boolean;
+  signToken?: string;
+  urlExpireSec?: number;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      additionData: 'addition_data',
+      driveId: 'drive_id',
+      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      imageUrlProcess: 'image_url_process',
+      limit: 'limit',
+      location: 'location',
+      marker: 'marker',
+      orderBy: 'order_by',
+      query: 'query',
+      referer: 'referer',
+      returnTotalCount: 'return_total_count',
+      signToken: 'sign_token',
+      urlExpireSec: 'url_expire_sec',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
+      driveId: 'string',
+      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
+      imageThumbnailProcess: 'string',
+      imageUrlProcess: 'string',
+      limit: 'number',
+      location: 'string',
+      marker: 'string',
+      orderBy: 'string',
+      query: 'string',
+      referer: 'string',
+      returnTotalCount: 'boolean',
+      signToken: 'string',
+      urlExpireSec: 'number',
+      videoThumbnailProcess: 'string',
     };
   }
 
@@ -5521,6 +10822,40 @@ export class SharePermissionPolicy extends $tea.Model {
 /**
  * 
  */
+export class SimpleStreamInfo extends $tea.Model {
+  crc64Hash?: string;
+  downloadUrl?: string;
+  size?: number;
+  thumbnail?: string;
+  url?: string;
+  static names(): { [key: string]: string } {
+    return {
+      crc64Hash: 'crc64_hash',
+      downloadUrl: 'download_url',
+      size: 'size',
+      thumbnail: 'thumbnail',
+      url: 'url',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      crc64Hash: 'string',
+      downloadUrl: 'string',
+      size: 'number',
+      thumbnail: 'string',
+      url: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class Store extends $tea.Model {
   accelerateEndpoint?: string;
   basePath?: string;
@@ -5692,40 +11027,6 @@ export class StoreItemResponse extends $tea.Model {
 /**
  * 
  */
-export class StreamInfo extends $tea.Model {
-  crc64Hash?: string;
-  downloadUrl?: string;
-  size?: number;
-  thumbnail?: string;
-  url?: string;
-  static names(): { [key: string]: string } {
-    return {
-      crc64Hash: 'crc64_hash',
-      downloadUrl: 'download_url',
-      size: 'size',
-      thumbnail: 'thumbnail',
-      url: 'url',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      crc64Hash: 'string',
-      downloadUrl: 'string',
-      size: 'number',
-      thumbnail: 'string',
-      url: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
 export class StreamUploadInfo extends $tea.Model {
   location?: string;
   partInfoList?: UploadPartInfo[];
@@ -5803,6 +11104,59 @@ export class SystemTag extends $tea.Model {
 /**
  * 
  */
+export class Target extends $tea.Model {
+  fileId?: string;
+  fileName?: string;
+  fileType?: string;
+  static names(): { [key: string]: string } {
+    return {
+      fileId: 'file_id',
+      fileName: 'file_name',
+      fileType: 'file_type',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      fileId: 'string',
+      fileName: 'string',
+      fileType: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class TimeRange extends $tea.Model {
+  endTime?: string;
+  startTime?: string;
+  static names(): { [key: string]: string } {
+    return {
+      endTime: 'end_time',
+      startTime: 'start_time',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      endTime: 'string',
+      startTime: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class TokenRequest extends $tea.Model {
   Assertion?: string;
   ClientID: string;
@@ -5838,6 +11192,72 @@ export class TokenRequest extends $tea.Model {
       RedirectUri: 'string',
       RefreshToken: 'string',
       SubDomainID: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class TrashDetail extends $tea.Model {
+  parentFileId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      parentFileId: 'parent_file_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      parentFileId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * UCGetObjectInfoByObjectKeyRequest
+ */
+export class UCGetObjectInfoByObjectKeyRequest extends $tea.Model {
+  objectKey?: string;
+  static names(): { [key: string]: string } {
+    return {
+      objectKey: 'object_key',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      objectKey: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * UCGetObjectInfoBySha1Request
+ */
+export class UCGetObjectInfoBySha1Request extends $tea.Model {
+  sha1?: string;
+  static names(): { [key: string]: string } {
+    return {
+      sha1: 'sha1',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      sha1: 'string',
     };
   }
 
@@ -5972,6 +11392,52 @@ export class UpdateDomainRequest extends $tea.Model {
 }
 
 /**
+ * Update drive request
+ */
+export class UpdateDriveRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  description?: string;
+  driveId: string;
+  driveName?: string;
+  encryptDataAccess?: boolean;
+  encryptMode?: string;
+  status?: string;
+  subdomainId?: string;
+  totalSize?: number;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      description: 'description',
+      driveId: 'drive_id',
+      driveName: 'drive_name',
+      encryptDataAccess: 'encrypt_data_access',
+      encryptMode: 'encrypt_mode',
+      status: 'status',
+      subdomainId: 'subdomain_id',
+      totalSize: 'total_size',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      description: 'string',
+      driveId: 'string',
+      driveName: 'string',
+      encryptDataAccess: 'boolean',
+      encryptMode: 'string',
+      status: 'string',
+      subdomainId: 'string',
+      totalSize: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Update drive response
  */
 export class UpdateDriveResponse extends $tea.Model {
@@ -6027,6 +11493,76 @@ export class UpdateDriveResponse extends $tea.Model {
       storeId: 'string',
       totalSize: 'number',
       usedSize: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 更新文件元数据
+ */
+export class UpdateFileMetaRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  checkNameMode?: string;
+  customIndexKey?: string;
+  description?: string;
+  driveId: string;
+  encryptMode?: string;
+  fileId: string;
+  fileIdPath?: string;
+  hidden?: boolean;
+  labels?: string[];
+  meta?: string;
+  name?: string;
+  referer?: string;
+  shareId?: string;
+  signToken?: string;
+  starred?: boolean;
+  userMeta?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      checkNameMode: 'check_name_mode',
+      customIndexKey: 'custom_index_key',
+      description: 'description',
+      driveId: 'drive_id',
+      encryptMode: 'encrypt_mode',
+      fileId: 'file_id',
+      fileIdPath: 'file_id_path',
+      hidden: 'hidden',
+      labels: 'labels',
+      meta: 'meta',
+      name: 'name',
+      referer: 'referer',
+      shareId: 'share_id',
+      signToken: 'sign_token',
+      starred: 'starred',
+      userMeta: 'user_meta',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      checkNameMode: 'string',
+      customIndexKey: 'string',
+      description: 'string',
+      driveId: 'string',
+      encryptMode: 'string',
+      fileId: 'string',
+      fileIdPath: 'string',
+      hidden: 'boolean',
+      labels: { 'type': 'array', 'itemType': 'string' },
+      meta: 'string',
+      name: 'string',
+      referer: 'string',
+      shareId: 'string',
+      signToken: 'string',
+      starred: 'boolean',
+      userMeta: 'string',
     };
   }
 
@@ -6160,6 +11696,46 @@ export class UpdateFileMetaResponse extends $tea.Model {
 }
 
 /**
+ * update_share_link request
+ */
+export class UpdateShareLinkRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  description?: string;
+  expiration?: string;
+  shareId?: string;
+  shareName?: string;
+  sharePwd?: string;
+  status?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      description: 'description',
+      expiration: 'expiration',
+      shareId: 'share_id',
+      shareName: 'share_name',
+      sharePwd: 'share_pwd',
+      status: 'status',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      description: 'string',
+      expiration: 'string',
+      shareId: 'string',
+      shareName: 'string',
+      sharePwd: 'string',
+      status: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * update_share_link response
  */
 export class UpdateShareLinkResponse extends $tea.Model {
@@ -6181,6 +11757,7 @@ export class UpdateShareLinkResponse extends $tea.Model {
   sharePolicy?: string;
   sharePwd?: string;
   shareUrl?: string;
+  status?: string;
   updatedAt?: string;
   static names(): { [key: string]: string } {
     return {
@@ -6202,6 +11779,7 @@ export class UpdateShareLinkResponse extends $tea.Model {
       sharePolicy: 'share_policy',
       sharePwd: 'share_pwd',
       shareUrl: 'share_url',
+      status: 'status',
       updatedAt: 'updated_at',
     };
   }
@@ -6226,7 +11804,51 @@ export class UpdateShareLinkResponse extends $tea.Model {
       sharePolicy: 'string',
       sharePwd: 'string',
       shareUrl: 'string',
+      status: 'string',
       updatedAt: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * update share request
+ */
+export class UpdateShareRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  description?: string;
+  expiration?: string;
+  permissions?: string[];
+  shareId: string;
+  shareName?: string;
+  sharePolicy?: SharePermissionPolicy[];
+  status?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      description: 'description',
+      expiration: 'expiration',
+      permissions: 'permissions',
+      shareId: 'share_id',
+      shareName: 'share_name',
+      sharePolicy: 'share_policy',
+      status: 'status',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      description: 'string',
+      expiration: 'string',
+      permissions: { 'type': 'array', 'itemType': 'string' },
+      shareId: 'string',
+      shareName: 'string',
+      sharePolicy: { 'type': 'array', 'itemType': SharePermissionPolicy },
+      status: 'string',
     };
   }
 
@@ -6546,6 +12168,28 @@ export class VideoMediaAudioStream extends $tea.Model {
 /**
  * 
  */
+export class VideoMediaMetadata extends $tea.Model {
+  duration?: string;
+  static names(): { [key: string]: string } {
+    return {
+      duration: 'duration',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      duration: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class VideoMediaResponse extends $tea.Model {
   addressLine?: string;
   city?: string;
@@ -6824,160 +12468,6 @@ export class VideoPreviewTranscode extends $tea.Model {
     return {
       status: 'string',
       templateId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class AdminListStoresModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListStoresResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListStoresResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CreateSubdomainModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: CreateSubdomainResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CreateSubdomainResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class DeleteSubdomainModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: DeleteSubdomainResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: DeleteSubdomainResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetSubdomainModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetSubdomainResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetSubdomainResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListSubdomainsModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListSubdomainsResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListSubdomainsResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class UpdateSubdomainModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: UpdateSubdomainResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: UpdateSubdomainResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetUserAccessTokenModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: AccessTokenResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: AccessTokenResponse,
     };
   }
 
@@ -7881,6 +13371,49 @@ export class GetUserAccessTokenRequest extends $tea.Model {
 /**
  * 
  */
+export class GetUserAccessTokenResponse extends $tea.Model {
+  accessToken: string;
+  defaultDriveId: string;
+  expireTime: string;
+  expiresIn: number;
+  refreshToken?: string;
+  role: string;
+  tokenType: string;
+  userId: string;
+  static names(): { [key: string]: string } {
+    return {
+      accessToken: 'access_token',
+      defaultDriveId: 'default_drive_id',
+      expireTime: 'expire_time',
+      expiresIn: 'expires_in',
+      refreshToken: 'refresh_token',
+      role: 'role',
+      tokenType: 'token_type',
+      userId: 'user_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      accessToken: 'string',
+      defaultDriveId: 'string',
+      expireTime: 'string',
+      expiresIn: 'number',
+      refreshToken: 'string',
+      role: 'string',
+      tokenType: 'string',
+      userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
 export class ListAppsResponse extends $tea.Model {
   items: GetAppResponse[];
   nextMarker?: string;
@@ -8301,4571 +13834,6 @@ export class UpdateSubdomainResponse extends $tea.Model {
   }
 }
 
-export class GetAsyncTaskInfoModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetAsyncTaskResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetAsyncTaskResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class BatchOperationModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: BatchResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: BatchResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CreateDriveModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: CreateDriveResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CreateDriveResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class DeleteDriveModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetDriveModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetDriveResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetDriveResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetDefaultDriveModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetDriveResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetDriveResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListDrivesModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListDriveResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListDriveResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListMyDrivesModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListDriveResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListDriveResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class UpdateDriveModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: UpdateDriveResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: UpdateDriveResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CompleteFileModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: CompleteFileResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CompleteFileResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CopyFileModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: CopyFileResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CopyFileResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CreateFileModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: CreateFileResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CreateFileResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class DeleteFileModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: DeleteFileResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: DeleteFileResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetFileModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetFileResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetFileResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetFileByPathModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetFileByPathResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetFileByPathResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetDownloadUrlModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetDownloadUrlResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetDownloadUrlResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetLastCursorModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetLastCursorResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetLastCursorResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetMediaPlayUrlModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetMediaPlayURLResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetMediaPlayURLResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetOfficeEditUrlModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetOfficeEditUrlResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetOfficeEditUrlResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetOfficePreviewUrlModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetOfficePreviewUrlResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetOfficePreviewUrlResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetUploadUrlModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetUploadUrlResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetUploadUrlResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetVideoPreviewSpriteUrlModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetVideoPreviewSpriteURLResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetVideoPreviewSpriteURLResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetVideoPreviewUrlModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetVideoPreviewURLResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetVideoPreviewURLResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListFileModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListFileResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListFileResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListFileByAnonymousModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListByAnonymousResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListByAnonymousResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListFileByCustomIndexKeyModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListFileResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListFileResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListFileDeltaModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListFileDeltaResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListFileDeltaResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListUploadedPartsModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListUploadedPartResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListUploadedPartResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class MoveFileModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: MoveFileResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: MoveFileResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class TokenModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: RefreshOfficeEditTokenResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: RefreshOfficeEditTokenResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ScanFileMetaModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ScanFileMetaResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ScanFileMetaResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class SearchFileModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: SearchFileResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: SearchFileResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class UpdateFileModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: UpdateFileMetaResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: UpdateFileMetaResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CreateShareModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: CreateShareResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CreateShareResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class DeleteShareModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetShareModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetShareResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetShareResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListShareModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListShareResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListShareResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class UpdateShareModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: UpdateShareResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: UpdateShareResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CancelShareLinkModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CreateShareLinkModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: CreateShareLinkResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CreateShareLinkResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetShareByAnonymousModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetShareLinkByAnonymousResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetShareLinkByAnonymousResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetShareIdModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetShareLinkIDResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetShareLinkIDResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetShareTokenModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetShareLinkTokenResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetShareLinkTokenResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListShareLinkModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListShareLinkResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListShareLinkResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class UpdateShareLinkModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: UpdateShareLinkResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: UpdateShareLinkResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * complete file request
- */
-export class BaseCompleteFileRequest extends $tea.Model {
-  additionData?: {[key: string]: any};
-  driveId?: string;
-  partInfoList?: UploadPartInfo[];
-  shareId?: string;
-  uploadId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      additionData: 'addition_data',
-      driveId: 'drive_id',
-      partInfoList: 'part_info_list',
-      shareId: 'share_id',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      driveId: 'string',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      shareId: 'string',
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * create file request
- */
-export class BaseCreateFileRequest extends $tea.Model {
-  additionData?: {[key: string]: any};
-  contentMd5?: string;
-  contentType?: string;
-  name: string;
-  partInfoList?: UploadPartInfo[];
-  size?: number;
-  type: string;
-  static names(): { [key: string]: string } {
-    return {
-      additionData: 'addition_data',
-      contentMd5: 'content_md5',
-      contentType: 'content_type',
-      name: 'name',
-      partInfoList: 'part_info_list',
-      size: 'size',
-      type: 'type',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      contentMd5: 'string',
-      contentType: 'string',
-      name: 'string',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      size: 'number',
-      type: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class BaseFileProcessRequest extends $tea.Model {
-  imageCroppingAspectRatios?: string[];
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class BaseFileRequest extends $tea.Model {
-  additionData?: {[key: string]: any};
-  static names(): { [key: string]: string } {
-    return {
-      additionData: 'addition_data',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件上传URL
- */
-export class BaseGetUploadUrlRequest extends $tea.Model {
-  contentMd5?: string;
-  driveId?: string;
-  partInfoList?: UploadPartInfo[];
-  shareId?: string;
-  uploadId: string;
-  static names(): { [key: string]: string } {
-    return {
-      contentMd5: 'content_md5',
-      driveId: 'drive_id',
-      partInfoList: 'part_info_list',
-      shareId: 'share_id',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      contentMd5: 'string',
-      driveId: 'string',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      shareId: 'string',
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Base image process
- */
-export class BaseImageProcessRequest extends $tea.Model {
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * list file request
- */
-export class BaseListFileRequest extends $tea.Model {
-  additionData?: {[key: string]: any};
-  driveId?: string;
-  imageCroppingAspectRatios?: string[];
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  limit?: number;
-  marker?: string;
-  referer?: string;
-  shareId?: string;
-  signToken?: string;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      additionData: 'addition_data',
-      driveId: 'drive_id',
-      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      limit: 'limit',
-      marker: 'marker',
-      referer: 'referer',
-      shareId: 'share_id',
-      signToken: 'sign_token',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      driveId: 'string',
-      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      limit: 'number',
-      marker: 'string',
-      referer: 'string',
-      shareId: 'string',
-      signToken: 'string',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 文件移动请求
- */
-export class BaseMoveFileRequest extends $tea.Model {
-  driveId: string;
-  newName?: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      newName: 'new_name',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      newName: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 批处理
- */
-export class BatchRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  requests: BatchSubRequest[];
-  resource: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      requests: 'requests',
-      resource: 'resource',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      requests: { 'type': 'array', 'itemType': BatchSubRequest },
-      resource: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class BatchSubRequest extends $tea.Model {
-  body?: {[key: string]: any};
-  headers?: {[key: string]: any};
-  id: string;
-  method: string;
-  url: string;
-  static names(): { [key: string]: string } {
-    return {
-      body: 'body',
-      headers: 'headers',
-      id: 'id',
-      method: 'method',
-      url: 'url',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      body: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      id: 'string',
-      method: 'string',
-      url: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件夹size信息
- */
-export class CCPGetDirSizeInfoRequest extends $tea.Model {
-  driveId?: string;
-  fileId: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      fileId: 'file_id',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      fileId: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * cancel_share_link request
- */
-export class CancelShareLinkRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 合并文件上传任务
- */
-export class CompleteFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  driveId?: string;
-  fileId: string;
-  partInfoList?: UploadPartInfo[];
-  shareId?: string;
-  uploadId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      driveId: 'drive_id',
-      fileId: 'file_id',
-      partInfoList: 'part_info_list',
-      shareId: 'share_id',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      driveId: 'string',
-      fileId: 'string',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      shareId: 'string',
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 文件拷贝
- */
-export class CopyFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  autoRename?: boolean;
-  driveId?: string;
-  fileId: string;
-  fileIdPath?: string;
-  newName?: string;
-  shareId?: string;
-  toDriveId?: string;
-  toParentFileId: string;
-  toShareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      autoRename: 'auto_rename',
-      driveId: 'drive_id',
-      fileId: 'file_id',
-      fileIdPath: 'file_id_path',
-      newName: 'new_name',
-      shareId: 'share_id',
-      toDriveId: 'to_drive_id',
-      toParentFileId: 'to_parent_file_id',
-      toShareId: 'to_share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      autoRename: 'boolean',
-      driveId: 'string',
-      fileId: 'string',
-      fileIdPath: 'string',
-      newName: 'string',
-      shareId: 'string',
-      toDriveId: 'string',
-      toParentFileId: 'string',
-      toShareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * create drive request
- */
-export class CreateDriveRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  default?: boolean;
-  description?: string;
-  driveName: string;
-  driveType?: string;
-  encryptMode?: string;
-  location?: string;
-  owner: string;
-  ownerType: string;
-  relativePath?: string;
-  status?: string;
-  storeId?: string;
-  subdomainId?: string;
-  totalSize?: number;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      default: 'default',
-      description: 'description',
-      driveName: 'drive_name',
-      driveType: 'drive_type',
-      encryptMode: 'encrypt_mode',
-      location: 'location',
-      owner: 'owner',
-      ownerType: 'owner_type',
-      relativePath: 'relative_path',
-      status: 'status',
-      storeId: 'store_id',
-      subdomainId: 'subdomain_id',
-      totalSize: 'total_size',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      default: 'boolean',
-      description: 'string',
-      driveName: 'string',
-      driveType: 'string',
-      encryptMode: 'string',
-      location: 'string',
-      owner: 'string',
-      ownerType: 'string',
-      relativePath: 'string',
-      status: 'string',
-      storeId: 'string',
-      subdomainId: 'string',
-      totalSize: 'number',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 创建文件
- */
-export class CreateFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  autoRename?: boolean;
-  checkNameMode?: string;
-  contentHash?: string;
-  contentHashName?: string;
-  contentMd5?: string;
-  contentType?: string;
-  description?: string;
-  driveId?: string;
-  encryptMode?: string;
-  fileId?: string;
-  forceUploadToLocation?: boolean;
-  hidden?: boolean;
-  imageMediaMetadata?: ImageMediaMetadata;
-  labels?: string[];
-  lastUpdatedAt?: string;
-  location?: string;
-  meta?: string;
-  name: string;
-  parentFileId: string;
-  parentFileIdPath?: string;
-  partInfoList?: UploadPartInfo[];
-  preHash?: string;
-  shareId?: string;
-  size?: number;
-  streamsInfo?: {[key: string]: any};
-  type: string;
-  userMeta?: string;
-  videoMediaMetadata?: VideoMediaMetadata;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      autoRename: 'auto_rename',
-      checkNameMode: 'check_name_mode',
-      contentHash: 'content_hash',
-      contentHashName: 'content_hash_name',
-      contentMd5: 'content_md5',
-      contentType: 'content_type',
-      description: 'description',
-      driveId: 'drive_id',
-      encryptMode: 'encrypt_mode',
-      fileId: 'file_id',
-      forceUploadToLocation: 'force_upload_to_location',
-      hidden: 'hidden',
-      imageMediaMetadata: 'image_media_metadata',
-      labels: 'labels',
-      lastUpdatedAt: 'last_updated_at',
-      location: 'location',
-      meta: 'meta',
-      name: 'name',
-      parentFileId: 'parent_file_id',
-      parentFileIdPath: 'parent_file_id_path',
-      partInfoList: 'part_info_list',
-      preHash: 'pre_hash',
-      shareId: 'share_id',
-      size: 'size',
-      streamsInfo: 'streams_info',
-      type: 'type',
-      userMeta: 'user_meta',
-      videoMediaMetadata: 'video_media_metadata',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      autoRename: 'boolean',
-      checkNameMode: 'string',
-      contentHash: 'string',
-      contentHashName: 'string',
-      contentMd5: 'string',
-      contentType: 'string',
-      description: 'string',
-      driveId: 'string',
-      encryptMode: 'string',
-      fileId: 'string',
-      forceUploadToLocation: 'boolean',
-      hidden: 'boolean',
-      imageMediaMetadata: ImageMediaMetadata,
-      labels: { 'type': 'array', 'itemType': 'string' },
-      lastUpdatedAt: 'string',
-      location: 'string',
-      meta: 'string',
-      name: 'string',
-      parentFileId: 'string',
-      parentFileIdPath: 'string',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      preHash: 'string',
-      shareId: 'string',
-      size: 'number',
-      streamsInfo: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      type: 'string',
-      userMeta: 'string',
-      videoMediaMetadata: VideoMediaMetadata,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * create_share_link request
- */
-export class CreateShareLinkRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  description?: string;
-  driveId: string;
-  expiration: string;
-  fileId: string;
-  fileIdList: string[];
-  filePathList: string[];
-  shareName?: string;
-  sharePwd?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      description: 'description',
-      driveId: 'drive_id',
-      expiration: 'expiration',
-      fileId: 'file_id',
-      fileIdList: 'file_id_list',
-      filePathList: 'file_path_list',
-      shareName: 'share_name',
-      sharePwd: 'share_pwd',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      description: 'string',
-      driveId: 'string',
-      expiration: 'string',
-      fileId: 'string',
-      fileIdList: { 'type': 'array', 'itemType': 'string' },
-      filePathList: { 'type': 'array', 'itemType': 'string' },
-      shareName: 'string',
-      sharePwd: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * create share request
- */
-export class CreateShareRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  description?: string;
-  driveId: string;
-  expiration?: string;
-  owner: string;
-  ownerType?: string;
-  permissions?: string[];
-  shareFileId?: string;
-  shareFilePath?: string;
-  shareName?: string;
-  sharePolicy?: SharePermissionPolicy[];
-  status?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      description: 'description',
-      driveId: 'drive_id',
-      expiration: 'expiration',
-      owner: 'owner',
-      ownerType: 'owner_type',
-      permissions: 'permissions',
-      shareFileId: 'share_file_id',
-      shareFilePath: 'share_file_path',
-      shareName: 'share_name',
-      sharePolicy: 'share_policy',
-      status: 'status',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      description: 'string',
-      driveId: 'string',
-      expiration: 'string',
-      owner: 'string',
-      ownerType: 'string',
-      permissions: { 'type': 'array', 'itemType': 'string' },
-      shareFileId: 'string',
-      shareFilePath: 'string',
-      shareName: 'string',
-      sharePolicy: { 'type': 'array', 'itemType': SharePermissionPolicy },
-      status: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Delete drive request
- */
-export class DeleteDriveRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  subdomainId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      subdomainId: 'subdomain_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      subdomainId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 删除文件请求
- */
-export class DeleteFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId?: string;
-  fileId?: string;
-  fileIdPath?: string;
-  permanently?: boolean;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      fileId: 'file_id',
-      fileIdPath: 'file_id_path',
-      permanently: 'permanently',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      fileId: 'string',
-      fileIdPath: 'string',
-      permanently: 'boolean',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 批量删除文件请求
- */
-export class DeleteFilesRequest extends $tea.Model {
-  driveId?: string;
-  fileIdList: string[];
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      fileIdList: 'file_id_list',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      fileIdList: { 'type': 'array', 'itemType': 'string' },
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * delete share request
- */
-export class DeleteShareRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  shareId: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 下载文件请求body
- */
-export class DownloadRequest extends $tea.Model {
-  DriveID?: string;
-  FileID: string;
-  ImageThumbnailProcess?: string;
-  ShareID?: string;
-  VideoThumbnailProcess?: string;
-  fileIdPath?: string;
-  location?: string;
-  referer?: string;
-  signToken?: string;
-  static names(): { [key: string]: string } {
-    return {
-      DriveID: 'DriveID',
-      FileID: 'FileID',
-      ImageThumbnailProcess: 'ImageThumbnailProcess',
-      ShareID: 'ShareID',
-      VideoThumbnailProcess: 'VideoThumbnailProcess',
-      fileIdPath: 'file_id_path',
-      location: 'location',
-      referer: 'referer',
-      signToken: 'sign_token',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      DriveID: 'string',
-      FileID: 'string',
-      ImageThumbnailProcess: 'string',
-      ShareID: 'string',
-      VideoThumbnailProcess: 'string',
-      fileIdPath: 'string',
-      location: 'string',
-      referer: 'string',
-      signToken: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取异步人去信息
- */
-export class GetAsyncTaskRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  asyncTaskId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      asyncTaskId: 'async_task_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      asyncTaskId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Get default drive request
- */
-export class GetDefaultDriveRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  subdomainId?: string;
-  userId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      subdomainId: 'subdomain_id',
-      userId: 'user_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      subdomainId: 'string',
-      userId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件下载地址的请求body
- */
-export class GetDownloadUrlRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  driveId: string;
-  expireSec?: number;
-  fileId: string;
-  fileIdPath?: string;
-  fileName?: string;
-  location?: string;
-  referer?: string;
-  shareId?: string;
-  signToken?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      driveId: 'drive_id',
-      expireSec: 'expire_sec',
-      fileId: 'file_id',
-      fileIdPath: 'file_id_path',
-      fileName: 'file_name',
-      location: 'location',
-      referer: 'referer',
-      shareId: 'share_id',
-      signToken: 'sign_token',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      driveId: 'string',
-      expireSec: 'number',
-      fileId: 'string',
-      fileIdPath: 'string',
-      fileName: 'string',
-      location: 'string',
-      referer: 'string',
-      shareId: 'string',
-      signToken: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Get drive request
- */
-export class GetDriveRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  subdomainId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      subdomainId: 'subdomain_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      subdomainId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 根据路径获取 File 接口 body
- */
-export class GetFileByPathRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  driveId: string;
-  filePath?: string;
-  imageCroppingAspectRatios?: string[];
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  referer?: string;
-  signToken?: string;
-  urlExpireSec?: number;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      referer: 'referer',
-      signToken: 'sign_token',
-      urlExpireSec: 'url_expire_sec',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      driveId: 'string',
-      filePath: 'string',
-      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      referer: 'string',
-      signToken: 'string',
-      urlExpireSec: 'number',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件元数据
- */
-export class GetFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  driveId: string;
-  fields?: string;
-  fileId: string;
-  fileIdPath?: string;
-  imageCroppingAspectRatios?: string[];
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  location?: string;
-  referer?: string;
-  shareId?: string;
-  signToken?: string;
-  urlExpireSec?: number;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      driveId: 'drive_id',
-      fields: 'fields',
-      fileId: 'file_id',
-      fileIdPath: 'file_id_path',
-      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      location: 'location',
-      referer: 'referer',
-      shareId: 'share_id',
-      signToken: 'sign_token',
-      urlExpireSec: 'url_expire_sec',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      driveId: 'string',
-      fields: 'string',
-      fileId: 'string',
-      fileIdPath: 'string',
-      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      location: 'string',
-      referer: 'string',
-      shareId: 'string',
-      signToken: 'string',
-      urlExpireSec: 'number',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取最新游标
- */
-export class GetLastCursorRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * get_media_play_url request
- */
-export class GetMediaPlayURLRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  fileId: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      fileId: 'file_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      fileId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取office文档在线编辑地址
- */
-export class GetOfficeEditUrlRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  driveId: string;
-  fileId: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      driveId: 'drive_id',
-      fileId: 'file_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      driveId: 'string',
-      fileId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取office文档预览地址
- */
-export class GetOfficePreviewUrlRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  driveId: string;
-  fileId: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      driveId: 'drive_id',
-      fileId: 'file_id',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      driveId: 'string',
-      fileId: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * get_share_link_by_anonymous request
- */
-export class GetShareLinkByAnonymousRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * get_share_id request
- */
-export class GetShareLinkIDRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  shareMsg?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      shareMsg: 'share_msg',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      shareMsg: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * get_share_token request
- */
-export class GetShareLinkTokenRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  shareId?: string;
-  sharePwd?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      shareId: 'share_id',
-      sharePwd: 'share_pwd',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      shareId: 'string',
-      sharePwd: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * get share request
- */
-export class GetShareRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件上传URL
- */
-export class GetUploadUrlRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  contentMd5?: string;
-  driveId?: string;
-  fileId: string;
-  partInfoList?: UploadPartInfo[];
-  shareId?: string;
-  uploadId: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      contentMd5: 'content_md5',
-      driveId: 'drive_id',
-      fileId: 'file_id',
-      partInfoList: 'part_info_list',
-      shareId: 'share_id',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      contentMd5: 'string',
-      driveId: 'string',
-      fileId: 'string',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      shareId: 'string',
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取视频雪碧图地址的请求body
- */
-export class GetVideoPreviewSpriteURLRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  expireSec?: number;
-  fileId: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      expireSec: 'expire_sec',
-      fileId: 'file_id',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      expireSec: 'number',
-      fileId: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取视频文件播放地址的请求body
- */
-export class GetVideoPreviewURLRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  audioTemplateId?: string;
-  driveId: string;
-  expireSec?: number;
-  fileId: string;
-  shareId?: string;
-  templateId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      audioTemplateId: 'audio_template_id',
-      driveId: 'drive_id',
-      expireSec: 'expire_sec',
-      fileId: 'file_id',
-      shareId: 'share_id',
-      templateId: 'template_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      audioTemplateId: 'string',
-      driveId: 'string',
-      expireSec: 'number',
-      fileId: 'string',
-      shareId: 'string',
-      templateId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * complete file request
- */
-export class HostingCompleteFileRequest extends $tea.Model {
-  additionData?: {[key: string]: any};
-  driveId?: string;
-  filePath?: string;
-  forbidOverwrite?: boolean;
-  partInfoList?: UploadPartInfo[];
-  shareId?: string;
-  uploadId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      additionData: 'addition_data',
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      forbidOverwrite: 'forbid_overwrite',
-      partInfoList: 'part_info_list',
-      shareId: 'share_id',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      driveId: 'string',
-      filePath: 'string',
-      forbidOverwrite: 'boolean',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      shareId: 'string',
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * copy file request
- */
-export class HostingCopyFileRequest extends $tea.Model {
-  driveId?: string;
-  filePath: string;
-  newName?: string;
-  overwrite?: boolean;
-  shareId?: string;
-  toDriveId?: string;
-  toParentFilePath: string;
-  toShareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      newName: 'new_name',
-      overwrite: 'overwrite',
-      shareId: 'share_id',
-      toDriveId: 'to_drive_id',
-      toParentFilePath: 'to_parent_file_path',
-      toShareId: 'to_share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      newName: 'string',
-      overwrite: 'boolean',
-      shareId: 'string',
-      toDriveId: 'string',
-      toParentFilePath: 'string',
-      toShareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * create file request
- */
-export class HostingCreateFileRequest extends $tea.Model {
-  additionData?: {[key: string]: any};
-  contentMd5?: string;
-  contentType?: string;
-  driveId?: string;
-  forbidOverwrite?: boolean;
-  name: string;
-  parentFilePath: string;
-  partInfoList?: UploadPartInfo[];
-  shareId?: string;
-  size?: number;
-  type: string;
-  static names(): { [key: string]: string } {
-    return {
-      additionData: 'addition_data',
-      contentMd5: 'content_md5',
-      contentType: 'content_type',
-      driveId: 'drive_id',
-      forbidOverwrite: 'forbid_overwrite',
-      name: 'name',
-      parentFilePath: 'parent_file_path',
-      partInfoList: 'part_info_list',
-      shareId: 'share_id',
-      size: 'size',
-      type: 'type',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      contentMd5: 'string',
-      contentType: 'string',
-      driveId: 'string',
-      forbidOverwrite: 'boolean',
-      name: 'string',
-      parentFilePath: 'string',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      shareId: 'string',
-      size: 'number',
-      type: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 删除文件请求
- */
-export class HostingDeleteFileRequest extends $tea.Model {
-  driveId?: string;
-  filePath: string;
-  permanently?: boolean;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      permanently: 'permanently',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      permanently: 'boolean',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件下载地址的请求body
- */
-export class HostingGetDownloadUrlRequest extends $tea.Model {
-  driveId?: string;
-  expireSec?: number;
-  fileName?: string;
-  filePath: string;
-  referer?: string;
-  shareId?: string;
-  signToken?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      expireSec: 'expire_sec',
-      fileName: 'file_name',
-      filePath: 'file_path',
-      referer: 'referer',
-      shareId: 'share_id',
-      signToken: 'sign_token',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      expireSec: 'number',
-      fileName: 'string',
-      filePath: 'string',
-      referer: 'string',
-      shareId: 'string',
-      signToken: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件元数据
- */
-export class HostingGetFileRequest extends $tea.Model {
-  driveId?: string;
-  filePath: string;
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  referer?: string;
-  shareId?: string;
-  signToken?: string;
-  urlExpireSec?: number;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      referer: 'referer',
-      shareId: 'share_id',
-      signToken: 'sign_token',
-      urlExpireSec: 'url_expire_sec',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      referer: 'string',
-      shareId: 'string',
-      signToken: 'string',
-      urlExpireSec: 'number',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件安全地址的请求body
- */
-export class HostingGetSecureUrlRequest extends $tea.Model {
-  driveId?: string;
-  expireSec?: number;
-  filePath: string;
-  secureIp?: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      expireSec: 'expire_sec',
-      filePath: 'file_path',
-      secureIp: 'secure_ip',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      expireSec: 'number',
-      filePath: 'string',
-      secureIp: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取文件上传URL
- */
-export class HostingGetUploadUrlRequest extends $tea.Model {
-  contentMd5?: string;
-  driveId?: string;
-  filePath: string;
-  partInfoList?: UploadPartInfo[];
-  shareId?: string;
-  uploadId: string;
-  static names(): { [key: string]: string } {
-    return {
-      contentMd5: 'content_md5',
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      partInfoList: 'part_info_list',
-      shareId: 'share_id',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      contentMd5: 'string',
-      driveId: 'string',
-      filePath: 'string',
-      partInfoList: { 'type': 'array', 'itemType': UploadPartInfo },
-      shareId: 'string',
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * list file request
- */
-export class HostingListFileRequest extends $tea.Model {
-  additionData?: {[key: string]: any};
-  driveId?: string;
-  imageCroppingAspectRatios?: string[];
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  limit?: number;
-  marker?: string;
-  parentFilePath: string;
-  referer?: string;
-  shareId?: string;
-  signToken?: string;
-  urlExpireSec?: number;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      additionData: 'addition_data',
-      driveId: 'drive_id',
-      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      limit: 'limit',
-      marker: 'marker',
-      parentFilePath: 'parent_file_path',
-      referer: 'referer',
-      shareId: 'share_id',
-      signToken: 'sign_token',
-      urlExpireSec: 'url_expire_sec',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      driveId: 'string',
-      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      limit: 'number',
-      marker: 'string',
-      parentFilePath: 'string',
-      referer: 'string',
-      shareId: 'string',
-      signToken: 'string',
-      urlExpireSec: 'number',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 列举uploadID对应的已上传分片
- */
-export class HostingListUploadedPartRequest extends $tea.Model {
-  driveId?: string;
-  filePath: string;
-  limit?: number;
-  partNumberMarker?: number;
-  shareId?: string;
-  uploadId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      limit: 'limit',
-      partNumberMarker: 'part_number_marker',
-      shareId: 'share_id',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      limit: 'number',
-      partNumberMarker: 'number',
-      shareId: 'string',
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 文件移动请求
- */
-export class HostingMoveFileRequest extends $tea.Model {
-  driveId?: string;
-  filePath?: string;
-  newName?: string;
-  overwrite?: boolean;
-  shareId?: string;
-  toParentFilePath?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      newName: 'new_name',
-      overwrite: 'overwrite',
-      shareId: 'share_id',
-      toParentFilePath: 'to_parent_file_path',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      newName: 'string',
-      overwrite: 'boolean',
-      shareId: 'string',
-      toParentFilePath: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取视频DRM License
- */
-export class HostingVideoDRMLicenseRequest extends $tea.Model {
-  drmType: string;
-  licenseRequest: string;
-  static names(): { [key: string]: string } {
-    return {
-      drmType: 'drmType',
-      licenseRequest: 'licenseRequest',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      drmType: 'string',
-      licenseRequest: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取视频分辨率列表
- */
-export class HostingVideoDefinitionRequest extends $tea.Model {
-  driveId?: string;
-  filePath: string;
-  protectionScheme?: string;
-  shareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      protectionScheme: 'protection_scheme',
-      shareId: 'share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      protectionScheme: 'string',
-      shareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取视频的m3u8文件
- */
-export class HostingVideoM3U8Request extends $tea.Model {
-  definition?: string;
-  driveId?: string;
-  expireSec?: number;
-  filePath: string;
-  protectionScheme?: string;
-  shareId?: string;
-  signToken: string;
-  static names(): { [key: string]: string } {
-    return {
-      definition: 'definition',
-      driveId: 'drive_id',
-      expireSec: 'expire_sec',
-      filePath: 'file_path',
-      protectionScheme: 'protection_scheme',
-      shareId: 'share_id',
-      signToken: 'sign_token',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      definition: 'string',
-      driveId: 'string',
-      expireSec: 'number',
-      filePath: 'string',
-      protectionScheme: 'string',
-      shareId: 'string',
-      signToken: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 启动视频转码请求
- */
-export class HostingVideoTranscodeRequest extends $tea.Model {
-  driveId?: string;
-  filePath: string;
-  hlsTime?: number;
-  protectionScheme?: string;
-  remarks?: string;
-  shareId?: string;
-  transcode?: boolean;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      filePath: 'file_path',
-      hlsTime: 'hls_time',
-      protectionScheme: 'protection_scheme',
-      remarks: 'remarks',
-      shareId: 'share_id',
-      transcode: 'transcode',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      filePath: 'string',
-      hlsTime: 'number',
-      protectionScheme: 'string',
-      remarks: 'string',
-      shareId: 'string',
-      transcode: 'boolean',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class ImageMediaMetadata extends $tea.Model {
-  height?: number;
-  width?: number;
-  static names(): { [key: string]: string } {
-    return {
-      height: 'height',
-      width: 'width',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      height: 'number',
-      width: 'number',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * list_file_by_anonymous request
- */
-export class ListByAnonymousRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  limit?: number;
-  marker?: string;
-  parentFileId: string;
-  referer?: string;
-  shareId: string;
-  signToken?: string;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      limit: 'limit',
-      marker: 'marker',
-      parentFileId: 'parent_file_id',
-      referer: 'referer',
-      shareId: 'share_id',
-      signToken: 'sign_token',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      limit: 'number',
-      marker: 'string',
-      parentFileId: 'string',
-      referer: 'string',
-      shareId: 'string',
-      signToken: 'string',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * List drive request
- */
-export class ListDriveRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  limit?: number;
-  marker?: string;
-  owner?: string;
-  ownerType?: string;
-  subdomainId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      limit: 'limit',
-      marker: 'marker',
-      owner: 'owner',
-      ownerType: 'owner_type',
-      subdomainId: 'subdomain_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      limit: 'number',
-      marker: 'string',
-      owner: 'string',
-      ownerType: 'string',
-      subdomainId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 列举文件
- */
-export class ListFileByCustomIndexKeyRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  Starred?: boolean;
-  additionData?: {[key: string]: any};
-  category?: string;
-  customIndexKey: string;
-  driveId?: string;
-  encryptMode?: string;
-  fields?: string;
-  imageCroppingAspectRatios?: string[];
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  limit?: number;
-  marker?: string;
-  orderDirection?: string;
-  referer?: string;
-  shareId?: string;
-  signToken?: string;
-  status?: string;
-  type?: string;
-  urlExpireSec?: number;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      Starred: 'Starred',
-      additionData: 'addition_data',
-      category: 'category',
-      customIndexKey: 'custom_index_key',
-      driveId: 'drive_id',
-      encryptMode: 'encrypt_mode',
-      fields: 'fields',
-      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      limit: 'limit',
-      marker: 'marker',
-      orderDirection: 'order_direction',
-      referer: 'referer',
-      shareId: 'share_id',
-      signToken: 'sign_token',
-      status: 'status',
-      type: 'type',
-      urlExpireSec: 'url_expire_sec',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      Starred: 'boolean',
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      category: 'string',
-      customIndexKey: 'string',
-      driveId: 'string',
-      encryptMode: 'string',
-      fields: 'string',
-      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      limit: 'number',
-      marker: 'string',
-      orderDirection: 'string',
-      referer: 'string',
-      shareId: 'string',
-      signToken: 'string',
-      status: 'string',
-      type: 'string',
-      urlExpireSec: 'number',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取增量文件操作记录
- */
-export class ListFileDeltaRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  cursor?: string;
-  driveId: string;
-  imageCroppingAspectRatios?: string[];
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  limit?: number;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      cursor: 'cursor',
-      driveId: 'drive_id',
-      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      limit: 'limit',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      cursor: 'string',
-      driveId: 'string',
-      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      limit: 'number',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 列举文件
- */
-export class ListFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  all?: boolean;
-  category?: string;
-  driveId?: string;
-  fields?: string;
-  imageCroppingAspectRatios?: string[];
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  limit?: number;
-  location?: string;
-  marker?: string;
-  orderBy?: string;
-  orderDirection?: string;
-  parentFileId: string;
-  parentFileIdPath?: string;
-  referer?: string;
-  shareId?: string;
-  signToken?: string;
-  starred?: boolean;
-  status?: string;
-  type?: string;
-  urlExpireSec?: number;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      all: 'all',
-      category: 'category',
-      driveId: 'drive_id',
-      fields: 'fields',
-      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      limit: 'limit',
-      location: 'location',
-      marker: 'marker',
-      orderBy: 'order_by',
-      orderDirection: 'order_direction',
-      parentFileId: 'parent_file_id',
-      parentFileIdPath: 'parent_file_id_path',
-      referer: 'referer',
-      shareId: 'share_id',
-      signToken: 'sign_token',
-      starred: 'starred',
-      status: 'status',
-      type: 'type',
-      urlExpireSec: 'url_expire_sec',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      all: 'boolean',
-      category: 'string',
-      driveId: 'string',
-      fields: 'string',
-      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      limit: 'number',
-      location: 'string',
-      marker: 'string',
-      orderBy: 'string',
-      orderDirection: 'string',
-      parentFileId: 'string',
-      parentFileIdPath: 'string',
-      referer: 'string',
-      shareId: 'string',
-      signToken: 'string',
-      starred: 'boolean',
-      status: 'string',
-      type: 'string',
-      urlExpireSec: 'number',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * List my drive request
- */
-export class ListMyDriveRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  limit?: number;
-  marker?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      limit: 'limit',
-      marker: 'marker',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      limit: 'number',
-      marker: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * list_share_link request
- */
-export class ListShareLinkRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  creator?: string;
-  limit?: number;
-  marker?: string;
-  orderBy?: string;
-  orderDirection?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      creator: 'creator',
-      limit: 'limit',
-      marker: 'marker',
-      orderBy: 'order_by',
-      orderDirection: 'order_direction',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      creator: 'string',
-      limit: 'number',
-      marker: 'string',
-      orderBy: 'string',
-      orderDirection: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * list share request
- */
-export class ListShareRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  creator?: string;
-  driveId?: string;
-  limit?: number;
-  marker?: string;
-  owner?: string;
-  ownerType?: string;
-  shareFilePath?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      creator: 'creator',
-      driveId: 'drive_id',
-      limit: 'limit',
-      marker: 'marker',
-      owner: 'owner',
-      ownerType: 'owner_type',
-      shareFilePath: 'share_file_path',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      creator: 'string',
-      driveId: 'string',
-      limit: 'number',
-      marker: 'string',
-      owner: 'string',
-      ownerType: 'string',
-      shareFilePath: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * list store file
- */
-export class ListStoreFileRequest extends $tea.Model {
-  limit?: number;
-  marker?: string;
-  parentFilePath?: string;
-  storeId?: string;
-  type?: string;
-  static names(): { [key: string]: string } {
-    return {
-      limit: 'limit',
-      marker: 'marker',
-      parentFilePath: 'parent_file_path',
-      storeId: 'store_id',
-      type: 'type',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      limit: 'number',
-      marker: 'string',
-      parentFilePath: 'string',
-      storeId: 'string',
-      type: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * list storage file
- */
-export class ListStoreRequest extends $tea.Model {
-  domainId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      domainId: 'domain_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      domainId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 列举uploadID对应的已上传分片
- */
-export class ListUploadedPartRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  fileId: string;
-  fileIdPath?: string;
-  limit?: number;
-  partNumberMarker?: number;
-  shareId?: string;
-  uploadId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      fileId: 'file_id',
-      fileIdPath: 'file_id_path',
-      limit: 'limit',
-      partNumberMarker: 'part_number_marker',
-      shareId: 'share_id',
-      uploadId: 'upload_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      fileId: 'string',
-      fileIdPath: 'string',
-      limit: 'number',
-      partNumberMarker: 'number',
-      shareId: 'string',
-      uploadId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 文件移动请求
- */
-export class MoveFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  autoRename?: boolean;
-  driveId: string;
-  fileId: string;
-  fileIdPath?: string;
-  newName?: string;
-  shareId?: string;
-  toDriveId?: string;
-  toParentFileId: string;
-  toShareId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      autoRename: 'auto_rename',
-      driveId: 'drive_id',
-      fileId: 'file_id',
-      fileIdPath: 'file_id_path',
-      newName: 'new_name',
-      shareId: 'share_id',
-      toDriveId: 'to_drive_id',
-      toParentFileId: 'to_parent_file_id',
-      toShareId: 'to_share_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      autoRename: 'boolean',
-      driveId: 'string',
-      fileId: 'string',
-      fileIdPath: 'string',
-      newName: 'string',
-      shareId: 'string',
-      toDriveId: 'string',
-      toParentFileId: 'string',
-      toShareId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * play_media request
- */
-export class PlayMediaRequest extends $tea.Model {
-  AuthKey: string;
-  DriveID: string;
-  FileID: string;
-  static names(): { [key: string]: string } {
-    return {
-      AuthKey: 'AuthKey',
-      DriveID: 'DriveID',
-      FileID: 'FileID',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      AuthKey: 'string',
-      DriveID: 'string',
-      FileID: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 刷新office文档在线编辑凭证
- */
-export class RefreshOfficeEditTokenRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  location?: string;
-  officeAccessToken: string;
-  officeRefreshToken: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      location: 'location',
-      officeAccessToken: 'office_access_token',
-      officeRefreshToken: 'office_refresh_token',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      location: 'string',
-      officeAccessToken: 'string',
-      officeRefreshToken: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 全量获取file元信息的请求body
- */
-export class ScanFileMetaRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  category?: string;
-  driveId: string;
-  imageCroppingAspectRatios?: string[];
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  limit?: number;
-  marker?: string;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      category: 'category',
-      driveId: 'drive_id',
-      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      limit: 'limit',
-      marker: 'marker',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      category: 'string',
-      driveId: 'string',
-      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      limit: 'number',
-      marker: 'string',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 搜索文件元数据
- */
-export class SearchFileRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  additionData?: {[key: string]: any};
-  driveId: string;
-  imageCroppingAspectRatios?: string[];
-  imageThumbnailProcess?: string;
-  imageUrlProcess?: string;
-  limit?: number;
-  location?: string;
-  marker?: string;
-  orderBy?: string;
-  query?: string;
-  referer?: string;
-  returnTotalCount?: boolean;
-  signToken?: string;
-  urlExpireSec?: number;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      additionData: 'addition_data',
-      driveId: 'drive_id',
-      imageCroppingAspectRatios: 'image_cropping_aspect_ratios',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      imageUrlProcess: 'image_url_process',
-      limit: 'limit',
-      location: 'location',
-      marker: 'marker',
-      orderBy: 'order_by',
-      query: 'query',
-      referer: 'referer',
-      returnTotalCount: 'return_total_count',
-      signToken: 'sign_token',
-      urlExpireSec: 'url_expire_sec',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      additionData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
-      driveId: 'string',
-      imageCroppingAspectRatios: { 'type': 'array', 'itemType': 'string' },
-      imageThumbnailProcess: 'string',
-      imageUrlProcess: 'string',
-      limit: 'number',
-      location: 'string',
-      marker: 'string',
-      orderBy: 'string',
-      query: 'string',
-      referer: 'string',
-      returnTotalCount: 'boolean',
-      signToken: 'string',
-      urlExpireSec: 'number',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * UCGetObjectInfoByObjectKeyRequest
- */
-export class UCGetObjectInfoByObjectKeyRequest extends $tea.Model {
-  objectKey?: string;
-  static names(): { [key: string]: string } {
-    return {
-      objectKey: 'object_key',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      objectKey: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * UCGetObjectInfoBySha1Request
- */
-export class UCGetObjectInfoBySha1Request extends $tea.Model {
-  sha1?: string;
-  static names(): { [key: string]: string } {
-    return {
-      sha1: 'sha1',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      sha1: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Update drive request
- */
-export class UpdateDriveRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  description?: string;
-  driveId: string;
-  driveName?: string;
-  encryptDataAccess?: boolean;
-  encryptMode?: string;
-  status?: string;
-  subdomainId?: string;
-  totalSize?: number;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      description: 'description',
-      driveId: 'drive_id',
-      driveName: 'drive_name',
-      encryptDataAccess: 'encrypt_data_access',
-      encryptMode: 'encrypt_mode',
-      status: 'status',
-      subdomainId: 'subdomain_id',
-      totalSize: 'total_size',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      description: 'string',
-      driveId: 'string',
-      driveName: 'string',
-      encryptDataAccess: 'boolean',
-      encryptMode: 'string',
-      status: 'string',
-      subdomainId: 'string',
-      totalSize: 'number',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 更新文件元数据
- */
-export class UpdateFileMetaRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  checkNameMode?: string;
-  customIndexKey?: string;
-  description?: string;
-  driveId: string;
-  encryptMode?: string;
-  fileId: string;
-  fileIdPath?: string;
-  hidden?: boolean;
-  labels?: string[];
-  meta?: string;
-  name?: string;
-  referer?: string;
-  shareId?: string;
-  signToken?: string;
-  starred?: boolean;
-  userMeta?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      checkNameMode: 'check_name_mode',
-      customIndexKey: 'custom_index_key',
-      description: 'description',
-      driveId: 'drive_id',
-      encryptMode: 'encrypt_mode',
-      fileId: 'file_id',
-      fileIdPath: 'file_id_path',
-      hidden: 'hidden',
-      labels: 'labels',
-      meta: 'meta',
-      name: 'name',
-      referer: 'referer',
-      shareId: 'share_id',
-      signToken: 'sign_token',
-      starred: 'starred',
-      userMeta: 'user_meta',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      checkNameMode: 'string',
-      customIndexKey: 'string',
-      description: 'string',
-      driveId: 'string',
-      encryptMode: 'string',
-      fileId: 'string',
-      fileIdPath: 'string',
-      hidden: 'boolean',
-      labels: { 'type': 'array', 'itemType': 'string' },
-      meta: 'string',
-      name: 'string',
-      referer: 'string',
-      shareId: 'string',
-      signToken: 'string',
-      starred: 'boolean',
-      userMeta: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * update_share_link request
- */
-export class UpdateShareLinkRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  description?: string;
-  expiration?: string;
-  shareId?: string;
-  shareName?: string;
-  sharePwd?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      description: 'description',
-      expiration: 'expiration',
-      shareId: 'share_id',
-      shareName: 'share_name',
-      sharePwd: 'share_pwd',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      description: 'string',
-      expiration: 'string',
-      shareId: 'string',
-      shareName: 'string',
-      sharePwd: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * update share request
- */
-export class UpdateShareRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  description?: string;
-  expiration?: string;
-  permissions?: string[];
-  shareId: string;
-  shareName?: string;
-  sharePolicy?: SharePermissionPolicy[];
-  status?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      description: 'description',
-      expiration: 'expiration',
-      permissions: 'permissions',
-      shareId: 'share_id',
-      shareName: 'share_name',
-      sharePolicy: 'share_policy',
-      status: 'status',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      description: 'string',
-      expiration: 'string',
-      permissions: { 'type': 'array', 'itemType': 'string' },
-      shareId: 'string',
-      shareName: 'string',
-      sharePolicy: { 'type': 'array', 'itemType': SharePermissionPolicy },
-      status: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class VideoMediaMetadata extends $tea.Model {
-  duration?: string;
-  static names(): { [key: string]: string } {
-    return {
-      duration: 'duration',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      duration: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CreateGroupModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: CreateGroupResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CreateGroupResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class DeleteGroupModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: DeleteGroupResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: DeleteGroupResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetGroupModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetGroupResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetGroupResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListGroupModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListGroupResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListGroupResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class SearchGroupModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: SearchGroupResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: SearchGroupResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class UpdateGroupModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: UpdateGroupResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: UpdateGroupResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CreateMembershipModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: CreateMembershipResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CreateMembershipResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class DeleteMembershipModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: DeleteMembershipResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: DeleteMembershipResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetMembershipModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetMembershipResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetMembershipResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class HasMemberModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: HasMembershipResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: HasMembershipResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListDirectChildMembershipsModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListDirectChildMembershipsResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListDirectChildMembershipsResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListDirectMembershipsModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListDirectParentMembershipsResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListDirectParentMembershipsResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListDirectParentMembershipsModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListDirectParentMembershipsResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListDirectParentMembershipsResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class UpdateMembershipModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: UpdateMembershipResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: UpdateMembershipResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class AddUserToSubdomainModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CreateUserModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: CreateUserResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CreateUserResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class DeleteUserModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetUserModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetUserResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetUserResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListUsersModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListUserResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListUserResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class RemoveUserFromSubdomainModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class SearchUserModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListUserResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListUserResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class UpdateUserModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: UpdateUserResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: UpdateUserResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
 /**
  * Add user to subdomain request
  */
@@ -12886,6 +13854,40 @@ export class AddUserToSubdomainRequest extends $tea.Model {
       headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
       subdomainId: 'string',
       userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class Address extends $tea.Model {
+  city?: string;
+  country?: string;
+  district?: string;
+  province?: string;
+  township?: string;
+  static names(): { [key: string]: string } {
+    return {
+      city: 'city',
+      country: 'country',
+      district: 'district',
+      province: 'province',
+      township: 'township',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      city: 'string',
+      country: 'string',
+      district: 'string',
+      province: 'string',
+      township: 'string',
     };
   }
 
@@ -13252,6 +14254,53 @@ export class CreateMembershipResponse extends $tea.Model {
 }
 
 /**
+ * Create story request
+ */
+export class CreateStoryRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 生成故事
+ */
+export class CreateStoryResponse extends $tea.Model {
+  driveId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Create user request
  */
 export class CreateUserRequest extends $tea.Model {
@@ -13583,6 +14632,53 @@ export class GetGroupResponse extends $tea.Model {
 }
 
 /**
+ * Get photo count request
+ */
+export class GetImageCountRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 获取云照片个数结果
+ */
+export class GetImageCountResponse extends $tea.Model {
+  imageCount?: number;
+  static names(): { [key: string]: string } {
+    return {
+      imageCount: 'image_count',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      imageCount: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * 
  */
 export class GetMembershipRequest extends $tea.Model {
@@ -13657,6 +14753,89 @@ export class GetMembershipResponse extends $tea.Model {
       subGroupId: 'string',
       updatedAt: 'number',
       userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Get story detail request
+ */
+export class GetStoryDetailRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  storyId: string;
+  videoUrlExpireSec?: number;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+      storyId: 'story_id',
+      videoUrlExpireSec: 'video_url_expire_sec',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+      storyId: 'string',
+      videoUrlExpireSec: 'number',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 故事详情
+ */
+export class GetStoryDetailResponse extends $tea.Model {
+  coverFileId?: string;
+  createdAt?: string;
+  items?: BaseCCPFileResponse[];
+  score?: number;
+  storyId?: string;
+  storyImagesDateRange?: number[];
+  subTitle?: string;
+  title?: string;
+  updatedAt?: string;
+  videoStatus?: string;
+  videoUrl?: string;
+  static names(): { [key: string]: string } {
+    return {
+      coverFileId: 'cover_file_id',
+      createdAt: 'created_at',
+      items: 'items',
+      score: 'score',
+      storyId: 'story_id',
+      storyImagesDateRange: 'story_images_date_range',
+      subTitle: 'sub_title',
+      title: 'title',
+      updatedAt: 'updated_at',
+      videoStatus: 'video_status',
+      videoUrl: 'video_url',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      coverFileId: 'string',
+      createdAt: 'string',
+      items: { 'type': 'array', 'itemType': BaseCCPFileResponse },
+      score: 'number',
+      storyId: 'string',
+      storyImagesDateRange: { 'type': 'array', 'itemType': 'number' },
+      subTitle: 'string',
+      title: 'string',
+      updatedAt: 'string',
+      videoStatus: 'string',
+      videoUrl: 'string',
     };
   }
 
@@ -13802,6 +14981,123 @@ export class HasMembershipResponse extends $tea.Model {
   static types(): { [key: string]: any } {
     return {
       result: 'boolean',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ImageAddressResponse extends $tea.Model {
+  addressDetail?: Address;
+  count?: number;
+  coverFileId?: string;
+  coverUrl?: string;
+  location?: string;
+  name?: string;
+  static names(): { [key: string]: string } {
+    return {
+      addressDetail: 'address_detail',
+      count: 'count',
+      coverFileId: 'cover_file_id',
+      coverUrl: 'cover_url',
+      location: 'location',
+      name: 'name',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      addressDetail: Address,
+      count: 'number',
+      coverFileId: 'string',
+      coverUrl: 'string',
+      location: 'string',
+      name: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ImageFaceGroupResponse extends $tea.Model {
+  createdAt?: string;
+  faceCount?: number;
+  groupCoverUrl?: string;
+  groupId?: string;
+  groupName?: string;
+  imageCount?: number;
+  updatedAt?: string;
+  static names(): { [key: string]: string } {
+    return {
+      createdAt: 'created_at',
+      faceCount: 'face_count',
+      groupCoverUrl: 'group_cover_url',
+      groupId: 'group_id',
+      groupName: 'group_name',
+      imageCount: 'image_count',
+      updatedAt: 'updated_at',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      createdAt: 'string',
+      faceCount: 'number',
+      groupCoverUrl: 'string',
+      groupId: 'string',
+      groupName: 'string',
+      imageCount: 'number',
+      updatedAt: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class ImageTagResponse extends $tea.Model {
+  count?: number;
+  coverFileCategory?: string;
+  coverFileId?: string;
+  coverOverallScore?: number;
+  coverTagConfidence?: number;
+  coverUrl?: string;
+  name?: string;
+  static names(): { [key: string]: string } {
+    return {
+      count: 'count',
+      coverFileCategory: 'cover_file_category',
+      coverFileId: 'cover_file_id',
+      coverOverallScore: 'cover_overall_score',
+      coverTagConfidence: 'cover_tag_confidence',
+      coverUrl: 'cover_url',
+      name: 'name',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      count: 'number',
+      coverFileCategory: 'string',
+      coverFileId: 'string',
+      coverOverallScore: 'number',
+      coverTagConfidence: 'number',
+      coverUrl: 'string',
+      name: 'string',
     };
   }
 
@@ -13994,6 +15290,233 @@ export class ListGroupResponse extends $tea.Model {
 }
 
 /**
+ * List image address groups request
+ */
+export class ListImageAddressGroupsRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  imageThumbnailProcess?: string;
+  limit?: number;
+  marker?: string;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      limit: 'limit',
+      marker: 'marker',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+      imageThumbnailProcess: 'string',
+      limit: 'number',
+      marker: 'string',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 展示地点分组集合
+ */
+export class ListImageAddressGroupsResponse extends $tea.Model {
+  items?: ImageAddressResponse[];
+  nextMarker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      items: 'items',
+      nextMarker: 'next_marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      items: { 'type': 'array', 'itemType': ImageAddressResponse },
+      nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * List image face groups request
+ */
+export class ListImageFaceGroupsRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  limit?: number;
+  marker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+      limit: 'limit',
+      marker: 'marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+      limit: 'number',
+      marker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 展示人脸分组集合
+ */
+export class ListImageFaceGroupsResponse extends $tea.Model {
+  items?: ImageFaceGroupResponse[];
+  nextMarker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      items: 'items',
+      nextMarker: 'next_marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      items: { 'type': 'array', 'itemType': ImageFaceGroupResponse },
+      nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * List image tags request
+ */
+export class ListImageTagsRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  imageThumbnailProcess?: string;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+      imageThumbnailProcess: 'string',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 展示标签集合
+ */
+export class ListImageTagsResponse extends $tea.Model {
+  tags?: ImageTagResponse[];
+  static names(): { [key: string]: string } {
+    return {
+      tags: 'tags',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      tags: { 'type': 'array', 'itemType': ImageTagResponse },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * List story request
+ */
+export class ListStoryRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  limit?: number;
+  marker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+      limit: 'limit',
+      marker: 'marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+      limit: 'number',
+      marker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 故事列表
+ */
+export class ListStoryResponse extends $tea.Model {
+  items?: StoryResponse[];
+  nextMarker?: string;
+  static names(): { [key: string]: string } {
+    return {
+      items: 'items',
+      nextMarker: 'next_marker',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      items: { 'type': 'array', 'itemType': StoryResponse },
+      nextMarker: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * List user request
  */
 export class ListUserRequest extends $tea.Model {
@@ -14069,6 +15592,155 @@ export class MemberIDInfo extends $tea.Model {
       memberType: 'string',
       subGroupId: 'string',
       userId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Parse keywords request
+ */
+export class ParseKeywordsRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  keywords?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      keywords: 'keywords',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      keywords: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Parse keywords response
+ */
+export class ParseKeywordsResponse extends $tea.Model {
+  addressLine?: string;
+  tags?: SystemTag[];
+  timeRange?: TimeRange;
+  static names(): { [key: string]: string } {
+    return {
+      addressLine: 'address_line',
+      tags: 'tags',
+      timeRange: 'time_range',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      addressLine: 'string',
+      tags: { 'type': 'array', 'itemType': SystemTag },
+      timeRange: TimeRange,
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Remove story images request
+ */
+export class RemoveStoryImagesRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId?: string;
+  fileIds?: string[];
+  storyId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+      fileIds: 'file_ids',
+      storyId: 'story_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+      fileIds: { 'type': 'array', 'itemType': 'string' },
+      storyId: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Remove story images response
+ */
+export class RemoveStoryImagesResponse extends $tea.Model {
+  driveId?: string;
+  fileIds?: string[];
+  results?: RemoveStoryImagesResultItem[];
+  storyId?: string;
+  successFileIds?: string[];
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      fileIds: 'file_ids',
+      results: 'results',
+      storyId: 'story_id',
+      successFileIds: 'success_file_ids',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      fileIds: { 'type': 'array', 'itemType': 'string' },
+      results: { 'type': 'array', 'itemType': RemoveStoryImagesResultItem },
+      storyId: 'string',
+      successFileIds: { 'type': 'array', 'itemType': 'string' },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class RemoveStoryImagesResultItem extends $tea.Model {
+  code?: string;
+  fileId?: string;
+  isSucceed?: boolean;
+  message?: string;
+  static names(): { [key: string]: string } {
+    return {
+      code: 'code',
+      fileId: 'file_id',
+      isSucceed: 'is_succeed',
+      message: 'message',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      code: 'string',
+      fileId: 'string',
+      isSucceed: 'boolean',
+      message: 'string',
     };
   }
 
@@ -14165,6 +15837,71 @@ export class SearchGroupResponse extends $tea.Model {
 }
 
 /**
+ * Search image address groups request
+ */
+export class SearchImageAddressGroupsRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  addressLevel?: string;
+  addressNames?: string[];
+  brGeoPoint?: string;
+  driveId: string;
+  imageThumbnailProcess?: string;
+  tlGeoPoint?: string;
+  videoThumbnailProcess?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      addressLevel: 'address_level',
+      addressNames: 'address_names',
+      brGeoPoint: 'br_geo_point',
+      driveId: 'drive_id',
+      imageThumbnailProcess: 'image_thumbnail_process',
+      tlGeoPoint: 'tl_geo_point',
+      videoThumbnailProcess: 'video_thumbnail_process',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      addressLevel: 'string',
+      addressNames: { 'type': 'array', 'itemType': 'string' },
+      brGeoPoint: 'string',
+      driveId: 'string',
+      imageThumbnailProcess: 'string',
+      tlGeoPoint: 'string',
+      videoThumbnailProcess: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 展示地点分组列表
+ */
+export class SearchImageAddressGroupsResponse extends $tea.Model {
+  items?: ImageAddressResponse[];
+  static names(): { [key: string]: string } {
+    return {
+      items: 'items',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      items: { 'type': 'array', 'itemType': ImageAddressResponse },
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
  * Search user request
  */
 export class SearchUserRequest extends $tea.Model {
@@ -14205,6 +15942,111 @@ export class SearchUserRequest extends $tea.Model {
       status: 'string',
       subdomainId: 'string',
       userName: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 
+ */
+export class StoryResponse extends $tea.Model {
+  coverFileId?: string;
+  createdAt?: string;
+  score?: number;
+  storyId?: string;
+  storyImagesDateRange?: number[];
+  subTitle?: string;
+  title?: string;
+  updatedAt?: string;
+  videoStatus?: string;
+  videoUrl?: string;
+  static names(): { [key: string]: string } {
+    return {
+      coverFileId: 'cover_file_id',
+      createdAt: 'created_at',
+      score: 'score',
+      storyId: 'story_id',
+      storyImagesDateRange: 'story_images_date_range',
+      subTitle: 'sub_title',
+      title: 'title',
+      updatedAt: 'updated_at',
+      videoStatus: 'video_status',
+      videoUrl: 'video_url',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      coverFileId: 'string',
+      createdAt: 'string',
+      score: 'number',
+      storyId: 'string',
+      storyImagesDateRange: { 'type': 'array', 'itemType': 'number' },
+      subTitle: 'string',
+      title: 'string',
+      updatedAt: 'string',
+      videoStatus: 'string',
+      videoUrl: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * Update face group info request
+ */
+export class UpdateFaceGroupInfoRequest extends $tea.Model {
+  headers?: { [key: string]: string };
+  driveId: string;
+  groupId: string;
+  groupName?: string;
+  static names(): { [key: string]: string } {
+    return {
+      headers: 'headers',
+      driveId: 'drive_id',
+      groupId: 'group_id',
+      groupName: 'group_name',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
+      driveId: 'string',
+      groupId: 'string',
+      groupName: 'string',
+    };
+  }
+
+  constructor(map?: { [key: string]: any }) {
+    super(map);
+  }
+}
+
+/**
+ * 更新人脸分组信息结果
+ */
+export class UpdateFaceGroupInfoResponse extends $tea.Model {
+  driveId?: string;
+  groupId?: string;
+  static names(): { [key: string]: string } {
+    return {
+      driveId: 'drive_id',
+      groupId: 'group_id',
+    };
+  }
+
+  static types(): { [key: string]: any } {
+    return {
+      driveId: 'string',
+      groupId: 'string',
     };
   }
 
@@ -14478,1138 +16320,6 @@ export class UpdateUserResponse extends $tea.Model {
       userData: { 'type': 'map', 'keyType': 'string', 'valueType': 'any' },
       userId: 'string',
       userName: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class CreateStoryModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: CreateStoryResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: CreateStoryResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetPhotoCountModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetImageCountResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetImageCountResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class GetStoryDetailModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: GetStoryDetailResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: GetStoryDetailResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListAddressGroupsModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListImageAddressGroupsResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListImageAddressGroupsResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListFacegroupsModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListImageFaceGroupsResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListImageFaceGroupsResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListStoryModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListStoryResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListStoryResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ListTagsModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ListImageTagsResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ListImageTagsResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class ParseKeywordsModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: ParseKeywordsResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: ParseKeywordsResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class RemoveStoryImagesModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: RemoveStoryImagesResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: RemoveStoryImagesResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class SearchAddressGroupsModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: SearchImageAddressGroupsResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: SearchImageAddressGroupsResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-export class UpdateFacegroupInfoModel extends $tea.Model {
-  headers?: { [key: string]: string };
-  body: UpdateFaceGroupInfoResponse;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      body: 'body',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      body: UpdateFaceGroupInfoResponse,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class Address extends $tea.Model {
-  city?: string;
-  country?: string;
-  district?: string;
-  province?: string;
-  township?: string;
-  static names(): { [key: string]: string } {
-    return {
-      city: 'city',
-      country: 'country',
-      district: 'district',
-      province: 'province',
-      township: 'township',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      city: 'string',
-      country: 'string',
-      district: 'string',
-      province: 'string',
-      township: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Create story request
- */
-export class CreateStoryRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 生成故事
- */
-export class CreateStoryResponse extends $tea.Model {
-  driveId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Get photo count request
- */
-export class GetImageCountRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 获取云照片个数结果
- */
-export class GetImageCountResponse extends $tea.Model {
-  imageCount?: number;
-  static names(): { [key: string]: string } {
-    return {
-      imageCount: 'image_count',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      imageCount: 'number',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Get story detail request
- */
-export class GetStoryDetailRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  storyId: string;
-  videoUrlExpireSec?: number;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      storyId: 'story_id',
-      videoUrlExpireSec: 'video_url_expire_sec',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      storyId: 'string',
-      videoUrlExpireSec: 'number',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 故事详情
- */
-export class GetStoryDetailResponse extends $tea.Model {
-  coverFileId?: string;
-  createdAt?: string;
-  items?: BaseCCPFileResponse[];
-  score?: number;
-  storyId?: string;
-  storyImagesDateRange?: number[];
-  subTitle?: string;
-  title?: string;
-  updatedAt?: string;
-  videoStatus?: string;
-  videoUrl?: string;
-  static names(): { [key: string]: string } {
-    return {
-      coverFileId: 'cover_file_id',
-      createdAt: 'created_at',
-      items: 'items',
-      score: 'score',
-      storyId: 'story_id',
-      storyImagesDateRange: 'story_images_date_range',
-      subTitle: 'sub_title',
-      title: 'title',
-      updatedAt: 'updated_at',
-      videoStatus: 'video_status',
-      videoUrl: 'video_url',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      coverFileId: 'string',
-      createdAt: 'string',
-      items: { 'type': 'array', 'itemType': BaseCCPFileResponse },
-      score: 'number',
-      storyId: 'string',
-      storyImagesDateRange: { 'type': 'array', 'itemType': 'number' },
-      subTitle: 'string',
-      title: 'string',
-      updatedAt: 'string',
-      videoStatus: 'string',
-      videoUrl: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class ImageAddressResponse extends $tea.Model {
-  addressDetail?: Address;
-  count?: number;
-  coverFileId?: string;
-  coverUrl?: string;
-  location?: string;
-  name?: string;
-  static names(): { [key: string]: string } {
-    return {
-      addressDetail: 'address_detail',
-      count: 'count',
-      coverFileId: 'cover_file_id',
-      coverUrl: 'cover_url',
-      location: 'location',
-      name: 'name',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      addressDetail: Address,
-      count: 'number',
-      coverFileId: 'string',
-      coverUrl: 'string',
-      location: 'string',
-      name: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class ImageFaceGroupResponse extends $tea.Model {
-  createdAt?: string;
-  faceCount?: number;
-  groupCoverUrl?: string;
-  groupId?: string;
-  groupName?: string;
-  imageCount?: number;
-  updatedAt?: string;
-  static names(): { [key: string]: string } {
-    return {
-      createdAt: 'created_at',
-      faceCount: 'face_count',
-      groupCoverUrl: 'group_cover_url',
-      groupId: 'group_id',
-      groupName: 'group_name',
-      imageCount: 'image_count',
-      updatedAt: 'updated_at',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      createdAt: 'string',
-      faceCount: 'number',
-      groupCoverUrl: 'string',
-      groupId: 'string',
-      groupName: 'string',
-      imageCount: 'number',
-      updatedAt: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class ImageTagResponse extends $tea.Model {
-  count?: number;
-  coverFileId?: string;
-  coverUrl?: string;
-  name?: string;
-  static names(): { [key: string]: string } {
-    return {
-      count: 'count',
-      coverFileId: 'cover_file_id',
-      coverUrl: 'cover_url',
-      name: 'name',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      count: 'number',
-      coverFileId: 'string',
-      coverUrl: 'string',
-      name: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * List image address groups request
- */
-export class ListImageAddressGroupsRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  imageThumbnailProcess?: string;
-  limit?: number;
-  marker?: string;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      limit: 'limit',
-      marker: 'marker',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      imageThumbnailProcess: 'string',
-      limit: 'number',
-      marker: 'string',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 展示地点分组集合
- */
-export class ListImageAddressGroupsResponse extends $tea.Model {
-  items?: ImageAddressResponse[];
-  nextMarker?: string;
-  static names(): { [key: string]: string } {
-    return {
-      items: 'items',
-      nextMarker: 'next_marker',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      items: { 'type': 'array', 'itemType': ImageAddressResponse },
-      nextMarker: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * List image face groups request
- */
-export class ListImageFaceGroupsRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  limit?: number;
-  marker?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      limit: 'limit',
-      marker: 'marker',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      limit: 'number',
-      marker: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 展示人脸分组集合
- */
-export class ListImageFaceGroupsResponse extends $tea.Model {
-  items?: ImageFaceGroupResponse[];
-  nextMarker?: string;
-  static names(): { [key: string]: string } {
-    return {
-      items: 'items',
-      nextMarker: 'next_marker',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      items: { 'type': 'array', 'itemType': ImageFaceGroupResponse },
-      nextMarker: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * List image tags request
- */
-export class ListImageTagsRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  imageThumbnailProcess?: string;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      imageThumbnailProcess: 'string',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 展示标签集合
- */
-export class ListImageTagsResponse extends $tea.Model {
-  tags?: ImageTagResponse[];
-  static names(): { [key: string]: string } {
-    return {
-      tags: 'tags',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      tags: { 'type': 'array', 'itemType': ImageTagResponse },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * List story request
- */
-export class ListStoryRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  limit?: number;
-  marker?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      limit: 'limit',
-      marker: 'marker',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      limit: 'number',
-      marker: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 故事列表
- */
-export class ListStoryResponse extends $tea.Model {
-  items?: StoryResponse[];
-  nextMarker?: string;
-  static names(): { [key: string]: string } {
-    return {
-      items: 'items',
-      nextMarker: 'next_marker',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      items: { 'type': 'array', 'itemType': StoryResponse },
-      nextMarker: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Parse keywords request
- */
-export class ParseKeywordsRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  keywords?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      keywords: 'keywords',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      keywords: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Parse keywords response
- */
-export class ParseKeywordsResponse extends $tea.Model {
-  addressLine?: string;
-  tags?: SystemTag[];
-  timeRange?: TimeRange;
-  static names(): { [key: string]: string } {
-    return {
-      addressLine: 'address_line',
-      tags: 'tags',
-      timeRange: 'time_range',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      addressLine: 'string',
-      tags: { 'type': 'array', 'itemType': SystemTag },
-      timeRange: TimeRange,
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Remove story images request
- */
-export class RemoveStoryImagesRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId?: string;
-  fileIds?: string[];
-  storyId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      fileIds: 'file_ids',
-      storyId: 'story_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      fileIds: { 'type': 'array', 'itemType': 'string' },
-      storyId: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Remove story images response
- */
-export class RemoveStoryImagesResponse extends $tea.Model {
-  driveId?: string;
-  fileIds?: string[];
-  results?: RemoveStoryImagesResultItem[];
-  storyId?: string;
-  successFileIds?: string[];
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      fileIds: 'file_ids',
-      results: 'results',
-      storyId: 'story_id',
-      successFileIds: 'success_file_ids',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      fileIds: { 'type': 'array', 'itemType': 'string' },
-      results: { 'type': 'array', 'itemType': RemoveStoryImagesResultItem },
-      storyId: 'string',
-      successFileIds: { 'type': 'array', 'itemType': 'string' },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class RemoveStoryImagesResultItem extends $tea.Model {
-  code?: string;
-  fileId?: string;
-  isSucceed?: boolean;
-  message?: string;
-  static names(): { [key: string]: string } {
-    return {
-      code: 'code',
-      fileId: 'file_id',
-      isSucceed: 'is_succeed',
-      message: 'message',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      code: 'string',
-      fileId: 'string',
-      isSucceed: 'boolean',
-      message: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Search image address groups request
- */
-export class SearchImageAddressGroupsRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  addressLevel?: string;
-  addressNames?: string[];
-  brGeoPoint?: string;
-  driveId: string;
-  imageThumbnailProcess?: string;
-  tlGeoPoint?: string;
-  videoThumbnailProcess?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      addressLevel: 'address_level',
-      addressNames: 'address_names',
-      brGeoPoint: 'br_geo_point',
-      driveId: 'drive_id',
-      imageThumbnailProcess: 'image_thumbnail_process',
-      tlGeoPoint: 'tl_geo_point',
-      videoThumbnailProcess: 'video_thumbnail_process',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      addressLevel: 'string',
-      addressNames: { 'type': 'array', 'itemType': 'string' },
-      brGeoPoint: 'string',
-      driveId: 'string',
-      imageThumbnailProcess: 'string',
-      tlGeoPoint: 'string',
-      videoThumbnailProcess: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 展示地点分组列表
- */
-export class SearchImageAddressGroupsResponse extends $tea.Model {
-  items?: ImageAddressResponse[];
-  static names(): { [key: string]: string } {
-    return {
-      items: 'items',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      items: { 'type': 'array', 'itemType': ImageAddressResponse },
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class StoryResponse extends $tea.Model {
-  coverFileId?: string;
-  createdAt?: string;
-  score?: number;
-  storyId?: string;
-  storyImagesDateRange?: number[];
-  subTitle?: string;
-  title?: string;
-  updatedAt?: string;
-  videoStatus?: string;
-  videoUrl?: string;
-  static names(): { [key: string]: string } {
-    return {
-      coverFileId: 'cover_file_id',
-      createdAt: 'created_at',
-      score: 'score',
-      storyId: 'story_id',
-      storyImagesDateRange: 'story_images_date_range',
-      subTitle: 'sub_title',
-      title: 'title',
-      updatedAt: 'updated_at',
-      videoStatus: 'video_status',
-      videoUrl: 'video_url',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      coverFileId: 'string',
-      createdAt: 'string',
-      score: 'number',
-      storyId: 'string',
-      storyImagesDateRange: { 'type': 'array', 'itemType': 'number' },
-      subTitle: 'string',
-      title: 'string',
-      updatedAt: 'string',
-      videoStatus: 'string',
-      videoUrl: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 
- */
-export class TimeRange extends $tea.Model {
-  end?: string;
-  start?: string;
-  static names(): { [key: string]: string } {
-    return {
-      end: 'end',
-      start: 'start',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      end: 'string',
-      start: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * Update face group info request
- */
-export class UpdateFaceGroupInfoRequest extends $tea.Model {
-  headers?: { [key: string]: string };
-  driveId: string;
-  groupId: string;
-  groupName?: string;
-  static names(): { [key: string]: string } {
-    return {
-      headers: 'headers',
-      driveId: 'drive_id',
-      groupId: 'group_id',
-      groupName: 'group_name',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      headers: { 'type': 'map', 'keyType': 'string', 'valueType': 'string' },
-      driveId: 'string',
-      groupId: 'string',
-      groupName: 'string',
-    };
-  }
-
-  constructor(map?: { [key: string]: any }) {
-    super(map);
-  }
-}
-
-/**
- * 更新人脸分组信息结果
- */
-export class UpdateFaceGroupInfoResponse extends $tea.Model {
-  driveId?: string;
-  groupId?: string;
-  static names(): { [key: string]: string } {
-    return {
-      driveId: 'drive_id',
-      groupId: 'group_id',
-    };
-  }
-
-  static types(): { [key: string]: any } {
-    return {
-      driveId: 'string',
-      groupId: 'string',
     };
   }
 
@@ -21579,6 +22289,130 @@ export default class Client {
   }
 
   /**
+   * list file activity
+   * @tags file
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async listFileActivityEx(request: ListFileActivityRequest, runtime: RuntimeOptions): Promise<ListFileActivityModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/file/list_activity`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<ListFileActivityModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new ListFileActivityModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
    * 查看分享中的文件列表
    * @tags share_link
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -23519,6 +24353,127 @@ export default class Client {
             body: respMap,
             headers: response_.headers,
           }, new CreateShareLinkModel({}));
+        }
+
+        if (!Util.empty(response_.headers["x-ca-error-message"])) {
+          throw $tea.newError({
+            data: {
+              requestId: response_.headers["x-ca-request-id"],
+              statusCode: response_.statusCode,
+              statusMessage: response_.statusMessage,
+            },
+            message: response_.headers["x-ca-error-message"],
+          });
+        }
+
+        obj = await Util.readAsJSON(response_.body);
+        respMap = Util.assertAsMap(obj);
+        throw $tea.newError({
+          data: {
+            requestId: response_.headers["x-ca-request-id"],
+            statusCode: response_.statusCode,
+            statusMessage: response_.statusMessage,
+          },
+          ...respMap,
+        });
+      } catch (ex) {
+        if ($tea.isRetryable(ex)) {
+          continue;
+        }
+        throw ex;
+      }
+    }
+
+    throw $tea.newUnretryableError(_lastRequest);
+  }
+
+  /**
+   * 查看分享的所有信息
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async getShareLinkEx(request: GetShareLinkRequest, runtime: RuntimeOptions): Promise<GetShareLinkModel> {
+    let _runtime: { [key: string]: any } = {
+      timeouted: "retry",
+      readTimeout: runtime.readTimeout,
+      connectTimeout: runtime.connectTimeout,
+      localAddr: runtime.localAddr,
+      httpProxy: runtime.httpProxy,
+      httpsProxy: runtime.httpsProxy,
+      noProxy: runtime.noProxy,
+      maxIdleConns: runtime.maxIdleConns,
+      socks5Proxy: runtime.socks5Proxy,
+      socks5NetWork: runtime.socks5NetWork,
+      retry: {
+        retryable: runtime.autoretry,
+        maxAttempts: Util.defaultNumber(runtime.maxAttempts, 3),
+      },
+      backoff: {
+        policy: Util.defaultString(runtime.backoffPolicy, "no"),
+        period: Util.defaultNumber(runtime.backoffPeriod, 1),
+      },
+      ignoreSSL: runtime.ignoreSSL,
+    }
+
+    let _lastRequest = null;
+    let _now = Date.now();
+    let _retryTimes = 0;
+    while ($tea.allowRetry(_runtime['retry'], _retryTimes, _now)) {
+      if (_retryTimes > 0) {
+        let _backoffTime = $tea.getBackoffTime(_runtime['backoff'], _retryTimes);
+        if (_backoffTime > 0) {
+          await $tea.sleep(_backoffTime);
+        }
+      }
+
+      _retryTimes = _retryTimes + 1;
+      try {
+        let request_ = new $tea.Request();
+        let accesskeyId = await this.getAccessKeyId();
+        let accessKeySecret = await this.getAccessKeySecret();
+        let securityToken = await this.getSecurityToken();
+        let accessToken = await this.getAccessToken();
+        let realReq = Util.toMap(request);
+        request_.protocol = Util.defaultString(this._protocol, "https");
+        request_.method = "POST";
+        request_.pathname = this.getPathname(this._nickname, `/v2/share_link/get`);
+        request_.headers = {
+          'user-agent': this.getUserAgent(),
+          host: Util.defaultString(this._endpoint, `${this._domainId}.api.aliyunpds.com`),
+          'content-type': "application/json; charset=utf-8",
+          ...request.headers,
+        };
+        realReq["headers"] = null;
+        if (!Util.empty(accessToken)) {
+          request_.headers["authorization"] = `Bearer ${accessToken}`;
+        } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+          if (!Util.empty(securityToken)) {
+            request_.headers["x-acs-security-token"] = securityToken;
+          }
+
+          request_.headers["date"] = Util.getDateUTCString();
+          request_.headers["accept"] = "application/json";
+          request_.headers["x-acs-signature-method"] = "HMAC-SHA1";
+          request_.headers["x-acs-signature-version"] = "1.0";
+          let stringToSign = ROAUtil.getStringToSign(request_);
+          request_.headers["authorization"] = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+        }
+
+        request_.body = new $tea.BytesReadable(Util.toJSONString(realReq));
+        _lastRequest = request_;
+        let response_ = await $tea.doAction(request_, _runtime);
+
+        let respMap : {[key: string]: any} = null;
+        let obj : any = null;
+        if (Util.equalNumber(response_.statusCode, 200)) {
+          obj = await Util.readAsJSON(response_.body);
+          respMap = Util.assertAsMap(obj);
+          return $tea.cast<GetShareLinkModel>({
+            body: respMap,
+            headers: response_.headers,
+          }, new GetShareLinkModel({}));
         }
 
         if (!Util.empty(response_.headers["x-ca-error-message"])) {
@@ -28897,6 +29852,21 @@ export default class Client {
   }
 
   /**
+   * list file activity
+   * @tags file
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error AccessTokenInvalid AccessToken is invalid. {message}
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error NotFound The resource {resource_name} cannot be found. Please check.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async listFileActivity(request: ListFileActivityRequest): Promise<ListFileActivityModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.listFileActivityEx(request, runtime);
+  }
+
+  /**
    * 查看分享中的文件列表
    * @tags share_link
    * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -29131,6 +30101,18 @@ export default class Client {
   async createShareLink(request: CreateShareLinkRequest): Promise<CreateShareLinkModel> {
     let runtime = new RuntimeOptions({ });
     return await this.createShareLinkEx(request, runtime);
+  }
+
+  /**
+   * 查看分享的所有信息
+   * @error InvalidParameter The input parameter {parameter_name} is not valid.
+   * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+   * @error InternalError The request has been failed due to some unknown error.
+   * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+   */
+  async getShareLink(request: GetShareLinkRequest): Promise<GetShareLinkModel> {
+    let runtime = new RuntimeOptions({ });
+    return await this.getShareLinkEx(request, runtime);
   }
 
   /**

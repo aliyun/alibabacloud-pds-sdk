@@ -174,6 +174,15 @@ class CreateShareLinkResponse extends Model
     public $shareUrl;
 
     /**
+     * @description status
+     *
+     * @example xxx
+     *
+     * @var string
+     */
+    public $status;
+
+    /**
      * @description updated_at
      *
      * @example 2006-01-02T15:04:05.999Z
@@ -200,6 +209,7 @@ class CreateShareLinkResponse extends Model
         'sharePolicy'   => 'share_policy',
         'sharePwd'      => 'share_pwd',
         'shareUrl'      => 'share_url',
+        'status'        => 'status',
         'updatedAt'     => 'updated_at',
     ];
 
@@ -263,6 +273,9 @@ class CreateShareLinkResponse extends Model
         }
         if (null !== $this->shareUrl) {
             $res['share_url'] = $this->shareUrl;
+        }
+        if (null !== $this->status) {
+            $res['status'] = $this->status;
         }
         if (null !== $this->updatedAt) {
             $res['updated_at'] = $this->updatedAt;
@@ -336,6 +349,9 @@ class CreateShareLinkResponse extends Model
         }
         if (isset($map['share_url'])) {
             $model->shareUrl = $map['share_url'];
+        }
+        if (isset($map['status'])) {
+            $model->status = $map['status'];
         }
         if (isset($map['updated_at'])) {
             $model->updatedAt = $map['updated_at'];

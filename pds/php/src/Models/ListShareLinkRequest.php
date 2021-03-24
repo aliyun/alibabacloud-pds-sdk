@@ -23,6 +23,15 @@ class ListShareLinkRequest extends Model
     public $creator;
 
     /**
+     * @description include_cancelled
+     *
+     * @example true
+     *
+     * @var bool
+     */
+    public $includeCancelled;
+
+    /**
      * @description limit
      *
      * @example 50
@@ -58,11 +67,12 @@ class ListShareLinkRequest extends Model
      */
     public $orderDirection;
     protected $_name = [
-        'creator'        => 'creator',
-        'limit'          => 'limit',
-        'marker'         => 'marker',
-        'orderBy'        => 'order_by',
-        'orderDirection' => 'order_direction',
+        'creator'          => 'creator',
+        'includeCancelled' => 'include_cancelled',
+        'limit'            => 'limit',
+        'marker'           => 'marker',
+        'orderBy'          => 'order_by',
+        'orderDirection'   => 'order_direction',
     ];
 
     public function validate()
@@ -79,6 +89,9 @@ class ListShareLinkRequest extends Model
         }
         if (null !== $this->creator) {
             $res['creator'] = $this->creator;
+        }
+        if (null !== $this->includeCancelled) {
+            $res['include_cancelled'] = $this->includeCancelled;
         }
         if (null !== $this->limit) {
             $res['limit'] = $this->limit;
@@ -109,6 +122,9 @@ class ListShareLinkRequest extends Model
         }
         if (isset($map['creator'])) {
             $model->creator = $map['creator'];
+        }
+        if (isset($map['include_cancelled'])) {
+            $model->includeCancelled = $map['include_cancelled'];
         }
         if (isset($map['limit'])) {
             $model->limit = $map['limit'];

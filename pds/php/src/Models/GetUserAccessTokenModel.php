@@ -14,7 +14,7 @@ class GetUserAccessTokenModel extends Model
     public $headers;
 
     /**
-     * @var AccessTokenResponse
+     * @var GetUserAccessTokenResponse
      */
     public $body;
     protected $_name = [
@@ -52,7 +52,7 @@ class GetUserAccessTokenModel extends Model
             $model->headers = $map['headers'];
         }
         if (isset($map['body'])) {
-            $model->body = AccessTokenResponse::fromMap($map['body']);
+            $model->body = GetUserAccessTokenResponse::fromMap($map['body']);
         }
 
         return $model;

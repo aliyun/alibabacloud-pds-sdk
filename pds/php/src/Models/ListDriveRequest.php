@@ -43,7 +43,6 @@ class ListDriveRequest extends Model
     /**
      * @description owner_type
      * 所述者类型
-     *
      * @example user
      *
      * @var string

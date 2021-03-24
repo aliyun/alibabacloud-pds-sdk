@@ -17,12 +17,23 @@ namespace Aliyun.SDK.PDS.Client.Models
         public Dictionary<string, string> Headers { get; set; }
 
         /// <summary>
+        /// addition_data
+        /// </summary>
+        [NameInMap("addition_data")]
+        [Validation(Required=false)]
+        public Dictionary<string, object> AdditionData { get; set; }
+
+        /// <summary>
         /// auto_rename
         /// type: boolean
         /// </summary>
         [NameInMap("auto_rename")]
         [Validation(Required=false)]
         public bool? AutoRename { get; set; }
+
+        [NameInMap("batch_id")]
+        [Validation(Required=false)]
+        public string BatchId { get; set; }
 
         /// <summary>
         /// drive_id
@@ -48,6 +59,10 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("new_name")]
         [Validation(Required=false, MaxLength=1024)]
         public string NewName { get; set; }
+
+        [NameInMap("referer")]
+        [Validation(Required=false)]
+        public string Referer { get; set; }
 
         /// <summary>
         /// share_id, either share_id or drive_id is required

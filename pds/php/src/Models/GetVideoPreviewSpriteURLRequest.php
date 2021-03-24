@@ -14,6 +14,13 @@ class GetVideoPreviewSpriteURLRequest extends Model
     public $headers;
 
     /**
+     * @description addition_data
+     *
+     * @var mixed[]
+     */
+    public $additionData;
+
+    /**
      * @description drive_id
      *
      * @example 1
@@ -39,6 +46,11 @@ class GetVideoPreviewSpriteURLRequest extends Model
     public $fileId;
 
     /**
+     * @var string
+     */
+    public $referer;
+
+    /**
      * @description share_id, either share_id or drive_id is required
      *
      * @example 0018d25b-faed-4f5c-a67b-414e160b7953
@@ -46,11 +58,19 @@ class GetVideoPreviewSpriteURLRequest extends Model
      * @var string
      */
     public $shareId;
+
+    /**
+     * @var string
+     */
+    public $signToken;
     protected $_name = [
-        'driveId'   => 'drive_id',
-        'expireSec' => 'expire_sec',
-        'fileId'    => 'file_id',
-        'shareId'   => 'share_id',
+        'additionData' => 'addition_data',
+        'driveId'      => 'drive_id',
+        'expireSec'    => 'expire_sec',
+        'fileId'       => 'file_id',
+        'referer'      => 'referer',
+        'shareId'      => 'share_id',
+        'signToken'    => 'sign_token',
     ];
     protected $_default = [
         'expireSec' => 900,
@@ -58,12 +78,11 @@ class GetVideoPreviewSpriteURLRequest extends Model
 
     public function validate()
     {
-        Model::validateRequired('driveId', $this->driveId, true);
-        Model::validateRequired('fileId', $this->fileId, true);
         Model::validatePattern('driveId', $this->driveId, '[0-9]+');
         Model::validatePattern('fileId', $this->fileId, '[a-z0-9.-_]{1,50}');
         Model::validateMaximum('expireSec', $this->expireSec, 14400);
         Model::validateMinimum('expireSec', $this->expireSec, 1);
+        Model::validateRequired('fileId', $this->fileId, true);
         Model::validateMaxLength('fileId', $this->fileId, 50);
         Model::validateMinLength('fileId', $this->fileId, 40);
     }
@@ -74,6 +93,9 @@ class GetVideoPreviewSpriteURLRequest extends Model
         if (null !== $this->headers) {
             $res['headers'] = $this->headers;
         }
+        if (null !== $this->additionData) {
+            $res['addition_data'] = $this->additionData;
+        }
         if (null !== $this->driveId) {
             $res['drive_id'] = $this->driveId;
         }
@@ -83,8 +105,14 @@ class GetVideoPreviewSpriteURLRequest extends Model
         if (null !== $this->fileId) {
             $res['file_id'] = $this->fileId;
         }
+        if (null !== $this->referer) {
+            $res['referer'] = $this->referer;
+        }
         if (null !== $this->shareId) {
             $res['share_id'] = $this->shareId;
+        }
+        if (null !== $this->signToken) {
+            $res['sign_token'] = $this->signToken;
         }
 
         return $res;
@@ -101,6 +129,9 @@ class GetVideoPreviewSpriteURLRequest extends Model
         if (isset($map['headers'])) {
             $model->headers = $map['headers'];
         }
+        if (isset($map['addition_data'])) {
+            $model->additionData = $map['addition_data'];
+        }
         if (isset($map['drive_id'])) {
             $model->driveId = $map['drive_id'];
         }
@@ -110,8 +141,14 @@ class GetVideoPreviewSpriteURLRequest extends Model
         if (isset($map['file_id'])) {
             $model->fileId = $map['file_id'];
         }
+        if (isset($map['referer'])) {
+            $model->referer = $map['referer'];
+        }
         if (isset($map['share_id'])) {
             $model->shareId = $map['share_id'];
+        }
+        if (isset($map['sign_token'])) {
+            $model->signToken = $map['sign_token'];
         }
 
         return $model;

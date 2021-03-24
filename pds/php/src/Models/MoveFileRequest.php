@@ -21,6 +21,11 @@ class MoveFileRequest extends Model
     public $autoRename;
 
     /**
+     * @var string[]
+     */
+    public $categoryList;
+
+    /**
      * @description drive_id
      *
      * @example 1
@@ -83,6 +88,7 @@ class MoveFileRequest extends Model
     public $toShareId;
     protected $_name = [
         'autoRename'     => 'auto_rename',
+        'categoryList'   => 'category_list',
         'driveId'        => 'drive_id',
         'fileId'         => 'file_id',
         'fileIdPath'     => 'file_id_path',
@@ -118,6 +124,9 @@ class MoveFileRequest extends Model
         }
         if (null !== $this->autoRename) {
             $res['auto_rename'] = $this->autoRename;
+        }
+        if (null !== $this->categoryList) {
+            $res['category_list'] = $this->categoryList;
         }
         if (null !== $this->driveId) {
             $res['drive_id'] = $this->driveId;
@@ -160,6 +169,11 @@ class MoveFileRequest extends Model
         }
         if (isset($map['auto_rename'])) {
             $model->autoRename = $map['auto_rename'];
+        }
+        if (isset($map['category_list'])) {
+            if (!empty($map['category_list'])) {
+                $model->categoryList = $map['category_list'];
+            }
         }
         if (isset($map['drive_id'])) {
             $model->driveId = $map['drive_id'];

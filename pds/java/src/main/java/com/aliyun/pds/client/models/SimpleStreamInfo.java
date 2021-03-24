@@ -6,7 +6,7 @@ import com.aliyun.tea.*;
 /**
  * 
  */
-public class StreamInfo extends TeaModel {
+public class SimpleStreamInfo extends TeaModel {
     // crc64_hash
     @NameInMap("crc64_hash")
     public String crc64Hash;
@@ -15,6 +15,7 @@ public class StreamInfo extends TeaModel {
     @NameInMap("download_url")
     public String downloadUrl;
 
+    // size
     @NameInMap("size")
     public Long size;
 
@@ -26,12 +27,12 @@ public class StreamInfo extends TeaModel {
     @NameInMap("url")
     public String url;
 
-    public static StreamInfo build(java.util.Map<String, ?> map) throws Exception {
-        StreamInfo self = new StreamInfo();
+    public static SimpleStreamInfo build(java.util.Map<String, ?> map) throws Exception {
+        SimpleStreamInfo self = new SimpleStreamInfo();
         return TeaModel.build(map, self);
     }
 
-    public StreamInfo setCrc64Hash(String crc64Hash) {
+    public SimpleStreamInfo setCrc64Hash(String crc64Hash) {
         this.crc64Hash = crc64Hash;
         return this;
     }
@@ -39,7 +40,7 @@ public class StreamInfo extends TeaModel {
         return this.crc64Hash;
     }
 
-    public StreamInfo setDownloadUrl(String downloadUrl) {
+    public SimpleStreamInfo setDownloadUrl(String downloadUrl) {
         this.downloadUrl = downloadUrl;
         return this;
     }
@@ -47,7 +48,7 @@ public class StreamInfo extends TeaModel {
         return this.downloadUrl;
     }
 
-    public StreamInfo setSize(Long size) {
+    public SimpleStreamInfo setSize(Long size) {
         this.size = size;
         return this;
     }
@@ -55,7 +56,7 @@ public class StreamInfo extends TeaModel {
         return this.size;
     }
 
-    public StreamInfo setThumbnail(String thumbnail) {
+    public SimpleStreamInfo setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
         return this;
     }
@@ -63,7 +64,7 @@ public class StreamInfo extends TeaModel {
         return this.thumbnail;
     }
 
-    public StreamInfo setUrl(String url) {
+    public SimpleStreamInfo setUrl(String url) {
         this.url = url;
         return this;
     }

@@ -15,7 +15,7 @@ namespace Aliyun.SDK.PDS.Client.Models
 
         [NameInMap("body")]
         [Validation(Required=true)]
-        public AccessTokenResponse Body { get; set; }
+        public GetUserAccessTokenResponse Body { get; set; }
 
     }
 

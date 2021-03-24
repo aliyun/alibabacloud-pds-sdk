@@ -51,6 +51,13 @@ namespace Aliyun.SDK.PDS.Client.Models
         [Validation(Required=false)]
         public string SharePwd { get; set; }
 
+        /// <summary>
+        /// status
+        /// </summary>
+        [NameInMap("status")]
+        [Validation(Required=false)]
+        public string Status { get; set; }
+
     }
 
 }

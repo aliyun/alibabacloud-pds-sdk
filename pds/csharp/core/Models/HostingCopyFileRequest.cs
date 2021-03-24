@@ -13,6 +13,13 @@ namespace Aliyun.SDK.PDS.Client.Models
      */
     public class HostingCopyFileRequest : TeaModel {
         /// <summary>
+        /// addition_data
+        /// </summary>
+        [NameInMap("addition_data")]
+        [Validation(Required=false)]
+        public Dictionary<string, object> AdditionData { get; set; }
+
+        /// <summary>
         /// drive_id
         /// </summary>
         [NameInMap("drive_id")]
@@ -40,6 +47,10 @@ namespace Aliyun.SDK.PDS.Client.Models
         [NameInMap("overwrite")]
         [Validation(Required=false)]
         public bool? Overwrite { get; set; }
+
+        [NameInMap("referer")]
+        [Validation(Required=false)]
+        public string Referer { get; set; }
 
         /// <summary>
         /// share_id

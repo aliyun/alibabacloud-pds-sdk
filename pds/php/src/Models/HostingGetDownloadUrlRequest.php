@@ -12,6 +12,13 @@ use AlibabaCloud\Tea\Model;
 class HostingGetDownloadUrlRequest extends Model
 {
     /**
+     * @description addition_data
+     *
+     * @var mixed[]
+     */
+    public $additionData;
+
+    /**
      * @description drive_id
      *
      * @example 1
@@ -66,13 +73,14 @@ class HostingGetDownloadUrlRequest extends Model
      */
     public $signToken;
     protected $_name = [
-        'driveId'   => 'drive_id',
-        'expireSec' => 'expire_sec',
-        'fileName'  => 'file_name',
-        'filePath'  => 'file_path',
-        'referer'   => 'referer',
-        'shareId'   => 'share_id',
-        'signToken' => 'sign_token',
+        'additionData' => 'addition_data',
+        'driveId'      => 'drive_id',
+        'expireSec'    => 'expire_sec',
+        'fileName'     => 'file_name',
+        'filePath'     => 'file_path',
+        'referer'      => 'referer',
+        'shareId'      => 'share_id',
+        'signToken'    => 'sign_token',
     ];
     protected $_default = [
         'expireSec' => 900,
@@ -92,6 +100,9 @@ class HostingGetDownloadUrlRequest extends Model
     public function toMap()
     {
         $res = [];
+        if (null !== $this->additionData) {
+            $res['addition_data'] = $this->additionData;
+        }
         if (null !== $this->driveId) {
             $res['drive_id'] = $this->driveId;
         }
@@ -125,6 +136,9 @@ class HostingGetDownloadUrlRequest extends Model
     public static function fromMap($map = [])
     {
         $model = new self();
+        if (isset($map['addition_data'])) {
+            $model->additionData = $map['addition_data'];
+        }
         if (isset($map['drive_id'])) {
             $model->driveId = $map['drive_id'];
         }
