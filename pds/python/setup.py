@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_pds_sdk.
 
-Created on 24/03/2021
+Created on 23/04/2021
 
 @author: Alibaba Cloud SDK
 """
@@ -40,12 +40,12 @@ REQUIRES = [
     "alibabacloud_tea_util>=0.3.3, <1.0.0",
     "alibabacloud_roa_util>=0.1.2, <1.0.0",
     "alibabacloud_credentials>=0.1.2, <1.0.0",
-    "alibabacloud_pds_credentials>=0.0.2, <1.0.0"
+    "alibabacloud_pds_credentials>=0.0.2, <1.0.0",
 ]
 
-LONG_DESCRIPTION = ''
-if os.path.exists('./README.md'):
-    with open("README.md", encoding='utf-8') as fp:
+LONG_DESCRIPTION = ""
+if os.path.exists("./README.md"):
+    with open("README.md", encoding="utf-8") as fp:
         LONG_DESCRIPTION = fp.read()
 
 setup(
@@ -53,12 +53,12 @@ setup(
     version=VERSION,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
-    long_description_content_type='text/markdown',
+    long_description_content_type="text/markdown",
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     license="Apache License 2.0",
     url=URL,
-    keywords=["alibabacloud","pds","sdk"],
+    keywords=["alibabacloud", "pds", "sdk"],
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     platforms="any",
@@ -71,9 +71,9 @@ setup(
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        "Topic :: Software Development"
-    )
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Topic :: Software Development",
+    ),
 )
