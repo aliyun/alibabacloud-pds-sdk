@@ -4126,6 +4126,125 @@ api createFileEx(request: CreateFileRequest, runtime: RuntimeOptions): CreateFil
   ignoreSSL = runtime.ignoreSSL
 }
 
+model CreateFileWithProofModel {
+  headers?: map[string]string(name='headers'),
+  body: CreateFileResponse(name='body'),
+}
+
+/**
+ * 在指定文件夹下创建文件或者文件夹，
+ * 根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error AlreadyExist {resource} has already exists. {extra_msg}
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function createFileWithProof(request: CreateFileRequest) throws: CreateFileWithProofModel  {
+  var runtime = new RuntimeOptions{};
+  return createFileWithProofEx(request, runtime);
+}
+
+/**
+ * 在指定文件夹下创建文件或者文件夹，
+ * 根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error AlreadyExist {resource} has already exists. {extra_msg}
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api createFileWithProofEx(request: CreateFileRequest, runtime: RuntimeOptions): CreateFileWithProofModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/file/create_with_proof`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.headers
+  };
+  realReq.headers = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 201)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
 model DeleteFileModel {
   headers?: map[string]string(name='headers'),
   body: DeleteFileResponse(name='body'),
@@ -4974,6 +5093,121 @@ api getOfficePreviewUrlEx(request: GetOfficePreviewUrlRequest, runtime: RuntimeO
   __request.protocol = Util.defaultString(@protocol, 'https');
   __request.method = 'POST';
   __request.pathname = getPathname(@nickname, `/v2/file/get_office_preview_url`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.headers
+  };
+  realReq.headers = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
+model GetShareLinkDownloadUrlModel {
+  headers?: map[string]string(name='headers'),
+  body: GetShareLinkDownloadURLResponse(name='body'),
+}
+
+/**
+ * 获取分享中文件的下载地址，调用者可自己设置range头并发下载。
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function getShareLinkDownloadUrl(request: GetShareLinkDownloadURLRequest) throws: GetShareLinkDownloadUrlModel  {
+  var runtime = new RuntimeOptions{};
+  return getShareLinkDownloadUrlEx(request, runtime);
+}
+
+/**
+ * 获取分享中文件的下载地址，调用者可自己设置range头并发下载。
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api getShareLinkDownloadUrlEx(request: GetShareLinkDownloadURLRequest, runtime: RuntimeOptions): GetShareLinkDownloadUrlModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/file/get_share_link_download_url`);
   __request.headers = {
     user-agent = getUserAgent(),
     host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
@@ -6584,6 +6818,121 @@ api updateFileEx(request: UpdateFileMetaRequest, runtime: RuntimeOptions): Updat
   __request.protocol = Util.defaultString(@protocol, 'https');
   __request.method = 'POST';
   __request.pathname = getPathname(@nickname, `/v2/file/update`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.headers
+  };
+  realReq.headers = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
+model WalkFileModel {
+  headers?: map[string]string(name='headers'),
+  body: CCPWalkFileResponse(name='body'),
+}
+
+/**
+ * walk file
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function walkFile(request: CCPWalkFileRequest) throws: WalkFileModel  {
+  var runtime = new RuntimeOptions{};
+  return walkFileEx(request, runtime);
+}
+
+/**
+ * walk file
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api walkFileEx(request: CCPWalkFileRequest, runtime: RuntimeOptions): WalkFileModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/file/walk`);
   __request.headers = {
     user-agent = getUserAgent(),
     host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
@@ -10715,6 +11064,121 @@ api createStoryEx(request: CreateStoryRequest, runtime: RuntimeOptions): CreateS
   ignoreSSL = runtime.ignoreSSL
 }
 
+model FindStoriesModel {
+  headers?: map[string]string(name='headers'),
+  body: FindStoriesResponse(name='body'),
+}
+
+/**
+ * 该接口将会查询故事列表
+ * @tags image
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function findStories(request: FindStoriesRequest) throws: FindStoriesModel  {
+  var runtime = new RuntimeOptions{};
+  return findStoriesEx(request, runtime);
+}
+
+/**
+ * 该接口将会查询故事列表
+ * @tags image
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api findStoriesEx(request: FindStoriesRequest, runtime: RuntimeOptions): FindStoriesModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/image/find_stories`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.headers
+  };
+  realReq.headers = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
 model GetPhotoCountModel {
   headers?: map[string]string(name='headers'),
   body: GetImageCountResponse(name='body'),
@@ -10830,9 +11294,9 @@ api getPhotoCountEx(request: GetImageCountRequest, runtime: RuntimeOptions): Get
   ignoreSSL = runtime.ignoreSSL
 }
 
-model GetStoryDetailModel {
+model GetStoryModel {
   headers?: map[string]string(name='headers'),
-  body: GetStoryDetailResponse(name='body'),
+  body: GetStoryResponse(name='body'),
 }
 
 /**
@@ -10845,9 +11309,9 @@ model GetStoryDetailModel {
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
-async function getStoryDetail(request: GetStoryDetailRequest) throws: GetStoryDetailModel  {
+async function getStory(request: GetStoryRequest) throws: GetStoryModel  {
   var runtime = new RuntimeOptions{};
-  return getStoryDetailEx(request, runtime);
+  return getStoryEx(request, runtime);
 }
 
 /**
@@ -10860,7 +11324,7 @@ async function getStoryDetail(request: GetStoryDetailRequest) throws: GetStoryDe
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
-api getStoryDetailEx(request: GetStoryDetailRequest, runtime: RuntimeOptions): GetStoryDetailModel  {
+api getStoryEx(request: GetStoryRequest, runtime: RuntimeOptions): GetStoryModel  {
   var accesskeyId = getAccessKeyId();
   var accessKeySecret = getAccessKeySecret();
   var securityToken = getSecurityToken();
@@ -10868,7 +11332,7 @@ api getStoryDetailEx(request: GetStoryDetailRequest, runtime: RuntimeOptions): G
   var realReq = Util.toMap(request);
   __request.protocol = Util.defaultString(@protocol, 'https');
   __request.method = 'POST';
-  __request.pathname = getPathname(@nickname, `/v2/image/get_story_detail`);
+  __request.pathname = getPathname(@nickname, `/v2/image/get_story`);
   __request.headers = {
     user-agent = getUserAgent(),
     host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
@@ -11175,121 +11639,6 @@ api listFacegroupsEx(request: ListImageFaceGroupsRequest, runtime: RuntimeOption
   ignoreSSL = runtime.ignoreSSL
 }
 
-model ListStoryModel {
-  headers?: map[string]string(name='headers'),
-  body: ListStoryResponse(name='body'),
-}
-
-/**
- * 该接口将会获取故事列表
- * @tags image
- * @error InvalidParameter The input parameter {parameter_name} is not valid.
- * @error AccessTokenInvalid AccessToken is invalid. {message}
- * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
- * @error NotFound The resource {resource_name} cannot be found. Please check.
- * @error InternalError The request has been failed due to some unknown error.
- * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
- */
-async function listStory(request: ListStoryRequest) throws: ListStoryModel  {
-  var runtime = new RuntimeOptions{};
-  return listStoryEx(request, runtime);
-}
-
-/**
- * 该接口将会获取故事列表
- * @tags image
- * @error InvalidParameter The input parameter {parameter_name} is not valid.
- * @error AccessTokenInvalid AccessToken is invalid. {message}
- * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
- * @error NotFound The resource {resource_name} cannot be found. Please check.
- * @error InternalError The request has been failed due to some unknown error.
- * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
- */
-api listStoryEx(request: ListStoryRequest, runtime: RuntimeOptions): ListStoryModel  {
-  var accesskeyId = getAccessKeyId();
-  var accessKeySecret = getAccessKeySecret();
-  var securityToken = getSecurityToken();
-  var accessToken = getAccessToken();
-  var realReq = Util.toMap(request);
-  __request.protocol = Util.defaultString(@protocol, 'https');
-  __request.method = 'POST';
-  __request.pathname = getPathname(@nickname, `/v2/image/list_story`);
-  __request.headers = {
-    user-agent = getUserAgent(),
-    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
-    content-type = 'application/json; charset=utf-8',
-    ...request.headers
-  };
-  realReq.headers = null;
-
-  if (!Util.empty(accessToken)) {
-    __request.headers.authorization = `Bearer ${accessToken}`;
-  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-    if (!Util.empty(securityToken)) {
-      __request.headers.x-acs-security-token = securityToken;
-    }
-    __request.headers.date = Util.getDateUTCString();
-    __request.headers.accept = 'application/json';
-    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
-    __request.headers.x-acs-signature-version = '1.0';
-    var stringToSign = ROAUtil.getStringToSign(__request);
-    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-  }
-  __request.body = Util.toJSONString(realReq);
-} returns {
-  var respMap : object = null;
-  var obj : any = null;
-  if (Util.equalNumber(__response.statusCode, 200)) {
-    obj = Util.readAsJSON(__response.body);
-    respMap = Util.assertAsMap(obj);
-    return {
-      body = respMap,
-      headers =  __response.headers,
-    };
-  }
-
-  if (!Util.empty(__response.headers.x-ca-error-message)) {
-    throw {
-      data = {
-        requestId = __response.headers.x-ca-request-id,
-        statusCode = __response.statusCode,
-        statusMessage = __response.statusMessage,
-      },
-      message = __response.headers.x-ca-error-message,
-    };
-  }
-  obj = Util.readAsJSON(__response.body);
-  respMap = Util.assertAsMap(obj);
-  throw {
-    data = {
-      requestId = __response.headers.x-ca-request-id,
-      statusCode = __response.statusCode,
-      statusMessage = __response.statusMessage,
-    },
-    ...respMap,
-  };
-} runtime {
-  timeouted = 'retry',
-  readTimeout = runtime.readTimeout,
-  connectTimeout = runtime.connectTimeout,
-  localAddr = runtime.localAddr,
-  httpProxy = runtime.httpProxy,
-  httpsProxy = runtime.httpsProxy,
-  noProxy = runtime.noProxy,
-  maxIdleConns = runtime.maxIdleConns,
-  socks5Proxy = runtime.socks5Proxy,
-  socks5NetWork = runtime.socks5NetWork,
-  retry = {
-    retryable = runtime.autoretry,
-    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
-  },
-  backoff = {
-    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
-    period = Util.defaultNumber(runtime.backoffPeriod, 1),
-  },
-  ignoreSSL = runtime.ignoreSSL
-}
-
 model ListTagsModel {
   headers?: map[string]string(name='headers'),
   body: ListImageTagsResponse(name='body'),
@@ -11442,121 +11791,6 @@ api parseKeywordsEx(request: ParseKeywordsRequest, runtime: RuntimeOptions): Par
   __request.protocol = Util.defaultString(@protocol, 'https');
   __request.method = 'POST';
   __request.pathname = getPathname(@nickname, `/v2/image/parse_keywords`);
-  __request.headers = {
-    user-agent = getUserAgent(),
-    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
-    content-type = 'application/json; charset=utf-8',
-    ...request.headers
-  };
-  realReq.headers = null;
-
-  if (!Util.empty(accessToken)) {
-    __request.headers.authorization = `Bearer ${accessToken}`;
-  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-    if (!Util.empty(securityToken)) {
-      __request.headers.x-acs-security-token = securityToken;
-    }
-    __request.headers.date = Util.getDateUTCString();
-    __request.headers.accept = 'application/json';
-    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
-    __request.headers.x-acs-signature-version = '1.0';
-    var stringToSign = ROAUtil.getStringToSign(__request);
-    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-  }
-  __request.body = Util.toJSONString(realReq);
-} returns {
-  var respMap : object = null;
-  var obj : any = null;
-  if (Util.equalNumber(__response.statusCode, 200)) {
-    obj = Util.readAsJSON(__response.body);
-    respMap = Util.assertAsMap(obj);
-    return {
-      body = respMap,
-      headers =  __response.headers,
-    };
-  }
-
-  if (!Util.empty(__response.headers.x-ca-error-message)) {
-    throw {
-      data = {
-        requestId = __response.headers.x-ca-request-id,
-        statusCode = __response.statusCode,
-        statusMessage = __response.statusMessage,
-      },
-      message = __response.headers.x-ca-error-message,
-    };
-  }
-  obj = Util.readAsJSON(__response.body);
-  respMap = Util.assertAsMap(obj);
-  throw {
-    data = {
-      requestId = __response.headers.x-ca-request-id,
-      statusCode = __response.statusCode,
-      statusMessage = __response.statusMessage,
-    },
-    ...respMap,
-  };
-} runtime {
-  timeouted = 'retry',
-  readTimeout = runtime.readTimeout,
-  connectTimeout = runtime.connectTimeout,
-  localAddr = runtime.localAddr,
-  httpProxy = runtime.httpProxy,
-  httpsProxy = runtime.httpsProxy,
-  noProxy = runtime.noProxy,
-  maxIdleConns = runtime.maxIdleConns,
-  socks5Proxy = runtime.socks5Proxy,
-  socks5NetWork = runtime.socks5NetWork,
-  retry = {
-    retryable = runtime.autoretry,
-    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
-  },
-  backoff = {
-    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
-    period = Util.defaultNumber(runtime.backoffPeriod, 1),
-  },
-  ignoreSSL = runtime.ignoreSSL
-}
-
-model RemoveStoryImagesModel {
-  headers?: map[string]string(name='headers'),
-  body: RemoveStoryImagesResponse(name='body'),
-}
-
-/**
- * 该接口将会移除故事中的照片
- * @tags image
- * @error InvalidParameter The input parameter {parameter_name} is not valid.
- * @error AccessTokenInvalid AccessToken is invalid. {message}
- * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
- * @error NotFound The resource {resource_name} cannot be found. Please check.
- * @error InternalError The request has been failed due to some unknown error.
- * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
- */
-async function removeStoryImages(request: RemoveStoryImagesRequest) throws: RemoveStoryImagesModel  {
-  var runtime = new RuntimeOptions{};
-  return removeStoryImagesEx(request, runtime);
-}
-
-/**
- * 该接口将会移除故事中的照片
- * @tags image
- * @error InvalidParameter The input parameter {parameter_name} is not valid.
- * @error AccessTokenInvalid AccessToken is invalid. {message}
- * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
- * @error NotFound The resource {resource_name} cannot be found. Please check.
- * @error InternalError The request has been failed due to some unknown error.
- * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
- */
-api removeStoryImagesEx(request: RemoveStoryImagesRequest, runtime: RuntimeOptions): RemoveStoryImagesModel  {
-  var accesskeyId = getAccessKeyId();
-  var accessKeySecret = getAccessKeySecret();
-  var securityToken = getSecurityToken();
-  var accessToken = getAccessToken();
-  var realReq = Util.toMap(request);
-  __request.protocol = Util.defaultString(@protocol, 'https');
-  __request.method = 'POST';
-  __request.pathname = getPathname(@nickname, `/v2/image/remove_story_images`);
   __request.headers = {
     user-agent = getUserAgent(),
     host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
@@ -12134,6 +12368,7 @@ model BaseFileProcessRequest {
   imageCroppingAspectRatios?: [ string ](name='image_cropping_aspect_ratios', example='1:1, 1:2, 2:1, 2:3, 3:2, 7:4', items='{"type":"string"}'),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
 type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
@@ -12183,6 +12418,7 @@ model BaseHostingFileResponse {
 model BaseImageProcessRequest {
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
 type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
@@ -12198,6 +12434,7 @@ model BaseListFileRequest {
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
   limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   referer?: string(name='referer'),
   shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
   signToken?: string(name='sign_token'),
@@ -12323,6 +12560,46 @@ model CCPGetDirSizeInfoRequest {
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
   shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
+}
+
+/**
+ * 遍历文件
+ */
+model CCPWalkFileRequest {
+  headers?: map[string]string,
+  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  all?: boolean(name='all', default=true, description='all', enum='false, true', example=false),
+  category?: string(name='category', description='category', enum='image, video, music, doc, other', example='image'),
+  driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+  fields?: string(name='fields', description='fields', example='*'),
+  imageCroppingAspectRatios?: [ string ](name='image_cropping_aspect_ratios', example='1:1, 1:2, 2:1, 2:3, 3:2, 7:4', items='{"type":"string"}'),
+  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
+  imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
+  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0),
+  location?: string(name='location', description='location', example='cn-hangzhou'),
+  marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
+  orderBy?: string(name='order_by', description='order_by', enum='update_time, name', example='name'),
+  orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
+  parentFileId: string(name='parent_file_id', description='ParentFileID', example='root', maxLength=50, minLength=4, pattern='[a-z0-9.-_]{1,50}'),
+  parentFileIdPath?: string(name='parent_file_id_path'),
+  referer?: string(name='referer'),
+  shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
+  signToken?: string(name='sign_token'),
+  starred?: boolean(name='starred', description='starred', enum='false, true', example=false),
+  status?: string(name='status', default='available', description='status', enum='uploading, available', example='available'),
+  type?: string(name='type', description='type', enum='file, folder', example='file'),
+  urlExpireSec?: int64(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
+  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
+type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
+}
+
+/**
+ * 列举文件response
+ */
+model CCPWalkFileResponse {
+  items?: [ BaseCCPFileResponse ](name='items', description='items', example='', items='{"$ref":"#/definitions/BaseCCPFileResponse"}', maxItems=100),
+  nextMarker?: string(name='next_marker', description='next_marker', example='NWQ1YmI4MjA0ZGU1ZWNjYzAzODM0ZDVkODlkMWJiMzcyNzM1NTU4OA'),
 }
 
 /**
@@ -12571,10 +12848,13 @@ model CreateFileRequest {
   location?: string(name='location', description='location'),
   meta?: string(name='meta'),
   name: string(name='name', description='Name', example='ccp.jpg', maxLength=1024, minLength=1),
+  parallelUpload?: boolean(name='parallel_upload'),
   parentFileId: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=4, pattern='[a-z0-9]{1,50}'),
   parentFileIdPath?: string(name='parent_file_id_path'),
   partInfoList?: [ UploadPartInfo ](name='part_info_list', description='part_info_list', items='{"$ref":"#/definitions/UploadPartInfo"}'),
   preHash?: string(name='pre_hash', description='pre_hash', example='E10ADC3949BA59ABBE56E057F20F883E'),
+  proofCode?: string(name='proof_code', description='proof_code'),
+  proofVersion?: string(name='proof_version', description='proof_version', enum='v1'),
   shareId?: string(name='share_id', description='share_id
 example'),
   size?: int64(name='size', description='Size', format='int64', maximum=53687091200, minimum=0),
@@ -12853,6 +13133,7 @@ model DownloadRequest {
   FileID: string(name='FileID', description='file id', example='5d79206586bb5dd69fb34c349282718146c55da7'),
   ImageThumbnailProcess?: string(name='ImageThumbnailProcess', description='in: query
 image_thumbnail_process', example='image/resize,m_fill,h_128,w_128,limit_0'),
+  OfficeThumbnailProcess?: string(name='OfficeThumbnailProcess', description='office_thumbnail_process', example='image/resize,w_200'),
   ShareID?: string(name='ShareID', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
   VideoThumbnailProcess?: string(name='VideoThumbnailProcess', description='video_thumbnail_process
 type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
@@ -12899,6 +13180,8 @@ model FileStreamInfo {
   contentMd5: string(name='content_md5', description='ContentMd5', example='E10ADC3949BA59ABBE56E057F20F883E'),
   partInfoList?: [ UploadPartInfo ](name='part_info_list', description='part_info_list', items='{"$ref":"#/definitions/UploadPartInfo"}'),
   preHash?: string(name='pre_hash', description='pre_hash', example='E10ADC3949BA59ABBE56E057F20F883E'),
+  proofCode?: string(name='proof_code', description='proof_code'),
+  proofVersion?: string(name='proof_version', description='proof_version', enum='v1'),
   size: int64(name='size', description='Size', format='int64', maximum=53687091200, minimum=0),
 }
 
@@ -13086,6 +13369,7 @@ model GetFileByPathRequest {
   imageCroppingAspectRatios?: [ string ](name='image_cropping_aspect_ratios', example='1:1, 1:2, 2:1, 2:3, 3:2, 7:4', items='{"type":"string"}'),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   referer?: string(name='referer'),
   signToken?: string(name='sign_token'),
   urlExpireSec?: int64(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
@@ -13152,6 +13436,7 @@ model GetFileRequest {
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
   location?: string(name='location', description='location', example='cn-hangzhou'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   referer?: string(name='referer'),
   shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
   signToken?: string(name='sign_token'),
@@ -13360,6 +13645,39 @@ model GetShareLinkByAnonymousResponse {
 }
 
 /**
+ * 获取分享中文件下载地址的请求body
+ */
+model GetShareLinkDownloadURLRequest {
+  headers?: map[string]string,
+  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  expireSec?: int64(name='expire_sec', default=300, description='expire_sec', example=15, format='int64', maximum=600, minimum=1),
+  fileId: string(name='file_id', description='file_id', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
+  fileIdPath?: string(name='file_id_path'),
+  getAudioPlayInfo?: boolean(name='get_audio_play_info', description='get_audio_play_info', example=true),
+  getVideoPlayInfo?: boolean(name='get_video_play_info', description='get_video_play_info', example=true),
+  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
+  imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
+  location?: string(name='location', description='location', example='cn-hangzhou'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
+  referer?: string(name='referer'),
+  shareId: string(name='share_id', description='share_id is required', example='Agg1RL8pw96'),
+  signToken?: string(name='sign_token'),
+  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
+type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
+}
+
+/**
+ * 获取分享中文件数据response
+ */
+model GetShareLinkDownloadURLResponse {
+  audioTemplateList?: [ MediaPlayInfoTemplate ](name='audio_template_list', description='audio_template_list', items='{"$ref":"#/definitions/MediaPlayInfoTemplate"}'),
+  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  videoTemplateList?: [ MediaPlayInfoTemplate ](name='video_template_list', description='video_template_list', items='{"$ref":"#/definitions/MediaPlayInfoTemplate"}'),
+}
+
+/**
  * get_share_id request
  */
 model GetShareLinkIDRequest {
@@ -13389,6 +13707,7 @@ model GetShareLinkRequest {
 model GetShareLinkTokenRequest {
   headers?: map[string]string,
   additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  expireSec?: int64(name='expire_sec', default=7200, description='expire_sec', example=7200, format='int64', maximum=7200, minimum=0),
   referer?: string(name='referer'),
   shareId?: string(name='share_id', description='share_id', example='z6e81Up4u3GDBoJ741dm8z8fZBc2dh8gW'),
   sharePwd?: string(name='share_pwd', description='share_pwd', example='12ABcd'),
@@ -13675,6 +13994,7 @@ model HostingGetFileRequest {
   filePath: string(name='file_path', description='file_id', maxLength=1000, minLength=1),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   referer?: string(name='referer'),
   shareId?: string(name='share_id', description='share_id', example='3d336314-63c8-4d96-bce0-17aefb6833b6', pattern='[0-9a-zA-Z-]+'),
   signToken?: string(name='sign_token'),
@@ -13765,6 +14085,7 @@ model HostingListFileRequest {
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
   limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   parentFilePath: string(name='parent_file_path', description='ParentFilePath', example='/a/b/c.jpg'),
   referer?: string(name='referer'),
   shareId?: string(name='share_id', description='share_id', example='1', pattern='[0-9a-zA-Z-]+'),
@@ -14040,6 +14361,7 @@ model ListByAnonymousRequest {
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
   limit?: int64(name='limit', description='limit', example=50, format='int64', maximum=100, minimum=1),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   parentFileId: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=4, pattern='[a-z0-9]{1,50}'),
   referer?: string(name='referer'),
   shareId: string(name='share_id', description='share_id', example='z6e81Up4u3GDBoJ741dm8z8fZBc2dh8gW'),
@@ -14122,6 +14444,7 @@ model ListFileByCustomIndexKeyRequest {
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
   limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
   referer?: string(name='referer'),
   shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
@@ -14145,6 +14468,7 @@ model ListFileDeltaRequest {
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
   limit?: int32(name='limit', description='limit
 default 100', example=100, format='int32'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
 type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
@@ -14174,6 +14498,7 @@ model ListFileRequest {
   limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0),
   location?: string(name='location', description='location', example='cn-hangzhou'),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   orderBy?: string(name='order_by', description='order_by', enum='update_time, name', example='name'),
   orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
   parentFileId: string(name='parent_file_id', description='ParentFileID', example='root', maxLength=50, minLength=4, pattern='[a-z0-9.-_]{1,50}'),
@@ -14310,6 +14635,7 @@ model ListUploadedPartRequest {
 model ListUploadedPartResponse {
   fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   nextPartNumberMarker?: string(name='next_part_number_marker', description='next_part_number_marker', example='4'),
+  parallelUpload?: boolean(name='parallel_upload'),
   uploadId?: string(name='upload_id', description='upload_id', example='F3C25CDFA5C74ECB8DE32672F6211FD4'),
   uploadedParts?: [ UploadPartInfo ](name='uploaded_parts', description='uploaded_parts', example='', items='{"$ref":"#/definitions/UploadPartInfo"}'),
 }
@@ -14331,6 +14657,15 @@ model LogoutRequest {
   BackUrl?: string(name='BackUrl', description='登出之后的跳转地址，默认跳转到App的域名下', example='https://app.com/home'),
   ClientID: string(name='ClientID', description='Client ID, 此处填写创建App时返回的AppID', example='aksjoiajsoias'),
   LoginType?: string(name='LoginType', description='用户自定义字段，会在鉴权成功后的callback带回'),
+}
+
+/**
+ * 
+ */
+model MediaPlayInfoTemplate {
+  status?: string(name='status', description='status', enum='finished, failed, running', example='finished'),
+  templateId?: string(name='template_id', description='template_id', example='"HD"'),
+  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
 }
 
 /**
@@ -14526,6 +14861,23 @@ model RevokeRequest {
 }
 
 /**
+ * 对应OSS Sha1的结构体，定义在 gitlab.alibaba-inc.com/oss/parallel_hash.go OSSSha1Digest
+type OSSSha1Digest struct {
+h   [5]uint32         // h是计算sha1时存放中间结果的变量，参与每一轮Sha1的计算，必不可少，最后的Sha1值也由这几个数字决定
+x   [BlockSize]byte   // 上一轮计算非64字节对齐时，不足64节的内容会保存在这里
+nx  int               // 上一轮计算数据长度取模64的结果，64字节对齐时这个值为0
+len uint64            // 到上一个数据块为止的总长度，字节，用来计算 OSSRequestSha1Ctx 中的Nl, Nh
+}
+
+SHA1CTX 是 OSSSha1Digest 的简化
+当每轮计算Sha1的数据长度为64位对齐时，nx固定为0，x长度为0，只需包含h和len；part_offset对应OSSSha1Digest的len
+ */
+model SHA1CTX {
+  h?: [ integer ](name='h', items='{"format":"uint32","type":"integer"}'),
+  partOffset?: uint64(name='part_offset', format='uint64'),
+}
+
+/**
  * 全量获取file元信息的请求body
  */
 model ScanFileMetaRequest {
@@ -14538,6 +14890,7 @@ model ScanFileMetaRequest {
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
   limit?: int32(name='limit', description='limit', example=1000, format='int32', maximum=5000, minimum=1),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
 type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
@@ -14563,6 +14916,7 @@ model SearchFileRequest {
   limit?: int32(name='limit', default=50, description='limit', example=10, format='int32', maximum=100, minimum=1),
   location?: string(name='location', description='location', example='cn-hangzhou'),
   marker?: string(name='marker', description='Marker', example='""'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   orderBy?: string(name='order_by', default='updated_at', description='order_by', enum='name, created_at, updated_at, size', example='size'),
   query?: string(name='query', description='query', example='not name=123', maxLength=4096),
   referer?: string(name='referer', description='referer'),
@@ -14731,7 +15085,6 @@ model SystemTag {
   name?: string(name='name'),
   parentEnName?: string(name='parent_en_name'),
   parentName?: string(name='parent_name'),
-  selected?: boolean(name='selected'),
   source?: string(name='source'),
   tagLevel?: int64(name='tag_level', format='int64'),
 }
@@ -15015,8 +15368,9 @@ model UpdateShareResponse {
  * 
  */
 model UploadPartInfo {
-  contentType?: string(name='content_type'),
+  contentType?: string(name='content_type', description='content_type'),
   etag?: string(name='etag', description='etag', example='0CC175B9C0F1B6A831C399E269772661'),
+  parallelSha1Ctx?: SHA1CTX(name='parallel_sha1_ctx'),
   partNumber?: int64(name='part_number', description='PartNumber', example=1, format='int64', maximum=10000, minimum=1),
   partSize?: int64(name='part_size', description='PartSize：', example=1024, format='int64', maximum=5368709120, minimum=102400),
   uploadUrl?: string(name='upload_url', description='upload_url', example='https://ccp.data.aliyuncs.com/xxx/xxx?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx&partNumber=1&uploadId=0CC175B9C0F1B6A831C399E269772661'),
@@ -15253,6 +15607,7 @@ model BaseDomainResponse {
   mode?: string(name='mode', description='Domain 类型', example='StandardMode'),
   pathType?: string(name='path_type', description='Domain 类型', example='CCPPath'),
   publishedAppAccessStrategy?: AppAccessStrategy(name='published_app_access_strategy'),
+  serviceCode?: string(name='service_code', description='Domain ServiceCode', example='"edm"'),
   sharable?: boolean(name='sharable', description='是否开启了分享', example=true),
   storeLevel?: string(name='store_level', description='存储级别', example='Standard'),
   storeRegionList?: [ string ](name='store_region_list', description='存储 Region 列表', example='cn-hangzhou', items='{"type":"string"}'),
@@ -15315,6 +15670,7 @@ model CreateDomainResponse {
   mode?: string(name='mode', description='Domain 类型', example='StandardMode'),
   pathType?: string(name='path_type', description='Domain 类型', example='CCPPath'),
   publishedAppAccessStrategy?: AppAccessStrategy(name='published_app_access_strategy'),
+  serviceCode?: string(name='service_code', description='Domain ServiceCode', example='"edm"'),
   sharable?: boolean(name='sharable', description='是否开启了分享', example=true),
   storeLevel?: string(name='store_level', description='存储级别', example='Standard'),
   storeRegionList?: [ string ](name='store_region_list', description='存储 Region 列表', example='cn-hangzhou', items='{"type":"string"}'),
@@ -15444,6 +15800,7 @@ model GetDomainResponse {
   mode?: string(name='mode', description='Domain 类型', example='StandardMode'),
   pathType?: string(name='path_type', description='Domain 类型', example='CCPPath'),
   publishedAppAccessStrategy?: AppAccessStrategy(name='published_app_access_strategy'),
+  serviceCode?: string(name='service_code', description='Domain ServiceCode', example='"edm"'),
   sharable?: boolean(name='sharable', description='是否开启了分享', example=true),
   storeLevel?: string(name='store_level', description='存储级别', example='Standard'),
   storeRegionList?: [ string ](name='store_region_list', description='存储 Region 列表', example='cn-hangzhou', items='{"type":"string"}'),
@@ -15607,6 +15964,7 @@ model UpdateDomainResponse {
   mode?: string(name='mode', description='Domain 类型', example='StandardMode'),
   pathType?: string(name='path_type', description='Domain 类型', example='CCPPath'),
   publishedAppAccessStrategy?: AppAccessStrategy(name='published_app_access_strategy'),
+  serviceCode?: string(name='service_code', description='Domain ServiceCode', example='"edm"'),
   sharable?: boolean(name='sharable', description='是否开启了分享', example=true),
   storeLevel?: string(name='store_level', description='存储级别', example='Standard'),
   storeRegionList?: [ string ](name='store_region_list', description='存储 Region 列表', example='cn-hangzhou', items='{"type":"string"}'),
@@ -15723,6 +16081,7 @@ model CreateGroupRequest {
   description?: string(name='description', description='描述', example='"desc-1"'),
   groupName: string(name='group_name', description='名称', example='"group-1"'),
   isRoot?: boolean(name='is_root', description='是否是根group', example=false),
+  parentGroupId?: string(name='parent_group_id', description='parent group id'),
   subdomainId?: string(name='subdomain_id', description='subdomain id', example='"b38b5681bd964950ad8bc0f8ea504794"'),
 }
 
@@ -15773,13 +16132,19 @@ model CreateMembershipResponse {
 model CreateStoryRequest {
   headers?: map[string]string,
   driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  maxImageCount?: int64(name='max_image_count', description='max_image_count', example=100, format='int64'),
+  minImageCount?: int64(name='min_image_count', description='min_image_count', example=1, format='int64'),
+  storyEndTime?: string(name='story_end_time', description='story_end_time', example='"2199-01-01T00:00:01.544Z"'),
+  storyName?: string(name='story_name', description='story_name', example='"custom"'),
+  storyStartTime?: string(name='story_start_time', description='story_start_time', example='"2020-11-10T00:00:01.544Z"'),
+  storyType: string(name='story_type', description='story_type', example='"TimeMemory"'),
 }
 
 /**
  * 生成故事
  */
 model CreateStoryResponse {
-  driveId?: string(name='drive_id'),
+  driveId?: string(name='drive_id', description='drive_id'),
 }
 
 /**
@@ -15790,6 +16155,7 @@ model CreateUserRequest {
   avatar?: string(name='avatar', description='头像', example='http://a.b.c/ccp.jpg'),
   description?: string(name='description', description='描述信息', example='ccp team user', maxLength=1024),
   email?: string(name='email', description='邮箱', example='123@ccp.com'),
+  groupInfoList?: [ GroupInfo ](name='group_info_list', items='{"$ref":"#/definitions/GroupInfo"}'),
   location?: string(name='location', description='用户地域'),
   nickName?: string(name='nick_name', description='昵称', example='ccpuser'),
   phone?: string(name='phone', description='电话号码', example='13700000000'),
@@ -15869,6 +16235,43 @@ model DeleteUserResponse {
 }
 
 /**
+ * find story request
+ */
+model FindStoriesRequest {
+  headers?: map[string]string,
+  coverImageThumbnailProcess?: string(name='cover_image_thumbnail_process', description='cover_image_thumbnail_process'),
+  coverVideoThumbnailProcess?: string(name='cover_video_thumbnail_process', description='cover_video_thumbnail_process'),
+  createTimeRange?: FindStoryRequestTimeRange(name='create_time_range'),
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  eventType?: string(name='event_type', description='event_type'),
+  faceGroupIds?: [ string ](name='face_group_ids', description='face_group_ids', items='{"type":"string"}'),
+  limit?: int64(name='limit', description='limit', format='int64'),
+  marker?: string(name='marker', description='marker'),
+  storyEndTimeRange?: FindStoryRequestTimeRange(name='story_end_time_range'),
+  storyId?: string(name='story_id', description='story_id', example='"story112312"'),
+  storyName?: string(name='story_name', description='story_name'),
+  storyStartTimeRange?: FindStoryRequestTimeRange(name='story_start_time_range'),
+  storyType?: string(name='story_type', description='story_type'),
+  urlExpireSec?: int64(name='url_expire_sec', description='url_expire_sec', format='int64'),
+}
+
+/**
+ * 生成故事
+ */
+model FindStoriesResponse {
+  items?: [ GetStoryResponse ](name='items', description='items', items='{"$ref":"#/definitions/GetStoryResponse"}'),
+  nextMarker?: string(name='next_marker', description='next_marker'),
+}
+
+/**
+ * 
+ */
+model FindStoryRequestTimeRange {
+  end?: string(name='end', description='end'),
+  start?: string(name='start', description='start'),
+}
+
+/**
  * 
  */
 model GetGroupRequest {
@@ -15932,30 +16335,36 @@ model GetMembershipResponse {
 }
 
 /**
- * Get story detail request
+ * Get story request
  */
-model GetStoryDetailRequest {
+model GetStoryRequest {
   headers?: map[string]string,
+  coverImageThumbnailProcess?: string(name='cover_image_thumbnail_process', description='cover_image_thumbnail_process'),
+  coverVideoThumbnailProcess?: string(name='cover_video_thumbnail_process', description='cover_video_thumbnail_process'),
   driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  imageProcess?: string(name='image_process', description='image_process'),
+  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process'),
   storyId: string(name='story_id', description='story_id', example='"story112312"'),
-  videoUrlExpireSec?: int64(name='video_url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
+  urlExpireSec?: int64(name='url_expire_sec', description='url_expire_sec', format='int64'),
+  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process'),
 }
 
 /**
- * 故事详情
+ * 生成故事
  */
-model GetStoryDetailResponse {
+model GetStoryResponse {
   coverFileId?: string(name='cover_file_id', description='cover_file_id'),
+  coverFileThumbnailUrl?: string(name='cover_file_thumbnail_url', description='cover_file_url'),
   createdAt?: string(name='created_at', description='created_at'),
-  items?: [ BaseCCPFileResponse ](name='items', description='items', items='{"$ref":"#/definitions/BaseCCPFileResponse"}'),
-  score?: double(name='score', description='score', example=50.5, format='double'),
-  storyId?: string(name='story_id', description='story_id', example='"abc"'),
-  storyImagesDateRange?: [ integer ](name='story_images_date_range', description='story_images_date_range', items='{"format":"int64","type":"integer"}'),
-  subTitle?: string(name='sub_title', description='sub_title', example='"2020"'),
-  title?: string(name='title', description='title', example='"历史的今天"'),
+  eventType?: string(name='event_type', description='event_type'),
+  faceGroupIds?: [ string ](name='face_group_ids', description='face_group_ids', items='{"type":"string"}'),
+  storyEndTime?: string(name='story_end_time', description='story_end_time'),
+  storyFileList?: [ BaseCCPFileResponse ](name='story_file_list', items='{"$ref":"#/definitions/BaseCCPFileResponse"}'),
+  storyId?: string(name='story_id', description='story_id'),
+  storyName?: string(name='story_name', description='story_name'),
+  storyStartTime?: string(name='story_start_time', description='story_start_time'),
+  storyType?: string(name='story_type', description='story_type'),
   updatedAt?: string(name='updated_at', description='updated_at'),
-  videoStatus?: string(name='video_status', description='video_status', enum='creating, available'),
-  videoUrl?: string(name='video_url', description='video_url', example='"https://abc.xxx"'),
 }
 
 /**
@@ -15985,6 +16394,14 @@ model GetUserResponse {
   userData?: object(name='user_data', additionalProperties='{"type":"object"}', description='用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K', example='{ is_student: true }'),
   userId?: string(name='user_id', description='用户 ID', example='ccpuserid'),
   userName?: string(name='user_name', description='用户名称', example='name'),
+}
+
+/**
+ * 
+ */
+model GroupInfo {
+  groupId?: string(name='group_id'),
+  memberRole?: string(name='member_role', description='MemberRole 暂不对外，只作保留'),
 }
 
 /**
@@ -16160,24 +16577,6 @@ model ListImageTagsResponse {
 }
 
 /**
- * List story request
- */
-model ListStoryRequest {
-  headers?: map[string]string,
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  limit?: int32(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
-  marker?: string(name='marker', description='翻页标记', example='marker'),
-}
-
-/**
- * 故事列表
- */
-model ListStoryResponse {
-  items?: [ StoryResponse ](name='items', description='items', items='{"$ref":"#/definitions/StoryResponse"}'),
-  nextMarker?: string(name='next_marker', description='next_marker'),
-}
-
-/**
  * List user request
  */
 model ListUserRequest {
@@ -16219,16 +16618,6 @@ model ParseKeywordsResponse {
   addressLine?: string(name='address_line', description='AddressLine'),
   tags?: [ SystemTag ](name='tags', items='{"$ref":"#/definitions/SystemTag"}'),
   timeRange?: TimeRange(name='time_range'),
-}
-
-/**
- * Remove story images request
- */
-model RemoveStoryImagesRequest {
-  headers?: map[string]string,
-  driveId?: string(name='drive_id'),
-  fileIds?: [ string ](name='file_ids', items='{"type":"string"}'),
-  storyId?: string(name='story_id'),
 }
 
 /**
@@ -16318,22 +16707,6 @@ model SearchUserRequest {
 }
 
 /**
- * 
- */
-model StoryResponse {
-  coverFileId?: string(name='cover_file_id', description='cover_file_id'),
-  createdAt?: string(name='created_at', description='created_at'),
-  score?: double(name='score', description='score', example=50.5, format='double'),
-  storyId?: string(name='story_id', description='story_id', example='"abc"'),
-  storyImagesDateRange?: [ integer ](name='story_images_date_range', description='story_images_date_range', items='{"format":"int64","type":"integer"}'),
-  subTitle?: string(name='sub_title', description='sub_title', example='"2020"'),
-  title?: string(name='title', description='title', example='"历史的今天"'),
-  updatedAt?: string(name='updated_at', description='updated_at'),
-  videoStatus?: string(name='video_status', description='video_status', enum='creating, available'),
-  videoUrl?: string(name='video_url', description='video_url', example='"https://abc.xxx"'),
-}
-
-/**
  * Update face group info request
  */
 model UpdateFaceGroupInfoRequest {
@@ -16412,6 +16785,7 @@ model UpdateUserRequest {
   avatar?: string(name='avatar', description='头像', example='http://a.b.c/ccp.jpg'),
   description?: string(name='description', description='描述信息', example='ccp team user', maxLength=1024),
   email?: string(name='email', description='邮箱', example='123@ccp.com'),
+  groupInfoList?: [ GroupInfo ](name='group_info_list', items='{"$ref":"#/definitions/GroupInfo"}'),
   nickName?: string(name='nick_name', description='昵称', example='ccpuser'),
   phone?: string(name='phone', description='电话号码', example='13700000000'),
   role?: string(name='role', default='user', description='角色', enum='superadmin, admin, user', example='user'),
