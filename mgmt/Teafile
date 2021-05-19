@@ -1,7 +1,7 @@
 {
 	"scope": "alibabacloud",
 	"name": "mgmt",
-	"version": "1.0.5",
+	"version": "1.0.7",
 	"main": "./main.tea",
 	"maintainers": [
 		{
@@ -10,9 +10,9 @@
 		}
 	],
 	"releases": {
-		"go": "github.com/alibabacloud-go/pds-mgmt-sdk/client:v1.0.0",
+		"go": "github.com/alibabacloud-go/pds-mgmt-sdk/client:v1.0.1",
 		"ts": "@alicloud/pds-mgmt-sdk:^1.0.0",
-		"java": "com.aliyun:aliyun-sdk-pds-mgmt:0.0.7",
+		"java": "com.aliyun:aliyun-sdk-pds-mgmt:0.0.8",
 		"csharp": "Aliyun.SDK.Mgmt.Client:1.0.0",
 		"php": "alibabacloud/pds-mgmt-sdk:^0.1.0",
 		"python": "alibabacloud_pds_mgmt_sdk:0.0.1",
