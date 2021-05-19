@@ -12,6 +12,7 @@ public class ListAppsRequest extends TeaModel {
 
     // 返回结果数据
     @NameInMap("limit")
+    @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
     // 下次查询游标

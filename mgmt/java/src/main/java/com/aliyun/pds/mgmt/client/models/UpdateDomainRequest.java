@@ -40,6 +40,9 @@ public class UpdateDomainRequest extends TeaModel {
     @NameInMap("auth_ram_enable")
     public Boolean authRamEnable;
 
+    @NameInMap("custom_benefits")
+    public java.util.Map<String, ?> customBenefits;
+
     // 数据 Hash 算法
     @NameInMap("data_hash_name")
     public String dataHashName;
@@ -76,6 +79,9 @@ public class UpdateDomainRequest extends TeaModel {
     // 事件通知 Role Arn
     @NameInMap("event_role_arn")
     public String eventRoleArn;
+
+    @NameInMap("get_benefit")
+    public Boolean getBenefit;
 
     // 开启自动初始化 Drive
     @NameInMap("init_drive_enable")
@@ -173,6 +179,14 @@ public class UpdateDomainRequest extends TeaModel {
         return this.authRamEnable;
     }
 
+    public UpdateDomainRequest setCustomBenefits(java.util.Map<String, ?> customBenefits) {
+        this.customBenefits = customBenefits;
+        return this;
+    }
+    public java.util.Map<String, ?> getCustomBenefits() {
+        return this.customBenefits;
+    }
+
     public UpdateDomainRequest setDataHashName(String dataHashName) {
         this.dataHashName = dataHashName;
         return this;
@@ -243,6 +257,14 @@ public class UpdateDomainRequest extends TeaModel {
     }
     public String getEventRoleArn() {
         return this.eventRoleArn;
+    }
+
+    public UpdateDomainRequest setGetBenefit(Boolean getBenefit) {
+        this.getBenefit = getBenefit;
+        return this;
+    }
+    public Boolean getGetBenefit() {
+        return this.getBenefit;
     }
 
     public UpdateDomainRequest setInitDriveEnable(Boolean initDriveEnable) {

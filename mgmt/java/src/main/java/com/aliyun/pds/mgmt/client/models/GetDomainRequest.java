@@ -15,6 +15,9 @@ public class GetDomainRequest extends TeaModel {
     @Validation(required = true)
     public String domainId;
 
+    @NameInMap("get_benefit")
+    public Boolean getBenefit;
+
     public static GetDomainRequest build(java.util.Map<String, ?> map) throws Exception {
         GetDomainRequest self = new GetDomainRequest();
         return TeaModel.build(map, self);
@@ -34,6 +37,14 @@ public class GetDomainRequest extends TeaModel {
     }
     public String getDomainId() {
         return this.domainId;
+    }
+
+    public GetDomainRequest setGetBenefit(Boolean getBenefit) {
+        this.getBenefit = getBenefit;
+        return this;
+    }
+    public Boolean getGetBenefit() {
+        return this.getBenefit;
     }
 
 }
