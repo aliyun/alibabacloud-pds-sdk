@@ -15,7 +15,7 @@ public class DomainUpdateNameRequest extends TeaModel {
     @Validation(required = true)
     public String domainId;
 
-    // Name
+    // Domain 名称
     @NameInMap("name")
     @Validation(required = true)
     public String name;

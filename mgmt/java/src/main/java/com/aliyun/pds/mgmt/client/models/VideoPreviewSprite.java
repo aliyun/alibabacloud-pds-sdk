@@ -7,17 +7,12 @@ import com.aliyun.tea.*;
  * 
  */
 public class VideoPreviewSprite extends TeaModel {
+    @NameInMap("auto_scale")
+    public VideoPreviewAutoScale autoScale;
+
     // col
     @NameInMap("col")
     public Long col;
-
-    // count
-    @NameInMap("count")
-    public Long count;
-
-    // frame_count
-    @NameInMap("frame_count")
-    public Long frameCount;
 
     // frame_height
     @NameInMap("frame_height")
@@ -27,17 +22,24 @@ public class VideoPreviewSprite extends TeaModel {
     @NameInMap("frame_width")
     public Long frameWidth;
 
+    @NameInMap("interval")
+    public VideoPreviewSpriteInterval interval;
+
     // row
     @NameInMap("row")
     public Long row;
 
-    // status
-    @NameInMap("status")
-    public String status;
-
     public static VideoPreviewSprite build(java.util.Map<String, ?> map) throws Exception {
         VideoPreviewSprite self = new VideoPreviewSprite();
         return TeaModel.build(map, self);
+    }
+
+    public VideoPreviewSprite setAutoScale(VideoPreviewAutoScale autoScale) {
+        this.autoScale = autoScale;
+        return this;
+    }
+    public VideoPreviewAutoScale getAutoScale() {
+        return this.autoScale;
     }
 
     public VideoPreviewSprite setCol(Long col) {
@@ -46,22 +48,6 @@ public class VideoPreviewSprite extends TeaModel {
     }
     public Long getCol() {
         return this.col;
-    }
-
-    public VideoPreviewSprite setCount(Long count) {
-        this.count = count;
-        return this;
-    }
-    public Long getCount() {
-        return this.count;
-    }
-
-    public VideoPreviewSprite setFrameCount(Long frameCount) {
-        this.frameCount = frameCount;
-        return this;
-    }
-    public Long getFrameCount() {
-        return this.frameCount;
     }
 
     public VideoPreviewSprite setFrameHeight(Long frameHeight) {
@@ -80,20 +66,20 @@ public class VideoPreviewSprite extends TeaModel {
         return this.frameWidth;
     }
 
+    public VideoPreviewSprite setInterval(VideoPreviewSpriteInterval interval) {
+        this.interval = interval;
+        return this;
+    }
+    public VideoPreviewSpriteInterval getInterval() {
+        return this.interval;
+    }
+
     public VideoPreviewSprite setRow(Long row) {
         this.row = row;
         return this;
     }
     public Long getRow() {
         return this.row;
-    }
-
-    public VideoPreviewSprite setStatus(String status) {
-        this.status = status;
-        return this;
-    }
-    public String getStatus() {
-        return this.status;
     }
 
 }

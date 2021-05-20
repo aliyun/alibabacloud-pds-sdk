@@ -20,7 +20,7 @@ public class SHA1CTX extends TeaModel {
     public java.util.List<Integer> h;
 
     @NameInMap("part_offset")
-    public uint64 partOffset;
+    public Long partOffset;
 
     public static SHA1CTX build(java.util.Map<String, ?> map) throws Exception {
         SHA1CTX self = new SHA1CTX();
@@ -35,11 +35,11 @@ public class SHA1CTX extends TeaModel {
         return this.h;
     }
 
-    public SHA1CTX setPartOffset(uint64 partOffset) {
+    public SHA1CTX setPartOffset(Long partOffset) {
         this.partOffset = partOffset;
         return this;
     }
-    public uint64 getPartOffset() {
+    public Long getPartOffset() {
         return this.partOffset;
     }
 
