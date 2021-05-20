@@ -6728,7 +6728,7 @@ type DomainUpdateNameRequest struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   // Domain ID
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty" require:"true"`
-  // Name
+  // Domain 名称
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
 }
 
@@ -14783,7 +14783,7 @@ SHA1CTX 是 OSSSha1Digest 的简化
  */
 type SHA1CTX struct {
   H []*int `json:"h,omitempty" xml:"h,omitempty" type:"Repeated"`
-  PartOffset *uint64 `json:"part_offset,omitempty" xml:"part_offset,omitempty"`
+  PartOffset *int64 `json:"part_offset,omitempty" xml:"part_offset,omitempty"`
 }
 
 func (s SHA1CTX) String() string {
@@ -14799,7 +14799,7 @@ func (s *SHA1CTX) SetH(v []*int) *SHA1CTX {
   return s
 }
 
-func (s *SHA1CTX) SetPartOffset(v uint64) *SHA1CTX {
+func (s *SHA1CTX) SetPartOffset(v int64) *SHA1CTX {
   s.PartOffset = &v
   return s
 }
@@ -19023,20 +19023,16 @@ func (s *VideoPreviewResponse) SetWidth(v int64) *VideoPreviewResponse {
  * 
  */
 type VideoPreviewSprite struct {
+  AutoScale *VideoPreviewAutoScale `json:"auto_scale,omitempty" xml:"auto_scale,omitempty"`
   // col
   Col *int64 `json:"col,omitempty" xml:"col,omitempty"`
-  // count
-  Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-  // frame_count
-  FrameCount *int64 `json:"frame_count,omitempty" xml:"frame_count,omitempty"`
   // frame_height
   FrameHeight *int64 `json:"frame_height,omitempty" xml:"frame_height,omitempty"`
   // frame_width
   FrameWidth *int64 `json:"frame_width,omitempty" xml:"frame_width,omitempty"`
+  Interval *VideoPreviewSpriteInterval `json:"interval,omitempty" xml:"interval,omitempty"`
   // row
   Row *int64 `json:"row,omitempty" xml:"row,omitempty"`
-  // status
-  Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s VideoPreviewSprite) String() string {
@@ -19047,18 +19043,13 @@ func (s VideoPreviewSprite) GoString() string {
   return s.String()
 }
 
+func (s *VideoPreviewSprite) SetAutoScale(v *VideoPreviewAutoScale) *VideoPreviewSprite {
+  s.AutoScale = v
+  return s
+}
+
 func (s *VideoPreviewSprite) SetCol(v int64) *VideoPreviewSprite {
   s.Col = &v
-  return s
-}
-
-func (s *VideoPreviewSprite) SetCount(v int64) *VideoPreviewSprite {
-  s.Count = &v
-  return s
-}
-
-func (s *VideoPreviewSprite) SetFrameCount(v int64) *VideoPreviewSprite {
-  s.FrameCount = &v
   return s
 }
 
@@ -19072,13 +19063,13 @@ func (s *VideoPreviewSprite) SetFrameWidth(v int64) *VideoPreviewSprite {
   return s
 }
 
-func (s *VideoPreviewSprite) SetRow(v int64) *VideoPreviewSprite {
-  s.Row = &v
+func (s *VideoPreviewSprite) SetInterval(v *VideoPreviewSpriteInterval) *VideoPreviewSprite {
+  s.Interval = v
   return s
 }
 
-func (s *VideoPreviewSprite) SetStatus(v string) *VideoPreviewSprite {
-  s.Status = &v
+func (s *VideoPreviewSprite) SetRow(v int64) *VideoPreviewSprite {
+  s.Row = &v
   return s
 }
 
