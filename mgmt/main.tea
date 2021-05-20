@@ -4577,7 +4577,7 @@ model DomainSuperAdminConfig {
 model DomainUpdateNameRequest {
   headers?: map[string]string,
   domainId: string(name='domain_id', description='Domain ID', example='sz111'),
-  name: string(name='name', description='Name', example='sz123'),
+  name: string(name='name', description='Domain 名称', example='test_domain'),
 }
 
 /**
@@ -6360,8 +6360,8 @@ SHA1CTX 是 OSSSha1Digest 的简化
 当每轮计算Sha1的数据长度为64位对齐时，nx固定为0，x长度为0，只需包含h和len；part_offset对应OSSSha1Digest的len
  */
 model SHA1CTX {
-  h?: [ integer ](name='h', items='{"format":"uint32","type":"integer"}'),
-  partOffset?: uint64(name='part_offset', format='uint64'),
+  h?: [ integer ](name='h', items='{"format":"int64","type":"integer"}'),
+  partOffset?: int64(name='part_offset', format='int64'),
 }
 
 /**
@@ -7253,13 +7253,12 @@ model VideoPreviewResponse {
  * 
  */
 model VideoPreviewSprite {
+  autoScale?: VideoPreviewAutoScale(name='auto_scale'),
   col?: int64(name='col', description='col', example=10, format='int64'),
-  count?: int64(name='count', description='count', example=4, format='int64'),
-  frameCount?: int64(name='frame_count', description='frame_count', example=333, format='int64'),
   frameHeight?: int64(name='frame_height', description='frame_height', example=90, format='int64'),
   frameWidth?: int64(name='frame_width', description='frame_width', example=160, format='int64'),
+  interval?: VideoPreviewSpriteInterval(name='interval'),
   row?: int64(name='row', description='row', example=10, format='int64'),
-  status?: string(name='status', description='status', example='finished'),
 }
 
 /**
