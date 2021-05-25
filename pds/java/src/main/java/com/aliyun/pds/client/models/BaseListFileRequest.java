@@ -29,6 +29,7 @@ public class BaseListFileRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
+    @Validation(maximum = 100)
     public Long limit;
 
     // marker
