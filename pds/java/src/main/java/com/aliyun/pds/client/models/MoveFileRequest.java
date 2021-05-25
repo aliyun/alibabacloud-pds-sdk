@@ -14,9 +14,6 @@ public class MoveFileRequest extends TeaModel {
     @NameInMap("auto_rename")
     public Boolean autoRename;
 
-    @NameInMap("category_list")
-    public java.util.List<String> categoryList;
-
     // drive_id
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
@@ -71,14 +68,6 @@ public class MoveFileRequest extends TeaModel {
     }
     public Boolean getAutoRename() {
         return this.autoRename;
-    }
-
-    public MoveFileRequest setCategoryList(java.util.List<String> categoryList) {
-        this.categoryList = categoryList;
-        return this;
-    }
-    public java.util.List<String> getCategoryList() {
-        return this.categoryList;
     }
 
     public MoveFileRequest setDriveId(String driveId) {

@@ -7,33 +7,31 @@ import com.aliyun.tea.*;
  * 
  */
 public class TimeRange extends TeaModel {
-    // EndTime
-    @NameInMap("end_time")
-    public String endTime;
+    @NameInMap("end")
+    public String end;
 
-    // StartTime
-    @NameInMap("start_time")
-    public String startTime;
+    @NameInMap("start")
+    public String start;
 
     public static TimeRange build(java.util.Map<String, ?> map) throws Exception {
         TimeRange self = new TimeRange();
         return TeaModel.build(map, self);
     }
 
-    public TimeRange setEndTime(String endTime) {
-        this.endTime = endTime;
+    public TimeRange setEnd(String end) {
+        this.end = end;
         return this;
     }
-    public String getEndTime() {
-        return this.endTime;
+    public String getEnd() {
+        return this.end;
     }
 
-    public TimeRange setStartTime(String startTime) {
-        this.startTime = startTime;
+    public TimeRange setStart(String start) {
+        this.start = start;
         return this;
     }
-    public String getStartTime() {
-        return this.startTime;
+    public String getStart() {
+        return this.start;
     }
 
 }

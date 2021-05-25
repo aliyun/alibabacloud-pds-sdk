@@ -79,10 +79,6 @@ public class BaseShareLinkResponse extends TeaModel {
     @NameInMap("share_url")
     public String shareUrl;
 
-    // status
-    @NameInMap("status")
-    public String status;
-
     // updated_at
     @NameInMap("updated_at")
     public String updatedAt;
@@ -234,14 +230,6 @@ public class BaseShareLinkResponse extends TeaModel {
     }
     public String getShareUrl() {
         return this.shareUrl;
-    }
-
-    public BaseShareLinkResponse setStatus(String status) {
-        this.status = status;
-        return this;
-    }
-    public String getStatus() {
-        return this.status;
     }
 
     public BaseShareLinkResponse setUpdatedAt(String updatedAt) {

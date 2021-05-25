@@ -6,7 +6,7 @@ import com.aliyun.tea.*;
 /**
  * 
  */
-public class GetUserAccessTokenResponse extends TeaModel {
+public class AccessTokenResponse extends TeaModel {
     // 用于调用业务接口的accessToken
     @NameInMap("access_token")
     @Validation(required = true)
@@ -29,6 +29,7 @@ public class GetUserAccessTokenResponse extends TeaModel {
 
     // 用于刷新accessToken
     @NameInMap("refresh_token")
+    @Validation(required = true)
     public String refreshToken;
 
     // 当前用户角色
@@ -46,12 +47,12 @@ public class GetUserAccessTokenResponse extends TeaModel {
     @Validation(required = true)
     public String userId;
 
-    public static GetUserAccessTokenResponse build(java.util.Map<String, ?> map) throws Exception {
-        GetUserAccessTokenResponse self = new GetUserAccessTokenResponse();
+    public static AccessTokenResponse build(java.util.Map<String, ?> map) throws Exception {
+        AccessTokenResponse self = new AccessTokenResponse();
         return TeaModel.build(map, self);
     }
 
-    public GetUserAccessTokenResponse setAccessToken(String accessToken) {
+    public AccessTokenResponse setAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
@@ -59,7 +60,7 @@ public class GetUserAccessTokenResponse extends TeaModel {
         return this.accessToken;
     }
 
-    public GetUserAccessTokenResponse setDefaultDriveId(String defaultDriveId) {
+    public AccessTokenResponse setDefaultDriveId(String defaultDriveId) {
         this.defaultDriveId = defaultDriveId;
         return this;
     }
@@ -67,7 +68,7 @@ public class GetUserAccessTokenResponse extends TeaModel {
         return this.defaultDriveId;
     }
 
-    public GetUserAccessTokenResponse setExpireTime(String expireTime) {
+    public AccessTokenResponse setExpireTime(String expireTime) {
         this.expireTime = expireTime;
         return this;
     }
@@ -75,7 +76,7 @@ public class GetUserAccessTokenResponse extends TeaModel {
         return this.expireTime;
     }
 
-    public GetUserAccessTokenResponse setExpiresIn(Long expiresIn) {
+    public AccessTokenResponse setExpiresIn(Long expiresIn) {
         this.expiresIn = expiresIn;
         return this;
     }
@@ -83,7 +84,7 @@ public class GetUserAccessTokenResponse extends TeaModel {
         return this.expiresIn;
     }
 
-    public GetUserAccessTokenResponse setRefreshToken(String refreshToken) {
+    public AccessTokenResponse setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
     }
@@ -91,7 +92,7 @@ public class GetUserAccessTokenResponse extends TeaModel {
         return this.refreshToken;
     }
 
-    public GetUserAccessTokenResponse setRole(String role) {
+    public AccessTokenResponse setRole(String role) {
         this.role = role;
         return this;
     }
@@ -99,7 +100,7 @@ public class GetUserAccessTokenResponse extends TeaModel {
         return this.role;
     }
 
-    public GetUserAccessTokenResponse setTokenType(String tokenType) {
+    public AccessTokenResponse setTokenType(String tokenType) {
         this.tokenType = tokenType;
         return this;
     }
@@ -107,7 +108,7 @@ public class GetUserAccessTokenResponse extends TeaModel {
         return this.tokenType;
     }
 
-    public GetUserAccessTokenResponse setUserId(String userId) {
+    public AccessTokenResponse setUserId(String userId) {
         this.userId = userId;
         return this;
     }

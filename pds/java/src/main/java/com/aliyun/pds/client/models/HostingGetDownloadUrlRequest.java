@@ -18,6 +18,7 @@ public class HostingGetDownloadUrlRequest extends TeaModel {
 
     // expire_sec
     @NameInMap("expire_sec")
+    @Validation(maximum = 14400, minimum = 10)
     public Long expireSec;
 
     // file_name
