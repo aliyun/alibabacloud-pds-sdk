@@ -30,6 +30,7 @@ public class BaseCreateFileRequest extends TeaModel {
 
     // Size
     @NameInMap("size")
+    @Validation(maximum = 53687091200D)
     public Long size;
 
     // Type
