@@ -22,6 +22,7 @@ public class GetStoryDetailRequest extends TeaModel {
 
     // url_expire_sec
     @NameInMap("video_url_expire_sec")
+    @Validation(maximum = 14400, minimum = 10)
     public Long videoUrlExpireSec;
 
     public static GetStoryDetailRequest build(java.util.Map<String, ?> map) throws Exception {

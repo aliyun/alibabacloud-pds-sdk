@@ -6,7 +6,7 @@ import com.aliyun.tea.*;
 /**
  * 
  */
-public class SimpleStreamInfo extends TeaModel {
+public class StreamInfo extends TeaModel {
     // crc64_hash
     @NameInMap("crc64_hash")
     public String crc64Hash;
@@ -15,7 +15,6 @@ public class SimpleStreamInfo extends TeaModel {
     @NameInMap("download_url")
     public String downloadUrl;
 
-    // size
     @NameInMap("size")
     public Long size;
 
@@ -27,12 +26,12 @@ public class SimpleStreamInfo extends TeaModel {
     @NameInMap("url")
     public String url;
 
-    public static SimpleStreamInfo build(java.util.Map<String, ?> map) throws Exception {
-        SimpleStreamInfo self = new SimpleStreamInfo();
+    public static StreamInfo build(java.util.Map<String, ?> map) throws Exception {
+        StreamInfo self = new StreamInfo();
         return TeaModel.build(map, self);
     }
 
-    public SimpleStreamInfo setCrc64Hash(String crc64Hash) {
+    public StreamInfo setCrc64Hash(String crc64Hash) {
         this.crc64Hash = crc64Hash;
         return this;
     }
@@ -40,7 +39,7 @@ public class SimpleStreamInfo extends TeaModel {
         return this.crc64Hash;
     }
 
-    public SimpleStreamInfo setDownloadUrl(String downloadUrl) {
+    public StreamInfo setDownloadUrl(String downloadUrl) {
         this.downloadUrl = downloadUrl;
         return this;
     }
@@ -48,7 +47,7 @@ public class SimpleStreamInfo extends TeaModel {
         return this.downloadUrl;
     }
 
-    public SimpleStreamInfo setSize(Long size) {
+    public StreamInfo setSize(Long size) {
         this.size = size;
         return this;
     }
@@ -56,7 +55,7 @@ public class SimpleStreamInfo extends TeaModel {
         return this.size;
     }
 
-    public SimpleStreamInfo setThumbnail(String thumbnail) {
+    public StreamInfo setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
         return this;
     }
@@ -64,7 +63,7 @@ public class SimpleStreamInfo extends TeaModel {
         return this.thumbnail;
     }
 
-    public SimpleStreamInfo setUrl(String url) {
+    public StreamInfo setUrl(String url) {
         this.url = url;
         return this;
     }

@@ -20,23 +20,27 @@ public class CreateShareLinkRequest extends TeaModel {
 
     // drive_id
     @NameInMap("drive_id")
-    @Validation(pattern = "[0-9]+")
+    @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
     // expiration
     @NameInMap("expiration")
+    @Validation(required = true)
     public String expiration;
 
     // file_id
     @NameInMap("file_id")
+    @Validation(required = true)
     public String fileId;
 
     // file_id_list
     @NameInMap("file_id_list")
+    @Validation(required = true, maximum = 50, minimum = 1)
     public java.util.List<String> fileIdList;
 
     // file_path_list
     @NameInMap("file_path_list")
+    @Validation(required = true, maximum = 50, minimum = 1)
     public java.util.List<String> filePathList;
 
     @NameInMap("referer")
@@ -48,6 +52,7 @@ public class CreateShareLinkRequest extends TeaModel {
 
     // share_pwd
     @NameInMap("share_pwd")
+    @Validation(maximum = 64)
     public String sharePwd;
 
     public static CreateShareLinkRequest build(java.util.Map<String, ?> map) throws Exception {

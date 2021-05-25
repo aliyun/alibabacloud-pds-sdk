@@ -9,7 +9,7 @@ public class GetUserAccessTokenModel extends TeaModel {
 
     @NameInMap("body")
     @Validation(required = true)
-    public GetUserAccessTokenResponse body;
+    public AccessTokenResponse body;
 
     public static GetUserAccessTokenModel build(java.util.Map<String, ?> map) throws Exception {
         GetUserAccessTokenModel self = new GetUserAccessTokenModel();
@@ -24,11 +24,11 @@ public class GetUserAccessTokenModel extends TeaModel {
         return this.headers;
     }
 
-    public GetUserAccessTokenModel setBody(GetUserAccessTokenResponse body) {
+    public GetUserAccessTokenModel setBody(AccessTokenResponse body) {
         this.body = body;
         return this;
     }
-    public GetUserAccessTokenResponse getBody() {
+    public AccessTokenResponse getBody() {
         return this.body;
     }
 

@@ -17,6 +17,7 @@ public class ListImageFaceGroupsRequest extends TeaModel {
 
     // 每页大小限制
     @NameInMap("limit")
+    @Validation(maximum = 100, minimum = 1)
     public Long limit;
 
     // 翻页标记
