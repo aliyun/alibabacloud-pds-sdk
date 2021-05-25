@@ -16,11 +16,12 @@ public class GetVideoPreviewSpriteURLRequest extends TeaModel {
 
     // drive_id
     @NameInMap("drive_id")
-    @Validation(pattern = "[0-9]+")
+    @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
     // expire_sec
     @NameInMap("expire_sec")
+    @Validation(maximum = 14400, minimum = 1)
     public Long expireSec;
 
     // file_id
@@ -34,9 +35,6 @@ public class GetVideoPreviewSpriteURLRequest extends TeaModel {
     // share_id, either share_id or drive_id is required
     @NameInMap("share_id")
     public String shareId;
-
-    @NameInMap("sign_token")
-    public String signToken;
 
     public static GetVideoPreviewSpriteURLRequest build(java.util.Map<String, ?> map) throws Exception {
         GetVideoPreviewSpriteURLRequest self = new GetVideoPreviewSpriteURLRequest();
@@ -97,14 +95,6 @@ public class GetVideoPreviewSpriteURLRequest extends TeaModel {
     }
     public String getShareId() {
         return this.shareId;
-    }
-
-    public GetVideoPreviewSpriteURLRequest setSignToken(String signToken) {
-        this.signToken = signToken;
-        return this;
-    }
-    public String getSignToken() {
-        return this.signToken;
     }
 
 }

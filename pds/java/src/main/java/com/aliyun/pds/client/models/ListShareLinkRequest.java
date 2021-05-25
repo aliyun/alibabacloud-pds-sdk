@@ -14,12 +14,9 @@ public class ListShareLinkRequest extends TeaModel {
     @NameInMap("creator")
     public String creator;
 
-    // include_cancelled
-    @NameInMap("include_cancelled")
-    public Boolean includeCancelled;
-
     // limit
     @NameInMap("limit")
+    @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
     // marker
@@ -53,14 +50,6 @@ public class ListShareLinkRequest extends TeaModel {
     }
     public String getCreator() {
         return this.creator;
-    }
-
-    public ListShareLinkRequest setIncludeCancelled(Boolean includeCancelled) {
-        this.includeCancelled = includeCancelled;
-        return this;
-    }
-    public Boolean getIncludeCancelled() {
-        return this.includeCancelled;
     }
 
     public ListShareLinkRequest setLimit(Integer limit) {

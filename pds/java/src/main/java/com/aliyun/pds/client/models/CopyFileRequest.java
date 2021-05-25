@@ -19,9 +19,6 @@ public class CopyFileRequest extends TeaModel {
     @NameInMap("auto_rename")
     public Boolean autoRename;
 
-    @NameInMap("batch_id")
-    public String batchId;
-
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -89,14 +86,6 @@ public class CopyFileRequest extends TeaModel {
     }
     public Boolean getAutoRename() {
         return this.autoRename;
-    }
-
-    public CopyFileRequest setBatchId(String batchId) {
-        this.batchId = batchId;
-        return this;
-    }
-    public String getBatchId() {
-        return this.batchId;
     }
 
     public CopyFileRequest setDriveId(String driveId) {

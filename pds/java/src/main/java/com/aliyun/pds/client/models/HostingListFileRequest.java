@@ -29,6 +29,7 @@ public class HostingListFileRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
+    @Validation(maximum = 100)
     public Long limit;
 
     // marker
@@ -53,6 +54,7 @@ public class HostingListFileRequest extends TeaModel {
 
     // url_expire_sec
     @NameInMap("url_expire_sec")
+    @Validation(maximum = 14400, minimum = 10)
     public Long urlExpireSec;
 
     // video_thumbnail_process

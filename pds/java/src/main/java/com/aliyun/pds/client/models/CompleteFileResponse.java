@@ -95,15 +95,15 @@ public class CompleteFileResponse extends TeaModel {
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String parentFileId;
 
-    // PunishFlag
     @NameInMap("punish_flag")
-    public Long punishFlag;
+    public Integer punishFlag;
 
     @NameInMap("share_id")
     public String shareId;
 
     // Size
     @NameInMap("size")
+    @Validation(maximum = 53687091200D)
     public Long size;
 
     // starred
@@ -329,11 +329,11 @@ public class CompleteFileResponse extends TeaModel {
         return this.parentFileId;
     }
 
-    public CompleteFileResponse setPunishFlag(Long punishFlag) {
+    public CompleteFileResponse setPunishFlag(Integer punishFlag) {
         this.punishFlag = punishFlag;
         return this;
     }
-    public Long getPunishFlag() {
+    public Integer getPunishFlag() {
         return this.punishFlag;
     }
 
