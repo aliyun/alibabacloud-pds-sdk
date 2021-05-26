@@ -39,6 +39,10 @@ public class GetUserResponse extends TeaModel {
     @NameInMap("phone")
     public String phone;
 
+    // 用户处罚标志
+    @NameInMap("punish_flag")
+    public Long punishFlag;
+
     // 角色
     @NameInMap("role")
     public String role;
@@ -130,6 +134,14 @@ public class GetUserResponse extends TeaModel {
     }
     public String getPhone() {
         return this.phone;
+    }
+
+    public GetUserResponse setPunishFlag(Long punishFlag) {
+        this.punishFlag = punishFlag;
+        return this;
+    }
+    public Long getPunishFlag() {
+        return this.punishFlag;
     }
 
     public GetUserResponse setRole(String role) {

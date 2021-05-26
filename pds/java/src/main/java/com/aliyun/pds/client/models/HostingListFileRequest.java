@@ -36,6 +36,10 @@ public class HostingListFileRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    // office_thumbnail_process
+    @NameInMap("office_thumbnail_process")
+    public String officeThumbnailProcess;
+
     // ParentFilePath
     @NameInMap("parent_file_path")
     @Validation(required = true)
@@ -121,6 +125,14 @@ public class HostingListFileRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public HostingListFileRequest setOfficeThumbnailProcess(String officeThumbnailProcess) {
+        this.officeThumbnailProcess = officeThumbnailProcess;
+        return this;
+    }
+    public String getOfficeThumbnailProcess() {
+        return this.officeThumbnailProcess;
     }
 
     public HostingListFileRequest setParentFilePath(String parentFilePath) {

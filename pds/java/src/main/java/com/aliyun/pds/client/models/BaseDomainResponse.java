@@ -62,6 +62,9 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("auth_ram_enable")
     public Boolean authRamEnable;
 
+    @NameInMap("benefits")
+    public java.util.Map<String, ?> benefits;
+
     // Domain 创建时间
     @NameInMap("created_at")
     public String createdAt;
@@ -69,6 +72,9 @@ public class BaseDomainResponse extends TeaModel {
     // 数据 Hash 算法
     @NameInMap("data_hash_name")
     public String dataHashName;
+
+    @NameInMap("default_super_admin_config")
+    public DomainSuperAdminConfig defaultSuperAdminConfig;
 
     // Domain 描述
     @NameInMap("description")
@@ -102,6 +108,10 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("event_role_arn")
     public String eventRoleArn;
 
+    // 预付费domain过期时间
+    @NameInMap("expire_time")
+    public Long expireTime;
+
     // 是否开启了自动初始化 Drive
     @NameInMap("init_drive_enable")
     public Boolean initDriveEnable;
@@ -118,16 +128,43 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("mode")
     public String mode;
 
+    @NameInMap("office_preview_config")
+    public OfficePreviewConfig officePreviewConfig;
+
     // Domain 类型
     @NameInMap("path_type")
     public String pathType;
 
+    // 预付费套餐
+    @NameInMap("prepaid_package")
+    public String prepaidPackage;
+
     @NameInMap("published_app_access_strategy")
     public AppAccessStrategy publishedAppAccessStrategy;
 
-    // 是否开启了分享
+    // Domain ServiceCode
+    @NameInMap("service_code")
+    public String serviceCode;
+
+    // 是否开启了共享
     @NameInMap("sharable")
     public Boolean sharable;
+
+    // 是否开启了分享
+    @NameInMap("share_link_enabled")
+    public Boolean shareLinkEnabled;
+
+    // 容量配额
+    @NameInMap("size_quota")
+    public Long sizeQuota;
+
+    // SPI 实例 id
+    @NameInMap("spi_instance_id")
+    public String spiInstanceId;
+
+    // domain状态：创建中，正常，已过期
+    @NameInMap("status")
+    public Long status;
 
     // 存储级别
     @NameInMap("store_level")
@@ -140,6 +177,13 @@ public class BaseDomainResponse extends TeaModel {
     // Domain 更新时间
     @NameInMap("updated_at")
     public String updatedAt;
+
+    // 用户数配额
+    @NameInMap("user_count_quota")
+    public Long userCountQuota;
+
+    @NameInMap("video_preview_config")
+    public VideoPreviewConfig videoPreviewConfig;
 
     public static BaseDomainResponse build(java.util.Map<String, ?> map) throws Exception {
         BaseDomainResponse self = new BaseDomainResponse();
@@ -258,6 +302,14 @@ public class BaseDomainResponse extends TeaModel {
         return this.authRamEnable;
     }
 
+    public BaseDomainResponse setBenefits(java.util.Map<String, ?> benefits) {
+        this.benefits = benefits;
+        return this;
+    }
+    public java.util.Map<String, ?> getBenefits() {
+        return this.benefits;
+    }
+
     public BaseDomainResponse setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
         return this;
@@ -272,6 +324,14 @@ public class BaseDomainResponse extends TeaModel {
     }
     public String getDataHashName() {
         return this.dataHashName;
+    }
+
+    public BaseDomainResponse setDefaultSuperAdminConfig(DomainSuperAdminConfig defaultSuperAdminConfig) {
+        this.defaultSuperAdminConfig = defaultSuperAdminConfig;
+        return this;
+    }
+    public DomainSuperAdminConfig getDefaultSuperAdminConfig() {
+        return this.defaultSuperAdminConfig;
     }
 
     public BaseDomainResponse setDescription(String description) {
@@ -338,6 +398,14 @@ public class BaseDomainResponse extends TeaModel {
         return this.eventRoleArn;
     }
 
+    public BaseDomainResponse setExpireTime(Long expireTime) {
+        this.expireTime = expireTime;
+        return this;
+    }
+    public Long getExpireTime() {
+        return this.expireTime;
+    }
+
     public BaseDomainResponse setInitDriveEnable(Boolean initDriveEnable) {
         this.initDriveEnable = initDriveEnable;
         return this;
@@ -370,12 +438,28 @@ public class BaseDomainResponse extends TeaModel {
         return this.mode;
     }
 
+    public BaseDomainResponse setOfficePreviewConfig(OfficePreviewConfig officePreviewConfig) {
+        this.officePreviewConfig = officePreviewConfig;
+        return this;
+    }
+    public OfficePreviewConfig getOfficePreviewConfig() {
+        return this.officePreviewConfig;
+    }
+
     public BaseDomainResponse setPathType(String pathType) {
         this.pathType = pathType;
         return this;
     }
     public String getPathType() {
         return this.pathType;
+    }
+
+    public BaseDomainResponse setPrepaidPackage(String prepaidPackage) {
+        this.prepaidPackage = prepaidPackage;
+        return this;
+    }
+    public String getPrepaidPackage() {
+        return this.prepaidPackage;
     }
 
     public BaseDomainResponse setPublishedAppAccessStrategy(AppAccessStrategy publishedAppAccessStrategy) {
@@ -386,12 +470,52 @@ public class BaseDomainResponse extends TeaModel {
         return this.publishedAppAccessStrategy;
     }
 
+    public BaseDomainResponse setServiceCode(String serviceCode) {
+        this.serviceCode = serviceCode;
+        return this;
+    }
+    public String getServiceCode() {
+        return this.serviceCode;
+    }
+
     public BaseDomainResponse setSharable(Boolean sharable) {
         this.sharable = sharable;
         return this;
     }
     public Boolean getSharable() {
         return this.sharable;
+    }
+
+    public BaseDomainResponse setShareLinkEnabled(Boolean shareLinkEnabled) {
+        this.shareLinkEnabled = shareLinkEnabled;
+        return this;
+    }
+    public Boolean getShareLinkEnabled() {
+        return this.shareLinkEnabled;
+    }
+
+    public BaseDomainResponse setSizeQuota(Long sizeQuota) {
+        this.sizeQuota = sizeQuota;
+        return this;
+    }
+    public Long getSizeQuota() {
+        return this.sizeQuota;
+    }
+
+    public BaseDomainResponse setSpiInstanceId(String spiInstanceId) {
+        this.spiInstanceId = spiInstanceId;
+        return this;
+    }
+    public String getSpiInstanceId() {
+        return this.spiInstanceId;
+    }
+
+    public BaseDomainResponse setStatus(Long status) {
+        this.status = status;
+        return this;
+    }
+    public Long getStatus() {
+        return this.status;
     }
 
     public BaseDomainResponse setStoreLevel(String storeLevel) {
@@ -416,6 +540,22 @@ public class BaseDomainResponse extends TeaModel {
     }
     public String getUpdatedAt() {
         return this.updatedAt;
+    }
+
+    public BaseDomainResponse setUserCountQuota(Long userCountQuota) {
+        this.userCountQuota = userCountQuota;
+        return this;
+    }
+    public Long getUserCountQuota() {
+        return this.userCountQuota;
+    }
+
+    public BaseDomainResponse setVideoPreviewConfig(VideoPreviewConfig videoPreviewConfig) {
+        this.videoPreviewConfig = videoPreviewConfig;
+        return this;
+    }
+    public VideoPreviewConfig getVideoPreviewConfig() {
+        return this.videoPreviewConfig;
     }
 
 }

@@ -27,6 +27,10 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     @NameInMap("expiration")
     public String expiration;
 
+    // file_count
+    @NameInMap("file_count")
+    public Long fileCount;
+
     // share_name
     @NameInMap("share_name")
     public String shareName;
@@ -78,6 +82,14 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     }
     public String getExpiration() {
         return this.expiration;
+    }
+
+    public GetShareLinkByAnonymousResponse setFileCount(Long fileCount) {
+        this.fileCount = fileCount;
+        return this;
+    }
+    public Long getFileCount() {
+        return this.fileCount;
     }
 
     public GetShareLinkByAnonymousResponse setShareName(String shareName) {
