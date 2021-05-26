@@ -36,6 +36,10 @@ public class BaseListFileRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    // office_thumbnail_process
+    @NameInMap("office_thumbnail_process")
+    public String officeThumbnailProcess;
+
     @NameInMap("referer")
     public String referer;
 
@@ -110,6 +114,14 @@ public class BaseListFileRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public BaseListFileRequest setOfficeThumbnailProcess(String officeThumbnailProcess) {
+        this.officeThumbnailProcess = officeThumbnailProcess;
+        return this;
+    }
+    public String getOfficeThumbnailProcess() {
+        return this.officeThumbnailProcess;
     }
 
     public BaseListFileRequest setReferer(String referer) {

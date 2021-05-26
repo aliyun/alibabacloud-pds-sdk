@@ -35,6 +35,10 @@ public class ListFileDeltaRequest extends TeaModel {
     @NameInMap("limit")
     public Integer limit;
 
+    // office_thumbnail_process
+    @NameInMap("office_thumbnail_process")
+    public String officeThumbnailProcess;
+
     // video_thumbnail_process
     // type:string
     @NameInMap("video_thumbnail_process")
@@ -99,6 +103,14 @@ public class ListFileDeltaRequest extends TeaModel {
     }
     public Integer getLimit() {
         return this.limit;
+    }
+
+    public ListFileDeltaRequest setOfficeThumbnailProcess(String officeThumbnailProcess) {
+        this.officeThumbnailProcess = officeThumbnailProcess;
+        return this;
+    }
+    public String getOfficeThumbnailProcess() {
+        return this.officeThumbnailProcess;
     }
 
     public ListFileDeltaRequest setVideoThumbnailProcess(String videoThumbnailProcess) {

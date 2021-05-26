@@ -16,12 +16,12 @@ public class GetDownloadUrlRequest extends TeaModel {
 
     // drive_id
     @NameInMap("drive_id")
-    @Validation(required = true, pattern = "[0-9]+")
+    @Validation(pattern = "[0-9]+")
     public String driveId;
 
     // expire_sec
     @NameInMap("expire_sec")
-    @Validation(maximum = 14400, minimum = 1)
+    @Validation(maximum = 115200, minimum = 1)
     public Long expireSec;
 
     // file_id

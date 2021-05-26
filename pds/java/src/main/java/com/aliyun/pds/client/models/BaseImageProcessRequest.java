@@ -15,6 +15,10 @@ public class BaseImageProcessRequest extends TeaModel {
     @NameInMap("image_url_process")
     public String imageUrlProcess;
 
+    // office_thumbnail_process
+    @NameInMap("office_thumbnail_process")
+    public String officeThumbnailProcess;
+
     // video_thumbnail_process
     // type:string
     @NameInMap("video_thumbnail_process")
@@ -39,6 +43,14 @@ public class BaseImageProcessRequest extends TeaModel {
     }
     public String getImageUrlProcess() {
         return this.imageUrlProcess;
+    }
+
+    public BaseImageProcessRequest setOfficeThumbnailProcess(String officeThumbnailProcess) {
+        this.officeThumbnailProcess = officeThumbnailProcess;
+        return this;
+    }
+    public String getOfficeThumbnailProcess() {
+        return this.officeThumbnailProcess;
     }
 
     public BaseImageProcessRequest setVideoThumbnailProcess(String videoThumbnailProcess) {
