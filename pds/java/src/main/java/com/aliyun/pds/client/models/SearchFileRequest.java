@@ -16,8 +16,12 @@ public class SearchFileRequest extends TeaModel {
 
     // drive_id
     @NameInMap("drive_id")
-    @Validation(required = true, pattern = "[0-9]+")
+    @Validation(pattern = "[0-9]+")
     public String driveId;
+
+    // drive_ids
+    @NameInMap("drive_id_list")
+    public java.util.List<String> driveIdList;
 
     @NameInMap("image_cropping_aspect_ratios")
     public java.util.List<String> imageCroppingAspectRatios;
@@ -42,6 +46,10 @@ public class SearchFileRequest extends TeaModel {
     // Marker
     @NameInMap("marker")
     public String marker;
+
+    // office_thumbnail_process
+    @NameInMap("office_thumbnail_process")
+    public String officeThumbnailProcess;
 
     // order_by
     @NameInMap("order_by")
@@ -103,6 +111,14 @@ public class SearchFileRequest extends TeaModel {
         return this.driveId;
     }
 
+    public SearchFileRequest setDriveIdList(java.util.List<String> driveIdList) {
+        this.driveIdList = driveIdList;
+        return this;
+    }
+    public java.util.List<String> getDriveIdList() {
+        return this.driveIdList;
+    }
+
     public SearchFileRequest setImageCroppingAspectRatios(java.util.List<String> imageCroppingAspectRatios) {
         this.imageCroppingAspectRatios = imageCroppingAspectRatios;
         return this;
@@ -149,6 +165,14 @@ public class SearchFileRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public SearchFileRequest setOfficeThumbnailProcess(String officeThumbnailProcess) {
+        this.officeThumbnailProcess = officeThumbnailProcess;
+        return this;
+    }
+    public String getOfficeThumbnailProcess() {
+        return this.officeThumbnailProcess;
     }
 
     public SearchFileRequest setOrderBy(String orderBy) {

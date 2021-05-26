@@ -23,6 +23,9 @@ public class CreateUserRequest extends TeaModel {
     @NameInMap("email")
     public String email;
 
+    @NameInMap("group_info_list")
+    public java.util.List<GroupInfo> groupInfoList;
+
     // 用户地域
     @NameInMap("location")
     public String location;
@@ -95,6 +98,14 @@ public class CreateUserRequest extends TeaModel {
     }
     public String getEmail() {
         return this.email;
+    }
+
+    public CreateUserRequest setGroupInfoList(java.util.List<GroupInfo> groupInfoList) {
+        this.groupInfoList = groupInfoList;
+        return this;
+    }
+    public java.util.List<GroupInfo> getGroupInfoList() {
+        return this.groupInfoList;
     }
 
     public CreateUserRequest setLocation(String location) {

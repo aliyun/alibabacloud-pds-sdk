@@ -10,9 +10,9 @@ public class ListImageAddressGroupsRequest extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
-    // Drive ID
+    // drive_id
     @NameInMap("drive_id")
-    @Validation(required = true)
+    @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
     // image_thumbnail_process

@@ -86,6 +86,9 @@ public class CreateFileRequest extends TeaModel {
     @Validation(required = true, maxLength = 1024, minLength = 1)
     public String name;
 
+    @NameInMap("parallel_upload")
+    public Boolean parallelUpload;
+
     // parent_file_id
     @NameInMap("parent_file_id")
     @Validation(required = true, pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 4)
@@ -101,6 +104,14 @@ public class CreateFileRequest extends TeaModel {
     // pre_hash
     @NameInMap("pre_hash")
     public String preHash;
+
+    // proof_code
+    @NameInMap("proof_code")
+    public String proofCode;
+
+    // proof_version
+    @NameInMap("proof_version")
+    public String proofVersion;
 
     // share_id
     // example
@@ -293,6 +304,14 @@ public class CreateFileRequest extends TeaModel {
         return this.name;
     }
 
+    public CreateFileRequest setParallelUpload(Boolean parallelUpload) {
+        this.parallelUpload = parallelUpload;
+        return this;
+    }
+    public Boolean getParallelUpload() {
+        return this.parallelUpload;
+    }
+
     public CreateFileRequest setParentFileId(String parentFileId) {
         this.parentFileId = parentFileId;
         return this;
@@ -323,6 +342,22 @@ public class CreateFileRequest extends TeaModel {
     }
     public String getPreHash() {
         return this.preHash;
+    }
+
+    public CreateFileRequest setProofCode(String proofCode) {
+        this.proofCode = proofCode;
+        return this;
+    }
+    public String getProofCode() {
+        return this.proofCode;
+    }
+
+    public CreateFileRequest setProofVersion(String proofVersion) {
+        this.proofVersion = proofVersion;
+        return this;
+    }
+    public String getProofVersion() {
+        return this.proofVersion;
     }
 
     public CreateFileRequest setShareId(String shareId) {

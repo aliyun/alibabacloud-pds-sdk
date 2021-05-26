@@ -43,6 +43,10 @@ public class ScanFileMetaRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    // office_thumbnail_process
+    @NameInMap("office_thumbnail_process")
+    public String officeThumbnailProcess;
+
     // video_thumbnail_process
     // type:string
     @NameInMap("video_thumbnail_process")
@@ -123,6 +127,14 @@ public class ScanFileMetaRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ScanFileMetaRequest setOfficeThumbnailProcess(String officeThumbnailProcess) {
+        this.officeThumbnailProcess = officeThumbnailProcess;
+        return this;
+    }
+    public String getOfficeThumbnailProcess() {
+        return this.officeThumbnailProcess;
     }
 
     public ScanFileMetaRequest setVideoThumbnailProcess(String videoThumbnailProcess) {

@@ -23,6 +23,9 @@ public class UpdateUserRequest extends TeaModel {
     @NameInMap("email")
     public String email;
 
+    @NameInMap("group_info_list")
+    public java.util.List<GroupInfo> groupInfoList;
+
     // 昵称
     @NameInMap("nick_name")
     public String nickName;
@@ -83,6 +86,14 @@ public class UpdateUserRequest extends TeaModel {
     }
     public String getEmail() {
         return this.email;
+    }
+
+    public UpdateUserRequest setGroupInfoList(java.util.List<GroupInfo> groupInfoList) {
+        this.groupInfoList = groupInfoList;
+        return this;
+    }
+    public java.util.List<GroupInfo> getGroupInfoList() {
+        return this.groupInfoList;
     }
 
     public UpdateUserRequest setNickName(String nickName) {

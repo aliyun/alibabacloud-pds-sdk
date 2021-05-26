@@ -29,6 +29,10 @@ public class HostingGetFileRequest extends TeaModel {
     @NameInMap("image_url_process")
     public String imageUrlProcess;
 
+    // office_thumbnail_process
+    @NameInMap("office_thumbnail_process")
+    public String officeThumbnailProcess;
+
     @NameInMap("referer")
     public String referer;
 
@@ -93,6 +97,14 @@ public class HostingGetFileRequest extends TeaModel {
     }
     public String getImageUrlProcess() {
         return this.imageUrlProcess;
+    }
+
+    public HostingGetFileRequest setOfficeThumbnailProcess(String officeThumbnailProcess) {
+        this.officeThumbnailProcess = officeThumbnailProcess;
+        return this;
+    }
+    public String getOfficeThumbnailProcess() {
+        return this.officeThumbnailProcess;
     }
 
     public HostingGetFileRequest setReferer(String referer) {

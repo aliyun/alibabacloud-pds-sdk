@@ -10,9 +10,9 @@ public class ListImageFaceGroupsRequest extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
-    // Drive ID
+    // drive_id
     @NameInMap("drive_id")
-    @Validation(required = true)
+    @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
     // 每页大小限制
@@ -23,6 +23,12 @@ public class ListImageFaceGroupsRequest extends TeaModel {
     // 翻页标记
     @NameInMap("marker")
     public String marker;
+
+    @NameInMap("remarks_array_query")
+    public RemarksQuery remarksArrayQuery;
+
+    @NameInMap("remarks_query")
+    public RemarksQuery remarksQuery;
 
     public static ListImageFaceGroupsRequest build(java.util.Map<String, ?> map) throws Exception {
         ListImageFaceGroupsRequest self = new ListImageFaceGroupsRequest();
@@ -59,6 +65,22 @@ public class ListImageFaceGroupsRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ListImageFaceGroupsRequest setRemarksArrayQuery(RemarksQuery remarksArrayQuery) {
+        this.remarksArrayQuery = remarksArrayQuery;
+        return this;
+    }
+    public RemarksQuery getRemarksArrayQuery() {
+        return this.remarksArrayQuery;
+    }
+
+    public ListImageFaceGroupsRequest setRemarksQuery(RemarksQuery remarksQuery) {
+        this.remarksQuery = remarksQuery;
+        return this;
+    }
+    public RemarksQuery getRemarksQuery() {
+        return this.remarksQuery;
     }
 
 }
