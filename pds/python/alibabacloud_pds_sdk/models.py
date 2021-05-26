@@ -33369,20 +33369,20 @@ class ListImageAddressGroupsRequest(TeaModel):
         return self
 
 
-class RemarksQuery(TeaModel):
+class RemarksQueryRequest(TeaModel):
     """
     *\
     """
     def __init__(
         self,
         in_: List[str] = None,
-        not__in: List[str] = None,
-        not__prefix: str = None,
+        not_in: List[str] = None,
+        not_prefix: str = None,
         prefix: str = None,
     ):
         self.in_ = in_
-        self.not__in = not__in
-        self.not__prefix = not__prefix
+        self.not_in = not_in
+        self.not_prefix = not_prefix
         self.prefix = prefix
 
     def validate(self):
@@ -33395,25 +33395,25 @@ class RemarksQuery(TeaModel):
 
         result = dict()
         if self.in_ is not None:
-            result['IN'] = self.in_
-        if self.not__in is not None:
-            result['NOT-IN'] = self.not__in
-        if self.not__prefix is not None:
-            result['NOT-PREFIX'] = self.not__prefix
+            result['in'] = self.in_
+        if self.not_in is not None:
+            result['not_in'] = self.not_in
+        if self.not_prefix is not None:
+            result['not_prefix'] = self.not_prefix
         if self.prefix is not None:
-            result['PREFIX'] = self.prefix
+            result['prefix'] = self.prefix
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('IN') is not None:
-            self.in_ = m.get('IN')
-        if m.get('NOT-IN') is not None:
-            self.not__in = m.get('NOT-IN')
-        if m.get('NOT-PREFIX') is not None:
-            self.not__prefix = m.get('NOT-PREFIX')
-        if m.get('PREFIX') is not None:
-            self.prefix = m.get('PREFIX')
+        if m.get('in') is not None:
+            self.in_ = m.get('in')
+        if m.get('not_in') is not None:
+            self.not_in = m.get('not_in')
+        if m.get('not_prefix') is not None:
+            self.not_prefix = m.get('not_prefix')
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
         return self
 
 
@@ -33427,8 +33427,8 @@ class ListImageFaceGroupsRequest(TeaModel):
         drive_id: str = None,
         limit: int = None,
         marker: str = None,
-        remarks_array_query: RemarksQuery = None,
-        remarks_query: RemarksQuery = None,
+        remarks_array_query: RemarksQueryRequest = None,
+        remarks_query: RemarksQueryRequest = None,
     ):
         self.headers = headers
         # drive_id
@@ -33483,10 +33483,10 @@ class ListImageFaceGroupsRequest(TeaModel):
         if m.get('marker') is not None:
             self.marker = m.get('marker')
         if m.get('remarks_array_query') is not None:
-            temp_model = RemarksQuery()
+            temp_model = RemarksQueryRequest()
             self.remarks_array_query = temp_model.from_map(m['remarks_array_query'])
         if m.get('remarks_query') is not None:
-            temp_model = RemarksQuery()
+            temp_model = RemarksQueryRequest()
             self.remarks_query = temp_model.from_map(m['remarks_query'])
         return self
 

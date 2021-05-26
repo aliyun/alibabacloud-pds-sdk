@@ -25778,8 +25778,8 @@ type ListImageFaceGroupsRequest struct {
   Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
   // 翻页标记
   Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-  RemarksArrayQuery *RemarksQuery `json:"remarks_array_query,omitempty" xml:"remarks_array_query,omitempty"`
-  RemarksQuery *RemarksQuery `json:"remarks_query,omitempty" xml:"remarks_query,omitempty"`
+  RemarksArrayQuery *RemarksQueryRequest `json:"remarks_array_query,omitempty" xml:"remarks_array_query,omitempty"`
+  RemarksQuery *RemarksQueryRequest `json:"remarks_query,omitempty" xml:"remarks_query,omitempty"`
 }
 
 func (s ListImageFaceGroupsRequest) String() string {
@@ -25810,12 +25810,12 @@ func (s *ListImageFaceGroupsRequest) SetMarker(v string) *ListImageFaceGroupsReq
   return s
 }
 
-func (s *ListImageFaceGroupsRequest) SetRemarksArrayQuery(v *RemarksQuery) *ListImageFaceGroupsRequest {
+func (s *ListImageFaceGroupsRequest) SetRemarksArrayQuery(v *RemarksQueryRequest) *ListImageFaceGroupsRequest {
   s.RemarksArrayQuery = v
   return s
 }
 
-func (s *ListImageFaceGroupsRequest) SetRemarksQuery(v *RemarksQuery) *ListImageFaceGroupsRequest {
+func (s *ListImageFaceGroupsRequest) SetRemarksQuery(v *RemarksQueryRequest) *ListImageFaceGroupsRequest {
   s.RemarksQuery = v
   return s
 }
@@ -26137,38 +26137,38 @@ func (s *ParseKeywordsResponse) SetTimeRange(v *TimeRange) *ParseKeywordsRespons
 /**
  * 
  */
-type RemarksQuery struct {
-  IN []*string `json:"IN,omitempty" xml:"IN,omitempty" type:"Repeated"`
-  NOTIN []*string `json:"NOT-IN,omitempty" xml:"NOT-IN,omitempty" type:"Repeated"`
-  NOTPREFIX *string `json:"NOT-PREFIX,omitempty" xml:"NOT-PREFIX,omitempty"`
-  PREFIX *string `json:"PREFIX,omitempty" xml:"PREFIX,omitempty"`
+type RemarksQueryRequest struct {
+  In []*string `json:"in,omitempty" xml:"in,omitempty" type:"Repeated"`
+  NotIn []*string `json:"not_in,omitempty" xml:"not_in,omitempty" type:"Repeated"`
+  NotPrefix *string `json:"not_prefix,omitempty" xml:"not_prefix,omitempty"`
+  Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 
-func (s RemarksQuery) String() string {
+func (s RemarksQueryRequest) String() string {
   return tea.Prettify(s)
 }
 
-func (s RemarksQuery) GoString() string {
+func (s RemarksQueryRequest) GoString() string {
   return s.String()
 }
 
-func (s *RemarksQuery) SetIN(v []*string) *RemarksQuery {
-  s.IN = v
+func (s *RemarksQueryRequest) SetIn(v []*string) *RemarksQueryRequest {
+  s.In = v
   return s
 }
 
-func (s *RemarksQuery) SetNOTIN(v []*string) *RemarksQuery {
-  s.NOTIN = v
+func (s *RemarksQueryRequest) SetNotIn(v []*string) *RemarksQueryRequest {
+  s.NotIn = v
   return s
 }
 
-func (s *RemarksQuery) SetNOTPREFIX(v string) *RemarksQuery {
-  s.NOTPREFIX = &v
+func (s *RemarksQueryRequest) SetNotPrefix(v string) *RemarksQueryRequest {
+  s.NotPrefix = &v
   return s
 }
 
-func (s *RemarksQuery) SetPREFIX(v string) *RemarksQuery {
-  s.PREFIX = &v
+func (s *RemarksQueryRequest) SetPrefix(v string) *RemarksQueryRequest {
+  s.Prefix = &v
   return s
 }
 
