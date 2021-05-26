@@ -91,8 +91,9 @@ public class GetFileResponse extends TeaModel {
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String parentFileId;
 
+    // PunishFlag
     @NameInMap("punish_flag")
-    public Integer punishFlag;
+    public Long punishFlag;
 
     @NameInMap("share_id")
     public String shareId;
@@ -118,6 +119,11 @@ public class GetFileResponse extends TeaModel {
     // thumbnail
     @NameInMap("thumbnail")
     public String thumbnail;
+
+    // Trashed
+    // type: boolean
+    @NameInMap("trashed")
+    public Boolean trashed;
 
     // trashed_at
     @NameInMap("trashed_at")
@@ -314,11 +320,11 @@ public class GetFileResponse extends TeaModel {
         return this.parentFileId;
     }
 
-    public GetFileResponse setPunishFlag(Integer punishFlag) {
+    public GetFileResponse setPunishFlag(Long punishFlag) {
         this.punishFlag = punishFlag;
         return this;
     }
-    public Integer getPunishFlag() {
+    public Long getPunishFlag() {
         return this.punishFlag;
     }
 
@@ -368,6 +374,14 @@ public class GetFileResponse extends TeaModel {
     }
     public String getThumbnail() {
         return this.thumbnail;
+    }
+
+    public GetFileResponse setTrashed(Boolean trashed) {
+        this.trashed = trashed;
+        return this;
+    }
+    public Boolean getTrashed() {
+        return this.trashed;
     }
 
     public GetFileResponse setTrashedAt(String trashedAt) {

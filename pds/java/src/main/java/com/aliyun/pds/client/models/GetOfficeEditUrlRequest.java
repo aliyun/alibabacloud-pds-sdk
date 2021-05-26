@@ -24,6 +24,12 @@ public class GetOfficeEditUrlRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    @NameInMap("option")
+    public GetOfficeEditUrlOption option;
+
+    @NameInMap("watermark")
+    public GetOfficeEditUrlWatermark watermark;
+
     public static GetOfficeEditUrlRequest build(java.util.Map<String, ?> map) throws Exception {
         GetOfficeEditUrlRequest self = new GetOfficeEditUrlRequest();
         return TeaModel.build(map, self);
@@ -59,6 +65,22 @@ public class GetOfficeEditUrlRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public GetOfficeEditUrlRequest setOption(GetOfficeEditUrlOption option) {
+        this.option = option;
+        return this;
+    }
+    public GetOfficeEditUrlOption getOption() {
+        return this.option;
+    }
+
+    public GetOfficeEditUrlRequest setWatermark(GetOfficeEditUrlWatermark watermark) {
+        this.watermark = watermark;
+        return this;
+    }
+    public GetOfficeEditUrlWatermark getWatermark() {
+        return this.watermark;
     }
 
 }

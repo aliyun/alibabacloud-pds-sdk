@@ -16,7 +16,7 @@ public class GetFileRequest extends TeaModel {
 
     // drive_id
     @NameInMap("drive_id")
-    @Validation(required = true, pattern = "[0-9]+")
+    @Validation(pattern = "[0-9]+")
     public String driveId;
 
     // fields
@@ -45,6 +45,10 @@ public class GetFileRequest extends TeaModel {
     // location
     @NameInMap("location")
     public String location;
+
+    // office_thumbnail_process
+    @NameInMap("office_thumbnail_process")
+    public String officeThumbnailProcess;
 
     @NameInMap("referer")
     public String referer;
@@ -149,6 +153,14 @@ public class GetFileRequest extends TeaModel {
     }
     public String getLocation() {
         return this.location;
+    }
+
+    public GetFileRequest setOfficeThumbnailProcess(String officeThumbnailProcess) {
+        this.officeThumbnailProcess = officeThumbnailProcess;
+        return this;
+    }
+    public String getOfficeThumbnailProcess() {
+        return this.officeThumbnailProcess;
     }
 
     public GetFileRequest setReferer(String referer) {

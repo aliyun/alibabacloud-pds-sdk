@@ -35,6 +35,10 @@ public class ImageMediaResponse extends TeaModel {
     @NameInMap("faces")
     public String faces;
 
+    // faces_thumbnail_list
+    @NameInMap("faces_thumbnail")
+    public java.util.List<FaceThumbnail> facesThumbnail;
+
     // height
     @NameInMap("height")
     public Long height;
@@ -53,10 +57,6 @@ public class ImageMediaResponse extends TeaModel {
     // province
     @NameInMap("province")
     public String province;
-
-    // story_image_score
-    @NameInMap("story_image_score")
-    public Double storyImageScore;
 
     // time
     @NameInMap("time")
@@ -131,6 +131,14 @@ public class ImageMediaResponse extends TeaModel {
         return this.faces;
     }
 
+    public ImageMediaResponse setFacesThumbnail(java.util.List<FaceThumbnail> facesThumbnail) {
+        this.facesThumbnail = facesThumbnail;
+        return this;
+    }
+    public java.util.List<FaceThumbnail> getFacesThumbnail() {
+        return this.facesThumbnail;
+    }
+
     public ImageMediaResponse setHeight(Long height) {
         this.height = height;
         return this;
@@ -169,14 +177,6 @@ public class ImageMediaResponse extends TeaModel {
     }
     public String getProvince() {
         return this.province;
-    }
-
-    public ImageMediaResponse setStoryImageScore(Double storyImageScore) {
-        this.storyImageScore = storyImageScore;
-        return this;
-    }
-    public Double getStoryImageScore() {
-        return this.storyImageScore;
     }
 
     public ImageMediaResponse setTime(String time) {

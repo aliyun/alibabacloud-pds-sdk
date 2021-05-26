@@ -12,6 +12,10 @@ public class AuthorizeRequest extends TeaModel {
     @Validation(required = true)
     public String ClientID;
 
+    // 内部使用
+    @NameInMap("DomainID")
+    public String DomainID;
+
     // 鉴权方式，目前支持ding,ram鉴权
     @NameInMap("LoginType")
     public String LoginType;
@@ -49,6 +53,14 @@ public class AuthorizeRequest extends TeaModel {
     }
     public String getClientID() {
         return this.ClientID;
+    }
+
+    public AuthorizeRequest setDomainID(String DomainID) {
+        this.DomainID = DomainID;
+        return this;
+    }
+    public String getDomainID() {
+        return this.DomainID;
     }
 
     public AuthorizeRequest setLoginType(String LoginType) {

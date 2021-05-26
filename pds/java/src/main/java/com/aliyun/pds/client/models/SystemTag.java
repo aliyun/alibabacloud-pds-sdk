@@ -22,9 +22,6 @@ public class SystemTag extends TeaModel {
     @NameInMap("parent_name")
     public String parentName;
 
-    @NameInMap("selected")
-    public Boolean selected;
-
     @NameInMap("source")
     public String source;
 
@@ -74,14 +71,6 @@ public class SystemTag extends TeaModel {
     }
     public String getParentName() {
         return this.parentName;
-    }
-
-    public SystemTag setSelected(Boolean selected) {
-        this.selected = selected;
-        return this;
-    }
-    public Boolean getSelected() {
-        return this.selected;
     }
 
     public SystemTag setSource(String source) {
