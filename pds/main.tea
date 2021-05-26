@@ -17646,8 +17646,8 @@ model ListImageFaceGroupsRequest {
   driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
   limit?: int64(name='limit', default=100, description='每页大小限制', example=10, format='int64', maximum=100, minimum=1),
   marker?: string(name='marker', description='翻页标记', example='marker'),
-  remarksArrayQuery?: RemarksQuery(name='remarks_array_query'),
-  remarksQuery?: RemarksQuery(name='remarks_query'),
+  remarksArrayQuery?: RemarksQueryRequest(name='remarks_array_query'),
+  remarksQuery?: RemarksQueryRequest(name='remarks_query'),
 }
 
 /**
@@ -17741,11 +17741,11 @@ model ParseKeywordsResponse {
 /**
  * 
  */
-model RemarksQuery {
-  IN?: [ string ](name='IN', items='{"type":"string"}'),
-  NOT-IN?: [ string ](name='NOT-IN', items='{"type":"string"}'),
-  NOT-PREFIX?: string(name='NOT-PREFIX'),
-  PREFIX?: string(name='PREFIX'),
+model RemarksQueryRequest {
+  in?: [ string ](name='in', items='{"type":"string"}'),
+  notIn?: [ string ](name='not_in', items='{"type":"string"}'),
+  notPrefix?: string(name='not_prefix'),
+  prefix?: string(name='prefix'),
 }
 
 /**

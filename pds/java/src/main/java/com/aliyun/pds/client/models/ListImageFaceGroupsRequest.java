@@ -25,10 +25,10 @@ public class ListImageFaceGroupsRequest extends TeaModel {
     public String marker;
 
     @NameInMap("remarks_array_query")
-    public RemarksQuery remarksArrayQuery;
+    public RemarksQueryRequest remarksArrayQuery;
 
     @NameInMap("remarks_query")
-    public RemarksQuery remarksQuery;
+    public RemarksQueryRequest remarksQuery;
 
     public static ListImageFaceGroupsRequest build(java.util.Map<String, ?> map) throws Exception {
         ListImageFaceGroupsRequest self = new ListImageFaceGroupsRequest();
@@ -67,19 +67,19 @@ public class ListImageFaceGroupsRequest extends TeaModel {
         return this.marker;
     }
 
-    public ListImageFaceGroupsRequest setRemarksArrayQuery(RemarksQuery remarksArrayQuery) {
+    public ListImageFaceGroupsRequest setRemarksArrayQuery(RemarksQueryRequest remarksArrayQuery) {
         this.remarksArrayQuery = remarksArrayQuery;
         return this;
     }
-    public RemarksQuery getRemarksArrayQuery() {
+    public RemarksQueryRequest getRemarksArrayQuery() {
         return this.remarksArrayQuery;
     }
 
-    public ListImageFaceGroupsRequest setRemarksQuery(RemarksQuery remarksQuery) {
+    public ListImageFaceGroupsRequest setRemarksQuery(RemarksQueryRequest remarksQuery) {
         this.remarksQuery = remarksQuery;
         return this;
     }
-    public RemarksQuery getRemarksQuery() {
+    public RemarksQueryRequest getRemarksQuery() {
         return this.remarksQuery;
     }
 
