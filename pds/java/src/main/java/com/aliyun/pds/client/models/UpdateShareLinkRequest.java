@@ -31,6 +31,10 @@ public class UpdateShareLinkRequest extends TeaModel {
     @Validation(maximum = 64)
     public String sharePwd;
 
+    // status
+    @NameInMap("status")
+    public String status;
+
     public static UpdateShareLinkRequest build(java.util.Map<String, ?> map) throws Exception {
         UpdateShareLinkRequest self = new UpdateShareLinkRequest();
         return TeaModel.build(map, self);
@@ -82,6 +86,14 @@ public class UpdateShareLinkRequest extends TeaModel {
     }
     public String getSharePwd() {
         return this.sharePwd;
+    }
+
+    public UpdateShareLinkRequest setStatus(String status) {
+        this.status = status;
+        return this;
+    }
+    public String getStatus() {
+        return this.status;
     }
 
 }

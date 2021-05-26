@@ -22,9 +22,9 @@ public class SearchImageAddressGroupsRequest extends TeaModel {
     @NameInMap("br_geo_point")
     public String brGeoPoint;
 
-    // Drive ID
+    // drive_id
     @NameInMap("drive_id")
-    @Validation(required = true)
+    @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
     // image_thumbnail_process

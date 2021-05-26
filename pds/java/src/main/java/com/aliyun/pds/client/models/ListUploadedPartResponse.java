@@ -16,6 +16,9 @@ public class ListUploadedPartResponse extends TeaModel {
     @NameInMap("next_part_number_marker")
     public String nextPartNumberMarker;
 
+    @NameInMap("parallel_upload")
+    public Boolean parallelUpload;
+
     // upload_id
     @NameInMap("upload_id")
     public String uploadId;
@@ -43,6 +46,14 @@ public class ListUploadedPartResponse extends TeaModel {
     }
     public String getNextPartNumberMarker() {
         return this.nextPartNumberMarker;
+    }
+
+    public ListUploadedPartResponse setParallelUpload(Boolean parallelUpload) {
+        this.parallelUpload = parallelUpload;
+        return this;
+    }
+    public Boolean getParallelUpload() {
+        return this.parallelUpload;
     }
 
     public ListUploadedPartResponse setUploadId(String uploadId) {

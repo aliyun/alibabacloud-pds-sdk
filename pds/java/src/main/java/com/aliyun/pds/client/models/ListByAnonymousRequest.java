@@ -31,6 +31,10 @@ public class ListByAnonymousRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    // office_thumbnail_process
+    @NameInMap("office_thumbnail_process")
+    public String officeThumbnailProcess;
+
     // parent_file_id
     @NameInMap("parent_file_id")
     @Validation(required = true, pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 4)
@@ -103,6 +107,14 @@ public class ListByAnonymousRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ListByAnonymousRequest setOfficeThumbnailProcess(String officeThumbnailProcess) {
+        this.officeThumbnailProcess = officeThumbnailProcess;
+        return this;
+    }
+    public String getOfficeThumbnailProcess() {
+        return this.officeThumbnailProcess;
     }
 
     public ListByAnonymousRequest setParentFileId(String parentFileId) {

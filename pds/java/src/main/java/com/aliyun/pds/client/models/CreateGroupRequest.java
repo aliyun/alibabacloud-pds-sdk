@@ -23,6 +23,10 @@ public class CreateGroupRequest extends TeaModel {
     @NameInMap("is_root")
     public Boolean isRoot;
 
+    // parent group id
+    @NameInMap("parent_group_id")
+    public String parentGroupId;
+
     // subdomain id
     @NameInMap("subdomain_id")
     public String subdomainId;
@@ -62,6 +66,14 @@ public class CreateGroupRequest extends TeaModel {
     }
     public Boolean getIsRoot() {
         return this.isRoot;
+    }
+
+    public CreateGroupRequest setParentGroupId(String parentGroupId) {
+        this.parentGroupId = parentGroupId;
+        return this;
+    }
+    public String getParentGroupId() {
+        return this.parentGroupId;
     }
 
     public CreateGroupRequest setSubdomainId(String subdomainId) {

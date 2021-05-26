@@ -11,9 +11,21 @@ public class ImageTagResponse extends TeaModel {
     @NameInMap("count")
     public Long count;
 
+    // cover_file_category
+    @NameInMap("cover_file_category")
+    public String coverFileCategory;
+
     // cover_file_id
     @NameInMap("cover_file_id")
     public String coverFileId;
+
+    // cover_score
+    @NameInMap("cover_overall_score")
+    public Double coverOverallScore;
+
+    // cover_tag_confidence
+    @NameInMap("cover_tag_confidence")
+    public Double coverTagConfidence;
 
     // 聚类标签封面图片地址
     @NameInMap("cover_url")
@@ -36,12 +48,36 @@ public class ImageTagResponse extends TeaModel {
         return this.count;
     }
 
+    public ImageTagResponse setCoverFileCategory(String coverFileCategory) {
+        this.coverFileCategory = coverFileCategory;
+        return this;
+    }
+    public String getCoverFileCategory() {
+        return this.coverFileCategory;
+    }
+
     public ImageTagResponse setCoverFileId(String coverFileId) {
         this.coverFileId = coverFileId;
         return this;
     }
     public String getCoverFileId() {
         return this.coverFileId;
+    }
+
+    public ImageTagResponse setCoverOverallScore(Double coverOverallScore) {
+        this.coverOverallScore = coverOverallScore;
+        return this;
+    }
+    public Double getCoverOverallScore() {
+        return this.coverOverallScore;
+    }
+
+    public ImageTagResponse setCoverTagConfidence(Double coverTagConfidence) {
+        this.coverTagConfidence = coverTagConfidence;
+        return this;
+    }
+    public Double getCoverTagConfidence() {
+        return this.coverTagConfidence;
     }
 
     public ImageTagResponse setCoverUrl(String coverUrl) {

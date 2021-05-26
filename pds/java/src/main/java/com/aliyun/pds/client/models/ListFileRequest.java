@@ -55,6 +55,10 @@ public class ListFileRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    // office_thumbnail_process
+    @NameInMap("office_thumbnail_process")
+    public String officeThumbnailProcess;
+
     // order_by
     @NameInMap("order_by")
     public String orderBy;
@@ -202,6 +206,14 @@ public class ListFileRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ListFileRequest setOfficeThumbnailProcess(String officeThumbnailProcess) {
+        this.officeThumbnailProcess = officeThumbnailProcess;
+        return this;
+    }
+    public String getOfficeThumbnailProcess() {
+        return this.officeThumbnailProcess;
     }
 
     public ListFileRequest setOrderBy(String orderBy) {

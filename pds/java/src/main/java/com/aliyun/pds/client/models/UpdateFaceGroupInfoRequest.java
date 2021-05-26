@@ -15,6 +15,10 @@ public class UpdateFaceGroupInfoRequest extends TeaModel {
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
+    // group_cover_face_id
+    @NameInMap("group_cover_face_id")
+    public String groupCoverFaceId;
+
     // group_id 列举人脸分组接口中获取
     @NameInMap("group_id")
     @Validation(required = true)
@@ -23,6 +27,14 @@ public class UpdateFaceGroupInfoRequest extends TeaModel {
     // group_name
     @NameInMap("group_name")
     public String groupName;
+
+    // remarks
+    @NameInMap("remarks")
+    public String remarks;
+
+    // remarks_array
+    @NameInMap("remarks_array")
+    public java.util.List<String> remarksArray;
 
     public static UpdateFaceGroupInfoRequest build(java.util.Map<String, ?> map) throws Exception {
         UpdateFaceGroupInfoRequest self = new UpdateFaceGroupInfoRequest();
@@ -45,6 +57,14 @@ public class UpdateFaceGroupInfoRequest extends TeaModel {
         return this.driveId;
     }
 
+    public UpdateFaceGroupInfoRequest setGroupCoverFaceId(String groupCoverFaceId) {
+        this.groupCoverFaceId = groupCoverFaceId;
+        return this;
+    }
+    public String getGroupCoverFaceId() {
+        return this.groupCoverFaceId;
+    }
+
     public UpdateFaceGroupInfoRequest setGroupId(String groupId) {
         this.groupId = groupId;
         return this;
@@ -59,6 +79,22 @@ public class UpdateFaceGroupInfoRequest extends TeaModel {
     }
     public String getGroupName() {
         return this.groupName;
+    }
+
+    public UpdateFaceGroupInfoRequest setRemarks(String remarks) {
+        this.remarks = remarks;
+        return this;
+    }
+    public String getRemarks() {
+        return this.remarks;
+    }
+
+    public UpdateFaceGroupInfoRequest setRemarksArray(java.util.List<String> remarksArray) {
+        this.remarksArray = remarksArray;
+        return this;
+    }
+    public java.util.List<String> getRemarksArray() {
+        return this.remarksArray;
     }
 
 }
