@@ -3657,6 +3657,119 @@ api updateDriveEx(request: UpdateDriveRequest, runtime: RuntimeOptions): UpdateD
   ignoreSSL = runtime.ignoreSSL
 }
 
+model ArchiveFilesModel {
+  headers?: map[string]string(name='headers'),
+  body: CCPArchiveFilesResponse(name='body'),
+}
+
+/**
+ * archive_files
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function archiveFiles(request: CCPArchiveFilesRequest) throws: ArchiveFilesModel  {
+  var runtime = new RuntimeOptions{};
+  return archiveFilesEx(request, runtime);
+}
+
+/**
+ * archive_files
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api archiveFilesEx(request: CCPArchiveFilesRequest, runtime: RuntimeOptions): ArchiveFilesModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/file/archive_files`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.headers
+  };
+  realReq.headers = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 202)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
 model CompleteFileModel {
   headers?: map[string]string(name='headers'),
   body: CompleteFileResponse(name='body'),
@@ -6434,10 +6547,11 @@ api listUploadedPartsEx(request: ListUploadedPartRequest, runtime: RuntimeOption
 
 model LiveTranscodeModel {
   headers?: map[string]string(name='headers'),
+  body: CCPLiveTranscodeResponse(name='body'),
 }
 
 /**
- * 触发实时转码
+ * live_transcode
  * @tags file
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -6450,7 +6564,7 @@ async function liveTranscode(request: CCPLiveTranscodeRequest) throws: LiveTrans
 }
 
 /**
- * 触发实时转码
+ * live_transcode
  * @tags file
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -6492,7 +6606,10 @@ api liveTranscodeEx(request: CCPLiveTranscodeRequest, runtime: RuntimeOptions): 
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 202)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -7155,6 +7272,565 @@ api walkFileEx(request: CCPWalkFileRequest, runtime: RuntimeOptions): WalkFileMo
   __request.protocol = Util.defaultString(@protocol, 'https');
   __request.method = 'POST';
   __request.pathname = getPathname(@nickname, `/v2/file/walk`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.headers
+  };
+  realReq.headers = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
+model ClearRecyclebinModel {
+  headers?: map[string]string(name='headers'),
+  body: ClearRecycleBinResponse(name='body'),
+}
+
+/**
+ * clear_recyclebin
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function clearRecyclebin(request: ClearRecycleBinRequest) throws: ClearRecyclebinModel  {
+  var runtime = new RuntimeOptions{};
+  return clearRecyclebinEx(request, runtime);
+}
+
+/**
+ * clear_recyclebin
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api clearRecyclebinEx(request: ClearRecycleBinRequest, runtime: RuntimeOptions): ClearRecyclebinModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/recyclebin/clear`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.headers
+  };
+  realReq.headers = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 202)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
+model ListRecyclebinModel {
+  headers?: map[string]string(name='headers'),
+  body: ListFileResponse(name='body'),
+}
+
+/**
+ * list_recyclebin
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function listRecyclebin(request: ListFileInRecycleBinRequest) throws: ListRecyclebinModel  {
+  var runtime = new RuntimeOptions{};
+  return listRecyclebinEx(request, runtime);
+}
+
+/**
+ * list_recyclebin
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api listRecyclebinEx(request: ListFileInRecycleBinRequest, runtime: RuntimeOptions): ListRecyclebinModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/recyclebin/list`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.headers
+  };
+  realReq.headers = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
+model RestoreFileModel {
+  headers?: map[string]string(name='headers'),
+  body: RestoreFileResponse(name='body'),
+}
+
+/**
+ * restore_file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function restoreFile(request: RestoreFileRequest) throws: RestoreFileModel  {
+  var runtime = new RuntimeOptions{};
+  return restoreFileEx(request, runtime);
+}
+
+/**
+ * restore_file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api restoreFileEx(request: RestoreFileRequest, runtime: RuntimeOptions): RestoreFileModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/recyclebin/restore`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.headers
+  };
+  realReq.headers = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 202)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (Util.equalNumber(__response.statusCode, 204)) {
+    return {
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
+model TrashFileModel {
+  headers?: map[string]string(name='headers'),
+  body: TrashFileResponse(name='body'),
+}
+
+/**
+ * trash_file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function trashFile(request: TrashFileRequest) throws: TrashFileModel  {
+  var runtime = new RuntimeOptions{};
+  return trashFileEx(request, runtime);
+}
+
+/**
+ * trash_file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api trashFileEx(request: TrashFileRequest, runtime: RuntimeOptions): TrashFileModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/recyclebin/trash`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.headers
+  };
+  realReq.headers = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 202)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (Util.equalNumber(__response.statusCode, 204)) {
+    return {
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
+model ReportEventModel {
+  headers?: map[string]string(name='headers'),
+  body: ReportEventResponse(name='body'),
+}
+
+/**
+ * 上报事件
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function reportEvent(request: ReportEventRequest) throws: ReportEventModel  {
+  var runtime = new RuntimeOptions{};
+  return reportEventEx(request, runtime);
+}
+
+/**
+ * 上报事件
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api reportEventEx(request: ReportEventRequest, runtime: RuntimeOptions): ReportEventModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/report_event`);
   __request.headers = {
     user-agent = getUserAgent(),
     host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
@@ -8867,11 +9543,8 @@ api deleteGroupEx(request: DeleteGroupRequest, runtime: RuntimeOptions): DeleteG
 } returns {
   var respMap : object = null;
   var obj : any = null;
-  if (Util.equalNumber(__response.statusCode, 200)) {
-    obj = Util.readAsJSON(__response.body);
-    respMap = Util.assertAsMap(obj);
+  if (Util.equalNumber(__response.statusCode, 204)) {
     return {
-      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -10719,6 +11392,7 @@ api getUserEx(request: GetUserRequest, runtime: RuntimeOptions): GetUserModel  {
 
 model ImportUserModel {
   headers?: map[string]string(name='headers'),
+  body: BaseUserResponse(name='body'),
 }
 
 /**
@@ -10779,7 +11453,10 @@ api importUserEx(request: ImportUserRequest, runtime: RuntimeOptions): ImportUse
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -12777,6 +13454,60 @@ model AppAccessStrategy {
 }
 
 /**
+ * 预览压缩包结构
+ */
+model ArchiveListRequest {
+  RequestID?: string(name='RequestID'),
+  archiveType?: string(name='archive_type'),
+  domainId?: string(name='domain_id'),
+  driveId?: string(name='drive_id', description='TODO 增加对ShareID的支持'),
+  fileId?: string(name='file_id'),
+  password?: string(name='password'),
+}
+
+/**
+ * 预览压缩包结构 response
+ */
+model ArchiveListResponse {
+  fileList?: object(name='file_list', additionalProperties='{"type":"object"}'),
+  state?: string(name='state'),
+  taskId?: string(name='task_id'),
+}
+
+/**
+ * ArchiveStatusResponse response
+ */
+model ArchiveStatusResponse {
+  fileList?: object(name='file_list', additionalProperties='{"type":"object"}'),
+  progress?: int64(name='progress', format='int64'),
+  state?: string(name='state'),
+  taskId?: string(name='task_id'),
+}
+
+/**
+ * 解压
+ */
+model ArchiveUncompressRequest {
+  RequestID?: string(name='RequestID'),
+  archiveType?: string(name='archive_type'),
+  domainId?: string(name='domain_id'),
+  driveId?: string(name='drive_id', description='TODO 增加对ShareID的支持'),
+  fileId?: string(name='file_id'),
+  fileList?: [ string ](name='file_list', items='{"type":"string"}'),
+  password?: string(name='password'),
+  targetDriveId?: string(name='target_drive_id'),
+  targetFileId?: string(name='target_file_id'),
+}
+
+/**
+ * 解压 response
+ */
+model ArchiveUncompressResponse {
+  state?: string(name='state'),
+  taskId?: string(name='task_id'),
+}
+
+/**
  * 
  */
 model AuthConfig {
@@ -12811,6 +13542,16 @@ model AuthorizeRequest {
 /**
  * 
  */
+model BackUpConfig {
+  folderId?: string(name='folder_id', description='folder_id'),
+  photoFolderId?: string(name='photo_folder_id', description='photo_folder_id'),
+  subFolder?: object(name='sub_folder', additionalProperties='{"type":"string"}', description='sub_folder'),
+  videoFolderId?: string(name='video_folder_id', description='video_folder_id'),
+}
+
+/**
+ * 
+ */
 model BaseAdditionDataRequest {
   additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
 }
@@ -12837,6 +13578,9 @@ model BaseCCPFileResponse {
 type: boolean', enum='false, true', example=false),
   imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
   labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
+  lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
+  lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
+  lastModifierType?: string(name='last_modifier_type', description='last_modifier_type', example='User, AliUser'),
   meta?: string(name='meta'),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
@@ -12986,7 +13730,7 @@ model BaseListFileRequest {
   imageCroppingAspectRatios?: [ string ](name='image_cropping_aspect_ratios', example='1:1, 1:2, 2:1, 2:3, 3:2, 7:4', items='{"type":"string"}'),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0),
+  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=200, minimum=0),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
   officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   referer?: string(name='referer'),
@@ -13108,6 +13852,43 @@ model BatchSubResponse {
 }
 
 /**
+ * 打包下载
+ */
+model CCPArchiveFilesRequest {
+  headers?: map[string]string,
+  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+  files?: [ FileInfo ](name='files', items='{"$ref":"#/definitions/FileInfo"}'),
+  name?: string(name='name', description='file_name', example='ccp.jpg', maxLength=1024, minLength=1),
+}
+
+/**
+ * 打包下载response
+ */
+model CCPArchiveFilesResponse {
+  asyncTaskId?: string(name='async_task_id'),
+}
+
+/**
+ * 
+ */
+model CCPArchiveRequest {
+  RequestID?: string(name='RequestID'),
+  archiveType?: string(name='archive_type'),
+  domainId?: string(name='domain_id'),
+  driveId?: string(name='drive_id', description='TODO 增加对ShareID的支持'),
+  fileId?: string(name='file_id'),
+  password?: string(name='password'),
+}
+
+/**
+ * 
+ */
+model CCPArchiveResponse {
+  state?: string(name='state'),
+}
+
+/**
  * 获取文件夹size信息
  */
 model CCPGetDirSizeInfoRequest {
@@ -13186,6 +13967,12 @@ model CCPLiveTranscodeRequest {
 }
 
 /**
+ * CCPLiveTranscodeResponse
+ */
+model CCPLiveTranscodeResponse {
+}
+
+/**
  * 遍历文件
  */
 model CCPWalkFileRequest {
@@ -13198,7 +13985,7 @@ model CCPWalkFileRequest {
   imageCroppingAspectRatios?: [ string ](name='image_cropping_aspect_ratios', example='1:1, 1:2, 2:1, 2:3, 3:2, 7:4', items='{"type":"string"}'),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0),
+  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=200, minimum=0),
   location?: string(name='location', description='location', example='cn-hangzhou'),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
   officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
@@ -13261,6 +14048,23 @@ model CertInfo {
 }
 
 /**
+ * 清空回收站
+ */
+model ClearRecycleBinRequest {
+  headers?: map[string]string,
+  driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+}
+
+/**
+ * ClearRecycleBinResponse
+ */
+model ClearRecycleBinResponse {
+  domainId?: string(name='domain_id', description='domain_id'),
+  driveId?: string(name='drive_id', description='drive_id'),
+  taskId?: string(name='task_id', description='task_id'),
+}
+
+/**
  * 合并文件上传任务
  */
 model CompleteFileRequest {
@@ -13295,6 +14099,9 @@ model CompleteFileResponse {
 type: boolean', enum='false, true', example=false),
   imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
   labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
+  lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
+  lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
+  lastModifierType?: string(name='last_modifier_type', description='last_modifier_type', example='User, AliUser'),
   location?: string(name='location', description='location'),
   meta?: string(name='meta'),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
@@ -13609,6 +14416,15 @@ model CustomBenefitMetaRequest {
 /**
  * 
  */
+model DataBoxPrivileges {
+  featureAttrId?: string(name='feature_attr_id', description='feature_attr_id'),
+  featureId?: string(name='feature_id', description='feature_id'),
+  quota?: int64(name='quota', description='quota', format='int64'),
+}
+
+/**
+ * 
+ */
 model DefaultChangePasswordRequest {
   headers?: map[string]string,
   appId: string(name='app_id', description='App ID, 当前访问的App', example='csaklidwasdhjwid'),
@@ -13821,6 +14637,13 @@ model FileDeltaResponse {
 /**
  * 
  */
+model FileInfo {
+  fileId?: string(name='file_id'),
+}
+
+/**
+ * 
+ */
 model FileStreamInfo {
   contentHash?: string(name='content_hash', description='content_hash', example='7C4A8D09CA3762AF61E59520943DC26494F8941B'),
   contentHashName?: string(name='content_hash_name', description='content_hash_name', enum='sha1', example='sha1'),
@@ -13967,7 +14790,9 @@ model GetDownloadUrlRequest {
  * 获取download url response
  */
 model GetDownloadUrlResponse {
+  cdnUrl?: string(name='cdn_url', description='cdn_url'),
   expiration?: string(name='expiration', description='expiration', example='2006-01-02T15:04:05.999Z07:00'),
+  internalUrl?: string(name='internal_url', description='internal_url'),
   method?: string(name='method', description='method', example='GET'),
   ratelimit?: RateLimit(name='ratelimit'),
   size?: int64(name='size', description='size', example=102400, format='int64'),
@@ -14028,6 +14853,7 @@ type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
  * 根据路径获取文件元数据response
  */
 model GetFileByPathResponse {
+  autoDeleteLeftSec?: int64(name='auto_delete_left_sec', description='auto_delete_left_sec', example=10000, format='int64'),
   category?: string(name='category', description='category', enum='doc, image, audio, video', example='doc'),
   characteristicHash?: string(name='characteristic_hash', description='CharacteristicHash'),
   contentHash?: string(name='content_hash', description='Content Hash', example='EA4942AA8761213890A5C386F88E6464D2C31CA3'),
@@ -14042,10 +14868,14 @@ model GetFileByPathResponse {
   encryptMode?: string(name='encrypt_mode', description='encrypt_mode', example='pin'),
   fileExtension?: string(name='file_extension', description='file_extension', example='jpg'),
   fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
+  filePathType?: string(name='file_path_type', description='TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析'),
   hidden?: boolean(name='hidden', description='Hidden
 type: boolean', enum='false, true', example=false),
   imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
   labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
+  lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
+  lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
+  lastModifierType?: string(name='last_modifier_type', description='last_modifier_type', example='User, AliUser'),
   meta?: string(name='meta'),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
@@ -14096,6 +14926,7 @@ type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
  * 获取文件元数据response
  */
 model GetFileResponse {
+  autoDeleteLeftSec?: int64(name='auto_delete_left_sec', description='auto_delete_left_sec', example=10000, format='int64'),
   category?: string(name='category', description='category', enum='doc, image, audio, video', example='doc'),
   characteristicHash?: string(name='characteristic_hash', description='CharacteristicHash'),
   contentHash?: string(name='content_hash', description='Content Hash', example='EA4942AA8761213890A5C386F88E6464D2C31CA3'),
@@ -14110,10 +14941,14 @@ model GetFileResponse {
   encryptMode?: string(name='encrypt_mode', description='encrypt_mode', example='pin'),
   fileExtension?: string(name='file_extension', description='file_extension', example='jpg'),
   fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
+  filePathType?: string(name='file_path_type', description='TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析'),
   hidden?: boolean(name='hidden', description='Hidden
 type: boolean', enum='false, true', example=false),
   imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
   labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
+  lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
+  lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
+  lastModifierType?: string(name='last_modifier_type', description='last_modifier_type', example='User, AliUser'),
   meta?: string(name='meta'),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
@@ -14732,7 +15567,7 @@ model HostingListFileRequest {
   imageCroppingAspectRatios?: [ string ](name='image_cropping_aspect_ratios', example='1:1, 1:2, 2:1, 2:3, 3:2, 7:4', items='{"type":"string"}'),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0),
+  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=200, minimum=0),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
   officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   parentFilePath: string(name='parent_file_path', description='ParentFilePath', example='/a/b/c.jpg'),
@@ -15091,7 +15926,7 @@ model ListFileByCustomIndexKeyRequest {
   imageCroppingAspectRatios?: [ string ](name='image_cropping_aspect_ratios', example='1:1, 1:2, 2:1, 2:3, 3:2, 7:4', items='{"type":"string"}'),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0),
+  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=200, minimum=0),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
   officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
@@ -15132,6 +15967,44 @@ model ListFileDeltaResponse {
 }
 
 /**
+ * 列举回收站
+ */
+model ListFileInRecycleBinRequest {
+  headers?: map[string]string,
+  Starred?: boolean(name='Starred', description='starred', enum='false, true', example=false),
+  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  all?: boolean(name='all', default=true, description='all', enum='false, true', example=false),
+  category?: string(name='category', description='category', enum='image, video, music, doc, other', example='image'),
+  driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+  fields?: string(name='fields', description='fields', example='*'),
+  imageCroppingAspectRatios?: [ string ](name='image_cropping_aspect_ratios', example='1:1, 1:2, 2:1, 2:3, 3:2, 7:4', items='{"type":"string"}'),
+  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
+  imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
+  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=200, minimum=0),
+  marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
+  orderBy?: string(name='order_by', description='order_by', enum='update_time, name', example='name'),
+  orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
+  parentFileId: string(name='parent_file_id', description='ParentFileID', example='root', maxLength=50, minLength=4, pattern='[a-z0-9.-_]{1,50}'),
+  referer?: string(name='referer'),
+  shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
+  signToken?: string(name='sign_token'),
+  status?: string(name='status', default='available', description='status', enum='uploading, available', example='available'),
+  type?: string(name='type', description='type', enum='file, folder', example='file'),
+  urlExpireSec?: int64(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
+  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
+type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
+}
+
+/**
+ * ListFileInRecycleBinResponse
+ */
+model ListFileInRecycleBinResponse {
+  items?: [ RecycleBinItemResponse ](name='items', description='items', example='', items='{"$ref":"#/definitions/RecycleBinItemResponse"}', maxItems=100),
+  nextMarker?: string(name='next_marker', description='next_marker', example='NWQ1YmI4MjA0ZGU1ZWNjYzAzODM0ZDVkODlkMWJiMzcyNzM1NTU4OA'),
+}
+
+/**
  * 列举文件
  */
 model ListFileRequest {
@@ -15144,7 +16017,7 @@ model ListFileRequest {
   imageCroppingAspectRatios?: [ string ](name='image_cropping_aspect_ratios', example='1:1, 1:2, 2:1, 2:3, 3:2, 7:4', items='{"type":"string"}'),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=100, minimum=0),
+  limit?: int64(name='limit', default=50, description='limit', example=10, format='int64', maximum=200, minimum=0),
   location?: string(name='location', description='location', example='cn-hangzhou'),
   marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
   officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
@@ -15422,8 +16295,9 @@ model MoveDetail {
  */
 model MoveFileRequest {
   headers?: map[string]string,
-  autoRename?: boolean(name='auto_rename', description='auto_rename'),
+  autoRename?: boolean(name='auto_rename'),
   categoryList?: [ string ](name='category_list', items='{"type":"string"}'),
+  checkNameMode?: string(name='check_name_mode', default='ignore', description='check_name_mode', enum='ignore, auto_rename, refuse'),
   driveId: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
   fileIdPath?: string(name='file_id_path'),
@@ -15441,6 +16315,8 @@ model MoveFileResponse {
   asyncTaskId?: string(name='async_task_id', description='async_task_id', example='000e89fb-cf8f-11e9-8ab4-b6e980803a3b'),
   domainId?: string(name='domain_id', description='DomainID', example='test001', pattern='[a-z0-9A-Z]+'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+  exist?: boolean(name='exist', description='exist
+type: boolean', example=false),
   fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
 }
 
@@ -15481,6 +16357,54 @@ model RateLimit {
 }
 
 /**
+ * Recycle bin item response
+ */
+model RecycleBinItemResponse {
+  autoDeleteLeftSec?: int64(name='auto_delete_left_sec', description='auto_delete_left_sec', example=10000, format='int64'),
+  category?: string(name='category', description='category', enum='doc, image, audio, video', example='doc'),
+  characteristicHash?: string(name='characteristic_hash', description='CharacteristicHash'),
+  contentHash?: string(name='content_hash', description='Content Hash', example='EA4942AA8761213890A5C386F88E6464D2C31CA3'),
+  contentHashName?: string(name='content_hash_name', description='content_hash_name', enum='sha1', example='sha1'),
+  contentType?: string(name='content_type', description='content_type', example='application/json'),
+  crc64Hash?: string(name='crc64_hash', description='crc64_hash'),
+  createdAt?: string(name='created_at', description='created_at', example='2019-08-20T06:51:27.292Z'),
+  description?: string(name='description', description='description', example='file description'),
+  domainId?: string(name='domain_id', description='DomainID', example='test001', pattern='[a-z0-9A-Z]+'),
+  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+  encryptMode?: string(name='encrypt_mode', description='encrypt_mode', example='pin'),
+  fileExtension?: string(name='file_extension', description='file_extension', example='jpg'),
+  fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
+  filePathType?: string(name='file_path_type', description='TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析'),
+  hidden?: boolean(name='hidden', description='Hidden
+type: boolean', enum='false, true', example=false),
+  imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
+  labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
+  lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
+  lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
+  lastModifierType?: string(name='last_modifier_type', description='last_modifier_type', example='User, AliUser'),
+  meta?: string(name='meta'),
+  name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
+  parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
+  punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
+  shareId?: string(name='share_id'),
+  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  starred?: boolean(name='starred', description='starred
+type: boolean', example=false),
+  status?: string(name='status', description='status', enum='uploading, available', example='available'),
+  streamsInfo?: object(name='streams_info', additionalProperties='{"$ref":"#/definitions/SimpleStreamInfo"}', description='@Deprecated streams url info'),
+  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
+  type?: string(name='type', description='type', enum='file, folder', example='file'),
+  updatedAt?: string(name='updated_at', description='updated_at', format='date-time'),
+  uploadId?: string(name='upload_id', description='upload_id', example='C9DCFE5A82644AC7A02DB74C30C934A6'),
+  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
+  videoMediaMetadata?: VideoMediaResponse(name='video_media_metadata'),
+  videoPreviewMetadata?: VideoPreviewResponse(name='video_preview_metadata'),
+}
+
+/**
  * 刷新office文档在线编辑凭证
  */
 model RefreshOfficeEditTokenRequest {
@@ -15516,9 +16440,51 @@ model RenameDetail {
 }
 
 /**
+ * report_event request
+ */
+model ReportEventRequest {
+  headers?: map[string]string,
+  eventType?: string(name='event_type', description='event_type', enum='share_link', example='share_link'),
+  shareLink?: ReportShareLinkEventRequest(name='share_link'),
+}
+
+/**
+ * report_event operation response
+ */
+model ReportEventResponse {
+}
+
+/**
+ * report_share_link_event request
+ */
+model ReportShareLinkEventRequest {
+  shareId?: string(name='share_id', description='share_id', example='Agg1RL8pw96'),
+  subType?: string(name='sub_type', description='sub_type', enum='preview, save, download, report', example='preview'),
+}
+
+/**
  * 
  */
 model RestoreDetail {
+}
+
+/**
+ * 恢复文件请求，支持批量
+ */
+model RestoreFileRequest {
+  headers?: map[string]string,
+  driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+  fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
+}
+
+/**
+ * 还原文件response
+ */
+model RestoreFileResponse {
+  asyncTaskId?: string(name='async_task_id', description='async_task_id'),
+  domainId?: string(name='domain_id', description='domain_id'),
+  driveId?: string(name='drive_id', description='drive_id'),
+  fileId?: string(name='file_id', description='file_id'),
 }
 
 /**
@@ -15826,6 +16792,26 @@ model TrashDetail {
 }
 
 /**
+ * 删除文件请求，支持批量
+ */
+model TrashFileRequest {
+  headers?: map[string]string,
+  driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+  fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
+  shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
+}
+
+/**
+ * 删除文件到回收站response
+ */
+model TrashFileResponse {
+  asyncTaskId?: string(name='async_task_id', description='async_task_id'),
+  domainId?: string(name='domain_id', description='domain_id'),
+  driveId?: string(name='drive_id', description='drive_id'),
+  fileId?: string(name='file_id', description='file_id'),
+}
+
+/**
  * UCGetObjectInfoByObjectKeyRequest
  */
 model UCGetObjectInfoByObjectKeyRequest {
@@ -15990,6 +16976,9 @@ model UpdateFileMetaResponse {
 type: boolean', enum='false, true', example=false),
   imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
   labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
+  lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
+  lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
+  lastModifierType?: string(name='last_modifier_type', description='last_modifier_type', example='User, AliUser'),
   meta?: string(name='meta'),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
@@ -16093,6 +17082,7 @@ model UpdateShareResponse {
 model UploadPartInfo {
   contentType?: string(name='content_type', description='content_type'),
   etag?: string(name='etag', description='etag', example='0CC175B9C0F1B6A831C399E269772661'),
+  internalUploadUrl?: string(name='internal_upload_url', description='internal_upload_url', example='https://ccp.data-vpc.aliyuncs.com/xxx/xxx?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx&partNumber=1&uploadId=0CC175B9C0F1B6A831C399E269772661'),
   parallelSha1Ctx?: SHA1CTX(name='parallel_sha1_ctx'),
   partNumber?: int64(name='part_number', description='PartNumber', example=1, format='int64', maximum=10000, minimum=1),
   partSize?: int64(name='part_size', description='PartSize：', example=1024, format='int64', maximum=5368709120),
@@ -17126,9 +18116,11 @@ model BaseUserResponse {
   avatar?: string(name='avatar', description='头像', example='http://a.b.c/ccp.jpg'),
   createdAt?: int64(name='created_at', description='用户创建时间', example=1567407718386, format='int64'),
   defaultDriveId?: string(name='default_drive_id', description='默认 Drive ID', example='123'),
+  denyChangePasswordBySelf?: boolean(name='deny_change_password_by_self', description='禁止用户自行修改密码'),
   description?: string(name='description', description='用户备注信息', example='ccp team user'),
   domainId?: string(name='domain_id', description='Domain ID', example='hz999'),
   email?: string(name='email', description='邮箱', example='123@ccp.com'),
+  needChangePasswordNextLogin?: boolean(name='need_change_password_next_login', description='下次登录强制修改密码'),
   nickName?: string(name='nick_name', description='昵称', example='abc'),
   phone?: string(name='phone', description='电话', example='13700000000'),
   punishFlag?: int64(name='punish_flag', description='用户处罚标志', format='int64'),
@@ -17220,12 +18212,15 @@ model CreateStoryResponse {
 model CreateUserRequest {
   headers?: map[string]string,
   avatar?: string(name='avatar', description='头像', example='http://a.b.c/ccp.jpg'),
+  denyChangePasswordBySelf?: boolean(name='deny_change_password_by_self', description='是否能自己修改密码', example=false),
   description?: string(name='description', description='描述信息', example='ccp team user', maxLength=1024),
   email?: string(name='email', description='邮箱', example='123@ccp.com'),
   groupInfoList?: [ GroupInfo ](name='group_info_list', items='{"$ref":"#/definitions/GroupInfo"}'),
   location?: string(name='location', description='用户地域'),
+  needChangePasswordNextLogin?: boolean(name='need_change_password_next_login', description='下次登录后是否强制修改密码', example=false),
   nickName?: string(name='nick_name', description='昵称', example='ccpuser'),
   phone?: string(name='phone', description='电话号码', example='13700000000'),
+  plainPassword?: string(name='plain_password', description='用户明文密码', example='123456'),
   role?: string(name='role', default='user', description='角色', enum='superadmin, admin, user', example='user'),
   status?: string(name='status', default='enabled', description='状态', enum='enabled, disabled', example='enabled'),
   subdomainId?: string(name='subdomain_id', description='subdomain id'),
@@ -17241,9 +18236,11 @@ model CreateUserResponse {
   avatar?: string(name='avatar', description='头像', example='http://a.b.c/ccp.jpg'),
   createdAt?: int64(name='created_at', description='用户创建时间', example=1567407718386, format='int64'),
   defaultDriveId?: string(name='default_drive_id', description='默认 Drive ID', example='123'),
+  denyChangePasswordBySelf?: boolean(name='deny_change_password_by_self', description='禁止用户自行修改密码'),
   description?: string(name='description', description='用户备注信息', example='ccp team user'),
   domainId?: string(name='domain_id', description='Domain ID', example='hz999'),
   email?: string(name='email', description='邮箱', example='123@ccp.com'),
+  needChangePasswordNextLogin?: boolean(name='need_change_password_next_login', description='下次登录强制修改密码'),
   nickName?: string(name='nick_name', description='昵称', example='abc'),
   phone?: string(name='phone', description='电话', example='13700000000'),
   punishFlag?: int64(name='punish_flag', description='用户处罚标志', format='int64'),
@@ -17461,9 +18458,11 @@ model GetUserResponse {
   avatar?: string(name='avatar', description='头像', example='http://a.b.c/ccp.jpg'),
   createdAt?: int64(name='created_at', description='用户创建时间', example=1567407718386, format='int64'),
   defaultDriveId?: string(name='default_drive_id', description='默认 Drive ID', example='123'),
+  denyChangePasswordBySelf?: boolean(name='deny_change_password_by_self', description='禁止用户自行修改密码'),
   description?: string(name='description', description='用户备注信息', example='ccp team user'),
   domainId?: string(name='domain_id', description='Domain ID', example='hz999'),
   email?: string(name='email', description='邮箱', example='123@ccp.com'),
+  needChangePasswordNextLogin?: boolean(name='need_change_password_next_login', description='下次登录强制修改密码'),
   nickName?: string(name='nick_name', description='昵称', example='abc'),
   phone?: string(name='phone', description='电话', example='13700000000'),
   punishFlag?: int64(name='punish_flag', description='用户处罚标志', format='int64'),
@@ -17553,10 +18552,13 @@ model ImportUserRequest {
   headers?: map[string]string,
   authenticationType: string(name='authentication_type', description='认证类型', example='mobile'),
   autoCreateDrive?: boolean(name='auto_create_drive', description='自动创建空间', example=false),
+  denyChangePasswordBySelf?: boolean(name='deny_change_password_by_self', description='是否能自己修改密码', example=false),
   driveTotalSize?: int64(name='drive_total_size', description='空间大小', example=1, format='int64'),
   extra?: string(name='extra', description='额外的信息，比如type为mobile时，此字段为国家编号，不填默认86', example='1'),
   identity: string(name='identity', description='唯一身份标识', example='15208333333'),
+  needChangePasswordNextLogin?: boolean(name='need_change_password_next_login', description='下次登录后是否强制修改密码', example=false),
   nickName: string(name='nick_name', description='昵称', example='abc'),
+  plainPassword?: string(name='plain_password', description='用户明文密码', example='123456'),
 }
 
 /**
@@ -17735,7 +18737,15 @@ model ParseKeywordsRequest {
 model ParseKeywordsResponse {
   addressLine?: string(name='address_line', description='AddressLine'),
   tags?: [ SystemTag ](name='tags', items='{"$ref":"#/definitions/SystemTag"}'),
-  timeRange?: TimeRange(name='time_range'),
+  timeRange?: ParseTimeRange(name='time_range'),
+}
+
+/**
+ * 
+ */
+model ParseTimeRange {
+  end?: string(name='end'),
+  start?: string(name='start'),
 }
 
 /**
@@ -17924,11 +18934,14 @@ model UpdateMembershipResponse {
 model UpdateUserRequest {
   headers?: map[string]string,
   avatar?: string(name='avatar', description='头像', example='http://a.b.c/ccp.jpg'),
+  denyChangePasswordBySelf?: boolean(name='deny_change_password_by_self', description='是否能自己修改密码', example=false),
   description?: string(name='description', description='描述信息', example='ccp team user', maxLength=1024),
   email?: string(name='email', description='邮箱', example='123@ccp.com'),
   groupInfoList?: [ GroupInfo ](name='group_info_list', items='{"$ref":"#/definitions/GroupInfo"}'),
+  needChangePasswordNextLogin?: boolean(name='need_change_password_next_login', description='下次登录后是否强制修改密码', example=false),
   nickName?: string(name='nick_name', description='昵称', example='ccpuser'),
   phone?: string(name='phone', description='电话号码', example='13700000000'),
+  plainPassword?: string(name='plain_password', description='用户明文密码', example='123456'),
   role?: string(name='role', default='user', description='角色', enum='superadmin, admin, user', example='user'),
   status?: string(name='status', default='enabled', description='状态', enum='enabled, disabled', example='enabled'),
   userData?: object(name='user_data', additionalProperties='{"type":"object"}', description='用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K', example='{ is_student: true }'),
@@ -17942,9 +18955,11 @@ model UpdateUserResponse {
   avatar?: string(name='avatar', description='头像', example='http://a.b.c/ccp.jpg'),
   createdAt?: int64(name='created_at', description='用户创建时间', example=1567407718386, format='int64'),
   defaultDriveId?: string(name='default_drive_id', description='默认 Drive ID', example='123'),
+  denyChangePasswordBySelf?: boolean(name='deny_change_password_by_self', description='禁止用户自行修改密码'),
   description?: string(name='description', description='用户备注信息', example='ccp team user'),
   domainId?: string(name='domain_id', description='Domain ID', example='hz999'),
   email?: string(name='email', description='邮箱', example='123@ccp.com'),
+  needChangePasswordNextLogin?: boolean(name='need_change_password_next_login', description='下次登录强制修改密码'),
   nickName?: string(name='nick_name', description='昵称', example='abc'),
   phone?: string(name='phone', description='电话', example='13700000000'),
   punishFlag?: int64(name='punish_flag', description='用户处罚标志', format='int64'),

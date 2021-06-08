@@ -19,6 +19,10 @@ public class ImportUserRequest extends TeaModel {
     @NameInMap("auto_create_drive")
     public Boolean autoCreateDrive;
 
+    // 是否能自己修改密码
+    @NameInMap("deny_change_password_by_self")
+    public Boolean denyChangePasswordBySelf;
+
     // 空间大小
     @NameInMap("drive_total_size")
     public Long driveTotalSize;
@@ -32,10 +36,18 @@ public class ImportUserRequest extends TeaModel {
     @Validation(required = true)
     public String identity;
 
+    // 下次登录后是否强制修改密码
+    @NameInMap("need_change_password_next_login")
+    public Boolean needChangePasswordNextLogin;
+
     // 昵称
     @NameInMap("nick_name")
     @Validation(required = true)
     public String nickName;
+
+    // 用户明文密码
+    @NameInMap("plain_password")
+    public String plainPassword;
 
     public static ImportUserRequest build(java.util.Map<String, ?> map) throws Exception {
         ImportUserRequest self = new ImportUserRequest();
@@ -66,6 +78,14 @@ public class ImportUserRequest extends TeaModel {
         return this.autoCreateDrive;
     }
 
+    public ImportUserRequest setDenyChangePasswordBySelf(Boolean denyChangePasswordBySelf) {
+        this.denyChangePasswordBySelf = denyChangePasswordBySelf;
+        return this;
+    }
+    public Boolean getDenyChangePasswordBySelf() {
+        return this.denyChangePasswordBySelf;
+    }
+
     public ImportUserRequest setDriveTotalSize(Long driveTotalSize) {
         this.driveTotalSize = driveTotalSize;
         return this;
@@ -90,12 +110,28 @@ public class ImportUserRequest extends TeaModel {
         return this.identity;
     }
 
+    public ImportUserRequest setNeedChangePasswordNextLogin(Boolean needChangePasswordNextLogin) {
+        this.needChangePasswordNextLogin = needChangePasswordNextLogin;
+        return this;
+    }
+    public Boolean getNeedChangePasswordNextLogin() {
+        return this.needChangePasswordNextLogin;
+    }
+
     public ImportUserRequest setNickName(String nickName) {
         this.nickName = nickName;
         return this;
     }
     public String getNickName() {
         return this.nickName;
+    }
+
+    public ImportUserRequest setPlainPassword(String plainPassword) {
+        this.plainPassword = plainPassword;
+        return this;
+    }
+    public String getPlainPassword() {
+        return this.plainPassword;
     }
 
 }

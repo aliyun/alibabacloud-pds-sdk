@@ -78,6 +78,18 @@ public class UpdateFileMetaResponse extends TeaModel {
     @NameInMap("labels")
     public java.util.List<String> labels;
 
+    // last_modifier_id
+    @NameInMap("last_modifier_id")
+    public String lastModifierId;
+
+    // last_modifier_name
+    @NameInMap("last_modifier_name")
+    public String lastModifierName;
+
+    // last_modifier_type
+    @NameInMap("last_modifier_type")
+    public String lastModifierType;
+
     @NameInMap("meta")
     public String meta;
 
@@ -289,6 +301,30 @@ public class UpdateFileMetaResponse extends TeaModel {
     }
     public java.util.List<String> getLabels() {
         return this.labels;
+    }
+
+    public UpdateFileMetaResponse setLastModifierId(String lastModifierId) {
+        this.lastModifierId = lastModifierId;
+        return this;
+    }
+    public String getLastModifierId() {
+        return this.lastModifierId;
+    }
+
+    public UpdateFileMetaResponse setLastModifierName(String lastModifierName) {
+        this.lastModifierName = lastModifierName;
+        return this;
+    }
+    public String getLastModifierName() {
+        return this.lastModifierName;
+    }
+
+    public UpdateFileMetaResponse setLastModifierType(String lastModifierType) {
+        this.lastModifierType = lastModifierType;
+        return this;
+    }
+    public String getLastModifierType() {
+        return this.lastModifierType;
     }
 
     public UpdateFileMetaResponse setMeta(String meta) {

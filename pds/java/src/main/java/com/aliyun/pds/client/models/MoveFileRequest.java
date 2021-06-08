@@ -10,12 +10,15 @@ public class MoveFileRequest extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
-    // auto_rename
     @NameInMap("auto_rename")
     public Boolean autoRename;
 
     @NameInMap("category_list")
     public java.util.List<String> categoryList;
+
+    // check_name_mode
+    @NameInMap("check_name_mode")
+    public String checkNameMode;
 
     // drive_id
     @NameInMap("drive_id")
@@ -79,6 +82,14 @@ public class MoveFileRequest extends TeaModel {
     }
     public java.util.List<String> getCategoryList() {
         return this.categoryList;
+    }
+
+    public MoveFileRequest setCheckNameMode(String checkNameMode) {
+        this.checkNameMode = checkNameMode;
+        return this;
+    }
+    public String getCheckNameMode() {
+        return this.checkNameMode;
     }
 
     public MoveFileRequest setDriveId(String driveId) {

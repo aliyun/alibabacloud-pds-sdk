@@ -14,6 +14,10 @@ public class UpdateUserRequest extends TeaModel {
     @NameInMap("avatar")
     public String avatar;
 
+    // 是否能自己修改密码
+    @NameInMap("deny_change_password_by_self")
+    public Boolean denyChangePasswordBySelf;
+
     // 描述信息
     @NameInMap("description")
     @Validation(maxLength = 1024)
@@ -26,6 +30,10 @@ public class UpdateUserRequest extends TeaModel {
     @NameInMap("group_info_list")
     public java.util.List<GroupInfo> groupInfoList;
 
+    // 下次登录后是否强制修改密码
+    @NameInMap("need_change_password_next_login")
+    public Boolean needChangePasswordNextLogin;
+
     // 昵称
     @NameInMap("nick_name")
     public String nickName;
@@ -33,6 +41,10 @@ public class UpdateUserRequest extends TeaModel {
     // 电话号码
     @NameInMap("phone")
     public String phone;
+
+    // 用户明文密码
+    @NameInMap("plain_password")
+    public String plainPassword;
 
     // 角色
     @NameInMap("role")
@@ -72,6 +84,14 @@ public class UpdateUserRequest extends TeaModel {
         return this.avatar;
     }
 
+    public UpdateUserRequest setDenyChangePasswordBySelf(Boolean denyChangePasswordBySelf) {
+        this.denyChangePasswordBySelf = denyChangePasswordBySelf;
+        return this;
+    }
+    public Boolean getDenyChangePasswordBySelf() {
+        return this.denyChangePasswordBySelf;
+    }
+
     public UpdateUserRequest setDescription(String description) {
         this.description = description;
         return this;
@@ -96,6 +116,14 @@ public class UpdateUserRequest extends TeaModel {
         return this.groupInfoList;
     }
 
+    public UpdateUserRequest setNeedChangePasswordNextLogin(Boolean needChangePasswordNextLogin) {
+        this.needChangePasswordNextLogin = needChangePasswordNextLogin;
+        return this;
+    }
+    public Boolean getNeedChangePasswordNextLogin() {
+        return this.needChangePasswordNextLogin;
+    }
+
     public UpdateUserRequest setNickName(String nickName) {
         this.nickName = nickName;
         return this;
@@ -110,6 +138,14 @@ public class UpdateUserRequest extends TeaModel {
     }
     public String getPhone() {
         return this.phone;
+    }
+
+    public UpdateUserRequest setPlainPassword(String plainPassword) {
+        this.plainPassword = plainPassword;
+        return this;
+    }
+    public String getPlainPassword() {
+        return this.plainPassword;
     }
 
     public UpdateUserRequest setRole(String role) {

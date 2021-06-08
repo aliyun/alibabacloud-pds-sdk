@@ -7,9 +7,17 @@ import com.aliyun.tea.*;
  * 获取download url response
  */
 public class GetDownloadUrlResponse extends TeaModel {
+    // cdn_url
+    @NameInMap("cdn_url")
+    public String cdnUrl;
+
     // expiration
     @NameInMap("expiration")
     public String expiration;
+
+    // internal_url
+    @NameInMap("internal_url")
+    public String internalUrl;
 
     // method
     @NameInMap("method")
@@ -35,12 +43,28 @@ public class GetDownloadUrlResponse extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public GetDownloadUrlResponse setCdnUrl(String cdnUrl) {
+        this.cdnUrl = cdnUrl;
+        return this;
+    }
+    public String getCdnUrl() {
+        return this.cdnUrl;
+    }
+
     public GetDownloadUrlResponse setExpiration(String expiration) {
         this.expiration = expiration;
         return this;
     }
     public String getExpiration() {
         return this.expiration;
+    }
+
+    public GetDownloadUrlResponse setInternalUrl(String internalUrl) {
+        this.internalUrl = internalUrl;
+        return this;
+    }
+    public String getInternalUrl() {
+        return this.internalUrl;
     }
 
     public GetDownloadUrlResponse setMethod(String method) {
