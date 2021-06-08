@@ -19,6 +19,10 @@ public class GetUserResponse extends TeaModel {
     @NameInMap("default_drive_id")
     public String defaultDriveId;
 
+    // 禁止用户自行修改密码
+    @NameInMap("deny_change_password_by_self")
+    public Boolean denyChangePasswordBySelf;
+
     // 用户备注信息
     @NameInMap("description")
     public String description;
@@ -30,6 +34,10 @@ public class GetUserResponse extends TeaModel {
     // 邮箱
     @NameInMap("email")
     public String email;
+
+    // 下次登录强制修改密码
+    @NameInMap("need_change_password_next_login")
+    public Boolean needChangePasswordNextLogin;
 
     // 昵称
     @NameInMap("nick_name")
@@ -96,6 +104,14 @@ public class GetUserResponse extends TeaModel {
         return this.defaultDriveId;
     }
 
+    public GetUserResponse setDenyChangePasswordBySelf(Boolean denyChangePasswordBySelf) {
+        this.denyChangePasswordBySelf = denyChangePasswordBySelf;
+        return this;
+    }
+    public Boolean getDenyChangePasswordBySelf() {
+        return this.denyChangePasswordBySelf;
+    }
+
     public GetUserResponse setDescription(String description) {
         this.description = description;
         return this;
@@ -118,6 +134,14 @@ public class GetUserResponse extends TeaModel {
     }
     public String getEmail() {
         return this.email;
+    }
+
+    public GetUserResponse setNeedChangePasswordNextLogin(Boolean needChangePasswordNextLogin) {
+        this.needChangePasswordNextLogin = needChangePasswordNextLogin;
+        return this;
+    }
+    public Boolean getNeedChangePasswordNextLogin() {
+        return this.needChangePasswordNextLogin;
     }
 
     public GetUserResponse setNickName(String nickName) {

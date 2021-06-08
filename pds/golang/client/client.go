@@ -934,6 +934,29 @@ func (s *UpdateDriveModel) SetBody(v *UpdateDriveResponse) *UpdateDriveModel {
   return s
 }
 
+type ArchiveFilesModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *CCPArchiveFilesResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ArchiveFilesModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ArchiveFilesModel) GoString() string {
+  return s.String()
+}
+
+func (s *ArchiveFilesModel) SetHeaders(v map[string]*string) *ArchiveFilesModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ArchiveFilesModel) SetBody(v *CCPArchiveFilesResponse) *ArchiveFilesModel {
+  s.Body = v
+  return s
+}
+
 type CompleteFileModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *CompleteFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -1488,6 +1511,7 @@ func (s *ListUploadedPartsModel) SetBody(v *ListUploadedPartResponse) *ListUploa
 
 type LiveTranscodeModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *CCPLiveTranscodeResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s LiveTranscodeModel) String() string {
@@ -1500,6 +1524,11 @@ func (s LiveTranscodeModel) GoString() string {
 
 func (s *LiveTranscodeModel) SetHeaders(v map[string]*string) *LiveTranscodeModel {
   s.Headers = v
+  return s
+}
+
+func (s *LiveTranscodeModel) SetBody(v *CCPLiveTranscodeResponse) *LiveTranscodeModel {
+  s.Body = v
   return s
 }
 
@@ -1637,6 +1666,121 @@ func (s *WalkFileModel) SetHeaders(v map[string]*string) *WalkFileModel {
 }
 
 func (s *WalkFileModel) SetBody(v *CCPWalkFileResponse) *WalkFileModel {
+  s.Body = v
+  return s
+}
+
+type ClearRecyclebinModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ClearRecycleBinResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ClearRecyclebinModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ClearRecyclebinModel) GoString() string {
+  return s.String()
+}
+
+func (s *ClearRecyclebinModel) SetHeaders(v map[string]*string) *ClearRecyclebinModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ClearRecyclebinModel) SetBody(v *ClearRecycleBinResponse) *ClearRecyclebinModel {
+  s.Body = v
+  return s
+}
+
+type ListRecyclebinModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ListFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRecyclebinModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListRecyclebinModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListRecyclebinModel) SetHeaders(v map[string]*string) *ListRecyclebinModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListRecyclebinModel) SetBody(v *ListFileResponse) *ListRecyclebinModel {
+  s.Body = v
+  return s
+}
+
+type RestoreFileModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *RestoreFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RestoreFileModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s RestoreFileModel) GoString() string {
+  return s.String()
+}
+
+func (s *RestoreFileModel) SetHeaders(v map[string]*string) *RestoreFileModel {
+  s.Headers = v
+  return s
+}
+
+func (s *RestoreFileModel) SetBody(v *RestoreFileResponse) *RestoreFileModel {
+  s.Body = v
+  return s
+}
+
+type TrashFileModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *TrashFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TrashFileModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s TrashFileModel) GoString() string {
+  return s.String()
+}
+
+func (s *TrashFileModel) SetHeaders(v map[string]*string) *TrashFileModel {
+  s.Headers = v
+  return s
+}
+
+func (s *TrashFileModel) SetBody(v *TrashFileResponse) *TrashFileModel {
+  s.Body = v
+  return s
+}
+
+type ReportEventModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ReportEventResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReportEventModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ReportEventModel) GoString() string {
+  return s.String()
+}
+
+func (s *ReportEventModel) SetHeaders(v map[string]*string) *ReportEventModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ReportEventModel) SetBody(v *ReportEventResponse) *ReportEventModel {
   s.Body = v
   return s
 }
@@ -2332,6 +2476,7 @@ func (s *GetUserModel) SetBody(v *GetUserResponse) *GetUserModel {
 
 type ImportUserModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *BaseUserResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ImportUserModel) String() string {
@@ -2344,6 +2489,11 @@ func (s ImportUserModel) GoString() string {
 
 func (s *ImportUserModel) SetHeaders(v map[string]*string) *ImportUserModel {
   s.Headers = v
+  return s
+}
+
+func (s *ImportUserModel) SetBody(v *BaseUserResponse) *ImportUserModel {
+  s.Body = v
   return s
 }
 
@@ -3263,6 +3413,222 @@ func (s *AppAccessStrategy) SetExceptAppIdList(v []*string) *AppAccessStrategy {
 }
 
 /**
+ * 预览压缩包结构
+ */
+type ArchiveListRequest struct {
+  RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+  ArchiveType *string `json:"archive_type,omitempty" xml:"archive_type,omitempty"`
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // TODO 增加对ShareID的支持
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+  Password *string `json:"password,omitempty" xml:"password,omitempty"`
+}
+
+func (s ArchiveListRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ArchiveListRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ArchiveListRequest) SetRequestID(v string) *ArchiveListRequest {
+  s.RequestID = &v
+  return s
+}
+
+func (s *ArchiveListRequest) SetArchiveType(v string) *ArchiveListRequest {
+  s.ArchiveType = &v
+  return s
+}
+
+func (s *ArchiveListRequest) SetDomainId(v string) *ArchiveListRequest {
+  s.DomainId = &v
+  return s
+}
+
+func (s *ArchiveListRequest) SetDriveId(v string) *ArchiveListRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *ArchiveListRequest) SetFileId(v string) *ArchiveListRequest {
+  s.FileId = &v
+  return s
+}
+
+func (s *ArchiveListRequest) SetPassword(v string) *ArchiveListRequest {
+  s.Password = &v
+  return s
+}
+
+/**
+ * 预览压缩包结构 response
+ */
+type ArchiveListResponse struct {
+  FileList map[string]interface{} `json:"file_list,omitempty" xml:"file_list,omitempty"`
+  State *string `json:"state,omitempty" xml:"state,omitempty"`
+  TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s ArchiveListResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ArchiveListResponse) GoString() string {
+  return s.String()
+}
+
+func (s *ArchiveListResponse) SetFileList(v map[string]interface{}) *ArchiveListResponse {
+  s.FileList = v
+  return s
+}
+
+func (s *ArchiveListResponse) SetState(v string) *ArchiveListResponse {
+  s.State = &v
+  return s
+}
+
+func (s *ArchiveListResponse) SetTaskId(v string) *ArchiveListResponse {
+  s.TaskId = &v
+  return s
+}
+
+/**
+ * ArchiveStatusResponse response
+ */
+type ArchiveStatusResponse struct {
+  FileList map[string]interface{} `json:"file_list,omitempty" xml:"file_list,omitempty"`
+  Progress *int64 `json:"progress,omitempty" xml:"progress,omitempty"`
+  State *string `json:"state,omitempty" xml:"state,omitempty"`
+  TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s ArchiveStatusResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ArchiveStatusResponse) GoString() string {
+  return s.String()
+}
+
+func (s *ArchiveStatusResponse) SetFileList(v map[string]interface{}) *ArchiveStatusResponse {
+  s.FileList = v
+  return s
+}
+
+func (s *ArchiveStatusResponse) SetProgress(v int64) *ArchiveStatusResponse {
+  s.Progress = &v
+  return s
+}
+
+func (s *ArchiveStatusResponse) SetState(v string) *ArchiveStatusResponse {
+  s.State = &v
+  return s
+}
+
+func (s *ArchiveStatusResponse) SetTaskId(v string) *ArchiveStatusResponse {
+  s.TaskId = &v
+  return s
+}
+
+/**
+ * 解压
+ */
+type ArchiveUncompressRequest struct {
+  RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+  ArchiveType *string `json:"archive_type,omitempty" xml:"archive_type,omitempty"`
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // TODO 增加对ShareID的支持
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+  FileList []*string `json:"file_list,omitempty" xml:"file_list,omitempty" type:"Repeated"`
+  Password *string `json:"password,omitempty" xml:"password,omitempty"`
+  TargetDriveId *string `json:"target_drive_id,omitempty" xml:"target_drive_id,omitempty"`
+  TargetFileId *string `json:"target_file_id,omitempty" xml:"target_file_id,omitempty"`
+}
+
+func (s ArchiveUncompressRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ArchiveUncompressRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ArchiveUncompressRequest) SetRequestID(v string) *ArchiveUncompressRequest {
+  s.RequestID = &v
+  return s
+}
+
+func (s *ArchiveUncompressRequest) SetArchiveType(v string) *ArchiveUncompressRequest {
+  s.ArchiveType = &v
+  return s
+}
+
+func (s *ArchiveUncompressRequest) SetDomainId(v string) *ArchiveUncompressRequest {
+  s.DomainId = &v
+  return s
+}
+
+func (s *ArchiveUncompressRequest) SetDriveId(v string) *ArchiveUncompressRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *ArchiveUncompressRequest) SetFileId(v string) *ArchiveUncompressRequest {
+  s.FileId = &v
+  return s
+}
+
+func (s *ArchiveUncompressRequest) SetFileList(v []*string) *ArchiveUncompressRequest {
+  s.FileList = v
+  return s
+}
+
+func (s *ArchiveUncompressRequest) SetPassword(v string) *ArchiveUncompressRequest {
+  s.Password = &v
+  return s
+}
+
+func (s *ArchiveUncompressRequest) SetTargetDriveId(v string) *ArchiveUncompressRequest {
+  s.TargetDriveId = &v
+  return s
+}
+
+func (s *ArchiveUncompressRequest) SetTargetFileId(v string) *ArchiveUncompressRequest {
+  s.TargetFileId = &v
+  return s
+}
+
+/**
+ * 解压 response
+ */
+type ArchiveUncompressResponse struct {
+  State *string `json:"state,omitempty" xml:"state,omitempty"`
+  TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s ArchiveUncompressResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ArchiveUncompressResponse) GoString() string {
+  return s.String()
+}
+
+func (s *ArchiveUncompressResponse) SetState(v string) *ArchiveUncompressResponse {
+  s.State = &v
+  return s
+}
+
+func (s *ArchiveUncompressResponse) SetTaskId(v string) *ArchiveUncompressResponse {
+  s.TaskId = &v
+  return s
+}
+
+/**
  * 
  */
 type AuthConfig struct {
@@ -3421,6 +3787,48 @@ func (s *AuthorizeRequest) SetUserCode(v string) *AuthorizeRequest {
 /**
  * 
  */
+type BackUpConfig struct {
+  // folder_id
+  FolderId *string `json:"folder_id,omitempty" xml:"folder_id,omitempty"`
+  // photo_folder_id
+  PhotoFolderId *string `json:"photo_folder_id,omitempty" xml:"photo_folder_id,omitempty"`
+  // sub_folder
+  SubFolder map[string]interface{} `json:"sub_folder,omitempty" xml:"sub_folder,omitempty"`
+  // video_folder_id
+  VideoFolderId *string `json:"video_folder_id,omitempty" xml:"video_folder_id,omitempty"`
+}
+
+func (s BackUpConfig) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BackUpConfig) GoString() string {
+  return s.String()
+}
+
+func (s *BackUpConfig) SetFolderId(v string) *BackUpConfig {
+  s.FolderId = &v
+  return s
+}
+
+func (s *BackUpConfig) SetPhotoFolderId(v string) *BackUpConfig {
+  s.PhotoFolderId = &v
+  return s
+}
+
+func (s *BackUpConfig) SetSubFolder(v map[string]interface{}) *BackUpConfig {
+  s.SubFolder = v
+  return s
+}
+
+func (s *BackUpConfig) SetVideoFolderId(v string) *BackUpConfig {
+  s.VideoFolderId = &v
+  return s
+}
+
+/**
+ * 
+ */
 type BaseAdditionDataRequest struct {
   // addition_data
   AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
@@ -3477,6 +3885,12 @@ type BaseCCPFileResponse struct {
   ImageMediaMetadata *ImageMediaResponse `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
   // labels
   Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+  // last_modifier_id
+  LastModifierId *string `json:"last_modifier_id,omitempty" xml:"last_modifier_id,omitempty"`
+  // last_modifier_name
+  LastModifierName *string `json:"last_modifier_name,omitempty" xml:"last_modifier_name,omitempty"`
+  // last_modifier_type
+  LastModifierType *string `json:"last_modifier_type,omitempty" xml:"last_modifier_type,omitempty"`
   Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
   // name
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
@@ -3602,6 +4016,21 @@ func (s *BaseCCPFileResponse) SetImageMediaMetadata(v *ImageMediaResponse) *Base
 
 func (s *BaseCCPFileResponse) SetLabels(v []*string) *BaseCCPFileResponse {
   s.Labels = v
+  return s
+}
+
+func (s *BaseCCPFileResponse) SetLastModifierId(v string) *BaseCCPFileResponse {
+  s.LastModifierId = &v
+  return s
+}
+
+func (s *BaseCCPFileResponse) SetLastModifierName(v string) *BaseCCPFileResponse {
+  s.LastModifierName = &v
+  return s
+}
+
+func (s *BaseCCPFileResponse) SetLastModifierType(v string) *BaseCCPFileResponse {
+  s.LastModifierType = &v
   return s
 }
 
@@ -4301,7 +4730,7 @@ type BaseListFileRequest struct {
   // image_url_process
   ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
   // limit
-  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
+  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"200" minimum:"0"`
   // marker
   Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
   // office_thumbnail_process
@@ -4934,6 +5363,144 @@ func (s *BatchSubResponse) SetStatus(v int64) *BatchSubResponse {
 }
 
 /**
+ * 打包下载
+ */
+type CCPArchiveFilesRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // addition_data
+  AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+  Files []*FileInfo `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+  // file_name
+  Name *string `json:"name,omitempty" xml:"name,omitempty" maxLength:"1024" minLength:"1"`
+}
+
+func (s CCPArchiveFilesRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CCPArchiveFilesRequest) GoString() string {
+  return s.String()
+}
+
+func (s *CCPArchiveFilesRequest) SetHeaders(v map[string]*string) *CCPArchiveFilesRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *CCPArchiveFilesRequest) SetAdditionData(v map[string]interface{}) *CCPArchiveFilesRequest {
+  s.AdditionData = v
+  return s
+}
+
+func (s *CCPArchiveFilesRequest) SetDriveId(v string) *CCPArchiveFilesRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *CCPArchiveFilesRequest) SetFiles(v []*FileInfo) *CCPArchiveFilesRequest {
+  s.Files = v
+  return s
+}
+
+func (s *CCPArchiveFilesRequest) SetName(v string) *CCPArchiveFilesRequest {
+  s.Name = &v
+  return s
+}
+
+/**
+ * 打包下载response
+ */
+type CCPArchiveFilesResponse struct {
+  AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
+}
+
+func (s CCPArchiveFilesResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CCPArchiveFilesResponse) GoString() string {
+  return s.String()
+}
+
+func (s *CCPArchiveFilesResponse) SetAsyncTaskId(v string) *CCPArchiveFilesResponse {
+  s.AsyncTaskId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type CCPArchiveRequest struct {
+  RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+  ArchiveType *string `json:"archive_type,omitempty" xml:"archive_type,omitempty"`
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // TODO 增加对ShareID的支持
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+  Password *string `json:"password,omitempty" xml:"password,omitempty"`
+}
+
+func (s CCPArchiveRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CCPArchiveRequest) GoString() string {
+  return s.String()
+}
+
+func (s *CCPArchiveRequest) SetRequestID(v string) *CCPArchiveRequest {
+  s.RequestID = &v
+  return s
+}
+
+func (s *CCPArchiveRequest) SetArchiveType(v string) *CCPArchiveRequest {
+  s.ArchiveType = &v
+  return s
+}
+
+func (s *CCPArchiveRequest) SetDomainId(v string) *CCPArchiveRequest {
+  s.DomainId = &v
+  return s
+}
+
+func (s *CCPArchiveRequest) SetDriveId(v string) *CCPArchiveRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *CCPArchiveRequest) SetFileId(v string) *CCPArchiveRequest {
+  s.FileId = &v
+  return s
+}
+
+func (s *CCPArchiveRequest) SetPassword(v string) *CCPArchiveRequest {
+  s.Password = &v
+  return s
+}
+
+/**
+ * 
+ */
+type CCPArchiveResponse struct {
+  State *string `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s CCPArchiveResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CCPArchiveResponse) GoString() string {
+  return s.String()
+}
+
+func (s *CCPArchiveResponse) SetState(v string) *CCPArchiveResponse {
+  s.State = &v
+  return s
+}
+
+/**
  * 获取文件夹size信息
  */
 type CCPGetDirSizeInfoRequest struct {
@@ -5295,6 +5862,20 @@ func (s *CCPLiveTranscodeRequest) SetObjectPath(v string) *CCPLiveTranscodeReque
 }
 
 /**
+ * CCPLiveTranscodeResponse
+ */
+type CCPLiveTranscodeResponse struct {
+}
+
+func (s CCPLiveTranscodeResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CCPLiveTranscodeResponse) GoString() string {
+  return s.String()
+}
+
+/**
  * 遍历文件
  */
 type CCPWalkFileRequest struct {
@@ -5315,7 +5896,7 @@ type CCPWalkFileRequest struct {
   // image_url_process
   ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
   // limit
-  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
+  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"200" minimum:"0"`
   // location
   Location *string `json:"location,omitempty" xml:"location,omitempty"`
   // marker
@@ -5638,6 +6219,68 @@ func (s *CertInfo) SetCertPrivatekey(v string) *CertInfo {
 }
 
 /**
+ * 清空回收站
+ */
+type ClearRecycleBinRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+}
+
+func (s ClearRecycleBinRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ClearRecycleBinRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ClearRecycleBinRequest) SetHeaders(v map[string]*string) *ClearRecycleBinRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *ClearRecycleBinRequest) SetDriveId(v string) *ClearRecycleBinRequest {
+  s.DriveId = &v
+  return s
+}
+
+/**
+ * ClearRecycleBinResponse
+ */
+type ClearRecycleBinResponse struct {
+  // domain_id
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  // task_id
+  TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s ClearRecycleBinResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ClearRecycleBinResponse) GoString() string {
+  return s.String()
+}
+
+func (s *ClearRecycleBinResponse) SetDomainId(v string) *ClearRecycleBinResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *ClearRecycleBinResponse) SetDriveId(v string) *ClearRecycleBinResponse {
+  s.DriveId = &v
+  return s
+}
+
+func (s *ClearRecycleBinResponse) SetTaskId(v string) *ClearRecycleBinResponse {
+  s.TaskId = &v
+  return s
+}
+
+/**
  * 合并文件上传任务
  */
 type CompleteFileRequest struct {
@@ -5736,6 +6379,12 @@ type CompleteFileResponse struct {
   ImageMediaMetadata *ImageMediaResponse `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
   // labels
   Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+  // last_modifier_id
+  LastModifierId *string `json:"last_modifier_id,omitempty" xml:"last_modifier_id,omitempty"`
+  // last_modifier_name
+  LastModifierName *string `json:"last_modifier_name,omitempty" xml:"last_modifier_name,omitempty"`
+  // last_modifier_type
+  LastModifierType *string `json:"last_modifier_type,omitempty" xml:"last_modifier_type,omitempty"`
   // location
   Location *string `json:"location,omitempty" xml:"location,omitempty"`
   Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
@@ -5864,6 +6513,21 @@ func (s *CompleteFileResponse) SetImageMediaMetadata(v *ImageMediaResponse) *Com
 
 func (s *CompleteFileResponse) SetLabels(v []*string) *CompleteFileResponse {
   s.Labels = v
+  return s
+}
+
+func (s *CompleteFileResponse) SetLastModifierId(v string) *CompleteFileResponse {
+  s.LastModifierId = &v
+  return s
+}
+
+func (s *CompleteFileResponse) SetLastModifierName(v string) *CompleteFileResponse {
+  s.LastModifierName = &v
+  return s
+}
+
+func (s *CompleteFileResponse) SetLastModifierType(v string) *CompleteFileResponse {
+  s.LastModifierType = &v
   return s
 }
 
@@ -7419,6 +8083,41 @@ func (s *CustomBenefitMetaRequest) SetEnabled(v bool) *CustomBenefitMetaRequest 
 /**
  * 
  */
+type DataBoxPrivileges struct {
+  // feature_attr_id
+  FeatureAttrId *string `json:"feature_attr_id,omitempty" xml:"feature_attr_id,omitempty"`
+  // feature_id
+  FeatureId *string `json:"feature_id,omitempty" xml:"feature_id,omitempty"`
+  // quota
+  Quota *int64 `json:"quota,omitempty" xml:"quota,omitempty"`
+}
+
+func (s DataBoxPrivileges) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DataBoxPrivileges) GoString() string {
+  return s.String()
+}
+
+func (s *DataBoxPrivileges) SetFeatureAttrId(v string) *DataBoxPrivileges {
+  s.FeatureAttrId = &v
+  return s
+}
+
+func (s *DataBoxPrivileges) SetFeatureId(v string) *DataBoxPrivileges {
+  s.FeatureId = &v
+  return s
+}
+
+func (s *DataBoxPrivileges) SetQuota(v int64) *DataBoxPrivileges {
+  s.Quota = &v
+  return s
+}
+
+/**
+ * 
+ */
 type DefaultChangePasswordRequest struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   // App ID, 当前访问的App
@@ -8249,6 +8948,26 @@ func (s *FileDeltaResponse) SetOp(v string) *FileDeltaResponse {
 /**
  * 
  */
+type FileInfo struct {
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+}
+
+func (s FileInfo) String() string {
+  return tea.Prettify(s)
+}
+
+func (s FileInfo) GoString() string {
+  return s.String()
+}
+
+func (s *FileInfo) SetFileId(v string) *FileInfo {
+  s.FileId = &v
+  return s
+}
+
+/**
+ * 
+ */
 type FileStreamInfo struct {
   // content_hash
   ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
@@ -8818,8 +9537,12 @@ func (s *GetDownloadUrlRequest) SetSignToken(v string) *GetDownloadUrlRequest {
  * 获取download url response
  */
 type GetDownloadUrlResponse struct {
+  // cdn_url
+  CdnUrl *string `json:"cdn_url,omitempty" xml:"cdn_url,omitempty"`
   // expiration
   Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+  // internal_url
+  InternalUrl *string `json:"internal_url,omitempty" xml:"internal_url,omitempty"`
   // method
   Method *string `json:"method,omitempty" xml:"method,omitempty"`
   Ratelimit *RateLimit `json:"ratelimit,omitempty" xml:"ratelimit,omitempty"`
@@ -8839,8 +9562,18 @@ func (s GetDownloadUrlResponse) GoString() string {
   return s.String()
 }
 
+func (s *GetDownloadUrlResponse) SetCdnUrl(v string) *GetDownloadUrlResponse {
+  s.CdnUrl = &v
+  return s
+}
+
 func (s *GetDownloadUrlResponse) SetExpiration(v string) *GetDownloadUrlResponse {
   s.Expiration = &v
+  return s
+}
+
+func (s *GetDownloadUrlResponse) SetInternalUrl(v string) *GetDownloadUrlResponse {
+  s.InternalUrl = &v
   return s
 }
 
@@ -9119,6 +9852,8 @@ func (s *GetFileByPathRequest) SetVideoThumbnailProcess(v string) *GetFileByPath
  * 根据路径获取文件元数据response
  */
 type GetFileByPathResponse struct {
+  // auto_delete_left_sec
+  AutoDeleteLeftSec *int64 `json:"auto_delete_left_sec,omitempty" xml:"auto_delete_left_sec,omitempty"`
   // category
   Category *string `json:"category,omitempty" xml:"category,omitempty"`
   // CharacteristicHash
@@ -9147,12 +9882,20 @@ type GetFileByPathResponse struct {
   FileExtension *string `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
   // file_id
   FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+  // TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
+  FilePathType *string `json:"file_path_type,omitempty" xml:"file_path_type,omitempty"`
   // Hidden
   // type: boolean
   Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
   ImageMediaMetadata *ImageMediaResponse `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
   // labels
   Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+  // last_modifier_id
+  LastModifierId *string `json:"last_modifier_id,omitempty" xml:"last_modifier_id,omitempty"`
+  // last_modifier_name
+  LastModifierName *string `json:"last_modifier_name,omitempty" xml:"last_modifier_name,omitempty"`
+  // last_modifier_type
+  LastModifierType *string `json:"last_modifier_type,omitempty" xml:"last_modifier_type,omitempty"`
   Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
   // name
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
@@ -9197,6 +9940,11 @@ func (s GetFileByPathResponse) String() string {
 
 func (s GetFileByPathResponse) GoString() string {
   return s.String()
+}
+
+func (s *GetFileByPathResponse) SetAutoDeleteLeftSec(v int64) *GetFileByPathResponse {
+  s.AutoDeleteLeftSec = &v
+  return s
 }
 
 func (s *GetFileByPathResponse) SetCategory(v string) *GetFileByPathResponse {
@@ -9269,6 +10017,11 @@ func (s *GetFileByPathResponse) SetFileId(v string) *GetFileByPathResponse {
   return s
 }
 
+func (s *GetFileByPathResponse) SetFilePathType(v string) *GetFileByPathResponse {
+  s.FilePathType = &v
+  return s
+}
+
 func (s *GetFileByPathResponse) SetHidden(v bool) *GetFileByPathResponse {
   s.Hidden = &v
   return s
@@ -9281,6 +10034,21 @@ func (s *GetFileByPathResponse) SetImageMediaMetadata(v *ImageMediaResponse) *Ge
 
 func (s *GetFileByPathResponse) SetLabels(v []*string) *GetFileByPathResponse {
   s.Labels = v
+  return s
+}
+
+func (s *GetFileByPathResponse) SetLastModifierId(v string) *GetFileByPathResponse {
+  s.LastModifierId = &v
+  return s
+}
+
+func (s *GetFileByPathResponse) SetLastModifierName(v string) *GetFileByPathResponse {
+  s.LastModifierName = &v
+  return s
+}
+
+func (s *GetFileByPathResponse) SetLastModifierType(v string) *GetFileByPathResponse {
+  s.LastModifierType = &v
   return s
 }
 
@@ -9505,6 +10273,8 @@ func (s *GetFileRequest) SetVideoThumbnailProcess(v string) *GetFileRequest {
  * 获取文件元数据response
  */
 type GetFileResponse struct {
+  // auto_delete_left_sec
+  AutoDeleteLeftSec *int64 `json:"auto_delete_left_sec,omitempty" xml:"auto_delete_left_sec,omitempty"`
   // category
   Category *string `json:"category,omitempty" xml:"category,omitempty"`
   // CharacteristicHash
@@ -9533,12 +10303,20 @@ type GetFileResponse struct {
   FileExtension *string `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
   // file_id
   FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+  // TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
+  FilePathType *string `json:"file_path_type,omitempty" xml:"file_path_type,omitempty"`
   // Hidden
   // type: boolean
   Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
   ImageMediaMetadata *ImageMediaResponse `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
   // labels
   Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+  // last_modifier_id
+  LastModifierId *string `json:"last_modifier_id,omitempty" xml:"last_modifier_id,omitempty"`
+  // last_modifier_name
+  LastModifierName *string `json:"last_modifier_name,omitempty" xml:"last_modifier_name,omitempty"`
+  // last_modifier_type
+  LastModifierType *string `json:"last_modifier_type,omitempty" xml:"last_modifier_type,omitempty"`
   Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
   // name
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
@@ -9583,6 +10361,11 @@ func (s GetFileResponse) String() string {
 
 func (s GetFileResponse) GoString() string {
   return s.String()
+}
+
+func (s *GetFileResponse) SetAutoDeleteLeftSec(v int64) *GetFileResponse {
+  s.AutoDeleteLeftSec = &v
+  return s
 }
 
 func (s *GetFileResponse) SetCategory(v string) *GetFileResponse {
@@ -9655,6 +10438,11 @@ func (s *GetFileResponse) SetFileId(v string) *GetFileResponse {
   return s
 }
 
+func (s *GetFileResponse) SetFilePathType(v string) *GetFileResponse {
+  s.FilePathType = &v
+  return s
+}
+
 func (s *GetFileResponse) SetHidden(v bool) *GetFileResponse {
   s.Hidden = &v
   return s
@@ -9667,6 +10455,21 @@ func (s *GetFileResponse) SetImageMediaMetadata(v *ImageMediaResponse) *GetFileR
 
 func (s *GetFileResponse) SetLabels(v []*string) *GetFileResponse {
   s.Labels = v
+  return s
+}
+
+func (s *GetFileResponse) SetLastModifierId(v string) *GetFileResponse {
+  s.LastModifierId = &v
+  return s
+}
+
+func (s *GetFileResponse) SetLastModifierName(v string) *GetFileResponse {
+  s.LastModifierName = &v
+  return s
+}
+
+func (s *GetFileResponse) SetLastModifierType(v string) *GetFileResponse {
+  s.LastModifierType = &v
   return s
 }
 
@@ -12435,7 +13238,7 @@ type HostingListFileRequest struct {
   // image_url_process
   ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
   // limit
-  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
+  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"200" minimum:"0"`
   // marker
   Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
   // office_thumbnail_process
@@ -14028,7 +14831,7 @@ type ListFileByCustomIndexKeyRequest struct {
   // image_url_process
   ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
   // limit
-  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
+  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"200" minimum:"0"`
   // marker
   Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
   // office_thumbnail_process
@@ -14281,6 +15084,206 @@ func (s *ListFileDeltaResponse) SetItems(v []*FileDeltaResponse) *ListFileDeltaR
 }
 
 /**
+ * 列举回收站
+ */
+type ListFileInRecycleBinRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // starred
+  Starred *bool `json:"Starred,omitempty" xml:"Starred,omitempty"`
+  // addition_data
+  AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+  // all
+  All *bool `json:"all,omitempty" xml:"all,omitempty"`
+  // category
+  Category *string `json:"category,omitempty" xml:"category,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+  // fields
+  Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
+  ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
+  // image_thumbnail_process
+  ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+  // image_url_process
+  ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+  // limit
+  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"200" minimum:"0"`
+  // marker
+  Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+  // office_thumbnail_process
+  OfficeThumbnailProcess *string `json:"office_thumbnail_process,omitempty" xml:"office_thumbnail_process,omitempty"`
+  // order_by
+  OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
+  // order_direction
+  OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
+  // ParentFileID
+  ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4" pattern:"[a-z0-9.-_]{1,50}"`
+  Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
+  // share_id, either share_id or drive_id is required
+  ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+  SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
+  // status
+  Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // type
+  Type *string `json:"type,omitempty" xml:"type,omitempty"`
+  // url_expire_sec
+  UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty" maximum:"14400" minimum:"10"`
+  // video_thumbnail_process
+  // type:string
+  VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
+}
+
+func (s ListFileInRecycleBinRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListFileInRecycleBinRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ListFileInRecycleBinRequest) SetHeaders(v map[string]*string) *ListFileInRecycleBinRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetStarred(v bool) *ListFileInRecycleBinRequest {
+  s.Starred = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetAdditionData(v map[string]interface{}) *ListFileInRecycleBinRequest {
+  s.AdditionData = v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetAll(v bool) *ListFileInRecycleBinRequest {
+  s.All = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetCategory(v string) *ListFileInRecycleBinRequest {
+  s.Category = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetDriveId(v string) *ListFileInRecycleBinRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetFields(v string) *ListFileInRecycleBinRequest {
+  s.Fields = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetImageCroppingAspectRatios(v []*string) *ListFileInRecycleBinRequest {
+  s.ImageCroppingAspectRatios = v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetImageThumbnailProcess(v string) *ListFileInRecycleBinRequest {
+  s.ImageThumbnailProcess = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetImageUrlProcess(v string) *ListFileInRecycleBinRequest {
+  s.ImageUrlProcess = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetLimit(v int64) *ListFileInRecycleBinRequest {
+  s.Limit = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetMarker(v string) *ListFileInRecycleBinRequest {
+  s.Marker = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetOfficeThumbnailProcess(v string) *ListFileInRecycleBinRequest {
+  s.OfficeThumbnailProcess = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetOrderBy(v string) *ListFileInRecycleBinRequest {
+  s.OrderBy = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetOrderDirection(v string) *ListFileInRecycleBinRequest {
+  s.OrderDirection = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetParentFileId(v string) *ListFileInRecycleBinRequest {
+  s.ParentFileId = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetReferer(v string) *ListFileInRecycleBinRequest {
+  s.Referer = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetShareId(v string) *ListFileInRecycleBinRequest {
+  s.ShareId = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetSignToken(v string) *ListFileInRecycleBinRequest {
+  s.SignToken = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetStatus(v string) *ListFileInRecycleBinRequest {
+  s.Status = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetType(v string) *ListFileInRecycleBinRequest {
+  s.Type = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetUrlExpireSec(v int64) *ListFileInRecycleBinRequest {
+  s.UrlExpireSec = &v
+  return s
+}
+
+func (s *ListFileInRecycleBinRequest) SetVideoThumbnailProcess(v string) *ListFileInRecycleBinRequest {
+  s.VideoThumbnailProcess = &v
+  return s
+}
+
+/**
+ * ListFileInRecycleBinResponse
+ */
+type ListFileInRecycleBinResponse struct {
+  // items
+  Items []*RecycleBinItemResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+  // next_marker
+  NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s ListFileInRecycleBinResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListFileInRecycleBinResponse) GoString() string {
+  return s.String()
+}
+
+func (s *ListFileInRecycleBinResponse) SetItems(v []*RecycleBinItemResponse) *ListFileInRecycleBinResponse {
+  s.Items = v
+  return s
+}
+
+func (s *ListFileInRecycleBinResponse) SetNextMarker(v string) *ListFileInRecycleBinResponse {
+  s.NextMarker = &v
+  return s
+}
+
+/**
  * 列举文件
  */
 type ListFileRequest struct {
@@ -14301,7 +15304,7 @@ type ListFileRequest struct {
   // image_url_process
   ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
   // limit
-  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"0"`
+  Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"200" minimum:"0"`
   // location
   Location *string `json:"location,omitempty" xml:"location,omitempty"`
   // marker
@@ -15529,9 +16532,10 @@ func (s *MoveDetail) SetTgtParentFileId(v string) *MoveDetail {
  */
 type MoveFileRequest struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-  // auto_rename
   AutoRename *bool `json:"auto_rename,omitempty" xml:"auto_rename,omitempty"`
   CategoryList []*string `json:"category_list,omitempty" xml:"category_list,omitempty" type:"Repeated"`
+  // check_name_mode
+  CheckNameMode *string `json:"check_name_mode,omitempty" xml:"check_name_mode,omitempty"`
   // drive_id
   DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
   // file_id
@@ -15567,6 +16571,11 @@ func (s *MoveFileRequest) SetAutoRename(v bool) *MoveFileRequest {
 
 func (s *MoveFileRequest) SetCategoryList(v []*string) *MoveFileRequest {
   s.CategoryList = v
+  return s
+}
+
+func (s *MoveFileRequest) SetCheckNameMode(v string) *MoveFileRequest {
+  s.CheckNameMode = &v
   return s
 }
 
@@ -15620,6 +16629,9 @@ type MoveFileResponse struct {
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty" pattern:"[a-z0-9A-Z]+"`
   // drive_id
   DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+  // exist
+  // type: boolean
+  Exist *bool `json:"exist,omitempty" xml:"exist,omitempty"`
   // file_id
   FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
 }
@@ -15644,6 +16656,11 @@ func (s *MoveFileResponse) SetDomainId(v string) *MoveFileResponse {
 
 func (s *MoveFileResponse) SetDriveId(v string) *MoveFileResponse {
   s.DriveId = &v
+  return s
+}
+
+func (s *MoveFileResponse) SetExist(v bool) *MoveFileResponse {
+  s.Exist = &v
   return s
 }
 
@@ -15790,6 +16807,297 @@ func (s *RateLimit) SetPartSpeed(v int64) *RateLimit {
 }
 
 /**
+ * Recycle bin item response
+ */
+type RecycleBinItemResponse struct {
+  // auto_delete_left_sec
+  AutoDeleteLeftSec *int64 `json:"auto_delete_left_sec,omitempty" xml:"auto_delete_left_sec,omitempty"`
+  // category
+  Category *string `json:"category,omitempty" xml:"category,omitempty"`
+  // CharacteristicHash
+  CharacteristicHash *string `json:"characteristic_hash,omitempty" xml:"characteristic_hash,omitempty"`
+  // Content Hash
+  ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+  // content_hash_name
+  ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+  // content_type
+  ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
+  // crc64_hash
+  Crc64Hash *string `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
+  // created_at
+  CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  // description
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // DomainID
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty" pattern:"[a-z0-9A-Z]+"`
+  // download_url
+  DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+  // encrypt_mode
+  EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
+  // file_extension
+  FileExtension *string `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
+  // file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+  // TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
+  FilePathType *string `json:"file_path_type,omitempty" xml:"file_path_type,omitempty"`
+  // Hidden
+  // type: boolean
+  Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
+  ImageMediaMetadata *ImageMediaResponse `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
+  // labels
+  Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+  // last_modifier_id
+  LastModifierId *string `json:"last_modifier_id,omitempty" xml:"last_modifier_id,omitempty"`
+  // last_modifier_name
+  LastModifierName *string `json:"last_modifier_name,omitempty" xml:"last_modifier_name,omitempty"`
+  // last_modifier_type
+  LastModifierType *string `json:"last_modifier_type,omitempty" xml:"last_modifier_type,omitempty"`
+  Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
+  // name
+  Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
+  // parent_file_id
+  ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+  // PunishFlag
+  PunishFlag *int64 `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
+  ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+  // Size
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  // starred
+  // type: boolean
+  Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
+  // status
+  Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // @Deprecated streams url info
+  StreamsInfo map[string]interface{} `json:"streams_info,omitempty" xml:"streams_info,omitempty"`
+  // thumbnail
+  Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+  // trashed_at
+  TrashedAt *string `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
+  // type
+  Type *string `json:"type,omitempty" xml:"type,omitempty"`
+  // updated_at
+  UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+  // upload_id
+  UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+  // url
+  Url *string `json:"url,omitempty" xml:"url,omitempty"`
+  // user_meta
+  UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
+  VideoMediaMetadata *VideoMediaResponse `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
+  VideoPreviewMetadata *VideoPreviewResponse `json:"video_preview_metadata,omitempty" xml:"video_preview_metadata,omitempty"`
+}
+
+func (s RecycleBinItemResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s RecycleBinItemResponse) GoString() string {
+  return s.String()
+}
+
+func (s *RecycleBinItemResponse) SetAutoDeleteLeftSec(v int64) *RecycleBinItemResponse {
+  s.AutoDeleteLeftSec = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetCategory(v string) *RecycleBinItemResponse {
+  s.Category = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetCharacteristicHash(v string) *RecycleBinItemResponse {
+  s.CharacteristicHash = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetContentHash(v string) *RecycleBinItemResponse {
+  s.ContentHash = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetContentHashName(v string) *RecycleBinItemResponse {
+  s.ContentHashName = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetContentType(v string) *RecycleBinItemResponse {
+  s.ContentType = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetCrc64Hash(v string) *RecycleBinItemResponse {
+  s.Crc64Hash = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetCreatedAt(v string) *RecycleBinItemResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetDescription(v string) *RecycleBinItemResponse {
+  s.Description = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetDomainId(v string) *RecycleBinItemResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetDownloadUrl(v string) *RecycleBinItemResponse {
+  s.DownloadUrl = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetDriveId(v string) *RecycleBinItemResponse {
+  s.DriveId = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetEncryptMode(v string) *RecycleBinItemResponse {
+  s.EncryptMode = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetFileExtension(v string) *RecycleBinItemResponse {
+  s.FileExtension = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetFileId(v string) *RecycleBinItemResponse {
+  s.FileId = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetFilePathType(v string) *RecycleBinItemResponse {
+  s.FilePathType = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetHidden(v bool) *RecycleBinItemResponse {
+  s.Hidden = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetImageMediaMetadata(v *ImageMediaResponse) *RecycleBinItemResponse {
+  s.ImageMediaMetadata = v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetLabels(v []*string) *RecycleBinItemResponse {
+  s.Labels = v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetLastModifierId(v string) *RecycleBinItemResponse {
+  s.LastModifierId = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetLastModifierName(v string) *RecycleBinItemResponse {
+  s.LastModifierName = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetLastModifierType(v string) *RecycleBinItemResponse {
+  s.LastModifierType = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetMeta(v string) *RecycleBinItemResponse {
+  s.Meta = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetName(v string) *RecycleBinItemResponse {
+  s.Name = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetParentFileId(v string) *RecycleBinItemResponse {
+  s.ParentFileId = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetPunishFlag(v int64) *RecycleBinItemResponse {
+  s.PunishFlag = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetShareId(v string) *RecycleBinItemResponse {
+  s.ShareId = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetSize(v int64) *RecycleBinItemResponse {
+  s.Size = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetStarred(v bool) *RecycleBinItemResponse {
+  s.Starred = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetStatus(v string) *RecycleBinItemResponse {
+  s.Status = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetStreamsInfo(v map[string]interface{}) *RecycleBinItemResponse {
+  s.StreamsInfo = v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetThumbnail(v string) *RecycleBinItemResponse {
+  s.Thumbnail = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetTrashedAt(v string) *RecycleBinItemResponse {
+  s.TrashedAt = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetType(v string) *RecycleBinItemResponse {
+  s.Type = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetUpdatedAt(v string) *RecycleBinItemResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetUploadId(v string) *RecycleBinItemResponse {
+  s.UploadId = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetUrl(v string) *RecycleBinItemResponse {
+  s.Url = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetUserMeta(v string) *RecycleBinItemResponse {
+  s.UserMeta = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetVideoMediaMetadata(v *VideoMediaResponse) *RecycleBinItemResponse {
+  s.VideoMediaMetadata = v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetVideoPreviewMetadata(v *VideoPreviewResponse) *RecycleBinItemResponse {
+  s.VideoPreviewMetadata = v
+  return s
+}
+
+/**
  * 刷新office文档在线编辑凭证
  */
 type RefreshOfficeEditTokenRequest struct {
@@ -15922,6 +17230,81 @@ func (s *RenameDetail) SetOldName(v string) *RenameDetail {
 }
 
 /**
+ * report_event request
+ */
+type ReportEventRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // event_type
+  EventType *string `json:"event_type,omitempty" xml:"event_type,omitempty"`
+  ShareLink *ReportShareLinkEventRequest `json:"share_link,omitempty" xml:"share_link,omitempty"`
+}
+
+func (s ReportEventRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ReportEventRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ReportEventRequest) SetHeaders(v map[string]*string) *ReportEventRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *ReportEventRequest) SetEventType(v string) *ReportEventRequest {
+  s.EventType = &v
+  return s
+}
+
+func (s *ReportEventRequest) SetShareLink(v *ReportShareLinkEventRequest) *ReportEventRequest {
+  s.ShareLink = v
+  return s
+}
+
+/**
+ * report_event operation response
+ */
+type ReportEventResponse struct {
+}
+
+func (s ReportEventResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ReportEventResponse) GoString() string {
+  return s.String()
+}
+
+/**
+ * report_share_link_event request
+ */
+type ReportShareLinkEventRequest struct {
+  // share_id
+  ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+  // sub_type
+  SubType *string `json:"sub_type,omitempty" xml:"sub_type,omitempty"`
+}
+
+func (s ReportShareLinkEventRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ReportShareLinkEventRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ReportShareLinkEventRequest) SetShareId(v string) *ReportShareLinkEventRequest {
+  s.ShareId = &v
+  return s
+}
+
+func (s *ReportShareLinkEventRequest) SetSubType(v string) *ReportShareLinkEventRequest {
+  s.SubType = &v
+  return s
+}
+
+/**
  * 
  */
 type RestoreDetail struct {
@@ -15933,6 +17316,82 @@ func (s RestoreDetail) String() string {
 
 func (s RestoreDetail) GoString() string {
   return s.String()
+}
+
+/**
+ * 恢复文件请求，支持批量
+ */
+type RestoreFileRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+  // file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+}
+
+func (s RestoreFileRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s RestoreFileRequest) GoString() string {
+  return s.String()
+}
+
+func (s *RestoreFileRequest) SetHeaders(v map[string]*string) *RestoreFileRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *RestoreFileRequest) SetDriveId(v string) *RestoreFileRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *RestoreFileRequest) SetFileId(v string) *RestoreFileRequest {
+  s.FileId = &v
+  return s
+}
+
+/**
+ * 还原文件response
+ */
+type RestoreFileResponse struct {
+  // async_task_id
+  AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
+  // domain_id
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  // file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+}
+
+func (s RestoreFileResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s RestoreFileResponse) GoString() string {
+  return s.String()
+}
+
+func (s *RestoreFileResponse) SetAsyncTaskId(v string) *RestoreFileResponse {
+  s.AsyncTaskId = &v
+  return s
+}
+
+func (s *RestoreFileResponse) SetDomainId(v string) *RestoreFileResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *RestoreFileResponse) SetDriveId(v string) *RestoreFileResponse {
+  s.DriveId = &v
+  return s
+}
+
+func (s *RestoreFileResponse) SetFileId(v string) *RestoreFileResponse {
+  s.FileId = &v
+  return s
 }
 
 /**
@@ -17260,6 +18719,89 @@ func (s *TrashDetail) SetParentFileId(v string) *TrashDetail {
 }
 
 /**
+ * 删除文件请求，支持批量
+ */
+type TrashFileRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+  // file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+  // share_id, either share_id or drive_id is required
+  ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+}
+
+func (s TrashFileRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s TrashFileRequest) GoString() string {
+  return s.String()
+}
+
+func (s *TrashFileRequest) SetHeaders(v map[string]*string) *TrashFileRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *TrashFileRequest) SetDriveId(v string) *TrashFileRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *TrashFileRequest) SetFileId(v string) *TrashFileRequest {
+  s.FileId = &v
+  return s
+}
+
+func (s *TrashFileRequest) SetShareId(v string) *TrashFileRequest {
+  s.ShareId = &v
+  return s
+}
+
+/**
+ * 删除文件到回收站response
+ */
+type TrashFileResponse struct {
+  // async_task_id
+  AsyncTaskId *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
+  // domain_id
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  // file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+}
+
+func (s TrashFileResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s TrashFileResponse) GoString() string {
+  return s.String()
+}
+
+func (s *TrashFileResponse) SetAsyncTaskId(v string) *TrashFileResponse {
+  s.AsyncTaskId = &v
+  return s
+}
+
+func (s *TrashFileResponse) SetDomainId(v string) *TrashFileResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *TrashFileResponse) SetDriveId(v string) *TrashFileResponse {
+  s.DriveId = &v
+  return s
+}
+
+func (s *TrashFileResponse) SetFileId(v string) *TrashFileResponse {
+  s.FileId = &v
+  return s
+}
+
+/**
  * UCGetObjectInfoByObjectKeyRequest
  */
 type UCGetObjectInfoByObjectKeyRequest struct {
@@ -17998,6 +19540,12 @@ type UpdateFileMetaResponse struct {
   ImageMediaMetadata *ImageMediaResponse `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
   // labels
   Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+  // last_modifier_id
+  LastModifierId *string `json:"last_modifier_id,omitempty" xml:"last_modifier_id,omitempty"`
+  // last_modifier_name
+  LastModifierName *string `json:"last_modifier_name,omitempty" xml:"last_modifier_name,omitempty"`
+  // last_modifier_type
+  LastModifierType *string `json:"last_modifier_type,omitempty" xml:"last_modifier_type,omitempty"`
   Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
   // name
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
@@ -18123,6 +19671,21 @@ func (s *UpdateFileMetaResponse) SetImageMediaMetadata(v *ImageMediaResponse) *U
 
 func (s *UpdateFileMetaResponse) SetLabels(v []*string) *UpdateFileMetaResponse {
   s.Labels = v
+  return s
+}
+
+func (s *UpdateFileMetaResponse) SetLastModifierId(v string) *UpdateFileMetaResponse {
+  s.LastModifierId = &v
+  return s
+}
+
+func (s *UpdateFileMetaResponse) SetLastModifierName(v string) *UpdateFileMetaResponse {
+  s.LastModifierName = &v
+  return s
+}
+
+func (s *UpdateFileMetaResponse) SetLastModifierType(v string) *UpdateFileMetaResponse {
+  s.LastModifierType = &v
   return s
 }
 
@@ -18641,6 +20204,8 @@ type UploadPartInfo struct {
   ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
   // etag
   Etag *string `json:"etag,omitempty" xml:"etag,omitempty"`
+  // internal_upload_url
+  InternalUploadUrl *string `json:"internal_upload_url,omitempty" xml:"internal_upload_url,omitempty"`
   ParallelSha1Ctx *SHA1CTX `json:"parallel_sha1_ctx,omitempty" xml:"parallel_sha1_ctx,omitempty"`
   // PartNumber
   PartNumber *int64 `json:"part_number,omitempty" xml:"part_number,omitempty" maximum:"10000" minimum:"1"`
@@ -18665,6 +20230,11 @@ func (s *UploadPartInfo) SetContentType(v string) *UploadPartInfo {
 
 func (s *UploadPartInfo) SetEtag(v string) *UploadPartInfo {
   s.Etag = &v
+  return s
+}
+
+func (s *UploadPartInfo) SetInternalUploadUrl(v string) *UploadPartInfo {
+  s.InternalUploadUrl = &v
   return s
 }
 
@@ -23438,12 +25008,16 @@ type BaseUserResponse struct {
   CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
   // 默认 Drive ID
   DefaultDriveId *string `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
+  // 禁止用户自行修改密码
+  DenyChangePasswordBySelf *bool `json:"deny_change_password_by_self,omitempty" xml:"deny_change_password_by_self,omitempty"`
   // 用户备注信息
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   // Domain ID
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
   // 邮箱
   Email *string `json:"email,omitempty" xml:"email,omitempty"`
+  // 下次登录强制修改密码
+  NeedChangePasswordNextLogin *bool `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
   // 昵称
   NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
   // 电话
@@ -23487,6 +25061,11 @@ func (s *BaseUserResponse) SetDefaultDriveId(v string) *BaseUserResponse {
   return s
 }
 
+func (s *BaseUserResponse) SetDenyChangePasswordBySelf(v bool) *BaseUserResponse {
+  s.DenyChangePasswordBySelf = &v
+  return s
+}
+
 func (s *BaseUserResponse) SetDescription(v string) *BaseUserResponse {
   s.Description = &v
   return s
@@ -23499,6 +25078,11 @@ func (s *BaseUserResponse) SetDomainId(v string) *BaseUserResponse {
 
 func (s *BaseUserResponse) SetEmail(v string) *BaseUserResponse {
   s.Email = &v
+  return s
+}
+
+func (s *BaseUserResponse) SetNeedChangePasswordNextLogin(v bool) *BaseUserResponse {
+  s.NeedChangePasswordNextLogin = &v
   return s
 }
 
@@ -23894,6 +25478,8 @@ type CreateUserRequest struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   // 头像
   Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+  // 是否能自己修改密码
+  DenyChangePasswordBySelf *bool `json:"deny_change_password_by_self,omitempty" xml:"deny_change_password_by_self,omitempty"`
   // 描述信息
   Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024"`
   // 邮箱
@@ -23901,10 +25487,14 @@ type CreateUserRequest struct {
   GroupInfoList []*GroupInfo `json:"group_info_list,omitempty" xml:"group_info_list,omitempty" type:"Repeated"`
   // 用户地域
   Location *string `json:"location,omitempty" xml:"location,omitempty"`
+  // 下次登录后是否强制修改密码
+  NeedChangePasswordNextLogin *bool `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
   // 昵称
   NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
   // 电话号码
   Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+  // 用户明文密码
+  PlainPassword *string `json:"plain_password,omitempty" xml:"plain_password,omitempty"`
   // 角色
   Role *string `json:"role,omitempty" xml:"role,omitempty"`
   // 状态
@@ -23937,6 +25527,11 @@ func (s *CreateUserRequest) SetAvatar(v string) *CreateUserRequest {
   return s
 }
 
+func (s *CreateUserRequest) SetDenyChangePasswordBySelf(v bool) *CreateUserRequest {
+  s.DenyChangePasswordBySelf = &v
+  return s
+}
+
 func (s *CreateUserRequest) SetDescription(v string) *CreateUserRequest {
   s.Description = &v
   return s
@@ -23957,6 +25552,11 @@ func (s *CreateUserRequest) SetLocation(v string) *CreateUserRequest {
   return s
 }
 
+func (s *CreateUserRequest) SetNeedChangePasswordNextLogin(v bool) *CreateUserRequest {
+  s.NeedChangePasswordNextLogin = &v
+  return s
+}
+
 func (s *CreateUserRequest) SetNickName(v string) *CreateUserRequest {
   s.NickName = &v
   return s
@@ -23964,6 +25564,11 @@ func (s *CreateUserRequest) SetNickName(v string) *CreateUserRequest {
 
 func (s *CreateUserRequest) SetPhone(v string) *CreateUserRequest {
   s.Phone = &v
+  return s
+}
+
+func (s *CreateUserRequest) SetPlainPassword(v string) *CreateUserRequest {
+  s.PlainPassword = &v
   return s
 }
 
@@ -24007,12 +25612,16 @@ type CreateUserResponse struct {
   CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
   // 默认 Drive ID
   DefaultDriveId *string `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
+  // 禁止用户自行修改密码
+  DenyChangePasswordBySelf *bool `json:"deny_change_password_by_self,omitempty" xml:"deny_change_password_by_self,omitempty"`
   // 用户备注信息
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   // Domain ID
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
   // 邮箱
   Email *string `json:"email,omitempty" xml:"email,omitempty"`
+  // 下次登录强制修改密码
+  NeedChangePasswordNextLogin *bool `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
   // 昵称
   NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
   // 电话
@@ -24056,6 +25665,11 @@ func (s *CreateUserResponse) SetDefaultDriveId(v string) *CreateUserResponse {
   return s
 }
 
+func (s *CreateUserResponse) SetDenyChangePasswordBySelf(v bool) *CreateUserResponse {
+  s.DenyChangePasswordBySelf = &v
+  return s
+}
+
 func (s *CreateUserResponse) SetDescription(v string) *CreateUserResponse {
   s.Description = &v
   return s
@@ -24068,6 +25682,11 @@ func (s *CreateUserResponse) SetDomainId(v string) *CreateUserResponse {
 
 func (s *CreateUserResponse) SetEmail(v string) *CreateUserResponse {
   s.Email = &v
+  return s
+}
+
+func (s *CreateUserResponse) SetNeedChangePasswordNextLogin(v bool) *CreateUserResponse {
+  s.NeedChangePasswordNextLogin = &v
   return s
 }
 
@@ -24955,12 +26574,16 @@ type GetUserResponse struct {
   CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
   // 默认 Drive ID
   DefaultDriveId *string `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
+  // 禁止用户自行修改密码
+  DenyChangePasswordBySelf *bool `json:"deny_change_password_by_self,omitempty" xml:"deny_change_password_by_self,omitempty"`
   // 用户备注信息
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   // Domain ID
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
   // 邮箱
   Email *string `json:"email,omitempty" xml:"email,omitempty"`
+  // 下次登录强制修改密码
+  NeedChangePasswordNextLogin *bool `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
   // 昵称
   NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
   // 电话
@@ -25004,6 +26627,11 @@ func (s *GetUserResponse) SetDefaultDriveId(v string) *GetUserResponse {
   return s
 }
 
+func (s *GetUserResponse) SetDenyChangePasswordBySelf(v bool) *GetUserResponse {
+  s.DenyChangePasswordBySelf = &v
+  return s
+}
+
 func (s *GetUserResponse) SetDescription(v string) *GetUserResponse {
   s.Description = &v
   return s
@@ -25016,6 +26644,11 @@ func (s *GetUserResponse) SetDomainId(v string) *GetUserResponse {
 
 func (s *GetUserResponse) SetEmail(v string) *GetUserResponse {
   s.Email = &v
+  return s
+}
+
+func (s *GetUserResponse) SetNeedChangePasswordNextLogin(v bool) *GetUserResponse {
+  s.NeedChangePasswordNextLogin = &v
   return s
 }
 
@@ -25394,14 +27027,20 @@ type ImportUserRequest struct {
   AuthenticationType *string `json:"authentication_type,omitempty" xml:"authentication_type,omitempty" require:"true"`
   // 自动创建空间
   AutoCreateDrive *bool `json:"auto_create_drive,omitempty" xml:"auto_create_drive,omitempty"`
+  // 是否能自己修改密码
+  DenyChangePasswordBySelf *bool `json:"deny_change_password_by_self,omitempty" xml:"deny_change_password_by_self,omitempty"`
   // 空间大小
   DriveTotalSize *int64 `json:"drive_total_size,omitempty" xml:"drive_total_size,omitempty"`
   // 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
   Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
   // 唯一身份标识
   Identity *string `json:"identity,omitempty" xml:"identity,omitempty" require:"true"`
+  // 下次登录后是否强制修改密码
+  NeedChangePasswordNextLogin *bool `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
   // 昵称
   NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty" require:"true"`
+  // 用户明文密码
+  PlainPassword *string `json:"plain_password,omitempty" xml:"plain_password,omitempty"`
 }
 
 func (s ImportUserRequest) String() string {
@@ -25427,6 +27066,11 @@ func (s *ImportUserRequest) SetAutoCreateDrive(v bool) *ImportUserRequest {
   return s
 }
 
+func (s *ImportUserRequest) SetDenyChangePasswordBySelf(v bool) *ImportUserRequest {
+  s.DenyChangePasswordBySelf = &v
+  return s
+}
+
 func (s *ImportUserRequest) SetDriveTotalSize(v int64) *ImportUserRequest {
   s.DriveTotalSize = &v
   return s
@@ -25442,8 +27086,18 @@ func (s *ImportUserRequest) SetIdentity(v string) *ImportUserRequest {
   return s
 }
 
+func (s *ImportUserRequest) SetNeedChangePasswordNextLogin(v bool) *ImportUserRequest {
+  s.NeedChangePasswordNextLogin = &v
+  return s
+}
+
 func (s *ImportUserRequest) SetNickName(v string) *ImportUserRequest {
   s.NickName = &v
+  return s
+}
+
+func (s *ImportUserRequest) SetPlainPassword(v string) *ImportUserRequest {
+  s.PlainPassword = &v
   return s
 }
 
@@ -26108,7 +27762,7 @@ type ParseKeywordsResponse struct {
   // AddressLine
   AddressLine *string `json:"address_line,omitempty" xml:"address_line,omitempty"`
   Tags []*SystemTag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-  TimeRange *TimeRange `json:"time_range,omitempty" xml:"time_range,omitempty"`
+  TimeRange *ParseTimeRange `json:"time_range,omitempty" xml:"time_range,omitempty"`
 }
 
 func (s ParseKeywordsResponse) String() string {
@@ -26129,8 +27783,34 @@ func (s *ParseKeywordsResponse) SetTags(v []*SystemTag) *ParseKeywordsResponse {
   return s
 }
 
-func (s *ParseKeywordsResponse) SetTimeRange(v *TimeRange) *ParseKeywordsResponse {
+func (s *ParseKeywordsResponse) SetTimeRange(v *ParseTimeRange) *ParseKeywordsResponse {
   s.TimeRange = v
+  return s
+}
+
+/**
+ * 
+ */
+type ParseTimeRange struct {
+  End *string `json:"end,omitempty" xml:"end,omitempty"`
+  Start *string `json:"start,omitempty" xml:"start,omitempty"`
+}
+
+func (s ParseTimeRange) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ParseTimeRange) GoString() string {
+  return s.String()
+}
+
+func (s *ParseTimeRange) SetEnd(v string) *ParseTimeRange {
+  s.End = &v
+  return s
+}
+
+func (s *ParseTimeRange) SetStart(v string) *ParseTimeRange {
+  s.Start = &v
   return s
 }
 
@@ -26933,15 +28613,21 @@ type UpdateUserRequest struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   // 头像
   Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+  // 是否能自己修改密码
+  DenyChangePasswordBySelf *bool `json:"deny_change_password_by_self,omitempty" xml:"deny_change_password_by_self,omitempty"`
   // 描述信息
   Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024"`
   // 邮箱
   Email *string `json:"email,omitempty" xml:"email,omitempty"`
   GroupInfoList []*GroupInfo `json:"group_info_list,omitempty" xml:"group_info_list,omitempty" type:"Repeated"`
+  // 下次登录后是否强制修改密码
+  NeedChangePasswordNextLogin *bool `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
   // 昵称
   NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
   // 电话号码
   Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+  // 用户明文密码
+  PlainPassword *string `json:"plain_password,omitempty" xml:"plain_password,omitempty"`
   // 角色
   Role *string `json:"role,omitempty" xml:"role,omitempty"`
   // 状态
@@ -26970,6 +28656,11 @@ func (s *UpdateUserRequest) SetAvatar(v string) *UpdateUserRequest {
   return s
 }
 
+func (s *UpdateUserRequest) SetDenyChangePasswordBySelf(v bool) *UpdateUserRequest {
+  s.DenyChangePasswordBySelf = &v
+  return s
+}
+
 func (s *UpdateUserRequest) SetDescription(v string) *UpdateUserRequest {
   s.Description = &v
   return s
@@ -26985,6 +28676,11 @@ func (s *UpdateUserRequest) SetGroupInfoList(v []*GroupInfo) *UpdateUserRequest 
   return s
 }
 
+func (s *UpdateUserRequest) SetNeedChangePasswordNextLogin(v bool) *UpdateUserRequest {
+  s.NeedChangePasswordNextLogin = &v
+  return s
+}
+
 func (s *UpdateUserRequest) SetNickName(v string) *UpdateUserRequest {
   s.NickName = &v
   return s
@@ -26992,6 +28688,11 @@ func (s *UpdateUserRequest) SetNickName(v string) *UpdateUserRequest {
 
 func (s *UpdateUserRequest) SetPhone(v string) *UpdateUserRequest {
   s.Phone = &v
+  return s
+}
+
+func (s *UpdateUserRequest) SetPlainPassword(v string) *UpdateUserRequest {
+  s.PlainPassword = &v
   return s
 }
 
@@ -27025,12 +28726,16 @@ type UpdateUserResponse struct {
   CreatedAt *int64 `json:"created_at,omitempty" xml:"created_at,omitempty"`
   // 默认 Drive ID
   DefaultDriveId *string `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
+  // 禁止用户自行修改密码
+  DenyChangePasswordBySelf *bool `json:"deny_change_password_by_self,omitempty" xml:"deny_change_password_by_self,omitempty"`
   // 用户备注信息
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   // Domain ID
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
   // 邮箱
   Email *string `json:"email,omitempty" xml:"email,omitempty"`
+  // 下次登录强制修改密码
+  NeedChangePasswordNextLogin *bool `json:"need_change_password_next_login,omitempty" xml:"need_change_password_next_login,omitempty"`
   // 昵称
   NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
   // 电话
@@ -27074,6 +28779,11 @@ func (s *UpdateUserResponse) SetDefaultDriveId(v string) *UpdateUserResponse {
   return s
 }
 
+func (s *UpdateUserResponse) SetDenyChangePasswordBySelf(v bool) *UpdateUserResponse {
+  s.DenyChangePasswordBySelf = &v
+  return s
+}
+
 func (s *UpdateUserResponse) SetDescription(v string) *UpdateUserResponse {
   s.Description = &v
   return s
@@ -27086,6 +28796,11 @@ func (s *UpdateUserResponse) SetDomainId(v string) *UpdateUserResponse {
 
 func (s *UpdateUserResponse) SetEmail(v string) *UpdateUserResponse {
   s.Email = &v
+  return s
+}
+
+func (s *UpdateUserResponse) SetNeedChangePasswordNextLogin(v bool) *UpdateUserResponse {
+  s.NeedChangePasswordNextLogin = &v
   return s
 }
 
@@ -32065,6 +33780,159 @@ func (client *Client) UpdateDriveEx(request *UpdateDriveRequest, runtime *Runtim
 }
 
 /**
+ * archive_files
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ArchiveFilesEx(request *CCPArchiveFilesRequest, runtime *RuntimeOptions) (_result *ArchiveFilesModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ArchiveFilesModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ArchiveFilesModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/file/archive_files"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(202))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ArchiveFilesModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
  * 完成文件上传。
  * @tags file
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -35784,7 +37652,7 @@ func (client *Client) ListUploadedPartsEx(request *ListUploadedPartRequest, runt
 }
 
 /**
- * 触发实时转码
+ * live_transcode
  * @tags file
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -35886,8 +37754,15 @@ func (client *Client) LiveTranscodeEx(request *CCPLiveTranscodeRequest, runtime 
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(202))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
         _result = &LiveTranscodeModel{}
-        _err = tea.Convert(map[string]map[string]*string{
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -36811,6 +38686,778 @@ func (client *Client) WalkFileEx(request *CCPWalkFileRequest, runtime *RuntimeOp
 
         respMap = util.AssertAsMap(obj)
         _result = &WalkFileModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * clear_recyclebin
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ClearRecyclebinEx(request *ClearRecycleBinRequest, runtime *RuntimeOptions) (_result *ClearRecyclebinModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ClearRecyclebinModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ClearRecyclebinModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/recyclebin/clear"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(202))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ClearRecyclebinModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * list_recyclebin
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListRecyclebinEx(request *ListFileInRecycleBinRequest, runtime *RuntimeOptions) (_result *ListRecyclebinModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListRecyclebinModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListRecyclebinModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/recyclebin/list"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListRecyclebinModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * restore_file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) RestoreFileEx(request *RestoreFileRequest, runtime *RuntimeOptions) (_result *RestoreFileModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &RestoreFileModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*RestoreFileModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/recyclebin/restore"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(202))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &RestoreFileModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
+        _result = &RestoreFileModel{}
+        _err = tea.Convert(map[string]map[string]*string{
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * trash_file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) TrashFileEx(request *TrashFileRequest, runtime *RuntimeOptions) (_result *TrashFileModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &TrashFileModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*TrashFileModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/recyclebin/trash"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(202))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &TrashFileModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
+        _result = &TrashFileModel{}
+        _err = tea.Convert(map[string]map[string]*string{
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 上报事件
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ReportEventEx(request *ReportEventRequest, runtime *RuntimeOptions) (_result *ReportEventModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ReportEventModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ReportEventModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/report_event"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ReportEventModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
           "headers": response_.Headers,
@@ -39084,16 +41731,9 @@ func (client *Client) DeleteGroupEx(request *DeleteGroupRequest, runtime *Runtim
       }
       var respMap map[string]interface{}
       var obj interface{}
-      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
-        if _err != nil {
-          return _result, _err
-        }
-
-        respMap = util.AssertAsMap(obj)
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
         _result = &DeleteGroupModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -41666,8 +44306,15 @@ func (client *Client) ImportUserEx(request *ImportUserRequest, runtime *RuntimeO
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
         _result = &ImportUserModel{}
-        _err = tea.Convert(map[string]map[string]*string{
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -44778,6 +47425,26 @@ func (client *Client) UpdateDrive (request *UpdateDriveRequest) (_result *Update
 }
 
 /**
+ * archive_files
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ArchiveFiles (request *CCPArchiveFilesRequest) (_result *ArchiveFilesModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ArchiveFilesModel{}
+  _body, _err := client.ArchiveFilesEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
  * 完成文件上传。
  * @tags file
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -45282,7 +47949,7 @@ func (client *Client) ListUploadedParts (request *ListUploadedPartRequest) (_res
 }
 
 /**
- * 触发实时转码
+ * live_transcode
  * @tags file
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
@@ -45420,6 +48087,97 @@ func (client *Client) WalkFile (request *CCPWalkFileRequest) (_result *WalkFileM
   runtime := &RuntimeOptions{}
   _result = &WalkFileModel{}
   _body, _err := client.WalkFileEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * clear_recyclebin
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ClearRecyclebin (request *ClearRecycleBinRequest) (_result *ClearRecyclebinModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ClearRecyclebinModel{}
+  _body, _err := client.ClearRecyclebinEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * list_recyclebin
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListRecyclebin (request *ListFileInRecycleBinRequest) (_result *ListRecyclebinModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListRecyclebinModel{}
+  _body, _err := client.ListRecyclebinEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * restore_file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) RestoreFile (request *RestoreFileRequest) (_result *RestoreFileModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &RestoreFileModel{}
+  _body, _err := client.RestoreFileEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * trash_file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) TrashFile (request *TrashFileRequest) (_result *TrashFileModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &TrashFileModel{}
+  _body, _err := client.TrashFileEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 上报事件
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ReportEvent (request *ReportEventRequest) (_result *ReportEventModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ReportEventModel{}
+  _body, _err := client.ReportEventEx(request, runtime)
   if _err != nil {
     return _result, _err
   }

@@ -21,6 +21,11 @@ public class MoveFileResponse extends TeaModel {
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
+    // exist
+    // type: boolean
+    @NameInMap("exist")
+    public Boolean exist;
+
     // file_id
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
@@ -53,6 +58,14 @@ public class MoveFileResponse extends TeaModel {
     }
     public String getDriveId() {
         return this.driveId;
+    }
+
+    public MoveFileResponse setExist(Boolean exist) {
+        this.exist = exist;
+        return this;
+    }
+    public Boolean getExist() {
+        return this.exist;
     }
 
     public MoveFileResponse setFileId(String fileId) {

@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * 根据路径获取文件元数据response
  */
 public class GetFileByPathResponse extends TeaModel {
+    // auto_delete_left_sec
+    @NameInMap("auto_delete_left_sec")
+    public Long autoDeleteLeftSec;
+
     // category
     @NameInMap("category")
     public String category;
@@ -66,6 +70,10 @@ public class GetFileByPathResponse extends TeaModel {
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    // TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
+    @NameInMap("file_path_type")
+    public String filePathType;
+
     // Hidden
     // type: boolean
     @NameInMap("hidden")
@@ -77,6 +85,18 @@ public class GetFileByPathResponse extends TeaModel {
     // labels
     @NameInMap("labels")
     public java.util.List<String> labels;
+
+    // last_modifier_id
+    @NameInMap("last_modifier_id")
+    public String lastModifierId;
+
+    // last_modifier_name
+    @NameInMap("last_modifier_name")
+    public String lastModifierName;
+
+    // last_modifier_type
+    @NameInMap("last_modifier_type")
+    public String lastModifierType;
 
     @NameInMap("meta")
     public String meta;
@@ -158,6 +178,14 @@ public class GetFileByPathResponse extends TeaModel {
     public static GetFileByPathResponse build(java.util.Map<String, ?> map) throws Exception {
         GetFileByPathResponse self = new GetFileByPathResponse();
         return TeaModel.build(map, self);
+    }
+
+    public GetFileByPathResponse setAutoDeleteLeftSec(Long autoDeleteLeftSec) {
+        this.autoDeleteLeftSec = autoDeleteLeftSec;
+        return this;
+    }
+    public Long getAutoDeleteLeftSec() {
+        return this.autoDeleteLeftSec;
     }
 
     public GetFileByPathResponse setCategory(String category) {
@@ -272,6 +300,14 @@ public class GetFileByPathResponse extends TeaModel {
         return this.fileId;
     }
 
+    public GetFileByPathResponse setFilePathType(String filePathType) {
+        this.filePathType = filePathType;
+        return this;
+    }
+    public String getFilePathType() {
+        return this.filePathType;
+    }
+
     public GetFileByPathResponse setHidden(Boolean hidden) {
         this.hidden = hidden;
         return this;
@@ -294,6 +330,30 @@ public class GetFileByPathResponse extends TeaModel {
     }
     public java.util.List<String> getLabels() {
         return this.labels;
+    }
+
+    public GetFileByPathResponse setLastModifierId(String lastModifierId) {
+        this.lastModifierId = lastModifierId;
+        return this;
+    }
+    public String getLastModifierId() {
+        return this.lastModifierId;
+    }
+
+    public GetFileByPathResponse setLastModifierName(String lastModifierName) {
+        this.lastModifierName = lastModifierName;
+        return this;
+    }
+    public String getLastModifierName() {
+        return this.lastModifierName;
+    }
+
+    public GetFileByPathResponse setLastModifierType(String lastModifierType) {
+        this.lastModifierType = lastModifierType;
+        return this;
+    }
+    public String getLastModifierType() {
+        return this.lastModifierType;
     }
 
     public GetFileByPathResponse setMeta(String meta) {

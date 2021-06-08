@@ -15,6 +15,10 @@ public class UploadPartInfo extends TeaModel {
     @NameInMap("etag")
     public String etag;
 
+    // internal_upload_url
+    @NameInMap("internal_upload_url")
+    public String internalUploadUrl;
+
     @NameInMap("parallel_sha1_ctx")
     public SHA1CTX parallelSha1Ctx;
 
@@ -51,6 +55,14 @@ public class UploadPartInfo extends TeaModel {
     }
     public String getEtag() {
         return this.etag;
+    }
+
+    public UploadPartInfo setInternalUploadUrl(String internalUploadUrl) {
+        this.internalUploadUrl = internalUploadUrl;
+        return this;
+    }
+    public String getInternalUploadUrl() {
+        return this.internalUploadUrl;
     }
 
     public UploadPartInfo setParallelSha1Ctx(SHA1CTX parallelSha1Ctx) {

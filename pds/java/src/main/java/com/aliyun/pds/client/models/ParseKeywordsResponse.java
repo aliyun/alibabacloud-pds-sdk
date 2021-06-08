@@ -15,7 +15,7 @@ public class ParseKeywordsResponse extends TeaModel {
     public java.util.List<SystemTag> tags;
 
     @NameInMap("time_range")
-    public TimeRange timeRange;
+    public ParseTimeRange timeRange;
 
     public static ParseKeywordsResponse build(java.util.Map<String, ?> map) throws Exception {
         ParseKeywordsResponse self = new ParseKeywordsResponse();
@@ -38,11 +38,11 @@ public class ParseKeywordsResponse extends TeaModel {
         return this.tags;
     }
 
-    public ParseKeywordsResponse setTimeRange(TimeRange timeRange) {
+    public ParseKeywordsResponse setTimeRange(ParseTimeRange timeRange) {
         this.timeRange = timeRange;
         return this;
     }
-    public TimeRange getTimeRange() {
+    public ParseTimeRange getTimeRange() {
         return this.timeRange;
     }
 
