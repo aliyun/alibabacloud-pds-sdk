@@ -15,6 +15,9 @@ public class VideoPreviewPlayInfoMetaResponse extends TeaModel {
     @NameInMap("height")
     public Long height;
 
+    @NameInMap("live_transcoding_meta")
+    public LiveTranscodingMetaResponse liveTranscodingMeta;
+
     // witdh
     @NameInMap("width")
     public Long width;
@@ -38,6 +41,14 @@ public class VideoPreviewPlayInfoMetaResponse extends TeaModel {
     }
     public Long getHeight() {
         return this.height;
+    }
+
+    public VideoPreviewPlayInfoMetaResponse setLiveTranscodingMeta(LiveTranscodingMetaResponse liveTranscodingMeta) {
+        this.liveTranscodingMeta = liveTranscodingMeta;
+        return this;
+    }
+    public LiveTranscodingMetaResponse getLiveTranscodingMeta() {
+        return this.liveTranscodingMeta;
     }
 
     public VideoPreviewPlayInfoMetaResponse setWidth(Long width) {

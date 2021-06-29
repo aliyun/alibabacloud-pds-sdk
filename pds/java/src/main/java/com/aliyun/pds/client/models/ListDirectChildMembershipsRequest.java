@@ -22,7 +22,7 @@ public class ListDirectChildMembershipsRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
-    // 角色，可选值，["", "member", "admin"], ""表示获取所有类型
+    // 角色，可选值，["", "user", "group"], ""表示获取所有类型
     @NameInMap("member_type")
     public String memberType;
 

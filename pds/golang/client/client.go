@@ -2646,6 +2646,29 @@ func (s *CreateStoryModel) SetBody(v *CreateStoryResponse) *CreateStoryModel {
   return s
 }
 
+type DeleteStoryModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *DeleteStoryResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteStoryModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteStoryModel) GoString() string {
+  return s.String()
+}
+
+func (s *DeleteStoryModel) SetHeaders(v map[string]*string) *DeleteStoryModel {
+  s.Headers = v
+  return s
+}
+
+func (s *DeleteStoryModel) SetBody(v *DeleteStoryResponse) *DeleteStoryModel {
+  s.Body = v
+  return s
+}
+
 type FindStoriesModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *FindStoriesResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -3416,6 +3439,8 @@ func (s *AppAccessStrategy) SetExceptAppIdList(v []*string) *AppAccessStrategy {
  * 预览压缩包结构
  */
 type ArchiveListRequest struct {
+  // 格式类型，如果是uc，使用特殊格式
+  Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
   RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
   ArchiveType *string `json:"archive_type,omitempty" xml:"archive_type,omitempty"`
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
@@ -3431,6 +3456,11 @@ func (s ArchiveListRequest) String() string {
 
 func (s ArchiveListRequest) GoString() string {
   return s.String()
+}
+
+func (s *ArchiveListRequest) SetFormat(v string) *ArchiveListRequest {
+  s.Format = &v
+  return s
 }
 
 func (s *ArchiveListRequest) SetRequestID(v string) *ArchiveListRequest {
@@ -3534,19 +3564,19 @@ func (s *ArchiveStatusResponse) SetTaskId(v string) *ArchiveStatusResponse {
 }
 
 /**
- * 解压
+ * 获取解压任务状态
  */
 type ArchiveUncompressRequest struct {
+  // 格式类型，如果是uc，使用特殊格式
+  Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
   RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
   ArchiveType *string `json:"archive_type,omitempty" xml:"archive_type,omitempty"`
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
   // TODO 增加对ShareID的支持
   DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
   FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-  FileList []*string `json:"file_list,omitempty" xml:"file_list,omitempty" type:"Repeated"`
   Password *string `json:"password,omitempty" xml:"password,omitempty"`
-  TargetDriveId *string `json:"target_drive_id,omitempty" xml:"target_drive_id,omitempty"`
-  TargetFileId *string `json:"target_file_id,omitempty" xml:"target_file_id,omitempty"`
+  TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
 func (s ArchiveUncompressRequest) String() string {
@@ -3555,6 +3585,11 @@ func (s ArchiveUncompressRequest) String() string {
 
 func (s ArchiveUncompressRequest) GoString() string {
   return s.String()
+}
+
+func (s *ArchiveUncompressRequest) SetFormat(v string) *ArchiveUncompressRequest {
+  s.Format = &v
+  return s
 }
 
 func (s *ArchiveUncompressRequest) SetRequestID(v string) *ArchiveUncompressRequest {
@@ -3582,23 +3617,13 @@ func (s *ArchiveUncompressRequest) SetFileId(v string) *ArchiveUncompressRequest
   return s
 }
 
-func (s *ArchiveUncompressRequest) SetFileList(v []*string) *ArchiveUncompressRequest {
-  s.FileList = v
-  return s
-}
-
 func (s *ArchiveUncompressRequest) SetPassword(v string) *ArchiveUncompressRequest {
   s.Password = &v
   return s
 }
 
-func (s *ArchiveUncompressRequest) SetTargetDriveId(v string) *ArchiveUncompressRequest {
-  s.TargetDriveId = &v
-  return s
-}
-
-func (s *ArchiveUncompressRequest) SetTargetFileId(v string) *ArchiveUncompressRequest {
-  s.TargetFileId = &v
+func (s *ArchiveUncompressRequest) SetTaskId(v string) *ArchiveUncompressRequest {
+  s.TaskId = &v
   return s
 }
 
@@ -3892,6 +3917,10 @@ type BaseCCPFileResponse struct {
   // last_modifier_type
   LastModifierType *string `json:"last_modifier_type,omitempty" xml:"last_modifier_type,omitempty"`
   Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
+  // mime_extension
+  MimeExtension *string `json:"mime_extension,omitempty" xml:"mime_extension,omitempty"`
+  // mime_type
+  MimeType *string `json:"mime_type,omitempty" xml:"mime_type,omitempty"`
   // name
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
   // parent_file_id
@@ -4036,6 +4065,16 @@ func (s *BaseCCPFileResponse) SetLastModifierType(v string) *BaseCCPFileResponse
 
 func (s *BaseCCPFileResponse) SetMeta(v string) *BaseCCPFileResponse {
   s.Meta = &v
+  return s
+}
+
+func (s *BaseCCPFileResponse) SetMimeExtension(v string) *BaseCCPFileResponse {
+  s.MimeExtension = &v
+  return s
+}
+
+func (s *BaseCCPFileResponse) SetMimeType(v string) *BaseCCPFileResponse {
+  s.MimeType = &v
   return s
 }
 
@@ -5433,6 +5472,8 @@ func (s *CCPArchiveFilesResponse) SetAsyncTaskId(v string) *CCPArchiveFilesRespo
  * 
  */
 type CCPArchiveRequest struct {
+  // 格式类型，如果是uc，使用特殊格式
+  Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
   RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
   ArchiveType *string `json:"archive_type,omitempty" xml:"archive_type,omitempty"`
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
@@ -5448,6 +5489,11 @@ func (s CCPArchiveRequest) String() string {
 
 func (s CCPArchiveRequest) GoString() string {
   return s.String()
+}
+
+func (s *CCPArchiveRequest) SetFormat(v string) *CCPArchiveRequest {
+  s.Format = &v
+  return s
 }
 
 func (s *CCPArchiveRequest) SetRequestID(v string) *CCPArchiveRequest {
@@ -5890,6 +5936,10 @@ type CCPWalkFileRequest struct {
   DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
   // fields
   Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
+  // filter_file_as_share_link, 像分享一样过滤违规文件
+  FilterFileAsShareLink *bool `json:"filter_file_as_share_link,omitempty" xml:"filter_file_as_share_link,omitempty"`
+  // filter_file_field_as_share_link, 像分享一样过滤文件的字段，比如不输出drive_id等
+  FilterFileFieldAsShareLink *bool `json:"filter_file_field_as_share_link,omitempty" xml:"filter_file_field_as_share_link,omitempty"`
   ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
   // image_thumbnail_process
   ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
@@ -5962,6 +6012,16 @@ func (s *CCPWalkFileRequest) SetDriveId(v string) *CCPWalkFileRequest {
 
 func (s *CCPWalkFileRequest) SetFields(v string) *CCPWalkFileRequest {
   s.Fields = &v
+  return s
+}
+
+func (s *CCPWalkFileRequest) SetFilterFileAsShareLink(v bool) *CCPWalkFileRequest {
+  s.FilterFileAsShareLink = &v
+  return s
+}
+
+func (s *CCPWalkFileRequest) SetFilterFileFieldAsShareLink(v bool) *CCPWalkFileRequest {
+  s.FilterFileFieldAsShareLink = &v
   return s
 }
 
@@ -6116,6 +6176,27 @@ func (s *CancelLinkRequest) SetTemporaryToken(v string) *CancelLinkRequest {
 }
 
 /**
+ * 
+ */
+type CancelRPVerifyRequest struct {
+  // User ID, 当前访问的用户
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+}
+
+func (s CancelRPVerifyRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CancelRPVerifyRequest) GoString() string {
+  return s.String()
+}
+
+func (s *CancelRPVerifyRequest) SetUserId(v string) *CancelRPVerifyRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
  * cancel_share_link request
  */
 type CancelShareLinkRequest struct {
@@ -6174,47 +6255,6 @@ func (s *Captcha) SetCaptchaFormat(v string) *Captcha {
 
 func (s *Captcha) SetCaptchaId(v string) *Captcha {
   s.CaptchaId = &v
-  return s
-}
-
-/**
- * 
- */
-type CertInfo struct {
-  CertID *string `json:"CertID,omitempty" xml:"CertID,omitempty"`
-  // cert body
-  CertBody *string `json:"cert_body,omitempty" xml:"cert_body,omitempty" require:"true"`
-  // cert name
-  CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty" require:"true"`
-  // cert privatekey
-  CertPrivatekey *string `json:"cert_privatekey,omitempty" xml:"cert_privatekey,omitempty" require:"true"`
-}
-
-func (s CertInfo) String() string {
-  return tea.Prettify(s)
-}
-
-func (s CertInfo) GoString() string {
-  return s.String()
-}
-
-func (s *CertInfo) SetCertID(v string) *CertInfo {
-  s.CertID = &v
-  return s
-}
-
-func (s *CertInfo) SetCertBody(v string) *CertInfo {
-  s.CertBody = &v
-  return s
-}
-
-func (s *CertInfo) SetCertName(v string) *CertInfo {
-  s.CertName = &v
-  return s
-}
-
-func (s *CertInfo) SetCertPrivatekey(v string) *CertInfo {
-  s.CertPrivatekey = &v
   return s
 }
 
@@ -6388,6 +6428,10 @@ type CompleteFileResponse struct {
   // location
   Location *string `json:"location,omitempty" xml:"location,omitempty"`
   Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
+  // mime_extension
+  MimeExtension *string `json:"mime_extension,omitempty" xml:"mime_extension,omitempty"`
+  // mime_type
+  MimeType *string `json:"mime_type,omitempty" xml:"mime_type,omitempty"`
   // name
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
   // parent_file_id
@@ -6538,6 +6582,16 @@ func (s *CompleteFileResponse) SetLocation(v string) *CompleteFileResponse {
 
 func (s *CompleteFileResponse) SetMeta(v string) *CompleteFileResponse {
   s.Meta = &v
+  return s
+}
+
+func (s *CompleteFileResponse) SetMimeExtension(v string) *CompleteFileResponse {
+  s.MimeExtension = &v
+  return s
+}
+
+func (s *CompleteFileResponse) SetMimeType(v string) *CompleteFileResponse {
+  s.MimeType = &v
   return s
 }
 
@@ -7639,6 +7693,8 @@ type CreateShareLinkRequest struct {
   FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" maximum:"100" minimum:"1" type:"Repeated"`
   // file_path_list
   FilePathList []*string `json:"file_path_list,omitempty" xml:"file_path_list,omitempty" maximum:"100" minimum:"1" type:"Repeated"`
+  // filter_group
+  FilterGroup *string `json:"filter_group,omitempty" xml:"filter_group,omitempty"`
   Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
   // share_name
   ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
@@ -7691,6 +7747,11 @@ func (s *CreateShareLinkRequest) SetFileIdList(v []*string) *CreateShareLinkRequ
 
 func (s *CreateShareLinkRequest) SetFilePathList(v []*string) *CreateShareLinkRequest {
   s.FilePathList = v
+  return s
+}
+
+func (s *CreateShareLinkRequest) SetFilterGroup(v string) *CreateShareLinkRequest {
+  s.FilterGroup = &v
   return s
 }
 
@@ -9897,6 +9958,10 @@ type GetFileByPathResponse struct {
   // last_modifier_type
   LastModifierType *string `json:"last_modifier_type,omitempty" xml:"last_modifier_type,omitempty"`
   Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
+  // mime_extension
+  MimeExtension *string `json:"mime_extension,omitempty" xml:"mime_extension,omitempty"`
+  // mime_type
+  MimeType *string `json:"mime_type,omitempty" xml:"mime_type,omitempty"`
   // name
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
   // parent_file_id
@@ -10057,6 +10122,16 @@ func (s *GetFileByPathResponse) SetMeta(v string) *GetFileByPathResponse {
   return s
 }
 
+func (s *GetFileByPathResponse) SetMimeExtension(v string) *GetFileByPathResponse {
+  s.MimeExtension = &v
+  return s
+}
+
+func (s *GetFileByPathResponse) SetMimeType(v string) *GetFileByPathResponse {
+  s.MimeType = &v
+  return s
+}
+
 func (s *GetFileByPathResponse) SetName(v string) *GetFileByPathResponse {
   s.Name = &v
   return s
@@ -10161,6 +10236,10 @@ type GetFileRequest struct {
   // file_id
   FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
   FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
+  // filter_file_as_share_link, 像分享一样过滤违规文件
+  FilterFileAsShareLink *bool `json:"filter_file_as_share_link,omitempty" xml:"filter_file_as_share_link,omitempty"`
+  // filter_file_field_as_share_link, 像分享一样过滤文件的字段，比如不输出drive_id等
+  FilterFileFieldAsShareLink *bool `json:"filter_file_field_as_share_link,omitempty" xml:"filter_file_field_as_share_link,omitempty"`
   ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
   // image_thumbnail_process
   ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
@@ -10216,6 +10295,16 @@ func (s *GetFileRequest) SetFileId(v string) *GetFileRequest {
 
 func (s *GetFileRequest) SetFileIdPath(v string) *GetFileRequest {
   s.FileIdPath = &v
+  return s
+}
+
+func (s *GetFileRequest) SetFilterFileAsShareLink(v bool) *GetFileRequest {
+  s.FilterFileAsShareLink = &v
+  return s
+}
+
+func (s *GetFileRequest) SetFilterFileFieldAsShareLink(v bool) *GetFileRequest {
+  s.FilterFileFieldAsShareLink = &v
   return s
 }
 
@@ -10318,6 +10407,10 @@ type GetFileResponse struct {
   // last_modifier_type
   LastModifierType *string `json:"last_modifier_type,omitempty" xml:"last_modifier_type,omitempty"`
   Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
+  // mime_extension
+  MimeExtension *string `json:"mime_extension,omitempty" xml:"mime_extension,omitempty"`
+  // mime_type
+  MimeType *string `json:"mime_type,omitempty" xml:"mime_type,omitempty"`
   // name
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
   // parent_file_id
@@ -10475,6 +10568,16 @@ func (s *GetFileResponse) SetLastModifierType(v string) *GetFileResponse {
 
 func (s *GetFileResponse) SetMeta(v string) *GetFileResponse {
   s.Meta = &v
+  return s
+}
+
+func (s *GetFileResponse) SetMimeExtension(v string) *GetFileResponse {
+  s.MimeExtension = &v
+  return s
+}
+
+func (s *GetFileResponse) SetMimeType(v string) *GetFileResponse {
+  s.MimeType = &v
   return s
 }
 
@@ -11015,6 +11118,34 @@ func (s *GetPublicKeyResponse) SetKeyPairId(v string) *GetPublicKeyResponse {
 
 func (s *GetPublicKeyResponse) SetPublicKey(v string) *GetPublicKeyResponse {
   s.PublicKey = &v
+  return s
+}
+
+/**
+ * 
+ */
+type GetRPVerifyInfoRequest struct {
+  // Need Identity Info, 是否获取脱敏的身份信息
+  NeedIdentityInfo *bool `json:"need_identity_info,omitempty" xml:"need_identity_info,omitempty"`
+  // User ID, 当前访问的用户
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+}
+
+func (s GetRPVerifyInfoRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetRPVerifyInfoRequest) GoString() string {
+  return s.String()
+}
+
+func (s *GetRPVerifyInfoRequest) SetNeedIdentityInfo(v bool) *GetRPVerifyInfoRequest {
+  s.NeedIdentityInfo = &v
+  return s
+}
+
+func (s *GetRPVerifyInfoRequest) SetUserId(v string) *GetRPVerifyInfoRequest {
+  s.UserId = &v
   return s
 }
 
@@ -14062,6 +14193,8 @@ func (s *HostingVideoTranscodeResponse) SetHlsTime(v int64) *HostingVideoTransco
 type ImageMediaMetadata struct {
   // height
   Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
+  // taken_at
+  TakenAt *string `json:"taken_at,omitempty" xml:"taken_at,omitempty"`
   // width：
   Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
 }
@@ -14076,6 +14209,11 @@ func (s ImageMediaMetadata) GoString() string {
 
 func (s *ImageMediaMetadata) SetHeight(v int64) *ImageMediaMetadata {
   s.Height = &v
+  return s
+}
+
+func (s *ImageMediaMetadata) SetTakenAt(v string) *ImageMediaMetadata {
+  s.TakenAt = &v
   return s
 }
 
@@ -15298,6 +15436,10 @@ type ListFileRequest struct {
   DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
   // fields
   Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
+  // filter_file_as_share_link, 像分享一样过滤违规文件
+  FilterFileAsShareLink *bool `json:"filter_file_as_share_link,omitempty" xml:"filter_file_as_share_link,omitempty"`
+  // filter_file_field_as_share_link, 像分享一样过滤文件的字段，比如不输出drive_id等
+  FilterFileFieldAsShareLink *bool `json:"filter_file_field_as_share_link,omitempty" xml:"filter_file_field_as_share_link,omitempty"`
   ImageCroppingAspectRatios []*string `json:"image_cropping_aspect_ratios,omitempty" xml:"image_cropping_aspect_ratios,omitempty" type:"Repeated"`
   // image_thumbnail_process
   ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
@@ -15370,6 +15512,16 @@ func (s *ListFileRequest) SetDriveId(v string) *ListFileRequest {
 
 func (s *ListFileRequest) SetFields(v string) *ListFileRequest {
   s.Fields = &v
+  return s
+}
+
+func (s *ListFileRequest) SetFilterFileAsShareLink(v bool) *ListFileRequest {
+  s.FilterFileAsShareLink = &v
+  return s
+}
+
+func (s *ListFileRequest) SetFilterFileFieldAsShareLink(v bool) *ListFileRequest {
+  s.FilterFileFieldAsShareLink = &v
   return s
 }
 
@@ -16028,9 +16180,46 @@ func (s *ListUploadedPartResponse) SetUploadedParts(v []*UploadPartInfo) *ListUp
 }
 
 /**
+ * 实时转码meta响应
+ */
+type LiveTranscodingMetaResponse struct {
+  // ts_pre_count
+  TsPreCount *int64 `json:"ts_pre_count,omitempty" xml:"ts_pre_count,omitempty"`
+  // ts_segment
+  TsSegment *int64 `json:"ts_segment,omitempty" xml:"ts_segment,omitempty"`
+  // ts_total_count
+  TsTotalCount *int64 `json:"ts_total_count,omitempty" xml:"ts_total_count,omitempty"`
+}
+
+func (s LiveTranscodingMetaResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s LiveTranscodingMetaResponse) GoString() string {
+  return s.String()
+}
+
+func (s *LiveTranscodingMetaResponse) SetTsPreCount(v int64) *LiveTranscodingMetaResponse {
+  s.TsPreCount = &v
+  return s
+}
+
+func (s *LiveTranscodingMetaResponse) SetTsSegment(v int64) *LiveTranscodingMetaResponse {
+  s.TsSegment = &v
+  return s
+}
+
+func (s *LiveTranscodingMetaResponse) SetTsTotalCount(v int64) *LiveTranscodingMetaResponse {
+  s.TsTotalCount = &v
+  return s
+}
+
+/**
  * 实时转码信息task响应
  */
 type LiveTranscodingTaskResponse struct {
+  // stage
+  Stage *string `json:"stage,omitempty" xml:"stage,omitempty"`
   // status
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
   // template_id
@@ -16045,6 +16234,11 @@ func (s LiveTranscodingTaskResponse) String() string {
 
 func (s LiveTranscodingTaskResponse) GoString() string {
   return s.String()
+}
+
+func (s *LiveTranscodingTaskResponse) SetStage(v string) *LiveTranscodingTaskResponse {
+  s.Stage = &v
+  return s
 }
 
 func (s *LiveTranscodingTaskResponse) SetStatus(v string) *LiveTranscodingTaskResponse {
@@ -16756,6 +16950,27 @@ func (s *PreHashCheckSuccessResponse) SetPreHash(v string) *PreHashCheckSuccessR
 /**
  * 
  */
+type RPVerifyBaseRequest struct {
+  // User ID, 当前访问的用户
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty" require:"true"`
+}
+
+func (s RPVerifyBaseRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s RPVerifyBaseRequest) GoString() string {
+  return s.String()
+}
+
+func (s *RPVerifyBaseRequest) SetUserId(v string) *RPVerifyBaseRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * 
+ */
 type RPVerifyTokenResponse struct {
   // 是否需要实人认证，如果用户已通过认证，或者未开启实人认证，返回false
   NeedRpVerify *bool `json:"need_rp_verify,omitempty" xml:"need_rp_verify,omitempty" require:"true"`
@@ -16855,6 +17070,10 @@ type RecycleBinItemResponse struct {
   // last_modifier_type
   LastModifierType *string `json:"last_modifier_type,omitempty" xml:"last_modifier_type,omitempty"`
   Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
+  // mime_extension
+  MimeExtension *string `json:"mime_extension,omitempty" xml:"mime_extension,omitempty"`
+  // mime_type
+  MimeType *string `json:"mime_type,omitempty" xml:"mime_type,omitempty"`
   // name
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
   // parent_file_id
@@ -17009,6 +17228,16 @@ func (s *RecycleBinItemResponse) SetLastModifierType(v string) *RecycleBinItemRe
 
 func (s *RecycleBinItemResponse) SetMeta(v string) *RecycleBinItemResponse {
   s.Meta = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetMimeExtension(v string) *RecycleBinItemResponse {
+  s.MimeExtension = &v
+  return s
+}
+
+func (s *RecycleBinItemResponse) SetMimeType(v string) *RecycleBinItemResponse {
+  s.MimeType = &v
   return s
 }
 
@@ -18145,132 +18374,6 @@ func (s *SimpleStreamInfo) SetThumbnail(v string) *SimpleStreamInfo {
 
 func (s *SimpleStreamInfo) SetUrl(v string) *SimpleStreamInfo {
   s.Url = &v
-  return s
-}
-
-/**
- * 
- */
-type Store struct {
-  // 全球加速地址
-  AccelerateEndpoint *string `json:"accelerate_endpoint,omitempty" xml:"accelerate_endpoint,omitempty"`
-  // 存储公共前缀
-  BasePath *string `json:"base_path,omitempty" xml:"base_path,omitempty"`
-  // bucket名称
-  Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty" require:"true"`
-  // 内容分发地址
-  CdnEndpoint *string `json:"cdn_endpoint,omitempty" xml:"cdn_endpoint,omitempty"`
-  // 自定义全球加速地址
-  CustomizedAccelerateEndpoint *string `json:"customized_accelerate_endpoint,omitempty" xml:"customized_accelerate_endpoint,omitempty"`
-  // 自定义内容分发地址
-  CustomizedCdnEndpoint *string `json:"customized_cdn_endpoint,omitempty" xml:"customized_cdn_endpoint,omitempty"`
-  // 自定义Public访问地址
-  CustomizedEndpoint *string `json:"customized_endpoint,omitempty" xml:"customized_endpoint,omitempty"`
-  // 自定义vpc访问地址
-  CustomizedInternalEndpoint *string `json:"customized_internal_endpoint,omitempty" xml:"customized_internal_endpoint,omitempty"`
-  // Public访问地址
-  Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty" require:"true"`
-  // vpc访问地址
-  InternalEndpoint *string `json:"internal_endpoint,omitempty" xml:"internal_endpoint,omitempty"`
-  // 地点
-  Location *string `json:"location,omitempty" xml:"location,omitempty"`
-  // 存储归属，system表示系统提供，custom表示使用自己的存储
-  Ownership *string `json:"ownership,omitempty" xml:"ownership,omitempty" require:"true"`
-  // Policy授权,system类型store会将bucket权限授予当前云账号
-  Policy *string `json:"policy,omitempty" xml:"policy,omitempty" require:"true"`
-  // 访问Bucket的角色ARN
-  RoleArn *string `json:"role_arn,omitempty" xml:"role_arn,omitempty"`
-  // store ID
-  StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty" require:"true"`
-  // 存储类型，当前只支持oss
-  Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
-}
-
-func (s Store) String() string {
-  return tea.Prettify(s)
-}
-
-func (s Store) GoString() string {
-  return s.String()
-}
-
-func (s *Store) SetAccelerateEndpoint(v string) *Store {
-  s.AccelerateEndpoint = &v
-  return s
-}
-
-func (s *Store) SetBasePath(v string) *Store {
-  s.BasePath = &v
-  return s
-}
-
-func (s *Store) SetBucket(v string) *Store {
-  s.Bucket = &v
-  return s
-}
-
-func (s *Store) SetCdnEndpoint(v string) *Store {
-  s.CdnEndpoint = &v
-  return s
-}
-
-func (s *Store) SetCustomizedAccelerateEndpoint(v string) *Store {
-  s.CustomizedAccelerateEndpoint = &v
-  return s
-}
-
-func (s *Store) SetCustomizedCdnEndpoint(v string) *Store {
-  s.CustomizedCdnEndpoint = &v
-  return s
-}
-
-func (s *Store) SetCustomizedEndpoint(v string) *Store {
-  s.CustomizedEndpoint = &v
-  return s
-}
-
-func (s *Store) SetCustomizedInternalEndpoint(v string) *Store {
-  s.CustomizedInternalEndpoint = &v
-  return s
-}
-
-func (s *Store) SetEndpoint(v string) *Store {
-  s.Endpoint = &v
-  return s
-}
-
-func (s *Store) SetInternalEndpoint(v string) *Store {
-  s.InternalEndpoint = &v
-  return s
-}
-
-func (s *Store) SetLocation(v string) *Store {
-  s.Location = &v
-  return s
-}
-
-func (s *Store) SetOwnership(v string) *Store {
-  s.Ownership = &v
-  return s
-}
-
-func (s *Store) SetPolicy(v string) *Store {
-  s.Policy = &v
-  return s
-}
-
-func (s *Store) SetRoleArn(v string) *Store {
-  s.RoleArn = &v
-  return s
-}
-
-func (s *Store) SetStoreId(v string) *Store {
-  s.StoreId = &v
-  return s
-}
-
-func (s *Store) SetType(v string) *Store {
-  s.Type = &v
   return s
 }
 
@@ -19547,6 +19650,10 @@ type UpdateFileMetaResponse struct {
   // last_modifier_type
   LastModifierType *string `json:"last_modifier_type,omitempty" xml:"last_modifier_type,omitempty"`
   Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
+  // mime_extension
+  MimeExtension *string `json:"mime_extension,omitempty" xml:"mime_extension,omitempty"`
+  // mime_type
+  MimeType *string `json:"mime_type,omitempty" xml:"mime_type,omitempty"`
   // name
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
   // parent_file_id
@@ -19691,6 +19798,16 @@ func (s *UpdateFileMetaResponse) SetLastModifierType(v string) *UpdateFileMetaRe
 
 func (s *UpdateFileMetaResponse) SetMeta(v string) *UpdateFileMetaResponse {
   s.Meta = &v
+  return s
+}
+
+func (s *UpdateFileMetaResponse) SetMimeExtension(v string) *UpdateFileMetaResponse {
+  s.MimeExtension = &v
+  return s
+}
+
+func (s *UpdateFileMetaResponse) SetMimeType(v string) *UpdateFileMetaResponse {
+  s.MimeType = &v
   return s
 }
 
@@ -20261,41 +20378,6 @@ func (s *UploadPartInfo) SetUploadUrl(v string) *UploadPartInfo {
 /**
  * 
  */
-type UrlInfo struct {
-  // download_url
-  DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
-  // thumbnail
-  Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
-  // url
-  Url *string `json:"url,omitempty" xml:"url,omitempty"`
-}
-
-func (s UrlInfo) String() string {
-  return tea.Prettify(s)
-}
-
-func (s UrlInfo) GoString() string {
-  return s.String()
-}
-
-func (s *UrlInfo) SetDownloadUrl(v string) *UrlInfo {
-  s.DownloadUrl = &v
-  return s
-}
-
-func (s *UrlInfo) SetThumbnail(v string) *UrlInfo {
-  s.Thumbnail = &v
-  return s
-}
-
-func (s *UrlInfo) SetUrl(v string) *UrlInfo {
-  s.Url = &v
-  return s
-}
-
-/**
- * 
- */
 type UserAuthentication struct {
   // 认证类型
   AuthenticationType *string `json:"AuthenticationType,omitempty" xml:"AuthenticationType,omitempty" require:"true"`
@@ -20557,6 +20639,8 @@ func (s *VideoMediaAudioStream) SetSampleRate(v string) *VideoMediaAudioStream {
 type VideoMediaMetadata struct {
   // Duration
   Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
+  // taken_at
+  TakenAt *string `json:"taken_at,omitempty" xml:"taken_at,omitempty"`
 }
 
 func (s VideoMediaMetadata) String() string {
@@ -20569,6 +20653,11 @@ func (s VideoMediaMetadata) GoString() string {
 
 func (s *VideoMediaMetadata) SetDuration(v string) *VideoMediaMetadata {
   s.Duration = &v
+  return s
+}
+
+func (s *VideoMediaMetadata) SetTakenAt(v string) *VideoMediaMetadata {
+  s.TakenAt = &v
   return s
 }
 
@@ -20830,6 +20919,7 @@ type VideoPreviewPlayInfoMetaResponse struct {
   Duration *float64 `json:"duration,omitempty" xml:"duration,omitempty"`
   // height
   Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
+  LiveTranscodingMeta *LiveTranscodingMetaResponse `json:"live_transcoding_meta,omitempty" xml:"live_transcoding_meta,omitempty"`
   // witdh
   Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
 }
@@ -20849,6 +20939,11 @@ func (s *VideoPreviewPlayInfoMetaResponse) SetDuration(v float64) *VideoPreviewP
 
 func (s *VideoPreviewPlayInfoMetaResponse) SetHeight(v int64) *VideoPreviewPlayInfoMetaResponse {
   s.Height = &v
+  return s
+}
+
+func (s *VideoPreviewPlayInfoMetaResponse) SetLiveTranscodingMeta(v *LiveTranscodingMetaResponse) *VideoPreviewPlayInfoMetaResponse {
+  s.LiveTranscodingMeta = v
   return s
 }
 
@@ -21293,6 +21388,8 @@ type BaseDomainResponse struct {
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
   // Domain 描述
   DomainName *string `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
+  // 企业文件管理专属登录开关
+  EnterpriseCustomizedLogin *bool `json:"enterprise_customized_login,omitempty" xml:"enterprise_customized_login,omitempty"`
   // 事件通知 MNS 匹配文件名
   EventFilenameMatches *string `json:"event_filename_matches,omitempty" xml:"event_filename_matches,omitempty"`
   // 事件通知 MNS Endpoint
@@ -21452,6 +21549,11 @@ func (s *BaseDomainResponse) SetDomainId(v string) *BaseDomainResponse {
 
 func (s *BaseDomainResponse) SetDomainName(v string) *BaseDomainResponse {
   s.DomainName = &v
+  return s
+}
+
+func (s *BaseDomainResponse) SetEnterpriseCustomizedLogin(v bool) *BaseDomainResponse {
+  s.EnterpriseCustomizedLogin = &v
   return s
 }
 
@@ -21797,6 +21899,47 @@ func (s *CNameStatus) SetRemark(v string) *CNameStatus {
 }
 
 /**
+ * 
+ */
+type CertInfo struct {
+  CertID *string `json:"CertID,omitempty" xml:"CertID,omitempty"`
+  // cert body
+  CertBody *string `json:"cert_body,omitempty" xml:"cert_body,omitempty" require:"true"`
+  // cert name
+  CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty" require:"true"`
+  // cert privatekey
+  CertPrivatekey *string `json:"cert_privatekey,omitempty" xml:"cert_privatekey,omitempty" require:"true"`
+}
+
+func (s CertInfo) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CertInfo) GoString() string {
+  return s.String()
+}
+
+func (s *CertInfo) SetCertID(v string) *CertInfo {
+  s.CertID = &v
+  return s
+}
+
+func (s *CertInfo) SetCertBody(v string) *CertInfo {
+  s.CertBody = &v
+  return s
+}
+
+func (s *CertInfo) SetCertName(v string) *CertInfo {
+  s.CertName = &v
+  return s
+}
+
+func (s *CertInfo) SetCertPrivatekey(v string) *CertInfo {
+  s.CertPrivatekey = &v
+  return s
+}
+
+/**
  * create domain response
  */
 type CreateDomainResponse struct {
@@ -21839,6 +21982,8 @@ type CreateDomainResponse struct {
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
   // Domain 描述
   DomainName *string `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
+  // 企业文件管理专属登录开关
+  EnterpriseCustomizedLogin *bool `json:"enterprise_customized_login,omitempty" xml:"enterprise_customized_login,omitempty"`
   // 事件通知 MNS 匹配文件名
   EventFilenameMatches *string `json:"event_filename_matches,omitempty" xml:"event_filename_matches,omitempty"`
   // 事件通知 MNS Endpoint
@@ -21998,6 +22143,11 @@ func (s *CreateDomainResponse) SetDomainId(v string) *CreateDomainResponse {
 
 func (s *CreateDomainResponse) SetDomainName(v string) *CreateDomainResponse {
   s.DomainName = &v
+  return s
+}
+
+func (s *CreateDomainResponse) SetEnterpriseCustomizedLogin(v bool) *CreateDomainResponse {
+  s.EnterpriseCustomizedLogin = &v
   return s
 }
 
@@ -22569,6 +22719,8 @@ type GetDomainResponse struct {
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
   // Domain 描述
   DomainName *string `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
+  // 企业文件管理专属登录开关
+  EnterpriseCustomizedLogin *bool `json:"enterprise_customized_login,omitempty" xml:"enterprise_customized_login,omitempty"`
   // 事件通知 MNS 匹配文件名
   EventFilenameMatches *string `json:"event_filename_matches,omitempty" xml:"event_filename_matches,omitempty"`
   // 事件通知 MNS Endpoint
@@ -22728,6 +22880,11 @@ func (s *GetDomainResponse) SetDomainId(v string) *GetDomainResponse {
 
 func (s *GetDomainResponse) SetDomainName(v string) *GetDomainResponse {
   s.DomainName = &v
+  return s
+}
+
+func (s *GetDomainResponse) SetEnterpriseCustomizedLogin(v bool) *GetDomainResponse {
+  s.EnterpriseCustomizedLogin = &v
   return s
 }
 
@@ -23489,6 +23646,132 @@ func (s *SetDataCNameResponse) SetLocation(v string) *SetDataCNameResponse {
 }
 
 /**
+ * 
+ */
+type Store struct {
+  // 全球加速地址
+  AccelerateEndpoint *string `json:"accelerate_endpoint,omitempty" xml:"accelerate_endpoint,omitempty"`
+  // 存储公共前缀
+  BasePath *string `json:"base_path,omitempty" xml:"base_path,omitempty"`
+  // bucket名称
+  Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty" require:"true"`
+  // 内容分发地址
+  CdnEndpoint *string `json:"cdn_endpoint,omitempty" xml:"cdn_endpoint,omitempty"`
+  // 自定义全球加速地址
+  CustomizedAccelerateEndpoint *string `json:"customized_accelerate_endpoint,omitempty" xml:"customized_accelerate_endpoint,omitempty"`
+  // 自定义内容分发地址
+  CustomizedCdnEndpoint *string `json:"customized_cdn_endpoint,omitempty" xml:"customized_cdn_endpoint,omitempty"`
+  // 自定义Public访问地址
+  CustomizedEndpoint *string `json:"customized_endpoint,omitempty" xml:"customized_endpoint,omitempty"`
+  // 自定义vpc访问地址
+  CustomizedInternalEndpoint *string `json:"customized_internal_endpoint,omitempty" xml:"customized_internal_endpoint,omitempty"`
+  // Public访问地址
+  Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty" require:"true"`
+  // vpc访问地址
+  InternalEndpoint *string `json:"internal_endpoint,omitempty" xml:"internal_endpoint,omitempty"`
+  // 地点
+  Location *string `json:"location,omitempty" xml:"location,omitempty"`
+  // 存储归属，system表示系统提供，custom表示使用自己的存储
+  Ownership *string `json:"ownership,omitempty" xml:"ownership,omitempty" require:"true"`
+  // Policy授权,system类型store会将bucket权限授予当前云账号
+  Policy *string `json:"policy,omitempty" xml:"policy,omitempty" require:"true"`
+  // 访问Bucket的角色ARN
+  RoleArn *string `json:"role_arn,omitempty" xml:"role_arn,omitempty"`
+  // store ID
+  StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty" require:"true"`
+  // 存储类型，当前只支持oss
+  Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+}
+
+func (s Store) String() string {
+  return tea.Prettify(s)
+}
+
+func (s Store) GoString() string {
+  return s.String()
+}
+
+func (s *Store) SetAccelerateEndpoint(v string) *Store {
+  s.AccelerateEndpoint = &v
+  return s
+}
+
+func (s *Store) SetBasePath(v string) *Store {
+  s.BasePath = &v
+  return s
+}
+
+func (s *Store) SetBucket(v string) *Store {
+  s.Bucket = &v
+  return s
+}
+
+func (s *Store) SetCdnEndpoint(v string) *Store {
+  s.CdnEndpoint = &v
+  return s
+}
+
+func (s *Store) SetCustomizedAccelerateEndpoint(v string) *Store {
+  s.CustomizedAccelerateEndpoint = &v
+  return s
+}
+
+func (s *Store) SetCustomizedCdnEndpoint(v string) *Store {
+  s.CustomizedCdnEndpoint = &v
+  return s
+}
+
+func (s *Store) SetCustomizedEndpoint(v string) *Store {
+  s.CustomizedEndpoint = &v
+  return s
+}
+
+func (s *Store) SetCustomizedInternalEndpoint(v string) *Store {
+  s.CustomizedInternalEndpoint = &v
+  return s
+}
+
+func (s *Store) SetEndpoint(v string) *Store {
+  s.Endpoint = &v
+  return s
+}
+
+func (s *Store) SetInternalEndpoint(v string) *Store {
+  s.InternalEndpoint = &v
+  return s
+}
+
+func (s *Store) SetLocation(v string) *Store {
+  s.Location = &v
+  return s
+}
+
+func (s *Store) SetOwnership(v string) *Store {
+  s.Ownership = &v
+  return s
+}
+
+func (s *Store) SetPolicy(v string) *Store {
+  s.Policy = &v
+  return s
+}
+
+func (s *Store) SetRoleArn(v string) *Store {
+  s.RoleArn = &v
+  return s
+}
+
+func (s *Store) SetStoreId(v string) *Store {
+  s.StoreId = &v
+  return s
+}
+
+func (s *Store) SetType(v string) *Store {
+  s.Type = &v
+  return s
+}
+
+/**
  * create domain response
  */
 type UpdateDomainResponse struct {
@@ -23531,6 +23814,8 @@ type UpdateDomainResponse struct {
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
   // Domain 描述
   DomainName *string `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
+  // 企业文件管理专属登录开关
+  EnterpriseCustomizedLogin *bool `json:"enterprise_customized_login,omitempty" xml:"enterprise_customized_login,omitempty"`
   // 事件通知 MNS 匹配文件名
   EventFilenameMatches *string `json:"event_filename_matches,omitempty" xml:"event_filename_matches,omitempty"`
   // 事件通知 MNS Endpoint
@@ -23690,6 +23975,11 @@ func (s *UpdateDomainResponse) SetDomainId(v string) *UpdateDomainResponse {
 
 func (s *UpdateDomainResponse) SetDomainName(v string) *UpdateDomainResponse {
   s.DomainName = &v
+  return s
+}
+
+func (s *UpdateDomainResponse) SetEnterpriseCustomizedLogin(v bool) *UpdateDomainResponse {
+  s.EnterpriseCustomizedLogin = &v
   return s
 }
 
@@ -23885,44 +24175,6 @@ func (s UpdateSubdomainResponse) String() string {
 
 func (s UpdateSubdomainResponse) GoString() string {
   return s.String()
-}
-
-/**
- * 
- */
-type VideoPreviewAudio struct {
-  AudioBitrate *int64 `json:"audio_bitrate,omitempty" xml:"audio_bitrate,omitempty"`
-  AudioChannel *int64 `json:"audio_channel,omitempty" xml:"audio_channel,omitempty"`
-  AudioCodec *string `json:"audio_codec,omitempty" xml:"audio_codec,omitempty"`
-  AudioSampleRate *int64 `json:"audio_sample_rate,omitempty" xml:"audio_sample_rate,omitempty"`
-}
-
-func (s VideoPreviewAudio) String() string {
-  return tea.Prettify(s)
-}
-
-func (s VideoPreviewAudio) GoString() string {
-  return s.String()
-}
-
-func (s *VideoPreviewAudio) SetAudioBitrate(v int64) *VideoPreviewAudio {
-  s.AudioBitrate = &v
-  return s
-}
-
-func (s *VideoPreviewAudio) SetAudioChannel(v int64) *VideoPreviewAudio {
-  s.AudioChannel = &v
-  return s
-}
-
-func (s *VideoPreviewAudio) SetAudioCodec(v string) *VideoPreviewAudio {
-  s.AudioCodec = &v
-  return s
-}
-
-func (s *VideoPreviewAudio) SetAudioSampleRate(v int64) *VideoPreviewAudio {
-  s.AudioSampleRate = &v
-  return s
 }
 
 /**
@@ -24428,56 +24680,6 @@ func (s *VideoPreviewThumbnail) SetSkipBeginPercent(v string) *VideoPreviewThumb
 
 func (s *VideoPreviewThumbnail) SetSkipBeginSec(v float64) *VideoPreviewThumbnail {
   s.SkipBeginSec = &v
-  return s
-}
-
-/**
- * 
- */
-type VideoPreviewVideo struct {
-  Height *int64 `json:"height,omitempty" xml:"height,omitempty"`
-  KeepOriginal *bool `json:"keep_original,omitempty" xml:"keep_original,omitempty"`
-  VideoBitrate *int64 `json:"video_bitrate,omitempty" xml:"video_bitrate,omitempty"`
-  VideoCodec *string `json:"video_codec,omitempty" xml:"video_codec,omitempty"`
-  VideoFrameRate *int64 `json:"video_frame_rate,omitempty" xml:"video_frame_rate,omitempty"`
-  Width *int64 `json:"width,omitempty" xml:"width,omitempty"`
-}
-
-func (s VideoPreviewVideo) String() string {
-  return tea.Prettify(s)
-}
-
-func (s VideoPreviewVideo) GoString() string {
-  return s.String()
-}
-
-func (s *VideoPreviewVideo) SetHeight(v int64) *VideoPreviewVideo {
-  s.Height = &v
-  return s
-}
-
-func (s *VideoPreviewVideo) SetKeepOriginal(v bool) *VideoPreviewVideo {
-  s.KeepOriginal = &v
-  return s
-}
-
-func (s *VideoPreviewVideo) SetVideoBitrate(v int64) *VideoPreviewVideo {
-  s.VideoBitrate = &v
-  return s
-}
-
-func (s *VideoPreviewVideo) SetVideoCodec(v string) *VideoPreviewVideo {
-  s.VideoCodec = &v
-  return s
-}
-
-func (s *VideoPreviewVideo) SetVideoFrameRate(v int64) *VideoPreviewVideo {
-  s.VideoFrameRate = &v
-  return s
-}
-
-func (s *VideoPreviewVideo) SetWidth(v int64) *VideoPreviewVideo {
-  s.Width = &v
   return s
 }
 
@@ -25394,6 +25596,8 @@ type CreateStoryRequest struct {
   MinImageCount *int64 `json:"min_image_count,omitempty" xml:"min_image_count,omitempty"`
   // story_end_time
   StoryEndTime *string `json:"story_end_time,omitempty" xml:"story_end_time,omitempty"`
+  // story_id
+  StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
   // story_name
   StoryName *string `json:"story_name,omitempty" xml:"story_name,omitempty"`
   // story_start_time
@@ -25432,6 +25636,11 @@ func (s *CreateStoryRequest) SetMinImageCount(v int64) *CreateStoryRequest {
 
 func (s *CreateStoryRequest) SetStoryEndTime(v string) *CreateStoryRequest {
   s.StoryEndTime = &v
+  return s
+}
+
+func (s *CreateStoryRequest) SetStoryId(v string) *CreateStoryRequest {
+  s.StoryId = &v
   return s
 }
 
@@ -25847,6 +26056,61 @@ func (s DeleteMembershipResponse) String() string {
 
 func (s DeleteMembershipResponse) GoString() string {
   return s.String()
+}
+
+/**
+ * delete story request
+ */
+type DeleteStoryRequest struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
+  // story_id
+  StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty" require:"true"`
+}
+
+func (s DeleteStoryRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteStoryRequest) GoString() string {
+  return s.String()
+}
+
+func (s *DeleteStoryRequest) SetHeaders(v map[string]*string) *DeleteStoryRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *DeleteStoryRequest) SetDriveId(v string) *DeleteStoryRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *DeleteStoryRequest) SetStoryId(v string) *DeleteStoryRequest {
+  s.StoryId = &v
+  return s
+}
+
+/**
+ * 删除故事
+ */
+type DeleteStoryResponse struct {
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+}
+
+func (s DeleteStoryResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteStoryResponse) GoString() string {
+  return s.String()
+}
+
+func (s *DeleteStoryResponse) SetDriveId(v string) *DeleteStoryResponse {
+  s.DriveId = &v
+  return s
 }
 
 /**
@@ -27112,7 +27376,7 @@ type ListDirectChildMembershipsRequest struct {
   Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
   // 游标
   Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-  // 角色，可选值，["", "member", "admin"], ""表示获取所有类型
+  // 角色，可选值，["", "user", "group"], ""表示获取所有类型
   MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
   // subdomain id
   SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
@@ -45417,6 +45681,160 @@ func (client *Client) CreateStoryEx(request *CreateStoryRequest, runtime *Runtim
 }
 
 /**
+ * 该接口将会删除故事
+ * @tags image
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) DeleteStoryEx(request *DeleteStoryRequest, runtime *RuntimeOptions) (_result *DeleteStoryModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &DeleteStoryModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*DeleteStoryModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/image/delete_story"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Headers)
+      realReq["headers"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &DeleteStoryModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
  * 该接口将会查询故事列表
  * @tags image
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -48963,6 +49381,27 @@ func (client *Client) CreateStory (request *CreateStoryRequest) (_result *Create
   runtime := &RuntimeOptions{}
   _result = &CreateStoryModel{}
   _body, _err := client.CreateStoryEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 该接口将会删除故事
+ * @tags image
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) DeleteStory (request *DeleteStoryRequest) (_result *DeleteStoryModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &DeleteStoryModel{}
+  _body, _err := client.DeleteStoryEx(request, runtime)
   if _err != nil {
     return _result, _err
   }

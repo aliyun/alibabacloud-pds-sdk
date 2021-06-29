@@ -88,6 +88,10 @@ public class GetDomainResponse extends TeaModel {
     @NameInMap("domain_name")
     public String domainName;
 
+    // 企业文件管理专属登录开关
+    @NameInMap("enterprise_customized_login")
+    public Boolean enterpriseCustomizedLogin;
+
     // 事件通知 MNS 匹配文件名
     @NameInMap("event_filename_matches")
     public String eventFilenameMatches;
@@ -356,6 +360,14 @@ public class GetDomainResponse extends TeaModel {
     }
     public String getDomainName() {
         return this.domainName;
+    }
+
+    public GetDomainResponse setEnterpriseCustomizedLogin(Boolean enterpriseCustomizedLogin) {
+        this.enterpriseCustomizedLogin = enterpriseCustomizedLogin;
+        return this;
+    }
+    public Boolean getEnterpriseCustomizedLogin() {
+        return this.enterpriseCustomizedLogin;
     }
 
     public GetDomainResponse setEventFilenameMatches(String eventFilenameMatches) {

@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * 预览压缩包结构
  */
 public class ArchiveListRequest extends TeaModel {
+    // 格式类型，如果是uc，使用特殊格式
+    @NameInMap("Format")
+    public String Format;
+
     @NameInMap("RequestID")
     public String RequestID;
 
@@ -29,6 +33,14 @@ public class ArchiveListRequest extends TeaModel {
     public static ArchiveListRequest build(java.util.Map<String, ?> map) throws Exception {
         ArchiveListRequest self = new ArchiveListRequest();
         return TeaModel.build(map, self);
+    }
+
+    public ArchiveListRequest setFormat(String Format) {
+        this.Format = Format;
+        return this;
+    }
+    public String getFormat() {
+        return this.Format;
     }
 
     public ArchiveListRequest setRequestID(String RequestID) {
