@@ -101,6 +101,14 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("meta")
     public String meta;
 
+    // mime_extension
+    @NameInMap("mime_extension")
+    public String mimeExtension;
+
+    // mime_type
+    @NameInMap("mime_type")
+    public String mimeType;
+
     // name
     @NameInMap("name")
     @Validation(required = true, pattern = "[a-zA-Z0-9.-]{1,1000}")
@@ -362,6 +370,22 @@ public class GetFileResponse extends TeaModel {
     }
     public String getMeta() {
         return this.meta;
+    }
+
+    public GetFileResponse setMimeExtension(String mimeExtension) {
+        this.mimeExtension = mimeExtension;
+        return this;
+    }
+    public String getMimeExtension() {
+        return this.mimeExtension;
+    }
+
+    public GetFileResponse setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+        return this;
+    }
+    public String getMimeType() {
+        return this.mimeType;
     }
 
     public GetFileResponse setName(String name) {

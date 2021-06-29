@@ -41,6 +41,10 @@ public class CreateShareLinkRequest extends TeaModel {
     @Validation(maximum = 100, minimum = 1)
     public java.util.List<String> filePathList;
 
+    // filter_group
+    @NameInMap("filter_group")
+    public String filterGroup;
+
     @NameInMap("referer")
     public String referer;
 
@@ -120,6 +124,14 @@ public class CreateShareLinkRequest extends TeaModel {
     }
     public java.util.List<String> getFilePathList() {
         return this.filePathList;
+    }
+
+    public CreateShareLinkRequest setFilterGroup(String filterGroup) {
+        this.filterGroup = filterGroup;
+        return this;
+    }
+    public String getFilterGroup() {
+        return this.filterGroup;
     }
 
     public CreateShareLinkRequest setReferer(String referer) {

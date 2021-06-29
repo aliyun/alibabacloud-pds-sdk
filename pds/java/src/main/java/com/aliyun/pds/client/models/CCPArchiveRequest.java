@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * 
  */
 public class CCPArchiveRequest extends TeaModel {
+    // 格式类型，如果是uc，使用特殊格式
+    @NameInMap("Format")
+    public String Format;
+
     @NameInMap("RequestID")
     public String RequestID;
 
@@ -29,6 +33,14 @@ public class CCPArchiveRequest extends TeaModel {
     public static CCPArchiveRequest build(java.util.Map<String, ?> map) throws Exception {
         CCPArchiveRequest self = new CCPArchiveRequest();
         return TeaModel.build(map, self);
+    }
+
+    public CCPArchiveRequest setFormat(String Format) {
+        this.Format = Format;
+        return this;
+    }
+    public String getFormat() {
+        return this.Format;
     }
 
     public CCPArchiveRequest setRequestID(String RequestID) {

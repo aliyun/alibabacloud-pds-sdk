@@ -11,6 +11,10 @@ public class VideoMediaMetadata extends TeaModel {
     @NameInMap("duration")
     public String duration;
 
+    // taken_at
+    @NameInMap("taken_at")
+    public String takenAt;
+
     public static VideoMediaMetadata build(java.util.Map<String, ?> map) throws Exception {
         VideoMediaMetadata self = new VideoMediaMetadata();
         return TeaModel.build(map, self);
@@ -22,6 +26,14 @@ public class VideoMediaMetadata extends TeaModel {
     }
     public String getDuration() {
         return this.duration;
+    }
+
+    public VideoMediaMetadata setTakenAt(String takenAt) {
+        this.takenAt = takenAt;
+        return this;
+    }
+    public String getTakenAt() {
+        return this.takenAt;
     }
 
 }

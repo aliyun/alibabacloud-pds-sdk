@@ -27,6 +27,10 @@ public class CreateStoryRequest extends TeaModel {
     @NameInMap("story_end_time")
     public String storyEndTime;
 
+    // story_id
+    @NameInMap("story_id")
+    public String storyId;
+
     // story_name
     @NameInMap("story_name")
     public String storyName;
@@ -83,6 +87,14 @@ public class CreateStoryRequest extends TeaModel {
     }
     public String getStoryEndTime() {
         return this.storyEndTime;
+    }
+
+    public CreateStoryRequest setStoryId(String storyId) {
+        this.storyId = storyId;
+        return this;
+    }
+    public String getStoryId() {
+        return this.storyId;
     }
 
     public CreateStoryRequest setStoryName(String storyName) {
