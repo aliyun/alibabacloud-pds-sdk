@@ -3581,7 +3581,7 @@ func (s *ArchiveStatusResponse) SetTaskId(v string) *ArchiveStatusResponse {
 }
 
 /**
- * 解压
+ * 获取解压任务状态
  */
 type ArchiveUncompressRequest struct {
   // 格式类型，如果是uc，使用特殊格式
@@ -3592,10 +3592,8 @@ type ArchiveUncompressRequest struct {
   // TODO 增加对ShareID的支持
   DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
   FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-  FileList []*string `json:"file_list,omitempty" xml:"file_list,omitempty" type:"Repeated"`
   Password *string `json:"password,omitempty" xml:"password,omitempty"`
-  TargetDriveId *string `json:"target_drive_id,omitempty" xml:"target_drive_id,omitempty"`
-  TargetFileId *string `json:"target_file_id,omitempty" xml:"target_file_id,omitempty"`
+  TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
 func (s ArchiveUncompressRequest) String() string {
@@ -3636,23 +3634,13 @@ func (s *ArchiveUncompressRequest) SetFileId(v string) *ArchiveUncompressRequest
   return s
 }
 
-func (s *ArchiveUncompressRequest) SetFileList(v []*string) *ArchiveUncompressRequest {
-  s.FileList = v
-  return s
-}
-
 func (s *ArchiveUncompressRequest) SetPassword(v string) *ArchiveUncompressRequest {
   s.Password = &v
   return s
 }
 
-func (s *ArchiveUncompressRequest) SetTargetDriveId(v string) *ArchiveUncompressRequest {
-  s.TargetDriveId = &v
-  return s
-}
-
-func (s *ArchiveUncompressRequest) SetTargetFileId(v string) *ArchiveUncompressRequest {
-  s.TargetFileId = &v
+func (s *ArchiveUncompressRequest) SetTaskId(v string) *ArchiveUncompressRequest {
+  s.TaskId = &v
   return s
 }
 
@@ -3964,7 +3952,7 @@ type BaseCCPFileResponse struct {
   PunishFlag *int64 `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // starred
   // type: boolean
   Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
@@ -3987,7 +3975,7 @@ type BaseCCPFileResponse struct {
   // user_meta
   UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
   // user_tags
-  UserTags []*UserTagResponse `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
+  UserTags map[string]interface{} `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
   VideoMediaMetadata *VideoMediaResponse `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
   VideoPreviewMetadata *VideoPreviewResponse `json:"video_preview_metadata,omitempty" xml:"video_preview_metadata,omitempty"`
 }
@@ -4205,7 +4193,7 @@ func (s *BaseCCPFileResponse) SetUserMeta(v string) *BaseCCPFileResponse {
   return s
 }
 
-func (s *BaseCCPFileResponse) SetUserTags(v []*UserTagResponse) *BaseCCPFileResponse {
+func (s *BaseCCPFileResponse) SetUserTags(v map[string]interface{}) *BaseCCPFileResponse {
   s.UserTags = v
   return s
 }
@@ -4283,7 +4271,7 @@ type BaseCreateFileRequest struct {
   // part_info_list
   PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // Type
   Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
 }
@@ -4457,7 +4445,7 @@ type BaseFileAnonymousResponse struct {
   // name
   Name *string `json:"name,omitempty" xml:"name,omitempty" pattern:"[a-zA-Z0-9.-]{1,1000}"`
   // size, type=file时才有效
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // thumbnail
   Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
   // type
@@ -4634,7 +4622,7 @@ type BaseHostingFileResponse struct {
   // share_id
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9]+"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // status
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
   // thumbnail
@@ -5650,6 +5638,8 @@ type CCPGetShareLinkVideoPreviewPlayInfoRequest struct {
   // file_id
   FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
   FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
+  // get_preview_url
+  GetPreviewUrl *bool `json:"get_preview_url,omitempty" xml:"get_preview_url,omitempty"`
   // image_thumbnail_process
   ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
   // image_url_process
@@ -5701,6 +5691,11 @@ func (s *CCPGetShareLinkVideoPreviewPlayInfoRequest) SetFileId(v string) *CCPGet
 
 func (s *CCPGetShareLinkVideoPreviewPlayInfoRequest) SetFileIdPath(v string) *CCPGetShareLinkVideoPreviewPlayInfoRequest {
   s.FileIdPath = &v
+  return s
+}
+
+func (s *CCPGetShareLinkVideoPreviewPlayInfoRequest) SetGetPreviewUrl(v bool) *CCPGetShareLinkVideoPreviewPlayInfoRequest {
+  s.GetPreviewUrl = &v
   return s
 }
 
@@ -5802,6 +5797,8 @@ type CCPGetVideoPreviewPlayInfoRequest struct {
   // file_id
   FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9.-_]{1,50}"`
   FileIdPath *string `json:"file_id_path,omitempty" xml:"file_id_path,omitempty"`
+  // get_preview_url
+  GetPreviewUrl *bool `json:"get_preview_url,omitempty" xml:"get_preview_url,omitempty"`
   // location
   Location *string `json:"location,omitempty" xml:"location,omitempty"`
   Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
@@ -5849,6 +5846,11 @@ func (s *CCPGetVideoPreviewPlayInfoRequest) SetFileId(v string) *CCPGetVideoPrev
 
 func (s *CCPGetVideoPreviewPlayInfoRequest) SetFileIdPath(v string) *CCPGetVideoPreviewPlayInfoRequest {
   s.FileIdPath = &v
+  return s
+}
+
+func (s *CCPGetVideoPreviewPlayInfoRequest) SetGetPreviewUrl(v bool) *CCPGetVideoPreviewPlayInfoRequest {
+  s.GetPreviewUrl = &v
   return s
 }
 
@@ -6530,7 +6532,7 @@ type CompleteFileResponse struct {
   PunishFlag *int64 `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // starred
   // type: boolean
   Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
@@ -6554,7 +6556,7 @@ type CompleteFileResponse struct {
   // user_meta
   UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
   // user_tags
-  UserTags []*UserTagResponse `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
+  UserTags map[string]interface{} `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
   VideoMediaMetadata *VideoMediaResponse `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
   VideoPreviewMetadata *VideoPreviewResponse `json:"video_preview_metadata,omitempty" xml:"video_preview_metadata,omitempty"`
 }
@@ -6782,7 +6784,7 @@ func (s *CompleteFileResponse) SetUserMeta(v string) *CompleteFileResponse {
   return s
 }
 
-func (s *CompleteFileResponse) SetUserTags(v []*UserTagResponse) *CompleteFileResponse {
+func (s *CompleteFileResponse) SetUserTags(v map[string]interface{}) *CompleteFileResponse {
   s.UserTags = v
   return s
 }
@@ -7493,7 +7495,7 @@ type CreateFileRequest struct {
   // example
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // streams_info
   StreamsInfo map[string]interface{} `json:"streams_info,omitempty" xml:"streams_info,omitempty"`
   // Type
@@ -9230,7 +9232,7 @@ type FileStreamInfo struct {
   // proof_version
   ProofVersion *string `json:"proof_version,omitempty" xml:"proof_version,omitempty"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" require:"true" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" require:"true" minimum:"0"`
 }
 
 func (s FileStreamInfo) String() string {
@@ -10161,7 +10163,7 @@ type GetFileByPathResponse struct {
   PunishFlag *int64 `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // starred
   // type: boolean
   Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
@@ -10187,7 +10189,7 @@ type GetFileByPathResponse struct {
   // user_meta
   UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
   // user_tags
-  UserTags []*UserTagResponse `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
+  UserTags map[string]interface{} `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
   VideoMediaMetadata *VideoMediaResponse `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
   VideoPreviewMetadata *VideoPreviewResponse `json:"video_preview_metadata,omitempty" xml:"video_preview_metadata,omitempty"`
 }
@@ -10420,7 +10422,7 @@ func (s *GetFileByPathResponse) SetUserMeta(v string) *GetFileByPathResponse {
   return s
 }
 
-func (s *GetFileByPathResponse) SetUserTags(v []*UserTagResponse) *GetFileByPathResponse {
+func (s *GetFileByPathResponse) SetUserTags(v map[string]interface{}) *GetFileByPathResponse {
   s.UserTags = v
   return s
 }
@@ -10624,7 +10626,7 @@ type GetFileResponse struct {
   PunishFlag *int64 `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // starred
   // type: boolean
   Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
@@ -10650,7 +10652,7 @@ type GetFileResponse struct {
   // user_meta
   UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
   // user_tags
-  UserTags []*UserTagResponse `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
+  UserTags map[string]interface{} `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
   VideoMediaMetadata *VideoMediaResponse `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
   VideoPreviewMetadata *VideoPreviewResponse `json:"video_preview_metadata,omitempty" xml:"video_preview_metadata,omitempty"`
 }
@@ -10883,7 +10885,7 @@ func (s *GetFileResponse) SetUserMeta(v string) *GetFileResponse {
   return s
 }
 
-func (s *GetFileResponse) SetUserTags(v []*UserTagResponse) *GetFileResponse {
+func (s *GetFileResponse) SetUserTags(v map[string]interface{}) *GetFileResponse {
   s.UserTags = v
   return s
 }
@@ -12484,7 +12486,7 @@ type HostingCompleteFileResponse struct {
   // share_id
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9]+"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // status
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
   // thumbnail
@@ -12781,7 +12783,7 @@ type HostingCreateFileRequest struct {
   // share_id
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9a-zA-Z-]+"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // Type
   Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
 }
@@ -13272,7 +13274,7 @@ type HostingGetFileResponse struct {
   // share_id
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9]+"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // status
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
   // thumbnail
@@ -13999,7 +14001,7 @@ type HostingUpdateFileMetaResponse struct {
   // share_id
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty" pattern:"[0-9]+"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // status
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
   // thumbnail
@@ -16445,6 +16447,8 @@ func (s *LiveTranscodingMetaResponse) SetTsTotalCount(v int64) *LiveTranscodingM
  * 实时转码信息task响应
  */
 type LiveTranscodingTaskResponse struct {
+  // preview_url
+  PreviewUrl *string `json:"preview_url,omitempty" xml:"preview_url,omitempty"`
   // stage
   Stage *string `json:"stage,omitempty" xml:"stage,omitempty"`
   // status
@@ -16461,6 +16465,11 @@ func (s LiveTranscodingTaskResponse) String() string {
 
 func (s LiveTranscodingTaskResponse) GoString() string {
   return s.String()
+}
+
+func (s *LiveTranscodingTaskResponse) SetPreviewUrl(v string) *LiveTranscodingTaskResponse {
+  s.PreviewUrl = &v
+  return s
 }
 
 func (s *LiveTranscodingTaskResponse) SetStage(v string) *LiveTranscodingTaskResponse {
@@ -17377,7 +17386,7 @@ type RecycleBinItemResponse struct {
   PunishFlag *int64 `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // starred
   // type: boolean
   Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
@@ -17400,7 +17409,7 @@ type RecycleBinItemResponse struct {
   // user_meta
   UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
   // user_tags
-  UserTags []*UserTagResponse `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
+  UserTags map[string]interface{} `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
   VideoMediaMetadata *VideoMediaResponse `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
   VideoPreviewMetadata *VideoPreviewResponse `json:"video_preview_metadata,omitempty" xml:"video_preview_metadata,omitempty"`
 }
@@ -17628,7 +17637,7 @@ func (s *RecycleBinItemResponse) SetUserMeta(v string) *RecycleBinItemResponse {
   return s
 }
 
-func (s *RecycleBinItemResponse) SetUserTags(v []*UserTagResponse) *RecycleBinItemResponse {
+func (s *RecycleBinItemResponse) SetUserTags(v map[string]interface{}) *RecycleBinItemResponse {
   s.UserTags = v
   return s
 }
@@ -20129,7 +20138,7 @@ type UpdateFileMetaResponse struct {
   PunishFlag *int64 `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
   // Size
-  Size *int64 `json:"size,omitempty" xml:"size,omitempty" maximum:"53687091200" minimum:"0"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
   // starred
   // type: boolean
   Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
@@ -20152,7 +20161,7 @@ type UpdateFileMetaResponse struct {
   // user_meta
   UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
   // user_tags
-  UserTags []*UserTagResponse `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
+  UserTags map[string]interface{} `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
   VideoMediaMetadata *VideoMediaResponse `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
   VideoPreviewMetadata *VideoPreviewResponse `json:"video_preview_metadata,omitempty" xml:"video_preview_metadata,omitempty"`
 }
@@ -20370,7 +20379,7 @@ func (s *UpdateFileMetaResponse) SetUserMeta(v string) *UpdateFileMetaResponse {
   return s
 }
 
-func (s *UpdateFileMetaResponse) SetUserTags(v []*UserTagResponse) *UpdateFileMetaResponse {
+func (s *UpdateFileMetaResponse) SetUserTags(v map[string]interface{}) *UpdateFileMetaResponse {
   s.UserTags = v
   return s
 }
@@ -21007,34 +21016,6 @@ func (s *UserTag) SetKey(v string) *UserTag {
 }
 
 func (s *UserTag) SetValue(v string) *UserTag {
-  s.Value = &v
-  return s
-}
-
-/**
- * 
- */
-type UserTagResponse struct {
-  // key
-  Key *string `json:"key,omitempty" xml:"key,omitempty"`
-  // value
-  Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s UserTagResponse) String() string {
-  return tea.Prettify(s)
-}
-
-func (s UserTagResponse) GoString() string {
-  return s.String()
-}
-
-func (s *UserTagResponse) SetKey(v string) *UserTagResponse {
-  s.Key = &v
-  return s
-}
-
-func (s *UserTagResponse) SetValue(v string) *UserTagResponse {
   s.Value = &v
   return s
 }
@@ -24950,6 +24931,7 @@ type VideoPreviewLiveTranscodingConfig struct {
   LeadingPrefix *string `json:"leading_prefix,omitempty" xml:"leading_prefix,omitempty"`
   M3u8FilePrefix *string `json:"m3u8_file_prefix,omitempty" xml:"m3u8_file_prefix,omitempty"`
   MediaDurationLimit *float64 `json:"media_duration_limit,omitempty" xml:"media_duration_limit,omitempty"`
+  RefTaskConfig *VideoPreviewLiveTranscodingRefTaskConfig `json:"ref_task_config,omitempty" xml:"ref_task_config,omitempty"`
   Segment *int64 `json:"segment,omitempty" xml:"segment,omitempty"`
   TemplateList []*string `json:"template_list,omitempty" xml:"template_list,omitempty" type:"Repeated"`
   // Mode              string   `json:"mode"`               // 默认media模式
@@ -25012,6 +24994,11 @@ func (s *VideoPreviewLiveTranscodingConfig) SetMediaDurationLimit(v float64) *Vi
   return s
 }
 
+func (s *VideoPreviewLiveTranscodingConfig) SetRefTaskConfig(v *VideoPreviewLiveTranscodingRefTaskConfig) *VideoPreviewLiveTranscodingConfig {
+  s.RefTaskConfig = v
+  return s
+}
+
 func (s *VideoPreviewLiveTranscodingConfig) SetSegment(v int64) *VideoPreviewLiveTranscodingConfig {
   s.Segment = &v
   return s
@@ -25060,6 +25047,32 @@ func (s *VideoPreviewLiveTranscodingEnableConfig) SetDropFileCreatedEvent(v bool
 
 func (s *VideoPreviewLiveTranscodingEnableConfig) SetEnableIgnoreCopiedFile(v bool) *VideoPreviewLiveTranscodingEnableConfig {
   s.EnableIgnoreCopiedFile = &v
+  return s
+}
+
+/**
+ * 
+ */
+type VideoPreviewLiveTranscodingRefTaskConfig struct {
+  Duration *float64 `json:"duration,omitempty" xml:"duration,omitempty"`
+  Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+}
+
+func (s VideoPreviewLiveTranscodingRefTaskConfig) String() string {
+  return tea.Prettify(s)
+}
+
+func (s VideoPreviewLiveTranscodingRefTaskConfig) GoString() string {
+  return s.String()
+}
+
+func (s *VideoPreviewLiveTranscodingRefTaskConfig) SetDuration(v float64) *VideoPreviewLiveTranscodingRefTaskConfig {
+  s.Duration = &v
+  return s
+}
+
+func (s *VideoPreviewLiveTranscodingRefTaskConfig) SetEnabled(v bool) *VideoPreviewLiveTranscodingRefTaskConfig {
+  s.Enabled = &v
   return s
 }
 
