@@ -31,6 +31,10 @@ public class GetShareLinkDownloadURLRequest extends TeaModel {
     @NameInMap("get_audio_play_info")
     public Boolean getAudioPlayInfo;
 
+    // get_streams_url
+    @NameInMap("get_streams_url")
+    public Boolean getStreamsUrl;
+
     // get_video_play_info
     @NameInMap("get_video_play_info")
     public Boolean getVideoPlayInfo;
@@ -118,6 +122,14 @@ public class GetShareLinkDownloadURLRequest extends TeaModel {
     }
     public Boolean getGetAudioPlayInfo() {
         return this.getAudioPlayInfo;
+    }
+
+    public GetShareLinkDownloadURLRequest setGetStreamsUrl(Boolean getStreamsUrl) {
+        this.getStreamsUrl = getStreamsUrl;
+        return this;
+    }
+    public Boolean getGetStreamsUrl() {
+        return this.getStreamsUrl;
     }
 
     public GetShareLinkDownloadURLRequest setGetVideoPlayInfo(Boolean getVideoPlayInfo) {

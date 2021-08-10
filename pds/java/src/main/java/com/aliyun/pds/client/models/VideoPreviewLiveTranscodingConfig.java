@@ -16,11 +16,14 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
     @NameInMap("detail_count_limit")
     public Long detailCountLimit;
 
+    @NameInMap("enable_config")
+    public VideoPreviewLiveTranscodingEnableConfig enableConfig;
+
     @NameInMap("enabled")
     public Boolean enabled;
 
-    @NameInMap("imm_project_map")
-    public java.util.Map<String, ?> immProjectMap;
+    @NameInMap("ignore_template_list")
+    public java.util.List<String> ignoreTemplateList;
 
     @NameInMap("leading_prefix")
     public String leadingPrefix;
@@ -30,6 +33,9 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
 
     @NameInMap("media_duration_limit")
     public Double mediaDurationLimit;
+
+    @NameInMap("ref_task_config")
+    public VideoPreviewLiveTranscodingRefTaskConfig refTaskConfig;
 
     @NameInMap("segment")
     public Long segment;
@@ -77,6 +83,14 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
         return this.detailCountLimit;
     }
 
+    public VideoPreviewLiveTranscodingConfig setEnableConfig(VideoPreviewLiveTranscodingEnableConfig enableConfig) {
+        this.enableConfig = enableConfig;
+        return this;
+    }
+    public VideoPreviewLiveTranscodingEnableConfig getEnableConfig() {
+        return this.enableConfig;
+    }
+
     public VideoPreviewLiveTranscodingConfig setEnabled(Boolean enabled) {
         this.enabled = enabled;
         return this;
@@ -85,12 +99,12 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
         return this.enabled;
     }
 
-    public VideoPreviewLiveTranscodingConfig setImmProjectMap(java.util.Map<String, ?> immProjectMap) {
-        this.immProjectMap = immProjectMap;
+    public VideoPreviewLiveTranscodingConfig setIgnoreTemplateList(java.util.List<String> ignoreTemplateList) {
+        this.ignoreTemplateList = ignoreTemplateList;
         return this;
     }
-    public java.util.Map<String, ?> getImmProjectMap() {
-        return this.immProjectMap;
+    public java.util.List<String> getIgnoreTemplateList() {
+        return this.ignoreTemplateList;
     }
 
     public VideoPreviewLiveTranscodingConfig setLeadingPrefix(String leadingPrefix) {
@@ -115,6 +129,14 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
     }
     public Double getMediaDurationLimit() {
         return this.mediaDurationLimit;
+    }
+
+    public VideoPreviewLiveTranscodingConfig setRefTaskConfig(VideoPreviewLiveTranscodingRefTaskConfig refTaskConfig) {
+        this.refTaskConfig = refTaskConfig;
+        return this;
+    }
+    public VideoPreviewLiveTranscodingRefTaskConfig getRefTaskConfig() {
+        return this.refTaskConfig;
     }
 
     public VideoPreviewLiveTranscodingConfig setSegment(Long segment) {

@@ -43,6 +43,9 @@ public class VideoPreviewConfig extends TeaModel {
     @NameInMap("template_list")
     public java.util.List<String> templateList;
 
+    @NameInMap("template_policy_config")
+    public VideoPreviewTemplatePolicyConfig templatePolicyConfig;
+
     @NameInMap("thumbnail")
     public VideoPreviewThumbnail thumbnail;
 
@@ -151,6 +154,14 @@ public class VideoPreviewConfig extends TeaModel {
     }
     public java.util.List<String> getTemplateList() {
         return this.templateList;
+    }
+
+    public VideoPreviewConfig setTemplatePolicyConfig(VideoPreviewTemplatePolicyConfig templatePolicyConfig) {
+        this.templatePolicyConfig = templatePolicyConfig;
+        return this;
+    }
+    public VideoPreviewTemplatePolicyConfig getTemplatePolicyConfig() {
+        return this.templatePolicyConfig;
     }
 
     public VideoPreviewConfig setThumbnail(VideoPreviewThumbnail thumbnail) {

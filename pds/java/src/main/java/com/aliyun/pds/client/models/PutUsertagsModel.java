@@ -3,20 +3,20 @@ package com.aliyun.pds.client.models;
 
 import com.aliyun.tea.*;
 
-public class ChangePasswordModel extends TeaModel {
+public class PutUsertagsModel extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
     @NameInMap("body")
     @Validation(required = true)
-    public AccountAccessTokenResponse body;
+    public PutFileUserTagsResponse body;
 
-    public static ChangePasswordModel build(java.util.Map<String, ?> map) throws Exception {
-        ChangePasswordModel self = new ChangePasswordModel();
+    public static PutUsertagsModel build(java.util.Map<String, ?> map) throws Exception {
+        PutUsertagsModel self = new PutUsertagsModel();
         return TeaModel.build(map, self);
     }
 
-    public ChangePasswordModel setHeaders(java.util.Map<String, String> headers) {
+    public PutUsertagsModel setHeaders(java.util.Map<String, String> headers) {
         this.headers = headers;
         return this;
     }
@@ -24,11 +24,11 @@ public class ChangePasswordModel extends TeaModel {
         return this.headers;
     }
 
-    public ChangePasswordModel setBody(AccountAccessTokenResponse body) {
+    public PutUsertagsModel setBody(PutFileUserTagsResponse body) {
         this.body = body;
         return this;
     }
-    public AccountAccessTokenResponse getBody() {
+    public PutFileUserTagsResponse getBody() {
         return this.body;
     }
 

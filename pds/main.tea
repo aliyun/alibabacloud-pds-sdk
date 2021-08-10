@@ -13720,7 +13720,7 @@ model ArchiveStatusResponse {
 }
 
 /**
- * 解压
+ * 获取解压任务状态
  */
 model ArchiveUncompressRequest {
   Format?: string(name='Format', description='格式类型，如果是uc，使用特殊格式'),
@@ -13729,10 +13729,8 @@ model ArchiveUncompressRequest {
   domainId?: string(name='domain_id'),
   driveId?: string(name='drive_id', description='TODO 增加对ShareID的支持'),
   fileId?: string(name='file_id'),
-  fileList?: [ string ](name='file_list', items='{"type":"string"}'),
   password?: string(name='password'),
-  targetDriveId?: string(name='target_drive_id'),
-  targetFileId?: string(name='target_file_id'),
+  taskId?: string(name='task_id'),
 }
 
 /**
@@ -13827,7 +13825,7 @@ type: boolean', enum='false, true', example=false),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
   shareId?: string(name='share_id'),
-  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
   starred?: boolean(name='starred', description='starred
 type: boolean', example=false),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
@@ -13839,7 +13837,7 @@ type: boolean', example=false),
   uploadId?: string(name='upload_id', description='upload_id', example='C9DCFE5A82644AC7A02DB74C30C934A6'),
   url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
-  userTags?: [ UserTagResponse ](name='user_tags', description='user_tags', items='{"$ref":"#/definitions/UserTagResponse"}'),
+  userTags?: object(name='user_tags', additionalProperties='{"type":"string"}', description='user_tags'),
   videoMediaMetadata?: VideoMediaResponse(name='video_media_metadata'),
   videoPreviewMetadata?: VideoPreviewResponse(name='video_preview_metadata'),
 }
@@ -13864,7 +13862,7 @@ model BaseCreateFileRequest {
   contentType?: string(name='content_type', description='ContentType', example='application/json'),
   name: string(name='name', description='Name', example='ccp.jpg', maxLength=1024, minLength=1),
   partInfoList?: [ UploadPartInfo ](name='part_info_list', description='part_info_list', items='{"$ref":"#/definitions/UploadPartInfo"}'),
-  size?: int64(name='size', description='Size', format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', format='int64', minimum=0),
   type: string(name='type', description='Type', enum='file, folder', example='file'),
 }
 
@@ -13895,7 +13893,7 @@ model BaseDriveResponse {
 model BaseFileAnonymousResponse {
   fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   name?: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
-  size?: int64(name='size', description='size, type=file时才有效', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='size, type=file时才有效', example=1024, format='int64', minimum=0),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   type?: string(name='type', description='type', enum='file, folder', example='file'),
   updatedAt?: string(name='updated_at', description='updated_at', format='date-time'),
@@ -13942,7 +13940,7 @@ model BaseHostingFileResponse {
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_id', example='/', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[0-9]+'),
-  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
@@ -14149,6 +14147,7 @@ model CCPGetShareLinkVideoPreviewPlayInfoRequest {
   category?: string(name='category', description='category', enum='live_transcoding', example='live_transcoding'),
   fileId?: string(name='file_id', description='file_id', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
   fileIdPath?: string(name='file_id_path'),
+  getPreviewUrl?: boolean(name='get_preview_url', description='get_preview_url', example=true),
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
   location?: string(name='location', description='location', example='cn-hangzhou'),
@@ -14181,6 +14180,7 @@ model CCPGetVideoPreviewPlayInfoRequest {
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
   fileIdPath?: string(name='file_id_path'),
+  getPreviewUrl?: boolean(name='get_preview_url', description='get_preview_url', example=true),
   location?: string(name='location', description='location', example='cn-hangzhou'),
   referer?: string(name='referer'),
   shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='Agg1RL8pw96'),
@@ -14363,7 +14363,7 @@ type: boolean', enum='false, true', example=false),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
   shareId?: string(name='share_id'),
-  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
   starred?: boolean(name='starred', description='starred
 type: boolean', example=false),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
@@ -14376,7 +14376,7 @@ type: boolean', example=false),
   uploadId?: string(name='upload_id', description='upload_id', example='C9DCFE5A82644AC7A02DB74C30C934A6'),
   url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
-  userTags?: [ UserTagResponse ](name='user_tags', description='user_tags', items='{"$ref":"#/definitions/UserTagResponse"}'),
+  userTags?: object(name='user_tags', additionalProperties='{"type":"string"}', description='user_tags'),
   videoMediaMetadata?: VideoMediaResponse(name='video_media_metadata'),
   videoPreviewMetadata?: VideoPreviewResponse(name='video_preview_metadata'),
 }
@@ -14547,7 +14547,7 @@ model CreateFileRequest {
   proofVersion?: string(name='proof_version', description='proof_version', enum='v1'),
   shareId?: string(name='share_id', description='share_id
 example'),
-  size?: int64(name='size', description='Size', format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', format='int64', minimum=0),
   streamsInfo?: object(name='streams_info', additionalProperties='{"$ref":"#/definitions/FileStreamInfo"}', description='streams_info'),
   type: string(name='type', description='Type', enum='file, folder', example='file'),
   userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
@@ -14928,7 +14928,7 @@ model FileStreamInfo {
   preHash?: string(name='pre_hash', description='pre_hash', example='E10ADC3949BA59ABBE56E057F20F883E'),
   proofCode?: string(name='proof_code', description='proof_code'),
   proofVersion?: string(name='proof_version', description='proof_version', enum='v1'),
-  size: int64(name='size', description='Size', format='int64', maximum=53687091200, minimum=0),
+  size: int64(name='size', description='Size', format='int64', minimum=0),
 }
 
 /**
@@ -15162,7 +15162,7 @@ type: boolean', enum='false, true', example=false),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
   shareId?: string(name='share_id'),
-  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
   starred?: boolean(name='starred', description='starred
 type: boolean', example=false),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
@@ -15176,7 +15176,7 @@ type: boolean', enum='false, true', example=false),
   uploadId?: string(name='upload_id', description='upload_id', example='C9DCFE5A82644AC7A02DB74C30C934A6'),
   url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
-  userTags?: [ UserTagResponse ](name='user_tags', description='user_tags', items='{"$ref":"#/definitions/UserTagResponse"}'),
+  userTags?: object(name='user_tags', additionalProperties='{"type":"string"}', description='user_tags'),
   videoMediaMetadata?: VideoMediaResponse(name='video_media_metadata'),
   videoPreviewMetadata?: VideoPreviewResponse(name='video_preview_metadata'),
 }
@@ -15241,7 +15241,7 @@ type: boolean', enum='false, true', example=false),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
   shareId?: string(name='share_id'),
-  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
   starred?: boolean(name='starred', description='starred
 type: boolean', example=false),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
@@ -15255,7 +15255,7 @@ type: boolean', enum='false, true', example=false),
   uploadId?: string(name='upload_id', description='upload_id', example='C9DCFE5A82644AC7A02DB74C30C934A6'),
   url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
-  userTags?: [ UserTagResponse ](name='user_tags', description='user_tags', items='{"$ref":"#/definitions/UserTagResponse"}'),
+  userTags?: object(name='user_tags', additionalProperties='{"type":"string"}', description='user_tags'),
   videoMediaMetadata?: VideoMediaResponse(name='video_media_metadata'),
   videoPreviewMetadata?: VideoPreviewResponse(name='video_preview_metadata'),
 }
@@ -15643,7 +15643,7 @@ model HostingCompleteFileResponse {
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_id', example='/', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[0-9]+'),
-  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
@@ -15695,7 +15695,7 @@ type: boolean'),
   parentFilePath: string(name='parent_file_path', description='parent_file_path'),
   partInfoList?: [ UploadPartInfo ](name='part_info_list', description='part_info_list', items='{"$ref":"#/definitions/UploadPartInfo"}'),
   shareId?: string(name='share_id', description='share_id', pattern='[0-9a-zA-Z-]+'),
-  size?: int64(name='size', description='Size', format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', format='int64', minimum=0),
   type: string(name='type', description='Type', enum='file, folder', example='file'),
 }
 
@@ -15803,7 +15803,7 @@ model HostingGetFileResponse {
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_id', example='/', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[0-9]+'),
-  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
@@ -15957,7 +15957,7 @@ model HostingUpdateFileMetaResponse {
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFilePath?: string(name='parent_file_path', description='parent_file_id', example='/', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[0-9]+'),
-  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
@@ -16486,6 +16486,7 @@ model LiveTranscodingMetaResponse {
  * 实时转码信息task响应
  */
 model LiveTranscodingTaskResponse {
+  previewUrl?: string(name='preview_url', description='preview_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   stage?: string(name='stage', description='stage', enum='stage_all, stage_pre, stage_none', example='stage_pre'),
   status?: string(name='status', description='status', example='finished'),
   templateId?: string(name='template_id', description='template_id', example='HD'),
@@ -16726,7 +16727,7 @@ type: boolean', enum='false, true', example=false),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
   shareId?: string(name='share_id'),
-  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
   starred?: boolean(name='starred', description='starred
 type: boolean', example=false),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
@@ -16738,7 +16739,7 @@ type: boolean', example=false),
   uploadId?: string(name='upload_id', description='upload_id', example='C9DCFE5A82644AC7A02DB74C30C934A6'),
   url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
-  userTags?: [ UserTagResponse ](name='user_tags', description='user_tags', items='{"$ref":"#/definitions/UserTagResponse"}'),
+  userTags?: object(name='user_tags', additionalProperties='{"type":"string"}', description='user_tags'),
   videoMediaMetadata?: VideoMediaResponse(name='video_media_metadata'),
   videoPreviewMetadata?: VideoPreviewResponse(name='video_preview_metadata'),
 }
@@ -17331,7 +17332,7 @@ type: boolean', enum='false, true', example=false),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
   shareId?: string(name='share_id'),
-  size?: int64(name='size', description='Size', example=1024, format='int64', maximum=53687091200, minimum=0),
+  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
   starred?: boolean(name='starred', description='starred
 type: boolean', example=false),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
@@ -17343,7 +17344,7 @@ type: boolean', example=false),
   uploadId?: string(name='upload_id', description='upload_id', example='C9DCFE5A82644AC7A02DB74C30C934A6'),
   url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
-  userTags?: [ UserTagResponse ](name='user_tags', description='user_tags', items='{"$ref":"#/definitions/UserTagResponse"}'),
+  userTags?: object(name='user_tags', additionalProperties='{"type":"string"}', description='user_tags'),
   videoMediaMetadata?: VideoMediaResponse(name='video_media_metadata'),
   videoPreviewMetadata?: VideoPreviewResponse(name='video_preview_metadata'),
 }
@@ -17468,14 +17469,6 @@ model UserAuthentication {
 model UserTag {
   key?: string(name='key', description='key', example='123abc'),
   value?: string(name='value', description='value', example='abcdef'),
-}
-
-/**
- * 
- */
-model UserTagResponse {
-  key?: string(name='key', description='key'),
-  value?: string(name='value', description='value'),
 }
 
 /**
@@ -18305,6 +18298,7 @@ model VideoPreviewLiveTranscodingConfig {
   leadingPrefix?: string(name='leading_prefix'),
   m3u8FilePrefix?: string(name='m3u8_file_prefix'),
   mediaDurationLimit?: double(name='media_duration_limit', format='double'),
+  refTaskConfig?: VideoPreviewLiveTranscodingRefTaskConfig(name='ref_task_config'),
   segment?: int64(name='segment', format='int64'),
   templateList?: [ string ](name='template_list', items='{"type":"string"}'),
   tsCountWhenInitM3u8?: int64(name='ts_count_when_init_m3u8', description='Mode              string   `json:"mode"`               // 默认media模式
@@ -18319,6 +18313,14 @@ model VideoPreviewLiveTranscodingConfig {
 model VideoPreviewLiveTranscodingEnableConfig {
   dropFileCreatedEvent?: boolean(name='drop_file_created_event'),
   enableIgnoreCopiedFile?: boolean(name='enable_ignore_copied_file'),
+}
+
+/**
+ * 
+ */
+model VideoPreviewLiveTranscodingRefTaskConfig {
+  duration?: double(name='duration', format='double'),
+  enabled?: boolean(name='enabled'),
 }
 
 /**

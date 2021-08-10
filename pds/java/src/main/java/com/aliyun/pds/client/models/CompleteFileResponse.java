@@ -35,6 +35,18 @@ public class CompleteFileResponse extends TeaModel {
     @NameInMap("created_at")
     public String createdAt;
 
+    // custom_field_1
+    @NameInMap("custom_field_1")
+    public String customField1;
+
+    // custom_field_2
+    @NameInMap("custom_field_2")
+    public String customField2;
+
+    // custom_type
+    @NameInMap("custom_type")
+    public String customType;
+
     // description
     @NameInMap("description")
     public String description;
@@ -124,7 +136,6 @@ public class CompleteFileResponse extends TeaModel {
 
     // Size
     @NameInMap("size")
-    @Validation(maximum = 53687091200D)
     public Long size;
 
     // starred
@@ -170,6 +181,10 @@ public class CompleteFileResponse extends TeaModel {
     // user_meta
     @NameInMap("user_meta")
     public String userMeta;
+
+    // user_tags
+    @NameInMap("user_tags")
+    public java.util.Map<String, ?> userTags;
 
     @NameInMap("video_media_metadata")
     public VideoMediaResponse videoMediaMetadata;
@@ -236,6 +251,30 @@ public class CompleteFileResponse extends TeaModel {
     }
     public String getCreatedAt() {
         return this.createdAt;
+    }
+
+    public CompleteFileResponse setCustomField1(String customField1) {
+        this.customField1 = customField1;
+        return this;
+    }
+    public String getCustomField1() {
+        return this.customField1;
+    }
+
+    public CompleteFileResponse setCustomField2(String customField2) {
+        this.customField2 = customField2;
+        return this;
+    }
+    public String getCustomField2() {
+        return this.customField2;
+    }
+
+    public CompleteFileResponse setCustomType(String customType) {
+        this.customType = customType;
+        return this;
+    }
+    public String getCustomType() {
+        return this.customType;
     }
 
     public CompleteFileResponse setDescription(String description) {
@@ -500,6 +539,14 @@ public class CompleteFileResponse extends TeaModel {
     }
     public String getUserMeta() {
         return this.userMeta;
+    }
+
+    public CompleteFileResponse setUserTags(java.util.Map<String, ?> userTags) {
+        this.userTags = userTags;
+        return this;
+    }
+    public java.util.Map<String, ?> getUserTags() {
+        return this.userTags;
     }
 
     public CompleteFileResponse setVideoMediaMetadata(VideoMediaResponse videoMediaMetadata) {

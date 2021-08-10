@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * 实时转码信息task响应
  */
 public class LiveTranscodingTaskResponse extends TeaModel {
+    // preview_url
+    @NameInMap("preview_url")
+    public String previewUrl;
+
     // stage
     @NameInMap("stage")
     public String stage;
@@ -26,6 +30,14 @@ public class LiveTranscodingTaskResponse extends TeaModel {
     public static LiveTranscodingTaskResponse build(java.util.Map<String, ?> map) throws Exception {
         LiveTranscodingTaskResponse self = new LiveTranscodingTaskResponse();
         return TeaModel.build(map, self);
+    }
+
+    public LiveTranscodingTaskResponse setPreviewUrl(String previewUrl) {
+        this.previewUrl = previewUrl;
+        return this;
+    }
+    public String getPreviewUrl() {
+        return this.previewUrl;
     }
 
     public LiveTranscodingTaskResponse setStage(String stage) {

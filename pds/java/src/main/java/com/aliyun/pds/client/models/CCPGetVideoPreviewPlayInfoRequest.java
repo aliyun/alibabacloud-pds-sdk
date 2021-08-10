@@ -31,6 +31,10 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
+    // get_preview_url
+    @NameInMap("get_preview_url")
+    public Boolean getPreviewUrl;
+
     // location
     @NameInMap("location")
     public String location;
@@ -105,6 +109,14 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     }
     public String getFileIdPath() {
         return this.fileIdPath;
+    }
+
+    public CCPGetVideoPreviewPlayInfoRequest setGetPreviewUrl(Boolean getPreviewUrl) {
+        this.getPreviewUrl = getPreviewUrl;
+        return this;
+    }
+    public Boolean getGetPreviewUrl() {
+        return this.getPreviewUrl;
     }
 
     public CCPGetVideoPreviewPlayInfoRequest setLocation(String location) {
