@@ -26,6 +26,10 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
+    // get_preview_url
+    @NameInMap("get_preview_url")
+    public Boolean getPreviewUrl;
+
     // image_thumbnail_process
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
@@ -110,6 +114,14 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
     }
     public String getFileIdPath() {
         return this.fileIdPath;
+    }
+
+    public CCPGetShareLinkVideoPreviewPlayInfoRequest setGetPreviewUrl(Boolean getPreviewUrl) {
+        this.getPreviewUrl = getPreviewUrl;
+        return this;
+    }
+    public Boolean getGetPreviewUrl() {
+        return this.getPreviewUrl;
     }
 
     public CCPGetShareLinkVideoPreviewPlayInfoRequest setImageThumbnailProcess(String imageThumbnailProcess) {

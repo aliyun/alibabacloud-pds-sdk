@@ -14,8 +14,17 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("check_name_mode")
     public String checkNameMode;
 
+    @NameInMap("custom_field_1")
+    public String customField1;
+
+    @NameInMap("custom_field_2")
+    public String customField2;
+
     @NameInMap("custom_index_key")
     public String customIndexKey;
+
+    @NameInMap("custom_type")
+    public String customType;
 
     // description
     // type: string
@@ -95,12 +104,36 @@ public class UpdateFileMetaRequest extends TeaModel {
         return this.checkNameMode;
     }
 
+    public UpdateFileMetaRequest setCustomField1(String customField1) {
+        this.customField1 = customField1;
+        return this;
+    }
+    public String getCustomField1() {
+        return this.customField1;
+    }
+
+    public UpdateFileMetaRequest setCustomField2(String customField2) {
+        this.customField2 = customField2;
+        return this;
+    }
+    public String getCustomField2() {
+        return this.customField2;
+    }
+
     public UpdateFileMetaRequest setCustomIndexKey(String customIndexKey) {
         this.customIndexKey = customIndexKey;
         return this;
     }
     public String getCustomIndexKey() {
         return this.customIndexKey;
+    }
+
+    public UpdateFileMetaRequest setCustomType(String customType) {
+        this.customType = customType;
+        return this;
+    }
+    public String getCustomType() {
+        return this.customType;
     }
 
     public UpdateFileMetaRequest setDescription(String description) {

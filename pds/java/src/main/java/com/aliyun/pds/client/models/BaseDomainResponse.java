@@ -15,6 +15,9 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("app_cname")
     public String appCname;
 
+    @NameInMap("app_config")
+    public AppConfig appConfig;
+
     // 支付宝 App Id
     @NameInMap("auth_alipay_app_id")
     public String authAlipayAppId;
@@ -116,6 +119,9 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("expire_time")
     public Long expireTime;
 
+    @NameInMap("group_single_drive_enabled")
+    public Boolean groupSingleDriveEnabled;
+
     // 是否开启了自动初始化 Drive
     @NameInMap("init_drive_enable")
     public Boolean initDriveEnable;
@@ -186,6 +192,10 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("user_count_quota")
     public Long userCountQuota;
 
+    // user和group只能有一个drive的开关
+    @NameInMap("user_single_drive_enabled")
+    public Boolean userSingleDriveEnabled;
+
     @NameInMap("video_preview_config")
     public VideoPreviewConfig videoPreviewConfig;
 
@@ -208,6 +218,14 @@ public class BaseDomainResponse extends TeaModel {
     }
     public String getAppCname() {
         return this.appCname;
+    }
+
+    public BaseDomainResponse setAppConfig(AppConfig appConfig) {
+        this.appConfig = appConfig;
+        return this;
+    }
+    public AppConfig getAppConfig() {
+        return this.appConfig;
     }
 
     public BaseDomainResponse setAuthAlipayAppId(String authAlipayAppId) {
@@ -418,6 +436,14 @@ public class BaseDomainResponse extends TeaModel {
         return this.expireTime;
     }
 
+    public BaseDomainResponse setGroupSingleDriveEnabled(Boolean groupSingleDriveEnabled) {
+        this.groupSingleDriveEnabled = groupSingleDriveEnabled;
+        return this;
+    }
+    public Boolean getGroupSingleDriveEnabled() {
+        return this.groupSingleDriveEnabled;
+    }
+
     public BaseDomainResponse setInitDriveEnable(Boolean initDriveEnable) {
         this.initDriveEnable = initDriveEnable;
         return this;
@@ -560,6 +586,14 @@ public class BaseDomainResponse extends TeaModel {
     }
     public Long getUserCountQuota() {
         return this.userCountQuota;
+    }
+
+    public BaseDomainResponse setUserSingleDriveEnabled(Boolean userSingleDriveEnabled) {
+        this.userSingleDriveEnabled = userSingleDriveEnabled;
+        return this;
+    }
+    public Boolean getUserSingleDriveEnabled() {
+        return this.userSingleDriveEnabled;
     }
 
     public BaseDomainResponse setVideoPreviewConfig(VideoPreviewConfig videoPreviewConfig) {

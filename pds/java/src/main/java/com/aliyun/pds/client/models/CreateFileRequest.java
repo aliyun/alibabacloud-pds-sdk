@@ -37,6 +37,18 @@ public class CreateFileRequest extends TeaModel {
     @NameInMap("content_type")
     public String contentType;
 
+    @NameInMap("create_reason")
+    public String createReason;
+
+    @NameInMap("custom_field_1")
+    public String customField1;
+
+    @NameInMap("custom_field_2")
+    public String customField2;
+
+    @NameInMap("custom_type")
+    public String customType;
+
     // description
     @NameInMap("description")
     @Validation(maxLength = 1024)
@@ -120,7 +132,6 @@ public class CreateFileRequest extends TeaModel {
 
     // Size
     @NameInMap("size")
-    @Validation(maximum = 53687091200D)
     public Long size;
 
     // streams_info
@@ -206,6 +217,38 @@ public class CreateFileRequest extends TeaModel {
     }
     public String getContentType() {
         return this.contentType;
+    }
+
+    public CreateFileRequest setCreateReason(String createReason) {
+        this.createReason = createReason;
+        return this;
+    }
+    public String getCreateReason() {
+        return this.createReason;
+    }
+
+    public CreateFileRequest setCustomField1(String customField1) {
+        this.customField1 = customField1;
+        return this;
+    }
+    public String getCustomField1() {
+        return this.customField1;
+    }
+
+    public CreateFileRequest setCustomField2(String customField2) {
+        this.customField2 = customField2;
+        return this;
+    }
+    public String getCustomField2() {
+        return this.customField2;
+    }
+
+    public CreateFileRequest setCustomType(String customType) {
+        this.customType = customType;
+        return this;
+    }
+    public String getCustomType() {
+        return this.customType;
     }
 
     public CreateFileRequest setDescription(String description) {

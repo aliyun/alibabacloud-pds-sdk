@@ -19,7 +19,6 @@ public class BaseFileAnonymousResponse extends TeaModel {
 
     // size, type=file时才有效
     @NameInMap("size")
-    @Validation(maximum = 53687091200D)
     public Long size;
 
     // thumbnail

@@ -7,9 +7,6 @@ import com.aliyun.tea.*;
  * 
  */
 public class DefaultChangePasswordRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
-
     // App ID, 当前访问的App
     @NameInMap("app_id")
     @Validation(required = true)
@@ -42,14 +39,6 @@ public class DefaultChangePasswordRequest extends TeaModel {
     public static DefaultChangePasswordRequest build(java.util.Map<String, ?> map) throws Exception {
         DefaultChangePasswordRequest self = new DefaultChangePasswordRequest();
         return TeaModel.build(map, self);
-    }
-
-    public DefaultChangePasswordRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
-        return this;
-    }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
     }
 
     public DefaultChangePasswordRequest setAppId(String appId) {

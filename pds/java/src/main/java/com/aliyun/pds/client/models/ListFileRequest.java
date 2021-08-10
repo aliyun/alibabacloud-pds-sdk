@@ -31,14 +31,6 @@ public class ListFileRequest extends TeaModel {
     @NameInMap("fields")
     public String fields;
 
-    // filter_file_as_share_link, 像分享一样过滤违规文件
-    @NameInMap("filter_file_as_share_link")
-    public Boolean filterFileAsShareLink;
-
-    // filter_file_field_as_share_link, 像分享一样过滤文件的字段，比如不输出drive_id等
-    @NameInMap("filter_file_field_as_share_link")
-    public Boolean filterFileFieldAsShareLink;
-
     @NameInMap("image_cropping_aspect_ratios")
     public java.util.List<String> imageCroppingAspectRatios;
 
@@ -166,22 +158,6 @@ public class ListFileRequest extends TeaModel {
     }
     public String getFields() {
         return this.fields;
-    }
-
-    public ListFileRequest setFilterFileAsShareLink(Boolean filterFileAsShareLink) {
-        this.filterFileAsShareLink = filterFileAsShareLink;
-        return this;
-    }
-    public Boolean getFilterFileAsShareLink() {
-        return this.filterFileAsShareLink;
-    }
-
-    public ListFileRequest setFilterFileFieldAsShareLink(Boolean filterFileFieldAsShareLink) {
-        this.filterFileFieldAsShareLink = filterFileFieldAsShareLink;
-        return this;
-    }
-    public Boolean getFilterFileFieldAsShareLink() {
-        return this.filterFileFieldAsShareLink;
     }
 
     public ListFileRequest setImageCroppingAspectRatios(java.util.List<String> imageCroppingAspectRatios) {
