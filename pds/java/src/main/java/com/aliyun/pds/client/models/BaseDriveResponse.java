@@ -63,6 +63,10 @@ public class BaseDriveResponse extends TeaModel {
     @NameInMap("store_id")
     public String storeId;
 
+    // subdomain_id
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     // Drive 空间总量
     @NameInMap("total_size")
     public Long totalSize;
@@ -194,6 +198,14 @@ public class BaseDriveResponse extends TeaModel {
     }
     public String getStoreId() {
         return this.storeId;
+    }
+
+    public BaseDriveResponse setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
     public BaseDriveResponse setTotalSize(Long totalSize) {

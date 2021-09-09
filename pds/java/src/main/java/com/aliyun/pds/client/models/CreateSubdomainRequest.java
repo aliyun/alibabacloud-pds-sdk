@@ -23,6 +23,10 @@ public class CreateSubdomainRequest extends TeaModel {
     @NameInMap("total_size")
     public Long totalSize;
 
+    // 逻辑空间刷新周期，单位：秒
+    @NameInMap("used_size_refresh_interval")
+    public Long usedSizeRefreshInterval;
+
     // 用户数quota，默认为-1，无限制
     @NameInMap("user_quota")
     public Long userQuota;
@@ -62,6 +66,14 @@ public class CreateSubdomainRequest extends TeaModel {
     }
     public Long getTotalSize() {
         return this.totalSize;
+    }
+
+    public CreateSubdomainRequest setUsedSizeRefreshInterval(Long usedSizeRefreshInterval) {
+        this.usedSizeRefreshInterval = usedSizeRefreshInterval;
+        return this;
+    }
+    public Long getUsedSizeRefreshInterval() {
+        return this.usedSizeRefreshInterval;
     }
 
     public CreateSubdomainRequest setUserQuota(Long userQuota) {
