@@ -22,6 +22,10 @@ public class GetSubdomainResponse extends TeaModel {
     @Validation(required = true)
     public String name;
 
+    // 当前状态
+    @NameInMap("status")
+    public Long status;
+
     // 用以唯一标识subdomain
     @NameInMap("subdomain_id")
     @Validation(required = true)
@@ -36,6 +40,14 @@ public class GetSubdomainResponse extends TeaModel {
     @NameInMap("updated_at")
     @Validation(required = true)
     public String updatedAt;
+
+    // 逻辑空间使用量，单位为字节
+    @NameInMap("used_size")
+    public Long usedSize;
+
+    // 逻辑空间刷新周期，单位：秒
+    @NameInMap("used_size_refresh_interval")
+    public Long usedSizeRefreshInterval;
 
     // 用户数quota，-1表示无限制
     @NameInMap("user_quota")
@@ -71,6 +83,14 @@ public class GetSubdomainResponse extends TeaModel {
         return this.name;
     }
 
+    public GetSubdomainResponse setStatus(Long status) {
+        this.status = status;
+        return this;
+    }
+    public Long getStatus() {
+        return this.status;
+    }
+
     public GetSubdomainResponse setSubdomainId(String subdomainId) {
         this.subdomainId = subdomainId;
         return this;
@@ -93,6 +113,22 @@ public class GetSubdomainResponse extends TeaModel {
     }
     public String getUpdatedAt() {
         return this.updatedAt;
+    }
+
+    public GetSubdomainResponse setUsedSize(Long usedSize) {
+        this.usedSize = usedSize;
+        return this;
+    }
+    public Long getUsedSize() {
+        return this.usedSize;
+    }
+
+    public GetSubdomainResponse setUsedSizeRefreshInterval(Long usedSizeRefreshInterval) {
+        this.usedSizeRefreshInterval = usedSizeRefreshInterval;
+        return this;
+    }
+    public Long getUsedSizeRefreshInterval() {
+        return this.usedSizeRefreshInterval;
     }
 
     public GetSubdomainResponse setUserQuota(Long userQuota) {

@@ -18,6 +18,10 @@ public class UpdateSubdomainRequest extends TeaModel {
     @NameInMap("name")
     public String name;
 
+    // 状态
+    @NameInMap("status")
+    public Long status;
+
     // 用以唯一标识subdomain
     @NameInMap("subdomain_id")
     @Validation(required = true)
@@ -26,6 +30,10 @@ public class UpdateSubdomainRequest extends TeaModel {
     // 逻辑空间quota，-1表示无限制，单位为字节
     @NameInMap("total_size")
     public Long totalSize;
+
+    // 逻辑空间刷新周期，单位：秒
+    @NameInMap("used_size_refresh_interval")
+    public Long usedSizeRefreshInterval;
 
     // 用户数quota，-1表示无限制
     @NameInMap("user_quota")
@@ -60,6 +68,14 @@ public class UpdateSubdomainRequest extends TeaModel {
         return this.name;
     }
 
+    public UpdateSubdomainRequest setStatus(Long status) {
+        this.status = status;
+        return this;
+    }
+    public Long getStatus() {
+        return this.status;
+    }
+
     public UpdateSubdomainRequest setSubdomainId(String subdomainId) {
         this.subdomainId = subdomainId;
         return this;
@@ -74,6 +90,14 @@ public class UpdateSubdomainRequest extends TeaModel {
     }
     public Long getTotalSize() {
         return this.totalSize;
+    }
+
+    public UpdateSubdomainRequest setUsedSizeRefreshInterval(Long usedSizeRefreshInterval) {
+        this.usedSizeRefreshInterval = usedSizeRefreshInterval;
+        return this;
+    }
+    public Long getUsedSizeRefreshInterval() {
+        return this.usedSizeRefreshInterval;
     }
 
     public UpdateSubdomainRequest setUserQuota(Long userQuota) {
