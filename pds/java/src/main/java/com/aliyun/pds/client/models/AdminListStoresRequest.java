@@ -7,20 +7,20 @@ import com.aliyun.tea.*;
  * 
  */
 public class AdminListStoresRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     public static AdminListStoresRequest build(java.util.Map<String, ?> map) throws Exception {
         AdminListStoresRequest self = new AdminListStoresRequest();
         return TeaModel.build(map, self);
     }
 
-    public AdminListStoresRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public AdminListStoresRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
 }

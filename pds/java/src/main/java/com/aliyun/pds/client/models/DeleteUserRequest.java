@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * Delete user request
  */
 public class DeleteUserRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 用户 ID
     @NameInMap("user_id")
@@ -20,12 +20,12 @@ public class DeleteUserRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public DeleteUserRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public DeleteUserRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public DeleteUserRequest setUserId(String userId) {

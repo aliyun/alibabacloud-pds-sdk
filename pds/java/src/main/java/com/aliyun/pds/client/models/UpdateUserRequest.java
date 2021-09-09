@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * Update user request
  */
 public class UpdateUserRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 头像
     @NameInMap("avatar")
@@ -68,12 +68,12 @@ public class UpdateUserRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public UpdateUserRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public UpdateUserRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public UpdateUserRequest setAvatar(String avatar) {

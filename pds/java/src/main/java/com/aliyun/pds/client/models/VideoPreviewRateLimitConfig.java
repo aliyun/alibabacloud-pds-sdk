@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 转码文件下载限速配置
  */
 public class VideoPreviewRateLimitConfig extends TeaModel {
     @NameInMap("rate_limit")

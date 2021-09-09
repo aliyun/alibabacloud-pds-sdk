@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * 更新文件元数据 response
  */
 public class UpdateFileMetaResponse extends TeaModel {
+    // action_list
+    @NameInMap("action_list")
+    public java.util.List<String> actionList;
+
     // category
     @NameInMap("category")
     public String category;
@@ -188,6 +192,14 @@ public class UpdateFileMetaResponse extends TeaModel {
     public static UpdateFileMetaResponse build(java.util.Map<String, ?> map) throws Exception {
         UpdateFileMetaResponse self = new UpdateFileMetaResponse();
         return TeaModel.build(map, self);
+    }
+
+    public UpdateFileMetaResponse setActionList(java.util.List<String> actionList) {
+        this.actionList = actionList;
+        return this;
+    }
+    public java.util.List<String> getActionList() {
+        return this.actionList;
     }
 
     public UpdateFileMetaResponse setCategory(String category) {

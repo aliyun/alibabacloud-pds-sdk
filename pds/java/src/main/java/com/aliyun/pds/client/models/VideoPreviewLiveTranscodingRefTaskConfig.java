@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 实时转码refTask配置
  */
 public class VideoPreviewLiveTranscodingRefTaskConfig extends TeaModel {
     @NameInMap("duration")

@@ -16,6 +16,10 @@ public class AuthorizeRequest extends TeaModel {
     @NameInMap("DomainID")
     public String DomainID;
 
+    // 是否隐藏同意页面
+    @NameInMap("HideConsent")
+    public Boolean HideConsent;
+
     // 鉴权方式，目前支持ding,ram鉴权
     @NameInMap("LoginType")
     public String LoginType;
@@ -61,6 +65,14 @@ public class AuthorizeRequest extends TeaModel {
     }
     public String getDomainID() {
         return this.DomainID;
+    }
+
+    public AuthorizeRequest setHideConsent(Boolean HideConsent) {
+        this.HideConsent = HideConsent;
+        return this;
+    }
+    public Boolean getHideConsent() {
+        return this.HideConsent;
     }
 
     public AuthorizeRequest setLoginType(String LoginType) {

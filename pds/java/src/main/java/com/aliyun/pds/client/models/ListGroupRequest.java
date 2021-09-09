@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class ListGroupRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 分页获取的数量，默认为100
     @NameInMap("limit")
@@ -27,12 +27,12 @@ public class ListGroupRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ListGroupRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public ListGroupRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ListGroupRequest setLimit(Integer limit) {

@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 恢复文件请求，支持批量
  */
 public class RestoreFileRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // drive_id
     @NameInMap("drive_id")
@@ -25,12 +25,12 @@ public class RestoreFileRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public RestoreFileRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public RestoreFileRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public RestoreFileRequest setDriveId(String driveId) {

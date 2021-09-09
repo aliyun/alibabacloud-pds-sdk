@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * create drive request
  */
 public class CreateDriveRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 是否默认drive, 只允许设置一个默认drive
     @NameInMap("default")
@@ -70,12 +70,12 @@ public class CreateDriveRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public CreateDriveRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public CreateDriveRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public CreateDriveRequest set_default(Boolean _default) {

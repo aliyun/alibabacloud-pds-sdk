@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * Get drive response
  */
 public class GetDriveResponse extends TeaModel {
+    @NameInMap("action_list")
+    public java.util.List<String> actionList;
+
     // Drive 创建者
     @NameInMap("creator")
     public String creator;
@@ -45,6 +48,9 @@ public class GetDriveResponse extends TeaModel {
     @NameInMap("owner_type")
     public String ownerType;
 
+    @NameInMap("permission")
+    public java.util.Map<String, ?> permission;
+
     // Drive存储基于store的相对路径，domain的PathType为OSSPath时返回
     @NameInMap("relative_path")
     public String relativePath;
@@ -68,6 +74,14 @@ public class GetDriveResponse extends TeaModel {
     public static GetDriveResponse build(java.util.Map<String, ?> map) throws Exception {
         GetDriveResponse self = new GetDriveResponse();
         return TeaModel.build(map, self);
+    }
+
+    public GetDriveResponse setActionList(java.util.List<String> actionList) {
+        this.actionList = actionList;
+        return this;
+    }
+    public java.util.List<String> getActionList() {
+        return this.actionList;
     }
 
     public GetDriveResponse setCreator(String creator) {
@@ -148,6 +162,14 @@ public class GetDriveResponse extends TeaModel {
     }
     public String getOwnerType() {
         return this.ownerType;
+    }
+
+    public GetDriveResponse setPermission(java.util.Map<String, ?> permission) {
+        this.permission = permission;
+        return this;
+    }
+    public java.util.Map<String, ?> getPermission() {
+        return this.permission;
     }
 
     public GetDriveResponse setRelativePath(String relativePath) {

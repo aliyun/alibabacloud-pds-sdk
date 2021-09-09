@@ -6,7 +6,7 @@ import com.aliyun.tea.*;
 /**
  * 雪碧图抓图间隔配置。如果配置异常，默认以1%抓图
  */
-public class VideoPreviewSpriteInterval extends TeaModel {
+public class VideoPreviewSpriteIntervalConfig extends TeaModel {
     @NameInMap("default_interval")
     public String defaultInterval;
 
@@ -16,12 +16,12 @@ public class VideoPreviewSpriteInterval extends TeaModel {
     @NameInMap("upper_limit_list")
     public java.util.List<Integer> upperLimitList;
 
-    public static VideoPreviewSpriteInterval build(java.util.Map<String, ?> map) throws Exception {
-        VideoPreviewSpriteInterval self = new VideoPreviewSpriteInterval();
+    public static VideoPreviewSpriteIntervalConfig build(java.util.Map<String, ?> map) throws Exception {
+        VideoPreviewSpriteIntervalConfig self = new VideoPreviewSpriteIntervalConfig();
         return TeaModel.build(map, self);
     }
 
-    public VideoPreviewSpriteInterval setDefaultInterval(String defaultInterval) {
+    public VideoPreviewSpriteIntervalConfig setDefaultInterval(String defaultInterval) {
         this.defaultInterval = defaultInterval;
         return this;
     }
@@ -29,7 +29,7 @@ public class VideoPreviewSpriteInterval extends TeaModel {
         return this.defaultInterval;
     }
 
-    public VideoPreviewSpriteInterval setGrabIntervalList(java.util.List<String> grabIntervalList) {
+    public VideoPreviewSpriteIntervalConfig setGrabIntervalList(java.util.List<String> grabIntervalList) {
         this.grabIntervalList = grabIntervalList;
         return this;
     }
@@ -37,7 +37,7 @@ public class VideoPreviewSpriteInterval extends TeaModel {
         return this.grabIntervalList;
     }
 
-    public VideoPreviewSpriteInterval setUpperLimitList(java.util.List<Integer> upperLimitList) {
+    public VideoPreviewSpriteIntervalConfig setUpperLimitList(java.util.List<Integer> upperLimitList) {
         this.upperLimitList = upperLimitList;
         return this;
     }

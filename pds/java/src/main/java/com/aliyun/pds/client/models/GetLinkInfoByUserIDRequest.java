@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetLinkInfoByUserIDRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // user ID
     @NameInMap("user_id")
@@ -20,12 +20,12 @@ public class GetLinkInfoByUserIDRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public GetLinkInfoByUserIDRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public GetLinkInfoByUserIDRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public GetLinkInfoByUserIDRequest setUserId(String userId) {

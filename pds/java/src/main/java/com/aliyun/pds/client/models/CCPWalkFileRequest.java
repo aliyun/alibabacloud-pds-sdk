@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 遍历文件
  */
 public class CCPWalkFileRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // addition_data
     @NameInMap("addition_data")
@@ -112,12 +112,12 @@ public class CCPWalkFileRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public CCPWalkFileRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public CCPWalkFileRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public CCPWalkFileRequest setAdditionData(java.util.Map<String, ?> additionData) {

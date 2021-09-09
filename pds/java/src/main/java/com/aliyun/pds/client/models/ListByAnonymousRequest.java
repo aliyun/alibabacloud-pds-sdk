@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * list_file_by_anonymous request
  */
 public class ListByAnonymousRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // addition_data
     @NameInMap("addition_data")
@@ -61,12 +61,12 @@ public class ListByAnonymousRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ListByAnonymousRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public ListByAnonymousRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ListByAnonymousRequest setAdditionData(java.util.Map<String, ?> additionData) {

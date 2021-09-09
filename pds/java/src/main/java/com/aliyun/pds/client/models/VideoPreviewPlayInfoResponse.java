@@ -11,6 +11,9 @@ public class VideoPreviewPlayInfoResponse extends TeaModel {
     @NameInMap("category")
     public String category;
 
+    @NameInMap("live_transcoding_subtitle_task_list")
+    public java.util.List<LiveTranscodingSubtitleTaskResponse> liveTranscodingSubtitleTaskList;
+
     @NameInMap("live_transcoding_task_list")
     public java.util.List<LiveTranscodingTaskResponse> liveTranscodingTaskList;
 
@@ -28,6 +31,14 @@ public class VideoPreviewPlayInfoResponse extends TeaModel {
     }
     public String getCategory() {
         return this.category;
+    }
+
+    public VideoPreviewPlayInfoResponse setLiveTranscodingSubtitleTaskList(java.util.List<LiveTranscodingSubtitleTaskResponse> liveTranscodingSubtitleTaskList) {
+        this.liveTranscodingSubtitleTaskList = liveTranscodingSubtitleTaskList;
+        return this;
+    }
+    public java.util.List<LiveTranscodingSubtitleTaskResponse> getLiveTranscodingSubtitleTaskList() {
+        return this.liveTranscodingSubtitleTaskList;
     }
 
     public VideoPreviewPlayInfoResponse setLiveTranscodingTaskList(java.util.List<LiveTranscodingTaskResponse> liveTranscodingTaskList) {

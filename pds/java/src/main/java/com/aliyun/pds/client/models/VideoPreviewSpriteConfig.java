@@ -4,11 +4,11 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 视频雪碧图配置
  */
-public class VideoPreviewSprite extends TeaModel {
+public class VideoPreviewSpriteConfig extends TeaModel {
     @NameInMap("auto_scale")
-    public VideoPreviewAutoScale autoScale;
+    public VideoPreviewAutoScaleConfig autoScale;
 
     @NameInMap("col")
     public Long col;
@@ -20,25 +20,25 @@ public class VideoPreviewSprite extends TeaModel {
     public Long frameWidth;
 
     @NameInMap("interval")
-    public VideoPreviewSpriteInterval interval;
+    public VideoPreviewSpriteIntervalConfig interval;
 
     @NameInMap("row")
     public Long row;
 
-    public static VideoPreviewSprite build(java.util.Map<String, ?> map) throws Exception {
-        VideoPreviewSprite self = new VideoPreviewSprite();
+    public static VideoPreviewSpriteConfig build(java.util.Map<String, ?> map) throws Exception {
+        VideoPreviewSpriteConfig self = new VideoPreviewSpriteConfig();
         return TeaModel.build(map, self);
     }
 
-    public VideoPreviewSprite setAutoScale(VideoPreviewAutoScale autoScale) {
+    public VideoPreviewSpriteConfig setAutoScale(VideoPreviewAutoScaleConfig autoScale) {
         this.autoScale = autoScale;
         return this;
     }
-    public VideoPreviewAutoScale getAutoScale() {
+    public VideoPreviewAutoScaleConfig getAutoScale() {
         return this.autoScale;
     }
 
-    public VideoPreviewSprite setCol(Long col) {
+    public VideoPreviewSpriteConfig setCol(Long col) {
         this.col = col;
         return this;
     }
@@ -46,7 +46,7 @@ public class VideoPreviewSprite extends TeaModel {
         return this.col;
     }
 
-    public VideoPreviewSprite setFrameHeight(Long frameHeight) {
+    public VideoPreviewSpriteConfig setFrameHeight(Long frameHeight) {
         this.frameHeight = frameHeight;
         return this;
     }
@@ -54,7 +54,7 @@ public class VideoPreviewSprite extends TeaModel {
         return this.frameHeight;
     }
 
-    public VideoPreviewSprite setFrameWidth(Long frameWidth) {
+    public VideoPreviewSpriteConfig setFrameWidth(Long frameWidth) {
         this.frameWidth = frameWidth;
         return this;
     }
@@ -62,15 +62,15 @@ public class VideoPreviewSprite extends TeaModel {
         return this.frameWidth;
     }
 
-    public VideoPreviewSprite setInterval(VideoPreviewSpriteInterval interval) {
+    public VideoPreviewSpriteConfig setInterval(VideoPreviewSpriteIntervalConfig interval) {
         this.interval = interval;
         return this;
     }
-    public VideoPreviewSpriteInterval getInterval() {
+    public VideoPreviewSpriteIntervalConfig getInterval() {
         return this.interval;
     }
 
-    public VideoPreviewSprite setRow(Long row) {
+    public VideoPreviewSpriteConfig setRow(Long row) {
         this.row = row;
         return this;
     }

@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * Merge face group request
  */
 public class MergeFaceGroupRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // drive_id
     @NameInMap("drive_id")
@@ -30,12 +30,12 @@ public class MergeFaceGroupRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public MergeFaceGroupRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public MergeFaceGroupRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public MergeFaceGroupRequest setDriveId(String driveId) {

@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 获取视频文件播放地址的请求body
  */
 public class GetVideoPreviewURLRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // addition_data
     @NameInMap("addition_data")
@@ -52,12 +52,12 @@ public class GetVideoPreviewURLRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public GetVideoPreviewURLRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public GetVideoPreviewURLRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public GetVideoPreviewURLRequest setAdditionData(java.util.Map<String, ?> additionData) {

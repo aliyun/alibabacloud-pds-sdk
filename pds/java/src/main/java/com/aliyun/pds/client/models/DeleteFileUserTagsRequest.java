@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 删除文件 user_tags 字段
  */
 public class DeleteFileUserTagsRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // drive_id
     @NameInMap("drive_id")
@@ -29,12 +29,12 @@ public class DeleteFileUserTagsRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public DeleteFileUserTagsRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public DeleteFileUserTagsRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public DeleteFileUserTagsRequest setDriveId(String driveId) {

@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class ListDirectChildMembershipsRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // group id
     @NameInMap("group_id")
@@ -35,12 +35,12 @@ public class ListDirectChildMembershipsRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ListDirectChildMembershipsRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public ListDirectChildMembershipsRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ListDirectChildMembershipsRequest setGroupId(String groupId) {

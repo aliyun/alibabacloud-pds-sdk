@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 文件拷贝
  */
 public class CopyFileRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // addition_data
     @NameInMap("addition_data")
@@ -67,12 +67,12 @@ public class CopyFileRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public CopyFileRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public CopyFileRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public CopyFileRequest setAdditionData(java.util.Map<String, ?> additionData) {

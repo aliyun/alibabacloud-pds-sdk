@@ -18,6 +18,9 @@ public class UpdateDomainResponse extends TeaModel {
     @NameInMap("app_config")
     public AppConfig appConfig;
 
+    @NameInMap("audit_log_config")
+    public AuditLogConfig auditLogConfig;
+
     // 支付宝 App Id
     @NameInMap("auth_alipay_app_id")
     public String authAlipayAppId;
@@ -141,6 +144,9 @@ public class UpdateDomainResponse extends TeaModel {
     @NameInMap("office_preview_config")
     public OfficePreviewConfig officePreviewConfig;
 
+    @NameInMap("parallel_upload_enabled")
+    public Boolean parallelUploadEnabled;
+
     // Domain 类型
     @NameInMap("path_type")
     public String pathType;
@@ -226,6 +232,14 @@ public class UpdateDomainResponse extends TeaModel {
     }
     public AppConfig getAppConfig() {
         return this.appConfig;
+    }
+
+    public UpdateDomainResponse setAuditLogConfig(AuditLogConfig auditLogConfig) {
+        this.auditLogConfig = auditLogConfig;
+        return this;
+    }
+    public AuditLogConfig getAuditLogConfig() {
+        return this.auditLogConfig;
     }
 
     public UpdateDomainResponse setAuthAlipayAppId(String authAlipayAppId) {
@@ -482,6 +496,14 @@ public class UpdateDomainResponse extends TeaModel {
     }
     public OfficePreviewConfig getOfficePreviewConfig() {
         return this.officePreviewConfig;
+    }
+
+    public UpdateDomainResponse setParallelUploadEnabled(Boolean parallelUploadEnabled) {
+        this.parallelUploadEnabled = parallelUploadEnabled;
+        return this;
+    }
+    public Boolean getParallelUploadEnabled() {
+        return this.parallelUploadEnabled;
     }
 
     public UpdateDomainResponse setPathType(String pathType) {

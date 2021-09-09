@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 获取文件下载地址的请求body
  */
 public class GetDownloadUrlRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // addition_data
     @NameInMap("addition_data")
@@ -56,12 +56,12 @@ public class GetDownloadUrlRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public GetDownloadUrlRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public GetDownloadUrlRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public GetDownloadUrlRequest setAdditionData(java.util.Map<String, ?> additionData) {

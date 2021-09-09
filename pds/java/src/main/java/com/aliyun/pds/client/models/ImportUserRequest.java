@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * Import user request
  */
 public class ImportUserRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 认证类型
     @NameInMap("authentication_type")
@@ -45,6 +45,10 @@ public class ImportUserRequest extends TeaModel {
     @Validation(required = true)
     public String nickName;
 
+    // 加入到group
+    @NameInMap("parent_group_id")
+    public String parentGroupId;
+
     // 用户明文密码
     @NameInMap("plain_password")
     public String plainPassword;
@@ -54,12 +58,12 @@ public class ImportUserRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ImportUserRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public ImportUserRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ImportUserRequest setAuthenticationType(String authenticationType) {
@@ -124,6 +128,14 @@ public class ImportUserRequest extends TeaModel {
     }
     public String getNickName() {
         return this.nickName;
+    }
+
+    public ImportUserRequest setParentGroupId(String parentGroupId) {
+        this.parentGroupId = parentGroupId;
+        return this;
+    }
+    public String getParentGroupId() {
+        return this.parentGroupId;
     }
 
     public ImportUserRequest setPlainPassword(String plainPassword) {

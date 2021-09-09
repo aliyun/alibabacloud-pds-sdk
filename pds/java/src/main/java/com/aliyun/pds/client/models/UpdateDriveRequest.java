@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * Update drive request
  */
 public class UpdateDriveRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 描述信息
     @NameInMap("description")
@@ -50,12 +50,12 @@ public class UpdateDriveRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public UpdateDriveRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public UpdateDriveRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public UpdateDriveRequest setDescription(String description) {

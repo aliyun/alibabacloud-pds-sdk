@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 音频转码配置
  */
 public class VideoPreviewAudioConfig extends TeaModel {
     @NameInMap("support_ext")

@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 实时转码子开关配置
  */
 public class VideoPreviewLiveTranscodingEnableConfig extends TeaModel {
     @NameInMap("drop_file_created_event")

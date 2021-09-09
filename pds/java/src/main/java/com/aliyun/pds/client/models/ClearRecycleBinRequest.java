@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 清空回收站
  */
 public class ClearRecycleBinRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // drive_id
     @NameInMap("drive_id")
@@ -20,12 +20,12 @@ public class ClearRecycleBinRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ClearRecycleBinRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public ClearRecycleBinRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ClearRecycleBinRequest setDriveId(String driveId) {

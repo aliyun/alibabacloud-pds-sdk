@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class MobileRegisterRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // App ID, 当前访问的App
     @NameInMap("app_id")
@@ -44,12 +44,12 @@ public class MobileRegisterRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public MobileRegisterRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public MobileRegisterRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public MobileRegisterRequest setAppId(String appId) {

@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * Recycle bin item response
  */
 public class RecycleBinItemResponse extends TeaModel {
+    // action_list
+    @NameInMap("action_list")
+    public java.util.List<String> actionList;
+
     // auto_delete_left_sec
     @NameInMap("auto_delete_left_sec")
     public Long autoDeleteLeftSec;
@@ -196,6 +200,14 @@ public class RecycleBinItemResponse extends TeaModel {
     public static RecycleBinItemResponse build(java.util.Map<String, ?> map) throws Exception {
         RecycleBinItemResponse self = new RecycleBinItemResponse();
         return TeaModel.build(map, self);
+    }
+
+    public RecycleBinItemResponse setActionList(java.util.List<String> actionList) {
+        this.actionList = actionList;
+        return this;
+    }
+    public java.util.List<String> getActionList() {
+        return this.actionList;
     }
 
     public RecycleBinItemResponse setAutoDeleteLeftSec(Long autoDeleteLeftSec) {

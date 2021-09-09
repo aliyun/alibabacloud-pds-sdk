@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * domain config --------
+ * 实时转码配置
  */
 public class VideoPreviewLiveTranscodingConfig extends TeaModel {
     @NameInMap("current_version")
@@ -39,6 +39,9 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
 
     @NameInMap("segment")
     public Long segment;
+
+    @NameInMap("subtitle_config")
+    public VideoPreviewLiveTranscodingSubtitleConfig subtitleConfig;
 
     @NameInMap("template_list")
     public java.util.List<String> templateList;
@@ -145,6 +148,14 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
     }
     public Long getSegment() {
         return this.segment;
+    }
+
+    public VideoPreviewLiveTranscodingConfig setSubtitleConfig(VideoPreviewLiveTranscodingSubtitleConfig subtitleConfig) {
+        this.subtitleConfig = subtitleConfig;
+        return this;
+    }
+    public VideoPreviewLiveTranscodingSubtitleConfig getSubtitleConfig() {
+        return this.subtitleConfig;
     }
 
     public VideoPreviewLiveTranscodingConfig setTemplateList(java.util.List<String> templateList) {

@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * Get default drive request
  */
 public class GetDefaultDriveRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // Subdomain ID
     @NameInMap("subdomain_id")
@@ -23,12 +23,12 @@ public class GetDefaultDriveRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public GetDefaultDriveRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public GetDefaultDriveRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public GetDefaultDriveRequest setSubdomainId(String subdomainId) {

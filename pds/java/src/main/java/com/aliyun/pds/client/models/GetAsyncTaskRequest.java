@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 获取异步人去信息
  */
 public class GetAsyncTaskRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // async_task_id
     // type:string
@@ -20,12 +20,12 @@ public class GetAsyncTaskRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public GetAsyncTaskRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public GetAsyncTaskRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public GetAsyncTaskRequest setAsyncTaskId(String asyncTaskId) {

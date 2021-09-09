@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 文件移动请求
  */
 public class MoveFileRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     @NameInMap("auto_rename")
     public Boolean autoRename;
@@ -60,12 +60,12 @@ public class MoveFileRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public MoveFileRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public MoveFileRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public MoveFileRequest setAutoRename(Boolean autoRename) {

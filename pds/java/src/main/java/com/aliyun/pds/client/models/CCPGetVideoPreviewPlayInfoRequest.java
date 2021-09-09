@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 获取转码信息请求
  */
 public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // addition_data
     @NameInMap("addition_data")
@@ -35,6 +35,14 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     @NameInMap("get_preview_url")
     public Boolean getPreviewUrl;
 
+    // get_subtitle_info
+    @NameInMap("get_subtitle_info")
+    public Boolean getSubtitleInfo;
+
+    // get_without_url
+    @NameInMap("get_without_url")
+    public Boolean getWithoutUrl;
+
     // location
     @NameInMap("location")
     public String location;
@@ -48,6 +56,10 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
 
     @NameInMap("sign_token")
     public String signToken;
+
+    // subtitle_language_list, 根据语言获取压制在视频中的字幕, 不传则取所有
+    @NameInMap("subtitle_language_list")
+    public java.util.List<String> subtitleLanguageList;
 
     // template_id
     @NameInMap("template_id")
@@ -63,12 +75,12 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public CCPGetVideoPreviewPlayInfoRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public CCPGetVideoPreviewPlayInfoRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public CCPGetVideoPreviewPlayInfoRequest setAdditionData(java.util.Map<String, ?> additionData) {
@@ -119,6 +131,22 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
         return this.getPreviewUrl;
     }
 
+    public CCPGetVideoPreviewPlayInfoRequest setGetSubtitleInfo(Boolean getSubtitleInfo) {
+        this.getSubtitleInfo = getSubtitleInfo;
+        return this;
+    }
+    public Boolean getGetSubtitleInfo() {
+        return this.getSubtitleInfo;
+    }
+
+    public CCPGetVideoPreviewPlayInfoRequest setGetWithoutUrl(Boolean getWithoutUrl) {
+        this.getWithoutUrl = getWithoutUrl;
+        return this;
+    }
+    public Boolean getGetWithoutUrl() {
+        return this.getWithoutUrl;
+    }
+
     public CCPGetVideoPreviewPlayInfoRequest setLocation(String location) {
         this.location = location;
         return this;
@@ -149,6 +177,14 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     }
     public String getSignToken() {
         return this.signToken;
+    }
+
+    public CCPGetVideoPreviewPlayInfoRequest setSubtitleLanguageList(java.util.List<String> subtitleLanguageList) {
+        this.subtitleLanguageList = subtitleLanguageList;
+        return this;
+    }
+    public java.util.List<String> getSubtitleLanguageList() {
+        return this.subtitleLanguageList;
     }
 
     public CCPGetVideoPreviewPlayInfoRequest setTemplateId(String templateId) {

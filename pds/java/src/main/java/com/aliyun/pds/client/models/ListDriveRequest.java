@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * List drive request
  */
 public class ListDriveRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 每页大小限制
     @NameInMap("limit")
@@ -37,12 +37,12 @@ public class ListDriveRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ListDriveRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public ListDriveRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ListDriveRequest setLimit(Integer limit) {

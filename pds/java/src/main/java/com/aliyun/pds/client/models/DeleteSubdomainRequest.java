@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class DeleteSubdomainRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 用以唯一标识subdomain
     @NameInMap("subdomain_id")
@@ -20,12 +20,12 @@ public class DeleteSubdomainRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public DeleteSubdomainRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public DeleteSubdomainRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public DeleteSubdomainRequest setSubdomainId(String subdomainId) {

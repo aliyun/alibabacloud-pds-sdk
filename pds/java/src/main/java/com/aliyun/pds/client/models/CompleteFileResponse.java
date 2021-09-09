@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * complete file response
  */
 public class CompleteFileResponse extends TeaModel {
+    // action_list
+    @NameInMap("action_list")
+    public java.util.List<String> actionList;
+
     // category
     @NameInMap("category")
     public String category;
@@ -195,6 +199,14 @@ public class CompleteFileResponse extends TeaModel {
     public static CompleteFileResponse build(java.util.Map<String, ?> map) throws Exception {
         CompleteFileResponse self = new CompleteFileResponse();
         return TeaModel.build(map, self);
+    }
+
+    public CompleteFileResponse setActionList(java.util.List<String> actionList) {
+        this.actionList = actionList;
+        return this;
+    }
+    public java.util.List<String> getActionList() {
+        return this.actionList;
     }
 
     public CompleteFileResponse setCategory(String category) {
