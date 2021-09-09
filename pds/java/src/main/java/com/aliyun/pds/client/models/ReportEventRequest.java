@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * report_event request
  */
 public class ReportEventRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // event_type
     @NameInMap("event_type")
@@ -22,12 +22,12 @@ public class ReportEventRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ReportEventRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public ReportEventRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ReportEventRequest setEventType(String eventType) {

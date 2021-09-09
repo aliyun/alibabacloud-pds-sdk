@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class ConfirmLinkRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 待绑定的临时token，此token只能访问绑定、取消绑定接口
     @NameInMap("temporary_token")
@@ -20,12 +20,12 @@ public class ConfirmLinkRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ConfirmLinkRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public ConfirmLinkRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ConfirmLinkRequest setTemporaryToken(String temporaryToken) {

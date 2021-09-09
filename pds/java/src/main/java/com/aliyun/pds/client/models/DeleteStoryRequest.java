@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * delete story request
  */
 public class DeleteStoryRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // drive_id
     @NameInMap("drive_id")
@@ -25,12 +25,12 @@ public class DeleteStoryRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public DeleteStoryRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public DeleteStoryRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public DeleteStoryRequest setDriveId(String driveId) {

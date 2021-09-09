@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 触发实时转码
  */
 public class CCPLiveTranscodeRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // addition_data
     @NameInMap("addition_data")
@@ -23,12 +23,12 @@ public class CCPLiveTranscodeRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public CCPLiveTranscodeRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public CCPLiveTranscodeRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public CCPLiveTranscodeRequest setAdditionData(java.util.Map<String, ?> additionData) {

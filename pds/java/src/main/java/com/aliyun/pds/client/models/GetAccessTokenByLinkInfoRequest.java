@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetAccessTokenByLinkInfoRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
     @NameInMap("extra")
@@ -29,12 +29,12 @@ public class GetAccessTokenByLinkInfoRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public GetAccessTokenByLinkInfoRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public GetAccessTokenByLinkInfoRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public GetAccessTokenByLinkInfoRequest setExtra(String extra) {

@@ -27,6 +27,9 @@ public class CreateGroupResponse extends TeaModel {
     @NameInMap("group_name")
     public String groupName;
 
+    @NameInMap("permission")
+    public java.util.Map<String, ?> permission;
+
     // updated_at
     @NameInMap("updated_at")
     public Long updatedAt;
@@ -74,6 +77,14 @@ public class CreateGroupResponse extends TeaModel {
     }
     public String getGroupName() {
         return this.groupName;
+    }
+
+    public CreateGroupResponse setPermission(java.util.Map<String, ?> permission) {
+        this.permission = permission;
+        return this;
+    }
+    public java.util.Map<String, ?> getPermission() {
+        return this.permission;
     }
 
     public CreateGroupResponse setUpdatedAt(Long updatedAt) {

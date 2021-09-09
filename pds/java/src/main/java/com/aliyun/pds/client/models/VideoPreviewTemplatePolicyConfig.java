@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 细化模板策略
+ * 转码模板选择策略配置
  */
 public class VideoPreviewTemplatePolicyConfig extends TeaModel {
     @NameInMap("aliyundrive_config")

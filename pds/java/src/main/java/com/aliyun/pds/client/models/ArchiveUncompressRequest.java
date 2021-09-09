@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 获取解压任务状态
+ * 解压
  */
 public class ArchiveUncompressRequest extends TeaModel {
     // 格式类型，如果是uc，使用特殊格式
@@ -27,11 +27,17 @@ public class ArchiveUncompressRequest extends TeaModel {
     @NameInMap("file_id")
     public String fileId;
 
+    @NameInMap("file_list")
+    public java.util.List<String> fileList;
+
     @NameInMap("password")
     public String password;
 
-    @NameInMap("task_id")
-    public String taskId;
+    @NameInMap("target_drive_id")
+    public String targetDriveId;
+
+    @NameInMap("target_file_id")
+    public String targetFileId;
 
     public static ArchiveUncompressRequest build(java.util.Map<String, ?> map) throws Exception {
         ArchiveUncompressRequest self = new ArchiveUncompressRequest();
@@ -86,6 +92,14 @@ public class ArchiveUncompressRequest extends TeaModel {
         return this.fileId;
     }
 
+    public ArchiveUncompressRequest setFileList(java.util.List<String> fileList) {
+        this.fileList = fileList;
+        return this;
+    }
+    public java.util.List<String> getFileList() {
+        return this.fileList;
+    }
+
     public ArchiveUncompressRequest setPassword(String password) {
         this.password = password;
         return this;
@@ -94,12 +108,20 @@ public class ArchiveUncompressRequest extends TeaModel {
         return this.password;
     }
 
-    public ArchiveUncompressRequest setTaskId(String taskId) {
-        this.taskId = taskId;
+    public ArchiveUncompressRequest setTargetDriveId(String targetDriveId) {
+        this.targetDriveId = targetDriveId;
         return this;
     }
-    public String getTaskId() {
-        return this.taskId;
+    public String getTargetDriveId() {
+        return this.targetDriveId;
+    }
+
+    public ArchiveUncompressRequest setTargetFileId(String targetFileId) {
+        this.targetFileId = targetFileId;
+        return this;
+    }
+    public String getTargetFileId() {
+        return this.targetFileId;
     }
 
 }

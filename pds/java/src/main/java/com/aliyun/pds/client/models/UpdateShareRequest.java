@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * update share request
  */
 public class UpdateShareRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // description
     @NameInMap("description")
@@ -45,12 +45,12 @@ public class UpdateShareRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public UpdateShareRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public UpdateShareRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public UpdateShareRequest setDescription(String description) {

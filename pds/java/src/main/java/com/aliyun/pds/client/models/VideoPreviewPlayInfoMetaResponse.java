@@ -7,18 +7,18 @@ import com.aliyun.tea.*;
  * 获取转码信息meta响应
  */
 public class VideoPreviewPlayInfoMetaResponse extends TeaModel {
-    // duration
+    // duration, 视频长度
     @NameInMap("duration")
     public Double duration;
 
-    // height
+    // height, 视频高度
     @NameInMap("height")
     public Long height;
 
     @NameInMap("live_transcoding_meta")
     public LiveTranscodingMetaResponse liveTranscodingMeta;
 
-    // witdh
+    // width, 视频宽度
     @NameInMap("width")
     public Long width;
 

@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class AccountLinkRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 账号信息
     @NameInMap("detail")
@@ -42,12 +42,12 @@ public class AccountLinkRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public AccountLinkRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public AccountLinkRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public AccountLinkRequest setDetail(String detail) {

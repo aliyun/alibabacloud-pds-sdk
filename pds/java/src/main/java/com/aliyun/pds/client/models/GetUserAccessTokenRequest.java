@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetUserAccessTokenRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // subdomain ID
     @NameInMap("subdomain_id")
@@ -24,12 +24,12 @@ public class GetUserAccessTokenRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public GetUserAccessTokenRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public GetUserAccessTokenRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public GetUserAccessTokenRequest setSubdomainId(String subdomainId) {

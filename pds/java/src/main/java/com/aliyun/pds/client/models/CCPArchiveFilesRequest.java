@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 打包下载
  */
 public class CCPArchiveFilesRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // addition_data
     @NameInMap("addition_data")
@@ -32,12 +32,12 @@ public class CCPArchiveFilesRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public CCPArchiveFilesRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public CCPArchiveFilesRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public CCPArchiveFilesRequest setAdditionData(java.util.Map<String, ?> additionData) {

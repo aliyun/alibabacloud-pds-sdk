@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class ListSubdomainsRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 数量，默认为50
     @NameInMap("limit")
@@ -23,12 +23,12 @@ public class ListSubdomainsRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ListSubdomainsRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public ListSubdomainsRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ListSubdomainsRequest setLimit(Integer limit) {

@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * 根据路径获取文件元数据response
  */
 public class GetFileByPathResponse extends TeaModel {
+    // action_list
+    @NameInMap("action_list")
+    public java.util.List<String> actionList;
+
     // auto_delete_left_sec
     @NameInMap("auto_delete_left_sec")
     public Long autoDeleteLeftSec;
@@ -201,6 +205,14 @@ public class GetFileByPathResponse extends TeaModel {
     public static GetFileByPathResponse build(java.util.Map<String, ?> map) throws Exception {
         GetFileByPathResponse self = new GetFileByPathResponse();
         return TeaModel.build(map, self);
+    }
+
+    public GetFileByPathResponse setActionList(java.util.List<String> actionList) {
+        this.actionList = actionList;
+        return this;
+    }
+    public java.util.List<String> getActionList() {
+        return this.actionList;
     }
 
     public GetFileByPathResponse setAutoDeleteLeftSec(Long autoDeleteLeftSec) {

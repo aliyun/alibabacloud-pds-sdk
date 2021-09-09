@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * Base file response
  */
 public class BaseCCPFileResponse extends TeaModel {
+    // action_list
+    @NameInMap("action_list")
+    public java.util.List<String> actionList;
+
     // category
     @NameInMap("category")
     public String category;
@@ -188,6 +192,14 @@ public class BaseCCPFileResponse extends TeaModel {
     public static BaseCCPFileResponse build(java.util.Map<String, ?> map) throws Exception {
         BaseCCPFileResponse self = new BaseCCPFileResponse();
         return TeaModel.build(map, self);
+    }
+
+    public BaseCCPFileResponse setActionList(java.util.List<String> actionList) {
+        this.actionList = actionList;
+        return this;
+    }
+    public java.util.List<String> getActionList() {
+        return this.actionList;
     }
 
     public BaseCCPFileResponse setCategory(String category) {

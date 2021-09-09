@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * find story request
  */
 public class FindStoriesRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // cover_image_thumbnail_process
     @NameInMap("cover_image_thumbnail_process")
@@ -69,12 +69,12 @@ public class FindStoriesRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public FindStoriesRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public FindStoriesRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public FindStoriesRequest setCoverImageThumbnailProcess(String coverImageThumbnailProcess) {

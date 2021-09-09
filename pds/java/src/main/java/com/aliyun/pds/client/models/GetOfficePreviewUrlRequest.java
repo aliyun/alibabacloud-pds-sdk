@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 获取office文档预览地址
  */
 public class GetOfficePreviewUrlRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // addition_data
     @NameInMap("addition_data")
@@ -36,12 +36,12 @@ public class GetOfficePreviewUrlRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public GetOfficePreviewUrlRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public GetOfficePreviewUrlRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public GetOfficePreviewUrlRequest setAdditionData(java.util.Map<String, ?> additionData) {

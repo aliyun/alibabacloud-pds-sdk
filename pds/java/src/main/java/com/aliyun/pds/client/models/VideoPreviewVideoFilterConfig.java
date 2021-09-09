@@ -4,7 +4,8 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 同时满足以下所有null条件，则不触发转码。如果没有配置任何条件，那么不触发过滤
+ * 转码源过滤配置（TODO: 未完整测试）
+同时满足以下所有null条件，则不触发转码。如果没有配置任何条件，那么不触发过滤
  */
 public class VideoPreviewVideoFilterConfig extends TeaModel {
     @NameInMap("audio_bitrate")

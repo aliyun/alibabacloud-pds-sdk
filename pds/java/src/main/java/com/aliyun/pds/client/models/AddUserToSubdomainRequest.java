@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * Add user to subdomain request
  */
 public class AddUserToSubdomainRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // subdomain id
     @NameInMap("subdomain_id")
@@ -24,12 +24,12 @@ public class AddUserToSubdomainRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public AddUserToSubdomainRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public AddUserToSubdomainRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public AddUserToSubdomainRequest setSubdomainId(String subdomainId) {

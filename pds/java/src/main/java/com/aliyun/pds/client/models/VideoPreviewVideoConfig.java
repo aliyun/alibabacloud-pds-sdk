@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 视频转码配置
  */
 public class VideoPreviewVideoConfig extends TeaModel {
     @NameInMap("default_output_ext")

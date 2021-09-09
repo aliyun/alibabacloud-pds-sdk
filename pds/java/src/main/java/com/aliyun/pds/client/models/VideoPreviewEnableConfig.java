@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 转码子开关配置
  */
 public class VideoPreviewEnableConfig extends TeaModel {
     @NameInMap("enable_transcode_when_play")

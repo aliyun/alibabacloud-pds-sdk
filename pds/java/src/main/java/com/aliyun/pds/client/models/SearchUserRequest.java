@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * Search user request
  */
 public class SearchUserRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 邮箱
     @NameInMap("email")
@@ -52,12 +52,12 @@ public class SearchUserRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public SearchUserRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public SearchUserRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public SearchUserRequest setEmail(String email) {

@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * Parse keywords request
  */
 public class ParseKeywordsRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     @NameInMap("keywords")
     public String keywords;
@@ -18,12 +18,12 @@ public class ParseKeywordsRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ParseKeywordsRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public ParseKeywordsRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ParseKeywordsRequest setKeywords(String keywords) {

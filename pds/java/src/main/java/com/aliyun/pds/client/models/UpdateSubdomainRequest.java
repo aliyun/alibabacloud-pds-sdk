@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class UpdateSubdomainRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 描述
     @NameInMap("description")
@@ -36,12 +36,12 @@ public class UpdateSubdomainRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public UpdateSubdomainRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public UpdateSubdomainRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public UpdateSubdomainRequest setDescription(String description) {

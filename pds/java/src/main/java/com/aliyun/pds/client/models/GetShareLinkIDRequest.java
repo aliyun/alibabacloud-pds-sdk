@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * get_share_id request
  */
 public class GetShareLinkIDRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // share_msg
     @NameInMap("share_msg")
@@ -19,12 +19,12 @@ public class GetShareLinkIDRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public GetShareLinkIDRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public GetShareLinkIDRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public GetShareLinkIDRequest setShareMsg(String shareMsg) {

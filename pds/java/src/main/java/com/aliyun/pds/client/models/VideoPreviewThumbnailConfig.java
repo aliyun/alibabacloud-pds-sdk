@@ -4,21 +4,21 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 截图配置
  */
-public class VideoPreviewThumbnail extends TeaModel {
+public class VideoPreviewThumbnailConfig extends TeaModel {
     @NameInMap("skip_begin_percent")
     public String skipBeginPercent;
 
     @NameInMap("skip_begin_sec")
     public Double skipBeginSec;
 
-    public static VideoPreviewThumbnail build(java.util.Map<String, ?> map) throws Exception {
-        VideoPreviewThumbnail self = new VideoPreviewThumbnail();
+    public static VideoPreviewThumbnailConfig build(java.util.Map<String, ?> map) throws Exception {
+        VideoPreviewThumbnailConfig self = new VideoPreviewThumbnailConfig();
         return TeaModel.build(map, self);
     }
 
-    public VideoPreviewThumbnail setSkipBeginPercent(String skipBeginPercent) {
+    public VideoPreviewThumbnailConfig setSkipBeginPercent(String skipBeginPercent) {
         this.skipBeginPercent = skipBeginPercent;
         return this;
     }
@@ -26,7 +26,7 @@ public class VideoPreviewThumbnail extends TeaModel {
         return this.skipBeginPercent;
     }
 
-    public VideoPreviewThumbnail setSkipBeginSec(Double skipBeginSec) {
+    public VideoPreviewThumbnailConfig setSkipBeginSec(Double skipBeginSec) {
         this.skipBeginSec = skipBeginSec;
         return this;
     }

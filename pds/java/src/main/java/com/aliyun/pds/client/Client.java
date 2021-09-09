@@ -115,9 +115,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -236,9 +236,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -357,9 +357,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -475,9 +475,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -596,9 +596,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -717,9 +717,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -838,9 +838,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -959,9 +959,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -1080,9 +1080,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -1201,9 +1201,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -1322,9 +1322,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -1443,9 +1443,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -1564,9 +1564,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -1685,9 +1685,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -1803,9 +1803,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".auth.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -1834,6 +1834,248 @@ public class Client {
                         new TeaPair("body", respMap),
                         new TeaPair("headers", response_.headers)
                     ), new AccountTokenModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public ExportAuditLogModel exportAuditLogEx(ExportAuditLogRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/audit_log/export");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new ExportAuditLogModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public SearchAuditLogModel searchAuditLogEx(SearchAuditLogRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/audit_log/search");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new SearchAuditLogModel());
                 }
 
                 if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
@@ -1924,9 +2166,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -2045,9 +2287,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -2166,9 +2408,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -2287,9 +2529,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -2408,9 +2650,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -2529,9 +2771,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -2650,9 +2892,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -2771,9 +3013,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -2892,9 +3134,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -3013,9 +3255,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -3134,9 +3376,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -3252,9 +3494,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -3373,9 +3615,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -3494,9 +3736,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -3615,9 +3857,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -3736,9 +3978,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -3857,9 +4099,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -3978,9 +4220,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -4099,9 +4341,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -4229,9 +4471,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -4350,9 +4592,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -4471,9 +4713,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -4598,9 +4840,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -4716,9 +4958,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -4837,9 +5079,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -4958,9 +5200,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -5079,9 +5321,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -5200,9 +5442,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -5321,9 +5563,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -5442,9 +5684,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -5563,9 +5805,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -5684,9 +5926,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -5805,9 +6047,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -5926,9 +6168,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -6047,9 +6289,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -6168,9 +6410,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -6289,9 +6531,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -6410,9 +6652,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -6531,9 +6773,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -6652,9 +6894,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -6773,9 +7015,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -6894,9 +7136,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -7015,9 +7257,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -7136,9 +7378,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -7257,9 +7499,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -7378,9 +7620,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -7499,9 +7741,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -7620,9 +7862,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -7741,9 +7983,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -7862,9 +8104,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -7983,9 +8225,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -8104,9 +8346,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -8225,9 +8467,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -8352,9 +8594,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -8479,9 +8721,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -8600,9 +8842,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -8721,9 +8963,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -8839,9 +9081,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -8960,9 +9202,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -9081,9 +9323,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -9202,9 +9444,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -9320,9 +9562,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -9441,9 +9683,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -9562,9 +9804,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -9683,9 +9925,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -9804,9 +10046,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -9925,9 +10167,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -10046,9 +10288,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -10077,6 +10319,490 @@ public class Client {
                         new TeaPair("body", respMap),
                         new TeaPair("headers", response_.headers)
                     ), new UpdateShareLinkModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public GetDriveUsedSizeModel getDriveUsedSizeEx(GetDriveUsedSizeRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/statistics/drive_used_size");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "localhost")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new GetDriveUsedSizeModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public GetFileCountModel getFileCountEx(GetFileCountRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/statistics/file_count");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "localhost")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new GetFileCountModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public GetSubdomainSummaryModel getSubdomainSummaryEx(GetSubdomainSummaryRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/statistics/subdomain_summary");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "localhost")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new GetSubdomainSummaryModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public GetDomainSummaryModel getDomainSummaryEx(GetDomainSummaryRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/statistics/summary");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "localhost")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new GetDomainSummaryModel());
                 }
 
                 if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
@@ -10167,9 +10893,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -10288,9 +11014,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -10406,9 +11132,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -10527,9 +11253,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -10648,9 +11374,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -10769,9 +11495,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -10890,9 +11616,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -11011,9 +11737,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -11129,9 +11855,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -11250,9 +11976,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -11371,9 +12097,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -11492,9 +12218,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -11613,9 +12339,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -11734,9 +12460,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -11855,9 +12581,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -11973,9 +12699,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -12094,9 +12820,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -12212,9 +12938,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -12333,9 +13059,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -12454,9 +13180,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -12575,9 +13301,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -12693,9 +13419,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -12814,9 +13540,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -12845,6 +13571,127 @@ public class Client {
                         new TeaPair("body", respMap),
                         new TeaPair("headers", response_.headers)
                     ), new UpdateUserModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public ListViewsModel listViewsEx(ListViewsRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/View/list");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new ListViewsModel());
                 }
 
                 if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
@@ -12935,9 +13782,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -13056,9 +13903,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -13174,9 +14021,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -13295,9 +14142,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -13416,9 +14263,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -13537,9 +14384,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -13658,9 +14505,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -13779,9 +14626,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -13900,9 +14747,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -14021,9 +14868,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -14142,9 +14989,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -14263,9 +15110,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -14384,9 +15231,9 @@ public class Client {
                         new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
                         new TeaPair("content-type", "application/json; charset=utf-8")
                     ),
-                    request.headers
+                    request.httpheaders
                 );
-                realReq.put("headers", null);
+                realReq.put("httpheaders", null);
                 if (!com.aliyun.teautil.Common.empty(accessToken)) {
                     request_.headers.put("authorization", "Bearer " + accessToken + "");
                 } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
@@ -14415,6 +15262,965 @@ public class Client {
                         new TeaPair("body", respMap),
                         new TeaPair("headers", response_.headers)
                     ), new UpdateFacegroupInfoModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public AddFileModel addFileEx(AddViewFileRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/view/add_file");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new AddFileModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public CreateViewModel createViewEx(CreateViewRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/view/create");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new CreateViewModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public DeleteViewModel deleteViewEx(DeleteViewRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/view/delete");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 204)) {
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("headers", response_.headers)
+                    ), new DeleteViewModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public GetViewModel getViewEx(GetViewRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/view/get");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new GetViewModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public ViewListFileModel viewListFileEx(ListViewFilesRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/view/list_file");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new ViewListFileModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public ListFileViewsModel listFileViewsEx(ListFileViewsRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/view/list_file_views");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new ListFileViewsModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public RemoveFileModel removeFileEx(RemoveViewFileRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/view/remove_file");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 204)) {
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("headers", response_.headers)
+                    ), new RemoveFileModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    public UpdateViewModel updateViewEx(UpdateViewRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/view/update");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 204)) {
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("headers", response_.headers)
+                    ), new UpdateViewModel());
                 }
 
                 if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
@@ -14646,6 +16452,30 @@ public class Client {
     public AccountTokenModel accountToken(AccountTokenRequest request) throws Exception {
         RuntimeOptions runtime = new RuntimeOptions();
         return this.accountTokenEx(request, runtime);
+    }
+
+    /**
+     * export audit log
+     * @tags audit_log
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
+    public ExportAuditLogModel exportAuditLog(ExportAuditLogRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.exportAuditLogEx(request, runtime);
+    }
+
+    /**
+     * search audit log
+     * @tags audit_log
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
+    public SearchAuditLogModel searchAuditLog(SearchAuditLogRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.searchAuditLogEx(request, runtime);
     }
 
     /**
@@ -15623,6 +17453,54 @@ public class Client {
     }
 
     /**
+     * 查询 Drive 使用空间
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
+    public GetDriveUsedSizeModel getDriveUsedSize(GetDriveUsedSizeRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.getDriveUsedSizeEx(request, runtime);
+    }
+
+    /**
+     * 查询 Domain 或 Drive 下文件数
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
+    public GetFileCountModel getFileCount(GetFileCountRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.getFileCountEx(request, runtime);
+    }
+
+    /**
+     * 查询 Domain 统计信息
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
+    public GetSubdomainSummaryModel getSubdomainSummary(GetSubdomainSummaryRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.getSubdomainSummaryEx(request, runtime);
+    }
+
+    /**
+     * 查询 Domain 统计信息
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
+    public GetDomainSummaryModel getDomainSummary(GetDomainSummaryRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.getDomainSummaryEx(request, runtime);
+    }
+
+    /**
      * 创建用户组
      * @tags group
      * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -15949,6 +17827,20 @@ public class Client {
     }
 
     /**
+     * 列举View列表
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
+    public ListViewsModel listViews(ListViewsRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.listViewsEx(request, runtime);
+    }
+
+    /**
      * 该接口将会对两个人脸分组进行合并
      * @tags face_group
      * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -16138,6 +18030,127 @@ public class Client {
     public UpdateFacegroupInfoModel updateFacegroupInfo(UpdateFaceGroupInfoRequest request) throws Exception {
         RuntimeOptions runtime = new RuntimeOptions();
         return this.updateFacegroupInfoEx(request, runtime);
+    }
+
+    /**
+     * 视图添加文件
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error StateConflict User operation is not valid.
+     * @error TooManyRequests Too many requests
+     * @error InternalError The request has been failed due to some unknown error.
+     */
+    public AddFileModel addFile(AddViewFileRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.addFileEx(request, runtime);
+    }
+
+    /**
+     * 该接口将会创建一个逻辑视图
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
+    public CreateViewModel createView(CreateViewRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.createViewEx(request, runtime);
+    }
+
+    /**
+     * 删除指定view_id对应的View
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
+    public DeleteViewModel deleteView(DeleteViewRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.deleteViewEx(request, runtime);
+    }
+
+    /**
+     * 获取指定view_id对应的View详细信息。
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
+    public GetViewModel getView(GetViewRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.getViewEx(request, runtime);
+    }
+
+    /**
+     * 获取视图文件列表
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error TooManyRequests Too many requests
+     * @error InternalError The request has been failed due to some unknown error.
+     */
+    public ViewListFileModel viewListFile(ListViewFilesRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.viewListFileEx(request, runtime);
+    }
+
+    /**
+     * 列出文件关联视图
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error TooManyRequests Too many requests
+     * @error InternalError The request has been failed due to some unknown error.
+     */
+    public ListFileViewsModel listFileViews(ListFileViewsRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.listFileViewsEx(request, runtime);
+    }
+
+    /**
+     * 从视图中删除文件
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error TooManyRequests Too many requests
+     * @error InternalError The request has been failed due to some unknown error.
+     */
+    public RemoveFileModel removeFile(RemoveViewFileRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.removeFileEx(request, runtime);
+    }
+
+    /**
+     * 更新指定view的相关信息
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error undefined undefined
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
+    public UpdateViewModel updateView(UpdateViewRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.updateViewEx(request, runtime);
     }
 
     public String getPathname(String nickname, String path) throws Exception {

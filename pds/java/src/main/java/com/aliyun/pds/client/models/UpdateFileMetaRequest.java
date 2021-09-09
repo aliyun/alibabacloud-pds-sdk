@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 更新文件元数据
  */
 public class UpdateFileMetaRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // check_name_mode
     @NameInMap("check_name_mode")
@@ -88,12 +88,12 @@ public class UpdateFileMetaRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public UpdateFileMetaRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public UpdateFileMetaRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public UpdateFileMetaRequest setCheckNameMode(String checkNameMode) {

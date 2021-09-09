@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 合并文件上传任务
  */
 public class CompleteFileRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // addition_data
     @NameInMap("addition_data")
@@ -40,12 +40,12 @@ public class CompleteFileRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public CompleteFileRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public CompleteFileRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public CompleteFileRequest setAdditionData(java.util.Map<String, ?> additionData) {

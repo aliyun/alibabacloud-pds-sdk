@@ -43,6 +43,9 @@ public class GetUserResponse extends TeaModel {
     @NameInMap("nick_name")
     public String nickName;
 
+    @NameInMap("permission")
+    public java.util.Map<String, ?> permission;
+
     // 电话
     @NameInMap("phone")
     public String phone;
@@ -150,6 +153,14 @@ public class GetUserResponse extends TeaModel {
     }
     public String getNickName() {
         return this.nickName;
+    }
+
+    public GetUserResponse setPermission(java.util.Map<String, ?> permission) {
+        this.permission = permission;
+        return this;
+    }
+    public java.util.Map<String, ?> getPermission() {
+        return this.permission;
     }
 
     public GetUserResponse setPhone(String phone) {

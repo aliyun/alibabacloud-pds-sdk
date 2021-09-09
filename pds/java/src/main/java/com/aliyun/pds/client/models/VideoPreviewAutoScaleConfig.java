@@ -6,19 +6,19 @@ import com.aliyun.tea.*;
 /**
  * 
  */
-public class VideoPreviewAutoScale extends TeaModel {
+public class VideoPreviewAutoScaleConfig extends TeaModel {
     @NameInMap("enabled")
     public Boolean enabled;
 
     @NameInMap("max_length")
     public Long maxLength;
 
-    public static VideoPreviewAutoScale build(java.util.Map<String, ?> map) throws Exception {
-        VideoPreviewAutoScale self = new VideoPreviewAutoScale();
+    public static VideoPreviewAutoScaleConfig build(java.util.Map<String, ?> map) throws Exception {
+        VideoPreviewAutoScaleConfig self = new VideoPreviewAutoScaleConfig();
         return TeaModel.build(map, self);
     }
 
-    public VideoPreviewAutoScale setEnabled(Boolean enabled) {
+    public VideoPreviewAutoScaleConfig setEnabled(Boolean enabled) {
         this.enabled = enabled;
         return this;
     }
@@ -26,7 +26,7 @@ public class VideoPreviewAutoScale extends TeaModel {
         return this.enabled;
     }
 
-    public VideoPreviewAutoScale setMaxLength(Long maxLength) {
+    public VideoPreviewAutoScaleConfig setMaxLength(Long maxLength) {
         this.maxLength = maxLength;
         return this;
     }

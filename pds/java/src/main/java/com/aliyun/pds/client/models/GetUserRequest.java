@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * Get user request
  */
 public class GetUserRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 用户 ID, 使用ak方式访问，该项必传, access_token访问如果不传，默认取自己的user信息
     // example
@@ -20,12 +20,12 @@ public class GetUserRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public GetUserRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public GetUserRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public GetUserRequest setUserId(String userId) {
