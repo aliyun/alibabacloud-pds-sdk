@@ -123,8 +123,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -235,8 +235,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -349,8 +349,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -463,8 +463,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -576,8 +576,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -686,8 +686,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -796,8 +796,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -909,8 +909,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -1022,8 +1022,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -1135,8 +1135,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -1248,8 +1248,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -1361,8 +1361,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -1473,8 +1473,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -1585,8 +1585,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -1698,8 +1698,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -1811,8 +1811,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -1925,8 +1925,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -2039,8 +2039,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -2152,8 +2152,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -2265,8 +2265,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -2378,8 +2378,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -2491,8 +2491,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -2605,8 +2605,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -2719,8 +2719,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -2832,8 +2832,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -2945,8 +2945,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -3058,8 +3058,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -3168,8 +3168,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -3278,8 +3278,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -3391,8 +3391,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.auth.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -3414,6 +3414,454 @@ class Client:
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
                         pds_models.AccountTokenModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def export_audit_log_ex(
+        self,
+        request: pds_models.ExportAuditLogRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.ExportAuditLogModel:
+        """
+        export audit log
+        @tags audit_log
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/audit_log/export')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.ExportAuditLogModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def export_audit_log_ex_async(
+        self,
+        request: pds_models.ExportAuditLogRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.ExportAuditLogModel:
+        """
+        export audit log
+        @tags audit_log
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/audit_log/export')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.ExportAuditLogModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def search_audit_log_ex(
+        self,
+        request: pds_models.SearchAuditLogRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.SearchAuditLogModel:
+        """
+        search audit log
+        @tags audit_log
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/audit_log/search')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.SearchAuditLogModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def search_audit_log_ex_async(
+        self,
+        request: pds_models.SearchAuditLogRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.SearchAuditLogModel:
+        """
+        search audit log
+        @tags audit_log
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/audit_log/search')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.SearchAuditLogModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -3503,8 +3951,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -3615,8 +4063,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -3727,8 +4175,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -3839,8 +4287,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -3951,8 +4399,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -4063,8 +4511,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -4175,8 +4623,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -4287,8 +4735,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -4399,8 +4847,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -4511,8 +4959,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -4623,8 +5071,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -4735,8 +5183,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -4849,8 +5297,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -4963,8 +5411,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -5079,8 +5527,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -5195,8 +5643,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -5310,8 +5758,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -5425,8 +5873,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -5541,8 +5989,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -5657,8 +6105,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -5771,8 +6219,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -5882,8 +6330,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -5994,8 +6442,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -6109,8 +6557,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -6225,8 +6673,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -6341,8 +6789,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -6455,8 +6903,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -6569,8 +7017,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -6683,8 +7131,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -6797,8 +7245,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -6912,8 +7360,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -7027,8 +7475,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -7141,8 +7589,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -7255,8 +7703,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -7370,8 +7818,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -7485,8 +7933,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -7600,8 +8048,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -7725,8 +8173,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -7852,8 +8300,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -7969,8 +8417,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -8086,8 +8534,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -8203,8 +8651,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -8318,8 +8766,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -8440,8 +8888,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -8563,8 +9011,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -8676,8 +9124,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -8788,8 +9236,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -8903,8 +9351,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -9018,8 +9466,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -9133,8 +9581,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -9248,8 +9696,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -9363,8 +9811,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -9478,8 +9926,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -9593,8 +10041,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -9707,8 +10155,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -9821,8 +10269,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -9936,8 +10384,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -10051,8 +10499,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -10166,8 +10614,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -10281,8 +10729,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -10396,8 +10844,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -10511,8 +10959,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -10626,8 +11074,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -10741,8 +11189,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -10856,8 +11304,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -10971,8 +11419,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -11084,8 +11532,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -11197,8 +11645,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -11312,8 +11760,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -11427,8 +11875,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -11542,8 +11990,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -11657,8 +12105,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -11772,8 +12220,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -11887,8 +12335,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -12002,8 +12450,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -12117,8 +12565,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -12231,8 +12679,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -12345,8 +12793,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -12460,8 +12908,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -12575,8 +13023,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -12690,8 +13138,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -12805,8 +13253,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -12920,8 +13368,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -13035,8 +13483,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -13148,8 +13596,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -13261,8 +13709,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -13376,8 +13824,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -13491,8 +13939,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -13607,8 +14055,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -13723,8 +14171,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -13838,8 +14286,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -13953,8 +14401,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -14068,8 +14516,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -14183,8 +14631,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -14298,8 +14746,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -14413,8 +14861,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -14529,8 +14977,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -14645,8 +15093,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -14760,8 +15208,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -14875,8 +15323,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -14987,8 +15435,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -15099,8 +15547,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -15211,8 +15659,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -15323,8 +15771,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -15435,8 +15883,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -15554,8 +16002,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -15673,8 +16121,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -15792,8 +16240,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -15912,8 +16360,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -16025,8 +16473,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -16140,8 +16588,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -16255,8 +16703,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -16369,8 +16817,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -16480,8 +16928,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -16592,8 +17040,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -16707,8 +17155,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -16821,8 +17269,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -16935,8 +17383,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -17050,8 +17498,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -17165,8 +17613,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -17279,8 +17727,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -17390,8 +17838,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -17502,8 +17950,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -17617,8 +18065,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -17729,8 +18177,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -17841,8 +18289,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -17954,8 +18402,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -18067,8 +18515,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -18181,8 +18629,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -18295,8 +18743,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -18408,8 +18856,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -18521,8 +18969,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -18635,8 +19083,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -18749,8 +19197,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -18863,8 +19311,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -18977,8 +19425,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -19000,6 +19448,902 @@ class Client:
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
                         pds_models.UpdateShareLinkModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def get_drive_used_size_ex(
+        self,
+        request: pds_models.GetDriveUsedSizeRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.GetDriveUsedSizeModel:
+        """
+        查询 Drive 使用空间
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/statistics/drive_used_size')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'localhost'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.GetDriveUsedSizeModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def get_drive_used_size_ex_async(
+        self,
+        request: pds_models.GetDriveUsedSizeRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.GetDriveUsedSizeModel:
+        """
+        查询 Drive 使用空间
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/statistics/drive_used_size')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'localhost'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.GetDriveUsedSizeModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def get_file_count_ex(
+        self,
+        request: pds_models.GetFileCountRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.GetFileCountModel:
+        """
+        查询 Domain 或 Drive 下文件数
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/statistics/file_count')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'localhost'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.GetFileCountModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def get_file_count_ex_async(
+        self,
+        request: pds_models.GetFileCountRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.GetFileCountModel:
+        """
+        查询 Domain 或 Drive 下文件数
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/statistics/file_count')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'localhost'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.GetFileCountModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def get_subdomain_summary_ex(
+        self,
+        request: pds_models.GetSubdomainSummaryRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.GetSubdomainSummaryModel:
+        """
+        查询 Domain 统计信息
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/statistics/subdomain_summary')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'localhost'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.GetSubdomainSummaryModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def get_subdomain_summary_ex_async(
+        self,
+        request: pds_models.GetSubdomainSummaryRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.GetSubdomainSummaryModel:
+        """
+        查询 Domain 统计信息
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/statistics/subdomain_summary')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'localhost'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.GetSubdomainSummaryModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def get_domain_summary_ex(
+        self,
+        request: pds_models.GetDomainSummaryRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.GetDomainSummaryModel:
+        """
+        查询 Domain 统计信息
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/statistics/summary')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'localhost'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.GetDomainSummaryModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def get_domain_summary_ex_async(
+        self,
+        request: pds_models.GetDomainSummaryRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.GetDomainSummaryModel:
+        """
+        查询 Domain 统计信息
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/statistics/summary')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'localhost'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.GetDomainSummaryModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -19091,8 +20435,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -19205,8 +20549,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -19319,8 +20663,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -19430,8 +20774,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -19541,8 +20885,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -19655,8 +20999,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -19769,8 +21113,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -19883,8 +21227,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -19997,8 +21341,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -20111,8 +21455,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -20225,8 +21569,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -20339,8 +21683,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -20453,8 +21797,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -20567,8 +21911,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -20681,8 +22025,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -20792,8 +22136,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -20903,8 +22247,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -21017,8 +22361,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -21131,8 +22475,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -21245,8 +22589,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -21359,8 +22703,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -21473,8 +22817,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -21587,8 +22931,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -21701,8 +23045,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -21815,8 +23159,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -21929,8 +23273,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -22043,8 +23387,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -22157,8 +23501,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -22271,8 +23615,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -22382,8 +23726,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -22493,8 +23837,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -22607,8 +23951,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -22721,8 +24065,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -22832,8 +24176,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -22944,8 +24288,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -23059,8 +24403,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -23173,8 +24517,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -23287,8 +24631,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -23401,8 +24745,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -23515,8 +24859,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -23629,8 +24973,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -23740,8 +25084,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -23851,8 +25195,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -23965,8 +25309,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -24082,8 +25426,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -24199,8 +25543,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -24222,6 +25566,234 @@ class Client:
                     resp_map = UtilClient.assert_as_map(obj)
                     return TeaCore.from_map(
                         pds_models.UpdateUserModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def list_views_ex(
+        self,
+        request: pds_models.ListViewsRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.ListViewsModel:
+        """
+        列举View列表
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/View/list')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.ListViewsModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def list_views_ex_async(
+        self,
+        request: pds_models.ListViewsRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.ListViewsModel:
+        """
+        列举View列表
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/View/list')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.ListViewsModel(),
                         {
                             'body': resp_map,
                             'headers': _response.headers
@@ -24313,8 +25885,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -24427,8 +25999,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -24541,8 +26113,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -24652,8 +26224,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -24764,8 +26336,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -24879,8 +26451,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -24994,8 +26566,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -25109,8 +26681,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -25224,8 +26796,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -25339,8 +26911,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -25454,8 +27026,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -25569,8 +27141,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -25684,8 +27256,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -25799,8 +27371,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -25914,8 +27486,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -26029,8 +27601,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -26144,8 +27716,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -26259,8 +27831,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -26374,8 +27946,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -26489,8 +28061,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -26603,8 +28175,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -26717,8 +28289,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -26832,8 +28404,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -26947,8 +28519,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -27062,8 +28634,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -27177,8 +28749,8 @@ class Client:
                     'user-agent': self.get_user_agent(),
                     'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
                     'content-type': 'application/json; charset=utf-8'
-                }, request.headers)
-                real_req['headers'] = None
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
                 if not UtilClient.empty(access_token):
                     _request.headers['authorization'] = f'Bearer {access_token}'
                 elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
@@ -27202,6 +28774,1830 @@ class Client:
                         pds_models.UpdateFacegroupInfoModel(),
                         {
                             'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def add_file_ex(
+        self,
+        request: pds_models.AddViewFileRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.AddFileModel:
+        """
+        视图添加文件
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error StateConflict User operation is not valid.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/add_file')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.AddFileModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def add_file_ex_async(
+        self,
+        request: pds_models.AddViewFileRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.AddFileModel:
+        """
+        视图添加文件
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error StateConflict User operation is not valid.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/add_file')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.AddFileModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def create_view_ex(
+        self,
+        request: pds_models.CreateViewRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.CreateViewModel:
+        """
+        该接口将会创建一个逻辑视图
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/create')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.CreateViewModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def create_view_ex_async(
+        self,
+        request: pds_models.CreateViewRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.CreateViewModel:
+        """
+        该接口将会创建一个逻辑视图
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/create')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.CreateViewModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def delete_view_ex(
+        self,
+        request: pds_models.DeleteViewRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.DeleteViewModel:
+        """
+        删除指定view_id对应的View
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/delete')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 204):
+                    return TeaCore.from_map(
+                        pds_models.DeleteViewModel(),
+                        {
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def delete_view_ex_async(
+        self,
+        request: pds_models.DeleteViewRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.DeleteViewModel:
+        """
+        删除指定view_id对应的View
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/delete')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 204):
+                    return TeaCore.from_map(
+                        pds_models.DeleteViewModel(),
+                        {
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def get_view_ex(
+        self,
+        request: pds_models.GetViewRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.GetViewModel:
+        """
+        获取指定view_id对应的View详细信息。
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/get')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.GetViewModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def get_view_ex_async(
+        self,
+        request: pds_models.GetViewRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.GetViewModel:
+        """
+        获取指定view_id对应的View详细信息。
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/get')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.GetViewModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def view_list_file_ex(
+        self,
+        request: pds_models.ListViewFilesRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.ViewListFileModel:
+        """
+        获取视图文件列表
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/list_file')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.ViewListFileModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def view_list_file_ex_async(
+        self,
+        request: pds_models.ListViewFilesRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.ViewListFileModel:
+        """
+        获取视图文件列表
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/list_file')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.ViewListFileModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def list_file_views_ex(
+        self,
+        request: pds_models.ListFileViewsRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.ListFileViewsModel:
+        """
+        列出文件关联视图
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/list_file_views')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.ListFileViewsModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def list_file_views_ex_async(
+        self,
+        request: pds_models.ListFileViewsRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.ListFileViewsModel:
+        """
+        列出文件关联视图
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/list_file_views')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.ListFileViewsModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def remove_file_ex(
+        self,
+        request: pds_models.RemoveViewFileRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.RemoveFileModel:
+        """
+        从视图中删除文件
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/remove_file')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 204):
+                    return TeaCore.from_map(
+                        pds_models.RemoveFileModel(),
+                        {
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def remove_file_ex_async(
+        self,
+        request: pds_models.RemoveViewFileRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.RemoveFileModel:
+        """
+        从视图中删除文件
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/remove_file')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 204):
+                    return TeaCore.from_map(
+                        pds_models.RemoveFileModel(),
+                        {
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    def update_view_ex(
+        self,
+        request: pds_models.UpdateViewRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.UpdateViewModel:
+        """
+        更新指定view的相关信息
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error undefined undefined
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/update')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 204):
+                    return TeaCore.from_map(
+                        pds_models.UpdateViewModel(),
+                        {
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def update_view_ex_async(
+        self,
+        request: pds_models.UpdateViewRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.UpdateViewModel:
+        """
+        更新指定view的相关信息
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error undefined undefined
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/view/update')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 204):
+                    return TeaCore.from_map(
+                        pds_models.UpdateViewModel(),
+                        {
                             'headers': _response.headers
                         }
                     )
@@ -27681,6 +31077,62 @@ class Client:
         """
         runtime = pds_models.RuntimeOptions()
         return await self.account_token_ex_async(request, runtime)
+
+    def export_audit_log(
+        self,
+        request: pds_models.ExportAuditLogRequest,
+    ) -> pds_models.ExportAuditLogModel:
+        """
+        export audit log
+        @tags audit_log
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.export_audit_log_ex(request, runtime)
+
+    async def export_audit_log_async(
+        self,
+        request: pds_models.ExportAuditLogRequest,
+    ) -> pds_models.ExportAuditLogModel:
+        """
+        export audit log
+        @tags audit_log
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.export_audit_log_ex_async(request, runtime)
+
+    def search_audit_log(
+        self,
+        request: pds_models.SearchAuditLogRequest,
+    ) -> pds_models.SearchAuditLogModel:
+        """
+        search audit log
+        @tags audit_log
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.search_audit_log_ex(request, runtime)
+
+    async def search_audit_log_async(
+        self,
+        request: pds_models.SearchAuditLogRequest,
+    ) -> pds_models.SearchAuditLogModel:
+        """
+        search audit log
+        @tags audit_log
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.search_audit_log_ex_async(request, runtime)
 
     def admin_list_stores(
         self,
@@ -29902,6 +33354,118 @@ class Client:
         runtime = pds_models.RuntimeOptions()
         return await self.update_share_link_ex_async(request, runtime)
 
+    def get_drive_used_size(
+        self,
+        request: pds_models.GetDriveUsedSizeRequest,
+    ) -> pds_models.GetDriveUsedSizeModel:
+        """
+        查询 Drive 使用空间
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.get_drive_used_size_ex(request, runtime)
+
+    async def get_drive_used_size_async(
+        self,
+        request: pds_models.GetDriveUsedSizeRequest,
+    ) -> pds_models.GetDriveUsedSizeModel:
+        """
+        查询 Drive 使用空间
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.get_drive_used_size_ex_async(request, runtime)
+
+    def get_file_count(
+        self,
+        request: pds_models.GetFileCountRequest,
+    ) -> pds_models.GetFileCountModel:
+        """
+        查询 Domain 或 Drive 下文件数
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.get_file_count_ex(request, runtime)
+
+    async def get_file_count_async(
+        self,
+        request: pds_models.GetFileCountRequest,
+    ) -> pds_models.GetFileCountModel:
+        """
+        查询 Domain 或 Drive 下文件数
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.get_file_count_ex_async(request, runtime)
+
+    def get_subdomain_summary(
+        self,
+        request: pds_models.GetSubdomainSummaryRequest,
+    ) -> pds_models.GetSubdomainSummaryModel:
+        """
+        查询 Domain 统计信息
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.get_subdomain_summary_ex(request, runtime)
+
+    async def get_subdomain_summary_async(
+        self,
+        request: pds_models.GetSubdomainSummaryRequest,
+    ) -> pds_models.GetSubdomainSummaryModel:
+        """
+        查询 Domain 统计信息
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.get_subdomain_summary_ex_async(request, runtime)
+
+    def get_domain_summary(
+        self,
+        request: pds_models.GetDomainSummaryRequest,
+    ) -> pds_models.GetDomainSummaryModel:
+        """
+        查询 Domain 统计信息
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.get_domain_summary_ex(request, runtime)
+
+    async def get_domain_summary_async(
+        self,
+        request: pds_models.GetDomainSummaryRequest,
+    ) -> pds_models.GetDomainSummaryModel:
+        """
+        查询 Domain 统计信息
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.get_domain_summary_ex_async(request, runtime)
+
     def create_group(
         self,
         request: pds_models.CreateGroupRequest,
@@ -30646,6 +34210,38 @@ class Client:
         runtime = pds_models.RuntimeOptions()
         return await self.update_user_ex_async(request, runtime)
 
+    def list_views(
+        self,
+        request: pds_models.ListViewsRequest,
+    ) -> pds_models.ListViewsModel:
+        """
+        列举View列表
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.list_views_ex(request, runtime)
+
+    async def list_views_async(
+        self,
+        request: pds_models.ListViewsRequest,
+    ) -> pds_models.ListViewsModel:
+        """
+        列举View列表
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.list_views_ex_async(request, runtime)
+
     def merge(
         self,
         request: pds_models.MergeFaceGroupRequest,
@@ -31081,6 +34677,280 @@ class Client:
         """
         runtime = pds_models.RuntimeOptions()
         return await self.update_facegroup_info_ex_async(request, runtime)
+
+    def add_file(
+        self,
+        request: pds_models.AddViewFileRequest,
+    ) -> pds_models.AddFileModel:
+        """
+        视图添加文件
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error StateConflict User operation is not valid.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.add_file_ex(request, runtime)
+
+    async def add_file_async(
+        self,
+        request: pds_models.AddViewFileRequest,
+    ) -> pds_models.AddFileModel:
+        """
+        视图添加文件
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error StateConflict User operation is not valid.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.add_file_ex_async(request, runtime)
+
+    def create_view(
+        self,
+        request: pds_models.CreateViewRequest,
+    ) -> pds_models.CreateViewModel:
+        """
+        该接口将会创建一个逻辑视图
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.create_view_ex(request, runtime)
+
+    async def create_view_async(
+        self,
+        request: pds_models.CreateViewRequest,
+    ) -> pds_models.CreateViewModel:
+        """
+        该接口将会创建一个逻辑视图
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.create_view_ex_async(request, runtime)
+
+    def delete_view(
+        self,
+        request: pds_models.DeleteViewRequest,
+    ) -> pds_models.DeleteViewModel:
+        """
+        删除指定view_id对应的View
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.delete_view_ex(request, runtime)
+
+    async def delete_view_async(
+        self,
+        request: pds_models.DeleteViewRequest,
+    ) -> pds_models.DeleteViewModel:
+        """
+        删除指定view_id对应的View
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.delete_view_ex_async(request, runtime)
+
+    def get_view(
+        self,
+        request: pds_models.GetViewRequest,
+    ) -> pds_models.GetViewModel:
+        """
+        获取指定view_id对应的View详细信息。
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.get_view_ex(request, runtime)
+
+    async def get_view_async(
+        self,
+        request: pds_models.GetViewRequest,
+    ) -> pds_models.GetViewModel:
+        """
+        获取指定view_id对应的View详细信息。
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.get_view_ex_async(request, runtime)
+
+    def view_list_file(
+        self,
+        request: pds_models.ListViewFilesRequest,
+    ) -> pds_models.ViewListFileModel:
+        """
+        获取视图文件列表
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.view_list_file_ex(request, runtime)
+
+    async def view_list_file_async(
+        self,
+        request: pds_models.ListViewFilesRequest,
+    ) -> pds_models.ViewListFileModel:
+        """
+        获取视图文件列表
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.view_list_file_ex_async(request, runtime)
+
+    def list_file_views(
+        self,
+        request: pds_models.ListFileViewsRequest,
+    ) -> pds_models.ListFileViewsModel:
+        """
+        列出文件关联视图
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.list_file_views_ex(request, runtime)
+
+    async def list_file_views_async(
+        self,
+        request: pds_models.ListFileViewsRequest,
+    ) -> pds_models.ListFileViewsModel:
+        """
+        列出文件关联视图
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.list_file_views_ex_async(request, runtime)
+
+    def remove_file(
+        self,
+        request: pds_models.RemoveViewFileRequest,
+    ) -> pds_models.RemoveFileModel:
+        """
+        从视图中删除文件
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.remove_file_ex(request, runtime)
+
+    async def remove_file_async(
+        self,
+        request: pds_models.RemoveViewFileRequest,
+    ) -> pds_models.RemoveFileModel:
+        """
+        从视图中删除文件
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error Forbidden User not authorized to operate on the specified APIs.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error TooManyRequests Too many requests
+        @error InternalError The request has been failed due to some unknown error.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.remove_file_ex_async(request, runtime)
+
+    def update_view(
+        self,
+        request: pds_models.UpdateViewRequest,
+    ) -> pds_models.UpdateViewModel:
+        """
+        更新指定view的相关信息
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error undefined undefined
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.update_view_ex(request, runtime)
+
+    async def update_view_async(
+        self,
+        request: pds_models.UpdateViewRequest,
+    ) -> pds_models.UpdateViewModel:
+        """
+        更新指定view的相关信息
+        @tags view
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error undefined undefined
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.update_view_ex_async(request, runtime)
 
     def get_pathname(
         self,
