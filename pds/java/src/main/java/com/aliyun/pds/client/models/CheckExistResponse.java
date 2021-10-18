@@ -6,7 +6,7 @@ import com.aliyun.tea.*;
 /**
  * 
  */
-public class MobileCheckExistResponse extends TeaModel {
+public class CheckExistResponse extends TeaModel {
     // 当前手机号是否存在
     @NameInMap("is_exist")
     @Validation(required = true)
@@ -21,12 +21,12 @@ public class MobileCheckExistResponse extends TeaModel {
     @NameInMap("phone_region")
     public String phoneRegion;
 
-    public static MobileCheckExistResponse build(java.util.Map<String, ?> map) throws Exception {
-        MobileCheckExistResponse self = new MobileCheckExistResponse();
+    public static CheckExistResponse build(java.util.Map<String, ?> map) throws Exception {
+        CheckExistResponse self = new CheckExistResponse();
         return TeaModel.build(map, self);
     }
 
-    public MobileCheckExistResponse setIsExist(Boolean isExist) {
+    public CheckExistResponse setIsExist(Boolean isExist) {
         this.isExist = isExist;
         return this;
     }
@@ -34,7 +34,7 @@ public class MobileCheckExistResponse extends TeaModel {
         return this.isExist;
     }
 
-    public MobileCheckExistResponse setPhoneNumber(String phoneNumber) {
+    public CheckExistResponse setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -42,7 +42,7 @@ public class MobileCheckExistResponse extends TeaModel {
         return this.phoneNumber;
     }
 
-    public MobileCheckExistResponse setPhoneRegion(String phoneRegion) {
+    public CheckExistResponse setPhoneRegion(String phoneRegion) {
         this.phoneRegion = phoneRegion;
         return this;
     }

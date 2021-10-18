@@ -60,6 +60,12 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("meta")
     public String meta;
 
+    @NameInMap("mime_extension")
+    public String mimeExtension;
+
+    @NameInMap("mime_type")
+    public String mimeType;
+
     // name
     @NameInMap("name")
     @Validation(maxLength = 1024, minLength = 1)
@@ -78,6 +84,9 @@ public class UpdateFileMetaRequest extends TeaModel {
     // type: boolean
     @NameInMap("starred")
     public Boolean starred;
+
+    @NameInMap("taken_at")
+    public String takenAt;
 
     // user_meta
     @NameInMap("user_meta")
@@ -200,6 +209,22 @@ public class UpdateFileMetaRequest extends TeaModel {
         return this.meta;
     }
 
+    public UpdateFileMetaRequest setMimeExtension(String mimeExtension) {
+        this.mimeExtension = mimeExtension;
+        return this;
+    }
+    public String getMimeExtension() {
+        return this.mimeExtension;
+    }
+
+    public UpdateFileMetaRequest setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+        return this;
+    }
+    public String getMimeType() {
+        return this.mimeType;
+    }
+
     public UpdateFileMetaRequest setName(String name) {
         this.name = name;
         return this;
@@ -238,6 +263,14 @@ public class UpdateFileMetaRequest extends TeaModel {
     }
     public Boolean getStarred() {
         return this.starred;
+    }
+
+    public UpdateFileMetaRequest setTakenAt(String takenAt) {
+        this.takenAt = takenAt;
+        return this;
+    }
+    public String getTakenAt() {
+        return this.takenAt;
     }
 
     public UpdateFileMetaRequest setUserMeta(String userMeta) {

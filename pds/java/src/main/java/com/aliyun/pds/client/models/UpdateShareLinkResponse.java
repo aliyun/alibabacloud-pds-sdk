@@ -47,6 +47,14 @@ public class UpdateShareLinkResponse extends TeaModel {
     @NameInMap("file_path_list")
     public java.util.List<String> filePathList;
 
+    // is_subscribed
+    @NameInMap("is_subscribed")
+    public Boolean isSubscribed;
+
+    // num_of_subscribers
+    @NameInMap("num_of_subscribers")
+    public Long numOfSubscribers;
+
     // preview_count
     @NameInMap("preview_count")
     public Long previewCount;
@@ -170,6 +178,22 @@ public class UpdateShareLinkResponse extends TeaModel {
     }
     public java.util.List<String> getFilePathList() {
         return this.filePathList;
+    }
+
+    public UpdateShareLinkResponse setIsSubscribed(Boolean isSubscribed) {
+        this.isSubscribed = isSubscribed;
+        return this;
+    }
+    public Boolean getIsSubscribed() {
+        return this.isSubscribed;
+    }
+
+    public UpdateShareLinkResponse setNumOfSubscribers(Long numOfSubscribers) {
+        this.numOfSubscribers = numOfSubscribers;
+        return this;
+    }
+    public Long getNumOfSubscribers() {
+        return this.numOfSubscribers;
     }
 
     public UpdateShareLinkResponse setPreviewCount(Long previewCount) {

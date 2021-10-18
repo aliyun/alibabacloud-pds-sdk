@@ -11,6 +11,18 @@ public class GetDownloadUrlResponse extends TeaModel {
     @NameInMap("cdn_url")
     public String cdnUrl;
 
+    // Content Hash
+    @NameInMap("content_hash")
+    public String contentHash;
+
+    // content_hash_name
+    @NameInMap("content_hash_name")
+    public String contentHashName;
+
+    // crc64_hash
+    @NameInMap("crc64_hash")
+    public String crc64Hash;
+
     // expiration
     @NameInMap("expiration")
     public String expiration;
@@ -49,6 +61,30 @@ public class GetDownloadUrlResponse extends TeaModel {
     }
     public String getCdnUrl() {
         return this.cdnUrl;
+    }
+
+    public GetDownloadUrlResponse setContentHash(String contentHash) {
+        this.contentHash = contentHash;
+        return this;
+    }
+    public String getContentHash() {
+        return this.contentHash;
+    }
+
+    public GetDownloadUrlResponse setContentHashName(String contentHashName) {
+        this.contentHashName = contentHashName;
+        return this;
+    }
+    public String getContentHashName() {
+        return this.contentHashName;
+    }
+
+    public GetDownloadUrlResponse setCrc64Hash(String crc64Hash) {
+        this.crc64Hash = crc64Hash;
+        return this;
+    }
+    public String getCrc64Hash() {
+        return this.crc64Hash;
     }
 
     public GetDownloadUrlResponse setExpiration(String expiration) {

@@ -7,15 +7,23 @@ import com.aliyun.tea.*;
  * List identity benefit package request
  */
 public class ListIdentityBenefitPkgRequest extends TeaModel {
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
+
     // 查询特定的benefit ID，include_benefit为true时有效。 如果为空，不做任何过滤；如果不为空，只返回包含特定benefit ID的权益包；也只返回权益包中特定的权益信息。
     @NameInMap("benefit_id_list")
     public java.util.List<String> benefitIdList;
 
-    // domain ID AK方式访问，参数identity_type为user时，该项必传
+    // domain ID
     @NameInMap("domain_id")
     public String domainId;
 
-    // 实体类型，目前只支持查询user类型实体绑定的权益包
+    // 实体的唯一标识，如 userID
+    @NameInMap("identity_id")
+    @Validation(required = true)
+    public String identityId;
+
+    // 实体类型，当前支持user类型实体
     @NameInMap("identity_type")
     @Validation(required = true)
     public String identityType;
@@ -28,13 +36,17 @@ public class ListIdentityBenefitPkgRequest extends TeaModel {
     @NameInMap("include_expired")
     public Boolean includeExpired;
 
-    // 用户 ID, AK方式访问，参数identity_type为user时，该项必传
-    @NameInMap("user_id")
-    public String userId;
-
     public static ListIdentityBenefitPkgRequest build(java.util.Map<String, ?> map) throws Exception {
         ListIdentityBenefitPkgRequest self = new ListIdentityBenefitPkgRequest();
         return TeaModel.build(map, self);
+    }
+
+    public ListIdentityBenefitPkgRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
+        return this;
+    }
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ListIdentityBenefitPkgRequest setBenefitIdList(java.util.List<String> benefitIdList) {
@@ -51,6 +63,14 @@ public class ListIdentityBenefitPkgRequest extends TeaModel {
     }
     public String getDomainId() {
         return this.domainId;
+    }
+
+    public ListIdentityBenefitPkgRequest setIdentityId(String identityId) {
+        this.identityId = identityId;
+        return this;
+    }
+    public String getIdentityId() {
+        return this.identityId;
     }
 
     public ListIdentityBenefitPkgRequest setIdentityType(String identityType) {
@@ -75,14 +95,6 @@ public class ListIdentityBenefitPkgRequest extends TeaModel {
     }
     public Boolean getIncludeExpired() {
         return this.includeExpired;
-    }
-
-    public ListIdentityBenefitPkgRequest setUserId(String userId) {
-        this.userId = userId;
-        return this;
-    }
-    public String getUserId() {
-        return this.userId;
     }
 
 }

@@ -27,6 +27,10 @@ public class SearchUserRequest extends TeaModel {
     @NameInMap("nick_name")
     public String nickName;
 
+    // 昵称-模糊搜索
+    @NameInMap("nick_name_for_fuzzy")
+    public String nickNameForFuzzy;
+
     // 电话号码
     @NameInMap("phone")
     public String phone;
@@ -90,6 +94,14 @@ public class SearchUserRequest extends TeaModel {
     }
     public String getNickName() {
         return this.nickName;
+    }
+
+    public SearchUserRequest setNickNameForFuzzy(String nickNameForFuzzy) {
+        this.nickNameForFuzzy = nickNameForFuzzy;
+        return this;
+    }
+    public String getNickNameForFuzzy() {
+        return this.nickNameForFuzzy;
     }
 
     public SearchUserRequest setPhone(String phone) {

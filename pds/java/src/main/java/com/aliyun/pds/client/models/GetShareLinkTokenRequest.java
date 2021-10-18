@@ -14,6 +14,10 @@ public class GetShareLinkTokenRequest extends TeaModel {
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
+    // check_share_pwd, effective for creator, admin or aksk only
+    @NameInMap("check_share_pwd")
+    public Boolean checkSharePwd;
+
     // expire_sec
     @NameInMap("expire_sec")
     @Validation(maximum = 7200)
@@ -49,6 +53,14 @@ public class GetShareLinkTokenRequest extends TeaModel {
     }
     public java.util.Map<String, ?> getAdditionData() {
         return this.additionData;
+    }
+
+    public GetShareLinkTokenRequest setCheckSharePwd(Boolean checkSharePwd) {
+        this.checkSharePwd = checkSharePwd;
+        return this;
+    }
+    public Boolean getCheckSharePwd() {
+        return this.checkSharePwd;
     }
 
     public GetShareLinkTokenRequest setExpireSec(Long expireSec) {

@@ -6,7 +6,7 @@ import com.aliyun.tea.*;
 /**
  * 
  */
-public class MobileCheckExistRequest extends TeaModel {
+public class CheckExistRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
@@ -15,21 +15,24 @@ public class MobileCheckExistRequest extends TeaModel {
     @Validation(required = true)
     public String appId;
 
-    // 待查询的手机号
+    // 邮箱
+    @NameInMap("email")
+    public String email;
+
+    // 待发送验证短信的手机号
     @NameInMap("phone_number")
-    @Validation(required = true)
     public String phoneNumber;
 
     // 国家编号，默认86，不需要填+号，直接填数字
     @NameInMap("phone_region")
     public String phoneRegion;
 
-    public static MobileCheckExistRequest build(java.util.Map<String, ?> map) throws Exception {
-        MobileCheckExistRequest self = new MobileCheckExistRequest();
+    public static CheckExistRequest build(java.util.Map<String, ?> map) throws Exception {
+        CheckExistRequest self = new CheckExistRequest();
         return TeaModel.build(map, self);
     }
 
-    public MobileCheckExistRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+    public CheckExistRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
         this.httpheaders = httpheaders;
         return this;
     }
@@ -37,7 +40,7 @@ public class MobileCheckExistRequest extends TeaModel {
         return this.httpheaders;
     }
 
-    public MobileCheckExistRequest setAppId(String appId) {
+    public CheckExistRequest setAppId(String appId) {
         this.appId = appId;
         return this;
     }
@@ -45,7 +48,15 @@ public class MobileCheckExistRequest extends TeaModel {
         return this.appId;
     }
 
-    public MobileCheckExistRequest setPhoneNumber(String phoneNumber) {
+    public CheckExistRequest setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+    public String getEmail() {
+        return this.email;
+    }
+
+    public CheckExistRequest setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -53,7 +64,7 @@ public class MobileCheckExistRequest extends TeaModel {
         return this.phoneNumber;
     }
 
-    public MobileCheckExistRequest setPhoneRegion(String phoneRegion) {
+    public CheckExistRequest setPhoneRegion(String phoneRegion) {
         this.phoneRegion = phoneRegion;
         return this;
     }

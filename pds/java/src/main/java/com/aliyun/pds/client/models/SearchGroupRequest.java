@@ -14,6 +14,10 @@ public class SearchGroupRequest extends TeaModel {
     @NameInMap("group_name")
     public String groupName;
 
+    // group_name_for_fuzzy
+    @NameInMap("group_name_for_fuzzy")
+    public String groupNameForFuzzy;
+
     // 分页获取的数量，默认为100
     @NameInMap("limit")
     public Integer limit;
@@ -45,6 +49,14 @@ public class SearchGroupRequest extends TeaModel {
     }
     public String getGroupName() {
         return this.groupName;
+    }
+
+    public SearchGroupRequest setGroupNameForFuzzy(String groupNameForFuzzy) {
+        this.groupNameForFuzzy = groupNameForFuzzy;
+        return this;
+    }
+    public String getGroupNameForFuzzy() {
+        return this.groupNameForFuzzy;
     }
 
     public SearchGroupRequest setLimit(Integer limit) {

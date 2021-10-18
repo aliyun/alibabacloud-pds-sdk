@@ -9,7 +9,7 @@ public class CheckExistModel extends TeaModel {
 
     @NameInMap("body")
     @Validation(required = true)
-    public MobileCheckExistResponse body;
+    public CheckExistResponse body;
 
     public static CheckExistModel build(java.util.Map<String, ?> map) throws Exception {
         CheckExistModel self = new CheckExistModel();
@@ -24,11 +24,11 @@ public class CheckExistModel extends TeaModel {
         return this.headers;
     }
 
-    public CheckExistModel setBody(MobileCheckExistResponse body) {
+    public CheckExistModel setBody(CheckExistResponse body) {
         this.body = body;
         return this;
     }
-    public MobileCheckExistResponse getBody() {
+    public CheckExistResponse getBody() {
         return this.body;
     }
 

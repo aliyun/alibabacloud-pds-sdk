@@ -15,6 +15,10 @@ public class ListByAnonymousResponse extends TeaModel {
     @NameInMap("next_marker")
     public String nextMarker;
 
+    // punished_file_count
+    @NameInMap("punished_file_count")
+    public Long punishedFileCount;
+
     public static ListByAnonymousResponse build(java.util.Map<String, ?> map) throws Exception {
         ListByAnonymousResponse self = new ListByAnonymousResponse();
         return TeaModel.build(map, self);
@@ -34,6 +38,14 @@ public class ListByAnonymousResponse extends TeaModel {
     }
     public String getNextMarker() {
         return this.nextMarker;
+    }
+
+    public ListByAnonymousResponse setPunishedFileCount(Long punishedFileCount) {
+        this.punishedFileCount = punishedFileCount;
+        return this;
+    }
+    public Long getPunishedFileCount() {
+        return this.punishedFileCount;
     }
 
 }

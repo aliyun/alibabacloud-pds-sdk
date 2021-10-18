@@ -23,13 +23,17 @@ public class GetStoryRequest extends TeaModel {
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // image_process
-    @NameInMap("image_process")
-    public String imageProcess;
-
     // image_thumbnail_process
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
+
+    // image_url_process
+    @NameInMap("image_url_process")
+    public String imageUrlProcess;
+
+    // office_thumbnail_process
+    @NameInMap("office_thumbnail_process")
+    public String officeThumbnailProcess;
 
     // story_id
     @NameInMap("story_id")
@@ -41,6 +45,7 @@ public class GetStoryRequest extends TeaModel {
     public Long urlExpireSec;
 
     // video_thumbnail_process
+    // type:string
     @NameInMap("video_thumbnail_process")
     public String videoThumbnailProcess;
 
@@ -81,20 +86,28 @@ public class GetStoryRequest extends TeaModel {
         return this.driveId;
     }
 
-    public GetStoryRequest setImageProcess(String imageProcess) {
-        this.imageProcess = imageProcess;
-        return this;
-    }
-    public String getImageProcess() {
-        return this.imageProcess;
-    }
-
     public GetStoryRequest setImageThumbnailProcess(String imageThumbnailProcess) {
         this.imageThumbnailProcess = imageThumbnailProcess;
         return this;
     }
     public String getImageThumbnailProcess() {
         return this.imageThumbnailProcess;
+    }
+
+    public GetStoryRequest setImageUrlProcess(String imageUrlProcess) {
+        this.imageUrlProcess = imageUrlProcess;
+        return this;
+    }
+    public String getImageUrlProcess() {
+        return this.imageUrlProcess;
+    }
+
+    public GetStoryRequest setOfficeThumbnailProcess(String officeThumbnailProcess) {
+        this.officeThumbnailProcess = officeThumbnailProcess;
+        return this;
+    }
+    public String getOfficeThumbnailProcess() {
+        return this.officeThumbnailProcess;
     }
 
     public GetStoryRequest setStoryId(String storyId) {

@@ -13,6 +13,9 @@ public class AppConfig extends TeaModel {
     @NameInMap("hide_share_admin_entry")
     public Boolean hideShareAdminEntry;
 
+    @NameInMap("show_customized_login_config")
+    public Boolean showCustomizedLoginConfig;
+
     @NameInMap("web_version")
     public String webVersion;
 
@@ -35,6 +38,14 @@ public class AppConfig extends TeaModel {
     }
     public Boolean getHideShareAdminEntry() {
         return this.hideShareAdminEntry;
+    }
+
+    public AppConfig setShowCustomizedLoginConfig(Boolean showCustomizedLoginConfig) {
+        this.showCustomizedLoginConfig = showCustomizedLoginConfig;
+        return this;
+    }
+    public Boolean getShowCustomizedLoginConfig() {
+        return this.showCustomizedLoginConfig;
     }
 
     public AppConfig setWebVersion(String webVersion) {
