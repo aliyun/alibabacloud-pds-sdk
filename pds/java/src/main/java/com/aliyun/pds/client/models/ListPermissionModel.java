@@ -3,20 +3,20 @@ package com.aliyun.pds.client.models;
 
 import com.aliyun.tea.*;
 
-public class MobileSendSmsCodeModel extends TeaModel {
+public class ListPermissionModel extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
     @NameInMap("body")
     @Validation(required = true)
-    public MobileSendSmsCodeResponse body;
+    public FilePermissionMember body;
 
-    public static MobileSendSmsCodeModel build(java.util.Map<String, ?> map) throws Exception {
-        MobileSendSmsCodeModel self = new MobileSendSmsCodeModel();
+    public static ListPermissionModel build(java.util.Map<String, ?> map) throws Exception {
+        ListPermissionModel self = new ListPermissionModel();
         return TeaModel.build(map, self);
     }
 
-    public MobileSendSmsCodeModel setHeaders(java.util.Map<String, String> headers) {
+    public ListPermissionModel setHeaders(java.util.Map<String, String> headers) {
         this.headers = headers;
         return this;
     }
@@ -24,11 +24,11 @@ public class MobileSendSmsCodeModel extends TeaModel {
         return this.headers;
     }
 
-    public MobileSendSmsCodeModel setBody(MobileSendSmsCodeResponse body) {
+    public ListPermissionModel setBody(FilePermissionMember body) {
         this.body = body;
         return this;
     }
-    public MobileSendSmsCodeResponse getBody() {
+    public FilePermissionMember getBody() {
         return this.body;
     }
 

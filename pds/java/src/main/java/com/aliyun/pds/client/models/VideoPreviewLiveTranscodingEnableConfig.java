@@ -10,6 +10,9 @@ public class VideoPreviewLiveTranscodingEnableConfig extends TeaModel {
     @NameInMap("drop_file_created_event")
     public Boolean dropFileCreatedEvent;
 
+    @NameInMap("enable_dump_old_m3u8_task_info")
+    public Boolean enableDumpOldM3u8TaskInfo;
+
     @NameInMap("enable_ignore_copied_file")
     public Boolean enableIgnoreCopiedFile;
 
@@ -24,6 +27,14 @@ public class VideoPreviewLiveTranscodingEnableConfig extends TeaModel {
     }
     public Boolean getDropFileCreatedEvent() {
         return this.dropFileCreatedEvent;
+    }
+
+    public VideoPreviewLiveTranscodingEnableConfig setEnableDumpOldM3u8TaskInfo(Boolean enableDumpOldM3u8TaskInfo) {
+        this.enableDumpOldM3u8TaskInfo = enableDumpOldM3u8TaskInfo;
+        return this;
+    }
+    public Boolean getEnableDumpOldM3u8TaskInfo() {
+        return this.enableDumpOldM3u8TaskInfo;
     }
 
     public VideoPreviewLiveTranscodingEnableConfig setEnableIgnoreCopiedFile(Boolean enableIgnoreCopiedFile) {

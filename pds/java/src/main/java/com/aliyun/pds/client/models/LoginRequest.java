@@ -6,7 +6,7 @@ import com.aliyun.tea.*;
 /**
  * 
  */
-public class MobileLoginRequest extends TeaModel {
+public class LoginRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
@@ -27,6 +27,10 @@ public class MobileLoginRequest extends TeaModel {
     @NameInMap("captcha_text")
     public String captchaText;
 
+    // 邮箱
+    @NameInMap("email")
+    public String email;
+
     // AES-256对称加密密钥，通过App公钥加密后传输
     @NameInMap("encrypted_key")
     public String encryptedKey;
@@ -40,9 +44,8 @@ public class MobileLoginRequest extends TeaModel {
     @NameInMap("password")
     public String password;
 
-    // 待查询的手机号
+    // 待发送验证短信的手机号
     @NameInMap("phone_number")
-    @Validation(required = true)
     public String phoneNumber;
 
     // 国家编号，默认86，不需要填+号，直接填数字
@@ -57,12 +60,12 @@ public class MobileLoginRequest extends TeaModel {
     @NameInMap("sms_code_id")
     public String smsCodeId;
 
-    public static MobileLoginRequest build(java.util.Map<String, ?> map) throws Exception {
-        MobileLoginRequest self = new MobileLoginRequest();
+    public static LoginRequest build(java.util.Map<String, ?> map) throws Exception {
+        LoginRequest self = new LoginRequest();
         return TeaModel.build(map, self);
     }
 
-    public MobileLoginRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+    public LoginRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
         this.httpheaders = httpheaders;
         return this;
     }
@@ -70,7 +73,7 @@ public class MobileLoginRequest extends TeaModel {
         return this.httpheaders;
     }
 
-    public MobileLoginRequest setAppId(String appId) {
+    public LoginRequest setAppId(String appId) {
         this.appId = appId;
         return this;
     }
@@ -78,7 +81,7 @@ public class MobileLoginRequest extends TeaModel {
         return this.appId;
     }
 
-    public MobileLoginRequest setAutoRegister(Boolean autoRegister) {
+    public LoginRequest setAutoRegister(Boolean autoRegister) {
         this.autoRegister = autoRegister;
         return this;
     }
@@ -86,7 +89,7 @@ public class MobileLoginRequest extends TeaModel {
         return this.autoRegister;
     }
 
-    public MobileLoginRequest setCaptchaId(String captchaId) {
+    public LoginRequest setCaptchaId(String captchaId) {
         this.captchaId = captchaId;
         return this;
     }
@@ -94,7 +97,7 @@ public class MobileLoginRequest extends TeaModel {
         return this.captchaId;
     }
 
-    public MobileLoginRequest setCaptchaText(String captchaText) {
+    public LoginRequest setCaptchaText(String captchaText) {
         this.captchaText = captchaText;
         return this;
     }
@@ -102,7 +105,15 @@ public class MobileLoginRequest extends TeaModel {
         return this.captchaText;
     }
 
-    public MobileLoginRequest setEncryptedKey(String encryptedKey) {
+    public LoginRequest setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+    public String getEmail() {
+        return this.email;
+    }
+
+    public LoginRequest setEncryptedKey(String encryptedKey) {
         this.encryptedKey = encryptedKey;
         return this;
     }
@@ -110,7 +121,7 @@ public class MobileLoginRequest extends TeaModel {
         return this.encryptedKey;
     }
 
-    public MobileLoginRequest setNvcParam(String nvcParam) {
+    public LoginRequest setNvcParam(String nvcParam) {
         this.nvcParam = nvcParam;
         return this;
     }
@@ -118,7 +129,7 @@ public class MobileLoginRequest extends TeaModel {
         return this.nvcParam;
     }
 
-    public MobileLoginRequest setPassword(String password) {
+    public LoginRequest setPassword(String password) {
         this.password = password;
         return this;
     }
@@ -126,7 +137,7 @@ public class MobileLoginRequest extends TeaModel {
         return this.password;
     }
 
-    public MobileLoginRequest setPhoneNumber(String phoneNumber) {
+    public LoginRequest setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -134,7 +145,7 @@ public class MobileLoginRequest extends TeaModel {
         return this.phoneNumber;
     }
 
-    public MobileLoginRequest setPhoneRegion(String phoneRegion) {
+    public LoginRequest setPhoneRegion(String phoneRegion) {
         this.phoneRegion = phoneRegion;
         return this;
     }
@@ -142,7 +153,7 @@ public class MobileLoginRequest extends TeaModel {
         return this.phoneRegion;
     }
 
-    public MobileLoginRequest setSmsCode(String smsCode) {
+    public LoginRequest setSmsCode(String smsCode) {
         this.smsCode = smsCode;
         return this;
     }
@@ -150,7 +161,7 @@ public class MobileLoginRequest extends TeaModel {
         return this.smsCode;
     }
 
-    public MobileLoginRequest setSmsCodeId(String smsCodeId) {
+    public LoginRequest setSmsCodeId(String smsCodeId) {
         this.smsCodeId = smsCodeId;
         return this;
     }

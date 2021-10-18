@@ -18,6 +18,14 @@ public class UpdateShareLinkRequest extends TeaModel {
     @NameInMap("expiration")
     public String expiration;
 
+    // is_subscribed
+    @NameInMap("is_subscribed")
+    public Boolean isSubscribed;
+
+    // num_of_subscribers
+    @NameInMap("num_of_subscribers")
+    public Long numOfSubscribers;
+
     // share_id
     @NameInMap("share_id")
     public String shareId;
@@ -28,7 +36,6 @@ public class UpdateShareLinkRequest extends TeaModel {
 
     // share_pwd
     @NameInMap("share_pwd")
-    @Validation(maximum = 64)
     public String sharePwd;
 
     // status
@@ -62,6 +69,22 @@ public class UpdateShareLinkRequest extends TeaModel {
     }
     public String getExpiration() {
         return this.expiration;
+    }
+
+    public UpdateShareLinkRequest setIsSubscribed(Boolean isSubscribed) {
+        this.isSubscribed = isSubscribed;
+        return this;
+    }
+    public Boolean getIsSubscribed() {
+        return this.isSubscribed;
+    }
+
+    public UpdateShareLinkRequest setNumOfSubscribers(Long numOfSubscribers) {
+        this.numOfSubscribers = numOfSubscribers;
+        return this;
+    }
+    public Long getNumOfSubscribers() {
+        return this.numOfSubscribers;
     }
 
     public UpdateShareLinkRequest setShareId(String shareId) {

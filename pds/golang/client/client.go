@@ -239,6 +239,29 @@ func (s *CancelLinkModel) SetBody(v *AccountAccessTokenResponse) *CancelLinkMode
   return s
 }
 
+type CheckExistModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *CheckExistResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckExistModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CheckExistModel) GoString() string {
+  return s.String()
+}
+
+func (s *CheckExistModel) SetHeaders(v map[string]*string) *CheckExistModel {
+  s.Headers = v
+  return s
+}
+
+func (s *CheckExistModel) SetBody(v *CheckExistResponse) *CheckExistModel {
+  s.Body = v
+  return s
+}
+
 type ConfirmLinkModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *AccountAccessTokenResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -259,23 +282,6 @@ func (s *ConfirmLinkModel) SetHeaders(v map[string]*string) *ConfirmLinkModel {
 
 func (s *ConfirmLinkModel) SetBody(v *AccountAccessTokenResponse) *ConfirmLinkModel {
   s.Body = v
-  return s
-}
-
-type SetPasswordModel struct {
-  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-}
-
-func (s SetPasswordModel) String() string {
-  return tea.Prettify(s)
-}
-
-func (s SetPasswordModel) GoString() string {
-  return s.String()
-}
-
-func (s *SetPasswordModel) SetHeaders(v map[string]*string) *SetPasswordModel {
-  s.Headers = v
   return s
 }
 
@@ -417,29 +423,6 @@ func (s *LinkModel) SetBody(v *AccountAccessTokenResponse) *LinkModel {
   return s
 }
 
-type CheckExistModel struct {
-  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-  Body *MobileCheckExistResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckExistModel) String() string {
-  return tea.Prettify(s)
-}
-
-func (s CheckExistModel) GoString() string {
-  return s.String()
-}
-
-func (s *CheckExistModel) SetHeaders(v map[string]*string) *CheckExistModel {
-  s.Headers = v
-  return s
-}
-
-func (s *CheckExistModel) SetBody(v *MobileCheckExistResponse) *CheckExistModel {
-  s.Body = v
-  return s
-}
-
 type LoginModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *AccountAccessTokenResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -486,29 +469,6 @@ func (s *RegisterModel) SetBody(v *AccountAccessTokenResponse) *RegisterModel {
   return s
 }
 
-type MobileSendSmsCodeModel struct {
-  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-  Body *MobileSendSmsCodeResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s MobileSendSmsCodeModel) String() string {
-  return tea.Prettify(s)
-}
-
-func (s MobileSendSmsCodeModel) GoString() string {
-  return s.String()
-}
-
-func (s *MobileSendSmsCodeModel) SetHeaders(v map[string]*string) *MobileSendSmsCodeModel {
-  s.Headers = v
-  return s
-}
-
-func (s *MobileSendSmsCodeModel) SetBody(v *MobileSendSmsCodeResponse) *MobileSendSmsCodeModel {
-  s.Body = v
-  return s
-}
-
 type AccountRevokeModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 }
@@ -523,6 +483,29 @@ func (s AccountRevokeModel) GoString() string {
 
 func (s *AccountRevokeModel) SetHeaders(v map[string]*string) *AccountRevokeModel {
   s.Headers = v
+  return s
+}
+
+type SendSmsCodeModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *SendSmsCodeResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendSmsCodeModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SendSmsCodeModel) GoString() string {
+  return s.String()
+}
+
+func (s *SendSmsCodeModel) SetHeaders(v map[string]*string) *SendSmsCodeModel {
+  s.Headers = v
+  return s
+}
+
+func (s *SendSmsCodeModel) SetBody(v *SendSmsCodeResponse) *SendSmsCodeModel {
+  s.Body = v
   return s
 }
 
@@ -591,6 +574,144 @@ func (s *SearchAuditLogModel) SetHeaders(v map[string]*string) *SearchAuditLogMo
 }
 
 func (s *SearchAuditLogModel) SetBody(v *SearchAuditLogResponse) *SearchAuditLogModel {
+  s.Body = v
+  return s
+}
+
+type CreateIdentityToBenefitPkgMappingModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *CreateIdentityToBenefitPkgMappingResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateIdentityToBenefitPkgMappingModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateIdentityToBenefitPkgMappingModel) GoString() string {
+  return s.String()
+}
+
+func (s *CreateIdentityToBenefitPkgMappingModel) SetHeaders(v map[string]*string) *CreateIdentityToBenefitPkgMappingModel {
+  s.Headers = v
+  return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingModel) SetBody(v *CreateIdentityToBenefitPkgMappingResponse) *CreateIdentityToBenefitPkgMappingModel {
+  s.Body = v
+  return s
+}
+
+type DeleteIdentityToBenefitPkgMappingModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *DeleteIdentityToBenefitPkgMappingResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteIdentityToBenefitPkgMappingModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteIdentityToBenefitPkgMappingModel) GoString() string {
+  return s.String()
+}
+
+func (s *DeleteIdentityToBenefitPkgMappingModel) SetHeaders(v map[string]*string) *DeleteIdentityToBenefitPkgMappingModel {
+  s.Headers = v
+  return s
+}
+
+func (s *DeleteIdentityToBenefitPkgMappingModel) SetBody(v *DeleteIdentityToBenefitPkgMappingResponse) *DeleteIdentityToBenefitPkgMappingModel {
+  s.Body = v
+  return s
+}
+
+type GetIdentityToBenefitPkgMappingModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *BaseIdentityToBenefitPkgMappingResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetIdentityToBenefitPkgMappingModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetIdentityToBenefitPkgMappingModel) GoString() string {
+  return s.String()
+}
+
+func (s *GetIdentityToBenefitPkgMappingModel) SetHeaders(v map[string]*string) *GetIdentityToBenefitPkgMappingModel {
+  s.Headers = v
+  return s
+}
+
+func (s *GetIdentityToBenefitPkgMappingModel) SetBody(v *BaseIdentityToBenefitPkgMappingResponse) *GetIdentityToBenefitPkgMappingModel {
+  s.Body = v
+  return s
+}
+
+type ListIdentityToBenefitPkgMappingModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ListIdentityToBenefitPkgMappingResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListIdentityToBenefitPkgMappingModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListIdentityToBenefitPkgMappingModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListIdentityToBenefitPkgMappingModel) SetHeaders(v map[string]*string) *ListIdentityToBenefitPkgMappingModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListIdentityToBenefitPkgMappingModel) SetBody(v *ListIdentityToBenefitPkgMappingResponse) *ListIdentityToBenefitPkgMappingModel {
+  s.Body = v
+  return s
+}
+
+type UpdateIdentityToBenefitPkgMappingModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *UpdateIdentityToBenefitPkgMappingResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateIdentityToBenefitPkgMappingModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateIdentityToBenefitPkgMappingModel) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingModel) SetHeaders(v map[string]*string) *UpdateIdentityToBenefitPkgMappingModel {
+  s.Headers = v
+  return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingModel) SetBody(v *UpdateIdentityToBenefitPkgMappingResponse) *UpdateIdentityToBenefitPkgMappingModel {
+  s.Body = v
+  return s
+}
+
+type ListIdentityBenefitPkgModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ListIdentityBenefitPkgResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListIdentityBenefitPkgModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListIdentityBenefitPkgModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListIdentityBenefitPkgModel) SetHeaders(v map[string]*string) *ListIdentityBenefitPkgModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListIdentityBenefitPkgModel) SetBody(v *ListIdentityBenefitPkgResponse) *ListIdentityBenefitPkgModel {
   s.Body = v
   return s
 }
@@ -753,6 +874,23 @@ func (s *GetUserAccessTokenModel) SetHeaders(v map[string]*string) *GetUserAcces
 
 func (s *GetUserAccessTokenModel) SetBody(v *GetUserAccessTokenResponse) *GetUserAccessTokenModel {
   s.Body = v
+  return s
+}
+
+type PunishFileModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+}
+
+func (s PunishFileModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s PunishFileModel) GoString() string {
+  return s.String()
+}
+
+func (s *PunishFileModel) SetHeaders(v map[string]*string) *PunishFileModel {
+  s.Headers = v
   return s
 }
 
@@ -934,6 +1072,29 @@ func (s *ListMyDrivesModel) SetBody(v *ListDriveResponse) *ListMyDrivesModel {
   return s
 }
 
+type SearchDrivesModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *SearchDriveResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchDrivesModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SearchDrivesModel) GoString() string {
+  return s.String()
+}
+
+func (s *SearchDrivesModel) SetHeaders(v map[string]*string) *SearchDrivesModel {
+  s.Headers = v
+  return s
+}
+
+func (s *SearchDrivesModel) SetBody(v *SearchDriveResponse) *SearchDrivesModel {
+  s.Body = v
+  return s
+}
+
 type UpdateDriveModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *UpdateDriveResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -954,6 +1115,23 @@ func (s *UpdateDriveModel) SetHeaders(v map[string]*string) *UpdateDriveModel {
 
 func (s *UpdateDriveModel) SetBody(v *UpdateDriveResponse) *UpdateDriveModel {
   s.Body = v
+  return s
+}
+
+type AddPermissionModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+}
+
+func (s AddPermissionModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s AddPermissionModel) GoString() string {
+  return s.String()
+}
+
+func (s *AddPermissionModel) SetHeaders(v map[string]*string) *AddPermissionModel {
+  s.Headers = v
   return s
 }
 
@@ -999,6 +1177,29 @@ func (s *CompleteFileModel) SetHeaders(v map[string]*string) *CompleteFileModel 
 }
 
 func (s *CompleteFileModel) SetBody(v *CompleteFileResponse) *CompleteFileModel {
+  s.Body = v
+  return s
+}
+
+type CompleteFileWithStoreInfoModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *UCCompleteFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CompleteFileWithStoreInfoModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CompleteFileWithStoreInfoModel) GoString() string {
+  return s.String()
+}
+
+func (s *CompleteFileWithStoreInfoModel) SetHeaders(v map[string]*string) *CompleteFileWithStoreInfoModel {
+  s.Headers = v
+  return s
+}
+
+func (s *CompleteFileWithStoreInfoModel) SetBody(v *UCCompleteFileResponse) *CompleteFileWithStoreInfoModel {
   s.Body = v
   return s
 }
@@ -1068,6 +1269,29 @@ func (s *CreateFileWithProofModel) SetHeaders(v map[string]*string) *CreateFileW
 }
 
 func (s *CreateFileWithProofModel) SetBody(v *CreateFileResponse) *CreateFileWithProofModel {
+  s.Body = v
+  return s
+}
+
+type CreateFileWithSignatureModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *UCCreateFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFileWithSignatureModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateFileWithSignatureModel) GoString() string {
+  return s.String()
+}
+
+func (s *CreateFileWithSignatureModel) SetHeaders(v map[string]*string) *CreateFileWithSignatureModel {
+  s.Headers = v
+  return s
+}
+
+func (s *CreateFileWithSignatureModel) SetBody(v *UCCreateFileResponse) *CreateFileWithSignatureModel {
   s.Body = v
   return s
 }
@@ -1319,6 +1543,29 @@ func (s *GetShareLinkVideoPreviewPlayInfoModel) SetBody(v *CCPGetShareLinkVideoP
   return s
 }
 
+type GetFileSignatureModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *UCGetSignatureResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFileSignatureModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetFileSignatureModel) GoString() string {
+  return s.String()
+}
+
+func (s *GetFileSignatureModel) SetHeaders(v map[string]*string) *GetFileSignatureModel {
+  s.Headers = v
+  return s
+}
+
+func (s *GetFileSignatureModel) SetBody(v *UCGetSignatureResponse) *GetFileSignatureModel {
+  s.Body = v
+  return s
+}
+
 type GetUploadUrlModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *GetUploadUrlResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -1526,6 +1773,98 @@ func (s *ListFileDeltaModel) SetBody(v *ListFileDeltaResponse) *ListFileDeltaMod
   return s
 }
 
+type ListManageSharingFileModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ListFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListManageSharingFileModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListManageSharingFileModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListManageSharingFileModel) SetHeaders(v map[string]*string) *ListManageSharingFileModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListManageSharingFileModel) SetBody(v *ListFileResponse) *ListManageSharingFileModel {
+  s.Body = v
+  return s
+}
+
+type ListPermissionModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *FilePermissionMember `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPermissionModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListPermissionModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListPermissionModel) SetHeaders(v map[string]*string) *ListPermissionModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListPermissionModel) SetBody(v *FilePermissionMember) *ListPermissionModel {
+  s.Body = v
+  return s
+}
+
+type ListReceivedFileModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ListFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListReceivedFileModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListReceivedFileModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListReceivedFileModel) SetHeaders(v map[string]*string) *ListReceivedFileModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListReceivedFileModel) SetBody(v *ListFileResponse) *ListReceivedFileModel {
+  s.Body = v
+  return s
+}
+
+type ListSharingFileModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ListFileResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSharingFileModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListSharingFileModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListSharingFileModel) SetHeaders(v map[string]*string) *ListSharingFileModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListSharingFileModel) SetBody(v *ListFileResponse) *ListSharingFileModel {
+  s.Body = v
+  return s
+}
+
 type ListUploadedPartsModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *ListUploadedPartResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -1641,6 +1980,23 @@ func (s *TokenModel) SetBody(v *RefreshOfficeEditTokenResponse) *TokenModel {
   return s
 }
 
+type RemovePermissionModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+}
+
+func (s RemovePermissionModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s RemovePermissionModel) GoString() string {
+  return s.String()
+}
+
+func (s *RemovePermissionModel) SetHeaders(v map[string]*string) *RemovePermissionModel {
+  s.Headers = v
+  return s
+}
+
 type ScanFileMetaModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *ScanFileMetaResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -1706,6 +2062,29 @@ func (s *UpdateFileModel) SetHeaders(v map[string]*string) *UpdateFileModel {
 }
 
 func (s *UpdateFileModel) SetBody(v *UpdateFileMetaResponse) *UpdateFileModel {
+  s.Body = v
+  return s
+}
+
+type UpdateFileUploadContentHashModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *UCUpdateUploadContentHashResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFileUploadContentHashModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateFileUploadContentHashModel) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateFileUploadContentHashModel) SetHeaders(v map[string]*string) *UpdateFileUploadContentHashModel {
+  s.Headers = v
+  return s
+}
+
+func (s *UpdateFileUploadContentHashModel) SetBody(v *UCUpdateUploadContentHashResponse) *UpdateFileUploadContentHashModel {
   s.Body = v
   return s
 }
@@ -2675,6 +3054,29 @@ func (s *ListUsersModel) SetBody(v *ListUserResponse) *ListUsersModel {
   return s
 }
 
+type MigrateUserToSubdomainModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *MigrateUserToSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MigrateUserToSubdomainModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s MigrateUserToSubdomainModel) GoString() string {
+  return s.String()
+}
+
+func (s *MigrateUserToSubdomainModel) SetHeaders(v map[string]*string) *MigrateUserToSubdomainModel {
+  s.Headers = v
+  return s
+}
+
+func (s *MigrateUserToSubdomainModel) SetBody(v *MigrateUserToSubdomainResponse) *MigrateUserToSubdomainModel {
+  s.Body = v
+  return s
+}
+
 type RemoveUserFromSubdomainModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 }
@@ -2689,6 +3091,29 @@ func (s RemoveUserFromSubdomainModel) GoString() string {
 
 func (s *RemoveUserFromSubdomainModel) SetHeaders(v map[string]*string) *RemoveUserFromSubdomainModel {
   s.Headers = v
+  return s
+}
+
+type RollbackUserFromSubdomainModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *RollbackUserFromSubdomainResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RollbackUserFromSubdomainModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s RollbackUserFromSubdomainModel) GoString() string {
+  return s.String()
+}
+
+func (s *RollbackUserFromSubdomainModel) SetHeaders(v map[string]*string) *RollbackUserFromSubdomainModel {
+  s.Headers = v
+  return s
+}
+
+func (s *RollbackUserFromSubdomainModel) SetBody(v *RollbackUserFromSubdomainResponse) *RollbackUserFromSubdomainModel {
+  s.Body = v
   return s
 }
 
@@ -2738,25 +3163,25 @@ func (s *UpdateUserModel) SetBody(v *UpdateUserResponse) *UpdateUserModel {
   return s
 }
 
-type ListViewsModel struct {
+type SearchUserGroupModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-  Body *ListViewsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+  Body *SearchUserAndGroupResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s ListViewsModel) String() string {
+func (s SearchUserGroupModel) String() string {
   return tea.Prettify(s)
 }
 
-func (s ListViewsModel) GoString() string {
+func (s SearchUserGroupModel) GoString() string {
   return s.String()
 }
 
-func (s *ListViewsModel) SetHeaders(v map[string]*string) *ListViewsModel {
+func (s *SearchUserGroupModel) SetHeaders(v map[string]*string) *SearchUserGroupModel {
   s.Headers = v
   return s
 }
 
-func (s *ListViewsModel) SetBody(v *ListViewsResponse) *ListViewsModel {
+func (s *SearchUserGroupModel) SetBody(v *SearchUserAndGroupResponse) *SearchUserGroupModel {
   s.Body = v
   return s
 }
@@ -3140,6 +3565,29 @@ func (s *GetViewModel) SetBody(v *GetViewResponse) *GetViewModel {
   return s
 }
 
+type ListViewsModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *ListViewsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListViewsModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListViewsModel) GoString() string {
+  return s.String()
+}
+
+func (s *ListViewsModel) SetHeaders(v map[string]*string) *ListViewsModel {
+  s.Headers = v
+  return s
+}
+
+func (s *ListViewsModel) SetBody(v *ListViewsResponse) *ListViewsModel {
+  s.Body = v
+  return s
+}
+
 type ViewListFileModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *ListViewFilesResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -3203,6 +3651,29 @@ func (s *RemoveFileModel) SetHeaders(v map[string]*string) *RemoveFileModel {
   return s
 }
 
+type SearchViewsModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  Body *SearchViewsResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchViewsModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SearchViewsModel) GoString() string {
+  return s.String()
+}
+
+func (s *SearchViewsModel) SetHeaders(v map[string]*string) *SearchViewsModel {
+  s.Headers = v
+  return s
+}
+
+func (s *SearchViewsModel) SetBody(v *SearchViewsResponse) *SearchViewsModel {
+  s.Body = v
+  return s
+}
+
 type UpdateViewModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 }
@@ -3236,6 +3707,8 @@ type AccountAccessTokenResponse struct {
   DeviceId *string `json:"device_id,omitempty" xml:"device_id,omitempty"`
   // device_name 通过device flow 绑定的设备名
   DeviceName *string `json:"device_name,omitempty" xml:"device_name,omitempty"`
+  // domainID 用户登录的domainID
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
   // 当前用户已存在的登录方式
   ExistLink []*LinkInfo `json:"exist_link,omitempty" xml:"exist_link,omitempty" type:"Repeated"`
   // accessToken过期时间，ISO时间
@@ -3307,6 +3780,11 @@ func (s *AccountAccessTokenResponse) SetDeviceId(v string) *AccountAccessTokenRe
 
 func (s *AccountAccessTokenResponse) SetDeviceName(v string) *AccountAccessTokenResponse {
   s.DeviceName = &v
+  return s
+}
+
+func (s *AccountAccessTokenResponse) SetDomainId(v string) *AccountAccessTokenResponse {
+  s.DomainId = &v
   return s
 }
 
@@ -3946,7 +4424,7 @@ func (s *ArchiveStatusResponse) SetTaskId(v string) *ArchiveStatusResponse {
 }
 
 /**
- * 解压
+ * 获取解压任务状态
  */
 type ArchiveUncompressRequest struct {
   // 格式类型，如果是uc，使用特殊格式
@@ -3957,10 +4435,8 @@ type ArchiveUncompressRequest struct {
   // TODO 增加对ShareID的支持
   DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
   FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-  FileList []*string `json:"file_list,omitempty" xml:"file_list,omitempty" type:"Repeated"`
   Password *string `json:"password,omitempty" xml:"password,omitempty"`
-  TargetDriveId *string `json:"target_drive_id,omitempty" xml:"target_drive_id,omitempty"`
-  TargetFileId *string `json:"target_file_id,omitempty" xml:"target_file_id,omitempty"`
+  TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
 func (s ArchiveUncompressRequest) String() string {
@@ -4001,23 +4477,13 @@ func (s *ArchiveUncompressRequest) SetFileId(v string) *ArchiveUncompressRequest
   return s
 }
 
-func (s *ArchiveUncompressRequest) SetFileList(v []*string) *ArchiveUncompressRequest {
-  s.FileList = v
-  return s
-}
-
 func (s *ArchiveUncompressRequest) SetPassword(v string) *ArchiveUncompressRequest {
   s.Password = &v
   return s
 }
 
-func (s *ArchiveUncompressRequest) SetTargetDriveId(v string) *ArchiveUncompressRequest {
-  s.TargetDriveId = &v
-  return s
-}
-
-func (s *ArchiveUncompressRequest) SetTargetFileId(v string) *ArchiveUncompressRequest {
-  s.TargetFileId = &v
+func (s *ArchiveUncompressRequest) SetTaskId(v string) *ArchiveUncompressRequest {
+  s.TaskId = &v
   return s
 }
 
@@ -4270,6 +4736,41 @@ func (s BaseAdditionDataRequest) GoString() string {
 
 func (s *BaseAdditionDataRequest) SetAdditionData(v map[string]interface{}) *BaseAdditionDataRequest {
   s.AdditionData = v
+  return s
+}
+
+/**
+ * 
+ */
+type BaseAuthentication struct {
+  // 邮箱
+  Email *string `json:"email,omitempty" xml:"email,omitempty"`
+  // 待发送验证短信的手机号
+  PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty"`
+  // 国家编号，默认86，不需要填+号，直接填数字
+  PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
+}
+
+func (s BaseAuthentication) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BaseAuthentication) GoString() string {
+  return s.String()
+}
+
+func (s *BaseAuthentication) SetEmail(v string) *BaseAuthentication {
+  s.Email = &v
+  return s
+}
+
+func (s *BaseAuthentication) SetPhoneNumber(v string) *BaseAuthentication {
+  s.PhoneNumber = &v
+  return s
+}
+
+func (s *BaseAuthentication) SetPhoneRegion(v string) *BaseAuthentication {
+  s.PhoneRegion = &v
   return s
 }
 
@@ -4715,6 +5216,7 @@ func (s *BaseCreateFileRequest) SetType(v string) *BaseCreateFileRequest {
  */
 type BaseDriveResponse struct {
   ActionList []*string `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
+  CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
   // Drive 创建者
   Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
   // Drive 备注信息
@@ -4740,6 +5242,8 @@ type BaseDriveResponse struct {
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
   // 存储 ID, domain的PathType为OSSPath时返回
   StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty"`
+  // subdomain_id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
   // Drive 空间总量
   TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
   // Drive 空间已使用量
@@ -4756,6 +5260,11 @@ func (s BaseDriveResponse) GoString() string {
 
 func (s *BaseDriveResponse) SetActionList(v []*string) *BaseDriveResponse {
   s.ActionList = v
+  return s
+}
+
+func (s *BaseDriveResponse) SetCreatedAt(v string) *BaseDriveResponse {
+  s.CreatedAt = &v
   return s
 }
 
@@ -4826,6 +5335,11 @@ func (s *BaseDriveResponse) SetStatus(v string) *BaseDriveResponse {
 
 func (s *BaseDriveResponse) SetStoreId(v string) *BaseDriveResponse {
   s.StoreId = &v
+  return s
+}
+
+func (s *BaseDriveResponse) SetSubdomainId(v string) *BaseDriveResponse {
+  s.SubdomainId = &v
   return s
 }
 
@@ -5448,6 +5962,10 @@ type BaseShareLinkResponse struct {
   FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
   // file_id_list
   FilePathList []*string `json:"file_path_list,omitempty" xml:"file_path_list,omitempty" type:"Repeated"`
+  // is_subscribed
+  IsSubscribed *bool `json:"is_subscribed,omitempty" xml:"is_subscribed,omitempty"`
+  // num_of_subscribers
+  NumOfSubscribers *int64 `json:"num_of_subscribers,omitempty" xml:"num_of_subscribers,omitempty"`
   // preview_count
   PreviewCount *int64 `json:"preview_count,omitempty" xml:"preview_count,omitempty"`
   // 转存次数
@@ -5525,6 +6043,16 @@ func (s *BaseShareLinkResponse) SetFileIdList(v []*string) *BaseShareLinkRespons
 
 func (s *BaseShareLinkResponse) SetFilePathList(v []*string) *BaseShareLinkResponse {
   s.FilePathList = v
+  return s
+}
+
+func (s *BaseShareLinkResponse) SetIsSubscribed(v bool) *BaseShareLinkResponse {
+  s.IsSubscribed = &v
+  return s
+}
+
+func (s *BaseShareLinkResponse) SetNumOfSubscribers(v int64) *BaseShareLinkResponse {
+  s.NumOfSubscribers = &v
   return s
 }
 
@@ -5707,6 +6235,27 @@ func (s *BaseShareResponse) SetStatus(v string) *BaseShareResponse {
 
 func (s *BaseShareResponse) SetUpdatedAt(v string) *BaseShareResponse {
   s.UpdatedAt = &v
+  return s
+}
+
+/**
+ * user_tags 字段
+ */
+type BaseUserTagsRequest struct {
+  // user_tags
+  UserTags []*UserTag `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
+}
+
+func (s BaseUserTagsRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BaseUserTagsRequest) GoString() string {
+  return s.String()
+}
+
+func (s *BaseUserTagsRequest) SetUserTags(v []*UserTag) *BaseUserTagsRequest {
+  s.UserTags = v
   return s
 }
 
@@ -6618,6 +7167,8 @@ type CCPWalkFileResponse struct {
   Items []*BaseCCPFileResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
   // next_marker
   NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+  // punished_file_count
+  PunishedFileCount *int64 `json:"punished_file_count,omitempty" xml:"punished_file_count,omitempty"`
 }
 
 func (s CCPWalkFileResponse) String() string {
@@ -6635,6 +7186,37 @@ func (s *CCPWalkFileResponse) SetItems(v []*BaseCCPFileResponse) *CCPWalkFileRes
 
 func (s *CCPWalkFileResponse) SetNextMarker(v string) *CCPWalkFileResponse {
   s.NextMarker = &v
+  return s
+}
+
+func (s *CCPWalkFileResponse) SetPunishedFileCount(v int64) *CCPWalkFileResponse {
+  s.PunishedFileCount = &v
+  return s
+}
+
+/**
+ * 
+ */
+type Callback struct {
+  Body *string `json:"body,omitempty" xml:"body,omitempty"`
+  Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s Callback) String() string {
+  return tea.Prettify(s)
+}
+
+func (s Callback) GoString() string {
+  return s.String()
+}
+
+func (s *Callback) SetBody(v string) *Callback {
+  s.Body = &v
+  return s
+}
+
+func (s *Callback) SetUrl(v string) *Callback {
+  s.Url = &v
   return s
 }
 
@@ -6751,6 +7333,32 @@ func (s *Captcha) SetCaptchaId(v string) *Captcha {
 /**
  * 
  */
+type CcpCallback struct {
+  Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
+  Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CcpCallback) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CcpCallback) GoString() string {
+  return s.String()
+}
+
+func (s *CcpCallback) SetBody(v map[string]interface{}) *CcpCallback {
+  s.Body = v
+  return s
+}
+
+func (s *CcpCallback) SetUrl(v string) *CcpCallback {
+  s.Url = &v
+  return s
+}
+
+/**
+ * 
+ */
 type CertInfo struct {
   CertID *string `json:"CertID,omitempty" xml:"CertID,omitempty"`
   // cert body
@@ -6786,6 +7394,89 @@ func (s *CertInfo) SetCertName(v string) *CertInfo {
 
 func (s *CertInfo) SetCertPrivatekey(v string) *CertInfo {
   s.CertPrivatekey = &v
+  return s
+}
+
+/**
+ * 
+ */
+type CheckExistRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // App ID, 当前访问的App
+  AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty" require:"true"`
+  // 邮箱
+  Email *string `json:"email,omitempty" xml:"email,omitempty"`
+  // 待发送验证短信的手机号
+  PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty"`
+  // 国家编号，默认86，不需要填+号，直接填数字
+  PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
+}
+
+func (s CheckExistRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CheckExistRequest) GoString() string {
+  return s.String()
+}
+
+func (s *CheckExistRequest) SetHttpheaders(v map[string]*string) *CheckExistRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *CheckExistRequest) SetAppId(v string) *CheckExistRequest {
+  s.AppId = &v
+  return s
+}
+
+func (s *CheckExistRequest) SetEmail(v string) *CheckExistRequest {
+  s.Email = &v
+  return s
+}
+
+func (s *CheckExistRequest) SetPhoneNumber(v string) *CheckExistRequest {
+  s.PhoneNumber = &v
+  return s
+}
+
+func (s *CheckExistRequest) SetPhoneRegion(v string) *CheckExistRequest {
+  s.PhoneRegion = &v
+  return s
+}
+
+/**
+ * 
+ */
+type CheckExistResponse struct {
+  // 当前手机号是否存在
+  IsExist *bool `json:"is_exist,omitempty" xml:"is_exist,omitempty" require:"true"`
+  // 待查询的手机号
+  PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty" require:"true"`
+  // 国家编号，默认86，不需要填+号，直接填数字
+  PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
+}
+
+func (s CheckExistResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CheckExistResponse) GoString() string {
+  return s.String()
+}
+
+func (s *CheckExistResponse) SetIsExist(v bool) *CheckExistResponse {
+  s.IsExist = &v
+  return s
+}
+
+func (s *CheckExistResponse) SetPhoneNumber(v string) *CheckExistResponse {
+  s.PhoneNumber = &v
+  return s
+}
+
+func (s *CheckExistResponse) SetPhoneRegion(v string) *CheckExistResponse {
+  s.PhoneRegion = &v
   return s
 }
 
@@ -7954,6 +8645,8 @@ type CreateFileRequest struct {
   Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
   // user_meta
   UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
+  // user_tags
+  UserTags []*UserTag `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
   VideoMediaMetadata *VideoMediaMetadata `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
 }
 
@@ -8145,6 +8838,11 @@ func (s *CreateFileRequest) SetUserMeta(v string) *CreateFileRequest {
   return s
 }
 
+func (s *CreateFileRequest) SetUserTags(v []*UserTag) *CreateFileRequest {
+  s.UserTags = v
+  return s
+}
+
 func (s *CreateFileRequest) SetVideoMediaMetadata(v *VideoMediaMetadata) *CreateFileRequest {
   s.VideoMediaMetadata = v
   return s
@@ -8280,16 +8978,18 @@ type CreateShareLinkRequest struct {
   // file_id
   FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
   // file_id_list
-  FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" maximum:"100" minimum:"1" type:"Repeated"`
+  FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
   // file_path_list
-  FilePathList []*string `json:"file_path_list,omitempty" xml:"file_path_list,omitempty" maximum:"100" minimum:"1" type:"Repeated"`
+  FilePathList []*string `json:"file_path_list,omitempty" xml:"file_path_list,omitempty" type:"Repeated"`
   // filter_group
   FilterGroup *string `json:"filter_group,omitempty" xml:"filter_group,omitempty"`
   Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
   // share_name
   ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
   // share_pwd
-  SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty" maximum:"64" minimum:"0"`
+  SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
+  // user_id, only admin or aksk can set
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CreateShareLinkRequest) String() string {
@@ -8360,6 +9060,11 @@ func (s *CreateShareLinkRequest) SetSharePwd(v string) *CreateShareLinkRequest {
   return s
 }
 
+func (s *CreateShareLinkRequest) SetUserId(v string) *CreateShareLinkRequest {
+  s.UserId = &v
+  return s
+}
+
 /**
  * create_share_link response
  */
@@ -8384,6 +9089,10 @@ type CreateShareLinkResponse struct {
   FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
   // file_id_list
   FilePathList []*string `json:"file_path_list,omitempty" xml:"file_path_list,omitempty" type:"Repeated"`
+  // is_subscribed
+  IsSubscribed *bool `json:"is_subscribed,omitempty" xml:"is_subscribed,omitempty"`
+  // num_of_subscribers
+  NumOfSubscribers *int64 `json:"num_of_subscribers,omitempty" xml:"num_of_subscribers,omitempty"`
   // preview_count
   PreviewCount *int64 `json:"preview_count,omitempty" xml:"preview_count,omitempty"`
   // 转存次数
@@ -8461,6 +9170,16 @@ func (s *CreateShareLinkResponse) SetFileIdList(v []*string) *CreateShareLinkRes
 
 func (s *CreateShareLinkResponse) SetFilePathList(v []*string) *CreateShareLinkResponse {
   s.FilePathList = v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetIsSubscribed(v bool) *CreateShareLinkResponse {
+  s.IsSubscribed = &v
+  return s
+}
+
+func (s *CreateShareLinkResponse) SetNumOfSubscribers(v int64) *CreateShareLinkResponse {
+  s.NumOfSubscribers = &v
   return s
 }
 
@@ -8826,7 +9545,6 @@ func (s *DefaultChangePasswordRequest) SetState(v string) *DefaultChangePassword
  * 
  */
 type DefaultSetPasswordRequest struct {
-  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
   // App ID, 当前访问的App
   AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty" require:"true"`
   // AES-256对称加密密钥，通过App公钥加密后传输
@@ -8843,11 +9561,6 @@ func (s DefaultSetPasswordRequest) String() string {
 
 func (s DefaultSetPasswordRequest) GoString() string {
   return s.String()
-}
-
-func (s *DefaultSetPasswordRequest) SetHttpheaders(v map[string]*string) *DefaultSetPasswordRequest {
-  s.Httpheaders = v
-  return s
 }
 
 func (s *DefaultSetPasswordRequest) SetAppId(v string) *DefaultSetPasswordRequest {
@@ -9608,6 +10321,47 @@ func (s *FileActivity) SetTimestamp(v string) *FileActivity {
 }
 
 /**
+ * 文件共享/授权请求
+ */
+type FileAddPermissionRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 文件所属的drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
+  // 文件的file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
+  // 被授权的用户或团队列表
+  MemberList []*FilePermissionMember `json:"member_list,omitempty" xml:"member_list,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s FileAddPermissionRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s FileAddPermissionRequest) GoString() string {
+  return s.String()
+}
+
+func (s *FileAddPermissionRequest) SetHttpheaders(v map[string]*string) *FileAddPermissionRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *FileAddPermissionRequest) SetDriveId(v string) *FileAddPermissionRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *FileAddPermissionRequest) SetFileId(v string) *FileAddPermissionRequest {
+  s.FileId = &v
+  return s
+}
+
+func (s *FileAddPermissionRequest) SetMemberList(v []*FilePermissionMember) *FileAddPermissionRequest {
+  s.MemberList = v
+  return s
+}
+
+/**
  * the file op info
  */
 type FileDeltaResponse struct {
@@ -9662,6 +10416,115 @@ func (s FileInfo) GoString() string {
 
 func (s *FileInfo) SetFileId(v string) *FileInfo {
   s.FileId = &v
+  return s
+}
+
+/**
+ * 列举当前文件的共享/授权记录请求
+ */
+type FileListPermissionRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 文件所属的drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
+  // 文件的file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
+}
+
+func (s FileListPermissionRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s FileListPermissionRequest) GoString() string {
+  return s.String()
+}
+
+func (s *FileListPermissionRequest) SetHttpheaders(v map[string]*string) *FileListPermissionRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *FileListPermissionRequest) SetDriveId(v string) *FileListPermissionRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *FileListPermissionRequest) SetFileId(v string) *FileListPermissionRequest {
+  s.FileId = &v
+  return s
+}
+
+/**
+ * 文件被共享/授权的成员列表
+ */
+type FilePermissionMember struct {
+  // 过期时间，传入时间戳，单位毫秒
+  ExpireTime *int64 `json:"expire_time,omitempty" xml:"expire_time,omitempty" require:"true"`
+  Identity *Identity `json:"identity,omitempty" xml:"identity,omitempty" require:"true"`
+  // 授予的角色，目前支持：SystemFileOwner(文件协同)、SystemFileDownloader(下载者)、SystemFileEditor(编辑者)、SystemFileEditorWithoutDelete(无删除编辑者)、SystemFileEditorWithoutShareLink(无分享编辑者)、SystemFileMetaViewer(可见列表)、SystemFileUploader(上传者)、SystemFileUploaderAndDownloader(上传/下载者)、SystemFileDownloaderWithShareLink(下载/分享者)、SystemFileUploaderAndDownloaderWithShareLink(上传/下载/分享者)、SystemFileUploaderAndViewer(预览/上传者)、SystemFileUploaderWithShareLink(上传/分享者)、SystemFileViewer(预览者)
+  RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty" require:"true"`
+}
+
+func (s FilePermissionMember) String() string {
+  return tea.Prettify(s)
+}
+
+func (s FilePermissionMember) GoString() string {
+  return s.String()
+}
+
+func (s *FilePermissionMember) SetExpireTime(v int64) *FilePermissionMember {
+  s.ExpireTime = &v
+  return s
+}
+
+func (s *FilePermissionMember) SetIdentity(v *Identity) *FilePermissionMember {
+  s.Identity = v
+  return s
+}
+
+func (s *FilePermissionMember) SetRoleId(v string) *FilePermissionMember {
+  s.RoleId = &v
+  return s
+}
+
+/**
+ * 取消文件共享/授权请求
+ */
+type FileRemovePermissionRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 文件所属的drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true"`
+  // 文件的file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true"`
+  // 被取消授权的用户或团队列表
+  MemberList []*FilePermissionMember `json:"member_list,omitempty" xml:"member_list,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s FileRemovePermissionRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s FileRemovePermissionRequest) GoString() string {
+  return s.String()
+}
+
+func (s *FileRemovePermissionRequest) SetHttpheaders(v map[string]*string) *FileRemovePermissionRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *FileRemovePermissionRequest) SetDriveId(v string) *FileRemovePermissionRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *FileRemovePermissionRequest) SetFileId(v string) *FileRemovePermissionRequest {
+  s.FileId = &v
+  return s
+}
+
+func (s *FileRemovePermissionRequest) SetMemberList(v []*FilePermissionMember) *FileRemovePermissionRequest {
+  s.MemberList = v
   return s
 }
 
@@ -9859,6 +10722,8 @@ type GetAsyncTaskResponse struct {
   ErrCode *int64 `json:"err_code,omitempty" xml:"err_code,omitempty"`
   // message
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
+  // punished_file_count
+  PunishedFileCount *int64 `json:"punished_file_count,omitempty" xml:"punished_file_count,omitempty"`
   // state
   State *string `json:"state,omitempty" xml:"state,omitempty"`
   // total_process
@@ -9893,6 +10758,11 @@ func (s *GetAsyncTaskResponse) SetErrCode(v int64) *GetAsyncTaskResponse {
 
 func (s *GetAsyncTaskResponse) SetMessage(v string) *GetAsyncTaskResponse {
   s.Message = &v
+  return s
+}
+
+func (s *GetAsyncTaskResponse) SetPunishedFileCount(v int64) *GetAsyncTaskResponse {
+  s.PunishedFileCount = &v
   return s
 }
 
@@ -10239,6 +11109,12 @@ func (s *GetDownloadUrlRequest) SetSignToken(v string) *GetDownloadUrlRequest {
 type GetDownloadUrlResponse struct {
   // cdn_url
   CdnUrl *string `json:"cdn_url,omitempty" xml:"cdn_url,omitempty"`
+  // Content Hash
+  ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+  // content_hash_name
+  ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+  // crc64_hash
+  Crc64Hash *string `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
   // expiration
   Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
   // internal_url
@@ -10264,6 +11140,21 @@ func (s GetDownloadUrlResponse) GoString() string {
 
 func (s *GetDownloadUrlResponse) SetCdnUrl(v string) *GetDownloadUrlResponse {
   s.CdnUrl = &v
+  return s
+}
+
+func (s *GetDownloadUrlResponse) SetContentHash(v string) *GetDownloadUrlResponse {
+  s.ContentHash = &v
+  return s
+}
+
+func (s *GetDownloadUrlResponse) SetContentHashName(v string) *GetDownloadUrlResponse {
+  s.ContentHashName = &v
+  return s
+}
+
+func (s *GetDownloadUrlResponse) SetCrc64Hash(v string) *GetDownloadUrlResponse {
+  s.Crc64Hash = &v
   return s
 }
 
@@ -10341,6 +11232,7 @@ func (s *GetDriveRequest) SetSubdomainId(v string) *GetDriveRequest {
  */
 type GetDriveResponse struct {
   ActionList []*string `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
+  CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
   // Drive 创建者
   Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
   // Drive 备注信息
@@ -10366,6 +11258,8 @@ type GetDriveResponse struct {
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
   // 存储 ID, domain的PathType为OSSPath时返回
   StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty"`
+  // subdomain_id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
   // Drive 空间总量
   TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
   // Drive 空间已使用量
@@ -10382,6 +11276,11 @@ func (s GetDriveResponse) GoString() string {
 
 func (s *GetDriveResponse) SetActionList(v []*string) *GetDriveResponse {
   s.ActionList = v
+  return s
+}
+
+func (s *GetDriveResponse) SetCreatedAt(v string) *GetDriveResponse {
+  s.CreatedAt = &v
   return s
 }
 
@@ -10452,6 +11351,11 @@ func (s *GetDriveResponse) SetStatus(v string) *GetDriveResponse {
 
 func (s *GetDriveResponse) SetStoreId(v string) *GetDriveResponse {
   s.StoreId = &v
+  return s
+}
+
+func (s *GetDriveResponse) SetSubdomainId(v string) *GetDriveResponse {
+  s.SubdomainId = &v
   return s
 }
 
@@ -11692,6 +12596,9 @@ type GetOfficePreviewUrlRequest struct {
   Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
   // addition_data
   AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+  // allow_copy
+  // default true
+  AllowCopy *bool `json:"allow_copy,omitempty" xml:"allow_copy,omitempty"`
   // drive_id
   DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
   // file_id
@@ -11716,6 +12623,11 @@ func (s *GetOfficePreviewUrlRequest) SetHttpheaders(v map[string]*string) *GetOf
 
 func (s *GetOfficePreviewUrlRequest) SetAdditionData(v map[string]interface{}) *GetOfficePreviewUrlRequest {
   s.AdditionData = v
+  return s
+}
+
+func (s *GetOfficePreviewUrlRequest) SetAllowCopy(v bool) *GetOfficePreviewUrlRequest {
+  s.AllowCopy = &v
   return s
 }
 
@@ -12277,6 +13189,8 @@ type GetShareLinkTokenRequest struct {
   Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
   // addition_data
   AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+  // check_share_pwd, effective for creator, admin or aksk only
+  CheckSharePwd *bool `json:"check_share_pwd,omitempty" xml:"check_share_pwd,omitempty"`
   // expire_sec
   ExpireSec *int64 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty" maximum:"7200" minimum:"0"`
   Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
@@ -12301,6 +13215,11 @@ func (s *GetShareLinkTokenRequest) SetHttpheaders(v map[string]*string) *GetShar
 
 func (s *GetShareLinkTokenRequest) SetAdditionData(v map[string]interface{}) *GetShareLinkTokenRequest {
   s.AdditionData = v
+  return s
+}
+
+func (s *GetShareLinkTokenRequest) SetCheckSharePwd(v bool) *GetShareLinkTokenRequest {
+  s.CheckSharePwd = &v
   return s
 }
 
@@ -15007,6 +15926,34 @@ func (s *IDPermission) SetUpdatedBy(v string) *IDPermission {
 }
 
 /**
+ * 表示用户或团队
+ */
+type Identity struct {
+  // 用户或团队的ID
+  IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty" require:"true"`
+  // 类型，目前可传：IT_User(用户)、IT_Group(团队)
+  IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty" require:"true"`
+}
+
+func (s Identity) String() string {
+  return tea.Prettify(s)
+}
+
+func (s Identity) GoString() string {
+  return s.String()
+}
+
+func (s *Identity) SetIdentityId(v string) *Identity {
+  s.IdentityId = &v
+  return s
+}
+
+func (s *Identity) SetIdentityType(v string) *Identity {
+  s.IdentityType = &v
+  return s
+}
+
+/**
  * 
  */
 type ImageMediaMetadata struct {
@@ -15247,9 +16194,11 @@ type LdapConfig struct {
   AdminDn *string `json:"admin_dn,omitempty" xml:"admin_dn,omitempty"`
   AdminPassword *string `json:"admin_password,omitempty" xml:"admin_password,omitempty"`
   BaseDn *string `json:"base_dn,omitempty" xml:"base_dn,omitempty"`
+  GlobalUid *string `json:"global_uid,omitempty" xml:"global_uid,omitempty"`
   Host *string `json:"host,omitempty" xml:"host,omitempty"`
   Port *int64 `json:"port,omitempty" xml:"port,omitempty"`
   Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
+  Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s LdapConfig) String() string {
@@ -15275,6 +16224,11 @@ func (s *LdapConfig) SetBaseDn(v string) *LdapConfig {
   return s
 }
 
+func (s *LdapConfig) SetGlobalUid(v string) *LdapConfig {
+  s.GlobalUid = &v
+  return s
+}
+
 func (s *LdapConfig) SetHost(v string) *LdapConfig {
   s.Host = &v
   return s
@@ -15287,6 +16241,11 @@ func (s *LdapConfig) SetPort(v int64) *LdapConfig {
 
 func (s *LdapConfig) SetUid(v string) *LdapConfig {
   s.Uid = &v
+  return s
+}
+
+func (s *LdapConfig) SetVersion(v string) *LdapConfig {
+  s.Version = &v
   return s
 }
 
@@ -15548,6 +16507,8 @@ type ListByAnonymousResponse struct {
   Items []*BaseFileAnonymousResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
   // next_marker
   NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+  // punished_file_count
+  PunishedFileCount *int64 `json:"punished_file_count,omitempty" xml:"punished_file_count,omitempty"`
 }
 
 func (s ListByAnonymousResponse) String() string {
@@ -15565,6 +16526,11 @@ func (s *ListByAnonymousResponse) SetItems(v []*BaseFileAnonymousResponse) *List
 
 func (s *ListByAnonymousResponse) SetNextMarker(v string) *ListByAnonymousResponse {
   s.NextMarker = &v
+  return s
+}
+
+func (s *ListByAnonymousResponse) SetPunishedFileCount(v int64) *ListByAnonymousResponse {
+  s.PunishedFileCount = &v
   return s
 }
 
@@ -16433,6 +17399,8 @@ type ListFileResponse struct {
   Items []*BaseCCPFileResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
   // next_marker
   NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+  // punished_file_count
+  PunishedFileCount *int64 `json:"punished_file_count,omitempty" xml:"punished_file_count,omitempty"`
 }
 
 func (s ListFileResponse) String() string {
@@ -16453,59 +17421,49 @@ func (s *ListFileResponse) SetNextMarker(v string) *ListFileResponse {
   return s
 }
 
-/**
- * List identity benefit package request
- */
-type ListIdentityBenefitPkgRequest struct {
-  // 查询特定的benefit ID，include_benefit为true时有效。 如果为空，不做任何过滤；如果不为空，只返回包含特定benefit ID的权益包；也只返回权益包中特定的权益信息。
-  BenefitIdList []*string `json:"benefit_id_list,omitempty" xml:"benefit_id_list,omitempty" type:"Repeated"`
-  // domain ID AK方式访问，参数identity_type为user时，该项必传
-  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-  // 实体类型，目前只支持查询user类型实体绑定的权益包
-  IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty" require:"true"`
-  // 是否返回权益包中的权益，默认为false
-  IncludeBenefit *bool `json:"include_benefit,omitempty" xml:"include_benefit,omitempty"`
-  // 是否返回已经超期的权益包，默认为false
-  IncludeExpired *bool `json:"include_expired,omitempty" xml:"include_expired,omitempty"`
-  // 用户 ID, AK方式访问，参数identity_type为user时，该项必传
-  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+func (s *ListFileResponse) SetPunishedFileCount(v int64) *ListFileResponse {
+  s.PunishedFileCount = &v
+  return s
 }
 
-func (s ListIdentityBenefitPkgRequest) String() string {
+/**
+ * 列举用户管理的共享文件列表
+ */
+type ListMangeSharingFileRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 查询的用户列表，传入用户ID列表，不传默认查询所有有权限管理的共享
+  CreatorList []*string `json:"creator_list,omitempty" xml:"creator_list,omitempty" type:"Repeated"`
+  // 查询返回的记录数
+  Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" require:"true"`
+  // 上次查询返回的游标
+  Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+}
+
+func (s ListMangeSharingFileRequest) String() string {
   return tea.Prettify(s)
 }
 
-func (s ListIdentityBenefitPkgRequest) GoString() string {
+func (s ListMangeSharingFileRequest) GoString() string {
   return s.String()
 }
 
-func (s *ListIdentityBenefitPkgRequest) SetBenefitIdList(v []*string) *ListIdentityBenefitPkgRequest {
-  s.BenefitIdList = v
+func (s *ListMangeSharingFileRequest) SetHttpheaders(v map[string]*string) *ListMangeSharingFileRequest {
+  s.Httpheaders = v
   return s
 }
 
-func (s *ListIdentityBenefitPkgRequest) SetDomainId(v string) *ListIdentityBenefitPkgRequest {
-  s.DomainId = &v
+func (s *ListMangeSharingFileRequest) SetCreatorList(v []*string) *ListMangeSharingFileRequest {
+  s.CreatorList = v
   return s
 }
 
-func (s *ListIdentityBenefitPkgRequest) SetIdentityType(v string) *ListIdentityBenefitPkgRequest {
-  s.IdentityType = &v
+func (s *ListMangeSharingFileRequest) SetLimit(v int32) *ListMangeSharingFileRequest {
+  s.Limit = &v
   return s
 }
 
-func (s *ListIdentityBenefitPkgRequest) SetIncludeBenefit(v bool) *ListIdentityBenefitPkgRequest {
-  s.IncludeBenefit = &v
-  return s
-}
-
-func (s *ListIdentityBenefitPkgRequest) SetIncludeExpired(v bool) *ListIdentityBenefitPkgRequest {
-  s.IncludeExpired = &v
-  return s
-}
-
-func (s *ListIdentityBenefitPkgRequest) SetUserId(v string) *ListIdentityBenefitPkgRequest {
-  s.UserId = &v
+func (s *ListMangeSharingFileRequest) SetMarker(v string) *ListMangeSharingFileRequest {
+  s.Marker = &v
   return s
 }
 
@@ -16539,6 +17497,40 @@ func (s *ListMyDriveRequest) SetLimit(v int32) *ListMyDriveRequest {
 }
 
 func (s *ListMyDriveRequest) SetMarker(v string) *ListMyDriveRequest {
+  s.Marker = &v
+  return s
+}
+
+/**
+ * 列举当前用户收到的共享文件列表
+ */
+type ListReceivedFileRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 查询返回的记录数
+  Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" require:"true"`
+  // 上次查询返回的游标
+  Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+}
+
+func (s ListReceivedFileRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListReceivedFileRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ListReceivedFileRequest) SetHttpheaders(v map[string]*string) *ListReceivedFileRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *ListReceivedFileRequest) SetLimit(v int32) *ListReceivedFileRequest {
+  s.Limit = &v
+  return s
+}
+
+func (s *ListReceivedFileRequest) SetMarker(v string) *ListReceivedFileRequest {
   s.Marker = &v
   return s
 }
@@ -16726,6 +17718,40 @@ func (s *ListShareResponse) SetItems(v []*BaseShareResponse) *ListShareResponse 
 
 func (s *ListShareResponse) SetNextMarker(v string) *ListShareResponse {
   s.NextMarker = &v
+  return s
+}
+
+/**
+ * 列举当前用户共享的文件列表
+ */
+type ListSharingFileRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 查询返回的记录数
+  Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" require:"true"`
+  // 上次查询返回的游标
+  Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+}
+
+func (s ListSharingFileRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListSharingFileRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ListSharingFileRequest) SetHttpheaders(v map[string]*string) *ListSharingFileRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *ListSharingFileRequest) SetLimit(v int32) *ListSharingFileRequest {
+  s.Limit = &v
+  return s
+}
+
+func (s *ListSharingFileRequest) SetMarker(v string) *ListSharingFileRequest {
+  s.Marker = &v
   return s
 }
 
@@ -17155,6 +18181,110 @@ func (s *LoginByCodeRequest) SetType(v string) *LoginByCodeRequest {
 /**
  * 
  */
+type LoginRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // App ID, 当前访问的App
+  AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty" require:"true"`
+  // 是否自动注册用户，使用密码登录此参数不生效
+  AutoRegister *bool `json:"auto_register,omitempty" xml:"auto_register,omitempty"`
+  // 图片验证码ID, 密码登录需要此参数
+  CaptchaId *string `json:"captcha_id,omitempty" xml:"captcha_id,omitempty"`
+  // 用户输入的验证码值, 密码登录需要此参数
+  CaptchaText *string `json:"captcha_text,omitempty" xml:"captcha_text,omitempty"`
+  // 邮箱
+  Email *string `json:"email,omitempty" xml:"email,omitempty"`
+  // AES-256对称加密密钥，通过App公钥加密后传输
+  EncryptedKey *string `json:"encrypted_key,omitempty" xml:"encrypted_key,omitempty"`
+  // 环境参数
+  NvcParam *string `json:"nvc_param,omitempty" xml:"nvc_param,omitempty" require:"true"`
+  // 登录密码, 传入此参数则忽略短信验证码，不传此参数则默认使用短信登录。
+  Password *string `json:"password,omitempty" xml:"password,omitempty"`
+  // 待发送验证短信的手机号
+  PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty"`
+  // 国家编号，默认86，不需要填+号，直接填数字
+  PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
+  // 短信验证码内容，使用密码登录此参数不生效
+  SmsCode *string `json:"sms_code,omitempty" xml:"sms_code,omitempty"`
+  // 短信验证码ID，使用密码登录此参数不生效
+  SmsCodeId *string `json:"sms_code_id,omitempty" xml:"sms_code_id,omitempty"`
+}
+
+func (s LoginRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s LoginRequest) GoString() string {
+  return s.String()
+}
+
+func (s *LoginRequest) SetHttpheaders(v map[string]*string) *LoginRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *LoginRequest) SetAppId(v string) *LoginRequest {
+  s.AppId = &v
+  return s
+}
+
+func (s *LoginRequest) SetAutoRegister(v bool) *LoginRequest {
+  s.AutoRegister = &v
+  return s
+}
+
+func (s *LoginRequest) SetCaptchaId(v string) *LoginRequest {
+  s.CaptchaId = &v
+  return s
+}
+
+func (s *LoginRequest) SetCaptchaText(v string) *LoginRequest {
+  s.CaptchaText = &v
+  return s
+}
+
+func (s *LoginRequest) SetEmail(v string) *LoginRequest {
+  s.Email = &v
+  return s
+}
+
+func (s *LoginRequest) SetEncryptedKey(v string) *LoginRequest {
+  s.EncryptedKey = &v
+  return s
+}
+
+func (s *LoginRequest) SetNvcParam(v string) *LoginRequest {
+  s.NvcParam = &v
+  return s
+}
+
+func (s *LoginRequest) SetPassword(v string) *LoginRequest {
+  s.Password = &v
+  return s
+}
+
+func (s *LoginRequest) SetPhoneNumber(v string) *LoginRequest {
+  s.PhoneNumber = &v
+  return s
+}
+
+func (s *LoginRequest) SetPhoneRegion(v string) *LoginRequest {
+  s.PhoneRegion = &v
+  return s
+}
+
+func (s *LoginRequest) SetSmsCode(v string) *LoginRequest {
+  s.SmsCode = &v
+  return s
+}
+
+func (s *LoginRequest) SetSmsCodeId(v string) *LoginRequest {
+  s.SmsCodeId = &v
+  return s
+}
+
+/**
+ * 
+ */
 type LogoutRequest struct {
   // 登出之后的跳转地址，默认跳转到App的域名下
   BackUrl *string `json:"BackUrl,omitempty" xml:"BackUrl,omitempty"`
@@ -17219,331 +18349,6 @@ func (s *MediaPlayInfoTemplate) SetTemplateId(v string) *MediaPlayInfoTemplate {
 
 func (s *MediaPlayInfoTemplate) SetUrl(v string) *MediaPlayInfoTemplate {
   s.Url = &v
-  return s
-}
-
-/**
- * 
- */
-type MobileCheckExistRequest struct {
-  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
-  // App ID, 当前访问的App
-  AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty" require:"true"`
-  // 待查询的手机号
-  PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty" require:"true"`
-  // 国家编号，默认86，不需要填+号，直接填数字
-  PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
-}
-
-func (s MobileCheckExistRequest) String() string {
-  return tea.Prettify(s)
-}
-
-func (s MobileCheckExistRequest) GoString() string {
-  return s.String()
-}
-
-func (s *MobileCheckExistRequest) SetHttpheaders(v map[string]*string) *MobileCheckExistRequest {
-  s.Httpheaders = v
-  return s
-}
-
-func (s *MobileCheckExistRequest) SetAppId(v string) *MobileCheckExistRequest {
-  s.AppId = &v
-  return s
-}
-
-func (s *MobileCheckExistRequest) SetPhoneNumber(v string) *MobileCheckExistRequest {
-  s.PhoneNumber = &v
-  return s
-}
-
-func (s *MobileCheckExistRequest) SetPhoneRegion(v string) *MobileCheckExistRequest {
-  s.PhoneRegion = &v
-  return s
-}
-
-/**
- * 
- */
-type MobileCheckExistResponse struct {
-  // 当前手机号是否存在
-  IsExist *bool `json:"is_exist,omitempty" xml:"is_exist,omitempty" require:"true"`
-  // 待查询的手机号
-  PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty" require:"true"`
-  // 国家编号，默认86，不需要填+号，直接填数字
-  PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
-}
-
-func (s MobileCheckExistResponse) String() string {
-  return tea.Prettify(s)
-}
-
-func (s MobileCheckExistResponse) GoString() string {
-  return s.String()
-}
-
-func (s *MobileCheckExistResponse) SetIsExist(v bool) *MobileCheckExistResponse {
-  s.IsExist = &v
-  return s
-}
-
-func (s *MobileCheckExistResponse) SetPhoneNumber(v string) *MobileCheckExistResponse {
-  s.PhoneNumber = &v
-  return s
-}
-
-func (s *MobileCheckExistResponse) SetPhoneRegion(v string) *MobileCheckExistResponse {
-  s.PhoneRegion = &v
-  return s
-}
-
-/**
- * 
- */
-type MobileLoginRequest struct {
-  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
-  // App ID, 当前访问的App
-  AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty" require:"true"`
-  // 是否自动注册用户，使用密码登录此参数不生效
-  AutoRegister *bool `json:"auto_register,omitempty" xml:"auto_register,omitempty"`
-  // 图片验证码ID, 密码登录需要此参数
-  CaptchaId *string `json:"captcha_id,omitempty" xml:"captcha_id,omitempty"`
-  // 用户输入的验证码值, 密码登录需要此参数
-  CaptchaText *string `json:"captcha_text,omitempty" xml:"captcha_text,omitempty"`
-  // AES-256对称加密密钥，通过App公钥加密后传输
-  EncryptedKey *string `json:"encrypted_key,omitempty" xml:"encrypted_key,omitempty"`
-  // 环境参数
-  NvcParam *string `json:"nvc_param,omitempty" xml:"nvc_param,omitempty" require:"true"`
-  // 登录密码, 传入此参数则忽略短信验证码，不传此参数则默认使用短信登录。
-  Password *string `json:"password,omitempty" xml:"password,omitempty"`
-  // 待查询的手机号
-  PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty" require:"true"`
-  // 国家编号，默认86，不需要填+号，直接填数字
-  PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
-  // 短信验证码内容，使用密码登录此参数不生效
-  SmsCode *string `json:"sms_code,omitempty" xml:"sms_code,omitempty"`
-  // 短信验证码ID，使用密码登录此参数不生效
-  SmsCodeId *string `json:"sms_code_id,omitempty" xml:"sms_code_id,omitempty"`
-}
-
-func (s MobileLoginRequest) String() string {
-  return tea.Prettify(s)
-}
-
-func (s MobileLoginRequest) GoString() string {
-  return s.String()
-}
-
-func (s *MobileLoginRequest) SetHttpheaders(v map[string]*string) *MobileLoginRequest {
-  s.Httpheaders = v
-  return s
-}
-
-func (s *MobileLoginRequest) SetAppId(v string) *MobileLoginRequest {
-  s.AppId = &v
-  return s
-}
-
-func (s *MobileLoginRequest) SetAutoRegister(v bool) *MobileLoginRequest {
-  s.AutoRegister = &v
-  return s
-}
-
-func (s *MobileLoginRequest) SetCaptchaId(v string) *MobileLoginRequest {
-  s.CaptchaId = &v
-  return s
-}
-
-func (s *MobileLoginRequest) SetCaptchaText(v string) *MobileLoginRequest {
-  s.CaptchaText = &v
-  return s
-}
-
-func (s *MobileLoginRequest) SetEncryptedKey(v string) *MobileLoginRequest {
-  s.EncryptedKey = &v
-  return s
-}
-
-func (s *MobileLoginRequest) SetNvcParam(v string) *MobileLoginRequest {
-  s.NvcParam = &v
-  return s
-}
-
-func (s *MobileLoginRequest) SetPassword(v string) *MobileLoginRequest {
-  s.Password = &v
-  return s
-}
-
-func (s *MobileLoginRequest) SetPhoneNumber(v string) *MobileLoginRequest {
-  s.PhoneNumber = &v
-  return s
-}
-
-func (s *MobileLoginRequest) SetPhoneRegion(v string) *MobileLoginRequest {
-  s.PhoneRegion = &v
-  return s
-}
-
-func (s *MobileLoginRequest) SetSmsCode(v string) *MobileLoginRequest {
-  s.SmsCode = &v
-  return s
-}
-
-func (s *MobileLoginRequest) SetSmsCodeId(v string) *MobileLoginRequest {
-  s.SmsCodeId = &v
-  return s
-}
-
-/**
- * 
- */
-type MobileRegisterRequest struct {
-  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
-  // App ID, 当前访问的App
-  AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty" require:"true"`
-  // 环境参数
-  NvcParam *string `json:"nvc_param,omitempty" xml:"nvc_param,omitempty" require:"true"`
-  // 待查询的手机号
-  PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty" require:"true"`
-  // 国家编号，默认86，不需要填+号，直接填数字
-  PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
-  // 短信验证码内容
-  SmsCode *string `json:"sms_code,omitempty" xml:"sms_code,omitempty" require:"true"`
-  // 短信验证码ID
-  SmsCodeId *string `json:"sms_code_id,omitempty" xml:"sms_code_id,omitempty" require:"true"`
-}
-
-func (s MobileRegisterRequest) String() string {
-  return tea.Prettify(s)
-}
-
-func (s MobileRegisterRequest) GoString() string {
-  return s.String()
-}
-
-func (s *MobileRegisterRequest) SetHttpheaders(v map[string]*string) *MobileRegisterRequest {
-  s.Httpheaders = v
-  return s
-}
-
-func (s *MobileRegisterRequest) SetAppId(v string) *MobileRegisterRequest {
-  s.AppId = &v
-  return s
-}
-
-func (s *MobileRegisterRequest) SetNvcParam(v string) *MobileRegisterRequest {
-  s.NvcParam = &v
-  return s
-}
-
-func (s *MobileRegisterRequest) SetPhoneNumber(v string) *MobileRegisterRequest {
-  s.PhoneNumber = &v
-  return s
-}
-
-func (s *MobileRegisterRequest) SetPhoneRegion(v string) *MobileRegisterRequest {
-  s.PhoneRegion = &v
-  return s
-}
-
-func (s *MobileRegisterRequest) SetSmsCode(v string) *MobileRegisterRequest {
-  s.SmsCode = &v
-  return s
-}
-
-func (s *MobileRegisterRequest) SetSmsCodeId(v string) *MobileRegisterRequest {
-  s.SmsCodeId = &v
-  return s
-}
-
-/**
- * 
- */
-type MobileSendSmsCodeRequest struct {
-  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
-  // App ID, 当前访问的App
-  AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty" require:"true"`
-  // 图片验证码ID
-  CaptchaId *string `json:"captcha_id,omitempty" xml:"captcha_id,omitempty"`
-  // 用户输入的验证码值
-  CaptchaText *string `json:"captcha_text,omitempty" xml:"captcha_text,omitempty"`
-  // 环境参数
-  NvcParam *string `json:"nvc_param,omitempty" xml:"nvc_param,omitempty" require:"true"`
-  // 待发送验证短信的手机号
-  PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty" require:"true"`
-  // 国家编号，默认86，不需要填+号，直接填数字
-  PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
-  // 验证码用途, 可下发: login、register、change_password
-  Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
-}
-
-func (s MobileSendSmsCodeRequest) String() string {
-  return tea.Prettify(s)
-}
-
-func (s MobileSendSmsCodeRequest) GoString() string {
-  return s.String()
-}
-
-func (s *MobileSendSmsCodeRequest) SetHttpheaders(v map[string]*string) *MobileSendSmsCodeRequest {
-  s.Httpheaders = v
-  return s
-}
-
-func (s *MobileSendSmsCodeRequest) SetAppId(v string) *MobileSendSmsCodeRequest {
-  s.AppId = &v
-  return s
-}
-
-func (s *MobileSendSmsCodeRequest) SetCaptchaId(v string) *MobileSendSmsCodeRequest {
-  s.CaptchaId = &v
-  return s
-}
-
-func (s *MobileSendSmsCodeRequest) SetCaptchaText(v string) *MobileSendSmsCodeRequest {
-  s.CaptchaText = &v
-  return s
-}
-
-func (s *MobileSendSmsCodeRequest) SetNvcParam(v string) *MobileSendSmsCodeRequest {
-  s.NvcParam = &v
-  return s
-}
-
-func (s *MobileSendSmsCodeRequest) SetPhoneNumber(v string) *MobileSendSmsCodeRequest {
-  s.PhoneNumber = &v
-  return s
-}
-
-func (s *MobileSendSmsCodeRequest) SetPhoneRegion(v string) *MobileSendSmsCodeRequest {
-  s.PhoneRegion = &v
-  return s
-}
-
-func (s *MobileSendSmsCodeRequest) SetType(v string) *MobileSendSmsCodeRequest {
-  s.Type = &v
-  return s
-}
-
-/**
- * 
- */
-type MobileSendSmsCodeResponse struct {
-  // 短信验证码ID
-  SmsCodeId *string `json:"sms_code_id,omitempty" xml:"sms_code_id,omitempty" require:"true"`
-}
-
-func (s MobileSendSmsCodeResponse) String() string {
-  return tea.Prettify(s)
-}
-
-func (s MobileSendSmsCodeResponse) GoString() string {
-  return s.String()
-}
-
-func (s *MobileSendSmsCodeResponse) SetSmsCodeId(v string) *MobileSendSmsCodeResponse {
-  s.SmsCodeId = &v
   return s
 }
 
@@ -18436,6 +19241,75 @@ func (s *RefreshOfficeEditTokenResponse) SetOfficeRefreshToken(v string) *Refres
 /**
  * 
  */
+type RegisterRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // App ID, 当前访问的App
+  AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty" require:"true"`
+  // 邮箱
+  Email *string `json:"email,omitempty" xml:"email,omitempty"`
+  // 环境参数
+  NvcParam *string `json:"nvc_param,omitempty" xml:"nvc_param,omitempty" require:"true"`
+  // 待发送验证短信的手机号
+  PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty"`
+  // 国家编号，默认86，不需要填+号，直接填数字
+  PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
+  // 短信验证码内容
+  SmsCode *string `json:"sms_code,omitempty" xml:"sms_code,omitempty" require:"true"`
+  // 短信验证码ID
+  SmsCodeId *string `json:"sms_code_id,omitempty" xml:"sms_code_id,omitempty" require:"true"`
+}
+
+func (s RegisterRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s RegisterRequest) GoString() string {
+  return s.String()
+}
+
+func (s *RegisterRequest) SetHttpheaders(v map[string]*string) *RegisterRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *RegisterRequest) SetAppId(v string) *RegisterRequest {
+  s.AppId = &v
+  return s
+}
+
+func (s *RegisterRequest) SetEmail(v string) *RegisterRequest {
+  s.Email = &v
+  return s
+}
+
+func (s *RegisterRequest) SetNvcParam(v string) *RegisterRequest {
+  s.NvcParam = &v
+  return s
+}
+
+func (s *RegisterRequest) SetPhoneNumber(v string) *RegisterRequest {
+  s.PhoneNumber = &v
+  return s
+}
+
+func (s *RegisterRequest) SetPhoneRegion(v string) *RegisterRequest {
+  s.PhoneRegion = &v
+  return s
+}
+
+func (s *RegisterRequest) SetSmsCode(v string) *RegisterRequest {
+  s.SmsCode = &v
+  return s
+}
+
+func (s *RegisterRequest) SetSmsCodeId(v string) *RegisterRequest {
+  s.SmsCodeId = &v
+  return s
+}
+
+/**
+ * 
+ */
 type RemoveStoreRequest struct {
   // domain ID
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty" require:"true"`
@@ -18884,6 +19758,97 @@ func (s *SearchDomainsRequest) SetOrderBy(v string) *SearchDomainsRequest {
 }
 
 /**
+ * Search drive request
+ */
+type SearchDriveRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // Drive Fuzz Name
+  DriveName *string `json:"drive_name,omitempty" xml:"drive_name,omitempty" require:"true"`
+  // 每页大小限制
+  Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+  // 翻页标记, 接口返回的标记值
+  Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+  // 所属者
+  Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+  // owner_type
+  // 所述者类型
+  OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
+  // Subdomain ID
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s SearchDriveRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SearchDriveRequest) GoString() string {
+  return s.String()
+}
+
+func (s *SearchDriveRequest) SetHttpheaders(v map[string]*string) *SearchDriveRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *SearchDriveRequest) SetDriveName(v string) *SearchDriveRequest {
+  s.DriveName = &v
+  return s
+}
+
+func (s *SearchDriveRequest) SetLimit(v int32) *SearchDriveRequest {
+  s.Limit = &v
+  return s
+}
+
+func (s *SearchDriveRequest) SetMarker(v string) *SearchDriveRequest {
+  s.Marker = &v
+  return s
+}
+
+func (s *SearchDriveRequest) SetOwner(v string) *SearchDriveRequest {
+  s.Owner = &v
+  return s
+}
+
+func (s *SearchDriveRequest) SetOwnerType(v string) *SearchDriveRequest {
+  s.OwnerType = &v
+  return s
+}
+
+func (s *SearchDriveRequest) SetSubdomainId(v string) *SearchDriveRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * search drive response
+ */
+type SearchDriveResponse struct {
+  // Drive 列表
+  Items []*BaseDriveResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+  // 翻页标记
+  NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s SearchDriveResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SearchDriveResponse) GoString() string {
+  return s.String()
+}
+
+func (s *SearchDriveResponse) SetItems(v []*BaseDriveResponse) *SearchDriveResponse {
+  s.Items = v
+  return s
+}
+
+func (s *SearchDriveResponse) SetNextMarker(v string) *SearchDriveResponse {
+  s.NextMarker = &v
+  return s
+}
+
+/**
  * 搜索文件元数据
  */
 type SearchFileRequest struct {
@@ -19054,6 +20019,103 @@ func (s *SearchFileResponse) SetNextMarker(v string) *SearchFileResponse {
 
 func (s *SearchFileResponse) SetTotalCount(v int64) *SearchFileResponse {
   s.TotalCount = &v
+  return s
+}
+
+/**
+ * 
+ */
+type SendSmsCodeRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // App ID, 当前访问的App
+  AppId *string `json:"app_id,omitempty" xml:"app_id,omitempty" require:"true"`
+  // 图片验证码ID
+  CaptchaId *string `json:"captcha_id,omitempty" xml:"captcha_id,omitempty"`
+  // 用户输入的验证码值
+  CaptchaText *string `json:"captcha_text,omitempty" xml:"captcha_text,omitempty"`
+  // 邮箱
+  Email *string `json:"email,omitempty" xml:"email,omitempty"`
+  // 环境参数
+  NvcParam *string `json:"nvc_param,omitempty" xml:"nvc_param,omitempty" require:"true"`
+  // 待发送验证短信的手机号
+  PhoneNumber *string `json:"phone_number,omitempty" xml:"phone_number,omitempty"`
+  // 国家编号，默认86，不需要填+号，直接填数字
+  PhoneRegion *string `json:"phone_region,omitempty" xml:"phone_region,omitempty"`
+  // 验证码用途, 可下发: login、register、change_password
+  Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+}
+
+func (s SendSmsCodeRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SendSmsCodeRequest) GoString() string {
+  return s.String()
+}
+
+func (s *SendSmsCodeRequest) SetHttpheaders(v map[string]*string) *SendSmsCodeRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *SendSmsCodeRequest) SetAppId(v string) *SendSmsCodeRequest {
+  s.AppId = &v
+  return s
+}
+
+func (s *SendSmsCodeRequest) SetCaptchaId(v string) *SendSmsCodeRequest {
+  s.CaptchaId = &v
+  return s
+}
+
+func (s *SendSmsCodeRequest) SetCaptchaText(v string) *SendSmsCodeRequest {
+  s.CaptchaText = &v
+  return s
+}
+
+func (s *SendSmsCodeRequest) SetEmail(v string) *SendSmsCodeRequest {
+  s.Email = &v
+  return s
+}
+
+func (s *SendSmsCodeRequest) SetNvcParam(v string) *SendSmsCodeRequest {
+  s.NvcParam = &v
+  return s
+}
+
+func (s *SendSmsCodeRequest) SetPhoneNumber(v string) *SendSmsCodeRequest {
+  s.PhoneNumber = &v
+  return s
+}
+
+func (s *SendSmsCodeRequest) SetPhoneRegion(v string) *SendSmsCodeRequest {
+  s.PhoneRegion = &v
+  return s
+}
+
+func (s *SendSmsCodeRequest) SetType(v string) *SendSmsCodeRequest {
+  s.Type = &v
+  return s
+}
+
+/**
+ * 
+ */
+type SendSmsCodeResponse struct {
+  // 验证码ID
+  SmsCodeId *string `json:"sms_code_id,omitempty" xml:"sms_code_id,omitempty" require:"true"`
+}
+
+func (s SendSmsCodeResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SendSmsCodeResponse) GoString() string {
+  return s.String()
+}
+
+func (s *SendSmsCodeResponse) SetSmsCodeId(v string) *SendSmsCodeResponse {
+  s.SmsCodeId = &v
   return s
 }
 
@@ -19356,6 +20418,62 @@ func (s *SharePermissionPolicy) SetPermissionList(v []*string) *SharePermissionP
 
 func (s *SharePermissionPolicy) SetPermissionType(v string) *SharePermissionPolicy {
   s.PermissionType = &v
+  return s
+}
+
+/**
+ * 
+ */
+type SignatureInfo struct {
+  Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+  CanonicalizedResource *string `json:"canonicalized_resource,omitempty" xml:"canonicalized_resource,omitempty"`
+  Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+  Headers map[string]interface{} `json:"headers,omitempty" xml:"headers,omitempty"`
+  ObjectKey *string `json:"object_key,omitempty" xml:"object_key,omitempty"`
+  Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+  StrToSign *string `json:"str_to_sign,omitempty" xml:"str_to_sign,omitempty"`
+}
+
+func (s SignatureInfo) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SignatureInfo) GoString() string {
+  return s.String()
+}
+
+func (s *SignatureInfo) SetBucket(v string) *SignatureInfo {
+  s.Bucket = &v
+  return s
+}
+
+func (s *SignatureInfo) SetCanonicalizedResource(v string) *SignatureInfo {
+  s.CanonicalizedResource = &v
+  return s
+}
+
+func (s *SignatureInfo) SetEndpoint(v string) *SignatureInfo {
+  s.Endpoint = &v
+  return s
+}
+
+func (s *SignatureInfo) SetHeaders(v map[string]interface{}) *SignatureInfo {
+  s.Headers = v
+  return s
+}
+
+func (s *SignatureInfo) SetObjectKey(v string) *SignatureInfo {
+  s.ObjectKey = &v
+  return s
+}
+
+func (s *SignatureInfo) SetSignature(v string) *SignatureInfo {
+  s.Signature = &v
+  return s
+}
+
+func (s *SignatureInfo) SetStrToSign(v string) *SignatureInfo {
+  s.StrToSign = &v
   return s
 }
 
@@ -20062,6 +21180,955 @@ func (s *TrashFileResponse) SetFileId(v string) *TrashFileResponse {
 }
 
 /**
+ * UCCompleteFileRequest complete with store exist
+ */
+type UCCompleteFileRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // addition_data
+  AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+  // file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" require:"true" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+  // part_info_list
+  PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+  ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+  // upload_id
+  UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+}
+
+func (s UCCompleteFileRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UCCompleteFileRequest) GoString() string {
+  return s.String()
+}
+
+func (s *UCCompleteFileRequest) SetHttpheaders(v map[string]*string) *UCCompleteFileRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *UCCompleteFileRequest) SetAdditionData(v map[string]interface{}) *UCCompleteFileRequest {
+  s.AdditionData = v
+  return s
+}
+
+func (s *UCCompleteFileRequest) SetDriveId(v string) *UCCompleteFileRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *UCCompleteFileRequest) SetFileId(v string) *UCCompleteFileRequest {
+  s.FileId = &v
+  return s
+}
+
+func (s *UCCompleteFileRequest) SetPartInfoList(v []*UploadPartInfo) *UCCompleteFileRequest {
+  s.PartInfoList = v
+  return s
+}
+
+func (s *UCCompleteFileRequest) SetShareId(v string) *UCCompleteFileRequest {
+  s.ShareId = &v
+  return s
+}
+
+func (s *UCCompleteFileRequest) SetUploadId(v string) *UCCompleteFileRequest {
+  s.UploadId = &v
+  return s
+}
+
+/**
+ * UCCompleteFileResponse
+ */
+type UCCompleteFileResponse struct {
+  // action_list
+  ActionList []*string `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
+  // bucket_name
+  BucketName *string `json:"bucket_name,omitempty" xml:"bucket_name,omitempty"`
+  // category
+  Category *string `json:"category,omitempty" xml:"category,omitempty"`
+  // CharacteristicHash
+  CharacteristicHash *string `json:"characteristic_hash,omitempty" xml:"characteristic_hash,omitempty"`
+  // Content Hash
+  ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+  // content_hash_name
+  ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+  // content_type
+  ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
+  // crc64_hash
+  Crc64Hash *string `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
+  // created_at
+  CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  // custom_field_1
+  CustomField1 *string `json:"custom_field_1,omitempty" xml:"custom_field_1,omitempty"`
+  // custom_field_2
+  CustomField2 *string `json:"custom_field_2,omitempty" xml:"custom_field_2,omitempty"`
+  // custom_type
+  CustomType *string `json:"custom_type,omitempty" xml:"custom_type,omitempty"`
+  // description
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // DomainID
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty" pattern:"[a-z0-9A-Z]+"`
+  // download_url
+  DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+  // encrypt_mode
+  EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
+  // endpoint
+  Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+  // file_extension
+  FileExtension *string `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
+  // file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+  // Hidden
+  // type: boolean
+  Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
+  ImageMediaMetadata *ImageMediaResponse `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
+  // labels
+  Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+  // last_modifier_id
+  LastModifierId *string `json:"last_modifier_id,omitempty" xml:"last_modifier_id,omitempty"`
+  // last_modifier_name
+  LastModifierName *string `json:"last_modifier_name,omitempty" xml:"last_modifier_name,omitempty"`
+  // last_modifier_type
+  LastModifierType *string `json:"last_modifier_type,omitempty" xml:"last_modifier_type,omitempty"`
+  Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
+  // mime_extension
+  MimeExtension *string `json:"mime_extension,omitempty" xml:"mime_extension,omitempty"`
+  // mime_type
+  MimeType *string `json:"mime_type,omitempty" xml:"mime_type,omitempty"`
+  // name
+  Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" pattern:"[a-zA-Z0-9.-]{1,1000}"`
+  // object_key
+  ObjectKey *string `json:"object_key,omitempty" xml:"object_key,omitempty"`
+  // parent_file_id
+  ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+  // PunishFlag
+  PunishFlag *int64 `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
+  ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+  // Size
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
+  // starred
+  // type: boolean
+  Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
+  // status
+  Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // @Deprecated streams url info
+  StreamsInfo map[string]interface{} `json:"streams_info,omitempty" xml:"streams_info,omitempty"`
+  // thumbnail
+  Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+  // trashed_at
+  TrashedAt *string `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
+  // type
+  Type *string `json:"type,omitempty" xml:"type,omitempty"`
+  // updated_at
+  UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+  // upload_id
+  UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+  // url
+  Url *string `json:"url,omitempty" xml:"url,omitempty"`
+  // user_meta
+  UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
+  // user_tags
+  UserTags map[string]interface{} `json:"user_tags,omitempty" xml:"user_tags,omitempty"`
+  VideoMediaMetadata *VideoMediaResponse `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
+  VideoPreviewMetadata *VideoPreviewResponse `json:"video_preview_metadata,omitempty" xml:"video_preview_metadata,omitempty"`
+}
+
+func (s UCCompleteFileResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UCCompleteFileResponse) GoString() string {
+  return s.String()
+}
+
+func (s *UCCompleteFileResponse) SetActionList(v []*string) *UCCompleteFileResponse {
+  s.ActionList = v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetBucketName(v string) *UCCompleteFileResponse {
+  s.BucketName = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetCategory(v string) *UCCompleteFileResponse {
+  s.Category = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetCharacteristicHash(v string) *UCCompleteFileResponse {
+  s.CharacteristicHash = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetContentHash(v string) *UCCompleteFileResponse {
+  s.ContentHash = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetContentHashName(v string) *UCCompleteFileResponse {
+  s.ContentHashName = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetContentType(v string) *UCCompleteFileResponse {
+  s.ContentType = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetCrc64Hash(v string) *UCCompleteFileResponse {
+  s.Crc64Hash = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetCreatedAt(v string) *UCCompleteFileResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetCustomField1(v string) *UCCompleteFileResponse {
+  s.CustomField1 = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetCustomField2(v string) *UCCompleteFileResponse {
+  s.CustomField2 = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetCustomType(v string) *UCCompleteFileResponse {
+  s.CustomType = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetDescription(v string) *UCCompleteFileResponse {
+  s.Description = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetDomainId(v string) *UCCompleteFileResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetDownloadUrl(v string) *UCCompleteFileResponse {
+  s.DownloadUrl = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetDriveId(v string) *UCCompleteFileResponse {
+  s.DriveId = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetEncryptMode(v string) *UCCompleteFileResponse {
+  s.EncryptMode = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetEndpoint(v string) *UCCompleteFileResponse {
+  s.Endpoint = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetFileExtension(v string) *UCCompleteFileResponse {
+  s.FileExtension = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetFileId(v string) *UCCompleteFileResponse {
+  s.FileId = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetHidden(v bool) *UCCompleteFileResponse {
+  s.Hidden = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetImageMediaMetadata(v *ImageMediaResponse) *UCCompleteFileResponse {
+  s.ImageMediaMetadata = v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetLabels(v []*string) *UCCompleteFileResponse {
+  s.Labels = v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetLastModifierId(v string) *UCCompleteFileResponse {
+  s.LastModifierId = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetLastModifierName(v string) *UCCompleteFileResponse {
+  s.LastModifierName = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetLastModifierType(v string) *UCCompleteFileResponse {
+  s.LastModifierType = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetMeta(v string) *UCCompleteFileResponse {
+  s.Meta = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetMimeExtension(v string) *UCCompleteFileResponse {
+  s.MimeExtension = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetMimeType(v string) *UCCompleteFileResponse {
+  s.MimeType = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetName(v string) *UCCompleteFileResponse {
+  s.Name = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetObjectKey(v string) *UCCompleteFileResponse {
+  s.ObjectKey = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetParentFileId(v string) *UCCompleteFileResponse {
+  s.ParentFileId = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetPunishFlag(v int64) *UCCompleteFileResponse {
+  s.PunishFlag = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetShareId(v string) *UCCompleteFileResponse {
+  s.ShareId = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetSize(v int64) *UCCompleteFileResponse {
+  s.Size = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetStarred(v bool) *UCCompleteFileResponse {
+  s.Starred = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetStatus(v string) *UCCompleteFileResponse {
+  s.Status = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetStreamsInfo(v map[string]interface{}) *UCCompleteFileResponse {
+  s.StreamsInfo = v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetThumbnail(v string) *UCCompleteFileResponse {
+  s.Thumbnail = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetTrashedAt(v string) *UCCompleteFileResponse {
+  s.TrashedAt = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetType(v string) *UCCompleteFileResponse {
+  s.Type = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetUpdatedAt(v string) *UCCompleteFileResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetUploadId(v string) *UCCompleteFileResponse {
+  s.UploadId = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetUrl(v string) *UCCompleteFileResponse {
+  s.Url = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetUserMeta(v string) *UCCompleteFileResponse {
+  s.UserMeta = &v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetUserTags(v map[string]interface{}) *UCCompleteFileResponse {
+  s.UserTags = v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetVideoMediaMetadata(v *VideoMediaResponse) *UCCompleteFileResponse {
+  s.VideoMediaMetadata = v
+  return s
+}
+
+func (s *UCCompleteFileResponse) SetVideoPreviewMetadata(v *VideoPreviewResponse) *UCCompleteFileResponse {
+  s.VideoPreviewMetadata = v
+  return s
+}
+
+/**
+ * UCCreateFileRequest create file with signature
+ */
+type UCCreateFileRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // addition_data
+  AdditionData map[string]interface{} `json:"addition_data,omitempty" xml:"addition_data,omitempty"`
+  AutoRename *bool `json:"auto_rename,omitempty" xml:"auto_rename,omitempty"`
+  Callback *CcpCallback `json:"callback,omitempty" xml:"callback,omitempty"`
+  // check_name_mode
+  CheckNameMode *string `json:"check_name_mode,omitempty" xml:"check_name_mode,omitempty"`
+  // content_hash
+  ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+  // content_hash_mutable
+  ContentHashMutable *bool `json:"content_hash_mutable,omitempty" xml:"content_hash_mutable,omitempty"`
+  // content_hash_name
+  ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+  // ContentMd5
+  ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
+  // ContentType
+  ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
+  CreateReason *string `json:"create_reason,omitempty" xml:"create_reason,omitempty"`
+  CustomField1 *string `json:"custom_field_1,omitempty" xml:"custom_field_1,omitempty"`
+  CustomField2 *string `json:"custom_field_2,omitempty" xml:"custom_field_2,omitempty"`
+  CustomType *string `json:"custom_type,omitempty" xml:"custom_type,omitempty"`
+  // date
+  Date *string `json:"date,omitempty" xml:"date,omitempty"`
+  // description
+  Description *string `json:"description,omitempty" xml:"description,omitempty" maxLength:"1024" minLength:"0"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+  // encrypt_mode
+  EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
+  // file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+  // force_upload_to_location
+  ForceUploadToLocation *bool `json:"force_upload_to_location,omitempty" xml:"force_upload_to_location,omitempty"`
+  // headers
+  Headers map[string]interface{} `json:"headers,omitempty" xml:"headers,omitempty"`
+  // hidden
+  Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
+  ImageMediaMetadata *ImageMediaMetadata `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
+  // labels
+  Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+  // last_updated_at
+  LastUpdatedAt *string `json:"last_updated_at,omitempty" xml:"last_updated_at,omitempty"`
+  // location
+  Location *string `json:"location,omitempty" xml:"location,omitempty"`
+  Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
+  // Name
+  Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
+  // overwrite
+  Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
+  ParallelUpload *bool `json:"parallel_upload,omitempty" xml:"parallel_upload,omitempty"`
+  // parameters
+  Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+  // parent_file_id
+  ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4" pattern:"[a-z0-9]{1,50}"`
+  ParentFileIdPath *string `json:"parent_file_id_path,omitempty" xml:"parent_file_id_path,omitempty"`
+  // part_info_list
+  PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+  // pre_hash
+  PreHash *string `json:"pre_hash,omitempty" xml:"pre_hash,omitempty"`
+  // proof_code
+  ProofCode *string `json:"proof_code,omitempty" xml:"proof_code,omitempty"`
+  // proof_version
+  ProofVersion *string `json:"proof_version,omitempty" xml:"proof_version,omitempty"`
+  // share_id
+  // example
+  ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+  // Size
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty" minimum:"0"`
+  // streams_info
+  StreamsInfo map[string]interface{} `json:"streams_info,omitempty" xml:"streams_info,omitempty"`
+  // Type
+  Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+  // upload_type
+  UploadType *string `json:"upload_type,omitempty" xml:"upload_type,omitempty"`
+  // user_meta
+  UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
+  // user_tags
+  UserTags []*UserTag `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
+  VideoMediaMetadata *VideoMediaMetadata `json:"video_media_metadata,omitempty" xml:"video_media_metadata,omitempty"`
+}
+
+func (s UCCreateFileRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UCCreateFileRequest) GoString() string {
+  return s.String()
+}
+
+func (s *UCCreateFileRequest) SetHttpheaders(v map[string]*string) *UCCreateFileRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetAdditionData(v map[string]interface{}) *UCCreateFileRequest {
+  s.AdditionData = v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetAutoRename(v bool) *UCCreateFileRequest {
+  s.AutoRename = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetCallback(v *CcpCallback) *UCCreateFileRequest {
+  s.Callback = v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetCheckNameMode(v string) *UCCreateFileRequest {
+  s.CheckNameMode = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetContentHash(v string) *UCCreateFileRequest {
+  s.ContentHash = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetContentHashMutable(v bool) *UCCreateFileRequest {
+  s.ContentHashMutable = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetContentHashName(v string) *UCCreateFileRequest {
+  s.ContentHashName = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetContentMd5(v string) *UCCreateFileRequest {
+  s.ContentMd5 = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetContentType(v string) *UCCreateFileRequest {
+  s.ContentType = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetCreateReason(v string) *UCCreateFileRequest {
+  s.CreateReason = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetCustomField1(v string) *UCCreateFileRequest {
+  s.CustomField1 = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetCustomField2(v string) *UCCreateFileRequest {
+  s.CustomField2 = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetCustomType(v string) *UCCreateFileRequest {
+  s.CustomType = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetDate(v string) *UCCreateFileRequest {
+  s.Date = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetDescription(v string) *UCCreateFileRequest {
+  s.Description = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetDriveId(v string) *UCCreateFileRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetEncryptMode(v string) *UCCreateFileRequest {
+  s.EncryptMode = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetFileId(v string) *UCCreateFileRequest {
+  s.FileId = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetForceUploadToLocation(v bool) *UCCreateFileRequest {
+  s.ForceUploadToLocation = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetHeaders(v map[string]interface{}) *UCCreateFileRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetHidden(v bool) *UCCreateFileRequest {
+  s.Hidden = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetImageMediaMetadata(v *ImageMediaMetadata) *UCCreateFileRequest {
+  s.ImageMediaMetadata = v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetLabels(v []*string) *UCCreateFileRequest {
+  s.Labels = v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetLastUpdatedAt(v string) *UCCreateFileRequest {
+  s.LastUpdatedAt = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetLocation(v string) *UCCreateFileRequest {
+  s.Location = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetMeta(v string) *UCCreateFileRequest {
+  s.Meta = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetName(v string) *UCCreateFileRequest {
+  s.Name = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetOverwrite(v bool) *UCCreateFileRequest {
+  s.Overwrite = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetParallelUpload(v bool) *UCCreateFileRequest {
+  s.ParallelUpload = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetParameters(v map[string]interface{}) *UCCreateFileRequest {
+  s.Parameters = v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetParentFileId(v string) *UCCreateFileRequest {
+  s.ParentFileId = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetParentFileIdPath(v string) *UCCreateFileRequest {
+  s.ParentFileIdPath = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetPartInfoList(v []*UploadPartInfo) *UCCreateFileRequest {
+  s.PartInfoList = v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetPreHash(v string) *UCCreateFileRequest {
+  s.PreHash = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetProofCode(v string) *UCCreateFileRequest {
+  s.ProofCode = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetProofVersion(v string) *UCCreateFileRequest {
+  s.ProofVersion = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetShareId(v string) *UCCreateFileRequest {
+  s.ShareId = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetSize(v int64) *UCCreateFileRequest {
+  s.Size = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetStreamsInfo(v map[string]interface{}) *UCCreateFileRequest {
+  s.StreamsInfo = v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetType(v string) *UCCreateFileRequest {
+  s.Type = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetUploadType(v string) *UCCreateFileRequest {
+  s.UploadType = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetUserMeta(v string) *UCCreateFileRequest {
+  s.UserMeta = &v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetUserTags(v []*UserTag) *UCCreateFileRequest {
+  s.UserTags = v
+  return s
+}
+
+func (s *UCCreateFileRequest) SetVideoMediaMetadata(v *VideoMediaMetadata) *UCCreateFileRequest {
+  s.VideoMediaMetadata = v
+  return s
+}
+
+/**
+ * UCCreateFileResponse
+ */
+type UCCreateFileResponse struct {
+  Callback *Callback `json:"callback,omitempty" xml:"callback,omitempty"`
+  // domain_id
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" pattern:"[0-9]+"`
+  // encrypt_mode
+  EncryptMode *string `json:"encrypt_mode,omitempty" xml:"encrypt_mode,omitempty"`
+  // exist
+  // type: boolean
+  Exist *bool `json:"exist,omitempty" xml:"exist,omitempty"`
+  // file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+  // file_name
+  FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty" maxLength:"255" minLength:"1"`
+  // location
+  Location *string `json:"location,omitempty" xml:"location,omitempty"`
+  // parent_file_id
+  ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" maxLength:"50" minLength:"40" pattern:"[a-z0-9]{1,50}"`
+  // part_info_list
+  PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
+  // rapid_upload
+  // type: boolean
+  RapidUpload *bool `json:"rapid_upload,omitempty" xml:"rapid_upload,omitempty"`
+  Signature *SignatureInfo `json:"signature,omitempty" xml:"signature,omitempty"`
+  // status
+  Status *string `json:"status,omitempty" xml:"status,omitempty"`
+  // streams_upload_info
+  StreamsUploadInfo map[string]interface{} `json:"streams_upload_info,omitempty" xml:"streams_upload_info,omitempty"`
+  // type
+  Type *string `json:"type,omitempty" xml:"type,omitempty"`
+  // upload_id
+  UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+  // upload_type
+  UploadType *string `json:"upload_type,omitempty" xml:"upload_type,omitempty"`
+}
+
+func (s UCCreateFileResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UCCreateFileResponse) GoString() string {
+  return s.String()
+}
+
+func (s *UCCreateFileResponse) SetCallback(v *Callback) *UCCreateFileResponse {
+  s.Callback = v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetDomainId(v string) *UCCreateFileResponse {
+  s.DomainId = &v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetDriveId(v string) *UCCreateFileResponse {
+  s.DriveId = &v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetEncryptMode(v string) *UCCreateFileResponse {
+  s.EncryptMode = &v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetExist(v bool) *UCCreateFileResponse {
+  s.Exist = &v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetFileId(v string) *UCCreateFileResponse {
+  s.FileId = &v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetFileName(v string) *UCCreateFileResponse {
+  s.FileName = &v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetLocation(v string) *UCCreateFileResponse {
+  s.Location = &v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetParentFileId(v string) *UCCreateFileResponse {
+  s.ParentFileId = &v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetPartInfoList(v []*UploadPartInfo) *UCCreateFileResponse {
+  s.PartInfoList = v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetRapidUpload(v bool) *UCCreateFileResponse {
+  s.RapidUpload = &v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetSignature(v *SignatureInfo) *UCCreateFileResponse {
+  s.Signature = v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetStatus(v string) *UCCreateFileResponse {
+  s.Status = &v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetStreamsUploadInfo(v map[string]interface{}) *UCCreateFileResponse {
+  s.StreamsUploadInfo = v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetType(v string) *UCCreateFileResponse {
+  s.Type = &v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetUploadId(v string) *UCCreateFileResponse {
+  s.UploadId = &v
+  return s
+}
+
+func (s *UCCreateFileResponse) SetUploadType(v string) *UCCreateFileResponse {
+  s.UploadType = &v
+  return s
+}
+
+/**
+ * UCFileGetSignatureRequest get file upload signature
+ */
+type UCFileGetSignatureRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // action
+  Action *string `json:"action,omitempty" xml:"action,omitempty"`
+  // bucket
+  Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+  // content_md5
+  ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
+  // content_type
+  ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
+  // date
+  Date *string `json:"date,omitempty" xml:"date,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  // headers
+  Headers map[string]interface{} `json:"headers,omitempty" xml:"headers,omitempty"`
+  // object_key
+  ObjectKey *string `json:"object_key,omitempty" xml:"object_key,omitempty"`
+  // parameters
+  Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
+  // upload_id
+  UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+}
+
+func (s UCFileGetSignatureRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UCFileGetSignatureRequest) GoString() string {
+  return s.String()
+}
+
+func (s *UCFileGetSignatureRequest) SetHttpheaders(v map[string]*string) *UCFileGetSignatureRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *UCFileGetSignatureRequest) SetAction(v string) *UCFileGetSignatureRequest {
+  s.Action = &v
+  return s
+}
+
+func (s *UCFileGetSignatureRequest) SetBucket(v string) *UCFileGetSignatureRequest {
+  s.Bucket = &v
+  return s
+}
+
+func (s *UCFileGetSignatureRequest) SetContentMd5(v string) *UCFileGetSignatureRequest {
+  s.ContentMd5 = &v
+  return s
+}
+
+func (s *UCFileGetSignatureRequest) SetContentType(v string) *UCFileGetSignatureRequest {
+  s.ContentType = &v
+  return s
+}
+
+func (s *UCFileGetSignatureRequest) SetDate(v string) *UCFileGetSignatureRequest {
+  s.Date = &v
+  return s
+}
+
+func (s *UCFileGetSignatureRequest) SetDriveId(v string) *UCFileGetSignatureRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *UCFileGetSignatureRequest) SetHeaders(v map[string]interface{}) *UCFileGetSignatureRequest {
+  s.Headers = v
+  return s
+}
+
+func (s *UCFileGetSignatureRequest) SetObjectKey(v string) *UCFileGetSignatureRequest {
+  s.ObjectKey = &v
+  return s
+}
+
+func (s *UCFileGetSignatureRequest) SetParameters(v map[string]interface{}) *UCFileGetSignatureRequest {
+  s.Parameters = v
+  return s
+}
+
+func (s *UCFileGetSignatureRequest) SetUploadId(v string) *UCFileGetSignatureRequest {
+  s.UploadId = &v
+  return s
+}
+
+/**
  * UCGetObjectInfoByObjectKeyRequest
  */
 type UCGetObjectInfoByObjectKeyRequest struct {
@@ -20098,6 +22165,206 @@ func (s UCGetObjectInfoBySha1Request) GoString() string {
 
 func (s *UCGetObjectInfoBySha1Request) SetSha1(v string) *UCGetObjectInfoBySha1Request {
   s.Sha1 = &v
+  return s
+}
+
+/**
+ * UCGetSignatureResponse
+ */
+type UCGetSignatureResponse struct {
+  Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+  CanonicalizedResource *string `json:"canonicalized_resource,omitempty" xml:"canonicalized_resource,omitempty"`
+  Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+  Headers map[string]interface{} `json:"headers,omitempty" xml:"headers,omitempty"`
+  ObjectKey *string `json:"object_key,omitempty" xml:"object_key,omitempty"`
+  Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
+  StrToSign *string `json:"str_to_sign,omitempty" xml:"str_to_sign,omitempty"`
+}
+
+func (s UCGetSignatureResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UCGetSignatureResponse) GoString() string {
+  return s.String()
+}
+
+func (s *UCGetSignatureResponse) SetBucket(v string) *UCGetSignatureResponse {
+  s.Bucket = &v
+  return s
+}
+
+func (s *UCGetSignatureResponse) SetCanonicalizedResource(v string) *UCGetSignatureResponse {
+  s.CanonicalizedResource = &v
+  return s
+}
+
+func (s *UCGetSignatureResponse) SetEndpoint(v string) *UCGetSignatureResponse {
+  s.Endpoint = &v
+  return s
+}
+
+func (s *UCGetSignatureResponse) SetHeaders(v map[string]interface{}) *UCGetSignatureResponse {
+  s.Headers = v
+  return s
+}
+
+func (s *UCGetSignatureResponse) SetObjectKey(v string) *UCGetSignatureResponse {
+  s.ObjectKey = &v
+  return s
+}
+
+func (s *UCGetSignatureResponse) SetSignature(v string) *UCGetSignatureResponse {
+  s.Signature = &v
+  return s
+}
+
+func (s *UCGetSignatureResponse) SetStrToSign(v string) *UCGetSignatureResponse {
+  s.StrToSign = &v
+  return s
+}
+
+/**
+ * UCUpdateUploadContentHashRequest update upload info
+ */
+type UCUpdateUploadContentHashRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // content_hash
+  ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+  // content_hash_name
+  ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+  // content_md5
+  ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
+  // drive_id
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  // file_id
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+  // overwrite
+  Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
+  // size
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+  // upload_id
+  UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+}
+
+func (s UCUpdateUploadContentHashRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UCUpdateUploadContentHashRequest) GoString() string {
+  return s.String()
+}
+
+func (s *UCUpdateUploadContentHashRequest) SetHttpheaders(v map[string]*string) *UCUpdateUploadContentHashRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashRequest) SetContentHash(v string) *UCUpdateUploadContentHashRequest {
+  s.ContentHash = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashRequest) SetContentHashName(v string) *UCUpdateUploadContentHashRequest {
+  s.ContentHashName = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashRequest) SetContentMd5(v string) *UCUpdateUploadContentHashRequest {
+  s.ContentMd5 = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashRequest) SetDriveId(v string) *UCUpdateUploadContentHashRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashRequest) SetFileId(v string) *UCUpdateUploadContentHashRequest {
+  s.FileId = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashRequest) SetOverwrite(v bool) *UCUpdateUploadContentHashRequest {
+  s.Overwrite = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashRequest) SetSize(v int64) *UCUpdateUploadContentHashRequest {
+  s.Size = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashRequest) SetUploadId(v string) *UCUpdateUploadContentHashRequest {
+  s.UploadId = &v
+  return s
+}
+
+/**
+ * UCUpdateUploadContentHashResponse
+ */
+type UCUpdateUploadContentHashResponse struct {
+  ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+  ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+  ContentMd5 *string `json:"content_md5,omitempty" xml:"content_md5,omitempty"`
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+  IsRapidUpload *bool `json:"is_rapid_upload,omitempty" xml:"is_rapid_upload,omitempty"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+  UpdateTime *string `json:"update_time,omitempty" xml:"update_time,omitempty"`
+  UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+}
+
+func (s UCUpdateUploadContentHashResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UCUpdateUploadContentHashResponse) GoString() string {
+  return s.String()
+}
+
+func (s *UCUpdateUploadContentHashResponse) SetContentHash(v string) *UCUpdateUploadContentHashResponse {
+  s.ContentHash = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashResponse) SetContentHashName(v string) *UCUpdateUploadContentHashResponse {
+  s.ContentHashName = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashResponse) SetContentMd5(v string) *UCUpdateUploadContentHashResponse {
+  s.ContentMd5 = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashResponse) SetDriveId(v string) *UCUpdateUploadContentHashResponse {
+  s.DriveId = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashResponse) SetFileId(v string) *UCUpdateUploadContentHashResponse {
+  s.FileId = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashResponse) SetIsRapidUpload(v bool) *UCUpdateUploadContentHashResponse {
+  s.IsRapidUpload = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashResponse) SetSize(v int64) *UCUpdateUploadContentHashResponse {
+  s.Size = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashResponse) SetUpdateTime(v string) *UCUpdateUploadContentHashResponse {
+  s.UpdateTime = &v
+  return s
+}
+
+func (s *UCUpdateUploadContentHashResponse) SetUploadId(v string) *UCUpdateUploadContentHashResponse {
+  s.UploadId = &v
   return s
 }
 
@@ -20522,6 +22789,7 @@ func (s *UpdateDriveRequest) SetTotalSize(v int64) *UpdateDriveRequest {
  */
 type UpdateDriveResponse struct {
   ActionList []*string `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
+  CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
   // Drive 创建者
   Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
   // Drive 备注信息
@@ -20547,6 +22815,8 @@ type UpdateDriveResponse struct {
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
   // 存储 ID, domain的PathType为OSSPath时返回
   StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty"`
+  // subdomain_id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
   // Drive 空间总量
   TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
   // Drive 空间已使用量
@@ -20563,6 +22833,11 @@ func (s UpdateDriveResponse) GoString() string {
 
 func (s *UpdateDriveResponse) SetActionList(v []*string) *UpdateDriveResponse {
   s.ActionList = v
+  return s
+}
+
+func (s *UpdateDriveResponse) SetCreatedAt(v string) *UpdateDriveResponse {
+  s.CreatedAt = &v
   return s
 }
 
@@ -20636,6 +22911,11 @@ func (s *UpdateDriveResponse) SetStoreId(v string) *UpdateDriveResponse {
   return s
 }
 
+func (s *UpdateDriveResponse) SetSubdomainId(v string) *UpdateDriveResponse {
+  s.SubdomainId = &v
+  return s
+}
+
 func (s *UpdateDriveResponse) SetTotalSize(v int64) *UpdateDriveResponse {
   s.TotalSize = &v
   return s
@@ -20672,6 +22952,8 @@ type UpdateFileMetaRequest struct {
   // labels
   Labels []*string `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
   Meta *string `json:"meta,omitempty" xml:"meta,omitempty"`
+  MimeExtension *string `json:"mime_extension,omitempty" xml:"mime_extension,omitempty"`
+  MimeType *string `json:"mime_type,omitempty" xml:"mime_type,omitempty"`
   // name
   Name *string `json:"name,omitempty" xml:"name,omitempty" maxLength:"1024" minLength:"1"`
   Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
@@ -20680,6 +22962,7 @@ type UpdateFileMetaRequest struct {
   // starred
   // type: boolean
   Starred *bool `json:"starred,omitempty" xml:"starred,omitempty"`
+  TakenAt *string `json:"taken_at,omitempty" xml:"taken_at,omitempty"`
   // user_meta
   UserMeta *string `json:"user_meta,omitempty" xml:"user_meta,omitempty"`
 }
@@ -20762,6 +23045,16 @@ func (s *UpdateFileMetaRequest) SetMeta(v string) *UpdateFileMetaRequest {
   return s
 }
 
+func (s *UpdateFileMetaRequest) SetMimeExtension(v string) *UpdateFileMetaRequest {
+  s.MimeExtension = &v
+  return s
+}
+
+func (s *UpdateFileMetaRequest) SetMimeType(v string) *UpdateFileMetaRequest {
+  s.MimeType = &v
+  return s
+}
+
 func (s *UpdateFileMetaRequest) SetName(v string) *UpdateFileMetaRequest {
   s.Name = &v
   return s
@@ -20784,6 +23077,11 @@ func (s *UpdateFileMetaRequest) SetSignToken(v string) *UpdateFileMetaRequest {
 
 func (s *UpdateFileMetaRequest) SetStarred(v bool) *UpdateFileMetaRequest {
   s.Starred = &v
+  return s
+}
+
+func (s *UpdateFileMetaRequest) SetTakenAt(v string) *UpdateFileMetaRequest {
+  s.TakenAt = &v
   return s
 }
 
@@ -21127,12 +23425,16 @@ type UpdateShareLinkRequest struct {
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   // expiration
   Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+  // is_subscribed
+  IsSubscribed *bool `json:"is_subscribed,omitempty" xml:"is_subscribed,omitempty"`
+  // num_of_subscribers
+  NumOfSubscribers *int64 `json:"num_of_subscribers,omitempty" xml:"num_of_subscribers,omitempty"`
   // share_id
   ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
   // share_name
   ShareName *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
   // share_pwd
-  SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty" maximum:"64" minimum:"0"`
+  SharePwd *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
   // status
   Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
@@ -21157,6 +23459,16 @@ func (s *UpdateShareLinkRequest) SetDescription(v string) *UpdateShareLinkReques
 
 func (s *UpdateShareLinkRequest) SetExpiration(v string) *UpdateShareLinkRequest {
   s.Expiration = &v
+  return s
+}
+
+func (s *UpdateShareLinkRequest) SetIsSubscribed(v bool) *UpdateShareLinkRequest {
+  s.IsSubscribed = &v
+  return s
+}
+
+func (s *UpdateShareLinkRequest) SetNumOfSubscribers(v int64) *UpdateShareLinkRequest {
+  s.NumOfSubscribers = &v
   return s
 }
 
@@ -21204,6 +23516,10 @@ type UpdateShareLinkResponse struct {
   FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
   // file_id_list
   FilePathList []*string `json:"file_path_list,omitempty" xml:"file_path_list,omitempty" type:"Repeated"`
+  // is_subscribed
+  IsSubscribed *bool `json:"is_subscribed,omitempty" xml:"is_subscribed,omitempty"`
+  // num_of_subscribers
+  NumOfSubscribers *int64 `json:"num_of_subscribers,omitempty" xml:"num_of_subscribers,omitempty"`
   // preview_count
   PreviewCount *int64 `json:"preview_count,omitempty" xml:"preview_count,omitempty"`
   // 转存次数
@@ -21281,6 +23597,16 @@ func (s *UpdateShareLinkResponse) SetFileIdList(v []*string) *UpdateShareLinkRes
 
 func (s *UpdateShareLinkResponse) SetFilePathList(v []*string) *UpdateShareLinkResponse {
   s.FilePathList = v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetIsSubscribed(v bool) *UpdateShareLinkResponse {
+  s.IsSubscribed = &v
+  return s
+}
+
+func (s *UpdateShareLinkResponse) SetNumOfSubscribers(v int64) *UpdateShareLinkResponse {
+  s.NumOfSubscribers = &v
   return s
 }
 
@@ -22642,6 +24968,7 @@ func (s *AdminListStoresRequest) SetHttpheaders(v map[string]*string) *AdminList
 type AppConfig struct {
   HideDriveFileEntry *bool `json:"hide_drive_file_entry,omitempty" xml:"hide_drive_file_entry,omitempty"`
   HideShareAdminEntry *bool `json:"hide_share_admin_entry,omitempty" xml:"hide_share_admin_entry,omitempty"`
+  ShowCustomizedLoginConfig *bool `json:"show_customized_login_config,omitempty" xml:"show_customized_login_config,omitempty"`
   WebVersion *string `json:"web_version,omitempty" xml:"web_version,omitempty"`
 }
 
@@ -22660,6 +24987,11 @@ func (s *AppConfig) SetHideDriveFileEntry(v bool) *AppConfig {
 
 func (s *AppConfig) SetHideShareAdminEntry(v bool) *AppConfig {
   s.HideShareAdminEntry = &v
+  return s
+}
+
+func (s *AppConfig) SetShowCustomizedLoginConfig(v bool) *AppConfig {
+  s.ShowCustomizedLoginConfig = &v
   return s
 }
 
@@ -23259,6 +25591,162 @@ func (s *BaseDomainResponse) SetVideoPreviewConfig(v *VideoPreviewConfig) *BaseD
 /**
  * 
  */
+type BaseIdentityBenefitPkgDeliveryInfoRequest struct {
+  // 权益包数量
+  Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
+  // 权益下发的唯一标识
+  DeliveryId *string `json:"delivery_id,omitempty" xml:"delivery_id,omitempty"`
+  // 权益包超期时间的时间戳，单位为毫秒
+  ExpireTime *int64 `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
+}
+
+func (s BaseIdentityBenefitPkgDeliveryInfoRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BaseIdentityBenefitPkgDeliveryInfoRequest) GoString() string {
+  return s.String()
+}
+
+func (s *BaseIdentityBenefitPkgDeliveryInfoRequest) SetAmount(v int64) *BaseIdentityBenefitPkgDeliveryInfoRequest {
+  s.Amount = &v
+  return s
+}
+
+func (s *BaseIdentityBenefitPkgDeliveryInfoRequest) SetDeliveryId(v string) *BaseIdentityBenefitPkgDeliveryInfoRequest {
+  s.DeliveryId = &v
+  return s
+}
+
+func (s *BaseIdentityBenefitPkgDeliveryInfoRequest) SetExpireTime(v int64) *BaseIdentityBenefitPkgDeliveryInfoRequest {
+  s.ExpireTime = &v
+  return s
+}
+
+/**
+ * 
+ */
+type BaseIdentityToBenefitPkgMappingRequest struct {
+  // domain ID
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // 实体的唯一标识，如 userID
+  IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty" require:"true"`
+  // 实体类型，当前支持user类型实体
+  IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty" require:"true"`
+}
+
+func (s BaseIdentityToBenefitPkgMappingRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BaseIdentityToBenefitPkgMappingRequest) GoString() string {
+  return s.String()
+}
+
+func (s *BaseIdentityToBenefitPkgMappingRequest) SetDomainId(v string) *BaseIdentityToBenefitPkgMappingRequest {
+  s.DomainId = &v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingRequest) SetIdentityId(v string) *BaseIdentityToBenefitPkgMappingRequest {
+  s.IdentityId = &v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *BaseIdentityToBenefitPkgMappingRequest {
+  s.IdentityType = &v
+  return s
+}
+
+/**
+ * Identity to benefit pkg mapping info
+ */
+type BaseIdentityToBenefitPkgMappingResponse struct {
+  BenefitPkgComputationRule *string `json:"benefit_pkg_computation_rule,omitempty" xml:"benefit_pkg_computation_rule,omitempty"`
+  BenefitPkgId *string `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty"`
+  BenefitPkgName *string `json:"benefit_pkg_name,omitempty" xml:"benefit_pkg_name,omitempty"`
+  BenefitPkgOwnerId *string `json:"benefit_pkg_owner_id,omitempty" xml:"benefit_pkg_owner_id,omitempty"`
+  BenefitPkgPriority *int64 `json:"benefit_pkg_priority,omitempty" xml:"benefit_pkg_priority,omitempty"`
+  BenefitPkgType *string `json:"benefit_pkg_type,omitempty" xml:"benefit_pkg_type,omitempty"`
+  CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+  CustomBenefitMeta map[string]interface{} `json:"custom_benefit_meta,omitempty" xml:"custom_benefit_meta,omitempty"`
+  DeliveryInfoList []*BenefitPkgDeliveryInfoResponse `json:"delivery_info_list,omitempty" xml:"delivery_info_list,omitempty" type:"Repeated"`
+  IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
+  IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty"`
+  UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s BaseIdentityToBenefitPkgMappingResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BaseIdentityToBenefitPkgMappingResponse) GoString() string {
+  return s.String()
+}
+
+func (s *BaseIdentityToBenefitPkgMappingResponse) SetBenefitPkgComputationRule(v string) *BaseIdentityToBenefitPkgMappingResponse {
+  s.BenefitPkgComputationRule = &v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingResponse) SetBenefitPkgId(v string) *BaseIdentityToBenefitPkgMappingResponse {
+  s.BenefitPkgId = &v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingResponse) SetBenefitPkgName(v string) *BaseIdentityToBenefitPkgMappingResponse {
+  s.BenefitPkgName = &v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingResponse) SetBenefitPkgOwnerId(v string) *BaseIdentityToBenefitPkgMappingResponse {
+  s.BenefitPkgOwnerId = &v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingResponse) SetBenefitPkgPriority(v int64) *BaseIdentityToBenefitPkgMappingResponse {
+  s.BenefitPkgPriority = &v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingResponse) SetBenefitPkgType(v string) *BaseIdentityToBenefitPkgMappingResponse {
+  s.BenefitPkgType = &v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingResponse) SetCreatedAt(v string) *BaseIdentityToBenefitPkgMappingResponse {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingResponse) SetCustomBenefitMeta(v map[string]interface{}) *BaseIdentityToBenefitPkgMappingResponse {
+  s.CustomBenefitMeta = v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingResponse) SetDeliveryInfoList(v []*BenefitPkgDeliveryInfoResponse) *BaseIdentityToBenefitPkgMappingResponse {
+  s.DeliveryInfoList = v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingResponse) SetIdentityId(v string) *BaseIdentityToBenefitPkgMappingResponse {
+  s.IdentityId = &v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingResponse) SetIdentityType(v string) *BaseIdentityToBenefitPkgMappingResponse {
+  s.IdentityType = &v
+  return s
+}
+
+func (s *BaseIdentityToBenefitPkgMappingResponse) SetUpdatedAt(v string) *BaseIdentityToBenefitPkgMappingResponse {
+  s.UpdatedAt = &v
+  return s
+}
+
+/**
+ * 
+ */
 type BaseSubdomainResponse struct {
   // 创建时间
   CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty" require:"true"`
@@ -23266,12 +25754,22 @@ type BaseSubdomainResponse struct {
   Description *string `json:"description,omitempty" xml:"description,omitempty" require:"true"`
   // 名称
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
+  // 是否开启了共享
+  Sharable *bool `json:"sharable,omitempty" xml:"sharable,omitempty"`
+  // 是否开启了分享
+  ShareLinkEnabled *bool `json:"share_link_enabled,omitempty" xml:"share_link_enabled,omitempty"`
+  // 当前状态
+  Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
   // 用以唯一标识subdomain
   SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty" require:"true"`
   // 逻辑空间quota，-1表示无限制，单位为字节
   TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty" require:"true"`
   // 更新时间
   UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty" require:"true"`
+  // 逻辑空间使用量，单位为字节
+  UsedSize *int64 `json:"used_size,omitempty" xml:"used_size,omitempty"`
+  // 逻辑空间刷新周期，单位：秒
+  UsedSizeRefreshInterval *int64 `json:"used_size_refresh_interval,omitempty" xml:"used_size_refresh_interval,omitempty"`
   // 用户数quota，-1表示无限制
   UserQuota *int64 `json:"user_quota,omitempty" xml:"user_quota,omitempty" require:"true"`
 }
@@ -23299,6 +25797,21 @@ func (s *BaseSubdomainResponse) SetName(v string) *BaseSubdomainResponse {
   return s
 }
 
+func (s *BaseSubdomainResponse) SetSharable(v bool) *BaseSubdomainResponse {
+  s.Sharable = &v
+  return s
+}
+
+func (s *BaseSubdomainResponse) SetShareLinkEnabled(v bool) *BaseSubdomainResponse {
+  s.ShareLinkEnabled = &v
+  return s
+}
+
+func (s *BaseSubdomainResponse) SetStatus(v int64) *BaseSubdomainResponse {
+  s.Status = &v
+  return s
+}
+
 func (s *BaseSubdomainResponse) SetSubdomainId(v string) *BaseSubdomainResponse {
   s.SubdomainId = &v
   return s
@@ -23311,6 +25824,16 @@ func (s *BaseSubdomainResponse) SetTotalSize(v int64) *BaseSubdomainResponse {
 
 func (s *BaseSubdomainResponse) SetUpdatedAt(v string) *BaseSubdomainResponse {
   s.UpdatedAt = &v
+  return s
+}
+
+func (s *BaseSubdomainResponse) SetUsedSize(v int64) *BaseSubdomainResponse {
+  s.UsedSize = &v
+  return s
+}
+
+func (s *BaseSubdomainResponse) SetUsedSizeRefreshInterval(v int64) *BaseSubdomainResponse {
+  s.UsedSizeRefreshInterval = &v
   return s
 }
 
@@ -23357,6 +25880,38 @@ func (s *BenefitBaseResponse) SetBenefitPkgId(v string) *BenefitBaseResponse {
 
 func (s *BenefitBaseResponse) SetName(v string) *BenefitBaseResponse {
   s.Name = &v
+  return s
+}
+
+/**
+ * 权益元数据
+ */
+type BenefitMeta struct {
+  Config *string `json:"config,omitempty" xml:"config,omitempty"`
+  Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+  Quota *int64 `json:"quota,omitempty" xml:"quota,omitempty"`
+}
+
+func (s BenefitMeta) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BenefitMeta) GoString() string {
+  return s.String()
+}
+
+func (s *BenefitMeta) SetConfig(v string) *BenefitMeta {
+  s.Config = &v
+  return s
+}
+
+func (s *BenefitMeta) SetEnabled(v bool) *BenefitMeta {
+  s.Enabled = &v
+  return s
+}
+
+func (s *BenefitMeta) SetQuota(v int64) *BenefitMeta {
+  s.Quota = &v
   return s
 }
 
@@ -23841,6 +26396,96 @@ func (s *CreateDomainResponse) SetVideoPreviewConfig(v *VideoPreviewConfig) *Cre
 }
 
 /**
+ * create identity to benefit pkg mapping request
+ */
+type CreateIdentityToBenefitPkgMappingRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 权益包数量
+  Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
+  // 权益包的唯一标识
+  BenefitPkgId *string `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty" require:"true"`
+  // 权益下发的唯一标识
+  DeliveryId *string `json:"delivery_id,omitempty" xml:"delivery_id,omitempty"`
+  // domain ID
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // 权益包超期时间的时间戳，单位为毫秒
+  ExpireTime *int64 `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
+  // 实体的唯一标识，如 userID
+  IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty" require:"true"`
+  // 实体类型，当前支持user类型实体
+  IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty" require:"true"`
+  // nonce ID
+  NonceId *string `json:"nonce_id,omitempty" xml:"nonce_id,omitempty"`
+}
+
+func (s CreateIdentityToBenefitPkgMappingRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateIdentityToBenefitPkgMappingRequest) GoString() string {
+  return s.String()
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetHttpheaders(v map[string]*string) *CreateIdentityToBenefitPkgMappingRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetAmount(v int64) *CreateIdentityToBenefitPkgMappingRequest {
+  s.Amount = &v
+  return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetBenefitPkgId(v string) *CreateIdentityToBenefitPkgMappingRequest {
+  s.BenefitPkgId = &v
+  return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetDeliveryId(v string) *CreateIdentityToBenefitPkgMappingRequest {
+  s.DeliveryId = &v
+  return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetDomainId(v string) *CreateIdentityToBenefitPkgMappingRequest {
+  s.DomainId = &v
+  return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetExpireTime(v int64) *CreateIdentityToBenefitPkgMappingRequest {
+  s.ExpireTime = &v
+  return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetIdentityId(v string) *CreateIdentityToBenefitPkgMappingRequest {
+  s.IdentityId = &v
+  return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *CreateIdentityToBenefitPkgMappingRequest {
+  s.IdentityType = &v
+  return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetNonceId(v string) *CreateIdentityToBenefitPkgMappingRequest {
+  s.NonceId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type CreateIdentityToBenefitPkgMappingResponse struct {
+}
+
+func (s CreateIdentityToBenefitPkgMappingResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CreateIdentityToBenefitPkgMappingResponse) GoString() string {
+  return s.String()
+}
+
+/**
  * 
  */
 type CreateSubdomainRequest struct {
@@ -23851,6 +26496,8 @@ type CreateSubdomainRequest struct {
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
   // 逻辑空间quota，默认为-1，无限制，单位为字节
   TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
+  // 逻辑空间刷新周期，单位：秒
+  UsedSizeRefreshInterval *int64 `json:"used_size_refresh_interval,omitempty" xml:"used_size_refresh_interval,omitempty"`
   // 用户数quota，默认为-1，无限制
   UserQuota *int64 `json:"user_quota,omitempty" xml:"user_quota,omitempty"`
 }
@@ -23883,6 +26530,11 @@ func (s *CreateSubdomainRequest) SetTotalSize(v int64) *CreateSubdomainRequest {
   return s
 }
 
+func (s *CreateSubdomainRequest) SetUsedSizeRefreshInterval(v int64) *CreateSubdomainRequest {
+  s.UsedSizeRefreshInterval = &v
+  return s
+}
+
 func (s *CreateSubdomainRequest) SetUserQuota(v int64) *CreateSubdomainRequest {
   s.UserQuota = &v
   return s
@@ -23912,6 +26564,44 @@ func (s *CreateSubdomainResponse) SetSubdomainId(v string) *CreateSubdomainRespo
 /**
  * 
  */
+type CustomBenefitMeta struct {
+  Config *string `json:"config,omitempty" xml:"config,omitempty"`
+  CoverLowerLevel *bool `json:"cover_lower_level,omitempty" xml:"cover_lower_level,omitempty"`
+  Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+  Quota *int64 `json:"quota,omitempty" xml:"quota,omitempty"`
+}
+
+func (s CustomBenefitMeta) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CustomBenefitMeta) GoString() string {
+  return s.String()
+}
+
+func (s *CustomBenefitMeta) SetConfig(v string) *CustomBenefitMeta {
+  s.Config = &v
+  return s
+}
+
+func (s *CustomBenefitMeta) SetCoverLowerLevel(v bool) *CustomBenefitMeta {
+  s.CoverLowerLevel = &v
+  return s
+}
+
+func (s *CustomBenefitMeta) SetEnabled(v bool) *CustomBenefitMeta {
+  s.Enabled = &v
+  return s
+}
+
+func (s *CustomBenefitMeta) SetQuota(v int64) *CustomBenefitMeta {
+  s.Quota = &v
+  return s
+}
+
+/**
+ * 
+ */
 type DataCName struct {
   // datacname
   DataCname *string `json:"data_cname,omitempty" xml:"data_cname,omitempty" require:"true"`
@@ -23935,6 +26625,68 @@ func (s *DataCName) SetDataCname(v string) *DataCName {
 func (s *DataCName) SetLocation(v string) *DataCName {
   s.Location = &v
   return s
+}
+
+/**
+ * delete identity to benefit pkg mapping request
+ */
+type DeleteIdentityToBenefitPkgMappingRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 权益包的唯一标识
+  BenefitPkgId *string `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty" require:"true"`
+  // domain ID
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // 实体的唯一标识，如 userID
+  IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty" require:"true"`
+  // 实体类型，当前支持user类型实体
+  IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty" require:"true"`
+}
+
+func (s DeleteIdentityToBenefitPkgMappingRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteIdentityToBenefitPkgMappingRequest) GoString() string {
+  return s.String()
+}
+
+func (s *DeleteIdentityToBenefitPkgMappingRequest) SetHttpheaders(v map[string]*string) *DeleteIdentityToBenefitPkgMappingRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *DeleteIdentityToBenefitPkgMappingRequest) SetBenefitPkgId(v string) *DeleteIdentityToBenefitPkgMappingRequest {
+  s.BenefitPkgId = &v
+  return s
+}
+
+func (s *DeleteIdentityToBenefitPkgMappingRequest) SetDomainId(v string) *DeleteIdentityToBenefitPkgMappingRequest {
+  s.DomainId = &v
+  return s
+}
+
+func (s *DeleteIdentityToBenefitPkgMappingRequest) SetIdentityId(v string) *DeleteIdentityToBenefitPkgMappingRequest {
+  s.IdentityId = &v
+  return s
+}
+
+func (s *DeleteIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *DeleteIdentityToBenefitPkgMappingRequest {
+  s.IdentityType = &v
+  return s
+}
+
+/**
+ * 
+ */
+type DeleteIdentityToBenefitPkgMappingResponse struct {
+}
+
+func (s DeleteIdentityToBenefitPkgMappingResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s DeleteIdentityToBenefitPkgMappingResponse) GoString() string {
+  return s.String()
 }
 
 /**
@@ -24830,6 +27582,54 @@ func (s *GetDomainResponse) SetVideoPreviewConfig(v *VideoPreviewConfig) *GetDom
 }
 
 /**
+ * get identity to benefit pkg mapping request
+ */
+type GetIdentityToBenefitPkgMappingRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 权益包的唯一标识
+  BenefitPkgId *string `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty" require:"true"`
+  // domain ID
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // 实体的唯一标识，如 userID
+  IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty" require:"true"`
+  // 实体类型，当前支持user类型实体
+  IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty" require:"true"`
+}
+
+func (s GetIdentityToBenefitPkgMappingRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetIdentityToBenefitPkgMappingRequest) GoString() string {
+  return s.String()
+}
+
+func (s *GetIdentityToBenefitPkgMappingRequest) SetHttpheaders(v map[string]*string) *GetIdentityToBenefitPkgMappingRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *GetIdentityToBenefitPkgMappingRequest) SetBenefitPkgId(v string) *GetIdentityToBenefitPkgMappingRequest {
+  s.BenefitPkgId = &v
+  return s
+}
+
+func (s *GetIdentityToBenefitPkgMappingRequest) SetDomainId(v string) *GetIdentityToBenefitPkgMappingRequest {
+  s.DomainId = &v
+  return s
+}
+
+func (s *GetIdentityToBenefitPkgMappingRequest) SetIdentityId(v string) *GetIdentityToBenefitPkgMappingRequest {
+  s.IdentityId = &v
+  return s
+}
+
+func (s *GetIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *GetIdentityToBenefitPkgMappingRequest {
+  s.IdentityType = &v
+  return s
+}
+
+/**
  * 
  */
 type GetSubdomainRequest struct {
@@ -24866,12 +27666,22 @@ type GetSubdomainResponse struct {
   Description *string `json:"description,omitempty" xml:"description,omitempty" require:"true"`
   // 名称
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
+  // 是否开启了共享
+  Sharable *bool `json:"sharable,omitempty" xml:"sharable,omitempty"`
+  // 是否开启了分享
+  ShareLinkEnabled *bool `json:"share_link_enabled,omitempty" xml:"share_link_enabled,omitempty"`
+  // 当前状态
+  Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
   // 用以唯一标识subdomain
   SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty" require:"true"`
   // 逻辑空间quota，-1表示无限制，单位为字节
   TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty" require:"true"`
   // 更新时间
   UpdatedAt *string `json:"updated_at,omitempty" xml:"updated_at,omitempty" require:"true"`
+  // 逻辑空间使用量，单位为字节
+  UsedSize *int64 `json:"used_size,omitempty" xml:"used_size,omitempty"`
+  // 逻辑空间刷新周期，单位：秒
+  UsedSizeRefreshInterval *int64 `json:"used_size_refresh_interval,omitempty" xml:"used_size_refresh_interval,omitempty"`
   // 用户数quota，-1表示无限制
   UserQuota *int64 `json:"user_quota,omitempty" xml:"user_quota,omitempty" require:"true"`
 }
@@ -24899,6 +27709,21 @@ func (s *GetSubdomainResponse) SetName(v string) *GetSubdomainResponse {
   return s
 }
 
+func (s *GetSubdomainResponse) SetSharable(v bool) *GetSubdomainResponse {
+  s.Sharable = &v
+  return s
+}
+
+func (s *GetSubdomainResponse) SetShareLinkEnabled(v bool) *GetSubdomainResponse {
+  s.ShareLinkEnabled = &v
+  return s
+}
+
+func (s *GetSubdomainResponse) SetStatus(v int64) *GetSubdomainResponse {
+  s.Status = &v
+  return s
+}
+
 func (s *GetSubdomainResponse) SetSubdomainId(v string) *GetSubdomainResponse {
   s.SubdomainId = &v
   return s
@@ -24911,6 +27736,16 @@ func (s *GetSubdomainResponse) SetTotalSize(v int64) *GetSubdomainResponse {
 
 func (s *GetSubdomainResponse) SetUpdatedAt(v string) *GetSubdomainResponse {
   s.UpdatedAt = &v
+  return s
+}
+
+func (s *GetSubdomainResponse) SetUsedSize(v int64) *GetSubdomainResponse {
+  s.UsedSize = &v
+  return s
+}
+
+func (s *GetSubdomainResponse) SetUsedSizeRefreshInterval(v int64) *GetSubdomainResponse {
+  s.UsedSizeRefreshInterval = &v
   return s
 }
 
@@ -25226,6 +28061,68 @@ func (s *ListDomainsResponse) SetNextMarker(v string) *ListDomainsResponse {
 }
 
 /**
+ * List identity benefit package request
+ */
+type ListIdentityBenefitPkgRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 查询特定的benefit ID，include_benefit为true时有效。 如果为空，不做任何过滤；如果不为空，只返回包含特定benefit ID的权益包；也只返回权益包中特定的权益信息。
+  BenefitIdList []*string `json:"benefit_id_list,omitempty" xml:"benefit_id_list,omitempty" type:"Repeated"`
+  // domain ID
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // 实体的唯一标识，如 userID
+  IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty" require:"true"`
+  // 实体类型，当前支持user类型实体
+  IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty" require:"true"`
+  // 是否返回权益包中的权益，默认为false
+  IncludeBenefit *bool `json:"include_benefit,omitempty" xml:"include_benefit,omitempty"`
+  // 是否返回已经超期的权益包，默认为false
+  IncludeExpired *bool `json:"include_expired,omitempty" xml:"include_expired,omitempty"`
+}
+
+func (s ListIdentityBenefitPkgRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListIdentityBenefitPkgRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ListIdentityBenefitPkgRequest) SetHttpheaders(v map[string]*string) *ListIdentityBenefitPkgRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *ListIdentityBenefitPkgRequest) SetBenefitIdList(v []*string) *ListIdentityBenefitPkgRequest {
+  s.BenefitIdList = v
+  return s
+}
+
+func (s *ListIdentityBenefitPkgRequest) SetDomainId(v string) *ListIdentityBenefitPkgRequest {
+  s.DomainId = &v
+  return s
+}
+
+func (s *ListIdentityBenefitPkgRequest) SetIdentityId(v string) *ListIdentityBenefitPkgRequest {
+  s.IdentityId = &v
+  return s
+}
+
+func (s *ListIdentityBenefitPkgRequest) SetIdentityType(v string) *ListIdentityBenefitPkgRequest {
+  s.IdentityType = &v
+  return s
+}
+
+func (s *ListIdentityBenefitPkgRequest) SetIncludeBenefit(v bool) *ListIdentityBenefitPkgRequest {
+  s.IncludeBenefit = &v
+  return s
+}
+
+func (s *ListIdentityBenefitPkgRequest) SetIncludeExpired(v bool) *ListIdentityBenefitPkgRequest {
+  s.IncludeExpired = &v
+  return s
+}
+
+/**
  * List identity benefit package response
  */
 type ListIdentityBenefitPkgResponse struct {
@@ -25241,6 +28138,74 @@ func (s ListIdentityBenefitPkgResponse) GoString() string {
 }
 
 func (s *ListIdentityBenefitPkgResponse) SetItems(v []*IdentityBenefitPkgResponse) *ListIdentityBenefitPkgResponse {
+  s.Items = v
+  return s
+}
+
+/**
+ * list identity to benefit pkg mapping request
+ */
+type ListIdentityToBenefitPkgMappingRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // domain ID
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // 实体的唯一标识，如 userID
+  IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty" require:"true"`
+  // 实体类型，当前支持user类型实体
+  IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty" require:"true"`
+  // 是否返回已经超期的权益包，默认为false
+  IncludeExpired *bool `json:"include_expired,omitempty" xml:"include_expired,omitempty"`
+}
+
+func (s ListIdentityToBenefitPkgMappingRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListIdentityToBenefitPkgMappingRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ListIdentityToBenefitPkgMappingRequest) SetHttpheaders(v map[string]*string) *ListIdentityToBenefitPkgMappingRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *ListIdentityToBenefitPkgMappingRequest) SetDomainId(v string) *ListIdentityToBenefitPkgMappingRequest {
+  s.DomainId = &v
+  return s
+}
+
+func (s *ListIdentityToBenefitPkgMappingRequest) SetIdentityId(v string) *ListIdentityToBenefitPkgMappingRequest {
+  s.IdentityId = &v
+  return s
+}
+
+func (s *ListIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *ListIdentityToBenefitPkgMappingRequest {
+  s.IdentityType = &v
+  return s
+}
+
+func (s *ListIdentityToBenefitPkgMappingRequest) SetIncludeExpired(v bool) *ListIdentityToBenefitPkgMappingRequest {
+  s.IncludeExpired = &v
+  return s
+}
+
+/**
+ * List identity to benefit pkg mapping info
+ */
+type ListIdentityToBenefitPkgMappingResponse struct {
+  Items []*BaseIdentityToBenefitPkgMappingResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+}
+
+func (s ListIdentityToBenefitPkgMappingResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ListIdentityToBenefitPkgMappingResponse) GoString() string {
+  return s.String()
+}
+
+func (s *ListIdentityToBenefitPkgMappingResponse) SetItems(v []*BaseIdentityToBenefitPkgMappingResponse) *ListIdentityToBenefitPkgMappingResponse {
   s.Items = v
   return s
 }
@@ -26300,6 +29265,103 @@ func (s *UpdateDomainResponse) SetVideoPreviewConfig(v *VideoPreviewConfig) *Upd
 }
 
 /**
+ * update identity to benefit pkg mapping request
+ */
+type UpdateIdentityToBenefitPkgMappingRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 权益包数量
+  Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
+  // 权益包的唯一标识
+  BenefitPkgId *string `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty" require:"true"`
+  // 实体权益包关联的自定义Meta
+  CustomBenefitMeta *string `json:"custom_benefit_meta,omitempty" xml:"custom_benefit_meta,omitempty"`
+  // 权益下发的唯一标识
+  DeliveryId *string `json:"delivery_id,omitempty" xml:"delivery_id,omitempty"`
+  // domain ID
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // 权益包超期时间的时间戳，单位为毫秒
+  ExpireTime *int64 `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
+  // 实体的唯一标识，如 userID
+  IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty" require:"true"`
+  // 实体类型，当前支持user类型实体
+  IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty" require:"true"`
+  // nonce ID
+  NonceId *string `json:"nonce_id,omitempty" xml:"nonce_id,omitempty"`
+}
+
+func (s UpdateIdentityToBenefitPkgMappingRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateIdentityToBenefitPkgMappingRequest) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetHttpheaders(v map[string]*string) *UpdateIdentityToBenefitPkgMappingRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetAmount(v int64) *UpdateIdentityToBenefitPkgMappingRequest {
+  s.Amount = &v
+  return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetBenefitPkgId(v string) *UpdateIdentityToBenefitPkgMappingRequest {
+  s.BenefitPkgId = &v
+  return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetCustomBenefitMeta(v string) *UpdateIdentityToBenefitPkgMappingRequest {
+  s.CustomBenefitMeta = &v
+  return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetDeliveryId(v string) *UpdateIdentityToBenefitPkgMappingRequest {
+  s.DeliveryId = &v
+  return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetDomainId(v string) *UpdateIdentityToBenefitPkgMappingRequest {
+  s.DomainId = &v
+  return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetExpireTime(v int64) *UpdateIdentityToBenefitPkgMappingRequest {
+  s.ExpireTime = &v
+  return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetIdentityId(v string) *UpdateIdentityToBenefitPkgMappingRequest {
+  s.IdentityId = &v
+  return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *UpdateIdentityToBenefitPkgMappingRequest {
+  s.IdentityType = &v
+  return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetNonceId(v string) *UpdateIdentityToBenefitPkgMappingRequest {
+  s.NonceId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type UpdateIdentityToBenefitPkgMappingResponse struct {
+}
+
+func (s UpdateIdentityToBenefitPkgMappingResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateIdentityToBenefitPkgMappingResponse) GoString() string {
+  return s.String()
+}
+
+/**
  * 
  */
 type UpdateSubdomainRequest struct {
@@ -26308,10 +29370,18 @@ type UpdateSubdomainRequest struct {
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   // 名称
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
+  // 是否开启了共享
+  Sharable *bool `json:"sharable,omitempty" xml:"sharable,omitempty"`
+  // 是否开启了分享
+  ShareLinkEnabled *bool `json:"share_link_enabled,omitempty" xml:"share_link_enabled,omitempty"`
+  // 状态
+  Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
   // 用以唯一标识subdomain
   SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty" require:"true"`
   // 逻辑空间quota，-1表示无限制，单位为字节
   TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
+  // 逻辑空间刷新周期，单位：秒
+  UsedSizeRefreshInterval *int64 `json:"used_size_refresh_interval,omitempty" xml:"used_size_refresh_interval,omitempty"`
   // 用户数quota，-1表示无限制
   UserQuota *int64 `json:"user_quota,omitempty" xml:"user_quota,omitempty"`
 }
@@ -26339,6 +29409,21 @@ func (s *UpdateSubdomainRequest) SetName(v string) *UpdateSubdomainRequest {
   return s
 }
 
+func (s *UpdateSubdomainRequest) SetSharable(v bool) *UpdateSubdomainRequest {
+  s.Sharable = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetShareLinkEnabled(v bool) *UpdateSubdomainRequest {
+  s.ShareLinkEnabled = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetStatus(v int64) *UpdateSubdomainRequest {
+  s.Status = &v
+  return s
+}
+
 func (s *UpdateSubdomainRequest) SetSubdomainId(v string) *UpdateSubdomainRequest {
   s.SubdomainId = &v
   return s
@@ -26346,6 +29431,11 @@ func (s *UpdateSubdomainRequest) SetSubdomainId(v string) *UpdateSubdomainReques
 
 func (s *UpdateSubdomainRequest) SetTotalSize(v int64) *UpdateSubdomainRequest {
   s.TotalSize = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetUsedSizeRefreshInterval(v int64) *UpdateSubdomainRequest {
+  s.UsedSizeRefreshInterval = &v
   return s
 }
 
@@ -26862,6 +29952,7 @@ func (s *VideoPreviewLiveTranscodingConfig) SetTsFilePrefix(v string) *VideoPrev
  */
 type VideoPreviewLiveTranscodingEnableConfig struct {
   DropFileCreatedEvent *bool `json:"drop_file_created_event,omitempty" xml:"drop_file_created_event,omitempty"`
+  EnableDumpOldM3u8TaskInfo *bool `json:"enable_dump_old_m3u8_task_info,omitempty" xml:"enable_dump_old_m3u8_task_info,omitempty"`
   EnableIgnoreCopiedFile *bool `json:"enable_ignore_copied_file,omitempty" xml:"enable_ignore_copied_file,omitempty"`
 }
 
@@ -26875,6 +29966,11 @@ func (s VideoPreviewLiveTranscodingEnableConfig) GoString() string {
 
 func (s *VideoPreviewLiveTranscodingEnableConfig) SetDropFileCreatedEvent(v bool) *VideoPreviewLiveTranscodingEnableConfig {
   s.DropFileCreatedEvent = &v
+  return s
+}
+
+func (s *VideoPreviewLiveTranscodingEnableConfig) SetEnableDumpOldM3u8TaskInfo(v bool) *VideoPreviewLiveTranscodingEnableConfig {
+  s.EnableDumpOldM3u8TaskInfo = &v
   return s
 }
 
@@ -27409,6 +30505,50 @@ func (s *VideoPreviewVideoTemplate) SetVideoTemplateId(v string) *VideoPreviewVi
 
 func (s *VideoPreviewVideoTemplate) SetWidth(v int64) *VideoPreviewVideoTemplate {
   s.Width = &v
+  return s
+}
+
+/**
+ * 处罚文件请求
+ */
+type PunishFileRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  ActionCode *string `json:"action_code,omitempty" xml:"action_code,omitempty"`
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+  PunishReason *string `json:"punish_reason,omitempty" xml:"punish_reason,omitempty"`
+}
+
+func (s PunishFileRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s PunishFileRequest) GoString() string {
+  return s.String()
+}
+
+func (s *PunishFileRequest) SetHttpheaders(v map[string]*string) *PunishFileRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *PunishFileRequest) SetActionCode(v string) *PunishFileRequest {
+  s.ActionCode = &v
+  return s
+}
+
+func (s *PunishFileRequest) SetDriveId(v string) *PunishFileRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *PunishFileRequest) SetFileId(v string) *PunishFileRequest {
+  s.FileId = &v
+  return s
+}
+
+func (s *PunishFileRequest) SetPunishReason(v string) *PunishFileRequest {
+  s.PunishReason = &v
   return s
 }
 
@@ -29426,15 +32566,18 @@ type GetStoryRequest struct {
   CoverVideoThumbnailProcess *string `json:"cover_video_thumbnail_process,omitempty" xml:"cover_video_thumbnail_process,omitempty"`
   // drive_id
   DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty" require:"true" pattern:"[0-9]+"`
-  // image_process
-  ImageProcess *string `json:"image_process,omitempty" xml:"image_process,omitempty"`
   // image_thumbnail_process
   ImageThumbnailProcess *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
+  // image_url_process
+  ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+  // office_thumbnail_process
+  OfficeThumbnailProcess *string `json:"office_thumbnail_process,omitempty" xml:"office_thumbnail_process,omitempty"`
   // story_id
   StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty" require:"true"`
   // url_expire_sec
   UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
   // video_thumbnail_process
+  // type:string
   VideoThumbnailProcess *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
 }
 
@@ -29466,13 +32609,18 @@ func (s *GetStoryRequest) SetDriveId(v string) *GetStoryRequest {
   return s
 }
 
-func (s *GetStoryRequest) SetImageProcess(v string) *GetStoryRequest {
-  s.ImageProcess = &v
+func (s *GetStoryRequest) SetImageThumbnailProcess(v string) *GetStoryRequest {
+  s.ImageThumbnailProcess = &v
   return s
 }
 
-func (s *GetStoryRequest) SetImageThumbnailProcess(v string) *GetStoryRequest {
-  s.ImageThumbnailProcess = &v
+func (s *GetStoryRequest) SetImageUrlProcess(v string) *GetStoryRequest {
+  s.ImageUrlProcess = &v
+  return s
+}
+
+func (s *GetStoryRequest) SetOfficeThumbnailProcess(v string) *GetStoryRequest {
+  s.OfficeThumbnailProcess = &v
   return s
 }
 
@@ -31202,6 +34350,54 @@ func (s *MergeFaceGroupResponse) SetTaskId(v string) *MergeFaceGroupResponse {
 }
 
 /**
+ * MigrateUserToSubdomainRequest uc migrate user
+ */
+type MigrateUserToSubdomainRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // subdomain_id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+  // user_id
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s MigrateUserToSubdomainRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s MigrateUserToSubdomainRequest) GoString() string {
+  return s.String()
+}
+
+func (s *MigrateUserToSubdomainRequest) SetHttpheaders(v map[string]*string) *MigrateUserToSubdomainRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *MigrateUserToSubdomainRequest) SetSubdomainId(v string) *MigrateUserToSubdomainRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *MigrateUserToSubdomainRequest) SetUserId(v string) *MigrateUserToSubdomainRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * MigrateUserToSubdomainResponse
+ */
+type MigrateUserToSubdomainResponse struct {
+}
+
+func (s MigrateUserToSubdomainResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s MigrateUserToSubdomainResponse) GoString() string {
+  return s.String()
+}
+
+/**
  * Parse keywords request
  */
 type ParseKeywordsRequest struct {
@@ -31502,12 +34698,62 @@ func (s *RemoveViewFileRequest) SetViewId(v string) *RemoveViewFileRequest {
 }
 
 /**
+ * RollbackUserFromSubdomainRequest uc migrate user
+ */
+type RollbackUserFromSubdomainRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // subdomain_id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+  // user_id
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s RollbackUserFromSubdomainRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s RollbackUserFromSubdomainRequest) GoString() string {
+  return s.String()
+}
+
+func (s *RollbackUserFromSubdomainRequest) SetHttpheaders(v map[string]*string) *RollbackUserFromSubdomainRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *RollbackUserFromSubdomainRequest) SetSubdomainId(v string) *RollbackUserFromSubdomainRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *RollbackUserFromSubdomainRequest) SetUserId(v string) *RollbackUserFromSubdomainRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * RollbackUserFromSubdomainResponse
+ */
+type RollbackUserFromSubdomainResponse struct {
+}
+
+func (s RollbackUserFromSubdomainResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s RollbackUserFromSubdomainResponse) GoString() string {
+  return s.String()
+}
+
+/**
  * 
  */
 type SearchGroupRequest struct {
   Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
   // group_name
   GroupName *string `json:"group_name,omitempty" xml:"group_name,omitempty"`
+  // group_name_for_fuzzy
+  GroupNameForFuzzy *string `json:"group_name_for_fuzzy,omitempty" xml:"group_name_for_fuzzy,omitempty"`
   // 分页获取的数量，默认为100
   Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
   // 游标
@@ -31531,6 +34777,11 @@ func (s *SearchGroupRequest) SetHttpheaders(v map[string]*string) *SearchGroupRe
 
 func (s *SearchGroupRequest) SetGroupName(v string) *SearchGroupRequest {
   s.GroupName = &v
+  return s
+}
+
+func (s *SearchGroupRequest) SetGroupNameForFuzzy(v string) *SearchGroupRequest {
+  s.GroupNameForFuzzy = &v
   return s
 }
 
@@ -31667,6 +34918,101 @@ func (s *SearchImageAddressGroupsResponse) SetItems(v []*ImageAddressResponse) *
 }
 
 /**
+ * Search user and group request
+ */
+type SearchUserAndGroupRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 搜索实体对象类型
+  IdentityTypeList []*string `json:"identity_type_list,omitempty" xml:"identity_type_list,omitempty" type:"Repeated"`
+  // 每页大小限制
+  Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+  // 翻页标记
+  Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+  // 名称前缀搜索，Group名，或者用户昵称
+  Name *string `json:"name,omitempty" xml:"name,omitempty"`
+  // 名称模糊搜索，Group名，或者用户昵称
+  NameForFuzzy *string `json:"name_for_fuzzy,omitempty" xml:"name_for_fuzzy,omitempty"`
+  // subdomain id
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty"`
+}
+
+func (s SearchUserAndGroupRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SearchUserAndGroupRequest) GoString() string {
+  return s.String()
+}
+
+func (s *SearchUserAndGroupRequest) SetHttpheaders(v map[string]*string) *SearchUserAndGroupRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *SearchUserAndGroupRequest) SetIdentityTypeList(v []*string) *SearchUserAndGroupRequest {
+  s.IdentityTypeList = v
+  return s
+}
+
+func (s *SearchUserAndGroupRequest) SetLimit(v int32) *SearchUserAndGroupRequest {
+  s.Limit = &v
+  return s
+}
+
+func (s *SearchUserAndGroupRequest) SetMarker(v string) *SearchUserAndGroupRequest {
+  s.Marker = &v
+  return s
+}
+
+func (s *SearchUserAndGroupRequest) SetName(v string) *SearchUserAndGroupRequest {
+  s.Name = &v
+  return s
+}
+
+func (s *SearchUserAndGroupRequest) SetNameForFuzzy(v string) *SearchUserAndGroupRequest {
+  s.NameForFuzzy = &v
+  return s
+}
+
+func (s *SearchUserAndGroupRequest) SetSubdomainId(v string) *SearchUserAndGroupRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * Search user and group response
+ */
+type SearchUserAndGroupResponse struct {
+  Groups []*BaseGroupResponse `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
+  // 翻页标记
+  NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+  Users []*BaseUserResponse `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+}
+
+func (s SearchUserAndGroupResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SearchUserAndGroupResponse) GoString() string {
+  return s.String()
+}
+
+func (s *SearchUserAndGroupResponse) SetGroups(v []*BaseGroupResponse) *SearchUserAndGroupResponse {
+  s.Groups = v
+  return s
+}
+
+func (s *SearchUserAndGroupResponse) SetNextMarker(v string) *SearchUserAndGroupResponse {
+  s.NextMarker = &v
+  return s
+}
+
+func (s *SearchUserAndGroupResponse) SetUsers(v []*BaseUserResponse) *SearchUserAndGroupResponse {
+  s.Users = v
+  return s
+}
+
+/**
  * Search user request
  */
 type SearchUserRequest struct {
@@ -31679,6 +35025,8 @@ type SearchUserRequest struct {
   Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
   // 昵称
   NickName *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
+  // 昵称-模糊搜索
+  NickNameForFuzzy *string `json:"nick_name_for_fuzzy,omitempty" xml:"nick_name_for_fuzzy,omitempty"`
   // 电话号码
   Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
   // 角色
@@ -31724,6 +35072,11 @@ func (s *SearchUserRequest) SetNickName(v string) *SearchUserRequest {
   return s
 }
 
+func (s *SearchUserRequest) SetNickNameForFuzzy(v string) *SearchUserRequest {
+  s.NickNameForFuzzy = &v
+  return s
+}
+
 func (s *SearchUserRequest) SetPhone(v string) *SearchUserRequest {
   s.Phone = &v
   return s
@@ -31746,6 +35099,108 @@ func (s *SearchUserRequest) SetSubdomainId(v string) *SearchUserRequest {
 
 func (s *SearchUserRequest) SetUserName(v string) *SearchUserRequest {
   s.UserName = &v
+  return s
+}
+
+/**
+ * Search view request
+ */
+type SearchViewsRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // category
+  Category *string `json:"category,omitempty" xml:"category,omitempty" require:"true"`
+  // 每页大小限制
+  Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty" maximum:"100" minimum:"1"`
+  // marker
+  Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+  // name
+  Name *string `json:"name,omitempty" xml:"name,omitempty"`
+  // order_by
+  OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
+  // order_direction
+  OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
+  // owner
+  Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+  // user_id
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s SearchViewsRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SearchViewsRequest) GoString() string {
+  return s.String()
+}
+
+func (s *SearchViewsRequest) SetHttpheaders(v map[string]*string) *SearchViewsRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *SearchViewsRequest) SetCategory(v string) *SearchViewsRequest {
+  s.Category = &v
+  return s
+}
+
+func (s *SearchViewsRequest) SetLimit(v int32) *SearchViewsRequest {
+  s.Limit = &v
+  return s
+}
+
+func (s *SearchViewsRequest) SetMarker(v string) *SearchViewsRequest {
+  s.Marker = &v
+  return s
+}
+
+func (s *SearchViewsRequest) SetName(v string) *SearchViewsRequest {
+  s.Name = &v
+  return s
+}
+
+func (s *SearchViewsRequest) SetOrderBy(v string) *SearchViewsRequest {
+  s.OrderBy = &v
+  return s
+}
+
+func (s *SearchViewsRequest) SetOrderDirection(v string) *SearchViewsRequest {
+  s.OrderDirection = &v
+  return s
+}
+
+func (s *SearchViewsRequest) SetOwner(v string) *SearchViewsRequest {
+  s.Owner = &v
+  return s
+}
+
+func (s *SearchViewsRequest) SetUserId(v string) *SearchViewsRequest {
+  s.UserId = &v
+  return s
+}
+
+/**
+ * 获取逻辑视图列表信息
+ */
+type SearchViewsResponse struct {
+  Items []*GetViewResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+  NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s SearchViewsResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SearchViewsResponse) GoString() string {
+  return s.String()
+}
+
+func (s *SearchViewsResponse) SetItems(v []*GetViewResponse) *SearchViewsResponse {
+  s.Items = v
+  return s
+}
+
+func (s *SearchViewsResponse) SetNextMarker(v string) *SearchViewsResponse {
+  s.NextMarker = &v
   return s
 }
 
@@ -33340,6 +36795,158 @@ func (client *Client) CancelLinkEx(request *CancelLinkRequest, runtime *RuntimeO
 }
 
 /**
+ * 查询手机号是否已被注册
+ * @tags account
+ * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) CheckExistEx(request *CheckExistRequest, runtime *RuntimeOptions) (_result *CheckExistModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &CheckExistModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*CheckExistModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/account/check_exist"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".auth.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &CheckExistModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
  * 确认绑定关系, 成功后返回访问令牌
  * @tags account
  * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
@@ -33452,151 +37059,6 @@ func (client *Client) ConfirmLinkEx(request *ConfirmLinkRequest, runtime *Runtim
         _result = &ConfirmLinkModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
-          "headers": response_.Headers,
-        }, &_result)
-        return _result, _err
-      }
-
-      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
-        _err = tea.NewSDKError(map[string]interface{}{
-          "data": map[string]interface{}{
-            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
-            "statusCode": tea.IntValue(response_.StatusCode),
-            "statusMessage": tea.StringValue(response_.StatusMessage),
-          },
-          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
-        })
-        return _result, _err
-      }
-
-      obj, _err = util.ReadAsJSON(response_.Body)
-      if _err != nil {
-        return _result, _err
-      }
-
-      respMap = util.AssertAsMap(obj)
-      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
-        "data": map[string]interface{}{
-          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
-          "statusCode": tea.IntValue(response_.StatusCode),
-          "statusMessage": tea.StringValue(response_.StatusMessage),
-        },
-        },respMap))
-      return _result, _err
-    }()
-    if !tea.BoolValue(tea.Retryable(_err)) {
-      break
-    }
-  }
-
-  return _resp, _err
-}
-
-/**
- * 设置手机登录密码，密码必须包含数字和字母，长度8-20个字符
- * @tags account
- * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
- * @error Forbidden User not authorized to operate on the specified APIs.
- * @error NotFound The resource {resource_name} cannot be found. Please check.
- * @error InternalError The request has been failed due to some unknown error.
- */
-func (client *Client) SetPasswordEx(request *DefaultSetPasswordRequest, runtime *RuntimeOptions) (_result *SetPasswordModel, _err error) {
-  _err = tea.Validate(request)
-  if _err != nil {
-    return _result, _err
-  }
-  _err = tea.Validate(runtime)
-  if _err != nil {
-    return _result, _err
-  }
-  _runtime := map[string]interface{}{
-    "timeouted": "retry",
-    "readTimeout": tea.IntValue(runtime.ReadTimeout),
-    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
-    "localAddr": tea.StringValue(runtime.LocalAddr),
-    "httpProxy": tea.StringValue(runtime.HttpProxy),
-    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
-    "noProxy": tea.StringValue(runtime.NoProxy),
-    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
-    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
-    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
-    "retry": map[string]interface{}{
-      "retryable": tea.BoolValue(runtime.Autoretry),
-      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
-    },
-    "backoff": map[string]interface{}{
-      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
-      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
-    },
-    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
-  }
-
-  _resp := &SetPasswordModel{}
-  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
-    if _retryTimes > 0 {
-      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
-      if tea.IntValue(_backoffTime) > 0 {
-        tea.Sleep(_backoffTime)
-      }
-    }
-
-    _resp, _err = func()(*SetPasswordModel, error){
-      request_ := tea.NewRequest()
-      accesskeyId, _err := client.GetAccessKeyId()
-      if _err != nil {
-        return _result, _err
-      }
-
-      accessKeySecret, _err := client.GetAccessKeySecret()
-      if _err != nil {
-        return _result, _err
-      }
-
-      securityToken, _err := client.GetSecurityToken()
-      if _err != nil {
-        return _result, _err
-      }
-
-      accessToken, _err := client.GetAccessToken()
-      if _err != nil {
-        return _result, _err
-      }
-
-      realReq := util.ToMap(request)
-      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
-      request_.Method = tea.String("POST")
-      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/account/default/set_password"))
-      request_.Headers = tea.Merge(map[string]*string{
-        "user-agent": client.GetUserAgent(),
-        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".auth.aliyunpds.com")),
-        "content-type": tea.String("application/json; charset=utf-8"),
-        },request.Httpheaders)
-      realReq["httpheaders"] = nil
-      if !tea.BoolValue(util.Empty(accessToken)) {
-        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
-      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
-        if !tea.BoolValue(util.Empty(securityToken)) {
-          request_.Headers["x-acs-security-token"] = securityToken
-        }
-
-        request_.Headers["date"] = util.GetDateUTCString()
-        request_.Headers["accept"] = tea.String("application/json")
-        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
-        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
-        stringToSign := roautil.GetStringToSign(request_)
-        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
-      }
-
-      request_.Body = tea.ToReader(util.ToJSONString(realReq))
-      response_, _err := tea.DoRequest(request_, _runtime)
-      if _err != nil {
-        return _result, _err
-      }
-      var respMap map[string]interface{}
-      var obj interface{}
-      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        _result = &SetPasswordModel{}
-        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -34550,158 +38012,6 @@ func (client *Client) LinkEx(request *AccountLinkRequest, runtime *RuntimeOption
 }
 
 /**
- * 查询手机号是否已被注册
- * @tags account
- * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
- * @error Forbidden User not authorized to operate on the specified APIs.
- * @error NotFound The resource {resource_name} cannot be found. Please check.
- * @error InternalError The request has been failed due to some unknown error.
- */
-func (client *Client) CheckExistEx(request *MobileCheckExistRequest, runtime *RuntimeOptions) (_result *CheckExistModel, _err error) {
-  _err = tea.Validate(request)
-  if _err != nil {
-    return _result, _err
-  }
-  _err = tea.Validate(runtime)
-  if _err != nil {
-    return _result, _err
-  }
-  _runtime := map[string]interface{}{
-    "timeouted": "retry",
-    "readTimeout": tea.IntValue(runtime.ReadTimeout),
-    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
-    "localAddr": tea.StringValue(runtime.LocalAddr),
-    "httpProxy": tea.StringValue(runtime.HttpProxy),
-    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
-    "noProxy": tea.StringValue(runtime.NoProxy),
-    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
-    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
-    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
-    "retry": map[string]interface{}{
-      "retryable": tea.BoolValue(runtime.Autoretry),
-      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
-    },
-    "backoff": map[string]interface{}{
-      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
-      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
-    },
-    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
-  }
-
-  _resp := &CheckExistModel{}
-  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
-    if _retryTimes > 0 {
-      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
-      if tea.IntValue(_backoffTime) > 0 {
-        tea.Sleep(_backoffTime)
-      }
-    }
-
-    _resp, _err = func()(*CheckExistModel, error){
-      request_ := tea.NewRequest()
-      accesskeyId, _err := client.GetAccessKeyId()
-      if _err != nil {
-        return _result, _err
-      }
-
-      accessKeySecret, _err := client.GetAccessKeySecret()
-      if _err != nil {
-        return _result, _err
-      }
-
-      securityToken, _err := client.GetSecurityToken()
-      if _err != nil {
-        return _result, _err
-      }
-
-      accessToken, _err := client.GetAccessToken()
-      if _err != nil {
-        return _result, _err
-      }
-
-      realReq := util.ToMap(request)
-      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
-      request_.Method = tea.String("POST")
-      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/account/mobile/check_exist"))
-      request_.Headers = tea.Merge(map[string]*string{
-        "user-agent": client.GetUserAgent(),
-        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".auth.aliyunpds.com")),
-        "content-type": tea.String("application/json; charset=utf-8"),
-        },request.Httpheaders)
-      realReq["httpheaders"] = nil
-      if !tea.BoolValue(util.Empty(accessToken)) {
-        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
-      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
-        if !tea.BoolValue(util.Empty(securityToken)) {
-          request_.Headers["x-acs-security-token"] = securityToken
-        }
-
-        request_.Headers["date"] = util.GetDateUTCString()
-        request_.Headers["accept"] = tea.String("application/json")
-        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
-        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
-        stringToSign := roautil.GetStringToSign(request_)
-        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
-      }
-
-      request_.Body = tea.ToReader(util.ToJSONString(realReq))
-      response_, _err := tea.DoRequest(request_, _runtime)
-      if _err != nil {
-        return _result, _err
-      }
-      var respMap map[string]interface{}
-      var obj interface{}
-      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
-        if _err != nil {
-          return _result, _err
-        }
-
-        respMap = util.AssertAsMap(obj)
-        _result = &CheckExistModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
-          "headers": response_.Headers,
-        }, &_result)
-        return _result, _err
-      }
-
-      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
-        _err = tea.NewSDKError(map[string]interface{}{
-          "data": map[string]interface{}{
-            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
-            "statusCode": tea.IntValue(response_.StatusCode),
-            "statusMessage": tea.StringValue(response_.StatusMessage),
-          },
-          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
-        })
-        return _result, _err
-      }
-
-      obj, _err = util.ReadAsJSON(response_.Body)
-      if _err != nil {
-        return _result, _err
-      }
-
-      respMap = util.AssertAsMap(obj)
-      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
-        "data": map[string]interface{}{
-          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
-          "statusCode": tea.IntValue(response_.StatusCode),
-          "statusMessage": tea.StringValue(response_.StatusMessage),
-        },
-        },respMap))
-      return _result, _err
-    }()
-    if !tea.BoolValue(tea.Retryable(_err)) {
-      break
-    }
-  }
-
-  return _resp, _err
-}
-
-/**
  * 通过手机号+短信或密码登录，返回刷新令牌和访问令牌
  * @tags account
  * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
@@ -34709,7 +38019,7 @@ func (client *Client) CheckExistEx(request *MobileCheckExistRequest, runtime *Ru
  * @error NotFound The resource {resource_name} cannot be found. Please check.
  * @error InternalError The request has been failed due to some unknown error.
  */
-func (client *Client) LoginEx(request *MobileLoginRequest, runtime *RuntimeOptions) (_result *LoginModel, _err error) {
+func (client *Client) LoginEx(request *LoginRequest, runtime *RuntimeOptions) (_result *LoginModel, _err error) {
   _err = tea.Validate(request)
   if _err != nil {
     return _result, _err
@@ -34774,7 +38084,7 @@ func (client *Client) LoginEx(request *MobileLoginRequest, runtime *RuntimeOptio
       realReq := util.ToMap(request)
       request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
       request_.Method = tea.String("POST")
-      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/account/mobile/login"))
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/account/login"))
       request_.Headers = tea.Merge(map[string]*string{
         "user-agent": client.GetUserAgent(),
         "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".auth.aliyunpds.com")),
@@ -34862,7 +38172,7 @@ func (client *Client) LoginEx(request *MobileLoginRequest, runtime *RuntimeOptio
  * @error AlreadyExist {resource} has already exists. {extra_msg}
  * @error InternalError The request has been failed due to some unknown error.
  */
-func (client *Client) RegisterEx(request *MobileRegisterRequest, runtime *RuntimeOptions) (_result *RegisterModel, _err error) {
+func (client *Client) RegisterEx(request *RegisterRequest, runtime *RuntimeOptions) (_result *RegisterModel, _err error) {
   _err = tea.Validate(request)
   if _err != nil {
     return _result, _err
@@ -34927,7 +38237,7 @@ func (client *Client) RegisterEx(request *MobileRegisterRequest, runtime *Runtim
       realReq := util.ToMap(request)
       request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
       request_.Method = tea.String("POST")
-      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/account/mobile/register"))
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/account/register"))
       request_.Headers = tea.Merge(map[string]*string{
         "user-agent": client.GetUserAgent(),
         "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".auth.aliyunpds.com")),
@@ -34964,158 +38274,6 @@ func (client *Client) RegisterEx(request *MobileRegisterRequest, runtime *Runtim
 
         respMap = util.AssertAsMap(obj)
         _result = &RegisterModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
-          "headers": response_.Headers,
-        }, &_result)
-        return _result, _err
-      }
-
-      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
-        _err = tea.NewSDKError(map[string]interface{}{
-          "data": map[string]interface{}{
-            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
-            "statusCode": tea.IntValue(response_.StatusCode),
-            "statusMessage": tea.StringValue(response_.StatusMessage),
-          },
-          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
-        })
-        return _result, _err
-      }
-
-      obj, _err = util.ReadAsJSON(response_.Body)
-      if _err != nil {
-        return _result, _err
-      }
-
-      respMap = util.AssertAsMap(obj)
-      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
-        "data": map[string]interface{}{
-          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
-          "statusCode": tea.IntValue(response_.StatusCode),
-          "statusMessage": tea.StringValue(response_.StatusMessage),
-        },
-        },respMap))
-      return _result, _err
-    }()
-    if !tea.BoolValue(tea.Retryable(_err)) {
-      break
-    }
-  }
-
-  return _resp, _err
-}
-
-/**
- * 发送短信验证码，用于登录、注册、修改密码、绑定等
- * @tags account
- * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
- * @error Forbidden User not authorized to operate on the specified APIs.
- * @error NotFound The resource {resource_name} cannot be found. Please check.
- * @error InternalError The request has been failed due to some unknown error.
- */
-func (client *Client) MobileSendSmsCodeEx(request *MobileSendSmsCodeRequest, runtime *RuntimeOptions) (_result *MobileSendSmsCodeModel, _err error) {
-  _err = tea.Validate(request)
-  if _err != nil {
-    return _result, _err
-  }
-  _err = tea.Validate(runtime)
-  if _err != nil {
-    return _result, _err
-  }
-  _runtime := map[string]interface{}{
-    "timeouted": "retry",
-    "readTimeout": tea.IntValue(runtime.ReadTimeout),
-    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
-    "localAddr": tea.StringValue(runtime.LocalAddr),
-    "httpProxy": tea.StringValue(runtime.HttpProxy),
-    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
-    "noProxy": tea.StringValue(runtime.NoProxy),
-    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
-    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
-    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
-    "retry": map[string]interface{}{
-      "retryable": tea.BoolValue(runtime.Autoretry),
-      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
-    },
-    "backoff": map[string]interface{}{
-      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
-      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
-    },
-    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
-  }
-
-  _resp := &MobileSendSmsCodeModel{}
-  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
-    if _retryTimes > 0 {
-      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
-      if tea.IntValue(_backoffTime) > 0 {
-        tea.Sleep(_backoffTime)
-      }
-    }
-
-    _resp, _err = func()(*MobileSendSmsCodeModel, error){
-      request_ := tea.NewRequest()
-      accesskeyId, _err := client.GetAccessKeyId()
-      if _err != nil {
-        return _result, _err
-      }
-
-      accessKeySecret, _err := client.GetAccessKeySecret()
-      if _err != nil {
-        return _result, _err
-      }
-
-      securityToken, _err := client.GetSecurityToken()
-      if _err != nil {
-        return _result, _err
-      }
-
-      accessToken, _err := client.GetAccessToken()
-      if _err != nil {
-        return _result, _err
-      }
-
-      realReq := util.ToMap(request)
-      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
-      request_.Method = tea.String("POST")
-      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/account/mobile/send_sms_code"))
-      request_.Headers = tea.Merge(map[string]*string{
-        "user-agent": client.GetUserAgent(),
-        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".auth.aliyunpds.com")),
-        "content-type": tea.String("application/json; charset=utf-8"),
-        },request.Httpheaders)
-      realReq["httpheaders"] = nil
-      if !tea.BoolValue(util.Empty(accessToken)) {
-        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
-      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
-        if !tea.BoolValue(util.Empty(securityToken)) {
-          request_.Headers["x-acs-security-token"] = securityToken
-        }
-
-        request_.Headers["date"] = util.GetDateUTCString()
-        request_.Headers["accept"] = tea.String("application/json")
-        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
-        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
-        stringToSign := roautil.GetStringToSign(request_)
-        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
-      }
-
-      request_.Body = tea.ToReader(util.ToJSONString(realReq))
-      response_, _err := tea.DoRequest(request_, _runtime)
-      if _err != nil {
-        return _result, _err
-      }
-      var respMap map[string]interface{}
-      var obj interface{}
-      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
-        if _err != nil {
-          return _result, _err
-        }
-
-        respMap = util.AssertAsMap(obj)
-        _result = &MobileSendSmsCodeModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
           "headers": response_.Headers,
@@ -35263,6 +38421,158 @@ func (client *Client) AccountRevokeEx(request *RevokeRequest, runtime *RuntimeOp
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
         _result = &AccountRevokeModel{}
         _err = tea.Convert(map[string]map[string]*string{
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 发送短信验证码，用于登录、注册、修改密码、绑定等
+ * @tags account
+ * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) SendSmsCodeEx(request *SendSmsCodeRequest, runtime *RuntimeOptions) (_result *SendSmsCodeModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &SendSmsCodeModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*SendSmsCodeModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/account/send_sms_code"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".auth.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &SendSmsCodeModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -35715,6 +39025,922 @@ func (client *Client) SearchAuditLogEx(request *SearchAuditLogRequest, runtime *
 
         respMap = util.AssertAsMap(obj)
         _result = &SearchAuditLogModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 创建实体权益包关联
+ * @tags benefit
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) CreateIdentityToBenefitPkgMappingEx(request *CreateIdentityToBenefitPkgMappingRequest, runtime *RuntimeOptions) (_result *CreateIdentityToBenefitPkgMappingModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &CreateIdentityToBenefitPkgMappingModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*CreateIdentityToBenefitPkgMappingModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/benefit/identity_to_benefit_pkg_mapping/create"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &CreateIdentityToBenefitPkgMappingModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 删除实体权益包关联
+ * @tags benefit
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) DeleteIdentityToBenefitPkgMappingEx(request *DeleteIdentityToBenefitPkgMappingRequest, runtime *RuntimeOptions) (_result *DeleteIdentityToBenefitPkgMappingModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &DeleteIdentityToBenefitPkgMappingModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*DeleteIdentityToBenefitPkgMappingModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/benefit/identity_to_benefit_pkg_mapping/delete"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &DeleteIdentityToBenefitPkgMappingModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 获取实体权益包关联
+ * @tags benefit
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) GetIdentityToBenefitPkgMappingEx(request *GetIdentityToBenefitPkgMappingRequest, runtime *RuntimeOptions) (_result *GetIdentityToBenefitPkgMappingModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &GetIdentityToBenefitPkgMappingModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*GetIdentityToBenefitPkgMappingModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/benefit/identity_to_benefit_pkg_mapping/get"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &GetIdentityToBenefitPkgMappingModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 列举实体关联的所有权益包
+ * @tags benefit
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListIdentityToBenefitPkgMappingEx(request *ListIdentityToBenefitPkgMappingRequest, runtime *RuntimeOptions) (_result *ListIdentityToBenefitPkgMappingModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListIdentityToBenefitPkgMappingModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListIdentityToBenefitPkgMappingModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/benefit/identity_to_benefit_pkg_mapping/list"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListIdentityToBenefitPkgMappingModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 更新实体权益包关联
+ * @tags benefit
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) UpdateIdentityToBenefitPkgMappingEx(request *UpdateIdentityToBenefitPkgMappingRequest, runtime *RuntimeOptions) (_result *UpdateIdentityToBenefitPkgMappingModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &UpdateIdentityToBenefitPkgMappingModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*UpdateIdentityToBenefitPkgMappingModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/benefit/identity_to_benefit_pkg_mapping/update"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &UpdateIdentityToBenefitPkgMappingModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 列举实体的权益
+ * @tags benefit
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListIdentityBenefitPkgEx(request *ListIdentityBenefitPkgRequest, runtime *RuntimeOptions) (_result *ListIdentityBenefitPkgModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListIdentityBenefitPkgModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListIdentityBenefitPkgModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/benefit/list_identity_benefit_pkg"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListIdentityBenefitPkgModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
           "headers": response_.Headers,
@@ -36776,6 +41002,152 @@ func (client *Client) GetUserAccessTokenEx(request *GetUserAccessTokenRequest, r
         _result = &GetUserAccessTokenModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 指定文件或文件夹ID，删除文件或者文件夹。
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) PunishFileEx(request *PunishFileRequest, runtime *RuntimeOptions) (_result *PunishFileModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &PunishFileModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*PunishFileModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/csi/business/punish_file"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
+        _result = &PunishFileModel{}
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -38042,6 +42414,159 @@ func (client *Client) ListMyDrivesEx(request *ListMyDriveRequest, runtime *Runti
 }
 
 /**
+ * 按照名称或拥有者搜索相关Drive
+ * @tags drive
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) SearchDrivesEx(request *SearchDriveRequest, runtime *RuntimeOptions) (_result *SearchDrivesModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &SearchDrivesModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*SearchDrivesModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/drive/search"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &SearchDrivesModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
  * 更新指定drive_id的Drive信息
  * @tags drive
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -38155,6 +42680,153 @@ func (client *Client) UpdateDriveEx(request *UpdateDriveRequest, runtime *Runtim
         _result = &UpdateDriveModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 将文件共享/授权给其他用户或团队
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) AddPermissionEx(request *FileAddPermissionRequest, runtime *RuntimeOptions) (_result *AddPermissionModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &AddPermissionModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*AddPermissionModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/file/add_permission"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
+        _result = &AddPermissionModel{}
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -38460,6 +43132,159 @@ func (client *Client) CompleteFileEx(request *CompleteFileRequest, runtime *Runt
 
         respMap = util.AssertAsMap(obj)
         _result = &CompleteFileModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * UCCompleteFileRequest
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) CompleteFileWithStoreInfoEx(request *UCCompleteFileRequest, runtime *RuntimeOptions) (_result *CompleteFileWithStoreInfoModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &CompleteFileWithStoreInfoModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*CompleteFileWithStoreInfoModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/file/complete_with_store_info"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &CompleteFileWithStoreInfoModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
           "headers": response_.Headers,
@@ -38941,6 +43766,159 @@ func (client *Client) CreateFileWithProofEx(request *CreateFileRequest, runtime 
 
         respMap = util.AssertAsMap(obj)
         _result = &CreateFileWithProofModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * CreateFileWithSignature
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) CreateFileWithSignatureEx(request *UCCreateFileRequest, runtime *RuntimeOptions) (_result *CreateFileWithSignatureModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &CreateFileWithSignatureModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*CreateFileWithSignatureModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/file/create_with_signature"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(201))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &CreateFileWithSignatureModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
           "headers": response_.Headers,
@@ -40679,6 +45657,159 @@ func (client *Client) GetShareLinkVideoPreviewPlayInfoEx(request *CCPGetShareLin
 }
 
 /**
+ * GetFileSignature
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) GetFileSignatureEx(request *UCFileGetSignatureRequest, runtime *RuntimeOptions) (_result *GetFileSignatureModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &GetFileSignatureModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*GetFileSignatureModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/file/get_signature"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &GetFileSignatureModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
  * 可指定分片信息，一次获取多个分片的上传地址。
  * @tags file
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -42062,6 +47193,619 @@ func (client *Client) ListFileDeltaEx(request *ListFileDeltaRequest, runtime *Ru
 }
 
 /**
+ * 列举当前用户管理的共享记录
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListManageSharingFileEx(request *ListMangeSharingFileRequest, runtime *RuntimeOptions) (_result *ListManageSharingFileModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListManageSharingFileModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListManageSharingFileModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/file/list_manage_sharing_file"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListManageSharingFileModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 列举文件的共享/授权记录
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListPermissionEx(request *FileListPermissionRequest, runtime *RuntimeOptions) (_result *ListPermissionModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListPermissionModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListPermissionModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/file/list_permission"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListPermissionModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 列举当前用户收到的共享记录
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListReceivedFileEx(request *ListReceivedFileRequest, runtime *RuntimeOptions) (_result *ListReceivedFileModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListReceivedFileModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListReceivedFileModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/file/list_received_file"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListReceivedFileModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 列举当前用户的共享记录
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListSharingFileEx(request *ListSharingFileRequest, runtime *RuntimeOptions) (_result *ListSharingFileModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListSharingFileModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListSharingFileModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/file/list_sharing_file"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListSharingFileModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
  * 列举upload_id对应的已上传分片。
  * @tags file
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -42831,6 +48575,153 @@ func (client *Client) TokenEx(request *RefreshOfficeEditTokenRequest, runtime *R
 }
 
 /**
+ * 取消文件共享/授权
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) RemovePermissionEx(request *FileRemovePermissionRequest, runtime *RuntimeOptions) (_result *RemovePermissionModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &RemovePermissionModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*RemovePermissionModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/file/remove_permission"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
+        _result = &RemovePermissionModel{}
+        _err = tea.Convert(map[string]map[string]*string{
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
  * 在指定drive下全量获取文件元信息。
  * @tags file
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -43251,6 +49142,159 @@ func (client *Client) UpdateFileEx(request *UpdateFileMetaRequest, runtime *Runt
 
         respMap = util.AssertAsMap(obj)
         _result = &UpdateFileModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * UpdateFileUploadContentHash
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) UpdateFileUploadContentHashEx(request *UCUpdateUploadContentHashRequest, runtime *RuntimeOptions) (_result *UpdateFileUploadContentHashModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &UpdateFileUploadContentHashModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*UpdateFileUploadContentHashModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/file/update_upload_content_hash"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &UpdateFileUploadContentHashModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
           "headers": response_.Headers,
@@ -46196,6 +52240,7 @@ func (client *Client) UpdateShareLinkEx(request *UpdateShareLinkRequest, runtime
 
 /**
  * 查询 Drive 使用空间
+ * @tags statistics
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
  * @error NotFound The resource {resource_name} cannot be found. Please check.
@@ -46348,6 +52393,7 @@ func (client *Client) GetDriveUsedSizeEx(request *GetDriveUsedSizeRequest, runti
 
 /**
  * 查询 Domain 或 Drive 下文件数
+ * @tags statistics
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
  * @error NotFound The resource {resource_name} cannot be found. Please check.
@@ -46499,8 +52545,11 @@ func (client *Client) GetFileCountEx(request *GetFileCountRequest, runtime *Runt
 }
 
 /**
- * 查询 Domain 统计信息
+ * 获取 Subdomain summary
+ * @tags statistics
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
@@ -46613,6 +52662,21 @@ func (client *Client) GetSubdomainSummaryEx(request *GetSubdomainSummaryRequest,
         return _result, _err
       }
 
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(202))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &GetSubdomainSummaryModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
       if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
         _err = tea.NewSDKError(map[string]interface{}{
           "data": map[string]interface{}{
@@ -46649,8 +52713,11 @@ func (client *Client) GetSubdomainSummaryEx(request *GetSubdomainSummaryRequest,
 }
 
 /**
- * 查询 Domain 统计信息
+ * 获取 Domain summary
+ * @tags statistics
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
@@ -46749,6 +52816,21 @@ func (client *Client) GetDomainSummaryEx(request *GetDomainSummaryRequest, runti
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &GetDomainSummaryModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(202))) {
         obj, _err = util.ReadAsJSON(response_.Body)
         if _err != nil {
           return _result, _err
@@ -49832,6 +55914,159 @@ func (client *Client) ListUsersEx(request *ListUserRequest, runtime *RuntimeOpti
 }
 
 /**
+ * migrate_user_to_subdomain
+ * @tags user
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) MigrateUserToSubdomainEx(request *MigrateUserToSubdomainRequest, runtime *RuntimeOptions) (_result *MigrateUserToSubdomainModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &MigrateUserToSubdomainModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*MigrateUserToSubdomainModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/user/migrate_to_subdomain"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &MigrateUserToSubdomainModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
  * 只有管理员可以调用
  * @tags user
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -49937,6 +56172,159 @@ func (client *Client) RemoveUserFromSubdomainEx(request *RemoveUserFromSubdomain
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
         _result = &RemoveUserFromSubdomainModel{}
         _err = tea.Convert(map[string]map[string]*string{
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * rollback_from_subdomain
+ * @tags user
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) RollbackUserFromSubdomainEx(request *RollbackUserFromSubdomainRequest, runtime *RuntimeOptions) (_result *RollbackUserFromSubdomainModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &RollbackUserFromSubdomainModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*RollbackUserFromSubdomainModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/user/rollback_from_subdomain"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &RollbackUserFromSubdomainModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -50287,15 +56675,15 @@ func (client *Client) UpdateUserEx(request *UpdateUserRequest, runtime *RuntimeO
 }
 
 /**
- * 列举View列表
- * @tags view
+ * 该接口将会根据条件查询用户和团队，只有管理员可以调用
+ * @tags user_group
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error AccessTokenInvalid AccessToken is invalid. {message}
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
-func (client *Client) ListViewsEx(request *ListViewsRequest, runtime *RuntimeOptions) (_result *ListViewsModel, _err error) {
+func (client *Client) SearchUserGroupEx(request *SearchUserAndGroupRequest, runtime *RuntimeOptions) (_result *SearchUserGroupModel, _err error) {
   _err = tea.Validate(request)
   if _err != nil {
     return _result, _err
@@ -50326,7 +56714,7 @@ func (client *Client) ListViewsEx(request *ListViewsRequest, runtime *RuntimeOpt
     "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
   }
 
-  _resp := &ListViewsModel{}
+  _resp := &SearchUserGroupModel{}
   for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
     if _retryTimes > 0 {
       _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
@@ -50335,7 +56723,7 @@ func (client *Client) ListViewsEx(request *ListViewsRequest, runtime *RuntimeOpt
       }
     }
 
-    _resp, _err = func()(*ListViewsModel, error){
+    _resp, _err = func()(*SearchUserGroupModel, error){
       request_ := tea.NewRequest()
       accesskeyId, _err := client.GetAccessKeyId()
       if _err != nil {
@@ -50360,7 +56748,7 @@ func (client *Client) ListViewsEx(request *ListViewsRequest, runtime *RuntimeOpt
       realReq := util.ToMap(request)
       request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
       request_.Method = tea.String("POST")
-      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/View/list"))
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/user_group/search"))
       request_.Headers = tea.Merge(map[string]*string{
         "user-agent": client.GetUserAgent(),
         "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
@@ -50396,7 +56784,7 @@ func (client *Client) ListViewsEx(request *ListViewsRequest, runtime *RuntimeOpt
         }
 
         respMap = util.AssertAsMap(obj)
-        _result = &ListViewsModel{}
+        _result = &SearchUserGroupModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
           "headers": response_.Headers,
@@ -53042,6 +59430,159 @@ func (client *Client) GetViewEx(request *GetViewRequest, runtime *RuntimeOptions
 }
 
 /**
+ * 列举View列表
+ * @tags view
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListViewsEx(request *ListViewsRequest, runtime *RuntimeOptions) (_result *ListViewsModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &ListViewsModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*ListViewsModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/view/list"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &ListViewsModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
  * 获取视图文件列表
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -53496,6 +60037,159 @@ func (client *Client) RemoveFileEx(request *RemoveViewFileRequest, runtime *Runt
 }
 
 /**
+ * 搜索View列表
+ * @tags view
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) SearchViewsEx(request *SearchViewsRequest, runtime *RuntimeOptions) (_result *SearchViewsModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &SearchViewsModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*SearchViewsModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/view/search"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+        obj, _err = util.ReadAsJSON(response_.Body)
+        if _err != nil {
+          return _result, _err
+        }
+
+        respMap = util.AssertAsMap(obj)
+        _result = &SearchViewsModel{}
+        _err = tea.Convert(map[string]interface{}{
+          "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
  * 更新指定view的相关信息
  * @tags view
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -53663,6 +60357,25 @@ func (client *Client) CancelLink (request *CancelLinkRequest) (_result *CancelLi
 }
 
 /**
+ * 查询手机号是否已被注册
+ * @tags account
+ * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) CheckExist (request *CheckExistRequest) (_result *CheckExistModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &CheckExistModel{}
+  _body, _err := client.CheckExistEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
  * 确认绑定关系, 成功后返回访问令牌
  * @tags account
  * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
@@ -53675,25 +60388,6 @@ func (client *Client) ConfirmLink (request *ConfirmLinkRequest) (_result *Confir
   runtime := &RuntimeOptions{}
   _result = &ConfirmLinkModel{}
   _body, _err := client.ConfirmLinkEx(request, runtime)
-  if _err != nil {
-    return _result, _err
-  }
-  _result = _body
-  return _result, _err
-}
-
-/**
- * 设置手机登录密码，密码必须包含数字和字母，长度8-20个字符
- * @tags account
- * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
- * @error Forbidden User not authorized to operate on the specified APIs.
- * @error NotFound The resource {resource_name} cannot be found. Please check.
- * @error InternalError The request has been failed due to some unknown error.
- */
-func (client *Client) SetPassword (request *DefaultSetPasswordRequest) (_result *SetPasswordModel, _err error) {
-  runtime := &RuntimeOptions{}
-  _result = &SetPasswordModel{}
-  _body, _err := client.SetPasswordEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
@@ -53816,25 +60510,6 @@ func (client *Client) Link (request *AccountLinkRequest) (_result *LinkModel, _e
 }
 
 /**
- * 查询手机号是否已被注册
- * @tags account
- * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
- * @error Forbidden User not authorized to operate on the specified APIs.
- * @error NotFound The resource {resource_name} cannot be found. Please check.
- * @error InternalError The request has been failed due to some unknown error.
- */
-func (client *Client) CheckExist (request *MobileCheckExistRequest) (_result *CheckExistModel, _err error) {
-  runtime := &RuntimeOptions{}
-  _result = &CheckExistModel{}
-  _body, _err := client.CheckExistEx(request, runtime)
-  if _err != nil {
-    return _result, _err
-  }
-  _result = _body
-  return _result, _err
-}
-
-/**
  * 通过手机号+短信或密码登录，返回刷新令牌和访问令牌
  * @tags account
  * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
@@ -53842,7 +60517,7 @@ func (client *Client) CheckExist (request *MobileCheckExistRequest) (_result *Ch
  * @error NotFound The resource {resource_name} cannot be found. Please check.
  * @error InternalError The request has been failed due to some unknown error.
  */
-func (client *Client) Login (request *MobileLoginRequest) (_result *LoginModel, _err error) {
+func (client *Client) Login (request *LoginRequest) (_result *LoginModel, _err error) {
   runtime := &RuntimeOptions{}
   _result = &LoginModel{}
   _body, _err := client.LoginEx(request, runtime)
@@ -53862,29 +60537,10 @@ func (client *Client) Login (request *MobileLoginRequest) (_result *LoginModel, 
  * @error AlreadyExist {resource} has already exists. {extra_msg}
  * @error InternalError The request has been failed due to some unknown error.
  */
-func (client *Client) Register (request *MobileRegisterRequest) (_result *RegisterModel, _err error) {
+func (client *Client) Register (request *RegisterRequest) (_result *RegisterModel, _err error) {
   runtime := &RuntimeOptions{}
   _result = &RegisterModel{}
   _body, _err := client.RegisterEx(request, runtime)
-  if _err != nil {
-    return _result, _err
-  }
-  _result = _body
-  return _result, _err
-}
-
-/**
- * 发送短信验证码，用于登录、注册、修改密码、绑定等
- * @tags account
- * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
- * @error Forbidden User not authorized to operate on the specified APIs.
- * @error NotFound The resource {resource_name} cannot be found. Please check.
- * @error InternalError The request has been failed due to some unknown error.
- */
-func (client *Client) MobileSendSmsCode (request *MobileSendSmsCodeRequest) (_result *MobileSendSmsCodeModel, _err error) {
-  runtime := &RuntimeOptions{}
-  _result = &MobileSendSmsCodeModel{}
-  _body, _err := client.MobileSendSmsCodeEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
@@ -53904,6 +60560,25 @@ func (client *Client) AccountRevoke (request *RevokeRequest) (_result *AccountRe
   runtime := &RuntimeOptions{}
   _result = &AccountRevokeModel{}
   _body, _err := client.AccountRevokeEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 发送短信验证码，用于登录、注册、修改密码、绑定等
+ * @tags account
+ * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+ * @error Forbidden User not authorized to operate on the specified APIs.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ */
+func (client *Client) SendSmsCode (request *SendSmsCodeRequest) (_result *SendSmsCodeModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &SendSmsCodeModel{}
+  _body, _err := client.SendSmsCodeEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
@@ -53959,6 +60634,124 @@ func (client *Client) SearchAuditLog (request *SearchAuditLogRequest) (_result *
   runtime := &RuntimeOptions{}
   _result = &SearchAuditLogModel{}
   _body, _err := client.SearchAuditLogEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 创建实体权益包关联
+ * @tags benefit
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) CreateIdentityToBenefitPkgMapping (request *CreateIdentityToBenefitPkgMappingRequest) (_result *CreateIdentityToBenefitPkgMappingModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &CreateIdentityToBenefitPkgMappingModel{}
+  _body, _err := client.CreateIdentityToBenefitPkgMappingEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 删除实体权益包关联
+ * @tags benefit
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) DeleteIdentityToBenefitPkgMapping (request *DeleteIdentityToBenefitPkgMappingRequest) (_result *DeleteIdentityToBenefitPkgMappingModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &DeleteIdentityToBenefitPkgMappingModel{}
+  _body, _err := client.DeleteIdentityToBenefitPkgMappingEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 获取实体权益包关联
+ * @tags benefit
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) GetIdentityToBenefitPkgMapping (request *GetIdentityToBenefitPkgMappingRequest) (_result *GetIdentityToBenefitPkgMappingModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &GetIdentityToBenefitPkgMappingModel{}
+  _body, _err := client.GetIdentityToBenefitPkgMappingEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 列举实体关联的所有权益包
+ * @tags benefit
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListIdentityToBenefitPkgMapping (request *ListIdentityToBenefitPkgMappingRequest) (_result *ListIdentityToBenefitPkgMappingModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListIdentityToBenefitPkgMappingModel{}
+  _body, _err := client.ListIdentityToBenefitPkgMappingEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 更新实体权益包关联
+ * @tags benefit
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) UpdateIdentityToBenefitPkgMapping (request *UpdateIdentityToBenefitPkgMappingRequest) (_result *UpdateIdentityToBenefitPkgMappingModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &UpdateIdentityToBenefitPkgMappingModel{}
+  _body, _err := client.UpdateIdentityToBenefitPkgMappingEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 列举实体的权益
+ * @tags benefit
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListIdentityBenefitPkg (request *ListIdentityBenefitPkgRequest) (_result *ListIdentityBenefitPkgModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListIdentityBenefitPkgModel{}
+  _body, _err := client.ListIdentityBenefitPkgEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
@@ -54087,6 +60880,26 @@ func (client *Client) GetUserAccessToken (request *GetUserAccessTokenRequest) (_
   runtime := &RuntimeOptions{}
   _result = &GetUserAccessTokenModel{}
   _body, _err := client.GetUserAccessTokenEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 指定文件或文件夹ID，删除文件或者文件夹。
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) PunishFile (request *PunishFileRequest) (_result *PunishFileModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &PunishFileModel{}
+  _body, _err := client.PunishFileEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
@@ -54263,6 +61076,26 @@ func (client *Client) ListMyDrives (request *ListMyDriveRequest) (_result *ListM
 }
 
 /**
+ * 按照名称或拥有者搜索相关Drive
+ * @tags drive
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) SearchDrives (request *SearchDriveRequest) (_result *SearchDrivesModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &SearchDrivesModel{}
+  _body, _err := client.SearchDrivesEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
  * 更新指定drive_id的Drive信息
  * @tags drive
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -54276,6 +61109,27 @@ func (client *Client) UpdateDrive (request *UpdateDriveRequest) (_result *Update
   runtime := &RuntimeOptions{}
   _result = &UpdateDriveModel{}
   _body, _err := client.UpdateDriveEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 将文件共享/授权给其他用户或团队
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) AddPermission (request *FileAddPermissionRequest) (_result *AddPermissionModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &AddPermissionModel{}
+  _body, _err := client.AddPermissionEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
@@ -54317,6 +61171,26 @@ func (client *Client) CompleteFile (request *CompleteFileRequest) (_result *Comp
   runtime := &RuntimeOptions{}
   _result = &CompleteFileModel{}
   _body, _err := client.CompleteFileEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * UCCompleteFileRequest
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) CompleteFileWithStoreInfo (request *UCCompleteFileRequest) (_result *CompleteFileWithStoreInfoModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &CompleteFileWithStoreInfoModel{}
+  _body, _err := client.CompleteFileWithStoreInfoEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
@@ -54384,6 +61258,26 @@ func (client *Client) CreateFileWithProof (request *CreateFileRequest) (_result 
   runtime := &RuntimeOptions{}
   _result = &CreateFileWithProofModel{}
   _body, _err := client.CreateFileWithProofEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * CreateFileWithSignature
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) CreateFileWithSignature (request *UCCreateFileRequest) (_result *CreateFileWithSignatureModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &CreateFileWithSignatureModel{}
+  _body, _err := client.CreateFileWithSignatureEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
@@ -54623,6 +61517,26 @@ func (client *Client) GetShareLinkVideoPreviewPlayInfo (request *CCPGetShareLink
 }
 
 /**
+ * GetFileSignature
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) GetFileSignature (request *UCFileGetSignatureRequest) (_result *GetFileSignatureModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &GetFileSignatureModel{}
+  _body, _err := client.GetFileSignatureEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
  * 可指定分片信息，一次获取多个分片的上传地址。
  * @tags file
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -54809,6 +61723,87 @@ func (client *Client) ListFileDelta (request *ListFileDeltaRequest) (_result *Li
 }
 
 /**
+ * 列举当前用户管理的共享记录
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListManageSharingFile (request *ListMangeSharingFileRequest) (_result *ListManageSharingFileModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListManageSharingFileModel{}
+  _body, _err := client.ListManageSharingFileEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 列举文件的共享/授权记录
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListPermission (request *FileListPermissionRequest) (_result *ListPermissionModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListPermissionModel{}
+  _body, _err := client.ListPermissionEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 列举当前用户收到的共享记录
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListReceivedFile (request *ListReceivedFileRequest) (_result *ListReceivedFileModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListReceivedFileModel{}
+  _body, _err := client.ListReceivedFileEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 列举当前用户的共享记录
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListSharingFile (request *ListSharingFileRequest) (_result *ListSharingFileModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListSharingFileModel{}
+  _body, _err := client.ListSharingFileEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
  * 列举upload_id对应的已上传分片。
  * @tags file
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -54913,6 +61908,27 @@ func (client *Client) Token (request *RefreshOfficeEditTokenRequest) (_result *T
 }
 
 /**
+ * 取消文件共享/授权
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) RemovePermission (request *FileRemovePermissionRequest) (_result *RemovePermissionModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &RemovePermissionModel{}
+  _body, _err := client.RemovePermissionEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
  * 在指定drive下全量获取文件元信息。
  * @tags file
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -54969,6 +61985,26 @@ func (client *Client) UpdateFile (request *UpdateFileMetaRequest) (_result *Upda
   runtime := &RuntimeOptions{}
   _result = &UpdateFileModel{}
   _body, _err := client.UpdateFileEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * UpdateFileUploadContentHash
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) UpdateFileUploadContentHash (request *UCUpdateUploadContentHashRequest) (_result *UpdateFileUploadContentHashModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &UpdateFileUploadContentHashModel{}
+  _body, _err := client.UpdateFileUploadContentHashEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
@@ -55350,6 +62386,7 @@ func (client *Client) UpdateShareLink (request *UpdateShareLinkRequest) (_result
 
 /**
  * 查询 Drive 使用空间
+ * @tags statistics
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
  * @error NotFound The resource {resource_name} cannot be found. Please check.
@@ -55369,6 +62406,7 @@ func (client *Client) GetDriveUsedSize (request *GetDriveUsedSizeRequest) (_resu
 
 /**
  * 查询 Domain 或 Drive 下文件数
+ * @tags statistics
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
  * @error NotFound The resource {resource_name} cannot be found. Please check.
@@ -55387,8 +62425,11 @@ func (client *Client) GetFileCount (request *GetFileCountRequest) (_result *GetF
 }
 
 /**
- * 查询 Domain 统计信息
+ * 获取 Subdomain summary
+ * @tags statistics
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
@@ -55404,8 +62445,11 @@ func (client *Client) GetSubdomainSummary (request *GetSubdomainSummaryRequest) 
 }
 
 /**
- * 查询 Domain 统计信息
+ * 获取 Domain summary
+ * @tags statistics
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
@@ -55822,6 +62866,26 @@ func (client *Client) ListUsers (request *ListUserRequest) (_result *ListUsersMo
 }
 
 /**
+ * migrate_user_to_subdomain
+ * @tags user
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) MigrateUserToSubdomain (request *MigrateUserToSubdomainRequest) (_result *MigrateUserToSubdomainModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &MigrateUserToSubdomainModel{}
+  _body, _err := client.MigrateUserToSubdomainEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
  * 只有管理员可以调用
  * @tags user
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -55834,6 +62898,26 @@ func (client *Client) RemoveUserFromSubdomain (request *RemoveUserFromSubdomainR
   runtime := &RuntimeOptions{}
   _result = &RemoveUserFromSubdomainModel{}
   _body, _err := client.RemoveUserFromSubdomainEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * rollback_from_subdomain
+ * @tags user
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) RollbackUserFromSubdomain (request *RollbackUserFromSubdomainRequest) (_result *RollbackUserFromSubdomainModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &RollbackUserFromSubdomainModel{}
+  _body, _err := client.RollbackUserFromSubdomainEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
@@ -55885,18 +62969,18 @@ func (client *Client) UpdateUser (request *UpdateUserRequest) (_result *UpdateUs
 }
 
 /**
- * 列举View列表
- * @tags view
+ * 该接口将会根据条件查询用户和团队，只有管理员可以调用
+ * @tags user_group
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error AccessTokenInvalid AccessToken is invalid. {message}
  * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
-func (client *Client) ListViews (request *ListViewsRequest) (_result *ListViewsModel, _err error) {
+func (client *Client) SearchUserGroup (request *SearchUserAndGroupRequest) (_result *SearchUserGroupModel, _err error) {
   runtime := &RuntimeOptions{}
-  _result = &ListViewsModel{}
-  _body, _err := client.ListViewsEx(request, runtime)
+  _result = &SearchUserGroupModel{}
+  _body, _err := client.SearchUserGroupEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
@@ -56260,6 +63344,26 @@ func (client *Client) GetView (request *GetViewRequest) (_result *GetViewModel, 
 }
 
 /**
+ * 列举View列表
+ * @tags view
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) ListViews (request *ListViewsRequest) (_result *ListViewsModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &ListViewsModel{}
+  _body, _err := client.ListViewsEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
  * 获取视图文件列表
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -56314,6 +63418,26 @@ func (client *Client) RemoveFile (request *RemoveViewFileRequest) (_result *Remo
   runtime := &RuntimeOptions{}
   _result = &RemoveFileModel{}
   _body, _err := client.RemoveFileEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 搜索View列表
+ * @tags view
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) SearchViews (request *SearchViewsRequest) (_result *SearchViewsModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &SearchViewsModel{}
+  _body, _err := client.SearchViewsEx(request, runtime)
   if _err != nil {
     return _result, _err
   }

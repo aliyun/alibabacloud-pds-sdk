@@ -18,6 +18,14 @@ public class UpdateSubdomainRequest extends TeaModel {
     @NameInMap("name")
     public String name;
 
+    // 是否开启了共享
+    @NameInMap("sharable")
+    public Boolean sharable;
+
+    // 是否开启了分享
+    @NameInMap("share_link_enabled")
+    public Boolean shareLinkEnabled;
+
     // 状态
     @NameInMap("status")
     public Long status;
@@ -66,6 +74,22 @@ public class UpdateSubdomainRequest extends TeaModel {
     }
     public String getName() {
         return this.name;
+    }
+
+    public UpdateSubdomainRequest setSharable(Boolean sharable) {
+        this.sharable = sharable;
+        return this;
+    }
+    public Boolean getSharable() {
+        return this.sharable;
+    }
+
+    public UpdateSubdomainRequest setShareLinkEnabled(Boolean shareLinkEnabled) {
+        this.shareLinkEnabled = shareLinkEnabled;
+        return this;
+    }
+    public Boolean getShareLinkEnabled() {
+        return this.shareLinkEnabled;
     }
 
     public UpdateSubdomainRequest setStatus(Long status) {

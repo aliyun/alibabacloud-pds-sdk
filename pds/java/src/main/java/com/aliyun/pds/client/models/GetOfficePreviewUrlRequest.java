@@ -14,6 +14,11 @@ public class GetOfficePreviewUrlRequest extends TeaModel {
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
+    // allow_copy
+    // default true
+    @NameInMap("allow_copy")
+    public Boolean allowCopy;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -50,6 +55,14 @@ public class GetOfficePreviewUrlRequest extends TeaModel {
     }
     public java.util.Map<String, ?> getAdditionData() {
         return this.additionData;
+    }
+
+    public GetOfficePreviewUrlRequest setAllowCopy(Boolean allowCopy) {
+        this.allowCopy = allowCopy;
+        return this;
+    }
+    public Boolean getAllowCopy() {
+        return this.allowCopy;
     }
 
     public GetOfficePreviewUrlRequest setDriveId(String driveId) {

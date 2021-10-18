@@ -10,6 +10,9 @@ public class BaseDriveResponse extends TeaModel {
     @NameInMap("action_list")
     public java.util.List<String> actionList;
 
+    @NameInMap("created_at")
+    public String createdAt;
+
     // Drive 创建者
     @NameInMap("creator")
     public String creator;
@@ -86,6 +89,14 @@ public class BaseDriveResponse extends TeaModel {
     }
     public java.util.List<String> getActionList() {
         return this.actionList;
+    }
+
+    public BaseDriveResponse setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+    public String getCreatedAt() {
+        return this.createdAt;
     }
 
     public BaseDriveResponse setCreator(String creator) {

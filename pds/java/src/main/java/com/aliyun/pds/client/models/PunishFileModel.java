@@ -3,16 +3,16 @@ package com.aliyun.pds.client.models;
 
 import com.aliyun.tea.*;
 
-public class SetPasswordModel extends TeaModel {
+public class PunishFileModel extends TeaModel {
     @NameInMap("headers")
     public java.util.Map<String, String> headers;
 
-    public static SetPasswordModel build(java.util.Map<String, ?> map) throws Exception {
-        SetPasswordModel self = new SetPasswordModel();
+    public static PunishFileModel build(java.util.Map<String, ?> map) throws Exception {
+        PunishFileModel self = new PunishFileModel();
         return TeaModel.build(map, self);
     }
 
-    public SetPasswordModel setHeaders(java.util.Map<String, String> headers) {
+    public PunishFileModel setHeaders(java.util.Map<String, String> headers) {
         this.headers = headers;
         return this;
     }

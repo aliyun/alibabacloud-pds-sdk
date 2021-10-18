@@ -16,6 +16,9 @@ public class LdapConfig extends TeaModel {
     @NameInMap("base_dn")
     public String baseDn;
 
+    @NameInMap("global_uid")
+    public String globalUid;
+
     @NameInMap("host")
     public String host;
 
@@ -24,6 +27,9 @@ public class LdapConfig extends TeaModel {
 
     @NameInMap("uid")
     public String uid;
+
+    @NameInMap("version")
+    public String version;
 
     public static LdapConfig build(java.util.Map<String, ?> map) throws Exception {
         LdapConfig self = new LdapConfig();
@@ -54,6 +60,14 @@ public class LdapConfig extends TeaModel {
         return this.baseDn;
     }
 
+    public LdapConfig setGlobalUid(String globalUid) {
+        this.globalUid = globalUid;
+        return this;
+    }
+    public String getGlobalUid() {
+        return this.globalUid;
+    }
+
     public LdapConfig setHost(String host) {
         this.host = host;
         return this;
@@ -76,6 +90,14 @@ public class LdapConfig extends TeaModel {
     }
     public String getUid() {
         return this.uid;
+    }
+
+    public LdapConfig setVersion(String version) {
+        this.version = version;
+        return this;
+    }
+    public String getVersion() {
+        return this.version;
     }
 
 }

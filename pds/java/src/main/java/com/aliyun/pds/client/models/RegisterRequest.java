@@ -6,7 +6,7 @@ import com.aliyun.tea.*;
 /**
  * 
  */
-public class MobileRegisterRequest extends TeaModel {
+public class RegisterRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
@@ -15,14 +15,17 @@ public class MobileRegisterRequest extends TeaModel {
     @Validation(required = true)
     public String appId;
 
+    // 邮箱
+    @NameInMap("email")
+    public String email;
+
     // 环境参数
     @NameInMap("nvc_param")
     @Validation(required = true)
     public String nvcParam;
 
-    // 待查询的手机号
+    // 待发送验证短信的手机号
     @NameInMap("phone_number")
-    @Validation(required = true)
     public String phoneNumber;
 
     // 国家编号，默认86，不需要填+号，直接填数字
@@ -39,12 +42,12 @@ public class MobileRegisterRequest extends TeaModel {
     @Validation(required = true)
     public String smsCodeId;
 
-    public static MobileRegisterRequest build(java.util.Map<String, ?> map) throws Exception {
-        MobileRegisterRequest self = new MobileRegisterRequest();
+    public static RegisterRequest build(java.util.Map<String, ?> map) throws Exception {
+        RegisterRequest self = new RegisterRequest();
         return TeaModel.build(map, self);
     }
 
-    public MobileRegisterRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+    public RegisterRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
         this.httpheaders = httpheaders;
         return this;
     }
@@ -52,7 +55,7 @@ public class MobileRegisterRequest extends TeaModel {
         return this.httpheaders;
     }
 
-    public MobileRegisterRequest setAppId(String appId) {
+    public RegisterRequest setAppId(String appId) {
         this.appId = appId;
         return this;
     }
@@ -60,7 +63,15 @@ public class MobileRegisterRequest extends TeaModel {
         return this.appId;
     }
 
-    public MobileRegisterRequest setNvcParam(String nvcParam) {
+    public RegisterRequest setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+    public String getEmail() {
+        return this.email;
+    }
+
+    public RegisterRequest setNvcParam(String nvcParam) {
         this.nvcParam = nvcParam;
         return this;
     }
@@ -68,7 +79,7 @@ public class MobileRegisterRequest extends TeaModel {
         return this.nvcParam;
     }
 
-    public MobileRegisterRequest setPhoneNumber(String phoneNumber) {
+    public RegisterRequest setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -76,7 +87,7 @@ public class MobileRegisterRequest extends TeaModel {
         return this.phoneNumber;
     }
 
-    public MobileRegisterRequest setPhoneRegion(String phoneRegion) {
+    public RegisterRequest setPhoneRegion(String phoneRegion) {
         this.phoneRegion = phoneRegion;
         return this;
     }
@@ -84,7 +95,7 @@ public class MobileRegisterRequest extends TeaModel {
         return this.phoneRegion;
     }
 
-    public MobileRegisterRequest setSmsCode(String smsCode) {
+    public RegisterRequest setSmsCode(String smsCode) {
         this.smsCode = smsCode;
         return this;
     }
@@ -92,7 +103,7 @@ public class MobileRegisterRequest extends TeaModel {
         return this.smsCode;
     }
 
-    public MobileRegisterRequest setSmsCodeId(String smsCodeId) {
+    public RegisterRequest setSmsCodeId(String smsCodeId) {
         this.smsCodeId = smsCodeId;
         return this;
     }

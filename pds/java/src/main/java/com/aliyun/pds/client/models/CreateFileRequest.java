@@ -147,6 +147,10 @@ public class CreateFileRequest extends TeaModel {
     @NameInMap("user_meta")
     public String userMeta;
 
+    // user_tags
+    @NameInMap("user_tags")
+    public java.util.List<UserTag> userTags;
+
     @NameInMap("video_media_metadata")
     public VideoMediaMetadata videoMediaMetadata;
 
@@ -441,6 +445,14 @@ public class CreateFileRequest extends TeaModel {
     }
     public String getUserMeta() {
         return this.userMeta;
+    }
+
+    public CreateFileRequest setUserTags(java.util.List<UserTag> userTags) {
+        this.userTags = userTags;
+        return this;
+    }
+    public java.util.List<UserTag> getUserTags() {
+        return this.userTags;
     }
 
     public CreateFileRequest setVideoMediaMetadata(VideoMediaMetadata videoMediaMetadata) {

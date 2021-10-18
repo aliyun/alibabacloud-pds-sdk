@@ -6,18 +6,18 @@ import com.aliyun.tea.*;
 /**
  * 
  */
-public class MobileSendSmsCodeResponse extends TeaModel {
-    // 短信验证码ID
+public class SendSmsCodeResponse extends TeaModel {
+    // 验证码ID
     @NameInMap("sms_code_id")
     @Validation(required = true)
     public String smsCodeId;
 
-    public static MobileSendSmsCodeResponse build(java.util.Map<String, ?> map) throws Exception {
-        MobileSendSmsCodeResponse self = new MobileSendSmsCodeResponse();
+    public static SendSmsCodeResponse build(java.util.Map<String, ?> map) throws Exception {
+        SendSmsCodeResponse self = new SendSmsCodeResponse();
         return TeaModel.build(map, self);
     }
 
-    public MobileSendSmsCodeResponse setSmsCodeId(String smsCodeId) {
+    public SendSmsCodeResponse setSmsCodeId(String smsCodeId) {
         this.smsCodeId = smsCodeId;
         return this;
     }

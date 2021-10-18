@@ -33,12 +33,10 @@ public class CreateShareLinkRequest extends TeaModel {
 
     // file_id_list
     @NameInMap("file_id_list")
-    @Validation(maximum = 100, minimum = 1)
     public java.util.List<String> fileIdList;
 
     // file_path_list
     @NameInMap("file_path_list")
-    @Validation(maximum = 100, minimum = 1)
     public java.util.List<String> filePathList;
 
     // filter_group
@@ -54,8 +52,11 @@ public class CreateShareLinkRequest extends TeaModel {
 
     // share_pwd
     @NameInMap("share_pwd")
-    @Validation(maximum = 64)
     public String sharePwd;
+
+    // user_id, only admin or aksk can set
+    @NameInMap("user_id")
+    public String userId;
 
     public static CreateShareLinkRequest build(java.util.Map<String, ?> map) throws Exception {
         CreateShareLinkRequest self = new CreateShareLinkRequest();
@@ -156,6 +157,14 @@ public class CreateShareLinkRequest extends TeaModel {
     }
     public String getSharePwd() {
         return this.sharePwd;
+    }
+
+    public CreateShareLinkRequest setUserId(String userId) {
+        this.userId = userId;
+        return this;
+    }
+    public String getUserId() {
+        return this.userId;
     }
 
 }

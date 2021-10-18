@@ -32,6 +32,10 @@ public class AccountAccessTokenResponse extends TeaModel {
     @NameInMap("device_name")
     public String deviceName;
 
+    // domainID 用户登录的domainID
+    @NameInMap("domain_id")
+    public String domainId;
+
     // 当前用户已存在的登录方式
     @NameInMap("exist_link")
     public java.util.List<LinkInfo> existLink;
@@ -152,6 +156,14 @@ public class AccountAccessTokenResponse extends TeaModel {
     }
     public String getDeviceName() {
         return this.deviceName;
+    }
+
+    public AccountAccessTokenResponse setDomainId(String domainId) {
+        this.domainId = domainId;
+        return this;
+    }
+    public String getDomainId() {
+        return this.domainId;
     }
 
     public AccountAccessTokenResponse setExistLink(java.util.List<LinkInfo> existLink) {

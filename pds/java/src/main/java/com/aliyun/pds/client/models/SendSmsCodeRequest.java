@@ -6,7 +6,7 @@ import com.aliyun.tea.*;
 /**
  * 
  */
-public class MobileSendSmsCodeRequest extends TeaModel {
+public class SendSmsCodeRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
@@ -23,6 +23,10 @@ public class MobileSendSmsCodeRequest extends TeaModel {
     @NameInMap("captcha_text")
     public String captchaText;
 
+    // 邮箱
+    @NameInMap("email")
+    public String email;
+
     // 环境参数
     @NameInMap("nvc_param")
     @Validation(required = true)
@@ -30,7 +34,6 @@ public class MobileSendSmsCodeRequest extends TeaModel {
 
     // 待发送验证短信的手机号
     @NameInMap("phone_number")
-    @Validation(required = true)
     public String phoneNumber;
 
     // 国家编号，默认86，不需要填+号，直接填数字
@@ -42,12 +45,12 @@ public class MobileSendSmsCodeRequest extends TeaModel {
     @Validation(required = true)
     public String type;
 
-    public static MobileSendSmsCodeRequest build(java.util.Map<String, ?> map) throws Exception {
-        MobileSendSmsCodeRequest self = new MobileSendSmsCodeRequest();
+    public static SendSmsCodeRequest build(java.util.Map<String, ?> map) throws Exception {
+        SendSmsCodeRequest self = new SendSmsCodeRequest();
         return TeaModel.build(map, self);
     }
 
-    public MobileSendSmsCodeRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+    public SendSmsCodeRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
         this.httpheaders = httpheaders;
         return this;
     }
@@ -55,7 +58,7 @@ public class MobileSendSmsCodeRequest extends TeaModel {
         return this.httpheaders;
     }
 
-    public MobileSendSmsCodeRequest setAppId(String appId) {
+    public SendSmsCodeRequest setAppId(String appId) {
         this.appId = appId;
         return this;
     }
@@ -63,7 +66,7 @@ public class MobileSendSmsCodeRequest extends TeaModel {
         return this.appId;
     }
 
-    public MobileSendSmsCodeRequest setCaptchaId(String captchaId) {
+    public SendSmsCodeRequest setCaptchaId(String captchaId) {
         this.captchaId = captchaId;
         return this;
     }
@@ -71,7 +74,7 @@ public class MobileSendSmsCodeRequest extends TeaModel {
         return this.captchaId;
     }
 
-    public MobileSendSmsCodeRequest setCaptchaText(String captchaText) {
+    public SendSmsCodeRequest setCaptchaText(String captchaText) {
         this.captchaText = captchaText;
         return this;
     }
@@ -79,7 +82,15 @@ public class MobileSendSmsCodeRequest extends TeaModel {
         return this.captchaText;
     }
 
-    public MobileSendSmsCodeRequest setNvcParam(String nvcParam) {
+    public SendSmsCodeRequest setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+    public String getEmail() {
+        return this.email;
+    }
+
+    public SendSmsCodeRequest setNvcParam(String nvcParam) {
         this.nvcParam = nvcParam;
         return this;
     }
@@ -87,7 +98,7 @@ public class MobileSendSmsCodeRequest extends TeaModel {
         return this.nvcParam;
     }
 
-    public MobileSendSmsCodeRequest setPhoneNumber(String phoneNumber) {
+    public SendSmsCodeRequest setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -95,7 +106,7 @@ public class MobileSendSmsCodeRequest extends TeaModel {
         return this.phoneNumber;
     }
 
-    public MobileSendSmsCodeRequest setPhoneRegion(String phoneRegion) {
+    public SendSmsCodeRequest setPhoneRegion(String phoneRegion) {
         this.phoneRegion = phoneRegion;
         return this;
     }
@@ -103,7 +114,7 @@ public class MobileSendSmsCodeRequest extends TeaModel {
         return this.phoneRegion;
     }
 
-    public MobileSendSmsCodeRequest setType(String type) {
+    public SendSmsCodeRequest setType(String type) {
         this.type = type;
         return this;
     }
