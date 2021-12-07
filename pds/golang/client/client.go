@@ -877,6 +877,23 @@ func (s *GetUserAccessTokenModel) SetBody(v *GetUserAccessTokenResponse) *GetUse
   return s
 }
 
+type PunishFileModel struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+}
+
+func (s PunishFileModel) String() string {
+  return tea.Prettify(s)
+}
+
+func (s PunishFileModel) GoString() string {
+  return s.String()
+}
+
+func (s *PunishFileModel) SetHeaders(v map[string]*string) *PunishFileModel {
+  s.Headers = v
+  return s
+}
+
 type GetAsyncTaskInfoModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
   Body *GetAsyncTaskResponse `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -7664,6 +7681,47 @@ func (s *CcpCallback) SetBody(v map[string]interface{}) *CcpCallback {
 
 func (s *CcpCallback) SetUrl(v string) *CcpCallback {
   s.Url = &v
+  return s
+}
+
+/**
+ * 
+ */
+type CertInfo struct {
+  CertID *string `json:"CertID,omitempty" xml:"CertID,omitempty"`
+  // cert body
+  CertBody *string `json:"cert_body,omitempty" xml:"cert_body,omitempty" require:"true"`
+  // cert name
+  CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty" require:"true"`
+  // cert privatekey
+  CertPrivatekey *string `json:"cert_privatekey,omitempty" xml:"cert_privatekey,omitempty" require:"true"`
+}
+
+func (s CertInfo) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CertInfo) GoString() string {
+  return s.String()
+}
+
+func (s *CertInfo) SetCertID(v string) *CertInfo {
+  s.CertID = &v
+  return s
+}
+
+func (s *CertInfo) SetCertBody(v string) *CertInfo {
+  s.CertBody = &v
+  return s
+}
+
+func (s *CertInfo) SetCertName(v string) *CertInfo {
+  s.CertName = &v
+  return s
+}
+
+func (s *CertInfo) SetCertPrivatekey(v string) *CertInfo {
+  s.CertPrivatekey = &v
   return s
 }
 
@@ -31532,6 +31590,50 @@ func (s *VideoPreviewVideoTemplate) SetWidth(v int64) *VideoPreviewVideoTemplate
 }
 
 /**
+ * 处罚文件请求
+ */
+type PunishFileRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  ActionCode *string `json:"action_code,omitempty" xml:"action_code,omitempty"`
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+  PunishReason *string `json:"punish_reason,omitempty" xml:"punish_reason,omitempty"`
+}
+
+func (s PunishFileRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s PunishFileRequest) GoString() string {
+  return s.String()
+}
+
+func (s *PunishFileRequest) SetHttpheaders(v map[string]*string) *PunishFileRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *PunishFileRequest) SetActionCode(v string) *PunishFileRequest {
+  s.ActionCode = &v
+  return s
+}
+
+func (s *PunishFileRequest) SetDriveId(v string) *PunishFileRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *PunishFileRequest) SetFileId(v string) *PunishFileRequest {
+  s.FileId = &v
+  return s
+}
+
+func (s *PunishFileRequest) SetPunishReason(v string) *PunishFileRequest {
+  s.PunishReason = &v
+  return s
+}
+
+/**
  * Add user to subdomain request
  */
 type AddUserToSubdomainRequest struct {
@@ -32314,47 +32416,6 @@ func (s *CancelAssignRequest) SetRoleId(v string) *CancelAssignRequest {
 
 func (s *CancelAssignRequest) SetSubdomainId(v string) *CancelAssignRequest {
   s.SubdomainId = &v
-  return s
-}
-
-/**
- * 
- */
-type CertInfo struct {
-  CertID *string `json:"CertID,omitempty" xml:"CertID,omitempty"`
-  // cert body
-  CertBody *string `json:"cert_body,omitempty" xml:"cert_body,omitempty" require:"true"`
-  // cert name
-  CertName *string `json:"cert_name,omitempty" xml:"cert_name,omitempty" require:"true"`
-  // cert privatekey
-  CertPrivatekey *string `json:"cert_privatekey,omitempty" xml:"cert_privatekey,omitempty" require:"true"`
-}
-
-func (s CertInfo) String() string {
-  return tea.Prettify(s)
-}
-
-func (s CertInfo) GoString() string {
-  return s.String()
-}
-
-func (s *CertInfo) SetCertID(v string) *CertInfo {
-  s.CertID = &v
-  return s
-}
-
-func (s *CertInfo) SetCertBody(v string) *CertInfo {
-  s.CertBody = &v
-  return s
-}
-
-func (s *CertInfo) SetCertName(v string) *CertInfo {
-  s.CertName = &v
-  return s
-}
-
-func (s *CertInfo) SetCertPrivatekey(v string) *CertInfo {
-  s.CertPrivatekey = &v
   return s
 }
 
@@ -35781,6 +35842,86 @@ func (s *ParseTimeRange) SetStart(v string) *ParseTimeRange {
 /**
  * 
  */
+type Permission struct {
+  ActionList []*ActionItem `json:"ActionList,omitempty" xml:"ActionList,omitempty" type:"Repeated"`
+  CreatedAt *int64 `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+  Deleted *string `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+  DomainID *string `json:"DomainID,omitempty" xml:"DomainID,omitempty"`
+  IdentityID *string `json:"IdentityID,omitempty" xml:"IdentityID,omitempty"`
+  IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+  Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+  ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+  SequenceNumber *int64 `json:"SequenceNumber,omitempty" xml:"SequenceNumber,omitempty"`
+  UpdatedAt *int64 `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+  UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
+}
+
+func (s Permission) String() string {
+  return tea.Prettify(s)
+}
+
+func (s Permission) GoString() string {
+  return s.String()
+}
+
+func (s *Permission) SetActionList(v []*ActionItem) *Permission {
+  s.ActionList = v
+  return s
+}
+
+func (s *Permission) SetCreatedAt(v int64) *Permission {
+  s.CreatedAt = &v
+  return s
+}
+
+func (s *Permission) SetDeleted(v string) *Permission {
+  s.Deleted = &v
+  return s
+}
+
+func (s *Permission) SetDomainID(v string) *Permission {
+  s.DomainID = &v
+  return s
+}
+
+func (s *Permission) SetIdentityID(v string) *Permission {
+  s.IdentityID = &v
+  return s
+}
+
+func (s *Permission) SetIdentityType(v string) *Permission {
+  s.IdentityType = &v
+  return s
+}
+
+func (s *Permission) SetResource(v string) *Permission {
+  s.Resource = &v
+  return s
+}
+
+func (s *Permission) SetResourceType(v string) *Permission {
+  s.ResourceType = &v
+  return s
+}
+
+func (s *Permission) SetSequenceNumber(v int64) *Permission {
+  s.SequenceNumber = &v
+  return s
+}
+
+func (s *Permission) SetUpdatedAt(v int64) *Permission {
+  s.UpdatedAt = &v
+  return s
+}
+
+func (s *Permission) SetUpdatedBy(v string) *Permission {
+  s.UpdatedBy = &v
+  return s
+}
+
+/**
+ * 
+ */
 type RemarksQueryRequest struct {
   In []*string `json:"in,omitempty" xml:"in,omitempty" type:"Repeated"`
   NotIn []*string `json:"not_in,omitempty" xml:"not_in,omitempty" type:"Repeated"`
@@ -36417,6 +36558,8 @@ type SearchViewsRequest struct {
   OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
   // owner
   Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+  // return_total_count 是否返回查询总数
+  ReturnTotalCount *bool `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
   // user_id
   UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
@@ -36469,6 +36612,11 @@ func (s *SearchViewsRequest) SetOwner(v string) *SearchViewsRequest {
   return s
 }
 
+func (s *SearchViewsRequest) SetReturnTotalCount(v bool) *SearchViewsRequest {
+  s.ReturnTotalCount = &v
+  return s
+}
+
 func (s *SearchViewsRequest) SetUserId(v string) *SearchViewsRequest {
   s.UserId = &v
   return s
@@ -36480,6 +36628,7 @@ func (s *SearchViewsRequest) SetUserId(v string) *SearchViewsRequest {
 type SearchViewsResponse struct {
   Items []*GetViewResponse `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
   NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+  TotalCount *int64 `json:"total_count,omitempty" xml:"total_count,omitempty"`
 }
 
 func (s SearchViewsResponse) String() string {
@@ -36497,6 +36646,11 @@ func (s *SearchViewsResponse) SetItems(v []*GetViewResponse) *SearchViewsRespons
 
 func (s *SearchViewsResponse) SetNextMarker(v string) *SearchViewsResponse {
   s.NextMarker = &v
+  return s
+}
+
+func (s *SearchViewsResponse) SetTotalCount(v int64) *SearchViewsResponse {
+  s.TotalCount = &v
   return s
 }
 
@@ -37202,6 +37356,47 @@ func (s *UpdateViewRequest) SetUserId(v string) *UpdateViewRequest {
 }
 
 func (s *UpdateViewRequest) SetViewId(v string) *UpdateViewRequest {
+  s.ViewId = &v
+  return s
+}
+
+/**
+ * 
+ */
+type ViewFileBaseRequest struct {
+  // category
+  Category *string `json:"category,omitempty" xml:"category,omitempty" require:"true"`
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  // user_id
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+  // view_id
+  ViewId *string `json:"view_id,omitempty" xml:"view_id,omitempty" require:"true"`
+}
+
+func (s ViewFileBaseRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ViewFileBaseRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ViewFileBaseRequest) SetCategory(v string) *ViewFileBaseRequest {
+  s.Category = &v
+  return s
+}
+
+func (s *ViewFileBaseRequest) SetDriveId(v string) *ViewFileBaseRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *ViewFileBaseRequest) SetUserId(v string) *ViewFileBaseRequest {
+  s.UserId = &v
+  return s
+}
+
+func (s *ViewFileBaseRequest) SetViewId(v string) *ViewFileBaseRequest {
   s.ViewId = &v
   return s
 }
@@ -42313,6 +42508,152 @@ func (client *Client) GetUserAccessTokenEx(request *GetUserAccessTokenRequest, r
         _result = &GetUserAccessTokenModel{}
         _err = tea.Convert(map[string]interface{}{
           "body": respMap,
+          "headers": response_.Headers,
+        }, &_result)
+        return _result, _err
+      }
+
+      if !tea.BoolValue(util.Empty(response_.Headers["x-ca-error-message"])) {
+        _err = tea.NewSDKError(map[string]interface{}{
+          "data": map[string]interface{}{
+            "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+            "statusCode": tea.IntValue(response_.StatusCode),
+            "statusMessage": tea.StringValue(response_.StatusMessage),
+          },
+          "message": tea.StringValue(response_.Headers["x-ca-error-message"]),
+        })
+        return _result, _err
+      }
+
+      obj, _err = util.ReadAsJSON(response_.Body)
+      if _err != nil {
+        return _result, _err
+      }
+
+      respMap = util.AssertAsMap(obj)
+      _err = tea.NewSDKError(tea.ToMap(map[string]interface{}{
+        "data": map[string]interface{}{
+          "requestId": tea.StringValue(response_.Headers["x-ca-request-id"]),
+          "statusCode": tea.IntValue(response_.StatusCode),
+          "statusMessage": tea.StringValue(response_.StatusMessage),
+        },
+        },respMap))
+      return _result, _err
+    }()
+    if !tea.BoolValue(tea.Retryable(_err)) {
+      break
+    }
+  }
+
+  return _resp, _err
+}
+
+/**
+ * 指定文 ID，处罚文件。
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) PunishFileEx(request *PunishFileRequest, runtime *RuntimeOptions) (_result *PunishFileModel, _err error) {
+  _err = tea.Validate(request)
+  if _err != nil {
+    return _result, _err
+  }
+  _err = tea.Validate(runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _runtime := map[string]interface{}{
+    "timeouted": "retry",
+    "readTimeout": tea.IntValue(runtime.ReadTimeout),
+    "connectTimeout": tea.IntValue(runtime.ConnectTimeout),
+    "localAddr": tea.StringValue(runtime.LocalAddr),
+    "httpProxy": tea.StringValue(runtime.HttpProxy),
+    "httpsProxy": tea.StringValue(runtime.HttpsProxy),
+    "noProxy": tea.StringValue(runtime.NoProxy),
+    "maxIdleConns": tea.IntValue(runtime.MaxIdleConns),
+    "socks5Proxy": tea.StringValue(runtime.Socks5Proxy),
+    "socks5NetWork": tea.StringValue(runtime.Socks5NetWork),
+    "retry": map[string]interface{}{
+      "retryable": tea.BoolValue(runtime.Autoretry),
+      "maxAttempts": tea.IntValue(util.DefaultNumber(runtime.MaxAttempts, tea.Int(3))),
+    },
+    "backoff": map[string]interface{}{
+      "policy": tea.StringValue(util.DefaultString(runtime.BackoffPolicy, tea.String("no"))),
+      "period": tea.IntValue(util.DefaultNumber(runtime.BackoffPeriod, tea.Int(1))),
+    },
+    "ignoreSSL": tea.BoolValue(runtime.IgnoreSSL),
+  }
+
+  _resp := &PunishFileModel{}
+  for _retryTimes := 0; tea.BoolValue(tea.AllowRetry(_runtime["retry"], tea.Int(_retryTimes))); _retryTimes++ {
+    if _retryTimes > 0 {
+      _backoffTime := tea.GetBackoffTime(_runtime["backoff"], tea.Int(_retryTimes))
+      if tea.IntValue(_backoffTime) > 0 {
+        tea.Sleep(_backoffTime)
+      }
+    }
+
+    _resp, _err = func()(*PunishFileModel, error){
+      request_ := tea.NewRequest()
+      accesskeyId, _err := client.GetAccessKeyId()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessKeySecret, _err := client.GetAccessKeySecret()
+      if _err != nil {
+        return _result, _err
+      }
+
+      securityToken, _err := client.GetSecurityToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      accessToken, _err := client.GetAccessToken()
+      if _err != nil {
+        return _result, _err
+      }
+
+      realReq := util.ToMap(request)
+      request_.Protocol = util.DefaultString(client.Protocol, tea.String("https"))
+      request_.Method = tea.String("POST")
+      request_.Pathname = client.GetPathname(client.Nickname, tea.String("/v2/csi/business/punish_file"))
+      request_.Headers = tea.Merge(map[string]*string{
+        "user-agent": client.GetUserAgent(),
+        "host": util.DefaultString(client.Endpoint, tea.String(tea.StringValue(client.DomainId) + ".api.aliyunpds.com")),
+        "content-type": tea.String("application/json; charset=utf-8"),
+        },request.Httpheaders)
+      realReq["httpheaders"] = nil
+      if !tea.BoolValue(util.Empty(accessToken)) {
+        request_.Headers["authorization"] = tea.String("Bearer " + tea.StringValue(accessToken))
+      } else if !tea.BoolValue(util.Empty(accesskeyId)) && !tea.BoolValue(util.Empty(accessKeySecret)) {
+        if !tea.BoolValue(util.Empty(securityToken)) {
+          request_.Headers["x-acs-security-token"] = securityToken
+        }
+
+        request_.Headers["date"] = util.GetDateUTCString()
+        request_.Headers["accept"] = tea.String("application/json")
+        request_.Headers["x-acs-signature-method"] = tea.String("HMAC-SHA1")
+        request_.Headers["x-acs-signature-version"] = tea.String("1.0")
+        stringToSign := roautil.GetStringToSign(request_)
+        request_.Headers["authorization"] = tea.String("acs " + tea.StringValue(accesskeyId) + ":" + tea.StringValue(roautil.GetSignature(stringToSign, accessKeySecret)))
+      }
+
+      request_.Body = tea.ToReader(util.ToJSONString(realReq))
+      response_, _err := tea.DoRequest(request_, _runtime)
+      if _err != nil {
+        return _result, _err
+      }
+      var respMap map[string]interface{}
+      var obj interface{}
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
+        _result = &PunishFileModel{}
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -60704,7 +61045,7 @@ func (client *Client) CreateViewEx(request *CreateViewRequest, runtime *RuntimeO
       }
       var respMap map[string]interface{}
       var obj interface{}
-      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(200))) {
+      if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(201))) {
         obj, _err = util.ReadAsJSON(response_.Body)
         if _err != nil {
           return _result, _err
@@ -62506,6 +62847,26 @@ func (client *Client) GetUserAccessToken (request *GetUserAccessTokenRequest) (_
   runtime := &RuntimeOptions{}
   _result = &GetUserAccessTokenModel{}
   _body, _err := client.GetUserAccessTokenEx(request, runtime)
+  if _err != nil {
+    return _result, _err
+  }
+  _result = _body
+  return _result, _err
+}
+
+/**
+ * 指定文 ID，处罚文件。
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+func (client *Client) PunishFile (request *PunishFileRequest) (_result *PunishFileModel, _err error) {
+  runtime := &RuntimeOptions{}
+  _result = &PunishFileModel{}
+  _body, _err := client.PunishFileEx(request, runtime)
   if _err != nil {
     return _result, _err
   }
