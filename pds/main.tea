@@ -8119,7 +8119,7 @@ api listManageSharingFileEx(request: ListMangeSharingFileRequest, runtime: Runti
 
 model ListPermissionModel {
   headers?: map[string]string(name='headers'),
-  body: FilePermissionMember(name='body'),
+  body: [FilePermissionMember](name='body'),
 }
 
 /**
@@ -18155,6 +18155,20 @@ model ArchiveListResponse {
 }
 
 /**
+ * 获取解压任务状态
+ */
+model ArchiveStatusRequest {
+  Format?: string(name='Format', description='格式类型，如果是uc，使用特殊格式'),
+  RequestID?: string(name='RequestID'),
+  archiveType?: string(name='archive_type'),
+  domainId?: string(name='domain_id'),
+  driveId?: string(name='drive_id', description='TODO 增加对ShareID的支持'),
+  fileId?: string(name='file_id'),
+  password?: string(name='password'),
+  taskId?: string(name='task_id'),
+}
+
+/**
  * ArchiveStatusResponse response
  */
 model ArchiveStatusResponse {
@@ -18628,13 +18642,6 @@ model CCPArchiveRequest {
   driveId?: string(name='drive_id', description='TODO 增加对ShareID的支持'),
   fileId?: string(name='file_id'),
   password?: string(name='password'),
-}
-
-/**
- * 
- */
-model CCPArchiveResponse {
-  state?: string(name='state'),
 }
 
 /**
@@ -19697,6 +19704,7 @@ model GetDirSizeInfoResponse {
 model GetDomainRequest {
   domainId: string(name='domain_id', description='Domain ID', example='sz111'),
   getBenefit?: boolean(name='get_benefit'),
+  getShareDetail?: boolean(name='get_share_detail', description='是否获取share/share_link详情', example=false),
 }
 
 /**
@@ -20216,9 +20224,9 @@ model GetShareResponse {
 /**
  * 
  */
-model GetSubdomainRequest {
-  httpheaders?: map[string]string,
+model GetSubdomainMgmtRequest {
   domainId: string(name='domain_id', description='用以唯一标识domain', example='"bj23"'),
+  getShareDetail?: boolean(name='get_share_detail', description='是否获取share/share_link详情', example=false),
   subdomainId: string(name='subdomain_id', description='用以唯一标识subdomain', example='"c477c77a-aea8-413e-9ff0-30c24eeeae01"'),
 }
 
@@ -21747,6 +21755,29 @@ model SimpleStreamInfo {
 /**
  * 
  */
+model Store {
+  accelerateEndpoint?: string(name='accelerate_endpoint', description='全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  basePath?: string(name='base_path', description='存储公共前缀', example='pds-data'),
+  bucket: string(name='bucket', description='bucket名称', example='data-sz-bucket'),
+  cdnEndpoint?: string(name='cdn_endpoint', description='内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  cdnUrlAuthKey?: string(name='cdn_url_auth_key', description='CDN鉴权key'),
+  customizedAccelerateEndpoint?: string(name='customized_accelerate_endpoint', description='自定义全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  customizedCdnEndpoint?: string(name='customized_cdn_endpoint', description='自定义内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  customizedEndpoint?: string(name='customized_endpoint', description='自定义Public访问地址', example='https://{regionid}-data.mydomain.com/'),
+  customizedInternalEndpoint?: string(name='customized_internal_endpoint', description='自定义vpc访问地址', example='https://{regionid}-data-vpc.mydomain.com/'),
+  endpoint: string(name='endpoint', description='Public访问地址', example='https://{domainid}.{regionid}.data.aliyunpds.com/'),
+  internalEndpoint?: string(name='internal_endpoint', description='vpc访问地址', example='https://{domainid}.{regionid}.data-vpc.aliyunpds.com/'),
+  location?: string(name='location', description='地点', example='cn-hangzhou'),
+  ownership: string(name='ownership', description='存储归属，system表示系统提供，custom表示使用自己的存储', enum='system, custom', example='system'),
+  policy: string(name='policy', description='Policy授权,system类型store会将bucket权限授予当前云账号'),
+  roleArn?: string(name='role_arn', description='访问Bucket的角色ARN', example='acs:oss:*:*:*'),
+  storeId: string(name='store_id', description='store ID', example='101'),
+  type: string(name='type', description='存储类型，当前只支持oss', enum='oss', example='oss'),
+}
+
+/**
+ * 
+ */
 model StoreFile {
   domainId?: string(name='domain_id'),
   name?: string(name='name'),
@@ -22439,8 +22470,7 @@ model UpdateShareResponse {
 /**
  * 
  */
-model UpdateSubdomainRequest {
-  httpheaders?: map[string]string,
+model UpdateSubdomainMgmtRequest {
   description?: string(name='description', description='描述', example='"描述-1"'),
   domainId: string(name='domain_id', description='用以唯一标识subdomain', example='"c477c77a-aea8-413e-9ff0-30c24eeeae01"'),
   name?: string(name='name', description='名称', example='"subdomain-1"'),
@@ -22464,15 +22494,6 @@ model UploadPartInfo {
   partNumber?: int64(name='part_number', description='PartNumber', example=1, format='int64', maximum=10000, minimum=1),
   partSize?: int64(name='part_size', description='PartSize：', example=1024, format='int64', maximum=5368709120),
   uploadUrl?: string(name='upload_url', description='upload_url', example='https://ccp.data.aliyuncs.com/xxx/xxx?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx&partNumber=1&uploadId=0CC175B9C0F1B6A831C399E269772661'),
-}
-
-/**
- * 
- */
-model UrlInfo {
-  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
 }
 
 /**
@@ -22805,6 +22826,8 @@ model BaseDomainResponse {
   roleConfig?: RoleConfig(name='role_config'),
   serviceCode?: string(name='service_code', description='Domain ServiceCode', example='"edm"'),
   sharable?: boolean(name='sharable', description='是否开启了共享', example=true),
+  shareDetail?: ShareDetailResponse(name='share_detail'),
+  shareLinkDetail?: ShareDetailResponse(name='share_link_detail'),
   shareLinkEnabled?: boolean(name='share_link_enabled', description='是否开启了分享', example=true),
   sizeQuota?: int64(name='size_quota', description='容量配额', format='int64'),
   spiInstanceId?: string(name='spi_instance_id', description='SPI 实例 id'),
@@ -22816,6 +22839,7 @@ model BaseDomainResponse {
   userSingleDriveEnabled?: boolean(name='user_single_drive_enabled', description='user和group只能有一个drive的开关'),
   videoPreviewAppConfig?: VideoPreviewAppConfig(name='video_preview_app_config'),
   videoPreviewConfig?: VideoPreviewConfig(name='video_preview_config'),
+  watermarkConfig?: BaseWatermarkConfigResponse(name='watermark_config'),
 }
 
 /**
@@ -22863,6 +22887,8 @@ model BaseSubdomainResponse {
   groupSingeDriveEnable?: boolean(name='group_singe_drive_enable'),
   name: string(name='name', description='名称', example='"subdomain-1"'),
   sharable?: boolean(name='sharable', description='是否开启了共享', example=true),
+  shareDetail?: ShareDetailResponse(name='share_detail'),
+  shareLinkDetail?: ShareDetailResponse(name='share_link_detail'),
   shareLinkEnabled?: boolean(name='share_link_enabled', description='是否开启了分享', example=true),
   status?: int64(name='status', description='当前状态', example=0, format='int64'),
   subdomainId: string(name='subdomain_id', description='用以唯一标识subdomain', example='"c477c77a-aea8-413e-9ff0-30c24eeeae01"'),
@@ -22875,6 +22901,23 @@ model BaseSubdomainResponse {
 }
 
 /**
+ * base watermark config response
+ */
+model BaseWatermarkConfigResponse {
+  bold?: boolean(name='bold'),
+  displayAccessUserName?: boolean(name='display_access_user_name'),
+  displayCustomText?: string(name='display_custom_text'),
+  displayShareLinkCreatorName?: boolean(name='display_shareLink_creator_name'),
+  enableDocPreview?: boolean(name='enable_doc_preview'),
+  fillStyle?: string(name='fill_style'),
+  font?: string(name='font'),
+  horizontal?: int64(name='horizontal', format='int64'),
+  rotate?: int64(name='rotate', format='int64'),
+  size?: int64(name='size', format='int64'),
+  vertical?: int64(name='vertical', format='int64'),
+}
+
+/**
  * Benefit base info of benefit package
  */
 model BenefitBaseResponse {
@@ -22882,6 +22925,15 @@ model BenefitBaseResponse {
   benefitMeta?: BenefitMetaResponse(name='benefit_meta'),
   benefitPkgId?: string(name='benefit_pkg_id', description='权益包的唯一标识', example='value_add'),
   name?: string(name='name', description='权益的名称', example='人脸聚类'),
+}
+
+/**
+ * 权益元数据
+ */
+model BenefitMeta {
+  config?: string(name='config'),
+  enabled?: boolean(name='enabled'),
+  quota?: int64(name='quota', format='int64'),
 }
 
 /**
@@ -22961,6 +23013,8 @@ model CreateDomainResponse {
   roleConfig?: RoleConfig(name='role_config'),
   serviceCode?: string(name='service_code', description='Domain ServiceCode', example='"edm"'),
   sharable?: boolean(name='sharable', description='是否开启了共享', example=true),
+  shareDetail?: ShareDetailResponse(name='share_detail'),
+  shareLinkDetail?: ShareDetailResponse(name='share_link_detail'),
   shareLinkEnabled?: boolean(name='share_link_enabled', description='是否开启了分享', example=true),
   sizeQuota?: int64(name='size_quota', description='容量配额', format='int64'),
   spiInstanceId?: string(name='spi_instance_id', description='SPI 实例 id'),
@@ -22972,6 +23026,7 @@ model CreateDomainResponse {
   userSingleDriveEnabled?: boolean(name='user_single_drive_enabled', description='user和group只能有一个drive的开关'),
   videoPreviewAppConfig?: VideoPreviewAppConfig(name='video_preview_app_config'),
   videoPreviewConfig?: VideoPreviewConfig(name='video_preview_config'),
+  watermarkConfig?: BaseWatermarkConfigResponse(name='watermark_config'),
 }
 
 /**
@@ -23225,6 +23280,8 @@ model GetDomainResponse {
   roleConfig?: RoleConfig(name='role_config'),
   serviceCode?: string(name='service_code', description='Domain ServiceCode', example='"edm"'),
   sharable?: boolean(name='sharable', description='是否开启了共享', example=true),
+  shareDetail?: ShareDetailResponse(name='share_detail'),
+  shareLinkDetail?: ShareDetailResponse(name='share_link_detail'),
   shareLinkEnabled?: boolean(name='share_link_enabled', description='是否开启了分享', example=true),
   sizeQuota?: int64(name='size_quota', description='容量配额', format='int64'),
   spiInstanceId?: string(name='spi_instance_id', description='SPI 实例 id'),
@@ -23236,6 +23293,7 @@ model GetDomainResponse {
   userSingleDriveEnabled?: boolean(name='user_single_drive_enabled', description='user和group只能有一个drive的开关'),
   videoPreviewAppConfig?: VideoPreviewAppConfig(name='video_preview_app_config'),
   videoPreviewConfig?: VideoPreviewConfig(name='video_preview_config'),
+  watermarkConfig?: BaseWatermarkConfigResponse(name='watermark_config'),
 }
 
 /**
@@ -23252,12 +23310,22 @@ model GetIdentityToBenefitPkgMappingRequest {
 /**
  * 
  */
+model GetSubdomainRequest {
+  httpheaders?: map[string]string,
+  subdomainId: string(name='subdomain_id', description='用以唯一标识subdomain', example='"c477c77a-aea8-413e-9ff0-30c24eeeae01"'),
+}
+
+/**
+ * 
+ */
 model GetSubdomainResponse {
   createdAt: string(name='created_at', description='创建时间', example='"2021-02-05T06:07:05.181Z"'),
   description: string(name='description', description='描述', example='"描述-1"'),
   groupSingeDriveEnable?: boolean(name='group_singe_drive_enable'),
   name: string(name='name', description='名称', example='"subdomain-1"'),
   sharable?: boolean(name='sharable', description='是否开启了共享', example=true),
+  shareDetail?: ShareDetailResponse(name='share_detail'),
+  shareLinkDetail?: ShareDetailResponse(name='share_link_detail'),
   shareLinkEnabled?: boolean(name='share_link_enabled', description='是否开启了分享', example=true),
   status?: int64(name='status', description='当前状态', example=0, format='int64'),
   subdomainId: string(name='subdomain_id', description='用以唯一标识subdomain', example='"c477c77a-aea8-413e-9ff0-30c24eeeae01"'),
@@ -23417,6 +23485,7 @@ model LogDetail {
   groupLogDetail?: GroupLogDetail(name='group_log_detail'),
   membershipLogDetail?: MembershipLogDetail(name='membership_log_detail'),
   roleLogDetail?: RoleLogDetail(name='role_log_detail'),
+  securityLogDetail?: SecurityLogDetail(name='security_log_detail'),
   shareLinkLogDetail?: ShareLinkLogDetail(name='share_link_log_detail'),
   shareLogDetail?: ShareLogDetail(name='share_log_detail'),
   userLogDetail?: UserLogDetail(name='user_log_detail'),
@@ -23500,6 +23569,13 @@ model SearchAuditLogResponse {
 /**
  * 
  */
+model SecurityLogDetail {
+  watermarkConfig?: WatermarkEnableConfig(name='watermark_config'),
+}
+
+/**
+ * 
+ */
 model SetBizCNameCertResponse {
   bizCname?: string(name='biz_cname', description='biz cname', example='api.yoursite.com'),
   certName?: string(name='cert_name', description='cert name', example='xdrv2020cert'),
@@ -23526,6 +23602,14 @@ model SetDataCNameResponse {
   dataCname: string(name='data_cname', description='datacname', example='pdsdata-cn-hangzhou.yoursite.com'),
   domainId: string(name='domain_id', description='domain ID', example='sz100'),
   location: string(name='location', description='data location', example='cn-hangzhou'),
+}
+
+/**
+ * share detail response
+ */
+model ShareDetailResponse {
+  accessQuota?: int64(name='access_quota', description='企业未配置独立域名时，允许的访问次数', example=500, format='int64'),
+  exceedAccessQuota?: boolean(name='exceed_access_quota', description='企业未配置独立域名时，是否超过允许的访问次数', example=false),
 }
 
 /**
@@ -23565,29 +23649,6 @@ model ShareLogSettingDetail {
   expiration?: string(name='expiration', description='expiration', example='2006-01-02T15:04:05.999Z'),
   permissions?: [ string ](name='permissions', description='permissions', example='', items='{"type":"string"}'),
   roleId?: string(name='role_id', description='role_id', example='SystemFileViewer'),
-}
-
-/**
- * 
- */
-model Store {
-  accelerateEndpoint?: string(name='accelerate_endpoint', description='全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  basePath?: string(name='base_path', description='存储公共前缀', example='pds-data'),
-  bucket: string(name='bucket', description='bucket名称', example='data-sz-bucket'),
-  cdnEndpoint?: string(name='cdn_endpoint', description='内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  cdnUrlAuthKey?: string(name='cdn_url_auth_key', description='CDN鉴权key'),
-  customizedAccelerateEndpoint?: string(name='customized_accelerate_endpoint', description='自定义全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  customizedCdnEndpoint?: string(name='customized_cdn_endpoint', description='自定义内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  customizedEndpoint?: string(name='customized_endpoint', description='自定义Public访问地址', example='https://{regionid}-data.mydomain.com/'),
-  customizedInternalEndpoint?: string(name='customized_internal_endpoint', description='自定义vpc访问地址', example='https://{regionid}-data-vpc.mydomain.com/'),
-  endpoint: string(name='endpoint', description='Public访问地址', example='https://{domainid}.{regionid}.data.aliyunpds.com/'),
-  internalEndpoint?: string(name='internal_endpoint', description='vpc访问地址', example='https://{domainid}.{regionid}.data-vpc.aliyunpds.com/'),
-  location?: string(name='location', description='地点', example='cn-hangzhou'),
-  ownership: string(name='ownership', description='存储归属，system表示系统提供，custom表示使用自己的存储', enum='system, custom', example='system'),
-  policy: string(name='policy', description='Policy授权,system类型store会将bucket权限授予当前云账号'),
-  roleArn?: string(name='role_arn', description='访问Bucket的角色ARN', example='acs:oss:*:*:*'),
-  storeId: string(name='store_id', description='store ID', example='101'),
-  type: string(name='type', description='存储类型，当前只支持oss', enum='oss', example='oss'),
 }
 
 /**
@@ -23651,6 +23712,8 @@ model UpdateDomainResponse {
   roleConfig?: RoleConfig(name='role_config'),
   serviceCode?: string(name='service_code', description='Domain ServiceCode', example='"edm"'),
   sharable?: boolean(name='sharable', description='是否开启了共享', example=true),
+  shareDetail?: ShareDetailResponse(name='share_detail'),
+  shareLinkDetail?: ShareDetailResponse(name='share_link_detail'),
   shareLinkEnabled?: boolean(name='share_link_enabled', description='是否开启了分享', example=true),
   sizeQuota?: int64(name='size_quota', description='容量配额', format='int64'),
   spiInstanceId?: string(name='spi_instance_id', description='SPI 实例 id'),
@@ -23662,6 +23725,7 @@ model UpdateDomainResponse {
   userSingleDriveEnabled?: boolean(name='user_single_drive_enabled', description='user和group只能有一个drive的开关'),
   videoPreviewAppConfig?: VideoPreviewAppConfig(name='video_preview_app_config'),
   videoPreviewConfig?: VideoPreviewConfig(name='video_preview_config'),
+  watermarkConfig?: BaseWatermarkConfigResponse(name='watermark_config'),
 }
 
 /**
@@ -23684,6 +23748,22 @@ model UpdateIdentityToBenefitPkgMappingRequest {
  * 
  */
 model UpdateIdentityToBenefitPkgMappingResponse {
+}
+
+/**
+ * 
+ */
+model UpdateSubdomainRequest {
+  httpheaders?: map[string]string,
+  description?: string(name='description', description='描述', example='"描述-1"'),
+  name?: string(name='name', description='名称', example='"subdomain-1"'),
+  sharable?: boolean(name='sharable', description='是否开启了共享', example=true),
+  shareLinkEnabled?: boolean(name='share_link_enabled', description='是否开启了分享', example=true),
+  status?: int64(name='status', description='状态', example=0, format='int64'),
+  subdomainId: string(name='subdomain_id', description='用以唯一标识subdomain', example='"c477c77a-aea8-413e-9ff0-30c24eeeae01"'),
+  totalSize?: int64(name='total_size', description='逻辑空间quota，-1表示无限制，单位为字节', example=1073741824, format='int64'),
+  usedSizeRefreshInterval?: int64(name='used_size_refresh_interval', description='逻辑空间刷新周期，单位：秒', example=60, format='int64'),
+  userQuota?: int64(name='user_quota', description='用户数quota，-1表示无限制', example=100, format='int64'),
 }
 
 /**
@@ -23953,6 +24033,23 @@ model VideoPreviewVideoTemplate {
 }
 
 /**
+ * WatermarkEnableConfig 功能开关及显示配置
+ */
+model WatermarkEnableConfig {
+  displayAccessUserName?: boolean(name='display_access_user_name'),
+  displayCustomText?: string(name='display_custom_text'),
+  displayShareLinkCreatorName?: boolean(name='display_shareLink_creator_name'),
+  enableDocPreview?: boolean(name='enable_doc_preview'),
+}
+
+/**
+ * 
+ */
+model CCPArchiveResponse {
+  state?: string(name='state'),
+}
+
+/**
  * 处罚文件请求
  */
 model PunishFileRequest {
@@ -23961,6 +24058,15 @@ model PunishFileRequest {
   driveId?: string(name='drive_id'),
   fileId?: string(name='file_id'),
   punishReason?: string(name='punish_reason'),
+}
+
+/**
+ * 
+ */
+model UrlInfo {
+  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
 }
 
 /**
@@ -24081,15 +24187,6 @@ model BaseMembershipResponse {
   subGroupId?: string(name='sub_group_id'),
   updatedAt?: int64(name='updated_at', description='updated_at', example=1111, format='int64'),
   userId?: string(name='user_id'),
-}
-
-/**
- * 
- */
-model BaseRequest {
-  category: string(name='category', description='category', example='"album"'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  viewId: string(name='view_id', description='view_id', example='123'),
 }
 
 /**
@@ -24935,23 +25032,6 @@ model ParseTimeRange {
 /**
  * 
  */
-model Permission {
-  ActionList?: [ ActionItem ](name='ActionList', items='{"$ref":"#/definitions/ActionItem"}'),
-  CreatedAt?: int64(name='CreatedAt', format='int64'),
-  Deleted?: string(name='Deleted'),
-  DomainID?: string(name='DomainID'),
-  IdentityID?: string(name='IdentityID'),
-  IdentityType?: string(name='IdentityType'),
-  Resource?: string(name='Resource'),
-  ResourceType?: string(name='ResourceType'),
-  SequenceNumber?: int64(name='SequenceNumber', format='int64'),
-  UpdatedAt?: int64(name='UpdatedAt', format='int64'),
-  UpdatedBy?: string(name='UpdatedBy'),
-}
-
-/**
- * 
- */
 model RemarksQueryRequest {
   in?: [ string ](name='in', items='{"type":"string"}'),
   notIn?: [ string ](name='not_in', items='{"type":"string"}'),
@@ -25267,16 +25347,6 @@ model UpdateViewRequest {
 /**
  * 
  */
-model ViewFileBaseRequest {
-  category: string(name='category', description='category', example='"album"'),
-  driveId?: string(name='drive_id'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  viewId: string(name='view_id', description='view_id', example='123'),
-}
-
-/**
- * 
- */
 model ViewFileItem {
   actionList?: [ string ](name='action_list', description='action_list', items='{"type":"string"}'),
   autoDeleteLeftSec?: int64(name='auto_delete_left_sec', description='auto_delete_left_sec', example=10000, format='int64'),
@@ -25408,6 +25478,15 @@ model SubdomainSummaryResponse {
   statisticsTime?: int64(name='statistics_time', description='statistics_time', format='int64'),
   usedSize?: int64(name='used_size', description='used_size', example=1, format='int64'),
   userCount?: int64(name='user_count', description='user_count', example=1, format='int64'),
+}
+
+/**
+ * 
+ */
+model BaseRequest {
+  category: string(name='category', description='category', example='"album"'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  viewId: string(name='view_id', description='view_id', example='123'),
 }
 
 function getPathname(nickname: string, path: string): string {
