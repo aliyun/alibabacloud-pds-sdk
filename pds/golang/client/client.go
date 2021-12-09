@@ -1821,7 +1821,7 @@ func (s *ListManageSharingFileModel) SetBody(v *ListFileResponse) *ListManageSha
 
 type ListPermissionModel struct {
   Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-  Body *FilePermissionMember `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+  Body []*FilePermissionMember `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
 }
 
 func (s ListPermissionModel) String() string {
@@ -1837,7 +1837,7 @@ func (s *ListPermissionModel) SetHeaders(v map[string]*string) *ListPermissionMo
   return s
 }
 
-func (s *ListPermissionModel) SetBody(v *FilePermissionMember) *ListPermissionModel {
+func (s *ListPermissionModel) SetBody(v []*FilePermissionMember) *ListPermissionModel {
   s.Body = v
   return s
 }
@@ -4502,6 +4502,70 @@ func (s *ArchiveListResponse) SetTaskId(v string) *ArchiveListResponse {
 }
 
 /**
+ * 获取解压任务状态
+ */
+type ArchiveStatusRequest struct {
+  // 格式类型，如果是uc，使用特殊格式
+  Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+  RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+  ArchiveType *string `json:"archive_type,omitempty" xml:"archive_type,omitempty"`
+  DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+  // TODO 增加对ShareID的支持
+  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+  FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+  Password *string `json:"password,omitempty" xml:"password,omitempty"`
+  TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s ArchiveStatusRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ArchiveStatusRequest) GoString() string {
+  return s.String()
+}
+
+func (s *ArchiveStatusRequest) SetFormat(v string) *ArchiveStatusRequest {
+  s.Format = &v
+  return s
+}
+
+func (s *ArchiveStatusRequest) SetRequestID(v string) *ArchiveStatusRequest {
+  s.RequestID = &v
+  return s
+}
+
+func (s *ArchiveStatusRequest) SetArchiveType(v string) *ArchiveStatusRequest {
+  s.ArchiveType = &v
+  return s
+}
+
+func (s *ArchiveStatusRequest) SetDomainId(v string) *ArchiveStatusRequest {
+  s.DomainId = &v
+  return s
+}
+
+func (s *ArchiveStatusRequest) SetDriveId(v string) *ArchiveStatusRequest {
+  s.DriveId = &v
+  return s
+}
+
+func (s *ArchiveStatusRequest) SetFileId(v string) *ArchiveStatusRequest {
+  s.FileId = &v
+  return s
+}
+
+func (s *ArchiveStatusRequest) SetPassword(v string) *ArchiveStatusRequest {
+  s.Password = &v
+  return s
+}
+
+func (s *ArchiveStatusRequest) SetTaskId(v string) *ArchiveStatusRequest {
+  s.TaskId = &v
+  return s
+}
+
+/**
  * ArchiveStatusResponse response
  */
 type ArchiveStatusResponse struct {
@@ -6848,26 +6912,6 @@ func (s *CCPArchiveRequest) SetFileId(v string) *CCPArchiveRequest {
 
 func (s *CCPArchiveRequest) SetPassword(v string) *CCPArchiveRequest {
   s.Password = &v
-  return s
-}
-
-/**
- * 
- */
-type CCPArchiveResponse struct {
-  State *string `json:"state,omitempty" xml:"state,omitempty"`
-}
-
-func (s CCPArchiveResponse) String() string {
-  return tea.Prettify(s)
-}
-
-func (s CCPArchiveResponse) GoString() string {
-  return s.String()
-}
-
-func (s *CCPArchiveResponse) SetState(v string) *CCPArchiveResponse {
-  s.State = &v
   return s
 }
 
@@ -11596,6 +11640,8 @@ type GetDomainRequest struct {
   // Domain ID
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty" require:"true"`
   GetBenefit *bool `json:"get_benefit,omitempty" xml:"get_benefit,omitempty"`
+  // 是否获取share/share_link详情
+  GetShareDetail *bool `json:"get_share_detail,omitempty" xml:"get_share_detail,omitempty"`
 }
 
 func (s GetDomainRequest) String() string {
@@ -11613,6 +11659,11 @@ func (s *GetDomainRequest) SetDomainId(v string) *GetDomainRequest {
 
 func (s *GetDomainRequest) SetGetBenefit(v bool) *GetDomainRequest {
   s.GetBenefit = &v
+  return s
+}
+
+func (s *GetDomainRequest) SetGetShareDetail(v bool) *GetDomainRequest {
+  s.GetShareDetail = &v
   return s
 }
 
@@ -14124,33 +14175,34 @@ func (s *GetShareResponse) SetUpdatedAt(v string) *GetShareResponse {
 /**
  * 
  */
-type GetSubdomainRequest struct {
-  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+type GetSubdomainMgmtRequest struct {
   // 用以唯一标识domain
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty" require:"true"`
+  // 是否获取share/share_link详情
+  GetShareDetail *bool `json:"get_share_detail,omitempty" xml:"get_share_detail,omitempty"`
   // 用以唯一标识subdomain
   SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty" require:"true"`
 }
 
-func (s GetSubdomainRequest) String() string {
+func (s GetSubdomainMgmtRequest) String() string {
   return tea.Prettify(s)
 }
 
-func (s GetSubdomainRequest) GoString() string {
+func (s GetSubdomainMgmtRequest) GoString() string {
   return s.String()
 }
 
-func (s *GetSubdomainRequest) SetHttpheaders(v map[string]*string) *GetSubdomainRequest {
-  s.Httpheaders = v
-  return s
-}
-
-func (s *GetSubdomainRequest) SetDomainId(v string) *GetSubdomainRequest {
+func (s *GetSubdomainMgmtRequest) SetDomainId(v string) *GetSubdomainMgmtRequest {
   s.DomainId = &v
   return s
 }
 
-func (s *GetSubdomainRequest) SetSubdomainId(v string) *GetSubdomainRequest {
+func (s *GetSubdomainMgmtRequest) SetGetShareDetail(v bool) *GetSubdomainMgmtRequest {
+  s.GetShareDetail = &v
+  return s
+}
+
+func (s *GetSubdomainMgmtRequest) SetSubdomainId(v string) *GetSubdomainMgmtRequest {
   s.SubdomainId = &v
   return s
 }
@@ -20933,6 +20985,139 @@ func (s *SimpleStreamInfo) SetUrl(v string) *SimpleStreamInfo {
 /**
  * 
  */
+type Store struct {
+  // 全球加速地址
+  AccelerateEndpoint *string `json:"accelerate_endpoint,omitempty" xml:"accelerate_endpoint,omitempty"`
+  // 存储公共前缀
+  BasePath *string `json:"base_path,omitempty" xml:"base_path,omitempty"`
+  // bucket名称
+  Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty" require:"true"`
+  // 内容分发地址
+  CdnEndpoint *string `json:"cdn_endpoint,omitempty" xml:"cdn_endpoint,omitempty"`
+  // CDN鉴权key
+  CdnUrlAuthKey *string `json:"cdn_url_auth_key,omitempty" xml:"cdn_url_auth_key,omitempty"`
+  // 自定义全球加速地址
+  CustomizedAccelerateEndpoint *string `json:"customized_accelerate_endpoint,omitempty" xml:"customized_accelerate_endpoint,omitempty"`
+  // 自定义内容分发地址
+  CustomizedCdnEndpoint *string `json:"customized_cdn_endpoint,omitempty" xml:"customized_cdn_endpoint,omitempty"`
+  // 自定义Public访问地址
+  CustomizedEndpoint *string `json:"customized_endpoint,omitempty" xml:"customized_endpoint,omitempty"`
+  // 自定义vpc访问地址
+  CustomizedInternalEndpoint *string `json:"customized_internal_endpoint,omitempty" xml:"customized_internal_endpoint,omitempty"`
+  // Public访问地址
+  Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty" require:"true"`
+  // vpc访问地址
+  InternalEndpoint *string `json:"internal_endpoint,omitempty" xml:"internal_endpoint,omitempty"`
+  // 地点
+  Location *string `json:"location,omitempty" xml:"location,omitempty"`
+  // 存储归属，system表示系统提供，custom表示使用自己的存储
+  Ownership *string `json:"ownership,omitempty" xml:"ownership,omitempty" require:"true"`
+  // Policy授权,system类型store会将bucket权限授予当前云账号
+  Policy *string `json:"policy,omitempty" xml:"policy,omitempty" require:"true"`
+  // 访问Bucket的角色ARN
+  RoleArn *string `json:"role_arn,omitempty" xml:"role_arn,omitempty"`
+  // store ID
+  StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty" require:"true"`
+  // 存储类型，当前只支持oss
+  Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
+}
+
+func (s Store) String() string {
+  return tea.Prettify(s)
+}
+
+func (s Store) GoString() string {
+  return s.String()
+}
+
+func (s *Store) SetAccelerateEndpoint(v string) *Store {
+  s.AccelerateEndpoint = &v
+  return s
+}
+
+func (s *Store) SetBasePath(v string) *Store {
+  s.BasePath = &v
+  return s
+}
+
+func (s *Store) SetBucket(v string) *Store {
+  s.Bucket = &v
+  return s
+}
+
+func (s *Store) SetCdnEndpoint(v string) *Store {
+  s.CdnEndpoint = &v
+  return s
+}
+
+func (s *Store) SetCdnUrlAuthKey(v string) *Store {
+  s.CdnUrlAuthKey = &v
+  return s
+}
+
+func (s *Store) SetCustomizedAccelerateEndpoint(v string) *Store {
+  s.CustomizedAccelerateEndpoint = &v
+  return s
+}
+
+func (s *Store) SetCustomizedCdnEndpoint(v string) *Store {
+  s.CustomizedCdnEndpoint = &v
+  return s
+}
+
+func (s *Store) SetCustomizedEndpoint(v string) *Store {
+  s.CustomizedEndpoint = &v
+  return s
+}
+
+func (s *Store) SetCustomizedInternalEndpoint(v string) *Store {
+  s.CustomizedInternalEndpoint = &v
+  return s
+}
+
+func (s *Store) SetEndpoint(v string) *Store {
+  s.Endpoint = &v
+  return s
+}
+
+func (s *Store) SetInternalEndpoint(v string) *Store {
+  s.InternalEndpoint = &v
+  return s
+}
+
+func (s *Store) SetLocation(v string) *Store {
+  s.Location = &v
+  return s
+}
+
+func (s *Store) SetOwnership(v string) *Store {
+  s.Ownership = &v
+  return s
+}
+
+func (s *Store) SetPolicy(v string) *Store {
+  s.Policy = &v
+  return s
+}
+
+func (s *Store) SetRoleArn(v string) *Store {
+  s.RoleArn = &v
+  return s
+}
+
+func (s *Store) SetStoreId(v string) *Store {
+  s.StoreId = &v
+  return s
+}
+
+func (s *Store) SetType(v string) *Store {
+  s.Type = &v
+  return s
+}
+
+/**
+ * 
+ */
 type StoreFile struct {
   DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -24567,8 +24752,7 @@ func (s *UpdateShareResponse) SetUpdatedAt(v string) *UpdateShareResponse {
 /**
  * 
  */
-type UpdateSubdomainRequest struct {
-  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+type UpdateSubdomainMgmtRequest struct {
   // 描述
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   // 用以唯一标识subdomain
@@ -24591,65 +24775,60 @@ type UpdateSubdomainRequest struct {
   UserQuota *int64 `json:"user_quota,omitempty" xml:"user_quota,omitempty"`
 }
 
-func (s UpdateSubdomainRequest) String() string {
+func (s UpdateSubdomainMgmtRequest) String() string {
   return tea.Prettify(s)
 }
 
-func (s UpdateSubdomainRequest) GoString() string {
+func (s UpdateSubdomainMgmtRequest) GoString() string {
   return s.String()
 }
 
-func (s *UpdateSubdomainRequest) SetHttpheaders(v map[string]*string) *UpdateSubdomainRequest {
-  s.Httpheaders = v
-  return s
-}
-
-func (s *UpdateSubdomainRequest) SetDescription(v string) *UpdateSubdomainRequest {
+func (s *UpdateSubdomainMgmtRequest) SetDescription(v string) *UpdateSubdomainMgmtRequest {
   s.Description = &v
   return s
 }
 
-func (s *UpdateSubdomainRequest) SetDomainId(v string) *UpdateSubdomainRequest {
+func (s *UpdateSubdomainMgmtRequest) SetDomainId(v string) *UpdateSubdomainMgmtRequest {
   s.DomainId = &v
   return s
 }
 
-func (s *UpdateSubdomainRequest) SetName(v string) *UpdateSubdomainRequest {
+func (s *UpdateSubdomainMgmtRequest) SetName(v string) *UpdateSubdomainMgmtRequest {
   s.Name = &v
   return s
 }
 
-func (s *UpdateSubdomainRequest) SetSharable(v bool) *UpdateSubdomainRequest {
+func (s *UpdateSubdomainMgmtRequest) SetSharable(v bool) *UpdateSubdomainMgmtRequest {
   s.Sharable = &v
   return s
 }
 
-func (s *UpdateSubdomainRequest) SetShareLinkEnabled(v bool) *UpdateSubdomainRequest {
+func (s *UpdateSubdomainMgmtRequest) SetShareLinkEnabled(v bool) *UpdateSubdomainMgmtRequest {
   s.ShareLinkEnabled = &v
   return s
 }
 
-func (s *UpdateSubdomainRequest) SetStatus(v int64) *UpdateSubdomainRequest {
+func (s *UpdateSubdomainMgmtRequest) SetStatus(v int64) *UpdateSubdomainMgmtRequest {
   s.Status = &v
   return s
 }
 
-func (s *UpdateSubdomainRequest) SetSubdomainId(v string) *UpdateSubdomainRequest {
+func (s *UpdateSubdomainMgmtRequest) SetSubdomainId(v string) *UpdateSubdomainMgmtRequest {
   s.SubdomainId = &v
   return s
 }
 
-func (s *UpdateSubdomainRequest) SetTotalSize(v int64) *UpdateSubdomainRequest {
+func (s *UpdateSubdomainMgmtRequest) SetTotalSize(v int64) *UpdateSubdomainMgmtRequest {
   s.TotalSize = &v
   return s
 }
 
-func (s *UpdateSubdomainRequest) SetUsedSizeRefreshInterval(v int64) *UpdateSubdomainRequest {
+func (s *UpdateSubdomainMgmtRequest) SetUsedSizeRefreshInterval(v int64) *UpdateSubdomainMgmtRequest {
   s.UsedSizeRefreshInterval = &v
   return s
 }
 
-func (s *UpdateSubdomainRequest) SetUserQuota(v int64) *UpdateSubdomainRequest {
+func (s *UpdateSubdomainMgmtRequest) SetUserQuota(v int64) *UpdateSubdomainMgmtRequest {
   s.UserQuota = &v
   return s
 }
@@ -24713,41 +24892,6 @@ func (s *UploadPartInfo) SetPartSize(v int64) *UploadPartInfo {
 
 func (s *UploadPartInfo) SetUploadUrl(v string) *UploadPartInfo {
   s.UploadUrl = &v
-  return s
-}
-
-/**
- * 
- */
-type UrlInfo struct {
-  // download_url
-  DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
-  // thumbnail
-  Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
-  // url
-  Url *string `json:"url,omitempty" xml:"url,omitempty"`
-}
-
-func (s UrlInfo) String() string {
-  return tea.Prettify(s)
-}
-
-func (s UrlInfo) GoString() string {
-  return s.String()
-}
-
-func (s *UrlInfo) SetDownloadUrl(v string) *UrlInfo {
-  s.DownloadUrl = &v
-  return s
-}
-
-func (s *UrlInfo) SetThumbnail(v string) *UrlInfo {
-  s.Thumbnail = &v
-  return s
-}
-
-func (s *UrlInfo) SetUrl(v string) *UrlInfo {
-  s.Url = &v
   return s
 }
 
@@ -26131,6 +26275,8 @@ type BaseDomainResponse struct {
   ServiceCode *string `json:"service_code,omitempty" xml:"service_code,omitempty"`
   // 是否开启了共享
   Sharable *bool `json:"sharable,omitempty" xml:"sharable,omitempty"`
+  ShareDetail *ShareDetailResponse `json:"share_detail,omitempty" xml:"share_detail,omitempty"`
+  ShareLinkDetail *ShareDetailResponse `json:"share_link_detail,omitempty" xml:"share_link_detail,omitempty"`
   // 是否开启了分享
   ShareLinkEnabled *bool `json:"share_link_enabled,omitempty" xml:"share_link_enabled,omitempty"`
   // 容量配额
@@ -26151,6 +26297,7 @@ type BaseDomainResponse struct {
   UserSingleDriveEnabled *bool `json:"user_single_drive_enabled,omitempty" xml:"user_single_drive_enabled,omitempty"`
   VideoPreviewAppConfig *VideoPreviewAppConfig `json:"video_preview_app_config,omitempty" xml:"video_preview_app_config,omitempty"`
   VideoPreviewConfig *VideoPreviewConfig `json:"video_preview_config,omitempty" xml:"video_preview_config,omitempty"`
+  WatermarkConfig *BaseWatermarkConfigResponse `json:"watermark_config,omitempty" xml:"watermark_config,omitempty"`
 }
 
 func (s BaseDomainResponse) String() string {
@@ -26386,6 +26533,16 @@ func (s *BaseDomainResponse) SetSharable(v bool) *BaseDomainResponse {
   return s
 }
 
+func (s *BaseDomainResponse) SetShareDetail(v *ShareDetailResponse) *BaseDomainResponse {
+  s.ShareDetail = v
+  return s
+}
+
+func (s *BaseDomainResponse) SetShareLinkDetail(v *ShareDetailResponse) *BaseDomainResponse {
+  s.ShareLinkDetail = v
+  return s
+}
+
 func (s *BaseDomainResponse) SetShareLinkEnabled(v bool) *BaseDomainResponse {
   s.ShareLinkEnabled = &v
   return s
@@ -26438,6 +26595,11 @@ func (s *BaseDomainResponse) SetVideoPreviewAppConfig(v *VideoPreviewAppConfig) 
 
 func (s *BaseDomainResponse) SetVideoPreviewConfig(v *VideoPreviewConfig) *BaseDomainResponse {
   s.VideoPreviewConfig = v
+  return s
+}
+
+func (s *BaseDomainResponse) SetWatermarkConfig(v *BaseWatermarkConfigResponse) *BaseDomainResponse {
+  s.WatermarkConfig = v
   return s
 }
 
@@ -26610,6 +26772,8 @@ type BaseSubdomainResponse struct {
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
   // 是否开启了共享
   Sharable *bool `json:"sharable,omitempty" xml:"sharable,omitempty"`
+  ShareDetail *ShareDetailResponse `json:"share_detail,omitempty" xml:"share_detail,omitempty"`
+  ShareLinkDetail *ShareDetailResponse `json:"share_link_detail,omitempty" xml:"share_link_detail,omitempty"`
   // 是否开启了分享
   ShareLinkEnabled *bool `json:"share_link_enabled,omitempty" xml:"share_link_enabled,omitempty"`
   // 当前状态
@@ -26662,6 +26826,16 @@ func (s *BaseSubdomainResponse) SetSharable(v bool) *BaseSubdomainResponse {
   return s
 }
 
+func (s *BaseSubdomainResponse) SetShareDetail(v *ShareDetailResponse) *BaseSubdomainResponse {
+  s.ShareDetail = v
+  return s
+}
+
+func (s *BaseSubdomainResponse) SetShareLinkDetail(v *ShareDetailResponse) *BaseSubdomainResponse {
+  s.ShareLinkDetail = v
+  return s
+}
+
 func (s *BaseSubdomainResponse) SetShareLinkEnabled(v bool) *BaseSubdomainResponse {
   s.ShareLinkEnabled = &v
   return s
@@ -26708,6 +26882,86 @@ func (s *BaseSubdomainResponse) SetUserSingleDriveEnabled(v bool) *BaseSubdomain
 }
 
 /**
+ * base watermark config response
+ */
+type BaseWatermarkConfigResponse struct {
+  Bold *bool `json:"bold,omitempty" xml:"bold,omitempty"`
+  DisplayAccessUserName *bool `json:"display_access_user_name,omitempty" xml:"display_access_user_name,omitempty"`
+  DisplayCustomText *string `json:"display_custom_text,omitempty" xml:"display_custom_text,omitempty"`
+  DisplayShareLinkCreatorName *bool `json:"display_shareLink_creator_name,omitempty" xml:"display_shareLink_creator_name,omitempty"`
+  EnableDocPreview *bool `json:"enable_doc_preview,omitempty" xml:"enable_doc_preview,omitempty"`
+  FillStyle *string `json:"fill_style,omitempty" xml:"fill_style,omitempty"`
+  Font *string `json:"font,omitempty" xml:"font,omitempty"`
+  Horizontal *int64 `json:"horizontal,omitempty" xml:"horizontal,omitempty"`
+  Rotate *int64 `json:"rotate,omitempty" xml:"rotate,omitempty"`
+  Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+  Vertical *int64 `json:"vertical,omitempty" xml:"vertical,omitempty"`
+}
+
+func (s BaseWatermarkConfigResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BaseWatermarkConfigResponse) GoString() string {
+  return s.String()
+}
+
+func (s *BaseWatermarkConfigResponse) SetBold(v bool) *BaseWatermarkConfigResponse {
+  s.Bold = &v
+  return s
+}
+
+func (s *BaseWatermarkConfigResponse) SetDisplayAccessUserName(v bool) *BaseWatermarkConfigResponse {
+  s.DisplayAccessUserName = &v
+  return s
+}
+
+func (s *BaseWatermarkConfigResponse) SetDisplayCustomText(v string) *BaseWatermarkConfigResponse {
+  s.DisplayCustomText = &v
+  return s
+}
+
+func (s *BaseWatermarkConfigResponse) SetDisplayShareLinkCreatorName(v bool) *BaseWatermarkConfigResponse {
+  s.DisplayShareLinkCreatorName = &v
+  return s
+}
+
+func (s *BaseWatermarkConfigResponse) SetEnableDocPreview(v bool) *BaseWatermarkConfigResponse {
+  s.EnableDocPreview = &v
+  return s
+}
+
+func (s *BaseWatermarkConfigResponse) SetFillStyle(v string) *BaseWatermarkConfigResponse {
+  s.FillStyle = &v
+  return s
+}
+
+func (s *BaseWatermarkConfigResponse) SetFont(v string) *BaseWatermarkConfigResponse {
+  s.Font = &v
+  return s
+}
+
+func (s *BaseWatermarkConfigResponse) SetHorizontal(v int64) *BaseWatermarkConfigResponse {
+  s.Horizontal = &v
+  return s
+}
+
+func (s *BaseWatermarkConfigResponse) SetRotate(v int64) *BaseWatermarkConfigResponse {
+  s.Rotate = &v
+  return s
+}
+
+func (s *BaseWatermarkConfigResponse) SetSize(v int64) *BaseWatermarkConfigResponse {
+  s.Size = &v
+  return s
+}
+
+func (s *BaseWatermarkConfigResponse) SetVertical(v int64) *BaseWatermarkConfigResponse {
+  s.Vertical = &v
+  return s
+}
+
+/**
  * Benefit base info of benefit package
  */
 type BenefitBaseResponse struct {
@@ -26745,6 +26999,38 @@ func (s *BenefitBaseResponse) SetBenefitPkgId(v string) *BenefitBaseResponse {
 
 func (s *BenefitBaseResponse) SetName(v string) *BenefitBaseResponse {
   s.Name = &v
+  return s
+}
+
+/**
+ * 权益元数据
+ */
+type BenefitMeta struct {
+  Config *string `json:"config,omitempty" xml:"config,omitempty"`
+  Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+  Quota *int64 `json:"quota,omitempty" xml:"quota,omitempty"`
+}
+
+func (s BenefitMeta) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BenefitMeta) GoString() string {
+  return s.String()
+}
+
+func (s *BenefitMeta) SetConfig(v string) *BenefitMeta {
+  s.Config = &v
+  return s
+}
+
+func (s *BenefitMeta) SetEnabled(v bool) *BenefitMeta {
+  s.Enabled = &v
+  return s
+}
+
+func (s *BenefitMeta) SetQuota(v int64) *BenefitMeta {
+  s.Quota = &v
   return s
 }
 
@@ -26943,6 +27229,8 @@ type CreateDomainResponse struct {
   ServiceCode *string `json:"service_code,omitempty" xml:"service_code,omitempty"`
   // 是否开启了共享
   Sharable *bool `json:"sharable,omitempty" xml:"sharable,omitempty"`
+  ShareDetail *ShareDetailResponse `json:"share_detail,omitempty" xml:"share_detail,omitempty"`
+  ShareLinkDetail *ShareDetailResponse `json:"share_link_detail,omitempty" xml:"share_link_detail,omitempty"`
   // 是否开启了分享
   ShareLinkEnabled *bool `json:"share_link_enabled,omitempty" xml:"share_link_enabled,omitempty"`
   // 容量配额
@@ -26963,6 +27251,7 @@ type CreateDomainResponse struct {
   UserSingleDriveEnabled *bool `json:"user_single_drive_enabled,omitempty" xml:"user_single_drive_enabled,omitempty"`
   VideoPreviewAppConfig *VideoPreviewAppConfig `json:"video_preview_app_config,omitempty" xml:"video_preview_app_config,omitempty"`
   VideoPreviewConfig *VideoPreviewConfig `json:"video_preview_config,omitempty" xml:"video_preview_config,omitempty"`
+  WatermarkConfig *BaseWatermarkConfigResponse `json:"watermark_config,omitempty" xml:"watermark_config,omitempty"`
 }
 
 func (s CreateDomainResponse) String() string {
@@ -27198,6 +27487,16 @@ func (s *CreateDomainResponse) SetSharable(v bool) *CreateDomainResponse {
   return s
 }
 
+func (s *CreateDomainResponse) SetShareDetail(v *ShareDetailResponse) *CreateDomainResponse {
+  s.ShareDetail = v
+  return s
+}
+
+func (s *CreateDomainResponse) SetShareLinkDetail(v *ShareDetailResponse) *CreateDomainResponse {
+  s.ShareLinkDetail = v
+  return s
+}
+
 func (s *CreateDomainResponse) SetShareLinkEnabled(v bool) *CreateDomainResponse {
   s.ShareLinkEnabled = &v
   return s
@@ -27250,6 +27549,11 @@ func (s *CreateDomainResponse) SetVideoPreviewAppConfig(v *VideoPreviewAppConfig
 
 func (s *CreateDomainResponse) SetVideoPreviewConfig(v *VideoPreviewConfig) *CreateDomainResponse {
   s.VideoPreviewConfig = v
+  return s
+}
+
+func (s *CreateDomainResponse) SetWatermarkConfig(v *BaseWatermarkConfigResponse) *CreateDomainResponse {
+  s.WatermarkConfig = v
   return s
 }
 
@@ -28175,6 +28479,8 @@ type GetDomainResponse struct {
   ServiceCode *string `json:"service_code,omitempty" xml:"service_code,omitempty"`
   // 是否开启了共享
   Sharable *bool `json:"sharable,omitempty" xml:"sharable,omitempty"`
+  ShareDetail *ShareDetailResponse `json:"share_detail,omitempty" xml:"share_detail,omitempty"`
+  ShareLinkDetail *ShareDetailResponse `json:"share_link_detail,omitempty" xml:"share_link_detail,omitempty"`
   // 是否开启了分享
   ShareLinkEnabled *bool `json:"share_link_enabled,omitempty" xml:"share_link_enabled,omitempty"`
   // 容量配额
@@ -28195,6 +28501,7 @@ type GetDomainResponse struct {
   UserSingleDriveEnabled *bool `json:"user_single_drive_enabled,omitempty" xml:"user_single_drive_enabled,omitempty"`
   VideoPreviewAppConfig *VideoPreviewAppConfig `json:"video_preview_app_config,omitempty" xml:"video_preview_app_config,omitempty"`
   VideoPreviewConfig *VideoPreviewConfig `json:"video_preview_config,omitempty" xml:"video_preview_config,omitempty"`
+  WatermarkConfig *BaseWatermarkConfigResponse `json:"watermark_config,omitempty" xml:"watermark_config,omitempty"`
 }
 
 func (s GetDomainResponse) String() string {
@@ -28430,6 +28737,16 @@ func (s *GetDomainResponse) SetSharable(v bool) *GetDomainResponse {
   return s
 }
 
+func (s *GetDomainResponse) SetShareDetail(v *ShareDetailResponse) *GetDomainResponse {
+  s.ShareDetail = v
+  return s
+}
+
+func (s *GetDomainResponse) SetShareLinkDetail(v *ShareDetailResponse) *GetDomainResponse {
+  s.ShareLinkDetail = v
+  return s
+}
+
 func (s *GetDomainResponse) SetShareLinkEnabled(v bool) *GetDomainResponse {
   s.ShareLinkEnabled = &v
   return s
@@ -28485,6 +28802,11 @@ func (s *GetDomainResponse) SetVideoPreviewConfig(v *VideoPreviewConfig) *GetDom
   return s
 }
 
+func (s *GetDomainResponse) SetWatermarkConfig(v *BaseWatermarkConfigResponse) *GetDomainResponse {
+  s.WatermarkConfig = v
+  return s
+}
+
 /**
  * get identity to benefit pkg mapping request
  */
@@ -28536,6 +28858,33 @@ func (s *GetIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *GetId
 /**
  * 
  */
+type GetSubdomainRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 用以唯一标识subdomain
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty" require:"true"`
+}
+
+func (s GetSubdomainRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s GetSubdomainRequest) GoString() string {
+  return s.String()
+}
+
+func (s *GetSubdomainRequest) SetHttpheaders(v map[string]*string) *GetSubdomainRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *GetSubdomainRequest) SetSubdomainId(v string) *GetSubdomainRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+/**
+ * 
+ */
 type GetSubdomainResponse struct {
   // 创建时间
   CreatedAt *string `json:"created_at,omitempty" xml:"created_at,omitempty" require:"true"`
@@ -28546,6 +28895,8 @@ type GetSubdomainResponse struct {
   Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true"`
   // 是否开启了共享
   Sharable *bool `json:"sharable,omitempty" xml:"sharable,omitempty"`
+  ShareDetail *ShareDetailResponse `json:"share_detail,omitempty" xml:"share_detail,omitempty"`
+  ShareLinkDetail *ShareDetailResponse `json:"share_link_detail,omitempty" xml:"share_link_detail,omitempty"`
   // 是否开启了分享
   ShareLinkEnabled *bool `json:"share_link_enabled,omitempty" xml:"share_link_enabled,omitempty"`
   // 当前状态
@@ -28595,6 +28946,16 @@ func (s *GetSubdomainResponse) SetName(v string) *GetSubdomainResponse {
 
 func (s *GetSubdomainResponse) SetSharable(v bool) *GetSubdomainResponse {
   s.Sharable = &v
+  return s
+}
+
+func (s *GetSubdomainResponse) SetShareDetail(v *ShareDetailResponse) *GetSubdomainResponse {
+  s.ShareDetail = v
+  return s
+}
+
+func (s *GetSubdomainResponse) SetShareLinkDetail(v *ShareDetailResponse) *GetSubdomainResponse {
+  s.ShareLinkDetail = v
   return s
 }
 
@@ -29192,6 +29553,7 @@ type LogDetail struct {
   GroupLogDetail *GroupLogDetail `json:"group_log_detail,omitempty" xml:"group_log_detail,omitempty"`
   MembershipLogDetail *MembershipLogDetail `json:"membership_log_detail,omitempty" xml:"membership_log_detail,omitempty"`
   RoleLogDetail *RoleLogDetail `json:"role_log_detail,omitempty" xml:"role_log_detail,omitempty"`
+  SecurityLogDetail *SecurityLogDetail `json:"security_log_detail,omitempty" xml:"security_log_detail,omitempty"`
   ShareLinkLogDetail *ShareLinkLogDetail `json:"share_link_log_detail,omitempty" xml:"share_link_log_detail,omitempty"`
   ShareLogDetail *ShareLogDetail `json:"share_log_detail,omitempty" xml:"share_log_detail,omitempty"`
   UserLogDetail *UserLogDetail `json:"user_log_detail,omitempty" xml:"user_log_detail,omitempty"`
@@ -29232,6 +29594,11 @@ func (s *LogDetail) SetMembershipLogDetail(v *MembershipLogDetail) *LogDetail {
 
 func (s *LogDetail) SetRoleLogDetail(v *RoleLogDetail) *LogDetail {
   s.RoleLogDetail = v
+  return s
+}
+
+func (s *LogDetail) SetSecurityLogDetail(v *SecurityLogDetail) *LogDetail {
+  s.SecurityLogDetail = v
   return s
 }
 
@@ -29546,6 +29913,26 @@ func (s *SearchAuditLogResponse) SetNextMarker(v string) *SearchAuditLogResponse
 /**
  * 
  */
+type SecurityLogDetail struct {
+  WatermarkConfig *WatermarkEnableConfig `json:"watermark_config,omitempty" xml:"watermark_config,omitempty"`
+}
+
+func (s SecurityLogDetail) String() string {
+  return tea.Prettify(s)
+}
+
+func (s SecurityLogDetail) GoString() string {
+  return s.String()
+}
+
+func (s *SecurityLogDetail) SetWatermarkConfig(v *WatermarkEnableConfig) *SecurityLogDetail {
+  s.WatermarkConfig = v
+  return s
+}
+
+/**
+ * 
+ */
 type SetBizCNameCertResponse struct {
   // biz cname
   BizCname *string `json:"biz_cname,omitempty" xml:"biz_cname,omitempty"`
@@ -29672,6 +30059,34 @@ func (s *SetDataCNameResponse) SetDomainId(v string) *SetDataCNameResponse {
 
 func (s *SetDataCNameResponse) SetLocation(v string) *SetDataCNameResponse {
   s.Location = &v
+  return s
+}
+
+/**
+ * share detail response
+ */
+type ShareDetailResponse struct {
+  // 企业未配置独立域名时，允许的访问次数
+  AccessQuota *int64 `json:"access_quota,omitempty" xml:"access_quota,omitempty"`
+  // 企业未配置独立域名时，是否超过允许的访问次数
+  ExceedAccessQuota *bool `json:"exceed_access_quota,omitempty" xml:"exceed_access_quota,omitempty"`
+}
+
+func (s ShareDetailResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s ShareDetailResponse) GoString() string {
+  return s.String()
+}
+
+func (s *ShareDetailResponse) SetAccessQuota(v int64) *ShareDetailResponse {
+  s.AccessQuota = &v
+  return s
+}
+
+func (s *ShareDetailResponse) SetExceedAccessQuota(v bool) *ShareDetailResponse {
+  s.ExceedAccessQuota = &v
   return s
 }
 
@@ -29866,139 +30281,6 @@ func (s *ShareLogSettingDetail) SetRoleId(v string) *ShareLogSettingDetail {
 /**
  * 
  */
-type Store struct {
-  // 全球加速地址
-  AccelerateEndpoint *string `json:"accelerate_endpoint,omitempty" xml:"accelerate_endpoint,omitempty"`
-  // 存储公共前缀
-  BasePath *string `json:"base_path,omitempty" xml:"base_path,omitempty"`
-  // bucket名称
-  Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty" require:"true"`
-  // 内容分发地址
-  CdnEndpoint *string `json:"cdn_endpoint,omitempty" xml:"cdn_endpoint,omitempty"`
-  // CDN鉴权key
-  CdnUrlAuthKey *string `json:"cdn_url_auth_key,omitempty" xml:"cdn_url_auth_key,omitempty"`
-  // 自定义全球加速地址
-  CustomizedAccelerateEndpoint *string `json:"customized_accelerate_endpoint,omitempty" xml:"customized_accelerate_endpoint,omitempty"`
-  // 自定义内容分发地址
-  CustomizedCdnEndpoint *string `json:"customized_cdn_endpoint,omitempty" xml:"customized_cdn_endpoint,omitempty"`
-  // 自定义Public访问地址
-  CustomizedEndpoint *string `json:"customized_endpoint,omitempty" xml:"customized_endpoint,omitempty"`
-  // 自定义vpc访问地址
-  CustomizedInternalEndpoint *string `json:"customized_internal_endpoint,omitempty" xml:"customized_internal_endpoint,omitempty"`
-  // Public访问地址
-  Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty" require:"true"`
-  // vpc访问地址
-  InternalEndpoint *string `json:"internal_endpoint,omitempty" xml:"internal_endpoint,omitempty"`
-  // 地点
-  Location *string `json:"location,omitempty" xml:"location,omitempty"`
-  // 存储归属，system表示系统提供，custom表示使用自己的存储
-  Ownership *string `json:"ownership,omitempty" xml:"ownership,omitempty" require:"true"`
-  // Policy授权,system类型store会将bucket权限授予当前云账号
-  Policy *string `json:"policy,omitempty" xml:"policy,omitempty" require:"true"`
-  // 访问Bucket的角色ARN
-  RoleArn *string `json:"role_arn,omitempty" xml:"role_arn,omitempty"`
-  // store ID
-  StoreId *string `json:"store_id,omitempty" xml:"store_id,omitempty" require:"true"`
-  // 存储类型，当前只支持oss
-  Type *string `json:"type,omitempty" xml:"type,omitempty" require:"true"`
-}
-
-func (s Store) String() string {
-  return tea.Prettify(s)
-}
-
-func (s Store) GoString() string {
-  return s.String()
-}
-
-func (s *Store) SetAccelerateEndpoint(v string) *Store {
-  s.AccelerateEndpoint = &v
-  return s
-}
-
-func (s *Store) SetBasePath(v string) *Store {
-  s.BasePath = &v
-  return s
-}
-
-func (s *Store) SetBucket(v string) *Store {
-  s.Bucket = &v
-  return s
-}
-
-func (s *Store) SetCdnEndpoint(v string) *Store {
-  s.CdnEndpoint = &v
-  return s
-}
-
-func (s *Store) SetCdnUrlAuthKey(v string) *Store {
-  s.CdnUrlAuthKey = &v
-  return s
-}
-
-func (s *Store) SetCustomizedAccelerateEndpoint(v string) *Store {
-  s.CustomizedAccelerateEndpoint = &v
-  return s
-}
-
-func (s *Store) SetCustomizedCdnEndpoint(v string) *Store {
-  s.CustomizedCdnEndpoint = &v
-  return s
-}
-
-func (s *Store) SetCustomizedEndpoint(v string) *Store {
-  s.CustomizedEndpoint = &v
-  return s
-}
-
-func (s *Store) SetCustomizedInternalEndpoint(v string) *Store {
-  s.CustomizedInternalEndpoint = &v
-  return s
-}
-
-func (s *Store) SetEndpoint(v string) *Store {
-  s.Endpoint = &v
-  return s
-}
-
-func (s *Store) SetInternalEndpoint(v string) *Store {
-  s.InternalEndpoint = &v
-  return s
-}
-
-func (s *Store) SetLocation(v string) *Store {
-  s.Location = &v
-  return s
-}
-
-func (s *Store) SetOwnership(v string) *Store {
-  s.Ownership = &v
-  return s
-}
-
-func (s *Store) SetPolicy(v string) *Store {
-  s.Policy = &v
-  return s
-}
-
-func (s *Store) SetRoleArn(v string) *Store {
-  s.RoleArn = &v
-  return s
-}
-
-func (s *Store) SetStoreId(v string) *Store {
-  s.StoreId = &v
-  return s
-}
-
-func (s *Store) SetType(v string) *Store {
-  s.Type = &v
-  return s
-}
-
-/**
- * 
- */
 type SubdomainSetBizCNameResponse struct {
   // biz cname
   BizCname *string `json:"biz_cname,omitempty" xml:"biz_cname,omitempty"`
@@ -30134,6 +30416,8 @@ type UpdateDomainResponse struct {
   ServiceCode *string `json:"service_code,omitempty" xml:"service_code,omitempty"`
   // 是否开启了共享
   Sharable *bool `json:"sharable,omitempty" xml:"sharable,omitempty"`
+  ShareDetail *ShareDetailResponse `json:"share_detail,omitempty" xml:"share_detail,omitempty"`
+  ShareLinkDetail *ShareDetailResponse `json:"share_link_detail,omitempty" xml:"share_link_detail,omitempty"`
   // 是否开启了分享
   ShareLinkEnabled *bool `json:"share_link_enabled,omitempty" xml:"share_link_enabled,omitempty"`
   // 容量配额
@@ -30154,6 +30438,7 @@ type UpdateDomainResponse struct {
   UserSingleDriveEnabled *bool `json:"user_single_drive_enabled,omitempty" xml:"user_single_drive_enabled,omitempty"`
   VideoPreviewAppConfig *VideoPreviewAppConfig `json:"video_preview_app_config,omitempty" xml:"video_preview_app_config,omitempty"`
   VideoPreviewConfig *VideoPreviewConfig `json:"video_preview_config,omitempty" xml:"video_preview_config,omitempty"`
+  WatermarkConfig *BaseWatermarkConfigResponse `json:"watermark_config,omitempty" xml:"watermark_config,omitempty"`
 }
 
 func (s UpdateDomainResponse) String() string {
@@ -30389,6 +30674,16 @@ func (s *UpdateDomainResponse) SetSharable(v bool) *UpdateDomainResponse {
   return s
 }
 
+func (s *UpdateDomainResponse) SetShareDetail(v *ShareDetailResponse) *UpdateDomainResponse {
+  s.ShareDetail = v
+  return s
+}
+
+func (s *UpdateDomainResponse) SetShareLinkDetail(v *ShareDetailResponse) *UpdateDomainResponse {
+  s.ShareLinkDetail = v
+  return s
+}
+
 func (s *UpdateDomainResponse) SetShareLinkEnabled(v bool) *UpdateDomainResponse {
   s.ShareLinkEnabled = &v
   return s
@@ -30441,6 +30736,11 @@ func (s *UpdateDomainResponse) SetVideoPreviewAppConfig(v *VideoPreviewAppConfig
 
 func (s *UpdateDomainResponse) SetVideoPreviewConfig(v *VideoPreviewConfig) *UpdateDomainResponse {
   s.VideoPreviewConfig = v
+  return s
+}
+
+func (s *UpdateDomainResponse) SetWatermarkConfig(v *BaseWatermarkConfigResponse) *UpdateDomainResponse {
+  s.WatermarkConfig = v
   return s
 }
 
@@ -30539,6 +30839,89 @@ func (s UpdateIdentityToBenefitPkgMappingResponse) String() string {
 
 func (s UpdateIdentityToBenefitPkgMappingResponse) GoString() string {
   return s.String()
+}
+
+/**
+ * 
+ */
+type UpdateSubdomainRequest struct {
+  Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
+  // 描述
+  Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // 名称
+  Name *string `json:"name,omitempty" xml:"name,omitempty"`
+  // 是否开启了共享
+  Sharable *bool `json:"sharable,omitempty" xml:"sharable,omitempty"`
+  // 是否开启了分享
+  ShareLinkEnabled *bool `json:"share_link_enabled,omitempty" xml:"share_link_enabled,omitempty"`
+  // 状态
+  Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
+  // 用以唯一标识subdomain
+  SubdomainId *string `json:"subdomain_id,omitempty" xml:"subdomain_id,omitempty" require:"true"`
+  // 逻辑空间quota，-1表示无限制，单位为字节
+  TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
+  // 逻辑空间刷新周期，单位：秒
+  UsedSizeRefreshInterval *int64 `json:"used_size_refresh_interval,omitempty" xml:"used_size_refresh_interval,omitempty"`
+  // 用户数quota，-1表示无限制
+  UserQuota *int64 `json:"user_quota,omitempty" xml:"user_quota,omitempty"`
+}
+
+func (s UpdateSubdomainRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UpdateSubdomainRequest) GoString() string {
+  return s.String()
+}
+
+func (s *UpdateSubdomainRequest) SetHttpheaders(v map[string]*string) *UpdateSubdomainRequest {
+  s.Httpheaders = v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetDescription(v string) *UpdateSubdomainRequest {
+  s.Description = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetName(v string) *UpdateSubdomainRequest {
+  s.Name = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetSharable(v bool) *UpdateSubdomainRequest {
+  s.Sharable = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetShareLinkEnabled(v bool) *UpdateSubdomainRequest {
+  s.ShareLinkEnabled = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetStatus(v int64) *UpdateSubdomainRequest {
+  s.Status = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetSubdomainId(v string) *UpdateSubdomainRequest {
+  s.SubdomainId = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetTotalSize(v int64) *UpdateSubdomainRequest {
+  s.TotalSize = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetUsedSizeRefreshInterval(v int64) *UpdateSubdomainRequest {
+  s.UsedSizeRefreshInterval = &v
+  return s
+}
+
+func (s *UpdateSubdomainRequest) SetUserQuota(v int64) *UpdateSubdomainRequest {
+  s.UserQuota = &v
+  return s
 }
 
 /**
@@ -31590,6 +31973,64 @@ func (s *VideoPreviewVideoTemplate) SetWidth(v int64) *VideoPreviewVideoTemplate
 }
 
 /**
+ * WatermarkEnableConfig 功能开关及显示配置
+ */
+type WatermarkEnableConfig struct {
+  DisplayAccessUserName *bool `json:"display_access_user_name,omitempty" xml:"display_access_user_name,omitempty"`
+  DisplayCustomText *string `json:"display_custom_text,omitempty" xml:"display_custom_text,omitempty"`
+  DisplayShareLinkCreatorName *bool `json:"display_shareLink_creator_name,omitempty" xml:"display_shareLink_creator_name,omitempty"`
+  EnableDocPreview *bool `json:"enable_doc_preview,omitempty" xml:"enable_doc_preview,omitempty"`
+}
+
+func (s WatermarkEnableConfig) String() string {
+  return tea.Prettify(s)
+}
+
+func (s WatermarkEnableConfig) GoString() string {
+  return s.String()
+}
+
+func (s *WatermarkEnableConfig) SetDisplayAccessUserName(v bool) *WatermarkEnableConfig {
+  s.DisplayAccessUserName = &v
+  return s
+}
+
+func (s *WatermarkEnableConfig) SetDisplayCustomText(v string) *WatermarkEnableConfig {
+  s.DisplayCustomText = &v
+  return s
+}
+
+func (s *WatermarkEnableConfig) SetDisplayShareLinkCreatorName(v bool) *WatermarkEnableConfig {
+  s.DisplayShareLinkCreatorName = &v
+  return s
+}
+
+func (s *WatermarkEnableConfig) SetEnableDocPreview(v bool) *WatermarkEnableConfig {
+  s.EnableDocPreview = &v
+  return s
+}
+
+/**
+ * 
+ */
+type CCPArchiveResponse struct {
+  State *string `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s CCPArchiveResponse) String() string {
+  return tea.Prettify(s)
+}
+
+func (s CCPArchiveResponse) GoString() string {
+  return s.String()
+}
+
+func (s *CCPArchiveResponse) SetState(v string) *CCPArchiveResponse {
+  s.State = &v
+  return s
+}
+
+/**
  * 处罚文件请求
  */
 type PunishFileRequest struct {
@@ -31630,6 +32071,41 @@ func (s *PunishFileRequest) SetFileId(v string) *PunishFileRequest {
 
 func (s *PunishFileRequest) SetPunishReason(v string) *PunishFileRequest {
   s.PunishReason = &v
+  return s
+}
+
+/**
+ * 
+ */
+type UrlInfo struct {
+  // download_url
+  DownloadUrl *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
+  // thumbnail
+  Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+  // url
+  Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s UrlInfo) String() string {
+  return tea.Prettify(s)
+}
+
+func (s UrlInfo) GoString() string {
+  return s.String()
+}
+
+func (s *UrlInfo) SetDownloadUrl(v string) *UrlInfo {
+  s.DownloadUrl = &v
+  return s
+}
+
+func (s *UrlInfo) SetThumbnail(v string) *UrlInfo {
+  s.Thumbnail = &v
+  return s
+}
+
+func (s *UrlInfo) SetUrl(v string) *UrlInfo {
+  s.Url = &v
   return s
 }
 
@@ -32141,41 +32617,6 @@ func (s *BaseMembershipResponse) SetUpdatedAt(v int64) *BaseMembershipResponse {
 
 func (s *BaseMembershipResponse) SetUserId(v string) *BaseMembershipResponse {
   s.UserId = &v
-  return s
-}
-
-/**
- * 
- */
-type BaseRequest struct {
-  // category
-  Category *string `json:"category,omitempty" xml:"category,omitempty" require:"true"`
-  // user_id
-  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-  // view_id
-  ViewId *string `json:"view_id,omitempty" xml:"view_id,omitempty" require:"true"`
-}
-
-func (s BaseRequest) String() string {
-  return tea.Prettify(s)
-}
-
-func (s BaseRequest) GoString() string {
-  return s.String()
-}
-
-func (s *BaseRequest) SetCategory(v string) *BaseRequest {
-  s.Category = &v
-  return s
-}
-
-func (s *BaseRequest) SetUserId(v string) *BaseRequest {
-  s.UserId = &v
-  return s
-}
-
-func (s *BaseRequest) SetViewId(v string) *BaseRequest {
-  s.ViewId = &v
   return s
 }
 
@@ -35842,86 +36283,6 @@ func (s *ParseTimeRange) SetStart(v string) *ParseTimeRange {
 /**
  * 
  */
-type Permission struct {
-  ActionList []*ActionItem `json:"ActionList,omitempty" xml:"ActionList,omitempty" type:"Repeated"`
-  CreatedAt *int64 `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-  Deleted *string `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-  DomainID *string `json:"DomainID,omitempty" xml:"DomainID,omitempty"`
-  IdentityID *string `json:"IdentityID,omitempty" xml:"IdentityID,omitempty"`
-  IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
-  Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-  ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-  SequenceNumber *int64 `json:"SequenceNumber,omitempty" xml:"SequenceNumber,omitempty"`
-  UpdatedAt *int64 `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
-  UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
-}
-
-func (s Permission) String() string {
-  return tea.Prettify(s)
-}
-
-func (s Permission) GoString() string {
-  return s.String()
-}
-
-func (s *Permission) SetActionList(v []*ActionItem) *Permission {
-  s.ActionList = v
-  return s
-}
-
-func (s *Permission) SetCreatedAt(v int64) *Permission {
-  s.CreatedAt = &v
-  return s
-}
-
-func (s *Permission) SetDeleted(v string) *Permission {
-  s.Deleted = &v
-  return s
-}
-
-func (s *Permission) SetDomainID(v string) *Permission {
-  s.DomainID = &v
-  return s
-}
-
-func (s *Permission) SetIdentityID(v string) *Permission {
-  s.IdentityID = &v
-  return s
-}
-
-func (s *Permission) SetIdentityType(v string) *Permission {
-  s.IdentityType = &v
-  return s
-}
-
-func (s *Permission) SetResource(v string) *Permission {
-  s.Resource = &v
-  return s
-}
-
-func (s *Permission) SetResourceType(v string) *Permission {
-  s.ResourceType = &v
-  return s
-}
-
-func (s *Permission) SetSequenceNumber(v int64) *Permission {
-  s.SequenceNumber = &v
-  return s
-}
-
-func (s *Permission) SetUpdatedAt(v int64) *Permission {
-  s.UpdatedAt = &v
-  return s
-}
-
-func (s *Permission) SetUpdatedBy(v string) *Permission {
-  s.UpdatedBy = &v
-  return s
-}
-
-/**
- * 
- */
 type RemarksQueryRequest struct {
   In []*string `json:"in,omitempty" xml:"in,omitempty" type:"Repeated"`
   NotIn []*string `json:"not_in,omitempty" xml:"not_in,omitempty" type:"Repeated"`
@@ -37363,47 +37724,6 @@ func (s *UpdateViewRequest) SetViewId(v string) *UpdateViewRequest {
 /**
  * 
  */
-type ViewFileBaseRequest struct {
-  // category
-  Category *string `json:"category,omitempty" xml:"category,omitempty" require:"true"`
-  DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-  // user_id
-  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-  // view_id
-  ViewId *string `json:"view_id,omitempty" xml:"view_id,omitempty" require:"true"`
-}
-
-func (s ViewFileBaseRequest) String() string {
-  return tea.Prettify(s)
-}
-
-func (s ViewFileBaseRequest) GoString() string {
-  return s.String()
-}
-
-func (s *ViewFileBaseRequest) SetCategory(v string) *ViewFileBaseRequest {
-  s.Category = &v
-  return s
-}
-
-func (s *ViewFileBaseRequest) SetDriveId(v string) *ViewFileBaseRequest {
-  s.DriveId = &v
-  return s
-}
-
-func (s *ViewFileBaseRequest) SetUserId(v string) *ViewFileBaseRequest {
-  s.UserId = &v
-  return s
-}
-
-func (s *ViewFileBaseRequest) SetViewId(v string) *ViewFileBaseRequest {
-  s.ViewId = &v
-  return s
-}
-
-/**
- * 
- */
 type ViewFileItem struct {
   // action_list
   ActionList []*string `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
@@ -38073,6 +38393,41 @@ func (s *SubdomainSummaryResponse) SetUsedSize(v int64) *SubdomainSummaryRespons
 
 func (s *SubdomainSummaryResponse) SetUserCount(v int64) *SubdomainSummaryResponse {
   s.UserCount = &v
+  return s
+}
+
+/**
+ * 
+ */
+type BaseRequest struct {
+  // category
+  Category *string `json:"category,omitempty" xml:"category,omitempty" require:"true"`
+  // user_id
+  UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+  // view_id
+  ViewId *string `json:"view_id,omitempty" xml:"view_id,omitempty" require:"true"`
+}
+
+func (s BaseRequest) String() string {
+  return tea.Prettify(s)
+}
+
+func (s BaseRequest) GoString() string {
+  return s.String()
+}
+
+func (s *BaseRequest) SetCategory(v string) *BaseRequest {
+  s.Category = &v
+  return s
+}
+
+func (s *BaseRequest) SetUserId(v string) *BaseRequest {
+  s.UserId = &v
+  return s
+}
+
+func (s *BaseRequest) SetViewId(v string) *BaseRequest {
+  s.ViewId = &v
   return s
 }
 
