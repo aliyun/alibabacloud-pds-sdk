@@ -24,12 +24,10 @@ public class UploadPartInfo extends TeaModel {
 
     // PartNumber
     @NameInMap("part_number")
-    @Validation(maximum = 10000, minimum = 1)
     public Long partNumber;
 
     // PartSize：
     @NameInMap("part_size")
-    @Validation(maximum = 5368709120D)
     public Long partSize;
 
     // upload_url

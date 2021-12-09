@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * 
  */
 public class ShareLogDetail extends TeaModel {
+    // disinherit_sub_group
+    @NameInMap("disinherit_sub_group")
+    public Boolean disinheritSubGroup;
+
     // expiration
     @NameInMap("expiration")
     public String expiration;
@@ -45,6 +49,14 @@ public class ShareLogDetail extends TeaModel {
     public static ShareLogDetail build(java.util.Map<String, ?> map) throws Exception {
         ShareLogDetail self = new ShareLogDetail();
         return TeaModel.build(map, self);
+    }
+
+    public ShareLogDetail setDisinheritSubGroup(Boolean disinheritSubGroup) {
+        this.disinheritSubGroup = disinheritSubGroup;
+        return this;
+    }
+    public Boolean getDisinheritSubGroup() {
+        return this.disinheritSubGroup;
     }
 
     public ShareLogDetail setExpiration(String expiration) {

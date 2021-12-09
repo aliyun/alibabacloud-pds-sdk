@@ -12,7 +12,6 @@ public class SearchAuditLogRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
-    @Validation(maximum = 200, minimum = 1)
     public Integer limit;
 
     // Marker

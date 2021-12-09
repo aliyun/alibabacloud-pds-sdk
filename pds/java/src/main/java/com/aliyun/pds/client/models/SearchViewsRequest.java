@@ -17,7 +17,6 @@ public class SearchViewsRequest extends TeaModel {
 
     // 每页大小限制
     @NameInMap("limit")
-    @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
     // marker
@@ -39,6 +38,10 @@ public class SearchViewsRequest extends TeaModel {
     // owner
     @NameInMap("owner")
     public String owner;
+
+    // return_total_count 是否返回查询总数
+    @NameInMap("return_total_count")
+    public Boolean returnTotalCount;
 
     // user_id
     @NameInMap("user_id")
@@ -111,6 +114,14 @@ public class SearchViewsRequest extends TeaModel {
     }
     public String getOwner() {
         return this.owner;
+    }
+
+    public SearchViewsRequest setReturnTotalCount(Boolean returnTotalCount) {
+        this.returnTotalCount = returnTotalCount;
+        return this;
+    }
+    public Boolean getReturnTotalCount() {
+        return this.returnTotalCount;
     }
 
     public SearchViewsRequest setUserId(String userId) {

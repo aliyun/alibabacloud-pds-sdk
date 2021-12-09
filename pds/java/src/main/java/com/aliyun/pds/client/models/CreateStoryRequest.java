@@ -39,6 +39,10 @@ public class CreateStoryRequest extends TeaModel {
     @NameInMap("story_start_time")
     public String storyStartTime;
 
+    // story_sub_type
+    @NameInMap("story_sub_type")
+    public String storySubType;
+
     // story_type
     @NameInMap("story_type")
     @Validation(required = true)
@@ -111,6 +115,14 @@ public class CreateStoryRequest extends TeaModel {
     }
     public String getStoryStartTime() {
         return this.storyStartTime;
+    }
+
+    public CreateStoryRequest setStorySubType(String storySubType) {
+        this.storySubType = storySubType;
+        return this;
+    }
+    public String getStorySubType() {
+        return this.storySubType;
     }
 
     public CreateStoryRequest setStoryType(String storyType) {

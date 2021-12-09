@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * 文件被共享/授权的成员列表
  */
 public class FilePermissionMember extends TeaModel {
+    // 子团队禁止继承此权限
+    @NameInMap("disinherit_sub_group")
+    public Boolean disinheritSubGroup;
+
     // 过期时间，传入时间戳，单位毫秒
     @NameInMap("expire_time")
     @Validation(required = true)
@@ -24,6 +28,14 @@ public class FilePermissionMember extends TeaModel {
     public static FilePermissionMember build(java.util.Map<String, ?> map) throws Exception {
         FilePermissionMember self = new FilePermissionMember();
         return TeaModel.build(map, self);
+    }
+
+    public FilePermissionMember setDisinheritSubGroup(Boolean disinheritSubGroup) {
+        this.disinheritSubGroup = disinheritSubGroup;
+        return this;
+    }
+    public Boolean getDisinheritSubGroup() {
+        return this.disinheritSubGroup;
     }
 
     public FilePermissionMember setExpireTime(Long expireTime) {

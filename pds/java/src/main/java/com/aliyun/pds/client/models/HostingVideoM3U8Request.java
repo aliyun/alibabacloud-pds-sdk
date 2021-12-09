@@ -18,7 +18,6 @@ public class HostingVideoM3U8Request extends TeaModel {
 
     // expire_sec
     @NameInMap("expire_sec")
-    @Validation(maximum = 86400, minimum = 60)
     public Long expireSec;
 
     // file_path

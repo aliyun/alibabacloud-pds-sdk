@@ -21,7 +21,6 @@ public class ListImageAddressGroupsRequest extends TeaModel {
 
     // 每页大小限制
     @NameInMap("limit")
-    @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
     // 翻页标记

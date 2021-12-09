@@ -16,7 +16,6 @@ public class GetShareLinkDownloadURLRequest extends TeaModel {
 
     // expire_sec
     @NameInMap("expire_sec")
-    @Validation(maximum = 600, minimum = 1)
     public Long expireSec;
 
     // file_id

@@ -25,6 +25,10 @@ public class FileAddPermissionRequest extends TeaModel {
     @Validation(required = true)
     public java.util.List<FilePermissionMember> memberList;
 
+    // 文件所属的subdomain_id
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     public static FileAddPermissionRequest build(java.util.Map<String, ?> map) throws Exception {
         FileAddPermissionRequest self = new FileAddPermissionRequest();
         return TeaModel.build(map, self);
@@ -60,6 +64,14 @@ public class FileAddPermissionRequest extends TeaModel {
     }
     public java.util.List<FilePermissionMember> getMemberList() {
         return this.memberList;
+    }
+
+    public FileAddPermissionRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
 }

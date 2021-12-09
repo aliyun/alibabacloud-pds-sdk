@@ -17,6 +17,9 @@ public class GetSubdomainResponse extends TeaModel {
     @Validation(required = true)
     public String description;
 
+    @NameInMap("group_singe_drive_enable")
+    public Boolean groupSingeDriveEnable;
+
     // 名称
     @NameInMap("name")
     @Validation(required = true)
@@ -25,6 +28,12 @@ public class GetSubdomainResponse extends TeaModel {
     // 是否开启了共享
     @NameInMap("sharable")
     public Boolean sharable;
+
+    @NameInMap("share_detail")
+    public ShareDetailResponse shareDetail;
+
+    @NameInMap("share_link_detail")
+    public ShareDetailResponse shareLinkDetail;
 
     // 是否开启了分享
     @NameInMap("share_link_enabled")
@@ -62,6 +71,9 @@ public class GetSubdomainResponse extends TeaModel {
     @Validation(required = true)
     public Long userQuota;
 
+    @NameInMap("user_single_drive_enabled")
+    public Boolean userSingleDriveEnabled;
+
     public static GetSubdomainResponse build(java.util.Map<String, ?> map) throws Exception {
         GetSubdomainResponse self = new GetSubdomainResponse();
         return TeaModel.build(map, self);
@@ -83,6 +95,14 @@ public class GetSubdomainResponse extends TeaModel {
         return this.description;
     }
 
+    public GetSubdomainResponse setGroupSingeDriveEnable(Boolean groupSingeDriveEnable) {
+        this.groupSingeDriveEnable = groupSingeDriveEnable;
+        return this;
+    }
+    public Boolean getGroupSingeDriveEnable() {
+        return this.groupSingeDriveEnable;
+    }
+
     public GetSubdomainResponse setName(String name) {
         this.name = name;
         return this;
@@ -97,6 +117,22 @@ public class GetSubdomainResponse extends TeaModel {
     }
     public Boolean getSharable() {
         return this.sharable;
+    }
+
+    public GetSubdomainResponse setShareDetail(ShareDetailResponse shareDetail) {
+        this.shareDetail = shareDetail;
+        return this;
+    }
+    public ShareDetailResponse getShareDetail() {
+        return this.shareDetail;
+    }
+
+    public GetSubdomainResponse setShareLinkDetail(ShareDetailResponse shareLinkDetail) {
+        this.shareLinkDetail = shareLinkDetail;
+        return this;
+    }
+    public ShareDetailResponse getShareLinkDetail() {
+        return this.shareLinkDetail;
     }
 
     public GetSubdomainResponse setShareLinkEnabled(Boolean shareLinkEnabled) {
@@ -161,6 +197,14 @@ public class GetSubdomainResponse extends TeaModel {
     }
     public Long getUserQuota() {
         return this.userQuota;
+    }
+
+    public GetSubdomainResponse setUserSingleDriveEnabled(Boolean userSingleDriveEnabled) {
+        this.userSingleDriveEnabled = userSingleDriveEnabled;
+        return this;
+    }
+    public Boolean getUserSingleDriveEnabled() {
+        return this.userSingleDriveEnabled;
     }
 
 }

@@ -19,6 +19,9 @@ public class ListReceivedFileRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     public static ListReceivedFileRequest build(java.util.Map<String, ?> map) throws Exception {
         ListReceivedFileRequest self = new ListReceivedFileRequest();
         return TeaModel.build(map, self);
@@ -46,6 +49,14 @@ public class ListReceivedFileRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ListReceivedFileRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
 }

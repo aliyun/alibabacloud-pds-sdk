@@ -11,6 +11,10 @@ public class UCCompleteFileResponse extends TeaModel {
     @NameInMap("action_list")
     public java.util.List<String> actionList;
 
+    // auto_delete_left_sec
+    @NameInMap("auto_delete_left_sec")
+    public Long autoDeleteLeftSec;
+
     // bucket_name
     @NameInMap("bucket_name")
     public String bucketName;
@@ -42,6 +46,18 @@ public class UCCompleteFileResponse extends TeaModel {
     // created_at
     @NameInMap("created_at")
     public String createdAt;
+
+    // creator_id
+    @NameInMap("creator_id")
+    public String creatorId;
+
+    // creator_name
+    @NameInMap("creator_name")
+    public String creatorName;
+
+    // creator_type
+    @NameInMap("creator_type")
+    public String creatorType;
 
     // custom_field_1
     @NameInMap("custom_field_1")
@@ -81,6 +97,10 @@ public class UCCompleteFileResponse extends TeaModel {
     @NameInMap("endpoint")
     public String endpoint;
 
+    // ex_fields_info
+    @NameInMap("ex_fields_info")
+    public java.util.Map<String, ?> exFieldsInfo;
+
     // file_extension
     @NameInMap("file_extension")
     public String fileExtension;
@@ -89,6 +109,10 @@ public class UCCompleteFileResponse extends TeaModel {
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
+
+    // TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
+    @NameInMap("file_path_type")
+    public String filePathType;
 
     // Hidden
     // type: boolean
@@ -113,6 +137,10 @@ public class UCCompleteFileResponse extends TeaModel {
     // last_modifier_type
     @NameInMap("last_modifier_type")
     public String lastModifierType;
+
+    // local_created_at
+    @NameInMap("local_created_at")
+    public String localCreatedAt;
 
     @NameInMap("meta")
     public String meta;
@@ -142,6 +170,10 @@ public class UCCompleteFileResponse extends TeaModel {
     // PunishFlag
     @NameInMap("punish_flag")
     public Long punishFlag;
+
+    // revision_id
+    @NameInMap("revision_id")
+    public String revisionId;
 
     @NameInMap("share_id")
     public String shareId;
@@ -214,6 +246,14 @@ public class UCCompleteFileResponse extends TeaModel {
         return this.actionList;
     }
 
+    public UCCompleteFileResponse setAutoDeleteLeftSec(Long autoDeleteLeftSec) {
+        this.autoDeleteLeftSec = autoDeleteLeftSec;
+        return this;
+    }
+    public Long getAutoDeleteLeftSec() {
+        return this.autoDeleteLeftSec;
+    }
+
     public UCCompleteFileResponse setBucketName(String bucketName) {
         this.bucketName = bucketName;
         return this;
@@ -276,6 +316,30 @@ public class UCCompleteFileResponse extends TeaModel {
     }
     public String getCreatedAt() {
         return this.createdAt;
+    }
+
+    public UCCompleteFileResponse setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
+        return this;
+    }
+    public String getCreatorId() {
+        return this.creatorId;
+    }
+
+    public UCCompleteFileResponse setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
+        return this;
+    }
+    public String getCreatorName() {
+        return this.creatorName;
+    }
+
+    public UCCompleteFileResponse setCreatorType(String creatorType) {
+        this.creatorType = creatorType;
+        return this;
+    }
+    public String getCreatorType() {
+        return this.creatorType;
     }
 
     public UCCompleteFileResponse setCustomField1(String customField1) {
@@ -350,6 +414,14 @@ public class UCCompleteFileResponse extends TeaModel {
         return this.endpoint;
     }
 
+    public UCCompleteFileResponse setExFieldsInfo(java.util.Map<String, ?> exFieldsInfo) {
+        this.exFieldsInfo = exFieldsInfo;
+        return this;
+    }
+    public java.util.Map<String, ?> getExFieldsInfo() {
+        return this.exFieldsInfo;
+    }
+
     public UCCompleteFileResponse setFileExtension(String fileExtension) {
         this.fileExtension = fileExtension;
         return this;
@@ -364,6 +436,14 @@ public class UCCompleteFileResponse extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public UCCompleteFileResponse setFilePathType(String filePathType) {
+        this.filePathType = filePathType;
+        return this;
+    }
+    public String getFilePathType() {
+        return this.filePathType;
     }
 
     public UCCompleteFileResponse setHidden(Boolean hidden) {
@@ -412,6 +492,14 @@ public class UCCompleteFileResponse extends TeaModel {
     }
     public String getLastModifierType() {
         return this.lastModifierType;
+    }
+
+    public UCCompleteFileResponse setLocalCreatedAt(String localCreatedAt) {
+        this.localCreatedAt = localCreatedAt;
+        return this;
+    }
+    public String getLocalCreatedAt() {
+        return this.localCreatedAt;
     }
 
     public UCCompleteFileResponse setMeta(String meta) {
@@ -468,6 +556,14 @@ public class UCCompleteFileResponse extends TeaModel {
     }
     public Long getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public UCCompleteFileResponse setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+        return this;
+    }
+    public String getRevisionId() {
+        return this.revisionId;
     }
 
     public UCCompleteFileResponse setShareId(String shareId) {

@@ -46,6 +46,12 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
     @NameInMap("template_list")
     public java.util.List<String> templateList;
 
+    @NameInMap("template_list_sorted")
+    public java.util.List<String> templateListSorted;
+
+    @NameInMap("template_name_map")
+    public java.util.Map<String, ?> templateNameMap;
+
     // Mode              string   `json:"mode"`               // 默认media模式
     // 以下几个count需要根据task的status和stage来判断, 当前实时转码的状态
     @NameInMap("ts_count_when_init_m3u8")
@@ -164,6 +170,22 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
     }
     public java.util.List<String> getTemplateList() {
         return this.templateList;
+    }
+
+    public VideoPreviewLiveTranscodingConfig setTemplateListSorted(java.util.List<String> templateListSorted) {
+        this.templateListSorted = templateListSorted;
+        return this;
+    }
+    public java.util.List<String> getTemplateListSorted() {
+        return this.templateListSorted;
+    }
+
+    public VideoPreviewLiveTranscodingConfig setTemplateNameMap(java.util.Map<String, ?> templateNameMap) {
+        this.templateNameMap = templateNameMap;
+        return this;
+    }
+    public java.util.Map<String, ?> getTemplateNameMap() {
+        return this.templateNameMap;
     }
 
     public VideoPreviewLiveTranscodingConfig setTsCountWhenInitM3u8(Long tsCountWhenInitM3u8) {

@@ -46,6 +46,10 @@ public class GetStoryResponse extends TeaModel {
     @NameInMap("story_start_time")
     public String storyStartTime;
 
+    // story_sub_type
+    @NameInMap("story_sub_type")
+    public String storySubType;
+
     // story_type
     @NameInMap("story_type")
     public String storyType;
@@ -137,6 +141,14 @@ public class GetStoryResponse extends TeaModel {
     }
     public String getStoryStartTime() {
         return this.storyStartTime;
+    }
+
+    public GetStoryResponse setStorySubType(String storySubType) {
+        this.storySubType = storySubType;
+        return this;
+    }
+    public String getStorySubType() {
+        return this.storySubType;
     }
 
     public GetStoryResponse setStoryType(String storyType) {
