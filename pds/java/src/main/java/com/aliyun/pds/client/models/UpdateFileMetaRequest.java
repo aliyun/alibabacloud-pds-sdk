@@ -40,6 +40,10 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("encrypt_mode")
     public String encryptMode;
 
+    // ex_fields_info
+    @NameInMap("ex_fields_info")
+    public java.util.Map<String, ?> exFieldsInfo;
+
     // file_id
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
@@ -167,6 +171,14 @@ public class UpdateFileMetaRequest extends TeaModel {
     }
     public String getEncryptMode() {
         return this.encryptMode;
+    }
+
+    public UpdateFileMetaRequest setExFieldsInfo(java.util.Map<String, ?> exFieldsInfo) {
+        this.exFieldsInfo = exFieldsInfo;
+        return this;
+    }
+    public java.util.Map<String, ?> getExFieldsInfo() {
+        return this.exFieldsInfo;
     }
 
     public UpdateFileMetaRequest setFileId(String fileId) {

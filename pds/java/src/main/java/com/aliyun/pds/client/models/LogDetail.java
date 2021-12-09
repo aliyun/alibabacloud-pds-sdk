@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class LogDetail extends TeaModel {
+    @NameInMap("account_log_detail")
+    public AccountLogDetail accountLogDetail;
+
     @NameInMap("drive_log_detail")
     public DriveLogDetail driveLogDetail;
 
@@ -22,6 +25,9 @@ public class LogDetail extends TeaModel {
     @NameInMap("role_log_detail")
     public RoleLogDetail roleLogDetail;
 
+    @NameInMap("security_log_detail")
+    public SecurityLogDetail securityLogDetail;
+
     @NameInMap("share_link_log_detail")
     public ShareLinkLogDetail shareLinkLogDetail;
 
@@ -34,6 +40,14 @@ public class LogDetail extends TeaModel {
     public static LogDetail build(java.util.Map<String, ?> map) throws Exception {
         LogDetail self = new LogDetail();
         return TeaModel.build(map, self);
+    }
+
+    public LogDetail setAccountLogDetail(AccountLogDetail accountLogDetail) {
+        this.accountLogDetail = accountLogDetail;
+        return this;
+    }
+    public AccountLogDetail getAccountLogDetail() {
+        return this.accountLogDetail;
     }
 
     public LogDetail setDriveLogDetail(DriveLogDetail driveLogDetail) {
@@ -74,6 +88,14 @@ public class LogDetail extends TeaModel {
     }
     public RoleLogDetail getRoleLogDetail() {
         return this.roleLogDetail;
+    }
+
+    public LogDetail setSecurityLogDetail(SecurityLogDetail securityLogDetail) {
+        this.securityLogDetail = securityLogDetail;
+        return this;
+    }
+    public SecurityLogDetail getSecurityLogDetail() {
+        return this.securityLogDetail;
     }
 
     public LogDetail setShareLinkLogDetail(ShareLinkLogDetail shareLinkLogDetail) {

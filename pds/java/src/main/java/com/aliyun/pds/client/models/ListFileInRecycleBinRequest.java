@@ -48,7 +48,6 @@ public class ListFileInRecycleBinRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
-    @Validation(maximum = 200)
     public Long limit;
 
     // marker
@@ -69,7 +68,7 @@ public class ListFileInRecycleBinRequest extends TeaModel {
 
     // ParentFileID
     @NameInMap("parent_file_id")
-    @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 4)
+    @Validation(pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 4)
     public String parentFileId;
 
     @NameInMap("referer")
@@ -92,7 +91,6 @@ public class ListFileInRecycleBinRequest extends TeaModel {
 
     // url_expire_sec
     @NameInMap("url_expire_sec")
-    @Validation(maximum = 14400, minimum = 10)
     public Long urlExpireSec;
 
     // video_thumbnail_process

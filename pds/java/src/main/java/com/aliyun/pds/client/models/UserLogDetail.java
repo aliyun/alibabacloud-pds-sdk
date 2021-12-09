@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * 
  */
 public class UserLogDetail extends TeaModel {
+    // email
+    @NameInMap("email")
+    public String email;
+
     // name
     @NameInMap("name")
     public String name;
@@ -25,6 +29,14 @@ public class UserLogDetail extends TeaModel {
     public static UserLogDetail build(java.util.Map<String, ?> map) throws Exception {
         UserLogDetail self = new UserLogDetail();
         return TeaModel.build(map, self);
+    }
+
+    public UserLogDetail setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+    public String getEmail() {
+        return this.email;
     }
 
     public UserLogDetail setName(String name) {

@@ -19,6 +19,9 @@ public class ListSharingFileRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     public static ListSharingFileRequest build(java.util.Map<String, ?> map) throws Exception {
         ListSharingFileRequest self = new ListSharingFileRequest();
         return TeaModel.build(map, self);
@@ -46,6 +49,14 @@ public class ListSharingFileRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ListSharingFileRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
 }

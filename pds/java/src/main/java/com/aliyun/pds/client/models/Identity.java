@@ -12,6 +12,10 @@ public class Identity extends TeaModel {
     @Validation(required = true)
     public String identityId;
 
+    // 显示名称
+    @NameInMap("identity_name")
+    public String identityName;
+
     // 类型，目前可传：IT_User(用户)、IT_Group(团队)
     @NameInMap("identity_type")
     @Validation(required = true)
@@ -28,6 +32,14 @@ public class Identity extends TeaModel {
     }
     public String getIdentityId() {
         return this.identityId;
+    }
+
+    public Identity setIdentityName(String identityName) {
+        this.identityName = identityName;
+        return this;
+    }
+    public String getIdentityName() {
+        return this.identityName;
     }
 
     public Identity setIdentityType(String identityType) {

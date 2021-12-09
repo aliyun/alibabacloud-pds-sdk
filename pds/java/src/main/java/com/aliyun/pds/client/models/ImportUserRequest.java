@@ -19,6 +19,9 @@ public class ImportUserRequest extends TeaModel {
     @NameInMap("auto_create_drive")
     public Boolean autoCreateDrive;
 
+    @NameInMap("custom_identity")
+    public String customIdentity;
+
     // 是否能自己修改密码
     @NameInMap("deny_change_password_by_self")
     public Boolean denyChangePasswordBySelf;
@@ -80,6 +83,14 @@ public class ImportUserRequest extends TeaModel {
     }
     public Boolean getAutoCreateDrive() {
         return this.autoCreateDrive;
+    }
+
+    public ImportUserRequest setCustomIdentity(String customIdentity) {
+        this.customIdentity = customIdentity;
+        return this;
+    }
+    public String getCustomIdentity() {
+        return this.customIdentity;
     }
 
     public ImportUserRequest setDenyChangePasswordBySelf(Boolean denyChangePasswordBySelf) {

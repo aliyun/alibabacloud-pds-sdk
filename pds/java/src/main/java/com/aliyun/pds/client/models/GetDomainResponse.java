@@ -18,6 +18,10 @@ public class GetDomainResponse extends TeaModel {
     @NameInMap("app_config")
     public AppConfig appConfig;
 
+    // 打包下载配置
+    @NameInMap("archive_files_enable")
+    public Boolean archiveFilesEnable;
+
     @NameInMap("audit_log_config")
     public AuditLogConfig auditLogConfig;
 
@@ -141,6 +145,9 @@ public class GetDomainResponse extends TeaModel {
     @NameInMap("mode")
     public String mode;
 
+    @NameInMap("office_edit_config")
+    public OfficeEditConfig officeEditConfig;
+
     @NameInMap("office_preview_config")
     public OfficePreviewConfig officePreviewConfig;
 
@@ -158,6 +165,9 @@ public class GetDomainResponse extends TeaModel {
     @NameInMap("published_app_access_strategy")
     public AppAccessStrategy publishedAppAccessStrategy;
 
+    @NameInMap("role_config")
+    public RoleConfig roleConfig;
+
     // Domain ServiceCode
     @NameInMap("service_code")
     public String serviceCode;
@@ -165,6 +175,12 @@ public class GetDomainResponse extends TeaModel {
     // 是否开启了共享
     @NameInMap("sharable")
     public Boolean sharable;
+
+    @NameInMap("share_detail")
+    public ShareDetailResponse shareDetail;
+
+    @NameInMap("share_link_detail")
+    public ShareDetailResponse shareLinkDetail;
 
     // 是否开启了分享
     @NameInMap("share_link_enabled")
@@ -202,8 +218,14 @@ public class GetDomainResponse extends TeaModel {
     @NameInMap("user_single_drive_enabled")
     public Boolean userSingleDriveEnabled;
 
+    @NameInMap("video_preview_app_config")
+    public VideoPreviewAppConfig videoPreviewAppConfig;
+
     @NameInMap("video_preview_config")
     public VideoPreviewConfig videoPreviewConfig;
+
+    @NameInMap("watermark_config")
+    public BaseWatermarkConfigResponse watermarkConfig;
 
     public static GetDomainResponse build(java.util.Map<String, ?> map) throws Exception {
         GetDomainResponse self = new GetDomainResponse();
@@ -232,6 +254,14 @@ public class GetDomainResponse extends TeaModel {
     }
     public AppConfig getAppConfig() {
         return this.appConfig;
+    }
+
+    public GetDomainResponse setArchiveFilesEnable(Boolean archiveFilesEnable) {
+        this.archiveFilesEnable = archiveFilesEnable;
+        return this;
+    }
+    public Boolean getArchiveFilesEnable() {
+        return this.archiveFilesEnable;
     }
 
     public GetDomainResponse setAuditLogConfig(AuditLogConfig auditLogConfig) {
@@ -490,6 +520,14 @@ public class GetDomainResponse extends TeaModel {
         return this.mode;
     }
 
+    public GetDomainResponse setOfficeEditConfig(OfficeEditConfig officeEditConfig) {
+        this.officeEditConfig = officeEditConfig;
+        return this;
+    }
+    public OfficeEditConfig getOfficeEditConfig() {
+        return this.officeEditConfig;
+    }
+
     public GetDomainResponse setOfficePreviewConfig(OfficePreviewConfig officePreviewConfig) {
         this.officePreviewConfig = officePreviewConfig;
         return this;
@@ -530,6 +568,14 @@ public class GetDomainResponse extends TeaModel {
         return this.publishedAppAccessStrategy;
     }
 
+    public GetDomainResponse setRoleConfig(RoleConfig roleConfig) {
+        this.roleConfig = roleConfig;
+        return this;
+    }
+    public RoleConfig getRoleConfig() {
+        return this.roleConfig;
+    }
+
     public GetDomainResponse setServiceCode(String serviceCode) {
         this.serviceCode = serviceCode;
         return this;
@@ -544,6 +590,22 @@ public class GetDomainResponse extends TeaModel {
     }
     public Boolean getSharable() {
         return this.sharable;
+    }
+
+    public GetDomainResponse setShareDetail(ShareDetailResponse shareDetail) {
+        this.shareDetail = shareDetail;
+        return this;
+    }
+    public ShareDetailResponse getShareDetail() {
+        return this.shareDetail;
+    }
+
+    public GetDomainResponse setShareLinkDetail(ShareDetailResponse shareLinkDetail) {
+        this.shareLinkDetail = shareLinkDetail;
+        return this;
+    }
+    public ShareDetailResponse getShareLinkDetail() {
+        return this.shareLinkDetail;
     }
 
     public GetDomainResponse setShareLinkEnabled(Boolean shareLinkEnabled) {
@@ -618,12 +680,28 @@ public class GetDomainResponse extends TeaModel {
         return this.userSingleDriveEnabled;
     }
 
+    public GetDomainResponse setVideoPreviewAppConfig(VideoPreviewAppConfig videoPreviewAppConfig) {
+        this.videoPreviewAppConfig = videoPreviewAppConfig;
+        return this;
+    }
+    public VideoPreviewAppConfig getVideoPreviewAppConfig() {
+        return this.videoPreviewAppConfig;
+    }
+
     public GetDomainResponse setVideoPreviewConfig(VideoPreviewConfig videoPreviewConfig) {
         this.videoPreviewConfig = videoPreviewConfig;
         return this;
     }
     public VideoPreviewConfig getVideoPreviewConfig() {
         return this.videoPreviewConfig;
+    }
+
+    public GetDomainResponse setWatermarkConfig(BaseWatermarkConfigResponse watermarkConfig) {
+        this.watermarkConfig = watermarkConfig;
+        return this;
+    }
+    public BaseWatermarkConfigResponse getWatermarkConfig() {
+        return this.watermarkConfig;
     }
 
 }

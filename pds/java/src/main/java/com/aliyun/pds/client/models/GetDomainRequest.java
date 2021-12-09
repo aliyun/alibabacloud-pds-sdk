@@ -15,6 +15,10 @@ public class GetDomainRequest extends TeaModel {
     @NameInMap("get_benefit")
     public Boolean getBenefit;
 
+    // 是否获取share/share_link详情
+    @NameInMap("get_share_detail")
+    public Boolean getShareDetail;
+
     public static GetDomainRequest build(java.util.Map<String, ?> map) throws Exception {
         GetDomainRequest self = new GetDomainRequest();
         return TeaModel.build(map, self);
@@ -34,6 +38,14 @@ public class GetDomainRequest extends TeaModel {
     }
     public Boolean getGetBenefit() {
         return this.getBenefit;
+    }
+
+    public GetDomainRequest setGetShareDetail(Boolean getShareDetail) {
+        this.getShareDetail = getShareDetail;
+        return this;
+    }
+    public Boolean getGetShareDetail() {
+        return this.getShareDetail;
     }
 
 }

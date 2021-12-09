@@ -20,6 +20,9 @@ public class FileListPermissionRequest extends TeaModel {
     @Validation(required = true)
     public String fileId;
 
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     public static FileListPermissionRequest build(java.util.Map<String, ?> map) throws Exception {
         FileListPermissionRequest self = new FileListPermissionRequest();
         return TeaModel.build(map, self);
@@ -47,6 +50,14 @@ public class FileListPermissionRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public FileListPermissionRequest setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
 }

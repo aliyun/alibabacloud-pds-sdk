@@ -59,6 +59,10 @@ public class UpdateShareLinkResponse extends TeaModel {
     @NameInMap("preview_count")
     public Long previewCount;
 
+    // 举报次数
+    @NameInMap("report_count")
+    public Long reportCount;
+
     // 转存次数
     @NameInMap("save_count")
     public Long saveCount;
@@ -94,6 +98,10 @@ public class UpdateShareLinkResponse extends TeaModel {
     // updated_at
     @NameInMap("updated_at")
     public String updatedAt;
+
+    // 音视频播放次数
+    @NameInMap("video_preview_count")
+    public Long videoPreviewCount;
 
     public static UpdateShareLinkResponse build(java.util.Map<String, ?> map) throws Exception {
         UpdateShareLinkResponse self = new UpdateShareLinkResponse();
@@ -204,6 +212,14 @@ public class UpdateShareLinkResponse extends TeaModel {
         return this.previewCount;
     }
 
+    public UpdateShareLinkResponse setReportCount(Long reportCount) {
+        this.reportCount = reportCount;
+        return this;
+    }
+    public Long getReportCount() {
+        return this.reportCount;
+    }
+
     public UpdateShareLinkResponse setSaveCount(Long saveCount) {
         this.saveCount = saveCount;
         return this;
@@ -274,6 +290,14 @@ public class UpdateShareLinkResponse extends TeaModel {
     }
     public String getUpdatedAt() {
         return this.updatedAt;
+    }
+
+    public UpdateShareLinkResponse setVideoPreviewCount(Long videoPreviewCount) {
+        this.videoPreviewCount = videoPreviewCount;
+        return this;
+    }
+    public Long getVideoPreviewCount() {
+        return this.videoPreviewCount;
     }
 
 }

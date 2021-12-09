@@ -9,7 +9,6 @@ import com.aliyun.tea.*;
 public class ListStoreFileRequest extends TeaModel {
     // limit
     @NameInMap("limit")
-    @Validation(maximum = 1000, minimum = 1)
     public Long limit;
 
     // marker
