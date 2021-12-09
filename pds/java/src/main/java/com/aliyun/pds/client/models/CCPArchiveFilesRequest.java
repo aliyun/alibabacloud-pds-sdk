@@ -27,6 +27,13 @@ public class CCPArchiveFilesRequest extends TeaModel {
     @Validation(maxLength = 1024, minLength = 1)
     public String name;
 
+    @NameInMap("referer")
+    public String referer;
+
+    // share_id, either share_id or drive_id is required
+    @NameInMap("share_id")
+    public String shareId;
+
     public static CCPArchiveFilesRequest build(java.util.Map<String, ?> map) throws Exception {
         CCPArchiveFilesRequest self = new CCPArchiveFilesRequest();
         return TeaModel.build(map, self);
@@ -70,6 +77,22 @@ public class CCPArchiveFilesRequest extends TeaModel {
     }
     public String getName() {
         return this.name;
+    }
+
+    public CCPArchiveFilesRequest setReferer(String referer) {
+        this.referer = referer;
+        return this;
+    }
+    public String getReferer() {
+        return this.referer;
+    }
+
+    public CCPArchiveFilesRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
 }

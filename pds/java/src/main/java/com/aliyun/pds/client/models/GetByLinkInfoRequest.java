@@ -10,6 +10,9 @@ public class GetByLinkInfoRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    @NameInMap("custom_identity")
+    public String customIdentity;
+
     // 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
     @NameInMap("extra")
     public String extra;
@@ -35,6 +38,14 @@ public class GetByLinkInfoRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public GetByLinkInfoRequest setCustomIdentity(String customIdentity) {
+        this.customIdentity = customIdentity;
+        return this;
+    }
+    public String getCustomIdentity() {
+        return this.customIdentity;
     }
 
     public GetByLinkInfoRequest setExtra(String extra) {

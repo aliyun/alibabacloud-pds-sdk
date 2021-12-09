@@ -23,9 +23,13 @@ public class LiveTranscodingTaskResponse extends TeaModel {
     @NameInMap("status")
     public String status;
 
-    // template_id, 转码模板
+    // template_id, 转码模板id
     @NameInMap("template_id")
     public String templateId;
+
+    // template_name, 模板文案id
+    @NameInMap("template_name")
+    public String templateName;
 
     // url, 视频播放地址
     @NameInMap("url")
@@ -74,6 +78,14 @@ public class LiveTranscodingTaskResponse extends TeaModel {
     }
     public String getTemplateId() {
         return this.templateId;
+    }
+
+    public LiveTranscodingTaskResponse setTemplateName(String templateName) {
+        this.templateName = templateName;
+        return this;
+    }
+    public String getTemplateName() {
+        return this.templateName;
     }
 
     public LiveTranscodingTaskResponse setUrl(String url) {

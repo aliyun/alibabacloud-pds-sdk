@@ -20,7 +20,6 @@ public class ListShareRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
-    @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
     // marker

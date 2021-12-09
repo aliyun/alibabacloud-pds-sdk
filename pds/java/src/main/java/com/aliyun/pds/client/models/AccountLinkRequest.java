@@ -10,6 +10,9 @@ public class AccountLinkRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    @NameInMap("custom_identity")
+    public String customIdentity;
+
     // 账号信息
     @NameInMap("detail")
     public String detail;
@@ -48,6 +51,14 @@ public class AccountLinkRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public AccountLinkRequest setCustomIdentity(String customIdentity) {
+        this.customIdentity = customIdentity;
+        return this;
+    }
+    public String getCustomIdentity() {
+        return this.customIdentity;
     }
 
     public AccountLinkRequest setDetail(String detail) {

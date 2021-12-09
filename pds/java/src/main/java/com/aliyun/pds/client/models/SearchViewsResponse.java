@@ -13,6 +13,9 @@ public class SearchViewsResponse extends TeaModel {
     @NameInMap("next_marker")
     public String nextMarker;
 
+    @NameInMap("total_count")
+    public Long totalCount;
+
     public static SearchViewsResponse build(java.util.Map<String, ?> map) throws Exception {
         SearchViewsResponse self = new SearchViewsResponse();
         return TeaModel.build(map, self);
@@ -32,6 +35,14 @@ public class SearchViewsResponse extends TeaModel {
     }
     public String getNextMarker() {
         return this.nextMarker;
+    }
+
+    public SearchViewsResponse setTotalCount(Long totalCount) {
+        this.totalCount = totalCount;
+        return this;
+    }
+    public Long getTotalCount() {
+        return this.totalCount;
     }
 
 }

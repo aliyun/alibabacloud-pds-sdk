@@ -15,6 +15,10 @@ public class ActorAliUser extends TeaModel {
     @NameInMap("ali_user_type")
     public String aliUserType;
 
+    // AsUserID
+    @NameInMap("as_user_id")
+    public String asUserId;
+
     public static ActorAliUser build(java.util.Map<String, ?> map) throws Exception {
         ActorAliUser self = new ActorAliUser();
         return TeaModel.build(map, self);
@@ -34,6 +38,14 @@ public class ActorAliUser extends TeaModel {
     }
     public String getAliUserType() {
         return this.aliUserType;
+    }
+
+    public ActorAliUser setAsUserId(String asUserId) {
+        this.asUserId = asUserId;
+        return this;
+    }
+    public String getAsUserId() {
+        return this.asUserId;
     }
 
 }

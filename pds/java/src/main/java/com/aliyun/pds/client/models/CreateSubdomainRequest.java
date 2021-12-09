@@ -14,6 +14,10 @@ public class CreateSubdomainRequest extends TeaModel {
     @NameInMap("description")
     public String description;
 
+    // 单团队单drive
+    @NameInMap("group_single_drive_enabled")
+    public Boolean groupSingleDriveEnabled;
+
     // 名称，注意该字段会校验重名的subdomain
     @NameInMap("name")
     @Validation(required = true)
@@ -30,6 +34,10 @@ public class CreateSubdomainRequest extends TeaModel {
     // 用户数quota，默认为-1，无限制
     @NameInMap("user_quota")
     public Long userQuota;
+
+    // 单用户单drive
+    @NameInMap("user_single_drive_enabled")
+    public Boolean userSingleDriveEnabled;
 
     public static CreateSubdomainRequest build(java.util.Map<String, ?> map) throws Exception {
         CreateSubdomainRequest self = new CreateSubdomainRequest();
@@ -50,6 +58,14 @@ public class CreateSubdomainRequest extends TeaModel {
     }
     public String getDescription() {
         return this.description;
+    }
+
+    public CreateSubdomainRequest setGroupSingleDriveEnabled(Boolean groupSingleDriveEnabled) {
+        this.groupSingleDriveEnabled = groupSingleDriveEnabled;
+        return this;
+    }
+    public Boolean getGroupSingleDriveEnabled() {
+        return this.groupSingleDriveEnabled;
     }
 
     public CreateSubdomainRequest setName(String name) {
@@ -82,6 +98,14 @@ public class CreateSubdomainRequest extends TeaModel {
     }
     public Long getUserQuota() {
         return this.userQuota;
+    }
+
+    public CreateSubdomainRequest setUserSingleDriveEnabled(Boolean userSingleDriveEnabled) {
+        this.userSingleDriveEnabled = userSingleDriveEnabled;
+        return this;
+    }
+    public Boolean getUserSingleDriveEnabled() {
+        return this.userSingleDriveEnabled;
     }
 
 }

@@ -43,6 +43,18 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("created_at")
     public String createdAt;
 
+    // creator_id
+    @NameInMap("creator_id")
+    public String creatorId;
+
+    // creator_name
+    @NameInMap("creator_name")
+    public String creatorName;
+
+    // creator_type
+    @NameInMap("creator_type")
+    public String creatorType;
+
     // custom_field_1
     @NameInMap("custom_field_1")
     public String customField1;
@@ -76,6 +88,10 @@ public class GetFileResponse extends TeaModel {
     // encrypt_mode
     @NameInMap("encrypt_mode")
     public String encryptMode;
+
+    // ex_fields_info
+    @NameInMap("ex_fields_info")
+    public java.util.Map<String, ?> exFieldsInfo;
 
     // file_extension
     @NameInMap("file_extension")
@@ -114,6 +130,10 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("last_modifier_type")
     public String lastModifierType;
 
+    // local_created_at
+    @NameInMap("local_created_at")
+    public String localCreatedAt;
+
     @NameInMap("meta")
     public String meta;
 
@@ -138,6 +158,10 @@ public class GetFileResponse extends TeaModel {
     // PunishFlag
     @NameInMap("punish_flag")
     public Long punishFlag;
+
+    // revision_id
+    @NameInMap("revision_id")
+    public String revisionId;
 
     @NameInMap("share_id")
     public String shareId;
@@ -279,6 +303,30 @@ public class GetFileResponse extends TeaModel {
         return this.createdAt;
     }
 
+    public GetFileResponse setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
+        return this;
+    }
+    public String getCreatorId() {
+        return this.creatorId;
+    }
+
+    public GetFileResponse setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
+        return this;
+    }
+    public String getCreatorName() {
+        return this.creatorName;
+    }
+
+    public GetFileResponse setCreatorType(String creatorType) {
+        this.creatorType = creatorType;
+        return this;
+    }
+    public String getCreatorType() {
+        return this.creatorType;
+    }
+
     public GetFileResponse setCustomField1(String customField1) {
         this.customField1 = customField1;
         return this;
@@ -341,6 +389,14 @@ public class GetFileResponse extends TeaModel {
     }
     public String getEncryptMode() {
         return this.encryptMode;
+    }
+
+    public GetFileResponse setExFieldsInfo(java.util.Map<String, ?> exFieldsInfo) {
+        this.exFieldsInfo = exFieldsInfo;
+        return this;
+    }
+    public java.util.Map<String, ?> getExFieldsInfo() {
+        return this.exFieldsInfo;
     }
 
     public GetFileResponse setFileExtension(String fileExtension) {
@@ -415,6 +471,14 @@ public class GetFileResponse extends TeaModel {
         return this.lastModifierType;
     }
 
+    public GetFileResponse setLocalCreatedAt(String localCreatedAt) {
+        this.localCreatedAt = localCreatedAt;
+        return this;
+    }
+    public String getLocalCreatedAt() {
+        return this.localCreatedAt;
+    }
+
     public GetFileResponse setMeta(String meta) {
         this.meta = meta;
         return this;
@@ -461,6 +525,14 @@ public class GetFileResponse extends TeaModel {
     }
     public Long getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public GetFileResponse setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+        return this;
+    }
+    public String getRevisionId() {
+        return this.revisionId;
     }
 
     public GetFileResponse setShareId(String shareId) {

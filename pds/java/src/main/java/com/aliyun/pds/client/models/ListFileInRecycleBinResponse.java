@@ -9,7 +9,7 @@ import com.aliyun.tea.*;
 public class ListFileInRecycleBinResponse extends TeaModel {
     // items
     @NameInMap("items")
-    public java.util.List<RecycleBinItemResponse> items;
+    public java.util.List<BaseCCPFileResponse> items;
 
     // next_marker
     @NameInMap("next_marker")
@@ -20,11 +20,11 @@ public class ListFileInRecycleBinResponse extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ListFileInRecycleBinResponse setItems(java.util.List<RecycleBinItemResponse> items) {
+    public ListFileInRecycleBinResponse setItems(java.util.List<BaseCCPFileResponse> items) {
         this.items = items;
         return this;
     }
-    public java.util.List<RecycleBinItemResponse> getItems() {
+    public java.util.List<BaseCCPFileResponse> getItems() {
         return this.items;
     }
 

@@ -10,6 +10,9 @@ public class AddUserToSubdomainRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    @NameInMap("role")
+    public String role;
+
     // subdomain id
     @NameInMap("subdomain_id")
     public String subdomainId;
@@ -30,6 +33,14 @@ public class AddUserToSubdomainRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public AddUserToSubdomainRequest setRole(String role) {
+        this.role = role;
+        return this;
+    }
+    public String getRole() {
+        return this.role;
     }
 
     public AddUserToSubdomainRequest setSubdomainId(String subdomainId) {

@@ -67,7 +67,6 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
 
     // url_expire_sec
     @NameInMap("url_expire_sec")
-    @Validation(maximum = 14400, minimum = 10)
     public Long urlExpireSec;
 
     public static CCPGetVideoPreviewPlayInfoRequest build(java.util.Map<String, ?> map) throws Exception {
