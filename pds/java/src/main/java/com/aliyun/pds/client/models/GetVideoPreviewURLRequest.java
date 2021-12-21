@@ -25,6 +25,7 @@ public class GetVideoPreviewURLRequest extends TeaModel {
 
     // expire_sec
     @NameInMap("expire_sec")
+    @Validation(maximum = 14400, minimum = 1)
     public Long expireSec;
 
     // file_id

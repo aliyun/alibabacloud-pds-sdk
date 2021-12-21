@@ -20,6 +20,7 @@ public class GetShareLinkTokenRequest extends TeaModel {
 
     // expire_sec
     @NameInMap("expire_sec")
+    @Validation(maximum = 7200)
     public Long expireSec;
 
     @NameInMap("referer")
