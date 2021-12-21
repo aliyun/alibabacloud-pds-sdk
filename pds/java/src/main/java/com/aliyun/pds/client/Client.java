@@ -2,6 +2,7 @@
 package com.aliyun.pds.client;
 
 import com.aliyun.tea.*;
+import com.aliyun.tea.interceptor.*;
 import com.aliyun.pds.client.models.*;
 import com.aliyun.teautil.*;
 import com.aliyun.roautil.*;
@@ -11,6 +12,8 @@ import com.aliyun.pdscredentials.*;
 import com.aliyun.pdscredentials.models.*;
 
 public class Client {
+
+    private final static InterceptorChain interceptorChain = InterceptorChain.create();
 
     public String _domainId;
     public com.aliyun.pdscredentials.Client _accessTokenCredential;
@@ -8537,6 +8540,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -8583,15 +8587,15 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
                 if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
                     obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
-                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    java.util.List<Object> arr = com.aliyun.teautil.Common.assertAsArray(obj);
                     return TeaModel.toModel(TeaConverter.buildMap(
-                        new TeaPair("body", respMap),
+                        new TeaPair("body", arr),
                         new TeaPair("headers", response_.headers)
                     ), new ListPermissionModel());
                 }
@@ -8607,27 +8611,24 @@ public class Client {
                     ));
                 }
 
-                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
-                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
-                throw new TeaException(TeaConverter.merge(Object.class,
-                    TeaConverter.buildMap(
-                        new TeaPair("data", TeaConverter.buildMap(
-                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
-                            new TeaPair("statusCode", response_.statusCode),
-                            new TeaPair("statusMessage", response_.statusMessage)
-                        ))
-                    ),
-                    respMap
+                String str = com.aliyun.teautil.Common.readAsString(response_.body);
+                throw new TeaException(TeaConverter.buildMap(
+                    new TeaPair("data", TeaConverter.buildMap(
+                        new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                        new TeaPair("statusCode", response_.statusCode),
+                        new TeaPair("statusMessage", response_.statusMessage)
+                    )),
+                    new TeaPair("body", str)
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListReceivedFileModel listReceivedFileEx(ListReceivedFileRequest request, RuntimeOptions runtime) throws Exception {
