@@ -75,6 +75,7 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
 
     // url_expire_sec
     @NameInMap("url_expire_sec")
+    @Validation(maximum = 600, minimum = 10)
     public Long urlExpireSec;
 
     // video_thumbnail_process
