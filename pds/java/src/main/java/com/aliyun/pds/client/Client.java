@@ -8625,7 +8625,7 @@ public class Client {
                     _lastException = e;
                     continue;
                 }
-                throw e;
+                throw new RuntimeException(e);
             }
         }
         throw new TeaUnretryableException(_lastRequest, _lastException);
