@@ -29,6 +29,10 @@ public class GetOfficePreviewUrlRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    // language
+    @NameInMap("language")
+    public String language;
+
     @NameInMap("referer")
     public String referer;
 
@@ -79,6 +83,14 @@ public class GetOfficePreviewUrlRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public GetOfficePreviewUrlRequest setLanguage(String language) {
+        this.language = language;
+        return this;
+    }
+    public String getLanguage() {
+        return this.language;
     }
 
     public GetOfficePreviewUrlRequest setReferer(String referer) {

@@ -25,6 +25,7 @@ public class ListUploadedPartRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
+    @Validation(maximum = 1000, minimum = 1)
     public Long limit;
 
     // part_number_marker

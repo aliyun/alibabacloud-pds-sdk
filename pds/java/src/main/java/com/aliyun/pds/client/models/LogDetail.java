@@ -13,6 +13,9 @@ public class LogDetail extends TeaModel {
     @NameInMap("drive_log_detail")
     public DriveLogDetail driveLogDetail;
 
+    @NameInMap("ent_mgmt_log_detail")
+    public EntMgmtLogDetail entMgmtLogDetail;
+
     @NameInMap("file_log_detail")
     public FileLogDetail fileLogDetail;
 
@@ -56,6 +59,14 @@ public class LogDetail extends TeaModel {
     }
     public DriveLogDetail getDriveLogDetail() {
         return this.driveLogDetail;
+    }
+
+    public LogDetail setEntMgmtLogDetail(EntMgmtLogDetail entMgmtLogDetail) {
+        this.entMgmtLogDetail = entMgmtLogDetail;
+        return this;
+    }
+    public EntMgmtLogDetail getEntMgmtLogDetail() {
+        return this.entMgmtLogDetail;
     }
 
     public LogDetail setFileLogDetail(FileLogDetail fileLogDetail) {

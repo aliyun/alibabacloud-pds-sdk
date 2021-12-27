@@ -36,6 +36,7 @@ public class ScanFileMetaRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
+    @Validation(maximum = 5000, minimum = 1)
     public Integer limit;
 
     // marker

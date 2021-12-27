@@ -23,9 +23,6 @@ public class CreateDomainRequest extends TeaModel {
     @NameInMap("auth_dingding_enable")
     public Boolean authDingdingEnable;
 
-    @NameInMap("auth_endpoint_enable")
-    public Boolean authEndpointEnable;
-
     // RAM App Id
     @NameInMap("auth_ram_app_id")
     public String authRamAppId;
@@ -71,6 +68,10 @@ public class CreateDomainRequest extends TeaModel {
     @NameInMap("event_role_arn")
     public String eventRoleArn;
 
+    // 单团队单drive
+    @NameInMap("group_single_drive_enabled")
+    public Boolean groupSingleDriveEnabled;
+
     // 开启自动初始化 Drive
     @NameInMap("init_drive_enable")
     public Boolean initDriveEnable;
@@ -84,6 +85,10 @@ public class CreateDomainRequest extends TeaModel {
     @Validation(required = true)
     public String mode;
 
+    // 父 Domain ID
+    @NameInMap("parent_domain_id")
+    public String parentDomainId;
+
     // Domain 类型
     @NameInMap("path_type")
     public String pathType;
@@ -95,6 +100,10 @@ public class CreateDomainRequest extends TeaModel {
     @NameInMap("sharable")
     public Boolean sharable;
 
+    // 逻辑空间quota，默认为-1，无限制，单位为字节
+    @NameInMap("size_quota")
+    public Long sizeQuota;
+
     // 存储级别
     @NameInMap("store_level")
     public String storeLevel;
@@ -103,6 +112,18 @@ public class CreateDomainRequest extends TeaModel {
     @NameInMap("store_region_list")
     @Validation(required = true)
     public java.util.List<String> storeRegionList;
+
+    // 逻辑空间刷新周期，单位：秒
+    @NameInMap("used_size_refresh_interval")
+    public Long usedSizeRefreshInterval;
+
+    // 用户数quota，默认为-1，无限制
+    @NameInMap("user_count_quota")
+    public Long userCountQuota;
+
+    // 单用户单drive
+    @NameInMap("user_single_drive_enabled")
+    public Boolean userSingleDriveEnabled;
 
     public static CreateDomainRequest build(java.util.Map<String, ?> map) throws Exception {
         CreateDomainRequest self = new CreateDomainRequest();
@@ -139,14 +160,6 @@ public class CreateDomainRequest extends TeaModel {
     }
     public Boolean getAuthDingdingEnable() {
         return this.authDingdingEnable;
-    }
-
-    public CreateDomainRequest setAuthEndpointEnable(Boolean authEndpointEnable) {
-        this.authEndpointEnable = authEndpointEnable;
-        return this;
-    }
-    public Boolean getAuthEndpointEnable() {
-        return this.authEndpointEnable;
     }
 
     public CreateDomainRequest setAuthRamAppId(String authRamAppId) {
@@ -237,6 +250,14 @@ public class CreateDomainRequest extends TeaModel {
         return this.eventRoleArn;
     }
 
+    public CreateDomainRequest setGroupSingleDriveEnabled(Boolean groupSingleDriveEnabled) {
+        this.groupSingleDriveEnabled = groupSingleDriveEnabled;
+        return this;
+    }
+    public Boolean getGroupSingleDriveEnabled() {
+        return this.groupSingleDriveEnabled;
+    }
+
     public CreateDomainRequest setInitDriveEnable(Boolean initDriveEnable) {
         this.initDriveEnable = initDriveEnable;
         return this;
@@ -259,6 +280,14 @@ public class CreateDomainRequest extends TeaModel {
     }
     public String getMode() {
         return this.mode;
+    }
+
+    public CreateDomainRequest setParentDomainId(String parentDomainId) {
+        this.parentDomainId = parentDomainId;
+        return this;
+    }
+    public String getParentDomainId() {
+        return this.parentDomainId;
     }
 
     public CreateDomainRequest setPathType(String pathType) {
@@ -285,6 +314,14 @@ public class CreateDomainRequest extends TeaModel {
         return this.sharable;
     }
 
+    public CreateDomainRequest setSizeQuota(Long sizeQuota) {
+        this.sizeQuota = sizeQuota;
+        return this;
+    }
+    public Long getSizeQuota() {
+        return this.sizeQuota;
+    }
+
     public CreateDomainRequest setStoreLevel(String storeLevel) {
         this.storeLevel = storeLevel;
         return this;
@@ -299,6 +336,30 @@ public class CreateDomainRequest extends TeaModel {
     }
     public java.util.List<String> getStoreRegionList() {
         return this.storeRegionList;
+    }
+
+    public CreateDomainRequest setUsedSizeRefreshInterval(Long usedSizeRefreshInterval) {
+        this.usedSizeRefreshInterval = usedSizeRefreshInterval;
+        return this;
+    }
+    public Long getUsedSizeRefreshInterval() {
+        return this.usedSizeRefreshInterval;
+    }
+
+    public CreateDomainRequest setUserCountQuota(Long userCountQuota) {
+        this.userCountQuota = userCountQuota;
+        return this;
+    }
+    public Long getUserCountQuota() {
+        return this.userCountQuota;
+    }
+
+    public CreateDomainRequest setUserSingleDriveEnabled(Boolean userSingleDriveEnabled) {
+        this.userSingleDriveEnabled = userSingleDriveEnabled;
+        return this;
+    }
+    public Boolean getUserSingleDriveEnabled() {
+        return this.userSingleDriveEnabled;
     }
 
 }

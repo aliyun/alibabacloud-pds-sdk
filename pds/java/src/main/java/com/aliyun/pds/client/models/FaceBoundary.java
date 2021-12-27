@@ -7,53 +7,53 @@ import com.aliyun.tea.*;
  * 
  */
 public class FaceBoundary extends TeaModel {
-    @NameInMap("height")
-    public Long height;
+    @NameInMap("Height")
+    public Long Height;
 
-    @NameInMap("left")
-    public Long left;
+    @NameInMap("Left")
+    public Long Left;
 
-    @NameInMap("top")
-    public Long top;
+    @NameInMap("Top")
+    public Long Top;
 
-    @NameInMap("width")
-    public Long width;
+    @NameInMap("Width")
+    public Long Width;
 
     public static FaceBoundary build(java.util.Map<String, ?> map) throws Exception {
         FaceBoundary self = new FaceBoundary();
         return TeaModel.build(map, self);
     }
 
-    public FaceBoundary setHeight(Long height) {
-        this.height = height;
+    public FaceBoundary setHeight(Long Height) {
+        this.Height = Height;
         return this;
     }
     public Long getHeight() {
-        return this.height;
+        return this.Height;
     }
 
-    public FaceBoundary setLeft(Long left) {
-        this.left = left;
+    public FaceBoundary setLeft(Long Left) {
+        this.Left = Left;
         return this;
     }
     public Long getLeft() {
-        return this.left;
+        return this.Left;
     }
 
-    public FaceBoundary setTop(Long top) {
-        this.top = top;
+    public FaceBoundary setTop(Long Top) {
+        this.Top = Top;
         return this;
     }
     public Long getTop() {
-        return this.top;
+        return this.Top;
     }
 
-    public FaceBoundary setWidth(Long width) {
-        this.width = width;
+    public FaceBoundary setWidth(Long Width) {
+        this.Width = Width;
         return this;
     }
     public Long getWidth() {
-        return this.width;
+        return this.Width;
     }
 
 }

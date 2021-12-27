@@ -11,10 +11,6 @@ public class ImageFaceGroupResponse extends TeaModel {
     @NameInMap("created_at")
     public String createdAt;
 
-    // 人脸个数
-    @NameInMap("face_count")
-    public Long faceCount;
-
     @NameInMap("group_cover_face_boundary")
     public FaceBoundary groupCoverFaceBoundary;
 
@@ -69,14 +65,6 @@ public class ImageFaceGroupResponse extends TeaModel {
     }
     public String getCreatedAt() {
         return this.createdAt;
-    }
-
-    public ImageFaceGroupResponse setFaceCount(Long faceCount) {
-        this.faceCount = faceCount;
-        return this;
-    }
-    public Long getFaceCount() {
-        return this.faceCount;
     }
 
     public ImageFaceGroupResponse setGroupCoverFaceBoundary(FaceBoundary groupCoverFaceBoundary) {
