@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 列举用户或团队的角色列表请求
  */
 public class ListIdentityRoleRequest extends TeaModel {
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
+
     @NameInMap("identity")
     @Validation(required = true)
     public Identity identity;
@@ -22,6 +25,14 @@ public class ListIdentityRoleRequest extends TeaModel {
     public static ListIdentityRoleRequest build(java.util.Map<String, ?> map) throws Exception {
         ListIdentityRoleRequest self = new ListIdentityRoleRequest();
         return TeaModel.build(map, self);
+    }
+
+    public ListIdentityRoleRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
+        return this;
+    }
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ListIdentityRoleRequest setIdentity(Identity identity) {

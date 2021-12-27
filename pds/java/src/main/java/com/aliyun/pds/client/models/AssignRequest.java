@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 分配角色请求
  */
 public class AssignRequest extends TeaModel {
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
+
     @NameInMap("identity")
     @Validation(required = true)
     public Identity identity;
@@ -32,6 +35,14 @@ public class AssignRequest extends TeaModel {
     public static AssignRequest build(java.util.Map<String, ?> map) throws Exception {
         AssignRequest self = new AssignRequest();
         return TeaModel.build(map, self);
+    }
+
+    public AssignRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
+        return this;
+    }
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public AssignRequest setIdentity(Identity identity) {

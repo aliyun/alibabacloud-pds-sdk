@@ -11965,6 +11965,337 @@ api updateShareLinkEx(request: UpdateShareLinkRequest, runtime: RuntimeOptions):
   ignoreSSL = runtime.ignoreSSL
 }
 
+model AssignModel {
+  headers?: map[string]string(name='headers'),
+}
+
+/**
+ * 给用户或团队分配一个角色
+ * @tags role
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function assign(request: AssignRequest) throws: AssignModel  {
+  var runtime = new RuntimeOptions{};
+  return assignEx(request, runtime);
+}
+
+/**
+ * 给用户或团队分配一个角色
+ * @tags role
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api assignEx(request: AssignRequest, runtime: RuntimeOptions): AssignModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/role/assign`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.httpheaders
+  };
+  realReq.httpheaders = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 204)) {
+    return {
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
+model CancelAssignModel {
+  headers?: map[string]string(name='headers'),
+}
+
+/**
+ * 取消用户或团队的一个角色
+ * @tags role
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function cancelAssign(request: CancelAssignRequest) throws: CancelAssignModel  {
+  var runtime = new RuntimeOptions{};
+  return cancelAssignEx(request, runtime);
+}
+
+/**
+ * 取消用户或团队的一个角色
+ * @tags role
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api cancelAssignEx(request: CancelAssignRequest, runtime: RuntimeOptions): CancelAssignModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/role/cancel_assign`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.httpheaders
+  };
+  realReq.httpheaders = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 204)) {
+    return {
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
+model ListIdentityRoleModel {
+  headers?: map[string]string(name='headers'),
+  body: BaseRoleMemberResponse(name='body'),
+}
+
+/**
+ * 列举用户或团队已分配的角色列表
+ * @tags role
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function listIdentityRole(request: ListIdentityRoleRequest) throws: ListIdentityRoleModel  {
+  var runtime = new RuntimeOptions{};
+  return listIdentityRoleEx(request, runtime);
+}
+
+/**
+ * 列举用户或团队已分配的角色列表
+ * @tags role
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api listIdentityRoleEx(request: ListIdentityRoleRequest, runtime: RuntimeOptions): ListIdentityRoleModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/role/list_identity_role`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.httpheaders
+  };
+  realReq.httpheaders = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
 model GetDriveUsedSizeModel {
   headers?: map[string]string(name='headers'),
   body: GetDriveUsedSizeResponse(name='body'),
@@ -18253,15 +18584,6 @@ model BaseAdditionDataRequest {
 }
 
 /**
- * 
- */
-model BaseAuthentication {
-  email?: string(name='email', description='邮箱', example='abc@alibaba-inc.com'),
-  phoneNumber?: string(name='phone_number', description='待发送验证短信的手机号', example='152*****341'),
-  phoneRegion?: string(name='phone_region', description='国家编号，默认86，不需要填+号，直接填数字', example='86'),
-}
-
-/**
  * Base file response
  */
 model BaseCCPFileResponse {
@@ -18389,6 +18711,18 @@ model BaseFileAnonymousResponse {
 model BaseFileListInheritPermissionResponse {
   fileId: string(name='file_id', description='被授权的文件ID', example='xxx'),
   member?: FilePermissionMember(name='member'),
+}
+
+/**
+ * 
+ */
+model BaseFileProcessRequest {
+  imageCroppingAspectRatios?: [ string ](name='image_cropping_aspect_ratios', example='1:1, 1:2, 2:1, 2:3, 3:2, 7:4', items='{"type":"string"}'),
+  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
+  imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
+  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
+type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
 
 /**
@@ -18618,19 +18952,6 @@ model CCPArchiveFilesRequest {
  */
 model CCPArchiveFilesResponse {
   asyncTaskId?: string(name='async_task_id'),
-}
-
-/**
- * 
- */
-model CCPArchiveRequest {
-  Format?: string(name='Format', description='格式类型，如果是uc，使用特殊格式'),
-  RequestID?: string(name='RequestID'),
-  archiveType?: string(name='archive_type'),
-  domainId?: string(name='domain_id'),
-  driveId?: string(name='drive_id', description='TODO 增加对ShareID的支持'),
-  fileId?: string(name='file_id'),
-  password?: string(name='password'),
 }
 
 /**
@@ -22510,15 +22831,6 @@ model UploadPartInfo {
 /**
  * 
  */
-model UrlInfo {
-  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-}
-
-/**
- * 
- */
 model UserAuthentication {
   AuthenticationType: string(name='AuthenticationType', description='认证类型', example='mobile'),
   CreatedAt: int64(name='CreatedAt', description='创建时间', example=1556163159820, format='int64'),
@@ -22864,18 +23176,6 @@ model BaseDomainResponse {
 /**
  * 
  */
-model BaseFileProcessRequest {
-  imageCroppingAspectRatios?: [ string ](name='image_cropping_aspect_ratios', example='1:1, 1:2, 2:1, 2:3, 3:2, 7:4', items='{"type":"string"}'),
-  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
-  imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
-  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
-type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
-}
-
-/**
- * 
- */
 model BaseIdentityBenefitPkgDeliveryInfoRequest {
   amount?: int64(name='amount', description='权益包数量', example=1, format='int64'),
   deliveryId?: string(name='delivery_id', description='权益下发的唯一标识', example='"123ace93f0123d"'),
@@ -22975,6 +23275,19 @@ model BenefitPkgDeliveryInfoResponse {
   createdAt?: string(name='created_at', description='权益包下发的创建时间', example='2019-08-20T06:51:27.292Z'),
   expireTime?: string(name='expire_time', description='权益包下发的超期时间，is_permanent为false时，返回有效值', example='2019-08-20T06:51:27.292Z'),
   isPermanent?: boolean(name='is_permanent', description='权益包是否永久有效', example=false),
+}
+
+/**
+ * 
+ */
+model CCPArchiveRequest {
+  Format?: string(name='Format', description='格式类型，如果是uc，使用特殊格式'),
+  RequestID?: string(name='RequestID'),
+  archiveType?: string(name='archive_type'),
+  domainId?: string(name='domain_id'),
+  driveId?: string(name='drive_id', description='TODO 增加对ShareID的支持'),
+  fileId?: string(name='file_id'),
+  password?: string(name='password'),
 }
 
 /**
@@ -24136,6 +24449,15 @@ model PunishFileRequest {
 }
 
 /**
+ * 
+ */
+model UrlInfo {
+  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+}
+
+/**
  * Add user to subdomain request
  */
 model AddUserToSubdomainRequest {
@@ -24189,6 +24511,7 @@ model AlbumsBaseRequest {
  * 分配角色请求
  */
 model AssignRequest {
+  httpheaders?: map[string]string,
   identity: Identity(name='identity'),
   manageResourceId: string(name='manage_resource_id', description='管辖的资源ID', example='a1f***bc2'),
   manageResourceType: string(name='manage_resource_type', description='管辖的资源类型，目前只支持团队: IT_Group', example='IT_Group'),
@@ -24208,6 +24531,15 @@ model BaseAssignmentResponse {
   manageResourceType: string(name='manage_resource_type', description='管辖的资源类型', example='IT_Group'),
   roleId: string(name='role_id', description='授予的角色', example='SystemGroupAdmin'),
   updatedAt: int64(name='updated_at', description='修改时间', example=1633620681914, format='int64'),
+}
+
+/**
+ * 
+ */
+model BaseAuthentication {
+  email?: string(name='email', description='邮箱', example='abc@alibaba-inc.com'),
+  phoneNumber?: string(name='phone_number', description='待发送验证短信的手机号', example='152*****341'),
+  phoneRegion?: string(name='phone_region', description='国家编号，默认86，不需要填+号，直接填数字', example='86'),
 }
 
 /**
@@ -24304,6 +24636,7 @@ model BaseUserResponse {
  * 取消角色请求
  */
 model CancelAssignRequest {
+  httpheaders?: map[string]string,
   identity: Identity(name='identity'),
   manageResourceId: string(name='manage_resource_id', description='管辖的资源ID', example='a1f***bc2'),
   manageResourceType: string(name='manage_resource_type', description='管辖的资源类型，目前只支持团队: IT_Group', example='IT_Group'),
@@ -24901,6 +25234,7 @@ model ListGroupResponse {
  * 列举用户或团队的角色列表请求
  */
 model ListIdentityRoleRequest {
+  httpheaders?: map[string]string,
   identity: Identity(name='identity'),
   includeGroupRole: boolean(name='include_group_role', description='是否包含所属父级团队的角色', example=false),
   subdomainId?: string(name='subdomain_id'),
@@ -25407,6 +25741,16 @@ model UpdateViewRequest {
 /**
  * 
  */
+model ViewFileBaseRequest {
+  category: string(name='category', description='category', example='"album"'),
+  driveId?: string(name='drive_id'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  viewId: string(name='view_id', description='view_id', example='123'),
+}
+
+/**
+ * 
+ */
 model ViewFileItem {
   actionList?: [ string ](name='action_list', description='action_list', items='{"type":"string"}'),
   autoDeleteLeftSec?: int64(name='auto_delete_left_sec', description='auto_delete_left_sec', example=10000, format='int64'),
@@ -25538,16 +25882,6 @@ model SubdomainSummaryResponse {
   statisticsTime?: int64(name='statistics_time', description='statistics_time', format='int64'),
   usedSize?: int64(name='used_size', description='used_size', example=1, format='int64'),
   userCount?: int64(name='user_count', description='user_count', example=1, format='int64'),
-}
-
-/**
- * 
- */
-model ViewFileBaseRequest {
-  category: string(name='category', description='category', example='"album"'),
-  driveId?: string(name='drive_id'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  viewId: string(name='view_id', description='view_id', example='123'),
 }
 
 function getPathname(nickname: string, path: string): string {

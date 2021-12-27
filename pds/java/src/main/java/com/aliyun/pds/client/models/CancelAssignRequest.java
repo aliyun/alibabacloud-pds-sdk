@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 取消角色请求
  */
 public class CancelAssignRequest extends TeaModel {
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
+
     @NameInMap("identity")
     @Validation(required = true)
     public Identity identity;
@@ -32,6 +35,14 @@ public class CancelAssignRequest extends TeaModel {
     public static CancelAssignRequest build(java.util.Map<String, ?> map) throws Exception {
         CancelAssignRequest self = new CancelAssignRequest();
         return TeaModel.build(map, self);
+    }
+
+    public CancelAssignRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
+        return this;
+    }
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public CancelAssignRequest setIdentity(Identity identity) {
