@@ -8664,9 +8664,9 @@ public class Client {
                 Object obj = null;
                 if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
                     obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
-                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    java.util.List<Object> arr = com.aliyun.teautil.Common.assertAsArray(obj);
                     return TeaModel.toModel(TeaConverter.buildMap(
-                        new TeaPair("body", respMap),
+                        new TeaPair("body", arr),
                         new TeaPair("headers", response_.headers)
                     ), new ListPermissionModel());
                 }
@@ -8682,24 +8682,21 @@ public class Client {
                     ));
                 }
 
-                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
-                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
-                throw new TeaException(TeaConverter.merge(Object.class,
-                    TeaConverter.buildMap(
-                        new TeaPair("data", TeaConverter.buildMap(
-                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
-                            new TeaPair("statusCode", response_.statusCode),
-                            new TeaPair("statusMessage", response_.statusMessage)
-                        ))
-                    ),
-                    respMap
+                String str = com.aliyun.teautil.Common.readAsString(response_.body);
+                throw new TeaException(TeaConverter.buildMap(
+                    new TeaPair("data", TeaConverter.buildMap(
+                        new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                        new TeaPair("statusCode", response_.statusCode),
+                        new TeaPair("statusMessage", response_.statusMessage)
+                    )),
+                    new TeaPair("body", str)
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
                     _lastException = e;
                     continue;
                 }
-                throw e;
+                throw new RuntimeException(e);
             }
         }
         throw new TeaUnretryableException(_lastRequest, _lastException);
