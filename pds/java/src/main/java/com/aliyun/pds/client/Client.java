@@ -91,6 +91,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -137,7 +138,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -175,13 +176,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CheckExistModel checkExistEx(CheckExistRequest request, RuntimeOptions runtime) throws Exception {
@@ -210,6 +211,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -256,7 +258,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -294,13 +296,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ConfirmLinkModel confirmLinkEx(ConfirmLinkRequest request, RuntimeOptions runtime) throws Exception {
@@ -329,6 +331,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -375,7 +378,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -413,13 +416,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public VerifyCodeModel verifyCodeEx(VerifyCodeRequest request, RuntimeOptions runtime) throws Exception {
@@ -448,6 +451,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -494,7 +498,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -532,13 +536,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetAccessTokenByLinkInfoModel getAccessTokenByLinkInfoEx(GetAccessTokenByLinkInfoRequest request, RuntimeOptions runtime) throws Exception {
@@ -567,6 +571,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -613,7 +618,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -651,13 +656,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetLinkInfoModel getLinkInfoEx(GetByLinkInfoRequest request, RuntimeOptions runtime) throws Exception {
@@ -686,6 +691,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -732,7 +738,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -770,13 +776,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetLinkInfoByUserIdModel getLinkInfoByUserIdEx(GetLinkInfoByUserIDRequest request, RuntimeOptions runtime) throws Exception {
@@ -805,6 +811,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -851,7 +858,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -889,13 +896,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetPublicKeyModel getPublicKeyEx(GetPublicKeyRequest request, RuntimeOptions runtime) throws Exception {
@@ -924,6 +931,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -970,7 +978,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -1008,13 +1016,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public LinkModel linkEx(AccountLinkRequest request, RuntimeOptions runtime) throws Exception {
@@ -1043,6 +1051,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -1089,7 +1098,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -1127,13 +1136,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public LoginModel loginEx(LoginRequest request, RuntimeOptions runtime) throws Exception {
@@ -1162,6 +1171,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -1208,7 +1218,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -1246,13 +1256,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public RegisterModel registerEx(RegisterRequest request, RuntimeOptions runtime) throws Exception {
@@ -1281,6 +1291,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -1327,7 +1338,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -1365,13 +1376,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public AccountRevokeModel accountRevokeEx(RevokeRequest request, RuntimeOptions runtime) throws Exception {
@@ -1400,6 +1411,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -1446,7 +1458,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -1481,13 +1493,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public SendSmsCodeModel sendSmsCodeEx(SendSmsCodeRequest request, RuntimeOptions runtime) throws Exception {
@@ -1516,6 +1528,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -1562,7 +1575,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -1600,13 +1613,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public AccountTokenModel accountTokenEx(AccountTokenRequest request, RuntimeOptions runtime) throws Exception {
@@ -1635,6 +1648,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -1681,7 +1695,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -1719,13 +1733,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ExportAuditLogModel exportAuditLogEx(ExportAuditLogRequest request, RuntimeOptions runtime) throws Exception {
@@ -1754,6 +1768,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -1800,7 +1815,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -1838,13 +1853,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public SearchAuditLogModel searchAuditLogEx(SearchAuditLogRequest request, RuntimeOptions runtime) throws Exception {
@@ -1873,6 +1888,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -1919,7 +1935,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -1957,13 +1973,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateIdentityToBenefitPkgMappingModel createIdentityToBenefitPkgMappingEx(CreateIdentityToBenefitPkgMappingRequest request, RuntimeOptions runtime) throws Exception {
@@ -1992,6 +2008,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -2038,7 +2055,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -2076,13 +2093,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public DeleteIdentityToBenefitPkgMappingModel deleteIdentityToBenefitPkgMappingEx(DeleteIdentityToBenefitPkgMappingRequest request, RuntimeOptions runtime) throws Exception {
@@ -2111,6 +2128,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -2157,7 +2175,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -2195,13 +2213,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetIdentityToBenefitPkgMappingModel getIdentityToBenefitPkgMappingEx(GetIdentityToBenefitPkgMappingRequest request, RuntimeOptions runtime) throws Exception {
@@ -2230,6 +2248,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -2276,7 +2295,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -2314,13 +2333,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListIdentityToBenefitPkgMappingModel listIdentityToBenefitPkgMappingEx(ListIdentityToBenefitPkgMappingRequest request, RuntimeOptions runtime) throws Exception {
@@ -2349,6 +2368,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -2395,7 +2415,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -2433,13 +2453,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UpdateIdentityToBenefitPkgMappingModel updateIdentityToBenefitPkgMappingEx(UpdateIdentityToBenefitPkgMappingRequest request, RuntimeOptions runtime) throws Exception {
@@ -2468,6 +2488,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -2514,7 +2535,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -2552,13 +2573,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListIdentityBenefitPkgModel listIdentityBenefitPkgEx(ListIdentityBenefitPkgRequest request, RuntimeOptions runtime) throws Exception {
@@ -2587,6 +2608,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -2633,7 +2655,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -2671,13 +2693,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public AdminListStoresModel adminListStoresEx(AdminListStoresRequest request, RuntimeOptions runtime) throws Exception {
@@ -2706,6 +2728,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -2752,7 +2775,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -2790,13 +2813,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateSubdomainModel createSubdomainEx(CreateSubdomainRequest request, RuntimeOptions runtime) throws Exception {
@@ -2825,6 +2848,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -2871,7 +2895,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -2909,13 +2933,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public DeleteSubdomainModel deleteSubdomainEx(DeleteSubdomainRequest request, RuntimeOptions runtime) throws Exception {
@@ -2944,6 +2968,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -2990,7 +3015,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -3028,13 +3053,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetSubdomainModel getSubdomainEx(GetSubdomainRequest request, RuntimeOptions runtime) throws Exception {
@@ -3063,6 +3088,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -3109,7 +3135,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -3147,13 +3173,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListSubdomainsModel listSubdomainsEx(ListSubdomainsRequest request, RuntimeOptions runtime) throws Exception {
@@ -3182,6 +3208,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -3228,7 +3255,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -3266,13 +3293,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UpdateSubdomainModel updateSubdomainEx(UpdateSubdomainRequest request, RuntimeOptions runtime) throws Exception {
@@ -3301,6 +3328,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -3347,7 +3375,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -3385,13 +3413,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetUserAccessTokenModel getUserAccessTokenEx(GetUserAccessTokenRequest request, RuntimeOptions runtime) throws Exception {
@@ -3420,6 +3448,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -3466,7 +3495,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -3504,13 +3533,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public PunishFileModel punishFileEx(PunishFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -3539,6 +3568,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -3585,7 +3615,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -3620,13 +3650,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetAsyncTaskInfoModel getAsyncTaskInfoEx(GetAsyncTaskRequest request, RuntimeOptions runtime) throws Exception {
@@ -3655,6 +3685,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -3701,7 +3732,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -3739,13 +3770,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public BatchOperationModel batchOperationEx(BatchRequest request, RuntimeOptions runtime) throws Exception {
@@ -3774,6 +3805,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -3820,7 +3852,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -3858,13 +3890,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateDriveModel createDriveEx(CreateDriveRequest request, RuntimeOptions runtime) throws Exception {
@@ -3893,6 +3925,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -3939,7 +3972,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -3977,13 +4010,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public DeleteDriveModel deleteDriveEx(DeleteDriveRequest request, RuntimeOptions runtime) throws Exception {
@@ -4012,6 +4045,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -4058,7 +4092,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -4093,13 +4127,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetDriveModel getDriveEx(GetDriveRequest request, RuntimeOptions runtime) throws Exception {
@@ -4128,6 +4162,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -4174,7 +4209,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -4212,13 +4247,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetDefaultDriveModel getDefaultDriveEx(GetDefaultDriveRequest request, RuntimeOptions runtime) throws Exception {
@@ -4247,6 +4282,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -4293,7 +4329,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -4331,13 +4367,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListDrivesModel listDrivesEx(ListDriveRequest request, RuntimeOptions runtime) throws Exception {
@@ -4366,6 +4402,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -4412,7 +4449,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -4450,13 +4487,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListMyDrivesModel listMyDrivesEx(ListMyDriveRequest request, RuntimeOptions runtime) throws Exception {
@@ -4485,6 +4522,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -4531,7 +4569,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -4569,13 +4607,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public SearchDrivesModel searchDrivesEx(SearchDriveRequest request, RuntimeOptions runtime) throws Exception {
@@ -4604,6 +4642,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -4650,7 +4689,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -4688,13 +4727,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UpdateDriveModel updateDriveEx(UpdateDriveRequest request, RuntimeOptions runtime) throws Exception {
@@ -4723,6 +4762,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -4769,7 +4809,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -4807,13 +4847,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public AddPermissionModel addPermissionEx(FileAddPermissionRequest request, RuntimeOptions runtime) throws Exception {
@@ -4842,6 +4882,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -4888,7 +4929,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -4923,13 +4964,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ArchiveFilesModel archiveFilesEx(CCPArchiveFilesRequest request, RuntimeOptions runtime) throws Exception {
@@ -4958,6 +4999,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -5004,7 +5046,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -5042,13 +5084,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CompleteFileModel completeFileEx(CompleteFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -5077,6 +5119,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -5123,7 +5166,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -5161,13 +5204,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CompleteFileWithStoreInfoModel completeFileWithStoreInfoEx(UCCompleteFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -5196,6 +5239,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -5242,7 +5286,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -5280,13 +5324,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CopyFileModel copyFileEx(CopyFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -5315,6 +5359,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -5361,7 +5406,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -5408,13 +5453,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateFileModel createFileEx(CreateFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -5443,6 +5488,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -5489,7 +5535,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -5527,13 +5573,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateFileWithProofModel createFileWithProofEx(CreateFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -5562,6 +5608,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -5608,7 +5655,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -5646,13 +5693,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateFileWithSignatureModel createFileWithSignatureEx(UCCreateFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -5681,6 +5728,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -5727,7 +5775,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -5765,13 +5813,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public DeleteFileModel deleteFileEx(DeleteFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -5800,6 +5848,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -5846,7 +5895,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -5890,13 +5939,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public DeleteUsertagsModel deleteUsertagsEx(DeleteFileUserTagsRequest request, RuntimeOptions runtime) throws Exception {
@@ -5925,6 +5974,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -5971,7 +6021,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -6006,13 +6056,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetFileModel getFileEx(GetFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -6041,6 +6091,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -6087,7 +6138,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -6125,13 +6176,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetFileByPathModel getFileByPathEx(GetFileByPathRequest request, RuntimeOptions runtime) throws Exception {
@@ -6160,6 +6211,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -6206,7 +6258,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -6244,13 +6296,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetDownloadUrlModel getDownloadUrlEx(GetDownloadUrlRequest request, RuntimeOptions runtime) throws Exception {
@@ -6279,6 +6331,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -6325,7 +6378,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -6363,13 +6416,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetLastCursorModel getLastCursorEx(GetLastCursorRequest request, RuntimeOptions runtime) throws Exception {
@@ -6398,6 +6451,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -6444,7 +6498,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -6482,13 +6536,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetMediaPlayUrlModel getMediaPlayUrlEx(GetMediaPlayURLRequest request, RuntimeOptions runtime) throws Exception {
@@ -6517,6 +6571,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -6563,7 +6618,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -6601,13 +6656,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetOfficeEditUrlModel getOfficeEditUrlEx(GetOfficeEditUrlRequest request, RuntimeOptions runtime) throws Exception {
@@ -6636,6 +6691,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -6682,7 +6738,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -6720,13 +6776,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetOfficePreviewUrlModel getOfficePreviewUrlEx(GetOfficePreviewUrlRequest request, RuntimeOptions runtime) throws Exception {
@@ -6755,6 +6811,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -6801,7 +6858,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -6839,13 +6896,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetShareLinkDownloadUrlModel getShareLinkDownloadUrlEx(GetShareLinkDownloadURLRequest request, RuntimeOptions runtime) throws Exception {
@@ -6874,6 +6931,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -6920,7 +6978,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -6958,13 +7016,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetShareLinkVideoPreviewPlayInfoModel getShareLinkVideoPreviewPlayInfoEx(CCPGetShareLinkVideoPreviewPlayInfoRequest request, RuntimeOptions runtime) throws Exception {
@@ -6993,6 +7051,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -7039,7 +7098,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -7077,13 +7136,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetFileSignatureModel getFileSignatureEx(UCFileGetSignatureRequest request, RuntimeOptions runtime) throws Exception {
@@ -7112,6 +7171,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -7158,7 +7218,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -7196,13 +7256,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetUploadUrlModel getUploadUrlEx(GetUploadUrlRequest request, RuntimeOptions runtime) throws Exception {
@@ -7231,6 +7291,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -7277,7 +7338,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -7315,13 +7376,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetVideoPreviewPlayInfoModel getVideoPreviewPlayInfoEx(CCPGetVideoPreviewPlayInfoRequest request, RuntimeOptions runtime) throws Exception {
@@ -7350,6 +7411,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -7396,7 +7458,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -7434,13 +7496,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetVideoPreviewSpriteUrlModel getVideoPreviewSpriteUrlEx(GetVideoPreviewSpriteURLRequest request, RuntimeOptions runtime) throws Exception {
@@ -7469,6 +7531,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -7515,7 +7578,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -7553,13 +7616,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetVideoPreviewUrlModel getVideoPreviewUrlEx(GetVideoPreviewURLRequest request, RuntimeOptions runtime) throws Exception {
@@ -7588,6 +7651,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -7634,7 +7698,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -7672,13 +7736,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListFileModel listFileEx(ListFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -7707,6 +7771,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -7753,7 +7818,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -7791,13 +7856,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListFileActivityModel listFileActivityEx(ListFileActivityRequest request, RuntimeOptions runtime) throws Exception {
@@ -7826,6 +7891,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -7872,7 +7938,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -7910,13 +7976,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListFileByAnonymousModel listFileByAnonymousEx(ListByAnonymousRequest request, RuntimeOptions runtime) throws Exception {
@@ -7945,6 +8011,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -7991,7 +8058,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -8029,13 +8096,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListFileByCustomIndexKeyModel listFileByCustomIndexKeyEx(ListFileByCustomIndexKeyRequest request, RuntimeOptions runtime) throws Exception {
@@ -8064,6 +8131,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -8110,7 +8178,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -8148,13 +8216,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListFileDeltaModel listFileDeltaEx(ListFileDeltaRequest request, RuntimeOptions runtime) throws Exception {
@@ -8183,6 +8251,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -8229,7 +8298,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -8267,13 +8336,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListInheritPermissionModel listInheritPermissionEx(FileListInheritPermissionRequest request, RuntimeOptions runtime) throws Exception {
@@ -8302,6 +8371,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -8348,7 +8418,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -8386,13 +8456,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListManageSharingFileModel listManageSharingFileEx(ListMangeSharingFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -8421,6 +8491,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -8467,7 +8538,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -8505,13 +8576,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListPermissionModel listPermissionEx(FileListPermissionRequest request, RuntimeOptions runtime) throws Exception {
@@ -8593,9 +8664,9 @@ public class Client {
                 Object obj = null;
                 if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
                     obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
-                    java.util.List<Object> arr = com.aliyun.teautil.Common.assertAsArray(obj);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
                     return TeaModel.toModel(TeaConverter.buildMap(
-                        new TeaPair("body", arr),
+                        new TeaPair("body", respMap),
                         new TeaPair("headers", response_.headers)
                     ), new ListPermissionModel());
                 }
@@ -8611,21 +8682,24 @@ public class Client {
                     ));
                 }
 
-                String str = com.aliyun.teautil.Common.readAsString(response_.body);
-                throw new TeaException(TeaConverter.buildMap(
-                    new TeaPair("data", TeaConverter.buildMap(
-                        new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
-                        new TeaPair("statusCode", response_.statusCode),
-                        new TeaPair("statusMessage", response_.statusMessage)
-                    )),
-                    new TeaPair("body", str)
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
                     _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
         throw new TeaUnretryableException(_lastRequest, _lastException);
@@ -8657,6 +8731,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -8703,7 +8778,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -8741,13 +8816,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListSharingFileModel listSharingFileEx(ListSharingFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -8776,6 +8851,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -8822,7 +8898,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -8860,13 +8936,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListUploadedPartsModel listUploadedPartsEx(ListUploadedPartRequest request, RuntimeOptions runtime) throws Exception {
@@ -8895,6 +8971,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -8941,7 +9018,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -8979,13 +9056,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListUserPermissionModel listUserPermissionEx(FileListUserPermissionRequest request, RuntimeOptions runtime) throws Exception {
@@ -9014,6 +9091,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -9060,7 +9138,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -9098,13 +9176,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public LiveTranscodeModel liveTranscodeEx(CCPLiveTranscodeRequest request, RuntimeOptions runtime) throws Exception {
@@ -9133,6 +9211,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -9179,7 +9258,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -9217,13 +9296,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public MoveFileModel moveFileEx(MoveFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -9252,6 +9331,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -9298,7 +9378,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -9336,13 +9416,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public PutUsertagsModel putUsertagsEx(PutFileUserTagsRequest request, RuntimeOptions runtime) throws Exception {
@@ -9371,6 +9451,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -9417,7 +9498,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -9455,13 +9536,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public TokenModel tokenEx(RefreshOfficeEditTokenRequest request, RuntimeOptions runtime) throws Exception {
@@ -9490,6 +9571,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -9536,7 +9618,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -9574,13 +9656,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public RemovePermissionModel removePermissionEx(FileRemovePermissionRequest request, RuntimeOptions runtime) throws Exception {
@@ -9609,6 +9691,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -9655,7 +9738,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -9690,13 +9773,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ScanFileMetaModel scanFileMetaEx(ScanFileMetaRequest request, RuntimeOptions runtime) throws Exception {
@@ -9725,6 +9808,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -9771,7 +9855,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -9809,13 +9893,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public SearchFileModel searchFileEx(SearchFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -9844,6 +9928,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -9890,7 +9975,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -9928,13 +10013,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public SearchFileFpRefsModel searchFileFpRefsEx(SearchFileFpRefsRequest request, RuntimeOptions runtime) throws Exception {
@@ -9963,6 +10048,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -10009,7 +10095,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -10047,13 +10133,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UpdateFileModel updateFileEx(UpdateFileMetaRequest request, RuntimeOptions runtime) throws Exception {
@@ -10082,6 +10168,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -10128,7 +10215,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -10166,13 +10253,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UpdateFileUploadContentHashModel updateFileUploadContentHashEx(UCUpdateUploadContentHashRequest request, RuntimeOptions runtime) throws Exception {
@@ -10201,6 +10288,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -10247,7 +10335,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -10285,13 +10373,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public WalkFileModel walkFileEx(CCPWalkFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -10320,6 +10408,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -10366,7 +10455,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -10404,13 +10493,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ClearRecyclebinModel clearRecyclebinEx(ClearRecycleBinRequest request, RuntimeOptions runtime) throws Exception {
@@ -10439,6 +10528,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -10485,7 +10575,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -10523,13 +10613,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListRecyclebinModel listRecyclebinEx(ListFileInRecycleBinRequest request, RuntimeOptions runtime) throws Exception {
@@ -10558,6 +10648,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -10604,7 +10695,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -10642,13 +10733,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public RestoreFileModel restoreFileEx(RestoreFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -10677,6 +10768,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -10723,7 +10815,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -10767,13 +10859,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public TrashFileModel trashFileEx(TrashFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -10802,6 +10894,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -10848,7 +10941,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -10892,13 +10985,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ReportEventModel reportEventEx(ReportEventRequest request, RuntimeOptions runtime) throws Exception {
@@ -10927,6 +11020,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -10973,7 +11067,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -11011,13 +11105,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateShareModel createShareEx(CreateShareRequest request, RuntimeOptions runtime) throws Exception {
@@ -11046,6 +11140,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -11092,7 +11187,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -11130,13 +11225,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public DeleteShareModel deleteShareEx(DeleteShareRequest request, RuntimeOptions runtime) throws Exception {
@@ -11165,6 +11260,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -11211,7 +11307,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -11246,13 +11342,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetShareModel getShareEx(GetShareRequest request, RuntimeOptions runtime) throws Exception {
@@ -11281,6 +11377,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -11327,7 +11424,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -11365,13 +11462,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListShareModel listShareEx(ListShareRequest request, RuntimeOptions runtime) throws Exception {
@@ -11400,6 +11497,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -11446,7 +11544,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -11484,13 +11582,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UpdateShareModel updateShareEx(UpdateShareRequest request, RuntimeOptions runtime) throws Exception {
@@ -11519,6 +11617,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -11565,7 +11664,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -11603,13 +11702,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CancelShareLinkModel cancelShareLinkEx(CancelShareLinkRequest request, RuntimeOptions runtime) throws Exception {
@@ -11638,6 +11737,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -11684,7 +11784,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -11719,13 +11819,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateShareLinkModel createShareLinkEx(CreateShareLinkRequest request, RuntimeOptions runtime) throws Exception {
@@ -11754,6 +11854,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -11800,7 +11901,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -11838,13 +11939,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetShareLinkModel getShareLinkEx(GetShareLinkRequest request, RuntimeOptions runtime) throws Exception {
@@ -11873,6 +11974,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -11919,7 +12021,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -11957,13 +12059,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetShareByAnonymousModel getShareByAnonymousEx(GetShareLinkByAnonymousRequest request, RuntimeOptions runtime) throws Exception {
@@ -11992,6 +12094,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -12038,7 +12141,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -12076,13 +12179,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetShareIdModel getShareIdEx(GetShareLinkIDRequest request, RuntimeOptions runtime) throws Exception {
@@ -12111,6 +12214,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -12157,7 +12261,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -12195,13 +12299,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetShareTokenModel getShareTokenEx(GetShareLinkTokenRequest request, RuntimeOptions runtime) throws Exception {
@@ -12230,6 +12334,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -12276,7 +12381,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -12314,13 +12419,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListShareLinkModel listShareLinkEx(ListShareLinkRequest request, RuntimeOptions runtime) throws Exception {
@@ -12349,6 +12454,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -12395,7 +12501,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -12433,13 +12539,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UpdateShareLinkModel updateShareLinkEx(UpdateShareLinkRequest request, RuntimeOptions runtime) throws Exception {
@@ -12468,6 +12574,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -12514,7 +12621,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -12552,13 +12659,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetDriveUsedSizeModel getDriveUsedSizeEx(GetDriveUsedSizeRequest request, RuntimeOptions runtime) throws Exception {
@@ -12587,6 +12694,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -12633,7 +12741,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -12671,13 +12779,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetFileCountModel getFileCountEx(GetFileCountRequest request, RuntimeOptions runtime) throws Exception {
@@ -12706,6 +12814,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -12752,7 +12861,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -12790,13 +12899,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetSubdomainSummaryModel getSubdomainSummaryEx(GetSubdomainSummaryRequest request, RuntimeOptions runtime) throws Exception {
@@ -12825,6 +12934,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -12871,7 +12981,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -12918,13 +13028,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetDomainSummaryModel getDomainSummaryEx(GetDomainSummaryRequest request, RuntimeOptions runtime) throws Exception {
@@ -12953,6 +13063,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -12999,7 +13110,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -13046,13 +13157,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateGroupModel createGroupEx(CreateGroupRequest request, RuntimeOptions runtime) throws Exception {
@@ -13081,6 +13192,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -13127,7 +13239,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -13165,13 +13277,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public DeleteGroupModel deleteGroupEx(DeleteGroupRequest request, RuntimeOptions runtime) throws Exception {
@@ -13200,6 +13312,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -13246,7 +13359,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -13281,13 +13394,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetGroupModel getGroupEx(GetGroupRequest request, RuntimeOptions runtime) throws Exception {
@@ -13316,6 +13429,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -13362,7 +13476,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -13400,13 +13514,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListGroupModel listGroupEx(ListGroupRequest request, RuntimeOptions runtime) throws Exception {
@@ -13435,6 +13549,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -13481,7 +13596,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -13519,13 +13634,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public SearchGroupModel searchGroupEx(SearchGroupRequest request, RuntimeOptions runtime) throws Exception {
@@ -13554,6 +13669,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -13600,7 +13716,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -13638,13 +13754,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UpdateGroupModel updateGroupEx(UpdateGroupRequest request, RuntimeOptions runtime) throws Exception {
@@ -13673,6 +13789,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -13719,7 +13836,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -13757,13 +13874,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateMembershipModel createMembershipEx(CreateMembershipRequest request, RuntimeOptions runtime) throws Exception {
@@ -13792,6 +13909,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -13838,7 +13956,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -13876,13 +13994,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public DeleteMembershipModel deleteMembershipEx(DeleteMembershipRequest request, RuntimeOptions runtime) throws Exception {
@@ -13911,6 +14029,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -13957,7 +14076,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -13992,13 +14111,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetMembershipModel getMembershipEx(GetMembershipRequest request, RuntimeOptions runtime) throws Exception {
@@ -14027,6 +14146,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -14073,7 +14193,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -14111,13 +14231,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public HasMemberModel hasMemberEx(HasMemberRequest request, RuntimeOptions runtime) throws Exception {
@@ -14146,6 +14266,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -14192,7 +14313,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -14230,13 +14351,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListDirectChildMembershipsModel listDirectChildMembershipsEx(ListDirectChildMembershipsRequest request, RuntimeOptions runtime) throws Exception {
@@ -14265,6 +14386,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -14311,7 +14433,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -14349,13 +14471,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListDirectMembershipsModel listDirectMembershipsEx(ListDirectParentMembershipsRequest request, RuntimeOptions runtime) throws Exception {
@@ -14384,6 +14506,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -14430,7 +14553,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -14468,13 +14591,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListDirectParentMembershipsModel listDirectParentMembershipsEx(ListDirectParentMembershipsRequest request, RuntimeOptions runtime) throws Exception {
@@ -14503,6 +14626,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -14549,7 +14673,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -14587,13 +14711,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UpdateMembershipModel updateMembershipEx(UpdateMembershipRequest request, RuntimeOptions runtime) throws Exception {
@@ -14622,6 +14746,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -14668,7 +14793,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -14706,13 +14831,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public AddUserToSubdomainModel addUserToSubdomainEx(AddUserToSubdomainRequest request, RuntimeOptions runtime) throws Exception {
@@ -14741,6 +14866,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -14787,7 +14913,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -14822,13 +14948,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateUserModel createUserEx(CreateUserRequest request, RuntimeOptions runtime) throws Exception {
@@ -14857,6 +14983,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -14903,7 +15030,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -14941,13 +15068,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public DeleteUserModel deleteUserEx(DeleteUserRequest request, RuntimeOptions runtime) throws Exception {
@@ -14976,6 +15103,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -15022,7 +15150,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -15057,13 +15185,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetUserModel getUserEx(GetUserRequest request, RuntimeOptions runtime) throws Exception {
@@ -15092,6 +15220,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -15138,7 +15267,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -15176,13 +15305,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ImportUserModel importUserEx(ImportUserRequest request, RuntimeOptions runtime) throws Exception {
@@ -15211,6 +15340,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -15257,7 +15387,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -15295,13 +15425,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListUsersModel listUsersEx(ListUserRequest request, RuntimeOptions runtime) throws Exception {
@@ -15330,6 +15460,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -15376,7 +15507,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -15414,13 +15545,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public MigrateUserToSubdomainModel migrateUserToSubdomainEx(MigrateUserToSubdomainRequest request, RuntimeOptions runtime) throws Exception {
@@ -15449,6 +15580,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -15495,7 +15627,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -15533,13 +15665,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public RemoveUserFromSubdomainModel removeUserFromSubdomainEx(RemoveUserFromSubdomainRequest request, RuntimeOptions runtime) throws Exception {
@@ -15568,6 +15700,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -15614,7 +15747,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -15649,13 +15782,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public RollbackUserFromSubdomainModel rollbackUserFromSubdomainEx(RollbackUserFromSubdomainRequest request, RuntimeOptions runtime) throws Exception {
@@ -15684,6 +15817,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -15730,7 +15864,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -15768,13 +15902,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public SearchUserModel searchUserEx(SearchUserRequest request, RuntimeOptions runtime) throws Exception {
@@ -15803,6 +15937,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -15849,7 +15984,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -15887,13 +16022,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UpdateUserModel updateUserEx(UpdateUserRequest request, RuntimeOptions runtime) throws Exception {
@@ -15922,6 +16057,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -15968,7 +16104,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -16006,13 +16142,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public SearchUserGroupModel searchUserGroupEx(SearchUserAndGroupRequest request, RuntimeOptions runtime) throws Exception {
@@ -16041,6 +16177,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -16087,7 +16224,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -16125,13 +16262,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public MergeModel mergeEx(MergeFaceGroupRequest request, RuntimeOptions runtime) throws Exception {
@@ -16160,6 +16297,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -16206,7 +16344,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -16244,13 +16382,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UnassignFacegroupItemModel unassignFacegroupItemEx(UnAssignFaceGroupItemRequest request, RuntimeOptions runtime) throws Exception {
@@ -16279,6 +16417,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -16325,7 +16464,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -16360,13 +16499,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateStoryModel createStoryEx(CreateStoryRequest request, RuntimeOptions runtime) throws Exception {
@@ -16395,6 +16534,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -16441,7 +16581,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -16479,13 +16619,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public DeleteStoryModel deleteStoryEx(DeleteStoryRequest request, RuntimeOptions runtime) throws Exception {
@@ -16514,6 +16654,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -16560,7 +16701,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -16598,13 +16739,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public FindStoriesModel findStoriesEx(FindStoriesRequest request, RuntimeOptions runtime) throws Exception {
@@ -16633,6 +16774,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -16679,7 +16821,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -16717,13 +16859,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetPhotoCountModel getPhotoCountEx(GetImageCountRequest request, RuntimeOptions runtime) throws Exception {
@@ -16752,6 +16894,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -16798,7 +16941,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -16836,13 +16979,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetStoryModel getStoryEx(GetStoryRequest request, RuntimeOptions runtime) throws Exception {
@@ -16871,6 +17014,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -16917,7 +17061,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -16955,13 +17099,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListAddressGroupsModel listAddressGroupsEx(ListImageAddressGroupsRequest request, RuntimeOptions runtime) throws Exception {
@@ -16990,6 +17134,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -17036,7 +17181,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -17074,13 +17219,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListFacegroupsModel listFacegroupsEx(ListImageFaceGroupsRequest request, RuntimeOptions runtime) throws Exception {
@@ -17109,6 +17254,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -17155,7 +17301,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -17193,13 +17339,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListTagsModel listTagsEx(ListImageTagsRequest request, RuntimeOptions runtime) throws Exception {
@@ -17228,6 +17374,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -17274,7 +17421,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -17312,13 +17459,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ParseKeywordsModel parseKeywordsEx(ParseKeywordsRequest request, RuntimeOptions runtime) throws Exception {
@@ -17347,6 +17494,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -17393,7 +17541,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -17431,13 +17579,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public SearchAddressGroupsModel searchAddressGroupsEx(SearchImageAddressGroupsRequest request, RuntimeOptions runtime) throws Exception {
@@ -17466,6 +17614,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -17512,7 +17661,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -17550,13 +17699,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UpdateFacegroupInfoModel updateFacegroupInfoEx(UpdateFaceGroupInfoRequest request, RuntimeOptions runtime) throws Exception {
@@ -17585,6 +17734,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -17631,7 +17781,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -17669,13 +17819,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public AddFileModel addFileEx(AddViewFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -17704,6 +17854,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -17750,7 +17901,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -17788,13 +17939,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public CreateViewModel createViewEx(CreateViewRequest request, RuntimeOptions runtime) throws Exception {
@@ -17823,6 +17974,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -17869,7 +18021,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -17907,13 +18059,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public DeleteViewModel deleteViewEx(DeleteViewRequest request, RuntimeOptions runtime) throws Exception {
@@ -17942,6 +18094,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -17988,7 +18141,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -18023,13 +18176,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public GetViewModel getViewEx(GetViewRequest request, RuntimeOptions runtime) throws Exception {
@@ -18058,6 +18211,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -18104,7 +18258,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -18142,13 +18296,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListViewsModel listViewsEx(ListViewsRequest request, RuntimeOptions runtime) throws Exception {
@@ -18177,6 +18331,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -18223,7 +18378,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -18261,13 +18416,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ViewListFileModel viewListFileEx(ListViewFilesRequest request, RuntimeOptions runtime) throws Exception {
@@ -18296,6 +18451,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -18342,7 +18498,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -18380,13 +18536,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public ListFileViewsModel listFileViewsEx(ListFileViewsRequest request, RuntimeOptions runtime) throws Exception {
@@ -18415,6 +18571,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -18461,7 +18618,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -18499,13 +18656,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public RemoveFileModel removeFileEx(RemoveViewFileRequest request, RuntimeOptions runtime) throws Exception {
@@ -18534,6 +18691,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -18580,7 +18738,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -18615,13 +18773,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public SearchViewsModel searchViewsEx(SearchViewsRequest request, RuntimeOptions runtime) throws Exception {
@@ -18650,6 +18808,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -18696,7 +18855,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -18734,13 +18893,13 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
-
-        throw new TeaUnretryableException(_lastRequest);
+        throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
     public UpdateViewModel updateViewEx(UpdateViewRequest request, RuntimeOptions runtime) throws Exception {
@@ -18769,6 +18928,7 @@ public class Client {
         );
 
         TeaRequest _lastRequest = null;
+        Exception _lastException = null;
         long _now = System.currentTimeMillis();
         int _retryTimes = 0;
         while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
@@ -18815,7 +18975,7 @@ public class Client {
 
                 request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
                 _lastRequest = request_;
-                TeaResponse response_ = Tea.doAction(request_, runtime_);
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
                 java.util.Map<String, Object> respMap = null;
                 Object obj = null;
@@ -18850,13 +19010,25 @@ public class Client {
                 ));
             } catch (Exception e) {
                 if (Tea.isRetryable(e)) {
+                    _lastException = e;
                     continue;
                 }
-                throw new RuntimeException(e);
+                throw e;
             }
         }
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
 
-        throw new TeaUnretryableException(_lastRequest);
+    public void addRuntimeOptionsInterceptor(RuntimeOptionsInterceptor interceptor) {
+        interceptorChain.addRuntimeOptionsInterceptor(interceptor);
+    }
+
+    public void addRequestInterceptor(RequestInterceptor interceptor) {
+        interceptorChain.addRequestInterceptor(interceptor);
+    }
+
+    public void addResponseInterceptor(ResponseInterceptor interceptor) {
+        interceptorChain.addResponseInterceptor(interceptor);
     }
 
     /**

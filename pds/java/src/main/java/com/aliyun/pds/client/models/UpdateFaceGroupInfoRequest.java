@@ -32,10 +32,6 @@ public class UpdateFaceGroupInfoRequest extends TeaModel {
     @NameInMap("remarks")
     public String remarks;
 
-    // remarks_array
-    @NameInMap("remarks_array")
-    public java.util.List<String> remarksArray;
-
     public static UpdateFaceGroupInfoRequest build(java.util.Map<String, ?> map) throws Exception {
         UpdateFaceGroupInfoRequest self = new UpdateFaceGroupInfoRequest();
         return TeaModel.build(map, self);
@@ -87,14 +83,6 @@ public class UpdateFaceGroupInfoRequest extends TeaModel {
     }
     public String getRemarks() {
         return this.remarks;
-    }
-
-    public UpdateFaceGroupInfoRequest setRemarksArray(java.util.List<String> remarksArray) {
-        this.remarksArray = remarksArray;
-        return this;
-    }
-    public java.util.List<String> getRemarksArray() {
-        return this.remarksArray;
     }
 
 }

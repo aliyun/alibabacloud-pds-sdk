@@ -26,10 +26,6 @@ public class FindStoriesRequest extends TeaModel {
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // event_type
-    @NameInMap("event_type")
-    public String eventType;
-
     // face_group_ids
     @NameInMap("face_group_ids")
     public java.util.List<String> faceGroupIds;
@@ -107,14 +103,6 @@ public class FindStoriesRequest extends TeaModel {
     }
     public String getDriveId() {
         return this.driveId;
-    }
-
-    public FindStoriesRequest setEventType(String eventType) {
-        this.eventType = eventType;
-        return this;
-    }
-    public String getEventType() {
-        return this.eventType;
     }
 
     public FindStoriesRequest setFaceGroupIds(java.util.List<String> faceGroupIds) {

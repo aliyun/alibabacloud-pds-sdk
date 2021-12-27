@@ -25,18 +25,6 @@ public class CreateDomainResponse extends TeaModel {
     @NameInMap("audit_log_config")
     public AuditLogConfig auditLogConfig;
 
-    // 支付宝 App Id
-    @NameInMap("auth_alipay_app_id")
-    public String authAlipayAppId;
-
-    // 是否开启了支付宝认证
-    @NameInMap("auth_alipay_enable")
-    public Boolean authAlipayEnable;
-
-    // 支付宝 App Secret
-    @NameInMap("auth_alipay_private_key")
-    public String authAlipayPrivateKey;
-
     // Domain AuthCName
     @NameInMap("auth_cname")
     public String authCname;
@@ -56,9 +44,6 @@ public class CreateDomainResponse extends TeaModel {
     // 是否开启了钉钉认证
     @NameInMap("auth_dingding_enable")
     public Boolean authDingdingEnable;
-
-    @NameInMap("auth_endpoint_enable")
-    public Boolean authEndpointEnable;
 
     // RAM App Id
     @NameInMap("auth_ram_app_id")
@@ -154,6 +139,10 @@ public class CreateDomainResponse extends TeaModel {
     @NameInMap("parallel_upload_enabled")
     public Boolean parallelUploadEnabled;
 
+    // Parent Domain ID
+    @NameInMap("parent_domain_id")
+    public String parentDomainId;
+
     // Domain 类型
     @NameInMap("path_type")
     public String pathType;
@@ -209,6 +198,14 @@ public class CreateDomainResponse extends TeaModel {
     // Domain 更新时间
     @NameInMap("updated_at")
     public String updatedAt;
+
+    // 逻辑空间使用量，单位为字节
+    @NameInMap("used_size")
+    public Long usedSize;
+
+    // 逻辑空间刷新周期，单位：秒
+    @NameInMap("used_size_refresh_interval")
+    public Long usedSizeRefreshInterval;
 
     // 用户数配额
     @NameInMap("user_count_quota")
@@ -272,30 +269,6 @@ public class CreateDomainResponse extends TeaModel {
         return this.auditLogConfig;
     }
 
-    public CreateDomainResponse setAuthAlipayAppId(String authAlipayAppId) {
-        this.authAlipayAppId = authAlipayAppId;
-        return this;
-    }
-    public String getAuthAlipayAppId() {
-        return this.authAlipayAppId;
-    }
-
-    public CreateDomainResponse setAuthAlipayEnable(Boolean authAlipayEnable) {
-        this.authAlipayEnable = authAlipayEnable;
-        return this;
-    }
-    public Boolean getAuthAlipayEnable() {
-        return this.authAlipayEnable;
-    }
-
-    public CreateDomainResponse setAuthAlipayPrivateKey(String authAlipayPrivateKey) {
-        this.authAlipayPrivateKey = authAlipayPrivateKey;
-        return this;
-    }
-    public String getAuthAlipayPrivateKey() {
-        return this.authAlipayPrivateKey;
-    }
-
     public CreateDomainResponse setAuthCname(String authCname) {
         this.authCname = authCname;
         return this;
@@ -334,14 +307,6 @@ public class CreateDomainResponse extends TeaModel {
     }
     public Boolean getAuthDingdingEnable() {
         return this.authDingdingEnable;
-    }
-
-    public CreateDomainResponse setAuthEndpointEnable(Boolean authEndpointEnable) {
-        this.authEndpointEnable = authEndpointEnable;
-        return this;
-    }
-    public Boolean getAuthEndpointEnable() {
-        return this.authEndpointEnable;
     }
 
     public CreateDomainResponse setAuthRamAppId(String authRamAppId) {
@@ -544,6 +509,14 @@ public class CreateDomainResponse extends TeaModel {
         return this.parallelUploadEnabled;
     }
 
+    public CreateDomainResponse setParentDomainId(String parentDomainId) {
+        this.parentDomainId = parentDomainId;
+        return this;
+    }
+    public String getParentDomainId() {
+        return this.parentDomainId;
+    }
+
     public CreateDomainResponse setPathType(String pathType) {
         this.pathType = pathType;
         return this;
@@ -662,6 +635,22 @@ public class CreateDomainResponse extends TeaModel {
     }
     public String getUpdatedAt() {
         return this.updatedAt;
+    }
+
+    public CreateDomainResponse setUsedSize(Long usedSize) {
+        this.usedSize = usedSize;
+        return this;
+    }
+    public Long getUsedSize() {
+        return this.usedSize;
+    }
+
+    public CreateDomainResponse setUsedSizeRefreshInterval(Long usedSizeRefreshInterval) {
+        this.usedSizeRefreshInterval = usedSizeRefreshInterval;
+        return this;
+    }
+    public Long getUsedSizeRefreshInterval() {
+        return this.usedSizeRefreshInterval;
     }
 
     public CreateDomainResponse setUserCountQuota(Long userCountQuota) {

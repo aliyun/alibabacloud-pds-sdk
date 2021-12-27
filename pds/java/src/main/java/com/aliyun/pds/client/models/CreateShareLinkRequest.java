@@ -23,6 +23,10 @@ public class CreateShareLinkRequest extends TeaModel {
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
+    // enable_file_changed_notify
+    @NameInMap("enable_file_changed_notify")
+    public Boolean enableFileChangedNotify;
+
     // expiration
     @NameInMap("expiration")
     public String expiration;
@@ -93,6 +97,14 @@ public class CreateShareLinkRequest extends TeaModel {
     }
     public String getDriveId() {
         return this.driveId;
+    }
+
+    public CreateShareLinkRequest setEnableFileChangedNotify(Boolean enableFileChangedNotify) {
+        this.enableFileChangedNotify = enableFileChangedNotify;
+        return this;
+    }
+    public Boolean getEnableFileChangedNotify() {
+        return this.enableFileChangedNotify;
     }
 
     public CreateShareLinkRequest setExpiration(String expiration) {

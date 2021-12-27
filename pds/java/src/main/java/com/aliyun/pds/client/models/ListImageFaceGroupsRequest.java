@@ -17,17 +17,15 @@ public class ListImageFaceGroupsRequest extends TeaModel {
 
     // 每页大小限制
     @NameInMap("limit")
+    @Validation(maximum = 100, minimum = 1)
     public Long limit;
 
     // 翻页标记
     @NameInMap("marker")
     public String marker;
 
-    @NameInMap("remarks_array_query")
-    public RemarksQueryRequest remarksArrayQuery;
-
-    @NameInMap("remarks_query")
-    public RemarksQueryRequest remarksQuery;
+    @NameInMap("remarks")
+    public String remarks;
 
     public static ListImageFaceGroupsRequest build(java.util.Map<String, ?> map) throws Exception {
         ListImageFaceGroupsRequest self = new ListImageFaceGroupsRequest();
@@ -66,20 +64,12 @@ public class ListImageFaceGroupsRequest extends TeaModel {
         return this.marker;
     }
 
-    public ListImageFaceGroupsRequest setRemarksArrayQuery(RemarksQueryRequest remarksArrayQuery) {
-        this.remarksArrayQuery = remarksArrayQuery;
+    public ListImageFaceGroupsRequest setRemarks(String remarks) {
+        this.remarks = remarks;
         return this;
     }
-    public RemarksQueryRequest getRemarksArrayQuery() {
-        return this.remarksArrayQuery;
-    }
-
-    public ListImageFaceGroupsRequest setRemarksQuery(RemarksQueryRequest remarksQuery) {
-        this.remarksQuery = remarksQuery;
-        return this;
-    }
-    public RemarksQueryRequest getRemarksQuery() {
-        return this.remarksQuery;
+    public String getRemarks() {
+        return this.remarks;
     }
 
 }

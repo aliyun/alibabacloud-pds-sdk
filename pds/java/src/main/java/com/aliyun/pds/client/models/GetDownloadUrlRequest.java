@@ -21,6 +21,7 @@ public class GetDownloadUrlRequest extends TeaModel {
 
     // expire_sec
     @NameInMap("expire_sec")
+    @Validation(maximum = 115200, minimum = 1)
     public Long expireSec;
 
     // file_id
