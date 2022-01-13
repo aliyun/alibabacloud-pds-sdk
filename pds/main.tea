@@ -7891,7 +7891,7 @@ api listFileDeltaEx(request: ListFileDeltaRequest, runtime: RuntimeOptions): Lis
 
 model ListInheritPermissionModel {
   headers?: map[string]string(name='headers'),
-  body: FilePermissionMember(name='body'),
+  body: FileListInheritPermissionResponse(name='body'),
 }
 
 /**
@@ -24165,6 +24165,14 @@ model AuditLogConfig {
 /**
  * 
  */
+model AuditMgmtLogDetail {
+  fileName?: string(name='file_name', description='file_name', example='log.csv'),
+  query?: string(name='query', description='query', example='"app123"'),
+}
+
+/**
+ * 
+ */
 model BaseAuditLogRequest {
   orderBy?: string(name='order_by', description='order_by', enum='acted_at DESC', example='name'),
   query?: string(name='query', description='query', example='not actor_name=user1', maxLength=4096),
@@ -24824,7 +24832,6 @@ model GetBizCNameInfoResponse {
   cnameType?: string(name='cname_type', description='cname type', example='api'),
   domainId: string(name='domain_id', description='domain ID', example='sz100'),
   isVpc?: boolean(name='is_vpc', description='is vpc', example=false),
-  subdomainId: string(name='subdomain_id', description='subdomain ID', example='sz100'),
 }
 
 /**
@@ -25207,6 +25214,7 @@ model ListUserRequest {
  */
 model LogDetail {
   accountLogDetail?: AccountLogDetail(name='account_log_detail'),
+  auditMgmtLogDetail?: AuditMgmtLogDetail(name='audit_mgmt_log_detail'),
   driveLogDetail?: DriveLogDetail(name='drive_log_detail'),
   entMgmtLogDetail?: EntMgmtLogDetail(name='ent_mgmt_log_detail'),
   fileLogDetail?: FileLogDetail(name='file_log_detail'),
@@ -25476,6 +25484,9 @@ model ShareLinkLogDetail {
   expiration?: string(name='expiration', description='expiration', example='2006-01-02T15:04:05.999Z'),
   hasMultiObject?: boolean(name='has_multi_object', description='has_multi_object', example=true),
   hasPwd?: boolean(name='has_pwd', description='has_pwd', example=false),
+  shareCreatedAt?: string(name='share_created_at', description='share_created_at', example='2006-01-02T15:04:05.999Z'),
+  shareCreatorId?: string(name='share_creator_id', description='share_creator_id', example='"123456"'),
+  shareCreatorName?: string(name='share_creator_name', description='share_creator_name', example='"user1"'),
   shareId?: string(name='share_id', description='share_id (脱敏)', enum='file, folder', example='file'),
   toParentPath?: string(name='to_parent_path', description='to_parent_path', example='/e/f/g'),
   toParentPathType?: string(name='to_parent_path_type', description='to_parent_path_type', example='self'),

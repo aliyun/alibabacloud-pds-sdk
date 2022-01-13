@@ -9,7 +9,7 @@ public class ListInheritPermissionModel extends TeaModel {
 
     @NameInMap("body")
     @Validation(required = true)
-    public FilePermissionMember body;
+    public FileListInheritPermissionResponse body;
 
     public static ListInheritPermissionModel build(java.util.Map<String, ?> map) throws Exception {
         ListInheritPermissionModel self = new ListInheritPermissionModel();
@@ -24,11 +24,11 @@ public class ListInheritPermissionModel extends TeaModel {
         return this.headers;
     }
 
-    public ListInheritPermissionModel setBody(FilePermissionMember body) {
+    public ListInheritPermissionModel setBody(FileListInheritPermissionResponse body) {
         this.body = body;
         return this;
     }
-    public FilePermissionMember getBody() {
+    public FileListInheritPermissionResponse getBody() {
         return this.body;
     }
 
