@@ -10,6 +10,9 @@ public class LogDetail extends TeaModel {
     @NameInMap("account_log_detail")
     public AccountLogDetail accountLogDetail;
 
+    @NameInMap("audit_mgmt_log_detail")
+    public AuditMgmtLogDetail auditMgmtLogDetail;
+
     @NameInMap("drive_log_detail")
     public DriveLogDetail driveLogDetail;
 
@@ -54,6 +57,14 @@ public class LogDetail extends TeaModel {
     }
     public AccountLogDetail getAccountLogDetail() {
         return this.accountLogDetail;
+    }
+
+    public LogDetail setAuditMgmtLogDetail(AuditMgmtLogDetail auditMgmtLogDetail) {
+        this.auditMgmtLogDetail = auditMgmtLogDetail;
+        return this;
+    }
+    public AuditMgmtLogDetail getAuditMgmtLogDetail() {
+        return this.auditMgmtLogDetail;
     }
 
     public LogDetail setDriveLogDetail(DriveLogDetail driveLogDetail) {

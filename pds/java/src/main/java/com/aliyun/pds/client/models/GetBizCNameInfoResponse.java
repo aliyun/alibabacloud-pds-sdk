@@ -35,11 +35,6 @@ public class GetBizCNameInfoResponse extends TeaModel {
     @NameInMap("is_vpc")
     public Boolean isVpc;
 
-    // subdomain ID
-    @NameInMap("subdomain_id")
-    @Validation(required = true)
-    public String subdomainId;
-
     public static GetBizCNameInfoResponse build(java.util.Map<String, ?> map) throws Exception {
         GetBizCNameInfoResponse self = new GetBizCNameInfoResponse();
         return TeaModel.build(map, self);
@@ -99,14 +94,6 @@ public class GetBizCNameInfoResponse extends TeaModel {
     }
     public Boolean getIsVpc() {
         return this.isVpc;
-    }
-
-    public GetBizCNameInfoResponse setSubdomainId(String subdomainId) {
-        this.subdomainId = subdomainId;
-        return this;
-    }
-    public String getSubdomainId() {
-        return this.subdomainId;
     }
 
 }
