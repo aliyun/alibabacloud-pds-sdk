@@ -27,6 +27,10 @@ public class UserAuthentication extends TeaModel {
     @Validation(required = true)
     public String DomainID;
 
+    // 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
+    @NameInMap("Extra")
+    public String Extra;
+
     // 唯一身份标识
     @NameInMap("Identity")
     @Validation(required = true)
@@ -46,10 +50,6 @@ public class UserAuthentication extends TeaModel {
     @NameInMap("UserID")
     @Validation(required = true)
     public String UserID;
-
-    // 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
-    @NameInMap("extra")
-    public String extra;
 
     // subdomain id
     @NameInMap("subdomain_id")
@@ -92,6 +92,14 @@ public class UserAuthentication extends TeaModel {
         return this.DomainID;
     }
 
+    public UserAuthentication setExtra(String Extra) {
+        this.Extra = Extra;
+        return this;
+    }
+    public String getExtra() {
+        return this.Extra;
+    }
+
     public UserAuthentication setIdentity(String Identity) {
         this.Identity = Identity;
         return this;
@@ -122,14 +130,6 @@ public class UserAuthentication extends TeaModel {
     }
     public String getUserID() {
         return this.UserID;
-    }
-
-    public UserAuthentication setExtra(String extra) {
-        this.extra = extra;
-        return this;
-    }
-    public String getExtra() {
-        return this.extra;
     }
 
     public UserAuthentication setSubdomainId(String subdomainId) {

@@ -22,6 +22,9 @@ public class BaseWatermarkConfigResponse extends TeaModel {
     @NameInMap("enable_doc_preview")
     public Boolean enableDocPreview;
 
+    @NameInMap("enable_on_preview")
+    public Boolean enableOnPreview;
+
     @NameInMap("fill_style")
     public String fillStyle;
 
@@ -83,6 +86,14 @@ public class BaseWatermarkConfigResponse extends TeaModel {
     }
     public Boolean getEnableDocPreview() {
         return this.enableDocPreview;
+    }
+
+    public BaseWatermarkConfigResponse setEnableOnPreview(Boolean enableOnPreview) {
+        this.enableOnPreview = enableOnPreview;
+        return this;
+    }
+    public Boolean getEnableOnPreview() {
+        return this.enableOnPreview;
     }
 
     public BaseWatermarkConfigResponse setFillStyle(String fillStyle) {

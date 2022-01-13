@@ -18,6 +18,11 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
     @NameInMap("category")
     public String category;
 
+    // drive_id
+    @NameInMap("drive_id")
+    @Validation(required = true, pattern = "[0-9]+")
+    public String driveId;
+
     // file_id
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
@@ -110,6 +115,14 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
     }
     public String getCategory() {
         return this.category;
+    }
+
+    public CCPGetShareLinkVideoPreviewPlayInfoRequest setDriveId(String driveId) {
+        this.driveId = driveId;
+        return this;
+    }
+    public String getDriveId() {
+        return this.driveId;
     }
 
     public CCPGetShareLinkVideoPreviewPlayInfoRequest setFileId(String fileId) {

@@ -22,6 +22,9 @@ public class LogDetail extends TeaModel {
     @NameInMap("group_log_detail")
     public GroupLogDetail groupLogDetail;
 
+    @NameInMap("login_mgmt_log_detail")
+    public LoginMgmtLogDetail loginMgmtLogDetail;
+
     @NameInMap("membership_log_detail")
     public MembershipLogDetail membershipLogDetail;
 
@@ -83,6 +86,14 @@ public class LogDetail extends TeaModel {
     }
     public GroupLogDetail getGroupLogDetail() {
         return this.groupLogDetail;
+    }
+
+    public LogDetail setLoginMgmtLogDetail(LoginMgmtLogDetail loginMgmtLogDetail) {
+        this.loginMgmtLogDetail = loginMgmtLogDetail;
+        return this;
+    }
+    public LoginMgmtLogDetail getLoginMgmtLogDetail() {
+        return this.loginMgmtLogDetail;
     }
 
     public LogDetail setMembershipLogDetail(MembershipLogDetail membershipLogDetail) {

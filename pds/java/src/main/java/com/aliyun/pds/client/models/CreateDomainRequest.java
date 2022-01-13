@@ -45,7 +45,6 @@ public class CreateDomainRequest extends TeaModel {
 
     // Domain 名称
     @NameInMap("domain_name")
-    @Validation(required = true)
     public String domainName;
 
     // 事件通知 MNS 匹配文件名
@@ -82,7 +81,6 @@ public class CreateDomainRequest extends TeaModel {
 
     // Domain 类型
     @NameInMap("mode")
-    @Validation(required = true)
     public String mode;
 
     // 父 Domain ID
@@ -110,7 +108,6 @@ public class CreateDomainRequest extends TeaModel {
 
     // 存储 Region 列表
     @NameInMap("store_region_list")
-    @Validation(required = true)
     public java.util.List<String> storeRegionList;
 
     // 逻辑空间刷新周期，单位：秒

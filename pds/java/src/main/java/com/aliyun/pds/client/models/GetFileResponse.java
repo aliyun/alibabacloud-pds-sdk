@@ -134,6 +134,9 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("local_created_at")
     public String localCreatedAt;
 
+    @NameInMap("local_modified_at")
+    public String localModifiedAt;
+
     @NameInMap("meta")
     public String meta;
 
@@ -182,6 +185,18 @@ public class GetFileResponse extends TeaModel {
     // @Deprecated streams url info
     @NameInMap("streams_info")
     public java.util.Map<String, ?> streamsInfo;
+
+    // sync_device_flag
+    @NameInMap("sync_device_flag")
+    public Boolean syncDeviceFlag;
+
+    // sync_flag
+    @NameInMap("sync_flag")
+    public Boolean syncFlag;
+
+    // sync_meta
+    @NameInMap("sync_meta")
+    public String syncMeta;
 
     // thumbnail
     @NameInMap("thumbnail")
@@ -479,6 +494,14 @@ public class GetFileResponse extends TeaModel {
         return this.localCreatedAt;
     }
 
+    public GetFileResponse setLocalModifiedAt(String localModifiedAt) {
+        this.localModifiedAt = localModifiedAt;
+        return this;
+    }
+    public String getLocalModifiedAt() {
+        return this.localModifiedAt;
+    }
+
     public GetFileResponse setMeta(String meta) {
         this.meta = meta;
         return this;
@@ -573,6 +596,30 @@ public class GetFileResponse extends TeaModel {
     }
     public java.util.Map<String, ?> getStreamsInfo() {
         return this.streamsInfo;
+    }
+
+    public GetFileResponse setSyncDeviceFlag(Boolean syncDeviceFlag) {
+        this.syncDeviceFlag = syncDeviceFlag;
+        return this;
+    }
+    public Boolean getSyncDeviceFlag() {
+        return this.syncDeviceFlag;
+    }
+
+    public GetFileResponse setSyncFlag(Boolean syncFlag) {
+        this.syncFlag = syncFlag;
+        return this;
+    }
+    public Boolean getSyncFlag() {
+        return this.syncFlag;
+    }
+
+    public GetFileResponse setSyncMeta(String syncMeta) {
+        this.syncMeta = syncMeta;
+        return this;
+    }
+    public String getSyncMeta() {
+        return this.syncMeta;
     }
 
     public GetFileResponse setThumbnail(String thumbnail) {

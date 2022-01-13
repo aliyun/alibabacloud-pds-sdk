@@ -42,6 +42,10 @@ public class GetDownloadUrlResponse extends TeaModel {
     @NameInMap("size")
     public Long size;
 
+    // streams info
+    @NameInMap("streams_info")
+    public java.util.Map<String, ?> streamsInfo;
+
     // streams url info
     @NameInMap("streams_url")
     public java.util.Map<String, ?> streamsUrl;
@@ -125,6 +129,14 @@ public class GetDownloadUrlResponse extends TeaModel {
     }
     public Long getSize() {
         return this.size;
+    }
+
+    public GetDownloadUrlResponse setStreamsInfo(java.util.Map<String, ?> streamsInfo) {
+        this.streamsInfo = streamsInfo;
+        return this;
+    }
+    public java.util.Map<String, ?> getStreamsInfo() {
+        return this.streamsInfo;
     }
 
     public GetDownloadUrlResponse setStreamsUrl(java.util.Map<String, ?> streamsUrl) {

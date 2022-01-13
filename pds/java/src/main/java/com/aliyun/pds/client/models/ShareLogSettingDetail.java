@@ -23,6 +23,10 @@ public class ShareLogSettingDetail extends TeaModel {
     @NameInMap("role_id")
     public String roleId;
 
+    // role_name
+    @NameInMap("role_name")
+    public String roleName;
+
     public static ShareLogSettingDetail build(java.util.Map<String, ?> map) throws Exception {
         ShareLogSettingDetail self = new ShareLogSettingDetail();
         return TeaModel.build(map, self);
@@ -58,6 +62,14 @@ public class ShareLogSettingDetail extends TeaModel {
     }
     public String getRoleId() {
         return this.roleId;
+    }
+
+    public ShareLogSettingDetail setRoleName(String roleName) {
+        this.roleName = roleName;
+        return this;
+    }
+    public String getRoleName() {
+        return this.roleName;
     }
 
 }

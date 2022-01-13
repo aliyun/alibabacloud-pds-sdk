@@ -14,6 +14,10 @@ public class GetShareLinkDownloadURLRequest extends TeaModel {
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
+    // drive_id is optional
+    @NameInMap("drive_id")
+    public String driveId;
+
     // expire_sec
     @NameInMap("expire_sec")
     @Validation(maximum = 600, minimum = 1)
@@ -90,6 +94,14 @@ public class GetShareLinkDownloadURLRequest extends TeaModel {
     }
     public java.util.Map<String, ?> getAdditionData() {
         return this.additionData;
+    }
+
+    public GetShareLinkDownloadURLRequest setDriveId(String driveId) {
+        this.driveId = driveId;
+        return this;
+    }
+    public String getDriveId() {
+        return this.driveId;
     }
 
     public GetShareLinkDownloadURLRequest setExpireSec(Long expireSec) {
