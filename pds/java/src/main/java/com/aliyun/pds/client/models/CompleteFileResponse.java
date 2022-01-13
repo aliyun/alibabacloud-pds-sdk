@@ -134,6 +134,9 @@ public class CompleteFileResponse extends TeaModel {
     @NameInMap("local_created_at")
     public String localCreatedAt;
 
+    @NameInMap("local_modified_at")
+    public String localModifiedAt;
+
     // location
     @NameInMap("location")
     public String location;
@@ -189,6 +192,18 @@ public class CompleteFileResponse extends TeaModel {
     // @Deprecated streams url info
     @NameInMap("streams_info")
     public java.util.Map<String, ?> streamsInfo;
+
+    // sync_device_flag
+    @NameInMap("sync_device_flag")
+    public Boolean syncDeviceFlag;
+
+    // sync_flag
+    @NameInMap("sync_flag")
+    public Boolean syncFlag;
+
+    // sync_meta
+    @NameInMap("sync_meta")
+    public String syncMeta;
 
     // thumbnail
     @NameInMap("thumbnail")
@@ -481,6 +496,14 @@ public class CompleteFileResponse extends TeaModel {
         return this.localCreatedAt;
     }
 
+    public CompleteFileResponse setLocalModifiedAt(String localModifiedAt) {
+        this.localModifiedAt = localModifiedAt;
+        return this;
+    }
+    public String getLocalModifiedAt() {
+        return this.localModifiedAt;
+    }
+
     public CompleteFileResponse setLocation(String location) {
         this.location = location;
         return this;
@@ -591,6 +614,30 @@ public class CompleteFileResponse extends TeaModel {
     }
     public java.util.Map<String, ?> getStreamsInfo() {
         return this.streamsInfo;
+    }
+
+    public CompleteFileResponse setSyncDeviceFlag(Boolean syncDeviceFlag) {
+        this.syncDeviceFlag = syncDeviceFlag;
+        return this;
+    }
+    public Boolean getSyncDeviceFlag() {
+        return this.syncDeviceFlag;
+    }
+
+    public CompleteFileResponse setSyncFlag(Boolean syncFlag) {
+        this.syncFlag = syncFlag;
+        return this;
+    }
+    public Boolean getSyncFlag() {
+        return this.syncFlag;
+    }
+
+    public CompleteFileResponse setSyncMeta(String syncMeta) {
+        this.syncMeta = syncMeta;
+        return this;
+    }
+    public String getSyncMeta() {
+        return this.syncMeta;
     }
 
     public CompleteFileResponse setThumbnail(String thumbnail) {

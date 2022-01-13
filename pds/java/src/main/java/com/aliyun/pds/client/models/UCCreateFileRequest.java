@@ -105,6 +105,9 @@ public class UCCreateFileRequest extends TeaModel {
     @NameInMap("local_created_at")
     public String localCreatedAt;
 
+    @NameInMap("local_modified_at")
+    public String localModifiedAt;
+
     // location
     @NameInMap("location")
     public String location;
@@ -396,6 +399,14 @@ public class UCCreateFileRequest extends TeaModel {
     }
     public String getLocalCreatedAt() {
         return this.localCreatedAt;
+    }
+
+    public UCCreateFileRequest setLocalModifiedAt(String localModifiedAt) {
+        this.localModifiedAt = localModifiedAt;
+        return this;
+    }
+    public String getLocalModifiedAt() {
+        return this.localModifiedAt;
     }
 
     public UCCreateFileRequest setLocation(String location) {

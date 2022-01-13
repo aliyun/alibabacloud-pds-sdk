@@ -19,6 +19,9 @@ public class WatermarkEnableConfig extends TeaModel {
     @NameInMap("enable_doc_preview")
     public Boolean enableDocPreview;
 
+    @NameInMap("enable_on_preview")
+    public Boolean enableOnPreview;
+
     public static WatermarkEnableConfig build(java.util.Map<String, ?> map) throws Exception {
         WatermarkEnableConfig self = new WatermarkEnableConfig();
         return TeaModel.build(map, self);
@@ -54,6 +57,14 @@ public class WatermarkEnableConfig extends TeaModel {
     }
     public Boolean getEnableDocPreview() {
         return this.enableDocPreview;
+    }
+
+    public WatermarkEnableConfig setEnableOnPreview(Boolean enableOnPreview) {
+        this.enableOnPreview = enableOnPreview;
+        return this;
+    }
+    public Boolean getEnableOnPreview() {
+        return this.enableOnPreview;
     }
 
 }

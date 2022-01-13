@@ -14,10 +14,19 @@ public class CreateShareLinkRequest extends TeaModel {
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
+    // category
+    @NameInMap("category")
+    public String category;
+
     // description
     @NameInMap("description")
     public String description;
 
+    // 多drive使用该字段，view分享支持跨drive，使用该字段，如果为空，则是分享view下所有文件
+    @NameInMap("drive_file_list")
+    public java.util.List<ShareFile> driveFileList;
+
+    // 单drive使用以下字段，文件共享目前使用该字段
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -62,6 +71,10 @@ public class CreateShareLinkRequest extends TeaModel {
     @NameInMap("user_id")
     public String userId;
 
+    // view_id
+    @NameInMap("view_id")
+    public String viewId;
+
     public static CreateShareLinkRequest build(java.util.Map<String, ?> map) throws Exception {
         CreateShareLinkRequest self = new CreateShareLinkRequest();
         return TeaModel.build(map, self);
@@ -83,12 +96,28 @@ public class CreateShareLinkRequest extends TeaModel {
         return this.additionData;
     }
 
+    public CreateShareLinkRequest setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
+    }
+
     public CreateShareLinkRequest setDescription(String description) {
         this.description = description;
         return this;
     }
     public String getDescription() {
         return this.description;
+    }
+
+    public CreateShareLinkRequest setDriveFileList(java.util.List<ShareFile> driveFileList) {
+        this.driveFileList = driveFileList;
+        return this;
+    }
+    public java.util.List<ShareFile> getDriveFileList() {
+        return this.driveFileList;
     }
 
     public CreateShareLinkRequest setDriveId(String driveId) {
@@ -177,6 +206,14 @@ public class CreateShareLinkRequest extends TeaModel {
     }
     public String getUserId() {
         return this.userId;
+    }
+
+    public CreateShareLinkRequest setViewId(String viewId) {
+        this.viewId = viewId;
+        return this;
+    }
+    public String getViewId() {
+        return this.viewId;
     }
 
 }

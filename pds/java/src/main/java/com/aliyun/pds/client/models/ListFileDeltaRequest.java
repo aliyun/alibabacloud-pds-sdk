@@ -14,6 +14,11 @@ public class ListFileDeltaRequest extends TeaModel {
     @NameInMap("cursor")
     public String cursor;
 
+    // disable_characteristic_hash
+    // default false
+    @NameInMap("disable_characteristic_hash")
+    public Boolean disableCharacteristicHash;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
@@ -39,6 +44,10 @@ public class ListFileDeltaRequest extends TeaModel {
     @NameInMap("office_thumbnail_process")
     public String officeThumbnailProcess;
 
+    // sync_root_id
+    @NameInMap("sync_root_id")
+    public String syncRootId;
+
     // video_thumbnail_process
     // type:string
     @NameInMap("video_thumbnail_process")
@@ -63,6 +72,14 @@ public class ListFileDeltaRequest extends TeaModel {
     }
     public String getCursor() {
         return this.cursor;
+    }
+
+    public ListFileDeltaRequest setDisableCharacteristicHash(Boolean disableCharacteristicHash) {
+        this.disableCharacteristicHash = disableCharacteristicHash;
+        return this;
+    }
+    public Boolean getDisableCharacteristicHash() {
+        return this.disableCharacteristicHash;
     }
 
     public ListFileDeltaRequest setDriveId(String driveId) {
@@ -111,6 +128,14 @@ public class ListFileDeltaRequest extends TeaModel {
     }
     public String getOfficeThumbnailProcess() {
         return this.officeThumbnailProcess;
+    }
+
+    public ListFileDeltaRequest setSyncRootId(String syncRootId) {
+        this.syncRootId = syncRootId;
+        return this;
+    }
+    public String getSyncRootId() {
+        return this.syncRootId;
     }
 
     public ListFileDeltaRequest setVideoThumbnailProcess(String videoThumbnailProcess) {

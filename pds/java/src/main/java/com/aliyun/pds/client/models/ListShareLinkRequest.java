@@ -10,6 +10,10 @@ public class ListShareLinkRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    // category
+    @NameInMap("category")
+    public String category;
+
     // creator
     @NameInMap("creator")
     public String creator;
@@ -35,6 +39,10 @@ public class ListShareLinkRequest extends TeaModel {
     @NameInMap("order_direction")
     public String orderDirection;
 
+    // view_id
+    @NameInMap("view_id")
+    public String viewId;
+
     public static ListShareLinkRequest build(java.util.Map<String, ?> map) throws Exception {
         ListShareLinkRequest self = new ListShareLinkRequest();
         return TeaModel.build(map, self);
@@ -46,6 +54,14 @@ public class ListShareLinkRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public ListShareLinkRequest setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public ListShareLinkRequest setCreator(String creator) {
@@ -94,6 +110,14 @@ public class ListShareLinkRequest extends TeaModel {
     }
     public String getOrderDirection() {
         return this.orderDirection;
+    }
+
+    public ListShareLinkRequest setViewId(String viewId) {
+        this.viewId = viewId;
+        return this;
+    }
+    public String getViewId() {
+        return this.viewId;
     }
 
 }

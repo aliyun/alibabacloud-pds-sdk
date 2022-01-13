@@ -15,6 +15,10 @@ public class GetUserResponse extends TeaModel {
     @NameInMap("created_at")
     public Long createdAt;
 
+    // creator
+    @NameInMap("creator")
+    public String creator;
+
     // 默认 Drive ID
     @NameInMap("default_drive_id")
     public String defaultDriveId;
@@ -97,6 +101,14 @@ public class GetUserResponse extends TeaModel {
     }
     public Long getCreatedAt() {
         return this.createdAt;
+    }
+
+    public GetUserResponse setCreator(String creator) {
+        this.creator = creator;
+        return this;
+    }
+    public String getCreator() {
+        return this.creator;
     }
 
     public GetUserResponse setDefaultDriveId(String defaultDriveId) {

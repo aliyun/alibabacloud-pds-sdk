@@ -27,6 +27,10 @@ public class ShareLogDetail extends TeaModel {
     @NameInMap("role_id")
     public String roleId;
 
+    // role_name
+    @NameInMap("role_name")
+    public String roleName;
+
     // share_to_id
     @NameInMap("share_to_id")
     public String shareToId;
@@ -89,6 +93,14 @@ public class ShareLogDetail extends TeaModel {
     }
     public String getRoleId() {
         return this.roleId;
+    }
+
+    public ShareLogDetail setRoleName(String roleName) {
+        this.roleName = roleName;
+        return this;
+    }
+    public String getRoleName() {
+        return this.roleName;
     }
 
     public ShareLogDetail setShareToId(String shareToId) {
