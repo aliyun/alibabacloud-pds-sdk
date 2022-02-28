@@ -13,6 +13,9 @@ public class Actor extends TeaModel {
     @NameInMap("anonymous_user")
     public ActorAnonymousUser anonymousUser;
 
+    @NameInMap("share_link_user")
+    public ActorShareLinkUser shareLinkUser;
+
     @NameInMap("system")
     public ActorSystem system;
 
@@ -38,6 +41,14 @@ public class Actor extends TeaModel {
     }
     public ActorAnonymousUser getAnonymousUser() {
         return this.anonymousUser;
+    }
+
+    public Actor setShareLinkUser(ActorShareLinkUser shareLinkUser) {
+        this.shareLinkUser = shareLinkUser;
+        return this;
+    }
+    public ActorShareLinkUser getShareLinkUser() {
+        return this.shareLinkUser;
     }
 
     public Actor setSystem(ActorSystem system) {

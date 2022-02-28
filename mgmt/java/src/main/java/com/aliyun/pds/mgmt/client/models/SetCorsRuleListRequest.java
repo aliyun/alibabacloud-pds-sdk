@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * list cors rule request
  */
 public class SetCorsRuleListRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // cors rule list
     @NameInMap("cors_rule_list")
@@ -25,12 +25,12 @@ public class SetCorsRuleListRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public SetCorsRuleListRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public SetCorsRuleListRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public SetCorsRuleListRequest setCorsRuleList(java.util.List<CorsRule> corsRuleList) {

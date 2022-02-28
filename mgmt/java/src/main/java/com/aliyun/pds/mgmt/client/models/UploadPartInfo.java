@@ -15,6 +15,13 @@ public class UploadPartInfo extends TeaModel {
     @NameInMap("etag")
     public String etag;
 
+    @NameInMap("internal_upload_form_info")
+    public UploadFormInfo internalUploadFormInfo;
+
+    // internal_upload_url
+    @NameInMap("internal_upload_url")
+    public String internalUploadUrl;
+
     @NameInMap("parallel_sha1_ctx")
     public SHA1CTX parallelSha1Ctx;
 
@@ -27,6 +34,9 @@ public class UploadPartInfo extends TeaModel {
     @NameInMap("part_size")
     @Validation(maximum = 5368709120D)
     public Long partSize;
+
+    @NameInMap("upload_form_info")
+    public UploadFormInfo uploadFormInfo;
 
     // upload_url
     @NameInMap("upload_url")
@@ -53,6 +63,22 @@ public class UploadPartInfo extends TeaModel {
         return this.etag;
     }
 
+    public UploadPartInfo setInternalUploadFormInfo(UploadFormInfo internalUploadFormInfo) {
+        this.internalUploadFormInfo = internalUploadFormInfo;
+        return this;
+    }
+    public UploadFormInfo getInternalUploadFormInfo() {
+        return this.internalUploadFormInfo;
+    }
+
+    public UploadPartInfo setInternalUploadUrl(String internalUploadUrl) {
+        this.internalUploadUrl = internalUploadUrl;
+        return this;
+    }
+    public String getInternalUploadUrl() {
+        return this.internalUploadUrl;
+    }
+
     public UploadPartInfo setParallelSha1Ctx(SHA1CTX parallelSha1Ctx) {
         this.parallelSha1Ctx = parallelSha1Ctx;
         return this;
@@ -75,6 +101,14 @@ public class UploadPartInfo extends TeaModel {
     }
     public Long getPartSize() {
         return this.partSize;
+    }
+
+    public UploadPartInfo setUploadFormInfo(UploadFormInfo uploadFormInfo) {
+        this.uploadFormInfo = uploadFormInfo;
+        return this;
+    }
+    public UploadFormInfo getUploadFormInfo() {
+        return this.uploadFormInfo;
     }
 
     public UploadPartInfo setUploadUrl(String uploadUrl) {

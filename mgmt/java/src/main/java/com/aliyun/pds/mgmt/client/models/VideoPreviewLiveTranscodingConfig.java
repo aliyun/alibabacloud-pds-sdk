@@ -4,7 +4,7 @@ package com.aliyun.pds.mgmt.client.models;
 import com.aliyun.tea.*;
 
 /**
- * domain config --------
+ * 实时转码配置
  */
 public class VideoPreviewLiveTranscodingConfig extends TeaModel {
     @NameInMap("current_version")
@@ -16,11 +16,14 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
     @NameInMap("detail_count_limit")
     public Long detailCountLimit;
 
+    @NameInMap("enable_config")
+    public VideoPreviewLiveTranscodingEnableConfig enableConfig;
+
     @NameInMap("enabled")
     public Boolean enabled;
 
-    @NameInMap("imm_project_map")
-    public java.util.Map<String, ?> immProjectMap;
+    @NameInMap("ignore_template_list")
+    public java.util.List<String> ignoreTemplateList;
 
     @NameInMap("leading_prefix")
     public String leadingPrefix;
@@ -31,11 +34,23 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
     @NameInMap("media_duration_limit")
     public Double mediaDurationLimit;
 
+    @NameInMap("ref_task_config")
+    public VideoPreviewLiveTranscodingRefTaskConfig refTaskConfig;
+
     @NameInMap("segment")
     public Long segment;
 
+    @NameInMap("subtitle_config")
+    public VideoPreviewLiveTranscodingSubtitleConfig subtitleConfig;
+
     @NameInMap("template_list")
     public java.util.List<String> templateList;
+
+    @NameInMap("template_list_sorted")
+    public java.util.List<String> templateListSorted;
+
+    @NameInMap("template_name_map")
+    public java.util.Map<String, ?> templateNameMap;
 
     // Mode              string   `json:"mode"`               // 默认media模式
     // 以下几个count需要根据task的status和stage来判断, 当前实时转码的状态
@@ -77,6 +92,14 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
         return this.detailCountLimit;
     }
 
+    public VideoPreviewLiveTranscodingConfig setEnableConfig(VideoPreviewLiveTranscodingEnableConfig enableConfig) {
+        this.enableConfig = enableConfig;
+        return this;
+    }
+    public VideoPreviewLiveTranscodingEnableConfig getEnableConfig() {
+        return this.enableConfig;
+    }
+
     public VideoPreviewLiveTranscodingConfig setEnabled(Boolean enabled) {
         this.enabled = enabled;
         return this;
@@ -85,12 +108,12 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
         return this.enabled;
     }
 
-    public VideoPreviewLiveTranscodingConfig setImmProjectMap(java.util.Map<String, ?> immProjectMap) {
-        this.immProjectMap = immProjectMap;
+    public VideoPreviewLiveTranscodingConfig setIgnoreTemplateList(java.util.List<String> ignoreTemplateList) {
+        this.ignoreTemplateList = ignoreTemplateList;
         return this;
     }
-    public java.util.Map<String, ?> getImmProjectMap() {
-        return this.immProjectMap;
+    public java.util.List<String> getIgnoreTemplateList() {
+        return this.ignoreTemplateList;
     }
 
     public VideoPreviewLiveTranscodingConfig setLeadingPrefix(String leadingPrefix) {
@@ -117,6 +140,14 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
         return this.mediaDurationLimit;
     }
 
+    public VideoPreviewLiveTranscodingConfig setRefTaskConfig(VideoPreviewLiveTranscodingRefTaskConfig refTaskConfig) {
+        this.refTaskConfig = refTaskConfig;
+        return this;
+    }
+    public VideoPreviewLiveTranscodingRefTaskConfig getRefTaskConfig() {
+        return this.refTaskConfig;
+    }
+
     public VideoPreviewLiveTranscodingConfig setSegment(Long segment) {
         this.segment = segment;
         return this;
@@ -125,12 +156,36 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
         return this.segment;
     }
 
+    public VideoPreviewLiveTranscodingConfig setSubtitleConfig(VideoPreviewLiveTranscodingSubtitleConfig subtitleConfig) {
+        this.subtitleConfig = subtitleConfig;
+        return this;
+    }
+    public VideoPreviewLiveTranscodingSubtitleConfig getSubtitleConfig() {
+        return this.subtitleConfig;
+    }
+
     public VideoPreviewLiveTranscodingConfig setTemplateList(java.util.List<String> templateList) {
         this.templateList = templateList;
         return this;
     }
     public java.util.List<String> getTemplateList() {
         return this.templateList;
+    }
+
+    public VideoPreviewLiveTranscodingConfig setTemplateListSorted(java.util.List<String> templateListSorted) {
+        this.templateListSorted = templateListSorted;
+        return this;
+    }
+    public java.util.List<String> getTemplateListSorted() {
+        return this.templateListSorted;
+    }
+
+    public VideoPreviewLiveTranscodingConfig setTemplateNameMap(java.util.Map<String, ?> templateNameMap) {
+        this.templateNameMap = templateNameMap;
+        return this;
+    }
+    public java.util.Map<String, ?> getTemplateNameMap() {
+        return this.templateNameMap;
     }
 
     public VideoPreviewLiveTranscodingConfig setTsCountWhenInitM3u8(Long tsCountWhenInitM3u8) {

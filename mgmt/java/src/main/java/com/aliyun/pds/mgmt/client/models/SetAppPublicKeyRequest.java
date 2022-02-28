@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class SetAppPublicKeyRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // App ID
     @NameInMap("app_id")
@@ -25,12 +25,12 @@ public class SetAppPublicKeyRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public SetAppPublicKeyRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public SetAppPublicKeyRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public SetAppPublicKeyRequest setAppId(String appId) {

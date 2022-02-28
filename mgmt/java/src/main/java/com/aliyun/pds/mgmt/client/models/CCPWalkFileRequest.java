@@ -41,7 +41,7 @@ public class CCPWalkFileRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
-    @Validation(maximum = 100)
+    @Validation(maximum = 200)
     public Long limit;
 
     // location

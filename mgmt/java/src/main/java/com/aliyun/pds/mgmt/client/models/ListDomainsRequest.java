@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * list domain request
  */
 public class ListDomainsRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 分页大小
     @NameInMap("limit")
@@ -19,17 +19,20 @@ public class ListDomainsRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    @NameInMap("parent_domain_id")
+    public String parentDomainId;
+
     public static ListDomainsRequest build(java.util.Map<String, ?> map) throws Exception {
         ListDomainsRequest self = new ListDomainsRequest();
         return TeaModel.build(map, self);
     }
 
-    public ListDomainsRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public ListDomainsRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ListDomainsRequest setLimit(Integer limit) {
@@ -46,6 +49,14 @@ public class ListDomainsRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ListDomainsRequest setParentDomainId(String parentDomainId) {
+        this.parentDomainId = parentDomainId;
+        return this;
+    }
+    public String getParentDomainId() {
+        return this.parentDomainId;
     }
 
 }

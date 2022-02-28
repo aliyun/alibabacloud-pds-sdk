@@ -11,6 +11,10 @@ public class ImageMediaMetadata extends TeaModel {
     @NameInMap("height")
     public Long height;
 
+    // taken_at
+    @NameInMap("taken_at")
+    public String takenAt;
+
     // width：
     @NameInMap("width")
     public Long width;
@@ -26,6 +30,14 @@ public class ImageMediaMetadata extends TeaModel {
     }
     public Long getHeight() {
         return this.height;
+    }
+
+    public ImageMediaMetadata setTakenAt(String takenAt) {
+        this.takenAt = takenAt;
+        return this;
+    }
+    public String getTakenAt() {
+        return this.takenAt;
     }
 
     public ImageMediaMetadata setWidth(Long width) {

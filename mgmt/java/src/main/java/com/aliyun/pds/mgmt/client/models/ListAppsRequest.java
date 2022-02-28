@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class ListAppsRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 返回结果数据
     @NameInMap("limit")
@@ -24,12 +24,12 @@ public class ListAppsRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ListAppsRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public ListAppsRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public ListAppsRequest setLimit(Integer limit) {

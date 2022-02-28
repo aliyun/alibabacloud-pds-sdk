@@ -24,6 +24,10 @@ public class StoreItemResponse extends TeaModel {
     @NameInMap("cdn_endpoint")
     public String cdnEndpoint;
 
+    // CDN鉴权key
+    @NameInMap("cdn_url_auth_key")
+    public String cdnUrlAuthKey;
+
     // 自定义全球加速地址
     @NameInMap("customized_accelerate_endpoint")
     public String customizedAccelerateEndpoint;
@@ -115,6 +119,14 @@ public class StoreItemResponse extends TeaModel {
     }
     public String getCdnEndpoint() {
         return this.cdnEndpoint;
+    }
+
+    public StoreItemResponse setCdnUrlAuthKey(String cdnUrlAuthKey) {
+        this.cdnUrlAuthKey = cdnUrlAuthKey;
+        return this;
+    }
+    public String getCdnUrlAuthKey() {
+        return this.cdnUrlAuthKey;
     }
 
     public StoreItemResponse setCustomizedAccelerateEndpoint(String customizedAccelerateEndpoint) {
