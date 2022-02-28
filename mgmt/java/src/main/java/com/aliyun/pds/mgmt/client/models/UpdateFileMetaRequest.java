@@ -11,8 +11,17 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("check_name_mode")
     public String checkNameMode;
 
+    @NameInMap("custom_field_1")
+    public String customField1;
+
+    @NameInMap("custom_field_2")
+    public String customField2;
+
     @NameInMap("custom_index_key")
     public String customIndexKey;
+
+    @NameInMap("custom_type")
+    public String customType;
 
     // description
     // type: string
@@ -27,6 +36,10 @@ public class UpdateFileMetaRequest extends TeaModel {
 
     @NameInMap("encrypt_mode")
     public String encryptMode;
+
+    // ex_fields_info
+    @NameInMap("ex_fields_info")
+    public java.util.Map<String, ?> exFieldsInfo;
 
     // file_id
     @NameInMap("file_id")
@@ -45,8 +58,17 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("labels")
     public java.util.List<String> labels;
 
+    @NameInMap("local_modified_at")
+    public String localModifiedAt;
+
     @NameInMap("meta")
     public String meta;
+
+    @NameInMap("mime_extension")
+    public String mimeExtension;
+
+    @NameInMap("mime_type")
+    public String mimeType;
 
     // name
     @NameInMap("name")
@@ -67,6 +89,9 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("starred")
     public Boolean starred;
 
+    @NameInMap("taken_at")
+    public String takenAt;
+
     // user_meta
     @NameInMap("user_meta")
     public String userMeta;
@@ -84,12 +109,36 @@ public class UpdateFileMetaRequest extends TeaModel {
         return this.checkNameMode;
     }
 
+    public UpdateFileMetaRequest setCustomField1(String customField1) {
+        this.customField1 = customField1;
+        return this;
+    }
+    public String getCustomField1() {
+        return this.customField1;
+    }
+
+    public UpdateFileMetaRequest setCustomField2(String customField2) {
+        this.customField2 = customField2;
+        return this;
+    }
+    public String getCustomField2() {
+        return this.customField2;
+    }
+
     public UpdateFileMetaRequest setCustomIndexKey(String customIndexKey) {
         this.customIndexKey = customIndexKey;
         return this;
     }
     public String getCustomIndexKey() {
         return this.customIndexKey;
+    }
+
+    public UpdateFileMetaRequest setCustomType(String customType) {
+        this.customType = customType;
+        return this;
+    }
+    public String getCustomType() {
+        return this.customType;
     }
 
     public UpdateFileMetaRequest setDescription(String description) {
@@ -114,6 +163,14 @@ public class UpdateFileMetaRequest extends TeaModel {
     }
     public String getEncryptMode() {
         return this.encryptMode;
+    }
+
+    public UpdateFileMetaRequest setExFieldsInfo(java.util.Map<String, ?> exFieldsInfo) {
+        this.exFieldsInfo = exFieldsInfo;
+        return this;
+    }
+    public java.util.Map<String, ?> getExFieldsInfo() {
+        return this.exFieldsInfo;
     }
 
     public UpdateFileMetaRequest setFileId(String fileId) {
@@ -148,12 +205,36 @@ public class UpdateFileMetaRequest extends TeaModel {
         return this.labels;
     }
 
+    public UpdateFileMetaRequest setLocalModifiedAt(String localModifiedAt) {
+        this.localModifiedAt = localModifiedAt;
+        return this;
+    }
+    public String getLocalModifiedAt() {
+        return this.localModifiedAt;
+    }
+
     public UpdateFileMetaRequest setMeta(String meta) {
         this.meta = meta;
         return this;
     }
     public String getMeta() {
         return this.meta;
+    }
+
+    public UpdateFileMetaRequest setMimeExtension(String mimeExtension) {
+        this.mimeExtension = mimeExtension;
+        return this;
+    }
+    public String getMimeExtension() {
+        return this.mimeExtension;
+    }
+
+    public UpdateFileMetaRequest setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+        return this;
+    }
+    public String getMimeType() {
+        return this.mimeType;
     }
 
     public UpdateFileMetaRequest setName(String name) {
@@ -194,6 +275,14 @@ public class UpdateFileMetaRequest extends TeaModel {
     }
     public Boolean getStarred() {
         return this.starred;
+    }
+
+    public UpdateFileMetaRequest setTakenAt(String takenAt) {
+        this.takenAt = takenAt;
+        return this;
+    }
+    public String getTakenAt() {
+        return this.takenAt;
     }
 
     public UpdateFileMetaRequest setUserMeta(String userMeta) {

@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class DeleteAppRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // App ID
     @NameInMap("app_id")
@@ -20,12 +20,12 @@ public class DeleteAppRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public DeleteAppRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public DeleteAppRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public DeleteAppRequest setAppId(String appId) {

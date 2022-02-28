@@ -12,6 +12,10 @@ public class GetLastCursorRequest extends TeaModel {
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
+    // sync_root_id
+    @NameInMap("sync_root_id")
+    public String syncRootId;
+
     public static GetLastCursorRequest build(java.util.Map<String, ?> map) throws Exception {
         GetLastCursorRequest self = new GetLastCursorRequest();
         return TeaModel.build(map, self);
@@ -23,6 +27,14 @@ public class GetLastCursorRequest extends TeaModel {
     }
     public String getDriveId() {
         return this.driveId;
+    }
+
+    public GetLastCursorRequest setSyncRootId(String syncRootId) {
+        this.syncRootId = syncRootId;
+        return this;
+    }
+    public String getSyncRootId() {
+        return this.syncRootId;
     }
 
 }

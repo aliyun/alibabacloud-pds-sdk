@@ -15,6 +15,11 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
     @NameInMap("category")
     public String category;
 
+    // drive_id
+    @NameInMap("drive_id")
+    @Validation(required = true, pattern = "[0-9]+")
+    public String driveId;
+
     // file_id
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
@@ -22,6 +27,18 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
 
     @NameInMap("file_id_path")
     public String fileIdPath;
+
+    // get_preview_url
+    @NameInMap("get_preview_url")
+    public Boolean getPreviewUrl;
+
+    // get_subtitle_info
+    @NameInMap("get_subtitle_info")
+    public Boolean getSubtitleInfo;
+
+    // get_without_url
+    @NameInMap("get_without_url")
+    public Boolean getWithoutUrl;
 
     // image_thumbnail_process
     @NameInMap("image_thumbnail_process")
@@ -49,6 +66,10 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
 
     @NameInMap("sign_token")
     public String signToken;
+
+    // subtitle_language_list, 根据语言获取压制在视频中的字幕, 不传则取所有
+    @NameInMap("subtitle_language_list")
+    public java.util.List<String> subtitleLanguageList;
 
     // template_id
     @NameInMap("template_id")
@@ -85,6 +106,14 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
         return this.category;
     }
 
+    public CCPGetShareLinkVideoPreviewPlayInfoRequest setDriveId(String driveId) {
+        this.driveId = driveId;
+        return this;
+    }
+    public String getDriveId() {
+        return this.driveId;
+    }
+
     public CCPGetShareLinkVideoPreviewPlayInfoRequest setFileId(String fileId) {
         this.fileId = fileId;
         return this;
@@ -99,6 +128,30 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
     }
     public String getFileIdPath() {
         return this.fileIdPath;
+    }
+
+    public CCPGetShareLinkVideoPreviewPlayInfoRequest setGetPreviewUrl(Boolean getPreviewUrl) {
+        this.getPreviewUrl = getPreviewUrl;
+        return this;
+    }
+    public Boolean getGetPreviewUrl() {
+        return this.getPreviewUrl;
+    }
+
+    public CCPGetShareLinkVideoPreviewPlayInfoRequest setGetSubtitleInfo(Boolean getSubtitleInfo) {
+        this.getSubtitleInfo = getSubtitleInfo;
+        return this;
+    }
+    public Boolean getGetSubtitleInfo() {
+        return this.getSubtitleInfo;
+    }
+
+    public CCPGetShareLinkVideoPreviewPlayInfoRequest setGetWithoutUrl(Boolean getWithoutUrl) {
+        this.getWithoutUrl = getWithoutUrl;
+        return this;
+    }
+    public Boolean getGetWithoutUrl() {
+        return this.getWithoutUrl;
     }
 
     public CCPGetShareLinkVideoPreviewPlayInfoRequest setImageThumbnailProcess(String imageThumbnailProcess) {
@@ -155,6 +208,14 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
     }
     public String getSignToken() {
         return this.signToken;
+    }
+
+    public CCPGetShareLinkVideoPreviewPlayInfoRequest setSubtitleLanguageList(java.util.List<String> subtitleLanguageList) {
+        this.subtitleLanguageList = subtitleLanguageList;
+        return this;
+    }
+    public java.util.List<String> getSubtitleLanguageList() {
+        return this.subtitleLanguageList;
     }
 
     public CCPGetShareLinkVideoPreviewPlayInfoRequest setTemplateId(String templateId) {

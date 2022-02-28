@@ -34,6 +34,18 @@ public class CreateFileRequest extends TeaModel {
     @NameInMap("content_type")
     public String contentType;
 
+    @NameInMap("create_reason")
+    public String createReason;
+
+    @NameInMap("custom_field_1")
+    public String customField1;
+
+    @NameInMap("custom_field_2")
+    public String customField2;
+
+    @NameInMap("custom_type")
+    public String customType;
+
     // description
     @NameInMap("description")
     @Validation(maxLength = 1024)
@@ -44,7 +56,6 @@ public class CreateFileRequest extends TeaModel {
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // encrypt_mode
     @NameInMap("encrypt_mode")
     public String encryptMode;
 
@@ -70,6 +81,13 @@ public class CreateFileRequest extends TeaModel {
     // last_updated_at
     @NameInMap("last_updated_at")
     public String lastUpdatedAt;
+
+    // local_created_at
+    @NameInMap("local_created_at")
+    public String localCreatedAt;
+
+    @NameInMap("local_modified_at")
+    public String localModifiedAt;
 
     // location
     @NameInMap("location")
@@ -117,7 +135,6 @@ public class CreateFileRequest extends TeaModel {
 
     // Size
     @NameInMap("size")
-    @Validation(maximum = 53687091200D)
     public Long size;
 
     // streams_info
@@ -129,9 +146,16 @@ public class CreateFileRequest extends TeaModel {
     @Validation(required = true)
     public String type;
 
+    @NameInMap("upload_type")
+    public String uploadType;
+
     // user_meta
     @NameInMap("user_meta")
     public String userMeta;
+
+    // user_tags
+    @NameInMap("user_tags")
+    public java.util.List<UserTag> userTags;
 
     @NameInMap("video_media_metadata")
     public VideoMediaMetadata videoMediaMetadata;
@@ -195,6 +219,38 @@ public class CreateFileRequest extends TeaModel {
     }
     public String getContentType() {
         return this.contentType;
+    }
+
+    public CreateFileRequest setCreateReason(String createReason) {
+        this.createReason = createReason;
+        return this;
+    }
+    public String getCreateReason() {
+        return this.createReason;
+    }
+
+    public CreateFileRequest setCustomField1(String customField1) {
+        this.customField1 = customField1;
+        return this;
+    }
+    public String getCustomField1() {
+        return this.customField1;
+    }
+
+    public CreateFileRequest setCustomField2(String customField2) {
+        this.customField2 = customField2;
+        return this;
+    }
+    public String getCustomField2() {
+        return this.customField2;
+    }
+
+    public CreateFileRequest setCustomType(String customType) {
+        this.customType = customType;
+        return this;
+    }
+    public String getCustomType() {
+        return this.customType;
     }
 
     public CreateFileRequest setDescription(String description) {
@@ -267,6 +323,22 @@ public class CreateFileRequest extends TeaModel {
     }
     public String getLastUpdatedAt() {
         return this.lastUpdatedAt;
+    }
+
+    public CreateFileRequest setLocalCreatedAt(String localCreatedAt) {
+        this.localCreatedAt = localCreatedAt;
+        return this;
+    }
+    public String getLocalCreatedAt() {
+        return this.localCreatedAt;
+    }
+
+    public CreateFileRequest setLocalModifiedAt(String localModifiedAt) {
+        this.localModifiedAt = localModifiedAt;
+        return this;
+    }
+    public String getLocalModifiedAt() {
+        return this.localModifiedAt;
     }
 
     public CreateFileRequest setLocation(String location) {
@@ -381,12 +453,28 @@ public class CreateFileRequest extends TeaModel {
         return this.type;
     }
 
+    public CreateFileRequest setUploadType(String uploadType) {
+        this.uploadType = uploadType;
+        return this;
+    }
+    public String getUploadType() {
+        return this.uploadType;
+    }
+
     public CreateFileRequest setUserMeta(String userMeta) {
         this.userMeta = userMeta;
         return this;
     }
     public String getUserMeta() {
         return this.userMeta;
+    }
+
+    public CreateFileRequest setUserTags(java.util.List<UserTag> userTags) {
+        this.userTags = userTags;
+        return this;
+    }
+    public java.util.List<UserTag> getUserTags() {
+        return this.userTags;
     }
 
     public CreateFileRequest setVideoMediaMetadata(VideoMediaMetadata videoMediaMetadata) {

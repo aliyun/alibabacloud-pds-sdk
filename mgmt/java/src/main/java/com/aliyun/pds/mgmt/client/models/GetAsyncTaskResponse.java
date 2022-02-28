@@ -24,6 +24,10 @@ public class GetAsyncTaskResponse extends TeaModel {
     @NameInMap("message")
     public String message;
 
+    // punished_file_count
+    @NameInMap("punished_file_count")
+    public Long punishedFileCount;
+
     // state
     @NameInMap("state")
     public String state;
@@ -72,6 +76,14 @@ public class GetAsyncTaskResponse extends TeaModel {
     }
     public String getMessage() {
         return this.message;
+    }
+
+    public GetAsyncTaskResponse setPunishedFileCount(Long punishedFileCount) {
+        this.punishedFileCount = punishedFileCount;
+        return this;
+    }
+    public Long getPunishedFileCount() {
+        return this.punishedFileCount;
     }
 
     public GetAsyncTaskResponse setState(String state) {

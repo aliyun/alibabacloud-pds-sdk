@@ -38,7 +38,7 @@ public class FileStreamInfo extends TeaModel {
 
     // Size
     @NameInMap("size")
-    @Validation(required = true, maximum = 53687091200D)
+    @Validation(required = true)
     public Long size;
 
     public static FileStreamInfo build(java.util.Map<String, ?> map) throws Exception {

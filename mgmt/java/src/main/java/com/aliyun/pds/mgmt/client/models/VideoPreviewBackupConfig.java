@@ -4,7 +4,7 @@ package com.aliyun.pds.mgmt.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 转码备份配置（当前仅运维会用到）
  */
 public class VideoPreviewBackupConfig extends TeaModel {
     @NameInMap("count_once")

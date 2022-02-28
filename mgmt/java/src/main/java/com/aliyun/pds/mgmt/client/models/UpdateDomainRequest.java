@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * update domain request
  */
 public class UpdateDomainRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     @NameInMap("auth_config")
     public java.util.Map<String, ?> authConfig;
@@ -24,9 +24,6 @@ public class UpdateDomainRequest extends TeaModel {
     // 启用钉钉认证
     @NameInMap("auth_dingding_enable")
     public Boolean authDingdingEnable;
-
-    @NameInMap("auth_endpoint_enable")
-    public Boolean authEndpointEnable;
 
     // RAM App Id
     @NameInMap("auth_ram_app_id")
@@ -83,6 +80,10 @@ public class UpdateDomainRequest extends TeaModel {
     @NameInMap("get_benefit")
     public Boolean getBenefit;
 
+    // 单团队单drive
+    @NameInMap("group_single_drive_enabled")
+    public Boolean groupSingleDriveEnabled;
+
     // 开启自动初始化 Drive
     @NameInMap("init_drive_enable")
     public Boolean initDriveEnable;
@@ -102,17 +103,37 @@ public class UpdateDomainRequest extends TeaModel {
     @NameInMap("sharable")
     public Boolean sharable;
 
+    // 逻辑空间quota，默认为-1，无限制，单位为字节
+    @NameInMap("size_quota")
+    public Long sizeQuota;
+
+    // 状态
+    @NameInMap("status")
+    public Long status;
+
+    // 逻辑空间刷新周期，单位：秒
+    @NameInMap("used_size_refresh_interval")
+    public Long usedSizeRefreshInterval;
+
+    // 用户数quota，默认为-1，无限制
+    @NameInMap("user_count_quota")
+    public Long userCountQuota;
+
+    // 单用户单drive
+    @NameInMap("user_single_drive_enabled")
+    public Boolean userSingleDriveEnabled;
+
     public static UpdateDomainRequest build(java.util.Map<String, ?> map) throws Exception {
         UpdateDomainRequest self = new UpdateDomainRequest();
         return TeaModel.build(map, self);
     }
 
-    public UpdateDomainRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public UpdateDomainRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public UpdateDomainRequest setAuthConfig(java.util.Map<String, ?> authConfig) {
@@ -145,14 +166,6 @@ public class UpdateDomainRequest extends TeaModel {
     }
     public Boolean getAuthDingdingEnable() {
         return this.authDingdingEnable;
-    }
-
-    public UpdateDomainRequest setAuthEndpointEnable(Boolean authEndpointEnable) {
-        this.authEndpointEnable = authEndpointEnable;
-        return this;
-    }
-    public Boolean getAuthEndpointEnable() {
-        return this.authEndpointEnable;
     }
 
     public UpdateDomainRequest setAuthRamAppId(String authRamAppId) {
@@ -267,6 +280,14 @@ public class UpdateDomainRequest extends TeaModel {
         return this.getBenefit;
     }
 
+    public UpdateDomainRequest setGroupSingleDriveEnabled(Boolean groupSingleDriveEnabled) {
+        this.groupSingleDriveEnabled = groupSingleDriveEnabled;
+        return this;
+    }
+    public Boolean getGroupSingleDriveEnabled() {
+        return this.groupSingleDriveEnabled;
+    }
+
     public UpdateDomainRequest setInitDriveEnable(Boolean initDriveEnable) {
         this.initDriveEnable = initDriveEnable;
         return this;
@@ -305,6 +326,46 @@ public class UpdateDomainRequest extends TeaModel {
     }
     public Boolean getSharable() {
         return this.sharable;
+    }
+
+    public UpdateDomainRequest setSizeQuota(Long sizeQuota) {
+        this.sizeQuota = sizeQuota;
+        return this;
+    }
+    public Long getSizeQuota() {
+        return this.sizeQuota;
+    }
+
+    public UpdateDomainRequest setStatus(Long status) {
+        this.status = status;
+        return this;
+    }
+    public Long getStatus() {
+        return this.status;
+    }
+
+    public UpdateDomainRequest setUsedSizeRefreshInterval(Long usedSizeRefreshInterval) {
+        this.usedSizeRefreshInterval = usedSizeRefreshInterval;
+        return this;
+    }
+    public Long getUsedSizeRefreshInterval() {
+        return this.usedSizeRefreshInterval;
+    }
+
+    public UpdateDomainRequest setUserCountQuota(Long userCountQuota) {
+        this.userCountQuota = userCountQuota;
+        return this;
+    }
+    public Long getUserCountQuota() {
+        return this.userCountQuota;
+    }
+
+    public UpdateDomainRequest setUserSingleDriveEnabled(Boolean userSingleDriveEnabled) {
+        this.userSingleDriveEnabled = userSingleDriveEnabled;
+        return this;
+    }
+    public Boolean getUserSingleDriveEnabled() {
+        return this.userSingleDriveEnabled;
     }
 
 }

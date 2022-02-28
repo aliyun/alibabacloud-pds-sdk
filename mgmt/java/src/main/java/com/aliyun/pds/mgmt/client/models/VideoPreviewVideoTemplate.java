@@ -4,7 +4,7 @@ package com.aliyun.pds.mgmt.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 视频转码模板
  */
 public class VideoPreviewVideoTemplate extends TeaModel {
     @NameInMap("audio_bitrate")

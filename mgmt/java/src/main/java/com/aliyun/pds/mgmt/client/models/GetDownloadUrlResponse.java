@@ -7,9 +7,29 @@ import com.aliyun.tea.*;
  * 获取download url response
  */
 public class GetDownloadUrlResponse extends TeaModel {
+    // cdn_url
+    @NameInMap("cdn_url")
+    public String cdnUrl;
+
+    // Content Hash
+    @NameInMap("content_hash")
+    public String contentHash;
+
+    // content_hash_name
+    @NameInMap("content_hash_name")
+    public String contentHashName;
+
+    // crc64_hash
+    @NameInMap("crc64_hash")
+    public String crc64Hash;
+
     // expiration
     @NameInMap("expiration")
     public String expiration;
+
+    // internal_url
+    @NameInMap("internal_url")
+    public String internalUrl;
 
     // method
     @NameInMap("method")
@@ -21,6 +41,10 @@ public class GetDownloadUrlResponse extends TeaModel {
     // size
     @NameInMap("size")
     public Long size;
+
+    // streams info
+    @NameInMap("streams_info")
+    public java.util.Map<String, ?> streamsInfo;
 
     // streams url info
     @NameInMap("streams_url")
@@ -35,12 +59,52 @@ public class GetDownloadUrlResponse extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public GetDownloadUrlResponse setCdnUrl(String cdnUrl) {
+        this.cdnUrl = cdnUrl;
+        return this;
+    }
+    public String getCdnUrl() {
+        return this.cdnUrl;
+    }
+
+    public GetDownloadUrlResponse setContentHash(String contentHash) {
+        this.contentHash = contentHash;
+        return this;
+    }
+    public String getContentHash() {
+        return this.contentHash;
+    }
+
+    public GetDownloadUrlResponse setContentHashName(String contentHashName) {
+        this.contentHashName = contentHashName;
+        return this;
+    }
+    public String getContentHashName() {
+        return this.contentHashName;
+    }
+
+    public GetDownloadUrlResponse setCrc64Hash(String crc64Hash) {
+        this.crc64Hash = crc64Hash;
+        return this;
+    }
+    public String getCrc64Hash() {
+        return this.crc64Hash;
+    }
+
     public GetDownloadUrlResponse setExpiration(String expiration) {
         this.expiration = expiration;
         return this;
     }
     public String getExpiration() {
         return this.expiration;
+    }
+
+    public GetDownloadUrlResponse setInternalUrl(String internalUrl) {
+        this.internalUrl = internalUrl;
+        return this;
+    }
+    public String getInternalUrl() {
+        return this.internalUrl;
     }
 
     public GetDownloadUrlResponse setMethod(String method) {
@@ -65,6 +129,14 @@ public class GetDownloadUrlResponse extends TeaModel {
     }
     public Long getSize() {
         return this.size;
+    }
+
+    public GetDownloadUrlResponse setStreamsInfo(java.util.Map<String, ?> streamsInfo) {
+        this.streamsInfo = streamsInfo;
+        return this;
+    }
+    public java.util.Map<String, ?> getStreamsInfo() {
+        return this.streamsInfo;
     }
 
     public GetDownloadUrlResponse setStreamsUrl(java.util.Map<String, ?> streamsUrl) {

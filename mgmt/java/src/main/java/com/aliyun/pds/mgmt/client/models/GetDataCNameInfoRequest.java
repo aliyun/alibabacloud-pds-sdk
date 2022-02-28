@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetDataCNameInfoRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // domain ID
     @NameInMap("domain_id")
@@ -20,12 +20,12 @@ public class GetDataCNameInfoRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public GetDataCNameInfoRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public GetDataCNameInfoRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public GetDataCNameInfoRequest setDomainId(String domainId) {

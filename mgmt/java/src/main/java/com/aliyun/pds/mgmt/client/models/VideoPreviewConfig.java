@@ -4,7 +4,7 @@ package com.aliyun.pds.mgmt.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 转码配置
  */
 public class VideoPreviewConfig extends TeaModel {
     @NameInMap("audio_config")
@@ -14,7 +14,7 @@ public class VideoPreviewConfig extends TeaModel {
     public java.util.List<String> audioTemplateList;
 
     @NameInMap("audio_thumbnail")
-    public VideoPreviewThumbnail audioThumbnail;
+    public VideoPreviewThumbnailConfig audioThumbnail;
 
     @NameInMap("backup_config")
     public VideoPreviewBackupConfig backupConfig;
@@ -32,7 +32,7 @@ public class VideoPreviewConfig extends TeaModel {
     public VideoPreviewRateLimitConfig rateLimitConfig;
 
     @NameInMap("sprite")
-    public VideoPreviewSprite sprite;
+    public VideoPreviewSpriteConfig sprite;
 
     @NameInMap("store")
     public Store store;
@@ -43,8 +43,11 @@ public class VideoPreviewConfig extends TeaModel {
     @NameInMap("template_list")
     public java.util.List<String> templateList;
 
+    @NameInMap("template_policy_config")
+    public VideoPreviewTemplatePolicyConfig templatePolicyConfig;
+
     @NameInMap("thumbnail")
-    public VideoPreviewThumbnail thumbnail;
+    public VideoPreviewThumbnailConfig thumbnail;
 
     @NameInMap("video_config")
     public VideoPreviewVideoConfig videoConfig;
@@ -73,11 +76,11 @@ public class VideoPreviewConfig extends TeaModel {
         return this.audioTemplateList;
     }
 
-    public VideoPreviewConfig setAudioThumbnail(VideoPreviewThumbnail audioThumbnail) {
+    public VideoPreviewConfig setAudioThumbnail(VideoPreviewThumbnailConfig audioThumbnail) {
         this.audioThumbnail = audioThumbnail;
         return this;
     }
-    public VideoPreviewThumbnail getAudioThumbnail() {
+    public VideoPreviewThumbnailConfig getAudioThumbnail() {
         return this.audioThumbnail;
     }
 
@@ -121,11 +124,11 @@ public class VideoPreviewConfig extends TeaModel {
         return this.rateLimitConfig;
     }
 
-    public VideoPreviewConfig setSprite(VideoPreviewSprite sprite) {
+    public VideoPreviewConfig setSprite(VideoPreviewSpriteConfig sprite) {
         this.sprite = sprite;
         return this;
     }
-    public VideoPreviewSprite getSprite() {
+    public VideoPreviewSpriteConfig getSprite() {
         return this.sprite;
     }
 
@@ -153,11 +156,19 @@ public class VideoPreviewConfig extends TeaModel {
         return this.templateList;
     }
 
-    public VideoPreviewConfig setThumbnail(VideoPreviewThumbnail thumbnail) {
+    public VideoPreviewConfig setTemplatePolicyConfig(VideoPreviewTemplatePolicyConfig templatePolicyConfig) {
+        this.templatePolicyConfig = templatePolicyConfig;
+        return this;
+    }
+    public VideoPreviewTemplatePolicyConfig getTemplatePolicyConfig() {
+        return this.templatePolicyConfig;
+    }
+
+    public VideoPreviewConfig setThumbnail(VideoPreviewThumbnailConfig thumbnail) {
         this.thumbnail = thumbnail;
         return this;
     }
-    public VideoPreviewThumbnail getThumbnail() {
+    public VideoPreviewThumbnailConfig getThumbnail() {
         return this.thumbnail;
     }
 

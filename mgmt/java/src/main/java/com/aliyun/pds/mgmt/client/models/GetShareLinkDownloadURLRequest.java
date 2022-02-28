@@ -11,6 +11,10 @@ public class GetShareLinkDownloadURLRequest extends TeaModel {
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
+    // drive_id is optional
+    @NameInMap("drive_id")
+    public String driveId;
+
     // expire_sec
     @NameInMap("expire_sec")
     @Validation(maximum = 600, minimum = 1)
@@ -27,6 +31,10 @@ public class GetShareLinkDownloadURLRequest extends TeaModel {
     // get_audio_play_info
     @NameInMap("get_audio_play_info")
     public Boolean getAudioPlayInfo;
+
+    // get_streams_url
+    @NameInMap("get_streams_url")
+    public Boolean getStreamsUrl;
 
     // get_video_play_info
     @NameInMap("get_video_play_info")
@@ -77,6 +85,14 @@ public class GetShareLinkDownloadURLRequest extends TeaModel {
         return this.additionData;
     }
 
+    public GetShareLinkDownloadURLRequest setDriveId(String driveId) {
+        this.driveId = driveId;
+        return this;
+    }
+    public String getDriveId() {
+        return this.driveId;
+    }
+
     public GetShareLinkDownloadURLRequest setExpireSec(Long expireSec) {
         this.expireSec = expireSec;
         return this;
@@ -107,6 +123,14 @@ public class GetShareLinkDownloadURLRequest extends TeaModel {
     }
     public Boolean getGetAudioPlayInfo() {
         return this.getAudioPlayInfo;
+    }
+
+    public GetShareLinkDownloadURLRequest setGetStreamsUrl(Boolean getStreamsUrl) {
+        this.getStreamsUrl = getStreamsUrl;
+        return this;
+    }
+    public Boolean getGetStreamsUrl() {
+        return this.getStreamsUrl;
     }
 
     public GetShareLinkDownloadURLRequest setGetVideoPlayInfo(Boolean getVideoPlayInfo) {

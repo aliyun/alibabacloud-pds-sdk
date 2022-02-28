@@ -46,7 +46,7 @@ public class VideoPreviewResponse extends TeaModel {
     public Long height;
 
     @NameInMap("sprite_info")
-    public VideoPreviewSprite spriteInfo;
+    public VideoPreviewSpriteResponse spriteInfo;
 
     // template_list
     @NameInMap("template_list")
@@ -149,11 +149,11 @@ public class VideoPreviewResponse extends TeaModel {
         return this.height;
     }
 
-    public VideoPreviewResponse setSpriteInfo(VideoPreviewSprite spriteInfo) {
+    public VideoPreviewResponse setSpriteInfo(VideoPreviewSpriteResponse spriteInfo) {
         this.spriteInfo = spriteInfo;
         return this;
     }
-    public VideoPreviewSprite getSpriteInfo() {
+    public VideoPreviewSpriteResponse getSpriteInfo() {
         return this.spriteInfo;
     }
 
