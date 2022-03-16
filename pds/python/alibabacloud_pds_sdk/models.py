@@ -741,6 +741,7 @@ class LinkInfoResponse(TeaModel):
         self,
         authentication_type: str = None,
         created_at: int = None,
+        display_name: str = None,
         domain_id: str = None,
         extra: str = None,
         identity: str = None,
@@ -752,6 +753,8 @@ class LinkInfoResponse(TeaModel):
         self.authentication_type = authentication_type
         # 创建时间
         self.created_at = created_at
+        # 显示名称
+        self.display_name = display_name
         # Domain ID
         self.domain_id = domain_id
         # 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
@@ -768,6 +771,7 @@ class LinkInfoResponse(TeaModel):
     def validate(self):
         self.validate_required(self.authentication_type, 'authentication_type')
         self.validate_required(self.created_at, 'created_at')
+        self.validate_required(self.display_name, 'display_name')
         self.validate_required(self.domain_id, 'domain_id')
         self.validate_required(self.identity, 'identity')
         self.validate_required(self.last_login_time, 'last_login_time')
@@ -784,6 +788,8 @@ class LinkInfoResponse(TeaModel):
             result['authentication_type'] = self.authentication_type
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.display_name is not None:
+            result['display_name'] = self.display_name
         if self.domain_id is not None:
             result['domain_id'] = self.domain_id
         if self.extra is not None:
@@ -804,6 +810,8 @@ class LinkInfoResponse(TeaModel):
             self.authentication_type = m.get('authentication_type')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('display_name') is not None:
+            self.display_name = m.get('display_name')
         if m.get('domain_id') is not None:
             self.domain_id = m.get('domain_id')
         if m.get('extra') is not None:
@@ -1316,6 +1324,82 @@ class ExportAuditLogModel(TeaModel):
         return self
 
 
+class AccountLogDetail(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        authentication_type: str = None,
+        login_type: str = None,
+    ):
+        # authentication_type
+        self.authentication_type = authentication_type
+        # login_type
+        self.login_type = login_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authentication_type is not None:
+            result['authentication_type'] = self.authentication_type
+        if self.login_type is not None:
+            result['login_type'] = self.login_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authentication_type') is not None:
+            self.authentication_type = m.get('authentication_type')
+        if m.get('login_type') is not None:
+            self.login_type = m.get('login_type')
+        return self
+
+
+class AuditMgmtLogDetail(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        file_name: str = None,
+        query: str = None,
+    ):
+        # file_name
+        self.file_name = file_name
+        # query
+        self.query = query
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['file_name'] = self.file_name
+        if self.query is not None:
+            result['query'] = self.query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('file_name') is not None:
+            self.file_name = m.get('file_name')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        return self
+
+
 class DriveLogSettingDetail(TeaModel):
     """
     *\
@@ -1439,6 +1523,170 @@ class DriveLogDetail(TeaModel):
         if m.get('update_to') is not None:
             temp_model = DriveLogSettingDetail()
             self.update_to = temp_model.from_map(m['update_to'])
+        return self
+
+
+class DomainBaseInfoLogDetail(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        # name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class DomainCnameInfoLogDetail(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        cert_name: str = None,
+        cname: str = None,
+    ):
+        # cert_name
+        self.cert_name = cert_name
+        # cname
+        self.cname = cname
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_name is not None:
+            result['cert_name'] = self.cert_name
+        if self.cname is not None:
+            result['cname'] = self.cname
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cert_name') is not None:
+            self.cert_name = m.get('cert_name')
+        if m.get('cname') is not None:
+            self.cname = m.get('cname')
+        return self
+
+
+class FileCustomRoleInfoLogDetail(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        action_list: List[str] = None,
+        role_name: str = None,
+    ):
+        self.action_list = action_list
+        self.role_name = role_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_list is not None:
+            result['action_list'] = self.action_list
+        if self.role_name is not None:
+            result['role_name'] = self.role_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action_list') is not None:
+            self.action_list = m.get('action_list')
+        if m.get('role_name') is not None:
+            self.role_name = m.get('role_name')
+        return self
+
+
+class EntMgmtLogDetail(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        domain_base_info: DomainBaseInfoLogDetail = None,
+        domain_cname_info: DomainCnameInfoLogDetail = None,
+        file_custom_role_info: FileCustomRoleInfoLogDetail = None,
+        file_custom_role_info_updated_to: FileCustomRoleInfoLogDetail = None,
+    ):
+        self.domain_base_info = domain_base_info
+        self.domain_cname_info = domain_cname_info
+        self.file_custom_role_info = file_custom_role_info
+        self.file_custom_role_info_updated_to = file_custom_role_info_updated_to
+
+    def validate(self):
+        if self.domain_base_info:
+            self.domain_base_info.validate()
+        if self.domain_cname_info:
+            self.domain_cname_info.validate()
+        if self.file_custom_role_info:
+            self.file_custom_role_info.validate()
+        if self.file_custom_role_info_updated_to:
+            self.file_custom_role_info_updated_to.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_base_info is not None:
+            result['domain_base_info'] = self.domain_base_info.to_map()
+        if self.domain_cname_info is not None:
+            result['domain_cname_info'] = self.domain_cname_info.to_map()
+        if self.file_custom_role_info is not None:
+            result['file_custom_role_info'] = self.file_custom_role_info.to_map()
+        if self.file_custom_role_info_updated_to is not None:
+            result['file_custom_role_info_updated_to'] = self.file_custom_role_info_updated_to.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('domain_base_info') is not None:
+            temp_model = DomainBaseInfoLogDetail()
+            self.domain_base_info = temp_model.from_map(m['domain_base_info'])
+        if m.get('domain_cname_info') is not None:
+            temp_model = DomainCnameInfoLogDetail()
+            self.domain_cname_info = temp_model.from_map(m['domain_cname_info'])
+        if m.get('file_custom_role_info') is not None:
+            temp_model = FileCustomRoleInfoLogDetail()
+            self.file_custom_role_info = temp_model.from_map(m['file_custom_role_info'])
+        if m.get('file_custom_role_info_updated_to') is not None:
+            temp_model = FileCustomRoleInfoLogDetail()
+            self.file_custom_role_info_updated_to = temp_model.from_map(m['file_custom_role_info_updated_to'])
         return self
 
 
@@ -1596,6 +1844,255 @@ class GroupLogDetail(TeaModel):
         if m.get('update_to') is not None:
             temp_model = GroupLogSettingDetail()
             self.update_to = temp_model.from_map(m['update_to'])
+        return self
+
+
+class LDAPSyncConfig(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        cron: str = None,
+        enabled: bool = None,
+        group_filter: str = None,
+        group_object_class: str = None,
+        user_filter: str = None,
+        user_object_class: str = None,
+    ):
+        self.cron = cron
+        self.enabled = enabled
+        self.group_filter = group_filter
+        self.group_object_class = group_object_class
+        self.user_filter = user_filter
+        self.user_object_class = user_object_class
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cron is not None:
+            result['cron'] = self.cron
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.group_filter is not None:
+            result['group_filter'] = self.group_filter
+        if self.group_object_class is not None:
+            result['group_object_class'] = self.group_object_class
+        if self.user_filter is not None:
+            result['user_filter'] = self.user_filter
+        if self.user_object_class is not None:
+            result['user_object_class'] = self.user_object_class
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cron') is not None:
+            self.cron = m.get('cron')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('group_filter') is not None:
+            self.group_filter = m.get('group_filter')
+        if m.get('group_object_class') is not None:
+            self.group_object_class = m.get('group_object_class')
+        if m.get('user_filter') is not None:
+            self.user_filter = m.get('user_filter')
+        if m.get('user_object_class') is not None:
+            self.user_object_class = m.get('user_object_class')
+        return self
+
+
+class LdapConfig(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        admin_dn: str = None,
+        admin_password: str = None,
+        base_dn: str = None,
+        display_name_key: str = None,
+        global_uid: str = None,
+        host: str = None,
+        port: int = None,
+        sync_config: LDAPSyncConfig = None,
+        type: str = None,
+        uid: str = None,
+        version: str = None,
+    ):
+        self.admin_dn = admin_dn
+        self.admin_password = admin_password
+        self.base_dn = base_dn
+        self.display_name_key = display_name_key
+        self.global_uid = global_uid
+        self.host = host
+        self.port = port
+        self.sync_config = sync_config
+        self.type = type
+        self.uid = uid
+        self.version = version
+
+    def validate(self):
+        if self.sync_config:
+            self.sync_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.admin_dn is not None:
+            result['admin_dn'] = self.admin_dn
+        if self.admin_password is not None:
+            result['admin_password'] = self.admin_password
+        if self.base_dn is not None:
+            result['base_dn'] = self.base_dn
+        if self.display_name_key is not None:
+            result['display_name_key'] = self.display_name_key
+        if self.global_uid is not None:
+            result['global_uid'] = self.global_uid
+        if self.host is not None:
+            result['host'] = self.host
+        if self.port is not None:
+            result['port'] = self.port
+        if self.sync_config is not None:
+            result['sync_config'] = self.sync_config.to_map()
+        if self.type is not None:
+            result['type'] = self.type
+        if self.uid is not None:
+            result['uid'] = self.uid
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('admin_dn') is not None:
+            self.admin_dn = m.get('admin_dn')
+        if m.get('admin_password') is not None:
+            self.admin_password = m.get('admin_password')
+        if m.get('base_dn') is not None:
+            self.base_dn = m.get('base_dn')
+        if m.get('display_name_key') is not None:
+            self.display_name_key = m.get('display_name_key')
+        if m.get('global_uid') is not None:
+            self.global_uid = m.get('global_uid')
+        if m.get('host') is not None:
+            self.host = m.get('host')
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('sync_config') is not None:
+            temp_model = LDAPSyncConfig()
+            self.sync_config = temp_model.from_map(m['sync_config'])
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class WeChatSyncConfig(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        cron: str = None,
+        enabled: bool = None,
+        tag_id: str = None,
+    ):
+        self.cron = cron
+        self.enabled = enabled
+        self.tag_id = tag_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cron is not None:
+            result['cron'] = self.cron
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.tag_id is not None:
+            result['tag_id'] = self.tag_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cron') is not None:
+            self.cron = m.get('cron')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('tag_id') is not None:
+            self.tag_id = m.get('tag_id')
+        return self
+
+
+class LoginMgmtLogDetail(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        app_id: str = None,
+        enable: bool = None,
+        ldap_config: LdapConfig = None,
+        wechat_sync_config: WeChatSyncConfig = None,
+    ):
+        # app_id
+        self.app_id = app_id
+        # enable
+        self.enable = enable
+        self.ldap_config = ldap_config
+        self.wechat_sync_config = wechat_sync_config
+
+    def validate(self):
+        if self.ldap_config:
+            self.ldap_config.validate()
+        if self.wechat_sync_config:
+            self.wechat_sync_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.ldap_config is not None:
+            result['ldap_config'] = self.ldap_config.to_map()
+        if self.wechat_sync_config is not None:
+            result['wechat_sync_config'] = self.wechat_sync_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('app_id') is not None:
+            self.app_id = m.get('app_id')
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('ldap_config') is not None:
+            temp_model = LdapConfig()
+            self.ldap_config = temp_model.from_map(m['ldap_config'])
+        if m.get('wechat_sync_config') is not None:
+            temp_model = WeChatSyncConfig()
+            self.wechat_sync_config = temp_model.from_map(m['wechat_sync_config'])
         return self
 
 
@@ -1770,6 +2267,172 @@ class RoleLogDetail(TeaModel):
         return self
 
 
+class ShareConfigLogDetail(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        # enable
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
+class ShareLinkConfigLogDetail(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        # enable
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
+class WatermarkEnableConfig(TeaModel):
+    """
+    WatermarkEnableConfig 功能开关及显示配置
+    """
+    def __init__(
+        self,
+        display_access_user_name: bool = None,
+        display_custom_text: str = None,
+        display_share_link_creator_name: bool = None,
+        enable_doc_preview: bool = None,
+        enable_on_preview: bool = None,
+    ):
+        self.display_access_user_name = display_access_user_name
+        self.display_custom_text = display_custom_text
+        self.display_share_link_creator_name = display_share_link_creator_name
+        self.enable_doc_preview = enable_doc_preview
+        self.enable_on_preview = enable_on_preview
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_access_user_name is not None:
+            result['display_access_user_name'] = self.display_access_user_name
+        if self.display_custom_text is not None:
+            result['display_custom_text'] = self.display_custom_text
+        if self.display_share_link_creator_name is not None:
+            result['display_shareLink_creator_name'] = self.display_share_link_creator_name
+        if self.enable_doc_preview is not None:
+            result['enable_doc_preview'] = self.enable_doc_preview
+        if self.enable_on_preview is not None:
+            result['enable_on_preview'] = self.enable_on_preview
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('display_access_user_name') is not None:
+            self.display_access_user_name = m.get('display_access_user_name')
+        if m.get('display_custom_text') is not None:
+            self.display_custom_text = m.get('display_custom_text')
+        if m.get('display_shareLink_creator_name') is not None:
+            self.display_share_link_creator_name = m.get('display_shareLink_creator_name')
+        if m.get('enable_doc_preview') is not None:
+            self.enable_doc_preview = m.get('enable_doc_preview')
+        if m.get('enable_on_preview') is not None:
+            self.enable_on_preview = m.get('enable_on_preview')
+        return self
+
+
+class SecurityLogDetail(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        share_config: ShareConfigLogDetail = None,
+        share_link_config: ShareLinkConfigLogDetail = None,
+        watermark_config: WatermarkEnableConfig = None,
+    ):
+        self.share_config = share_config
+        self.share_link_config = share_link_config
+        self.watermark_config = watermark_config
+
+    def validate(self):
+        if self.share_config:
+            self.share_config.validate()
+        if self.share_link_config:
+            self.share_link_config.validate()
+        if self.watermark_config:
+            self.watermark_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.share_config is not None:
+            result['share_config'] = self.share_config.to_map()
+        if self.share_link_config is not None:
+            result['share_link_config'] = self.share_link_config.to_map()
+        if self.watermark_config is not None:
+            result['watermark_config'] = self.watermark_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('share_config') is not None:
+            temp_model = ShareConfigLogDetail()
+            self.share_config = temp_model.from_map(m['share_config'])
+        if m.get('share_link_config') is not None:
+            temp_model = ShareLinkConfigLogDetail()
+            self.share_link_config = temp_model.from_map(m['share_link_config'])
+        if m.get('watermark_config') is not None:
+            temp_model = WatermarkEnableConfig()
+            self.watermark_config = temp_model.from_map(m['watermark_config'])
+        return self
+
+
 class ShareLinkLogDetail(TeaModel):
     """
     *\
@@ -1779,6 +2442,9 @@ class ShareLinkLogDetail(TeaModel):
         expiration: str = None,
         has_multi_object: bool = None,
         has_pwd: bool = None,
+        share_created_at: str = None,
+        share_creator_id: str = None,
+        share_creator_name: str = None,
         share_id: str = None,
         to_parent_path: str = None,
         to_parent_path_type: str = None,
@@ -1790,6 +2456,12 @@ class ShareLinkLogDetail(TeaModel):
         self.has_multi_object = has_multi_object
         # has_pwd
         self.has_pwd = has_pwd
+        # share_created_at
+        self.share_created_at = share_created_at
+        # share_creator_id
+        self.share_creator_id = share_creator_id
+        # share_creator_name
+        self.share_creator_name = share_creator_name
         # share_id (脱敏)
         self.share_id = share_id
         # to_parent_path
@@ -1814,6 +2486,12 @@ class ShareLinkLogDetail(TeaModel):
             result['has_multi_object'] = self.has_multi_object
         if self.has_pwd is not None:
             result['has_pwd'] = self.has_pwd
+        if self.share_created_at is not None:
+            result['share_created_at'] = self.share_created_at
+        if self.share_creator_id is not None:
+            result['share_creator_id'] = self.share_creator_id
+        if self.share_creator_name is not None:
+            result['share_creator_name'] = self.share_creator_name
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.to_parent_path is not None:
@@ -1832,6 +2510,12 @@ class ShareLinkLogDetail(TeaModel):
             self.has_multi_object = m.get('has_multi_object')
         if m.get('has_pwd') is not None:
             self.has_pwd = m.get('has_pwd')
+        if m.get('share_created_at') is not None:
+            self.share_created_at = m.get('share_created_at')
+        if m.get('share_creator_id') is not None:
+            self.share_creator_id = m.get('share_creator_id')
+        if m.get('share_creator_name') is not None:
+            self.share_creator_name = m.get('share_creator_name')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('to_parent_path') is not None:
@@ -1849,16 +2533,22 @@ class ShareLogSettingDetail(TeaModel):
     """
     def __init__(
         self,
+        disinherit_sub_group: bool = None,
         expiration: str = None,
         permissions: List[str] = None,
         role_id: str = None,
+        role_name: str = None,
     ):
+        # disinherit_sub_group
+        self.disinherit_sub_group = disinherit_sub_group
         # expiration
         self.expiration = expiration
         # permissions
         self.permissions = permissions
         # role_id
         self.role_id = role_id
+        # role_name
+        self.role_name = role_name
 
     def validate(self):
         pass
@@ -1869,22 +2559,30 @@ class ShareLogSettingDetail(TeaModel):
             return _map
 
         result = dict()
+        if self.disinherit_sub_group is not None:
+            result['disinherit_sub_group'] = self.disinherit_sub_group
         if self.expiration is not None:
             result['expiration'] = self.expiration
         if self.permissions is not None:
             result['permissions'] = self.permissions
         if self.role_id is not None:
             result['role_id'] = self.role_id
+        if self.role_name is not None:
+            result['role_name'] = self.role_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('disinherit_sub_group') is not None:
+            self.disinherit_sub_group = m.get('disinherit_sub_group')
         if m.get('expiration') is not None:
             self.expiration = m.get('expiration')
         if m.get('permissions') is not None:
             self.permissions = m.get('permissions')
         if m.get('role_id') is not None:
             self.role_id = m.get('role_id')
+        if m.get('role_name') is not None:
+            self.role_name = m.get('role_name')
         return self
 
 
@@ -1894,16 +2592,20 @@ class ShareLogDetail(TeaModel):
     """
     def __init__(
         self,
+        disinherit_sub_group: bool = None,
         expiration: str = None,
         parent_path: str = None,
         permissions: List[str] = None,
         role_id: str = None,
+        role_name: str = None,
         share_to_id: str = None,
         share_to_name: str = None,
         share_to_type: str = None,
         type: str = None,
         update_to: ShareLogSettingDetail = None,
     ):
+        # disinherit_sub_group
+        self.disinherit_sub_group = disinherit_sub_group
         # expiration
         self.expiration = expiration
         # parent_path
@@ -1912,6 +2614,8 @@ class ShareLogDetail(TeaModel):
         self.permissions = permissions
         # role_id
         self.role_id = role_id
+        # role_name
+        self.role_name = role_name
         # share_to_id
         self.share_to_id = share_to_id
         # share_to_name
@@ -1932,6 +2636,8 @@ class ShareLogDetail(TeaModel):
             return _map
 
         result = dict()
+        if self.disinherit_sub_group is not None:
+            result['disinherit_sub_group'] = self.disinherit_sub_group
         if self.expiration is not None:
             result['expiration'] = self.expiration
         if self.parent_path is not None:
@@ -1940,6 +2646,8 @@ class ShareLogDetail(TeaModel):
             result['permissions'] = self.permissions
         if self.role_id is not None:
             result['role_id'] = self.role_id
+        if self.role_name is not None:
+            result['role_name'] = self.role_name
         if self.share_to_id is not None:
             result['share_to_id'] = self.share_to_id
         if self.share_to_name is not None:
@@ -1954,6 +2662,8 @@ class ShareLogDetail(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('disinherit_sub_group') is not None:
+            self.disinherit_sub_group = m.get('disinherit_sub_group')
         if m.get('expiration') is not None:
             self.expiration = m.get('expiration')
         if m.get('parent_path') is not None:
@@ -1962,6 +2672,8 @@ class ShareLogDetail(TeaModel):
             self.permissions = m.get('permissions')
         if m.get('role_id') is not None:
             self.role_id = m.get('role_id')
+        if m.get('role_name') is not None:
+            self.role_name = m.get('role_name')
         if m.get('share_to_id') is not None:
             self.share_to_id = m.get('share_to_id')
         if m.get('share_to_name') is not None:
@@ -2020,11 +2732,14 @@ class UserLogDetail(TeaModel):
     """
     def __init__(
         self,
+        email: str = None,
         name: str = None,
         phone: str = None,
         role_id: str = None,
         update_to: UserLogSettingDetail = None,
     ):
+        # email
+        self.email = email
         # name
         self.name = name
         # phone
@@ -2043,6 +2758,8 @@ class UserLogDetail(TeaModel):
             return _map
 
         result = dict()
+        if self.email is not None:
+            result['email'] = self.email
         if self.name is not None:
             result['name'] = self.name
         if self.phone is not None:
@@ -2055,6 +2772,8 @@ class UserLogDetail(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('email') is not None:
+            self.email = m.get('email')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('phone') is not None:
@@ -2073,35 +2792,55 @@ class LogDetail(TeaModel):
     """
     def __init__(
         self,
+        account_log_detail: AccountLogDetail = None,
+        audit_mgmt_log_detail: AuditMgmtLogDetail = None,
         drive_log_detail: DriveLogDetail = None,
+        ent_mgmt_log_detail: EntMgmtLogDetail = None,
         file_log_detail: FileLogDetail = None,
         group_log_detail: GroupLogDetail = None,
+        login_mgmt_log_detail: LoginMgmtLogDetail = None,
         membership_log_detail: MembershipLogDetail = None,
         role_log_detail: RoleLogDetail = None,
+        security_log_detail: SecurityLogDetail = None,
         share_link_log_detail: ShareLinkLogDetail = None,
         share_log_detail: ShareLogDetail = None,
         user_log_detail: UserLogDetail = None,
     ):
+        self.account_log_detail = account_log_detail
+        self.audit_mgmt_log_detail = audit_mgmt_log_detail
         self.drive_log_detail = drive_log_detail
+        self.ent_mgmt_log_detail = ent_mgmt_log_detail
         self.file_log_detail = file_log_detail
         self.group_log_detail = group_log_detail
+        self.login_mgmt_log_detail = login_mgmt_log_detail
         self.membership_log_detail = membership_log_detail
         self.role_log_detail = role_log_detail
+        self.security_log_detail = security_log_detail
         self.share_link_log_detail = share_link_log_detail
         self.share_log_detail = share_log_detail
         self.user_log_detail = user_log_detail
 
     def validate(self):
+        if self.account_log_detail:
+            self.account_log_detail.validate()
+        if self.audit_mgmt_log_detail:
+            self.audit_mgmt_log_detail.validate()
         if self.drive_log_detail:
             self.drive_log_detail.validate()
+        if self.ent_mgmt_log_detail:
+            self.ent_mgmt_log_detail.validate()
         if self.file_log_detail:
             self.file_log_detail.validate()
         if self.group_log_detail:
             self.group_log_detail.validate()
+        if self.login_mgmt_log_detail:
+            self.login_mgmt_log_detail.validate()
         if self.membership_log_detail:
             self.membership_log_detail.validate()
         if self.role_log_detail:
             self.role_log_detail.validate()
+        if self.security_log_detail:
+            self.security_log_detail.validate()
         if self.share_link_log_detail:
             self.share_link_log_detail.validate()
         if self.share_log_detail:
@@ -2115,16 +2854,26 @@ class LogDetail(TeaModel):
             return _map
 
         result = dict()
+        if self.account_log_detail is not None:
+            result['account_log_detail'] = self.account_log_detail.to_map()
+        if self.audit_mgmt_log_detail is not None:
+            result['audit_mgmt_log_detail'] = self.audit_mgmt_log_detail.to_map()
         if self.drive_log_detail is not None:
             result['drive_log_detail'] = self.drive_log_detail.to_map()
+        if self.ent_mgmt_log_detail is not None:
+            result['ent_mgmt_log_detail'] = self.ent_mgmt_log_detail.to_map()
         if self.file_log_detail is not None:
             result['file_log_detail'] = self.file_log_detail.to_map()
         if self.group_log_detail is not None:
             result['group_log_detail'] = self.group_log_detail.to_map()
+        if self.login_mgmt_log_detail is not None:
+            result['login_mgmt_log_detail'] = self.login_mgmt_log_detail.to_map()
         if self.membership_log_detail is not None:
             result['membership_log_detail'] = self.membership_log_detail.to_map()
         if self.role_log_detail is not None:
             result['role_log_detail'] = self.role_log_detail.to_map()
+        if self.security_log_detail is not None:
+            result['security_log_detail'] = self.security_log_detail.to_map()
         if self.share_link_log_detail is not None:
             result['share_link_log_detail'] = self.share_link_log_detail.to_map()
         if self.share_log_detail is not None:
@@ -2135,21 +2884,36 @@ class LogDetail(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('account_log_detail') is not None:
+            temp_model = AccountLogDetail()
+            self.account_log_detail = temp_model.from_map(m['account_log_detail'])
+        if m.get('audit_mgmt_log_detail') is not None:
+            temp_model = AuditMgmtLogDetail()
+            self.audit_mgmt_log_detail = temp_model.from_map(m['audit_mgmt_log_detail'])
         if m.get('drive_log_detail') is not None:
             temp_model = DriveLogDetail()
             self.drive_log_detail = temp_model.from_map(m['drive_log_detail'])
+        if m.get('ent_mgmt_log_detail') is not None:
+            temp_model = EntMgmtLogDetail()
+            self.ent_mgmt_log_detail = temp_model.from_map(m['ent_mgmt_log_detail'])
         if m.get('file_log_detail') is not None:
             temp_model = FileLogDetail()
             self.file_log_detail = temp_model.from_map(m['file_log_detail'])
         if m.get('group_log_detail') is not None:
             temp_model = GroupLogDetail()
             self.group_log_detail = temp_model.from_map(m['group_log_detail'])
+        if m.get('login_mgmt_log_detail') is not None:
+            temp_model = LoginMgmtLogDetail()
+            self.login_mgmt_log_detail = temp_model.from_map(m['login_mgmt_log_detail'])
         if m.get('membership_log_detail') is not None:
             temp_model = MembershipLogDetail()
             self.membership_log_detail = temp_model.from_map(m['membership_log_detail'])
         if m.get('role_log_detail') is not None:
             temp_model = RoleLogDetail()
             self.role_log_detail = temp_model.from_map(m['role_log_detail'])
+        if m.get('security_log_detail') is not None:
+            temp_model = SecurityLogDetail()
+            self.security_log_detail = temp_model.from_map(m['security_log_detail'])
         if m.get('share_link_log_detail') is not None:
             temp_model = ShareLinkLogDetail()
             self.share_link_log_detail = temp_model.from_map(m['share_link_log_detail'])
@@ -3068,6 +3832,7 @@ class Store(TeaModel):
         base_path: str = None,
         bucket: str = None,
         cdn_endpoint: str = None,
+        cdn_url_auth_key: str = None,
         customized_accelerate_endpoint: str = None,
         customized_cdn_endpoint: str = None,
         customized_endpoint: str = None,
@@ -3089,6 +3854,8 @@ class Store(TeaModel):
         self.bucket = bucket
         # 内容分发地址
         self.cdn_endpoint = cdn_endpoint
+        # CDN鉴权key
+        self.cdn_url_auth_key = cdn_url_auth_key
         # 自定义全球加速地址
         self.customized_accelerate_endpoint = customized_accelerate_endpoint
         # 自定义内容分发地址
@@ -3136,6 +3903,8 @@ class Store(TeaModel):
             result['bucket'] = self.bucket
         if self.cdn_endpoint is not None:
             result['cdn_endpoint'] = self.cdn_endpoint
+        if self.cdn_url_auth_key is not None:
+            result['cdn_url_auth_key'] = self.cdn_url_auth_key
         if self.customized_accelerate_endpoint is not None:
             result['customized_accelerate_endpoint'] = self.customized_accelerate_endpoint
         if self.customized_cdn_endpoint is not None:
@@ -3172,6 +3941,8 @@ class Store(TeaModel):
             self.bucket = m.get('bucket')
         if m.get('cdn_endpoint') is not None:
             self.cdn_endpoint = m.get('cdn_endpoint')
+        if m.get('cdn_url_auth_key') is not None:
+            self.cdn_url_auth_key = m.get('cdn_url_auth_key')
         if m.get('customized_accelerate_endpoint') is not None:
             self.customized_accelerate_endpoint = m.get('customized_accelerate_endpoint')
         if m.get('customized_cdn_endpoint') is not None:
@@ -3346,11 +4117,15 @@ class DeleteSubdomainResponse(TeaModel):
     """
     *\
     """
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        subdomain_id: str = None,
+    ):
+        # 用以唯一标识subdomain
+        self.subdomain_id = subdomain_id
 
     def validate(self):
-        pass
+        self.validate_required(self.subdomain_id, 'subdomain_id')
 
     def to_map(self):
         _map = super().to_map()
@@ -3358,10 +4133,14 @@ class DeleteSubdomainResponse(TeaModel):
             return _map
 
         result = dict()
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -3401,6 +4180,44 @@ class DeleteSubdomainModel(TeaModel):
         return self
 
 
+class ShareDetailResponse(TeaModel):
+    """
+    share detail response
+    """
+    def __init__(
+        self,
+        access_quota: int = None,
+        exceed_access_quota: bool = None,
+    ):
+        # 企业未配置独立域名时，允许的访问次数
+        self.access_quota = access_quota
+        # 企业未配置独立域名时，是否超过允许的访问次数
+        self.exceed_access_quota = exceed_access_quota
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_quota is not None:
+            result['access_quota'] = self.access_quota
+        if self.exceed_access_quota is not None:
+            result['exceed_access_quota'] = self.exceed_access_quota
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('access_quota') is not None:
+            self.access_quota = m.get('access_quota')
+        if m.get('exceed_access_quota') is not None:
+            self.exceed_access_quota = m.get('exceed_access_quota')
+        return self
+
+
 class GetSubdomainResponse(TeaModel):
     """
     *\
@@ -3409,8 +4226,11 @@ class GetSubdomainResponse(TeaModel):
         self,
         created_at: str = None,
         description: str = None,
+        group_singe_drive_enable: bool = None,
         name: str = None,
         sharable: bool = None,
+        share_detail: ShareDetailResponse = None,
+        share_link_detail: ShareDetailResponse = None,
         share_link_enabled: bool = None,
         status: int = None,
         subdomain_id: str = None,
@@ -3419,15 +4239,19 @@ class GetSubdomainResponse(TeaModel):
         used_size: int = None,
         used_size_refresh_interval: int = None,
         user_quota: int = None,
+        user_single_drive_enabled: bool = None,
     ):
         # 创建时间
         self.created_at = created_at
         # 描述
         self.description = description
+        self.group_singe_drive_enable = group_singe_drive_enable
         # 名称
         self.name = name
         # 是否开启了共享
         self.sharable = sharable
+        self.share_detail = share_detail
+        self.share_link_detail = share_link_detail
         # 是否开启了分享
         self.share_link_enabled = share_link_enabled
         # 当前状态
@@ -3444,11 +4268,16 @@ class GetSubdomainResponse(TeaModel):
         self.used_size_refresh_interval = used_size_refresh_interval
         # 用户数quota，-1表示无限制
         self.user_quota = user_quota
+        self.user_single_drive_enabled = user_single_drive_enabled
 
     def validate(self):
         self.validate_required(self.created_at, 'created_at')
         self.validate_required(self.description, 'description')
         self.validate_required(self.name, 'name')
+        if self.share_detail:
+            self.share_detail.validate()
+        if self.share_link_detail:
+            self.share_link_detail.validate()
         self.validate_required(self.subdomain_id, 'subdomain_id')
         self.validate_required(self.total_size, 'total_size')
         self.validate_required(self.updated_at, 'updated_at')
@@ -3464,10 +4293,16 @@ class GetSubdomainResponse(TeaModel):
             result['created_at'] = self.created_at
         if self.description is not None:
             result['description'] = self.description
+        if self.group_singe_drive_enable is not None:
+            result['group_singe_drive_enable'] = self.group_singe_drive_enable
         if self.name is not None:
             result['name'] = self.name
         if self.sharable is not None:
             result['sharable'] = self.sharable
+        if self.share_detail is not None:
+            result['share_detail'] = self.share_detail.to_map()
+        if self.share_link_detail is not None:
+            result['share_link_detail'] = self.share_link_detail.to_map()
         if self.share_link_enabled is not None:
             result['share_link_enabled'] = self.share_link_enabled
         if self.status is not None:
@@ -3484,6 +4319,8 @@ class GetSubdomainResponse(TeaModel):
             result['used_size_refresh_interval'] = self.used_size_refresh_interval
         if self.user_quota is not None:
             result['user_quota'] = self.user_quota
+        if self.user_single_drive_enabled is not None:
+            result['user_single_drive_enabled'] = self.user_single_drive_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -3492,10 +4329,18 @@ class GetSubdomainResponse(TeaModel):
             self.created_at = m.get('created_at')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('group_singe_drive_enable') is not None:
+            self.group_singe_drive_enable = m.get('group_singe_drive_enable')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('sharable') is not None:
             self.sharable = m.get('sharable')
+        if m.get('share_detail') is not None:
+            temp_model = ShareDetailResponse()
+            self.share_detail = temp_model.from_map(m['share_detail'])
+        if m.get('share_link_detail') is not None:
+            temp_model = ShareDetailResponse()
+            self.share_link_detail = temp_model.from_map(m['share_link_detail'])
         if m.get('share_link_enabled') is not None:
             self.share_link_enabled = m.get('share_link_enabled')
         if m.get('status') is not None:
@@ -3512,6 +4357,8 @@ class GetSubdomainResponse(TeaModel):
             self.used_size_refresh_interval = m.get('used_size_refresh_interval')
         if m.get('user_quota') is not None:
             self.user_quota = m.get('user_quota')
+        if m.get('user_single_drive_enabled') is not None:
+            self.user_single_drive_enabled = m.get('user_single_drive_enabled')
         return self
 
 
@@ -3559,8 +4406,11 @@ class BaseSubdomainResponse(TeaModel):
         self,
         created_at: str = None,
         description: str = None,
+        group_singe_drive_enable: bool = None,
         name: str = None,
         sharable: bool = None,
+        share_detail: ShareDetailResponse = None,
+        share_link_detail: ShareDetailResponse = None,
         share_link_enabled: bool = None,
         status: int = None,
         subdomain_id: str = None,
@@ -3569,15 +4419,19 @@ class BaseSubdomainResponse(TeaModel):
         used_size: int = None,
         used_size_refresh_interval: int = None,
         user_quota: int = None,
+        user_single_drive_enabled: bool = None,
     ):
         # 创建时间
         self.created_at = created_at
         # 描述
         self.description = description
+        self.group_singe_drive_enable = group_singe_drive_enable
         # 名称
         self.name = name
         # 是否开启了共享
         self.sharable = sharable
+        self.share_detail = share_detail
+        self.share_link_detail = share_link_detail
         # 是否开启了分享
         self.share_link_enabled = share_link_enabled
         # 当前状态
@@ -3594,11 +4448,16 @@ class BaseSubdomainResponse(TeaModel):
         self.used_size_refresh_interval = used_size_refresh_interval
         # 用户数quota，-1表示无限制
         self.user_quota = user_quota
+        self.user_single_drive_enabled = user_single_drive_enabled
 
     def validate(self):
         self.validate_required(self.created_at, 'created_at')
         self.validate_required(self.description, 'description')
         self.validate_required(self.name, 'name')
+        if self.share_detail:
+            self.share_detail.validate()
+        if self.share_link_detail:
+            self.share_link_detail.validate()
         self.validate_required(self.subdomain_id, 'subdomain_id')
         self.validate_required(self.total_size, 'total_size')
         self.validate_required(self.updated_at, 'updated_at')
@@ -3614,10 +4473,16 @@ class BaseSubdomainResponse(TeaModel):
             result['created_at'] = self.created_at
         if self.description is not None:
             result['description'] = self.description
+        if self.group_singe_drive_enable is not None:
+            result['group_singe_drive_enable'] = self.group_singe_drive_enable
         if self.name is not None:
             result['name'] = self.name
         if self.sharable is not None:
             result['sharable'] = self.sharable
+        if self.share_detail is not None:
+            result['share_detail'] = self.share_detail.to_map()
+        if self.share_link_detail is not None:
+            result['share_link_detail'] = self.share_link_detail.to_map()
         if self.share_link_enabled is not None:
             result['share_link_enabled'] = self.share_link_enabled
         if self.status is not None:
@@ -3634,6 +4499,8 @@ class BaseSubdomainResponse(TeaModel):
             result['used_size_refresh_interval'] = self.used_size_refresh_interval
         if self.user_quota is not None:
             result['user_quota'] = self.user_quota
+        if self.user_single_drive_enabled is not None:
+            result['user_single_drive_enabled'] = self.user_single_drive_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -3642,10 +4509,18 @@ class BaseSubdomainResponse(TeaModel):
             self.created_at = m.get('created_at')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('group_singe_drive_enable') is not None:
+            self.group_singe_drive_enable = m.get('group_singe_drive_enable')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('sharable') is not None:
             self.sharable = m.get('sharable')
+        if m.get('share_detail') is not None:
+            temp_model = ShareDetailResponse()
+            self.share_detail = temp_model.from_map(m['share_detail'])
+        if m.get('share_link_detail') is not None:
+            temp_model = ShareDetailResponse()
+            self.share_link_detail = temp_model.from_map(m['share_link_detail'])
         if m.get('share_link_enabled') is not None:
             self.share_link_enabled = m.get('share_link_enabled')
         if m.get('status') is not None:
@@ -3662,6 +4537,8 @@ class BaseSubdomainResponse(TeaModel):
             self.used_size_refresh_interval = m.get('used_size_refresh_interval')
         if m.get('user_quota') is not None:
             self.user_quota = m.get('user_quota')
+        if m.get('user_single_drive_enabled') is not None:
+            self.user_single_drive_enabled = m.get('user_single_drive_enabled')
         return self
 
 
@@ -5377,6 +6254,7 @@ class SystemTag(TeaModel):
     """
     def __init__(
         self,
+        centric_score: float = None,
         confidence: float = None,
         en_name: str = None,
         name: str = None,
@@ -5385,6 +6263,7 @@ class SystemTag(TeaModel):
         source: str = None,
         tag_level: int = None,
     ):
+        self.centric_score = centric_score
         self.confidence = confidence
         self.en_name = en_name
         self.name = name
@@ -5402,6 +6281,8 @@ class SystemTag(TeaModel):
             return _map
 
         result = dict()
+        if self.centric_score is not None:
+            result['centric_score'] = self.centric_score
         if self.confidence is not None:
             result['confidence'] = self.confidence
         if self.en_name is not None:
@@ -5420,6 +6301,8 @@ class SystemTag(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('centric_score') is not None:
+            self.centric_score = m.get('centric_score')
         if m.get('confidence') is not None:
             self.confidence = m.get('confidence')
         if m.get('en_name') is not None:
@@ -6253,6 +7136,7 @@ class CompleteFileResponse(TeaModel):
     def __init__(
         self,
         action_list: List[str] = None,
+        auto_delete_left_sec: int = None,
         category: str = None,
         characteristic_hash: str = None,
         content_hash: str = None,
@@ -6260,6 +7144,9 @@ class CompleteFileResponse(TeaModel):
         content_type: str = None,
         crc_64hash: str = None,
         created_at: str = None,
+        creator_id: str = None,
+        creator_name: str = None,
+        creator_type: str = None,
         custom_field_1: str = None,
         custom_field_2: str = None,
         custom_type: str = None,
@@ -6268,14 +7155,18 @@ class CompleteFileResponse(TeaModel):
         download_url: str = None,
         drive_id: str = None,
         encrypt_mode: str = None,
+        ex_fields_info: dict = None,
         file_extension: str = None,
         file_id: str = None,
+        file_path_type: str = None,
         hidden: bool = None,
         image_media_metadata: ImageMediaResponse = None,
         labels: List[str] = None,
         last_modifier_id: str = None,
         last_modifier_name: str = None,
         last_modifier_type: str = None,
+        local_created_at: str = None,
+        local_modified_at: str = None,
         location: str = None,
         meta: str = None,
         mime_extension: str = None,
@@ -6283,12 +7174,16 @@ class CompleteFileResponse(TeaModel):
         name: str = None,
         parent_file_id: str = None,
         punish_flag: int = None,
+        revision_id: str = None,
         share_id: str = None,
         size: int = None,
         starred: bool = None,
         status: str = None,
         stream_locations: dict = None,
         streams_info: dict = None,
+        sync_device_flag: bool = None,
+        sync_flag: bool = None,
+        sync_meta: str = None,
         thumbnail: str = None,
         trashed_at: str = None,
         type: str = None,
@@ -6302,6 +7197,8 @@ class CompleteFileResponse(TeaModel):
     ):
         # action_list
         self.action_list = action_list
+        # auto_delete_left_sec
+        self.auto_delete_left_sec = auto_delete_left_sec
         # category
         self.category = category
         # CharacteristicHash
@@ -6316,6 +7213,12 @@ class CompleteFileResponse(TeaModel):
         self.crc_64hash = crc_64hash
         # created_at
         self.created_at = created_at
+        # creator_id
+        self.creator_id = creator_id
+        # creator_name
+        self.creator_name = creator_name
+        # creator_type
+        self.creator_type = creator_type
         # custom_field_1
         self.custom_field_1 = custom_field_1
         # custom_field_2
@@ -6332,10 +7235,14 @@ class CompleteFileResponse(TeaModel):
         self.drive_id = drive_id
         # encrypt_mode
         self.encrypt_mode = encrypt_mode
+        # ex_fields_info
+        self.ex_fields_info = ex_fields_info
         # file_extension
         self.file_extension = file_extension
         # file_id
         self.file_id = file_id
+        # TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
+        self.file_path_type = file_path_type
         # Hidden
         # type: boolean
         self.hidden = hidden
@@ -6348,6 +7255,9 @@ class CompleteFileResponse(TeaModel):
         self.last_modifier_name = last_modifier_name
         # last_modifier_type
         self.last_modifier_type = last_modifier_type
+        # local_created_at
+        self.local_created_at = local_created_at
+        self.local_modified_at = local_modified_at
         # location
         self.location = location
         self.meta = meta
@@ -6361,6 +7271,8 @@ class CompleteFileResponse(TeaModel):
         self.parent_file_id = parent_file_id
         # PunishFlag
         self.punish_flag = punish_flag
+        # revision_id
+        self.revision_id = revision_id
         self.share_id = share_id
         # Size
         self.size = size
@@ -6372,6 +7284,12 @@ class CompleteFileResponse(TeaModel):
         self.stream_locations = stream_locations
         # @Deprecated streams url info
         self.streams_info = streams_info
+        # sync_device_flag
+        self.sync_device_flag = sync_device_flag
+        # sync_flag
+        self.sync_flag = sync_flag
+        # sync_meta
+        self.sync_meta = sync_meta
         # thumbnail
         self.thumbnail = thumbnail
         # trashed_at
@@ -6422,6 +7340,8 @@ class CompleteFileResponse(TeaModel):
         result = dict()
         if self.action_list is not None:
             result['action_list'] = self.action_list
+        if self.auto_delete_left_sec is not None:
+            result['auto_delete_left_sec'] = self.auto_delete_left_sec
         if self.category is not None:
             result['category'] = self.category
         if self.characteristic_hash is not None:
@@ -6436,6 +7356,12 @@ class CompleteFileResponse(TeaModel):
             result['crc64_hash'] = self.crc_64hash
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator_id is not None:
+            result['creator_id'] = self.creator_id
+        if self.creator_name is not None:
+            result['creator_name'] = self.creator_name
+        if self.creator_type is not None:
+            result['creator_type'] = self.creator_type
         if self.custom_field_1 is not None:
             result['custom_field_1'] = self.custom_field_1
         if self.custom_field_2 is not None:
@@ -6452,10 +7378,14 @@ class CompleteFileResponse(TeaModel):
             result['drive_id'] = self.drive_id
         if self.encrypt_mode is not None:
             result['encrypt_mode'] = self.encrypt_mode
+        if self.ex_fields_info is not None:
+            result['ex_fields_info'] = self.ex_fields_info
         if self.file_extension is not None:
             result['file_extension'] = self.file_extension
         if self.file_id is not None:
             result['file_id'] = self.file_id
+        if self.file_path_type is not None:
+            result['file_path_type'] = self.file_path_type
         if self.hidden is not None:
             result['hidden'] = self.hidden
         if self.image_media_metadata is not None:
@@ -6468,6 +7398,10 @@ class CompleteFileResponse(TeaModel):
             result['last_modifier_name'] = self.last_modifier_name
         if self.last_modifier_type is not None:
             result['last_modifier_type'] = self.last_modifier_type
+        if self.local_created_at is not None:
+            result['local_created_at'] = self.local_created_at
+        if self.local_modified_at is not None:
+            result['local_modified_at'] = self.local_modified_at
         if self.location is not None:
             result['location'] = self.location
         if self.meta is not None:
@@ -6482,6 +7416,8 @@ class CompleteFileResponse(TeaModel):
             result['parent_file_id'] = self.parent_file_id
         if self.punish_flag is not None:
             result['punish_flag'] = self.punish_flag
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.size is not None:
@@ -6494,6 +7430,12 @@ class CompleteFileResponse(TeaModel):
             result['stream_locations'] = self.stream_locations
         if self.streams_info is not None:
             result['streams_info'] = self.streams_info
+        if self.sync_device_flag is not None:
+            result['sync_device_flag'] = self.sync_device_flag
+        if self.sync_flag is not None:
+            result['sync_flag'] = self.sync_flag
+        if self.sync_meta is not None:
+            result['sync_meta'] = self.sync_meta
         if self.thumbnail is not None:
             result['thumbnail'] = self.thumbnail
         if self.trashed_at is not None:
@@ -6520,6 +7462,8 @@ class CompleteFileResponse(TeaModel):
         m = m or dict()
         if m.get('action_list') is not None:
             self.action_list = m.get('action_list')
+        if m.get('auto_delete_left_sec') is not None:
+            self.auto_delete_left_sec = m.get('auto_delete_left_sec')
         if m.get('category') is not None:
             self.category = m.get('category')
         if m.get('characteristic_hash') is not None:
@@ -6534,6 +7478,12 @@ class CompleteFileResponse(TeaModel):
             self.crc_64hash = m.get('crc64_hash')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator_id') is not None:
+            self.creator_id = m.get('creator_id')
+        if m.get('creator_name') is not None:
+            self.creator_name = m.get('creator_name')
+        if m.get('creator_type') is not None:
+            self.creator_type = m.get('creator_type')
         if m.get('custom_field_1') is not None:
             self.custom_field_1 = m.get('custom_field_1')
         if m.get('custom_field_2') is not None:
@@ -6550,10 +7500,14 @@ class CompleteFileResponse(TeaModel):
             self.drive_id = m.get('drive_id')
         if m.get('encrypt_mode') is not None:
             self.encrypt_mode = m.get('encrypt_mode')
+        if m.get('ex_fields_info') is not None:
+            self.ex_fields_info = m.get('ex_fields_info')
         if m.get('file_extension') is not None:
             self.file_extension = m.get('file_extension')
         if m.get('file_id') is not None:
             self.file_id = m.get('file_id')
+        if m.get('file_path_type') is not None:
+            self.file_path_type = m.get('file_path_type')
         if m.get('hidden') is not None:
             self.hidden = m.get('hidden')
         if m.get('image_media_metadata') is not None:
@@ -6567,6 +7521,10 @@ class CompleteFileResponse(TeaModel):
             self.last_modifier_name = m.get('last_modifier_name')
         if m.get('last_modifier_type') is not None:
             self.last_modifier_type = m.get('last_modifier_type')
+        if m.get('local_created_at') is not None:
+            self.local_created_at = m.get('local_created_at')
+        if m.get('local_modified_at') is not None:
+            self.local_modified_at = m.get('local_modified_at')
         if m.get('location') is not None:
             self.location = m.get('location')
         if m.get('meta') is not None:
@@ -6581,6 +7539,8 @@ class CompleteFileResponse(TeaModel):
             self.parent_file_id = m.get('parent_file_id')
         if m.get('punish_flag') is not None:
             self.punish_flag = m.get('punish_flag')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('size') is not None:
@@ -6593,6 +7553,12 @@ class CompleteFileResponse(TeaModel):
             self.stream_locations = m.get('stream_locations')
         if m.get('streams_info') is not None:
             self.streams_info = m.get('streams_info')
+        if m.get('sync_device_flag') is not None:
+            self.sync_device_flag = m.get('sync_device_flag')
+        if m.get('sync_flag') is not None:
+            self.sync_flag = m.get('sync_flag')
+        if m.get('sync_meta') is not None:
+            self.sync_meta = m.get('sync_meta')
         if m.get('thumbnail') is not None:
             self.thumbnail = m.get('thumbnail')
         if m.get('trashed_at') is not None:
@@ -6661,6 +7627,7 @@ class UCCompleteFileResponse(TeaModel):
     def __init__(
         self,
         action_list: List[str] = None,
+        auto_delete_left_sec: int = None,
         bucket_name: str = None,
         category: str = None,
         characteristic_hash: str = None,
@@ -6669,6 +7636,9 @@ class UCCompleteFileResponse(TeaModel):
         content_type: str = None,
         crc_64hash: str = None,
         created_at: str = None,
+        creator_id: str = None,
+        creator_name: str = None,
+        creator_type: str = None,
         custom_field_1: str = None,
         custom_field_2: str = None,
         custom_type: str = None,
@@ -6678,14 +7648,18 @@ class UCCompleteFileResponse(TeaModel):
         drive_id: str = None,
         encrypt_mode: str = None,
         endpoint: str = None,
+        ex_fields_info: dict = None,
         file_extension: str = None,
         file_id: str = None,
+        file_path_type: str = None,
         hidden: bool = None,
         image_media_metadata: ImageMediaResponse = None,
         labels: List[str] = None,
         last_modifier_id: str = None,
         last_modifier_name: str = None,
         last_modifier_type: str = None,
+        local_created_at: str = None,
+        local_modified_at: str = None,
         meta: str = None,
         mime_extension: str = None,
         mime_type: str = None,
@@ -6693,11 +7667,15 @@ class UCCompleteFileResponse(TeaModel):
         object_key: str = None,
         parent_file_id: str = None,
         punish_flag: int = None,
+        revision_id: str = None,
         share_id: str = None,
         size: int = None,
         starred: bool = None,
         status: str = None,
         streams_info: dict = None,
+        sync_device_flag: bool = None,
+        sync_flag: bool = None,
+        sync_meta: str = None,
         thumbnail: str = None,
         trashed_at: str = None,
         type: str = None,
@@ -6711,6 +7689,8 @@ class UCCompleteFileResponse(TeaModel):
     ):
         # action_list
         self.action_list = action_list
+        # auto_delete_left_sec
+        self.auto_delete_left_sec = auto_delete_left_sec
         # bucket_name
         self.bucket_name = bucket_name
         # category
@@ -6727,6 +7707,12 @@ class UCCompleteFileResponse(TeaModel):
         self.crc_64hash = crc_64hash
         # created_at
         self.created_at = created_at
+        # creator_id
+        self.creator_id = creator_id
+        # creator_name
+        self.creator_name = creator_name
+        # creator_type
+        self.creator_type = creator_type
         # custom_field_1
         self.custom_field_1 = custom_field_1
         # custom_field_2
@@ -6745,10 +7731,14 @@ class UCCompleteFileResponse(TeaModel):
         self.encrypt_mode = encrypt_mode
         # endpoint
         self.endpoint = endpoint
+        # ex_fields_info
+        self.ex_fields_info = ex_fields_info
         # file_extension
         self.file_extension = file_extension
         # file_id
         self.file_id = file_id
+        # TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
+        self.file_path_type = file_path_type
         # Hidden
         # type: boolean
         self.hidden = hidden
@@ -6761,6 +7751,9 @@ class UCCompleteFileResponse(TeaModel):
         self.last_modifier_name = last_modifier_name
         # last_modifier_type
         self.last_modifier_type = last_modifier_type
+        # local_created_at
+        self.local_created_at = local_created_at
+        self.local_modified_at = local_modified_at
         self.meta = meta
         # mime_extension
         self.mime_extension = mime_extension
@@ -6774,6 +7767,8 @@ class UCCompleteFileResponse(TeaModel):
         self.parent_file_id = parent_file_id
         # PunishFlag
         self.punish_flag = punish_flag
+        # revision_id
+        self.revision_id = revision_id
         self.share_id = share_id
         # Size
         self.size = size
@@ -6784,6 +7779,12 @@ class UCCompleteFileResponse(TeaModel):
         self.status = status
         # @Deprecated streams url info
         self.streams_info = streams_info
+        # sync_device_flag
+        self.sync_device_flag = sync_device_flag
+        # sync_flag
+        self.sync_flag = sync_flag
+        # sync_meta
+        self.sync_meta = sync_meta
         # thumbnail
         self.thumbnail = thumbnail
         # trashed_at
@@ -6834,6 +7835,8 @@ class UCCompleteFileResponse(TeaModel):
         result = dict()
         if self.action_list is not None:
             result['action_list'] = self.action_list
+        if self.auto_delete_left_sec is not None:
+            result['auto_delete_left_sec'] = self.auto_delete_left_sec
         if self.bucket_name is not None:
             result['bucket_name'] = self.bucket_name
         if self.category is not None:
@@ -6850,6 +7853,12 @@ class UCCompleteFileResponse(TeaModel):
             result['crc64_hash'] = self.crc_64hash
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator_id is not None:
+            result['creator_id'] = self.creator_id
+        if self.creator_name is not None:
+            result['creator_name'] = self.creator_name
+        if self.creator_type is not None:
+            result['creator_type'] = self.creator_type
         if self.custom_field_1 is not None:
             result['custom_field_1'] = self.custom_field_1
         if self.custom_field_2 is not None:
@@ -6868,10 +7877,14 @@ class UCCompleteFileResponse(TeaModel):
             result['encrypt_mode'] = self.encrypt_mode
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
+        if self.ex_fields_info is not None:
+            result['ex_fields_info'] = self.ex_fields_info
         if self.file_extension is not None:
             result['file_extension'] = self.file_extension
         if self.file_id is not None:
             result['file_id'] = self.file_id
+        if self.file_path_type is not None:
+            result['file_path_type'] = self.file_path_type
         if self.hidden is not None:
             result['hidden'] = self.hidden
         if self.image_media_metadata is not None:
@@ -6884,6 +7897,10 @@ class UCCompleteFileResponse(TeaModel):
             result['last_modifier_name'] = self.last_modifier_name
         if self.last_modifier_type is not None:
             result['last_modifier_type'] = self.last_modifier_type
+        if self.local_created_at is not None:
+            result['local_created_at'] = self.local_created_at
+        if self.local_modified_at is not None:
+            result['local_modified_at'] = self.local_modified_at
         if self.meta is not None:
             result['meta'] = self.meta
         if self.mime_extension is not None:
@@ -6898,6 +7915,8 @@ class UCCompleteFileResponse(TeaModel):
             result['parent_file_id'] = self.parent_file_id
         if self.punish_flag is not None:
             result['punish_flag'] = self.punish_flag
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.size is not None:
@@ -6908,6 +7927,12 @@ class UCCompleteFileResponse(TeaModel):
             result['status'] = self.status
         if self.streams_info is not None:
             result['streams_info'] = self.streams_info
+        if self.sync_device_flag is not None:
+            result['sync_device_flag'] = self.sync_device_flag
+        if self.sync_flag is not None:
+            result['sync_flag'] = self.sync_flag
+        if self.sync_meta is not None:
+            result['sync_meta'] = self.sync_meta
         if self.thumbnail is not None:
             result['thumbnail'] = self.thumbnail
         if self.trashed_at is not None:
@@ -6934,6 +7959,8 @@ class UCCompleteFileResponse(TeaModel):
         m = m or dict()
         if m.get('action_list') is not None:
             self.action_list = m.get('action_list')
+        if m.get('auto_delete_left_sec') is not None:
+            self.auto_delete_left_sec = m.get('auto_delete_left_sec')
         if m.get('bucket_name') is not None:
             self.bucket_name = m.get('bucket_name')
         if m.get('category') is not None:
@@ -6950,6 +7977,12 @@ class UCCompleteFileResponse(TeaModel):
             self.crc_64hash = m.get('crc64_hash')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator_id') is not None:
+            self.creator_id = m.get('creator_id')
+        if m.get('creator_name') is not None:
+            self.creator_name = m.get('creator_name')
+        if m.get('creator_type') is not None:
+            self.creator_type = m.get('creator_type')
         if m.get('custom_field_1') is not None:
             self.custom_field_1 = m.get('custom_field_1')
         if m.get('custom_field_2') is not None:
@@ -6968,10 +8001,14 @@ class UCCompleteFileResponse(TeaModel):
             self.encrypt_mode = m.get('encrypt_mode')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
+        if m.get('ex_fields_info') is not None:
+            self.ex_fields_info = m.get('ex_fields_info')
         if m.get('file_extension') is not None:
             self.file_extension = m.get('file_extension')
         if m.get('file_id') is not None:
             self.file_id = m.get('file_id')
+        if m.get('file_path_type') is not None:
+            self.file_path_type = m.get('file_path_type')
         if m.get('hidden') is not None:
             self.hidden = m.get('hidden')
         if m.get('image_media_metadata') is not None:
@@ -6985,6 +8022,10 @@ class UCCompleteFileResponse(TeaModel):
             self.last_modifier_name = m.get('last_modifier_name')
         if m.get('last_modifier_type') is not None:
             self.last_modifier_type = m.get('last_modifier_type')
+        if m.get('local_created_at') is not None:
+            self.local_created_at = m.get('local_created_at')
+        if m.get('local_modified_at') is not None:
+            self.local_modified_at = m.get('local_modified_at')
         if m.get('meta') is not None:
             self.meta = m.get('meta')
         if m.get('mime_extension') is not None:
@@ -6999,6 +8040,8 @@ class UCCompleteFileResponse(TeaModel):
             self.parent_file_id = m.get('parent_file_id')
         if m.get('punish_flag') is not None:
             self.punish_flag = m.get('punish_flag')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('size') is not None:
@@ -7009,6 +8052,12 @@ class UCCompleteFileResponse(TeaModel):
             self.status = m.get('status')
         if m.get('streams_info') is not None:
             self.streams_info = m.get('streams_info')
+        if m.get('sync_device_flag') is not None:
+            self.sync_device_flag = m.get('sync_device_flag')
+        if m.get('sync_flag') is not None:
+            self.sync_flag = m.get('sync_flag')
+        if m.get('sync_meta') is not None:
+            self.sync_meta = m.get('sync_meta')
         if m.get('thumbnail') is not None:
             self.thumbnail = m.get('thumbnail')
         if m.get('trashed_at') is not None:
@@ -7164,6 +8213,72 @@ class CopyFileModel(TeaModel):
         return self
 
 
+class UploadFormInfo(TeaModel):
+    """
+    使用form上传所需字段
+    """
+    def __init__(
+        self,
+        bucket_name: str = None,
+        object_key: str = None,
+        oss_access_key_id: str = None,
+        oss_end_point: str = None,
+        oss_security_token: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.bucket_name = bucket_name
+        self.object_key = object_key
+        self.oss_access_key_id = oss_access_key_id
+        self.oss_end_point = oss_end_point
+        self.oss_security_token = oss_security_token
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['bucket_name'] = self.bucket_name
+        if self.object_key is not None:
+            result['object_key'] = self.object_key
+        if self.oss_access_key_id is not None:
+            result['oss_access_key_id'] = self.oss_access_key_id
+        if self.oss_end_point is not None:
+            result['oss_end_point'] = self.oss_end_point
+        if self.oss_security_token is not None:
+            result['oss_security_token'] = self.oss_security_token
+        if self.policy is not None:
+            result['policy'] = self.policy
+        if self.signature is not None:
+            result['signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucket_name') is not None:
+            self.bucket_name = m.get('bucket_name')
+        if m.get('object_key') is not None:
+            self.object_key = m.get('object_key')
+        if m.get('oss_access_key_id') is not None:
+            self.oss_access_key_id = m.get('oss_access_key_id')
+        if m.get('oss_end_point') is not None:
+            self.oss_end_point = m.get('oss_end_point')
+        if m.get('oss_security_token') is not None:
+            self.oss_security_token = m.get('oss_security_token')
+        if m.get('policy') is not None:
+            self.policy = m.get('policy')
+        if m.get('signature') is not None:
+            self.signature = m.get('signature')
+        return self
+
+
 class SHA1CTX(TeaModel):
     """
     对应OSS Sha1的结构体，定义在 gitlab.alibaba-inc.com/oss/parallel_hash.go OSSSha1Digest
@@ -7216,16 +8331,19 @@ class UploadPartInfo(TeaModel):
         self,
         content_type: str = None,
         etag: str = None,
+        internal_upload_form_info: UploadFormInfo = None,
         internal_upload_url: str = None,
         parallel_sha_1ctx: SHA1CTX = None,
         part_number: int = None,
         part_size: int = None,
+        upload_form_info: UploadFormInfo = None,
         upload_url: str = None,
     ):
         # content_type
         self.content_type = content_type
         # etag
         self.etag = etag
+        self.internal_upload_form_info = internal_upload_form_info
         # internal_upload_url
         self.internal_upload_url = internal_upload_url
         self.parallel_sha_1ctx = parallel_sha_1ctx
@@ -7233,10 +8351,13 @@ class UploadPartInfo(TeaModel):
         self.part_number = part_number
         # PartSize：
         self.part_size = part_size
+        self.upload_form_info = upload_form_info
         # upload_url
         self.upload_url = upload_url
 
     def validate(self):
+        if self.internal_upload_form_info:
+            self.internal_upload_form_info.validate()
         if self.parallel_sha_1ctx:
             self.parallel_sha_1ctx.validate()
         if self.part_number is not None:
@@ -7244,6 +8365,8 @@ class UploadPartInfo(TeaModel):
             self.validate_minimum(self.part_number, 'part_number', 1)
         if self.part_size is not None:
             self.validate_maximum(self.part_size, 'part_size', 5368709120)
+        if self.upload_form_info:
+            self.upload_form_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7255,6 +8378,8 @@ class UploadPartInfo(TeaModel):
             result['content_type'] = self.content_type
         if self.etag is not None:
             result['etag'] = self.etag
+        if self.internal_upload_form_info is not None:
+            result['internal_upload_form_info'] = self.internal_upload_form_info.to_map()
         if self.internal_upload_url is not None:
             result['internal_upload_url'] = self.internal_upload_url
         if self.parallel_sha_1ctx is not None:
@@ -7263,6 +8388,8 @@ class UploadPartInfo(TeaModel):
             result['part_number'] = self.part_number
         if self.part_size is not None:
             result['part_size'] = self.part_size
+        if self.upload_form_info is not None:
+            result['upload_form_info'] = self.upload_form_info.to_map()
         if self.upload_url is not None:
             result['upload_url'] = self.upload_url
         return result
@@ -7273,6 +8400,9 @@ class UploadPartInfo(TeaModel):
             self.content_type = m.get('content_type')
         if m.get('etag') is not None:
             self.etag = m.get('etag')
+        if m.get('internal_upload_form_info') is not None:
+            temp_model = UploadFormInfo()
+            self.internal_upload_form_info = temp_model.from_map(m['internal_upload_form_info'])
         if m.get('internal_upload_url') is not None:
             self.internal_upload_url = m.get('internal_upload_url')
         if m.get('parallel_sha1_ctx') is not None:
@@ -7282,6 +8412,9 @@ class UploadPartInfo(TeaModel):
             self.part_number = m.get('part_number')
         if m.get('part_size') is not None:
             self.part_size = m.get('part_size')
+        if m.get('upload_form_info') is not None:
+            temp_model = UploadFormInfo()
+            self.upload_form_info = temp_model.from_map(m['upload_form_info'])
         if m.get('upload_url') is not None:
             self.upload_url = m.get('upload_url')
         return self
@@ -7948,6 +9081,9 @@ class GetFileResponse(TeaModel):
         content_type: str = None,
         crc_64hash: str = None,
         created_at: str = None,
+        creator_id: str = None,
+        creator_name: str = None,
+        creator_type: str = None,
         custom_field_1: str = None,
         custom_field_2: str = None,
         custom_type: str = None,
@@ -7956,6 +9092,7 @@ class GetFileResponse(TeaModel):
         download_url: str = None,
         drive_id: str = None,
         encrypt_mode: str = None,
+        ex_fields_info: dict = None,
         file_extension: str = None,
         file_id: str = None,
         file_path_type: str = None,
@@ -7965,17 +9102,23 @@ class GetFileResponse(TeaModel):
         last_modifier_id: str = None,
         last_modifier_name: str = None,
         last_modifier_type: str = None,
+        local_created_at: str = None,
+        local_modified_at: str = None,
         meta: str = None,
         mime_extension: str = None,
         mime_type: str = None,
         name: str = None,
         parent_file_id: str = None,
         punish_flag: int = None,
+        revision_id: str = None,
         share_id: str = None,
         size: int = None,
         starred: bool = None,
         status: str = None,
         streams_info: dict = None,
+        sync_device_flag: bool = None,
+        sync_flag: bool = None,
+        sync_meta: str = None,
         thumbnail: str = None,
         trashed: bool = None,
         trashed_at: str = None,
@@ -8006,6 +9149,12 @@ class GetFileResponse(TeaModel):
         self.crc_64hash = crc_64hash
         # created_at
         self.created_at = created_at
+        # creator_id
+        self.creator_id = creator_id
+        # creator_name
+        self.creator_name = creator_name
+        # creator_type
+        self.creator_type = creator_type
         # custom_field_1
         self.custom_field_1 = custom_field_1
         # custom_field_2
@@ -8022,6 +9171,8 @@ class GetFileResponse(TeaModel):
         self.drive_id = drive_id
         # encrypt_mode
         self.encrypt_mode = encrypt_mode
+        # ex_fields_info
+        self.ex_fields_info = ex_fields_info
         # file_extension
         self.file_extension = file_extension
         # file_id
@@ -8040,6 +9191,9 @@ class GetFileResponse(TeaModel):
         self.last_modifier_name = last_modifier_name
         # last_modifier_type
         self.last_modifier_type = last_modifier_type
+        # local_created_at
+        self.local_created_at = local_created_at
+        self.local_modified_at = local_modified_at
         self.meta = meta
         # mime_extension
         self.mime_extension = mime_extension
@@ -8051,6 +9205,8 @@ class GetFileResponse(TeaModel):
         self.parent_file_id = parent_file_id
         # PunishFlag
         self.punish_flag = punish_flag
+        # revision_id
+        self.revision_id = revision_id
         self.share_id = share_id
         # Size
         self.size = size
@@ -8061,6 +9217,12 @@ class GetFileResponse(TeaModel):
         self.status = status
         # @Deprecated streams url info
         self.streams_info = streams_info
+        # sync_device_flag
+        self.sync_device_flag = sync_device_flag
+        # sync_flag
+        self.sync_flag = sync_flag
+        # sync_meta
+        self.sync_meta = sync_meta
         # thumbnail
         self.thumbnail = thumbnail
         # Trashed
@@ -8130,6 +9292,12 @@ class GetFileResponse(TeaModel):
             result['crc64_hash'] = self.crc_64hash
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator_id is not None:
+            result['creator_id'] = self.creator_id
+        if self.creator_name is not None:
+            result['creator_name'] = self.creator_name
+        if self.creator_type is not None:
+            result['creator_type'] = self.creator_type
         if self.custom_field_1 is not None:
             result['custom_field_1'] = self.custom_field_1
         if self.custom_field_2 is not None:
@@ -8146,6 +9314,8 @@ class GetFileResponse(TeaModel):
             result['drive_id'] = self.drive_id
         if self.encrypt_mode is not None:
             result['encrypt_mode'] = self.encrypt_mode
+        if self.ex_fields_info is not None:
+            result['ex_fields_info'] = self.ex_fields_info
         if self.file_extension is not None:
             result['file_extension'] = self.file_extension
         if self.file_id is not None:
@@ -8164,6 +9334,10 @@ class GetFileResponse(TeaModel):
             result['last_modifier_name'] = self.last_modifier_name
         if self.last_modifier_type is not None:
             result['last_modifier_type'] = self.last_modifier_type
+        if self.local_created_at is not None:
+            result['local_created_at'] = self.local_created_at
+        if self.local_modified_at is not None:
+            result['local_modified_at'] = self.local_modified_at
         if self.meta is not None:
             result['meta'] = self.meta
         if self.mime_extension is not None:
@@ -8176,6 +9350,8 @@ class GetFileResponse(TeaModel):
             result['parent_file_id'] = self.parent_file_id
         if self.punish_flag is not None:
             result['punish_flag'] = self.punish_flag
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.size is not None:
@@ -8186,6 +9362,12 @@ class GetFileResponse(TeaModel):
             result['status'] = self.status
         if self.streams_info is not None:
             result['streams_info'] = self.streams_info
+        if self.sync_device_flag is not None:
+            result['sync_device_flag'] = self.sync_device_flag
+        if self.sync_flag is not None:
+            result['sync_flag'] = self.sync_flag
+        if self.sync_meta is not None:
+            result['sync_meta'] = self.sync_meta
         if self.thumbnail is not None:
             result['thumbnail'] = self.thumbnail
         if self.trashed is not None:
@@ -8230,6 +9412,12 @@ class GetFileResponse(TeaModel):
             self.crc_64hash = m.get('crc64_hash')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator_id') is not None:
+            self.creator_id = m.get('creator_id')
+        if m.get('creator_name') is not None:
+            self.creator_name = m.get('creator_name')
+        if m.get('creator_type') is not None:
+            self.creator_type = m.get('creator_type')
         if m.get('custom_field_1') is not None:
             self.custom_field_1 = m.get('custom_field_1')
         if m.get('custom_field_2') is not None:
@@ -8246,6 +9434,8 @@ class GetFileResponse(TeaModel):
             self.drive_id = m.get('drive_id')
         if m.get('encrypt_mode') is not None:
             self.encrypt_mode = m.get('encrypt_mode')
+        if m.get('ex_fields_info') is not None:
+            self.ex_fields_info = m.get('ex_fields_info')
         if m.get('file_extension') is not None:
             self.file_extension = m.get('file_extension')
         if m.get('file_id') is not None:
@@ -8265,6 +9455,10 @@ class GetFileResponse(TeaModel):
             self.last_modifier_name = m.get('last_modifier_name')
         if m.get('last_modifier_type') is not None:
             self.last_modifier_type = m.get('last_modifier_type')
+        if m.get('local_created_at') is not None:
+            self.local_created_at = m.get('local_created_at')
+        if m.get('local_modified_at') is not None:
+            self.local_modified_at = m.get('local_modified_at')
         if m.get('meta') is not None:
             self.meta = m.get('meta')
         if m.get('mime_extension') is not None:
@@ -8277,6 +9471,8 @@ class GetFileResponse(TeaModel):
             self.parent_file_id = m.get('parent_file_id')
         if m.get('punish_flag') is not None:
             self.punish_flag = m.get('punish_flag')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('size') is not None:
@@ -8287,6 +9483,12 @@ class GetFileResponse(TeaModel):
             self.status = m.get('status')
         if m.get('streams_info') is not None:
             self.streams_info = m.get('streams_info')
+        if m.get('sync_device_flag') is not None:
+            self.sync_device_flag = m.get('sync_device_flag')
+        if m.get('sync_flag') is not None:
+            self.sync_flag = m.get('sync_flag')
+        if m.get('sync_meta') is not None:
+            self.sync_meta = m.get('sync_meta')
         if m.get('thumbnail') is not None:
             self.thumbnail = m.get('thumbnail')
         if m.get('trashed') is not None:
@@ -8365,6 +9567,9 @@ class GetFileByPathResponse(TeaModel):
         content_type: str = None,
         crc_64hash: str = None,
         created_at: str = None,
+        creator_id: str = None,
+        creator_name: str = None,
+        creator_type: str = None,
         custom_field_1: str = None,
         custom_field_2: str = None,
         custom_type: str = None,
@@ -8373,6 +9578,7 @@ class GetFileByPathResponse(TeaModel):
         download_url: str = None,
         drive_id: str = None,
         encrypt_mode: str = None,
+        ex_fields_info: dict = None,
         file_extension: str = None,
         file_id: str = None,
         file_path_type: str = None,
@@ -8382,17 +9588,23 @@ class GetFileByPathResponse(TeaModel):
         last_modifier_id: str = None,
         last_modifier_name: str = None,
         last_modifier_type: str = None,
+        local_created_at: str = None,
+        local_modified_at: str = None,
         meta: str = None,
         mime_extension: str = None,
         mime_type: str = None,
         name: str = None,
         parent_file_id: str = None,
         punish_flag: int = None,
+        revision_id: str = None,
         share_id: str = None,
         size: int = None,
         starred: bool = None,
         status: str = None,
         streams_info: dict = None,
+        sync_device_flag: bool = None,
+        sync_flag: bool = None,
+        sync_meta: str = None,
         thumbnail: str = None,
         trashed: bool = None,
         trashed_at: str = None,
@@ -8423,6 +9635,12 @@ class GetFileByPathResponse(TeaModel):
         self.crc_64hash = crc_64hash
         # created_at
         self.created_at = created_at
+        # creator_id
+        self.creator_id = creator_id
+        # creator_name
+        self.creator_name = creator_name
+        # creator_type
+        self.creator_type = creator_type
         # custom_field_1
         self.custom_field_1 = custom_field_1
         # custom_field_2
@@ -8439,6 +9657,8 @@ class GetFileByPathResponse(TeaModel):
         self.drive_id = drive_id
         # encrypt_mode
         self.encrypt_mode = encrypt_mode
+        # ex_fields_info
+        self.ex_fields_info = ex_fields_info
         # file_extension
         self.file_extension = file_extension
         # file_id
@@ -8457,6 +9677,9 @@ class GetFileByPathResponse(TeaModel):
         self.last_modifier_name = last_modifier_name
         # last_modifier_type
         self.last_modifier_type = last_modifier_type
+        # local_created_at
+        self.local_created_at = local_created_at
+        self.local_modified_at = local_modified_at
         self.meta = meta
         # mime_extension
         self.mime_extension = mime_extension
@@ -8468,6 +9691,8 @@ class GetFileByPathResponse(TeaModel):
         self.parent_file_id = parent_file_id
         # PunishFlag
         self.punish_flag = punish_flag
+        # revision_id
+        self.revision_id = revision_id
         self.share_id = share_id
         # Size
         self.size = size
@@ -8478,6 +9703,12 @@ class GetFileByPathResponse(TeaModel):
         self.status = status
         # @Deprecated streams url info
         self.streams_info = streams_info
+        # sync_device_flag
+        self.sync_device_flag = sync_device_flag
+        # sync_flag
+        self.sync_flag = sync_flag
+        # sync_meta
+        self.sync_meta = sync_meta
         # thumbnail
         self.thumbnail = thumbnail
         # Trashed
@@ -8547,6 +9778,12 @@ class GetFileByPathResponse(TeaModel):
             result['crc64_hash'] = self.crc_64hash
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator_id is not None:
+            result['creator_id'] = self.creator_id
+        if self.creator_name is not None:
+            result['creator_name'] = self.creator_name
+        if self.creator_type is not None:
+            result['creator_type'] = self.creator_type
         if self.custom_field_1 is not None:
             result['custom_field_1'] = self.custom_field_1
         if self.custom_field_2 is not None:
@@ -8563,6 +9800,8 @@ class GetFileByPathResponse(TeaModel):
             result['drive_id'] = self.drive_id
         if self.encrypt_mode is not None:
             result['encrypt_mode'] = self.encrypt_mode
+        if self.ex_fields_info is not None:
+            result['ex_fields_info'] = self.ex_fields_info
         if self.file_extension is not None:
             result['file_extension'] = self.file_extension
         if self.file_id is not None:
@@ -8581,6 +9820,10 @@ class GetFileByPathResponse(TeaModel):
             result['last_modifier_name'] = self.last_modifier_name
         if self.last_modifier_type is not None:
             result['last_modifier_type'] = self.last_modifier_type
+        if self.local_created_at is not None:
+            result['local_created_at'] = self.local_created_at
+        if self.local_modified_at is not None:
+            result['local_modified_at'] = self.local_modified_at
         if self.meta is not None:
             result['meta'] = self.meta
         if self.mime_extension is not None:
@@ -8593,6 +9836,8 @@ class GetFileByPathResponse(TeaModel):
             result['parent_file_id'] = self.parent_file_id
         if self.punish_flag is not None:
             result['punish_flag'] = self.punish_flag
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.size is not None:
@@ -8603,6 +9848,12 @@ class GetFileByPathResponse(TeaModel):
             result['status'] = self.status
         if self.streams_info is not None:
             result['streams_info'] = self.streams_info
+        if self.sync_device_flag is not None:
+            result['sync_device_flag'] = self.sync_device_flag
+        if self.sync_flag is not None:
+            result['sync_flag'] = self.sync_flag
+        if self.sync_meta is not None:
+            result['sync_meta'] = self.sync_meta
         if self.thumbnail is not None:
             result['thumbnail'] = self.thumbnail
         if self.trashed is not None:
@@ -8647,6 +9898,12 @@ class GetFileByPathResponse(TeaModel):
             self.crc_64hash = m.get('crc64_hash')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator_id') is not None:
+            self.creator_id = m.get('creator_id')
+        if m.get('creator_name') is not None:
+            self.creator_name = m.get('creator_name')
+        if m.get('creator_type') is not None:
+            self.creator_type = m.get('creator_type')
         if m.get('custom_field_1') is not None:
             self.custom_field_1 = m.get('custom_field_1')
         if m.get('custom_field_2') is not None:
@@ -8663,6 +9920,8 @@ class GetFileByPathResponse(TeaModel):
             self.drive_id = m.get('drive_id')
         if m.get('encrypt_mode') is not None:
             self.encrypt_mode = m.get('encrypt_mode')
+        if m.get('ex_fields_info') is not None:
+            self.ex_fields_info = m.get('ex_fields_info')
         if m.get('file_extension') is not None:
             self.file_extension = m.get('file_extension')
         if m.get('file_id') is not None:
@@ -8682,6 +9941,10 @@ class GetFileByPathResponse(TeaModel):
             self.last_modifier_name = m.get('last_modifier_name')
         if m.get('last_modifier_type') is not None:
             self.last_modifier_type = m.get('last_modifier_type')
+        if m.get('local_created_at') is not None:
+            self.local_created_at = m.get('local_created_at')
+        if m.get('local_modified_at') is not None:
+            self.local_modified_at = m.get('local_modified_at')
         if m.get('meta') is not None:
             self.meta = m.get('meta')
         if m.get('mime_extension') is not None:
@@ -8694,6 +9957,8 @@ class GetFileByPathResponse(TeaModel):
             self.parent_file_id = m.get('parent_file_id')
         if m.get('punish_flag') is not None:
             self.punish_flag = m.get('punish_flag')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('size') is not None:
@@ -8704,6 +9969,12 @@ class GetFileByPathResponse(TeaModel):
             self.status = m.get('status')
         if m.get('streams_info') is not None:
             self.streams_info = m.get('streams_info')
+        if m.get('sync_device_flag') is not None:
+            self.sync_device_flag = m.get('sync_device_flag')
+        if m.get('sync_flag') is not None:
+            self.sync_flag = m.get('sync_flag')
+        if m.get('sync_meta') is not None:
+            self.sync_meta = m.get('sync_meta')
         if m.get('thumbnail') is not None:
             self.thumbnail = m.get('thumbnail')
         if m.get('trashed') is not None:
@@ -8818,6 +10089,7 @@ class GetDownloadUrlResponse(TeaModel):
         method: str = None,
         ratelimit: RateLimit = None,
         size: int = None,
+        streams_info: dict = None,
         streams_url: dict = None,
         url: str = None,
     ):
@@ -8838,6 +10110,8 @@ class GetDownloadUrlResponse(TeaModel):
         self.ratelimit = ratelimit
         # size
         self.size = size
+        # streams info
+        self.streams_info = streams_info
         # streams url info
         self.streams_url = streams_url
         # url
@@ -8871,6 +10145,8 @@ class GetDownloadUrlResponse(TeaModel):
             result['ratelimit'] = self.ratelimit.to_map()
         if self.size is not None:
             result['size'] = self.size
+        if self.streams_info is not None:
+            result['streams_info'] = self.streams_info
         if self.streams_url is not None:
             result['streams_url'] = self.streams_url
         if self.url is not None:
@@ -8898,6 +10174,8 @@ class GetDownloadUrlResponse(TeaModel):
             self.ratelimit = temp_model.from_map(m['ratelimit'])
         if m.get('size') is not None:
             self.size = m.get('size')
+        if m.get('streams_info') is not None:
+            self.streams_info = m.get('streams_info')
         if m.get('streams_url') is not None:
             self.streams_url = m.get('streams_url')
         if m.get('url') is not None:
@@ -9456,6 +10734,7 @@ class LiveTranscodingTaskResponse(TeaModel):
         stage: str = None,
         status: str = None,
         template_id: str = None,
+        template_name: str = None,
         url: str = None,
     ):
         # keep_original_resolution 转码后的视频分辨率是否保持原画(template分辨率大于当前视频)
@@ -9466,8 +10745,10 @@ class LiveTranscodingTaskResponse(TeaModel):
         self.stage = stage
         # status, 转码状态
         self.status = status
-        # template_id, 转码模板
+        # template_id, 转码模板id
         self.template_id = template_id
+        # template_name, 模板文案id
+        self.template_name = template_name
         # url, 视频播放地址
         self.url = url
 
@@ -9490,6 +10771,8 @@ class LiveTranscodingTaskResponse(TeaModel):
             result['status'] = self.status
         if self.template_id is not None:
             result['template_id'] = self.template_id
+        if self.template_name is not None:
+            result['template_name'] = self.template_name
         if self.url is not None:
             result['url'] = self.url
         return result
@@ -9506,6 +10789,8 @@ class LiveTranscodingTaskResponse(TeaModel):
             self.status = m.get('status')
         if m.get('template_id') is not None:
             self.template_id = m.get('template_id')
+        if m.get('template_name') is not None:
+            self.template_name = m.get('template_name')
         if m.get('url') is not None:
             self.url = m.get('url')
         return self
@@ -10268,6 +11553,7 @@ class BaseCCPFileResponse(TeaModel):
     def __init__(
         self,
         action_list: List[str] = None,
+        auto_delete_left_sec: int = None,
         category: str = None,
         characteristic_hash: str = None,
         content_hash: str = None,
@@ -10275,6 +11561,9 @@ class BaseCCPFileResponse(TeaModel):
         content_type: str = None,
         crc_64hash: str = None,
         created_at: str = None,
+        creator_id: str = None,
+        creator_name: str = None,
+        creator_type: str = None,
         custom_field_1: str = None,
         custom_field_2: str = None,
         custom_type: str = None,
@@ -10283,25 +11572,33 @@ class BaseCCPFileResponse(TeaModel):
         download_url: str = None,
         drive_id: str = None,
         encrypt_mode: str = None,
+        ex_fields_info: dict = None,
         file_extension: str = None,
         file_id: str = None,
+        file_path_type: str = None,
         hidden: bool = None,
         image_media_metadata: ImageMediaResponse = None,
         labels: List[str] = None,
         last_modifier_id: str = None,
         last_modifier_name: str = None,
         last_modifier_type: str = None,
+        local_created_at: str = None,
+        local_modified_at: str = None,
         meta: str = None,
         mime_extension: str = None,
         mime_type: str = None,
         name: str = None,
         parent_file_id: str = None,
         punish_flag: int = None,
+        revision_id: str = None,
         share_id: str = None,
         size: int = None,
         starred: bool = None,
         status: str = None,
         streams_info: dict = None,
+        sync_device_flag: bool = None,
+        sync_flag: bool = None,
+        sync_meta: str = None,
         thumbnail: str = None,
         trashed_at: str = None,
         type: str = None,
@@ -10315,6 +11612,8 @@ class BaseCCPFileResponse(TeaModel):
     ):
         # action_list
         self.action_list = action_list
+        # auto_delete_left_sec
+        self.auto_delete_left_sec = auto_delete_left_sec
         # category
         self.category = category
         # CharacteristicHash
@@ -10329,6 +11628,12 @@ class BaseCCPFileResponse(TeaModel):
         self.crc_64hash = crc_64hash
         # created_at
         self.created_at = created_at
+        # creator_id
+        self.creator_id = creator_id
+        # creator_name
+        self.creator_name = creator_name
+        # creator_type
+        self.creator_type = creator_type
         # custom_field_1
         self.custom_field_1 = custom_field_1
         # custom_field_2
@@ -10345,10 +11650,14 @@ class BaseCCPFileResponse(TeaModel):
         self.drive_id = drive_id
         # encrypt_mode
         self.encrypt_mode = encrypt_mode
+        # ex_fields_info
+        self.ex_fields_info = ex_fields_info
         # file_extension
         self.file_extension = file_extension
         # file_id
         self.file_id = file_id
+        # TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
+        self.file_path_type = file_path_type
         # Hidden
         # type: boolean
         self.hidden = hidden
@@ -10361,6 +11670,9 @@ class BaseCCPFileResponse(TeaModel):
         self.last_modifier_name = last_modifier_name
         # last_modifier_type
         self.last_modifier_type = last_modifier_type
+        # local_created_at
+        self.local_created_at = local_created_at
+        self.local_modified_at = local_modified_at
         self.meta = meta
         # mime_extension
         self.mime_extension = mime_extension
@@ -10372,6 +11684,8 @@ class BaseCCPFileResponse(TeaModel):
         self.parent_file_id = parent_file_id
         # PunishFlag
         self.punish_flag = punish_flag
+        # revision_id
+        self.revision_id = revision_id
         self.share_id = share_id
         # Size
         self.size = size
@@ -10382,6 +11696,12 @@ class BaseCCPFileResponse(TeaModel):
         self.status = status
         # @Deprecated streams url info
         self.streams_info = streams_info
+        # sync_device_flag
+        self.sync_device_flag = sync_device_flag
+        # sync_flag
+        self.sync_flag = sync_flag
+        # sync_meta
+        self.sync_meta = sync_meta
         # thumbnail
         self.thumbnail = thumbnail
         # trashed_at
@@ -10432,6 +11752,8 @@ class BaseCCPFileResponse(TeaModel):
         result = dict()
         if self.action_list is not None:
             result['action_list'] = self.action_list
+        if self.auto_delete_left_sec is not None:
+            result['auto_delete_left_sec'] = self.auto_delete_left_sec
         if self.category is not None:
             result['category'] = self.category
         if self.characteristic_hash is not None:
@@ -10446,6 +11768,12 @@ class BaseCCPFileResponse(TeaModel):
             result['crc64_hash'] = self.crc_64hash
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator_id is not None:
+            result['creator_id'] = self.creator_id
+        if self.creator_name is not None:
+            result['creator_name'] = self.creator_name
+        if self.creator_type is not None:
+            result['creator_type'] = self.creator_type
         if self.custom_field_1 is not None:
             result['custom_field_1'] = self.custom_field_1
         if self.custom_field_2 is not None:
@@ -10462,10 +11790,14 @@ class BaseCCPFileResponse(TeaModel):
             result['drive_id'] = self.drive_id
         if self.encrypt_mode is not None:
             result['encrypt_mode'] = self.encrypt_mode
+        if self.ex_fields_info is not None:
+            result['ex_fields_info'] = self.ex_fields_info
         if self.file_extension is not None:
             result['file_extension'] = self.file_extension
         if self.file_id is not None:
             result['file_id'] = self.file_id
+        if self.file_path_type is not None:
+            result['file_path_type'] = self.file_path_type
         if self.hidden is not None:
             result['hidden'] = self.hidden
         if self.image_media_metadata is not None:
@@ -10478,6 +11810,10 @@ class BaseCCPFileResponse(TeaModel):
             result['last_modifier_name'] = self.last_modifier_name
         if self.last_modifier_type is not None:
             result['last_modifier_type'] = self.last_modifier_type
+        if self.local_created_at is not None:
+            result['local_created_at'] = self.local_created_at
+        if self.local_modified_at is not None:
+            result['local_modified_at'] = self.local_modified_at
         if self.meta is not None:
             result['meta'] = self.meta
         if self.mime_extension is not None:
@@ -10490,6 +11826,8 @@ class BaseCCPFileResponse(TeaModel):
             result['parent_file_id'] = self.parent_file_id
         if self.punish_flag is not None:
             result['punish_flag'] = self.punish_flag
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.size is not None:
@@ -10500,6 +11838,12 @@ class BaseCCPFileResponse(TeaModel):
             result['status'] = self.status
         if self.streams_info is not None:
             result['streams_info'] = self.streams_info
+        if self.sync_device_flag is not None:
+            result['sync_device_flag'] = self.sync_device_flag
+        if self.sync_flag is not None:
+            result['sync_flag'] = self.sync_flag
+        if self.sync_meta is not None:
+            result['sync_meta'] = self.sync_meta
         if self.thumbnail is not None:
             result['thumbnail'] = self.thumbnail
         if self.trashed_at is not None:
@@ -10526,6 +11870,8 @@ class BaseCCPFileResponse(TeaModel):
         m = m or dict()
         if m.get('action_list') is not None:
             self.action_list = m.get('action_list')
+        if m.get('auto_delete_left_sec') is not None:
+            self.auto_delete_left_sec = m.get('auto_delete_left_sec')
         if m.get('category') is not None:
             self.category = m.get('category')
         if m.get('characteristic_hash') is not None:
@@ -10540,6 +11886,12 @@ class BaseCCPFileResponse(TeaModel):
             self.crc_64hash = m.get('crc64_hash')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator_id') is not None:
+            self.creator_id = m.get('creator_id')
+        if m.get('creator_name') is not None:
+            self.creator_name = m.get('creator_name')
+        if m.get('creator_type') is not None:
+            self.creator_type = m.get('creator_type')
         if m.get('custom_field_1') is not None:
             self.custom_field_1 = m.get('custom_field_1')
         if m.get('custom_field_2') is not None:
@@ -10556,10 +11908,14 @@ class BaseCCPFileResponse(TeaModel):
             self.drive_id = m.get('drive_id')
         if m.get('encrypt_mode') is not None:
             self.encrypt_mode = m.get('encrypt_mode')
+        if m.get('ex_fields_info') is not None:
+            self.ex_fields_info = m.get('ex_fields_info')
         if m.get('file_extension') is not None:
             self.file_extension = m.get('file_extension')
         if m.get('file_id') is not None:
             self.file_id = m.get('file_id')
+        if m.get('file_path_type') is not None:
+            self.file_path_type = m.get('file_path_type')
         if m.get('hidden') is not None:
             self.hidden = m.get('hidden')
         if m.get('image_media_metadata') is not None:
@@ -10573,6 +11929,10 @@ class BaseCCPFileResponse(TeaModel):
             self.last_modifier_name = m.get('last_modifier_name')
         if m.get('last_modifier_type') is not None:
             self.last_modifier_type = m.get('last_modifier_type')
+        if m.get('local_created_at') is not None:
+            self.local_created_at = m.get('local_created_at')
+        if m.get('local_modified_at') is not None:
+            self.local_modified_at = m.get('local_modified_at')
         if m.get('meta') is not None:
             self.meta = m.get('meta')
         if m.get('mime_extension') is not None:
@@ -10585,6 +11945,8 @@ class BaseCCPFileResponse(TeaModel):
             self.parent_file_id = m.get('parent_file_id')
         if m.get('punish_flag') is not None:
             self.punish_flag = m.get('punish_flag')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('size') is not None:
@@ -10595,6 +11957,12 @@ class BaseCCPFileResponse(TeaModel):
             self.status = m.get('status')
         if m.get('streams_info') is not None:
             self.streams_info = m.get('streams_info')
+        if m.get('sync_device_flag') is not None:
+            self.sync_device_flag = m.get('sync_device_flag')
+        if m.get('sync_flag') is not None:
+            self.sync_flag = m.get('sync_flag')
+        if m.get('sync_meta') is not None:
+            self.sync_meta = m.get('sync_meta')
         if m.get('thumbnail') is not None:
             self.thumbnail = m.get('thumbnail')
         if m.get('trashed_at') is not None:
@@ -10717,11 +12085,14 @@ class ActorAliUser(TeaModel):
         self,
         ali_user_id: str = None,
         ali_user_type: str = None,
+        as_user_id: str = None,
     ):
         # AliUserID
         self.ali_user_id = ali_user_id
         # AliUserType
         self.ali_user_type = ali_user_type
+        # AsUserID
+        self.as_user_id = as_user_id
 
     def validate(self):
         pass
@@ -10736,6 +12107,8 @@ class ActorAliUser(TeaModel):
             result['ali_user_id'] = self.ali_user_id
         if self.ali_user_type is not None:
             result['ali_user_type'] = self.ali_user_type
+        if self.as_user_id is not None:
+            result['as_user_id'] = self.as_user_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10744,6 +12117,8 @@ class ActorAliUser(TeaModel):
             self.ali_user_id = m.get('ali_user_id')
         if m.get('ali_user_type') is not None:
             self.ali_user_type = m.get('ali_user_type')
+        if m.get('as_user_id') is not None:
+            self.as_user_id = m.get('as_user_id')
         return self
 
 
@@ -10767,6 +12142,58 @@ class ActorAnonymousUser(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        return self
+
+
+class ActorShareLinkUser(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        creator: str = None,
+        share_id: str = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        # Creator
+        self.creator = creator
+        # ShareID
+        self.share_id = share_id
+        # UserID
+        self.user_id = user_id
+        # UserName
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('share_id') is not None:
+            self.share_id = m.get('share_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        if m.get('user_name') is not None:
+            self.user_name = m.get('user_name')
         return self
 
 
@@ -10847,11 +12274,13 @@ class Actor(TeaModel):
         self,
         ali_user: ActorAliUser = None,
         anonymous_user: ActorAnonymousUser = None,
+        share_link_user: ActorShareLinkUser = None,
         system: ActorSystem = None,
         user: ActorUser = None,
     ):
         self.ali_user = ali_user
         self.anonymous_user = anonymous_user
+        self.share_link_user = share_link_user
         self.system = system
         self.user = user
 
@@ -10860,6 +12289,8 @@ class Actor(TeaModel):
             self.ali_user.validate()
         if self.anonymous_user:
             self.anonymous_user.validate()
+        if self.share_link_user:
+            self.share_link_user.validate()
         if self.system:
             self.system.validate()
         if self.user:
@@ -10875,6 +12306,8 @@ class Actor(TeaModel):
             result['ali_user'] = self.ali_user.to_map()
         if self.anonymous_user is not None:
             result['anonymous_user'] = self.anonymous_user.to_map()
+        if self.share_link_user is not None:
+            result['share_link_user'] = self.share_link_user.to_map()
         if self.system is not None:
             result['system'] = self.system.to_map()
         if self.user is not None:
@@ -10889,6 +12322,9 @@ class Actor(TeaModel):
         if m.get('anonymous_user') is not None:
             temp_model = ActorAnonymousUser()
             self.anonymous_user = temp_model.from_map(m['anonymous_user'])
+        if m.get('share_link_user') is not None:
+            temp_model = ActorShareLinkUser()
+            self.share_link_user = temp_model.from_map(m['share_link_user'])
         if m.get('system') is not None:
             temp_model = ActorSystem()
             self.system = temp_model.from_map(m['system'])
@@ -11779,6 +13215,222 @@ class ListFileDeltaModel(TeaModel):
         return self
 
 
+class Identity(TeaModel):
+    """
+    表示用户或团队
+    """
+    def __init__(
+        self,
+        identity_id: str = None,
+        identity_name: str = None,
+        identity_type: str = None,
+    ):
+        # 用户或团队的ID
+        self.identity_id = identity_id
+        # 显示名称
+        self.identity_name = identity_name
+        # 类型，目前可传：IT_User(用户)、IT_Group(团队)
+        self.identity_type = identity_type
+
+    def validate(self):
+        self.validate_required(self.identity_id, 'identity_id')
+        self.validate_required(self.identity_type, 'identity_type')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_id is not None:
+            result['identity_id'] = self.identity_id
+        if self.identity_name is not None:
+            result['identity_name'] = self.identity_name
+        if self.identity_type is not None:
+            result['identity_type'] = self.identity_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('identity_id') is not None:
+            self.identity_id = m.get('identity_id')
+        if m.get('identity_name') is not None:
+            self.identity_name = m.get('identity_name')
+        if m.get('identity_type') is not None:
+            self.identity_type = m.get('identity_type')
+        return self
+
+
+class FilePermissionMember(TeaModel):
+    """
+    文件被共享/授权的成员列表
+    """
+    def __init__(
+        self,
+        disinherit_sub_group: bool = None,
+        expire_time: int = None,
+        identity: Identity = None,
+        role_id: str = None,
+    ):
+        # 子团队禁止继承此权限
+        self.disinherit_sub_group = disinherit_sub_group
+        # 过期时间，传入时间戳，单位毫秒
+        self.expire_time = expire_time
+        self.identity = identity
+        # 授予的角色，目前支持：SystemFileOwner(文件协同)、SystemFileDownloader(下载者)、SystemFileEditor(编辑者)、SystemFileEditorWithoutDelete(无删除编辑者)、SystemFileEditorWithoutShareLink(无分享编辑者)、SystemFileMetaViewer(可见列表)、SystemFileUploader(上传者)、SystemFileUploaderAndDownloader(上传/下载者)、SystemFileDownloaderWithShareLink(下载/分享者)、SystemFileUploaderAndDownloaderWithShareLink(上传/下载/分享者)、SystemFileUploaderAndViewer(预览/上传者)、SystemFileUploaderWithShareLink(上传/分享者)、SystemFileViewer(预览者)
+        self.role_id = role_id
+
+    def validate(self):
+        self.validate_required(self.expire_time, 'expire_time')
+        self.validate_required(self.identity, 'identity')
+        if self.identity:
+            self.identity.validate()
+        self.validate_required(self.role_id, 'role_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disinherit_sub_group is not None:
+            result['disinherit_sub_group'] = self.disinherit_sub_group
+        if self.expire_time is not None:
+            result['expire_time'] = self.expire_time
+        if self.identity is not None:
+            result['identity'] = self.identity.to_map()
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('disinherit_sub_group') is not None:
+            self.disinherit_sub_group = m.get('disinherit_sub_group')
+        if m.get('expire_time') is not None:
+            self.expire_time = m.get('expire_time')
+        if m.get('identity') is not None:
+            temp_model = Identity()
+            self.identity = temp_model.from_map(m['identity'])
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        return self
+
+
+class BaseFileListInheritPermissionResponse(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        file_id: str = None,
+        member: FilePermissionMember = None,
+    ):
+        # 被授权的文件ID
+        self.file_id = file_id
+        self.member = member
+
+    def validate(self):
+        self.validate_required(self.file_id, 'file_id')
+        if self.member:
+            self.member.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.member is not None:
+            result['member'] = self.member.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('member') is not None:
+            temp_model = FilePermissionMember()
+            self.member = temp_model.from_map(m['member'])
+        return self
+
+
+class FileListInheritPermissionResponse(TeaModel):
+    """
+    文件继承共享/授权的列表
+    """
+    def __init__(
+        self,
+        items: List[BaseFileListInheritPermissionResponse] = None,
+    ):
+        self.items = items
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = BaseFileListInheritPermissionResponse()
+                self.items.append(temp_model.from_map(k))
+        return self
+
+
+class ListInheritPermissionModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: FileListInheritPermissionResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = FileListInheritPermissionResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListManageSharingFileModel(TeaModel):
     def __init__(
         self,
@@ -11815,99 +13467,11 @@ class ListManageSharingFileModel(TeaModel):
         return self
 
 
-class Identity(TeaModel):
-    """
-    表示用户或团队
-    """
-    def __init__(
-        self,
-        identity_id: str = None,
-        identity_type: str = None,
-    ):
-        # 用户或团队的ID
-        self.identity_id = identity_id
-        # 类型，目前可传：IT_User(用户)、IT_Group(团队)
-        self.identity_type = identity_type
-
-    def validate(self):
-        self.validate_required(self.identity_id, 'identity_id')
-        self.validate_required(self.identity_type, 'identity_type')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.identity_id is not None:
-            result['identity_id'] = self.identity_id
-        if self.identity_type is not None:
-            result['identity_type'] = self.identity_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('identity_id') is not None:
-            self.identity_id = m.get('identity_id')
-        if m.get('identity_type') is not None:
-            self.identity_type = m.get('identity_type')
-        return self
-
-
-class FilePermissionMember(TeaModel):
-    """
-    文件被共享/授权的成员列表
-    """
-    def __init__(
-        self,
-        expire_time: int = None,
-        identity: Identity = None,
-        role_id: str = None,
-    ):
-        # 过期时间，传入时间戳，单位毫秒
-        self.expire_time = expire_time
-        self.identity = identity
-        # 授予的角色，目前支持：SystemFileOwner(文件协同)、SystemFileDownloader(下载者)、SystemFileEditor(编辑者)、SystemFileEditorWithoutDelete(无删除编辑者)、SystemFileEditorWithoutShareLink(无分享编辑者)、SystemFileMetaViewer(可见列表)、SystemFileUploader(上传者)、SystemFileUploaderAndDownloader(上传/下载者)、SystemFileDownloaderWithShareLink(下载/分享者)、SystemFileUploaderAndDownloaderWithShareLink(上传/下载/分享者)、SystemFileUploaderAndViewer(预览/上传者)、SystemFileUploaderWithShareLink(上传/分享者)、SystemFileViewer(预览者)
-        self.role_id = role_id
-
-    def validate(self):
-        self.validate_required(self.expire_time, 'expire_time')
-        self.validate_required(self.identity, 'identity')
-        if self.identity:
-            self.identity.validate()
-        self.validate_required(self.role_id, 'role_id')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.expire_time is not None:
-            result['expire_time'] = self.expire_time
-        if self.identity is not None:
-            result['identity'] = self.identity.to_map()
-        if self.role_id is not None:
-            result['role_id'] = self.role_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('expire_time') is not None:
-            self.expire_time = m.get('expire_time')
-        if m.get('identity') is not None:
-            temp_model = Identity()
-            self.identity = temp_model.from_map(m['identity'])
-        if m.get('role_id') is not None:
-            self.role_id = m.get('role_id')
-        return self
-
-
 class ListPermissionModel(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: FilePermissionMember = None,
+        body: List[FilePermissionMember] = None,
     ):
         self.headers = headers
         self.body = body
@@ -11915,7 +13479,9 @@ class ListPermissionModel(TeaModel):
     def validate(self):
         self.validate_required(self.body, 'body')
         if self.body:
-            self.body.validate()
+            for k in self.body:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11925,17 +13491,21 @@ class ListPermissionModel(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        result['body'] = []
         if self.body is not None:
-            result['body'] = self.body.to_map()
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        self.body = []
         if m.get('body') is not None:
-            temp_model = FilePermissionMember()
-            self.body = temp_model.from_map(m['body'])
+            for k in m.get('body'):
+                temp_model = FilePermissionMember()
+                self.body.append(temp_model.from_map(k))
         return self
 
 
@@ -12112,6 +13682,193 @@ class ListUploadedPartsModel(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListUploadedPartResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BaseFileUserPermissionResponse(TeaModel):
+    """
+    用户文件共享/授权列表返回信息
+    """
+    def __init__(
+        self,
+        can_access: bool = None,
+        created_at: int = None,
+        creator: str = None,
+        disinherit_sub_group: bool = None,
+        domain_id: str = None,
+        drive_id: str = None,
+        expire_time: int = None,
+        file_full_path: str = None,
+        file_id: str = None,
+        identity: Identity = None,
+        role_id: str = None,
+    ):
+        # 当前用户是否能访问此授权
+        self.can_access = can_access
+        # 创建时间
+        self.created_at = created_at
+        # 创建者的UserID
+        self.creator = creator
+        # 是否禁用子团队继承
+        self.disinherit_sub_group = disinherit_sub_group
+        # domain_id
+        self.domain_id = domain_id
+        # 被授权的driveID
+        self.drive_id = drive_id
+        # 过期时间
+        self.expire_time = expire_time
+        # 授权的文件ID
+        self.file_full_path = file_full_path
+        # 授权的文件ID
+        self.file_id = file_id
+        self.identity = identity
+        # 授予的角色
+        self.role_id = role_id
+
+    def validate(self):
+        self.validate_required(self.can_access, 'can_access')
+        self.validate_required(self.created_at, 'created_at')
+        self.validate_required(self.creator, 'creator')
+        self.validate_required(self.disinherit_sub_group, 'disinherit_sub_group')
+        self.validate_required(self.domain_id, 'domain_id')
+        self.validate_required(self.drive_id, 'drive_id')
+        self.validate_required(self.expire_time, 'expire_time')
+        self.validate_required(self.file_full_path, 'file_full_path')
+        self.validate_required(self.file_id, 'file_id')
+        self.validate_required(self.identity, 'identity')
+        if self.identity:
+            self.identity.validate()
+        self.validate_required(self.role_id, 'role_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_access is not None:
+            result['can_access'] = self.can_access
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.disinherit_sub_group is not None:
+            result['disinherit_sub_group'] = self.disinherit_sub_group
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.expire_time is not None:
+            result['expire_time'] = self.expire_time
+        if self.file_full_path is not None:
+            result['file_full_path'] = self.file_full_path
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.identity is not None:
+            result['identity'] = self.identity.to_map()
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('can_access') is not None:
+            self.can_access = m.get('can_access')
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('disinherit_sub_group') is not None:
+            self.disinherit_sub_group = m.get('disinherit_sub_group')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('expire_time') is not None:
+            self.expire_time = m.get('expire_time')
+        if m.get('file_full_path') is not None:
+            self.file_full_path = m.get('file_full_path')
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('identity') is not None:
+            temp_model = Identity()
+            self.identity = temp_model.from_map(m['identity'])
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        return self
+
+
+class FileListUserPermissionResponse(TeaModel):
+    """
+    用户所有的文件共享/授权列表请求
+    """
+    def __init__(
+        self,
+        items: List[BaseFileUserPermissionResponse] = None,
+    ):
+        self.items = items
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = BaseFileUserPermissionResponse()
+                self.items.append(temp_model.from_map(k))
+        return self
+
+
+class ListUserPermissionModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: FileListUserPermissionResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = FileListUserPermissionResponse()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12617,6 +14374,138 @@ class SearchFileModel(TeaModel):
         return self
 
 
+class FpRef(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        domain_id: str = None,
+        drive_id: str = None,
+        file_id: str = None,
+        file_revision_id: str = None,
+    ):
+        # domain_id
+        self.domain_id = domain_id
+        # drive_id
+        self.drive_id = drive_id
+        # file_id
+        self.file_id = file_id
+        # file_revision_id
+        self.file_revision_id = file_revision_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.file_revision_id is not None:
+            result['file_revision_id'] = self.file_revision_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('file_revision_id') is not None:
+            self.file_revision_id = m.get('file_revision_id')
+        return self
+
+
+class SearchFileFpRefsResponse(TeaModel):
+    """
+    search file response
+    """
+    def __init__(
+        self,
+        items: List[FpRef] = None,
+        next_marker: str = None,
+    ):
+        self.items = items
+        self.next_marker = next_marker
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = FpRef()
+                self.items.append(temp_model.from_map(k))
+        if m.get('next_marker') is not None:
+            self.next_marker = m.get('next_marker')
+        return self
+
+
+class SearchFileFpRefsModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SearchFileFpRefsResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SearchFileFpRefsResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateFileMetaResponse(TeaModel):
     """
     更新文件元数据 response
@@ -12624,6 +14513,7 @@ class UpdateFileMetaResponse(TeaModel):
     def __init__(
         self,
         action_list: List[str] = None,
+        auto_delete_left_sec: int = None,
         category: str = None,
         characteristic_hash: str = None,
         content_hash: str = None,
@@ -12631,6 +14521,9 @@ class UpdateFileMetaResponse(TeaModel):
         content_type: str = None,
         crc_64hash: str = None,
         created_at: str = None,
+        creator_id: str = None,
+        creator_name: str = None,
+        creator_type: str = None,
         custom_field_1: str = None,
         custom_field_2: str = None,
         custom_type: str = None,
@@ -12639,25 +14532,33 @@ class UpdateFileMetaResponse(TeaModel):
         download_url: str = None,
         drive_id: str = None,
         encrypt_mode: str = None,
+        ex_fields_info: dict = None,
         file_extension: str = None,
         file_id: str = None,
+        file_path_type: str = None,
         hidden: bool = None,
         image_media_metadata: ImageMediaResponse = None,
         labels: List[str] = None,
         last_modifier_id: str = None,
         last_modifier_name: str = None,
         last_modifier_type: str = None,
+        local_created_at: str = None,
+        local_modified_at: str = None,
         meta: str = None,
         mime_extension: str = None,
         mime_type: str = None,
         name: str = None,
         parent_file_id: str = None,
         punish_flag: int = None,
+        revision_id: str = None,
         share_id: str = None,
         size: int = None,
         starred: bool = None,
         status: str = None,
         streams_info: dict = None,
+        sync_device_flag: bool = None,
+        sync_flag: bool = None,
+        sync_meta: str = None,
         thumbnail: str = None,
         trashed_at: str = None,
         type: str = None,
@@ -12671,6 +14572,8 @@ class UpdateFileMetaResponse(TeaModel):
     ):
         # action_list
         self.action_list = action_list
+        # auto_delete_left_sec
+        self.auto_delete_left_sec = auto_delete_left_sec
         # category
         self.category = category
         # CharacteristicHash
@@ -12685,6 +14588,12 @@ class UpdateFileMetaResponse(TeaModel):
         self.crc_64hash = crc_64hash
         # created_at
         self.created_at = created_at
+        # creator_id
+        self.creator_id = creator_id
+        # creator_name
+        self.creator_name = creator_name
+        # creator_type
+        self.creator_type = creator_type
         # custom_field_1
         self.custom_field_1 = custom_field_1
         # custom_field_2
@@ -12701,10 +14610,14 @@ class UpdateFileMetaResponse(TeaModel):
         self.drive_id = drive_id
         # encrypt_mode
         self.encrypt_mode = encrypt_mode
+        # ex_fields_info
+        self.ex_fields_info = ex_fields_info
         # file_extension
         self.file_extension = file_extension
         # file_id
         self.file_id = file_id
+        # TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
+        self.file_path_type = file_path_type
         # Hidden
         # type: boolean
         self.hidden = hidden
@@ -12717,6 +14630,9 @@ class UpdateFileMetaResponse(TeaModel):
         self.last_modifier_name = last_modifier_name
         # last_modifier_type
         self.last_modifier_type = last_modifier_type
+        # local_created_at
+        self.local_created_at = local_created_at
+        self.local_modified_at = local_modified_at
         self.meta = meta
         # mime_extension
         self.mime_extension = mime_extension
@@ -12728,6 +14644,8 @@ class UpdateFileMetaResponse(TeaModel):
         self.parent_file_id = parent_file_id
         # PunishFlag
         self.punish_flag = punish_flag
+        # revision_id
+        self.revision_id = revision_id
         self.share_id = share_id
         # Size
         self.size = size
@@ -12738,6 +14656,12 @@ class UpdateFileMetaResponse(TeaModel):
         self.status = status
         # @Deprecated streams url info
         self.streams_info = streams_info
+        # sync_device_flag
+        self.sync_device_flag = sync_device_flag
+        # sync_flag
+        self.sync_flag = sync_flag
+        # sync_meta
+        self.sync_meta = sync_meta
         # thumbnail
         self.thumbnail = thumbnail
         # trashed_at
@@ -12788,6 +14712,8 @@ class UpdateFileMetaResponse(TeaModel):
         result = dict()
         if self.action_list is not None:
             result['action_list'] = self.action_list
+        if self.auto_delete_left_sec is not None:
+            result['auto_delete_left_sec'] = self.auto_delete_left_sec
         if self.category is not None:
             result['category'] = self.category
         if self.characteristic_hash is not None:
@@ -12802,6 +14728,12 @@ class UpdateFileMetaResponse(TeaModel):
             result['crc64_hash'] = self.crc_64hash
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator_id is not None:
+            result['creator_id'] = self.creator_id
+        if self.creator_name is not None:
+            result['creator_name'] = self.creator_name
+        if self.creator_type is not None:
+            result['creator_type'] = self.creator_type
         if self.custom_field_1 is not None:
             result['custom_field_1'] = self.custom_field_1
         if self.custom_field_2 is not None:
@@ -12818,10 +14750,14 @@ class UpdateFileMetaResponse(TeaModel):
             result['drive_id'] = self.drive_id
         if self.encrypt_mode is not None:
             result['encrypt_mode'] = self.encrypt_mode
+        if self.ex_fields_info is not None:
+            result['ex_fields_info'] = self.ex_fields_info
         if self.file_extension is not None:
             result['file_extension'] = self.file_extension
         if self.file_id is not None:
             result['file_id'] = self.file_id
+        if self.file_path_type is not None:
+            result['file_path_type'] = self.file_path_type
         if self.hidden is not None:
             result['hidden'] = self.hidden
         if self.image_media_metadata is not None:
@@ -12834,6 +14770,10 @@ class UpdateFileMetaResponse(TeaModel):
             result['last_modifier_name'] = self.last_modifier_name
         if self.last_modifier_type is not None:
             result['last_modifier_type'] = self.last_modifier_type
+        if self.local_created_at is not None:
+            result['local_created_at'] = self.local_created_at
+        if self.local_modified_at is not None:
+            result['local_modified_at'] = self.local_modified_at
         if self.meta is not None:
             result['meta'] = self.meta
         if self.mime_extension is not None:
@@ -12846,6 +14786,8 @@ class UpdateFileMetaResponse(TeaModel):
             result['parent_file_id'] = self.parent_file_id
         if self.punish_flag is not None:
             result['punish_flag'] = self.punish_flag
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.size is not None:
@@ -12856,6 +14798,12 @@ class UpdateFileMetaResponse(TeaModel):
             result['status'] = self.status
         if self.streams_info is not None:
             result['streams_info'] = self.streams_info
+        if self.sync_device_flag is not None:
+            result['sync_device_flag'] = self.sync_device_flag
+        if self.sync_flag is not None:
+            result['sync_flag'] = self.sync_flag
+        if self.sync_meta is not None:
+            result['sync_meta'] = self.sync_meta
         if self.thumbnail is not None:
             result['thumbnail'] = self.thumbnail
         if self.trashed_at is not None:
@@ -12882,6 +14830,8 @@ class UpdateFileMetaResponse(TeaModel):
         m = m or dict()
         if m.get('action_list') is not None:
             self.action_list = m.get('action_list')
+        if m.get('auto_delete_left_sec') is not None:
+            self.auto_delete_left_sec = m.get('auto_delete_left_sec')
         if m.get('category') is not None:
             self.category = m.get('category')
         if m.get('characteristic_hash') is not None:
@@ -12896,6 +14846,12 @@ class UpdateFileMetaResponse(TeaModel):
             self.crc_64hash = m.get('crc64_hash')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator_id') is not None:
+            self.creator_id = m.get('creator_id')
+        if m.get('creator_name') is not None:
+            self.creator_name = m.get('creator_name')
+        if m.get('creator_type') is not None:
+            self.creator_type = m.get('creator_type')
         if m.get('custom_field_1') is not None:
             self.custom_field_1 = m.get('custom_field_1')
         if m.get('custom_field_2') is not None:
@@ -12912,10 +14868,14 @@ class UpdateFileMetaResponse(TeaModel):
             self.drive_id = m.get('drive_id')
         if m.get('encrypt_mode') is not None:
             self.encrypt_mode = m.get('encrypt_mode')
+        if m.get('ex_fields_info') is not None:
+            self.ex_fields_info = m.get('ex_fields_info')
         if m.get('file_extension') is not None:
             self.file_extension = m.get('file_extension')
         if m.get('file_id') is not None:
             self.file_id = m.get('file_id')
+        if m.get('file_path_type') is not None:
+            self.file_path_type = m.get('file_path_type')
         if m.get('hidden') is not None:
             self.hidden = m.get('hidden')
         if m.get('image_media_metadata') is not None:
@@ -12929,6 +14889,10 @@ class UpdateFileMetaResponse(TeaModel):
             self.last_modifier_name = m.get('last_modifier_name')
         if m.get('last_modifier_type') is not None:
             self.last_modifier_type = m.get('last_modifier_type')
+        if m.get('local_created_at') is not None:
+            self.local_created_at = m.get('local_created_at')
+        if m.get('local_modified_at') is not None:
+            self.local_modified_at = m.get('local_modified_at')
         if m.get('meta') is not None:
             self.meta = m.get('meta')
         if m.get('mime_extension') is not None:
@@ -12941,6 +14905,8 @@ class UpdateFileMetaResponse(TeaModel):
             self.parent_file_id = m.get('parent_file_id')
         if m.get('punish_flag') is not None:
             self.punish_flag = m.get('punish_flag')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('size') is not None:
@@ -12951,6 +14917,12 @@ class UpdateFileMetaResponse(TeaModel):
             self.status = m.get('status')
         if m.get('streams_info') is not None:
             self.streams_info = m.get('streams_info')
+        if m.get('sync_device_flag') is not None:
+            self.sync_device_flag = m.get('sync_device_flag')
+        if m.get('sync_flag') is not None:
+            self.sync_flag = m.get('sync_flag')
+        if m.get('sync_meta') is not None:
+            self.sync_meta = m.get('sync_meta')
         if m.get('thumbnail') is not None:
             self.thumbnail = m.get('thumbnail')
         if m.get('trashed_at') is not None:
@@ -14353,17 +16325,65 @@ class CancelShareLinkModel(TeaModel):
         return self
 
 
+class ShareFile(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        drive_id: str = None,
+        file_id: str = None,
+    ):
+        # drive_id
+        self.drive_id = drive_id
+        # file_id
+        self.file_id = file_id
+
+    def validate(self):
+        if self.drive_id is not None:
+            self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        return self
+
+
 class CreateShareLinkResponse(TeaModel):
     """
     create_share_link response
     """
     def __init__(
         self,
+        access_count: int = None,
+        category: str = None,
+        comments: str = None,
         created_at: str = None,
         creator: str = None,
         description: str = None,
+        disable_download: bool = None,
+        disable_preview: bool = None,
+        disable_save: bool = None,
         download_count: int = None,
+        download_limit: int = None,
+        drive_file_list: List[ShareFile] = None,
         drive_id: str = None,
+        enable_file_changed_notify: bool = None,
         expiration: str = None,
         expired: bool = None,
         file_id: str = None,
@@ -14372,7 +16392,13 @@ class CreateShareLinkResponse(TeaModel):
         is_subscribed: bool = None,
         num_of_subscribers: int = None,
         preview_count: int = None,
+        preview_limit: int = None,
+        report_count: int = None,
+        require_login: bool = None,
         save_count: int = None,
+        save_download_limit: int = None,
+        save_limit: int = None,
+        share_icon: str = None,
         share_id: str = None,
         share_msg: str = None,
         share_name: str = None,
@@ -14381,17 +16407,37 @@ class CreateShareLinkResponse(TeaModel):
         share_url: str = None,
         status: str = None,
         updated_at: str = None,
+        video_preview_count: int = None,
+        view_id: str = None,
     ):
+        # access_count
+        self.access_count = access_count
+        # Category
+        self.category = category
+        # comments
+        self.comments = comments
         # created_at
         self.created_at = created_at
         # creator
         self.creator = creator
         # description
         self.description = description
+        # 禁止下载分享中的文件
+        self.disable_download = disable_download
+        # 禁止预览分享中的文件
+        self.disable_preview = disable_preview
+        # 禁止转存分享中的文件
+        self.disable_save = disable_save
         # 下载次数
         self.download_count = download_count
+        # 分享下载次数限制
+        self.download_limit = download_limit
+        # file_list
+        self.drive_file_list = drive_file_list
         # drive_id
         self.drive_id = drive_id
+        # enable_file_changed_notify
+        self.enable_file_changed_notify = enable_file_changed_notify
         # expiration
         self.expiration = expiration
         # expired
@@ -14408,8 +16454,20 @@ class CreateShareLinkResponse(TeaModel):
         self.num_of_subscribers = num_of_subscribers
         # preview_count
         self.preview_count = preview_count
+        # 分享预览次数限制
+        self.preview_limit = preview_limit
+        # 举报次数
+        self.report_count = report_count
+        # 企业内(domain)登录后才允许使用分享
+        self.require_login = require_login
         # 转存次数
         self.save_count = save_count
+        # 分享转存和下载的总次数限制
+        self.save_download_limit = save_download_limit
+        # 分享转存次数限制
+        self.save_limit = save_limit
+        # share_icon
+        self.share_icon = share_icon
         # share_id
         self.share_id = share_id
         # share_msg
@@ -14426,9 +16484,16 @@ class CreateShareLinkResponse(TeaModel):
         self.status = status
         # updated_at
         self.updated_at = updated_at
+        # 音视频播放次数
+        self.video_preview_count = video_preview_count
+        # ViewID
+        self.view_id = view_id
 
     def validate(self):
-        pass
+        if self.drive_file_list:
+            for k in self.drive_file_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14436,16 +16501,36 @@ class CreateShareLinkResponse(TeaModel):
             return _map
 
         result = dict()
+        if self.access_count is not None:
+            result['access_count'] = self.access_count
+        if self.category is not None:
+            result['category'] = self.category
+        if self.comments is not None:
+            result['comments'] = self.comments
         if self.created_at is not None:
             result['created_at'] = self.created_at
         if self.creator is not None:
             result['creator'] = self.creator
         if self.description is not None:
             result['description'] = self.description
+        if self.disable_download is not None:
+            result['disable_download'] = self.disable_download
+        if self.disable_preview is not None:
+            result['disable_preview'] = self.disable_preview
+        if self.disable_save is not None:
+            result['disable_save'] = self.disable_save
         if self.download_count is not None:
             result['download_count'] = self.download_count
+        if self.download_limit is not None:
+            result['download_limit'] = self.download_limit
+        result['drive_file_list'] = []
+        if self.drive_file_list is not None:
+            for k in self.drive_file_list:
+                result['drive_file_list'].append(k.to_map() if k else None)
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
+        if self.enable_file_changed_notify is not None:
+            result['enable_file_changed_notify'] = self.enable_file_changed_notify
         if self.expiration is not None:
             result['expiration'] = self.expiration
         if self.expired is not None:
@@ -14462,8 +16547,20 @@ class CreateShareLinkResponse(TeaModel):
             result['num_of_subscribers'] = self.num_of_subscribers
         if self.preview_count is not None:
             result['preview_count'] = self.preview_count
+        if self.preview_limit is not None:
+            result['preview_limit'] = self.preview_limit
+        if self.report_count is not None:
+            result['report_count'] = self.report_count
+        if self.require_login is not None:
+            result['require_login'] = self.require_login
         if self.save_count is not None:
             result['save_count'] = self.save_count
+        if self.save_download_limit is not None:
+            result['save_download_limit'] = self.save_download_limit
+        if self.save_limit is not None:
+            result['save_limit'] = self.save_limit
+        if self.share_icon is not None:
+            result['share_icon'] = self.share_icon
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.share_msg is not None:
@@ -14480,20 +16577,45 @@ class CreateShareLinkResponse(TeaModel):
             result['status'] = self.status
         if self.updated_at is not None:
             result['updated_at'] = self.updated_at
+        if self.video_preview_count is not None:
+            result['video_preview_count'] = self.video_preview_count
+        if self.view_id is not None:
+            result['view_id'] = self.view_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('access_count') is not None:
+            self.access_count = m.get('access_count')
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('comments') is not None:
+            self.comments = m.get('comments')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
         if m.get('creator') is not None:
             self.creator = m.get('creator')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('disable_download') is not None:
+            self.disable_download = m.get('disable_download')
+        if m.get('disable_preview') is not None:
+            self.disable_preview = m.get('disable_preview')
+        if m.get('disable_save') is not None:
+            self.disable_save = m.get('disable_save')
         if m.get('download_count') is not None:
             self.download_count = m.get('download_count')
+        if m.get('download_limit') is not None:
+            self.download_limit = m.get('download_limit')
+        self.drive_file_list = []
+        if m.get('drive_file_list') is not None:
+            for k in m.get('drive_file_list'):
+                temp_model = ShareFile()
+                self.drive_file_list.append(temp_model.from_map(k))
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
+        if m.get('enable_file_changed_notify') is not None:
+            self.enable_file_changed_notify = m.get('enable_file_changed_notify')
         if m.get('expiration') is not None:
             self.expiration = m.get('expiration')
         if m.get('expired') is not None:
@@ -14510,8 +16632,20 @@ class CreateShareLinkResponse(TeaModel):
             self.num_of_subscribers = m.get('num_of_subscribers')
         if m.get('preview_count') is not None:
             self.preview_count = m.get('preview_count')
+        if m.get('preview_limit') is not None:
+            self.preview_limit = m.get('preview_limit')
+        if m.get('report_count') is not None:
+            self.report_count = m.get('report_count')
+        if m.get('require_login') is not None:
+            self.require_login = m.get('require_login')
         if m.get('save_count') is not None:
             self.save_count = m.get('save_count')
+        if m.get('save_download_limit') is not None:
+            self.save_download_limit = m.get('save_download_limit')
+        if m.get('save_limit') is not None:
+            self.save_limit = m.get('save_limit')
+        if m.get('share_icon') is not None:
+            self.share_icon = m.get('share_icon')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('share_msg') is not None:
@@ -14528,6 +16662,10 @@ class CreateShareLinkResponse(TeaModel):
             self.status = m.get('status')
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
+        if m.get('video_preview_count') is not None:
+            self.video_preview_count = m.get('video_preview_count')
+        if m.get('view_id') is not None:
+            self.view_id = m.get('view_id')
         return self
 
 
@@ -14573,11 +16711,20 @@ class BaseShareLinkResponse(TeaModel):
     """
     def __init__(
         self,
+        access_count: int = None,
+        category: str = None,
+        comments: str = None,
         created_at: str = None,
         creator: str = None,
         description: str = None,
+        disable_download: bool = None,
+        disable_preview: bool = None,
+        disable_save: bool = None,
         download_count: int = None,
+        download_limit: int = None,
+        drive_file_list: List[ShareFile] = None,
         drive_id: str = None,
+        enable_file_changed_notify: bool = None,
         expiration: str = None,
         expired: bool = None,
         file_id: str = None,
@@ -14586,7 +16733,13 @@ class BaseShareLinkResponse(TeaModel):
         is_subscribed: bool = None,
         num_of_subscribers: int = None,
         preview_count: int = None,
+        preview_limit: int = None,
+        report_count: int = None,
+        require_login: bool = None,
         save_count: int = None,
+        save_download_limit: int = None,
+        save_limit: int = None,
+        share_icon: str = None,
         share_id: str = None,
         share_msg: str = None,
         share_name: str = None,
@@ -14595,17 +16748,37 @@ class BaseShareLinkResponse(TeaModel):
         share_url: str = None,
         status: str = None,
         updated_at: str = None,
+        video_preview_count: int = None,
+        view_id: str = None,
     ):
+        # access_count
+        self.access_count = access_count
+        # Category
+        self.category = category
+        # comments
+        self.comments = comments
         # created_at
         self.created_at = created_at
         # creator
         self.creator = creator
         # description
         self.description = description
+        # 禁止下载分享中的文件
+        self.disable_download = disable_download
+        # 禁止预览分享中的文件
+        self.disable_preview = disable_preview
+        # 禁止转存分享中的文件
+        self.disable_save = disable_save
         # 下载次数
         self.download_count = download_count
+        # 分享下载次数限制
+        self.download_limit = download_limit
+        # file_list
+        self.drive_file_list = drive_file_list
         # drive_id
         self.drive_id = drive_id
+        # enable_file_changed_notify
+        self.enable_file_changed_notify = enable_file_changed_notify
         # expiration
         self.expiration = expiration
         # expired
@@ -14622,8 +16795,20 @@ class BaseShareLinkResponse(TeaModel):
         self.num_of_subscribers = num_of_subscribers
         # preview_count
         self.preview_count = preview_count
+        # 分享预览次数限制
+        self.preview_limit = preview_limit
+        # 举报次数
+        self.report_count = report_count
+        # 企业内(domain)登录后才允许使用分享
+        self.require_login = require_login
         # 转存次数
         self.save_count = save_count
+        # 分享转存和下载的总次数限制
+        self.save_download_limit = save_download_limit
+        # 分享转存次数限制
+        self.save_limit = save_limit
+        # share_icon
+        self.share_icon = share_icon
         # share_id
         self.share_id = share_id
         # share_msg
@@ -14640,9 +16825,16 @@ class BaseShareLinkResponse(TeaModel):
         self.status = status
         # updated_at
         self.updated_at = updated_at
+        # 音视频播放次数
+        self.video_preview_count = video_preview_count
+        # ViewID
+        self.view_id = view_id
 
     def validate(self):
-        pass
+        if self.drive_file_list:
+            for k in self.drive_file_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14650,16 +16842,36 @@ class BaseShareLinkResponse(TeaModel):
             return _map
 
         result = dict()
+        if self.access_count is not None:
+            result['access_count'] = self.access_count
+        if self.category is not None:
+            result['category'] = self.category
+        if self.comments is not None:
+            result['comments'] = self.comments
         if self.created_at is not None:
             result['created_at'] = self.created_at
         if self.creator is not None:
             result['creator'] = self.creator
         if self.description is not None:
             result['description'] = self.description
+        if self.disable_download is not None:
+            result['disable_download'] = self.disable_download
+        if self.disable_preview is not None:
+            result['disable_preview'] = self.disable_preview
+        if self.disable_save is not None:
+            result['disable_save'] = self.disable_save
         if self.download_count is not None:
             result['download_count'] = self.download_count
+        if self.download_limit is not None:
+            result['download_limit'] = self.download_limit
+        result['drive_file_list'] = []
+        if self.drive_file_list is not None:
+            for k in self.drive_file_list:
+                result['drive_file_list'].append(k.to_map() if k else None)
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
+        if self.enable_file_changed_notify is not None:
+            result['enable_file_changed_notify'] = self.enable_file_changed_notify
         if self.expiration is not None:
             result['expiration'] = self.expiration
         if self.expired is not None:
@@ -14676,8 +16888,20 @@ class BaseShareLinkResponse(TeaModel):
             result['num_of_subscribers'] = self.num_of_subscribers
         if self.preview_count is not None:
             result['preview_count'] = self.preview_count
+        if self.preview_limit is not None:
+            result['preview_limit'] = self.preview_limit
+        if self.report_count is not None:
+            result['report_count'] = self.report_count
+        if self.require_login is not None:
+            result['require_login'] = self.require_login
         if self.save_count is not None:
             result['save_count'] = self.save_count
+        if self.save_download_limit is not None:
+            result['save_download_limit'] = self.save_download_limit
+        if self.save_limit is not None:
+            result['save_limit'] = self.save_limit
+        if self.share_icon is not None:
+            result['share_icon'] = self.share_icon
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.share_msg is not None:
@@ -14694,20 +16918,45 @@ class BaseShareLinkResponse(TeaModel):
             result['status'] = self.status
         if self.updated_at is not None:
             result['updated_at'] = self.updated_at
+        if self.video_preview_count is not None:
+            result['video_preview_count'] = self.video_preview_count
+        if self.view_id is not None:
+            result['view_id'] = self.view_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('access_count') is not None:
+            self.access_count = m.get('access_count')
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('comments') is not None:
+            self.comments = m.get('comments')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
         if m.get('creator') is not None:
             self.creator = m.get('creator')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('disable_download') is not None:
+            self.disable_download = m.get('disable_download')
+        if m.get('disable_preview') is not None:
+            self.disable_preview = m.get('disable_preview')
+        if m.get('disable_save') is not None:
+            self.disable_save = m.get('disable_save')
         if m.get('download_count') is not None:
             self.download_count = m.get('download_count')
+        if m.get('download_limit') is not None:
+            self.download_limit = m.get('download_limit')
+        self.drive_file_list = []
+        if m.get('drive_file_list') is not None:
+            for k in m.get('drive_file_list'):
+                temp_model = ShareFile()
+                self.drive_file_list.append(temp_model.from_map(k))
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
+        if m.get('enable_file_changed_notify') is not None:
+            self.enable_file_changed_notify = m.get('enable_file_changed_notify')
         if m.get('expiration') is not None:
             self.expiration = m.get('expiration')
         if m.get('expired') is not None:
@@ -14724,8 +16973,20 @@ class BaseShareLinkResponse(TeaModel):
             self.num_of_subscribers = m.get('num_of_subscribers')
         if m.get('preview_count') is not None:
             self.preview_count = m.get('preview_count')
+        if m.get('preview_limit') is not None:
+            self.preview_limit = m.get('preview_limit')
+        if m.get('report_count') is not None:
+            self.report_count = m.get('report_count')
+        if m.get('require_login') is not None:
+            self.require_login = m.get('require_login')
         if m.get('save_count') is not None:
             self.save_count = m.get('save_count')
+        if m.get('save_download_limit') is not None:
+            self.save_download_limit = m.get('save_download_limit')
+        if m.get('save_limit') is not None:
+            self.save_limit = m.get('save_limit')
+        if m.get('share_icon') is not None:
+            self.share_icon = m.get('share_icon')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('share_msg') is not None:
@@ -14742,6 +17003,10 @@ class BaseShareLinkResponse(TeaModel):
             self.status = m.get('status')
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
+        if m.get('video_preview_count') is not None:
+            self.video_preview_count = m.get('video_preview_count')
+        if m.get('view_id') is not None:
+            self.view_id = m.get('view_id')
         return self
 
 
@@ -14787,31 +17052,79 @@ class GetShareLinkByAnonymousResponse(TeaModel):
     """
     def __init__(
         self,
+        access_count: int = None,
         avatar: str = None,
+        comments: str = None,
         creator_id: str = None,
         creator_name: str = None,
         creator_phone: str = None,
+        disable_download: bool = None,
+        disable_preview: bool = None,
+        disable_save: bool = None,
+        download_count: int = None,
+        download_limit: int = None,
         expiration: str = None,
         file_count: int = None,
+        preview_count: int = None,
+        preview_limit: int = None,
+        report_count: int = None,
+        require_login: bool = None,
+        save_count: int = None,
+        save_download_limit: int = None,
+        save_limit: int = None,
+        share_icon: str = None,
         share_name: str = None,
         updated_at: str = None,
+        video_preview_count: int = None,
     ):
+        # access_count
+        self.access_count = access_count
         # avatar
         self.avatar = avatar
+        # comments
+        self.comments = comments
         # creator_id
         self.creator_id = creator_id
         # creator_name
         self.creator_name = creator_name
         # creator_phone
         self.creator_phone = creator_phone
+        # 禁止下载分享中的文件
+        self.disable_download = disable_download
+        # 禁止预览分享中的文件
+        self.disable_preview = disable_preview
+        # 禁止转存分享中的文件
+        self.disable_save = disable_save
+        # 下载次数
+        self.download_count = download_count
+        # 分享下载次数限制
+        self.download_limit = download_limit
         # expiration
         self.expiration = expiration
         # file_count
         self.file_count = file_count
+        # preview_count
+        self.preview_count = preview_count
+        # 分享预览次数限制
+        self.preview_limit = preview_limit
+        # 举报次数
+        self.report_count = report_count
+        # 企业内(domain)登录后才允许使用分享
+        self.require_login = require_login
+        # 转存次数
+        self.save_count = save_count
+        # 分享转存和下载的总次数限制
+        self.save_download_limit = save_download_limit
+        # 分享转存次数限制
+        self.save_limit = save_limit
+        # share_icon
+        self.share_icon = share_icon
         # share_name
         self.share_name = share_name
         # updated_at
         self.updated_at = updated_at
+        # 音视频播放次数
+        self.video_preview_count = video_preview_count
 
     def validate(self):
         pass
@@ -14822,42 +17135,106 @@ class GetShareLinkByAnonymousResponse(TeaModel):
             return _map
 
         result = dict()
+        if self.access_count is not None:
+            result['access_count'] = self.access_count
         if self.avatar is not None:
             result['avatar'] = self.avatar
+        if self.comments is not None:
+            result['comments'] = self.comments
         if self.creator_id is not None:
             result['creator_id'] = self.creator_id
         if self.creator_name is not None:
             result['creator_name'] = self.creator_name
         if self.creator_phone is not None:
             result['creator_phone'] = self.creator_phone
+        if self.disable_download is not None:
+            result['disable_download'] = self.disable_download
+        if self.disable_preview is not None:
+            result['disable_preview'] = self.disable_preview
+        if self.disable_save is not None:
+            result['disable_save'] = self.disable_save
+        if self.download_count is not None:
+            result['download_count'] = self.download_count
+        if self.download_limit is not None:
+            result['download_limit'] = self.download_limit
         if self.expiration is not None:
             result['expiration'] = self.expiration
         if self.file_count is not None:
             result['file_count'] = self.file_count
+        if self.preview_count is not None:
+            result['preview_count'] = self.preview_count
+        if self.preview_limit is not None:
+            result['preview_limit'] = self.preview_limit
+        if self.report_count is not None:
+            result['report_count'] = self.report_count
+        if self.require_login is not None:
+            result['require_login'] = self.require_login
+        if self.save_count is not None:
+            result['save_count'] = self.save_count
+        if self.save_download_limit is not None:
+            result['save_download_limit'] = self.save_download_limit
+        if self.save_limit is not None:
+            result['save_limit'] = self.save_limit
+        if self.share_icon is not None:
+            result['share_icon'] = self.share_icon
         if self.share_name is not None:
             result['share_name'] = self.share_name
         if self.updated_at is not None:
             result['updated_at'] = self.updated_at
+        if self.video_preview_count is not None:
+            result['video_preview_count'] = self.video_preview_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('access_count') is not None:
+            self.access_count = m.get('access_count')
         if m.get('avatar') is not None:
             self.avatar = m.get('avatar')
+        if m.get('comments') is not None:
+            self.comments = m.get('comments')
         if m.get('creator_id') is not None:
             self.creator_id = m.get('creator_id')
         if m.get('creator_name') is not None:
             self.creator_name = m.get('creator_name')
         if m.get('creator_phone') is not None:
             self.creator_phone = m.get('creator_phone')
+        if m.get('disable_download') is not None:
+            self.disable_download = m.get('disable_download')
+        if m.get('disable_preview') is not None:
+            self.disable_preview = m.get('disable_preview')
+        if m.get('disable_save') is not None:
+            self.disable_save = m.get('disable_save')
+        if m.get('download_count') is not None:
+            self.download_count = m.get('download_count')
+        if m.get('download_limit') is not None:
+            self.download_limit = m.get('download_limit')
         if m.get('expiration') is not None:
             self.expiration = m.get('expiration')
         if m.get('file_count') is not None:
             self.file_count = m.get('file_count')
+        if m.get('preview_count') is not None:
+            self.preview_count = m.get('preview_count')
+        if m.get('preview_limit') is not None:
+            self.preview_limit = m.get('preview_limit')
+        if m.get('report_count') is not None:
+            self.report_count = m.get('report_count')
+        if m.get('require_login') is not None:
+            self.require_login = m.get('require_login')
+        if m.get('save_count') is not None:
+            self.save_count = m.get('save_count')
+        if m.get('save_download_limit') is not None:
+            self.save_download_limit = m.get('save_download_limit')
+        if m.get('save_limit') is not None:
+            self.save_limit = m.get('save_limit')
+        if m.get('share_icon') is not None:
+            self.share_icon = m.get('share_icon')
         if m.get('share_name') is not None:
             self.share_name = m.get('share_name')
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
+        if m.get('video_preview_count') is not None:
+            self.video_preview_count = m.get('video_preview_count')
         return self
 
 
@@ -15136,17 +17513,115 @@ class ListShareLinkModel(TeaModel):
         return self
 
 
+class SearchShareLinkResponse(TeaModel):
+    """
+    search_share_link response
+    """
+    def __init__(
+        self,
+        items: List[BaseShareLinkResponse] = None,
+        next_marker: str = None,
+        total_count: int = None,
+    ):
+        # items
+        self.items = items
+        # next_marker
+        self.next_marker = next_marker
+        # total_count
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.next_marker is not None:
+            result['next_marker'] = self.next_marker
+        if self.total_count is not None:
+            result['total_count'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = BaseShareLinkResponse()
+                self.items.append(temp_model.from_map(k))
+        if m.get('next_marker') is not None:
+            self.next_marker = m.get('next_marker')
+        if m.get('total_count') is not None:
+            self.total_count = m.get('total_count')
+        return self
+
+
+class SearchShareLinkModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SearchShareLinkResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SearchShareLinkResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateShareLinkResponse(TeaModel):
     """
     update_share_link response
     """
     def __init__(
         self,
+        access_count: int = None,
+        category: str = None,
+        comments: str = None,
         created_at: str = None,
         creator: str = None,
         description: str = None,
+        disable_download: bool = None,
+        disable_preview: bool = None,
+        disable_save: bool = None,
         download_count: int = None,
+        download_limit: int = None,
+        drive_file_list: List[ShareFile] = None,
         drive_id: str = None,
+        enable_file_changed_notify: bool = None,
         expiration: str = None,
         expired: bool = None,
         file_id: str = None,
@@ -15155,7 +17630,13 @@ class UpdateShareLinkResponse(TeaModel):
         is_subscribed: bool = None,
         num_of_subscribers: int = None,
         preview_count: int = None,
+        preview_limit: int = None,
+        report_count: int = None,
+        require_login: bool = None,
         save_count: int = None,
+        save_download_limit: int = None,
+        save_limit: int = None,
+        share_icon: str = None,
         share_id: str = None,
         share_msg: str = None,
         share_name: str = None,
@@ -15164,17 +17645,37 @@ class UpdateShareLinkResponse(TeaModel):
         share_url: str = None,
         status: str = None,
         updated_at: str = None,
+        video_preview_count: int = None,
+        view_id: str = None,
     ):
+        # access_count
+        self.access_count = access_count
+        # Category
+        self.category = category
+        # comments
+        self.comments = comments
         # created_at
         self.created_at = created_at
         # creator
         self.creator = creator
         # description
         self.description = description
+        # 禁止下载分享中的文件
+        self.disable_download = disable_download
+        # 禁止预览分享中的文件
+        self.disable_preview = disable_preview
+        # 禁止转存分享中的文件
+        self.disable_save = disable_save
         # 下载次数
         self.download_count = download_count
+        # 分享下载次数限制
+        self.download_limit = download_limit
+        # file_list
+        self.drive_file_list = drive_file_list
         # drive_id
         self.drive_id = drive_id
+        # enable_file_changed_notify
+        self.enable_file_changed_notify = enable_file_changed_notify
         # expiration
         self.expiration = expiration
         # expired
@@ -15191,8 +17692,20 @@ class UpdateShareLinkResponse(TeaModel):
         self.num_of_subscribers = num_of_subscribers
         # preview_count
         self.preview_count = preview_count
+        # 分享预览次数限制
+        self.preview_limit = preview_limit
+        # 举报次数
+        self.report_count = report_count
+        # 企业内(domain)登录后才允许使用分享
+        self.require_login = require_login
         # 转存次数
         self.save_count = save_count
+        # 分享转存和下载的总次数限制
+        self.save_download_limit = save_download_limit
+        # 分享转存次数限制
+        self.save_limit = save_limit
+        # share_icon
+        self.share_icon = share_icon
         # share_id
         self.share_id = share_id
         # share_msg
@@ -15209,9 +17722,16 @@ class UpdateShareLinkResponse(TeaModel):
         self.status = status
         # updated_at
         self.updated_at = updated_at
+        # 音视频播放次数
+        self.video_preview_count = video_preview_count
+        # ViewID
+        self.view_id = view_id
 
     def validate(self):
-        pass
+        if self.drive_file_list:
+            for k in self.drive_file_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15219,16 +17739,36 @@ class UpdateShareLinkResponse(TeaModel):
             return _map
 
         result = dict()
+        if self.access_count is not None:
+            result['access_count'] = self.access_count
+        if self.category is not None:
+            result['category'] = self.category
+        if self.comments is not None:
+            result['comments'] = self.comments
         if self.created_at is not None:
             result['created_at'] = self.created_at
         if self.creator is not None:
             result['creator'] = self.creator
         if self.description is not None:
             result['description'] = self.description
+        if self.disable_download is not None:
+            result['disable_download'] = self.disable_download
+        if self.disable_preview is not None:
+            result['disable_preview'] = self.disable_preview
+        if self.disable_save is not None:
+            result['disable_save'] = self.disable_save
         if self.download_count is not None:
             result['download_count'] = self.download_count
+        if self.download_limit is not None:
+            result['download_limit'] = self.download_limit
+        result['drive_file_list'] = []
+        if self.drive_file_list is not None:
+            for k in self.drive_file_list:
+                result['drive_file_list'].append(k.to_map() if k else None)
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
+        if self.enable_file_changed_notify is not None:
+            result['enable_file_changed_notify'] = self.enable_file_changed_notify
         if self.expiration is not None:
             result['expiration'] = self.expiration
         if self.expired is not None:
@@ -15245,8 +17785,20 @@ class UpdateShareLinkResponse(TeaModel):
             result['num_of_subscribers'] = self.num_of_subscribers
         if self.preview_count is not None:
             result['preview_count'] = self.preview_count
+        if self.preview_limit is not None:
+            result['preview_limit'] = self.preview_limit
+        if self.report_count is not None:
+            result['report_count'] = self.report_count
+        if self.require_login is not None:
+            result['require_login'] = self.require_login
         if self.save_count is not None:
             result['save_count'] = self.save_count
+        if self.save_download_limit is not None:
+            result['save_download_limit'] = self.save_download_limit
+        if self.save_limit is not None:
+            result['save_limit'] = self.save_limit
+        if self.share_icon is not None:
+            result['share_icon'] = self.share_icon
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.share_msg is not None:
@@ -15263,20 +17815,45 @@ class UpdateShareLinkResponse(TeaModel):
             result['status'] = self.status
         if self.updated_at is not None:
             result['updated_at'] = self.updated_at
+        if self.video_preview_count is not None:
+            result['video_preview_count'] = self.video_preview_count
+        if self.view_id is not None:
+            result['view_id'] = self.view_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('access_count') is not None:
+            self.access_count = m.get('access_count')
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('comments') is not None:
+            self.comments = m.get('comments')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
         if m.get('creator') is not None:
             self.creator = m.get('creator')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('disable_download') is not None:
+            self.disable_download = m.get('disable_download')
+        if m.get('disable_preview') is not None:
+            self.disable_preview = m.get('disable_preview')
+        if m.get('disable_save') is not None:
+            self.disable_save = m.get('disable_save')
         if m.get('download_count') is not None:
             self.download_count = m.get('download_count')
+        if m.get('download_limit') is not None:
+            self.download_limit = m.get('download_limit')
+        self.drive_file_list = []
+        if m.get('drive_file_list') is not None:
+            for k in m.get('drive_file_list'):
+                temp_model = ShareFile()
+                self.drive_file_list.append(temp_model.from_map(k))
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
+        if m.get('enable_file_changed_notify') is not None:
+            self.enable_file_changed_notify = m.get('enable_file_changed_notify')
         if m.get('expiration') is not None:
             self.expiration = m.get('expiration')
         if m.get('expired') is not None:
@@ -15293,8 +17870,20 @@ class UpdateShareLinkResponse(TeaModel):
             self.num_of_subscribers = m.get('num_of_subscribers')
         if m.get('preview_count') is not None:
             self.preview_count = m.get('preview_count')
+        if m.get('preview_limit') is not None:
+            self.preview_limit = m.get('preview_limit')
+        if m.get('report_count') is not None:
+            self.report_count = m.get('report_count')
+        if m.get('require_login') is not None:
+            self.require_login = m.get('require_login')
         if m.get('save_count') is not None:
             self.save_count = m.get('save_count')
+        if m.get('save_download_limit') is not None:
+            self.save_download_limit = m.get('save_download_limit')
+        if m.get('save_limit') is not None:
+            self.save_limit = m.get('save_limit')
+        if m.get('share_icon') is not None:
+            self.share_icon = m.get('share_icon')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('share_msg') is not None:
@@ -15311,6 +17900,10 @@ class UpdateShareLinkResponse(TeaModel):
             self.status = m.get('status')
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
+        if m.get('video_preview_count') is not None:
+            self.video_preview_count = m.get('video_preview_count')
+        if m.get('view_id') is not None:
+            self.view_id = m.get('view_id')
         return self
 
 
@@ -15346,6 +17939,265 @@ class UpdateShareLinkModel(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateShareLinkResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AssignModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class CancelAssignModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+    ):
+        self.headers = headers
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        return self
+
+
+class BaseAssignmentResponse(TeaModel):
+    """
+    List identity role response item
+    """
+    def __init__(
+        self,
+        created_at: int = None,
+        creator: str = None,
+        domain_id: str = None,
+        identity: Identity = None,
+        manage_resource_id: str = None,
+        manage_resource_type: str = None,
+        role_id: str = None,
+        updated_at: int = None,
+    ):
+        # 创建时间
+        self.created_at = created_at
+        # 创建者的UserID
+        self.creator = creator
+        # domain_id
+        self.domain_id = domain_id
+        self.identity = identity
+        # 管辖的资源ID
+        self.manage_resource_id = manage_resource_id
+        # 管辖的资源类型
+        self.manage_resource_type = manage_resource_type
+        # 授予的角色
+        self.role_id = role_id
+        # 修改时间
+        self.updated_at = updated_at
+
+    def validate(self):
+        self.validate_required(self.created_at, 'created_at')
+        self.validate_required(self.creator, 'creator')
+        self.validate_required(self.domain_id, 'domain_id')
+        self.validate_required(self.identity, 'identity')
+        if self.identity:
+            self.identity.validate()
+        self.validate_required(self.manage_resource_id, 'manage_resource_id')
+        self.validate_required(self.manage_resource_type, 'manage_resource_type')
+        self.validate_required(self.role_id, 'role_id')
+        self.validate_required(self.updated_at, 'updated_at')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.identity is not None:
+            result['identity'] = self.identity.to_map()
+        if self.manage_resource_id is not None:
+            result['manage_resource_id'] = self.manage_resource_id
+        if self.manage_resource_type is not None:
+            result['manage_resource_type'] = self.manage_resource_type
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('identity') is not None:
+            temp_model = Identity()
+            self.identity = temp_model.from_map(m['identity'])
+        if m.get('manage_resource_id') is not None:
+            self.manage_resource_id = m.get('manage_resource_id')
+        if m.get('manage_resource_type') is not None:
+            self.manage_resource_type = m.get('manage_resource_type')
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        if m.get('updated_at') is not None:
+            self.updated_at = m.get('updated_at')
+        return self
+
+
+class BaseRoleMemberResponse(TeaModel):
+    """
+    List identity role response
+    """
+    def __init__(
+        self,
+        assignment_list: List[BaseAssignmentResponse] = None,
+        domain_id: str = None,
+        identity: Identity = None,
+        identity_name: str = None,
+        is_admin: bool = None,
+        subdomain_id: str = None,
+    ):
+        # 当前用户或团队分配的角色列表
+        self.assignment_list = assignment_list
+        # domain_id
+        self.domain_id = domain_id
+        self.identity = identity
+        # 查询的用户或团队的名称
+        self.identity_name = identity_name
+        # 是否为管理员
+        self.is_admin = is_admin
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        self.validate_required(self.assignment_list, 'assignment_list')
+        if self.assignment_list:
+            for k in self.assignment_list:
+                if k:
+                    k.validate()
+        self.validate_required(self.domain_id, 'domain_id')
+        self.validate_required(self.identity, 'identity')
+        if self.identity:
+            self.identity.validate()
+        self.validate_required(self.identity_name, 'identity_name')
+        self.validate_required(self.is_admin, 'is_admin')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['assignment_list'] = []
+        if self.assignment_list is not None:
+            for k in self.assignment_list:
+                result['assignment_list'].append(k.to_map() if k else None)
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.identity is not None:
+            result['identity'] = self.identity.to_map()
+        if self.identity_name is not None:
+            result['identity_name'] = self.identity_name
+        if self.is_admin is not None:
+            result['is_admin'] = self.is_admin
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.assignment_list = []
+        if m.get('assignment_list') is not None:
+            for k in m.get('assignment_list'):
+                temp_model = BaseAssignmentResponse()
+                self.assignment_list.append(temp_model.from_map(k))
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('identity') is not None:
+            temp_model = Identity()
+            self.identity = temp_model.from_map(m['identity'])
+        if m.get('identity_name') is not None:
+            self.identity_name = m.get('identity_name')
+        if m.get('is_admin') is not None:
+            self.is_admin = m.get('is_admin')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class ListIdentityRoleModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: BaseRoleMemberResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = BaseRoleMemberResponse()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15681,6 +18533,418 @@ class GetDomainSummaryModel(TeaModel):
         return self
 
 
+class GetAppDebugCmdResponse(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        cmd: str = None,
+    ):
+        # cmd
+        self.cmd = cmd
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cmd is not None:
+            result['cmd'] = self.cmd
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cmd') is not None:
+            self.cmd = m.get('cmd')
+        return self
+
+
+class GetAppDebugCmdModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetAppDebugCmdResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetAppDebugCmdResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpgradeCheckAppResponse(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        option: str = None,
+        release_date: str = None,
+        release_notes_url: str = None,
+        url: str = None,
+        version: str = None,
+    ):
+        # option
+        self.option = option
+        # release_date
+        self.release_date = release_date
+        # release_notes_url
+        self.release_notes_url = release_notes_url
+        # url
+        self.url = url
+        # version
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option is not None:
+            result['option'] = self.option
+        if self.release_date is not None:
+            result['release_date'] = self.release_date
+        if self.release_notes_url is not None:
+            result['release_notes_url'] = self.release_notes_url
+        if self.url is not None:
+            result['url'] = self.url
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('option') is not None:
+            self.option = m.get('option')
+        if m.get('release_date') is not None:
+            self.release_date = m.get('release_date')
+        if m.get('release_notes_url') is not None:
+            self.release_notes_url = m.get('release_notes_url')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class UpgradeCheckAppModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpgradeCheckAppResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpgradeCheckAppResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BindDeviceResponse(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        created_at: str = None,
+        device_id: str = None,
+        device_info: str = None,
+        device_name: str = None,
+        device_type: str = None,
+        updated_at: str = None,
+    ):
+        # created_at
+        self.created_at = created_at
+        # device_id
+        self.device_id = device_id
+        # device_info
+        self.device_info = device_info
+        # device_name
+        self.device_name = device_name
+        # device_type
+        self.device_type = device_type
+        # updated_at
+        self.updated_at = updated_at
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.device_id is not None:
+            result['device_id'] = self.device_id
+        if self.device_info is not None:
+            result['device_info'] = self.device_info
+        if self.device_name is not None:
+            result['device_name'] = self.device_name
+        if self.device_type is not None:
+            result['device_type'] = self.device_type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('device_id') is not None:
+            self.device_id = m.get('device_id')
+        if m.get('device_info') is not None:
+            self.device_info = m.get('device_info')
+        if m.get('device_name') is not None:
+            self.device_name = m.get('device_name')
+        if m.get('device_type') is not None:
+            self.device_type = m.get('device_type')
+        if m.get('updated_at') is not None:
+            self.updated_at = m.get('updated_at')
+        return self
+
+
+class BindDeviceModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: BindDeviceResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = BindDeviceResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeviceItem(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        created_at: str = None,
+        device_id: str = None,
+        device_info: str = None,
+        device_name: str = None,
+        device_type: str = None,
+        updated_at: str = None,
+    ):
+        # created_at
+        self.created_at = created_at
+        # device_id
+        self.device_id = device_id
+        # device_info
+        self.device_info = device_info
+        # device_name
+        self.device_name = device_name
+        # device_type
+        self.device_type = device_type
+        # updated_at
+        self.updated_at = updated_at
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.device_id is not None:
+            result['device_id'] = self.device_id
+        if self.device_info is not None:
+            result['device_info'] = self.device_info
+        if self.device_name is not None:
+            result['device_name'] = self.device_name
+        if self.device_type is not None:
+            result['device_type'] = self.device_type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('device_id') is not None:
+            self.device_id = m.get('device_id')
+        if m.get('device_info') is not None:
+            self.device_info = m.get('device_info')
+        if m.get('device_name') is not None:
+            self.device_name = m.get('device_name')
+        if m.get('device_type') is not None:
+            self.device_type = m.get('device_type')
+        if m.get('updated_at') is not None:
+            self.updated_at = m.get('updated_at')
+        return self
+
+
+class ListDeviceResponse(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        items: List[DeviceItem] = None,
+        marker: str = None,
+    ):
+        # items
+        self.items = items
+        # marker
+        self.marker = marker
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.marker is not None:
+            result['marker'] = self.marker
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = DeviceItem()
+                self.items.append(temp_model.from_map(k))
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        return self
+
+
+class ListDeviceModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDeviceResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDeviceResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateGroupResponse(TeaModel):
     """
     *\
@@ -15688,6 +18952,7 @@ class CreateGroupResponse(TeaModel):
     def __init__(
         self,
         created_at: int = None,
+        creator: str = None,
         description: str = None,
         domain_id: str = None,
         group_id: str = None,
@@ -15697,6 +18962,8 @@ class CreateGroupResponse(TeaModel):
     ):
         # created_at
         self.created_at = created_at
+        # creator
+        self.creator = creator
         # description
         self.description = description
         # domain id
@@ -15720,6 +18987,8 @@ class CreateGroupResponse(TeaModel):
         result = dict()
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.description is not None:
             result['description'] = self.description
         if self.domain_id is not None:
@@ -15738,6 +19007,8 @@ class CreateGroupResponse(TeaModel):
         m = m or dict()
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('domain_id') is not None:
@@ -15855,6 +19126,7 @@ class GetGroupResponse(TeaModel):
     def __init__(
         self,
         created_at: int = None,
+        creator: str = None,
         description: str = None,
         domain_id: str = None,
         group_id: str = None,
@@ -15864,6 +19136,8 @@ class GetGroupResponse(TeaModel):
     ):
         # created_at
         self.created_at = created_at
+        # creator
+        self.creator = creator
         # description
         self.description = description
         # domain id
@@ -15887,6 +19161,8 @@ class GetGroupResponse(TeaModel):
         result = dict()
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.description is not None:
             result['description'] = self.description
         if self.domain_id is not None:
@@ -15905,6 +19181,8 @@ class GetGroupResponse(TeaModel):
         m = m or dict()
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('domain_id') is not None:
@@ -15963,6 +19241,7 @@ class BaseGroupResponse(TeaModel):
     def __init__(
         self,
         created_at: int = None,
+        creator: str = None,
         description: str = None,
         domain_id: str = None,
         group_id: str = None,
@@ -15972,6 +19251,8 @@ class BaseGroupResponse(TeaModel):
     ):
         # created_at
         self.created_at = created_at
+        # creator
+        self.creator = creator
         # description
         self.description = description
         # domain id
@@ -15995,6 +19276,8 @@ class BaseGroupResponse(TeaModel):
         result = dict()
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.description is not None:
             result['description'] = self.description
         if self.domain_id is not None:
@@ -16013,6 +19296,8 @@ class BaseGroupResponse(TeaModel):
         m = m or dict()
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('domain_id') is not None:
@@ -16199,6 +19484,7 @@ class UpdateGroupResponse(TeaModel):
     def __init__(
         self,
         created_at: int = None,
+        creator: str = None,
         description: str = None,
         domain_id: str = None,
         group_id: str = None,
@@ -16208,6 +19494,8 @@ class UpdateGroupResponse(TeaModel):
     ):
         # created_at
         self.created_at = created_at
+        # creator
+        self.creator = creator
         # description
         self.description = description
         # domain id
@@ -16231,6 +19519,8 @@ class UpdateGroupResponse(TeaModel):
         result = dict()
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.description is not None:
             result['description'] = self.description
         if self.domain_id is not None:
@@ -16249,6 +19539,8 @@ class UpdateGroupResponse(TeaModel):
         m = m or dict()
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('domain_id') is not None:
@@ -16307,6 +19599,7 @@ class CreateMembershipResponse(TeaModel):
     def __init__(
         self,
         created_at: int = None,
+        creator: str = None,
         description: str = None,
         domain_id: str = None,
         group_id: str = None,
@@ -16318,6 +19611,8 @@ class CreateMembershipResponse(TeaModel):
     ):
         # created_at
         self.created_at = created_at
+        # creator
+        self.creator = creator
         # 描述
         self.description = description
         # domain id
@@ -16343,6 +19638,8 @@ class CreateMembershipResponse(TeaModel):
         result = dict()
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.description is not None:
             result['description'] = self.description
         if self.domain_id is not None:
@@ -16365,6 +19662,8 @@ class CreateMembershipResponse(TeaModel):
         m = m or dict()
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('domain_id') is not None:
@@ -16486,6 +19785,7 @@ class GetMembershipResponse(TeaModel):
     def __init__(
         self,
         created_at: int = None,
+        creator: str = None,
         description: str = None,
         domain_id: str = None,
         group_id: str = None,
@@ -16497,6 +19797,8 @@ class GetMembershipResponse(TeaModel):
     ):
         # created_at
         self.created_at = created_at
+        # creator
+        self.creator = creator
         # 描述
         self.description = description
         # domain id
@@ -16522,6 +19824,8 @@ class GetMembershipResponse(TeaModel):
         result = dict()
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.description is not None:
             result['description'] = self.description
         if self.domain_id is not None:
@@ -16544,6 +19848,8 @@ class GetMembershipResponse(TeaModel):
         m = m or dict()
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('domain_id') is not None:
@@ -16672,6 +19978,7 @@ class BaseMembershipResponse(TeaModel):
     def __init__(
         self,
         created_at: int = None,
+        creator: str = None,
         description: str = None,
         domain_id: str = None,
         group_id: str = None,
@@ -16683,6 +19990,8 @@ class BaseMembershipResponse(TeaModel):
     ):
         # created_at
         self.created_at = created_at
+        # creator
+        self.creator = creator
         # 描述
         self.description = description
         # domain id
@@ -16708,6 +20017,8 @@ class BaseMembershipResponse(TeaModel):
         result = dict()
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.description is not None:
             result['description'] = self.description
         if self.domain_id is not None:
@@ -16730,6 +20041,8 @@ class BaseMembershipResponse(TeaModel):
         m = m or dict()
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('domain_id') is not None:
@@ -16956,6 +20269,7 @@ class UpdateMembershipResponse(TeaModel):
     def __init__(
         self,
         created_at: int = None,
+        creator: str = None,
         description: str = None,
         domain_id: str = None,
         group_id: str = None,
@@ -16967,6 +20281,8 @@ class UpdateMembershipResponse(TeaModel):
     ):
         # created_at
         self.created_at = created_at
+        # creator
+        self.creator = creator
         # 描述
         self.description = description
         # domain id
@@ -16992,6 +20308,8 @@ class UpdateMembershipResponse(TeaModel):
         result = dict()
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.description is not None:
             result['description'] = self.description
         if self.domain_id is not None:
@@ -17014,6 +20332,8 @@ class UpdateMembershipResponse(TeaModel):
         m = m or dict()
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('domain_id') is not None:
@@ -17069,6 +20389,308 @@ class UpdateMembershipModel(TeaModel):
         return self
 
 
+class CreateSyncMappingResponse(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        drive_id: str = None,
+        file_id: str = None,
+    ):
+        # drive_id
+        self.drive_id = drive_id
+        # file_id
+        self.file_id = file_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        return self
+
+
+class CreateSyncMappingModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateSyncMappingResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateSyncMappingResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSyncMappingResponse(TeaModel):
+    """
+    *\
+    """
+    def __init__(self):
+        pass
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        return self
+
+
+class DeleteSyncMappingModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteSyncMappingResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteSyncMappingResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SyncMappingItem(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        created_at: str = None,
+        custom_meta: str = None,
+        device_name: str = None,
+        drive_id: str = None,
+        file_id: str = None,
+        fs_id: str = None,
+        local_path: str = None,
+        sync_mode: str = None,
+        updated_at: str = None,
+    ):
+        # created_at
+        self.created_at = created_at
+        # custom_meta
+        self.custom_meta = custom_meta
+        # device_name
+        self.device_name = device_name
+        # drive_id
+        self.drive_id = drive_id
+        # file_id
+        self.file_id = file_id
+        # fs_id
+        self.fs_id = fs_id
+        # local_path
+        self.local_path = local_path
+        # sync_mode
+        self.sync_mode = sync_mode
+        # updated_at
+        self.updated_at = updated_at
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.custom_meta is not None:
+            result['custom_meta'] = self.custom_meta
+        if self.device_name is not None:
+            result['device_name'] = self.device_name
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.fs_id is not None:
+            result['fs_id'] = self.fs_id
+        if self.local_path is not None:
+            result['local_path'] = self.local_path
+        if self.sync_mode is not None:
+            result['sync_mode'] = self.sync_mode
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('custom_meta') is not None:
+            self.custom_meta = m.get('custom_meta')
+        if m.get('device_name') is not None:
+            self.device_name = m.get('device_name')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('fs_id') is not None:
+            self.fs_id = m.get('fs_id')
+        if m.get('local_path') is not None:
+            self.local_path = m.get('local_path')
+        if m.get('sync_mode') is not None:
+            self.sync_mode = m.get('sync_mode')
+        if m.get('updated_at') is not None:
+            self.updated_at = m.get('updated_at')
+        return self
+
+
+class ListSyncMappingResponse(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        items: List[SyncMappingItem] = None,
+        marker: str = None,
+    ):
+        # items
+        self.items = items
+        # marker
+        self.marker = marker
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.marker is not None:
+            result['marker'] = self.marker
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = SyncMappingItem()
+                self.items.append(temp_model.from_map(k))
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        return self
+
+
+class ListSyncMappingModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListSyncMappingResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListSyncMappingResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddUserToSubdomainModel(TeaModel):
     def __init__(
         self,
@@ -17104,6 +20726,7 @@ class CreateUserResponse(TeaModel):
         self,
         avatar: str = None,
         created_at: int = None,
+        creator: str = None,
         default_drive_id: str = None,
         deny_change_password_by_self: bool = None,
         description: str = None,
@@ -17125,6 +20748,8 @@ class CreateUserResponse(TeaModel):
         self.avatar = avatar
         # 用户创建时间
         self.created_at = created_at
+        # creator
+        self.creator = creator
         # 默认 Drive ID
         self.default_drive_id = default_drive_id
         # 禁止用户自行修改密码
@@ -17170,6 +20795,8 @@ class CreateUserResponse(TeaModel):
             result['avatar'] = self.avatar
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.default_drive_id is not None:
             result['default_drive_id'] = self.default_drive_id
         if self.deny_change_password_by_self is not None:
@@ -17210,6 +20837,8 @@ class CreateUserResponse(TeaModel):
             self.avatar = m.get('avatar')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('default_drive_id') is not None:
             self.default_drive_id = m.get('default_drive_id')
         if m.get('deny_change_password_by_self') is not None:
@@ -17316,6 +20945,7 @@ class GetUserResponse(TeaModel):
         self,
         avatar: str = None,
         created_at: int = None,
+        creator: str = None,
         default_drive_id: str = None,
         deny_change_password_by_self: bool = None,
         description: str = None,
@@ -17337,6 +20967,8 @@ class GetUserResponse(TeaModel):
         self.avatar = avatar
         # 用户创建时间
         self.created_at = created_at
+        # creator
+        self.creator = creator
         # 默认 Drive ID
         self.default_drive_id = default_drive_id
         # 禁止用户自行修改密码
@@ -17382,6 +21014,8 @@ class GetUserResponse(TeaModel):
             result['avatar'] = self.avatar
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.default_drive_id is not None:
             result['default_drive_id'] = self.default_drive_id
         if self.deny_change_password_by_self is not None:
@@ -17422,6 +21056,8 @@ class GetUserResponse(TeaModel):
             self.avatar = m.get('avatar')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('default_drive_id') is not None:
             self.default_drive_id = m.get('default_drive_id')
         if m.get('deny_change_password_by_self') is not None:
@@ -17501,6 +21137,7 @@ class BaseUserResponse(TeaModel):
         self,
         avatar: str = None,
         created_at: int = None,
+        creator: str = None,
         default_drive_id: str = None,
         deny_change_password_by_self: bool = None,
         description: str = None,
@@ -17522,6 +21159,8 @@ class BaseUserResponse(TeaModel):
         self.avatar = avatar
         # 用户创建时间
         self.created_at = created_at
+        # creator
+        self.creator = creator
         # 默认 Drive ID
         self.default_drive_id = default_drive_id
         # 禁止用户自行修改密码
@@ -17567,6 +21206,8 @@ class BaseUserResponse(TeaModel):
             result['avatar'] = self.avatar
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.default_drive_id is not None:
             result['default_drive_id'] = self.default_drive_id
         if self.deny_change_password_by_self is not None:
@@ -17607,6 +21248,8 @@ class BaseUserResponse(TeaModel):
             self.avatar = m.get('avatar')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('default_drive_id') is not None:
             self.default_drive_id = m.get('default_drive_id')
         if m.get('deny_change_password_by_self') is not None:
@@ -17948,6 +21591,7 @@ class UpdateUserResponse(TeaModel):
         self,
         avatar: str = None,
         created_at: int = None,
+        creator: str = None,
         default_drive_id: str = None,
         deny_change_password_by_self: bool = None,
         description: str = None,
@@ -17969,6 +21613,8 @@ class UpdateUserResponse(TeaModel):
         self.avatar = avatar
         # 用户创建时间
         self.created_at = created_at
+        # creator
+        self.creator = creator
         # 默认 Drive ID
         self.default_drive_id = default_drive_id
         # 禁止用户自行修改密码
@@ -18014,6 +21660,8 @@ class UpdateUserResponse(TeaModel):
             result['avatar'] = self.avatar
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.default_drive_id is not None:
             result['default_drive_id'] = self.default_drive_id
         if self.deny_change_password_by_self is not None:
@@ -18054,6 +21702,8 @@ class UpdateUserResponse(TeaModel):
             self.avatar = m.get('avatar')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('default_drive_id') is not None:
             self.default_drive_id = m.get('default_drive_id')
         if m.get('deny_change_password_by_self') is not None:
@@ -18463,13 +22113,15 @@ class GetStoryResponse(TeaModel):
         cover_file_id: str = None,
         cover_file_thumbnail_url: str = None,
         created_at: str = None,
-        event_type: str = None,
+        custom_id: str = None,
+        custom_labels: dict = None,
         face_group_ids: List[str] = None,
         story_end_time: str = None,
         story_file_list: List[BaseCCPFileResponse] = None,
         story_id: str = None,
         story_name: str = None,
         story_start_time: str = None,
+        story_sub_type: str = None,
         story_type: str = None,
         updated_at: str = None,
     ):
@@ -18479,8 +22131,10 @@ class GetStoryResponse(TeaModel):
         self.cover_file_thumbnail_url = cover_file_thumbnail_url
         # created_at
         self.created_at = created_at
-        # event_type
-        self.event_type = event_type
+        # custom_id
+        self.custom_id = custom_id
+        # custom_labels
+        self.custom_labels = custom_labels
         # face_group_ids
         self.face_group_ids = face_group_ids
         # story_end_time
@@ -18492,6 +22146,8 @@ class GetStoryResponse(TeaModel):
         self.story_name = story_name
         # story_start_time
         self.story_start_time = story_start_time
+        # story_sub_type
+        self.story_sub_type = story_sub_type
         # story_type
         self.story_type = story_type
         # updated_at
@@ -18515,8 +22171,10 @@ class GetStoryResponse(TeaModel):
             result['cover_file_thumbnail_url'] = self.cover_file_thumbnail_url
         if self.created_at is not None:
             result['created_at'] = self.created_at
-        if self.event_type is not None:
-            result['event_type'] = self.event_type
+        if self.custom_id is not None:
+            result['custom_id'] = self.custom_id
+        if self.custom_labels is not None:
+            result['custom_labels'] = self.custom_labels
         if self.face_group_ids is not None:
             result['face_group_ids'] = self.face_group_ids
         if self.story_end_time is not None:
@@ -18531,6 +22189,8 @@ class GetStoryResponse(TeaModel):
             result['story_name'] = self.story_name
         if self.story_start_time is not None:
             result['story_start_time'] = self.story_start_time
+        if self.story_sub_type is not None:
+            result['story_sub_type'] = self.story_sub_type
         if self.story_type is not None:
             result['story_type'] = self.story_type
         if self.updated_at is not None:
@@ -18545,8 +22205,10 @@ class GetStoryResponse(TeaModel):
             self.cover_file_thumbnail_url = m.get('cover_file_thumbnail_url')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
-        if m.get('event_type') is not None:
-            self.event_type = m.get('event_type')
+        if m.get('custom_id') is not None:
+            self.custom_id = m.get('custom_id')
+        if m.get('custom_labels') is not None:
+            self.custom_labels = m.get('custom_labels')
         if m.get('face_group_ids') is not None:
             self.face_group_ids = m.get('face_group_ids')
         if m.get('story_end_time') is not None:
@@ -18562,6 +22224,8 @@ class GetStoryResponse(TeaModel):
             self.story_name = m.get('story_name')
         if m.get('story_start_time') is not None:
             self.story_start_time = m.get('story_start_time')
+        if m.get('story_sub_type') is not None:
+            self.story_sub_type = m.get('story_sub_type')
         if m.get('story_type') is not None:
             self.story_type = m.get('story_type')
         if m.get('updated_at') is not None:
@@ -18981,25 +22645,25 @@ class FaceBoundary(TeaModel):
 
         result = dict()
         if self.height is not None:
-            result['height'] = self.height
+            result['Height'] = self.height
         if self.left is not None:
-            result['left'] = self.left
+            result['Left'] = self.left
         if self.top is not None:
-            result['top'] = self.top
+            result['Top'] = self.top
         if self.width is not None:
-            result['width'] = self.width
+            result['Width'] = self.width
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('height') is not None:
-            self.height = m.get('height')
-        if m.get('left') is not None:
-            self.left = m.get('left')
-        if m.get('top') is not None:
-            self.top = m.get('top')
-        if m.get('width') is not None:
-            self.width = m.get('width')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
         return self
 
 
@@ -19010,7 +22674,6 @@ class ImageFaceGroupResponse(TeaModel):
     def __init__(
         self,
         created_at: str = None,
-        face_count: int = None,
         group_cover_face_boundary: FaceBoundary = None,
         group_cover_file_id: str = None,
         group_cover_height: int = None,
@@ -19025,8 +22688,6 @@ class ImageFaceGroupResponse(TeaModel):
     ):
         # 人脸分组生成时间
         self.created_at = created_at
-        # 人脸个数
-        self.face_count = face_count
         self.group_cover_face_boundary = group_cover_face_boundary
         # group_cover_file_id
         self.group_cover_file_id = group_cover_file_id
@@ -19061,8 +22722,6 @@ class ImageFaceGroupResponse(TeaModel):
         result = dict()
         if self.created_at is not None:
             result['created_at'] = self.created_at
-        if self.face_count is not None:
-            result['face_count'] = self.face_count
         if self.group_cover_face_boundary is not None:
             result['group_cover_face_boundary'] = self.group_cover_face_boundary.to_map()
         if self.group_cover_file_id is not None:
@@ -19091,8 +22750,6 @@ class ImageFaceGroupResponse(TeaModel):
         m = m or dict()
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
-        if m.get('face_count') is not None:
-            self.face_count = m.get('face_count')
         if m.get('group_cover_face_boundary') is not None:
             temp_model = FaceBoundary()
             self.group_cover_face_boundary = temp_model.from_map(m['group_cover_face_boundary'])
@@ -19698,6 +23355,73 @@ class AddFileModel(TeaModel):
         return self
 
 
+class CopyViewFilesResponse(TeaModel):
+    """
+    copy view files
+    """
+    def __init__(
+        self,
+        async_task_id: str = None,
+    ):
+        # async_task_id
+        self.async_task_id = async_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('async_task_id') is not None:
+            self.async_task_id = m.get('async_task_id')
+        return self
+
+
+class CopyFilesModel(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CopyViewFilesResponse = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CopyViewFilesResponse()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateViewResponse(TeaModel):
     """
     创建逻辑视图
@@ -20004,6 +23728,7 @@ class ViewFileItem(TeaModel):
     def __init__(
         self,
         action_list: List[str] = None,
+        auto_delete_left_sec: int = None,
         category: str = None,
         characteristic_hash: str = None,
         content_hash: str = None,
@@ -20011,6 +23736,9 @@ class ViewFileItem(TeaModel):
         content_type: str = None,
         crc_64hash: str = None,
         created_at: str = None,
+        creator_id: str = None,
+        creator_name: str = None,
+        creator_type: str = None,
         custom_field_1: str = None,
         custom_field_2: str = None,
         custom_type: str = None,
@@ -20019,9 +23747,11 @@ class ViewFileItem(TeaModel):
         download_url: str = None,
         drive_id: str = None,
         encrypt_mode: str = None,
+        ex_fields_info: dict = None,
         fields: dict = None,
         file_extension: str = None,
         file_id: str = None,
+        file_path_type: str = None,
         file_revision_id: str = None,
         hidden: bool = None,
         image_media_metadata: ImageMediaResponse = None,
@@ -20030,17 +23760,23 @@ class ViewFileItem(TeaModel):
         last_modifier_id: str = None,
         last_modifier_name: str = None,
         last_modifier_type: str = None,
+        local_created_at: str = None,
+        local_modified_at: str = None,
         meta: str = None,
         mime_extension: str = None,
         mime_type: str = None,
         name: str = None,
         parent_file_id: str = None,
         punish_flag: int = None,
+        revision_id: str = None,
         share_id: str = None,
         size: int = None,
         starred: bool = None,
         status: str = None,
         streams_info: dict = None,
+        sync_device_flag: bool = None,
+        sync_flag: bool = None,
+        sync_meta: str = None,
         thumbnail: str = None,
         trashed_at: str = None,
         type: str = None,
@@ -20055,6 +23791,8 @@ class ViewFileItem(TeaModel):
     ):
         # action_list
         self.action_list = action_list
+        # auto_delete_left_sec
+        self.auto_delete_left_sec = auto_delete_left_sec
         # category
         self.category = category
         # CharacteristicHash
@@ -20069,6 +23807,12 @@ class ViewFileItem(TeaModel):
         self.crc_64hash = crc_64hash
         # created_at
         self.created_at = created_at
+        # creator_id
+        self.creator_id = creator_id
+        # creator_name
+        self.creator_name = creator_name
+        # creator_type
+        self.creator_type = creator_type
         # custom_field_1
         self.custom_field_1 = custom_field_1
         # custom_field_2
@@ -20085,11 +23829,15 @@ class ViewFileItem(TeaModel):
         self.drive_id = drive_id
         # encrypt_mode
         self.encrypt_mode = encrypt_mode
+        # ex_fields_info
+        self.ex_fields_info = ex_fields_info
         self.fields = fields
         # file_extension
         self.file_extension = file_extension
         # file_id
         self.file_id = file_id
+        # TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
+        self.file_path_type = file_path_type
         self.file_revision_id = file_revision_id
         # Hidden
         # type: boolean
@@ -20104,6 +23852,9 @@ class ViewFileItem(TeaModel):
         self.last_modifier_name = last_modifier_name
         # last_modifier_type
         self.last_modifier_type = last_modifier_type
+        # local_created_at
+        self.local_created_at = local_created_at
+        self.local_modified_at = local_modified_at
         self.meta = meta
         # mime_extension
         self.mime_extension = mime_extension
@@ -20115,6 +23866,8 @@ class ViewFileItem(TeaModel):
         self.parent_file_id = parent_file_id
         # PunishFlag
         self.punish_flag = punish_flag
+        # revision_id
+        self.revision_id = revision_id
         self.share_id = share_id
         # Size
         self.size = size
@@ -20125,6 +23878,12 @@ class ViewFileItem(TeaModel):
         self.status = status
         # @Deprecated streams url info
         self.streams_info = streams_info
+        # sync_device_flag
+        self.sync_device_flag = sync_device_flag
+        # sync_flag
+        self.sync_flag = sync_flag
+        # sync_meta
+        self.sync_meta = sync_meta
         # thumbnail
         self.thumbnail = thumbnail
         # trashed_at
@@ -20176,6 +23935,8 @@ class ViewFileItem(TeaModel):
         result = dict()
         if self.action_list is not None:
             result['action_list'] = self.action_list
+        if self.auto_delete_left_sec is not None:
+            result['auto_delete_left_sec'] = self.auto_delete_left_sec
         if self.category is not None:
             result['category'] = self.category
         if self.characteristic_hash is not None:
@@ -20190,6 +23951,12 @@ class ViewFileItem(TeaModel):
             result['crc64_hash'] = self.crc_64hash
         if self.created_at is not None:
             result['created_at'] = self.created_at
+        if self.creator_id is not None:
+            result['creator_id'] = self.creator_id
+        if self.creator_name is not None:
+            result['creator_name'] = self.creator_name
+        if self.creator_type is not None:
+            result['creator_type'] = self.creator_type
         if self.custom_field_1 is not None:
             result['custom_field_1'] = self.custom_field_1
         if self.custom_field_2 is not None:
@@ -20206,12 +23973,16 @@ class ViewFileItem(TeaModel):
             result['drive_id'] = self.drive_id
         if self.encrypt_mode is not None:
             result['encrypt_mode'] = self.encrypt_mode
+        if self.ex_fields_info is not None:
+            result['ex_fields_info'] = self.ex_fields_info
         if self.fields is not None:
             result['fields'] = self.fields
         if self.file_extension is not None:
             result['file_extension'] = self.file_extension
         if self.file_id is not None:
             result['file_id'] = self.file_id
+        if self.file_path_type is not None:
+            result['file_path_type'] = self.file_path_type
         if self.file_revision_id is not None:
             result['file_revision_id'] = self.file_revision_id
         if self.hidden is not None:
@@ -20228,6 +23999,10 @@ class ViewFileItem(TeaModel):
             result['last_modifier_name'] = self.last_modifier_name
         if self.last_modifier_type is not None:
             result['last_modifier_type'] = self.last_modifier_type
+        if self.local_created_at is not None:
+            result['local_created_at'] = self.local_created_at
+        if self.local_modified_at is not None:
+            result['local_modified_at'] = self.local_modified_at
         if self.meta is not None:
             result['meta'] = self.meta
         if self.mime_extension is not None:
@@ -20240,6 +24015,8 @@ class ViewFileItem(TeaModel):
             result['parent_file_id'] = self.parent_file_id
         if self.punish_flag is not None:
             result['punish_flag'] = self.punish_flag
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.size is not None:
@@ -20250,6 +24027,12 @@ class ViewFileItem(TeaModel):
             result['status'] = self.status
         if self.streams_info is not None:
             result['streams_info'] = self.streams_info
+        if self.sync_device_flag is not None:
+            result['sync_device_flag'] = self.sync_device_flag
+        if self.sync_flag is not None:
+            result['sync_flag'] = self.sync_flag
+        if self.sync_meta is not None:
+            result['sync_meta'] = self.sync_meta
         if self.thumbnail is not None:
             result['thumbnail'] = self.thumbnail
         if self.trashed_at is not None:
@@ -20278,6 +24061,8 @@ class ViewFileItem(TeaModel):
         m = m or dict()
         if m.get('action_list') is not None:
             self.action_list = m.get('action_list')
+        if m.get('auto_delete_left_sec') is not None:
+            self.auto_delete_left_sec = m.get('auto_delete_left_sec')
         if m.get('category') is not None:
             self.category = m.get('category')
         if m.get('characteristic_hash') is not None:
@@ -20292,6 +24077,12 @@ class ViewFileItem(TeaModel):
             self.crc_64hash = m.get('crc64_hash')
         if m.get('created_at') is not None:
             self.created_at = m.get('created_at')
+        if m.get('creator_id') is not None:
+            self.creator_id = m.get('creator_id')
+        if m.get('creator_name') is not None:
+            self.creator_name = m.get('creator_name')
+        if m.get('creator_type') is not None:
+            self.creator_type = m.get('creator_type')
         if m.get('custom_field_1') is not None:
             self.custom_field_1 = m.get('custom_field_1')
         if m.get('custom_field_2') is not None:
@@ -20308,12 +24099,16 @@ class ViewFileItem(TeaModel):
             self.drive_id = m.get('drive_id')
         if m.get('encrypt_mode') is not None:
             self.encrypt_mode = m.get('encrypt_mode')
+        if m.get('ex_fields_info') is not None:
+            self.ex_fields_info = m.get('ex_fields_info')
         if m.get('fields') is not None:
             self.fields = m.get('fields')
         if m.get('file_extension') is not None:
             self.file_extension = m.get('file_extension')
         if m.get('file_id') is not None:
             self.file_id = m.get('file_id')
+        if m.get('file_path_type') is not None:
+            self.file_path_type = m.get('file_path_type')
         if m.get('file_revision_id') is not None:
             self.file_revision_id = m.get('file_revision_id')
         if m.get('hidden') is not None:
@@ -20331,6 +24126,10 @@ class ViewFileItem(TeaModel):
             self.last_modifier_name = m.get('last_modifier_name')
         if m.get('last_modifier_type') is not None:
             self.last_modifier_type = m.get('last_modifier_type')
+        if m.get('local_created_at') is not None:
+            self.local_created_at = m.get('local_created_at')
+        if m.get('local_modified_at') is not None:
+            self.local_modified_at = m.get('local_modified_at')
         if m.get('meta') is not None:
             self.meta = m.get('meta')
         if m.get('mime_extension') is not None:
@@ -20343,6 +24142,8 @@ class ViewFileItem(TeaModel):
             self.parent_file_id = m.get('parent_file_id')
         if m.get('punish_flag') is not None:
             self.punish_flag = m.get('punish_flag')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('size') is not None:
@@ -20353,6 +24154,12 @@ class ViewFileItem(TeaModel):
             self.status = m.get('status')
         if m.get('streams_info') is not None:
             self.streams_info = m.get('streams_info')
+        if m.get('sync_device_flag') is not None:
+            self.sync_device_flag = m.get('sync_device_flag')
+        if m.get('sync_flag') is not None:
+            self.sync_flag = m.get('sync_flag')
+        if m.get('sync_meta') is not None:
+            self.sync_meta = m.get('sync_meta')
         if m.get('thumbnail') is not None:
             self.thumbnail = m.get('thumbnail')
         if m.get('trashed_at') is not None:
@@ -20569,9 +24376,11 @@ class SearchViewsResponse(TeaModel):
         self,
         items: List[GetViewResponse] = None,
         next_marker: str = None,
+        total_count: int = None,
     ):
         self.items = items
         self.next_marker = next_marker
+        self.total_count = total_count
 
     def validate(self):
         if self.items:
@@ -20591,6 +24400,8 @@ class SearchViewsResponse(TeaModel):
                 result['items'].append(k.to_map() if k else None)
         if self.next_marker is not None:
             result['next_marker'] = self.next_marker
+        if self.total_count is not None:
+            result['total_count'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -20602,6 +24413,8 @@ class SearchViewsResponse(TeaModel):
                 self.items.append(temp_model.from_map(k))
         if m.get('next_marker') is not None:
             self.next_marker = m.get('next_marker')
+        if m.get('total_count') is not None:
+            self.total_count = m.get('total_count')
         return self
 
 
@@ -20675,6 +24488,7 @@ class AccountLinkRequest(TeaModel):
     def __init__(
         self,
         httpheaders: Dict[str, str] = None,
+        custom_identity: str = None,
         detail: str = None,
         extra: str = None,
         identity: str = None,
@@ -20683,6 +24497,7 @@ class AccountLinkRequest(TeaModel):
         user_id: str = None,
     ):
         self.httpheaders = httpheaders
+        self.custom_identity = custom_identity
         # 账号信息
         self.detail = detail
         # 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
@@ -20709,6 +24524,8 @@ class AccountLinkRequest(TeaModel):
         result = dict()
         if self.httpheaders is not None:
             result['httpheaders'] = self.httpheaders
+        if self.custom_identity is not None:
+            result['custom_identity'] = self.custom_identity
         if self.detail is not None:
             result['detail'] = self.detail
         if self.extra is not None:
@@ -20727,6 +24544,8 @@ class AccountLinkRequest(TeaModel):
         m = m or dict()
         if m.get('httpheaders') is not None:
             self.httpheaders = m.get('httpheaders')
+        if m.get('custom_identity') is not None:
+            self.custom_identity = m.get('custom_identity')
         if m.get('detail') is not None:
             self.detail = m.get('detail')
         if m.get('extra') is not None:
@@ -21071,55 +24890,7 @@ class ArchiveListResponse(TeaModel):
         return self
 
 
-class ArchiveStatusResponse(TeaModel):
-    """
-    ArchiveStatusResponse response
-    """
-    def __init__(
-        self,
-        file_list: dict = None,
-        progress: int = None,
-        state: str = None,
-        task_id: str = None,
-    ):
-        self.file_list = file_list
-        self.progress = progress
-        self.state = state
-        self.task_id = task_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.file_list is not None:
-            result['file_list'] = self.file_list
-        if self.progress is not None:
-            result['progress'] = self.progress
-        if self.state is not None:
-            result['state'] = self.state
-        if self.task_id is not None:
-            result['task_id'] = self.task_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('file_list') is not None:
-            self.file_list = m.get('file_list')
-        if m.get('progress') is not None:
-            self.progress = m.get('progress')
-        if m.get('state') is not None:
-            self.state = m.get('state')
-        if m.get('task_id') is not None:
-            self.task_id = m.get('task_id')
-        return self
-
-
-class ArchiveUncompressRequest(TeaModel):
+class ArchiveStatusRequest(TeaModel):
     """
     获取解压任务状态
     """
@@ -21193,6 +24964,140 @@ class ArchiveUncompressRequest(TeaModel):
         return self
 
 
+class ArchiveStatusResponse(TeaModel):
+    """
+    ArchiveStatusResponse response
+    """
+    def __init__(
+        self,
+        file_list: dict = None,
+        progress: int = None,
+        state: str = None,
+        task_id: str = None,
+    ):
+        self.file_list = file_list
+        self.progress = progress
+        self.state = state
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_list is not None:
+            result['file_list'] = self.file_list
+        if self.progress is not None:
+            result['progress'] = self.progress
+        if self.state is not None:
+            result['state'] = self.state
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('file_list') is not None:
+            self.file_list = m.get('file_list')
+        if m.get('progress') is not None:
+            self.progress = m.get('progress')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class ArchiveUncompressRequest(TeaModel):
+    """
+    解压
+    """
+    def __init__(
+        self,
+        format: str = None,
+        request_id: str = None,
+        archive_type: str = None,
+        domain_id: str = None,
+        drive_id: str = None,
+        file_id: str = None,
+        file_list: List[str] = None,
+        password: str = None,
+        target_drive_id: str = None,
+        target_file_id: str = None,
+    ):
+        # 格式类型，如果是uc，使用特殊格式
+        self.format = format
+        self.request_id = request_id
+        self.archive_type = archive_type
+        self.domain_id = domain_id
+        # TODO 增加对ShareID的支持
+        self.drive_id = drive_id
+        self.file_id = file_id
+        self.file_list = file_list
+        self.password = password
+        self.target_drive_id = target_drive_id
+        self.target_file_id = target_file_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.request_id is not None:
+            result['RequestID'] = self.request_id
+        if self.archive_type is not None:
+            result['archive_type'] = self.archive_type
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.file_list is not None:
+            result['file_list'] = self.file_list
+        if self.password is not None:
+            result['password'] = self.password
+        if self.target_drive_id is not None:
+            result['target_drive_id'] = self.target_drive_id
+        if self.target_file_id is not None:
+            result['target_file_id'] = self.target_file_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('RequestID') is not None:
+            self.request_id = m.get('RequestID')
+        if m.get('archive_type') is not None:
+            self.archive_type = m.get('archive_type')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('file_list') is not None:
+            self.file_list = m.get('file_list')
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('target_drive_id') is not None:
+            self.target_drive_id = m.get('target_drive_id')
+        if m.get('target_file_id') is not None:
+            self.target_file_id = m.get('target_file_id')
+        return self
+
+
 class ArchiveUncompressResponse(TeaModel):
     """
     解压 response
@@ -21229,78 +25134,6 @@ class ArchiveUncompressResponse(TeaModel):
         return self
 
 
-class LdapConfig(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        admin_dn: str = None,
-        admin_password: str = None,
-        base_dn: str = None,
-        global_uid: str = None,
-        host: str = None,
-        port: int = None,
-        uid: str = None,
-        version: str = None,
-    ):
-        self.admin_dn = admin_dn
-        self.admin_password = admin_password
-        self.base_dn = base_dn
-        self.global_uid = global_uid
-        self.host = host
-        self.port = port
-        self.uid = uid
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.admin_dn is not None:
-            result['admin_dn'] = self.admin_dn
-        if self.admin_password is not None:
-            result['admin_password'] = self.admin_password
-        if self.base_dn is not None:
-            result['base_dn'] = self.base_dn
-        if self.global_uid is not None:
-            result['global_uid'] = self.global_uid
-        if self.host is not None:
-            result['host'] = self.host
-        if self.port is not None:
-            result['port'] = self.port
-        if self.uid is not None:
-            result['uid'] = self.uid
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('admin_dn') is not None:
-            self.admin_dn = m.get('admin_dn')
-        if m.get('admin_password') is not None:
-            self.admin_password = m.get('admin_password')
-        if m.get('base_dn') is not None:
-            self.base_dn = m.get('base_dn')
-        if m.get('global_uid') is not None:
-            self.global_uid = m.get('global_uid')
-        if m.get('host') is not None:
-            self.host = m.get('host')
-        if m.get('port') is not None:
-            self.port = m.get('port')
-        if m.get('uid') is not None:
-            self.uid = m.get('uid')
-        if m.get('version') is not None:
-            self.version = m.get('version')
-        return self
-
-
 class AuthConfig(TeaModel):
     """
     *\
@@ -21311,12 +25144,15 @@ class AuthConfig(TeaModel):
         app_secret: str = None,
         callback_security: bool = None,
         enable: bool = None,
+        encoding_aes_key: str = None,
         endpoint: str = None,
         enterprise_id: str = None,
         ldap_config: LdapConfig = None,
         login_page_headers: dict = None,
         login_page_template: str = None,
         login_page_vars: dict = None,
+        token: str = None,
+        we_chat_sync_config: WeChatSyncConfig = None,
         white_list_config: dict = None,
         white_list_enable: bool = None,
     ):
@@ -21324,18 +25160,23 @@ class AuthConfig(TeaModel):
         self.app_secret = app_secret
         self.callback_security = callback_security
         self.enable = enable
+        self.encoding_aes_key = encoding_aes_key
         self.endpoint = endpoint
         self.enterprise_id = enterprise_id
         self.ldap_config = ldap_config
         self.login_page_headers = login_page_headers
         self.login_page_template = login_page_template
         self.login_page_vars = login_page_vars
+        self.token = token
+        self.we_chat_sync_config = we_chat_sync_config
         self.white_list_config = white_list_config
         self.white_list_enable = white_list_enable
 
     def validate(self):
         if self.ldap_config:
             self.ldap_config.validate()
+        if self.we_chat_sync_config:
+            self.we_chat_sync_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -21351,6 +25192,8 @@ class AuthConfig(TeaModel):
             result['callback_security'] = self.callback_security
         if self.enable is not None:
             result['enable'] = self.enable
+        if self.encoding_aes_key is not None:
+            result['encoding_aes_key'] = self.encoding_aes_key
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
         if self.enterprise_id is not None:
@@ -21363,6 +25206,10 @@ class AuthConfig(TeaModel):
             result['login_page_template'] = self.login_page_template
         if self.login_page_vars is not None:
             result['login_page_vars'] = self.login_page_vars
+        if self.token is not None:
+            result['token'] = self.token
+        if self.we_chat_sync_config is not None:
+            result['we_chat_sync_config'] = self.we_chat_sync_config.to_map()
         if self.white_list_config is not None:
             result['white_list_config'] = self.white_list_config
         if self.white_list_enable is not None:
@@ -21379,6 +25226,8 @@ class AuthConfig(TeaModel):
             self.callback_security = m.get('callback_security')
         if m.get('enable') is not None:
             self.enable = m.get('enable')
+        if m.get('encoding_aes_key') is not None:
+            self.encoding_aes_key = m.get('encoding_aes_key')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
         if m.get('enterprise_id') is not None:
@@ -21392,6 +25241,11 @@ class AuthConfig(TeaModel):
             self.login_page_template = m.get('login_page_template')
         if m.get('login_page_vars') is not None:
             self.login_page_vars = m.get('login_page_vars')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('we_chat_sync_config') is not None:
+            temp_model = WeChatSyncConfig()
+            self.we_chat_sync_config = temp_model.from_map(m['we_chat_sync_config'])
         if m.get('white_list_config') is not None:
             self.white_list_config = m.get('white_list_config')
         if m.get('white_list_enable') is not None:
@@ -22412,6 +26266,44 @@ class BaseMoveFileRequest(TeaModel):
         return self
 
 
+class BaseSortShareLinkRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        order_by: str = None,
+        order_direction: str = None,
+    ):
+        # order_by
+        self.order_by = order_by
+        # order_direction
+        self.order_direction = order_direction
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_by is not None:
+            result['order_by'] = self.order_by
+        if self.order_direction is not None:
+            result['order_direction'] = self.order_direction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('order_by') is not None:
+            self.order_by = m.get('order_by')
+        if m.get('order_direction') is not None:
+            self.order_direction = m.get('order_direction')
+        return self
+
+
 class UserTag(TeaModel):
     """
     *\
@@ -22645,6 +26537,8 @@ class CCPArchiveFilesRequest(TeaModel):
         drive_id: str = None,
         files: List[FileInfo] = None,
         name: str = None,
+        referer: str = None,
+        share_id: str = None,
     ):
         self.httpheaders = httpheaders
         # addition_data
@@ -22654,6 +26548,9 @@ class CCPArchiveFilesRequest(TeaModel):
         self.files = files
         # file_name
         self.name = name
+        self.referer = referer
+        # share_id, either share_id or drive_id is required
+        self.share_id = share_id
 
     def validate(self):
         if self.drive_id is not None:
@@ -22683,6 +26580,10 @@ class CCPArchiveFilesRequest(TeaModel):
                 result['files'].append(k.to_map() if k else None)
         if self.name is not None:
             result['name'] = self.name
+        if self.referer is not None:
+            result['referer'] = self.referer
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
         return result
 
     def from_map(self, m: dict = None):
@@ -22700,6 +26601,10 @@ class CCPArchiveFilesRequest(TeaModel):
                 self.files.append(temp_model.from_map(k))
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('referer') is not None:
+            self.referer = m.get('referer')
+        if m.get('share_id') is not None:
+            self.share_id = m.get('share_id')
         return self
 
 
@@ -22860,6 +26765,7 @@ class CCPGetShareLinkVideoPreviewPlayInfoRequest(TeaModel):
         httpheaders: Dict[str, str] = None,
         addition_data: dict = None,
         category: str = None,
+        drive_id: str = None,
         file_id: str = None,
         file_id_path: str = None,
         get_preview_url: bool = None,
@@ -22882,6 +26788,8 @@ class CCPGetShareLinkVideoPreviewPlayInfoRequest(TeaModel):
         self.addition_data = addition_data
         # category
         self.category = category
+        # drive_id
+        self.drive_id = drive_id
         # file_id
         self.file_id = file_id
         self.file_id_path = file_id_path
@@ -22914,6 +26822,9 @@ class CCPGetShareLinkVideoPreviewPlayInfoRequest(TeaModel):
         self.video_thumbnail_process = video_thumbnail_process
 
     def validate(self):
+        self.validate_required(self.drive_id, 'drive_id')
+        if self.drive_id is not None:
+            self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
         if self.file_id is not None:
             self.validate_max_length(self.file_id, 'file_id', 50)
             self.validate_pattern(self.file_id, 'file_id', '[a-z0-9.-_]{1,50}')
@@ -22934,6 +26845,8 @@ class CCPGetShareLinkVideoPreviewPlayInfoRequest(TeaModel):
             result['addition_data'] = self.addition_data
         if self.category is not None:
             result['category'] = self.category
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
         if self.file_id is not None:
             result['file_id'] = self.file_id
         if self.file_id_path is not None:
@@ -22976,6 +26889,8 @@ class CCPGetShareLinkVideoPreviewPlayInfoRequest(TeaModel):
             self.addition_data = m.get('addition_data')
         if m.get('category') is not None:
             self.category = m.get('category')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
         if m.get('file_id') is not None:
             self.file_id = m.get('file_id')
         if m.get('file_id_path') is not None:
@@ -24143,7 +28058,6 @@ class CreateDomainRequest(TeaModel):
         auth_dingding_app_id: str = None,
         auth_dingding_app_secret: str = None,
         auth_dingding_enable: bool = None,
-        auth_endpoint_enable: bool = None,
         auth_ram_app_id: str = None,
         auth_ram_app_secret: str = None,
         auth_ram_enable: bool = None,
@@ -24155,14 +28069,21 @@ class CreateDomainRequest(TeaModel):
         event_mns_topic: str = None,
         event_names: List[str] = None,
         event_role_arn: str = None,
+        group_single_drive_enabled: bool = None,
+        independent_store: bool = None,
         init_drive_enable: bool = None,
         init_drive_size: int = None,
         mode: str = None,
+        parent_domain_id: str = None,
         path_type: str = None,
         published_app_access_strategy: AppAccessStrategy = None,
         sharable: bool = None,
+        size_quota: int = None,
         store_level: str = None,
         store_region_list: List[str] = None,
+        used_size_refresh_interval: int = None,
+        user_count_quota: int = None,
+        user_single_drive_enabled: bool = None,
     ):
         # 登录相关信息
         self.auth_config = auth_config
@@ -24172,7 +28093,6 @@ class CreateDomainRequest(TeaModel):
         self.auth_dingding_app_secret = auth_dingding_app_secret
         # 启用钉钉认证
         self.auth_dingding_enable = auth_dingding_enable
-        self.auth_endpoint_enable = auth_endpoint_enable
         # RAM App Id
         self.auth_ram_app_id = auth_ram_app_id
         # RAM App Secret
@@ -24195,28 +28115,38 @@ class CreateDomainRequest(TeaModel):
         self.event_names = event_names
         # 事件通知 Role Arn
         self.event_role_arn = event_role_arn
+        # 单团队单drive
+        self.group_single_drive_enabled = group_single_drive_enabled
+        self.independent_store = independent_store
         # 开启自动初始化 Drive
         self.init_drive_enable = init_drive_enable
         # 自动初始化 Drive 大小
         self.init_drive_size = init_drive_size
         # Domain 类型
         self.mode = mode
+        # 父 Domain ID
+        self.parent_domain_id = parent_domain_id
         # Domain 类型
         self.path_type = path_type
         self.published_app_access_strategy = published_app_access_strategy
         # 开启分享
         self.sharable = sharable
+        # 逻辑空间quota，默认为-1，无限制，单位为字节
+        self.size_quota = size_quota
         # 存储级别
         self.store_level = store_level
         # 存储 Region 列表
         self.store_region_list = store_region_list
+        # 逻辑空间刷新周期，单位：秒
+        self.used_size_refresh_interval = used_size_refresh_interval
+        # 用户数quota，默认为-1，无限制
+        self.user_count_quota = user_count_quota
+        # 单用户单drive
+        self.user_single_drive_enabled = user_single_drive_enabled
 
     def validate(self):
-        self.validate_required(self.domain_name, 'domain_name')
-        self.validate_required(self.mode, 'mode')
         if self.published_app_access_strategy:
             self.published_app_access_strategy.validate()
-        self.validate_required(self.store_region_list, 'store_region_list')
 
     def to_map(self):
         _map = super().to_map()
@@ -24232,8 +28162,6 @@ class CreateDomainRequest(TeaModel):
             result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
         if self.auth_dingding_enable is not None:
             result['auth_dingding_enable'] = self.auth_dingding_enable
-        if self.auth_endpoint_enable is not None:
-            result['auth_endpoint_enable'] = self.auth_endpoint_enable
         if self.auth_ram_app_id is not None:
             result['auth_ram_app_id'] = self.auth_ram_app_id
         if self.auth_ram_app_secret is not None:
@@ -24256,22 +28184,36 @@ class CreateDomainRequest(TeaModel):
             result['event_names'] = self.event_names
         if self.event_role_arn is not None:
             result['event_role_arn'] = self.event_role_arn
+        if self.group_single_drive_enabled is not None:
+            result['group_single_drive_enabled'] = self.group_single_drive_enabled
+        if self.independent_store is not None:
+            result['independent_store'] = self.independent_store
         if self.init_drive_enable is not None:
             result['init_drive_enable'] = self.init_drive_enable
         if self.init_drive_size is not None:
             result['init_drive_size'] = self.init_drive_size
         if self.mode is not None:
             result['mode'] = self.mode
+        if self.parent_domain_id is not None:
+            result['parent_domain_id'] = self.parent_domain_id
         if self.path_type is not None:
             result['path_type'] = self.path_type
         if self.published_app_access_strategy is not None:
             result['published_app_access_strategy'] = self.published_app_access_strategy.to_map()
         if self.sharable is not None:
             result['sharable'] = self.sharable
+        if self.size_quota is not None:
+            result['size_quota'] = self.size_quota
         if self.store_level is not None:
             result['store_level'] = self.store_level
         if self.store_region_list is not None:
             result['store_region_list'] = self.store_region_list
+        if self.used_size_refresh_interval is not None:
+            result['used_size_refresh_interval'] = self.used_size_refresh_interval
+        if self.user_count_quota is not None:
+            result['user_count_quota'] = self.user_count_quota
+        if self.user_single_drive_enabled is not None:
+            result['user_single_drive_enabled'] = self.user_single_drive_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -24284,8 +28226,6 @@ class CreateDomainRequest(TeaModel):
             self.auth_dingding_app_secret = m.get('auth_dingding_app_secret')
         if m.get('auth_dingding_enable') is not None:
             self.auth_dingding_enable = m.get('auth_dingding_enable')
-        if m.get('auth_endpoint_enable') is not None:
-            self.auth_endpoint_enable = m.get('auth_endpoint_enable')
         if m.get('auth_ram_app_id') is not None:
             self.auth_ram_app_id = m.get('auth_ram_app_id')
         if m.get('auth_ram_app_secret') is not None:
@@ -24308,12 +28248,18 @@ class CreateDomainRequest(TeaModel):
             self.event_names = m.get('event_names')
         if m.get('event_role_arn') is not None:
             self.event_role_arn = m.get('event_role_arn')
+        if m.get('group_single_drive_enabled') is not None:
+            self.group_single_drive_enabled = m.get('group_single_drive_enabled')
+        if m.get('independent_store') is not None:
+            self.independent_store = m.get('independent_store')
         if m.get('init_drive_enable') is not None:
             self.init_drive_enable = m.get('init_drive_enable')
         if m.get('init_drive_size') is not None:
             self.init_drive_size = m.get('init_drive_size')
         if m.get('mode') is not None:
             self.mode = m.get('mode')
+        if m.get('parent_domain_id') is not None:
+            self.parent_domain_id = m.get('parent_domain_id')
         if m.get('path_type') is not None:
             self.path_type = m.get('path_type')
         if m.get('published_app_access_strategy') is not None:
@@ -24321,10 +28267,18 @@ class CreateDomainRequest(TeaModel):
             self.published_app_access_strategy = temp_model.from_map(m['published_app_access_strategy'])
         if m.get('sharable') is not None:
             self.sharable = m.get('sharable')
+        if m.get('size_quota') is not None:
+            self.size_quota = m.get('size_quota')
         if m.get('store_level') is not None:
             self.store_level = m.get('store_level')
         if m.get('store_region_list') is not None:
             self.store_region_list = m.get('store_region_list')
+        if m.get('used_size_refresh_interval') is not None:
+            self.used_size_refresh_interval = m.get('used_size_refresh_interval')
+        if m.get('user_count_quota') is not None:
+            self.user_count_quota = m.get('user_count_quota')
+        if m.get('user_single_drive_enabled') is not None:
+            self.user_single_drive_enabled = m.get('user_single_drive_enabled')
         return self
 
 
@@ -24564,6 +28518,8 @@ class CreateFileRequest(TeaModel):
         image_media_metadata: ImageMediaMetadata = None,
         labels: List[str] = None,
         last_updated_at: str = None,
+        local_created_at: str = None,
+        local_modified_at: str = None,
         location: str = None,
         meta: str = None,
         name: str = None,
@@ -24578,6 +28534,7 @@ class CreateFileRequest(TeaModel):
         size: int = None,
         streams_info: dict = None,
         type: str = None,
+        upload_type: str = None,
         user_meta: str = None,
         user_tags: List[UserTag] = None,
         video_media_metadata: VideoMediaMetadata = None,
@@ -24604,7 +28561,6 @@ class CreateFileRequest(TeaModel):
         self.description = description
         # drive_id
         self.drive_id = drive_id
-        # encrypt_mode
         self.encrypt_mode = encrypt_mode
         # file_id
         self.file_id = file_id
@@ -24617,6 +28573,9 @@ class CreateFileRequest(TeaModel):
         self.labels = labels
         # last_updated_at
         self.last_updated_at = last_updated_at
+        # local_created_at
+        self.local_created_at = local_created_at
+        self.local_modified_at = local_modified_at
         # location
         self.location = location
         self.meta = meta
@@ -24643,6 +28602,7 @@ class CreateFileRequest(TeaModel):
         self.streams_info = streams_info
         # Type
         self.type = type
+        self.upload_type = upload_type
         # user_meta
         self.user_meta = user_meta
         # user_tags
@@ -24725,6 +28685,10 @@ class CreateFileRequest(TeaModel):
             result['labels'] = self.labels
         if self.last_updated_at is not None:
             result['last_updated_at'] = self.last_updated_at
+        if self.local_created_at is not None:
+            result['local_created_at'] = self.local_created_at
+        if self.local_modified_at is not None:
+            result['local_modified_at'] = self.local_modified_at
         if self.location is not None:
             result['location'] = self.location
         if self.meta is not None:
@@ -24755,6 +28719,8 @@ class CreateFileRequest(TeaModel):
             result['streams_info'] = self.streams_info
         if self.type is not None:
             result['type'] = self.type
+        if self.upload_type is not None:
+            result['upload_type'] = self.upload_type
         if self.user_meta is not None:
             result['user_meta'] = self.user_meta
         result['user_tags'] = []
@@ -24810,6 +28776,10 @@ class CreateFileRequest(TeaModel):
             self.labels = m.get('labels')
         if m.get('last_updated_at') is not None:
             self.last_updated_at = m.get('last_updated_at')
+        if m.get('local_created_at') is not None:
+            self.local_created_at = m.get('local_created_at')
+        if m.get('local_modified_at') is not None:
+            self.local_modified_at = m.get('local_modified_at')
         if m.get('location') is not None:
             self.location = m.get('location')
         if m.get('meta') is not None:
@@ -24841,6 +28811,8 @@ class CreateFileRequest(TeaModel):
             self.streams_info = m.get('streams_info')
         if m.get('type') is not None:
             self.type = m.get('type')
+        if m.get('upload_type') is not None:
+            self.upload_type = m.get('upload_type')
         if m.get('user_meta') is not None:
             self.user_meta = m.get('user_meta')
         self.user_tags = []
@@ -24854,6 +28826,93 @@ class CreateFileRequest(TeaModel):
         return self
 
 
+class CreateShareLinkPermissionRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        disable_download: bool = None,
+        disable_preview: bool = None,
+        disable_save: bool = None,
+        download_limit: int = None,
+        enable_upload: bool = None,
+        preview_limit: int = None,
+        require_login: bool = None,
+        save_download_limit: int = None,
+        save_limit: int = None,
+    ):
+        # 禁止下载分享中的文件
+        self.disable_download = disable_download
+        # 禁止预览分享中的文件
+        self.disable_preview = disable_preview
+        # 禁止转存分享中的文件
+        self.disable_save = disable_save
+        # 分享下载次数限制
+        self.download_limit = download_limit
+        # 允许上传文件到分享
+        self.enable_upload = enable_upload
+        # 分享预览次数限制
+        self.preview_limit = preview_limit
+        # 企业内(domain)登录后才允许使用分享
+        self.require_login = require_login
+        # 分享转存和下载的总次数限制
+        self.save_download_limit = save_download_limit
+        # 分享转存次数限制
+        self.save_limit = save_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_download is not None:
+            result['disable_download'] = self.disable_download
+        if self.disable_preview is not None:
+            result['disable_preview'] = self.disable_preview
+        if self.disable_save is not None:
+            result['disable_save'] = self.disable_save
+        if self.download_limit is not None:
+            result['download_limit'] = self.download_limit
+        if self.enable_upload is not None:
+            result['enable_upload'] = self.enable_upload
+        if self.preview_limit is not None:
+            result['preview_limit'] = self.preview_limit
+        if self.require_login is not None:
+            result['require_login'] = self.require_login
+        if self.save_download_limit is not None:
+            result['save_download_limit'] = self.save_download_limit
+        if self.save_limit is not None:
+            result['save_limit'] = self.save_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('disable_download') is not None:
+            self.disable_download = m.get('disable_download')
+        if m.get('disable_preview') is not None:
+            self.disable_preview = m.get('disable_preview')
+        if m.get('disable_save') is not None:
+            self.disable_save = m.get('disable_save')
+        if m.get('download_limit') is not None:
+            self.download_limit = m.get('download_limit')
+        if m.get('enable_upload') is not None:
+            self.enable_upload = m.get('enable_upload')
+        if m.get('preview_limit') is not None:
+            self.preview_limit = m.get('preview_limit')
+        if m.get('require_login') is not None:
+            self.require_login = m.get('require_login')
+        if m.get('save_download_limit') is not None:
+            self.save_download_limit = m.get('save_download_limit')
+        if m.get('save_limit') is not None:
+            self.save_limit = m.get('save_limit')
+        return self
+
+
 class CreateShareLinkRequest(TeaModel):
     """
     create_share_link request
@@ -24862,25 +28921,59 @@ class CreateShareLinkRequest(TeaModel):
         self,
         httpheaders: Dict[str, str] = None,
         addition_data: dict = None,
+        category: str = None,
+        comments: str = None,
         description: str = None,
+        disable_download: bool = None,
+        disable_preview: bool = None,
+        disable_save: bool = None,
+        download_limit: int = None,
+        drive_file_list: List[ShareFile] = None,
         drive_id: str = None,
+        enable_file_changed_notify: bool = None,
+        enable_upload: bool = None,
         expiration: str = None,
         file_id: str = None,
         file_id_list: List[str] = None,
         file_path_list: List[str] = None,
         filter_group: str = None,
+        preview_limit: int = None,
         referer: str = None,
+        require_login: bool = None,
+        save_download_limit: int = None,
+        save_limit: int = None,
+        share_icon: str = None,
         share_name: str = None,
         share_pwd: str = None,
         user_id: str = None,
+        view_id: str = None,
     ):
         self.httpheaders = httpheaders
         # addition_data
         self.addition_data = addition_data
+        # category
+        self.category = category
+        # comments
+        self.comments = comments
         # description
         self.description = description
+        # 禁止下载分享中的文件
+        self.disable_download = disable_download
+        # 禁止预览分享中的文件
+        self.disable_preview = disable_preview
+        # 禁止转存分享中的文件
+        self.disable_save = disable_save
+        # 分享下载次数限制
+        self.download_limit = download_limit
+        # 多drive使用该字段，view分享支持跨drive，使用该字段，如果为空，则是分享view下所有文件
+        self.drive_file_list = drive_file_list
+        # 单drive使用以下字段，文件共享目前使用该字段
         # drive_id
         self.drive_id = drive_id
+        # enable_file_changed_notify
+        self.enable_file_changed_notify = enable_file_changed_notify
+        # 允许上传文件到分享
+        self.enable_upload = enable_upload
         # expiration
         self.expiration = expiration
         # file_id
@@ -24891,15 +28984,31 @@ class CreateShareLinkRequest(TeaModel):
         self.file_path_list = file_path_list
         # filter_group
         self.filter_group = filter_group
+        # 分享预览次数限制
+        self.preview_limit = preview_limit
         self.referer = referer
+        # 企业内(domain)登录后才允许使用分享
+        self.require_login = require_login
+        # 分享转存和下载的总次数限制
+        self.save_download_limit = save_download_limit
+        # 分享转存次数限制
+        self.save_limit = save_limit
+        # share_icon
+        self.share_icon = share_icon
         # share_name
         self.share_name = share_name
         # share_pwd
         self.share_pwd = share_pwd
         # user_id, only admin or aksk can set
         self.user_id = user_id
+        # view_id
+        self.view_id = view_id
 
     def validate(self):
+        if self.drive_file_list:
+            for k in self.drive_file_list:
+                if k:
+                    k.validate()
         if self.drive_id is not None:
             self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
 
@@ -24913,10 +29022,30 @@ class CreateShareLinkRequest(TeaModel):
             result['httpheaders'] = self.httpheaders
         if self.addition_data is not None:
             result['addition_data'] = self.addition_data
+        if self.category is not None:
+            result['category'] = self.category
+        if self.comments is not None:
+            result['comments'] = self.comments
         if self.description is not None:
             result['description'] = self.description
+        if self.disable_download is not None:
+            result['disable_download'] = self.disable_download
+        if self.disable_preview is not None:
+            result['disable_preview'] = self.disable_preview
+        if self.disable_save is not None:
+            result['disable_save'] = self.disable_save
+        if self.download_limit is not None:
+            result['download_limit'] = self.download_limit
+        result['drive_file_list'] = []
+        if self.drive_file_list is not None:
+            for k in self.drive_file_list:
+                result['drive_file_list'].append(k.to_map() if k else None)
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
+        if self.enable_file_changed_notify is not None:
+            result['enable_file_changed_notify'] = self.enable_file_changed_notify
+        if self.enable_upload is not None:
+            result['enable_upload'] = self.enable_upload
         if self.expiration is not None:
             result['expiration'] = self.expiration
         if self.file_id is not None:
@@ -24927,14 +29056,26 @@ class CreateShareLinkRequest(TeaModel):
             result['file_path_list'] = self.file_path_list
         if self.filter_group is not None:
             result['filter_group'] = self.filter_group
+        if self.preview_limit is not None:
+            result['preview_limit'] = self.preview_limit
         if self.referer is not None:
             result['referer'] = self.referer
+        if self.require_login is not None:
+            result['require_login'] = self.require_login
+        if self.save_download_limit is not None:
+            result['save_download_limit'] = self.save_download_limit
+        if self.save_limit is not None:
+            result['save_limit'] = self.save_limit
+        if self.share_icon is not None:
+            result['share_icon'] = self.share_icon
         if self.share_name is not None:
             result['share_name'] = self.share_name
         if self.share_pwd is not None:
             result['share_pwd'] = self.share_pwd
         if self.user_id is not None:
             result['user_id'] = self.user_id
+        if self.view_id is not None:
+            result['view_id'] = self.view_id
         return result
 
     def from_map(self, m: dict = None):
@@ -24943,10 +29084,31 @@ class CreateShareLinkRequest(TeaModel):
             self.httpheaders = m.get('httpheaders')
         if m.get('addition_data') is not None:
             self.addition_data = m.get('addition_data')
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('comments') is not None:
+            self.comments = m.get('comments')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('disable_download') is not None:
+            self.disable_download = m.get('disable_download')
+        if m.get('disable_preview') is not None:
+            self.disable_preview = m.get('disable_preview')
+        if m.get('disable_save') is not None:
+            self.disable_save = m.get('disable_save')
+        if m.get('download_limit') is not None:
+            self.download_limit = m.get('download_limit')
+        self.drive_file_list = []
+        if m.get('drive_file_list') is not None:
+            for k in m.get('drive_file_list'):
+                temp_model = ShareFile()
+                self.drive_file_list.append(temp_model.from_map(k))
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
+        if m.get('enable_file_changed_notify') is not None:
+            self.enable_file_changed_notify = m.get('enable_file_changed_notify')
+        if m.get('enable_upload') is not None:
+            self.enable_upload = m.get('enable_upload')
         if m.get('expiration') is not None:
             self.expiration = m.get('expiration')
         if m.get('file_id') is not None:
@@ -24957,14 +29119,26 @@ class CreateShareLinkRequest(TeaModel):
             self.file_path_list = m.get('file_path_list')
         if m.get('filter_group') is not None:
             self.filter_group = m.get('filter_group')
+        if m.get('preview_limit') is not None:
+            self.preview_limit = m.get('preview_limit')
         if m.get('referer') is not None:
             self.referer = m.get('referer')
+        if m.get('require_login') is not None:
+            self.require_login = m.get('require_login')
+        if m.get('save_download_limit') is not None:
+            self.save_download_limit = m.get('save_download_limit')
+        if m.get('save_limit') is not None:
+            self.save_limit = m.get('save_limit')
+        if m.get('share_icon') is not None:
+            self.share_icon = m.get('share_icon')
         if m.get('share_name') is not None:
             self.share_name = m.get('share_name')
         if m.get('share_pwd') is not None:
             self.share_pwd = m.get('share_pwd')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
+        if m.get('view_id') is not None:
+            self.view_id = m.get('view_id')
         return self
 
 
@@ -26063,6 +30237,7 @@ class FileAddPermissionRequest(TeaModel):
         drive_id: str = None,
         file_id: str = None,
         member_list: List[FilePermissionMember] = None,
+        subdomain_id: str = None,
     ):
         self.httpheaders = httpheaders
         # 文件所属的drive_id
@@ -26071,6 +30246,8 @@ class FileAddPermissionRequest(TeaModel):
         self.file_id = file_id
         # 被授权的用户或团队列表
         self.member_list = member_list
+        # 文件所属的subdomain_id
+        self.subdomain_id = subdomain_id
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
@@ -26097,6 +30274,8 @@ class FileAddPermissionRequest(TeaModel):
         if self.member_list is not None:
             for k in self.member_list:
                 result['member_list'].append(k.to_map() if k else None)
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
         return result
 
     def from_map(self, m: dict = None):
@@ -26112,24 +30291,28 @@ class FileAddPermissionRequest(TeaModel):
             for k in m.get('member_list'):
                 temp_model = FilePermissionMember()
                 self.member_list.append(temp_model.from_map(k))
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
-class FileListPermissionRequest(TeaModel):
+class FileListInheritPermissionRequest(TeaModel):
     """
-    列举当前文件的共享/授权记录请求
+    查询文件继承的共享/授权列表请求
     """
     def __init__(
         self,
         httpheaders: Dict[str, str] = None,
         drive_id: str = None,
         file_id: str = None,
+        subdomain_id: str = None,
     ):
         self.httpheaders = httpheaders
         # 文件所属的drive_id
         self.drive_id = drive_id
         # 文件的file_id
         self.file_id = file_id
+        self.subdomain_id = subdomain_id
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
@@ -26147,6 +30330,8 @@ class FileListPermissionRequest(TeaModel):
             result['drive_id'] = self.drive_id
         if self.file_id is not None:
             result['file_id'] = self.file_id
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
         return result
 
     def from_map(self, m: dict = None):
@@ -26157,6 +30342,109 @@ class FileListPermissionRequest(TeaModel):
             self.drive_id = m.get('drive_id')
         if m.get('file_id') is not None:
             self.file_id = m.get('file_id')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class FileListPermissionRequest(TeaModel):
+    """
+    列举当前文件的共享/授权记录请求
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        drive_id: str = None,
+        file_id: str = None,
+        subdomain_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 文件所属的drive_id
+        self.drive_id = drive_id
+        # 文件的file_id
+        self.file_id = file_id
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        self.validate_required(self.drive_id, 'drive_id')
+        self.validate_required(self.file_id, 'file_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class FileListUserPermissionRequest(TeaModel):
+    """
+    查询用户所有的文件共享/授权列表请求
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        subdomain_id: str = None,
+        type: str = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        self.subdomain_id = subdomain_id
+        # 选择查看自己的或团队的或所有的，默认自己的
+        self.type = type
+        # 需要查询的用户ID
+        self.user_id = user_id
+
+    def validate(self):
+        self.validate_required(self.user_id, 'user_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.type is not None:
+            result['type'] = self.type
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
         return self
 
 
@@ -26170,6 +30458,7 @@ class FileRemovePermissionRequest(TeaModel):
         drive_id: str = None,
         file_id: str = None,
         member_list: List[FilePermissionMember] = None,
+        subdomain_id: str = None,
     ):
         self.httpheaders = httpheaders
         # 文件所属的drive_id
@@ -26178,6 +30467,8 @@ class FileRemovePermissionRequest(TeaModel):
         self.file_id = file_id
         # 被取消授权的用户或团队列表
         self.member_list = member_list
+        # 文件所属的subdomain_id
+        self.subdomain_id = subdomain_id
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
@@ -26204,6 +30495,8 @@ class FileRemovePermissionRequest(TeaModel):
         if self.member_list is not None:
             for k in self.member_list:
                 result['member_list'].append(k.to_map() if k else None)
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
         return result
 
     def from_map(self, m: dict = None):
@@ -26219,6 +30512,8 @@ class FileRemovePermissionRequest(TeaModel):
             for k in m.get('member_list'):
                 temp_model = FilePermissionMember()
                 self.member_list.append(temp_model.from_map(k))
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -26519,11 +30814,13 @@ class GetByLinkInfoRequest(TeaModel):
     def __init__(
         self,
         httpheaders: Dict[str, str] = None,
+        custom_identity: str = None,
         extra: str = None,
         identity: str = None,
         type: str = None,
     ):
         self.httpheaders = httpheaders
+        self.custom_identity = custom_identity
         # 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
         self.extra = extra
         # 唯一身份标识
@@ -26543,6 +30840,8 @@ class GetByLinkInfoRequest(TeaModel):
         result = dict()
         if self.httpheaders is not None:
             result['httpheaders'] = self.httpheaders
+        if self.custom_identity is not None:
+            result['custom_identity'] = self.custom_identity
         if self.extra is not None:
             result['extra'] = self.extra
         if self.identity is not None:
@@ -26555,6 +30854,8 @@ class GetByLinkInfoRequest(TeaModel):
         m = m or dict()
         if m.get('httpheaders') is not None:
             self.httpheaders = m.get('httpheaders')
+        if m.get('custom_identity') is not None:
+            self.custom_identity = m.get('custom_identity')
         if m.get('extra') is not None:
             self.extra = m.get('extra')
         if m.get('identity') is not None:
@@ -26754,10 +31055,16 @@ class GetDomainRequest(TeaModel):
         self,
         domain_id: str = None,
         get_benefit: bool = None,
+        get_share_detail: bool = None,
+        merge_parent: bool = None,
     ):
         # Domain ID
         self.domain_id = domain_id
         self.get_benefit = get_benefit
+        # 是否获取share/share_link详情
+        self.get_share_detail = get_share_detail
+        # 是否 merge parent 配置
+        self.merge_parent = merge_parent
 
     def validate(self):
         self.validate_required(self.domain_id, 'domain_id')
@@ -26772,6 +31079,10 @@ class GetDomainRequest(TeaModel):
             result['domain_id'] = self.domain_id
         if self.get_benefit is not None:
             result['get_benefit'] = self.get_benefit
+        if self.get_share_detail is not None:
+            result['get_share_detail'] = self.get_share_detail
+        if self.merge_parent is not None:
+            result['merge_parent'] = self.merge_parent
         return result
 
     def from_map(self, m: dict = None):
@@ -26780,6 +31091,10 @@ class GetDomainRequest(TeaModel):
             self.domain_id = m.get('domain_id')
         if m.get('get_benefit') is not None:
             self.get_benefit = m.get('get_benefit')
+        if m.get('get_share_detail') is not None:
+            self.get_share_detail = m.get('get_share_detail')
+        if m.get('merge_parent') is not None:
+            self.merge_parent = m.get('merge_parent')
         return self
 
 
@@ -27192,10 +31507,13 @@ class GetLastCursorRequest(TeaModel):
         self,
         httpheaders: Dict[str, str] = None,
         drive_id: str = None,
+        sync_root_id: str = None,
     ):
         self.httpheaders = httpheaders
         # drive_id
         self.drive_id = drive_id
+        # sync_root_id
+        self.sync_root_id = sync_root_id
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
@@ -27212,6 +31530,8 @@ class GetLastCursorRequest(TeaModel):
             result['httpheaders'] = self.httpheaders
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
+        if self.sync_root_id is not None:
+            result['sync_root_id'] = self.sync_root_id
         return result
 
     def from_map(self, m: dict = None):
@@ -27220,6 +31540,8 @@ class GetLastCursorRequest(TeaModel):
             self.httpheaders = m.get('httpheaders')
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
+        if m.get('sync_root_id') is not None:
+            self.sync_root_id = m.get('sync_root_id')
         return self
 
 
@@ -27506,6 +31828,7 @@ class GetOfficePreviewUrlRequest(TeaModel):
         allow_copy: bool = None,
         drive_id: str = None,
         file_id: str = None,
+        language: str = None,
         referer: str = None,
         share_id: str = None,
     ):
@@ -27519,6 +31842,8 @@ class GetOfficePreviewUrlRequest(TeaModel):
         self.drive_id = drive_id
         # file_id
         self.file_id = file_id
+        # language
+        self.language = language
         self.referer = referer
         # share_id, either share_id or drive_id is required
         self.share_id = share_id
@@ -27547,6 +31872,8 @@ class GetOfficePreviewUrlRequest(TeaModel):
             result['drive_id'] = self.drive_id
         if self.file_id is not None:
             result['file_id'] = self.file_id
+        if self.language is not None:
+            result['language'] = self.language
         if self.referer is not None:
             result['referer'] = self.referer
         if self.share_id is not None:
@@ -27565,6 +31892,8 @@ class GetOfficePreviewUrlRequest(TeaModel):
             self.drive_id = m.get('drive_id')
         if m.get('file_id') is not None:
             self.file_id = m.get('file_id')
+        if m.get('language') is not None:
+            self.language = m.get('language')
         if m.get('referer') is not None:
             self.referer = m.get('referer')
         if m.get('share_id') is not None:
@@ -27761,6 +32090,7 @@ class GetShareLinkDownloadURLRequest(TeaModel):
         self,
         httpheaders: Dict[str, str] = None,
         addition_data: dict = None,
+        drive_id: str = None,
         expire_sec: int = None,
         file_id: str = None,
         file_id_path: str = None,
@@ -27779,6 +32109,8 @@ class GetShareLinkDownloadURLRequest(TeaModel):
         self.httpheaders = httpheaders
         # addition_data
         self.addition_data = addition_data
+        # drive_id is optional
+        self.drive_id = drive_id
         # expire_sec
         self.expire_sec = expire_sec
         # file_id
@@ -27826,6 +32158,8 @@ class GetShareLinkDownloadURLRequest(TeaModel):
             result['httpheaders'] = self.httpheaders
         if self.addition_data is not None:
             result['addition_data'] = self.addition_data
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
         if self.expire_sec is not None:
             result['expire_sec'] = self.expire_sec
         if self.file_id is not None:
@@ -27862,6 +32196,8 @@ class GetShareLinkDownloadURLRequest(TeaModel):
             self.httpheaders = m.get('httpheaders')
         if m.get('addition_data') is not None:
             self.addition_data = m.get('addition_data')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
         if m.get('expire_sec') is not None:
             self.expire_sec = m.get('expire_sec')
         if m.get('file_id') is not None:
@@ -28074,6 +32410,52 @@ class GetShareRequest(TeaModel):
             self.httpheaders = m.get('httpheaders')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
+        return self
+
+
+class GetSubdomainMgmtRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        domain_id: str = None,
+        get_share_detail: bool = None,
+        subdomain_id: str = None,
+    ):
+        # 用以唯一标识domain
+        self.domain_id = domain_id
+        # 是否获取share/share_link详情
+        self.get_share_detail = get_share_detail
+        # 用以唯一标识subdomain
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        self.validate_required(self.domain_id, 'domain_id')
+        self.validate_required(self.subdomain_id, 'subdomain_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.get_share_detail is not None:
+            result['get_share_detail'] = self.get_share_detail
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('get_share_detail') is not None:
+            self.get_share_detail = m.get('get_share_detail')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -31228,11 +35610,13 @@ class ListDomainsRequest(TeaModel):
         self,
         limit: int = None,
         marker: str = None,
+        parent_domain_id: str = None,
     ):
         # 分页大小
         self.limit = limit
         # 查询游标
         self.marker = marker
+        self.parent_domain_id = parent_domain_id
 
     def validate(self):
         if self.limit is not None:
@@ -31249,6 +35633,8 @@ class ListDomainsRequest(TeaModel):
             result['limit'] = self.limit
         if self.marker is not None:
             result['marker'] = self.marker
+        if self.parent_domain_id is not None:
+            result['parent_domain_id'] = self.parent_domain_id
         return result
 
     def from_map(self, m: dict = None):
@@ -31257,6 +35643,8 @@ class ListDomainsRequest(TeaModel):
             self.limit = m.get('limit')
         if m.get('marker') is not None:
             self.marker = m.get('marker')
+        if m.get('parent_domain_id') is not None:
+            self.parent_domain_id = m.get('parent_domain_id')
         return self
 
 
@@ -31584,17 +35972,22 @@ class ListFileDeltaRequest(TeaModel):
         self,
         httpheaders: Dict[str, str] = None,
         cursor: str = None,
+        disable_characteristic_hash: bool = None,
         drive_id: str = None,
         image_cropping_aspect_ratios: List[str] = None,
         image_thumbnail_process: str = None,
         image_url_process: str = None,
         limit: int = None,
         office_thumbnail_process: str = None,
+        sync_root_id: str = None,
         video_thumbnail_process: str = None,
     ):
         self.httpheaders = httpheaders
         # cursor 游标
         self.cursor = cursor
+        # disable_characteristic_hash
+        # default false
+        self.disable_characteristic_hash = disable_characteristic_hash
         # drive_id
         self.drive_id = drive_id
         self.image_cropping_aspect_ratios = image_cropping_aspect_ratios
@@ -31607,6 +36000,8 @@ class ListFileDeltaRequest(TeaModel):
         self.limit = limit
         # office_thumbnail_process
         self.office_thumbnail_process = office_thumbnail_process
+        # sync_root_id
+        self.sync_root_id = sync_root_id
         # video_thumbnail_process
         # type:string
         self.video_thumbnail_process = video_thumbnail_process
@@ -31626,6 +36021,8 @@ class ListFileDeltaRequest(TeaModel):
             result['httpheaders'] = self.httpheaders
         if self.cursor is not None:
             result['cursor'] = self.cursor
+        if self.disable_characteristic_hash is not None:
+            result['disable_characteristic_hash'] = self.disable_characteristic_hash
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
         if self.image_cropping_aspect_ratios is not None:
@@ -31638,6 +36035,8 @@ class ListFileDeltaRequest(TeaModel):
             result['limit'] = self.limit
         if self.office_thumbnail_process is not None:
             result['office_thumbnail_process'] = self.office_thumbnail_process
+        if self.sync_root_id is not None:
+            result['sync_root_id'] = self.sync_root_id
         if self.video_thumbnail_process is not None:
             result['video_thumbnail_process'] = self.video_thumbnail_process
         return result
@@ -31648,6 +36047,8 @@ class ListFileDeltaRequest(TeaModel):
             self.httpheaders = m.get('httpheaders')
         if m.get('cursor') is not None:
             self.cursor = m.get('cursor')
+        if m.get('disable_characteristic_hash') is not None:
+            self.disable_characteristic_hash = m.get('disable_characteristic_hash')
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
         if m.get('image_cropping_aspect_ratios') is not None:
@@ -31660,6 +36061,8 @@ class ListFileDeltaRequest(TeaModel):
             self.limit = m.get('limit')
         if m.get('office_thumbnail_process') is not None:
             self.office_thumbnail_process = m.get('office_thumbnail_process')
+        if m.get('sync_root_id') is not None:
+            self.sync_root_id = m.get('sync_root_id')
         if m.get('video_thumbnail_process') is not None:
             self.video_thumbnail_process = m.get('video_thumbnail_process')
         return self
@@ -31745,7 +36148,6 @@ class ListFileInRecycleBinRequest(TeaModel):
         if self.limit is not None:
             self.validate_maximum(self.limit, 'limit', 200)
             self.validate_minimum(self.limit, 'limit', 0)
-        self.validate_required(self.parent_file_id, 'parent_file_id')
         if self.parent_file_id is not None:
             self.validate_max_length(self.parent_file_id, 'parent_file_id', 50)
             self.validate_pattern(self.parent_file_id, 'parent_file_id', '[a-z0-9.-_]{1,50}')
@@ -31858,386 +36260,13 @@ class ListFileInRecycleBinRequest(TeaModel):
         return self
 
 
-class RecycleBinItemResponse(TeaModel):
-    """
-    Recycle bin item response
-    """
-    def __init__(
-        self,
-        action_list: List[str] = None,
-        auto_delete_left_sec: int = None,
-        category: str = None,
-        characteristic_hash: str = None,
-        content_hash: str = None,
-        content_hash_name: str = None,
-        content_type: str = None,
-        crc_64hash: str = None,
-        created_at: str = None,
-        custom_field_1: str = None,
-        custom_field_2: str = None,
-        custom_type: str = None,
-        description: str = None,
-        domain_id: str = None,
-        download_url: str = None,
-        drive_id: str = None,
-        encrypt_mode: str = None,
-        file_extension: str = None,
-        file_id: str = None,
-        file_path_type: str = None,
-        hidden: bool = None,
-        image_media_metadata: ImageMediaResponse = None,
-        labels: List[str] = None,
-        last_modifier_id: str = None,
-        last_modifier_name: str = None,
-        last_modifier_type: str = None,
-        meta: str = None,
-        mime_extension: str = None,
-        mime_type: str = None,
-        name: str = None,
-        parent_file_id: str = None,
-        punish_flag: int = None,
-        share_id: str = None,
-        size: int = None,
-        starred: bool = None,
-        status: str = None,
-        streams_info: dict = None,
-        thumbnail: str = None,
-        trashed_at: str = None,
-        type: str = None,
-        updated_at: str = None,
-        upload_id: str = None,
-        url: str = None,
-        user_meta: str = None,
-        user_tags: dict = None,
-        video_media_metadata: VideoMediaResponse = None,
-        video_preview_metadata: VideoPreviewResponse = None,
-    ):
-        # action_list
-        self.action_list = action_list
-        # auto_delete_left_sec
-        self.auto_delete_left_sec = auto_delete_left_sec
-        # category
-        self.category = category
-        # CharacteristicHash
-        self.characteristic_hash = characteristic_hash
-        # Content Hash
-        self.content_hash = content_hash
-        # content_hash_name
-        self.content_hash_name = content_hash_name
-        # content_type
-        self.content_type = content_type
-        # crc64_hash
-        self.crc_64hash = crc_64hash
-        # created_at
-        self.created_at = created_at
-        # custom_field_1
-        self.custom_field_1 = custom_field_1
-        # custom_field_2
-        self.custom_field_2 = custom_field_2
-        # custom_type
-        self.custom_type = custom_type
-        # description
-        self.description = description
-        # DomainID
-        self.domain_id = domain_id
-        # download_url
-        self.download_url = download_url
-        # drive_id
-        self.drive_id = drive_id
-        # encrypt_mode
-        self.encrypt_mode = encrypt_mode
-        # file_extension
-        self.file_extension = file_extension
-        # file_id
-        self.file_id = file_id
-        # TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
-        self.file_path_type = file_path_type
-        # Hidden
-        # type: boolean
-        self.hidden = hidden
-        self.image_media_metadata = image_media_metadata
-        # labels
-        self.labels = labels
-        # last_modifier_id
-        self.last_modifier_id = last_modifier_id
-        # last_modifier_name
-        self.last_modifier_name = last_modifier_name
-        # last_modifier_type
-        self.last_modifier_type = last_modifier_type
-        self.meta = meta
-        # mime_extension
-        self.mime_extension = mime_extension
-        # mime_type
-        self.mime_type = mime_type
-        # name
-        self.name = name
-        # parent_file_id
-        self.parent_file_id = parent_file_id
-        # PunishFlag
-        self.punish_flag = punish_flag
-        self.share_id = share_id
-        # Size
-        self.size = size
-        # starred
-        # type: boolean
-        self.starred = starred
-        # status
-        self.status = status
-        # @Deprecated streams url info
-        self.streams_info = streams_info
-        # thumbnail
-        self.thumbnail = thumbnail
-        # trashed_at
-        self.trashed_at = trashed_at
-        # type
-        self.type = type
-        # updated_at
-        self.updated_at = updated_at
-        # upload_id
-        self.upload_id = upload_id
-        # url
-        self.url = url
-        # user_meta
-        self.user_meta = user_meta
-        # user_tags
-        self.user_tags = user_tags
-        self.video_media_metadata = video_media_metadata
-        self.video_preview_metadata = video_preview_metadata
-
-    def validate(self):
-        if self.domain_id is not None:
-            self.validate_pattern(self.domain_id, 'domain_id', '[a-z0-9A-Z]+')
-        if self.drive_id is not None:
-            self.validate_pattern(self.drive_id, 'drive_id', '[0-9]+')
-        if self.file_id is not None:
-            self.validate_max_length(self.file_id, 'file_id', 50)
-            self.validate_pattern(self.file_id, 'file_id', '[a-z0-9]{1,50}')
-        if self.image_media_metadata:
-            self.image_media_metadata.validate()
-        self.validate_required(self.name, 'name')
-        if self.name is not None:
-            self.validate_pattern(self.name, 'name', '[a-zA-Z0-9.-]{1,1000}')
-        if self.parent_file_id is not None:
-            self.validate_max_length(self.parent_file_id, 'parent_file_id', 50)
-            self.validate_pattern(self.parent_file_id, 'parent_file_id', '[a-z0-9]{1,50}')
-        if self.size is not None:
-            self.validate_minimum(self.size, 'size', 0)
-        if self.video_media_metadata:
-            self.video_media_metadata.validate()
-        if self.video_preview_metadata:
-            self.video_preview_metadata.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.action_list is not None:
-            result['action_list'] = self.action_list
-        if self.auto_delete_left_sec is not None:
-            result['auto_delete_left_sec'] = self.auto_delete_left_sec
-        if self.category is not None:
-            result['category'] = self.category
-        if self.characteristic_hash is not None:
-            result['characteristic_hash'] = self.characteristic_hash
-        if self.content_hash is not None:
-            result['content_hash'] = self.content_hash
-        if self.content_hash_name is not None:
-            result['content_hash_name'] = self.content_hash_name
-        if self.content_type is not None:
-            result['content_type'] = self.content_type
-        if self.crc_64hash is not None:
-            result['crc64_hash'] = self.crc_64hash
-        if self.created_at is not None:
-            result['created_at'] = self.created_at
-        if self.custom_field_1 is not None:
-            result['custom_field_1'] = self.custom_field_1
-        if self.custom_field_2 is not None:
-            result['custom_field_2'] = self.custom_field_2
-        if self.custom_type is not None:
-            result['custom_type'] = self.custom_type
-        if self.description is not None:
-            result['description'] = self.description
-        if self.domain_id is not None:
-            result['domain_id'] = self.domain_id
-        if self.download_url is not None:
-            result['download_url'] = self.download_url
-        if self.drive_id is not None:
-            result['drive_id'] = self.drive_id
-        if self.encrypt_mode is not None:
-            result['encrypt_mode'] = self.encrypt_mode
-        if self.file_extension is not None:
-            result['file_extension'] = self.file_extension
-        if self.file_id is not None:
-            result['file_id'] = self.file_id
-        if self.file_path_type is not None:
-            result['file_path_type'] = self.file_path_type
-        if self.hidden is not None:
-            result['hidden'] = self.hidden
-        if self.image_media_metadata is not None:
-            result['image_media_metadata'] = self.image_media_metadata.to_map()
-        if self.labels is not None:
-            result['labels'] = self.labels
-        if self.last_modifier_id is not None:
-            result['last_modifier_id'] = self.last_modifier_id
-        if self.last_modifier_name is not None:
-            result['last_modifier_name'] = self.last_modifier_name
-        if self.last_modifier_type is not None:
-            result['last_modifier_type'] = self.last_modifier_type
-        if self.meta is not None:
-            result['meta'] = self.meta
-        if self.mime_extension is not None:
-            result['mime_extension'] = self.mime_extension
-        if self.mime_type is not None:
-            result['mime_type'] = self.mime_type
-        if self.name is not None:
-            result['name'] = self.name
-        if self.parent_file_id is not None:
-            result['parent_file_id'] = self.parent_file_id
-        if self.punish_flag is not None:
-            result['punish_flag'] = self.punish_flag
-        if self.share_id is not None:
-            result['share_id'] = self.share_id
-        if self.size is not None:
-            result['size'] = self.size
-        if self.starred is not None:
-            result['starred'] = self.starred
-        if self.status is not None:
-            result['status'] = self.status
-        if self.streams_info is not None:
-            result['streams_info'] = self.streams_info
-        if self.thumbnail is not None:
-            result['thumbnail'] = self.thumbnail
-        if self.trashed_at is not None:
-            result['trashed_at'] = self.trashed_at
-        if self.type is not None:
-            result['type'] = self.type
-        if self.updated_at is not None:
-            result['updated_at'] = self.updated_at
-        if self.upload_id is not None:
-            result['upload_id'] = self.upload_id
-        if self.url is not None:
-            result['url'] = self.url
-        if self.user_meta is not None:
-            result['user_meta'] = self.user_meta
-        if self.user_tags is not None:
-            result['user_tags'] = self.user_tags
-        if self.video_media_metadata is not None:
-            result['video_media_metadata'] = self.video_media_metadata.to_map()
-        if self.video_preview_metadata is not None:
-            result['video_preview_metadata'] = self.video_preview_metadata.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('action_list') is not None:
-            self.action_list = m.get('action_list')
-        if m.get('auto_delete_left_sec') is not None:
-            self.auto_delete_left_sec = m.get('auto_delete_left_sec')
-        if m.get('category') is not None:
-            self.category = m.get('category')
-        if m.get('characteristic_hash') is not None:
-            self.characteristic_hash = m.get('characteristic_hash')
-        if m.get('content_hash') is not None:
-            self.content_hash = m.get('content_hash')
-        if m.get('content_hash_name') is not None:
-            self.content_hash_name = m.get('content_hash_name')
-        if m.get('content_type') is not None:
-            self.content_type = m.get('content_type')
-        if m.get('crc64_hash') is not None:
-            self.crc_64hash = m.get('crc64_hash')
-        if m.get('created_at') is not None:
-            self.created_at = m.get('created_at')
-        if m.get('custom_field_1') is not None:
-            self.custom_field_1 = m.get('custom_field_1')
-        if m.get('custom_field_2') is not None:
-            self.custom_field_2 = m.get('custom_field_2')
-        if m.get('custom_type') is not None:
-            self.custom_type = m.get('custom_type')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('domain_id') is not None:
-            self.domain_id = m.get('domain_id')
-        if m.get('download_url') is not None:
-            self.download_url = m.get('download_url')
-        if m.get('drive_id') is not None:
-            self.drive_id = m.get('drive_id')
-        if m.get('encrypt_mode') is not None:
-            self.encrypt_mode = m.get('encrypt_mode')
-        if m.get('file_extension') is not None:
-            self.file_extension = m.get('file_extension')
-        if m.get('file_id') is not None:
-            self.file_id = m.get('file_id')
-        if m.get('file_path_type') is not None:
-            self.file_path_type = m.get('file_path_type')
-        if m.get('hidden') is not None:
-            self.hidden = m.get('hidden')
-        if m.get('image_media_metadata') is not None:
-            temp_model = ImageMediaResponse()
-            self.image_media_metadata = temp_model.from_map(m['image_media_metadata'])
-        if m.get('labels') is not None:
-            self.labels = m.get('labels')
-        if m.get('last_modifier_id') is not None:
-            self.last_modifier_id = m.get('last_modifier_id')
-        if m.get('last_modifier_name') is not None:
-            self.last_modifier_name = m.get('last_modifier_name')
-        if m.get('last_modifier_type') is not None:
-            self.last_modifier_type = m.get('last_modifier_type')
-        if m.get('meta') is not None:
-            self.meta = m.get('meta')
-        if m.get('mime_extension') is not None:
-            self.mime_extension = m.get('mime_extension')
-        if m.get('mime_type') is not None:
-            self.mime_type = m.get('mime_type')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('parent_file_id') is not None:
-            self.parent_file_id = m.get('parent_file_id')
-        if m.get('punish_flag') is not None:
-            self.punish_flag = m.get('punish_flag')
-        if m.get('share_id') is not None:
-            self.share_id = m.get('share_id')
-        if m.get('size') is not None:
-            self.size = m.get('size')
-        if m.get('starred') is not None:
-            self.starred = m.get('starred')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        if m.get('streams_info') is not None:
-            self.streams_info = m.get('streams_info')
-        if m.get('thumbnail') is not None:
-            self.thumbnail = m.get('thumbnail')
-        if m.get('trashed_at') is not None:
-            self.trashed_at = m.get('trashed_at')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        if m.get('updated_at') is not None:
-            self.updated_at = m.get('updated_at')
-        if m.get('upload_id') is not None:
-            self.upload_id = m.get('upload_id')
-        if m.get('url') is not None:
-            self.url = m.get('url')
-        if m.get('user_meta') is not None:
-            self.user_meta = m.get('user_meta')
-        if m.get('user_tags') is not None:
-            self.user_tags = m.get('user_tags')
-        if m.get('video_media_metadata') is not None:
-            temp_model = VideoMediaResponse()
-            self.video_media_metadata = temp_model.from_map(m['video_media_metadata'])
-        if m.get('video_preview_metadata') is not None:
-            temp_model = VideoPreviewResponse()
-            self.video_preview_metadata = temp_model.from_map(m['video_preview_metadata'])
-        return self
-
-
 class ListFileInRecycleBinResponse(TeaModel):
     """
     ListFileInRecycleBinResponse
     """
     def __init__(
         self,
-        items: List[RecycleBinItemResponse] = None,
+        items: List[BaseCCPFileResponse] = None,
         next_marker: str = None,
     ):
         # items
@@ -32270,7 +36299,7 @@ class ListFileInRecycleBinResponse(TeaModel):
         self.items = []
         if m.get('items') is not None:
             for k in m.get('items'):
-                temp_model = RecycleBinItemResponse()
+                temp_model = BaseCCPFileResponse()
                 self.items.append(temp_model.from_map(k))
         if m.get('next_marker') is not None:
             self.next_marker = m.get('next_marker')
@@ -32493,6 +36522,7 @@ class ListMangeSharingFileRequest(TeaModel):
         creator_list: List[str] = None,
         limit: int = None,
         marker: str = None,
+        subdomain_id: str = None,
     ):
         self.httpheaders = httpheaders
         # 查询的用户列表，传入用户ID列表，不传默认查询所有有权限管理的共享
@@ -32501,6 +36531,7 @@ class ListMangeSharingFileRequest(TeaModel):
         self.limit = limit
         # 上次查询返回的游标
         self.marker = marker
+        self.subdomain_id = subdomain_id
 
     def validate(self):
         self.validate_required(self.limit, 'limit')
@@ -32519,6 +36550,8 @@ class ListMangeSharingFileRequest(TeaModel):
             result['limit'] = self.limit
         if self.marker is not None:
             result['marker'] = self.marker
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
         return result
 
     def from_map(self, m: dict = None):
@@ -32531,6 +36564,8 @@ class ListMangeSharingFileRequest(TeaModel):
             self.limit = m.get('limit')
         if m.get('marker') is not None:
             self.marker = m.get('marker')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -32589,12 +36624,14 @@ class ListReceivedFileRequest(TeaModel):
         httpheaders: Dict[str, str] = None,
         limit: int = None,
         marker: str = None,
+        subdomain_id: str = None,
     ):
         self.httpheaders = httpheaders
         # 查询返回的记录数
         self.limit = limit
         # 上次查询返回的游标
         self.marker = marker
+        self.subdomain_id = subdomain_id
 
     def validate(self):
         self.validate_required(self.limit, 'limit')
@@ -32611,6 +36648,8 @@ class ListReceivedFileRequest(TeaModel):
             result['limit'] = self.limit
         if self.marker is not None:
             result['marker'] = self.marker
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
         return result
 
     def from_map(self, m: dict = None):
@@ -32621,6 +36660,8 @@ class ListReceivedFileRequest(TeaModel):
             self.limit = m.get('limit')
         if m.get('marker') is not None:
             self.marker = m.get('marker')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -32631,14 +36672,18 @@ class ListShareLinkRequest(TeaModel):
     def __init__(
         self,
         httpheaders: Dict[str, str] = None,
+        category: str = None,
         creator: str = None,
         include_cancelled: bool = None,
         limit: int = None,
         marker: str = None,
         order_by: str = None,
         order_direction: str = None,
+        view_id: str = None,
     ):
         self.httpheaders = httpheaders
+        # category
+        self.category = category
         # creator
         self.creator = creator
         # include_cancelled
@@ -32651,6 +36696,8 @@ class ListShareLinkRequest(TeaModel):
         self.order_by = order_by
         # order_direction
         self.order_direction = order_direction
+        # view_id
+        self.view_id = view_id
 
     def validate(self):
         if self.limit is not None:
@@ -32665,6 +36712,8 @@ class ListShareLinkRequest(TeaModel):
         result = dict()
         if self.httpheaders is not None:
             result['httpheaders'] = self.httpheaders
+        if self.category is not None:
+            result['category'] = self.category
         if self.creator is not None:
             result['creator'] = self.creator
         if self.include_cancelled is not None:
@@ -32677,12 +36726,16 @@ class ListShareLinkRequest(TeaModel):
             result['order_by'] = self.order_by
         if self.order_direction is not None:
             result['order_direction'] = self.order_direction
+        if self.view_id is not None:
+            result['view_id'] = self.view_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('httpheaders') is not None:
             self.httpheaders = m.get('httpheaders')
+        if m.get('category') is not None:
+            self.category = m.get('category')
         if m.get('creator') is not None:
             self.creator = m.get('creator')
         if m.get('include_cancelled') is not None:
@@ -32695,6 +36748,8 @@ class ListShareLinkRequest(TeaModel):
             self.order_by = m.get('order_by')
         if m.get('order_direction') is not None:
             self.order_direction = m.get('order_direction')
+        if m.get('view_id') is not None:
+            self.view_id = m.get('view_id')
         return self
 
 
@@ -32789,12 +36844,14 @@ class ListSharingFileRequest(TeaModel):
         httpheaders: Dict[str, str] = None,
         limit: int = None,
         marker: str = None,
+        subdomain_id: str = None,
     ):
         self.httpheaders = httpheaders
         # 查询返回的记录数
         self.limit = limit
         # 上次查询返回的游标
         self.marker = marker
+        self.subdomain_id = subdomain_id
 
     def validate(self):
         self.validate_required(self.limit, 'limit')
@@ -32811,6 +36868,8 @@ class ListSharingFileRequest(TeaModel):
             result['limit'] = self.limit
         if self.marker is not None:
             result['marker'] = self.marker
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
         return result
 
     def from_map(self, m: dict = None):
@@ -32821,6 +36880,8 @@ class ListSharingFileRequest(TeaModel):
             self.limit = m.get('limit')
         if m.get('marker') is not None:
             self.marker = m.get('marker')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -33026,6 +37087,7 @@ class StoreItemResponse(TeaModel):
         base_path: str = None,
         bucket: str = None,
         cdn_endpoint: str = None,
+        cdn_url_auth_key: str = None,
         customized_accelerate_endpoint: str = None,
         customized_cdn_endpoint: str = None,
         customized_endpoint: str = None,
@@ -33048,6 +37110,8 @@ class StoreItemResponse(TeaModel):
         self.bucket = bucket
         # 内容分发地址
         self.cdn_endpoint = cdn_endpoint
+        # CDN鉴权key
+        self.cdn_url_auth_key = cdn_url_auth_key
         # 自定义全球加速地址
         self.customized_accelerate_endpoint = customized_accelerate_endpoint
         # 自定义内容分发地址
@@ -33096,6 +37160,8 @@ class StoreItemResponse(TeaModel):
             result['bucket'] = self.bucket
         if self.cdn_endpoint is not None:
             result['cdn_endpoint'] = self.cdn_endpoint
+        if self.cdn_url_auth_key is not None:
+            result['cdn_url_auth_key'] = self.cdn_url_auth_key
         if self.customized_accelerate_endpoint is not None:
             result['customized_accelerate_endpoint'] = self.customized_accelerate_endpoint
         if self.customized_cdn_endpoint is not None:
@@ -33134,6 +37200,8 @@ class StoreItemResponse(TeaModel):
             self.bucket = m.get('bucket')
         if m.get('cdn_endpoint') is not None:
             self.cdn_endpoint = m.get('cdn_endpoint')
+        if m.get('cdn_url_auth_key') is not None:
+            self.cdn_url_auth_key = m.get('cdn_url_auth_key')
         if m.get('customized_accelerate_endpoint') is not None:
             self.customized_accelerate_endpoint = m.get('customized_accelerate_endpoint')
         if m.get('customized_cdn_endpoint') is not None:
@@ -34268,6 +38336,44 @@ class ReportShareLinkEventRequest(TeaModel):
         return self
 
 
+class ReportShareLinkAccessEventRequest(TeaModel):
+    """
+    report_share_link_access_event request
+    """
+    def __init__(
+        self,
+        share_id: str = None,
+        sub_type: str = None,
+    ):
+        # share_id
+        self.share_id = share_id
+        # sub_type
+        self.sub_type = sub_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.sub_type is not None:
+            result['sub_type'] = self.sub_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('share_id') is not None:
+            self.share_id = m.get('share_id')
+        if m.get('sub_type') is not None:
+            self.sub_type = m.get('sub_type')
+        return self
+
+
 class ReportEventRequest(TeaModel):
     """
     report_event request
@@ -34277,15 +38383,19 @@ class ReportEventRequest(TeaModel):
         httpheaders: Dict[str, str] = None,
         event_type: str = None,
         share_link: ReportShareLinkEventRequest = None,
+        share_link_access: ReportShareLinkAccessEventRequest = None,
     ):
         self.httpheaders = httpheaders
         # event_type
         self.event_type = event_type
         self.share_link = share_link
+        self.share_link_access = share_link_access
 
     def validate(self):
         if self.share_link:
             self.share_link.validate()
+        if self.share_link_access:
+            self.share_link_access.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -34299,6 +38409,8 @@ class ReportEventRequest(TeaModel):
             result['event_type'] = self.event_type
         if self.share_link is not None:
             result['share_link'] = self.share_link.to_map()
+        if self.share_link_access is not None:
+            result['share_link_access'] = self.share_link_access.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -34310,6 +38422,9 @@ class ReportEventRequest(TeaModel):
         if m.get('share_link') is not None:
             temp_model = ReportShareLinkEventRequest()
             self.share_link = temp_model.from_map(m['share_link'])
+        if m.get('share_link_access') is not None:
+            temp_model = ReportShareLinkAccessEventRequest()
+            self.share_link_access = temp_model.from_map(m['share_link_access'])
         return self
 
 
@@ -34417,6 +38532,7 @@ class ScanFileMetaRequest(TeaModel):
         addition_data: dict = None,
         category: str = None,
         drive_id: str = None,
+        fields: str = None,
         image_cropping_aspect_ratios: List[str] = None,
         image_thumbnail_process: str = None,
         image_url_process: str = None,
@@ -34432,6 +38548,8 @@ class ScanFileMetaRequest(TeaModel):
         self.category = category
         # drive_id
         self.drive_id = drive_id
+        # fields
+        self.fields = fields
         self.image_cropping_aspect_ratios = image_cropping_aspect_ratios
         # image_thumbnail_process
         self.image_thumbnail_process = image_thumbnail_process
@@ -34469,6 +38587,8 @@ class ScanFileMetaRequest(TeaModel):
             result['category'] = self.category
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
+        if self.fields is not None:
+            result['fields'] = self.fields
         if self.image_cropping_aspect_ratios is not None:
             result['image_cropping_aspect_ratios'] = self.image_cropping_aspect_ratios
         if self.image_thumbnail_process is not None:
@@ -34495,6 +38615,8 @@ class ScanFileMetaRequest(TeaModel):
             self.category = m.get('category')
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
+        if m.get('fields') is not None:
+            self.fields = m.get('fields')
         if m.get('image_cropping_aspect_ratios') is not None:
             self.image_cropping_aspect_ratios = m.get('image_cropping_aspect_ratios')
         if m.get('image_thumbnail_process') is not None:
@@ -34639,6 +38761,66 @@ class SearchDriveRequest(TeaModel):
             self.owner_type = m.get('owner_type')
         if m.get('subdomain_id') is not None:
             self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class SearchFileFpRefsRequest(TeaModel):
+    """
+    search file request
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        drive_id: str = None,
+        file_id: str = None,
+        file_revision_id: str = None,
+        marker: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # drive_id
+        self.drive_id = drive_id
+        # file_id
+        self.file_id = file_id
+        # file_revision_id
+        self.file_revision_id = file_revision_id
+        # marker
+        self.marker = marker
+
+    def validate(self):
+        self.validate_required(self.drive_id, 'drive_id')
+        self.validate_required(self.file_id, 'file_id')
+        self.validate_required(self.file_revision_id, 'file_revision_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.file_revision_id is not None:
+            result['file_revision_id'] = self.file_revision_id
+        if self.marker is not None:
+            result['marker'] = self.marker
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('file_revision_id') is not None:
+            self.file_revision_id = m.get('file_revision_id')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
         return self
 
 
@@ -34797,6 +38979,90 @@ class SearchFileRequest(TeaModel):
             self.url_expire_sec = m.get('url_expire_sec')
         if m.get('video_thumbnail_process') is not None:
             self.video_thumbnail_process = m.get('video_thumbnail_process')
+        return self
+
+
+class SearchShareLinkRequest(TeaModel):
+    """
+    search_share_link request
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        creators: List[str] = None,
+        limit: int = None,
+        marker: str = None,
+        order_by: str = None,
+        order_direction: str = None,
+        query: str = None,
+        return_total_count: bool = None,
+    ):
+        self.httpheaders = httpheaders
+        # creators
+        # type: string
+        self.creators = creators
+        # limit
+        self.limit = limit
+        # marker
+        self.marker = marker
+        # order_by
+        self.order_by = order_by
+        # order_direction
+        self.order_direction = order_direction
+        # query
+        self.query = query
+        # return_total_count 是否返回查询总数
+        self.return_total_count = return_total_count
+
+    def validate(self):
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 1)
+        if self.query is not None:
+            self.validate_max_length(self.query, 'query', 4096)
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.creators is not None:
+            result['creators'] = self.creators
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.order_by is not None:
+            result['order_by'] = self.order_by
+        if self.order_direction is not None:
+            result['order_direction'] = self.order_direction
+        if self.query is not None:
+            result['query'] = self.query
+        if self.return_total_count is not None:
+            result['return_total_count'] = self.return_total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('creators') is not None:
+            self.creators = m.get('creators')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        if m.get('order_by') is not None:
+            self.order_by = m.get('order_by')
+        if m.get('order_direction') is not None:
+            self.order_direction = m.get('order_direction')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('return_total_count') is not None:
+            self.return_total_count = m.get('return_total_count')
         return self
 
 
@@ -35237,6 +39503,152 @@ class SetShareStatusRequest(TeaModel):
         return self
 
 
+class ShareLinkCountResponse(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        access_count: int = None,
+        download_count: int = None,
+        preview_count: int = None,
+        report_count: int = None,
+        save_count: int = None,
+        video_preview_count: int = None,
+    ):
+        # access_count
+        self.access_count = access_count
+        # 下载次数
+        self.download_count = download_count
+        # preview_count
+        self.preview_count = preview_count
+        # 举报次数
+        self.report_count = report_count
+        # 转存次数
+        self.save_count = save_count
+        # 音视频播放次数
+        self.video_preview_count = video_preview_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_count is not None:
+            result['access_count'] = self.access_count
+        if self.download_count is not None:
+            result['download_count'] = self.download_count
+        if self.preview_count is not None:
+            result['preview_count'] = self.preview_count
+        if self.report_count is not None:
+            result['report_count'] = self.report_count
+        if self.save_count is not None:
+            result['save_count'] = self.save_count
+        if self.video_preview_count is not None:
+            result['video_preview_count'] = self.video_preview_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('access_count') is not None:
+            self.access_count = m.get('access_count')
+        if m.get('download_count') is not None:
+            self.download_count = m.get('download_count')
+        if m.get('preview_count') is not None:
+            self.preview_count = m.get('preview_count')
+        if m.get('report_count') is not None:
+            self.report_count = m.get('report_count')
+        if m.get('save_count') is not None:
+            self.save_count = m.get('save_count')
+        if m.get('video_preview_count') is not None:
+            self.video_preview_count = m.get('video_preview_count')
+        return self
+
+
+class ShareLinkPermissionResponse(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        disable_download: bool = None,
+        disable_preview: bool = None,
+        disable_save: bool = None,
+        download_limit: int = None,
+        preview_limit: int = None,
+        require_login: bool = None,
+        save_download_limit: int = None,
+        save_limit: int = None,
+    ):
+        # 禁止下载分享中的文件
+        self.disable_download = disable_download
+        # 禁止预览分享中的文件
+        self.disable_preview = disable_preview
+        # 禁止转存分享中的文件
+        self.disable_save = disable_save
+        # 分享下载次数限制
+        self.download_limit = download_limit
+        # 分享预览次数限制
+        self.preview_limit = preview_limit
+        # 企业内(domain)登录后才允许使用分享
+        self.require_login = require_login
+        # 分享转存和下载的总次数限制
+        self.save_download_limit = save_download_limit
+        # 分享转存次数限制
+        self.save_limit = save_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_download is not None:
+            result['disable_download'] = self.disable_download
+        if self.disable_preview is not None:
+            result['disable_preview'] = self.disable_preview
+        if self.disable_save is not None:
+            result['disable_save'] = self.disable_save
+        if self.download_limit is not None:
+            result['download_limit'] = self.download_limit
+        if self.preview_limit is not None:
+            result['preview_limit'] = self.preview_limit
+        if self.require_login is not None:
+            result['require_login'] = self.require_login
+        if self.save_download_limit is not None:
+            result['save_download_limit'] = self.save_download_limit
+        if self.save_limit is not None:
+            result['save_limit'] = self.save_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('disable_download') is not None:
+            self.disable_download = m.get('disable_download')
+        if m.get('disable_preview') is not None:
+            self.disable_preview = m.get('disable_preview')
+        if m.get('disable_save') is not None:
+            self.disable_save = m.get('disable_save')
+        if m.get('download_limit') is not None:
+            self.download_limit = m.get('download_limit')
+        if m.get('preview_limit') is not None:
+            self.preview_limit = m.get('preview_limit')
+        if m.get('require_login') is not None:
+            self.require_login = m.get('require_login')
+        if m.get('save_download_limit') is not None:
+            self.save_download_limit = m.get('save_download_limit')
+        if m.get('save_limit') is not None:
+            self.save_limit = m.get('save_limit')
+        return self
+
+
 class SimpleStreamInfo(TeaModel):
     """
     *\
@@ -35362,6 +39774,342 @@ class StreamUploadInfo(TeaModel):
             self.rapid_upload = m.get('rapid_upload')
         if m.get('upload_id') is not None:
             self.upload_id = m.get('upload_id')
+        return self
+
+
+class SubdomainDeleteBizCNameAndCertRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        biz_cname: str = None,
+        cname_type: str = None,
+        domain_id: str = None,
+        is_vpc: bool = None,
+        subdomain_id: str = None,
+    ):
+        # api cname
+        self.biz_cname = biz_cname
+        # cname type
+        self.cname_type = cname_type
+        # domain ID
+        self.domain_id = domain_id
+        # vpc
+        self.is_vpc = is_vpc
+        # subdomain ID
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        self.validate_required(self.cname_type, 'cname_type')
+        self.validate_required(self.domain_id, 'domain_id')
+        self.validate_required(self.subdomain_id, 'subdomain_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_cname is not None:
+            result['biz_cname'] = self.biz_cname
+        if self.cname_type is not None:
+            result['cname_type'] = self.cname_type
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.is_vpc is not None:
+            result['is_vpc'] = self.is_vpc
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('biz_cname') is not None:
+            self.biz_cname = m.get('biz_cname')
+        if m.get('cname_type') is not None:
+            self.cname_type = m.get('cname_type')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('is_vpc') is not None:
+            self.is_vpc = m.get('is_vpc')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class SubdomainDeleteBizCNameCertRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        biz_cname: str = None,
+        cert_id: str = None,
+        cname_type: str = None,
+        domain_id: str = None,
+        is_vpc: bool = None,
+        subdomain_id: str = None,
+    ):
+        # biz cname
+        self.biz_cname = biz_cname
+        # cert id
+        self.cert_id = cert_id
+        # cname type
+        self.cname_type = cname_type
+        # domain ID
+        self.domain_id = domain_id
+        # is vpc
+        self.is_vpc = is_vpc
+        # subdomain ID
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        self.validate_required(self.cname_type, 'cname_type')
+        self.validate_required(self.domain_id, 'domain_id')
+        self.validate_required(self.subdomain_id, 'subdomain_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_cname is not None:
+            result['biz_cname'] = self.biz_cname
+        if self.cert_id is not None:
+            result['cert_id'] = self.cert_id
+        if self.cname_type is not None:
+            result['cname_type'] = self.cname_type
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.is_vpc is not None:
+            result['is_vpc'] = self.is_vpc
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('biz_cname') is not None:
+            self.biz_cname = m.get('biz_cname')
+        if m.get('cert_id') is not None:
+            self.cert_id = m.get('cert_id')
+        if m.get('cname_type') is not None:
+            self.cname_type = m.get('cname_type')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('is_vpc') is not None:
+            self.is_vpc = m.get('is_vpc')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class SubdomainGetBizCNameInfoRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        cname_type: str = None,
+        domain_id: str = None,
+        is_vpc: bool = None,
+        subdomain_id: str = None,
+    ):
+        # cname type
+        self.cname_type = cname_type
+        # domain ID
+        self.domain_id = domain_id
+        # is vpc
+        self.is_vpc = is_vpc
+        # subdomain ID
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        self.validate_required(self.cname_type, 'cname_type')
+        self.validate_required(self.domain_id, 'domain_id')
+        self.validate_required(self.subdomain_id, 'subdomain_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cname_type is not None:
+            result['cname_type'] = self.cname_type
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.is_vpc is not None:
+            result['is_vpc'] = self.is_vpc
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cname_type') is not None:
+            self.cname_type = m.get('cname_type')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('is_vpc') is not None:
+            self.is_vpc = m.get('is_vpc')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class SubdomainSetBizCNameCertRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        cert_id: str = None,
+        biz_cname: str = None,
+        cert_body: str = None,
+        cert_name: str = None,
+        cert_privatekey: str = None,
+        cname_type: str = None,
+        domain_id: str = None,
+        is_vpc: bool = None,
+        subdomain_id: str = None,
+    ):
+        self.cert_id = cert_id
+        # biz cname
+        self.biz_cname = biz_cname
+        # cert body
+        self.cert_body = cert_body
+        # cert name
+        self.cert_name = cert_name
+        # cert privatekey
+        self.cert_privatekey = cert_privatekey
+        # cname type
+        self.cname_type = cname_type
+        # domain ID
+        self.domain_id = domain_id
+        # biz cname
+        self.is_vpc = is_vpc
+        # subdomain ID
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        self.validate_required(self.cert_body, 'cert_body')
+        self.validate_required(self.cert_name, 'cert_name')
+        self.validate_required(self.cert_privatekey, 'cert_privatekey')
+        self.validate_required(self.cname_type, 'cname_type')
+        self.validate_required(self.domain_id, 'domain_id')
+        self.validate_required(self.subdomain_id, 'subdomain_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_id is not None:
+            result['CertID'] = self.cert_id
+        if self.biz_cname is not None:
+            result['biz_cname'] = self.biz_cname
+        if self.cert_body is not None:
+            result['cert_body'] = self.cert_body
+        if self.cert_name is not None:
+            result['cert_name'] = self.cert_name
+        if self.cert_privatekey is not None:
+            result['cert_privatekey'] = self.cert_privatekey
+        if self.cname_type is not None:
+            result['cname_type'] = self.cname_type
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.is_vpc is not None:
+            result['is_vpc'] = self.is_vpc
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertID') is not None:
+            self.cert_id = m.get('CertID')
+        if m.get('biz_cname') is not None:
+            self.biz_cname = m.get('biz_cname')
+        if m.get('cert_body') is not None:
+            self.cert_body = m.get('cert_body')
+        if m.get('cert_name') is not None:
+            self.cert_name = m.get('cert_name')
+        if m.get('cert_privatekey') is not None:
+            self.cert_privatekey = m.get('cert_privatekey')
+        if m.get('cname_type') is not None:
+            self.cname_type = m.get('cname_type')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('is_vpc') is not None:
+            self.is_vpc = m.get('is_vpc')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class SubdomainSetBizCNameRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        biz_cname: str = None,
+        cname_type: str = None,
+        domain_id: str = None,
+        is_vpc: bool = None,
+        subdomain_id: str = None,
+    ):
+        # biz cname
+        self.biz_cname = biz_cname
+        # cname type
+        self.cname_type = cname_type
+        # domain ID
+        self.domain_id = domain_id
+        # biz cname
+        self.is_vpc = is_vpc
+        # domain ID
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        self.validate_required(self.biz_cname, 'biz_cname')
+        self.validate_required(self.cname_type, 'cname_type')
+        self.validate_required(self.domain_id, 'domain_id')
+        self.validate_required(self.subdomain_id, 'subdomain_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_cname is not None:
+            result['biz_cname'] = self.biz_cname
+        if self.cname_type is not None:
+            result['cname_type'] = self.cname_type
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.is_vpc is not None:
+            result['is_vpc'] = self.is_vpc
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('biz_cname') is not None:
+            self.biz_cname = m.get('biz_cname')
+        if m.get('cname_type') is not None:
+            self.cname_type = m.get('cname_type')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('is_vpc') is not None:
+            self.is_vpc = m.get('is_vpc')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -35626,6 +40374,8 @@ class UCCreateFileRequest(TeaModel):
         image_media_metadata: ImageMediaMetadata = None,
         labels: List[str] = None,
         last_updated_at: str = None,
+        local_created_at: str = None,
+        local_modified_at: str = None,
         location: str = None,
         meta: str = None,
         name: str = None,
@@ -35674,7 +40424,6 @@ class UCCreateFileRequest(TeaModel):
         self.description = description
         # drive_id
         self.drive_id = drive_id
-        # encrypt_mode
         self.encrypt_mode = encrypt_mode
         # file_id
         self.file_id = file_id
@@ -35689,6 +40438,9 @@ class UCCreateFileRequest(TeaModel):
         self.labels = labels
         # last_updated_at
         self.last_updated_at = last_updated_at
+        # local_created_at
+        self.local_created_at = local_created_at
+        self.local_modified_at = local_modified_at
         # location
         self.location = location
         self.meta = meta
@@ -35813,6 +40565,10 @@ class UCCreateFileRequest(TeaModel):
             result['labels'] = self.labels
         if self.last_updated_at is not None:
             result['last_updated_at'] = self.last_updated_at
+        if self.local_created_at is not None:
+            result['local_created_at'] = self.local_created_at
+        if self.local_modified_at is not None:
+            result['local_modified_at'] = self.local_modified_at
         if self.location is not None:
             result['location'] = self.location
         if self.meta is not None:
@@ -35913,6 +40669,10 @@ class UCCreateFileRequest(TeaModel):
             self.labels = m.get('labels')
         if m.get('last_updated_at') is not None:
             self.last_updated_at = m.get('last_updated_at')
+        if m.get('local_created_at') is not None:
+            self.local_created_at = m.get('local_created_at')
+        if m.get('local_modified_at') is not None:
+            self.local_modified_at = m.get('local_modified_at')
         if m.get('location') is not None:
             self.location = m.get('location')
         if m.get('meta') is not None:
@@ -36416,7 +41176,6 @@ class UpdateDomainRequest(TeaModel):
         auth_dingding_app_id: str = None,
         auth_dingding_app_secret: str = None,
         auth_dingding_enable: bool = None,
-        auth_endpoint_enable: bool = None,
         auth_ram_app_id: str = None,
         auth_ram_app_secret: str = None,
         auth_ram_enable: bool = None,
@@ -36431,11 +41190,17 @@ class UpdateDomainRequest(TeaModel):
         event_names: List[str] = None,
         event_role_arn: str = None,
         get_benefit: bool = None,
+        group_single_drive_enabled: bool = None,
         init_drive_enable: bool = None,
         init_drive_size: int = None,
         init_drive_store_id: str = None,
         published_app_access_strategy: AppAccessStrategy = None,
         sharable: bool = None,
+        size_quota: int = None,
+        status: int = None,
+        used_size_refresh_interval: int = None,
+        user_count_quota: int = None,
+        user_single_drive_enabled: bool = None,
     ):
         self.auth_config = auth_config
         # 钉钉 App Id
@@ -36444,7 +41209,6 @@ class UpdateDomainRequest(TeaModel):
         self.auth_dingding_app_secret = auth_dingding_app_secret
         # 启用钉钉认证
         self.auth_dingding_enable = auth_dingding_enable
-        self.auth_endpoint_enable = auth_endpoint_enable
         # RAM App Id
         self.auth_ram_app_id = auth_ram_app_id
         # RAM App Secret
@@ -36471,6 +41235,8 @@ class UpdateDomainRequest(TeaModel):
         # 事件通知 Role Arn
         self.event_role_arn = event_role_arn
         self.get_benefit = get_benefit
+        # 单团队单drive
+        self.group_single_drive_enabled = group_single_drive_enabled
         # 开启自动初始化 Drive
         self.init_drive_enable = init_drive_enable
         # 自动初始化 Drive 大小
@@ -36480,6 +41246,16 @@ class UpdateDomainRequest(TeaModel):
         self.published_app_access_strategy = published_app_access_strategy
         # 开启分享
         self.sharable = sharable
+        # 逻辑空间quota，默认为-1，无限制，单位为字节
+        self.size_quota = size_quota
+        # 状态
+        self.status = status
+        # 逻辑空间刷新周期，单位：秒
+        self.used_size_refresh_interval = used_size_refresh_interval
+        # 用户数quota，默认为-1，无限制
+        self.user_count_quota = user_count_quota
+        # 单用户单drive
+        self.user_single_drive_enabled = user_single_drive_enabled
 
     def validate(self):
         self.validate_required(self.domain_id, 'domain_id')
@@ -36500,8 +41276,6 @@ class UpdateDomainRequest(TeaModel):
             result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
         if self.auth_dingding_enable is not None:
             result['auth_dingding_enable'] = self.auth_dingding_enable
-        if self.auth_endpoint_enable is not None:
-            result['auth_endpoint_enable'] = self.auth_endpoint_enable
         if self.auth_ram_app_id is not None:
             result['auth_ram_app_id'] = self.auth_ram_app_id
         if self.auth_ram_app_secret is not None:
@@ -36530,6 +41304,8 @@ class UpdateDomainRequest(TeaModel):
             result['event_role_arn'] = self.event_role_arn
         if self.get_benefit is not None:
             result['get_benefit'] = self.get_benefit
+        if self.group_single_drive_enabled is not None:
+            result['group_single_drive_enabled'] = self.group_single_drive_enabled
         if self.init_drive_enable is not None:
             result['init_drive_enable'] = self.init_drive_enable
         if self.init_drive_size is not None:
@@ -36540,6 +41316,16 @@ class UpdateDomainRequest(TeaModel):
             result['published_app_access_strategy'] = self.published_app_access_strategy.to_map()
         if self.sharable is not None:
             result['sharable'] = self.sharable
+        if self.size_quota is not None:
+            result['size_quota'] = self.size_quota
+        if self.status is not None:
+            result['status'] = self.status
+        if self.used_size_refresh_interval is not None:
+            result['used_size_refresh_interval'] = self.used_size_refresh_interval
+        if self.user_count_quota is not None:
+            result['user_count_quota'] = self.user_count_quota
+        if self.user_single_drive_enabled is not None:
+            result['user_single_drive_enabled'] = self.user_single_drive_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -36552,8 +41338,6 @@ class UpdateDomainRequest(TeaModel):
             self.auth_dingding_app_secret = m.get('auth_dingding_app_secret')
         if m.get('auth_dingding_enable') is not None:
             self.auth_dingding_enable = m.get('auth_dingding_enable')
-        if m.get('auth_endpoint_enable') is not None:
-            self.auth_endpoint_enable = m.get('auth_endpoint_enable')
         if m.get('auth_ram_app_id') is not None:
             self.auth_ram_app_id = m.get('auth_ram_app_id')
         if m.get('auth_ram_app_secret') is not None:
@@ -36582,6 +41366,8 @@ class UpdateDomainRequest(TeaModel):
             self.event_role_arn = m.get('event_role_arn')
         if m.get('get_benefit') is not None:
             self.get_benefit = m.get('get_benefit')
+        if m.get('group_single_drive_enabled') is not None:
+            self.group_single_drive_enabled = m.get('group_single_drive_enabled')
         if m.get('init_drive_enable') is not None:
             self.init_drive_enable = m.get('init_drive_enable')
         if m.get('init_drive_size') is not None:
@@ -36593,6 +41379,16 @@ class UpdateDomainRequest(TeaModel):
             self.published_app_access_strategy = temp_model.from_map(m['published_app_access_strategy'])
         if m.get('sharable') is not None:
             self.sharable = m.get('sharable')
+        if m.get('size_quota') is not None:
+            self.size_quota = m.get('size_quota')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('used_size_refresh_interval') is not None:
+            self.used_size_refresh_interval = m.get('used_size_refresh_interval')
+        if m.get('user_count_quota') is not None:
+            self.user_count_quota = m.get('user_count_quota')
+        if m.get('user_single_drive_enabled') is not None:
+            self.user_single_drive_enabled = m.get('user_single_drive_enabled')
         return self
 
 
@@ -36701,10 +41497,12 @@ class UpdateFileMetaRequest(TeaModel):
         description: str = None,
         drive_id: str = None,
         encrypt_mode: str = None,
+        ex_fields_info: dict = None,
         file_id: str = None,
         file_id_path: str = None,
         hidden: bool = None,
         labels: List[str] = None,
+        local_modified_at: str = None,
         meta: str = None,
         mime_extension: str = None,
         mime_type: str = None,
@@ -36729,6 +41527,8 @@ class UpdateFileMetaRequest(TeaModel):
         # drive_id
         self.drive_id = drive_id
         self.encrypt_mode = encrypt_mode
+        # ex_fields_info
+        self.ex_fields_info = ex_fields_info
         # file_id
         self.file_id = file_id
         self.file_id_path = file_id_path
@@ -36737,6 +41537,7 @@ class UpdateFileMetaRequest(TeaModel):
         self.hidden = hidden
         # labels
         self.labels = labels
+        self.local_modified_at = local_modified_at
         self.meta = meta
         self.mime_extension = mime_extension
         self.mime_type = mime_type
@@ -36789,6 +41590,8 @@ class UpdateFileMetaRequest(TeaModel):
             result['drive_id'] = self.drive_id
         if self.encrypt_mode is not None:
             result['encrypt_mode'] = self.encrypt_mode
+        if self.ex_fields_info is not None:
+            result['ex_fields_info'] = self.ex_fields_info
         if self.file_id is not None:
             result['file_id'] = self.file_id
         if self.file_id_path is not None:
@@ -36797,6 +41600,8 @@ class UpdateFileMetaRequest(TeaModel):
             result['hidden'] = self.hidden
         if self.labels is not None:
             result['labels'] = self.labels
+        if self.local_modified_at is not None:
+            result['local_modified_at'] = self.local_modified_at
         if self.meta is not None:
             result['meta'] = self.meta
         if self.mime_extension is not None:
@@ -36839,6 +41644,8 @@ class UpdateFileMetaRequest(TeaModel):
             self.drive_id = m.get('drive_id')
         if m.get('encrypt_mode') is not None:
             self.encrypt_mode = m.get('encrypt_mode')
+        if m.get('ex_fields_info') is not None:
+            self.ex_fields_info = m.get('ex_fields_info')
         if m.get('file_id') is not None:
             self.file_id = m.get('file_id')
         if m.get('file_id_path') is not None:
@@ -36847,6 +41654,8 @@ class UpdateFileMetaRequest(TeaModel):
             self.hidden = m.get('hidden')
         if m.get('labels') is not None:
             self.labels = m.get('labels')
+        if m.get('local_modified_at') is not None:
+            self.local_modified_at = m.get('local_modified_at')
         if m.get('meta') is not None:
             self.meta = m.get('meta')
         if m.get('mime_extension') is not None:
@@ -36870,6 +41679,93 @@ class UpdateFileMetaRequest(TeaModel):
         return self
 
 
+class UpdateShareLinkPermissionRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        disable_download: bool = None,
+        disable_preview: bool = None,
+        disable_save: bool = None,
+        download_limit: int = None,
+        enable_upload: bool = None,
+        preview_limit: int = None,
+        require_login: bool = None,
+        save_download_limit: int = None,
+        save_limit: int = None,
+    ):
+        # 禁止下载分享中的文件
+        self.disable_download = disable_download
+        # 禁止预览分享中的文件
+        self.disable_preview = disable_preview
+        # 禁止转存分享中的文件
+        self.disable_save = disable_save
+        # 分享下载次数限制
+        self.download_limit = download_limit
+        # 允许上传文件到分享
+        self.enable_upload = enable_upload
+        # 分享预览次数限制
+        self.preview_limit = preview_limit
+        # 企业内(domain)登录后才允许使用分享
+        self.require_login = require_login
+        # 分享转存和下载的总次数限制
+        self.save_download_limit = save_download_limit
+        # 分享转存次数限制
+        self.save_limit = save_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_download is not None:
+            result['disable_download'] = self.disable_download
+        if self.disable_preview is not None:
+            result['disable_preview'] = self.disable_preview
+        if self.disable_save is not None:
+            result['disable_save'] = self.disable_save
+        if self.download_limit is not None:
+            result['download_limit'] = self.download_limit
+        if self.enable_upload is not None:
+            result['enable_upload'] = self.enable_upload
+        if self.preview_limit is not None:
+            result['preview_limit'] = self.preview_limit
+        if self.require_login is not None:
+            result['require_login'] = self.require_login
+        if self.save_download_limit is not None:
+            result['save_download_limit'] = self.save_download_limit
+        if self.save_limit is not None:
+            result['save_limit'] = self.save_limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('disable_download') is not None:
+            self.disable_download = m.get('disable_download')
+        if m.get('disable_preview') is not None:
+            self.disable_preview = m.get('disable_preview')
+        if m.get('disable_save') is not None:
+            self.disable_save = m.get('disable_save')
+        if m.get('download_limit') is not None:
+            self.download_limit = m.get('download_limit')
+        if m.get('enable_upload') is not None:
+            self.enable_upload = m.get('enable_upload')
+        if m.get('preview_limit') is not None:
+            self.preview_limit = m.get('preview_limit')
+        if m.get('require_login') is not None:
+            self.require_login = m.get('require_login')
+        if m.get('save_download_limit') is not None:
+            self.save_download_limit = m.get('save_download_limit')
+        if m.get('save_limit') is not None:
+            self.save_limit = m.get('save_limit')
+        return self
+
+
 class UpdateShareLinkRequest(TeaModel):
     """
     update_share_link request
@@ -36877,24 +41773,73 @@ class UpdateShareLinkRequest(TeaModel):
     def __init__(
         self,
         httpheaders: Dict[str, str] = None,
+        comments: str = None,
         description: str = None,
+        disable_download: bool = None,
+        disable_preview: bool = None,
+        disable_save: bool = None,
+        download_count: int = None,
+        download_limit: int = None,
+        enable_file_changed_notify: bool = None,
+        enable_upload: bool = None,
         expiration: str = None,
         is_subscribed: bool = None,
         num_of_subscribers: int = None,
+        preview_count: int = None,
+        preview_limit: int = None,
+        report_count: int = None,
+        require_login: bool = None,
+        save_count: int = None,
+        save_download_limit: int = None,
+        save_limit: int = None,
+        share_icon: str = None,
         share_id: str = None,
         share_name: str = None,
         share_pwd: str = None,
         status: str = None,
+        video_preview_count: int = None,
     ):
         self.httpheaders = httpheaders
+        # comments
+        self.comments = comments
         # description
         self.description = description
+        # 禁止下载分享中的文件
+        self.disable_download = disable_download
+        # 禁止预览分享中的文件
+        self.disable_preview = disable_preview
+        # 禁止转存分享中的文件
+        self.disable_save = disable_save
+        # download_count
+        self.download_count = download_count
+        # 分享下载次数限制
+        self.download_limit = download_limit
+        # enable_file_changed_notify
+        self.enable_file_changed_notify = enable_file_changed_notify
+        # 允许上传文件到分享
+        self.enable_upload = enable_upload
         # expiration
         self.expiration = expiration
         # is_subscribed
         self.is_subscribed = is_subscribed
         # num_of_subscribers
         self.num_of_subscribers = num_of_subscribers
+        # preview_count
+        self.preview_count = preview_count
+        # 分享预览次数限制
+        self.preview_limit = preview_limit
+        # report_count
+        self.report_count = report_count
+        # 企业内(domain)登录后才允许使用分享
+        self.require_login = require_login
+        # save_count
+        self.save_count = save_count
+        # 分享转存和下载的总次数限制
+        self.save_download_limit = save_download_limit
+        # 分享转存次数限制
+        self.save_limit = save_limit
+        # share_icon
+        self.share_icon = share_icon
         # share_id
         self.share_id = share_id
         # share_name
@@ -36903,6 +41848,8 @@ class UpdateShareLinkRequest(TeaModel):
         self.share_pwd = share_pwd
         # status
         self.status = status
+        # video_preview_count
+        self.video_preview_count = video_preview_count
 
     def validate(self):
         pass
@@ -36915,14 +41862,46 @@ class UpdateShareLinkRequest(TeaModel):
         result = dict()
         if self.httpheaders is not None:
             result['httpheaders'] = self.httpheaders
+        if self.comments is not None:
+            result['comments'] = self.comments
         if self.description is not None:
             result['description'] = self.description
+        if self.disable_download is not None:
+            result['disable_download'] = self.disable_download
+        if self.disable_preview is not None:
+            result['disable_preview'] = self.disable_preview
+        if self.disable_save is not None:
+            result['disable_save'] = self.disable_save
+        if self.download_count is not None:
+            result['download_count'] = self.download_count
+        if self.download_limit is not None:
+            result['download_limit'] = self.download_limit
+        if self.enable_file_changed_notify is not None:
+            result['enable_file_changed_notify'] = self.enable_file_changed_notify
+        if self.enable_upload is not None:
+            result['enable_upload'] = self.enable_upload
         if self.expiration is not None:
             result['expiration'] = self.expiration
         if self.is_subscribed is not None:
             result['is_subscribed'] = self.is_subscribed
         if self.num_of_subscribers is not None:
             result['num_of_subscribers'] = self.num_of_subscribers
+        if self.preview_count is not None:
+            result['preview_count'] = self.preview_count
+        if self.preview_limit is not None:
+            result['preview_limit'] = self.preview_limit
+        if self.report_count is not None:
+            result['report_count'] = self.report_count
+        if self.require_login is not None:
+            result['require_login'] = self.require_login
+        if self.save_count is not None:
+            result['save_count'] = self.save_count
+        if self.save_download_limit is not None:
+            result['save_download_limit'] = self.save_download_limit
+        if self.save_limit is not None:
+            result['save_limit'] = self.save_limit
+        if self.share_icon is not None:
+            result['share_icon'] = self.share_icon
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.share_name is not None:
@@ -36931,20 +41910,54 @@ class UpdateShareLinkRequest(TeaModel):
             result['share_pwd'] = self.share_pwd
         if self.status is not None:
             result['status'] = self.status
+        if self.video_preview_count is not None:
+            result['video_preview_count'] = self.video_preview_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('httpheaders') is not None:
             self.httpheaders = m.get('httpheaders')
+        if m.get('comments') is not None:
+            self.comments = m.get('comments')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('disable_download') is not None:
+            self.disable_download = m.get('disable_download')
+        if m.get('disable_preview') is not None:
+            self.disable_preview = m.get('disable_preview')
+        if m.get('disable_save') is not None:
+            self.disable_save = m.get('disable_save')
+        if m.get('download_count') is not None:
+            self.download_count = m.get('download_count')
+        if m.get('download_limit') is not None:
+            self.download_limit = m.get('download_limit')
+        if m.get('enable_file_changed_notify') is not None:
+            self.enable_file_changed_notify = m.get('enable_file_changed_notify')
+        if m.get('enable_upload') is not None:
+            self.enable_upload = m.get('enable_upload')
         if m.get('expiration') is not None:
             self.expiration = m.get('expiration')
         if m.get('is_subscribed') is not None:
             self.is_subscribed = m.get('is_subscribed')
         if m.get('num_of_subscribers') is not None:
             self.num_of_subscribers = m.get('num_of_subscribers')
+        if m.get('preview_count') is not None:
+            self.preview_count = m.get('preview_count')
+        if m.get('preview_limit') is not None:
+            self.preview_limit = m.get('preview_limit')
+        if m.get('report_count') is not None:
+            self.report_count = m.get('report_count')
+        if m.get('require_login') is not None:
+            self.require_login = m.get('require_login')
+        if m.get('save_count') is not None:
+            self.save_count = m.get('save_count')
+        if m.get('save_download_limit') is not None:
+            self.save_download_limit = m.get('save_download_limit')
+        if m.get('save_limit') is not None:
+            self.save_limit = m.get('save_limit')
+        if m.get('share_icon') is not None:
+            self.share_icon = m.get('share_icon')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('share_name') is not None:
@@ -36953,6 +41966,8 @@ class UpdateShareLinkRequest(TeaModel):
             self.share_pwd = m.get('share_pwd')
         if m.get('status') is not None:
             self.status = m.get('status')
+        if m.get('video_preview_count') is not None:
+            self.video_preview_count = m.get('video_preview_count')
         return self
 
 
@@ -37046,6 +42061,101 @@ class UpdateShareRequest(TeaModel):
         return self
 
 
+class UpdateSubdomainMgmtRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        description: str = None,
+        domain_id: str = None,
+        name: str = None,
+        sharable: bool = None,
+        share_link_enabled: bool = None,
+        status: int = None,
+        subdomain_id: str = None,
+        total_size: int = None,
+        used_size_refresh_interval: int = None,
+        user_quota: int = None,
+    ):
+        # 描述
+        self.description = description
+        # 用以唯一标识subdomain
+        self.domain_id = domain_id
+        # 名称
+        self.name = name
+        # 是否开启了共享
+        self.sharable = sharable
+        # 是否开启了分享
+        self.share_link_enabled = share_link_enabled
+        # 状态
+        self.status = status
+        # 用以唯一标识subdomain
+        self.subdomain_id = subdomain_id
+        # 逻辑空间quota，-1表示无限制，单位为字节
+        self.total_size = total_size
+        # 逻辑空间刷新周期，单位：秒
+        self.used_size_refresh_interval = used_size_refresh_interval
+        # 用户数quota，-1表示无限制
+        self.user_quota = user_quota
+
+    def validate(self):
+        self.validate_required(self.domain_id, 'domain_id')
+        self.validate_required(self.subdomain_id, 'subdomain_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.sharable is not None:
+            result['sharable'] = self.sharable
+        if self.share_link_enabled is not None:
+            result['share_link_enabled'] = self.share_link_enabled
+        if self.status is not None:
+            result['status'] = self.status
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.total_size is not None:
+            result['total_size'] = self.total_size
+        if self.used_size_refresh_interval is not None:
+            result['used_size_refresh_interval'] = self.used_size_refresh_interval
+        if self.user_quota is not None:
+            result['user_quota'] = self.user_quota
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sharable') is not None:
+            self.sharable = m.get('sharable')
+        if m.get('share_link_enabled') is not None:
+            self.share_link_enabled = m.get('share_link_enabled')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('total_size') is not None:
+            self.total_size = m.get('total_size')
+        if m.get('used_size_refresh_interval') is not None:
+            self.used_size_refresh_interval = m.get('used_size_refresh_interval')
+        if m.get('user_quota') is not None:
+            self.user_quota = m.get('user_quota')
+        return self
+
+
 class UrlInfo(TeaModel):
     """
     *\
@@ -37101,11 +42211,11 @@ class UserAuthentication(TeaModel):
         created_at: int = None,
         detail: str = None,
         domain_id: str = None,
+        extra: str = None,
         identity: str = None,
         last_login_time: int = None,
         status: str = None,
         user_id: str = None,
-        extra: str = None,
         subdomain_id: str = None,
     ):
         # 认证类型
@@ -37116,6 +42226,8 @@ class UserAuthentication(TeaModel):
         self.detail = detail
         # Domain ID
         self.domain_id = domain_id
+        # 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
+        self.extra = extra
         # 唯一身份标识
         self.identity = identity
         # 最后登录时间
@@ -37124,8 +42236,6 @@ class UserAuthentication(TeaModel):
         self.status = status
         # 用户ID
         self.user_id = user_id
-        # 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
-        self.extra = extra
         # subdomain id
         self.subdomain_id = subdomain_id
 
@@ -37153,6 +42263,8 @@ class UserAuthentication(TeaModel):
             result['Detail'] = self.detail
         if self.domain_id is not None:
             result['DomainID'] = self.domain_id
+        if self.extra is not None:
+            result['Extra'] = self.extra
         if self.identity is not None:
             result['Identity'] = self.identity
         if self.last_login_time is not None:
@@ -37161,8 +42273,6 @@ class UserAuthentication(TeaModel):
             result['Status'] = self.status
         if self.user_id is not None:
             result['UserID'] = self.user_id
-        if self.extra is not None:
-            result['extra'] = self.extra
         if self.subdomain_id is not None:
             result['subdomain_id'] = self.subdomain_id
         return result
@@ -37177,6 +42287,8 @@ class UserAuthentication(TeaModel):
             self.detail = m.get('Detail')
         if m.get('DomainID') is not None:
             self.domain_id = m.get('DomainID')
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
         if m.get('Identity') is not None:
             self.identity = m.get('Identity')
         if m.get('LastLoginTime') is not None:
@@ -37185,8 +42297,6 @@ class UserAuthentication(TeaModel):
             self.status = m.get('Status')
         if m.get('UserID') is not None:
             self.user_id = m.get('UserID')
-        if m.get('extra') is not None:
-            self.extra = m.get('extra')
         if m.get('subdomain_id') is not None:
             self.subdomain_id = m.get('subdomain_id')
         return self
@@ -37277,6 +42387,7 @@ class AddStoreResponse(TeaModel):
         base_path: str = None,
         bucket: str = None,
         cdn_endpoint: str = None,
+        cdn_url_auth_key: str = None,
         customized_accelerate_endpoint: str = None,
         customized_cdn_endpoint: str = None,
         customized_endpoint: str = None,
@@ -37299,6 +42410,8 @@ class AddStoreResponse(TeaModel):
         self.bucket = bucket
         # 内容分发地址
         self.cdn_endpoint = cdn_endpoint
+        # CDN鉴权key
+        self.cdn_url_auth_key = cdn_url_auth_key
         # 自定义全球加速地址
         self.customized_accelerate_endpoint = customized_accelerate_endpoint
         # 自定义内容分发地址
@@ -37349,6 +42462,8 @@ class AddStoreResponse(TeaModel):
             result['bucket'] = self.bucket
         if self.cdn_endpoint is not None:
             result['cdn_endpoint'] = self.cdn_endpoint
+        if self.cdn_url_auth_key is not None:
+            result['cdn_url_auth_key'] = self.cdn_url_auth_key
         if self.customized_accelerate_endpoint is not None:
             result['customized_accelerate_endpoint'] = self.customized_accelerate_endpoint
         if self.customized_cdn_endpoint is not None:
@@ -37387,6 +42502,8 @@ class AddStoreResponse(TeaModel):
             self.bucket = m.get('bucket')
         if m.get('cdn_endpoint') is not None:
             self.cdn_endpoint = m.get('cdn_endpoint')
+        if m.get('cdn_url_auth_key') is not None:
+            self.cdn_url_auth_key = m.get('cdn_url_auth_key')
         if m.get('customized_accelerate_endpoint') is not None:
             self.customized_accelerate_endpoint = m.get('customized_accelerate_endpoint')
         if m.get('customized_cdn_endpoint') is not None:
@@ -37413,6 +42530,56 @@ class AddStoreResponse(TeaModel):
             self.store_id = m.get('store_id')
         if m.get('type') is not None:
             self.type = m.get('type')
+        return self
+
+
+class AddUserToSubdomainRequest(TeaModel):
+    """
+    Add user to subdomain request
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        role: str = None,
+        subdomain_id: str = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        self.role = role
+        # subdomain id
+        self.subdomain_id = subdomain_id
+        # 用户 ID
+        self.user_id = user_id
+
+    def validate(self):
+        self.validate_required(self.user_id, 'user_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.role is not None:
+            result['role'] = self.role
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
         return self
 
 
@@ -37452,14 +42619,44 @@ class AppConfig(TeaModel):
     """
     def __init__(
         self,
+        audio_play_enable: bool = None,
+        custom_account_identity_base_64: bool = None,
+        disable_group: bool = None,
+        enable_hidden_file: bool = None,
+        enable_share_link_count_limit: bool = None,
+        enable_transfer_acceleration: bool = None,
+        enable_update_share_link_by_admin: bool = None,
+        hidden_switch_user_role_entry: bool = None,
+        hide_admin_entry: bool = None,
+        hide_client_download_entry: bool = None,
         hide_drive_file_entry: bool = None,
+        hide_logout_entry: bool = None,
         hide_share_admin_entry: bool = None,
+        mount_app_enable: bool = None,
         show_customized_login_config: bool = None,
+        sync_app_enable: bool = None,
+        user_can_access_group_recycle_bin: bool = None,
+        video_play_enable: bool = None,
         web_version: str = None,
     ):
+        self.audio_play_enable = audio_play_enable
+        self.custom_account_identity_base_64 = custom_account_identity_base_64
+        self.disable_group = disable_group
+        self.enable_hidden_file = enable_hidden_file
+        self.enable_share_link_count_limit = enable_share_link_count_limit
+        self.enable_transfer_acceleration = enable_transfer_acceleration
+        self.enable_update_share_link_by_admin = enable_update_share_link_by_admin
+        self.hidden_switch_user_role_entry = hidden_switch_user_role_entry
+        self.hide_admin_entry = hide_admin_entry
+        self.hide_client_download_entry = hide_client_download_entry
         self.hide_drive_file_entry = hide_drive_file_entry
+        self.hide_logout_entry = hide_logout_entry
         self.hide_share_admin_entry = hide_share_admin_entry
+        self.mount_app_enable = mount_app_enable
         self.show_customized_login_config = show_customized_login_config
+        self.sync_app_enable = sync_app_enable
+        self.user_can_access_group_recycle_bin = user_can_access_group_recycle_bin
+        self.video_play_enable = video_play_enable
         self.web_version = web_version
 
     def validate(self):
@@ -37471,24 +42668,84 @@ class AppConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.audio_play_enable is not None:
+            result['audio_play_enable'] = self.audio_play_enable
+        if self.custom_account_identity_base_64 is not None:
+            result['custom_account_identity_base_64'] = self.custom_account_identity_base_64
+        if self.disable_group is not None:
+            result['disable_group'] = self.disable_group
+        if self.enable_hidden_file is not None:
+            result['enable_hidden_file'] = self.enable_hidden_file
+        if self.enable_share_link_count_limit is not None:
+            result['enable_share_link_count_limit'] = self.enable_share_link_count_limit
+        if self.enable_transfer_acceleration is not None:
+            result['enable_transfer_acceleration'] = self.enable_transfer_acceleration
+        if self.enable_update_share_link_by_admin is not None:
+            result['enable_update_share_link_by_admin'] = self.enable_update_share_link_by_admin
+        if self.hidden_switch_user_role_entry is not None:
+            result['hidden_switch_user_role_entry'] = self.hidden_switch_user_role_entry
+        if self.hide_admin_entry is not None:
+            result['hide_admin_entry'] = self.hide_admin_entry
+        if self.hide_client_download_entry is not None:
+            result['hide_client_download_entry'] = self.hide_client_download_entry
         if self.hide_drive_file_entry is not None:
             result['hide_drive_file_entry'] = self.hide_drive_file_entry
+        if self.hide_logout_entry is not None:
+            result['hide_logout_entry'] = self.hide_logout_entry
         if self.hide_share_admin_entry is not None:
             result['hide_share_admin_entry'] = self.hide_share_admin_entry
+        if self.mount_app_enable is not None:
+            result['mount_app_enable'] = self.mount_app_enable
         if self.show_customized_login_config is not None:
             result['show_customized_login_config'] = self.show_customized_login_config
+        if self.sync_app_enable is not None:
+            result['sync_app_enable'] = self.sync_app_enable
+        if self.user_can_access_group_recycle_bin is not None:
+            result['user_can_access_group_recycle_bin'] = self.user_can_access_group_recycle_bin
+        if self.video_play_enable is not None:
+            result['video_play_enable'] = self.video_play_enable
         if self.web_version is not None:
             result['web_version'] = self.web_version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('audio_play_enable') is not None:
+            self.audio_play_enable = m.get('audio_play_enable')
+        if m.get('custom_account_identity_base_64') is not None:
+            self.custom_account_identity_base_64 = m.get('custom_account_identity_base_64')
+        if m.get('disable_group') is not None:
+            self.disable_group = m.get('disable_group')
+        if m.get('enable_hidden_file') is not None:
+            self.enable_hidden_file = m.get('enable_hidden_file')
+        if m.get('enable_share_link_count_limit') is not None:
+            self.enable_share_link_count_limit = m.get('enable_share_link_count_limit')
+        if m.get('enable_transfer_acceleration') is not None:
+            self.enable_transfer_acceleration = m.get('enable_transfer_acceleration')
+        if m.get('enable_update_share_link_by_admin') is not None:
+            self.enable_update_share_link_by_admin = m.get('enable_update_share_link_by_admin')
+        if m.get('hidden_switch_user_role_entry') is not None:
+            self.hidden_switch_user_role_entry = m.get('hidden_switch_user_role_entry')
+        if m.get('hide_admin_entry') is not None:
+            self.hide_admin_entry = m.get('hide_admin_entry')
+        if m.get('hide_client_download_entry') is not None:
+            self.hide_client_download_entry = m.get('hide_client_download_entry')
         if m.get('hide_drive_file_entry') is not None:
             self.hide_drive_file_entry = m.get('hide_drive_file_entry')
+        if m.get('hide_logout_entry') is not None:
+            self.hide_logout_entry = m.get('hide_logout_entry')
         if m.get('hide_share_admin_entry') is not None:
             self.hide_share_admin_entry = m.get('hide_share_admin_entry')
+        if m.get('mount_app_enable') is not None:
+            self.mount_app_enable = m.get('mount_app_enable')
         if m.get('show_customized_login_config') is not None:
             self.show_customized_login_config = m.get('show_customized_login_config')
+        if m.get('sync_app_enable') is not None:
+            self.sync_app_enable = m.get('sync_app_enable')
+        if m.get('user_can_access_group_recycle_bin') is not None:
+            self.user_can_access_group_recycle_bin = m.get('user_can_access_group_recycle_bin')
+        if m.get('video_play_enable') is not None:
+            self.video_play_enable = m.get('video_play_enable')
         if m.get('web_version') is not None:
             self.web_version = m.get('web_version')
         return self
@@ -37543,6 +42800,73 @@ class AssignRoleSettingDetail(TeaModel):
             self.manage_resource_type = m.get('manage_resource_type')
         if m.get('role_id') is not None:
             self.role_id = m.get('role_id')
+        return self
+
+
+class AsyncTaskResponse(TeaModel):
+    """
+    Get AsyncTask Response
+    """
+    def __init__(
+        self,
+        async_task_id: str = None,
+        created_at: int = None,
+        err_code: int = None,
+        message: str = None,
+        state: str = None,
+        type: str = None,
+    ):
+        # async_task_id
+        # type:string
+        self.async_task_id = async_task_id
+        # created_at
+        self.created_at = created_at
+        # err_code
+        self.err_code = err_code
+        # message
+        self.message = message
+        # state
+        self.state = state
+        # type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_task_id is not None:
+            result['async_task_id'] = self.async_task_id
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.err_code is not None:
+            result['err_code'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.state is not None:
+            result['state'] = self.state
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('async_task_id') is not None:
+            self.async_task_id = m.get('async_task_id')
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('err_code') is not None:
+            self.err_code = m.get('err_code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         return self
 
 
@@ -37669,6 +42993,42 @@ class DomainSuperAdminConfig(TeaModel):
         return self
 
 
+class OfficeEditConfig(TeaModel):
+    """
+    OfficeEditConfig 文档编辑配置
+    """
+    def __init__(
+        self,
+        enabled: bool = None,
+        role: str = None,
+    ):
+        self.enabled = enabled
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
 class OfficePreviewConfig(TeaModel):
     """
     OfficePreviewConfig 文档预览配置
@@ -37696,6 +43056,165 @@ class OfficePreviewConfig(TeaModel):
         m = m or dict()
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
+        return self
+
+
+class RoleConfig(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        default_group_drive_role: str = None,
+        disabled_admin_file_permission: bool = None,
+        enabled: bool = None,
+        enabled_admin_delete_personal_file_permission: bool = None,
+        enabled_admin_personal_file_permission: bool = None,
+    ):
+        self.default_group_drive_role = default_group_drive_role
+        self.disabled_admin_file_permission = disabled_admin_file_permission
+        self.enabled = enabled
+        self.enabled_admin_delete_personal_file_permission = enabled_admin_delete_personal_file_permission
+        self.enabled_admin_personal_file_permission = enabled_admin_personal_file_permission
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_group_drive_role is not None:
+            result['default_group_drive_role'] = self.default_group_drive_role
+        if self.disabled_admin_file_permission is not None:
+            result['disabled_admin_file_permission'] = self.disabled_admin_file_permission
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.enabled_admin_delete_personal_file_permission is not None:
+            result['enabled_admin_delete_personal_file_permission'] = self.enabled_admin_delete_personal_file_permission
+        if self.enabled_admin_personal_file_permission is not None:
+            result['enabled_admin_personal_file_permission'] = self.enabled_admin_personal_file_permission
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('default_group_drive_role') is not None:
+            self.default_group_drive_role = m.get('default_group_drive_role')
+        if m.get('disabled_admin_file_permission') is not None:
+            self.disabled_admin_file_permission = m.get('disabled_admin_file_permission')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('enabled_admin_delete_personal_file_permission') is not None:
+            self.enabled_admin_delete_personal_file_permission = m.get('enabled_admin_delete_personal_file_permission')
+        if m.get('enabled_admin_personal_file_permission') is not None:
+            self.enabled_admin_personal_file_permission = m.get('enabled_admin_personal_file_permission')
+        return self
+
+
+class SubdomainConfig(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        enable_root_domain_create_resource: bool = None,
+        enabled: bool = None,
+        independent_store_count_quota: int = None,
+        subdomain_count_quota: int = None,
+        version: str = None,
+    ):
+        self.enable_root_domain_create_resource = enable_root_domain_create_resource
+        self.enabled = enabled
+        self.independent_store_count_quota = independent_store_count_quota
+        self.subdomain_count_quota = subdomain_count_quota
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_root_domain_create_resource is not None:
+            result['enable_root_domain_create_resource'] = self.enable_root_domain_create_resource
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.independent_store_count_quota is not None:
+            result['independent_store_count_quota'] = self.independent_store_count_quota
+        if self.subdomain_count_quota is not None:
+            result['subdomain_count_quota'] = self.subdomain_count_quota
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable_root_domain_create_resource') is not None:
+            self.enable_root_domain_create_resource = m.get('enable_root_domain_create_resource')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('independent_store_count_quota') is not None:
+            self.independent_store_count_quota = m.get('independent_store_count_quota')
+        if m.get('subdomain_count_quota') is not None:
+            self.subdomain_count_quota = m.get('subdomain_count_quota')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class VideoPreviewAppConfig(TeaModel):
+    """
+    前端判断是否可以播放视频流程
+    if OnlineVideoTranscodeEnable then do video_preview play  // 如果是离线转码, 那么用OfflineVideoTranscodeEnable代替, 音频类似
+    else if appConfig.VideoPlayEnable then do source file play // 音频用AudioPlayEnable代替
+    else notify user the function not support
+    """
+    def __init__(
+        self,
+        offline_audio_transcode_enable: bool = None,
+        offline_video_transcode_enable: bool = None,
+        online_audio_transcode_enable: bool = None,
+        online_video_transcode_enable: bool = None,
+    ):
+        self.offline_audio_transcode_enable = offline_audio_transcode_enable
+        self.offline_video_transcode_enable = offline_video_transcode_enable
+        self.online_audio_transcode_enable = online_audio_transcode_enable
+        self.online_video_transcode_enable = online_video_transcode_enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.offline_audio_transcode_enable is not None:
+            result['offline_audio_transcode_enable'] = self.offline_audio_transcode_enable
+        if self.offline_video_transcode_enable is not None:
+            result['offline_video_transcode_enable'] = self.offline_video_transcode_enable
+        if self.online_audio_transcode_enable is not None:
+            result['online_audio_transcode_enable'] = self.online_audio_transcode_enable
+        if self.online_video_transcode_enable is not None:
+            result['online_video_transcode_enable'] = self.online_video_transcode_enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('offline_audio_transcode_enable') is not None:
+            self.offline_audio_transcode_enable = m.get('offline_audio_transcode_enable')
+        if m.get('offline_video_transcode_enable') is not None:
+            self.offline_video_transcode_enable = m.get('offline_video_transcode_enable')
+        if m.get('online_audio_transcode_enable') is not None:
+            self.online_audio_transcode_enable = m.get('online_audio_transcode_enable')
+        if m.get('online_video_transcode_enable') is not None:
+            self.online_video_transcode_enable = m.get('online_video_transcode_enable')
         return self
 
 
@@ -37889,9 +43408,13 @@ class VideoPreviewEnableConfig(TeaModel):
     """
     def __init__(
         self,
+        disable_offline_audio_transcode: bool = None,
+        disable_offline_video_transcode: bool = None,
         enable_transcode_when_play: bool = None,
         enable_transcode_when_uploaded: bool = None,
     ):
+        self.disable_offline_audio_transcode = disable_offline_audio_transcode
+        self.disable_offline_video_transcode = disable_offline_video_transcode
         self.enable_transcode_when_play = enable_transcode_when_play
         self.enable_transcode_when_uploaded = enable_transcode_when_uploaded
 
@@ -37904,6 +43427,10 @@ class VideoPreviewEnableConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.disable_offline_audio_transcode is not None:
+            result['disable_offline_audio_transcode'] = self.disable_offline_audio_transcode
+        if self.disable_offline_video_transcode is not None:
+            result['disable_offline_video_transcode'] = self.disable_offline_video_transcode
         if self.enable_transcode_when_play is not None:
             result['enable_transcode_when_play'] = self.enable_transcode_when_play
         if self.enable_transcode_when_uploaded is not None:
@@ -37912,6 +43439,10 @@ class VideoPreviewEnableConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('disable_offline_audio_transcode') is not None:
+            self.disable_offline_audio_transcode = m.get('disable_offline_audio_transcode')
+        if m.get('disable_offline_video_transcode') is not None:
+            self.disable_offline_video_transcode = m.get('disable_offline_video_transcode')
         if m.get('enable_transcode_when_play') is not None:
             self.enable_transcode_when_play = m.get('enable_transcode_when_play')
         if m.get('enable_transcode_when_uploaded') is not None:
@@ -38058,6 +43589,8 @@ class VideoPreviewLiveTranscodingConfig(TeaModel):
         segment: int = None,
         subtitle_config: VideoPreviewLiveTranscodingSubtitleConfig = None,
         template_list: List[str] = None,
+        template_list_sorted: List[str] = None,
+        template_name_map: dict = None,
         ts_count_when_init_m3u_8: int = None,
         ts_count_when_ts_404: int = None,
         ts_file_prefix: str = None,
@@ -38075,6 +43608,8 @@ class VideoPreviewLiveTranscodingConfig(TeaModel):
         self.segment = segment
         self.subtitle_config = subtitle_config
         self.template_list = template_list
+        self.template_list_sorted = template_list_sorted
+        self.template_name_map = template_name_map
         # Mode              string   `json:"mode"`               // 默认media模式
         # 以下几个count需要根据task的status和stage来判断, 当前实时转码的状态
         self.ts_count_when_init_m3u_8 = ts_count_when_init_m3u_8
@@ -38121,6 +43656,10 @@ class VideoPreviewLiveTranscodingConfig(TeaModel):
             result['subtitle_config'] = self.subtitle_config.to_map()
         if self.template_list is not None:
             result['template_list'] = self.template_list
+        if self.template_list_sorted is not None:
+            result['template_list_sorted'] = self.template_list_sorted
+        if self.template_name_map is not None:
+            result['template_name_map'] = self.template_name_map
         if self.ts_count_when_init_m3u_8 is not None:
             result['ts_count_when_init_m3u8'] = self.ts_count_when_init_m3u_8
         if self.ts_count_when_ts_404 is not None:
@@ -38160,6 +43699,10 @@ class VideoPreviewLiveTranscodingConfig(TeaModel):
             self.subtitle_config = temp_model.from_map(m['subtitle_config'])
         if m.get('template_list') is not None:
             self.template_list = m.get('template_list')
+        if m.get('template_list_sorted') is not None:
+            self.template_list_sorted = m.get('template_list_sorted')
+        if m.get('template_name_map') is not None:
+            self.template_name_map = m.get('template_name_map')
         if m.get('ts_count_when_init_m3u8') is not None:
             self.ts_count_when_init_m3u_8 = m.get('ts_count_when_init_m3u8')
         if m.get('ts_count_when_ts_404') is not None:
@@ -38863,6 +44406,102 @@ class VideoPreviewConfig(TeaModel):
         return self
 
 
+class BaseWatermarkConfigResponse(TeaModel):
+    """
+    base watermark config response
+    """
+    def __init__(
+        self,
+        bold: bool = None,
+        display_access_user_name: bool = None,
+        display_custom_text: str = None,
+        display_share_link_creator_name: bool = None,
+        enable_doc_preview: bool = None,
+        enable_on_preview: bool = None,
+        fill_style: str = None,
+        font: str = None,
+        horizontal: int = None,
+        rotate: int = None,
+        size: int = None,
+        vertical: int = None,
+    ):
+        self.bold = bold
+        self.display_access_user_name = display_access_user_name
+        self.display_custom_text = display_custom_text
+        self.display_share_link_creator_name = display_share_link_creator_name
+        self.enable_doc_preview = enable_doc_preview
+        self.enable_on_preview = enable_on_preview
+        self.fill_style = fill_style
+        self.font = font
+        self.horizontal = horizontal
+        self.rotate = rotate
+        self.size = size
+        self.vertical = vertical
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bold is not None:
+            result['bold'] = self.bold
+        if self.display_access_user_name is not None:
+            result['display_access_user_name'] = self.display_access_user_name
+        if self.display_custom_text is not None:
+            result['display_custom_text'] = self.display_custom_text
+        if self.display_share_link_creator_name is not None:
+            result['display_shareLink_creator_name'] = self.display_share_link_creator_name
+        if self.enable_doc_preview is not None:
+            result['enable_doc_preview'] = self.enable_doc_preview
+        if self.enable_on_preview is not None:
+            result['enable_on_preview'] = self.enable_on_preview
+        if self.fill_style is not None:
+            result['fill_style'] = self.fill_style
+        if self.font is not None:
+            result['font'] = self.font
+        if self.horizontal is not None:
+            result['horizontal'] = self.horizontal
+        if self.rotate is not None:
+            result['rotate'] = self.rotate
+        if self.size is not None:
+            result['size'] = self.size
+        if self.vertical is not None:
+            result['vertical'] = self.vertical
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bold') is not None:
+            self.bold = m.get('bold')
+        if m.get('display_access_user_name') is not None:
+            self.display_access_user_name = m.get('display_access_user_name')
+        if m.get('display_custom_text') is not None:
+            self.display_custom_text = m.get('display_custom_text')
+        if m.get('display_shareLink_creator_name') is not None:
+            self.display_share_link_creator_name = m.get('display_shareLink_creator_name')
+        if m.get('enable_doc_preview') is not None:
+            self.enable_doc_preview = m.get('enable_doc_preview')
+        if m.get('enable_on_preview') is not None:
+            self.enable_on_preview = m.get('enable_on_preview')
+        if m.get('fill_style') is not None:
+            self.fill_style = m.get('fill_style')
+        if m.get('font') is not None:
+            self.font = m.get('font')
+        if m.get('horizontal') is not None:
+            self.horizontal = m.get('horizontal')
+        if m.get('rotate') is not None:
+            self.rotate = m.get('rotate')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('vertical') is not None:
+            self.vertical = m.get('vertical')
+        return self
+
+
 class BaseDomainResponse(TeaModel):
     """
     base domain response
@@ -38872,16 +44511,13 @@ class BaseDomainResponse(TeaModel):
         api_cname: str = None,
         app_cname: str = None,
         app_config: AppConfig = None,
+        archive_files_enable: bool = None,
         audit_log_config: AuditLogConfig = None,
-        auth_alipay_app_id: str = None,
-        auth_alipay_enable: bool = None,
-        auth_alipay_private_key: str = None,
         auth_cname: str = None,
         auth_config: dict = None,
         auth_dingding_app_id: str = None,
         auth_dingding_app_secret: str = None,
         auth_dingding_enable: bool = None,
-        auth_endpoint_enable: bool = None,
         auth_ram_app_id: str = None,
         auth_ram_app_secret: str = None,
         auth_ram_enable: bool = None,
@@ -38904,36 +44540,42 @@ class BaseDomainResponse(TeaModel):
         init_drive_size: int = None,
         init_drive_store_id: str = None,
         mode: str = None,
+        office_edit_config: OfficeEditConfig = None,
         office_preview_config: OfficePreviewConfig = None,
         parallel_upload_enabled: bool = None,
+        parent_domain_id: str = None,
         path_type: str = None,
         prepaid_package: str = None,
         published_app_access_strategy: AppAccessStrategy = None,
+        role_config: RoleConfig = None,
         service_code: str = None,
         sharable: bool = None,
+        share_detail: ShareDetailResponse = None,
+        share_link_detail: ShareDetailResponse = None,
         share_link_enabled: bool = None,
         size_quota: int = None,
         spi_instance_id: str = None,
         status: int = None,
         store_level: str = None,
         store_region_list: List[str] = None,
+        subdomain_config: SubdomainConfig = None,
         updated_at: str = None,
+        used_size: int = None,
+        used_size_refresh_interval: int = None,
         user_count_quota: int = None,
         user_single_drive_enabled: bool = None,
+        video_preview_app_config: VideoPreviewAppConfig = None,
         video_preview_config: VideoPreviewConfig = None,
+        watermark_config: BaseWatermarkConfigResponse = None,
     ):
         # Domain APICName
         self.api_cname = api_cname
         # Domain AppCName
         self.app_cname = app_cname
         self.app_config = app_config
+        # 打包下载配置
+        self.archive_files_enable = archive_files_enable
         self.audit_log_config = audit_log_config
-        # 支付宝 App Id
-        self.auth_alipay_app_id = auth_alipay_app_id
-        # 是否开启了支付宝认证
-        self.auth_alipay_enable = auth_alipay_enable
-        # 支付宝 App Secret
-        self.auth_alipay_private_key = auth_alipay_private_key
         # Domain AuthCName
         self.auth_cname = auth_cname
         # 登录相关信息
@@ -38944,7 +44586,6 @@ class BaseDomainResponse(TeaModel):
         self.auth_dingding_app_secret = auth_dingding_app_secret
         # 是否开启了钉钉认证
         self.auth_dingding_enable = auth_dingding_enable
-        self.auth_endpoint_enable = auth_endpoint_enable
         # RAM App Id
         self.auth_ram_app_id = auth_ram_app_id
         # RAM App Secret
@@ -38986,17 +44627,23 @@ class BaseDomainResponse(TeaModel):
         self.init_drive_store_id = init_drive_store_id
         # Domain 类型
         self.mode = mode
+        self.office_edit_config = office_edit_config
         self.office_preview_config = office_preview_config
         self.parallel_upload_enabled = parallel_upload_enabled
+        # Parent Domain ID
+        self.parent_domain_id = parent_domain_id
         # Domain 类型
         self.path_type = path_type
         # 预付费套餐
         self.prepaid_package = prepaid_package
         self.published_app_access_strategy = published_app_access_strategy
+        self.role_config = role_config
         # Domain ServiceCode
         self.service_code = service_code
         # 是否开启了共享
         self.sharable = sharable
+        self.share_detail = share_detail
+        self.share_link_detail = share_link_detail
         # 是否开启了分享
         self.share_link_enabled = share_link_enabled
         # 容量配额
@@ -39009,13 +44656,20 @@ class BaseDomainResponse(TeaModel):
         self.store_level = store_level
         # 存储 Region 列表
         self.store_region_list = store_region_list
+        self.subdomain_config = subdomain_config
         # Domain 更新时间
         self.updated_at = updated_at
+        # 逻辑空间使用量，单位为字节
+        self.used_size = used_size
+        # 逻辑空间刷新周期，单位：秒
+        self.used_size_refresh_interval = used_size_refresh_interval
         # 用户数配额
         self.user_count_quota = user_count_quota
         # user和group只能有一个drive的开关
         self.user_single_drive_enabled = user_single_drive_enabled
+        self.video_preview_app_config = video_preview_app_config
         self.video_preview_config = video_preview_config
+        self.watermark_config = watermark_config
 
     def validate(self):
         if self.app_config:
@@ -39024,12 +44678,26 @@ class BaseDomainResponse(TeaModel):
             self.audit_log_config.validate()
         if self.default_super_admin_config:
             self.default_super_admin_config.validate()
+        if self.office_edit_config:
+            self.office_edit_config.validate()
         if self.office_preview_config:
             self.office_preview_config.validate()
         if self.published_app_access_strategy:
             self.published_app_access_strategy.validate()
+        if self.role_config:
+            self.role_config.validate()
+        if self.share_detail:
+            self.share_detail.validate()
+        if self.share_link_detail:
+            self.share_link_detail.validate()
+        if self.subdomain_config:
+            self.subdomain_config.validate()
+        if self.video_preview_app_config:
+            self.video_preview_app_config.validate()
         if self.video_preview_config:
             self.video_preview_config.validate()
+        if self.watermark_config:
+            self.watermark_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -39043,14 +44711,10 @@ class BaseDomainResponse(TeaModel):
             result['app_cname'] = self.app_cname
         if self.app_config is not None:
             result['app_config'] = self.app_config.to_map()
+        if self.archive_files_enable is not None:
+            result['archive_files_enable'] = self.archive_files_enable
         if self.audit_log_config is not None:
             result['audit_log_config'] = self.audit_log_config.to_map()
-        if self.auth_alipay_app_id is not None:
-            result['auth_alipay_app_id'] = self.auth_alipay_app_id
-        if self.auth_alipay_enable is not None:
-            result['auth_alipay_enable'] = self.auth_alipay_enable
-        if self.auth_alipay_private_key is not None:
-            result['auth_alipay_private_key'] = self.auth_alipay_private_key
         if self.auth_cname is not None:
             result['auth_cname'] = self.auth_cname
         if self.auth_config is not None:
@@ -39061,8 +44725,6 @@ class BaseDomainResponse(TeaModel):
             result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
         if self.auth_dingding_enable is not None:
             result['auth_dingding_enable'] = self.auth_dingding_enable
-        if self.auth_endpoint_enable is not None:
-            result['auth_endpoint_enable'] = self.auth_endpoint_enable
         if self.auth_ram_app_id is not None:
             result['auth_ram_app_id'] = self.auth_ram_app_id
         if self.auth_ram_app_secret is not None:
@@ -39107,20 +44769,30 @@ class BaseDomainResponse(TeaModel):
             result['init_drive_store_id'] = self.init_drive_store_id
         if self.mode is not None:
             result['mode'] = self.mode
+        if self.office_edit_config is not None:
+            result['office_edit_config'] = self.office_edit_config.to_map()
         if self.office_preview_config is not None:
             result['office_preview_config'] = self.office_preview_config.to_map()
         if self.parallel_upload_enabled is not None:
             result['parallel_upload_enabled'] = self.parallel_upload_enabled
+        if self.parent_domain_id is not None:
+            result['parent_domain_id'] = self.parent_domain_id
         if self.path_type is not None:
             result['path_type'] = self.path_type
         if self.prepaid_package is not None:
             result['prepaid_package'] = self.prepaid_package
         if self.published_app_access_strategy is not None:
             result['published_app_access_strategy'] = self.published_app_access_strategy.to_map()
+        if self.role_config is not None:
+            result['role_config'] = self.role_config.to_map()
         if self.service_code is not None:
             result['service_code'] = self.service_code
         if self.sharable is not None:
             result['sharable'] = self.sharable
+        if self.share_detail is not None:
+            result['share_detail'] = self.share_detail.to_map()
+        if self.share_link_detail is not None:
+            result['share_link_detail'] = self.share_link_detail.to_map()
         if self.share_link_enabled is not None:
             result['share_link_enabled'] = self.share_link_enabled
         if self.size_quota is not None:
@@ -39133,14 +44805,24 @@ class BaseDomainResponse(TeaModel):
             result['store_level'] = self.store_level
         if self.store_region_list is not None:
             result['store_region_list'] = self.store_region_list
+        if self.subdomain_config is not None:
+            result['subdomain_config'] = self.subdomain_config.to_map()
         if self.updated_at is not None:
             result['updated_at'] = self.updated_at
+        if self.used_size is not None:
+            result['used_size'] = self.used_size
+        if self.used_size_refresh_interval is not None:
+            result['used_size_refresh_interval'] = self.used_size_refresh_interval
         if self.user_count_quota is not None:
             result['user_count_quota'] = self.user_count_quota
         if self.user_single_drive_enabled is not None:
             result['user_single_drive_enabled'] = self.user_single_drive_enabled
+        if self.video_preview_app_config is not None:
+            result['video_preview_app_config'] = self.video_preview_app_config.to_map()
         if self.video_preview_config is not None:
             result['video_preview_config'] = self.video_preview_config.to_map()
+        if self.watermark_config is not None:
+            result['watermark_config'] = self.watermark_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -39152,15 +44834,11 @@ class BaseDomainResponse(TeaModel):
         if m.get('app_config') is not None:
             temp_model = AppConfig()
             self.app_config = temp_model.from_map(m['app_config'])
+        if m.get('archive_files_enable') is not None:
+            self.archive_files_enable = m.get('archive_files_enable')
         if m.get('audit_log_config') is not None:
             temp_model = AuditLogConfig()
             self.audit_log_config = temp_model.from_map(m['audit_log_config'])
-        if m.get('auth_alipay_app_id') is not None:
-            self.auth_alipay_app_id = m.get('auth_alipay_app_id')
-        if m.get('auth_alipay_enable') is not None:
-            self.auth_alipay_enable = m.get('auth_alipay_enable')
-        if m.get('auth_alipay_private_key') is not None:
-            self.auth_alipay_private_key = m.get('auth_alipay_private_key')
         if m.get('auth_cname') is not None:
             self.auth_cname = m.get('auth_cname')
         if m.get('auth_config') is not None:
@@ -39171,8 +44849,6 @@ class BaseDomainResponse(TeaModel):
             self.auth_dingding_app_secret = m.get('auth_dingding_app_secret')
         if m.get('auth_dingding_enable') is not None:
             self.auth_dingding_enable = m.get('auth_dingding_enable')
-        if m.get('auth_endpoint_enable') is not None:
-            self.auth_endpoint_enable = m.get('auth_endpoint_enable')
         if m.get('auth_ram_app_id') is not None:
             self.auth_ram_app_id = m.get('auth_ram_app_id')
         if m.get('auth_ram_app_secret') is not None:
@@ -39218,11 +44894,16 @@ class BaseDomainResponse(TeaModel):
             self.init_drive_store_id = m.get('init_drive_store_id')
         if m.get('mode') is not None:
             self.mode = m.get('mode')
+        if m.get('office_edit_config') is not None:
+            temp_model = OfficeEditConfig()
+            self.office_edit_config = temp_model.from_map(m['office_edit_config'])
         if m.get('office_preview_config') is not None:
             temp_model = OfficePreviewConfig()
             self.office_preview_config = temp_model.from_map(m['office_preview_config'])
         if m.get('parallel_upload_enabled') is not None:
             self.parallel_upload_enabled = m.get('parallel_upload_enabled')
+        if m.get('parent_domain_id') is not None:
+            self.parent_domain_id = m.get('parent_domain_id')
         if m.get('path_type') is not None:
             self.path_type = m.get('path_type')
         if m.get('prepaid_package') is not None:
@@ -39230,10 +44911,19 @@ class BaseDomainResponse(TeaModel):
         if m.get('published_app_access_strategy') is not None:
             temp_model = AppAccessStrategy()
             self.published_app_access_strategy = temp_model.from_map(m['published_app_access_strategy'])
+        if m.get('role_config') is not None:
+            temp_model = RoleConfig()
+            self.role_config = temp_model.from_map(m['role_config'])
         if m.get('service_code') is not None:
             self.service_code = m.get('service_code')
         if m.get('sharable') is not None:
             self.sharable = m.get('sharable')
+        if m.get('share_detail') is not None:
+            temp_model = ShareDetailResponse()
+            self.share_detail = temp_model.from_map(m['share_detail'])
+        if m.get('share_link_detail') is not None:
+            temp_model = ShareDetailResponse()
+            self.share_link_detail = temp_model.from_map(m['share_link_detail'])
         if m.get('share_link_enabled') is not None:
             self.share_link_enabled = m.get('share_link_enabled')
         if m.get('size_quota') is not None:
@@ -39246,15 +44936,111 @@ class BaseDomainResponse(TeaModel):
             self.store_level = m.get('store_level')
         if m.get('store_region_list') is not None:
             self.store_region_list = m.get('store_region_list')
+        if m.get('subdomain_config') is not None:
+            temp_model = SubdomainConfig()
+            self.subdomain_config = temp_model.from_map(m['subdomain_config'])
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
+        if m.get('used_size') is not None:
+            self.used_size = m.get('used_size')
+        if m.get('used_size_refresh_interval') is not None:
+            self.used_size_refresh_interval = m.get('used_size_refresh_interval')
         if m.get('user_count_quota') is not None:
             self.user_count_quota = m.get('user_count_quota')
         if m.get('user_single_drive_enabled') is not None:
             self.user_single_drive_enabled = m.get('user_single_drive_enabled')
+        if m.get('video_preview_app_config') is not None:
+            temp_model = VideoPreviewAppConfig()
+            self.video_preview_app_config = temp_model.from_map(m['video_preview_app_config'])
         if m.get('video_preview_config') is not None:
             temp_model = VideoPreviewConfig()
             self.video_preview_config = temp_model.from_map(m['video_preview_config'])
+        if m.get('watermark_config') is not None:
+            temp_model = BaseWatermarkConfigResponse()
+            self.watermark_config = temp_model.from_map(m['watermark_config'])
+        return self
+
+
+class BaseGroupIDRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        group_id: str = None,
+        subdomain_id: str = None,
+    ):
+        # group id
+        self.group_id = group_id
+        # subdomain id
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class BaseGroupRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        description: str = None,
+        group_name: str = None,
+        is_root: bool = None,
+    ):
+        # 描述
+        self.description = description
+        # 名称
+        self.group_name = group_name
+        # 是否是根group
+        self.is_root = is_root
+
+    def validate(self):
+        self.validate_required(self.group_name, 'group_name')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.group_name is not None:
+            result['group_name'] = self.group_name
+        if self.is_root is not None:
+            result['is_root'] = self.is_root
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('group_name') is not None:
+            self.group_name = m.get('group_name')
+        if m.get('is_root') is not None:
+            self.is_root = m.get('is_root')
         return self
 
 
@@ -39391,6 +45177,85 @@ class BenefitMeta(TeaModel):
         return self
 
 
+class BindDeviceRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        device_info: str = None,
+        device_name: str = None,
+        device_type: str = None,
+        fs_type: str = None,
+        manufacturer: str = None,
+        total_size: int = None,
+        used_size: int = None,
+    ):
+        self.httpheaders = httpheaders
+        # device_info
+        self.device_info = device_info
+        # device_name
+        self.device_name = device_name
+        # device_type
+        self.device_type = device_type
+        # fs_type
+        self.fs_type = fs_type
+        # manufacturer
+        self.manufacturer = manufacturer
+        # total_size
+        self.total_size = total_size
+        # used_size
+        self.used_size = used_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.device_info is not None:
+            result['device_info'] = self.device_info
+        if self.device_name is not None:
+            result['device_name'] = self.device_name
+        if self.device_type is not None:
+            result['device_type'] = self.device_type
+        if self.fs_type is not None:
+            result['fs_type'] = self.fs_type
+        if self.manufacturer is not None:
+            result['manufacturer'] = self.manufacturer
+        if self.total_size is not None:
+            result['total_size'] = self.total_size
+        if self.used_size is not None:
+            result['used_size'] = self.used_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('device_info') is not None:
+            self.device_info = m.get('device_info')
+        if m.get('device_name') is not None:
+            self.device_name = m.get('device_name')
+        if m.get('device_type') is not None:
+            self.device_type = m.get('device_type')
+        if m.get('fs_type') is not None:
+            self.fs_type = m.get('fs_type')
+        if m.get('manufacturer') is not None:
+            self.manufacturer = m.get('manufacturer')
+        if m.get('total_size') is not None:
+            self.total_size = m.get('total_size')
+        if m.get('used_size') is not None:
+            self.used_size = m.get('used_size')
+        return self
+
+
 class CNameStatus(TeaModel):
     """
     *\
@@ -39438,6 +45303,43 @@ class CNameStatus(TeaModel):
         return self
 
 
+class ClearAllRecycleBinRequest(TeaModel):
+    """
+    清理所有回收站文件元数据请求
+    """
+    def __init__(
+        self,
+        addition_data: dict = None,
+        file_path_type: str = None,
+    ):
+        # addition_data
+        self.addition_data = addition_data
+        self.file_path_type = file_path_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.file_path_type is not None:
+            result['file_path_type'] = self.file_path_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addition_data') is not None:
+            self.addition_data = m.get('addition_data')
+        if m.get('file_path_type') is not None:
+            self.file_path_type = m.get('file_path_type')
+        return self
+
+
 class CreateDomainResponse(TeaModel):
     """
     create domain response
@@ -39447,16 +45349,13 @@ class CreateDomainResponse(TeaModel):
         api_cname: str = None,
         app_cname: str = None,
         app_config: AppConfig = None,
+        archive_files_enable: bool = None,
         audit_log_config: AuditLogConfig = None,
-        auth_alipay_app_id: str = None,
-        auth_alipay_enable: bool = None,
-        auth_alipay_private_key: str = None,
         auth_cname: str = None,
         auth_config: dict = None,
         auth_dingding_app_id: str = None,
         auth_dingding_app_secret: str = None,
         auth_dingding_enable: bool = None,
-        auth_endpoint_enable: bool = None,
         auth_ram_app_id: str = None,
         auth_ram_app_secret: str = None,
         auth_ram_enable: bool = None,
@@ -39479,36 +45378,42 @@ class CreateDomainResponse(TeaModel):
         init_drive_size: int = None,
         init_drive_store_id: str = None,
         mode: str = None,
+        office_edit_config: OfficeEditConfig = None,
         office_preview_config: OfficePreviewConfig = None,
         parallel_upload_enabled: bool = None,
+        parent_domain_id: str = None,
         path_type: str = None,
         prepaid_package: str = None,
         published_app_access_strategy: AppAccessStrategy = None,
+        role_config: RoleConfig = None,
         service_code: str = None,
         sharable: bool = None,
+        share_detail: ShareDetailResponse = None,
+        share_link_detail: ShareDetailResponse = None,
         share_link_enabled: bool = None,
         size_quota: int = None,
         spi_instance_id: str = None,
         status: int = None,
         store_level: str = None,
         store_region_list: List[str] = None,
+        subdomain_config: SubdomainConfig = None,
         updated_at: str = None,
+        used_size: int = None,
+        used_size_refresh_interval: int = None,
         user_count_quota: int = None,
         user_single_drive_enabled: bool = None,
+        video_preview_app_config: VideoPreviewAppConfig = None,
         video_preview_config: VideoPreviewConfig = None,
+        watermark_config: BaseWatermarkConfigResponse = None,
     ):
         # Domain APICName
         self.api_cname = api_cname
         # Domain AppCName
         self.app_cname = app_cname
         self.app_config = app_config
+        # 打包下载配置
+        self.archive_files_enable = archive_files_enable
         self.audit_log_config = audit_log_config
-        # 支付宝 App Id
-        self.auth_alipay_app_id = auth_alipay_app_id
-        # 是否开启了支付宝认证
-        self.auth_alipay_enable = auth_alipay_enable
-        # 支付宝 App Secret
-        self.auth_alipay_private_key = auth_alipay_private_key
         # Domain AuthCName
         self.auth_cname = auth_cname
         # 登录相关信息
@@ -39519,7 +45424,6 @@ class CreateDomainResponse(TeaModel):
         self.auth_dingding_app_secret = auth_dingding_app_secret
         # 是否开启了钉钉认证
         self.auth_dingding_enable = auth_dingding_enable
-        self.auth_endpoint_enable = auth_endpoint_enable
         # RAM App Id
         self.auth_ram_app_id = auth_ram_app_id
         # RAM App Secret
@@ -39561,17 +45465,23 @@ class CreateDomainResponse(TeaModel):
         self.init_drive_store_id = init_drive_store_id
         # Domain 类型
         self.mode = mode
+        self.office_edit_config = office_edit_config
         self.office_preview_config = office_preview_config
         self.parallel_upload_enabled = parallel_upload_enabled
+        # Parent Domain ID
+        self.parent_domain_id = parent_domain_id
         # Domain 类型
         self.path_type = path_type
         # 预付费套餐
         self.prepaid_package = prepaid_package
         self.published_app_access_strategy = published_app_access_strategy
+        self.role_config = role_config
         # Domain ServiceCode
         self.service_code = service_code
         # 是否开启了共享
         self.sharable = sharable
+        self.share_detail = share_detail
+        self.share_link_detail = share_link_detail
         # 是否开启了分享
         self.share_link_enabled = share_link_enabled
         # 容量配额
@@ -39584,13 +45494,20 @@ class CreateDomainResponse(TeaModel):
         self.store_level = store_level
         # 存储 Region 列表
         self.store_region_list = store_region_list
+        self.subdomain_config = subdomain_config
         # Domain 更新时间
         self.updated_at = updated_at
+        # 逻辑空间使用量，单位为字节
+        self.used_size = used_size
+        # 逻辑空间刷新周期，单位：秒
+        self.used_size_refresh_interval = used_size_refresh_interval
         # 用户数配额
         self.user_count_quota = user_count_quota
         # user和group只能有一个drive的开关
         self.user_single_drive_enabled = user_single_drive_enabled
+        self.video_preview_app_config = video_preview_app_config
         self.video_preview_config = video_preview_config
+        self.watermark_config = watermark_config
 
     def validate(self):
         if self.app_config:
@@ -39599,12 +45516,26 @@ class CreateDomainResponse(TeaModel):
             self.audit_log_config.validate()
         if self.default_super_admin_config:
             self.default_super_admin_config.validate()
+        if self.office_edit_config:
+            self.office_edit_config.validate()
         if self.office_preview_config:
             self.office_preview_config.validate()
         if self.published_app_access_strategy:
             self.published_app_access_strategy.validate()
+        if self.role_config:
+            self.role_config.validate()
+        if self.share_detail:
+            self.share_detail.validate()
+        if self.share_link_detail:
+            self.share_link_detail.validate()
+        if self.subdomain_config:
+            self.subdomain_config.validate()
+        if self.video_preview_app_config:
+            self.video_preview_app_config.validate()
         if self.video_preview_config:
             self.video_preview_config.validate()
+        if self.watermark_config:
+            self.watermark_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -39618,14 +45549,10 @@ class CreateDomainResponse(TeaModel):
             result['app_cname'] = self.app_cname
         if self.app_config is not None:
             result['app_config'] = self.app_config.to_map()
+        if self.archive_files_enable is not None:
+            result['archive_files_enable'] = self.archive_files_enable
         if self.audit_log_config is not None:
             result['audit_log_config'] = self.audit_log_config.to_map()
-        if self.auth_alipay_app_id is not None:
-            result['auth_alipay_app_id'] = self.auth_alipay_app_id
-        if self.auth_alipay_enable is not None:
-            result['auth_alipay_enable'] = self.auth_alipay_enable
-        if self.auth_alipay_private_key is not None:
-            result['auth_alipay_private_key'] = self.auth_alipay_private_key
         if self.auth_cname is not None:
             result['auth_cname'] = self.auth_cname
         if self.auth_config is not None:
@@ -39636,8 +45563,6 @@ class CreateDomainResponse(TeaModel):
             result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
         if self.auth_dingding_enable is not None:
             result['auth_dingding_enable'] = self.auth_dingding_enable
-        if self.auth_endpoint_enable is not None:
-            result['auth_endpoint_enable'] = self.auth_endpoint_enable
         if self.auth_ram_app_id is not None:
             result['auth_ram_app_id'] = self.auth_ram_app_id
         if self.auth_ram_app_secret is not None:
@@ -39682,20 +45607,30 @@ class CreateDomainResponse(TeaModel):
             result['init_drive_store_id'] = self.init_drive_store_id
         if self.mode is not None:
             result['mode'] = self.mode
+        if self.office_edit_config is not None:
+            result['office_edit_config'] = self.office_edit_config.to_map()
         if self.office_preview_config is not None:
             result['office_preview_config'] = self.office_preview_config.to_map()
         if self.parallel_upload_enabled is not None:
             result['parallel_upload_enabled'] = self.parallel_upload_enabled
+        if self.parent_domain_id is not None:
+            result['parent_domain_id'] = self.parent_domain_id
         if self.path_type is not None:
             result['path_type'] = self.path_type
         if self.prepaid_package is not None:
             result['prepaid_package'] = self.prepaid_package
         if self.published_app_access_strategy is not None:
             result['published_app_access_strategy'] = self.published_app_access_strategy.to_map()
+        if self.role_config is not None:
+            result['role_config'] = self.role_config.to_map()
         if self.service_code is not None:
             result['service_code'] = self.service_code
         if self.sharable is not None:
             result['sharable'] = self.sharable
+        if self.share_detail is not None:
+            result['share_detail'] = self.share_detail.to_map()
+        if self.share_link_detail is not None:
+            result['share_link_detail'] = self.share_link_detail.to_map()
         if self.share_link_enabled is not None:
             result['share_link_enabled'] = self.share_link_enabled
         if self.size_quota is not None:
@@ -39708,14 +45643,24 @@ class CreateDomainResponse(TeaModel):
             result['store_level'] = self.store_level
         if self.store_region_list is not None:
             result['store_region_list'] = self.store_region_list
+        if self.subdomain_config is not None:
+            result['subdomain_config'] = self.subdomain_config.to_map()
         if self.updated_at is not None:
             result['updated_at'] = self.updated_at
+        if self.used_size is not None:
+            result['used_size'] = self.used_size
+        if self.used_size_refresh_interval is not None:
+            result['used_size_refresh_interval'] = self.used_size_refresh_interval
         if self.user_count_quota is not None:
             result['user_count_quota'] = self.user_count_quota
         if self.user_single_drive_enabled is not None:
             result['user_single_drive_enabled'] = self.user_single_drive_enabled
+        if self.video_preview_app_config is not None:
+            result['video_preview_app_config'] = self.video_preview_app_config.to_map()
         if self.video_preview_config is not None:
             result['video_preview_config'] = self.video_preview_config.to_map()
+        if self.watermark_config is not None:
+            result['watermark_config'] = self.watermark_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -39727,15 +45672,11 @@ class CreateDomainResponse(TeaModel):
         if m.get('app_config') is not None:
             temp_model = AppConfig()
             self.app_config = temp_model.from_map(m['app_config'])
+        if m.get('archive_files_enable') is not None:
+            self.archive_files_enable = m.get('archive_files_enable')
         if m.get('audit_log_config') is not None:
             temp_model = AuditLogConfig()
             self.audit_log_config = temp_model.from_map(m['audit_log_config'])
-        if m.get('auth_alipay_app_id') is not None:
-            self.auth_alipay_app_id = m.get('auth_alipay_app_id')
-        if m.get('auth_alipay_enable') is not None:
-            self.auth_alipay_enable = m.get('auth_alipay_enable')
-        if m.get('auth_alipay_private_key') is not None:
-            self.auth_alipay_private_key = m.get('auth_alipay_private_key')
         if m.get('auth_cname') is not None:
             self.auth_cname = m.get('auth_cname')
         if m.get('auth_config') is not None:
@@ -39746,8 +45687,6 @@ class CreateDomainResponse(TeaModel):
             self.auth_dingding_app_secret = m.get('auth_dingding_app_secret')
         if m.get('auth_dingding_enable') is not None:
             self.auth_dingding_enable = m.get('auth_dingding_enable')
-        if m.get('auth_endpoint_enable') is not None:
-            self.auth_endpoint_enable = m.get('auth_endpoint_enable')
         if m.get('auth_ram_app_id') is not None:
             self.auth_ram_app_id = m.get('auth_ram_app_id')
         if m.get('auth_ram_app_secret') is not None:
@@ -39793,11 +45732,16 @@ class CreateDomainResponse(TeaModel):
             self.init_drive_store_id = m.get('init_drive_store_id')
         if m.get('mode') is not None:
             self.mode = m.get('mode')
+        if m.get('office_edit_config') is not None:
+            temp_model = OfficeEditConfig()
+            self.office_edit_config = temp_model.from_map(m['office_edit_config'])
         if m.get('office_preview_config') is not None:
             temp_model = OfficePreviewConfig()
             self.office_preview_config = temp_model.from_map(m['office_preview_config'])
         if m.get('parallel_upload_enabled') is not None:
             self.parallel_upload_enabled = m.get('parallel_upload_enabled')
+        if m.get('parent_domain_id') is not None:
+            self.parent_domain_id = m.get('parent_domain_id')
         if m.get('path_type') is not None:
             self.path_type = m.get('path_type')
         if m.get('prepaid_package') is not None:
@@ -39805,10 +45749,19 @@ class CreateDomainResponse(TeaModel):
         if m.get('published_app_access_strategy') is not None:
             temp_model = AppAccessStrategy()
             self.published_app_access_strategy = temp_model.from_map(m['published_app_access_strategy'])
+        if m.get('role_config') is not None:
+            temp_model = RoleConfig()
+            self.role_config = temp_model.from_map(m['role_config'])
         if m.get('service_code') is not None:
             self.service_code = m.get('service_code')
         if m.get('sharable') is not None:
             self.sharable = m.get('sharable')
+        if m.get('share_detail') is not None:
+            temp_model = ShareDetailResponse()
+            self.share_detail = temp_model.from_map(m['share_detail'])
+        if m.get('share_link_detail') is not None:
+            temp_model = ShareDetailResponse()
+            self.share_link_detail = temp_model.from_map(m['share_link_detail'])
         if m.get('share_link_enabled') is not None:
             self.share_link_enabled = m.get('share_link_enabled')
         if m.get('size_quota') is not None:
@@ -39821,15 +45774,93 @@ class CreateDomainResponse(TeaModel):
             self.store_level = m.get('store_level')
         if m.get('store_region_list') is not None:
             self.store_region_list = m.get('store_region_list')
+        if m.get('subdomain_config') is not None:
+            temp_model = SubdomainConfig()
+            self.subdomain_config = temp_model.from_map(m['subdomain_config'])
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
+        if m.get('used_size') is not None:
+            self.used_size = m.get('used_size')
+        if m.get('used_size_refresh_interval') is not None:
+            self.used_size_refresh_interval = m.get('used_size_refresh_interval')
         if m.get('user_count_quota') is not None:
             self.user_count_quota = m.get('user_count_quota')
         if m.get('user_single_drive_enabled') is not None:
             self.user_single_drive_enabled = m.get('user_single_drive_enabled')
+        if m.get('video_preview_app_config') is not None:
+            temp_model = VideoPreviewAppConfig()
+            self.video_preview_app_config = temp_model.from_map(m['video_preview_app_config'])
         if m.get('video_preview_config') is not None:
             temp_model = VideoPreviewConfig()
             self.video_preview_config = temp_model.from_map(m['video_preview_config'])
+        if m.get('watermark_config') is not None:
+            temp_model = BaseWatermarkConfigResponse()
+            self.watermark_config = temp_model.from_map(m['watermark_config'])
+        return self
+
+
+class CreateGroupRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        description: str = None,
+        group_name: str = None,
+        is_root: bool = None,
+        parent_group_id: str = None,
+        subdomain_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 描述
+        self.description = description
+        # 名称
+        self.group_name = group_name
+        # 是否是根group
+        self.is_root = is_root
+        # parent group id
+        self.parent_group_id = parent_group_id
+        # subdomain id
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        self.validate_required(self.group_name, 'group_name')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.description is not None:
+            result['description'] = self.description
+        if self.group_name is not None:
+            result['group_name'] = self.group_name
+        if self.is_root is not None:
+            result['is_root'] = self.is_root
+        if self.parent_group_id is not None:
+            result['parent_group_id'] = self.parent_group_id
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('group_name') is not None:
+            self.group_name = m.get('group_name')
+        if m.get('is_root') is not None:
+            self.is_root = m.get('is_root')
+        if m.get('parent_group_id') is not None:
+            self.parent_group_id = m.get('parent_group_id')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -39921,6 +45952,81 @@ class CreateIdentityToBenefitPkgMappingRequest(TeaModel):
         return self
 
 
+class CreateMembershipRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        description: str = None,
+        group_id: str = None,
+        member_role: str = None,
+        member_type: str = None,
+        sub_group_id: str = None,
+        subdomain_id: str = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 描述
+        self.description = description
+        # group id
+        self.group_id = group_id
+        # 角色， member or admin
+        self.member_role = member_role
+        self.member_type = member_type
+        self.sub_group_id = sub_group_id
+        self.subdomain_id = subdomain_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.description is not None:
+            result['description'] = self.description
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        if self.member_role is not None:
+            result['member_role'] = self.member_role
+        if self.member_type is not None:
+            result['member_type'] = self.member_type
+        if self.sub_group_id is not None:
+            result['sub_group_id'] = self.sub_group_id
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        if m.get('member_role') is not None:
+            self.member_role = m.get('member_role')
+        if m.get('member_type') is not None:
+            self.member_type = m.get('member_type')
+        if m.get('sub_group_id') is not None:
+            self.sub_group_id = m.get('sub_group_id')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
 class CreateSubdomainRequest(TeaModel):
     """
     *\
@@ -39929,14 +46035,18 @@ class CreateSubdomainRequest(TeaModel):
         self,
         httpheaders: Dict[str, str] = None,
         description: str = None,
+        group_single_drive_enabled: bool = None,
         name: str = None,
         total_size: int = None,
         used_size_refresh_interval: int = None,
         user_quota: int = None,
+        user_single_drive_enabled: bool = None,
     ):
         self.httpheaders = httpheaders
         # 描述
         self.description = description
+        # 单团队单drive
+        self.group_single_drive_enabled = group_single_drive_enabled
         # 名称，注意该字段会校验重名的subdomain
         self.name = name
         # 逻辑空间quota，默认为-1，无限制，单位为字节
@@ -39945,6 +46055,8 @@ class CreateSubdomainRequest(TeaModel):
         self.used_size_refresh_interval = used_size_refresh_interval
         # 用户数quota，默认为-1，无限制
         self.user_quota = user_quota
+        # 单用户单drive
+        self.user_single_drive_enabled = user_single_drive_enabled
 
     def validate(self):
         self.validate_required(self.name, 'name')
@@ -39959,6 +46071,8 @@ class CreateSubdomainRequest(TeaModel):
             result['httpheaders'] = self.httpheaders
         if self.description is not None:
             result['description'] = self.description
+        if self.group_single_drive_enabled is not None:
+            result['group_single_drive_enabled'] = self.group_single_drive_enabled
         if self.name is not None:
             result['name'] = self.name
         if self.total_size is not None:
@@ -39967,6 +46081,8 @@ class CreateSubdomainRequest(TeaModel):
             result['used_size_refresh_interval'] = self.used_size_refresh_interval
         if self.user_quota is not None:
             result['user_quota'] = self.user_quota
+        if self.user_single_drive_enabled is not None:
+            result['user_single_drive_enabled'] = self.user_single_drive_enabled
         return result
 
     def from_map(self, m: dict = None):
@@ -39975,6 +46091,8 @@ class CreateSubdomainRequest(TeaModel):
             self.httpheaders = m.get('httpheaders')
         if m.get('description') is not None:
             self.description = m.get('description')
+        if m.get('group_single_drive_enabled') is not None:
+            self.group_single_drive_enabled = m.get('group_single_drive_enabled')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('total_size') is not None:
@@ -39983,6 +46101,269 @@ class CreateSubdomainRequest(TeaModel):
             self.used_size_refresh_interval = m.get('used_size_refresh_interval')
         if m.get('user_quota') is not None:
             self.user_quota = m.get('user_quota')
+        if m.get('user_single_drive_enabled') is not None:
+            self.user_single_drive_enabled = m.get('user_single_drive_enabled')
+        return self
+
+
+class CreateSyncMappingRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        custom_meta: str = None,
+        device_name: str = None,
+        drive_id: str = None,
+        fs_id: str = None,
+        local_path: str = None,
+        sync_mode: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # custom_meta
+        self.custom_meta = custom_meta
+        # device_name
+        self.device_name = device_name
+        # drive_id
+        self.drive_id = drive_id
+        # fs_id
+        self.fs_id = fs_id
+        # local_path
+        self.local_path = local_path
+        # sync_mode
+        self.sync_mode = sync_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.custom_meta is not None:
+            result['custom_meta'] = self.custom_meta
+        if self.device_name is not None:
+            result['device_name'] = self.device_name
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.fs_id is not None:
+            result['fs_id'] = self.fs_id
+        if self.local_path is not None:
+            result['local_path'] = self.local_path
+        if self.sync_mode is not None:
+            result['sync_mode'] = self.sync_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('custom_meta') is not None:
+            self.custom_meta = m.get('custom_meta')
+        if m.get('device_name') is not None:
+            self.device_name = m.get('device_name')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('fs_id') is not None:
+            self.fs_id = m.get('fs_id')
+        if m.get('local_path') is not None:
+            self.local_path = m.get('local_path')
+        if m.get('sync_mode') is not None:
+            self.sync_mode = m.get('sync_mode')
+        return self
+
+
+class GroupInfo(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        group_id: str = None,
+        member_role: str = None,
+    ):
+        self.group_id = group_id
+        # MemberRole 暂不对外，只作保留
+        self.member_role = member_role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        if self.member_role is not None:
+            result['member_role'] = self.member_role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        if m.get('member_role') is not None:
+            self.member_role = m.get('member_role')
+        return self
+
+
+class CreateUserRequest(TeaModel):
+    """
+    Create user request
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        avatar: str = None,
+        deny_change_password_by_self: bool = None,
+        description: str = None,
+        email: str = None,
+        group_info_list: List[GroupInfo] = None,
+        location: str = None,
+        need_change_password_next_login: bool = None,
+        nick_name: str = None,
+        phone: str = None,
+        plain_password: str = None,
+        role: str = None,
+        status: str = None,
+        subdomain_id: str = None,
+        user_data: dict = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 头像
+        self.avatar = avatar
+        # 是否能自己修改密码
+        self.deny_change_password_by_self = deny_change_password_by_self
+        # 描述信息
+        self.description = description
+        # 邮箱
+        self.email = email
+        self.group_info_list = group_info_list
+        # 用户地域
+        self.location = location
+        # 下次登录后是否强制修改密码
+        self.need_change_password_next_login = need_change_password_next_login
+        # 昵称
+        self.nick_name = nick_name
+        # 电话号码
+        self.phone = phone
+        # 用户明文密码
+        self.plain_password = plain_password
+        # 角色
+        self.role = role
+        # 状态
+        self.status = status
+        # subdomain id
+        self.subdomain_id = subdomain_id
+        # 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
+        self.user_data = user_data
+        # 用户 ID
+        self.user_id = user_id
+        # 用户名称
+        self.user_name = user_name
+
+    def validate(self):
+        if self.description is not None:
+            self.validate_max_length(self.description, 'description', 1024)
+        if self.group_info_list:
+            for k in self.group_info_list:
+                if k:
+                    k.validate()
+        self.validate_required(self.user_id, 'user_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.avatar is not None:
+            result['avatar'] = self.avatar
+        if self.deny_change_password_by_self is not None:
+            result['deny_change_password_by_self'] = self.deny_change_password_by_self
+        if self.description is not None:
+            result['description'] = self.description
+        if self.email is not None:
+            result['email'] = self.email
+        result['group_info_list'] = []
+        if self.group_info_list is not None:
+            for k in self.group_info_list:
+                result['group_info_list'].append(k.to_map() if k else None)
+        if self.location is not None:
+            result['location'] = self.location
+        if self.need_change_password_next_login is not None:
+            result['need_change_password_next_login'] = self.need_change_password_next_login
+        if self.nick_name is not None:
+            result['nick_name'] = self.nick_name
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.plain_password is not None:
+            result['plain_password'] = self.plain_password
+        if self.role is not None:
+            result['role'] = self.role
+        if self.status is not None:
+            result['status'] = self.status
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.user_data is not None:
+            result['user_data'] = self.user_data
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('avatar') is not None:
+            self.avatar = m.get('avatar')
+        if m.get('deny_change_password_by_self') is not None:
+            self.deny_change_password_by_self = m.get('deny_change_password_by_self')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        self.group_info_list = []
+        if m.get('group_info_list') is not None:
+            for k in m.get('group_info_list'):
+                temp_model = GroupInfo()
+                self.group_info_list.append(temp_model.from_map(k))
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('need_change_password_next_login') is not None:
+            self.need_change_password_next_login = m.get('need_change_password_next_login')
+        if m.get('nick_name') is not None:
+            self.nick_name = m.get('nick_name')
+        if m.get('phone') is not None:
+            self.phone = m.get('phone')
+        if m.get('plain_password') is not None:
+            self.plain_password = m.get('plain_password')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('user_data') is not None:
+            self.user_data = m.get('user_data')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        if m.get('user_name') is not None:
+            self.user_name = m.get('user_name')
         return self
 
 
@@ -40073,6 +46454,50 @@ class DataCName(TeaModel):
         return self
 
 
+class DeleteGroupRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        group_id: str = None,
+        subdomain_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # group id
+        self.group_id = group_id
+        # subdomain id
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
 class DeleteIdentityToBenefitPkgMappingRequest(TeaModel):
     """
     delete identity to benefit pkg mapping request
@@ -40133,6 +46558,68 @@ class DeleteIdentityToBenefitPkgMappingRequest(TeaModel):
         return self
 
 
+class DeleteMembershipRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        group_id: str = None,
+        member_type: str = None,
+        sub_group_id: str = None,
+        subdomain_id: str = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # group id
+        self.group_id = group_id
+        self.member_type = member_type
+        self.sub_group_id = sub_group_id
+        # subdomain id
+        self.subdomain_id = subdomain_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        if self.member_type is not None:
+            result['member_type'] = self.member_type
+        if self.sub_group_id is not None:
+            result['sub_group_id'] = self.sub_group_id
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        if m.get('member_type') is not None:
+            self.member_type = m.get('member_type')
+        if m.get('sub_group_id') is not None:
+            self.sub_group_id = m.get('sub_group_id')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
 class DeleteSubdomainRequest(TeaModel):
     """
     *\
@@ -40167,6 +46654,101 @@ class DeleteSubdomainRequest(TeaModel):
             self.httpheaders = m.get('httpheaders')
         if m.get('subdomain_id') is not None:
             self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class DeleteSyncMappingRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        device_name: str = None,
+        drive_id: str = None,
+        fs_id: str = None,
+        local_path: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # device_name
+        self.device_name = device_name
+        # drive_id
+        self.drive_id = drive_id
+        # fs_id
+        self.fs_id = fs_id
+        # local_path
+        self.local_path = local_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.device_name is not None:
+            result['device_name'] = self.device_name
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.fs_id is not None:
+            result['fs_id'] = self.fs_id
+        if self.local_path is not None:
+            result['local_path'] = self.local_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('device_name') is not None:
+            self.device_name = m.get('device_name')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('fs_id') is not None:
+            self.fs_id = m.get('fs_id')
+        if m.get('local_path') is not None:
+            self.local_path = m.get('local_path')
+        return self
+
+
+class DeleteUserRequest(TeaModel):
+    """
+    Delete user request
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 用户 ID
+        self.user_id = user_id
+
+    def validate(self):
+        self.validate_required(self.user_id, 'user_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
         return self
 
 
@@ -40274,6 +46856,43 @@ class ExportAuditLogRequest(TeaModel):
             self.order_by = m.get('order_by')
         if m.get('query') is not None:
             self.query = m.get('query')
+        return self
+
+
+class GetAppDebugCmdRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        app_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # app_id
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('app_id') is not None:
+            self.app_id = m.get('app_id')
         return self
 
 
@@ -40469,6 +47088,7 @@ class GetBizCNameInfoResponse(TeaModel):
         cname_type: str = None,
         domain_id: str = None,
         is_vpc: bool = None,
+        subdomain_id: str = None,
     ):
         # biz cname
         self.biz_cname = biz_cname
@@ -40483,11 +47103,14 @@ class GetBizCNameInfoResponse(TeaModel):
         self.domain_id = domain_id
         # is vpc
         self.is_vpc = is_vpc
+        # subdomain ID
+        self.subdomain_id = subdomain_id
 
     def validate(self):
         if self.cname_status:
             self.cname_status.validate()
         self.validate_required(self.domain_id, 'domain_id')
+        self.validate_required(self.subdomain_id, 'subdomain_id')
 
     def to_map(self):
         _map = super().to_map()
@@ -40509,6 +47132,8 @@ class GetBizCNameInfoResponse(TeaModel):
             result['domain_id'] = self.domain_id
         if self.is_vpc is not None:
             result['is_vpc'] = self.is_vpc
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
         return result
 
     def from_map(self, m: dict = None):
@@ -40528,6 +47153,8 @@ class GetBizCNameInfoResponse(TeaModel):
             self.domain_id = m.get('domain_id')
         if m.get('is_vpc') is not None:
             self.is_vpc = m.get('is_vpc')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -40540,16 +47167,13 @@ class GetDomainResponse(TeaModel):
         api_cname: str = None,
         app_cname: str = None,
         app_config: AppConfig = None,
+        archive_files_enable: bool = None,
         audit_log_config: AuditLogConfig = None,
-        auth_alipay_app_id: str = None,
-        auth_alipay_enable: bool = None,
-        auth_alipay_private_key: str = None,
         auth_cname: str = None,
         auth_config: dict = None,
         auth_dingding_app_id: str = None,
         auth_dingding_app_secret: str = None,
         auth_dingding_enable: bool = None,
-        auth_endpoint_enable: bool = None,
         auth_ram_app_id: str = None,
         auth_ram_app_secret: str = None,
         auth_ram_enable: bool = None,
@@ -40572,36 +47196,42 @@ class GetDomainResponse(TeaModel):
         init_drive_size: int = None,
         init_drive_store_id: str = None,
         mode: str = None,
+        office_edit_config: OfficeEditConfig = None,
         office_preview_config: OfficePreviewConfig = None,
         parallel_upload_enabled: bool = None,
+        parent_domain_id: str = None,
         path_type: str = None,
         prepaid_package: str = None,
         published_app_access_strategy: AppAccessStrategy = None,
+        role_config: RoleConfig = None,
         service_code: str = None,
         sharable: bool = None,
+        share_detail: ShareDetailResponse = None,
+        share_link_detail: ShareDetailResponse = None,
         share_link_enabled: bool = None,
         size_quota: int = None,
         spi_instance_id: str = None,
         status: int = None,
         store_level: str = None,
         store_region_list: List[str] = None,
+        subdomain_config: SubdomainConfig = None,
         updated_at: str = None,
+        used_size: int = None,
+        used_size_refresh_interval: int = None,
         user_count_quota: int = None,
         user_single_drive_enabled: bool = None,
+        video_preview_app_config: VideoPreviewAppConfig = None,
         video_preview_config: VideoPreviewConfig = None,
+        watermark_config: BaseWatermarkConfigResponse = None,
     ):
         # Domain APICName
         self.api_cname = api_cname
         # Domain AppCName
         self.app_cname = app_cname
         self.app_config = app_config
+        # 打包下载配置
+        self.archive_files_enable = archive_files_enable
         self.audit_log_config = audit_log_config
-        # 支付宝 App Id
-        self.auth_alipay_app_id = auth_alipay_app_id
-        # 是否开启了支付宝认证
-        self.auth_alipay_enable = auth_alipay_enable
-        # 支付宝 App Secret
-        self.auth_alipay_private_key = auth_alipay_private_key
         # Domain AuthCName
         self.auth_cname = auth_cname
         # 登录相关信息
@@ -40612,7 +47242,6 @@ class GetDomainResponse(TeaModel):
         self.auth_dingding_app_secret = auth_dingding_app_secret
         # 是否开启了钉钉认证
         self.auth_dingding_enable = auth_dingding_enable
-        self.auth_endpoint_enable = auth_endpoint_enable
         # RAM App Id
         self.auth_ram_app_id = auth_ram_app_id
         # RAM App Secret
@@ -40654,17 +47283,23 @@ class GetDomainResponse(TeaModel):
         self.init_drive_store_id = init_drive_store_id
         # Domain 类型
         self.mode = mode
+        self.office_edit_config = office_edit_config
         self.office_preview_config = office_preview_config
         self.parallel_upload_enabled = parallel_upload_enabled
+        # Parent Domain ID
+        self.parent_domain_id = parent_domain_id
         # Domain 类型
         self.path_type = path_type
         # 预付费套餐
         self.prepaid_package = prepaid_package
         self.published_app_access_strategy = published_app_access_strategy
+        self.role_config = role_config
         # Domain ServiceCode
         self.service_code = service_code
         # 是否开启了共享
         self.sharable = sharable
+        self.share_detail = share_detail
+        self.share_link_detail = share_link_detail
         # 是否开启了分享
         self.share_link_enabled = share_link_enabled
         # 容量配额
@@ -40677,13 +47312,20 @@ class GetDomainResponse(TeaModel):
         self.store_level = store_level
         # 存储 Region 列表
         self.store_region_list = store_region_list
+        self.subdomain_config = subdomain_config
         # Domain 更新时间
         self.updated_at = updated_at
+        # 逻辑空间使用量，单位为字节
+        self.used_size = used_size
+        # 逻辑空间刷新周期，单位：秒
+        self.used_size_refresh_interval = used_size_refresh_interval
         # 用户数配额
         self.user_count_quota = user_count_quota
         # user和group只能有一个drive的开关
         self.user_single_drive_enabled = user_single_drive_enabled
+        self.video_preview_app_config = video_preview_app_config
         self.video_preview_config = video_preview_config
+        self.watermark_config = watermark_config
 
     def validate(self):
         if self.app_config:
@@ -40692,12 +47334,26 @@ class GetDomainResponse(TeaModel):
             self.audit_log_config.validate()
         if self.default_super_admin_config:
             self.default_super_admin_config.validate()
+        if self.office_edit_config:
+            self.office_edit_config.validate()
         if self.office_preview_config:
             self.office_preview_config.validate()
         if self.published_app_access_strategy:
             self.published_app_access_strategy.validate()
+        if self.role_config:
+            self.role_config.validate()
+        if self.share_detail:
+            self.share_detail.validate()
+        if self.share_link_detail:
+            self.share_link_detail.validate()
+        if self.subdomain_config:
+            self.subdomain_config.validate()
+        if self.video_preview_app_config:
+            self.video_preview_app_config.validate()
         if self.video_preview_config:
             self.video_preview_config.validate()
+        if self.watermark_config:
+            self.watermark_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -40711,14 +47367,10 @@ class GetDomainResponse(TeaModel):
             result['app_cname'] = self.app_cname
         if self.app_config is not None:
             result['app_config'] = self.app_config.to_map()
+        if self.archive_files_enable is not None:
+            result['archive_files_enable'] = self.archive_files_enable
         if self.audit_log_config is not None:
             result['audit_log_config'] = self.audit_log_config.to_map()
-        if self.auth_alipay_app_id is not None:
-            result['auth_alipay_app_id'] = self.auth_alipay_app_id
-        if self.auth_alipay_enable is not None:
-            result['auth_alipay_enable'] = self.auth_alipay_enable
-        if self.auth_alipay_private_key is not None:
-            result['auth_alipay_private_key'] = self.auth_alipay_private_key
         if self.auth_cname is not None:
             result['auth_cname'] = self.auth_cname
         if self.auth_config is not None:
@@ -40729,8 +47381,6 @@ class GetDomainResponse(TeaModel):
             result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
         if self.auth_dingding_enable is not None:
             result['auth_dingding_enable'] = self.auth_dingding_enable
-        if self.auth_endpoint_enable is not None:
-            result['auth_endpoint_enable'] = self.auth_endpoint_enable
         if self.auth_ram_app_id is not None:
             result['auth_ram_app_id'] = self.auth_ram_app_id
         if self.auth_ram_app_secret is not None:
@@ -40775,20 +47425,30 @@ class GetDomainResponse(TeaModel):
             result['init_drive_store_id'] = self.init_drive_store_id
         if self.mode is not None:
             result['mode'] = self.mode
+        if self.office_edit_config is not None:
+            result['office_edit_config'] = self.office_edit_config.to_map()
         if self.office_preview_config is not None:
             result['office_preview_config'] = self.office_preview_config.to_map()
         if self.parallel_upload_enabled is not None:
             result['parallel_upload_enabled'] = self.parallel_upload_enabled
+        if self.parent_domain_id is not None:
+            result['parent_domain_id'] = self.parent_domain_id
         if self.path_type is not None:
             result['path_type'] = self.path_type
         if self.prepaid_package is not None:
             result['prepaid_package'] = self.prepaid_package
         if self.published_app_access_strategy is not None:
             result['published_app_access_strategy'] = self.published_app_access_strategy.to_map()
+        if self.role_config is not None:
+            result['role_config'] = self.role_config.to_map()
         if self.service_code is not None:
             result['service_code'] = self.service_code
         if self.sharable is not None:
             result['sharable'] = self.sharable
+        if self.share_detail is not None:
+            result['share_detail'] = self.share_detail.to_map()
+        if self.share_link_detail is not None:
+            result['share_link_detail'] = self.share_link_detail.to_map()
         if self.share_link_enabled is not None:
             result['share_link_enabled'] = self.share_link_enabled
         if self.size_quota is not None:
@@ -40801,14 +47461,24 @@ class GetDomainResponse(TeaModel):
             result['store_level'] = self.store_level
         if self.store_region_list is not None:
             result['store_region_list'] = self.store_region_list
+        if self.subdomain_config is not None:
+            result['subdomain_config'] = self.subdomain_config.to_map()
         if self.updated_at is not None:
             result['updated_at'] = self.updated_at
+        if self.used_size is not None:
+            result['used_size'] = self.used_size
+        if self.used_size_refresh_interval is not None:
+            result['used_size_refresh_interval'] = self.used_size_refresh_interval
         if self.user_count_quota is not None:
             result['user_count_quota'] = self.user_count_quota
         if self.user_single_drive_enabled is not None:
             result['user_single_drive_enabled'] = self.user_single_drive_enabled
+        if self.video_preview_app_config is not None:
+            result['video_preview_app_config'] = self.video_preview_app_config.to_map()
         if self.video_preview_config is not None:
             result['video_preview_config'] = self.video_preview_config.to_map()
+        if self.watermark_config is not None:
+            result['watermark_config'] = self.watermark_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -40820,15 +47490,11 @@ class GetDomainResponse(TeaModel):
         if m.get('app_config') is not None:
             temp_model = AppConfig()
             self.app_config = temp_model.from_map(m['app_config'])
+        if m.get('archive_files_enable') is not None:
+            self.archive_files_enable = m.get('archive_files_enable')
         if m.get('audit_log_config') is not None:
             temp_model = AuditLogConfig()
             self.audit_log_config = temp_model.from_map(m['audit_log_config'])
-        if m.get('auth_alipay_app_id') is not None:
-            self.auth_alipay_app_id = m.get('auth_alipay_app_id')
-        if m.get('auth_alipay_enable') is not None:
-            self.auth_alipay_enable = m.get('auth_alipay_enable')
-        if m.get('auth_alipay_private_key') is not None:
-            self.auth_alipay_private_key = m.get('auth_alipay_private_key')
         if m.get('auth_cname') is not None:
             self.auth_cname = m.get('auth_cname')
         if m.get('auth_config') is not None:
@@ -40839,8 +47505,6 @@ class GetDomainResponse(TeaModel):
             self.auth_dingding_app_secret = m.get('auth_dingding_app_secret')
         if m.get('auth_dingding_enable') is not None:
             self.auth_dingding_enable = m.get('auth_dingding_enable')
-        if m.get('auth_endpoint_enable') is not None:
-            self.auth_endpoint_enable = m.get('auth_endpoint_enable')
         if m.get('auth_ram_app_id') is not None:
             self.auth_ram_app_id = m.get('auth_ram_app_id')
         if m.get('auth_ram_app_secret') is not None:
@@ -40886,11 +47550,16 @@ class GetDomainResponse(TeaModel):
             self.init_drive_store_id = m.get('init_drive_store_id')
         if m.get('mode') is not None:
             self.mode = m.get('mode')
+        if m.get('office_edit_config') is not None:
+            temp_model = OfficeEditConfig()
+            self.office_edit_config = temp_model.from_map(m['office_edit_config'])
         if m.get('office_preview_config') is not None:
             temp_model = OfficePreviewConfig()
             self.office_preview_config = temp_model.from_map(m['office_preview_config'])
         if m.get('parallel_upload_enabled') is not None:
             self.parallel_upload_enabled = m.get('parallel_upload_enabled')
+        if m.get('parent_domain_id') is not None:
+            self.parent_domain_id = m.get('parent_domain_id')
         if m.get('path_type') is not None:
             self.path_type = m.get('path_type')
         if m.get('prepaid_package') is not None:
@@ -40898,10 +47567,19 @@ class GetDomainResponse(TeaModel):
         if m.get('published_app_access_strategy') is not None:
             temp_model = AppAccessStrategy()
             self.published_app_access_strategy = temp_model.from_map(m['published_app_access_strategy'])
+        if m.get('role_config') is not None:
+            temp_model = RoleConfig()
+            self.role_config = temp_model.from_map(m['role_config'])
         if m.get('service_code') is not None:
             self.service_code = m.get('service_code')
         if m.get('sharable') is not None:
             self.sharable = m.get('sharable')
+        if m.get('share_detail') is not None:
+            temp_model = ShareDetailResponse()
+            self.share_detail = temp_model.from_map(m['share_detail'])
+        if m.get('share_link_detail') is not None:
+            temp_model = ShareDetailResponse()
+            self.share_link_detail = temp_model.from_map(m['share_link_detail'])
         if m.get('share_link_enabled') is not None:
             self.share_link_enabled = m.get('share_link_enabled')
         if m.get('size_quota') is not None:
@@ -40914,15 +47592,72 @@ class GetDomainResponse(TeaModel):
             self.store_level = m.get('store_level')
         if m.get('store_region_list') is not None:
             self.store_region_list = m.get('store_region_list')
+        if m.get('subdomain_config') is not None:
+            temp_model = SubdomainConfig()
+            self.subdomain_config = temp_model.from_map(m['subdomain_config'])
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
+        if m.get('used_size') is not None:
+            self.used_size = m.get('used_size')
+        if m.get('used_size_refresh_interval') is not None:
+            self.used_size_refresh_interval = m.get('used_size_refresh_interval')
         if m.get('user_count_quota') is not None:
             self.user_count_quota = m.get('user_count_quota')
         if m.get('user_single_drive_enabled') is not None:
             self.user_single_drive_enabled = m.get('user_single_drive_enabled')
+        if m.get('video_preview_app_config') is not None:
+            temp_model = VideoPreviewAppConfig()
+            self.video_preview_app_config = temp_model.from_map(m['video_preview_app_config'])
         if m.get('video_preview_config') is not None:
             temp_model = VideoPreviewConfig()
             self.video_preview_config = temp_model.from_map(m['video_preview_config'])
+        if m.get('watermark_config') is not None:
+            temp_model = BaseWatermarkConfigResponse()
+            self.watermark_config = temp_model.from_map(m['watermark_config'])
+        return self
+
+
+class GetGroupRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        group_id: str = None,
+        subdomain_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # group id
+        self.group_id = group_id
+        # subdomain id
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -40983,6 +47718,68 @@ class GetIdentityToBenefitPkgMappingRequest(TeaModel):
             self.identity_id = m.get('identity_id')
         if m.get('identity_type') is not None:
             self.identity_type = m.get('identity_type')
+        return self
+
+
+class GetMembershipRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        group_id: str = None,
+        member_type: str = None,
+        sub_group_id: str = None,
+        subdomain_id: str = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # group id
+        self.group_id = group_id
+        self.member_type = member_type
+        self.sub_group_id = sub_group_id
+        # subdomain id
+        self.subdomain_id = subdomain_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        if self.member_type is not None:
+            result['member_type'] = self.member_type
+        if self.sub_group_id is not None:
+            result['sub_group_id'] = self.sub_group_id
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        if m.get('member_type') is not None:
+            self.member_type = m.get('member_type')
+        if m.get('sub_group_id') is not None:
+            self.sub_group_id = m.get('sub_group_id')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
         return self
 
 
@@ -41067,6 +47864,214 @@ class GetUserAccessTokenRequest(TeaModel):
         return self
 
 
+class GetUserRequest(TeaModel):
+    """
+    Get user request
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 用户 ID, 使用ak方式访问，该项必传, access_token访问如果不传，默认取自己的user信息
+        # example
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
+class HasMemberRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        group_id: str = None,
+        member_type: str = None,
+        sub_group_id: str = None,
+        subdomain_id: str = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # group id
+        self.group_id = group_id
+        self.member_type = member_type
+        self.sub_group_id = sub_group_id
+        # subdomain id
+        self.subdomain_id = subdomain_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        if self.member_type is not None:
+            result['member_type'] = self.member_type
+        if self.sub_group_id is not None:
+            result['sub_group_id'] = self.sub_group_id
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        if m.get('member_type') is not None:
+            self.member_type = m.get('member_type')
+        if m.get('sub_group_id') is not None:
+            self.sub_group_id = m.get('sub_group_id')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
+class ImportUserRequest(TeaModel):
+    """
+    Import user request
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        authentication_type: str = None,
+        auto_create_drive: bool = None,
+        custom_identity: str = None,
+        deny_change_password_by_self: bool = None,
+        drive_total_size: int = None,
+        extra: str = None,
+        identity: str = None,
+        need_change_password_next_login: bool = None,
+        nick_name: str = None,
+        parent_group_id: str = None,
+        plain_password: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 认证类型
+        self.authentication_type = authentication_type
+        # 自动创建空间
+        self.auto_create_drive = auto_create_drive
+        self.custom_identity = custom_identity
+        # 是否能自己修改密码
+        self.deny_change_password_by_self = deny_change_password_by_self
+        # 空间大小
+        self.drive_total_size = drive_total_size
+        # 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
+        self.extra = extra
+        # 唯一身份标识
+        self.identity = identity
+        # 下次登录后是否强制修改密码
+        self.need_change_password_next_login = need_change_password_next_login
+        # 昵称
+        self.nick_name = nick_name
+        # 加入到group
+        self.parent_group_id = parent_group_id
+        # 用户明文密码
+        self.plain_password = plain_password
+
+    def validate(self):
+        self.validate_required(self.authentication_type, 'authentication_type')
+        self.validate_required(self.identity, 'identity')
+        self.validate_required(self.nick_name, 'nick_name')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.authentication_type is not None:
+            result['authentication_type'] = self.authentication_type
+        if self.auto_create_drive is not None:
+            result['auto_create_drive'] = self.auto_create_drive
+        if self.custom_identity is not None:
+            result['custom_identity'] = self.custom_identity
+        if self.deny_change_password_by_self is not None:
+            result['deny_change_password_by_self'] = self.deny_change_password_by_self
+        if self.drive_total_size is not None:
+            result['drive_total_size'] = self.drive_total_size
+        if self.extra is not None:
+            result['extra'] = self.extra
+        if self.identity is not None:
+            result['identity'] = self.identity
+        if self.need_change_password_next_login is not None:
+            result['need_change_password_next_login'] = self.need_change_password_next_login
+        if self.nick_name is not None:
+            result['nick_name'] = self.nick_name
+        if self.parent_group_id is not None:
+            result['parent_group_id'] = self.parent_group_id
+        if self.plain_password is not None:
+            result['plain_password'] = self.plain_password
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('authentication_type') is not None:
+            self.authentication_type = m.get('authentication_type')
+        if m.get('auto_create_drive') is not None:
+            self.auto_create_drive = m.get('auto_create_drive')
+        if m.get('custom_identity') is not None:
+            self.custom_identity = m.get('custom_identity')
+        if m.get('deny_change_password_by_self') is not None:
+            self.deny_change_password_by_self = m.get('deny_change_password_by_self')
+        if m.get('drive_total_size') is not None:
+            self.drive_total_size = m.get('drive_total_size')
+        if m.get('extra') is not None:
+            self.extra = m.get('extra')
+        if m.get('identity') is not None:
+            self.identity = m.get('identity')
+        if m.get('need_change_password_next_login') is not None:
+            self.need_change_password_next_login = m.get('need_change_password_next_login')
+        if m.get('nick_name') is not None:
+            self.nick_name = m.get('nick_name')
+        if m.get('parent_group_id') is not None:
+            self.parent_group_id = m.get('parent_group_id')
+        if m.get('plain_password') is not None:
+            self.plain_password = m.get('plain_password')
+        return self
+
+
 class ListAppsResponse(TeaModel):
     """
     *\
@@ -41111,6 +48116,184 @@ class ListAppsResponse(TeaModel):
                 self.items.append(temp_model.from_map(k))
         if m.get('next_marker') is not None:
             self.next_marker = m.get('next_marker')
+        return self
+
+
+class ListDeviceRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        limit: int = None,
+        marker: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # limit
+        self.limit = limit
+        # marker
+        self.marker = marker
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        return self
+
+
+class ListDirectChildMembershipsRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        group_id: str = None,
+        limit: int = None,
+        marker: str = None,
+        member_type: str = None,
+        subdomain_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # group id
+        self.group_id = group_id
+        # 分页获取的数量，默认为100
+        self.limit = limit
+        # 游标
+        self.marker = marker
+        # 角色，可选值，["", "user", "group"], ""表示获取所有类型
+        self.member_type = member_type
+        # subdomain id
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.member_type is not None:
+            result['member_type'] = self.member_type
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        if m.get('member_type') is not None:
+            self.member_type = m.get('member_type')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class ListDirectParentMembershipsRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        limit: int = None,
+        marker: str = None,
+        member_type: str = None,
+        sub_group_id: str = None,
+        subdomain_id: str = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 分页获取的数量，默认为100
+        self.limit = limit
+        # 游标
+        self.marker = marker
+        self.member_type = member_type
+        self.sub_group_id = sub_group_id
+        # subdomain id
+        self.subdomain_id = subdomain_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.member_type is not None:
+            result['member_type'] = self.member_type
+        if self.sub_group_id is not None:
+            result['sub_group_id'] = self.sub_group_id
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        if m.get('member_type') is not None:
+            self.member_type = m.get('member_type')
+        if m.get('sub_group_id') is not None:
+            self.sub_group_id = m.get('sub_group_id')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
         return self
 
 
@@ -41203,6 +48386,57 @@ class ListDomainsResponse(TeaModel):
                 self.items.append(temp_model.from_map(k))
         if m.get('next_marker') is not None:
             self.next_marker = m.get('next_marker')
+        return self
+
+
+class ListGroupRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        limit: int = None,
+        marker: str = None,
+        subdomain_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 分页获取的数量，默认为100
+        self.limit = limit
+        # 游标
+        self.marker = marker
+        # 列举 subdomain 下的group
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -41382,6 +48616,433 @@ class ListSubdomainsRequest(TeaModel):
         return self
 
 
+class ListSyncMappingRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        device_name: str = None,
+        limit: int = None,
+        marker: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # device_name
+        self.device_name = device_name
+        # limit
+        self.limit = limit
+        # marker
+        self.marker = marker
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.device_name is not None:
+            result['device_name'] = self.device_name
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('device_name') is not None:
+            self.device_name = m.get('device_name')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        return self
+
+
+class ListUserRequest(TeaModel):
+    """
+    List user request
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        limit: int = None,
+        marker: str = None,
+        subdomain_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 每页大小限制
+        self.limit = limit
+        # 翻页标记
+        self.marker = marker
+        # subdomain id
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 1)
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class MemberIDInfo(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        member_type: str = None,
+        sub_group_id: str = None,
+        user_id: str = None,
+    ):
+        self.member_type = member_type
+        self.sub_group_id = sub_group_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.member_type is not None:
+            result['member_type'] = self.member_type
+        if self.sub_group_id is not None:
+            result['sub_group_id'] = self.sub_group_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('member_type') is not None:
+            self.member_type = m.get('member_type')
+        if m.get('sub_group_id') is not None:
+            self.sub_group_id = m.get('sub_group_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
+class MigrateUserToSubdomainRequest(TeaModel):
+    """
+    MigrateUserToSubdomainRequest uc migrate user
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        subdomain_id: str = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # subdomain_id
+        self.subdomain_id = subdomain_id
+        # user_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
+class RemoveUserFromSubdomainRequest(TeaModel):
+    """
+    Remove user to subdomain request
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        subdomain_id: str = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # subdomain id
+        self.subdomain_id = subdomain_id
+        # 用户 ID
+        self.user_id = user_id
+
+    def validate(self):
+        self.validate_required(self.user_id, 'user_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
+class RollbackUserFromSubdomainRequest(TeaModel):
+    """
+    RollbackUserFromSubdomainRequest uc migrate user
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        subdomain_id: str = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # subdomain_id
+        self.subdomain_id = subdomain_id
+        # user_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
+class SearchAllRecycleBinRequest(TeaModel):
+    """
+    搜索所有回收站文件元数据请求
+    """
+    def __init__(
+        self,
+        addition_data: dict = None,
+        fields: str = None,
+        file_path_type: str = None,
+        image_cropping_aspect_ratios: List[str] = None,
+        image_thumbnail_process: str = None,
+        image_url_process: str = None,
+        limit: int = None,
+        location: str = None,
+        marker: str = None,
+        office_thumbnail_process: str = None,
+        order_by: str = None,
+        query: str = None,
+        referer: str = None,
+        return_total_count: bool = None,
+        sign_token: str = None,
+        url_expire_sec: int = None,
+        video_thumbnail_process: str = None,
+    ):
+        # addition_data
+        self.addition_data = addition_data
+        # fields
+        self.fields = fields
+        self.file_path_type = file_path_type
+        self.image_cropping_aspect_ratios = image_cropping_aspect_ratios
+        # image_thumbnail_process
+        self.image_thumbnail_process = image_thumbnail_process
+        # image_url_process
+        self.image_url_process = image_url_process
+        # limit
+        self.limit = limit
+        # location
+        self.location = location
+        # Marker
+        self.marker = marker
+        # office_thumbnail_process
+        self.office_thumbnail_process = office_thumbnail_process
+        # order_by
+        self.order_by = order_by
+        # query
+        self.query = query
+        # referer
+        self.referer = referer
+        # return_total_count 是否返回查询总数
+        self.return_total_count = return_total_count
+        # sign_token
+        self.sign_token = sign_token
+        # url_expire_sec
+        self.url_expire_sec = url_expire_sec
+        # video_thumbnail_process
+        # type:string
+        self.video_thumbnail_process = video_thumbnail_process
+
+    def validate(self):
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 200)
+            self.validate_minimum(self.limit, 'limit', 1)
+        if self.query is not None:
+            self.validate_max_length(self.query, 'query', 4096)
+        if self.url_expire_sec is not None:
+            self.validate_maximum(self.url_expire_sec, 'url_expire_sec', 14400)
+            self.validate_minimum(self.url_expire_sec, 'url_expire_sec', 10)
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.fields is not None:
+            result['fields'] = self.fields
+        if self.file_path_type is not None:
+            result['file_path_type'] = self.file_path_type
+        if self.image_cropping_aspect_ratios is not None:
+            result['image_cropping_aspect_ratios'] = self.image_cropping_aspect_ratios
+        if self.image_thumbnail_process is not None:
+            result['image_thumbnail_process'] = self.image_thumbnail_process
+        if self.image_url_process is not None:
+            result['image_url_process'] = self.image_url_process
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.location is not None:
+            result['location'] = self.location
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.office_thumbnail_process is not None:
+            result['office_thumbnail_process'] = self.office_thumbnail_process
+        if self.order_by is not None:
+            result['order_by'] = self.order_by
+        if self.query is not None:
+            result['query'] = self.query
+        if self.referer is not None:
+            result['referer'] = self.referer
+        if self.return_total_count is not None:
+            result['return_total_count'] = self.return_total_count
+        if self.sign_token is not None:
+            result['sign_token'] = self.sign_token
+        if self.url_expire_sec is not None:
+            result['url_expire_sec'] = self.url_expire_sec
+        if self.video_thumbnail_process is not None:
+            result['video_thumbnail_process'] = self.video_thumbnail_process
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addition_data') is not None:
+            self.addition_data = m.get('addition_data')
+        if m.get('fields') is not None:
+            self.fields = m.get('fields')
+        if m.get('file_path_type') is not None:
+            self.file_path_type = m.get('file_path_type')
+        if m.get('image_cropping_aspect_ratios') is not None:
+            self.image_cropping_aspect_ratios = m.get('image_cropping_aspect_ratios')
+        if m.get('image_thumbnail_process') is not None:
+            self.image_thumbnail_process = m.get('image_thumbnail_process')
+        if m.get('image_url_process') is not None:
+            self.image_url_process = m.get('image_url_process')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('location') is not None:
+            self.location = m.get('location')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        if m.get('office_thumbnail_process') is not None:
+            self.office_thumbnail_process = m.get('office_thumbnail_process')
+        if m.get('order_by') is not None:
+            self.order_by = m.get('order_by')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('referer') is not None:
+            self.referer = m.get('referer')
+        if m.get('return_total_count') is not None:
+            self.return_total_count = m.get('return_total_count')
+        if m.get('sign_token') is not None:
+            self.sign_token = m.get('sign_token')
+        if m.get('url_expire_sec') is not None:
+            self.url_expire_sec = m.get('url_expire_sec')
+        if m.get('video_thumbnail_process') is not None:
+            self.video_thumbnail_process = m.get('video_thumbnail_process')
+        return self
+
+
 class SearchAuditLogRequest(TeaModel):
     """
     查询审计日志request
@@ -41441,6 +49102,247 @@ class SearchAuditLogRequest(TeaModel):
             self.order_by = m.get('order_by')
         if m.get('query') is not None:
             self.query = m.get('query')
+        return self
+
+
+class SearchGroupRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        group_name: str = None,
+        group_name_for_fuzzy: str = None,
+        limit: int = None,
+        marker: str = None,
+        subdomain_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # group_name
+        self.group_name = group_name
+        # group_name_for_fuzzy
+        self.group_name_for_fuzzy = group_name_for_fuzzy
+        # 分页获取的数量，默认为100
+        self.limit = limit
+        # 游标
+        self.marker = marker
+        # 列举 subdomain 下的group
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.group_name is not None:
+            result['group_name'] = self.group_name
+        if self.group_name_for_fuzzy is not None:
+            result['group_name_for_fuzzy'] = self.group_name_for_fuzzy
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('group_name') is not None:
+            self.group_name = m.get('group_name')
+        if m.get('group_name_for_fuzzy') is not None:
+            self.group_name_for_fuzzy = m.get('group_name_for_fuzzy')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class SearchUserAndGroupRequest(TeaModel):
+    """
+    Search user and group request
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        identity_type_list: List[str] = None,
+        limit: int = None,
+        marker: str = None,
+        name: str = None,
+        name_for_fuzzy: str = None,
+        subdomain_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 搜索实体对象类型
+        self.identity_type_list = identity_type_list
+        # 每页大小限制
+        self.limit = limit
+        # 翻页标记
+        self.marker = marker
+        # 名称前缀搜索，Group名，或者用户昵称
+        self.name = name
+        # 名称模糊搜索，Group名，或者用户昵称
+        self.name_for_fuzzy = name_for_fuzzy
+        # subdomain id
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 1)
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.identity_type_list is not None:
+            result['identity_type_list'] = self.identity_type_list
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.name is not None:
+            result['name'] = self.name
+        if self.name_for_fuzzy is not None:
+            result['name_for_fuzzy'] = self.name_for_fuzzy
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('identity_type_list') is not None:
+            self.identity_type_list = m.get('identity_type_list')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('name_for_fuzzy') is not None:
+            self.name_for_fuzzy = m.get('name_for_fuzzy')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
+class SearchUserRequest(TeaModel):
+    """
+    Search user request
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        email: str = None,
+        limit: int = None,
+        marker: str = None,
+        nick_name: str = None,
+        nick_name_for_fuzzy: str = None,
+        phone: str = None,
+        role: str = None,
+        status: str = None,
+        subdomain_id: str = None,
+        user_name: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 邮箱
+        self.email = email
+        # 每页大小限制
+        self.limit = limit
+        # 翻页标记
+        self.marker = marker
+        # 昵称
+        self.nick_name = nick_name
+        # 昵称-模糊搜索
+        self.nick_name_for_fuzzy = nick_name_for_fuzzy
+        # 电话号码
+        self.phone = phone
+        # 角色
+        self.role = role
+        # 状态
+        self.status = status
+        # subdomain id
+        self.subdomain_id = subdomain_id
+        # 用户名
+        self.user_name = user_name
+
+    def validate(self):
+        if self.limit is not None:
+            self.validate_maximum(self.limit, 'limit', 100)
+            self.validate_minimum(self.limit, 'limit', 1)
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.email is not None:
+            result['email'] = self.email
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.nick_name is not None:
+            result['nick_name'] = self.nick_name
+        if self.nick_name_for_fuzzy is not None:
+            result['nick_name_for_fuzzy'] = self.nick_name_for_fuzzy
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.role is not None:
+            result['role'] = self.role
+        if self.status is not None:
+            result['status'] = self.status
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.user_name is not None:
+            result['user_name'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        if m.get('nick_name') is not None:
+            self.nick_name = m.get('nick_name')
+        if m.get('nick_name_for_fuzzy') is not None:
+            self.nick_name_for_fuzzy = m.get('nick_name_for_fuzzy')
+        if m.get('phone') is not None:
+            self.phone = m.get('phone')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('user_name') is not None:
+            self.user_name = m.get('user_name')
         return self
 
 
@@ -41611,6 +49513,123 @@ class SetDataCNameResponse(TeaModel):
         return self
 
 
+class ShareListReceivedRequest(TeaModel):
+    """
+    list received share request
+    """
+    def __init__(
+        self,
+        limit: int = None,
+        marker: str = None,
+        order_by: str = None,
+        order_direction: str = None,
+    ):
+        self.limit = limit
+        self.marker = marker
+        self.order_by = order_by
+        self.order_direction = order_direction
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.marker is not None:
+            result['marker'] = self.marker
+        if self.order_by is not None:
+            result['order_by'] = self.order_by
+        if self.order_direction is not None:
+            result['order_direction'] = self.order_direction
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('marker') is not None:
+            self.marker = m.get('marker')
+        if m.get('order_by') is not None:
+            self.order_by = m.get('order_by')
+        if m.get('order_direction') is not None:
+            self.order_direction = m.get('order_direction')
+        return self
+
+
+class SubdomainSetBizCNameResponse(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        biz_cname: str = None,
+        cname_status: CNameStatus = None,
+        cname_type: str = None,
+        domain_id: str = None,
+        is_vpc: bool = None,
+        subdomain_id: str = None,
+    ):
+        # biz cname
+        self.biz_cname = biz_cname
+        self.cname_status = cname_status
+        # cname type
+        self.cname_type = cname_type
+        # domain ID
+        self.domain_id = domain_id
+        # is vpc
+        self.is_vpc = is_vpc
+        # subdomain ID
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        if self.cname_status:
+            self.cname_status.validate()
+        self.validate_required(self.domain_id, 'domain_id')
+        self.validate_required(self.subdomain_id, 'subdomain_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_cname is not None:
+            result['biz_cname'] = self.biz_cname
+        if self.cname_status is not None:
+            result['cname_status'] = self.cname_status.to_map()
+        if self.cname_type is not None:
+            result['cname_type'] = self.cname_type
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.is_vpc is not None:
+            result['is_vpc'] = self.is_vpc
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('biz_cname') is not None:
+            self.biz_cname = m.get('biz_cname')
+        if m.get('cname_status') is not None:
+            temp_model = CNameStatus()
+            self.cname_status = temp_model.from_map(m['cname_status'])
+        if m.get('cname_type') is not None:
+            self.cname_type = m.get('cname_type')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('is_vpc') is not None:
+            self.is_vpc = m.get('is_vpc')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
 class UpdateDomainResponse(TeaModel):
     """
     create domain response
@@ -41620,16 +49639,13 @@ class UpdateDomainResponse(TeaModel):
         api_cname: str = None,
         app_cname: str = None,
         app_config: AppConfig = None,
+        archive_files_enable: bool = None,
         audit_log_config: AuditLogConfig = None,
-        auth_alipay_app_id: str = None,
-        auth_alipay_enable: bool = None,
-        auth_alipay_private_key: str = None,
         auth_cname: str = None,
         auth_config: dict = None,
         auth_dingding_app_id: str = None,
         auth_dingding_app_secret: str = None,
         auth_dingding_enable: bool = None,
-        auth_endpoint_enable: bool = None,
         auth_ram_app_id: str = None,
         auth_ram_app_secret: str = None,
         auth_ram_enable: bool = None,
@@ -41652,36 +49668,42 @@ class UpdateDomainResponse(TeaModel):
         init_drive_size: int = None,
         init_drive_store_id: str = None,
         mode: str = None,
+        office_edit_config: OfficeEditConfig = None,
         office_preview_config: OfficePreviewConfig = None,
         parallel_upload_enabled: bool = None,
+        parent_domain_id: str = None,
         path_type: str = None,
         prepaid_package: str = None,
         published_app_access_strategy: AppAccessStrategy = None,
+        role_config: RoleConfig = None,
         service_code: str = None,
         sharable: bool = None,
+        share_detail: ShareDetailResponse = None,
+        share_link_detail: ShareDetailResponse = None,
         share_link_enabled: bool = None,
         size_quota: int = None,
         spi_instance_id: str = None,
         status: int = None,
         store_level: str = None,
         store_region_list: List[str] = None,
+        subdomain_config: SubdomainConfig = None,
         updated_at: str = None,
+        used_size: int = None,
+        used_size_refresh_interval: int = None,
         user_count_quota: int = None,
         user_single_drive_enabled: bool = None,
+        video_preview_app_config: VideoPreviewAppConfig = None,
         video_preview_config: VideoPreviewConfig = None,
+        watermark_config: BaseWatermarkConfigResponse = None,
     ):
         # Domain APICName
         self.api_cname = api_cname
         # Domain AppCName
         self.app_cname = app_cname
         self.app_config = app_config
+        # 打包下载配置
+        self.archive_files_enable = archive_files_enable
         self.audit_log_config = audit_log_config
-        # 支付宝 App Id
-        self.auth_alipay_app_id = auth_alipay_app_id
-        # 是否开启了支付宝认证
-        self.auth_alipay_enable = auth_alipay_enable
-        # 支付宝 App Secret
-        self.auth_alipay_private_key = auth_alipay_private_key
         # Domain AuthCName
         self.auth_cname = auth_cname
         # 登录相关信息
@@ -41692,7 +49714,6 @@ class UpdateDomainResponse(TeaModel):
         self.auth_dingding_app_secret = auth_dingding_app_secret
         # 是否开启了钉钉认证
         self.auth_dingding_enable = auth_dingding_enable
-        self.auth_endpoint_enable = auth_endpoint_enable
         # RAM App Id
         self.auth_ram_app_id = auth_ram_app_id
         # RAM App Secret
@@ -41734,17 +49755,23 @@ class UpdateDomainResponse(TeaModel):
         self.init_drive_store_id = init_drive_store_id
         # Domain 类型
         self.mode = mode
+        self.office_edit_config = office_edit_config
         self.office_preview_config = office_preview_config
         self.parallel_upload_enabled = parallel_upload_enabled
+        # Parent Domain ID
+        self.parent_domain_id = parent_domain_id
         # Domain 类型
         self.path_type = path_type
         # 预付费套餐
         self.prepaid_package = prepaid_package
         self.published_app_access_strategy = published_app_access_strategy
+        self.role_config = role_config
         # Domain ServiceCode
         self.service_code = service_code
         # 是否开启了共享
         self.sharable = sharable
+        self.share_detail = share_detail
+        self.share_link_detail = share_link_detail
         # 是否开启了分享
         self.share_link_enabled = share_link_enabled
         # 容量配额
@@ -41757,13 +49784,20 @@ class UpdateDomainResponse(TeaModel):
         self.store_level = store_level
         # 存储 Region 列表
         self.store_region_list = store_region_list
+        self.subdomain_config = subdomain_config
         # Domain 更新时间
         self.updated_at = updated_at
+        # 逻辑空间使用量，单位为字节
+        self.used_size = used_size
+        # 逻辑空间刷新周期，单位：秒
+        self.used_size_refresh_interval = used_size_refresh_interval
         # 用户数配额
         self.user_count_quota = user_count_quota
         # user和group只能有一个drive的开关
         self.user_single_drive_enabled = user_single_drive_enabled
+        self.video_preview_app_config = video_preview_app_config
         self.video_preview_config = video_preview_config
+        self.watermark_config = watermark_config
 
     def validate(self):
         if self.app_config:
@@ -41772,12 +49806,26 @@ class UpdateDomainResponse(TeaModel):
             self.audit_log_config.validate()
         if self.default_super_admin_config:
             self.default_super_admin_config.validate()
+        if self.office_edit_config:
+            self.office_edit_config.validate()
         if self.office_preview_config:
             self.office_preview_config.validate()
         if self.published_app_access_strategy:
             self.published_app_access_strategy.validate()
+        if self.role_config:
+            self.role_config.validate()
+        if self.share_detail:
+            self.share_detail.validate()
+        if self.share_link_detail:
+            self.share_link_detail.validate()
+        if self.subdomain_config:
+            self.subdomain_config.validate()
+        if self.video_preview_app_config:
+            self.video_preview_app_config.validate()
         if self.video_preview_config:
             self.video_preview_config.validate()
+        if self.watermark_config:
+            self.watermark_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -41791,14 +49839,10 @@ class UpdateDomainResponse(TeaModel):
             result['app_cname'] = self.app_cname
         if self.app_config is not None:
             result['app_config'] = self.app_config.to_map()
+        if self.archive_files_enable is not None:
+            result['archive_files_enable'] = self.archive_files_enable
         if self.audit_log_config is not None:
             result['audit_log_config'] = self.audit_log_config.to_map()
-        if self.auth_alipay_app_id is not None:
-            result['auth_alipay_app_id'] = self.auth_alipay_app_id
-        if self.auth_alipay_enable is not None:
-            result['auth_alipay_enable'] = self.auth_alipay_enable
-        if self.auth_alipay_private_key is not None:
-            result['auth_alipay_private_key'] = self.auth_alipay_private_key
         if self.auth_cname is not None:
             result['auth_cname'] = self.auth_cname
         if self.auth_config is not None:
@@ -41809,8 +49853,6 @@ class UpdateDomainResponse(TeaModel):
             result['auth_dingding_app_secret'] = self.auth_dingding_app_secret
         if self.auth_dingding_enable is not None:
             result['auth_dingding_enable'] = self.auth_dingding_enable
-        if self.auth_endpoint_enable is not None:
-            result['auth_endpoint_enable'] = self.auth_endpoint_enable
         if self.auth_ram_app_id is not None:
             result['auth_ram_app_id'] = self.auth_ram_app_id
         if self.auth_ram_app_secret is not None:
@@ -41855,20 +49897,30 @@ class UpdateDomainResponse(TeaModel):
             result['init_drive_store_id'] = self.init_drive_store_id
         if self.mode is not None:
             result['mode'] = self.mode
+        if self.office_edit_config is not None:
+            result['office_edit_config'] = self.office_edit_config.to_map()
         if self.office_preview_config is not None:
             result['office_preview_config'] = self.office_preview_config.to_map()
         if self.parallel_upload_enabled is not None:
             result['parallel_upload_enabled'] = self.parallel_upload_enabled
+        if self.parent_domain_id is not None:
+            result['parent_domain_id'] = self.parent_domain_id
         if self.path_type is not None:
             result['path_type'] = self.path_type
         if self.prepaid_package is not None:
             result['prepaid_package'] = self.prepaid_package
         if self.published_app_access_strategy is not None:
             result['published_app_access_strategy'] = self.published_app_access_strategy.to_map()
+        if self.role_config is not None:
+            result['role_config'] = self.role_config.to_map()
         if self.service_code is not None:
             result['service_code'] = self.service_code
         if self.sharable is not None:
             result['sharable'] = self.sharable
+        if self.share_detail is not None:
+            result['share_detail'] = self.share_detail.to_map()
+        if self.share_link_detail is not None:
+            result['share_link_detail'] = self.share_link_detail.to_map()
         if self.share_link_enabled is not None:
             result['share_link_enabled'] = self.share_link_enabled
         if self.size_quota is not None:
@@ -41881,14 +49933,24 @@ class UpdateDomainResponse(TeaModel):
             result['store_level'] = self.store_level
         if self.store_region_list is not None:
             result['store_region_list'] = self.store_region_list
+        if self.subdomain_config is not None:
+            result['subdomain_config'] = self.subdomain_config.to_map()
         if self.updated_at is not None:
             result['updated_at'] = self.updated_at
+        if self.used_size is not None:
+            result['used_size'] = self.used_size
+        if self.used_size_refresh_interval is not None:
+            result['used_size_refresh_interval'] = self.used_size_refresh_interval
         if self.user_count_quota is not None:
             result['user_count_quota'] = self.user_count_quota
         if self.user_single_drive_enabled is not None:
             result['user_single_drive_enabled'] = self.user_single_drive_enabled
+        if self.video_preview_app_config is not None:
+            result['video_preview_app_config'] = self.video_preview_app_config.to_map()
         if self.video_preview_config is not None:
             result['video_preview_config'] = self.video_preview_config.to_map()
+        if self.watermark_config is not None:
+            result['watermark_config'] = self.watermark_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -41900,15 +49962,11 @@ class UpdateDomainResponse(TeaModel):
         if m.get('app_config') is not None:
             temp_model = AppConfig()
             self.app_config = temp_model.from_map(m['app_config'])
+        if m.get('archive_files_enable') is not None:
+            self.archive_files_enable = m.get('archive_files_enable')
         if m.get('audit_log_config') is not None:
             temp_model = AuditLogConfig()
             self.audit_log_config = temp_model.from_map(m['audit_log_config'])
-        if m.get('auth_alipay_app_id') is not None:
-            self.auth_alipay_app_id = m.get('auth_alipay_app_id')
-        if m.get('auth_alipay_enable') is not None:
-            self.auth_alipay_enable = m.get('auth_alipay_enable')
-        if m.get('auth_alipay_private_key') is not None:
-            self.auth_alipay_private_key = m.get('auth_alipay_private_key')
         if m.get('auth_cname') is not None:
             self.auth_cname = m.get('auth_cname')
         if m.get('auth_config') is not None:
@@ -41919,8 +49977,6 @@ class UpdateDomainResponse(TeaModel):
             self.auth_dingding_app_secret = m.get('auth_dingding_app_secret')
         if m.get('auth_dingding_enable') is not None:
             self.auth_dingding_enable = m.get('auth_dingding_enable')
-        if m.get('auth_endpoint_enable') is not None:
-            self.auth_endpoint_enable = m.get('auth_endpoint_enable')
         if m.get('auth_ram_app_id') is not None:
             self.auth_ram_app_id = m.get('auth_ram_app_id')
         if m.get('auth_ram_app_secret') is not None:
@@ -41966,11 +50022,16 @@ class UpdateDomainResponse(TeaModel):
             self.init_drive_store_id = m.get('init_drive_store_id')
         if m.get('mode') is not None:
             self.mode = m.get('mode')
+        if m.get('office_edit_config') is not None:
+            temp_model = OfficeEditConfig()
+            self.office_edit_config = temp_model.from_map(m['office_edit_config'])
         if m.get('office_preview_config') is not None:
             temp_model = OfficePreviewConfig()
             self.office_preview_config = temp_model.from_map(m['office_preview_config'])
         if m.get('parallel_upload_enabled') is not None:
             self.parallel_upload_enabled = m.get('parallel_upload_enabled')
+        if m.get('parent_domain_id') is not None:
+            self.parent_domain_id = m.get('parent_domain_id')
         if m.get('path_type') is not None:
             self.path_type = m.get('path_type')
         if m.get('prepaid_package') is not None:
@@ -41978,10 +50039,19 @@ class UpdateDomainResponse(TeaModel):
         if m.get('published_app_access_strategy') is not None:
             temp_model = AppAccessStrategy()
             self.published_app_access_strategy = temp_model.from_map(m['published_app_access_strategy'])
+        if m.get('role_config') is not None:
+            temp_model = RoleConfig()
+            self.role_config = temp_model.from_map(m['role_config'])
         if m.get('service_code') is not None:
             self.service_code = m.get('service_code')
         if m.get('sharable') is not None:
             self.sharable = m.get('sharable')
+        if m.get('share_detail') is not None:
+            temp_model = ShareDetailResponse()
+            self.share_detail = temp_model.from_map(m['share_detail'])
+        if m.get('share_link_detail') is not None:
+            temp_model = ShareDetailResponse()
+            self.share_link_detail = temp_model.from_map(m['share_link_detail'])
         if m.get('share_link_enabled') is not None:
             self.share_link_enabled = m.get('share_link_enabled')
         if m.get('size_quota') is not None:
@@ -41994,15 +50064,93 @@ class UpdateDomainResponse(TeaModel):
             self.store_level = m.get('store_level')
         if m.get('store_region_list') is not None:
             self.store_region_list = m.get('store_region_list')
+        if m.get('subdomain_config') is not None:
+            temp_model = SubdomainConfig()
+            self.subdomain_config = temp_model.from_map(m['subdomain_config'])
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
+        if m.get('used_size') is not None:
+            self.used_size = m.get('used_size')
+        if m.get('used_size_refresh_interval') is not None:
+            self.used_size_refresh_interval = m.get('used_size_refresh_interval')
         if m.get('user_count_quota') is not None:
             self.user_count_quota = m.get('user_count_quota')
         if m.get('user_single_drive_enabled') is not None:
             self.user_single_drive_enabled = m.get('user_single_drive_enabled')
+        if m.get('video_preview_app_config') is not None:
+            temp_model = VideoPreviewAppConfig()
+            self.video_preview_app_config = temp_model.from_map(m['video_preview_app_config'])
         if m.get('video_preview_config') is not None:
             temp_model = VideoPreviewConfig()
             self.video_preview_config = temp_model.from_map(m['video_preview_config'])
+        if m.get('watermark_config') is not None:
+            temp_model = BaseWatermarkConfigResponse()
+            self.watermark_config = temp_model.from_map(m['watermark_config'])
+        return self
+
+
+class UpdateGroupRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        description: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        is_root: bool = None,
+        subdomain_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 描述
+        self.description = description
+        # group id
+        self.group_id = group_id
+        # 名称
+        self.group_name = group_name
+        # 是否是根group
+        self.is_root = is_root
+        # subdomain id
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        self.validate_required(self.group_name, 'group_name')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.description is not None:
+            result['description'] = self.description
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        if self.group_name is not None:
+            result['group_name'] = self.group_name
+        if self.is_root is not None:
+            result['is_root'] = self.is_root
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        if m.get('group_name') is not None:
+            self.group_name = m.get('group_name')
+        if m.get('is_root') is not None:
+            self.is_root = m.get('is_root')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -42101,6 +50249,82 @@ class UpdateIdentityToBenefitPkgMappingRequest(TeaModel):
         return self
 
 
+class UpdateMembershipRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        description: str = None,
+        group_id: str = None,
+        member_role: str = None,
+        member_type: str = None,
+        sub_group_id: str = None,
+        subdomain_id: str = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 描述
+        self.description = description
+        # group id
+        self.group_id = group_id
+        # 角色， member or admin
+        self.member_role = member_role
+        self.member_type = member_type
+        self.sub_group_id = sub_group_id
+        # subdomain id
+        self.subdomain_id = subdomain_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.description is not None:
+            result['description'] = self.description
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        if self.member_role is not None:
+            result['member_role'] = self.member_role
+        if self.member_type is not None:
+            result['member_type'] = self.member_type
+        if self.sub_group_id is not None:
+            result['sub_group_id'] = self.sub_group_id
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        if m.get('member_role') is not None:
+            self.member_role = m.get('member_role')
+        if m.get('member_type') is not None:
+            self.member_type = m.get('member_type')
+        if m.get('sub_group_id') is not None:
+            self.sub_group_id = m.get('sub_group_id')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
 class UpdateSubdomainRequest(TeaModel):
     """
     *\
@@ -42191,6 +50415,188 @@ class UpdateSubdomainRequest(TeaModel):
             self.used_size_refresh_interval = m.get('used_size_refresh_interval')
         if m.get('user_quota') is not None:
             self.user_quota = m.get('user_quota')
+        return self
+
+
+class UpdateUserRequest(TeaModel):
+    """
+    Update user request
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        avatar: str = None,
+        deny_change_password_by_self: bool = None,
+        description: str = None,
+        email: str = None,
+        group_info_list: List[GroupInfo] = None,
+        need_change_password_next_login: bool = None,
+        nick_name: str = None,
+        phone: str = None,
+        plain_password: str = None,
+        role: str = None,
+        status: str = None,
+        user_data: dict = None,
+        user_id: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # 头像
+        self.avatar = avatar
+        # 是否能自己修改密码
+        self.deny_change_password_by_self = deny_change_password_by_self
+        # 描述信息
+        self.description = description
+        # 邮箱
+        self.email = email
+        self.group_info_list = group_info_list
+        # 下次登录后是否强制修改密码
+        self.need_change_password_next_login = need_change_password_next_login
+        # 昵称
+        self.nick_name = nick_name
+        # 电话号码
+        self.phone = phone
+        # 用户明文密码
+        self.plain_password = plain_password
+        # 角色
+        self.role = role
+        # 状态
+        self.status = status
+        # 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
+        self.user_data = user_data
+        # 用户 ID
+        self.user_id = user_id
+
+    def validate(self):
+        if self.description is not None:
+            self.validate_max_length(self.description, 'description', 1024)
+        if self.group_info_list:
+            for k in self.group_info_list:
+                if k:
+                    k.validate()
+        self.validate_required(self.user_id, 'user_id')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.avatar is not None:
+            result['avatar'] = self.avatar
+        if self.deny_change_password_by_self is not None:
+            result['deny_change_password_by_self'] = self.deny_change_password_by_self
+        if self.description is not None:
+            result['description'] = self.description
+        if self.email is not None:
+            result['email'] = self.email
+        result['group_info_list'] = []
+        if self.group_info_list is not None:
+            for k in self.group_info_list:
+                result['group_info_list'].append(k.to_map() if k else None)
+        if self.need_change_password_next_login is not None:
+            result['need_change_password_next_login'] = self.need_change_password_next_login
+        if self.nick_name is not None:
+            result['nick_name'] = self.nick_name
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.plain_password is not None:
+            result['plain_password'] = self.plain_password
+        if self.role is not None:
+            result['role'] = self.role
+        if self.status is not None:
+            result['status'] = self.status
+        if self.user_data is not None:
+            result['user_data'] = self.user_data
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('avatar') is not None:
+            self.avatar = m.get('avatar')
+        if m.get('deny_change_password_by_self') is not None:
+            self.deny_change_password_by_self = m.get('deny_change_password_by_self')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        self.group_info_list = []
+        if m.get('group_info_list') is not None:
+            for k in m.get('group_info_list'):
+                temp_model = GroupInfo()
+                self.group_info_list.append(temp_model.from_map(k))
+        if m.get('need_change_password_next_login') is not None:
+            self.need_change_password_next_login = m.get('need_change_password_next_login')
+        if m.get('nick_name') is not None:
+            self.nick_name = m.get('nick_name')
+        if m.get('phone') is not None:
+            self.phone = m.get('phone')
+        if m.get('plain_password') is not None:
+            self.plain_password = m.get('plain_password')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('user_data') is not None:
+            self.user_data = m.get('user_data')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
+class UpgradeCheckAppRequest(TeaModel):
+    """
+    *\
+    """
+    def __init__(
+        self,
+        httpheaders: Dict[str, str] = None,
+        app_id: str = None,
+        arch: str = None,
+        version: str = None,
+    ):
+        self.httpheaders = httpheaders
+        # app_id
+        self.app_id = app_id
+        # arch
+        self.arch = arch
+        # version
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.app_id is not None:
+            result['app_id'] = self.app_id
+        if self.arch is not None:
+            result['arch'] = self.arch
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('app_id') is not None:
+            self.app_id = m.get('app_id')
+        if m.get('arch') is not None:
+            self.arch = m.get('arch')
+        if m.get('version') is not None:
+            self.version = m.get('version')
         return self
 
 
@@ -42302,6 +50708,72 @@ class VideoPreviewVideo(TeaModel):
         return self
 
 
+class WatermarkTextConfig(TeaModel):
+    """
+    WatermarkTextConfig 文字水印配置
+    """
+    def __init__(
+        self,
+        bold: bool = None,
+        fill_style: str = None,
+        font: str = None,
+        horizontal: int = None,
+        rotate: int = None,
+        size: int = None,
+        vertical: int = None,
+    ):
+        self.bold = bold
+        self.fill_style = fill_style
+        self.font = font
+        self.horizontal = horizontal
+        self.rotate = rotate
+        self.size = size
+        self.vertical = vertical
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bold is not None:
+            result['bold'] = self.bold
+        if self.fill_style is not None:
+            result['fill_style'] = self.fill_style
+        if self.font is not None:
+            result['font'] = self.font
+        if self.horizontal is not None:
+            result['horizontal'] = self.horizontal
+        if self.rotate is not None:
+            result['rotate'] = self.rotate
+        if self.size is not None:
+            result['size'] = self.size
+        if self.vertical is not None:
+            result['vertical'] = self.vertical
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bold') is not None:
+            self.bold = m.get('bold')
+        if m.get('fill_style') is not None:
+            self.fill_style = m.get('fill_style')
+        if m.get('font') is not None:
+            self.font = m.get('font')
+        if m.get('horizontal') is not None:
+            self.horizontal = m.get('horizontal')
+        if m.get('rotate') is not None:
+            self.rotate = m.get('rotate')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('vertical') is not None:
+            self.vertical = m.get('vertical')
+        return self
+
+
 class PunishFileRequest(TeaModel):
     """
     处罚文件请求
@@ -42353,50 +50825,6 @@ class PunishFileRequest(TeaModel):
             self.file_id = m.get('file_id')
         if m.get('punish_reason') is not None:
             self.punish_reason = m.get('punish_reason')
-        return self
-
-
-class AddUserToSubdomainRequest(TeaModel):
-    """
-    Add user to subdomain request
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        subdomain_id: str = None,
-        user_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # subdomain id
-        self.subdomain_id = subdomain_id
-        # 用户 ID
-        self.user_id = user_id
-
-    def validate(self):
-        self.validate_required(self.user_id, 'user_id')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
         return self
 
 
@@ -42503,22 +50931,40 @@ class AlbumsBaseRequest(TeaModel):
         return self
 
 
-class BaseGroupIDRequest(TeaModel):
+class AssignRequest(TeaModel):
     """
-    *\
+    分配角色请求
     """
     def __init__(
         self,
-        group_id: str = None,
+        httpheaders: Dict[str, str] = None,
+        disinherit_sub_group: bool = None,
+        identity: Identity = None,
+        manage_resource_id: str = None,
+        manage_resource_type: str = None,
+        role_id: str = None,
         subdomain_id: str = None,
     ):
-        # group id
-        self.group_id = group_id
-        # subdomain id
+        self.httpheaders = httpheaders
+        # 子团队是否继承此权限
+        self.disinherit_sub_group = disinherit_sub_group
+        self.identity = identity
+        # 管辖的资源ID
+        self.manage_resource_id = manage_resource_id
+        # 管辖的资源类型，目前只支持团队: IT_Group
+        self.manage_resource_type = manage_resource_type
+        # 授予的角色，目前支持：SystemGroupAdmin(团队管理员)
+        self.role_id = role_id
         self.subdomain_id = subdomain_id
 
     def validate(self):
-        pass
+        self.validate_required(self.disinherit_sub_group, 'disinherit_sub_group')
+        self.validate_required(self.identity, 'identity')
+        if self.identity:
+            self.identity.validate()
+        self.validate_required(self.manage_resource_id, 'manage_resource_id')
+        self.validate_required(self.manage_resource_type, 'manage_resource_type')
+        self.validate_required(self.role_id, 'role_id')
 
     def to_map(self):
         _map = super().to_map()
@@ -42526,63 +50972,39 @@ class BaseGroupIDRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.group_id is not None:
-            result['group_id'] = self.group_id
+        if self.httpheaders is not None:
+            result['httpheaders'] = self.httpheaders
+        if self.disinherit_sub_group is not None:
+            result['disinherit_sub_group'] = self.disinherit_sub_group
+        if self.identity is not None:
+            result['identity'] = self.identity.to_map()
+        if self.manage_resource_id is not None:
+            result['manage_resource_id'] = self.manage_resource_id
+        if self.manage_resource_type is not None:
+            result['manage_resource_type'] = self.manage_resource_type
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
         if self.subdomain_id is not None:
             result['subdomain_id'] = self.subdomain_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('group_id') is not None:
-            self.group_id = m.get('group_id')
+        if m.get('httpheaders') is not None:
+            self.httpheaders = m.get('httpheaders')
+        if m.get('disinherit_sub_group') is not None:
+            self.disinherit_sub_group = m.get('disinherit_sub_group')
+        if m.get('identity') is not None:
+            temp_model = Identity()
+            self.identity = temp_model.from_map(m['identity'])
+        if m.get('manage_resource_id') is not None:
+            self.manage_resource_id = m.get('manage_resource_id')
+        if m.get('manage_resource_type') is not None:
+            self.manage_resource_type = m.get('manage_resource_type')
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
         if m.get('subdomain_id') is not None:
             self.subdomain_id = m.get('subdomain_id')
-        return self
-
-
-class BaseGroupRequest(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        description: str = None,
-        group_name: str = None,
-        is_root: bool = None,
-    ):
-        # 描述
-        self.description = description
-        # 名称
-        self.group_name = group_name
-        # 是否是根group
-        self.is_root = is_root
-
-    def validate(self):
-        self.validate_required(self.group_name, 'group_name')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['description'] = self.description
-        if self.group_name is not None:
-            result['group_name'] = self.group_name
-        if self.is_root is not None:
-            result['is_root'] = self.is_root
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('group_name') is not None:
-            self.group_name = m.get('group_name')
-        if m.get('is_root') is not None:
-            self.is_root = m.get('is_root')
         return self
 
 
@@ -42632,33 +51054,36 @@ class BaseRequest(TeaModel):
         return self
 
 
-class CreateGroupRequest(TeaModel):
+class CancelAssignRequest(TeaModel):
     """
-    *\
+    取消角色请求
     """
     def __init__(
         self,
         httpheaders: Dict[str, str] = None,
-        description: str = None,
-        group_name: str = None,
-        is_root: bool = None,
-        parent_group_id: str = None,
+        identity: Identity = None,
+        manage_resource_id: str = None,
+        manage_resource_type: str = None,
+        role_id: str = None,
         subdomain_id: str = None,
     ):
         self.httpheaders = httpheaders
-        # 描述
-        self.description = description
-        # 名称
-        self.group_name = group_name
-        # 是否是根group
-        self.is_root = is_root
-        # parent group id
-        self.parent_group_id = parent_group_id
-        # subdomain id
+        self.identity = identity
+        # 管辖的资源ID
+        self.manage_resource_id = manage_resource_id
+        # 管辖的资源类型，目前只支持团队: IT_Group
+        self.manage_resource_type = manage_resource_type
+        # 授予的角色，目前支持：SystemGroupAdmin(团队管理员)
+        self.role_id = role_id
         self.subdomain_id = subdomain_id
 
     def validate(self):
-        self.validate_required(self.group_name, 'group_name')
+        self.validate_required(self.identity, 'identity')
+        if self.identity:
+            self.identity.validate()
+        self.validate_required(self.manage_resource_id, 'manage_resource_id')
+        self.validate_required(self.manage_resource_type, 'manage_resource_type')
+        self.validate_required(self.role_id, 'role_id')
 
     def to_map(self):
         _map = super().to_map()
@@ -42668,14 +51093,14 @@ class CreateGroupRequest(TeaModel):
         result = dict()
         if self.httpheaders is not None:
             result['httpheaders'] = self.httpheaders
-        if self.description is not None:
-            result['description'] = self.description
-        if self.group_name is not None:
-            result['group_name'] = self.group_name
-        if self.is_root is not None:
-            result['is_root'] = self.is_root
-        if self.parent_group_id is not None:
-            result['parent_group_id'] = self.parent_group_id
+        if self.identity is not None:
+            result['identity'] = self.identity.to_map()
+        if self.manage_resource_id is not None:
+            result['manage_resource_id'] = self.manage_resource_id
+        if self.manage_resource_type is not None:
+            result['manage_resource_type'] = self.manage_resource_type
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
         if self.subdomain_id is not None:
             result['subdomain_id'] = self.subdomain_id
         return result
@@ -42684,48 +51109,76 @@ class CreateGroupRequest(TeaModel):
         m = m or dict()
         if m.get('httpheaders') is not None:
             self.httpheaders = m.get('httpheaders')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('group_name') is not None:
-            self.group_name = m.get('group_name')
-        if m.get('is_root') is not None:
-            self.is_root = m.get('is_root')
-        if m.get('parent_group_id') is not None:
-            self.parent_group_id = m.get('parent_group_id')
+        if m.get('identity') is not None:
+            temp_model = Identity()
+            self.identity = temp_model.from_map(m['identity'])
+        if m.get('manage_resource_id') is not None:
+            self.manage_resource_id = m.get('manage_resource_id')
+        if m.get('manage_resource_type') is not None:
+            self.manage_resource_type = m.get('manage_resource_type')
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
         if m.get('subdomain_id') is not None:
             self.subdomain_id = m.get('subdomain_id')
         return self
 
 
-class CreateMembershipRequest(TeaModel):
+class CopyViewFilesRequest(TeaModel):
     """
-    *\
+    Copy view files
     """
     def __init__(
         self,
         httpheaders: Dict[str, str] = None,
-        description: str = None,
-        group_id: str = None,
-        member_role: str = None,
-        member_type: str = None,
-        sub_group_id: str = None,
-        subdomain_id: str = None,
+        addition_data: dict = None,
+        auto_rename: bool = None,
+        category: str = None,
+        drive_file_list: List[ShareFile] = None,
+        referer: str = None,
+        share_id: str = None,
+        to_drive_id: str = None,
+        to_parent_file_id: str = None,
+        to_view_id: str = None,
         user_id: str = None,
+        view_id: str = None,
     ):
         self.httpheaders = httpheaders
-        # 描述
-        self.description = description
-        # group id
-        self.group_id = group_id
-        # 角色， member or admin
-        self.member_role = member_role
-        self.member_type = member_type
-        self.sub_group_id = sub_group_id
-        self.subdomain_id = subdomain_id
+        # addition_data
+        self.addition_data = addition_data
+        # auto_rename
+        # type: boolean
+        self.auto_rename = auto_rename
+        # category
+        self.category = category
+        self.drive_file_list = drive_file_list
+        self.referer = referer
+        # share_id
+        self.share_id = share_id
+        # to_drive_id
+        self.to_drive_id = to_drive_id
+        # to_parent_file_id
+        self.to_parent_file_id = to_parent_file_id
+        # to_view_id
+        self.to_view_id = to_view_id
+        # user_id
         self.user_id = user_id
+        # view_id
+        self.view_id = view_id
 
     def validate(self):
-        pass
+        self.validate_required(self.category, 'category')
+        if self.drive_file_list:
+            for k in self.drive_file_list:
+                if k:
+                    k.validate()
+        if self.to_drive_id is not None:
+            self.validate_pattern(self.to_drive_id, 'to_drive_id', '[0-9]+')
+        self.validate_required(self.to_parent_file_id, 'to_parent_file_id')
+        if self.to_parent_file_id is not None:
+            self.validate_max_length(self.to_parent_file_id, 'to_parent_file_id', 50)
+            self.validate_pattern(self.to_parent_file_id, 'to_parent_file_id', '[a-z0-9.-_]{1,50}')
+        self.validate_required(self.to_view_id, 'to_view_id')
+        self.validate_required(self.view_id, 'view_id')
 
     def to_map(self):
         _map = super().to_map()
@@ -42735,40 +51188,61 @@ class CreateMembershipRequest(TeaModel):
         result = dict()
         if self.httpheaders is not None:
             result['httpheaders'] = self.httpheaders
-        if self.description is not None:
-            result['description'] = self.description
-        if self.group_id is not None:
-            result['group_id'] = self.group_id
-        if self.member_role is not None:
-            result['member_role'] = self.member_role
-        if self.member_type is not None:
-            result['member_type'] = self.member_type
-        if self.sub_group_id is not None:
-            result['sub_group_id'] = self.sub_group_id
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
+        if self.addition_data is not None:
+            result['addition_data'] = self.addition_data
+        if self.auto_rename is not None:
+            result['auto_rename'] = self.auto_rename
+        if self.category is not None:
+            result['category'] = self.category
+        result['drive_file_list'] = []
+        if self.drive_file_list is not None:
+            for k in self.drive_file_list:
+                result['drive_file_list'].append(k.to_map() if k else None)
+        if self.referer is not None:
+            result['referer'] = self.referer
+        if self.share_id is not None:
+            result['share_id'] = self.share_id
+        if self.to_drive_id is not None:
+            result['to_drive_id'] = self.to_drive_id
+        if self.to_parent_file_id is not None:
+            result['to_parent_file_id'] = self.to_parent_file_id
+        if self.to_view_id is not None:
+            result['to_view_id'] = self.to_view_id
         if self.user_id is not None:
             result['user_id'] = self.user_id
+        if self.view_id is not None:
+            result['view_id'] = self.view_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('httpheaders') is not None:
             self.httpheaders = m.get('httpheaders')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('group_id') is not None:
-            self.group_id = m.get('group_id')
-        if m.get('member_role') is not None:
-            self.member_role = m.get('member_role')
-        if m.get('member_type') is not None:
-            self.member_type = m.get('member_type')
-        if m.get('sub_group_id') is not None:
-            self.sub_group_id = m.get('sub_group_id')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
+        if m.get('addition_data') is not None:
+            self.addition_data = m.get('addition_data')
+        if m.get('auto_rename') is not None:
+            self.auto_rename = m.get('auto_rename')
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        self.drive_file_list = []
+        if m.get('drive_file_list') is not None:
+            for k in m.get('drive_file_list'):
+                temp_model = ShareFile()
+                self.drive_file_list.append(temp_model.from_map(k))
+        if m.get('referer') is not None:
+            self.referer = m.get('referer')
+        if m.get('share_id') is not None:
+            self.share_id = m.get('share_id')
+        if m.get('to_drive_id') is not None:
+            self.to_drive_id = m.get('to_drive_id')
+        if m.get('to_parent_file_id') is not None:
+            self.to_parent_file_id = m.get('to_parent_file_id')
+        if m.get('to_view_id') is not None:
+            self.to_view_id = m.get('to_view_id')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
+        if m.get('view_id') is not None:
+            self.view_id = m.get('view_id')
         return self
 
 
@@ -42779,6 +51253,8 @@ class CreateStoryRequest(TeaModel):
     def __init__(
         self,
         httpheaders: Dict[str, str] = None,
+        custom_id: str = None,
+        custom_labels: dict = None,
         drive_id: str = None,
         max_image_count: int = None,
         min_image_count: int = None,
@@ -42786,9 +51262,14 @@ class CreateStoryRequest(TeaModel):
         story_id: str = None,
         story_name: str = None,
         story_start_time: str = None,
+        story_sub_type: str = None,
         story_type: str = None,
     ):
         self.httpheaders = httpheaders
+        # custom_id
+        self.custom_id = custom_id
+        # custom_labels
+        self.custom_labels = custom_labels
         # drive_id
         self.drive_id = drive_id
         # max_image_count
@@ -42803,6 +51284,8 @@ class CreateStoryRequest(TeaModel):
         self.story_name = story_name
         # story_start_time
         self.story_start_time = story_start_time
+        # story_sub_type
+        self.story_sub_type = story_sub_type
         # story_type
         self.story_type = story_type
 
@@ -42820,6 +51303,10 @@ class CreateStoryRequest(TeaModel):
         result = dict()
         if self.httpheaders is not None:
             result['httpheaders'] = self.httpheaders
+        if self.custom_id is not None:
+            result['custom_id'] = self.custom_id
+        if self.custom_labels is not None:
+            result['custom_labels'] = self.custom_labels
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
         if self.max_image_count is not None:
@@ -42834,6 +51321,8 @@ class CreateStoryRequest(TeaModel):
             result['story_name'] = self.story_name
         if self.story_start_time is not None:
             result['story_start_time'] = self.story_start_time
+        if self.story_sub_type is not None:
+            result['story_sub_type'] = self.story_sub_type
         if self.story_type is not None:
             result['story_type'] = self.story_type
         return result
@@ -42842,6 +51331,10 @@ class CreateStoryRequest(TeaModel):
         m = m or dict()
         if m.get('httpheaders') is not None:
             self.httpheaders = m.get('httpheaders')
+        if m.get('custom_id') is not None:
+            self.custom_id = m.get('custom_id')
+        if m.get('custom_labels') is not None:
+            self.custom_labels = m.get('custom_labels')
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
         if m.get('max_image_count') is not None:
@@ -42856,197 +51349,10 @@ class CreateStoryRequest(TeaModel):
             self.story_name = m.get('story_name')
         if m.get('story_start_time') is not None:
             self.story_start_time = m.get('story_start_time')
+        if m.get('story_sub_type') is not None:
+            self.story_sub_type = m.get('story_sub_type')
         if m.get('story_type') is not None:
             self.story_type = m.get('story_type')
-        return self
-
-
-class GroupInfo(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        group_id: str = None,
-        member_role: str = None,
-    ):
-        self.group_id = group_id
-        # MemberRole 暂不对外，只作保留
-        self.member_role = member_role
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.group_id is not None:
-            result['group_id'] = self.group_id
-        if self.member_role is not None:
-            result['member_role'] = self.member_role
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('group_id') is not None:
-            self.group_id = m.get('group_id')
-        if m.get('member_role') is not None:
-            self.member_role = m.get('member_role')
-        return self
-
-
-class CreateUserRequest(TeaModel):
-    """
-    Create user request
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        avatar: str = None,
-        deny_change_password_by_self: bool = None,
-        description: str = None,
-        email: str = None,
-        group_info_list: List[GroupInfo] = None,
-        location: str = None,
-        need_change_password_next_login: bool = None,
-        nick_name: str = None,
-        phone: str = None,
-        plain_password: str = None,
-        role: str = None,
-        status: str = None,
-        subdomain_id: str = None,
-        user_data: dict = None,
-        user_id: str = None,
-        user_name: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # 头像
-        self.avatar = avatar
-        # 是否能自己修改密码
-        self.deny_change_password_by_self = deny_change_password_by_self
-        # 描述信息
-        self.description = description
-        # 邮箱
-        self.email = email
-        self.group_info_list = group_info_list
-        # 用户地域
-        self.location = location
-        # 下次登录后是否强制修改密码
-        self.need_change_password_next_login = need_change_password_next_login
-        # 昵称
-        self.nick_name = nick_name
-        # 电话号码
-        self.phone = phone
-        # 用户明文密码
-        self.plain_password = plain_password
-        # 角色
-        self.role = role
-        # 状态
-        self.status = status
-        # subdomain id
-        self.subdomain_id = subdomain_id
-        # 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
-        self.user_data = user_data
-        # 用户 ID
-        self.user_id = user_id
-        # 用户名称
-        self.user_name = user_name
-
-    def validate(self):
-        if self.description is not None:
-            self.validate_max_length(self.description, 'description', 1024)
-        if self.group_info_list:
-            for k in self.group_info_list:
-                if k:
-                    k.validate()
-        self.validate_required(self.user_id, 'user_id')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.avatar is not None:
-            result['avatar'] = self.avatar
-        if self.deny_change_password_by_self is not None:
-            result['deny_change_password_by_self'] = self.deny_change_password_by_self
-        if self.description is not None:
-            result['description'] = self.description
-        if self.email is not None:
-            result['email'] = self.email
-        result['group_info_list'] = []
-        if self.group_info_list is not None:
-            for k in self.group_info_list:
-                result['group_info_list'].append(k.to_map() if k else None)
-        if self.location is not None:
-            result['location'] = self.location
-        if self.need_change_password_next_login is not None:
-            result['need_change_password_next_login'] = self.need_change_password_next_login
-        if self.nick_name is not None:
-            result['nick_name'] = self.nick_name
-        if self.phone is not None:
-            result['phone'] = self.phone
-        if self.plain_password is not None:
-            result['plain_password'] = self.plain_password
-        if self.role is not None:
-            result['role'] = self.role
-        if self.status is not None:
-            result['status'] = self.status
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        if self.user_data is not None:
-            result['user_data'] = self.user_data
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        if self.user_name is not None:
-            result['user_name'] = self.user_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('avatar') is not None:
-            self.avatar = m.get('avatar')
-        if m.get('deny_change_password_by_self') is not None:
-            self.deny_change_password_by_self = m.get('deny_change_password_by_self')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('email') is not None:
-            self.email = m.get('email')
-        self.group_info_list = []
-        if m.get('group_info_list') is not None:
-            for k in m.get('group_info_list'):
-                temp_model = GroupInfo()
-                self.group_info_list.append(temp_model.from_map(k))
-        if m.get('location') is not None:
-            self.location = m.get('location')
-        if m.get('need_change_password_next_login') is not None:
-            self.need_change_password_next_login = m.get('need_change_password_next_login')
-        if m.get('nick_name') is not None:
-            self.nick_name = m.get('nick_name')
-        if m.get('phone') is not None:
-            self.phone = m.get('phone')
-        if m.get('plain_password') is not None:
-            self.plain_password = m.get('plain_password')
-        if m.get('role') is not None:
-            self.role = m.get('role')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        if m.get('user_data') is not None:
-            self.user_data = m.get('user_data')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
-        if m.get('user_name') is not None:
-            self.user_name = m.get('user_name')
         return self
 
 
@@ -43117,112 +51423,6 @@ class CreateViewRequest(TeaModel):
         return self
 
 
-class DeleteGroupRequest(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        group_id: str = None,
-        subdomain_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # group id
-        self.group_id = group_id
-        # subdomain id
-        self.subdomain_id = subdomain_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.group_id is not None:
-            result['group_id'] = self.group_id
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('group_id') is not None:
-            self.group_id = m.get('group_id')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        return self
-
-
-class DeleteMembershipRequest(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        group_id: str = None,
-        member_type: str = None,
-        sub_group_id: str = None,
-        subdomain_id: str = None,
-        user_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # group id
-        self.group_id = group_id
-        self.member_type = member_type
-        self.sub_group_id = sub_group_id
-        # subdomain id
-        self.subdomain_id = subdomain_id
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.group_id is not None:
-            result['group_id'] = self.group_id
-        if self.member_type is not None:
-            result['member_type'] = self.member_type
-        if self.sub_group_id is not None:
-            result['sub_group_id'] = self.sub_group_id
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('group_id') is not None:
-            self.group_id = m.get('group_id')
-        if m.get('member_type') is not None:
-            self.member_type = m.get('member_type')
-        if m.get('sub_group_id') is not None:
-            self.sub_group_id = m.get('sub_group_id')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
-        return self
-
-
 class DeleteStoryRequest(TeaModel):
     """
     delete story request
@@ -43267,43 +51467,6 @@ class DeleteStoryRequest(TeaModel):
             self.drive_id = m.get('drive_id')
         if m.get('story_id') is not None:
             self.story_id = m.get('story_id')
-        return self
-
-
-class DeleteUserRequest(TeaModel):
-    """
-    Delete user request
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        user_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # 用户 ID
-        self.user_id = user_id
-
-    def validate(self):
-        self.validate_required(self.user_id, 'user_id')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
         return self
 
 
@@ -43430,8 +51593,8 @@ class FindStoriesRequest(TeaModel):
         cover_image_thumbnail_process: str = None,
         cover_video_thumbnail_process: str = None,
         create_time_range: FindStoryRequestTimeRange = None,
+        custom_labels: str = None,
         drive_id: str = None,
-        event_type: str = None,
         face_group_ids: List[str] = None,
         limit: int = None,
         marker: str = None,
@@ -43441,6 +51604,7 @@ class FindStoriesRequest(TeaModel):
         story_start_time_range: FindStoryRequestTimeRange = None,
         story_type: str = None,
         url_expire_sec: int = None,
+        with_empty_stories: bool = None,
     ):
         self.httpheaders = httpheaders
         # cover_image_thumbnail_process
@@ -43448,10 +51612,10 @@ class FindStoriesRequest(TeaModel):
         # cover_video_thumbnail_process
         self.cover_video_thumbnail_process = cover_video_thumbnail_process
         self.create_time_range = create_time_range
+        # custom_labels
+        self.custom_labels = custom_labels
         # drive_id
         self.drive_id = drive_id
-        # event_type
-        self.event_type = event_type
         # face_group_ids
         self.face_group_ids = face_group_ids
         # limit
@@ -43468,6 +51632,8 @@ class FindStoriesRequest(TeaModel):
         self.story_type = story_type
         # url_expire_sec
         self.url_expire_sec = url_expire_sec
+        # with_empty_stories
+        self.with_empty_stories = with_empty_stories
 
     def validate(self):
         if self.create_time_range:
@@ -43494,10 +51660,10 @@ class FindStoriesRequest(TeaModel):
             result['cover_video_thumbnail_process'] = self.cover_video_thumbnail_process
         if self.create_time_range is not None:
             result['create_time_range'] = self.create_time_range.to_map()
+        if self.custom_labels is not None:
+            result['custom_labels'] = self.custom_labels
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
-        if self.event_type is not None:
-            result['event_type'] = self.event_type
         if self.face_group_ids is not None:
             result['face_group_ids'] = self.face_group_ids
         if self.limit is not None:
@@ -43516,6 +51682,8 @@ class FindStoriesRequest(TeaModel):
             result['story_type'] = self.story_type
         if self.url_expire_sec is not None:
             result['url_expire_sec'] = self.url_expire_sec
+        if self.with_empty_stories is not None:
+            result['with_empty_stories'] = self.with_empty_stories
         return result
 
     def from_map(self, m: dict = None):
@@ -43529,10 +51697,10 @@ class FindStoriesRequest(TeaModel):
         if m.get('create_time_range') is not None:
             temp_model = FindStoryRequestTimeRange()
             self.create_time_range = temp_model.from_map(m['create_time_range'])
+        if m.get('custom_labels') is not None:
+            self.custom_labels = m.get('custom_labels')
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
-        if m.get('event_type') is not None:
-            self.event_type = m.get('event_type')
         if m.get('face_group_ids') is not None:
             self.face_group_ids = m.get('face_group_ids')
         if m.get('limit') is not None:
@@ -43553,50 +51721,8 @@ class FindStoriesRequest(TeaModel):
             self.story_type = m.get('story_type')
         if m.get('url_expire_sec') is not None:
             self.url_expire_sec = m.get('url_expire_sec')
-        return self
-
-
-class GetGroupRequest(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        group_id: str = None,
-        subdomain_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # group id
-        self.group_id = group_id
-        # subdomain id
-        self.subdomain_id = subdomain_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.group_id is not None:
-            result['group_id'] = self.group_id
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('group_id') is not None:
-            self.group_id = m.get('group_id')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
+        if m.get('with_empty_stories') is not None:
+            self.with_empty_stories = m.get('with_empty_stories')
         return self
 
 
@@ -43636,68 +51762,6 @@ class GetImageCountRequest(TeaModel):
             self.httpheaders = m.get('httpheaders')
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
-        return self
-
-
-class GetMembershipRequest(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        group_id: str = None,
-        member_type: str = None,
-        sub_group_id: str = None,
-        subdomain_id: str = None,
-        user_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # group id
-        self.group_id = group_id
-        self.member_type = member_type
-        self.sub_group_id = sub_group_id
-        # subdomain id
-        self.subdomain_id = subdomain_id
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.group_id is not None:
-            result['group_id'] = self.group_id
-        if self.member_type is not None:
-            result['member_type'] = self.member_type
-        if self.sub_group_id is not None:
-            result['sub_group_id'] = self.sub_group_id
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('group_id') is not None:
-            self.group_id = m.get('group_id')
-        if m.get('member_type') is not None:
-            self.member_type = m.get('member_type')
-        if m.get('sub_group_id') is not None:
-            self.sub_group_id = m.get('sub_group_id')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
         return self
 
 
@@ -43798,44 +51862,6 @@ class GetStoryRequest(TeaModel):
         return self
 
 
-class GetUserRequest(TeaModel):
-    """
-    Get user request
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        user_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # 用户 ID, 使用ak方式访问，该项必传, access_token访问如果不传，默认取自己的user信息
-        # example
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
-        return self
-
-
 class GetViewRequest(TeaModel):
     """
     Get view request
@@ -43885,304 +51911,6 @@ class GetViewRequest(TeaModel):
             self.user_id = m.get('user_id')
         if m.get('view_id') is not None:
             self.view_id = m.get('view_id')
-        return self
-
-
-class HasMemberRequest(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        group_id: str = None,
-        member_type: str = None,
-        sub_group_id: str = None,
-        subdomain_id: str = None,
-        user_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # group id
-        self.group_id = group_id
-        self.member_type = member_type
-        self.sub_group_id = sub_group_id
-        # subdomain id
-        self.subdomain_id = subdomain_id
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.group_id is not None:
-            result['group_id'] = self.group_id
-        if self.member_type is not None:
-            result['member_type'] = self.member_type
-        if self.sub_group_id is not None:
-            result['sub_group_id'] = self.sub_group_id
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('group_id') is not None:
-            self.group_id = m.get('group_id')
-        if m.get('member_type') is not None:
-            self.member_type = m.get('member_type')
-        if m.get('sub_group_id') is not None:
-            self.sub_group_id = m.get('sub_group_id')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
-        return self
-
-
-class ImportUserRequest(TeaModel):
-    """
-    Import user request
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        authentication_type: str = None,
-        auto_create_drive: bool = None,
-        deny_change_password_by_self: bool = None,
-        drive_total_size: int = None,
-        extra: str = None,
-        identity: str = None,
-        need_change_password_next_login: bool = None,
-        nick_name: str = None,
-        parent_group_id: str = None,
-        plain_password: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # 认证类型
-        self.authentication_type = authentication_type
-        # 自动创建空间
-        self.auto_create_drive = auto_create_drive
-        # 是否能自己修改密码
-        self.deny_change_password_by_self = deny_change_password_by_self
-        # 空间大小
-        self.drive_total_size = drive_total_size
-        # 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
-        self.extra = extra
-        # 唯一身份标识
-        self.identity = identity
-        # 下次登录后是否强制修改密码
-        self.need_change_password_next_login = need_change_password_next_login
-        # 昵称
-        self.nick_name = nick_name
-        # 加入到group
-        self.parent_group_id = parent_group_id
-        # 用户明文密码
-        self.plain_password = plain_password
-
-    def validate(self):
-        self.validate_required(self.authentication_type, 'authentication_type')
-        self.validate_required(self.identity, 'identity')
-        self.validate_required(self.nick_name, 'nick_name')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.authentication_type is not None:
-            result['authentication_type'] = self.authentication_type
-        if self.auto_create_drive is not None:
-            result['auto_create_drive'] = self.auto_create_drive
-        if self.deny_change_password_by_self is not None:
-            result['deny_change_password_by_self'] = self.deny_change_password_by_self
-        if self.drive_total_size is not None:
-            result['drive_total_size'] = self.drive_total_size
-        if self.extra is not None:
-            result['extra'] = self.extra
-        if self.identity is not None:
-            result['identity'] = self.identity
-        if self.need_change_password_next_login is not None:
-            result['need_change_password_next_login'] = self.need_change_password_next_login
-        if self.nick_name is not None:
-            result['nick_name'] = self.nick_name
-        if self.parent_group_id is not None:
-            result['parent_group_id'] = self.parent_group_id
-        if self.plain_password is not None:
-            result['plain_password'] = self.plain_password
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('authentication_type') is not None:
-            self.authentication_type = m.get('authentication_type')
-        if m.get('auto_create_drive') is not None:
-            self.auto_create_drive = m.get('auto_create_drive')
-        if m.get('deny_change_password_by_self') is not None:
-            self.deny_change_password_by_self = m.get('deny_change_password_by_self')
-        if m.get('drive_total_size') is not None:
-            self.drive_total_size = m.get('drive_total_size')
-        if m.get('extra') is not None:
-            self.extra = m.get('extra')
-        if m.get('identity') is not None:
-            self.identity = m.get('identity')
-        if m.get('need_change_password_next_login') is not None:
-            self.need_change_password_next_login = m.get('need_change_password_next_login')
-        if m.get('nick_name') is not None:
-            self.nick_name = m.get('nick_name')
-        if m.get('parent_group_id') is not None:
-            self.parent_group_id = m.get('parent_group_id')
-        if m.get('plain_password') is not None:
-            self.plain_password = m.get('plain_password')
-        return self
-
-
-class ListDirectChildMembershipsRequest(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        group_id: str = None,
-        limit: int = None,
-        marker: str = None,
-        member_type: str = None,
-        subdomain_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # group id
-        self.group_id = group_id
-        # 分页获取的数量，默认为100
-        self.limit = limit
-        # 游标
-        self.marker = marker
-        # 角色，可选值，["", "user", "group"], ""表示获取所有类型
-        self.member_type = member_type
-        # subdomain id
-        self.subdomain_id = subdomain_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.group_id is not None:
-            result['group_id'] = self.group_id
-        if self.limit is not None:
-            result['limit'] = self.limit
-        if self.marker is not None:
-            result['marker'] = self.marker
-        if self.member_type is not None:
-            result['member_type'] = self.member_type
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('group_id') is not None:
-            self.group_id = m.get('group_id')
-        if m.get('limit') is not None:
-            self.limit = m.get('limit')
-        if m.get('marker') is not None:
-            self.marker = m.get('marker')
-        if m.get('member_type') is not None:
-            self.member_type = m.get('member_type')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        return self
-
-
-class ListDirectParentMembershipsRequest(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        limit: int = None,
-        marker: str = None,
-        member_type: str = None,
-        sub_group_id: str = None,
-        subdomain_id: str = None,
-        user_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # 分页获取的数量，默认为100
-        self.limit = limit
-        # 游标
-        self.marker = marker
-        self.member_type = member_type
-        self.sub_group_id = sub_group_id
-        # subdomain id
-        self.subdomain_id = subdomain_id
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.limit is not None:
-            result['limit'] = self.limit
-        if self.marker is not None:
-            result['marker'] = self.marker
-        if self.member_type is not None:
-            result['member_type'] = self.member_type
-        if self.sub_group_id is not None:
-            result['sub_group_id'] = self.sub_group_id
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('limit') is not None:
-            self.limit = m.get('limit')
-        if m.get('marker') is not None:
-            self.marker = m.get('marker')
-        if m.get('member_type') is not None:
-            self.member_type = m.get('member_type')
-        if m.get('sub_group_id') is not None:
-            self.sub_group_id = m.get('sub_group_id')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
         return self
 
 
@@ -44241,27 +51969,28 @@ class ListFileViewsRequest(TeaModel):
         return self
 
 
-class ListGroupRequest(TeaModel):
+class ListIdentityRoleRequest(TeaModel):
     """
-    *\
+    列举用户或团队的角色列表请求
     """
     def __init__(
         self,
         httpheaders: Dict[str, str] = None,
-        limit: int = None,
-        marker: str = None,
+        identity: Identity = None,
+        include_group_role: bool = None,
         subdomain_id: str = None,
     ):
         self.httpheaders = httpheaders
-        # 分页获取的数量，默认为100
-        self.limit = limit
-        # 游标
-        self.marker = marker
-        # 列举 subdomain 下的group
+        self.identity = identity
+        # 是否包含所属父级团队的角色
+        self.include_group_role = include_group_role
         self.subdomain_id = subdomain_id
 
     def validate(self):
-        pass
+        self.validate_required(self.identity, 'identity')
+        if self.identity:
+            self.identity.validate()
+        self.validate_required(self.include_group_role, 'include_group_role')
 
     def to_map(self):
         _map = super().to_map()
@@ -44271,10 +52000,10 @@ class ListGroupRequest(TeaModel):
         result = dict()
         if self.httpheaders is not None:
             result['httpheaders'] = self.httpheaders
-        if self.limit is not None:
-            result['limit'] = self.limit
-        if self.marker is not None:
-            result['marker'] = self.marker
+        if self.identity is not None:
+            result['identity'] = self.identity.to_map()
+        if self.include_group_role is not None:
+            result['include_group_role'] = self.include_group_role
         if self.subdomain_id is not None:
             result['subdomain_id'] = self.subdomain_id
         return result
@@ -44283,10 +52012,11 @@ class ListGroupRequest(TeaModel):
         m = m or dict()
         if m.get('httpheaders') is not None:
             self.httpheaders = m.get('httpheaders')
-        if m.get('limit') is not None:
-            self.limit = m.get('limit')
-        if m.get('marker') is not None:
-            self.marker = m.get('marker')
+        if m.get('identity') is not None:
+            temp_model = Identity()
+            self.identity = temp_model.from_map(m['identity'])
+        if m.get('include_group_role') is not None:
+            self.include_group_role = m.get('include_group_role')
         if m.get('subdomain_id') is not None:
             self.subdomain_id = m.get('subdomain_id')
         return self
@@ -44362,54 +52092,6 @@ class ListImageAddressGroupsRequest(TeaModel):
         return self
 
 
-class RemarksQueryRequest(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        in_: List[str] = None,
-        not_in: List[str] = None,
-        not_prefix: str = None,
-        prefix: str = None,
-    ):
-        self.in_ = in_
-        self.not_in = not_in
-        self.not_prefix = not_prefix
-        self.prefix = prefix
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.in_ is not None:
-            result['in'] = self.in_
-        if self.not_in is not None:
-            result['not_in'] = self.not_in
-        if self.not_prefix is not None:
-            result['not_prefix'] = self.not_prefix
-        if self.prefix is not None:
-            result['prefix'] = self.prefix
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('in') is not None:
-            self.in_ = m.get('in')
-        if m.get('not_in') is not None:
-            self.not_in = m.get('not_in')
-        if m.get('not_prefix') is not None:
-            self.not_prefix = m.get('not_prefix')
-        if m.get('prefix') is not None:
-            self.prefix = m.get('prefix')
-        return self
-
-
 class ListImageFaceGroupsRequest(TeaModel):
     """
     List image face groups request
@@ -44420,8 +52102,7 @@ class ListImageFaceGroupsRequest(TeaModel):
         drive_id: str = None,
         limit: int = None,
         marker: str = None,
-        remarks_array_query: RemarksQueryRequest = None,
-        remarks_query: RemarksQueryRequest = None,
+        remarks: str = None,
     ):
         self.httpheaders = httpheaders
         # drive_id
@@ -44430,8 +52111,7 @@ class ListImageFaceGroupsRequest(TeaModel):
         self.limit = limit
         # 翻页标记
         self.marker = marker
-        self.remarks_array_query = remarks_array_query
-        self.remarks_query = remarks_query
+        self.remarks = remarks
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
@@ -44440,10 +52120,6 @@ class ListImageFaceGroupsRequest(TeaModel):
         if self.limit is not None:
             self.validate_maximum(self.limit, 'limit', 100)
             self.validate_minimum(self.limit, 'limit', 1)
-        if self.remarks_array_query:
-            self.remarks_array_query.validate()
-        if self.remarks_query:
-            self.remarks_query.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -44459,10 +52135,8 @@ class ListImageFaceGroupsRequest(TeaModel):
             result['limit'] = self.limit
         if self.marker is not None:
             result['marker'] = self.marker
-        if self.remarks_array_query is not None:
-            result['remarks_array_query'] = self.remarks_array_query.to_map()
-        if self.remarks_query is not None:
-            result['remarks_query'] = self.remarks_query.to_map()
+        if self.remarks is not None:
+            result['remarks'] = self.remarks
         return result
 
     def from_map(self, m: dict = None):
@@ -44475,12 +52149,8 @@ class ListImageFaceGroupsRequest(TeaModel):
             self.limit = m.get('limit')
         if m.get('marker') is not None:
             self.marker = m.get('marker')
-        if m.get('remarks_array_query') is not None:
-            temp_model = RemarksQueryRequest()
-            self.remarks_array_query = temp_model.from_map(m['remarks_array_query'])
-        if m.get('remarks_query') is not None:
-            temp_model = RemarksQueryRequest()
-            self.remarks_query = temp_model.from_map(m['remarks_query'])
+        if m.get('remarks') is not None:
+            self.remarks = m.get('remarks')
         return self
 
 
@@ -44535,59 +52205,6 @@ class ListImageTagsRequest(TeaModel):
             self.image_thumbnail_process = m.get('image_thumbnail_process')
         if m.get('video_thumbnail_process') is not None:
             self.video_thumbnail_process = m.get('video_thumbnail_process')
-        return self
-
-
-class ListUserRequest(TeaModel):
-    """
-    List user request
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        limit: int = None,
-        marker: str = None,
-        subdomain_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # 每页大小限制
-        self.limit = limit
-        # 翻页标记
-        self.marker = marker
-        # subdomain id
-        self.subdomain_id = subdomain_id
-
-    def validate(self):
-        if self.limit is not None:
-            self.validate_maximum(self.limit, 'limit', 100)
-            self.validate_minimum(self.limit, 'limit', 1)
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.limit is not None:
-            result['limit'] = self.limit
-        if self.marker is not None:
-            result['marker'] = self.marker
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('limit') is not None:
-            self.limit = m.get('limit')
-        if m.get('marker') is not None:
-            self.marker = m.get('marker')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -44797,48 +52414,6 @@ class ListViewsRequest(TeaModel):
         return self
 
 
-class MemberIDInfo(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        member_type: str = None,
-        sub_group_id: str = None,
-        user_id: str = None,
-    ):
-        self.member_type = member_type
-        self.sub_group_id = sub_group_id
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.member_type is not None:
-            result['member_type'] = self.member_type
-        if self.sub_group_id is not None:
-            result['sub_group_id'] = self.sub_group_id
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('member_type') is not None:
-            self.member_type = m.get('member_type')
-        if m.get('sub_group_id') is not None:
-            self.sub_group_id = m.get('sub_group_id')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
-        return self
-
-
 class MergeFaceGroupRequest(TeaModel):
     """
     Merge face group request
@@ -44891,50 +52466,6 @@ class MergeFaceGroupRequest(TeaModel):
             self.from_group_id = m.get('from_group_id')
         if m.get('to_group_id') is not None:
             self.to_group_id = m.get('to_group_id')
-        return self
-
-
-class MigrateUserToSubdomainRequest(TeaModel):
-    """
-    MigrateUserToSubdomainRequest uc migrate user
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        subdomain_id: str = None,
-        user_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # subdomain_id
-        self.subdomain_id = subdomain_id
-        # user_id
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
         return self
 
 
@@ -45092,50 +52623,6 @@ class RemoveStoryImagesResponse(TeaModel):
         return self
 
 
-class RemoveUserFromSubdomainRequest(TeaModel):
-    """
-    Remove user to subdomain request
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        subdomain_id: str = None,
-        user_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # subdomain id
-        self.subdomain_id = subdomain_id
-        # 用户 ID
-        self.user_id = user_id
-
-    def validate(self):
-        self.validate_required(self.user_id, 'user_id')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
-        return self
-
-
 class RemoveViewFileRequest(TeaModel):
     """
     remove file from view
@@ -45197,115 +52684,6 @@ class RemoveViewFileRequest(TeaModel):
             self.user_id = m.get('user_id')
         if m.get('view_id') is not None:
             self.view_id = m.get('view_id')
-        return self
-
-
-class RollbackUserFromSubdomainRequest(TeaModel):
-    """
-    RollbackUserFromSubdomainRequest uc migrate user
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        subdomain_id: str = None,
-        user_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # subdomain_id
-        self.subdomain_id = subdomain_id
-        # user_id
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
-        return self
-
-
-class SearchGroupRequest(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        group_name: str = None,
-        group_name_for_fuzzy: str = None,
-        limit: int = None,
-        marker: str = None,
-        subdomain_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # group_name
-        self.group_name = group_name
-        # group_name_for_fuzzy
-        self.group_name_for_fuzzy = group_name_for_fuzzy
-        # 分页获取的数量，默认为100
-        self.limit = limit
-        # 游标
-        self.marker = marker
-        # 列举 subdomain 下的group
-        self.subdomain_id = subdomain_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.group_name is not None:
-            result['group_name'] = self.group_name
-        if self.group_name_for_fuzzy is not None:
-            result['group_name_for_fuzzy'] = self.group_name_for_fuzzy
-        if self.limit is not None:
-            result['limit'] = self.limit
-        if self.marker is not None:
-            result['marker'] = self.marker
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('group_name') is not None:
-            self.group_name = m.get('group_name')
-        if m.get('group_name_for_fuzzy') is not None:
-            self.group_name_for_fuzzy = m.get('group_name_for_fuzzy')
-        if m.get('limit') is not None:
-            self.limit = m.get('limit')
-        if m.get('marker') is not None:
-            self.marker = m.get('marker')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
         return self
 
 
@@ -45390,182 +52768,6 @@ class SearchImageAddressGroupsRequest(TeaModel):
         return self
 
 
-class SearchUserAndGroupRequest(TeaModel):
-    """
-    Search user and group request
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        identity_type_list: List[str] = None,
-        limit: int = None,
-        marker: str = None,
-        name: str = None,
-        name_for_fuzzy: str = None,
-        subdomain_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # 搜索实体对象类型
-        self.identity_type_list = identity_type_list
-        # 每页大小限制
-        self.limit = limit
-        # 翻页标记
-        self.marker = marker
-        # 名称前缀搜索，Group名，或者用户昵称
-        self.name = name
-        # 名称模糊搜索，Group名，或者用户昵称
-        self.name_for_fuzzy = name_for_fuzzy
-        # subdomain id
-        self.subdomain_id = subdomain_id
-
-    def validate(self):
-        if self.limit is not None:
-            self.validate_maximum(self.limit, 'limit', 100)
-            self.validate_minimum(self.limit, 'limit', 1)
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.identity_type_list is not None:
-            result['identity_type_list'] = self.identity_type_list
-        if self.limit is not None:
-            result['limit'] = self.limit
-        if self.marker is not None:
-            result['marker'] = self.marker
-        if self.name is not None:
-            result['name'] = self.name
-        if self.name_for_fuzzy is not None:
-            result['name_for_fuzzy'] = self.name_for_fuzzy
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('identity_type_list') is not None:
-            self.identity_type_list = m.get('identity_type_list')
-        if m.get('limit') is not None:
-            self.limit = m.get('limit')
-        if m.get('marker') is not None:
-            self.marker = m.get('marker')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('name_for_fuzzy') is not None:
-            self.name_for_fuzzy = m.get('name_for_fuzzy')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        return self
-
-
-class SearchUserRequest(TeaModel):
-    """
-    Search user request
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        email: str = None,
-        limit: int = None,
-        marker: str = None,
-        nick_name: str = None,
-        nick_name_for_fuzzy: str = None,
-        phone: str = None,
-        role: str = None,
-        status: str = None,
-        subdomain_id: str = None,
-        user_name: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # 邮箱
-        self.email = email
-        # 每页大小限制
-        self.limit = limit
-        # 翻页标记
-        self.marker = marker
-        # 昵称
-        self.nick_name = nick_name
-        # 昵称-模糊搜索
-        self.nick_name_for_fuzzy = nick_name_for_fuzzy
-        # 电话号码
-        self.phone = phone
-        # 角色
-        self.role = role
-        # 状态
-        self.status = status
-        # subdomain id
-        self.subdomain_id = subdomain_id
-        # 用户名
-        self.user_name = user_name
-
-    def validate(self):
-        if self.limit is not None:
-            self.validate_maximum(self.limit, 'limit', 100)
-            self.validate_minimum(self.limit, 'limit', 1)
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.email is not None:
-            result['email'] = self.email
-        if self.limit is not None:
-            result['limit'] = self.limit
-        if self.marker is not None:
-            result['marker'] = self.marker
-        if self.nick_name is not None:
-            result['nick_name'] = self.nick_name
-        if self.nick_name_for_fuzzy is not None:
-            result['nick_name_for_fuzzy'] = self.nick_name_for_fuzzy
-        if self.phone is not None:
-            result['phone'] = self.phone
-        if self.role is not None:
-            result['role'] = self.role
-        if self.status is not None:
-            result['status'] = self.status
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        if self.user_name is not None:
-            result['user_name'] = self.user_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('email') is not None:
-            self.email = m.get('email')
-        if m.get('limit') is not None:
-            self.limit = m.get('limit')
-        if m.get('marker') is not None:
-            self.marker = m.get('marker')
-        if m.get('nick_name') is not None:
-            self.nick_name = m.get('nick_name')
-        if m.get('nick_name_for_fuzzy') is not None:
-            self.nick_name_for_fuzzy = m.get('nick_name_for_fuzzy')
-        if m.get('phone') is not None:
-            self.phone = m.get('phone')
-        if m.get('role') is not None:
-            self.role = m.get('role')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        if m.get('user_name') is not None:
-            self.user_name = m.get('user_name')
-        return self
-
-
 class SearchViewsRequest(TeaModel):
     """
     Search view request
@@ -45580,6 +52782,7 @@ class SearchViewsRequest(TeaModel):
         order_by: str = None,
         order_direction: str = None,
         owner: str = None,
+        return_total_count: bool = None,
         user_id: str = None,
     ):
         self.httpheaders = httpheaders
@@ -45597,6 +52800,8 @@ class SearchViewsRequest(TeaModel):
         self.order_direction = order_direction
         # owner
         self.owner = owner
+        # return_total_count 是否返回查询总数
+        self.return_total_count = return_total_count
         # user_id
         self.user_id = user_id
 
@@ -45628,6 +52833,8 @@ class SearchViewsRequest(TeaModel):
             result['order_direction'] = self.order_direction
         if self.owner is not None:
             result['owner'] = self.owner
+        if self.return_total_count is not None:
+            result['return_total_count'] = self.return_total_count
         if self.user_id is not None:
             result['user_id'] = self.user_id
         return result
@@ -45650,6 +52857,8 @@ class SearchViewsRequest(TeaModel):
             self.order_direction = m.get('order_direction')
         if m.get('owner') is not None:
             self.owner = m.get('owner')
+        if m.get('return_total_count') is not None:
+            self.return_total_count = m.get('return_total_count')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
         return self
@@ -45722,7 +52931,6 @@ class UpdateFaceGroupInfoRequest(TeaModel):
         group_id: str = None,
         group_name: str = None,
         remarks: str = None,
-        remarks_array: List[str] = None,
     ):
         self.httpheaders = httpheaders
         # drive_id
@@ -45735,8 +52943,6 @@ class UpdateFaceGroupInfoRequest(TeaModel):
         self.group_name = group_name
         # remarks
         self.remarks = remarks
-        # remarks_array
-        self.remarks_array = remarks_array
 
     def validate(self):
         self.validate_required(self.drive_id, 'drive_id')
@@ -45762,8 +52968,6 @@ class UpdateFaceGroupInfoRequest(TeaModel):
             result['group_name'] = self.group_name
         if self.remarks is not None:
             result['remarks'] = self.remarks
-        if self.remarks_array is not None:
-            result['remarks_array'] = self.remarks_array
         return result
 
     def from_map(self, m: dict = None):
@@ -45780,280 +52984,6 @@ class UpdateFaceGroupInfoRequest(TeaModel):
             self.group_name = m.get('group_name')
         if m.get('remarks') is not None:
             self.remarks = m.get('remarks')
-        if m.get('remarks_array') is not None:
-            self.remarks_array = m.get('remarks_array')
-        return self
-
-
-class UpdateGroupRequest(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        description: str = None,
-        group_id: str = None,
-        group_name: str = None,
-        is_root: bool = None,
-        subdomain_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # 描述
-        self.description = description
-        # group id
-        self.group_id = group_id
-        # 名称
-        self.group_name = group_name
-        # 是否是根group
-        self.is_root = is_root
-        # subdomain id
-        self.subdomain_id = subdomain_id
-
-    def validate(self):
-        self.validate_required(self.group_name, 'group_name')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.description is not None:
-            result['description'] = self.description
-        if self.group_id is not None:
-            result['group_id'] = self.group_id
-        if self.group_name is not None:
-            result['group_name'] = self.group_name
-        if self.is_root is not None:
-            result['is_root'] = self.is_root
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('group_id') is not None:
-            self.group_id = m.get('group_id')
-        if m.get('group_name') is not None:
-            self.group_name = m.get('group_name')
-        if m.get('is_root') is not None:
-            self.is_root = m.get('is_root')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        return self
-
-
-class UpdateMembershipRequest(TeaModel):
-    """
-    *\
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        description: str = None,
-        group_id: str = None,
-        member_role: str = None,
-        member_type: str = None,
-        sub_group_id: str = None,
-        subdomain_id: str = None,
-        user_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # 描述
-        self.description = description
-        # group id
-        self.group_id = group_id
-        # 角色， member or admin
-        self.member_role = member_role
-        self.member_type = member_type
-        self.sub_group_id = sub_group_id
-        # subdomain id
-        self.subdomain_id = subdomain_id
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.description is not None:
-            result['description'] = self.description
-        if self.group_id is not None:
-            result['group_id'] = self.group_id
-        if self.member_role is not None:
-            result['member_role'] = self.member_role
-        if self.member_type is not None:
-            result['member_type'] = self.member_type
-        if self.sub_group_id is not None:
-            result['sub_group_id'] = self.sub_group_id
-        if self.subdomain_id is not None:
-            result['subdomain_id'] = self.subdomain_id
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('group_id') is not None:
-            self.group_id = m.get('group_id')
-        if m.get('member_role') is not None:
-            self.member_role = m.get('member_role')
-        if m.get('member_type') is not None:
-            self.member_type = m.get('member_type')
-        if m.get('sub_group_id') is not None:
-            self.sub_group_id = m.get('sub_group_id')
-        if m.get('subdomain_id') is not None:
-            self.subdomain_id = m.get('subdomain_id')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
-        return self
-
-
-class UpdateUserRequest(TeaModel):
-    """
-    Update user request
-    """
-    def __init__(
-        self,
-        httpheaders: Dict[str, str] = None,
-        avatar: str = None,
-        deny_change_password_by_self: bool = None,
-        description: str = None,
-        email: str = None,
-        group_info_list: List[GroupInfo] = None,
-        need_change_password_next_login: bool = None,
-        nick_name: str = None,
-        phone: str = None,
-        plain_password: str = None,
-        role: str = None,
-        status: str = None,
-        user_data: dict = None,
-        user_id: str = None,
-    ):
-        self.httpheaders = httpheaders
-        # 头像
-        self.avatar = avatar
-        # 是否能自己修改密码
-        self.deny_change_password_by_self = deny_change_password_by_self
-        # 描述信息
-        self.description = description
-        # 邮箱
-        self.email = email
-        self.group_info_list = group_info_list
-        # 下次登录后是否强制修改密码
-        self.need_change_password_next_login = need_change_password_next_login
-        # 昵称
-        self.nick_name = nick_name
-        # 电话号码
-        self.phone = phone
-        # 用户明文密码
-        self.plain_password = plain_password
-        # 角色
-        self.role = role
-        # 状态
-        self.status = status
-        # 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
-        self.user_data = user_data
-        # 用户 ID
-        self.user_id = user_id
-
-    def validate(self):
-        if self.description is not None:
-            self.validate_max_length(self.description, 'description', 1024)
-        if self.group_info_list:
-            for k in self.group_info_list:
-                if k:
-                    k.validate()
-        self.validate_required(self.user_id, 'user_id')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.httpheaders is not None:
-            result['httpheaders'] = self.httpheaders
-        if self.avatar is not None:
-            result['avatar'] = self.avatar
-        if self.deny_change_password_by_self is not None:
-            result['deny_change_password_by_self'] = self.deny_change_password_by_self
-        if self.description is not None:
-            result['description'] = self.description
-        if self.email is not None:
-            result['email'] = self.email
-        result['group_info_list'] = []
-        if self.group_info_list is not None:
-            for k in self.group_info_list:
-                result['group_info_list'].append(k.to_map() if k else None)
-        if self.need_change_password_next_login is not None:
-            result['need_change_password_next_login'] = self.need_change_password_next_login
-        if self.nick_name is not None:
-            result['nick_name'] = self.nick_name
-        if self.phone is not None:
-            result['phone'] = self.phone
-        if self.plain_password is not None:
-            result['plain_password'] = self.plain_password
-        if self.role is not None:
-            result['role'] = self.role
-        if self.status is not None:
-            result['status'] = self.status
-        if self.user_data is not None:
-            result['user_data'] = self.user_data
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('httpheaders') is not None:
-            self.httpheaders = m.get('httpheaders')
-        if m.get('avatar') is not None:
-            self.avatar = m.get('avatar')
-        if m.get('deny_change_password_by_self') is not None:
-            self.deny_change_password_by_self = m.get('deny_change_password_by_self')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('email') is not None:
-            self.email = m.get('email')
-        self.group_info_list = []
-        if m.get('group_info_list') is not None:
-            for k in m.get('group_info_list'):
-                temp_model = GroupInfo()
-                self.group_info_list.append(temp_model.from_map(k))
-        if m.get('need_change_password_next_login') is not None:
-            self.need_change_password_next_login = m.get('need_change_password_next_login')
-        if m.get('nick_name') is not None:
-            self.nick_name = m.get('nick_name')
-        if m.get('phone') is not None:
-            self.phone = m.get('phone')
-        if m.get('plain_password') is not None:
-            self.plain_password = m.get('plain_password')
-        if m.get('role') is not None:
-            self.role = m.get('role')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        if m.get('user_data') is not None:
-            self.user_data = m.get('user_data')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
         return self
 
 
