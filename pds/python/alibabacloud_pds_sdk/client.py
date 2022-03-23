@@ -36366,6 +36366,236 @@ class Client:
                 raise e
         raise UnretryableException(_last_request, _last_exception)
 
+    def update_story_ex(
+        self,
+        request: pds_models.UpdateStoryRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.UpdateStoryModel:
+        """
+        该接口将会更新故事
+        @tags image
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = self.get_access_key_id()
+                access_key_secret = self.get_access_key_secret()
+                security_token = self.get_security_token()
+                access_token = self.get_access_token()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/image/update_story')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = TeaCore.do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = UtilClient.read_as_json(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.UpdateStoryModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = UtilClient.read_as_json(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
+    async def update_story_ex_async(
+        self,
+        request: pds_models.UpdateStoryRequest,
+        runtime: pds_models.RuntimeOptions,
+    ) -> pds_models.UpdateStoryModel:
+        """
+        该接口将会更新故事
+        @tags image
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        request.validate()
+        runtime.validate()
+        _runtime = {
+            'timeouted': 'retry',
+            'readTimeout': runtime.read_timeout,
+            'connectTimeout': runtime.connect_timeout,
+            'localAddr': runtime.local_addr,
+            'httpProxy': runtime.http_proxy,
+            'httpsProxy': runtime.https_proxy,
+            'noProxy': runtime.no_proxy,
+            'maxIdleConns': runtime.max_idle_conns,
+            'socks5Proxy': runtime.socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work,
+            'retry': {
+                'retryable': runtime.autoretry,
+                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
+            },
+            'backoff': {
+                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
+                'period': UtilClient.default_number(runtime.backoff_period, 1)
+            },
+            'ignoreSSL': runtime.ignore_ssl
+        }
+        _last_request = None
+        _last_exception = None
+        _now = time.time()
+        _retry_times = 0
+        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
+            if _retry_times > 0:
+                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+                if _backoff_time > 0:
+                    TeaCore.sleep(_backoff_time)
+            _retry_times = _retry_times + 1
+            try:
+                _request = TeaRequest()
+                accesskey_id = await self.get_access_key_id_async()
+                access_key_secret = await self.get_access_key_secret_async()
+                security_token = await self.get_security_token_async()
+                access_token = await self.get_access_token_async()
+                real_req = UtilClient.to_map(request)
+                _request.protocol = UtilClient.default_string(self._protocol, 'https')
+                _request.method = 'POST'
+                _request.pathname = self.get_pathname(self._nickname, f'/v2/image/update_story')
+                _request.headers = TeaCore.merge({
+                    'user-agent': self.get_user_agent(),
+                    'host': UtilClient.default_string(self._endpoint, f'{self._domain_id}.api.aliyunpds.com'),
+                    'content-type': 'application/json; charset=utf-8'
+                }, request.httpheaders)
+                real_req['httpheaders'] = None
+                if not UtilClient.empty(access_token):
+                    _request.headers['authorization'] = f'Bearer {access_token}'
+                elif not UtilClient.empty(accesskey_id) and not UtilClient.empty(access_key_secret):
+                    if not UtilClient.empty(security_token):
+                        _request.headers['x-acs-security-token'] = security_token
+                    _request.headers['date'] = UtilClient.get_date_utcstring()
+                    _request.headers['accept'] = 'application/json'
+                    _request.headers['x-acs-signature-method'] = 'HMAC-SHA1'
+                    _request.headers['x-acs-signature-version'] = '1.0'
+                    string_to_sign = ROAUtilClient.get_string_to_sign(_request)
+                    _request.headers['authorization'] = f'acs {accesskey_id}:{ROAUtilClient.get_signature(string_to_sign, access_key_secret)}'
+                _request.body = UtilClient.to_jsonstring(real_req)
+                _last_request = _request
+                _response = await TeaCore.async_do_action(_request, _runtime)
+                resp_map = None
+                obj = None
+                if UtilClient.equal_number(_response.status_code, 200):
+                    obj = await UtilClient.read_as_json_async(_response.body)
+                    resp_map = UtilClient.assert_as_map(obj)
+                    return TeaCore.from_map(
+                        pds_models.UpdateStoryModel(),
+                        {
+                            'body': resp_map,
+                            'headers': _response.headers
+                        }
+                    )
+                if not UtilClient.empty(_response.headers.get('x-ca-error-message')):
+                    raise TeaException({
+                        'data': {
+                            'requestId': _response.headers.get('x-ca-request-id'),
+                            'statusCode': _response.status_code,
+                            'statusMessage': _response.status_message
+                        },
+                        'message': _response.headers.get('x-ca-error-message')
+                    })
+                obj = await UtilClient.read_as_json_async(_response.body)
+                resp_map = UtilClient.assert_as_map(obj)
+                raise TeaException(TeaCore.merge({
+                    'data': {
+                        'requestId': _response.headers.get('x-ca-request-id'),
+                        'statusCode': _response.status_code,
+                        'statusMessage': _response.status_message
+                    }
+                }, resp_map))
+            except Exception as e:
+                if TeaCore.is_retryable(e):
+                    _last_exception = e
+                    continue
+                raise e
+        raise UnretryableException(_last_request, _last_exception)
+
     def add_file_ex(
         self,
         request: pds_models.AddViewFileRequest,
@@ -44007,6 +44237,40 @@ class Client:
         """
         runtime = pds_models.RuntimeOptions()
         return await self.update_facegroup_info_ex_async(request, runtime)
+
+    def update_story(
+        self,
+        request: pds_models.UpdateStoryRequest,
+    ) -> pds_models.UpdateStoryModel:
+        """
+        该接口将会更新故事
+        @tags image
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return self.update_story_ex(request, runtime)
+
+    async def update_story_async(
+        self,
+        request: pds_models.UpdateStoryRequest,
+    ) -> pds_models.UpdateStoryModel:
+        """
+        该接口将会更新故事
+        @tags image
+        @error InvalidParameter The input parameter {parameter_name} is not valid.
+        @error AccessTokenInvalid AccessToken is invalid. {message}
+        @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+        @error NotFound The resource {resource_name} cannot be found. Please check.
+        @error InternalError The request has been failed due to some unknown error.
+        @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+        """
+        runtime = pds_models.RuntimeOptions()
+        return await self.update_story_ex_async(request, runtime)
 
     def add_file(
         self,
