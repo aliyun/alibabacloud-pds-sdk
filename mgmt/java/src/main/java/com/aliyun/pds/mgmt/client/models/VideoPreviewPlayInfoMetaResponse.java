@@ -7,15 +7,18 @@ import com.aliyun.tea.*;
  * 获取转码信息meta响应
  */
 public class VideoPreviewPlayInfoMetaResponse extends TeaModel {
-    // duration
+    // duration, 视频长度
     @NameInMap("duration")
     public Double duration;
 
-    // height
+    // height, 视频高度
     @NameInMap("height")
     public Long height;
 
-    // witdh
+    @NameInMap("live_transcoding_meta")
+    public LiveTranscodingMetaResponse liveTranscodingMeta;
+
+    // width, 视频宽度
     @NameInMap("width")
     public Long width;
 
@@ -38,6 +41,14 @@ public class VideoPreviewPlayInfoMetaResponse extends TeaModel {
     }
     public Long getHeight() {
         return this.height;
+    }
+
+    public VideoPreviewPlayInfoMetaResponse setLiveTranscodingMeta(LiveTranscodingMetaResponse liveTranscodingMeta) {
+        this.liveTranscodingMeta = liveTranscodingMeta;
+        return this;
+    }
+    public LiveTranscodingMetaResponse getLiveTranscodingMeta() {
+        return this.liveTranscodingMeta;
     }
 
     public VideoPreviewPlayInfoMetaResponse setWidth(Long width) {

@@ -10,6 +10,9 @@ public class AppConfig extends TeaModel {
     @NameInMap("audio_play_enable")
     public Boolean audioPlayEnable;
 
+    @NameInMap("custom_account_identity_base_64")
+    public Boolean customAccountIdentityBase64;
+
     @NameInMap("hide_admin_entry")
     public Boolean hideAdminEntry;
 
@@ -51,6 +54,14 @@ public class AppConfig extends TeaModel {
     }
     public Boolean getAudioPlayEnable() {
         return this.audioPlayEnable;
+    }
+
+    public AppConfig setCustomAccountIdentityBase64(Boolean customAccountIdentityBase64) {
+        this.customAccountIdentityBase64 = customAccountIdentityBase64;
+        return this;
+    }
+    public Boolean getCustomAccountIdentityBase64() {
+        return this.customAccountIdentityBase64;
     }
 
     public AppConfig setHideAdminEntry(Boolean hideAdminEntry) {

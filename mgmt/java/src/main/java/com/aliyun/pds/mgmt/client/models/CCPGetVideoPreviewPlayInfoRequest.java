@@ -28,6 +28,18 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
+    // get_preview_url
+    @NameInMap("get_preview_url")
+    public Boolean getPreviewUrl;
+
+    // get_subtitle_info
+    @NameInMap("get_subtitle_info")
+    public Boolean getSubtitleInfo;
+
+    // get_without_url
+    @NameInMap("get_without_url")
+    public Boolean getWithoutUrl;
+
     // location
     @NameInMap("location")
     public String location;
@@ -41,6 +53,10 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
 
     @NameInMap("sign_token")
     public String signToken;
+
+    // subtitle_language_list, 根据语言获取压制在视频中的字幕, 不传则取所有
+    @NameInMap("subtitle_language_list")
+    public java.util.List<String> subtitleLanguageList;
 
     // template_id
     @NameInMap("template_id")
@@ -96,6 +112,30 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
         return this.fileIdPath;
     }
 
+    public CCPGetVideoPreviewPlayInfoRequest setGetPreviewUrl(Boolean getPreviewUrl) {
+        this.getPreviewUrl = getPreviewUrl;
+        return this;
+    }
+    public Boolean getGetPreviewUrl() {
+        return this.getPreviewUrl;
+    }
+
+    public CCPGetVideoPreviewPlayInfoRequest setGetSubtitleInfo(Boolean getSubtitleInfo) {
+        this.getSubtitleInfo = getSubtitleInfo;
+        return this;
+    }
+    public Boolean getGetSubtitleInfo() {
+        return this.getSubtitleInfo;
+    }
+
+    public CCPGetVideoPreviewPlayInfoRequest setGetWithoutUrl(Boolean getWithoutUrl) {
+        this.getWithoutUrl = getWithoutUrl;
+        return this;
+    }
+    public Boolean getGetWithoutUrl() {
+        return this.getWithoutUrl;
+    }
+
     public CCPGetVideoPreviewPlayInfoRequest setLocation(String location) {
         this.location = location;
         return this;
@@ -126,6 +166,14 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     }
     public String getSignToken() {
         return this.signToken;
+    }
+
+    public CCPGetVideoPreviewPlayInfoRequest setSubtitleLanguageList(java.util.List<String> subtitleLanguageList) {
+        this.subtitleLanguageList = subtitleLanguageList;
+        return this;
+    }
+    public java.util.List<String> getSubtitleLanguageList() {
+        return this.subtitleLanguageList;
     }
 
     public CCPGetVideoPreviewPlayInfoRequest setTemplateId(String templateId) {

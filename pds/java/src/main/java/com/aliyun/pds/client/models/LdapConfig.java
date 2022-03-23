@@ -16,6 +16,9 @@ public class LdapConfig extends TeaModel {
     @NameInMap("base_dn")
     public String baseDn;
 
+    @NameInMap("display_name_key")
+    public String displayNameKey;
+
     @NameInMap("global_uid")
     public String globalUid;
 
@@ -24,6 +27,12 @@ public class LdapConfig extends TeaModel {
 
     @NameInMap("port")
     public Long port;
+
+    @NameInMap("sync_config")
+    public LDAPSyncConfig syncConfig;
+
+    @NameInMap("type")
+    public String type;
 
     @NameInMap("uid")
     public String uid;
@@ -60,6 +69,14 @@ public class LdapConfig extends TeaModel {
         return this.baseDn;
     }
 
+    public LdapConfig setDisplayNameKey(String displayNameKey) {
+        this.displayNameKey = displayNameKey;
+        return this;
+    }
+    public String getDisplayNameKey() {
+        return this.displayNameKey;
+    }
+
     public LdapConfig setGlobalUid(String globalUid) {
         this.globalUid = globalUid;
         return this;
@@ -82,6 +99,22 @@ public class LdapConfig extends TeaModel {
     }
     public Long getPort() {
         return this.port;
+    }
+
+    public LdapConfig setSyncConfig(LDAPSyncConfig syncConfig) {
+        this.syncConfig = syncConfig;
+        return this;
+    }
+    public LDAPSyncConfig getSyncConfig() {
+        return this.syncConfig;
+    }
+
+    public LdapConfig setType(String type) {
+        this.type = type;
+        return this;
+    }
+    public String getType() {
+        return this.type;
     }
 
     public LdapConfig setUid(String uid) {

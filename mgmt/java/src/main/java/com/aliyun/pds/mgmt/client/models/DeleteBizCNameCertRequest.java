@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class DeleteBizCNameCertRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // biz cname
     @NameInMap("biz_cname")
@@ -37,12 +37,12 @@ public class DeleteBizCNameCertRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public DeleteBizCNameCertRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public DeleteBizCNameCertRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public DeleteBizCNameCertRequest setBizCname(String bizCname) {

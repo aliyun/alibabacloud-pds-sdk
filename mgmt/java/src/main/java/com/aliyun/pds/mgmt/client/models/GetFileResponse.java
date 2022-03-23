@@ -7,6 +7,14 @@ import com.aliyun.tea.*;
  * 获取文件元数据response
  */
 public class GetFileResponse extends TeaModel {
+    // action_list
+    @NameInMap("action_list")
+    public java.util.List<String> actionList;
+
+    // auto_delete_left_sec
+    @NameInMap("auto_delete_left_sec")
+    public Long autoDeleteLeftSec;
+
     // category
     @NameInMap("category")
     public String category;
@@ -35,6 +43,30 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("created_at")
     public String createdAt;
 
+    // creator_id
+    @NameInMap("creator_id")
+    public String creatorId;
+
+    // creator_name
+    @NameInMap("creator_name")
+    public String creatorName;
+
+    // creator_type
+    @NameInMap("creator_type")
+    public String creatorType;
+
+    // custom_field_1
+    @NameInMap("custom_field_1")
+    public String customField1;
+
+    // custom_field_2
+    @NameInMap("custom_field_2")
+    public String customField2;
+
+    // custom_type
+    @NameInMap("custom_type")
+    public String customType;
+
     // description
     @NameInMap("description")
     public String description;
@@ -57,6 +89,10 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("encrypt_mode")
     public String encryptMode;
 
+    // ex_fields_info
+    @NameInMap("ex_fields_info")
+    public java.util.Map<String, ?> exFieldsInfo;
+
     // file_extension
     @NameInMap("file_extension")
     public String fileExtension;
@@ -65,6 +101,10 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
+
+    // TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
+    @NameInMap("file_path_type")
+    public String filePathType;
 
     // Hidden
     // type: boolean
@@ -78,8 +118,35 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("labels")
     public java.util.List<String> labels;
 
+    // last_modifier_id
+    @NameInMap("last_modifier_id")
+    public String lastModifierId;
+
+    // last_modifier_name
+    @NameInMap("last_modifier_name")
+    public String lastModifierName;
+
+    // last_modifier_type
+    @NameInMap("last_modifier_type")
+    public String lastModifierType;
+
+    // local_created_at
+    @NameInMap("local_created_at")
+    public String localCreatedAt;
+
+    @NameInMap("local_modified_at")
+    public String localModifiedAt;
+
     @NameInMap("meta")
     public String meta;
+
+    // mime_extension
+    @NameInMap("mime_extension")
+    public String mimeExtension;
+
+    // mime_type
+    @NameInMap("mime_type")
+    public String mimeType;
 
     // name
     @NameInMap("name")
@@ -95,12 +162,15 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("punish_flag")
     public Long punishFlag;
 
+    // revision_id
+    @NameInMap("revision_id")
+    public String revisionId;
+
     @NameInMap("share_id")
     public String shareId;
 
     // Size
     @NameInMap("size")
-    @Validation(maximum = 53687091200D)
     public Long size;
 
     // starred
@@ -115,6 +185,18 @@ public class GetFileResponse extends TeaModel {
     // @Deprecated streams url info
     @NameInMap("streams_info")
     public java.util.Map<String, ?> streamsInfo;
+
+    // sync_device_flag
+    @NameInMap("sync_device_flag")
+    public Boolean syncDeviceFlag;
+
+    // sync_flag
+    @NameInMap("sync_flag")
+    public Boolean syncFlag;
+
+    // sync_meta
+    @NameInMap("sync_meta")
+    public String syncMeta;
 
     // thumbnail
     @NameInMap("thumbnail")
@@ -149,6 +231,10 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("user_meta")
     public String userMeta;
 
+    // user_tags
+    @NameInMap("user_tags")
+    public java.util.Map<String, ?> userTags;
+
     @NameInMap("video_media_metadata")
     public VideoMediaResponse videoMediaMetadata;
 
@@ -158,6 +244,22 @@ public class GetFileResponse extends TeaModel {
     public static GetFileResponse build(java.util.Map<String, ?> map) throws Exception {
         GetFileResponse self = new GetFileResponse();
         return TeaModel.build(map, self);
+    }
+
+    public GetFileResponse setActionList(java.util.List<String> actionList) {
+        this.actionList = actionList;
+        return this;
+    }
+    public java.util.List<String> getActionList() {
+        return this.actionList;
+    }
+
+    public GetFileResponse setAutoDeleteLeftSec(Long autoDeleteLeftSec) {
+        this.autoDeleteLeftSec = autoDeleteLeftSec;
+        return this;
+    }
+    public Long getAutoDeleteLeftSec() {
+        return this.autoDeleteLeftSec;
     }
 
     public GetFileResponse setCategory(String category) {
@@ -216,6 +318,54 @@ public class GetFileResponse extends TeaModel {
         return this.createdAt;
     }
 
+    public GetFileResponse setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
+        return this;
+    }
+    public String getCreatorId() {
+        return this.creatorId;
+    }
+
+    public GetFileResponse setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
+        return this;
+    }
+    public String getCreatorName() {
+        return this.creatorName;
+    }
+
+    public GetFileResponse setCreatorType(String creatorType) {
+        this.creatorType = creatorType;
+        return this;
+    }
+    public String getCreatorType() {
+        return this.creatorType;
+    }
+
+    public GetFileResponse setCustomField1(String customField1) {
+        this.customField1 = customField1;
+        return this;
+    }
+    public String getCustomField1() {
+        return this.customField1;
+    }
+
+    public GetFileResponse setCustomField2(String customField2) {
+        this.customField2 = customField2;
+        return this;
+    }
+    public String getCustomField2() {
+        return this.customField2;
+    }
+
+    public GetFileResponse setCustomType(String customType) {
+        this.customType = customType;
+        return this;
+    }
+    public String getCustomType() {
+        return this.customType;
+    }
+
     public GetFileResponse setDescription(String description) {
         this.description = description;
         return this;
@@ -256,6 +406,14 @@ public class GetFileResponse extends TeaModel {
         return this.encryptMode;
     }
 
+    public GetFileResponse setExFieldsInfo(java.util.Map<String, ?> exFieldsInfo) {
+        this.exFieldsInfo = exFieldsInfo;
+        return this;
+    }
+    public java.util.Map<String, ?> getExFieldsInfo() {
+        return this.exFieldsInfo;
+    }
+
     public GetFileResponse setFileExtension(String fileExtension) {
         this.fileExtension = fileExtension;
         return this;
@@ -270,6 +428,14 @@ public class GetFileResponse extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public GetFileResponse setFilePathType(String filePathType) {
+        this.filePathType = filePathType;
+        return this;
+    }
+    public String getFilePathType() {
+        return this.filePathType;
     }
 
     public GetFileResponse setHidden(Boolean hidden) {
@@ -296,12 +462,68 @@ public class GetFileResponse extends TeaModel {
         return this.labels;
     }
 
+    public GetFileResponse setLastModifierId(String lastModifierId) {
+        this.lastModifierId = lastModifierId;
+        return this;
+    }
+    public String getLastModifierId() {
+        return this.lastModifierId;
+    }
+
+    public GetFileResponse setLastModifierName(String lastModifierName) {
+        this.lastModifierName = lastModifierName;
+        return this;
+    }
+    public String getLastModifierName() {
+        return this.lastModifierName;
+    }
+
+    public GetFileResponse setLastModifierType(String lastModifierType) {
+        this.lastModifierType = lastModifierType;
+        return this;
+    }
+    public String getLastModifierType() {
+        return this.lastModifierType;
+    }
+
+    public GetFileResponse setLocalCreatedAt(String localCreatedAt) {
+        this.localCreatedAt = localCreatedAt;
+        return this;
+    }
+    public String getLocalCreatedAt() {
+        return this.localCreatedAt;
+    }
+
+    public GetFileResponse setLocalModifiedAt(String localModifiedAt) {
+        this.localModifiedAt = localModifiedAt;
+        return this;
+    }
+    public String getLocalModifiedAt() {
+        return this.localModifiedAt;
+    }
+
     public GetFileResponse setMeta(String meta) {
         this.meta = meta;
         return this;
     }
     public String getMeta() {
         return this.meta;
+    }
+
+    public GetFileResponse setMimeExtension(String mimeExtension) {
+        this.mimeExtension = mimeExtension;
+        return this;
+    }
+    public String getMimeExtension() {
+        return this.mimeExtension;
+    }
+
+    public GetFileResponse setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+        return this;
+    }
+    public String getMimeType() {
+        return this.mimeType;
     }
 
     public GetFileResponse setName(String name) {
@@ -326,6 +548,14 @@ public class GetFileResponse extends TeaModel {
     }
     public Long getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public GetFileResponse setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+        return this;
+    }
+    public String getRevisionId() {
+        return this.revisionId;
     }
 
     public GetFileResponse setShareId(String shareId) {
@@ -366,6 +596,30 @@ public class GetFileResponse extends TeaModel {
     }
     public java.util.Map<String, ?> getStreamsInfo() {
         return this.streamsInfo;
+    }
+
+    public GetFileResponse setSyncDeviceFlag(Boolean syncDeviceFlag) {
+        this.syncDeviceFlag = syncDeviceFlag;
+        return this;
+    }
+    public Boolean getSyncDeviceFlag() {
+        return this.syncDeviceFlag;
+    }
+
+    public GetFileResponse setSyncFlag(Boolean syncFlag) {
+        this.syncFlag = syncFlag;
+        return this;
+    }
+    public Boolean getSyncFlag() {
+        return this.syncFlag;
+    }
+
+    public GetFileResponse setSyncMeta(String syncMeta) {
+        this.syncMeta = syncMeta;
+        return this;
+    }
+    public String getSyncMeta() {
+        return this.syncMeta;
     }
 
     public GetFileResponse setThumbnail(String thumbnail) {
@@ -430,6 +684,14 @@ public class GetFileResponse extends TeaModel {
     }
     public String getUserMeta() {
         return this.userMeta;
+    }
+
+    public GetFileResponse setUserTags(java.util.Map<String, ?> userTags) {
+        this.userTags = userTags;
+        return this;
+    }
+    public java.util.Map<String, ?> getUserTags() {
+        return this.userTags;
     }
 
     public GetFileResponse setVideoMediaMetadata(VideoMediaResponse videoMediaMetadata) {

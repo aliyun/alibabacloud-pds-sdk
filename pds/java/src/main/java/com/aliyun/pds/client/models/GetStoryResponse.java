@@ -19,10 +19,6 @@ public class GetStoryResponse extends TeaModel {
     @NameInMap("created_at")
     public String createdAt;
 
-    // event_type
-    @NameInMap("event_type")
-    public String eventType;
-
     // face_group_ids
     @NameInMap("face_group_ids")
     public java.util.List<String> faceGroupIds;
@@ -85,14 +81,6 @@ public class GetStoryResponse extends TeaModel {
     }
     public String getCreatedAt() {
         return this.createdAt;
-    }
-
-    public GetStoryResponse setEventType(String eventType) {
-        this.eventType = eventType;
-        return this;
-    }
-    public String getEventType() {
-        return this.eventType;
     }
 
     public GetStoryResponse setFaceGroupIds(java.util.List<String> faceGroupIds) {

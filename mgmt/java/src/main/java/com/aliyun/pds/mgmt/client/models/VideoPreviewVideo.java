@@ -4,7 +4,7 @@ package com.aliyun.pds.mgmt.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 视频转码参数
  */
 public class VideoPreviewVideo extends TeaModel {
     @NameInMap("height")

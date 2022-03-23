@@ -7,6 +7,12 @@ import com.aliyun.tea.*;
  * Update drive response
  */
 public class UpdateDriveResponse extends TeaModel {
+    @NameInMap("action_list")
+    public java.util.List<String> actionList;
+
+    @NameInMap("created_at")
+    public String createdAt;
+
     // Drive 创建者
     @NameInMap("creator")
     public String creator;
@@ -45,6 +51,9 @@ public class UpdateDriveResponse extends TeaModel {
     @NameInMap("owner_type")
     public String ownerType;
 
+    @NameInMap("permission")
+    public java.util.Map<String, ?> permission;
+
     // Drive存储基于store的相对路径，domain的PathType为OSSPath时返回
     @NameInMap("relative_path")
     public String relativePath;
@@ -57,6 +66,10 @@ public class UpdateDriveResponse extends TeaModel {
     @NameInMap("store_id")
     public String storeId;
 
+    // subdomain_id
+    @NameInMap("subdomain_id")
+    public String subdomainId;
+
     // Drive 空间总量
     @NameInMap("total_size")
     public Long totalSize;
@@ -68,6 +81,22 @@ public class UpdateDriveResponse extends TeaModel {
     public static UpdateDriveResponse build(java.util.Map<String, ?> map) throws Exception {
         UpdateDriveResponse self = new UpdateDriveResponse();
         return TeaModel.build(map, self);
+    }
+
+    public UpdateDriveResponse setActionList(java.util.List<String> actionList) {
+        this.actionList = actionList;
+        return this;
+    }
+    public java.util.List<String> getActionList() {
+        return this.actionList;
+    }
+
+    public UpdateDriveResponse setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+    public String getCreatedAt() {
+        return this.createdAt;
     }
 
     public UpdateDriveResponse setCreator(String creator) {
@@ -150,6 +179,14 @@ public class UpdateDriveResponse extends TeaModel {
         return this.ownerType;
     }
 
+    public UpdateDriveResponse setPermission(java.util.Map<String, ?> permission) {
+        this.permission = permission;
+        return this;
+    }
+    public java.util.Map<String, ?> getPermission() {
+        return this.permission;
+    }
+
     public UpdateDriveResponse setRelativePath(String relativePath) {
         this.relativePath = relativePath;
         return this;
@@ -172,6 +209,14 @@ public class UpdateDriveResponse extends TeaModel {
     }
     public String getStoreId() {
         return this.storeId;
+    }
+
+    public UpdateDriveResponse setSubdomainId(String subdomainId) {
+        this.subdomainId = subdomainId;
+        return this;
+    }
+    public String getSubdomainId() {
+        return this.subdomainId;
     }
 
     public UpdateDriveResponse setTotalSize(Long totalSize) {

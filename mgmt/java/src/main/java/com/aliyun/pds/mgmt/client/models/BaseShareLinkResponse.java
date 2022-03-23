@@ -7,6 +7,18 @@ import com.aliyun.tea.*;
  * list_share_link response
  */
 public class BaseShareLinkResponse extends TeaModel {
+    // access_count
+    @NameInMap("access_count")
+    public Long accessCount;
+
+    // Category
+    @NameInMap("category")
+    public String category;
+
+    // comments
+    @NameInMap("comments")
+    public String comments;
+
     // created_at
     @NameInMap("created_at")
     public String createdAt;
@@ -19,13 +31,37 @@ public class BaseShareLinkResponse extends TeaModel {
     @NameInMap("description")
     public String description;
 
+    // 禁止下载分享中的文件
+    @NameInMap("disable_download")
+    public Boolean disableDownload;
+
+    // 禁止预览分享中的文件
+    @NameInMap("disable_preview")
+    public Boolean disablePreview;
+
+    // 禁止转存分享中的文件
+    @NameInMap("disable_save")
+    public Boolean disableSave;
+
     // 下载次数
     @NameInMap("download_count")
     public Long downloadCount;
 
+    // 分享下载次数限制
+    @NameInMap("download_limit")
+    public Long downloadLimit;
+
+    // file_list
+    @NameInMap("drive_file_list")
+    public java.util.List<ShareFile> driveFileList;
+
     // drive_id
     @NameInMap("drive_id")
     public String driveId;
+
+    // enable_file_changed_notify
+    @NameInMap("enable_file_changed_notify")
+    public Boolean enableFileChangedNotify;
 
     // expiration
     @NameInMap("expiration")
@@ -47,13 +83,45 @@ public class BaseShareLinkResponse extends TeaModel {
     @NameInMap("file_path_list")
     public java.util.List<String> filePathList;
 
+    // is_subscribed
+    @NameInMap("is_subscribed")
+    public Boolean isSubscribed;
+
+    // num_of_subscribers
+    @NameInMap("num_of_subscribers")
+    public Long numOfSubscribers;
+
     // preview_count
     @NameInMap("preview_count")
     public Long previewCount;
 
+    // 分享预览次数限制
+    @NameInMap("preview_limit")
+    public Long previewLimit;
+
+    // 举报次数
+    @NameInMap("report_count")
+    public Long reportCount;
+
+    // 企业内(domain)登录后才允许使用分享
+    @NameInMap("require_login")
+    public Boolean requireLogin;
+
     // 转存次数
     @NameInMap("save_count")
     public Long saveCount;
+
+    // 分享转存和下载的总次数限制
+    @NameInMap("save_download_limit")
+    public Long saveDownloadLimit;
+
+    // 分享转存次数限制
+    @NameInMap("save_limit")
+    public Long saveLimit;
+
+    // share_icon
+    @NameInMap("share_icon")
+    public String shareIcon;
 
     // share_id
     @NameInMap("share_id")
@@ -87,9 +155,41 @@ public class BaseShareLinkResponse extends TeaModel {
     @NameInMap("updated_at")
     public String updatedAt;
 
+    // 音视频播放次数
+    @NameInMap("video_preview_count")
+    public Long videoPreviewCount;
+
+    // ViewID
+    @NameInMap("view_id")
+    public String viewId;
+
     public static BaseShareLinkResponse build(java.util.Map<String, ?> map) throws Exception {
         BaseShareLinkResponse self = new BaseShareLinkResponse();
         return TeaModel.build(map, self);
+    }
+
+    public BaseShareLinkResponse setAccessCount(Long accessCount) {
+        this.accessCount = accessCount;
+        return this;
+    }
+    public Long getAccessCount() {
+        return this.accessCount;
+    }
+
+    public BaseShareLinkResponse setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
+    }
+
+    public BaseShareLinkResponse setComments(String comments) {
+        this.comments = comments;
+        return this;
+    }
+    public String getComments() {
+        return this.comments;
     }
 
     public BaseShareLinkResponse setCreatedAt(String createdAt) {
@@ -116,6 +216,30 @@ public class BaseShareLinkResponse extends TeaModel {
         return this.description;
     }
 
+    public BaseShareLinkResponse setDisableDownload(Boolean disableDownload) {
+        this.disableDownload = disableDownload;
+        return this;
+    }
+    public Boolean getDisableDownload() {
+        return this.disableDownload;
+    }
+
+    public BaseShareLinkResponse setDisablePreview(Boolean disablePreview) {
+        this.disablePreview = disablePreview;
+        return this;
+    }
+    public Boolean getDisablePreview() {
+        return this.disablePreview;
+    }
+
+    public BaseShareLinkResponse setDisableSave(Boolean disableSave) {
+        this.disableSave = disableSave;
+        return this;
+    }
+    public Boolean getDisableSave() {
+        return this.disableSave;
+    }
+
     public BaseShareLinkResponse setDownloadCount(Long downloadCount) {
         this.downloadCount = downloadCount;
         return this;
@@ -124,12 +248,36 @@ public class BaseShareLinkResponse extends TeaModel {
         return this.downloadCount;
     }
 
+    public BaseShareLinkResponse setDownloadLimit(Long downloadLimit) {
+        this.downloadLimit = downloadLimit;
+        return this;
+    }
+    public Long getDownloadLimit() {
+        return this.downloadLimit;
+    }
+
+    public BaseShareLinkResponse setDriveFileList(java.util.List<ShareFile> driveFileList) {
+        this.driveFileList = driveFileList;
+        return this;
+    }
+    public java.util.List<ShareFile> getDriveFileList() {
+        return this.driveFileList;
+    }
+
     public BaseShareLinkResponse setDriveId(String driveId) {
         this.driveId = driveId;
         return this;
     }
     public String getDriveId() {
         return this.driveId;
+    }
+
+    public BaseShareLinkResponse setEnableFileChangedNotify(Boolean enableFileChangedNotify) {
+        this.enableFileChangedNotify = enableFileChangedNotify;
+        return this;
+    }
+    public Boolean getEnableFileChangedNotify() {
+        return this.enableFileChangedNotify;
     }
 
     public BaseShareLinkResponse setExpiration(String expiration) {
@@ -172,6 +320,22 @@ public class BaseShareLinkResponse extends TeaModel {
         return this.filePathList;
     }
 
+    public BaseShareLinkResponse setIsSubscribed(Boolean isSubscribed) {
+        this.isSubscribed = isSubscribed;
+        return this;
+    }
+    public Boolean getIsSubscribed() {
+        return this.isSubscribed;
+    }
+
+    public BaseShareLinkResponse setNumOfSubscribers(Long numOfSubscribers) {
+        this.numOfSubscribers = numOfSubscribers;
+        return this;
+    }
+    public Long getNumOfSubscribers() {
+        return this.numOfSubscribers;
+    }
+
     public BaseShareLinkResponse setPreviewCount(Long previewCount) {
         this.previewCount = previewCount;
         return this;
@@ -180,12 +344,60 @@ public class BaseShareLinkResponse extends TeaModel {
         return this.previewCount;
     }
 
+    public BaseShareLinkResponse setPreviewLimit(Long previewLimit) {
+        this.previewLimit = previewLimit;
+        return this;
+    }
+    public Long getPreviewLimit() {
+        return this.previewLimit;
+    }
+
+    public BaseShareLinkResponse setReportCount(Long reportCount) {
+        this.reportCount = reportCount;
+        return this;
+    }
+    public Long getReportCount() {
+        return this.reportCount;
+    }
+
+    public BaseShareLinkResponse setRequireLogin(Boolean requireLogin) {
+        this.requireLogin = requireLogin;
+        return this;
+    }
+    public Boolean getRequireLogin() {
+        return this.requireLogin;
+    }
+
     public BaseShareLinkResponse setSaveCount(Long saveCount) {
         this.saveCount = saveCount;
         return this;
     }
     public Long getSaveCount() {
         return this.saveCount;
+    }
+
+    public BaseShareLinkResponse setSaveDownloadLimit(Long saveDownloadLimit) {
+        this.saveDownloadLimit = saveDownloadLimit;
+        return this;
+    }
+    public Long getSaveDownloadLimit() {
+        return this.saveDownloadLimit;
+    }
+
+    public BaseShareLinkResponse setSaveLimit(Long saveLimit) {
+        this.saveLimit = saveLimit;
+        return this;
+    }
+    public Long getSaveLimit() {
+        return this.saveLimit;
+    }
+
+    public BaseShareLinkResponse setShareIcon(String shareIcon) {
+        this.shareIcon = shareIcon;
+        return this;
+    }
+    public String getShareIcon() {
+        return this.shareIcon;
     }
 
     public BaseShareLinkResponse setShareId(String shareId) {
@@ -250,6 +462,22 @@ public class BaseShareLinkResponse extends TeaModel {
     }
     public String getUpdatedAt() {
         return this.updatedAt;
+    }
+
+    public BaseShareLinkResponse setVideoPreviewCount(Long videoPreviewCount) {
+        this.videoPreviewCount = videoPreviewCount;
+        return this;
+    }
+    public Long getVideoPreviewCount() {
+        return this.videoPreviewCount;
+    }
+
+    public BaseShareLinkResponse setViewId(String viewId) {
+        this.viewId = viewId;
+        return this;
+    }
+    public String getViewId() {
+        return this.viewId;
     }
 
 }

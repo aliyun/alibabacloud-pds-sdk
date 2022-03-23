@@ -9,11 +9,15 @@ import com.aliyun.tea.*;
 public class ListDomainsRequest extends TeaModel {
     // 分页大小
     @NameInMap("limit")
+    @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
     // 查询游标
     @NameInMap("marker")
     public String marker;
+
+    @NameInMap("parent_domain_id")
+    public String parentDomainId;
 
     public static ListDomainsRequest build(java.util.Map<String, ?> map) throws Exception {
         ListDomainsRequest self = new ListDomainsRequest();
@@ -34,6 +38,14 @@ public class ListDomainsRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ListDomainsRequest setParentDomainId(String parentDomainId) {
+        this.parentDomainId = parentDomainId;
+        return this;
+    }
+    public String getParentDomainId() {
+        return this.parentDomainId;
     }
 
 }

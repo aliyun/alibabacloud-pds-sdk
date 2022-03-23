@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * list_share_link response
  */
 public class BaseShareLinkResponse extends TeaModel {
+    // Category
+    @NameInMap("category")
+    public String category;
+
     // created_at
     @NameInMap("created_at")
     public String createdAt;
@@ -23,9 +27,17 @@ public class BaseShareLinkResponse extends TeaModel {
     @NameInMap("download_count")
     public Long downloadCount;
 
+    // file_list
+    @NameInMap("drive_file_list")
+    public java.util.List<ShareFile> driveFileList;
+
     // drive_id
     @NameInMap("drive_id")
     public String driveId;
+
+    // enable_file_changed_notify
+    @NameInMap("enable_file_changed_notify")
+    public Boolean enableFileChangedNotify;
 
     // expiration
     @NameInMap("expiration")
@@ -103,9 +115,21 @@ public class BaseShareLinkResponse extends TeaModel {
     @NameInMap("video_preview_count")
     public Long videoPreviewCount;
 
+    // ViewID
+    @NameInMap("view_id")
+    public String viewId;
+
     public static BaseShareLinkResponse build(java.util.Map<String, ?> map) throws Exception {
         BaseShareLinkResponse self = new BaseShareLinkResponse();
         return TeaModel.build(map, self);
+    }
+
+    public BaseShareLinkResponse setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public BaseShareLinkResponse setCreatedAt(String createdAt) {
@@ -140,12 +164,28 @@ public class BaseShareLinkResponse extends TeaModel {
         return this.downloadCount;
     }
 
+    public BaseShareLinkResponse setDriveFileList(java.util.List<ShareFile> driveFileList) {
+        this.driveFileList = driveFileList;
+        return this;
+    }
+    public java.util.List<ShareFile> getDriveFileList() {
+        return this.driveFileList;
+    }
+
     public BaseShareLinkResponse setDriveId(String driveId) {
         this.driveId = driveId;
         return this;
     }
     public String getDriveId() {
         return this.driveId;
+    }
+
+    public BaseShareLinkResponse setEnableFileChangedNotify(Boolean enableFileChangedNotify) {
+        this.enableFileChangedNotify = enableFileChangedNotify;
+        return this;
+    }
+    public Boolean getEnableFileChangedNotify() {
+        return this.enableFileChangedNotify;
     }
 
     public BaseShareLinkResponse setExpiration(String expiration) {
@@ -298,6 +338,14 @@ public class BaseShareLinkResponse extends TeaModel {
     }
     public Long getVideoPreviewCount() {
         return this.videoPreviewCount;
+    }
+
+    public BaseShareLinkResponse setViewId(String viewId) {
+        this.viewId = viewId;
+        return this;
+    }
+    public String getViewId() {
+        return this.viewId;
     }
 
 }

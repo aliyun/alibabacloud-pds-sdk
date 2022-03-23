@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class CreateAppRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // App名称
     @NameInMap("app_name")
@@ -53,12 +53,12 @@ public class CreateAppRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public CreateAppRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public CreateAppRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public CreateAppRequest setAppName(String appName) {

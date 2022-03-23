@@ -15,6 +15,10 @@ public class ListFileResponse extends TeaModel {
     @NameInMap("next_marker")
     public String nextMarker;
 
+    // punished_file_count
+    @NameInMap("punished_file_count")
+    public Long punishedFileCount;
+
     public static ListFileResponse build(java.util.Map<String, ?> map) throws Exception {
         ListFileResponse self = new ListFileResponse();
         return TeaModel.build(map, self);
@@ -34,6 +38,14 @@ public class ListFileResponse extends TeaModel {
     }
     public String getNextMarker() {
         return this.nextMarker;
+    }
+
+    public ListFileResponse setPunishedFileCount(Long punishedFileCount) {
+        this.punishedFileCount = punishedFileCount;
+        return this;
+    }
+    public Long getPunishedFileCount() {
+        return this.punishedFileCount;
     }
 
 }

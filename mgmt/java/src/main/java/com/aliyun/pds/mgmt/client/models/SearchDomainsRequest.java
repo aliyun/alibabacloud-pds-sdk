@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * search domain request
  */
 public class SearchDomainsRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 分页大小
     @NameInMap("limit")
@@ -32,12 +32,12 @@ public class SearchDomainsRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public SearchDomainsRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public SearchDomainsRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public SearchDomainsRequest setLimit(Integer limit) {

@@ -11,6 +11,10 @@ public class UpdateGroupResponse extends TeaModel {
     @NameInMap("created_at")
     public Long createdAt;
 
+    // creator
+    @NameInMap("creator")
+    public String creator;
+
     // description
     @NameInMap("description")
     public String description;
@@ -45,6 +49,14 @@ public class UpdateGroupResponse extends TeaModel {
     }
     public Long getCreatedAt() {
         return this.createdAt;
+    }
+
+    public UpdateGroupResponse setCreator(String creator) {
+        this.creator = creator;
+        return this;
+    }
+    public String getCreator() {
+        return this.creator;
     }
 
     public UpdateGroupResponse setDescription(String description) {

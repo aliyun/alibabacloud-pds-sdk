@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class SetShareStatusRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // domain ID
     @NameInMap("domain_id")
@@ -25,12 +25,12 @@ public class SetShareStatusRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public SetShareStatusRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public SetShareStatusRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public SetShareStatusRequest setDomainId(String domainId) {

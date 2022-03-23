@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * get domain request
  */
 public class GetDomainRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // Domain ID
     @NameInMap("domain_id")
@@ -18,17 +18,25 @@ public class GetDomainRequest extends TeaModel {
     @NameInMap("get_benefit")
     public Boolean getBenefit;
 
+    // 是否获取share/share_link详情
+    @NameInMap("get_share_detail")
+    public Boolean getShareDetail;
+
+    // 是否 merge parent 配置
+    @NameInMap("merge_parent")
+    public Boolean mergeParent;
+
     public static GetDomainRequest build(java.util.Map<String, ?> map) throws Exception {
         GetDomainRequest self = new GetDomainRequest();
         return TeaModel.build(map, self);
     }
 
-    public GetDomainRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public GetDomainRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public GetDomainRequest setDomainId(String domainId) {
@@ -45,6 +53,22 @@ public class GetDomainRequest extends TeaModel {
     }
     public Boolean getGetBenefit() {
         return this.getBenefit;
+    }
+
+    public GetDomainRequest setGetShareDetail(Boolean getShareDetail) {
+        this.getShareDetail = getShareDetail;
+        return this;
+    }
+    public Boolean getGetShareDetail() {
+        return this.getShareDetail;
+    }
+
+    public GetDomainRequest setMergeParent(Boolean mergeParent) {
+        this.mergeParent = mergeParent;
+        return this;
+    }
+    public Boolean getMergeParent() {
+        return this.mergeParent;
     }
 
 }

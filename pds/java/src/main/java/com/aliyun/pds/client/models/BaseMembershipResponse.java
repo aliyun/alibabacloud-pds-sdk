@@ -11,6 +11,10 @@ public class BaseMembershipResponse extends TeaModel {
     @NameInMap("created_at")
     public Long createdAt;
 
+    // creator
+    @NameInMap("creator")
+    public String creator;
+
     // 描述
     @NameInMap("description")
     public String description;
@@ -51,6 +55,14 @@ public class BaseMembershipResponse extends TeaModel {
     }
     public Long getCreatedAt() {
         return this.createdAt;
+    }
+
+    public BaseMembershipResponse setCreator(String creator) {
+        this.creator = creator;
+        return this;
+    }
+    public String getCreator() {
+        return this.creator;
     }
 
     public BaseMembershipResponse setDescription(String description) {

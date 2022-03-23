@@ -19,6 +19,10 @@ public class GetShareLinkDownloadURLResponse extends TeaModel {
     @NameInMap("streams_info")
     public java.util.Map<String, ?> streamsInfo;
 
+    // streams url info
+    @NameInMap("streams_url")
+    public java.util.Map<String, ?> streamsUrl;
+
     // thumbnail
     @NameInMap("thumbnail")
     public String thumbnail;
@@ -58,6 +62,14 @@ public class GetShareLinkDownloadURLResponse extends TeaModel {
     }
     public java.util.Map<String, ?> getStreamsInfo() {
         return this.streamsInfo;
+    }
+
+    public GetShareLinkDownloadURLResponse setStreamsUrl(java.util.Map<String, ?> streamsUrl) {
+        this.streamsUrl = streamsUrl;
+        return this;
+    }
+    public java.util.Map<String, ?> getStreamsUrl() {
+        return this.streamsUrl;
     }
 
     public GetShareLinkDownloadURLResponse setThumbnail(String thumbnail) {

@@ -24,6 +24,7 @@ public class ListByAnonymousRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
+    @Validation(maximum = 100, minimum = 1)
     public Long limit;
 
     // marker

@@ -10,14 +10,23 @@ public class LogDetail extends TeaModel {
     @NameInMap("account_log_detail")
     public AccountLogDetail accountLogDetail;
 
+    @NameInMap("audit_mgmt_log_detail")
+    public AuditMgmtLogDetail auditMgmtLogDetail;
+
     @NameInMap("drive_log_detail")
     public DriveLogDetail driveLogDetail;
+
+    @NameInMap("ent_mgmt_log_detail")
+    public EntMgmtLogDetail entMgmtLogDetail;
 
     @NameInMap("file_log_detail")
     public FileLogDetail fileLogDetail;
 
     @NameInMap("group_log_detail")
     public GroupLogDetail groupLogDetail;
+
+    @NameInMap("login_mgmt_log_detail")
+    public LoginMgmtLogDetail loginMgmtLogDetail;
 
     @NameInMap("membership_log_detail")
     public MembershipLogDetail membershipLogDetail;
@@ -50,12 +59,28 @@ public class LogDetail extends TeaModel {
         return this.accountLogDetail;
     }
 
+    public LogDetail setAuditMgmtLogDetail(AuditMgmtLogDetail auditMgmtLogDetail) {
+        this.auditMgmtLogDetail = auditMgmtLogDetail;
+        return this;
+    }
+    public AuditMgmtLogDetail getAuditMgmtLogDetail() {
+        return this.auditMgmtLogDetail;
+    }
+
     public LogDetail setDriveLogDetail(DriveLogDetail driveLogDetail) {
         this.driveLogDetail = driveLogDetail;
         return this;
     }
     public DriveLogDetail getDriveLogDetail() {
         return this.driveLogDetail;
+    }
+
+    public LogDetail setEntMgmtLogDetail(EntMgmtLogDetail entMgmtLogDetail) {
+        this.entMgmtLogDetail = entMgmtLogDetail;
+        return this;
+    }
+    public EntMgmtLogDetail getEntMgmtLogDetail() {
+        return this.entMgmtLogDetail;
     }
 
     public LogDetail setFileLogDetail(FileLogDetail fileLogDetail) {
@@ -72,6 +97,14 @@ public class LogDetail extends TeaModel {
     }
     public GroupLogDetail getGroupLogDetail() {
         return this.groupLogDetail;
+    }
+
+    public LogDetail setLoginMgmtLogDetail(LoginMgmtLogDetail loginMgmtLogDetail) {
+        this.loginMgmtLogDetail = loginMgmtLogDetail;
+        return this;
+    }
+    public LoginMgmtLogDetail getLoginMgmtLogDetail() {
+        return this.loginMgmtLogDetail;
     }
 
     public LogDetail setMembershipLogDetail(MembershipLogDetail membershipLogDetail) {

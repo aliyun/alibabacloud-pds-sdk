@@ -15,17 +15,15 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("app_cname")
     public String appCname;
 
-    // 支付宝 App Id
-    @NameInMap("auth_alipay_app_id")
-    public String authAlipayAppId;
+    @NameInMap("app_config")
+    public AppConfig appConfig;
 
-    // 是否开启了支付宝认证
-    @NameInMap("auth_alipay_enable")
-    public Boolean authAlipayEnable;
+    // 打包下载配置
+    @NameInMap("archive_files_enable")
+    public Boolean archiveFilesEnable;
 
-    // 支付宝 App Secret
-    @NameInMap("auth_alipay_private_key")
-    public String authAlipayPrivateKey;
+    @NameInMap("audit_log_config")
+    public AuditLogConfig auditLogConfig;
 
     // Domain AuthCName
     @NameInMap("auth_cname")
@@ -46,9 +44,6 @@ public class BaseDomainResponse extends TeaModel {
     // 是否开启了钉钉认证
     @NameInMap("auth_dingding_enable")
     public Boolean authDingdingEnable;
-
-    @NameInMap("auth_endpoint_enable")
-    public Boolean authEndpointEnable;
 
     // RAM App Id
     @NameInMap("auth_ram_app_id")
@@ -88,6 +83,10 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("domain_name")
     public String domainName;
 
+    // 企业文件管理专属登录开关
+    @NameInMap("enterprise_customized_login")
+    public Boolean enterpriseCustomizedLogin;
+
     // 事件通知 MNS 匹配文件名
     @NameInMap("event_filename_matches")
     public String eventFilenameMatches;
@@ -112,6 +111,9 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("expire_time")
     public Long expireTime;
 
+    @NameInMap("group_single_drive_enabled")
+    public Boolean groupSingleDriveEnabled;
+
     // 是否开启了自动初始化 Drive
     @NameInMap("init_drive_enable")
     public Boolean initDriveEnable;
@@ -128,8 +130,18 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("mode")
     public String mode;
 
+    @NameInMap("office_edit_config")
+    public OfficeEditConfig officeEditConfig;
+
     @NameInMap("office_preview_config")
     public OfficePreviewConfig officePreviewConfig;
+
+    @NameInMap("parallel_upload_enabled")
+    public Boolean parallelUploadEnabled;
+
+    // Parent Domain ID
+    @NameInMap("parent_domain_id")
+    public String parentDomainId;
 
     // Domain 类型
     @NameInMap("path_type")
@@ -142,6 +154,9 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("published_app_access_strategy")
     public AppAccessStrategy publishedAppAccessStrategy;
 
+    @NameInMap("role_config")
+    public RoleConfig roleConfig;
+
     // Domain ServiceCode
     @NameInMap("service_code")
     public String serviceCode;
@@ -149,6 +164,12 @@ public class BaseDomainResponse extends TeaModel {
     // 是否开启了共享
     @NameInMap("sharable")
     public Boolean sharable;
+
+    @NameInMap("share_detail")
+    public ShareDetailResponse shareDetail;
+
+    @NameInMap("share_link_detail")
+    public ShareDetailResponse shareLinkDetail;
 
     // 是否开启了分享
     @NameInMap("share_link_enabled")
@@ -174,16 +195,37 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("store_region_list")
     public java.util.List<String> storeRegionList;
 
+    @NameInMap("subdomain_config")
+    public SubdomainConfig subdomainConfig;
+
     // Domain 更新时间
     @NameInMap("updated_at")
     public String updatedAt;
+
+    // 逻辑空间使用量，单位为字节
+    @NameInMap("used_size")
+    public Long usedSize;
+
+    // 逻辑空间刷新周期，单位：秒
+    @NameInMap("used_size_refresh_interval")
+    public Long usedSizeRefreshInterval;
 
     // 用户数配额
     @NameInMap("user_count_quota")
     public Long userCountQuota;
 
+    // user和group只能有一个drive的开关
+    @NameInMap("user_single_drive_enabled")
+    public Boolean userSingleDriveEnabled;
+
+    @NameInMap("video_preview_app_config")
+    public VideoPreviewAppConfig videoPreviewAppConfig;
+
     @NameInMap("video_preview_config")
     public VideoPreviewConfig videoPreviewConfig;
+
+    @NameInMap("watermark_config")
+    public BaseWatermarkConfigResponse watermarkConfig;
 
     public static BaseDomainResponse build(java.util.Map<String, ?> map) throws Exception {
         BaseDomainResponse self = new BaseDomainResponse();
@@ -206,28 +248,28 @@ public class BaseDomainResponse extends TeaModel {
         return this.appCname;
     }
 
-    public BaseDomainResponse setAuthAlipayAppId(String authAlipayAppId) {
-        this.authAlipayAppId = authAlipayAppId;
+    public BaseDomainResponse setAppConfig(AppConfig appConfig) {
+        this.appConfig = appConfig;
         return this;
     }
-    public String getAuthAlipayAppId() {
-        return this.authAlipayAppId;
+    public AppConfig getAppConfig() {
+        return this.appConfig;
     }
 
-    public BaseDomainResponse setAuthAlipayEnable(Boolean authAlipayEnable) {
-        this.authAlipayEnable = authAlipayEnable;
+    public BaseDomainResponse setArchiveFilesEnable(Boolean archiveFilesEnable) {
+        this.archiveFilesEnable = archiveFilesEnable;
         return this;
     }
-    public Boolean getAuthAlipayEnable() {
-        return this.authAlipayEnable;
+    public Boolean getArchiveFilesEnable() {
+        return this.archiveFilesEnable;
     }
 
-    public BaseDomainResponse setAuthAlipayPrivateKey(String authAlipayPrivateKey) {
-        this.authAlipayPrivateKey = authAlipayPrivateKey;
+    public BaseDomainResponse setAuditLogConfig(AuditLogConfig auditLogConfig) {
+        this.auditLogConfig = auditLogConfig;
         return this;
     }
-    public String getAuthAlipayPrivateKey() {
-        return this.authAlipayPrivateKey;
+    public AuditLogConfig getAuditLogConfig() {
+        return this.auditLogConfig;
     }
 
     public BaseDomainResponse setAuthCname(String authCname) {
@@ -268,14 +310,6 @@ public class BaseDomainResponse extends TeaModel {
     }
     public Boolean getAuthDingdingEnable() {
         return this.authDingdingEnable;
-    }
-
-    public BaseDomainResponse setAuthEndpointEnable(Boolean authEndpointEnable) {
-        this.authEndpointEnable = authEndpointEnable;
-        return this;
-    }
-    public Boolean getAuthEndpointEnable() {
-        return this.authEndpointEnable;
     }
 
     public BaseDomainResponse setAuthRamAppId(String authRamAppId) {
@@ -358,6 +392,14 @@ public class BaseDomainResponse extends TeaModel {
         return this.domainName;
     }
 
+    public BaseDomainResponse setEnterpriseCustomizedLogin(Boolean enterpriseCustomizedLogin) {
+        this.enterpriseCustomizedLogin = enterpriseCustomizedLogin;
+        return this;
+    }
+    public Boolean getEnterpriseCustomizedLogin() {
+        return this.enterpriseCustomizedLogin;
+    }
+
     public BaseDomainResponse setEventFilenameMatches(String eventFilenameMatches) {
         this.eventFilenameMatches = eventFilenameMatches;
         return this;
@@ -406,6 +448,14 @@ public class BaseDomainResponse extends TeaModel {
         return this.expireTime;
     }
 
+    public BaseDomainResponse setGroupSingleDriveEnabled(Boolean groupSingleDriveEnabled) {
+        this.groupSingleDriveEnabled = groupSingleDriveEnabled;
+        return this;
+    }
+    public Boolean getGroupSingleDriveEnabled() {
+        return this.groupSingleDriveEnabled;
+    }
+
     public BaseDomainResponse setInitDriveEnable(Boolean initDriveEnable) {
         this.initDriveEnable = initDriveEnable;
         return this;
@@ -438,12 +488,36 @@ public class BaseDomainResponse extends TeaModel {
         return this.mode;
     }
 
+    public BaseDomainResponse setOfficeEditConfig(OfficeEditConfig officeEditConfig) {
+        this.officeEditConfig = officeEditConfig;
+        return this;
+    }
+    public OfficeEditConfig getOfficeEditConfig() {
+        return this.officeEditConfig;
+    }
+
     public BaseDomainResponse setOfficePreviewConfig(OfficePreviewConfig officePreviewConfig) {
         this.officePreviewConfig = officePreviewConfig;
         return this;
     }
     public OfficePreviewConfig getOfficePreviewConfig() {
         return this.officePreviewConfig;
+    }
+
+    public BaseDomainResponse setParallelUploadEnabled(Boolean parallelUploadEnabled) {
+        this.parallelUploadEnabled = parallelUploadEnabled;
+        return this;
+    }
+    public Boolean getParallelUploadEnabled() {
+        return this.parallelUploadEnabled;
+    }
+
+    public BaseDomainResponse setParentDomainId(String parentDomainId) {
+        this.parentDomainId = parentDomainId;
+        return this;
+    }
+    public String getParentDomainId() {
+        return this.parentDomainId;
     }
 
     public BaseDomainResponse setPathType(String pathType) {
@@ -470,6 +544,14 @@ public class BaseDomainResponse extends TeaModel {
         return this.publishedAppAccessStrategy;
     }
 
+    public BaseDomainResponse setRoleConfig(RoleConfig roleConfig) {
+        this.roleConfig = roleConfig;
+        return this;
+    }
+    public RoleConfig getRoleConfig() {
+        return this.roleConfig;
+    }
+
     public BaseDomainResponse setServiceCode(String serviceCode) {
         this.serviceCode = serviceCode;
         return this;
@@ -484,6 +566,22 @@ public class BaseDomainResponse extends TeaModel {
     }
     public Boolean getSharable() {
         return this.sharable;
+    }
+
+    public BaseDomainResponse setShareDetail(ShareDetailResponse shareDetail) {
+        this.shareDetail = shareDetail;
+        return this;
+    }
+    public ShareDetailResponse getShareDetail() {
+        return this.shareDetail;
+    }
+
+    public BaseDomainResponse setShareLinkDetail(ShareDetailResponse shareLinkDetail) {
+        this.shareLinkDetail = shareLinkDetail;
+        return this;
+    }
+    public ShareDetailResponse getShareLinkDetail() {
+        return this.shareLinkDetail;
     }
 
     public BaseDomainResponse setShareLinkEnabled(Boolean shareLinkEnabled) {
@@ -534,12 +632,36 @@ public class BaseDomainResponse extends TeaModel {
         return this.storeRegionList;
     }
 
+    public BaseDomainResponse setSubdomainConfig(SubdomainConfig subdomainConfig) {
+        this.subdomainConfig = subdomainConfig;
+        return this;
+    }
+    public SubdomainConfig getSubdomainConfig() {
+        return this.subdomainConfig;
+    }
+
     public BaseDomainResponse setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }
     public String getUpdatedAt() {
         return this.updatedAt;
+    }
+
+    public BaseDomainResponse setUsedSize(Long usedSize) {
+        this.usedSize = usedSize;
+        return this;
+    }
+    public Long getUsedSize() {
+        return this.usedSize;
+    }
+
+    public BaseDomainResponse setUsedSizeRefreshInterval(Long usedSizeRefreshInterval) {
+        this.usedSizeRefreshInterval = usedSizeRefreshInterval;
+        return this;
+    }
+    public Long getUsedSizeRefreshInterval() {
+        return this.usedSizeRefreshInterval;
     }
 
     public BaseDomainResponse setUserCountQuota(Long userCountQuota) {
@@ -550,12 +672,36 @@ public class BaseDomainResponse extends TeaModel {
         return this.userCountQuota;
     }
 
+    public BaseDomainResponse setUserSingleDriveEnabled(Boolean userSingleDriveEnabled) {
+        this.userSingleDriveEnabled = userSingleDriveEnabled;
+        return this;
+    }
+    public Boolean getUserSingleDriveEnabled() {
+        return this.userSingleDriveEnabled;
+    }
+
+    public BaseDomainResponse setVideoPreviewAppConfig(VideoPreviewAppConfig videoPreviewAppConfig) {
+        this.videoPreviewAppConfig = videoPreviewAppConfig;
+        return this;
+    }
+    public VideoPreviewAppConfig getVideoPreviewAppConfig() {
+        return this.videoPreviewAppConfig;
+    }
+
     public BaseDomainResponse setVideoPreviewConfig(VideoPreviewConfig videoPreviewConfig) {
         this.videoPreviewConfig = videoPreviewConfig;
         return this;
     }
     public VideoPreviewConfig getVideoPreviewConfig() {
         return this.videoPreviewConfig;
+    }
+
+    public BaseDomainResponse setWatermarkConfig(BaseWatermarkConfigResponse watermarkConfig) {
+        this.watermarkConfig = watermarkConfig;
+        return this;
+    }
+    public BaseWatermarkConfigResponse getWatermarkConfig() {
+        return this.watermarkConfig;
     }
 
 }

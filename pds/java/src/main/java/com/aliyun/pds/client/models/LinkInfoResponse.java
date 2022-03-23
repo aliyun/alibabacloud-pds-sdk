@@ -17,6 +17,11 @@ public class LinkInfoResponse extends TeaModel {
     @Validation(required = true)
     public Long createdAt;
 
+    // 显示名称
+    @NameInMap("display_name")
+    @Validation(required = true)
+    public String displayName;
+
     // Domain ID
     @NameInMap("domain_id")
     @Validation(required = true)
@@ -65,6 +70,14 @@ public class LinkInfoResponse extends TeaModel {
     }
     public Long getCreatedAt() {
         return this.createdAt;
+    }
+
+    public LinkInfoResponse setDisplayName(String displayName) {
+        this.displayName = displayName;
+        return this;
+    }
+    public String getDisplayName() {
+        return this.displayName;
     }
 
     public LinkInfoResponse setDomainId(String domainId) {

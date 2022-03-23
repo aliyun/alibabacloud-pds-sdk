@@ -19,6 +19,18 @@ public class ShareLinkLogDetail extends TeaModel {
     @NameInMap("has_pwd")
     public Boolean hasPwd;
 
+    // share_created_at
+    @NameInMap("share_created_at")
+    public String shareCreatedAt;
+
+    // share_creator_id
+    @NameInMap("share_creator_id")
+    public String shareCreatorId;
+
+    // share_creator_name
+    @NameInMap("share_creator_name")
+    public String shareCreatorName;
+
     // share_id (脱敏)
     @NameInMap("share_id")
     public String shareId;
@@ -62,6 +74,30 @@ public class ShareLinkLogDetail extends TeaModel {
     }
     public Boolean getHasPwd() {
         return this.hasPwd;
+    }
+
+    public ShareLinkLogDetail setShareCreatedAt(String shareCreatedAt) {
+        this.shareCreatedAt = shareCreatedAt;
+        return this;
+    }
+    public String getShareCreatedAt() {
+        return this.shareCreatedAt;
+    }
+
+    public ShareLinkLogDetail setShareCreatorId(String shareCreatorId) {
+        this.shareCreatorId = shareCreatorId;
+        return this;
+    }
+    public String getShareCreatorId() {
+        return this.shareCreatorId;
+    }
+
+    public ShareLinkLogDetail setShareCreatorName(String shareCreatorName) {
+        this.shareCreatorName = shareCreatorName;
+        return this;
+    }
+    public String getShareCreatorName() {
+        return this.shareCreatorName;
     }
 
     public ShareLinkLogDetail setShareId(String shareId) {

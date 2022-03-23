@@ -7,8 +7,8 @@ import com.aliyun.tea.*;
  * 
  */
 public class AddStoreRequest extends TeaModel {
-    @NameInMap("headers")
-    public java.util.Map<String, String> headers;
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
 
     // 存储公共前缀
     @NameInMap("base_path")
@@ -46,12 +46,12 @@ public class AddStoreRequest extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public AddStoreRequest setHeaders(java.util.Map<String, String> headers) {
-        this.headers = headers;
+    public AddStoreRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
         return this;
     }
-    public java.util.Map<String, String> getHeaders() {
-        return this.headers;
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public AddStoreRequest setBasePath(String basePath) {

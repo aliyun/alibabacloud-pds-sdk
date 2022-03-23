@@ -61,6 +61,9 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("labels")
     public java.util.List<String> labels;
 
+    @NameInMap("local_modified_at")
+    public String localModifiedAt;
+
     @NameInMap("meta")
     public String meta;
 
@@ -211,6 +214,14 @@ public class UpdateFileMetaRequest extends TeaModel {
     }
     public java.util.List<String> getLabels() {
         return this.labels;
+    }
+
+    public UpdateFileMetaRequest setLocalModifiedAt(String localModifiedAt) {
+        this.localModifiedAt = localModifiedAt;
+        return this;
+    }
+    public String getLocalModifiedAt() {
+        return this.localModifiedAt;
     }
 
     public UpdateFileMetaRequest setMeta(String meta) {

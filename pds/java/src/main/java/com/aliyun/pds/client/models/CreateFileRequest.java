@@ -90,6 +90,9 @@ public class CreateFileRequest extends TeaModel {
     @NameInMap("local_created_at")
     public String localCreatedAt;
 
+    @NameInMap("local_modified_at")
+    public String localModifiedAt;
+
     // location
     @NameInMap("location")
     public String location;
@@ -146,6 +149,9 @@ public class CreateFileRequest extends TeaModel {
     @NameInMap("type")
     @Validation(required = true)
     public String type;
+
+    @NameInMap("upload_type")
+    public String uploadType;
 
     // user_meta
     @NameInMap("user_meta")
@@ -339,6 +345,14 @@ public class CreateFileRequest extends TeaModel {
         return this.localCreatedAt;
     }
 
+    public CreateFileRequest setLocalModifiedAt(String localModifiedAt) {
+        this.localModifiedAt = localModifiedAt;
+        return this;
+    }
+    public String getLocalModifiedAt() {
+        return this.localModifiedAt;
+    }
+
     public CreateFileRequest setLocation(String location) {
         this.location = location;
         return this;
@@ -449,6 +463,14 @@ public class CreateFileRequest extends TeaModel {
     }
     public String getType() {
         return this.type;
+    }
+
+    public CreateFileRequest setUploadType(String uploadType) {
+        this.uploadType = uploadType;
+        return this;
+    }
+    public String getUploadType() {
+        return this.uploadType;
     }
 
     public CreateFileRequest setUserMeta(String userMeta) {
