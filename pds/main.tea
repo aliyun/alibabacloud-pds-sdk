@@ -18083,6 +18083,121 @@ api updateFacegroupInfoEx(request: UpdateFaceGroupInfoRequest, runtime: RuntimeO
   ignoreSSL = runtime.ignoreSSL
 }
 
+model UpdateStoryModel {
+  headers?: map[string]string(name='headers'),
+  body: UpdateStoryResponse(name='body'),
+}
+
+/**
+ * 该接口将会更新故事
+ * @tags image
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function updateStory(request: UpdateStoryRequest) throws: UpdateStoryModel  {
+  var runtime = new RuntimeOptions{};
+  return updateStoryEx(request, runtime);
+}
+
+/**
+ * 该接口将会更新故事
+ * @tags image
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api updateStoryEx(request: UpdateStoryRequest, runtime: RuntimeOptions): UpdateStoryModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/image/update_story`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.httpheaders
+  };
+  realReq.httpheaders = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
 model AddFileModel {
   headers?: map[string]string(name='headers'),
   body: AddViewFileResponse(name='body'),
@@ -20040,6 +20155,22 @@ model CCPGetDirSizeInfoRequest {
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
   shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
+}
+
+/**
+ * 获取文件夹信息
+ */
+model CCPGetFolderInfoRequest {
+  driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+  fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
+}
+
+/**
+ * 获取文件夹信息
+ */
+model CCPGetFolderInfoResponse {
+  totalSize?: int64(name='total_size', description='total_size', example=1024, format='int64'),
+  usedSize?: int64(name='used_size', description='used_size', example=1023, format='int64'),
 }
 
 /**
@@ -24416,6 +24547,7 @@ model AdminListStoresRequest {
  */
 model AppConfig {
   audioPlayEnable?: boolean(name='audio_play_enable'),
+  blackAdminMenuItems?: string(name='black_admin_menu_items'),
   customAccountIdentityBase64?: boolean(name='custom_account_identity_base_64'),
   disableGroup?: boolean(name='disable_group'),
   enableHiddenFile?: boolean(name='enable_hidden_file'),
@@ -24428,12 +24560,15 @@ model AppConfig {
   hideDriveFileEntry?: boolean(name='hide_drive_file_entry'),
   hideLogoutEntry?: boolean(name='hide_logout_entry'),
   hideShareAdminEntry?: boolean(name='hide_share_admin_entry'),
+  hideSharelinkLogin?: boolean(name='hide_sharelink_login'),
+  hideUserEntry?: boolean(name='hide_user_entry'),
   mountAppEnable?: boolean(name='mount_app_enable'),
   showCustomizedLoginConfig?: boolean(name='show_customized_login_config'),
   syncAppEnable?: boolean(name='sync_app_enable'),
   userCanAccessGroupRecycleBin?: boolean(name='user_can_access_group_recycle_bin'),
   videoPlayEnable?: boolean(name='video_play_enable'),
   webVersion?: string(name='web_version'),
+  whiteAdminMenuItems?: string(name='white_admin_menu_items'),
 }
 
 /**
@@ -24816,6 +24951,7 @@ model CreateIdentityToBenefitPkgMappingRequest {
   httpheaders?: map[string]string,
   amount?: int64(name='amount', description='权益包数量', example=1, format='int64'),
   benefitPkgId: string(name='benefit_pkg_id', description='权益包的唯一标识', example='"40cb7794c9294"'),
+  customBenefitMeta?: object(name='custom_benefit_meta', additionalProperties='{"$ref":"#/definitions/CustomBenefitMeta"}', description='实体权益包关联的自定义Meta'),
   deliveryId?: string(name='delivery_id', description='权益下发的唯一标识', example='"123ace93f0123d"'),
   domainId?: string(name='domain_id', description='domain ID', example='sz100'),
   expireTime?: int64(name='expire_time', description='权益包超期时间的时间戳，单位为毫秒', example=1633167071000, format='int64'),
@@ -25867,6 +26003,27 @@ model SubdomainSetBizCNameResponse {
 }
 
 /**
+ * update benefit to benefit package mapping request
+ */
+model UpdateBenefitToPkgMappingRequest {
+  allowConfigByTenant?: boolean(name='allow_config_by_tenant'),
+  allowConfigByUser?: boolean(name='allow_config_by_user'),
+  allowShowToTenant?: boolean(name='allow_show_to_tenant'),
+  allowShowToUser?: boolean(name='allow_show_to_user'),
+  benefitId?: string(name='benefit_id'),
+  benefitMeta?: BenefitMeta(name='benefit_meta'),
+  benefitPkgId?: string(name='benefit_pkg_id'),
+  name?: string(name='name'),
+  userMeta?: string(name='user_meta'),
+}
+
+/**
+ * 
+ */
+model UpdateBenefitToPkgMappingResponse {
+}
+
+/**
  * create domain response
  */
 model UpdateDomainResponse {
@@ -25950,7 +26107,7 @@ model UpdateIdentityToBenefitPkgMappingRequest {
   httpheaders?: map[string]string,
   amount?: int64(name='amount', description='权益包数量', example=1, format='int64'),
   benefitPkgId: string(name='benefit_pkg_id', description='权益包的唯一标识', example='"40cb7794c9294"'),
-  customBenefitMeta?: string(name='custom_benefit_meta', description='实体权益包关联的自定义Meta'),
+  customBenefitMeta?: object(name='custom_benefit_meta', additionalProperties='{"$ref":"#/definitions/CustomBenefitMeta"}', description='实体权益包关联的自定义Meta'),
   deliveryId?: string(name='delivery_id', description='权益下发的唯一标识', example='"123ace93f0123d"'),
   domainId?: string(name='domain_id', description='domain ID', example='sz100'),
   expireTime?: int64(name='expire_time', description='权益包超期时间的时间戳，单位为毫秒', example=1633167071000, format='int64'),
@@ -27358,6 +27515,26 @@ model UpdateMembershipResponse {
   subGroupId?: string(name='sub_group_id'),
   updatedAt?: int64(name='updated_at', description='updated_at', example=1111, format='int64'),
   userId?: string(name='user_id'),
+}
+
+/**
+ * Update story request
+ */
+model UpdateStoryRequest {
+  httpheaders?: map[string]string,
+  customId?: string(name='custom_id', description='custom_id'),
+  customLabels?: object(name='custom_labels', additionalProperties='{"type":"object"}', description='custom_labels'),
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  storyId: string(name='story_id', description='story_id'),
+  storyName?: string(name='story_name', description='story_name'),
+}
+
+/**
+ * update story response
+ */
+model UpdateStoryResponse {
+  driveId?: string(name='drive_id', description='drive_id'),
+  storyId?: string(name='story_id', description='story_id'),
 }
 
 /**
