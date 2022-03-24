@@ -19,6 +19,9 @@ public class AuthConfig extends TeaModel {
     @NameInMap("enable")
     public Boolean enable;
 
+    @NameInMap("encoding_aes_key")
+    public String encodingAesKey;
+
     @NameInMap("endpoint")
     public String endpoint;
 
@@ -36,6 +39,12 @@ public class AuthConfig extends TeaModel {
 
     @NameInMap("login_page_vars")
     public java.util.Map<String, ?> loginPageVars;
+
+    @NameInMap("token")
+    public String token;
+
+    @NameInMap("we_chat_sync_config")
+    public WeChatSyncConfig weChatSyncConfig;
 
     @NameInMap("white_list_config")
     public java.util.Map<String, ?> whiteListConfig;
@@ -78,6 +87,14 @@ public class AuthConfig extends TeaModel {
     }
     public Boolean getEnable() {
         return this.enable;
+    }
+
+    public AuthConfig setEncodingAesKey(String encodingAesKey) {
+        this.encodingAesKey = encodingAesKey;
+        return this;
+    }
+    public String getEncodingAesKey() {
+        return this.encodingAesKey;
     }
 
     public AuthConfig setEndpoint(String endpoint) {
@@ -126,6 +143,22 @@ public class AuthConfig extends TeaModel {
     }
     public java.util.Map<String, ?> getLoginPageVars() {
         return this.loginPageVars;
+    }
+
+    public AuthConfig setToken(String token) {
+        this.token = token;
+        return this;
+    }
+    public String getToken() {
+        return this.token;
+    }
+
+    public AuthConfig setWeChatSyncConfig(WeChatSyncConfig weChatSyncConfig) {
+        this.weChatSyncConfig = weChatSyncConfig;
+        return this;
+    }
+    public WeChatSyncConfig getWeChatSyncConfig() {
+        return this.weChatSyncConfig;
     }
 
     public AuthConfig setWhiteListConfig(java.util.Map<String, ?> whiteListConfig) {

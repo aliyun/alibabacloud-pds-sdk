@@ -18,6 +18,9 @@ public class LoginMgmtLogDetail extends TeaModel {
     @NameInMap("ldap_config")
     public LdapConfig ldapConfig;
 
+    @NameInMap("wechat_sync_config")
+    public WeChatSyncConfig wechatSyncConfig;
+
     public static LoginMgmtLogDetail build(java.util.Map<String, ?> map) throws Exception {
         LoginMgmtLogDetail self = new LoginMgmtLogDetail();
         return TeaModel.build(map, self);
@@ -45,6 +48,14 @@ public class LoginMgmtLogDetail extends TeaModel {
     }
     public LdapConfig getLdapConfig() {
         return this.ldapConfig;
+    }
+
+    public LoginMgmtLogDetail setWechatSyncConfig(WeChatSyncConfig wechatSyncConfig) {
+        this.wechatSyncConfig = wechatSyncConfig;
+        return this;
+    }
+    public WeChatSyncConfig getWechatSyncConfig() {
+        return this.wechatSyncConfig;
     }
 
 }

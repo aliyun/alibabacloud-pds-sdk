@@ -19,6 +19,10 @@ public class GetDomainRequest extends TeaModel {
     @NameInMap("get_share_detail")
     public Boolean getShareDetail;
 
+    // 是否 merge parent 配置
+    @NameInMap("merge_parent")
+    public Boolean mergeParent;
+
     public static GetDomainRequest build(java.util.Map<String, ?> map) throws Exception {
         GetDomainRequest self = new GetDomainRequest();
         return TeaModel.build(map, self);
@@ -46,6 +50,14 @@ public class GetDomainRequest extends TeaModel {
     }
     public Boolean getGetShareDetail() {
         return this.getShareDetail;
+    }
+
+    public GetDomainRequest setMergeParent(Boolean mergeParent) {
+        this.mergeParent = mergeParent;
+        return this;
+    }
+    public Boolean getMergeParent() {
+        return this.mergeParent;
     }
 
 }
