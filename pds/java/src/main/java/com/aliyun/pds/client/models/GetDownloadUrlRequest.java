@@ -51,6 +51,9 @@ public class GetDownloadUrlRequest extends TeaModel {
     @NameInMap("sign_token")
     public String signToken;
 
+    @NameInMap("static_url")
+    public Boolean staticUrl;
+
     public static GetDownloadUrlRequest build(java.util.Map<String, ?> map) throws Exception {
         GetDownloadUrlRequest self = new GetDownloadUrlRequest();
         return TeaModel.build(map, self);
@@ -142,6 +145,14 @@ public class GetDownloadUrlRequest extends TeaModel {
     }
     public String getSignToken() {
         return this.signToken;
+    }
+
+    public GetDownloadUrlRequest setStaticUrl(Boolean staticUrl) {
+        this.staticUrl = staticUrl;
+        return this;
+    }
+    public Boolean getStaticUrl() {
+        return this.staticUrl;
     }
 
 }

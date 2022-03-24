@@ -21,7 +21,7 @@ public class UpdateIdentityToBenefitPkgMappingRequest extends TeaModel {
 
     // 实体权益包关联的自定义Meta
     @NameInMap("custom_benefit_meta")
-    public String customBenefitMeta;
+    public java.util.Map<String, ?> customBenefitMeta;
 
     // 权益下发的唯一标识
     @NameInMap("delivery_id")
@@ -78,11 +78,11 @@ public class UpdateIdentityToBenefitPkgMappingRequest extends TeaModel {
         return this.benefitPkgId;
     }
 
-    public UpdateIdentityToBenefitPkgMappingRequest setCustomBenefitMeta(String customBenefitMeta) {
+    public UpdateIdentityToBenefitPkgMappingRequest setCustomBenefitMeta(java.util.Map<String, ?> customBenefitMeta) {
         this.customBenefitMeta = customBenefitMeta;
         return this;
     }
-    public String getCustomBenefitMeta() {
+    public java.util.Map<String, ?> getCustomBenefitMeta() {
         return this.customBenefitMeta;
     }
 

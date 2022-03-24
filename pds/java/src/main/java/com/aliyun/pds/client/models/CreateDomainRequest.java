@@ -71,6 +71,9 @@ public class CreateDomainRequest extends TeaModel {
     @NameInMap("group_single_drive_enabled")
     public Boolean groupSingleDriveEnabled;
 
+    @NameInMap("independent_store")
+    public Boolean independentStore;
+
     // 开启自动初始化 Drive
     @NameInMap("init_drive_enable")
     public Boolean initDriveEnable;
@@ -253,6 +256,14 @@ public class CreateDomainRequest extends TeaModel {
     }
     public Boolean getGroupSingleDriveEnabled() {
         return this.groupSingleDriveEnabled;
+    }
+
+    public CreateDomainRequest setIndependentStore(Boolean independentStore) {
+        this.independentStore = independentStore;
+        return this;
+    }
+    public Boolean getIndependentStore() {
+        return this.independentStore;
     }
 
     public CreateDomainRequest setInitDriveEnable(Boolean initDriveEnable) {

@@ -19,6 +19,14 @@ public class GetStoryResponse extends TeaModel {
     @NameInMap("created_at")
     public String createdAt;
 
+    // custom_id
+    @NameInMap("custom_id")
+    public String customId;
+
+    // custom_labels
+    @NameInMap("custom_labels")
+    public java.util.Map<String, ?> customLabels;
+
     // face_group_ids
     @NameInMap("face_group_ids")
     public java.util.List<String> faceGroupIds;
@@ -81,6 +89,22 @@ public class GetStoryResponse extends TeaModel {
     }
     public String getCreatedAt() {
         return this.createdAt;
+    }
+
+    public GetStoryResponse setCustomId(String customId) {
+        this.customId = customId;
+        return this;
+    }
+    public String getCustomId() {
+        return this.customId;
+    }
+
+    public GetStoryResponse setCustomLabels(java.util.Map<String, ?> customLabels) {
+        this.customLabels = customLabels;
+        return this;
+    }
+    public java.util.Map<String, ?> getCustomLabels() {
+        return this.customLabels;
     }
 
     public GetStoryResponse setFaceGroupIds(java.util.List<String> faceGroupIds) {

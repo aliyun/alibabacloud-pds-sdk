@@ -17,6 +17,9 @@ public class ReportEventRequest extends TeaModel {
     @NameInMap("share_link")
     public ReportShareLinkEventRequest shareLink;
 
+    @NameInMap("share_link_access")
+    public ReportShareLinkAccessEventRequest shareLinkAccess;
+
     public static ReportEventRequest build(java.util.Map<String, ?> map) throws Exception {
         ReportEventRequest self = new ReportEventRequest();
         return TeaModel.build(map, self);
@@ -44,6 +47,14 @@ public class ReportEventRequest extends TeaModel {
     }
     public ReportShareLinkEventRequest getShareLink() {
         return this.shareLink;
+    }
+
+    public ReportEventRequest setShareLinkAccess(ReportShareLinkAccessEventRequest shareLinkAccess) {
+        this.shareLinkAccess = shareLinkAccess;
+        return this;
+    }
+    public ReportShareLinkAccessEventRequest getShareLinkAccess() {
+        return this.shareLinkAccess;
     }
 
 }

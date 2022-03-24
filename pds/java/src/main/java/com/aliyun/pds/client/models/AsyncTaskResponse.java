@@ -12,6 +12,10 @@ public class AsyncTaskResponse extends TeaModel {
     @NameInMap("async_task_id")
     public String asyncTaskId;
 
+    // created_at
+    @NameInMap("created_at")
+    public Long createdAt;
+
     // err_code
     @NameInMap("err_code")
     public Long errCode;
@@ -39,6 +43,14 @@ public class AsyncTaskResponse extends TeaModel {
     }
     public String getAsyncTaskId() {
         return this.asyncTaskId;
+    }
+
+    public AsyncTaskResponse setCreatedAt(Long createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+    public Long getCreatedAt() {
+        return this.createdAt;
     }
 
     public AsyncTaskResponse setErrCode(Long errCode) {
