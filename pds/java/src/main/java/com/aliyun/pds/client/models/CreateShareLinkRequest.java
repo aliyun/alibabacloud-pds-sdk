@@ -18,9 +18,29 @@ public class CreateShareLinkRequest extends TeaModel {
     @NameInMap("category")
     public String category;
 
+    // comments
+    @NameInMap("comments")
+    public String comments;
+
     // description
     @NameInMap("description")
     public String description;
+
+    // 禁止下载分享中的文件
+    @NameInMap("disable_download")
+    public Boolean disableDownload;
+
+    // 禁止预览分享中的文件
+    @NameInMap("disable_preview")
+    public Boolean disablePreview;
+
+    // 禁止转存分享中的文件
+    @NameInMap("disable_save")
+    public Boolean disableSave;
+
+    // 分享下载次数限制
+    @NameInMap("download_limit")
+    public Long downloadLimit;
 
     // 多drive使用该字段，view分享支持跨drive，使用该字段，如果为空，则是分享view下所有文件
     @NameInMap("drive_file_list")
@@ -35,6 +55,10 @@ public class CreateShareLinkRequest extends TeaModel {
     // enable_file_changed_notify
     @NameInMap("enable_file_changed_notify")
     public Boolean enableFileChangedNotify;
+
+    // 允许上传文件到分享
+    @NameInMap("enable_upload")
+    public Boolean enableUpload;
 
     // expiration
     @NameInMap("expiration")
@@ -56,8 +80,28 @@ public class CreateShareLinkRequest extends TeaModel {
     @NameInMap("filter_group")
     public String filterGroup;
 
+    // 分享预览次数限制
+    @NameInMap("preview_limit")
+    public Long previewLimit;
+
     @NameInMap("referer")
     public String referer;
+
+    // 企业内(domain)登录后才允许使用分享
+    @NameInMap("require_login")
+    public Boolean requireLogin;
+
+    // 分享转存和下载的总次数限制
+    @NameInMap("save_download_limit")
+    public Long saveDownloadLimit;
+
+    // 分享转存次数限制
+    @NameInMap("save_limit")
+    public Long saveLimit;
+
+    // share_icon
+    @NameInMap("share_icon")
+    public String shareIcon;
 
     // share_name
     @NameInMap("share_name")
@@ -104,12 +148,52 @@ public class CreateShareLinkRequest extends TeaModel {
         return this.category;
     }
 
+    public CreateShareLinkRequest setComments(String comments) {
+        this.comments = comments;
+        return this;
+    }
+    public String getComments() {
+        return this.comments;
+    }
+
     public CreateShareLinkRequest setDescription(String description) {
         this.description = description;
         return this;
     }
     public String getDescription() {
         return this.description;
+    }
+
+    public CreateShareLinkRequest setDisableDownload(Boolean disableDownload) {
+        this.disableDownload = disableDownload;
+        return this;
+    }
+    public Boolean getDisableDownload() {
+        return this.disableDownload;
+    }
+
+    public CreateShareLinkRequest setDisablePreview(Boolean disablePreview) {
+        this.disablePreview = disablePreview;
+        return this;
+    }
+    public Boolean getDisablePreview() {
+        return this.disablePreview;
+    }
+
+    public CreateShareLinkRequest setDisableSave(Boolean disableSave) {
+        this.disableSave = disableSave;
+        return this;
+    }
+    public Boolean getDisableSave() {
+        return this.disableSave;
+    }
+
+    public CreateShareLinkRequest setDownloadLimit(Long downloadLimit) {
+        this.downloadLimit = downloadLimit;
+        return this;
+    }
+    public Long getDownloadLimit() {
+        return this.downloadLimit;
     }
 
     public CreateShareLinkRequest setDriveFileList(java.util.List<ShareFile> driveFileList) {
@@ -134,6 +218,14 @@ public class CreateShareLinkRequest extends TeaModel {
     }
     public Boolean getEnableFileChangedNotify() {
         return this.enableFileChangedNotify;
+    }
+
+    public CreateShareLinkRequest setEnableUpload(Boolean enableUpload) {
+        this.enableUpload = enableUpload;
+        return this;
+    }
+    public Boolean getEnableUpload() {
+        return this.enableUpload;
     }
 
     public CreateShareLinkRequest setExpiration(String expiration) {
@@ -176,12 +268,52 @@ public class CreateShareLinkRequest extends TeaModel {
         return this.filterGroup;
     }
 
+    public CreateShareLinkRequest setPreviewLimit(Long previewLimit) {
+        this.previewLimit = previewLimit;
+        return this;
+    }
+    public Long getPreviewLimit() {
+        return this.previewLimit;
+    }
+
     public CreateShareLinkRequest setReferer(String referer) {
         this.referer = referer;
         return this;
     }
     public String getReferer() {
         return this.referer;
+    }
+
+    public CreateShareLinkRequest setRequireLogin(Boolean requireLogin) {
+        this.requireLogin = requireLogin;
+        return this;
+    }
+    public Boolean getRequireLogin() {
+        return this.requireLogin;
+    }
+
+    public CreateShareLinkRequest setSaveDownloadLimit(Long saveDownloadLimit) {
+        this.saveDownloadLimit = saveDownloadLimit;
+        return this;
+    }
+    public Long getSaveDownloadLimit() {
+        return this.saveDownloadLimit;
+    }
+
+    public CreateShareLinkRequest setSaveLimit(Long saveLimit) {
+        this.saveLimit = saveLimit;
+        return this;
+    }
+    public Long getSaveLimit() {
+        return this.saveLimit;
+    }
+
+    public CreateShareLinkRequest setShareIcon(String shareIcon) {
+        this.shareIcon = shareIcon;
+        return this;
+    }
+    public String getShareIcon() {
+        return this.shareIcon;
     }
 
     public CreateShareLinkRequest setShareName(String shareName) {

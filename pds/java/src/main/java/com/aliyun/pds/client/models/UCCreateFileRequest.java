@@ -70,7 +70,6 @@ public class UCCreateFileRequest extends TeaModel {
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // encrypt_mode
     @NameInMap("encrypt_mode")
     public String encryptMode;
 

@@ -195,6 +195,9 @@ public class UpdateDomainResponse extends TeaModel {
     @NameInMap("store_region_list")
     public java.util.List<String> storeRegionList;
 
+    @NameInMap("subdomain_config")
+    public SubdomainConfig subdomainConfig;
+
     // Domain 更新时间
     @NameInMap("updated_at")
     public String updatedAt;
@@ -627,6 +630,14 @@ public class UpdateDomainResponse extends TeaModel {
     }
     public java.util.List<String> getStoreRegionList() {
         return this.storeRegionList;
+    }
+
+    public UpdateDomainResponse setSubdomainConfig(SubdomainConfig subdomainConfig) {
+        this.subdomainConfig = subdomainConfig;
+        return this;
+    }
+    public SubdomainConfig getSubdomainConfig() {
+        return this.subdomainConfig;
     }
 
     public UpdateDomainResponse setUpdatedAt(String updatedAt) {

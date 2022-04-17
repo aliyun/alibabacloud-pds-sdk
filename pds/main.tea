@@ -21302,6 +21302,7 @@ model GetDownloadUrlRequest {
   referer?: string(name='referer'),
   shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
   signToken?: string(name='sign_token'),
+  staticUrl?: boolean(name='static_url'),
 }
 
 /**
@@ -24552,6 +24553,7 @@ model AppConfig {
   disableGroup?: boolean(name='disable_group'),
   enableHiddenFile?: boolean(name='enable_hidden_file'),
   enableShareLinkCountLimit?: boolean(name='enable_share_link_count_limit'),
+  enableSseOss?: boolean(name='enable_sse_oss'),
   enableTransferAcceleration?: boolean(name='enable_transfer_acceleration'),
   enableUpdateShareLinkByAdmin?: boolean(name='enable_update_share_link_by_admin'),
   hiddenSwitchUserRoleEntry?: boolean(name='hidden_switch_user_role_entry'),

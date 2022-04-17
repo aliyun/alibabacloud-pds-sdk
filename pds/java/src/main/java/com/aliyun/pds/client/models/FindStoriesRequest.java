@@ -21,6 +21,10 @@ public class FindStoriesRequest extends TeaModel {
     @NameInMap("create_time_range")
     public FindStoryRequestTimeRange createTimeRange;
 
+    // custom_labels
+    @NameInMap("custom_labels")
+    public String customLabels;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
@@ -60,6 +64,10 @@ public class FindStoriesRequest extends TeaModel {
     @NameInMap("url_expire_sec")
     public Long urlExpireSec;
 
+    // with_empty_stories
+    @NameInMap("with_empty_stories")
+    public Boolean withEmptyStories;
+
     public static FindStoriesRequest build(java.util.Map<String, ?> map) throws Exception {
         FindStoriesRequest self = new FindStoriesRequest();
         return TeaModel.build(map, self);
@@ -95,6 +103,14 @@ public class FindStoriesRequest extends TeaModel {
     }
     public FindStoryRequestTimeRange getCreateTimeRange() {
         return this.createTimeRange;
+    }
+
+    public FindStoriesRequest setCustomLabels(String customLabels) {
+        this.customLabels = customLabels;
+        return this;
+    }
+    public String getCustomLabels() {
+        return this.customLabels;
     }
 
     public FindStoriesRequest setDriveId(String driveId) {
@@ -175,6 +191,14 @@ public class FindStoriesRequest extends TeaModel {
     }
     public Long getUrlExpireSec() {
         return this.urlExpireSec;
+    }
+
+    public FindStoriesRequest setWithEmptyStories(Boolean withEmptyStories) {
+        this.withEmptyStories = withEmptyStories;
+        return this;
+    }
+    public Boolean getWithEmptyStories() {
+        return this.withEmptyStories;
     }
 
 }
