@@ -12714,8 +12714,9 @@ type GetDownloadUrlResponse struct {
 	// internal_url
 	InternalUrl *string `json:"internal_url,omitempty" xml:"internal_url,omitempty"`
 	// method
-	Method    *string    `json:"method,omitempty" xml:"method,omitempty"`
-	Ratelimit *RateLimit `json:"ratelimit,omitempty" xml:"ratelimit,omitempty"`
+	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// PunishFlag
+	PunishFlag *int64 `json:"punish_flag,omitempty" xml:"punish_flag,omitempty"`
 	// size
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 	// streams info
@@ -12769,8 +12770,8 @@ func (s *GetDownloadUrlResponse) SetMethod(v string) *GetDownloadUrlResponse {
 	return s
 }
 
-func (s *GetDownloadUrlResponse) SetRatelimit(v *RateLimit) *GetDownloadUrlResponse {
-	s.Ratelimit = v
+func (s *GetDownloadUrlResponse) SetPunishFlag(v int64) *GetDownloadUrlResponse {
+	s.PunishFlag = &v
 	return s
 }
 
@@ -13506,6 +13507,8 @@ type GetFileRequest struct {
 	// office_thumbnail_process
 	OfficeThumbnailProcess *string `json:"office_thumbnail_process,omitempty" xml:"office_thumbnail_process,omitempty"`
 	Referer                *string `json:"referer,omitempty" xml:"referer,omitempty"`
+	// revision_id
+	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 	// share_id, either share_id or drive_id is required
 	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
@@ -13581,6 +13584,11 @@ func (s *GetFileRequest) SetOfficeThumbnailProcess(v string) *GetFileRequest {
 
 func (s *GetFileRequest) SetReferer(v string) *GetFileRequest {
 	s.Referer = &v
+	return s
+}
+
+func (s *GetFileRequest) SetRevisionId(v string) *GetFileRequest {
+	s.RevisionId = &v
 	return s
 }
 
@@ -21079,6 +21087,7 @@ type ReportEventRequest struct {
 	Httpheaders map[string]*string `json:"httpheaders,omitempty" xml:"httpheaders,omitempty"`
 	// event_type
 	EventType       *string                            `json:"event_type,omitempty" xml:"event_type,omitempty"`
+	MediaPlay       *ReportMediaPlayEventRequest       `json:"media_play,omitempty" xml:"media_play,omitempty"`
 	ShareLink       *ReportShareLinkEventRequest       `json:"share_link,omitempty" xml:"share_link,omitempty"`
 	ShareLinkAccess *ReportShareLinkAccessEventRequest `json:"share_link_access,omitempty" xml:"share_link_access,omitempty"`
 }
@@ -21098,6 +21107,11 @@ func (s *ReportEventRequest) SetHttpheaders(v map[string]*string) *ReportEventRe
 
 func (s *ReportEventRequest) SetEventType(v string) *ReportEventRequest {
 	s.EventType = &v
+	return s
+}
+
+func (s *ReportEventRequest) SetMediaPlay(v *ReportMediaPlayEventRequest) *ReportEventRequest {
+	s.MediaPlay = v
 	return s
 }
 
@@ -21123,6 +21137,69 @@ func (s ReportEventResponse) String() string {
 
 func (s ReportEventResponse) GoString() string {
 	return s.String()
+}
+
+/**
+ * report_media_play_event request
+ */
+type ReportMediaPlayEventRequest struct {
+	// duration
+	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// error
+	Error *string `json:"error,omitempty" xml:"error,omitempty"`
+	// file_id
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// player_version
+	PlayerVersion *string `json:"player_version,omitempty" xml:"player_version,omitempty"`
+	// sub_type
+	SubType *string `json:"sub_type,omitempty" xml:"sub_type,omitempty"`
+	// template_id
+	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
+	// wait_count
+	WaitCount *int64 `json:"wait_count,omitempty" xml:"wait_count,omitempty"`
+}
+
+func (s ReportMediaPlayEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportMediaPlayEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReportMediaPlayEventRequest) SetDuration(v int64) *ReportMediaPlayEventRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *ReportMediaPlayEventRequest) SetError(v string) *ReportMediaPlayEventRequest {
+	s.Error = &v
+	return s
+}
+
+func (s *ReportMediaPlayEventRequest) SetFileId(v string) *ReportMediaPlayEventRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *ReportMediaPlayEventRequest) SetPlayerVersion(v string) *ReportMediaPlayEventRequest {
+	s.PlayerVersion = &v
+	return s
+}
+
+func (s *ReportMediaPlayEventRequest) SetSubType(v string) *ReportMediaPlayEventRequest {
+	s.SubType = &v
+	return s
+}
+
+func (s *ReportMediaPlayEventRequest) SetTemplateId(v string) *ReportMediaPlayEventRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ReportMediaPlayEventRequest) SetWaitCount(v int64) *ReportMediaPlayEventRequest {
+	s.WaitCount = &v
+	return s
 }
 
 /**
@@ -28160,10 +28237,12 @@ type AppConfig struct {
 	HideSharelinkLogin           *bool   `json:"hide_sharelink_login,omitempty" xml:"hide_sharelink_login,omitempty"`
 	HideUserEntry                *bool   `json:"hide_user_entry,omitempty" xml:"hide_user_entry,omitempty"`
 	MountAppEnable               *bool   `json:"mount_app_enable,omitempty" xml:"mount_app_enable,omitempty"`
+	SameNameFileUploadMode       *string `json:"same_name_file_upload_mode,omitempty" xml:"same_name_file_upload_mode,omitempty"`
 	ShowCustomizedLoginConfig    *bool   `json:"show_customized_login_config,omitempty" xml:"show_customized_login_config,omitempty"`
 	SyncAppEnable                *bool   `json:"sync_app_enable,omitempty" xml:"sync_app_enable,omitempty"`
 	UserCanAccessGroupRecycleBin *bool   `json:"user_can_access_group_recycle_bin,omitempty" xml:"user_can_access_group_recycle_bin,omitempty"`
 	VideoPlayEnable              *bool   `json:"video_play_enable,omitempty" xml:"video_play_enable,omitempty"`
+	WebClientDownloadMode        *string `json:"web_client_download_mode,omitempty" xml:"web_client_download_mode,omitempty"`
 	WebVersion                   *string `json:"web_version,omitempty" xml:"web_version,omitempty"`
 	WhiteAdminMenuItems          *string `json:"white_admin_menu_items,omitempty" xml:"white_admin_menu_items,omitempty"`
 }
@@ -28266,6 +28345,11 @@ func (s *AppConfig) SetMountAppEnable(v bool) *AppConfig {
 	return s
 }
 
+func (s *AppConfig) SetSameNameFileUploadMode(v string) *AppConfig {
+	s.SameNameFileUploadMode = &v
+	return s
+}
+
 func (s *AppConfig) SetShowCustomizedLoginConfig(v bool) *AppConfig {
 	s.ShowCustomizedLoginConfig = &v
 	return s
@@ -28283,6 +28367,11 @@ func (s *AppConfig) SetUserCanAccessGroupRecycleBin(v bool) *AppConfig {
 
 func (s *AppConfig) SetVideoPlayEnable(v bool) *AppConfig {
 	s.VideoPlayEnable = &v
+	return s
+}
+
+func (s *AppConfig) SetWebClientDownloadMode(v string) *AppConfig {
+	s.WebClientDownloadMode = &v
 	return s
 }
 
@@ -28674,6 +28763,7 @@ type BaseDomainResponse struct {
 	// 预付费套餐
 	PrepaidPackage             *string            `json:"prepaid_package,omitempty" xml:"prepaid_package,omitempty"`
 	PublishedAppAccessStrategy *AppAccessStrategy `json:"published_app_access_strategy,omitempty" xml:"published_app_access_strategy,omitempty"`
+	RecycleBinConfig           *RecycleBinConfig  `json:"recycle_bin_config,omitempty" xml:"recycle_bin_config,omitempty"`
 	RoleConfig                 *RoleConfig        `json:"role_config,omitempty" xml:"role_config,omitempty"`
 	// Domain ServiceCode
 	ServiceCode *string `json:"service_code,omitempty" xml:"service_code,omitempty"`
@@ -28909,6 +28999,11 @@ func (s *BaseDomainResponse) SetPrepaidPackage(v string) *BaseDomainResponse {
 
 func (s *BaseDomainResponse) SetPublishedAppAccessStrategy(v *AppAccessStrategy) *BaseDomainResponse {
 	s.PublishedAppAccessStrategy = v
+	return s
+}
+
+func (s *BaseDomainResponse) SetRecycleBinConfig(v *RecycleBinConfig) *BaseDomainResponse {
+	s.RecycleBinConfig = v
 	return s
 }
 
@@ -29793,6 +29888,7 @@ type CreateDomainResponse struct {
 	// 预付费套餐
 	PrepaidPackage             *string            `json:"prepaid_package,omitempty" xml:"prepaid_package,omitempty"`
 	PublishedAppAccessStrategy *AppAccessStrategy `json:"published_app_access_strategy,omitempty" xml:"published_app_access_strategy,omitempty"`
+	RecycleBinConfig           *RecycleBinConfig  `json:"recycle_bin_config,omitempty" xml:"recycle_bin_config,omitempty"`
 	RoleConfig                 *RoleConfig        `json:"role_config,omitempty" xml:"role_config,omitempty"`
 	// Domain ServiceCode
 	ServiceCode *string `json:"service_code,omitempty" xml:"service_code,omitempty"`
@@ -30028,6 +30124,11 @@ func (s *CreateDomainResponse) SetPrepaidPackage(v string) *CreateDomainResponse
 
 func (s *CreateDomainResponse) SetPublishedAppAccessStrategy(v *AppAccessStrategy) *CreateDomainResponse {
 	s.PublishedAppAccessStrategy = v
+	return s
+}
+
+func (s *CreateDomainResponse) SetRecycleBinConfig(v *RecycleBinConfig) *CreateDomainResponse {
+	s.RecycleBinConfig = v
 	return s
 }
 
@@ -30672,6 +30773,38 @@ func (s *CustomBenefitMeta) SetQuota(v int64) *CustomBenefitMeta {
 /**
  *
  */
+type CustomSideLinkConfig struct {
+	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Link *string `json:"link,omitempty" xml:"link,omitempty"`
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s CustomSideLinkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomSideLinkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CustomSideLinkConfig) SetIcon(v string) *CustomSideLinkConfig {
+	s.Icon = &v
+	return s
+}
+
+func (s *CustomSideLinkConfig) SetLink(v string) *CustomSideLinkConfig {
+	s.Link = &v
+	return s
+}
+
+func (s *CustomSideLinkConfig) SetText(v string) *CustomSideLinkConfig {
+	s.Text = &v
+	return s
+}
+
+/**
+ *
+ */
 type DataCName struct {
 	// datacname
 	DataCname *string `json:"data_cname,omitempty" xml:"data_cname,omitempty" require:"true"`
@@ -30992,6 +31125,32 @@ func (s *DomainBaseInfoLogDetail) SetName(v string) *DomainBaseInfoLogDetail {
 /**
  *
  */
+type DomainBuildClient struct {
+	Copyright *string `json:"copyright,omitempty" xml:"copyright,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s DomainBuildClient) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DomainBuildClient) GoString() string {
+	return s.String()
+}
+
+func (s *DomainBuildClient) SetCopyright(v string) *DomainBuildClient {
+	s.Copyright = &v
+	return s
+}
+
+func (s *DomainBuildClient) SetName(v string) *DomainBuildClient {
+	s.Name = &v
+	return s
+}
+
+/**
+ *
+ */
 type DomainCNameResponse struct {
 	// data cname list
 	DataCnameList []*DataCName `json:"data_cname_list,omitempty" xml:"data_cname_list,omitempty" require:"true" type:"Repeated"`
@@ -31042,6 +31201,135 @@ func (s *DomainCnameInfoLogDetail) SetCertName(v string) *DomainCnameInfoLogDeta
 
 func (s *DomainCnameInfoLogDetail) SetCname(v string) *DomainCnameInfoLogDetail {
 	s.Cname = &v
+	return s
+}
+
+/**
+ *
+ */
+type DomainFileConfigDetail struct {
+	RecycleBinAutoDeleteEnabled    *bool   `json:"recycle_bin_auto_delete_enabled,omitempty" xml:"recycle_bin_auto_delete_enabled,omitempty"`
+	RecycleBinAutoDeleteKeepSecond *int64  `json:"recycle_bin_auto_delete_keep_second,omitempty" xml:"recycle_bin_auto_delete_keep_second,omitempty"`
+	SameNameFileUploadMode         *string `json:"same_name_file_upload_mode,omitempty" xml:"same_name_file_upload_mode,omitempty"`
+	WebClientDownloadMode          *string `json:"web_client_download_mode,omitempty" xml:"web_client_download_mode,omitempty"`
+}
+
+func (s DomainFileConfigDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DomainFileConfigDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DomainFileConfigDetail) SetRecycleBinAutoDeleteEnabled(v bool) *DomainFileConfigDetail {
+	s.RecycleBinAutoDeleteEnabled = &v
+	return s
+}
+
+func (s *DomainFileConfigDetail) SetRecycleBinAutoDeleteKeepSecond(v int64) *DomainFileConfigDetail {
+	s.RecycleBinAutoDeleteKeepSecond = &v
+	return s
+}
+
+func (s *DomainFileConfigDetail) SetSameNameFileUploadMode(v string) *DomainFileConfigDetail {
+	s.SameNameFileUploadMode = &v
+	return s
+}
+
+func (s *DomainFileConfigDetail) SetWebClientDownloadMode(v string) *DomainFileConfigDetail {
+	s.WebClientDownloadMode = &v
+	return s
+}
+
+/**
+ *
+ */
+type DomainSeniorConfig struct {
+	// 桌面端管理
+	ClientDownloadEnable *bool `json:"client_download_enable,omitempty" xml:"client_download_enable,omitempty"`
+	// 安全设置
+	CspFrameAncestors *string `json:"csp_frame_ancestors,omitempty" xml:"csp_frame_ancestors,omitempty"`
+	// 自定义登录页面
+	CustomLoginAppid *string `json:"custom_login_appid,omitempty" xml:"custom_login_appid,omitempty"`
+	CustomLoginUrl   *string `json:"custom_login_url,omitempty" xml:"custom_login_url,omitempty"`
+	CustomLogoutUrl  *string `json:"custom_logout_url,omitempty" xml:"custom_logout_url,omitempty"`
+	// 自定义链接
+	CustomSideLinkList []*CustomSideLinkConfig `json:"custom_side_link_list,omitempty" xml:"custom_side_link_list,omitempty" type:"Repeated"`
+	// 界面设置
+	HomePageBgImageUrl *string                  `json:"home_page_bg_image_url,omitempty" xml:"home_page_bg_image_url,omitempty"`
+	HomePageFooter     *string                  `json:"home_page_footer,omitempty" xml:"home_page_footer,omitempty"`
+	HomePageFooter2    *string                  `json:"home_page_footer2,omitempty" xml:"home_page_footer2,omitempty"`
+	HomePageSlogan     *string                  `json:"home_page_slogan,omitempty" xml:"home_page_slogan,omitempty"`
+	RefererEnable      *bool                    `json:"referer_enable,omitempty" xml:"referer_enable,omitempty"`
+	WxTxtList          []*WxTrustedDomainConfig `json:"wx_txt_list,omitempty" xml:"wx_txt_list,omitempty" type:"Repeated"`
+}
+
+func (s DomainSeniorConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DomainSeniorConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DomainSeniorConfig) SetClientDownloadEnable(v bool) *DomainSeniorConfig {
+	s.ClientDownloadEnable = &v
+	return s
+}
+
+func (s *DomainSeniorConfig) SetCspFrameAncestors(v string) *DomainSeniorConfig {
+	s.CspFrameAncestors = &v
+	return s
+}
+
+func (s *DomainSeniorConfig) SetCustomLoginAppid(v string) *DomainSeniorConfig {
+	s.CustomLoginAppid = &v
+	return s
+}
+
+func (s *DomainSeniorConfig) SetCustomLoginUrl(v string) *DomainSeniorConfig {
+	s.CustomLoginUrl = &v
+	return s
+}
+
+func (s *DomainSeniorConfig) SetCustomLogoutUrl(v string) *DomainSeniorConfig {
+	s.CustomLogoutUrl = &v
+	return s
+}
+
+func (s *DomainSeniorConfig) SetCustomSideLinkList(v []*CustomSideLinkConfig) *DomainSeniorConfig {
+	s.CustomSideLinkList = v
+	return s
+}
+
+func (s *DomainSeniorConfig) SetHomePageBgImageUrl(v string) *DomainSeniorConfig {
+	s.HomePageBgImageUrl = &v
+	return s
+}
+
+func (s *DomainSeniorConfig) SetHomePageFooter(v string) *DomainSeniorConfig {
+	s.HomePageFooter = &v
+	return s
+}
+
+func (s *DomainSeniorConfig) SetHomePageFooter2(v string) *DomainSeniorConfig {
+	s.HomePageFooter2 = &v
+	return s
+}
+
+func (s *DomainSeniorConfig) SetHomePageSlogan(v string) *DomainSeniorConfig {
+	s.HomePageSlogan = &v
+	return s
+}
+
+func (s *DomainSeniorConfig) SetRefererEnable(v bool) *DomainSeniorConfig {
+	s.RefererEnable = &v
+	return s
+}
+
+func (s *DomainSeniorConfig) SetWxTxtList(v []*WxTrustedDomainConfig) *DomainSeniorConfig {
+	s.WxTxtList = v
 	return s
 }
 
@@ -31185,10 +31473,13 @@ func (s *DriveLogSettingDetail) SetTotalSize(v int64) *DriveLogSettingDetail {
  *
  */
 type EntMgmtLogDetail struct {
+	BuildClient                 *DomainBuildClient           `json:"build_client,omitempty" xml:"build_client,omitempty"`
 	DomainBaseInfo              *DomainBaseInfoLogDetail     `json:"domain_base_info,omitempty" xml:"domain_base_info,omitempty"`
 	DomainCnameInfo             *DomainCnameInfoLogDetail    `json:"domain_cname_info,omitempty" xml:"domain_cname_info,omitempty"`
+	FileConfig                  *DomainFileConfigDetail      `json:"file_config,omitempty" xml:"file_config,omitempty"`
 	FileCustomRoleInfo          *FileCustomRoleInfoLogDetail `json:"file_custom_role_info,omitempty" xml:"file_custom_role_info,omitempty"`
 	FileCustomRoleInfoUpdatedTo *FileCustomRoleInfoLogDetail `json:"file_custom_role_info_updated_to,omitempty" xml:"file_custom_role_info_updated_to,omitempty"`
+	SeniorConfig                *DomainSeniorConfig          `json:"senior_config,omitempty" xml:"senior_config,omitempty"`
 }
 
 func (s EntMgmtLogDetail) String() string {
@@ -31197,6 +31488,11 @@ func (s EntMgmtLogDetail) String() string {
 
 func (s EntMgmtLogDetail) GoString() string {
 	return s.String()
+}
+
+func (s *EntMgmtLogDetail) SetBuildClient(v *DomainBuildClient) *EntMgmtLogDetail {
+	s.BuildClient = v
+	return s
 }
 
 func (s *EntMgmtLogDetail) SetDomainBaseInfo(v *DomainBaseInfoLogDetail) *EntMgmtLogDetail {
@@ -31209,6 +31505,11 @@ func (s *EntMgmtLogDetail) SetDomainCnameInfo(v *DomainCnameInfoLogDetail) *EntM
 	return s
 }
 
+func (s *EntMgmtLogDetail) SetFileConfig(v *DomainFileConfigDetail) *EntMgmtLogDetail {
+	s.FileConfig = v
+	return s
+}
+
 func (s *EntMgmtLogDetail) SetFileCustomRoleInfo(v *FileCustomRoleInfoLogDetail) *EntMgmtLogDetail {
 	s.FileCustomRoleInfo = v
 	return s
@@ -31216,6 +31517,11 @@ func (s *EntMgmtLogDetail) SetFileCustomRoleInfo(v *FileCustomRoleInfoLogDetail)
 
 func (s *EntMgmtLogDetail) SetFileCustomRoleInfoUpdatedTo(v *FileCustomRoleInfoLogDetail) *EntMgmtLogDetail {
 	s.FileCustomRoleInfoUpdatedTo = v
+	return s
+}
+
+func (s *EntMgmtLogDetail) SetSeniorConfig(v *DomainSeniorConfig) *EntMgmtLogDetail {
+	s.SeniorConfig = v
 	return s
 }
 
@@ -31671,6 +31977,7 @@ type GetDomainResponse struct {
 	// 预付费套餐
 	PrepaidPackage             *string            `json:"prepaid_package,omitempty" xml:"prepaid_package,omitempty"`
 	PublishedAppAccessStrategy *AppAccessStrategy `json:"published_app_access_strategy,omitempty" xml:"published_app_access_strategy,omitempty"`
+	RecycleBinConfig           *RecycleBinConfig  `json:"recycle_bin_config,omitempty" xml:"recycle_bin_config,omitempty"`
 	RoleConfig                 *RoleConfig        `json:"role_config,omitempty" xml:"role_config,omitempty"`
 	// Domain ServiceCode
 	ServiceCode *string `json:"service_code,omitempty" xml:"service_code,omitempty"`
@@ -31906,6 +32213,11 @@ func (s *GetDomainResponse) SetPrepaidPackage(v string) *GetDomainResponse {
 
 func (s *GetDomainResponse) SetPublishedAppAccessStrategy(v *AppAccessStrategy) *GetDomainResponse {
 	s.PublishedAppAccessStrategy = v
+	return s
+}
+
+func (s *GetDomainResponse) SetRecycleBinConfig(v *RecycleBinConfig) *GetDomainResponse {
+	s.RecycleBinConfig = v
 	return s
 }
 
@@ -33592,6 +33904,38 @@ func (s *OfficePreviewConfig) SetEnabled(v bool) *OfficePreviewConfig {
 }
 
 /**
+ *
+ */
+type RecycleBinConfig struct {
+	AutoDeleteEnabled             *bool  `json:"auto_delete_enabled,omitempty" xml:"auto_delete_enabled,omitempty"`
+	AutoDeleteKeepSecond          *int64 `json:"auto_delete_keep_second,omitempty" xml:"auto_delete_keep_second,omitempty"`
+	DeleteTrashNormalFileDisabled *bool  `json:"delete_trash_normal_file_disabled,omitempty" xml:"delete_trash_normal_file_disabled,omitempty"`
+}
+
+func (s RecycleBinConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecycleBinConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RecycleBinConfig) SetAutoDeleteEnabled(v bool) *RecycleBinConfig {
+	s.AutoDeleteEnabled = &v
+	return s
+}
+
+func (s *RecycleBinConfig) SetAutoDeleteKeepSecond(v int64) *RecycleBinConfig {
+	s.AutoDeleteKeepSecond = &v
+	return s
+}
+
+func (s *RecycleBinConfig) SetDeleteTrashNormalFileDisabled(v bool) *RecycleBinConfig {
+	s.DeleteTrashNormalFileDisabled = &v
+	return s
+}
+
+/**
  * Remove user to subdomain request
  */
 type RemoveUserFromSubdomainRequest struct {
@@ -33828,8 +34172,6 @@ type SearchAllRecycleBinRequest struct {
 	Query *string `json:"query,omitempty" xml:"query,omitempty" maxLength:"4096"`
 	// referer
 	Referer *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// return_total_count 是否返回查询总数
-	ReturnTotalCount *bool `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
 	// sign_token
 	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
 	// url_expire_sec
@@ -33909,11 +34251,6 @@ func (s *SearchAllRecycleBinRequest) SetQuery(v string) *SearchAllRecycleBinRequ
 
 func (s *SearchAllRecycleBinRequest) SetReferer(v string) *SearchAllRecycleBinRequest {
 	s.Referer = &v
-	return s
-}
-
-func (s *SearchAllRecycleBinRequest) SetReturnTotalCount(v bool) *SearchAllRecycleBinRequest {
-	s.ReturnTotalCount = &v
 	return s
 }
 
@@ -34964,6 +35301,7 @@ type UpdateDomainResponse struct {
 	// 预付费套餐
 	PrepaidPackage             *string            `json:"prepaid_package,omitempty" xml:"prepaid_package,omitempty"`
 	PublishedAppAccessStrategy *AppAccessStrategy `json:"published_app_access_strategy,omitempty" xml:"published_app_access_strategy,omitempty"`
+	RecycleBinConfig           *RecycleBinConfig  `json:"recycle_bin_config,omitempty" xml:"recycle_bin_config,omitempty"`
 	RoleConfig                 *RoleConfig        `json:"role_config,omitempty" xml:"role_config,omitempty"`
 	// Domain ServiceCode
 	ServiceCode *string `json:"service_code,omitempty" xml:"service_code,omitempty"`
@@ -35199,6 +35537,11 @@ func (s *UpdateDomainResponse) SetPrepaidPackage(v string) *UpdateDomainResponse
 
 func (s *UpdateDomainResponse) SetPublishedAppAccessStrategy(v *AppAccessStrategy) *UpdateDomainResponse {
 	s.PublishedAppAccessStrategy = v
+	return s
+}
+
+func (s *UpdateDomainResponse) SetRecycleBinConfig(v *RecycleBinConfig) *UpdateDomainResponse {
+	s.RecycleBinConfig = v
 	return s
 }
 
@@ -36987,6 +37330,38 @@ func (s *WatermarkTextConfig) SetSize(v int64) *WatermarkTextConfig {
 
 func (s *WatermarkTextConfig) SetVertical(v int64) *WatermarkTextConfig {
 	s.Vertical = &v
+	return s
+}
+
+/**
+ *
+ */
+type WxTrustedDomainConfig struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	Show    *bool   `json:"show,omitempty" xml:"show,omitempty"`
+}
+
+func (s WxTrustedDomainConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WxTrustedDomainConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WxTrustedDomainConfig) SetContent(v string) *WxTrustedDomainConfig {
+	s.Content = &v
+	return s
+}
+
+func (s *WxTrustedDomainConfig) SetName(v string) *WxTrustedDomainConfig {
+	s.Name = &v
+	return s
+}
+
+func (s *WxTrustedDomainConfig) SetShow(v bool) *WxTrustedDomainConfig {
+	s.Show = &v
 	return s
 }
 
