@@ -9682,8 +9682,9 @@ type CreateFileRequest struct {
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
 	Meta     *string `json:"meta,omitempty" xml:"meta,omitempty"`
 	// Name
-	Name           *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
-	ParallelUpload *bool   `json:"parallel_upload,omitempty" xml:"parallel_upload,omitempty"`
+	Name                    *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
+	NeedMergePeriodRevision *bool   `json:"need_merge_period_revision,omitempty" xml:"need_merge_period_revision,omitempty"`
+	ParallelUpload          *bool   `json:"parallel_upload,omitempty" xml:"parallel_upload,omitempty"`
 	// parent_file_id
 	ParentFileId     *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4" pattern:"[a-z0-9]{1,50}"`
 	ParentFileIdPath *string `json:"parent_file_id_path,omitempty" xml:"parent_file_id_path,omitempty"`
@@ -9847,6 +9848,11 @@ func (s *CreateFileRequest) SetMeta(v string) *CreateFileRequest {
 
 func (s *CreateFileRequest) SetName(v string) *CreateFileRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetNeedMergePeriodRevision(v bool) *CreateFileRequest {
+	s.NeedMergePeriodRevision = &v
 	return s
 }
 
@@ -24174,7 +24180,8 @@ type UCCreateFileRequest struct {
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
 	Meta     *string `json:"meta,omitempty" xml:"meta,omitempty"`
 	// Name
-	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
+	Name                    *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
+	NeedMergePeriodRevision *bool   `json:"need_merge_period_revision,omitempty" xml:"need_merge_period_revision,omitempty"`
 	// overwrite
 	Overwrite      *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
 	ParallelUpload *bool `json:"parallel_upload,omitempty" xml:"parallel_upload,omitempty"`
@@ -24364,6 +24371,11 @@ func (s *UCCreateFileRequest) SetMeta(v string) *UCCreateFileRequest {
 
 func (s *UCCreateFileRequest) SetName(v string) *UCCreateFileRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UCCreateFileRequest) SetNeedMergePeriodRevision(v bool) *UCCreateFileRequest {
+	s.NeedMergePeriodRevision = &v
 	return s
 }
 
