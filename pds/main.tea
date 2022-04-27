@@ -20638,7 +20638,6 @@ model CreateFileRequest {
   location?: string(name='location', description='location'),
   meta?: string(name='meta'),
   name: string(name='name', description='Name', example='ccp.jpg', maxLength=1024, minLength=1),
-  needMergePeriodRevision?: boolean(name='need_merge_period_revision'),
   parallelUpload?: boolean(name='parallel_upload'),
   parentFileId: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=4, pattern='[a-z0-9]{1,50}'),
   parentFileIdPath?: string(name='parent_file_id_path'),
@@ -21460,7 +21459,6 @@ model GetFileRequest {
   location?: string(name='location', description='location', example='cn-hangzhou'),
   officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   referer?: string(name='referer'),
-  revisionId?: string(name='revision_id', description='revision_id', example='6030dbcce499a7dad4b54ad7aa411e1535c6af40'),
   shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
   signToken?: string(name='sign_token'),
   urlExpireSec?: int64(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
@@ -23802,7 +23800,6 @@ model UCCreateFileRequest {
   location?: string(name='location', description='location'),
   meta?: string(name='meta'),
   name: string(name='name', description='Name', example='ccp.jpg', maxLength=1024, minLength=1),
-  needMergePeriodRevision?: boolean(name='need_merge_period_revision'),
   overwrite?: boolean(name='overwrite', description='overwrite'),
   parallelUpload?: boolean(name='parallel_upload'),
   parameters?: object(name='parameters', additionalProperties='{"type":"object"}', description='parameters'),
@@ -26376,7 +26373,7 @@ model VideoPreviewConfig {
 model VideoPreviewEnableConfig {
   disableOfflineAudioTranscode?: boolean(name='disable_offline_audio_transcode'),
   disableOfflineVideoTranscode?: boolean(name='disable_offline_video_transcode'),
-  enableTranscodeWhenPlay?: boolean(name='enable_transcode_when_play'),
+  enableTranscodeWhenPlay?: boolean(name='enable_transcode_when_play', description='Deprecated, 后续通过 VideoPreviewNeedTranscodeErrorMap 来判断是否允许重新转码'),
   enableTranscodeWhenUploaded?: boolean(name='enable_transcode_when_uploaded'),
 }
 
@@ -26982,6 +26979,8 @@ model FindStoriesRequest {
   faceGroupIds?: [ string ](name='face_group_ids', description='face_group_ids', items='{"type":"string"}'),
   limit?: int64(name='limit', description='limit', format='int64'),
   marker?: string(name='marker', description='marker'),
+  order?: string(name='order', description='order'),
+  sort?: string(name='sort', description='sort'),
   storyEndTimeRange?: FindStoryRequestTimeRange(name='story_end_time_range'),
   storyId?: string(name='story_id', description='story_id', example='"story112312"'),
   storyName?: string(name='story_name', description='story_name'),

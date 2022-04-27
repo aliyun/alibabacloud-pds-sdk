@@ -9682,9 +9682,8 @@ type CreateFileRequest struct {
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
 	Meta     *string `json:"meta,omitempty" xml:"meta,omitempty"`
 	// Name
-	Name                    *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
-	NeedMergePeriodRevision *bool   `json:"need_merge_period_revision,omitempty" xml:"need_merge_period_revision,omitempty"`
-	ParallelUpload          *bool   `json:"parallel_upload,omitempty" xml:"parallel_upload,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
+	ParallelUpload *bool   `json:"parallel_upload,omitempty" xml:"parallel_upload,omitempty"`
 	// parent_file_id
 	ParentFileId     *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty" require:"true" maxLength:"50" minLength:"4" pattern:"[a-z0-9]{1,50}"`
 	ParentFileIdPath *string `json:"parent_file_id_path,omitempty" xml:"parent_file_id_path,omitempty"`
@@ -9848,11 +9847,6 @@ func (s *CreateFileRequest) SetMeta(v string) *CreateFileRequest {
 
 func (s *CreateFileRequest) SetName(v string) *CreateFileRequest {
 	s.Name = &v
-	return s
-}
-
-func (s *CreateFileRequest) SetNeedMergePeriodRevision(v bool) *CreateFileRequest {
-	s.NeedMergePeriodRevision = &v
 	return s
 }
 
@@ -13513,8 +13507,6 @@ type GetFileRequest struct {
 	// office_thumbnail_process
 	OfficeThumbnailProcess *string `json:"office_thumbnail_process,omitempty" xml:"office_thumbnail_process,omitempty"`
 	Referer                *string `json:"referer,omitempty" xml:"referer,omitempty"`
-	// revision_id
-	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 	// share_id, either share_id or drive_id is required
 	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	SignToken *string `json:"sign_token,omitempty" xml:"sign_token,omitempty"`
@@ -13590,11 +13582,6 @@ func (s *GetFileRequest) SetOfficeThumbnailProcess(v string) *GetFileRequest {
 
 func (s *GetFileRequest) SetReferer(v string) *GetFileRequest {
 	s.Referer = &v
-	return s
-}
-
-func (s *GetFileRequest) SetRevisionId(v string) *GetFileRequest {
-	s.RevisionId = &v
 	return s
 }
 
@@ -24180,8 +24167,7 @@ type UCCreateFileRequest struct {
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
 	Meta     *string `json:"meta,omitempty" xml:"meta,omitempty"`
 	// Name
-	Name                    *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
-	NeedMergePeriodRevision *bool   `json:"need_merge_period_revision,omitempty" xml:"need_merge_period_revision,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty" require:"true" maxLength:"1024" minLength:"1"`
 	// overwrite
 	Overwrite      *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
 	ParallelUpload *bool `json:"parallel_upload,omitempty" xml:"parallel_upload,omitempty"`
@@ -24371,11 +24357,6 @@ func (s *UCCreateFileRequest) SetMeta(v string) *UCCreateFileRequest {
 
 func (s *UCCreateFileRequest) SetName(v string) *UCCreateFileRequest {
 	s.Name = &v
-	return s
-}
-
-func (s *UCCreateFileRequest) SetNeedMergePeriodRevision(v bool) *UCCreateFileRequest {
-	s.NeedMergePeriodRevision = &v
 	return s
 }
 
@@ -36528,8 +36509,9 @@ func (s *VideoPreviewConfig) SetVideoFilterConfig(v *VideoPreviewVideoFilterConf
 type VideoPreviewEnableConfig struct {
 	DisableOfflineAudioTranscode *bool `json:"disable_offline_audio_transcode,omitempty" xml:"disable_offline_audio_transcode,omitempty"`
 	DisableOfflineVideoTranscode *bool `json:"disable_offline_video_transcode,omitempty" xml:"disable_offline_video_transcode,omitempty"`
-	EnableTranscodeWhenPlay      *bool `json:"enable_transcode_when_play,omitempty" xml:"enable_transcode_when_play,omitempty"`
-	EnableTranscodeWhenUploaded  *bool `json:"enable_transcode_when_uploaded,omitempty" xml:"enable_transcode_when_uploaded,omitempty"`
+	// Deprecated, 后续通过 VideoPreviewNeedTranscodeErrorMap 来判断是否允许重新转码
+	EnableTranscodeWhenPlay     *bool `json:"enable_transcode_when_play,omitempty" xml:"enable_transcode_when_play,omitempty"`
+	EnableTranscodeWhenUploaded *bool `json:"enable_transcode_when_uploaded,omitempty" xml:"enable_transcode_when_uploaded,omitempty"`
 }
 
 func (s VideoPreviewEnableConfig) String() string {
@@ -39111,7 +39093,11 @@ type FindStoriesRequest struct {
 	// limit
 	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// marker
-	Marker            *string                    `json:"marker,omitempty" xml:"marker,omitempty"`
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	// order
+	Order *string `json:"order,omitempty" xml:"order,omitempty"`
+	// sort
+	Sort              *string                    `json:"sort,omitempty" xml:"sort,omitempty"`
 	StoryEndTimeRange *FindStoryRequestTimeRange `json:"story_end_time_range,omitempty" xml:"story_end_time_range,omitempty"`
 	// story_id
 	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
@@ -39176,6 +39162,16 @@ func (s *FindStoriesRequest) SetLimit(v int64) *FindStoriesRequest {
 
 func (s *FindStoriesRequest) SetMarker(v string) *FindStoriesRequest {
 	s.Marker = &v
+	return s
+}
+
+func (s *FindStoriesRequest) SetOrder(v string) *FindStoriesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *FindStoriesRequest) SetSort(v string) *FindStoriesRequest {
+	s.Sort = &v
 	return s
 }
 
