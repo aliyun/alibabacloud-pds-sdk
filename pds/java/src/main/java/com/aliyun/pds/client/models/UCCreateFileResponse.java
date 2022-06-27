@@ -57,6 +57,10 @@ public class UCCreateFileResponse extends TeaModel {
     @NameInMap("rapid_upload")
     public Boolean rapidUpload;
 
+    // share_id
+    @NameInMap("share_id")
+    public String shareId;
+
     @NameInMap("signature")
     public SignatureInfo signature;
 
@@ -171,6 +175,14 @@ public class UCCreateFileResponse extends TeaModel {
     }
     public Boolean getRapidUpload() {
         return this.rapidUpload;
+    }
+
+    public UCCreateFileResponse setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public UCCreateFileResponse setSignature(SignatureInfo signature) {

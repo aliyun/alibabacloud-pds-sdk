@@ -10,6 +10,12 @@ public class IDPermission extends TeaModel {
     @NameInMap("ActionList")
     public java.util.List<ActionItem> ActionList;
 
+    @NameInMap("Collection")
+    public String Collection;
+
+    @NameInMap("Condition")
+    public Condition Condition;
+
     @NameInMap("CreatedAt")
     public Long CreatedAt;
 
@@ -21,6 +27,9 @@ public class IDPermission extends TeaModel {
 
     @NameInMap("DomainID")
     public String DomainID;
+
+    @NameInMap("Effect")
+    public String Effect;
 
     @NameInMap("ExpireTime")
     public Long ExpireTime;
@@ -49,6 +58,9 @@ public class IDPermission extends TeaModel {
     @NameInMap("UpdatedBy")
     public String UpdatedBy;
 
+    @NameInMap("UserTags")
+    public java.util.List<String> UserTags;
+
     public static IDPermission build(java.util.Map<String, ?> map) throws Exception {
         IDPermission self = new IDPermission();
         return TeaModel.build(map, self);
@@ -60,6 +72,22 @@ public class IDPermission extends TeaModel {
     }
     public java.util.List<ActionItem> getActionList() {
         return this.ActionList;
+    }
+
+    public IDPermission setCollection(String Collection) {
+        this.Collection = Collection;
+        return this;
+    }
+    public String getCollection() {
+        return this.Collection;
+    }
+
+    public IDPermission setCondition(Condition Condition) {
+        this.Condition = Condition;
+        return this;
+    }
+    public Condition getCondition() {
+        return this.Condition;
     }
 
     public IDPermission setCreatedAt(Long CreatedAt) {
@@ -92,6 +120,14 @@ public class IDPermission extends TeaModel {
     }
     public String getDomainID() {
         return this.DomainID;
+    }
+
+    public IDPermission setEffect(String Effect) {
+        this.Effect = Effect;
+        return this;
+    }
+    public String getEffect() {
+        return this.Effect;
     }
 
     public IDPermission setExpireTime(Long ExpireTime) {
@@ -164,6 +200,14 @@ public class IDPermission extends TeaModel {
     }
     public String getUpdatedBy() {
         return this.UpdatedBy;
+    }
+
+    public IDPermission setUserTags(java.util.List<String> UserTags) {
+        this.UserTags = UserTags;
+        return this;
+    }
+    public java.util.List<String> getUserTags() {
+        return this.UserTags;
     }
 
 }

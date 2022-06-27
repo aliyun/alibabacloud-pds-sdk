@@ -15,9 +15,21 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     @NameInMap("avatar")
     public String avatar;
 
+    // 文件分享大类
+    @NameInMap("category")
+    public String category;
+
     // comments
     @NameInMap("comments")
     public String comments;
+
+    // 允许上传
+    @NameInMap("creatable")
+    public Boolean creatable;
+
+    // 允许上传的目录列表
+    @NameInMap("creatable_file_id_list")
+    public java.util.List<String> creatableFileIdList;
 
     // creator_id
     @NameInMap("creator_id")
@@ -42,6 +54,10 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     // 禁止转存分享中的文件
     @NameInMap("disable_save")
     public Boolean disableSave;
+
+    // 分享中的文件不可见
+    @NameInMap("disable_visible")
+    public Boolean disableVisible;
 
     // 下载次数
     @NameInMap("download_count")
@@ -124,12 +140,36 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
         return this.avatar;
     }
 
+    public GetShareLinkByAnonymousResponse setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
+    }
+
     public GetShareLinkByAnonymousResponse setComments(String comments) {
         this.comments = comments;
         return this;
     }
     public String getComments() {
         return this.comments;
+    }
+
+    public GetShareLinkByAnonymousResponse setCreatable(Boolean creatable) {
+        this.creatable = creatable;
+        return this;
+    }
+    public Boolean getCreatable() {
+        return this.creatable;
+    }
+
+    public GetShareLinkByAnonymousResponse setCreatableFileIdList(java.util.List<String> creatableFileIdList) {
+        this.creatableFileIdList = creatableFileIdList;
+        return this;
+    }
+    public java.util.List<String> getCreatableFileIdList() {
+        return this.creatableFileIdList;
     }
 
     public GetShareLinkByAnonymousResponse setCreatorId(String creatorId) {
@@ -178,6 +218,14 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     }
     public Boolean getDisableSave() {
         return this.disableSave;
+    }
+
+    public GetShareLinkByAnonymousResponse setDisableVisible(Boolean disableVisible) {
+        this.disableVisible = disableVisible;
+        return this;
+    }
+    public Boolean getDisableVisible() {
+        return this.disableVisible;
     }
 
     public GetShareLinkByAnonymousResponse setDownloadCount(Long downloadCount) {

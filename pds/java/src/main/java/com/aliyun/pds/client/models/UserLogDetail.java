@@ -11,6 +11,9 @@ public class UserLogDetail extends TeaModel {
     @NameInMap("email")
     public String email;
 
+    @NameInMap("expired_at")
+    public Long expiredAt;
+
     // name
     @NameInMap("name")
     public String name;
@@ -37,6 +40,14 @@ public class UserLogDetail extends TeaModel {
     }
     public String getEmail() {
         return this.email;
+    }
+
+    public UserLogDetail setExpiredAt(Long expiredAt) {
+        this.expiredAt = expiredAt;
+        return this;
+    }
+    public Long getExpiredAt() {
+        return this.expiredAt;
     }
 
     public UserLogDetail setName(String name) {

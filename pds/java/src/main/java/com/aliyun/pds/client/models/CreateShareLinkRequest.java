@@ -22,6 +22,14 @@ public class CreateShareLinkRequest extends TeaModel {
     @NameInMap("comments")
     public String comments;
 
+    // 允许上传
+    @NameInMap("creatable")
+    public Boolean creatable;
+
+    // 允许上传的目录列表
+    @NameInMap("creatable_file_id_list")
+    public java.util.List<String> creatableFileIdList;
+
     // description
     @NameInMap("description")
     public String description;
@@ -37,6 +45,10 @@ public class CreateShareLinkRequest extends TeaModel {
     // 禁止转存分享中的文件
     @NameInMap("disable_save")
     public Boolean disableSave;
+
+    // 分享中的文件不可见
+    @NameInMap("disable_visible")
+    public Boolean disableVisible;
 
     // 分享下载次数限制
     @NameInMap("download_limit")
@@ -55,10 +67,6 @@ public class CreateShareLinkRequest extends TeaModel {
     // enable_file_changed_notify
     @NameInMap("enable_file_changed_notify")
     public Boolean enableFileChangedNotify;
-
-    // 允许上传文件到分享
-    @NameInMap("enable_upload")
-    public Boolean enableUpload;
 
     // expiration
     @NameInMap("expiration")
@@ -156,6 +164,22 @@ public class CreateShareLinkRequest extends TeaModel {
         return this.comments;
     }
 
+    public CreateShareLinkRequest setCreatable(Boolean creatable) {
+        this.creatable = creatable;
+        return this;
+    }
+    public Boolean getCreatable() {
+        return this.creatable;
+    }
+
+    public CreateShareLinkRequest setCreatableFileIdList(java.util.List<String> creatableFileIdList) {
+        this.creatableFileIdList = creatableFileIdList;
+        return this;
+    }
+    public java.util.List<String> getCreatableFileIdList() {
+        return this.creatableFileIdList;
+    }
+
     public CreateShareLinkRequest setDescription(String description) {
         this.description = description;
         return this;
@@ -188,6 +212,14 @@ public class CreateShareLinkRequest extends TeaModel {
         return this.disableSave;
     }
 
+    public CreateShareLinkRequest setDisableVisible(Boolean disableVisible) {
+        this.disableVisible = disableVisible;
+        return this;
+    }
+    public Boolean getDisableVisible() {
+        return this.disableVisible;
+    }
+
     public CreateShareLinkRequest setDownloadLimit(Long downloadLimit) {
         this.downloadLimit = downloadLimit;
         return this;
@@ -218,14 +250,6 @@ public class CreateShareLinkRequest extends TeaModel {
     }
     public Boolean getEnableFileChangedNotify() {
         return this.enableFileChangedNotify;
-    }
-
-    public CreateShareLinkRequest setEnableUpload(Boolean enableUpload) {
-        this.enableUpload = enableUpload;
-        return this;
-    }
-    public Boolean getEnableUpload() {
-        return this.enableUpload;
     }
 
     public CreateShareLinkRequest setExpiration(String expiration) {

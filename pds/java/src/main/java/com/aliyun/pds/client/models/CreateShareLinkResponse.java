@@ -19,6 +19,14 @@ public class CreateShareLinkResponse extends TeaModel {
     @NameInMap("comments")
     public String comments;
 
+    // 允许上传
+    @NameInMap("creatable")
+    public Boolean creatable;
+
+    // 允许上传的目录列表
+    @NameInMap("creatable_file_id_list")
+    public java.util.List<String> creatableFileIdList;
+
     // created_at
     @NameInMap("created_at")
     public String createdAt;
@@ -42,6 +50,10 @@ public class CreateShareLinkResponse extends TeaModel {
     // 禁止转存分享中的文件
     @NameInMap("disable_save")
     public Boolean disableSave;
+
+    // 分享中的文件不可见
+    @NameInMap("disable_visible")
+    public Boolean disableVisible;
 
     // 下载次数
     @NameInMap("download_count")
@@ -192,6 +204,22 @@ public class CreateShareLinkResponse extends TeaModel {
         return this.comments;
     }
 
+    public CreateShareLinkResponse setCreatable(Boolean creatable) {
+        this.creatable = creatable;
+        return this;
+    }
+    public Boolean getCreatable() {
+        return this.creatable;
+    }
+
+    public CreateShareLinkResponse setCreatableFileIdList(java.util.List<String> creatableFileIdList) {
+        this.creatableFileIdList = creatableFileIdList;
+        return this;
+    }
+    public java.util.List<String> getCreatableFileIdList() {
+        return this.creatableFileIdList;
+    }
+
     public CreateShareLinkResponse setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
         return this;
@@ -238,6 +266,14 @@ public class CreateShareLinkResponse extends TeaModel {
     }
     public Boolean getDisableSave() {
         return this.disableSave;
+    }
+
+    public CreateShareLinkResponse setDisableVisible(Boolean disableVisible) {
+        this.disableVisible = disableVisible;
+        return this;
+    }
+    public Boolean getDisableVisible() {
+        return this.disableVisible;
     }
 
     public CreateShareLinkResponse setDownloadCount(Long downloadCount) {

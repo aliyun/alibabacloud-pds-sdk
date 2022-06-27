@@ -13,6 +13,7 @@ public class VideoPreviewEnableConfig extends TeaModel {
     @NameInMap("disable_offline_video_transcode")
     public Boolean disableOfflineVideoTranscode;
 
+    // Deprecated, 后续通过 VideoPreviewNeedTranscodeErrorMap 来判断是否允许重新转码
     @NameInMap("enable_transcode_when_play")
     public Boolean enableTranscodeWhenPlay;
 

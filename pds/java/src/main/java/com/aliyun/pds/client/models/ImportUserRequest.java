@@ -10,6 +10,10 @@ public class ImportUserRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    // 认证方式的显示名称
+    @NameInMap("authentication_display_name")
+    public String authenticationDisplayName;
+
     // 认证类型
     @NameInMap("authentication_type")
     @Validation(required = true)
@@ -29,6 +33,10 @@ public class ImportUserRequest extends TeaModel {
     // 空间大小
     @NameInMap("drive_total_size")
     public Long driveTotalSize;
+
+    // 用户过期时间
+    @NameInMap("expired_at")
+    public Long expiredAt;
 
     // 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
     @NameInMap("extra")
@@ -69,6 +77,14 @@ public class ImportUserRequest extends TeaModel {
         return this.httpheaders;
     }
 
+    public ImportUserRequest setAuthenticationDisplayName(String authenticationDisplayName) {
+        this.authenticationDisplayName = authenticationDisplayName;
+        return this;
+    }
+    public String getAuthenticationDisplayName() {
+        return this.authenticationDisplayName;
+    }
+
     public ImportUserRequest setAuthenticationType(String authenticationType) {
         this.authenticationType = authenticationType;
         return this;
@@ -107,6 +123,14 @@ public class ImportUserRequest extends TeaModel {
     }
     public Long getDriveTotalSize() {
         return this.driveTotalSize;
+    }
+
+    public ImportUserRequest setExpiredAt(Long expiredAt) {
+        this.expiredAt = expiredAt;
+        return this;
+    }
+    public Long getExpiredAt() {
+        return this.expiredAt;
     }
 
     public ImportUserRequest setExtra(String extra) {
