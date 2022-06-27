@@ -18,6 +18,9 @@ public class CreateDomainResponse extends TeaModel {
     @NameInMap("app_config")
     public AppConfig appConfig;
 
+    @NameInMap("archive_config")
+    public ArchiveConfig archiveConfig;
+
     // 打包下载配置
     @NameInMap("archive_files_enable")
     public Boolean archiveFilesEnable;
@@ -154,6 +157,9 @@ public class CreateDomainResponse extends TeaModel {
     @NameInMap("published_app_access_strategy")
     public AppAccessStrategy publishedAppAccessStrategy;
 
+    @NameInMap("recycle_bin_config")
+    public RecycleBinConfig recycleBinConfig;
+
     @NameInMap("role_config")
     public RoleConfig roleConfig;
 
@@ -254,6 +260,14 @@ public class CreateDomainResponse extends TeaModel {
     }
     public AppConfig getAppConfig() {
         return this.appConfig;
+    }
+
+    public CreateDomainResponse setArchiveConfig(ArchiveConfig archiveConfig) {
+        this.archiveConfig = archiveConfig;
+        return this;
+    }
+    public ArchiveConfig getArchiveConfig() {
+        return this.archiveConfig;
     }
 
     public CreateDomainResponse setArchiveFilesEnable(Boolean archiveFilesEnable) {
@@ -542,6 +556,14 @@ public class CreateDomainResponse extends TeaModel {
     }
     public AppAccessStrategy getPublishedAppAccessStrategy() {
         return this.publishedAppAccessStrategy;
+    }
+
+    public CreateDomainResponse setRecycleBinConfig(RecycleBinConfig recycleBinConfig) {
+        this.recycleBinConfig = recycleBinConfig;
+        return this;
+    }
+    public RecycleBinConfig getRecycleBinConfig() {
+        return this.recycleBinConfig;
     }
 
     public CreateDomainResponse setRoleConfig(RoleConfig roleConfig) {

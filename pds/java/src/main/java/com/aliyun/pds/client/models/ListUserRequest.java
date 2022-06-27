@@ -19,6 +19,11 @@ public class ListUserRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    // 用户状态
+    // status: enabled
+    @NameInMap("status")
+    public String status;
+
     // subdomain id
     @NameInMap("subdomain_id")
     public String subdomainId;
@@ -50,6 +55,14 @@ public class ListUserRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ListUserRequest setStatus(String status) {
+        this.status = status;
+        return this;
+    }
+    public String getStatus() {
+        return this.status;
     }
 
     public ListUserRequest setSubdomainId(String subdomainId) {

@@ -10,8 +10,11 @@ public class SearchShareLinkRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    // categories
+    @NameInMap("categories")
+    public java.util.List<String> categories;
+
     // creators
-    // type: string
     @NameInMap("creators")
     public java.util.List<String> creators;
 
@@ -52,6 +55,14 @@ public class SearchShareLinkRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public SearchShareLinkRequest setCategories(java.util.List<String> categories) {
+        this.categories = categories;
+        return this;
+    }
+    public java.util.List<String> getCategories() {
+        return this.categories;
     }
 
     public SearchShareLinkRequest setCreators(java.util.List<String> creators) {

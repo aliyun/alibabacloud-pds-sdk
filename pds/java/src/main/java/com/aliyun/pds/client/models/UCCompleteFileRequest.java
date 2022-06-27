@@ -14,6 +14,10 @@ public class UCCompleteFileRequest extends TeaModel {
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
+    // crc64_hash
+    @NameInMap("crc64_hash")
+    public String crc64Hash;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -54,6 +58,14 @@ public class UCCompleteFileRequest extends TeaModel {
     }
     public java.util.Map<String, ?> getAdditionData() {
         return this.additionData;
+    }
+
+    public UCCompleteFileRequest setCrc64Hash(String crc64Hash) {
+        this.crc64Hash = crc64Hash;
+        return this;
+    }
+    public String getCrc64Hash() {
+        return this.crc64Hash;
     }
 
     public UCCompleteFileRequest setDriveId(String driveId) {

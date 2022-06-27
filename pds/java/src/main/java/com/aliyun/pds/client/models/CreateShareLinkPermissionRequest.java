@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * 
  */
 public class CreateShareLinkPermissionRequest extends TeaModel {
+    // 允许上传
+    @NameInMap("creatable")
+    public Boolean creatable;
+
     // 禁止下载分享中的文件
     @NameInMap("disable_download")
     public Boolean disableDownload;
@@ -19,13 +23,13 @@ public class CreateShareLinkPermissionRequest extends TeaModel {
     @NameInMap("disable_save")
     public Boolean disableSave;
 
+    // 分享中的文件不可见
+    @NameInMap("disable_visible")
+    public Boolean disableVisible;
+
     // 分享下载次数限制
     @NameInMap("download_limit")
     public Long downloadLimit;
-
-    // 允许上传文件到分享
-    @NameInMap("enable_upload")
-    public Boolean enableUpload;
 
     // 分享预览次数限制
     @NameInMap("preview_limit")
@@ -46,6 +50,14 @@ public class CreateShareLinkPermissionRequest extends TeaModel {
     public static CreateShareLinkPermissionRequest build(java.util.Map<String, ?> map) throws Exception {
         CreateShareLinkPermissionRequest self = new CreateShareLinkPermissionRequest();
         return TeaModel.build(map, self);
+    }
+
+    public CreateShareLinkPermissionRequest setCreatable(Boolean creatable) {
+        this.creatable = creatable;
+        return this;
+    }
+    public Boolean getCreatable() {
+        return this.creatable;
     }
 
     public CreateShareLinkPermissionRequest setDisableDownload(Boolean disableDownload) {
@@ -72,20 +84,20 @@ public class CreateShareLinkPermissionRequest extends TeaModel {
         return this.disableSave;
     }
 
+    public CreateShareLinkPermissionRequest setDisableVisible(Boolean disableVisible) {
+        this.disableVisible = disableVisible;
+        return this;
+    }
+    public Boolean getDisableVisible() {
+        return this.disableVisible;
+    }
+
     public CreateShareLinkPermissionRequest setDownloadLimit(Long downloadLimit) {
         this.downloadLimit = downloadLimit;
         return this;
     }
     public Long getDownloadLimit() {
         return this.downloadLimit;
-    }
-
-    public CreateShareLinkPermissionRequest setEnableUpload(Boolean enableUpload) {
-        this.enableUpload = enableUpload;
-        return this;
-    }
-    public Boolean getEnableUpload() {
-        return this.enableUpload;
     }
 
     public CreateShareLinkPermissionRequest setPreviewLimit(Long previewLimit) {

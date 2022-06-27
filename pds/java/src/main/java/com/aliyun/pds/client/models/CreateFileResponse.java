@@ -54,6 +54,10 @@ public class CreateFileResponse extends TeaModel {
     @NameInMap("rapid_upload")
     public Boolean rapidUpload;
 
+    // share_id
+    @NameInMap("share_id")
+    public String shareId;
+
     // status
     @NameInMap("status")
     public String status;
@@ -153,6 +157,14 @@ public class CreateFileResponse extends TeaModel {
     }
     public Boolean getRapidUpload() {
         return this.rapidUpload;
+    }
+
+    public CreateFileResponse setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public CreateFileResponse setStatus(String status) {

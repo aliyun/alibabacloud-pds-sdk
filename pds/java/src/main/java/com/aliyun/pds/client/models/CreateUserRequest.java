@@ -14,6 +14,10 @@ public class CreateUserRequest extends TeaModel {
     @NameInMap("avatar")
     public String avatar;
 
+    // 用户默认地域
+    @NameInMap("default_location")
+    public String defaultLocation;
+
     // 是否能自己修改密码
     @NameInMap("deny_change_password_by_self")
     public Boolean denyChangePasswordBySelf;
@@ -27,12 +31,12 @@ public class CreateUserRequest extends TeaModel {
     @NameInMap("email")
     public String email;
 
+    // 用户过期时间
+    @NameInMap("expired_at")
+    public Long expiredAt;
+
     @NameInMap("group_info_list")
     public java.util.List<GroupInfo> groupInfoList;
-
-    // 用户地域
-    @NameInMap("location")
-    public String location;
 
     // 下次登录后是否强制修改密码
     @NameInMap("need_change_password_next_login")
@@ -96,6 +100,14 @@ public class CreateUserRequest extends TeaModel {
         return this.avatar;
     }
 
+    public CreateUserRequest setDefaultLocation(String defaultLocation) {
+        this.defaultLocation = defaultLocation;
+        return this;
+    }
+    public String getDefaultLocation() {
+        return this.defaultLocation;
+    }
+
     public CreateUserRequest setDenyChangePasswordBySelf(Boolean denyChangePasswordBySelf) {
         this.denyChangePasswordBySelf = denyChangePasswordBySelf;
         return this;
@@ -120,20 +132,20 @@ public class CreateUserRequest extends TeaModel {
         return this.email;
     }
 
+    public CreateUserRequest setExpiredAt(Long expiredAt) {
+        this.expiredAt = expiredAt;
+        return this;
+    }
+    public Long getExpiredAt() {
+        return this.expiredAt;
+    }
+
     public CreateUserRequest setGroupInfoList(java.util.List<GroupInfo> groupInfoList) {
         this.groupInfoList = groupInfoList;
         return this;
     }
     public java.util.List<GroupInfo> getGroupInfoList() {
         return this.groupInfoList;
-    }
-
-    public CreateUserRequest setLocation(String location) {
-        this.location = location;
-        return this;
-    }
-    public String getLocation() {
-        return this.location;
     }
 
     public CreateUserRequest setNeedChangePasswordNextLogin(Boolean needChangePasswordNextLogin) {

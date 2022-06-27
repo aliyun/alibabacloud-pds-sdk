@@ -7,6 +7,10 @@ import com.aliyun.tea.*;
  * search domain request
  */
 public class SearchDomainsRequest extends TeaModel {
+    // 通过购买的实例ID搜索domain
+    @NameInMap("instance_id")
+    public String instanceId;
+
     // 分页大小
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
@@ -24,9 +28,21 @@ public class SearchDomainsRequest extends TeaModel {
     @NameInMap("order_by")
     public String orderBy;
 
+    // 通过不同ServiceCode搜索
+    @NameInMap("service_code")
+    public String serviceCode;
+
     public static SearchDomainsRequest build(java.util.Map<String, ?> map) throws Exception {
         SearchDomainsRequest self = new SearchDomainsRequest();
         return TeaModel.build(map, self);
+    }
+
+    public SearchDomainsRequest setInstanceId(String instanceId) {
+        this.instanceId = instanceId;
+        return this;
+    }
+    public String getInstanceId() {
+        return this.instanceId;
     }
 
     public SearchDomainsRequest setLimit(Integer limit) {
@@ -59,6 +75,14 @@ public class SearchDomainsRequest extends TeaModel {
     }
     public String getOrderBy() {
         return this.orderBy;
+    }
+
+    public SearchDomainsRequest setServiceCode(String serviceCode) {
+        this.serviceCode = serviceCode;
+        return this;
+    }
+    public String getServiceCode() {
+        return this.serviceCode;
     }
 
 }

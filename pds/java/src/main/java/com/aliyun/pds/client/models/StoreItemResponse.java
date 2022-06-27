@@ -52,6 +52,10 @@ public class StoreItemResponse extends TeaModel {
     @Validation(required = true)
     public String endpoint;
 
+    // 冷流地址
+    @NameInMap("enet_endpoint")
+    public String enetEndpoint;
+
     // vpc访问地址
     @NameInMap("internal_endpoint")
     public String internalEndpoint;
@@ -175,6 +179,14 @@ public class StoreItemResponse extends TeaModel {
     }
     public String getEndpoint() {
         return this.endpoint;
+    }
+
+    public StoreItemResponse setEnetEndpoint(String enetEndpoint) {
+        this.enetEndpoint = enetEndpoint;
+        return this;
+    }
+    public String getEnetEndpoint() {
+        return this.enetEndpoint;
     }
 
     public StoreItemResponse setInternalEndpoint(String internalEndpoint) {

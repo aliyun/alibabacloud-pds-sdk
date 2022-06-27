@@ -42,6 +42,14 @@ public class FindStoriesRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    // order
+    @NameInMap("order")
+    public String order;
+
+    // sort
+    @NameInMap("sort")
+    public String sort;
+
     @NameInMap("story_end_time_range")
     public FindStoryRequestTimeRange storyEndTimeRange;
 
@@ -143,6 +151,22 @@ public class FindStoriesRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public FindStoriesRequest setOrder(String order) {
+        this.order = order;
+        return this;
+    }
+    public String getOrder() {
+        return this.order;
+    }
+
+    public FindStoriesRequest setSort(String sort) {
+        this.sort = sort;
+        return this;
+    }
+    public String getSort() {
+        return this.sort;
     }
 
     public FindStoriesRequest setStoryEndTimeRange(FindStoryRequestTimeRange storyEndTimeRange) {
