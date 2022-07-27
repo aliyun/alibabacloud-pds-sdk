@@ -6,6 +6,6 @@ require (
 	github.com/alibabacloud-go/pds-credentials v1.0.0
 	github.com/alibabacloud-go/tea v1.1.15
 	github.com/alibabacloud-go/tea-roa-utils v1.1.5
-	github.com/alibabacloud-go/tea-utils v1.4.3
+	github.com/alibabacloud-go/tea-utils v1.4.5
 	github.com/aliyun/credentials-go v1.1.2
 )

@@ -1372,7 +1372,10 @@ api accountRevokeEx(request: RevokeRequest, runtime: RuntimeOptions): AccountRev
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -1699,7 +1702,10 @@ api unlinkEx(request: AccountUnLinkRequest, runtime: RuntimeOptions): UnlinkMode
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -3467,7 +3473,10 @@ api punishFileEx(request: PunishFileRequest, runtime: RuntimeOptions): PunishFil
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -3925,7 +3934,10 @@ api deleteDriveEx(request: DeleteDriveRequest, runtime: RuntimeOptions): DeleteD
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -4722,7 +4734,10 @@ api addPermissionEx(request: FileAddPermissionRequest, runtime: RuntimeOptions):
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -5659,7 +5674,10 @@ api deleteFileEx(request: DeleteFileRequest, runtime: RuntimeOptions): DeleteFil
   }
 
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -5772,7 +5790,10 @@ api deleteUsertagsEx(request: DeleteFileUserTagsRequest, runtime: RuntimeOptions
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -9315,7 +9336,10 @@ api removePermissionEx(request: FileRemovePermissionRequest, runtime: RuntimeOpt
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -10336,7 +10360,10 @@ api restoreFileEx(request: RestoreFileRequest, runtime: RuntimeOptions): Restore
   }
 
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -10451,7 +10478,10 @@ api trashFileEx(request: TrashFileRequest, runtime: RuntimeOptions): TrashFileMo
   }
 
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -10786,7 +10816,10 @@ api deleteShareEx(request: DeleteShareRequest, runtime: RuntimeOptions): DeleteS
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -11238,7 +11271,10 @@ api cancelShareLinkEx(request: CancelShareLinkRequest, runtime: RuntimeOptions):
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -12358,7 +12394,10 @@ api deleteEx(request: DeletePermissionRequest, runtime: RuntimeOptions): DeleteM
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -12806,7 +12845,10 @@ api updateEx(request: UpdatePermissionRequest, runtime: RuntimeOptions): UpdateM
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -12915,7 +12957,10 @@ api assignEx(request: AssignRequest, runtime: RuntimeOptions): AssignModel  {
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -13024,7 +13069,10 @@ api cancelAssignEx(request: CancelAssignRequest, runtime: RuntimeOptions): Cance
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -14282,7 +14330,10 @@ api deleteGroupEx(request: DeleteGroupRequest, runtime: RuntimeOptions): DeleteG
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -14957,7 +15008,10 @@ api deleteMembershipEx(request: DeleteMembershipRequest, runtime: RuntimeOptions
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -16305,7 +16359,10 @@ api deleteUserEx(request: DeleteUserRequest, runtime: RuntimeOptions): DeleteUse
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -17548,7 +17605,10 @@ api unassignFacegroupItemEx(request: UnAssignFaceGroupItemRequest, runtime: Runt
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -19384,7 +19444,10 @@ api deleteViewEx(request: DeleteViewRequest, runtime: RuntimeOptions): DeleteVie
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -20066,7 +20129,10 @@ api removeFileEx(request: RemoveViewFileRequest, runtime: RuntimeOptions): Remov
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
@@ -20405,7 +20471,10 @@ api updateViewEx(request: UpdateViewRequest, runtime: RuntimeOptions): UpdateVie
   var respMap : object = null;
   var obj : any = null;
   if (Util.equalNumber(__response.statusCode, 204)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
     return {
+      body = respMap,
       headers =  __response.headers,
     };
   }
