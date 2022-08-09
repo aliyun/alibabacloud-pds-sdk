@@ -10,6 +10,9 @@ public class UpdateStoryRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    @NameInMap("cover")
+    public StoryFile cover;
+
     // custom_id
     @NameInMap("custom_id")
     public String customId;
@@ -43,6 +46,14 @@ public class UpdateStoryRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public UpdateStoryRequest setCover(StoryFile cover) {
+        this.cover = cover;
+        return this;
+    }
+    public StoryFile getCover() {
+        return this.cover;
     }
 
     public UpdateStoryRequest setCustomId(String customId) {

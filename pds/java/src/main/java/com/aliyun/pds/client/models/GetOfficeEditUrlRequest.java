@@ -27,6 +27,15 @@ public class GetOfficeEditUrlRequest extends TeaModel {
     @NameInMap("option")
     public GetOfficeEditUrlOption option;
 
+    // revision_id
+    @NameInMap("revision_id")
+    public String revisionId;
+
+    // share_id
+    // example
+    @NameInMap("share_id")
+    public String shareId;
+
     @NameInMap("watermark")
     public GetOfficeEditUrlWatermark watermark;
 
@@ -73,6 +82,22 @@ public class GetOfficeEditUrlRequest extends TeaModel {
     }
     public GetOfficeEditUrlOption getOption() {
         return this.option;
+    }
+
+    public GetOfficeEditUrlRequest setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+        return this;
+    }
+    public String getRevisionId() {
+        return this.revisionId;
+    }
+
+    public GetOfficeEditUrlRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public GetOfficeEditUrlRequest setWatermark(GetOfficeEditUrlWatermark watermark) {

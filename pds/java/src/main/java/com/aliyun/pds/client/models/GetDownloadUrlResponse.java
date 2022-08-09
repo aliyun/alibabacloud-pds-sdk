@@ -23,9 +23,24 @@ public class GetDownloadUrlResponse extends TeaModel {
     @NameInMap("crc64_hash")
     public String crc64Hash;
 
+    // DomainID
+    @NameInMap("domain_id")
+    @Validation(pattern = "[a-z0-9A-Z]+")
+    public String domainId;
+
+    // drive_id
+    @NameInMap("drive_id")
+    @Validation(pattern = "[0-9]+")
+    public String driveId;
+
     // expiration
     @NameInMap("expiration")
     public String expiration;
+
+    // file_id
+    @NameInMap("file_id")
+    @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
+    public String fileId;
 
     // internal_url
     @NameInMap("internal_url")
@@ -38,6 +53,10 @@ public class GetDownloadUrlResponse extends TeaModel {
     // PunishFlag
     @NameInMap("punish_flag")
     public Long punishFlag;
+
+    // revision_id
+    @NameInMap("revision_id")
+    public String revisionId;
 
     // size
     @NameInMap("size")
@@ -92,12 +111,36 @@ public class GetDownloadUrlResponse extends TeaModel {
         return this.crc64Hash;
     }
 
+    public GetDownloadUrlResponse setDomainId(String domainId) {
+        this.domainId = domainId;
+        return this;
+    }
+    public String getDomainId() {
+        return this.domainId;
+    }
+
+    public GetDownloadUrlResponse setDriveId(String driveId) {
+        this.driveId = driveId;
+        return this;
+    }
+    public String getDriveId() {
+        return this.driveId;
+    }
+
     public GetDownloadUrlResponse setExpiration(String expiration) {
         this.expiration = expiration;
         return this;
     }
     public String getExpiration() {
         return this.expiration;
+    }
+
+    public GetDownloadUrlResponse setFileId(String fileId) {
+        this.fileId = fileId;
+        return this;
+    }
+    public String getFileId() {
+        return this.fileId;
     }
 
     public GetDownloadUrlResponse setInternalUrl(String internalUrl) {
@@ -122,6 +165,14 @@ public class GetDownloadUrlResponse extends TeaModel {
     }
     public Long getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public GetDownloadUrlResponse setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+        return this;
+    }
+    public String getRevisionId() {
+        return this.revisionId;
     }
 
     public GetDownloadUrlResponse setSize(Long size) {

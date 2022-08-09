@@ -46,6 +46,9 @@ public class BaseUserResponse extends TeaModel {
     @NameInMap("expired_at")
     public Long expiredAt;
 
+    @NameInMap("is_sync")
+    public Boolean isSync;
+
     // 下次登录强制修改密码
     @NameInMap("need_change_password_next_login")
     public Boolean needChangePasswordNextLogin;
@@ -60,6 +63,10 @@ public class BaseUserResponse extends TeaModel {
     // 电话
     @NameInMap("phone")
     public String phone;
+
+    // 国家编码
+    @NameInMap("phone_region")
+    public String phoneRegion;
 
     // 用户处罚标志
     @NameInMap("punish_flag")
@@ -174,6 +181,14 @@ public class BaseUserResponse extends TeaModel {
         return this.expiredAt;
     }
 
+    public BaseUserResponse setIsSync(Boolean isSync) {
+        this.isSync = isSync;
+        return this;
+    }
+    public Boolean getIsSync() {
+        return this.isSync;
+    }
+
     public BaseUserResponse setNeedChangePasswordNextLogin(Boolean needChangePasswordNextLogin) {
         this.needChangePasswordNextLogin = needChangePasswordNextLogin;
         return this;
@@ -204,6 +219,14 @@ public class BaseUserResponse extends TeaModel {
     }
     public String getPhone() {
         return this.phone;
+    }
+
+    public BaseUserResponse setPhoneRegion(String phoneRegion) {
+        this.phoneRegion = phoneRegion;
+        return this;
+    }
+    public String getPhoneRegion() {
+        return this.phoneRegion;
     }
 
     public BaseUserResponse setPunishFlag(Long punishFlag) {

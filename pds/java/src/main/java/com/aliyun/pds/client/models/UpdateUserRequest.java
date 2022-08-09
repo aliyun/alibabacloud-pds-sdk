@@ -46,6 +46,10 @@ public class UpdateUserRequest extends TeaModel {
     @NameInMap("phone")
     public String phone;
 
+    // 国家编码
+    @NameInMap("phone_region")
+    public String phoneRegion;
+
     // 用户明文密码
     @NameInMap("plain_password")
     public String plainPassword;
@@ -150,6 +154,14 @@ public class UpdateUserRequest extends TeaModel {
     }
     public String getPhone() {
         return this.phone;
+    }
+
+    public UpdateUserRequest setPhoneRegion(String phoneRegion) {
+        this.phoneRegion = phoneRegion;
+        return this;
+    }
+    public String getPhoneRegion() {
+        return this.phoneRegion;
     }
 
     public UpdateUserRequest setPlainPassword(String plainPassword) {

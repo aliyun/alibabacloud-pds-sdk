@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 生成故事
+ * 查询故事
  */
 public class FindStoriesResponse extends TeaModel {
     // items

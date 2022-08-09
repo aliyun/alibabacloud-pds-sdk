@@ -49361,15 +49361,12 @@ func (client *Client) AccountRevokeEx(request *RevokeRequest, runtime *RuntimeOp
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &AccountRevokeModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -49816,15 +49813,12 @@ func (client *Client) UnlinkEx(request *AccountUnLinkRequest, runtime *RuntimeOp
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &UnlinkModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -52246,15 +52240,12 @@ func (client *Client) PunishFileEx(request *PunishFileRequest, runtime *RuntimeO
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &PunishFileModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -52863,15 +52854,12 @@ func (client *Client) DeleteDriveEx(request *DeleteDriveRequest, runtime *Runtim
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &DeleteDriveModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -53939,15 +53927,12 @@ func (client *Client) AddPermissionEx(request *FileAddPermissionRequest, runtime
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &AddPermissionModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -55202,15 +55187,12 @@ func (client *Client) DeleteFileEx(request *DeleteFileRequest, runtime *RuntimeO
       }
 
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &DeleteFileModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -55357,15 +55339,12 @@ func (client *Client) DeleteUsertagsEx(request *DeleteFileUserTagsRequest, runti
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &DeleteUsertagsModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -60274,15 +60253,12 @@ func (client *Client) RemovePermissionEx(request *FileRemovePermissionRequest, r
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &RemovePermissionModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -60428,15 +60404,12 @@ func (client *Client) DeleteFileRevisionEx(request *DeleteRevisionRequest, runti
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &DeleteFileRevisionModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -62588,15 +62561,12 @@ func (client *Client) RestoreFileEx(request *RestoreFileRequest, runtime *Runtim
       }
 
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &RestoreFileModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -62754,15 +62724,12 @@ func (client *Client) TrashFileEx(request *TrashFileRequest, runtime *RuntimeOpt
       }
 
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &TrashFileModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -63213,15 +63180,12 @@ func (client *Client) DeleteShareEx(request *DeleteShareRequest, runtime *Runtim
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &DeleteShareModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -63827,15 +63791,12 @@ func (client *Client) CancelShareLinkEx(request *CancelShareLinkRequest, runtime
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &CancelShareLinkModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -65506,15 +65467,12 @@ func (client *Client) DeleteEx(request *DeletePermissionRequest, runtime *Runtim
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &DeleteModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -66118,15 +66076,12 @@ func (client *Client) UpdateEx(request *UpdatePermissionRequest, runtime *Runtim
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &UpdateModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -66271,15 +66226,12 @@ func (client *Client) AssignEx(request *AssignRequest, runtime *RuntimeOptions) 
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &AssignModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -66424,15 +66376,12 @@ func (client *Client) CancelAssignEx(request *CancelAssignRequest, runtime *Runt
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &CancelAssignModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -68137,15 +68086,12 @@ func (client *Client) DeleteGroupEx(request *DeleteGroupRequest, runtime *Runtim
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &DeleteGroupModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -69055,15 +69001,12 @@ func (client *Client) DeleteMembershipEx(request *DeleteMembershipRequest, runti
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &DeleteMembershipModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -70884,15 +70827,12 @@ func (client *Client) DeleteUserEx(request *DeleteUserRequest, runtime *RuntimeO
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &DeleteUserModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -72719,15 +72659,12 @@ func (client *Client) UnassignFacegroupItemEx(request *UnAssignFaceGroupItemRequ
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &UnassignFacegroupItemModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -75491,15 +75428,12 @@ func (client *Client) DeleteViewEx(request *DeleteViewRequest, runtime *RuntimeO
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &DeleteViewModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -76413,15 +76347,12 @@ func (client *Client) RemoveFileEx(request *RemoveViewFileRequest, runtime *Runt
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &RemoveFileModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err
@@ -76874,15 +76805,12 @@ func (client *Client) UpdateViewEx(request *UpdateViewRequest, runtime *RuntimeO
       var respMap map[string]interface{}
       var obj interface{}
       if tea.BoolValue(util.EqualNumber(response_.StatusCode, tea.Int(204))) {
-        obj, _err = util.ReadAsJSON(response_.Body)
+        _, _err = util.ReadAsString(response_.Body)
         if _err != nil {
           return _result, _err
         }
-
-        respMap = util.AssertAsMap(obj)
         _result = &UpdateViewModel{}
-        _err = tea.Convert(map[string]interface{}{
-          "body": respMap,
+        _err = tea.Convert(map[string]map[string]*string{
           "headers": response_.Headers,
         }, &_result)
         return _result, _err

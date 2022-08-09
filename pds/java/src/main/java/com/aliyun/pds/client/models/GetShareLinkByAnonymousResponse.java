@@ -75,6 +75,10 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     @NameInMap("file_count")
     public Long fileCount;
 
+    // 允许在线编辑文档
+    @NameInMap("office_editable")
+    public Boolean officeEditable;
+
     // preview_count
     @NameInMap("preview_count")
     public Long previewCount;
@@ -258,6 +262,14 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     }
     public Long getFileCount() {
         return this.fileCount;
+    }
+
+    public GetShareLinkByAnonymousResponse setOfficeEditable(Boolean officeEditable) {
+        this.officeEditable = officeEditable;
+        return this;
+    }
+    public Boolean getOfficeEditable() {
+        return this.officeEditable;
     }
 
     public GetShareLinkByAnonymousResponse setPreviewCount(Long previewCount) {

@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class SendSmsCodeRequest extends TeaModel {
     @NameInMap("httpheaders")
@@ -26,6 +26,10 @@ public class SendSmsCodeRequest extends TeaModel {
     // 邮箱
     @NameInMap("email")
     public String email;
+
+    // 发短信的语言
+    @NameInMap("language")
+    public String language;
 
     // 环境参数
     @NameInMap("nvc_param")
@@ -88,6 +92,14 @@ public class SendSmsCodeRequest extends TeaModel {
     }
     public String getEmail() {
         return this.email;
+    }
+
+    public SendSmsCodeRequest setLanguage(String language) {
+        this.language = language;
+        return this;
+    }
+    public String getLanguage() {
+        return this.language;
     }
 
     public SendSmsCodeRequest setNvcParam(String nvcParam) {

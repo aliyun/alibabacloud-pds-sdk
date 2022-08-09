@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class EditDetail extends TeaModel {
     public static EditDetail build(java.util.Map<String, ?> map) throws Exception {

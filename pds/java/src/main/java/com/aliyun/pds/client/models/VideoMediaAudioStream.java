@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class VideoMediaAudioStream extends TeaModel {
     // bit_rate 音频比特率 单位：bps

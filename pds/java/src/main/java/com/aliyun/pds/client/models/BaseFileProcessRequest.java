@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class BaseFileProcessRequest extends TeaModel {
     @NameInMap("image_cropping_aspect_ratios")

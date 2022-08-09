@@ -114,6 +114,12 @@ public class UpdateDomainResponse extends TeaModel {
     @NameInMap("expire_time")
     public Long expireTime;
 
+    @NameInMap("file_category")
+    public java.util.Map<String, ?> fileCategory;
+
+    @NameInMap("group_config")
+    public GroupConfig groupConfig;
+
     @NameInMap("group_single_drive_enabled")
     public Boolean groupSingleDriveEnabled;
 
@@ -132,6 +138,9 @@ public class UpdateDomainResponse extends TeaModel {
     // Domain 类型
     @NameInMap("mode")
     public String mode;
+
+    @NameInMap("multi_revision_config")
+    public BaseMultiRevisionConfigResponse multiRevisionConfig;
 
     @NameInMap("office_edit_config")
     public OfficeEditConfig officeEditConfig;
@@ -175,7 +184,7 @@ public class UpdateDomainResponse extends TeaModel {
     public ShareDetailResponse shareDetail;
 
     @NameInMap("share_link_detail")
-    public ShareDetailResponse shareLinkDetail;
+    public ShareLinkDetailResponse shareLinkDetail;
 
     // 是否开启了分享
     @NameInMap("share_link_enabled")
@@ -462,6 +471,22 @@ public class UpdateDomainResponse extends TeaModel {
         return this.expireTime;
     }
 
+    public UpdateDomainResponse setFileCategory(java.util.Map<String, ?> fileCategory) {
+        this.fileCategory = fileCategory;
+        return this;
+    }
+    public java.util.Map<String, ?> getFileCategory() {
+        return this.fileCategory;
+    }
+
+    public UpdateDomainResponse setGroupConfig(GroupConfig groupConfig) {
+        this.groupConfig = groupConfig;
+        return this;
+    }
+    public GroupConfig getGroupConfig() {
+        return this.groupConfig;
+    }
+
     public UpdateDomainResponse setGroupSingleDriveEnabled(Boolean groupSingleDriveEnabled) {
         this.groupSingleDriveEnabled = groupSingleDriveEnabled;
         return this;
@@ -500,6 +525,14 @@ public class UpdateDomainResponse extends TeaModel {
     }
     public String getMode() {
         return this.mode;
+    }
+
+    public UpdateDomainResponse setMultiRevisionConfig(BaseMultiRevisionConfigResponse multiRevisionConfig) {
+        this.multiRevisionConfig = multiRevisionConfig;
+        return this;
+    }
+    public BaseMultiRevisionConfigResponse getMultiRevisionConfig() {
+        return this.multiRevisionConfig;
     }
 
     public UpdateDomainResponse setOfficeEditConfig(OfficeEditConfig officeEditConfig) {
@@ -598,11 +631,11 @@ public class UpdateDomainResponse extends TeaModel {
         return this.shareDetail;
     }
 
-    public UpdateDomainResponse setShareLinkDetail(ShareDetailResponse shareLinkDetail) {
+    public UpdateDomainResponse setShareLinkDetail(ShareLinkDetailResponse shareLinkDetail) {
         this.shareLinkDetail = shareLinkDetail;
         return this;
     }
-    public ShareDetailResponse getShareLinkDetail() {
+    public ShareLinkDetailResponse getShareLinkDetail() {
         return this.shareLinkDetail;
     }
 

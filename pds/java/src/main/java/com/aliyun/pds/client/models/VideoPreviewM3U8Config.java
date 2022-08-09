@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * hls配置
  */
 public class VideoPreviewM3U8Config extends TeaModel {
     @NameInMap("hls_time")

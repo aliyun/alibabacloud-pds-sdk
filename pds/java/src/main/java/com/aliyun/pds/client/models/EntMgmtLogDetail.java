@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class EntMgmtLogDetail extends TeaModel {
     @NameInMap("build_client")
@@ -24,6 +24,9 @@ public class EntMgmtLogDetail extends TeaModel {
 
     @NameInMap("file_custom_role_info_updated_to")
     public FileCustomRoleInfoLogDetail fileCustomRoleInfoUpdatedTo;
+
+    @NameInMap("multi_revision_config")
+    public ExternalMultiFileRevisionConfig multiRevisionConfig;
 
     @NameInMap("senior_config")
     public DomainSeniorConfig seniorConfig;
@@ -79,6 +82,14 @@ public class EntMgmtLogDetail extends TeaModel {
     }
     public FileCustomRoleInfoLogDetail getFileCustomRoleInfoUpdatedTo() {
         return this.fileCustomRoleInfoUpdatedTo;
+    }
+
+    public EntMgmtLogDetail setMultiRevisionConfig(ExternalMultiFileRevisionConfig multiRevisionConfig) {
+        this.multiRevisionConfig = multiRevisionConfig;
+        return this;
+    }
+    public ExternalMultiFileRevisionConfig getMultiRevisionConfig() {
+        return this.multiRevisionConfig;
     }
 
     public EntMgmtLogDetail setSeniorConfig(DomainSeniorConfig seniorConfig) {

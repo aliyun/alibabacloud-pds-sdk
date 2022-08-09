@@ -4,12 +4,15 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class LoginMgmtLogDetail extends TeaModel {
     // app_id
     @NameInMap("app_id")
     public String appId;
+
+    @NameInMap("ding_sync_config")
+    public DingSyncConfig dingSyncConfig;
 
     // enable
     @NameInMap("enable")
@@ -32,6 +35,14 @@ public class LoginMgmtLogDetail extends TeaModel {
     }
     public String getAppId() {
         return this.appId;
+    }
+
+    public LoginMgmtLogDetail setDingSyncConfig(DingSyncConfig dingSyncConfig) {
+        this.dingSyncConfig = dingSyncConfig;
+        return this;
+    }
+    public DingSyncConfig getDingSyncConfig() {
+        return this.dingSyncConfig;
     }
 
     public LoginMgmtLogDetail setEnable(Boolean enable) {

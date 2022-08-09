@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class ShareLinkLogDetail extends TeaModel {
     // creatable
@@ -34,6 +34,10 @@ public class ShareLinkLogDetail extends TeaModel {
     // has_pwd
     @NameInMap("has_pwd")
     public Boolean hasPwd;
+
+    // office_editable
+    @NameInMap("office_editable")
+    public Boolean officeEditable;
 
     // preview_limit
     @NameInMap("preview_limit")
@@ -134,6 +138,14 @@ public class ShareLinkLogDetail extends TeaModel {
     }
     public Boolean getHasPwd() {
         return this.hasPwd;
+    }
+
+    public ShareLinkLogDetail setOfficeEditable(Boolean officeEditable) {
+        this.officeEditable = officeEditable;
+        return this;
+    }
+    public Boolean getOfficeEditable() {
+        return this.officeEditable;
     }
 
     public ShareLinkLogDetail setPreviewLimit(Long previewLimit) {

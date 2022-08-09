@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class DeleteGroupResponse extends TeaModel {
     public static DeleteGroupResponse build(java.util.Map<String, ?> map) throws Exception {

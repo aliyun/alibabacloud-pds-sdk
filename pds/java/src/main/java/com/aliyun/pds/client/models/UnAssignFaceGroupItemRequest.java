@@ -17,13 +17,16 @@ public class UnAssignFaceGroupItemRequest extends TeaModel {
 
     // face_group_id
     @NameInMap("face_group_id")
-    @Validation(required = true)
     public String faceGroupId;
 
     // file_id
     @NameInMap("file_id")
     @Validation(required = true)
     public String fileId;
+
+    // group_id 列举人脸分组接口中获取
+    @NameInMap("group_id")
+    public String groupId;
 
     public static UnAssignFaceGroupItemRequest build(java.util.Map<String, ?> map) throws Exception {
         UnAssignFaceGroupItemRequest self = new UnAssignFaceGroupItemRequest();
@@ -60,6 +63,14 @@ public class UnAssignFaceGroupItemRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public UnAssignFaceGroupItemRequest setGroupId(String groupId) {
+        this.groupId = groupId;
+        return this;
+    }
+    public String getGroupId() {
+        return this.groupId;
     }
 
 }

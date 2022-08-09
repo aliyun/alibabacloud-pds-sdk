@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class TokenRequest extends TeaModel {
     // JWT方式授权需要传此参数，传入JWT签名的声明，用于更换accessToken

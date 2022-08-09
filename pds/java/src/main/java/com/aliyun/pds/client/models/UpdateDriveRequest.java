@@ -10,6 +10,9 @@ public class UpdateDriveRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    @NameInMap("category")
+    public String category;
+
     // 描述信息
     @NameInMap("description")
     @Validation(maxLength = 1024)
@@ -56,6 +59,14 @@ public class UpdateDriveRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public UpdateDriveRequest setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public UpdateDriveRequest setDescription(String description) {

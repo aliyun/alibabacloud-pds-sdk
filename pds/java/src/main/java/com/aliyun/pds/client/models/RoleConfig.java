@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class RoleConfig extends TeaModel {
     @NameInMap("default_group_drive_role")

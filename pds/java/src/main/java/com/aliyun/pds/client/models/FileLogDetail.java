@@ -4,9 +4,12 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class FileLogDetail extends TeaModel {
+    @NameInMap("decompress_file_list")
+    public java.util.List<String> decompressFileList;
+
     // new_name
     @NameInMap("new_name")
     public String newName;
@@ -14,6 +17,18 @@ public class FileLogDetail extends TeaModel {
     // parent_path
     @NameInMap("parent_path")
     public String parentPath;
+
+    // revision_version
+    @NameInMap("rev_version")
+    public Long revVersion;
+
+    // revision_id
+    @NameInMap("revision_id")
+    public String revisionId;
+
+    // Size
+    @NameInMap("size")
+    public Long size;
 
     // to_parent_path
     @NameInMap("to_parent_path")
@@ -32,6 +47,14 @@ public class FileLogDetail extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public FileLogDetail setDecompressFileList(java.util.List<String> decompressFileList) {
+        this.decompressFileList = decompressFileList;
+        return this;
+    }
+    public java.util.List<String> getDecompressFileList() {
+        return this.decompressFileList;
+    }
+
     public FileLogDetail setNewName(String newName) {
         this.newName = newName;
         return this;
@@ -46,6 +69,30 @@ public class FileLogDetail extends TeaModel {
     }
     public String getParentPath() {
         return this.parentPath;
+    }
+
+    public FileLogDetail setRevVersion(Long revVersion) {
+        this.revVersion = revVersion;
+        return this;
+    }
+    public Long getRevVersion() {
+        return this.revVersion;
+    }
+
+    public FileLogDetail setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+        return this;
+    }
+    public String getRevisionId() {
+        return this.revisionId;
+    }
+
+    public FileLogDetail setSize(Long size) {
+        this.size = size;
+        return this;
+    }
+    public Long getSize() {
+        return this.size;
     }
 
     public FileLogDetail setToParentPath(String toParentPath) {

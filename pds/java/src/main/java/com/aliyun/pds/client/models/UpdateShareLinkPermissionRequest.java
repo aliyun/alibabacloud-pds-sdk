@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class UpdateShareLinkPermissionRequest extends TeaModel {
     // 允许上传
@@ -30,6 +30,10 @@ public class UpdateShareLinkPermissionRequest extends TeaModel {
     // 分享下载次数限制
     @NameInMap("download_limit")
     public Long downloadLimit;
+
+    // 允许在线编辑文档
+    @NameInMap("office_editable")
+    public Boolean officeEditable;
 
     // 分享预览次数限制
     @NameInMap("preview_limit")
@@ -98,6 +102,14 @@ public class UpdateShareLinkPermissionRequest extends TeaModel {
     }
     public Long getDownloadLimit() {
         return this.downloadLimit;
+    }
+
+    public UpdateShareLinkPermissionRequest setOfficeEditable(Boolean officeEditable) {
+        this.officeEditable = officeEditable;
+        return this;
+    }
+    public Boolean getOfficeEditable() {
+        return this.officeEditable;
     }
 
     public UpdateShareLinkPermissionRequest setPreviewLimit(Long previewLimit) {

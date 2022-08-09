@@ -88,6 +88,10 @@ public class CreateShareLinkRequest extends TeaModel {
     @NameInMap("filter_group")
     public String filterGroup;
 
+    // 允许在线编辑文档
+    @NameInMap("office_editable")
+    public Boolean officeEditable;
+
     // 分享预览次数限制
     @NameInMap("preview_limit")
     public Long previewLimit;
@@ -290,6 +294,14 @@ public class CreateShareLinkRequest extends TeaModel {
     }
     public String getFilterGroup() {
         return this.filterGroup;
+    }
+
+    public CreateShareLinkRequest setOfficeEditable(Boolean officeEditable) {
+        this.officeEditable = officeEditable;
+        return this;
+    }
+    public Boolean getOfficeEditable() {
+        return this.officeEditable;
     }
 
     public CreateShareLinkRequest setPreviewLimit(Long previewLimit) {
