@@ -81,6 +81,9 @@ public class CreateFileRequest extends TeaModel {
     @NameInMap("labels")
     public java.util.List<String> labels;
 
+    @NameInMap("last_revision_id")
+    public String lastRevisionId;
+
     // last_updated_at
     @NameInMap("last_updated_at")
     public String lastUpdatedAt;
@@ -103,6 +106,9 @@ public class CreateFileRequest extends TeaModel {
     @NameInMap("name")
     @Validation(required = true, maxLength = 1024, minLength = 1)
     public String name;
+
+    @NameInMap("need_merge_period_revision")
+    public Boolean needMergePeriodRevision;
 
     @NameInMap("parallel_upload")
     public Boolean parallelUpload;
@@ -328,6 +334,14 @@ public class CreateFileRequest extends TeaModel {
         return this.labels;
     }
 
+    public CreateFileRequest setLastRevisionId(String lastRevisionId) {
+        this.lastRevisionId = lastRevisionId;
+        return this;
+    }
+    public String getLastRevisionId() {
+        return this.lastRevisionId;
+    }
+
     public CreateFileRequest setLastUpdatedAt(String lastUpdatedAt) {
         this.lastUpdatedAt = lastUpdatedAt;
         return this;
@@ -374,6 +388,14 @@ public class CreateFileRequest extends TeaModel {
     }
     public String getName() {
         return this.name;
+    }
+
+    public CreateFileRequest setNeedMergePeriodRevision(Boolean needMergePeriodRevision) {
+        this.needMergePeriodRevision = needMergePeriodRevision;
+        return this;
+    }
+    public Boolean getNeedMergePeriodRevision() {
+        return this.needMergePeriodRevision;
     }
 
     public CreateFileRequest setParallelUpload(Boolean parallelUpload) {

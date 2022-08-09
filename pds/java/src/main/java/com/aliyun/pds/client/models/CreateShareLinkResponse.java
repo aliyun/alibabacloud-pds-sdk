@@ -103,6 +103,10 @@ public class CreateShareLinkResponse extends TeaModel {
     @NameInMap("num_of_subscribers")
     public Long numOfSubscribers;
 
+    // 允许在线编辑文档
+    @NameInMap("office_editable")
+    public Boolean officeEditable;
+
     // preview_count
     @NameInMap("preview_count")
     public Long previewCount;
@@ -370,6 +374,14 @@ public class CreateShareLinkResponse extends TeaModel {
     }
     public Long getNumOfSubscribers() {
         return this.numOfSubscribers;
+    }
+
+    public CreateShareLinkResponse setOfficeEditable(Boolean officeEditable) {
+        this.officeEditable = officeEditable;
+        return this;
+    }
+    public Boolean getOfficeEditable() {
+        return this.officeEditable;
     }
 
     public CreateShareLinkResponse setPreviewCount(Long previewCount) {

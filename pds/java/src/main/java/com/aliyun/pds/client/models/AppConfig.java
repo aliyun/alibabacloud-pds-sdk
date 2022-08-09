@@ -4,9 +4,15 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class AppConfig extends TeaModel {
+    @NameInMap("allow_upload_custom_file_ext_list")
+    public java.util.List<String> allowUploadCustomFileExtList;
+
+    @NameInMap("allow_upload_file_category_list")
+    public java.util.List<String> allowUploadFileCategoryList;
+
     @NameInMap("audio_play_enable")
     public Boolean audioPlayEnable;
 
@@ -24,6 +30,9 @@ public class AppConfig extends TeaModel {
 
     @NameInMap("disable_group")
     public Boolean disableGroup;
+
+    @NameInMap("enable_edit_file_with_create_perm")
+    public Boolean enableEditFileWithCreatePerm;
 
     @NameInMap("enable_hidden_file")
     public Boolean enableHiddenFile;
@@ -85,6 +94,9 @@ public class AppConfig extends TeaModel {
     @NameInMap("show_customized_login_config")
     public Boolean showCustomizedLoginConfig;
 
+    @NameInMap("single_file_upload_size_limit")
+    public Long singleFileUploadSizeLimit;
+
     @NameInMap("sync_app_enable")
     public Boolean syncAppEnable;
 
@@ -106,6 +118,22 @@ public class AppConfig extends TeaModel {
     public static AppConfig build(java.util.Map<String, ?> map) throws Exception {
         AppConfig self = new AppConfig();
         return TeaModel.build(map, self);
+    }
+
+    public AppConfig setAllowUploadCustomFileExtList(java.util.List<String> allowUploadCustomFileExtList) {
+        this.allowUploadCustomFileExtList = allowUploadCustomFileExtList;
+        return this;
+    }
+    public java.util.List<String> getAllowUploadCustomFileExtList() {
+        return this.allowUploadCustomFileExtList;
+    }
+
+    public AppConfig setAllowUploadFileCategoryList(java.util.List<String> allowUploadFileCategoryList) {
+        this.allowUploadFileCategoryList = allowUploadFileCategoryList;
+        return this;
+    }
+    public java.util.List<String> getAllowUploadFileCategoryList() {
+        return this.allowUploadFileCategoryList;
     }
 
     public AppConfig setAudioPlayEnable(Boolean audioPlayEnable) {
@@ -154,6 +182,14 @@ public class AppConfig extends TeaModel {
     }
     public Boolean getDisableGroup() {
         return this.disableGroup;
+    }
+
+    public AppConfig setEnableEditFileWithCreatePerm(Boolean enableEditFileWithCreatePerm) {
+        this.enableEditFileWithCreatePerm = enableEditFileWithCreatePerm;
+        return this;
+    }
+    public Boolean getEnableEditFileWithCreatePerm() {
+        return this.enableEditFileWithCreatePerm;
     }
 
     public AppConfig setEnableHiddenFile(Boolean enableHiddenFile) {
@@ -314,6 +350,14 @@ public class AppConfig extends TeaModel {
     }
     public Boolean getShowCustomizedLoginConfig() {
         return this.showCustomizedLoginConfig;
+    }
+
+    public AppConfig setSingleFileUploadSizeLimit(Long singleFileUploadSizeLimit) {
+        this.singleFileUploadSizeLimit = singleFileUploadSizeLimit;
+        return this;
+    }
+    public Long getSingleFileUploadSizeLimit() {
+        return this.singleFileUploadSizeLimit;
     }
 
     public AppConfig setSyncAppEnable(Boolean syncAppEnable) {

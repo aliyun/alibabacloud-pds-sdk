@@ -28,6 +28,9 @@ public class CompleteFileRequest extends TeaModel {
     @Validation(required = true, pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
+    @NameInMap("last_revision_id")
+    public String lastRevisionId;
+
     // part_info_list
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
@@ -82,6 +85,14 @@ public class CompleteFileRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public CompleteFileRequest setLastRevisionId(String lastRevisionId) {
+        this.lastRevisionId = lastRevisionId;
+        return this;
+    }
+    public String getLastRevisionId() {
+        return this.lastRevisionId;
     }
 
     public CompleteFileRequest setPartInfoList(java.util.List<UploadPartInfo> partInfoList) {

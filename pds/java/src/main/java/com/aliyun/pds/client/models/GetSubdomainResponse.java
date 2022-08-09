@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class GetSubdomainResponse extends TeaModel {
     // 创建时间
@@ -33,7 +33,7 @@ public class GetSubdomainResponse extends TeaModel {
     public ShareDetailResponse shareDetail;
 
     @NameInMap("share_link_detail")
-    public ShareDetailResponse shareLinkDetail;
+    public ShareLinkDetailResponse shareLinkDetail;
 
     // 是否开启了分享
     @NameInMap("share_link_enabled")
@@ -127,11 +127,11 @@ public class GetSubdomainResponse extends TeaModel {
         return this.shareDetail;
     }
 
-    public GetSubdomainResponse setShareLinkDetail(ShareDetailResponse shareLinkDetail) {
+    public GetSubdomainResponse setShareLinkDetail(ShareLinkDetailResponse shareLinkDetail) {
         this.shareLinkDetail = shareLinkDetail;
         return this;
     }
-    public ShareDetailResponse getShareLinkDetail() {
+    public ShareLinkDetailResponse getShareLinkDetail() {
         return this.shareLinkDetail;
     }
 

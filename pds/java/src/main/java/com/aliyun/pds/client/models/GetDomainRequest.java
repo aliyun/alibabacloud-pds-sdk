@@ -12,6 +12,10 @@ public class GetDomainRequest extends TeaModel {
     @Validation(required = true)
     public String domainId;
 
+    // fields,需要获取的属性字段,英文逗号分隔,*表示获取所有fields支持的枚举属性字段,为空不获取任何枚举属性字段
+    @NameInMap("fields")
+    public String fields;
+
     @NameInMap("get_benefit")
     public Boolean getBenefit;
 
@@ -34,6 +38,14 @@ public class GetDomainRequest extends TeaModel {
     }
     public String getDomainId() {
         return this.domainId;
+    }
+
+    public GetDomainRequest setFields(String fields) {
+        this.fields = fields;
+        return this;
+    }
+    public String getFields() {
+        return this.fields;
     }
 
     public GetDomainRequest setGetBenefit(Boolean getBenefit) {

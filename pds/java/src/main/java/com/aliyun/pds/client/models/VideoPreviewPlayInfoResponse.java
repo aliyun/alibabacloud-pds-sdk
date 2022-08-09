@@ -14,11 +14,16 @@ public class VideoPreviewPlayInfoResponse extends TeaModel {
     @NameInMap("live_transcoding_subtitle_task_list")
     public java.util.List<LiveTranscodingSubtitleTaskResponse> liveTranscodingSubtitleTaskList;
 
+    // 边转边播有效
     @NameInMap("live_transcoding_task_list")
     public java.util.List<LiveTranscodingTaskResponse> liveTranscodingTaskList;
 
     @NameInMap("meta")
     public VideoPreviewPlayInfoMetaResponse meta;
+
+    // 离线转码有效
+    @NameInMap("offline_video_transcoding_list")
+    public java.util.List<VideoPreviewOfflineVideoTranscodingTaskResponse> offlineVideoTranscodingList;
 
     public static VideoPreviewPlayInfoResponse build(java.util.Map<String, ?> map) throws Exception {
         VideoPreviewPlayInfoResponse self = new VideoPreviewPlayInfoResponse();
@@ -55,6 +60,14 @@ public class VideoPreviewPlayInfoResponse extends TeaModel {
     }
     public VideoPreviewPlayInfoMetaResponse getMeta() {
         return this.meta;
+    }
+
+    public VideoPreviewPlayInfoResponse setOfflineVideoTranscodingList(java.util.List<VideoPreviewOfflineVideoTranscodingTaskResponse> offlineVideoTranscodingList) {
+        this.offlineVideoTranscodingList = offlineVideoTranscodingList;
+        return this;
+    }
+    public java.util.List<VideoPreviewOfflineVideoTranscodingTaskResponse> getOfflineVideoTranscodingList() {
+        return this.offlineVideoTranscodingList;
     }
 
 }

@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class LogoutRequest extends TeaModel {
     // 登出之后的跳转地址，默认跳转到App的域名下

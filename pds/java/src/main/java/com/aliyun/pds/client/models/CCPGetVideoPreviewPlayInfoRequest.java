@@ -50,6 +50,10 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     @NameInMap("referer")
     public String referer;
 
+    // revision_id
+    @NameInMap("revision_id")
+    public String revisionId;
+
     // share_id, either share_id or drive_id is required
     @NameInMap("share_id")
     public String shareId;
@@ -161,6 +165,14 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     }
     public String getReferer() {
         return this.referer;
+    }
+
+    public CCPGetVideoPreviewPlayInfoRequest setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+        return this;
+    }
+    public String getRevisionId() {
+        return this.revisionId;
     }
 
     public CCPGetVideoPreviewPlayInfoRequest setShareId(String shareId) {

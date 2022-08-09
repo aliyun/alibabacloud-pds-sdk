@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class LdapConfig extends TeaModel {
     @NameInMap("admin_dn")

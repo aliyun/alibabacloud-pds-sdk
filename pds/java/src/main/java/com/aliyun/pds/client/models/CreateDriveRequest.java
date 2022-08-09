@@ -10,6 +10,9 @@ public class CreateDriveRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    @NameInMap("category")
+    public String category;
+
     // 是否默认drive, 只允许设置一个默认drive
     @NameInMap("default")
     public Boolean _default;
@@ -76,6 +79,14 @@ public class CreateDriveRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public CreateDriveRequest setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public CreateDriveRequest set_default(Boolean _default) {

@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class GetRPVerifyResultRequest extends TeaModel {
     // During Verify Process, 是否在实人认证流程中调用
