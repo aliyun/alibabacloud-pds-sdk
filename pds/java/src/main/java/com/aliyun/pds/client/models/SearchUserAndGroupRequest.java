@@ -31,6 +31,11 @@ public class SearchUserAndGroupRequest extends TeaModel {
     @NameInMap("name_for_fuzzy")
     public String nameForFuzzy;
 
+    // 用户状态
+    // status: enabled
+    @NameInMap("status")
+    public String status;
+
     // subdomain id
     @NameInMap("subdomain_id")
     public String subdomainId;
@@ -86,6 +91,14 @@ public class SearchUserAndGroupRequest extends TeaModel {
     }
     public String getNameForFuzzy() {
         return this.nameForFuzzy;
+    }
+
+    public SearchUserAndGroupRequest setStatus(String status) {
+        this.status = status;
+        return this;
+    }
+    public String getStatus() {
+        return this.status;
     }
 
     public SearchUserAndGroupRequest setSubdomainId(String subdomainId) {

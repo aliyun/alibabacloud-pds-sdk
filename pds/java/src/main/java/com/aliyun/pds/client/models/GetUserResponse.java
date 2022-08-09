@@ -23,6 +23,9 @@ public class GetUserResponse extends TeaModel {
     @NameInMap("default_drive_id")
     public String defaultDriveId;
 
+    @NameInMap("default_location")
+    public String defaultLocation;
+
     // 禁止用户自行修改密码
     @NameInMap("deny_change_password_by_self")
     public Boolean denyChangePasswordBySelf;
@@ -38,6 +41,10 @@ public class GetUserResponse extends TeaModel {
     // 邮箱
     @NameInMap("email")
     public String email;
+
+    // 用户过期时间
+    @NameInMap("expired_at")
+    public Long expiredAt;
 
     // 下次登录强制修改密码
     @NameInMap("need_change_password_next_login")
@@ -119,6 +126,14 @@ public class GetUserResponse extends TeaModel {
         return this.defaultDriveId;
     }
 
+    public GetUserResponse setDefaultLocation(String defaultLocation) {
+        this.defaultLocation = defaultLocation;
+        return this;
+    }
+    public String getDefaultLocation() {
+        return this.defaultLocation;
+    }
+
     public GetUserResponse setDenyChangePasswordBySelf(Boolean denyChangePasswordBySelf) {
         this.denyChangePasswordBySelf = denyChangePasswordBySelf;
         return this;
@@ -149,6 +164,14 @@ public class GetUserResponse extends TeaModel {
     }
     public String getEmail() {
         return this.email;
+    }
+
+    public GetUserResponse setExpiredAt(Long expiredAt) {
+        this.expiredAt = expiredAt;
+        return this;
+    }
+    public Long getExpiredAt() {
+        return this.expiredAt;
     }
 
     public GetUserResponse setNeedChangePasswordNextLogin(Boolean needChangePasswordNextLogin) {

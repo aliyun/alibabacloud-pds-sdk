@@ -7,6 +7,18 @@ import com.aliyun.tea.*;
  * 
  */
 public class ShareLinkPermissionResponse extends TeaModel {
+    // 文件分享大类
+    @NameInMap("category")
+    public String category;
+
+    // 允许上传
+    @NameInMap("creatable")
+    public Boolean creatable;
+
+    // 允许上传的目录列表
+    @NameInMap("creatable_file_id_list")
+    public java.util.List<String> creatableFileIdList;
+
     // 禁止下载分享中的文件
     @NameInMap("disable_download")
     public Boolean disableDownload;
@@ -18,6 +30,10 @@ public class ShareLinkPermissionResponse extends TeaModel {
     // 禁止转存分享中的文件
     @NameInMap("disable_save")
     public Boolean disableSave;
+
+    // 分享中的文件不可见
+    @NameInMap("disable_visible")
+    public Boolean disableVisible;
 
     // 分享下载次数限制
     @NameInMap("download_limit")
@@ -44,6 +60,30 @@ public class ShareLinkPermissionResponse extends TeaModel {
         return TeaModel.build(map, self);
     }
 
+    public ShareLinkPermissionResponse setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
+    }
+
+    public ShareLinkPermissionResponse setCreatable(Boolean creatable) {
+        this.creatable = creatable;
+        return this;
+    }
+    public Boolean getCreatable() {
+        return this.creatable;
+    }
+
+    public ShareLinkPermissionResponse setCreatableFileIdList(java.util.List<String> creatableFileIdList) {
+        this.creatableFileIdList = creatableFileIdList;
+        return this;
+    }
+    public java.util.List<String> getCreatableFileIdList() {
+        return this.creatableFileIdList;
+    }
+
     public ShareLinkPermissionResponse setDisableDownload(Boolean disableDownload) {
         this.disableDownload = disableDownload;
         return this;
@@ -66,6 +106,14 @@ public class ShareLinkPermissionResponse extends TeaModel {
     }
     public Boolean getDisableSave() {
         return this.disableSave;
+    }
+
+    public ShareLinkPermissionResponse setDisableVisible(Boolean disableVisible) {
+        this.disableVisible = disableVisible;
+        return this;
+    }
+    public Boolean getDisableVisible() {
+        return this.disableVisible;
     }
 
     public ShareLinkPermissionResponse setDownloadLimit(Long downloadLimit) {

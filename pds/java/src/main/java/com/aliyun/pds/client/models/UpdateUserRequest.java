@@ -27,6 +27,10 @@ public class UpdateUserRequest extends TeaModel {
     @NameInMap("email")
     public String email;
 
+    // 用户过期时间
+    @NameInMap("expired_at")
+    public Long expiredAt;
+
     @NameInMap("group_info_list")
     public java.util.List<GroupInfo> groupInfoList;
 
@@ -106,6 +110,14 @@ public class UpdateUserRequest extends TeaModel {
     }
     public String getEmail() {
         return this.email;
+    }
+
+    public UpdateUserRequest setExpiredAt(Long expiredAt) {
+        this.expiredAt = expiredAt;
+        return this;
+    }
+    public Long getExpiredAt() {
+        return this.expiredAt;
     }
 
     public UpdateUserRequest setGroupInfoList(java.util.List<GroupInfo> groupInfoList) {

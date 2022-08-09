@@ -14,6 +14,10 @@ public class UpdateShareLinkRequest extends TeaModel {
     @NameInMap("comments")
     public String comments;
 
+    // 允许上传
+    @NameInMap("creatable")
+    public Boolean creatable;
+
     // description
     @NameInMap("description")
     public String description;
@@ -30,6 +34,10 @@ public class UpdateShareLinkRequest extends TeaModel {
     @NameInMap("disable_save")
     public Boolean disableSave;
 
+    // 分享中的文件不可见
+    @NameInMap("disable_visible")
+    public Boolean disableVisible;
+
     // download_count
     @NameInMap("download_count")
     public Long downloadCount;
@@ -41,10 +49,6 @@ public class UpdateShareLinkRequest extends TeaModel {
     // enable_file_changed_notify
     @NameInMap("enable_file_changed_notify")
     public Boolean enableFileChangedNotify;
-
-    // 允许上传文件到分享
-    @NameInMap("enable_upload")
-    public Boolean enableUpload;
 
     // expiration
     @NameInMap("expiration")
@@ -131,6 +135,14 @@ public class UpdateShareLinkRequest extends TeaModel {
         return this.comments;
     }
 
+    public UpdateShareLinkRequest setCreatable(Boolean creatable) {
+        this.creatable = creatable;
+        return this;
+    }
+    public Boolean getCreatable() {
+        return this.creatable;
+    }
+
     public UpdateShareLinkRequest setDescription(String description) {
         this.description = description;
         return this;
@@ -163,6 +175,14 @@ public class UpdateShareLinkRequest extends TeaModel {
         return this.disableSave;
     }
 
+    public UpdateShareLinkRequest setDisableVisible(Boolean disableVisible) {
+        this.disableVisible = disableVisible;
+        return this;
+    }
+    public Boolean getDisableVisible() {
+        return this.disableVisible;
+    }
+
     public UpdateShareLinkRequest setDownloadCount(Long downloadCount) {
         this.downloadCount = downloadCount;
         return this;
@@ -185,14 +205,6 @@ public class UpdateShareLinkRequest extends TeaModel {
     }
     public Boolean getEnableFileChangedNotify() {
         return this.enableFileChangedNotify;
-    }
-
-    public UpdateShareLinkRequest setEnableUpload(Boolean enableUpload) {
-        this.enableUpload = enableUpload;
-        return this;
-    }
-    public Boolean getEnableUpload() {
-        return this.enableUpload;
     }
 
     public UpdateShareLinkRequest setExpiration(String expiration) {

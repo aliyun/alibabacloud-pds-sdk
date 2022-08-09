@@ -7,6 +7,14 @@ import com.aliyun.tea.*;
  * 
  */
 public class SimpleStreamInfo extends TeaModel {
+    // Content Hash
+    @NameInMap("content_hash")
+    public String contentHash;
+
+    // content_hash_name
+    @NameInMap("content_hash_name")
+    public String contentHashName;
+
     // crc64_hash
     @NameInMap("crc64_hash")
     public String crc64Hash;
@@ -30,6 +38,22 @@ public class SimpleStreamInfo extends TeaModel {
     public static SimpleStreamInfo build(java.util.Map<String, ?> map) throws Exception {
         SimpleStreamInfo self = new SimpleStreamInfo();
         return TeaModel.build(map, self);
+    }
+
+    public SimpleStreamInfo setContentHash(String contentHash) {
+        this.contentHash = contentHash;
+        return this;
+    }
+    public String getContentHash() {
+        return this.contentHash;
+    }
+
+    public SimpleStreamInfo setContentHashName(String contentHashName) {
+        this.contentHashName = contentHashName;
+        return this;
+    }
+    public String getContentHashName() {
+        return this.contentHashName;
     }
 
     public SimpleStreamInfo setCrc64Hash(String crc64Hash) {

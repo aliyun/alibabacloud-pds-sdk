@@ -59,10 +59,6 @@ public class SearchAllRecycleBinRequest extends TeaModel {
     @NameInMap("referer")
     public String referer;
 
-    // return_total_count 是否返回查询总数
-    @NameInMap("return_total_count")
-    public Boolean returnTotalCount;
-
     // sign_token
     @NameInMap("sign_token")
     public String signToken;
@@ -184,14 +180,6 @@ public class SearchAllRecycleBinRequest extends TeaModel {
     }
     public String getReferer() {
         return this.referer;
-    }
-
-    public SearchAllRecycleBinRequest setReturnTotalCount(Boolean returnTotalCount) {
-        this.returnTotalCount = returnTotalCount;
-        return this;
-    }
-    public Boolean getReturnTotalCount() {
-        return this.returnTotalCount;
     }
 
     public SearchAllRecycleBinRequest setSignToken(String signToken) {

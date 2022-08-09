@@ -35,8 +35,9 @@ public class GetDownloadUrlResponse extends TeaModel {
     @NameInMap("method")
     public String method;
 
-    @NameInMap("ratelimit")
-    public RateLimit ratelimit;
+    // PunishFlag
+    @NameInMap("punish_flag")
+    public Long punishFlag;
 
     // size
     @NameInMap("size")
@@ -115,12 +116,12 @@ public class GetDownloadUrlResponse extends TeaModel {
         return this.method;
     }
 
-    public GetDownloadUrlResponse setRatelimit(RateLimit ratelimit) {
-        this.ratelimit = ratelimit;
+    public GetDownloadUrlResponse setPunishFlag(Long punishFlag) {
+        this.punishFlag = punishFlag;
         return this;
     }
-    public RateLimit getRatelimit() {
-        return this.ratelimit;
+    public Long getPunishFlag() {
+        return this.punishFlag;
     }
 
     public GetDownloadUrlResponse setSize(Long size) {

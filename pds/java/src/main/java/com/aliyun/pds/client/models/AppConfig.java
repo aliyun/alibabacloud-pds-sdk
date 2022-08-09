@@ -16,6 +16,12 @@ public class AppConfig extends TeaModel {
     @NameInMap("custom_account_identity_base_64")
     public Boolean customAccountIdentityBase64;
 
+    @NameInMap("default_url_expire_sec")
+    public Long defaultUrlExpireSec;
+
+    @NameInMap("disable_client_builder")
+    public Boolean disableClientBuilder;
+
     @NameInMap("disable_group")
     public Boolean disableGroup;
 
@@ -61,6 +67,21 @@ public class AppConfig extends TeaModel {
     @NameInMap("mount_app_enable")
     public Boolean mountAppEnable;
 
+    @NameInMap("same_name_file_upload_mode")
+    public String sameNameFileUploadMode;
+
+    @NameInMap("share_hide_disabled_user")
+    public Boolean shareHideDisabledUser;
+
+    @NameInMap("share_link_disable_download")
+    public Boolean shareLinkDisableDownload;
+
+    @NameInMap("share_link_disable_upload")
+    public Boolean shareLinkDisableUpload;
+
+    @NameInMap("share_link_login_access_only")
+    public Boolean shareLinkLoginAccessOnly;
+
     @NameInMap("show_customized_login_config")
     public Boolean showCustomizedLoginConfig;
 
@@ -72,6 +93,9 @@ public class AppConfig extends TeaModel {
 
     @NameInMap("video_play_enable")
     public Boolean videoPlayEnable;
+
+    @NameInMap("web_client_download_mode")
+    public String webClientDownloadMode;
 
     @NameInMap("web_version")
     public String webVersion;
@@ -106,6 +130,22 @@ public class AppConfig extends TeaModel {
     }
     public Boolean getCustomAccountIdentityBase64() {
         return this.customAccountIdentityBase64;
+    }
+
+    public AppConfig setDefaultUrlExpireSec(Long defaultUrlExpireSec) {
+        this.defaultUrlExpireSec = defaultUrlExpireSec;
+        return this;
+    }
+    public Long getDefaultUrlExpireSec() {
+        return this.defaultUrlExpireSec;
+    }
+
+    public AppConfig setDisableClientBuilder(Boolean disableClientBuilder) {
+        this.disableClientBuilder = disableClientBuilder;
+        return this;
+    }
+    public Boolean getDisableClientBuilder() {
+        return this.disableClientBuilder;
     }
 
     public AppConfig setDisableGroup(Boolean disableGroup) {
@@ -228,6 +268,46 @@ public class AppConfig extends TeaModel {
         return this.mountAppEnable;
     }
 
+    public AppConfig setSameNameFileUploadMode(String sameNameFileUploadMode) {
+        this.sameNameFileUploadMode = sameNameFileUploadMode;
+        return this;
+    }
+    public String getSameNameFileUploadMode() {
+        return this.sameNameFileUploadMode;
+    }
+
+    public AppConfig setShareHideDisabledUser(Boolean shareHideDisabledUser) {
+        this.shareHideDisabledUser = shareHideDisabledUser;
+        return this;
+    }
+    public Boolean getShareHideDisabledUser() {
+        return this.shareHideDisabledUser;
+    }
+
+    public AppConfig setShareLinkDisableDownload(Boolean shareLinkDisableDownload) {
+        this.shareLinkDisableDownload = shareLinkDisableDownload;
+        return this;
+    }
+    public Boolean getShareLinkDisableDownload() {
+        return this.shareLinkDisableDownload;
+    }
+
+    public AppConfig setShareLinkDisableUpload(Boolean shareLinkDisableUpload) {
+        this.shareLinkDisableUpload = shareLinkDisableUpload;
+        return this;
+    }
+    public Boolean getShareLinkDisableUpload() {
+        return this.shareLinkDisableUpload;
+    }
+
+    public AppConfig setShareLinkLoginAccessOnly(Boolean shareLinkLoginAccessOnly) {
+        this.shareLinkLoginAccessOnly = shareLinkLoginAccessOnly;
+        return this;
+    }
+    public Boolean getShareLinkLoginAccessOnly() {
+        return this.shareLinkLoginAccessOnly;
+    }
+
     public AppConfig setShowCustomizedLoginConfig(Boolean showCustomizedLoginConfig) {
         this.showCustomizedLoginConfig = showCustomizedLoginConfig;
         return this;
@@ -258,6 +338,14 @@ public class AppConfig extends TeaModel {
     }
     public Boolean getVideoPlayEnable() {
         return this.videoPlayEnable;
+    }
+
+    public AppConfig setWebClientDownloadMode(String webClientDownloadMode) {
+        this.webClientDownloadMode = webClientDownloadMode;
+        return this;
+    }
+    public String getWebClientDownloadMode() {
+        return this.webClientDownloadMode;
     }
 
     public AppConfig setWebVersion(String webVersion) {
