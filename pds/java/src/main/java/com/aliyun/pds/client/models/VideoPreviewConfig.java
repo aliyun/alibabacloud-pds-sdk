@@ -19,6 +19,9 @@ public class VideoPreviewConfig extends TeaModel {
     @NameInMap("backup_config")
     public VideoPreviewBackupConfig backupConfig;
 
+    @NameInMap("drm_config")
+    public VideoPreviewDrmConfig drmConfig;
+
     @NameInMap("enable_config")
     public VideoPreviewEnableConfig enableConfig;
 
@@ -90,6 +93,14 @@ public class VideoPreviewConfig extends TeaModel {
     }
     public VideoPreviewBackupConfig getBackupConfig() {
         return this.backupConfig;
+    }
+
+    public VideoPreviewConfig setDrmConfig(VideoPreviewDrmConfig drmConfig) {
+        this.drmConfig = drmConfig;
+        return this;
+    }
+    public VideoPreviewDrmConfig getDrmConfig() {
+        return this.drmConfig;
     }
 
     public VideoPreviewConfig setEnableConfig(VideoPreviewEnableConfig enableConfig) {

@@ -4,11 +4,14 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class AuthConfig extends TeaModel {
     @NameInMap("app_id")
     public String appId;
+
+    @NameInMap("app_scheme")
+    public String appScheme;
 
     @NameInMap("app_secret")
     public String appSecret;
@@ -16,8 +19,14 @@ public class AuthConfig extends TeaModel {
     @NameInMap("callback_security")
     public Boolean callbackSecurity;
 
+    @NameInMap("ding_sync_config")
+    public DingSyncConfig dingSyncConfig;
+
     @NameInMap("enable")
     public Boolean enable;
+
+    @NameInMap("encoding_aes_key")
+    public String encodingAesKey;
 
     @NameInMap("endpoint")
     public String endpoint;
@@ -36,6 +45,12 @@ public class AuthConfig extends TeaModel {
 
     @NameInMap("login_page_vars")
     public java.util.Map<String, ?> loginPageVars;
+
+    @NameInMap("token")
+    public String token;
+
+    @NameInMap("we_chat_sync_config")
+    public WeChatSyncConfig weChatSyncConfig;
 
     @NameInMap("white_list_config")
     public java.util.Map<String, ?> whiteListConfig;
@@ -56,6 +71,14 @@ public class AuthConfig extends TeaModel {
         return this.appId;
     }
 
+    public AuthConfig setAppScheme(String appScheme) {
+        this.appScheme = appScheme;
+        return this;
+    }
+    public String getAppScheme() {
+        return this.appScheme;
+    }
+
     public AuthConfig setAppSecret(String appSecret) {
         this.appSecret = appSecret;
         return this;
@@ -72,12 +95,28 @@ public class AuthConfig extends TeaModel {
         return this.callbackSecurity;
     }
 
+    public AuthConfig setDingSyncConfig(DingSyncConfig dingSyncConfig) {
+        this.dingSyncConfig = dingSyncConfig;
+        return this;
+    }
+    public DingSyncConfig getDingSyncConfig() {
+        return this.dingSyncConfig;
+    }
+
     public AuthConfig setEnable(Boolean enable) {
         this.enable = enable;
         return this;
     }
     public Boolean getEnable() {
         return this.enable;
+    }
+
+    public AuthConfig setEncodingAesKey(String encodingAesKey) {
+        this.encodingAesKey = encodingAesKey;
+        return this;
+    }
+    public String getEncodingAesKey() {
+        return this.encodingAesKey;
     }
 
     public AuthConfig setEndpoint(String endpoint) {
@@ -126,6 +165,22 @@ public class AuthConfig extends TeaModel {
     }
     public java.util.Map<String, ?> getLoginPageVars() {
         return this.loginPageVars;
+    }
+
+    public AuthConfig setToken(String token) {
+        this.token = token;
+        return this;
+    }
+    public String getToken() {
+        return this.token;
+    }
+
+    public AuthConfig setWeChatSyncConfig(WeChatSyncConfig weChatSyncConfig) {
+        this.weChatSyncConfig = weChatSyncConfig;
+        return this;
+    }
+    public WeChatSyncConfig getWeChatSyncConfig() {
+        return this.weChatSyncConfig;
     }
 
     public AuthConfig setWhiteListConfig(java.util.Map<String, ?> whiteListConfig) {

@@ -23,6 +23,10 @@ public class ScanFileMetaRequest extends TeaModel {
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
+    // fields
+    @NameInMap("fields")
+    public String fields;
+
     @NameInMap("image_cropping_aspect_ratios")
     public java.util.List<String> imageCroppingAspectRatios;
 
@@ -87,6 +91,14 @@ public class ScanFileMetaRequest extends TeaModel {
     }
     public String getDriveId() {
         return this.driveId;
+    }
+
+    public ScanFileMetaRequest setFields(String fields) {
+        this.fields = fields;
+        return this;
+    }
+    public String getFields() {
+        return this.fields;
     }
 
     public ScanFileMetaRequest setImageCroppingAspectRatios(java.util.List<String> imageCroppingAspectRatios) {

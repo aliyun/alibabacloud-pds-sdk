@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class GetLinkInfoByUserIDRequest extends TeaModel {
     @NameInMap("httpheaders")

@@ -27,6 +27,10 @@ public class UpdateUserRequest extends TeaModel {
     @NameInMap("email")
     public String email;
 
+    // 用户过期时间
+    @NameInMap("expired_at")
+    public Long expiredAt;
+
     @NameInMap("group_info_list")
     public java.util.List<GroupInfo> groupInfoList;
 
@@ -41,6 +45,10 @@ public class UpdateUserRequest extends TeaModel {
     // 电话号码
     @NameInMap("phone")
     public String phone;
+
+    // 国家编码
+    @NameInMap("phone_region")
+    public String phoneRegion;
 
     // 用户明文密码
     @NameInMap("plain_password")
@@ -108,6 +116,14 @@ public class UpdateUserRequest extends TeaModel {
         return this.email;
     }
 
+    public UpdateUserRequest setExpiredAt(Long expiredAt) {
+        this.expiredAt = expiredAt;
+        return this;
+    }
+    public Long getExpiredAt() {
+        return this.expiredAt;
+    }
+
     public UpdateUserRequest setGroupInfoList(java.util.List<GroupInfo> groupInfoList) {
         this.groupInfoList = groupInfoList;
         return this;
@@ -138,6 +154,14 @@ public class UpdateUserRequest extends TeaModel {
     }
     public String getPhone() {
         return this.phone;
+    }
+
+    public UpdateUserRequest setPhoneRegion(String phoneRegion) {
+        this.phoneRegion = phoneRegion;
+        return this;
+    }
+    public String getPhoneRegion() {
+        return this.phoneRegion;
     }
 
     public UpdateUserRequest setPlainPassword(String plainPassword) {

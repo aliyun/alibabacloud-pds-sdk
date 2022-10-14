@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class Store extends TeaModel {
     // 全球加速地址
@@ -23,6 +23,14 @@ public class Store extends TeaModel {
     // 内容分发地址
     @NameInMap("cdn_endpoint")
     public String cdnEndpoint;
+
+    // 命中限速用户时是否关闭CDN地址返回
+    @NameInMap("cdn_ratelimit_disable")
+    public Boolean cdnRatelimitDisable;
+
+    // CDN时间控制
+    @NameInMap("cdn_timelimit")
+    public String cdnTimelimit;
 
     // CDN鉴权key
     @NameInMap("cdn_url_auth_key")
@@ -48,6 +56,13 @@ public class Store extends TeaModel {
     @NameInMap("endpoint")
     @Validation(required = true)
     public String endpoint;
+
+    // 冷流地址
+    @NameInMap("enet_endpoint")
+    public String enetEndpoint;
+
+    @NameInMap("enet_percent_config")
+    public WhitePercentConfig enetPercentConfig;
 
     // vpc访问地址
     @NameInMap("internal_endpoint")
@@ -118,6 +133,22 @@ public class Store extends TeaModel {
         return this.cdnEndpoint;
     }
 
+    public Store setCdnRatelimitDisable(Boolean cdnRatelimitDisable) {
+        this.cdnRatelimitDisable = cdnRatelimitDisable;
+        return this;
+    }
+    public Boolean getCdnRatelimitDisable() {
+        return this.cdnRatelimitDisable;
+    }
+
+    public Store setCdnTimelimit(String cdnTimelimit) {
+        this.cdnTimelimit = cdnTimelimit;
+        return this;
+    }
+    public String getCdnTimelimit() {
+        return this.cdnTimelimit;
+    }
+
     public Store setCdnUrlAuthKey(String cdnUrlAuthKey) {
         this.cdnUrlAuthKey = cdnUrlAuthKey;
         return this;
@@ -164,6 +195,22 @@ public class Store extends TeaModel {
     }
     public String getEndpoint() {
         return this.endpoint;
+    }
+
+    public Store setEnetEndpoint(String enetEndpoint) {
+        this.enetEndpoint = enetEndpoint;
+        return this;
+    }
+    public String getEnetEndpoint() {
+        return this.enetEndpoint;
+    }
+
+    public Store setEnetPercentConfig(WhitePercentConfig enetPercentConfig) {
+        this.enetPercentConfig = enetPercentConfig;
+        return this;
+    }
+    public WhitePercentConfig getEnetPercentConfig() {
+        return this.enetPercentConfig;
     }
 
     public Store setInternalEndpoint(String internalEndpoint) {

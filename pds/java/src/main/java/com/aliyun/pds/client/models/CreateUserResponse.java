@@ -23,6 +23,9 @@ public class CreateUserResponse extends TeaModel {
     @NameInMap("default_drive_id")
     public String defaultDriveId;
 
+    @NameInMap("default_location")
+    public String defaultLocation;
+
     // 禁止用户自行修改密码
     @NameInMap("deny_change_password_by_self")
     public Boolean denyChangePasswordBySelf;
@@ -39,6 +42,13 @@ public class CreateUserResponse extends TeaModel {
     @NameInMap("email")
     public String email;
 
+    // 用户过期时间
+    @NameInMap("expired_at")
+    public Long expiredAt;
+
+    @NameInMap("is_sync")
+    public Boolean isSync;
+
     // 下次登录强制修改密码
     @NameInMap("need_change_password_next_login")
     public Boolean needChangePasswordNextLogin;
@@ -53,6 +63,10 @@ public class CreateUserResponse extends TeaModel {
     // 电话
     @NameInMap("phone")
     public String phone;
+
+    // 国家编码
+    @NameInMap("phone_region")
+    public String phoneRegion;
 
     // 用户处罚标志
     @NameInMap("punish_flag")
@@ -119,6 +133,14 @@ public class CreateUserResponse extends TeaModel {
         return this.defaultDriveId;
     }
 
+    public CreateUserResponse setDefaultLocation(String defaultLocation) {
+        this.defaultLocation = defaultLocation;
+        return this;
+    }
+    public String getDefaultLocation() {
+        return this.defaultLocation;
+    }
+
     public CreateUserResponse setDenyChangePasswordBySelf(Boolean denyChangePasswordBySelf) {
         this.denyChangePasswordBySelf = denyChangePasswordBySelf;
         return this;
@@ -151,6 +173,22 @@ public class CreateUserResponse extends TeaModel {
         return this.email;
     }
 
+    public CreateUserResponse setExpiredAt(Long expiredAt) {
+        this.expiredAt = expiredAt;
+        return this;
+    }
+    public Long getExpiredAt() {
+        return this.expiredAt;
+    }
+
+    public CreateUserResponse setIsSync(Boolean isSync) {
+        this.isSync = isSync;
+        return this;
+    }
+    public Boolean getIsSync() {
+        return this.isSync;
+    }
+
     public CreateUserResponse setNeedChangePasswordNextLogin(Boolean needChangePasswordNextLogin) {
         this.needChangePasswordNextLogin = needChangePasswordNextLogin;
         return this;
@@ -181,6 +219,14 @@ public class CreateUserResponse extends TeaModel {
     }
     public String getPhone() {
         return this.phone;
+    }
+
+    public CreateUserResponse setPhoneRegion(String phoneRegion) {
+        this.phoneRegion = phoneRegion;
+        return this;
+    }
+    public String getPhoneRegion() {
+        return this.phoneRegion;
     }
 
     public CreateUserResponse setPunishFlag(Long punishFlag) {

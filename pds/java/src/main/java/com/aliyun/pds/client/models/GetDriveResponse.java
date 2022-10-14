@@ -10,6 +10,9 @@ public class GetDriveResponse extends TeaModel {
     @NameInMap("action_list")
     public java.util.List<String> actionList;
 
+    @NameInMap("category")
+    public String category;
+
     @NameInMap("created_at")
     public String createdAt;
 
@@ -89,6 +92,14 @@ public class GetDriveResponse extends TeaModel {
     }
     public java.util.List<String> getActionList() {
         return this.actionList;
+    }
+
+    public GetDriveResponse setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public GetDriveResponse setCreatedAt(String createdAt) {

@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class CroppingSuggestionItem extends TeaModel {
     @NameInMap("aspect_ratio")

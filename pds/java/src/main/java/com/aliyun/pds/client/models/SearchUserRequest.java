@@ -10,9 +10,15 @@ public class SearchUserRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    @NameInMap("drive_status")
+    public String driveStatus;
+
     // 邮箱
     @NameInMap("email")
     public String email;
+
+    @NameInMap("expired_at_range")
+    public Int64Range expiredAtRange;
 
     // 每页大小限制
     @NameInMap("limit")
@@ -30,6 +36,12 @@ public class SearchUserRequest extends TeaModel {
     // 昵称-模糊搜索
     @NameInMap("nick_name_for_fuzzy")
     public String nickNameForFuzzy;
+
+    @NameInMap("order_by")
+    public String orderBy;
+
+    @NameInMap("order_direction")
+    public String orderDirection;
 
     // 电话号码
     @NameInMap("phone")
@@ -64,12 +76,28 @@ public class SearchUserRequest extends TeaModel {
         return this.httpheaders;
     }
 
+    public SearchUserRequest setDriveStatus(String driveStatus) {
+        this.driveStatus = driveStatus;
+        return this;
+    }
+    public String getDriveStatus() {
+        return this.driveStatus;
+    }
+
     public SearchUserRequest setEmail(String email) {
         this.email = email;
         return this;
     }
     public String getEmail() {
         return this.email;
+    }
+
+    public SearchUserRequest setExpiredAtRange(Int64Range expiredAtRange) {
+        this.expiredAtRange = expiredAtRange;
+        return this;
+    }
+    public Int64Range getExpiredAtRange() {
+        return this.expiredAtRange;
     }
 
     public SearchUserRequest setLimit(Integer limit) {
@@ -102,6 +130,22 @@ public class SearchUserRequest extends TeaModel {
     }
     public String getNickNameForFuzzy() {
         return this.nickNameForFuzzy;
+    }
+
+    public SearchUserRequest setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
+        return this;
+    }
+    public String getOrderBy() {
+        return this.orderBy;
+    }
+
+    public SearchUserRequest setOrderDirection(String orderDirection) {
+        this.orderDirection = orderDirection;
+        return this;
+    }
+    public String getOrderDirection() {
+        return this.orderDirection;
     }
 
     public SearchUserRequest setPhone(String phone) {

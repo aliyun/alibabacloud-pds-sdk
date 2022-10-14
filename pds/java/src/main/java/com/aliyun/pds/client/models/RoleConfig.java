@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class RoleConfig extends TeaModel {
     @NameInMap("default_group_drive_role")
@@ -15,6 +15,9 @@ public class RoleConfig extends TeaModel {
 
     @NameInMap("enabled")
     public Boolean enabled;
+
+    @NameInMap("enabled_admin_delete_personal_file_permission")
+    public Boolean enabledAdminDeletePersonalFilePermission;
 
     @NameInMap("enabled_admin_personal_file_permission")
     public Boolean enabledAdminPersonalFilePermission;
@@ -46,6 +49,14 @@ public class RoleConfig extends TeaModel {
     }
     public Boolean getEnabled() {
         return this.enabled;
+    }
+
+    public RoleConfig setEnabledAdminDeletePersonalFilePermission(Boolean enabledAdminDeletePersonalFilePermission) {
+        this.enabledAdminDeletePersonalFilePermission = enabledAdminDeletePersonalFilePermission;
+        return this;
+    }
+    public Boolean getEnabledAdminDeletePersonalFilePermission() {
+        return this.enabledAdminDeletePersonalFilePermission;
     }
 
     public RoleConfig setEnabledAdminPersonalFilePermission(Boolean enabledAdminPersonalFilePermission) {

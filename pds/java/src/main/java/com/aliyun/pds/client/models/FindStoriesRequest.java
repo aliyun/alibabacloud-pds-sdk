@@ -21,6 +21,10 @@ public class FindStoriesRequest extends TeaModel {
     @NameInMap("create_time_range")
     public FindStoryRequestTimeRange createTimeRange;
 
+    // custom_labels
+    @NameInMap("custom_labels")
+    public String customLabels;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
@@ -37,6 +41,14 @@ public class FindStoriesRequest extends TeaModel {
     // marker
     @NameInMap("marker")
     public String marker;
+
+    // order
+    @NameInMap("order")
+    public String order;
+
+    // sort
+    @NameInMap("sort")
+    public String sort;
 
     @NameInMap("story_end_time_range")
     public FindStoryRequestTimeRange storyEndTimeRange;
@@ -59,6 +71,10 @@ public class FindStoriesRequest extends TeaModel {
     // url_expire_sec
     @NameInMap("url_expire_sec")
     public Long urlExpireSec;
+
+    // with_empty_stories
+    @NameInMap("with_empty_stories")
+    public Boolean withEmptyStories;
 
     public static FindStoriesRequest build(java.util.Map<String, ?> map) throws Exception {
         FindStoriesRequest self = new FindStoriesRequest();
@@ -97,6 +113,14 @@ public class FindStoriesRequest extends TeaModel {
         return this.createTimeRange;
     }
 
+    public FindStoriesRequest setCustomLabels(String customLabels) {
+        this.customLabels = customLabels;
+        return this;
+    }
+    public String getCustomLabels() {
+        return this.customLabels;
+    }
+
     public FindStoriesRequest setDriveId(String driveId) {
         this.driveId = driveId;
         return this;
@@ -127,6 +151,22 @@ public class FindStoriesRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public FindStoriesRequest setOrder(String order) {
+        this.order = order;
+        return this;
+    }
+    public String getOrder() {
+        return this.order;
+    }
+
+    public FindStoriesRequest setSort(String sort) {
+        this.sort = sort;
+        return this;
+    }
+    public String getSort() {
+        return this.sort;
     }
 
     public FindStoriesRequest setStoryEndTimeRange(FindStoryRequestTimeRange storyEndTimeRange) {
@@ -175,6 +215,14 @@ public class FindStoriesRequest extends TeaModel {
     }
     public Long getUrlExpireSec() {
         return this.urlExpireSec;
+    }
+
+    public FindStoriesRequest setWithEmptyStories(Boolean withEmptyStories) {
+        this.withEmptyStories = withEmptyStories;
+        return this;
+    }
+    public Boolean getWithEmptyStories() {
+        return this.withEmptyStories;
     }
 
 }

@@ -24,6 +24,12 @@ public class SearchDriveRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
+    @NameInMap("order_by")
+    public String orderBy;
+
+    @NameInMap("order_direction")
+    public String orderDirection;
+
     // 所属者
     @NameInMap("owner")
     public String owner;
@@ -72,6 +78,22 @@ public class SearchDriveRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public SearchDriveRequest setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
+        return this;
+    }
+    public String getOrderBy() {
+        return this.orderBy;
+    }
+
+    public SearchDriveRequest setOrderDirection(String orderDirection) {
+        this.orderDirection = orderDirection;
+        return this;
+    }
+    public String getOrderDirection() {
+        return this.orderDirection;
     }
 
     public SearchDriveRequest setOwner(String owner) {

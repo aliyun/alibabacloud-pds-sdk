@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class LoginByCodeRequest extends TeaModel {
     // 鉴权后返回的accessToken，淘宝登录需要此字段

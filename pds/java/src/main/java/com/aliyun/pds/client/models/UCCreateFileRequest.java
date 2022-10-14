@@ -70,7 +70,6 @@ public class UCCreateFileRequest extends TeaModel {
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // encrypt_mode
     @NameInMap("encrypt_mode")
     public String encryptMode;
 
@@ -97,6 +96,9 @@ public class UCCreateFileRequest extends TeaModel {
     @NameInMap("labels")
     public java.util.List<String> labels;
 
+    @NameInMap("last_revision_id")
+    public String lastRevisionId;
+
     // last_updated_at
     @NameInMap("last_updated_at")
     public String lastUpdatedAt;
@@ -119,6 +121,9 @@ public class UCCreateFileRequest extends TeaModel {
     @NameInMap("name")
     @Validation(required = true, maxLength = 1024, minLength = 1)
     public String name;
+
+    @NameInMap("need_merge_period_revision")
+    public Boolean needMergePeriodRevision;
 
     // overwrite
     @NameInMap("overwrite")
@@ -385,6 +390,14 @@ public class UCCreateFileRequest extends TeaModel {
         return this.labels;
     }
 
+    public UCCreateFileRequest setLastRevisionId(String lastRevisionId) {
+        this.lastRevisionId = lastRevisionId;
+        return this;
+    }
+    public String getLastRevisionId() {
+        return this.lastRevisionId;
+    }
+
     public UCCreateFileRequest setLastUpdatedAt(String lastUpdatedAt) {
         this.lastUpdatedAt = lastUpdatedAt;
         return this;
@@ -431,6 +444,14 @@ public class UCCreateFileRequest extends TeaModel {
     }
     public String getName() {
         return this.name;
+    }
+
+    public UCCreateFileRequest setNeedMergePeriodRevision(Boolean needMergePeriodRevision) {
+        this.needMergePeriodRevision = needMergePeriodRevision;
+        return this;
+    }
+    public Boolean getNeedMergePeriodRevision() {
+        return this.needMergePeriodRevision;
     }
 
     public UCCreateFileRequest setOverwrite(Boolean overwrite) {

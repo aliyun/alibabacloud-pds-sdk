@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class CreateMembershipResponse extends TeaModel {
     // created_at
@@ -26,6 +26,9 @@ public class CreateMembershipResponse extends TeaModel {
     // group id
     @NameInMap("group_id")
     public String groupId;
+
+    @NameInMap("is_sync")
+    public Boolean isSync;
 
     // 角色， member or admin
     @NameInMap("member_role")
@@ -87,6 +90,14 @@ public class CreateMembershipResponse extends TeaModel {
     }
     public String getGroupId() {
         return this.groupId;
+    }
+
+    public CreateMembershipResponse setIsSync(Boolean isSync) {
+        this.isSync = isSync;
+        return this;
+    }
+    public Boolean getIsSync() {
+        return this.isSync;
     }
 
     public CreateMembershipResponse setMemberRole(String memberRole) {

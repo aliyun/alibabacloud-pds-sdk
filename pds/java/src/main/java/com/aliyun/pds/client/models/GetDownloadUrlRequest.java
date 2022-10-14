@@ -44,12 +44,19 @@ public class GetDownloadUrlRequest extends TeaModel {
     @NameInMap("referer")
     public String referer;
 
+    // revision_id
+    @NameInMap("revision_id")
+    public String revisionId;
+
     // share_id, either share_id or drive_id is required
     @NameInMap("share_id")
     public String shareId;
 
     @NameInMap("sign_token")
     public String signToken;
+
+    @NameInMap("static_url")
+    public Boolean staticUrl;
 
     public static GetDownloadUrlRequest build(java.util.Map<String, ?> map) throws Exception {
         GetDownloadUrlRequest self = new GetDownloadUrlRequest();
@@ -128,6 +135,14 @@ public class GetDownloadUrlRequest extends TeaModel {
         return this.referer;
     }
 
+    public GetDownloadUrlRequest setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+        return this;
+    }
+    public String getRevisionId() {
+        return this.revisionId;
+    }
+
     public GetDownloadUrlRequest setShareId(String shareId) {
         this.shareId = shareId;
         return this;
@@ -142,6 +157,14 @@ public class GetDownloadUrlRequest extends TeaModel {
     }
     public String getSignToken() {
         return this.signToken;
+    }
+
+    public GetDownloadUrlRequest setStaticUrl(Boolean staticUrl) {
+        this.staticUrl = staticUrl;
+        return this;
+    }
+    public Boolean getStaticUrl() {
+        return this.staticUrl;
     }
 
 }

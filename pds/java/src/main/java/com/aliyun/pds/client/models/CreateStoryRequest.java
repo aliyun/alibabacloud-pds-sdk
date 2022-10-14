@@ -10,6 +10,14 @@ public class CreateStoryRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    // custom_id
+    @NameInMap("custom_id")
+    public String customId;
+
+    // custom_labels
+    @NameInMap("custom_labels")
+    public java.util.Map<String, ?> customLabels;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
@@ -59,6 +67,22 @@ public class CreateStoryRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public CreateStoryRequest setCustomId(String customId) {
+        this.customId = customId;
+        return this;
+    }
+    public String getCustomId() {
+        return this.customId;
+    }
+
+    public CreateStoryRequest setCustomLabels(java.util.Map<String, ?> customLabels) {
+        this.customLabels = customLabels;
+        return this;
+    }
+    public java.util.Map<String, ?> getCustomLabels() {
+        return this.customLabels;
     }
 
     public CreateStoryRequest setDriveId(String driveId) {

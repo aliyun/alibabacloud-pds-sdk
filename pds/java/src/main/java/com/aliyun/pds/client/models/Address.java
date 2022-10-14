@@ -4,9 +4,12 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class Address extends TeaModel {
+    @NameInMap("address_line")
+    public String addressLine;
+
     @NameInMap("city")
     public String city;
 
@@ -25,6 +28,14 @@ public class Address extends TeaModel {
     public static Address build(java.util.Map<String, ?> map) throws Exception {
         Address self = new Address();
         return TeaModel.build(map, self);
+    }
+
+    public Address setAddressLine(String addressLine) {
+        this.addressLine = addressLine;
+        return this;
+    }
+    public String getAddressLine() {
+        return this.addressLine;
     }
 
     public Address setCity(String city) {

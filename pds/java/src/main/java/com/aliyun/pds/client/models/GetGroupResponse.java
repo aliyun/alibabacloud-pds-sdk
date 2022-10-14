@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class GetGroupResponse extends TeaModel {
     // created_at
@@ -30,6 +30,9 @@ public class GetGroupResponse extends TeaModel {
     // group name
     @NameInMap("group_name")
     public String groupName;
+
+    @NameInMap("is_sync")
+    public Boolean isSync;
 
     @NameInMap("permission")
     public java.util.Map<String, ?> permission;
@@ -89,6 +92,14 @@ public class GetGroupResponse extends TeaModel {
     }
     public String getGroupName() {
         return this.groupName;
+    }
+
+    public GetGroupResponse setIsSync(Boolean isSync) {
+        this.isSync = isSync;
+        return this;
+    }
+    public Boolean getIsSync() {
+        return this.isSync;
     }
 
     public GetGroupResponse setPermission(java.util.Map<String, ?> permission) {

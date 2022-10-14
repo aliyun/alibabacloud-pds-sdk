@@ -32,6 +32,10 @@ public class GetAsyncTaskResponse extends TeaModel {
     @NameInMap("state")
     public String state;
 
+    // status
+    @NameInMap("status")
+    public String status;
+
     // total_process
     @NameInMap("total_process")
     public Long totalProcess;
@@ -92,6 +96,14 @@ public class GetAsyncTaskResponse extends TeaModel {
     }
     public String getState() {
         return this.state;
+    }
+
+    public GetAsyncTaskResponse setStatus(String status) {
+        this.status = status;
+        return this;
+    }
+    public String getStatus() {
+        return this.status;
     }
 
     public GetAsyncTaskResponse setTotalProcess(Long totalProcess) {

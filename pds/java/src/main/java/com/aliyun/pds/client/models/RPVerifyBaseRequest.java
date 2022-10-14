@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class RPVerifyBaseRequest extends TeaModel {
     // User ID, 当前访问的用户

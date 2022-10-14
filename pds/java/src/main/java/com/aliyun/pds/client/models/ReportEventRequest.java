@@ -14,8 +14,14 @@ public class ReportEventRequest extends TeaModel {
     @NameInMap("event_type")
     public String eventType;
 
+    @NameInMap("media_play")
+    public ReportMediaPlayEventRequest mediaPlay;
+
     @NameInMap("share_link")
     public ReportShareLinkEventRequest shareLink;
+
+    @NameInMap("share_link_access")
+    public ReportShareLinkAccessEventRequest shareLinkAccess;
 
     public static ReportEventRequest build(java.util.Map<String, ?> map) throws Exception {
         ReportEventRequest self = new ReportEventRequest();
@@ -38,12 +44,28 @@ public class ReportEventRequest extends TeaModel {
         return this.eventType;
     }
 
+    public ReportEventRequest setMediaPlay(ReportMediaPlayEventRequest mediaPlay) {
+        this.mediaPlay = mediaPlay;
+        return this;
+    }
+    public ReportMediaPlayEventRequest getMediaPlay() {
+        return this.mediaPlay;
+    }
+
     public ReportEventRequest setShareLink(ReportShareLinkEventRequest shareLink) {
         this.shareLink = shareLink;
         return this;
     }
     public ReportShareLinkEventRequest getShareLink() {
         return this.shareLink;
+    }
+
+    public ReportEventRequest setShareLinkAccess(ReportShareLinkAccessEventRequest shareLinkAccess) {
+        this.shareLinkAccess = shareLinkAccess;
+        return this;
+    }
+    public ReportShareLinkAccessEventRequest getShareLinkAccess() {
+        return this.shareLinkAccess;
     }
 
 }

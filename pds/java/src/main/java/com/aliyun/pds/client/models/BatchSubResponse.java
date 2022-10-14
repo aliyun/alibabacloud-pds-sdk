@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class BatchSubResponse extends TeaModel {
     // body 子请求的返回结果，可参考对于子请求文档 json 字符串

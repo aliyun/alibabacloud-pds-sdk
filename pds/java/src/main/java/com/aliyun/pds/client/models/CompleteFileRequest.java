@@ -14,6 +14,10 @@ public class CompleteFileRequest extends TeaModel {
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
+    // crc64_hash
+    @NameInMap("crc64_hash")
+    public String crc64Hash;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -23,6 +27,9 @@ public class CompleteFileRequest extends TeaModel {
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
+
+    @NameInMap("last_revision_id")
+    public String lastRevisionId;
 
     // part_info_list
     @NameInMap("part_info_list")
@@ -56,6 +63,14 @@ public class CompleteFileRequest extends TeaModel {
         return this.additionData;
     }
 
+    public CompleteFileRequest setCrc64Hash(String crc64Hash) {
+        this.crc64Hash = crc64Hash;
+        return this;
+    }
+    public String getCrc64Hash() {
+        return this.crc64Hash;
+    }
+
     public CompleteFileRequest setDriveId(String driveId) {
         this.driveId = driveId;
         return this;
@@ -70,6 +85,14 @@ public class CompleteFileRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public CompleteFileRequest setLastRevisionId(String lastRevisionId) {
+        this.lastRevisionId = lastRevisionId;
+        return this;
+    }
+    public String getLastRevisionId() {
+        return this.lastRevisionId;
     }
 
     public CompleteFileRequest setPartInfoList(java.util.List<UploadPartInfo> partInfoList) {

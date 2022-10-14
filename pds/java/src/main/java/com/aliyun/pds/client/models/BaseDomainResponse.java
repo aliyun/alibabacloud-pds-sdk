@@ -18,6 +18,9 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("app_config")
     public AppConfig appConfig;
 
+    @NameInMap("archive_config")
+    public ArchiveConfig archiveConfig;
+
     // 打包下载配置
     @NameInMap("archive_files_enable")
     public Boolean archiveFilesEnable;
@@ -111,6 +114,12 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("expire_time")
     public Long expireTime;
 
+    @NameInMap("file_category")
+    public java.util.Map<String, ?> fileCategory;
+
+    @NameInMap("group_config")
+    public GroupConfig groupConfig;
+
     @NameInMap("group_single_drive_enabled")
     public Boolean groupSingleDriveEnabled;
 
@@ -129,6 +138,9 @@ public class BaseDomainResponse extends TeaModel {
     // Domain 类型
     @NameInMap("mode")
     public String mode;
+
+    @NameInMap("multi_revision_config")
+    public BaseMultiRevisionConfigResponse multiRevisionConfig;
 
     @NameInMap("office_edit_config")
     public OfficeEditConfig officeEditConfig;
@@ -154,6 +166,9 @@ public class BaseDomainResponse extends TeaModel {
     @NameInMap("published_app_access_strategy")
     public AppAccessStrategy publishedAppAccessStrategy;
 
+    @NameInMap("recycle_bin_config")
+    public RecycleBinConfig recycleBinConfig;
+
     @NameInMap("role_config")
     public RoleConfig roleConfig;
 
@@ -169,7 +184,7 @@ public class BaseDomainResponse extends TeaModel {
     public ShareDetailResponse shareDetail;
 
     @NameInMap("share_link_detail")
-    public ShareDetailResponse shareLinkDetail;
+    public ShareLinkDetailResponse shareLinkDetail;
 
     // 是否开启了分享
     @NameInMap("share_link_enabled")
@@ -194,6 +209,9 @@ public class BaseDomainResponse extends TeaModel {
     // 存储 Region 列表
     @NameInMap("store_region_list")
     public java.util.List<String> storeRegionList;
+
+    @NameInMap("subdomain_config")
+    public SubdomainConfig subdomainConfig;
 
     // Domain 更新时间
     @NameInMap("updated_at")
@@ -251,6 +269,14 @@ public class BaseDomainResponse extends TeaModel {
     }
     public AppConfig getAppConfig() {
         return this.appConfig;
+    }
+
+    public BaseDomainResponse setArchiveConfig(ArchiveConfig archiveConfig) {
+        this.archiveConfig = archiveConfig;
+        return this;
+    }
+    public ArchiveConfig getArchiveConfig() {
+        return this.archiveConfig;
     }
 
     public BaseDomainResponse setArchiveFilesEnable(Boolean archiveFilesEnable) {
@@ -445,6 +471,22 @@ public class BaseDomainResponse extends TeaModel {
         return this.expireTime;
     }
 
+    public BaseDomainResponse setFileCategory(java.util.Map<String, ?> fileCategory) {
+        this.fileCategory = fileCategory;
+        return this;
+    }
+    public java.util.Map<String, ?> getFileCategory() {
+        return this.fileCategory;
+    }
+
+    public BaseDomainResponse setGroupConfig(GroupConfig groupConfig) {
+        this.groupConfig = groupConfig;
+        return this;
+    }
+    public GroupConfig getGroupConfig() {
+        return this.groupConfig;
+    }
+
     public BaseDomainResponse setGroupSingleDriveEnabled(Boolean groupSingleDriveEnabled) {
         this.groupSingleDriveEnabled = groupSingleDriveEnabled;
         return this;
@@ -483,6 +525,14 @@ public class BaseDomainResponse extends TeaModel {
     }
     public String getMode() {
         return this.mode;
+    }
+
+    public BaseDomainResponse setMultiRevisionConfig(BaseMultiRevisionConfigResponse multiRevisionConfig) {
+        this.multiRevisionConfig = multiRevisionConfig;
+        return this;
+    }
+    public BaseMultiRevisionConfigResponse getMultiRevisionConfig() {
+        return this.multiRevisionConfig;
     }
 
     public BaseDomainResponse setOfficeEditConfig(OfficeEditConfig officeEditConfig) {
@@ -541,6 +591,14 @@ public class BaseDomainResponse extends TeaModel {
         return this.publishedAppAccessStrategy;
     }
 
+    public BaseDomainResponse setRecycleBinConfig(RecycleBinConfig recycleBinConfig) {
+        this.recycleBinConfig = recycleBinConfig;
+        return this;
+    }
+    public RecycleBinConfig getRecycleBinConfig() {
+        return this.recycleBinConfig;
+    }
+
     public BaseDomainResponse setRoleConfig(RoleConfig roleConfig) {
         this.roleConfig = roleConfig;
         return this;
@@ -573,11 +631,11 @@ public class BaseDomainResponse extends TeaModel {
         return this.shareDetail;
     }
 
-    public BaseDomainResponse setShareLinkDetail(ShareDetailResponse shareLinkDetail) {
+    public BaseDomainResponse setShareLinkDetail(ShareLinkDetailResponse shareLinkDetail) {
         this.shareLinkDetail = shareLinkDetail;
         return this;
     }
-    public ShareDetailResponse getShareLinkDetail() {
+    public ShareLinkDetailResponse getShareLinkDetail() {
         return this.shareLinkDetail;
     }
 
@@ -627,6 +685,14 @@ public class BaseDomainResponse extends TeaModel {
     }
     public java.util.List<String> getStoreRegionList() {
         return this.storeRegionList;
+    }
+
+    public BaseDomainResponse setSubdomainConfig(SubdomainConfig subdomainConfig) {
+        this.subdomainConfig = subdomainConfig;
+        return this;
+    }
+    public SubdomainConfig getSubdomainConfig() {
+        return this.subdomainConfig;
     }
 
     public BaseDomainResponse setUpdatedAt(String updatedAt) {

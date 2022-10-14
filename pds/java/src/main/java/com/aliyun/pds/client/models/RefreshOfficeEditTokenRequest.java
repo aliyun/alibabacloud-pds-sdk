@@ -28,6 +28,11 @@ public class RefreshOfficeEditTokenRequest extends TeaModel {
     @Validation(required = true)
     public String officeRefreshToken;
 
+    // share_id
+    // example
+    @NameInMap("share_id")
+    public String shareId;
+
     public static RefreshOfficeEditTokenRequest build(java.util.Map<String, ?> map) throws Exception {
         RefreshOfficeEditTokenRequest self = new RefreshOfficeEditTokenRequest();
         return TeaModel.build(map, self);
@@ -71,6 +76,14 @@ public class RefreshOfficeEditTokenRequest extends TeaModel {
     }
     public String getOfficeRefreshToken() {
         return this.officeRefreshToken;
+    }
+
+    public RefreshOfficeEditTokenRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
 }

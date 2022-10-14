@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ *
  */
 public class CCPArchiveRequest extends TeaModel {
     // 格式类型，如果是uc，使用特殊格式

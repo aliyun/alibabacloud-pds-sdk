@@ -30,6 +30,10 @@ public class GetUploadUrlResponse extends TeaModel {
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
+    // share_id
+    @NameInMap("share_id")
+    public String shareId;
+
     // upload_id
     @NameInMap("upload_id")
     public String uploadId;
@@ -77,6 +81,14 @@ public class GetUploadUrlResponse extends TeaModel {
     }
     public java.util.List<UploadPartInfo> getPartInfoList() {
         return this.partInfoList;
+    }
+
+    public GetUploadUrlResponse setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public GetUploadUrlResponse setUploadId(String uploadId) {
