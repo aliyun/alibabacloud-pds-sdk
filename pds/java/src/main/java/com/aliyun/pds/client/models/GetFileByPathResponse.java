@@ -166,6 +166,10 @@ public class GetFileByPathResponse extends TeaModel {
     @NameInMap("revision_id")
     public String revisionId;
 
+    // revision_version
+    @NameInMap("revision_version")
+    public Long revisionVersion;
+
     @NameInMap("share_id")
     public String shareId;
 
@@ -556,6 +560,14 @@ public class GetFileByPathResponse extends TeaModel {
     }
     public String getRevisionId() {
         return this.revisionId;
+    }
+
+    public GetFileByPathResponse setRevisionVersion(Long revisionVersion) {
+        this.revisionVersion = revisionVersion;
+        return this;
+    }
+    public Long getRevisionVersion() {
+        return this.revisionVersion;
     }
 
     public GetFileByPathResponse setShareId(String shareId) {

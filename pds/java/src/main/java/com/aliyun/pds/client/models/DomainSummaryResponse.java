@@ -23,6 +23,10 @@ public class DomainSummaryResponse extends TeaModel {
     @NameInMap("statistics_time")
     public Long statisticsTime;
 
+    // used_flow
+    @NameInMap("used_flow")
+    public Long usedFlow;
+
     // used_size
     @NameInMap("used_size")
     public Long usedSize;
@@ -66,6 +70,14 @@ public class DomainSummaryResponse extends TeaModel {
     }
     public Long getStatisticsTime() {
         return this.statisticsTime;
+    }
+
+    public DomainSummaryResponse setUsedFlow(Long usedFlow) {
+        this.usedFlow = usedFlow;
+        return this;
+    }
+    public Long getUsedFlow() {
+        return this.usedFlow;
     }
 
     public DomainSummaryResponse setUsedSize(Long usedSize) {
