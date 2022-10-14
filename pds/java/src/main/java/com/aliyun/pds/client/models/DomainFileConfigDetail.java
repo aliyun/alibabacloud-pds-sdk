@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class DomainFileConfigDetail extends TeaModel {
     @NameInMap("allow_upload_custom_file_ext_list")

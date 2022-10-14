@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class LiveTranscodingSubtitleTaskResponse extends TeaModel {
     // language, 字幕语言

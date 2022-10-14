@@ -4,13 +4,9 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class ShareLinkPermissionResponse extends TeaModel {
-    // 文件分享大类
-    @NameInMap("category")
-    public String category;
-
     // 允许上传
     @NameInMap("creatable")
     public Boolean creatable;
@@ -62,14 +58,6 @@ public class ShareLinkPermissionResponse extends TeaModel {
     public static ShareLinkPermissionResponse build(java.util.Map<String, ?> map) throws Exception {
         ShareLinkPermissionResponse self = new ShareLinkPermissionResponse();
         return TeaModel.build(map, self);
-    }
-
-    public ShareLinkPermissionResponse setCategory(String category) {
-        this.category = category;
-        return this;
-    }
-    public String getCategory() {
-        return this.category;
     }
 
     public ShareLinkPermissionResponse setCreatable(Boolean creatable) {

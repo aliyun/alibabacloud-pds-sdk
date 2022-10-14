@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class FaceThumbnail extends TeaModel {
     @NameInMap("face_group_id")

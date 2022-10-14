@@ -86,6 +86,9 @@ public class GetDomainResponse extends TeaModel {
     @NameInMap("domain_name")
     public String domainName;
 
+    @NameInMap("endpoints")
+    public DomainEndpointsResponse endpoints;
+
     // 企业文件管理专属登录开关
     @NameInMap("enterprise_customized_login")
     public Boolean enterpriseCustomizedLogin;
@@ -413,6 +416,14 @@ public class GetDomainResponse extends TeaModel {
     }
     public String getDomainName() {
         return this.domainName;
+    }
+
+    public GetDomainResponse setEndpoints(DomainEndpointsResponse endpoints) {
+        this.endpoints = endpoints;
+        return this;
+    }
+    public DomainEndpointsResponse getEndpoints() {
+        return this.endpoints;
     }
 
     public GetDomainResponse setEnterpriseCustomizedLogin(Boolean enterpriseCustomizedLogin) {

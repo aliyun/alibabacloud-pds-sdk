@@ -4,11 +4,14 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class ListGroupRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
+
+    @NameInMap("extra_return_info")
+    public java.util.List<String> extraReturnInfo;
 
     // 分页获取的数量，默认为100
     @NameInMap("limit")
@@ -33,6 +36,14 @@ public class ListGroupRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public ListGroupRequest setExtraReturnInfo(java.util.List<String> extraReturnInfo) {
+        this.extraReturnInfo = extraReturnInfo;
+        return this;
+    }
+    public java.util.List<String> getExtraReturnInfo() {
+        return this.extraReturnInfo;
     }
 
     public ListGroupRequest setLimit(Integer limit) {

@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class BaseFileListInheritPermissionResponse extends TeaModel {
     // 被授权的文件ID

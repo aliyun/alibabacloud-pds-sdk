@@ -4,11 +4,14 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class SearchGroupRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
+
+    @NameInMap("extra_return_info")
+    public java.util.List<String> extraReturnInfo;
 
     // group_name
     @NameInMap("group_name")
@@ -41,6 +44,14 @@ public class SearchGroupRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public SearchGroupRequest setExtraReturnInfo(java.util.List<String> extraReturnInfo) {
+        this.extraReturnInfo = extraReturnInfo;
+        return this;
+    }
+    public java.util.List<String> getExtraReturnInfo() {
+        return this.extraReturnInfo;
     }
 
     public SearchGroupRequest setGroupName(String groupName) {

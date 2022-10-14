@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class UpdateBenefitToPkgMappingResponse extends TeaModel {
     public static UpdateBenefitToPkgMappingResponse build(java.util.Map<String, ?> map) throws Exception {

@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class GetRPVerifyInfoRequest extends TeaModel {
     // Need Identity Info, 是否获取脱敏的身份信息

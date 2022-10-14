@@ -12,7 +12,6 @@ public class SearchDriveRequest extends TeaModel {
 
     // Drive Fuzz Name
     @NameInMap("drive_name")
-    @Validation(required = true)
     public String driveName;
 
     // 每页大小限制

@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class AuthorizeRequest extends TeaModel {
     // Client ID, 此处填写创建App时返回的AppID

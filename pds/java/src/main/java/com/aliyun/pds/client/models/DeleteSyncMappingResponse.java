@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class DeleteSyncMappingResponse extends TeaModel {
     public static DeleteSyncMappingResponse build(java.util.Map<String, ?> map) throws Exception {

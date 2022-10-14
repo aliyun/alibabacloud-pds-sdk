@@ -23,6 +23,10 @@ public class LiveTranscodingTaskResponse extends TeaModel {
     @NameInMap("status")
     public String status;
 
+    // template_height
+    @NameInMap("template_height")
+    public Long templateHeight;
+
     // template_id, 转码模板id
     @NameInMap("template_id")
     public String templateId;
@@ -30,6 +34,10 @@ public class LiveTranscodingTaskResponse extends TeaModel {
     // template_name, 模板文案id
     @NameInMap("template_name")
     public String templateName;
+
+    // template_width
+    @NameInMap("template_width")
+    public Long templateWidth;
 
     // url, 视频播放地址
     @NameInMap("url")
@@ -72,6 +80,14 @@ public class LiveTranscodingTaskResponse extends TeaModel {
         return this.status;
     }
 
+    public LiveTranscodingTaskResponse setTemplateHeight(Long templateHeight) {
+        this.templateHeight = templateHeight;
+        return this;
+    }
+    public Long getTemplateHeight() {
+        return this.templateHeight;
+    }
+
     public LiveTranscodingTaskResponse setTemplateId(String templateId) {
         this.templateId = templateId;
         return this;
@@ -86,6 +102,14 @@ public class LiveTranscodingTaskResponse extends TeaModel {
     }
     public String getTemplateName() {
         return this.templateName;
+    }
+
+    public LiveTranscodingTaskResponse setTemplateWidth(Long templateWidth) {
+        this.templateWidth = templateWidth;
+        return this;
+    }
+    public Long getTemplateWidth() {
+        return this.templateWidth;
     }
 
     public LiveTranscodingTaskResponse setUrl(String url) {

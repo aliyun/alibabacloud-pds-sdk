@@ -23,6 +23,10 @@ public class GetShareLinkTokenRequest extends TeaModel {
     @Validation(maximum = 7200)
     public Long expireSec;
 
+    // nvc_param
+    @NameInMap("nvc_param")
+    public String nvcParam;
+
     @NameInMap("referer")
     public String referer;
 
@@ -69,6 +73,14 @@ public class GetShareLinkTokenRequest extends TeaModel {
     }
     public Long getExpireSec() {
         return this.expireSec;
+    }
+
+    public GetShareLinkTokenRequest setNvcParam(String nvcParam) {
+        this.nvcParam = nvcParam;
+        return this;
+    }
+    public String getNvcParam() {
+        return this.nvcParam;
     }
 
     public GetShareLinkTokenRequest setReferer(String referer) {

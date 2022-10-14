@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class ExternalMultiFileRevisionConfig extends TeaModel {
     @NameInMap("revision_count")

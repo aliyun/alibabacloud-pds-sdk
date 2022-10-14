@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class VerifyCodeResponse extends TeaModel {
     // 修改密码的临时授权码

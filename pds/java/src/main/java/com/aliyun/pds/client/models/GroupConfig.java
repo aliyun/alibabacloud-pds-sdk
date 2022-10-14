@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class GroupConfig extends TeaModel {
     @NameInMap("auto_add_root_group_enabled")
