@@ -41,7 +41,7 @@ public class ListRevisionRequest extends TeaModel {
 
     // limit
     @NameInMap("limit")
-    @Validation(maximum = 200, minimum = 1)
+    @Validation(maximum = 100, minimum = 1)
     public Long limit;
 
     // location
