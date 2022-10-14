@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class Captcha extends TeaModel {
     // 图片验证码，base64格式

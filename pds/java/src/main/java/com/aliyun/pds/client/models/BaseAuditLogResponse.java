@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class BaseAuditLogResponse extends TeaModel {
     // 客户端设备

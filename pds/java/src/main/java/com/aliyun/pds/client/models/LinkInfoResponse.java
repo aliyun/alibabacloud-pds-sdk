@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class LinkInfoResponse extends TeaModel {
     // 认证类型

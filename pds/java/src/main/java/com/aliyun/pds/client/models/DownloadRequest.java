@@ -25,6 +25,10 @@ public class DownloadRequest extends TeaModel {
     @NameInMap("OfficeThumbnailProcess")
     public String OfficeThumbnailProcess;
 
+    // revision id
+    @NameInMap("RevisionID")
+    public String RevisionID;
+
     // share_id, either share_id or drive_id is required
     @NameInMap("ShareID")
     public String ShareID;
@@ -86,6 +90,14 @@ public class DownloadRequest extends TeaModel {
     }
     public String getOfficeThumbnailProcess() {
         return this.OfficeThumbnailProcess;
+    }
+
+    public DownloadRequest setRevisionID(String RevisionID) {
+        this.RevisionID = RevisionID;
+        return this;
+    }
+    public String getRevisionID() {
+        return this.RevisionID;
     }
 
     public DownloadRequest setShareID(String ShareID) {

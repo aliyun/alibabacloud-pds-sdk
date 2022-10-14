@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class AuditLogConfig extends TeaModel {
     @NameInMap("active_log_keep_days")

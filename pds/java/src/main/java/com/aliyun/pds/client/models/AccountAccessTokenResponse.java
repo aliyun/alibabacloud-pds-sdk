@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class AccountAccessTokenResponse extends TeaModel {
     // 用于调用业务接口的accessToken

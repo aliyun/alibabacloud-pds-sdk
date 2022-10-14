@@ -75,6 +75,14 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     @NameInMap("file_count")
     public Long fileCount;
 
+    // has_pwd
+    @NameInMap("has_pwd")
+    public Boolean hasPwd;
+
+    // need_check_pwd
+    @NameInMap("need_check_pwd")
+    public Boolean needCheckPwd;
+
     // 允许在线编辑文档
     @NameInMap("office_editable")
     public Boolean officeEditable;
@@ -262,6 +270,22 @@ public class GetShareLinkByAnonymousResponse extends TeaModel {
     }
     public Long getFileCount() {
         return this.fileCount;
+    }
+
+    public GetShareLinkByAnonymousResponse setHasPwd(Boolean hasPwd) {
+        this.hasPwd = hasPwd;
+        return this;
+    }
+    public Boolean getHasPwd() {
+        return this.hasPwd;
+    }
+
+    public GetShareLinkByAnonymousResponse setNeedCheckPwd(Boolean needCheckPwd) {
+        this.needCheckPwd = needCheckPwd;
+        return this;
+    }
+    public Boolean getNeedCheckPwd() {
+        return this.needCheckPwd;
     }
 
     public GetShareLinkByAnonymousResponse setOfficeEditable(Boolean officeEditable) {

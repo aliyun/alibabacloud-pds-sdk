@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class UpdateShareLinkPermissionRequest extends TeaModel {
     // 允许上传

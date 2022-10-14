@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 获取签名 response
  */
 public class ListUploadedPartResponse extends TeaModel {
+    @NameInMap("drive_id")
+    public String driveId;
+
     // file_id
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
@@ -30,6 +33,14 @@ public class ListUploadedPartResponse extends TeaModel {
     public static ListUploadedPartResponse build(java.util.Map<String, ?> map) throws Exception {
         ListUploadedPartResponse self = new ListUploadedPartResponse();
         return TeaModel.build(map, self);
+    }
+
+    public ListUploadedPartResponse setDriveId(String driveId) {
+        this.driveId = driveId;
+        return this;
+    }
+    public String getDriveId() {
+        return this.driveId;
     }
 
     public ListUploadedPartResponse setFileId(String fileId) {

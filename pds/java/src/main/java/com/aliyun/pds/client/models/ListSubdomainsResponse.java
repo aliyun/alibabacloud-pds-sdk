@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class ListSubdomainsResponse extends TeaModel {
     // 分页的 subdomain 数据

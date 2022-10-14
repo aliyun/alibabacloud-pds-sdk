@@ -49,6 +49,9 @@ public class UpdateUserResponse extends TeaModel {
     @NameInMap("is_sync")
     public Boolean isSync;
 
+    @NameInMap("last_login_time")
+    public Long lastLoginTime;
+
     // 下次登录强制修改密码
     @NameInMap("need_change_password_next_login")
     public Boolean needChangePasswordNextLogin;
@@ -71,6 +74,9 @@ public class UpdateUserResponse extends TeaModel {
     // 用户处罚标志
     @NameInMap("punish_flag")
     public Long punishFlag;
+
+    @NameInMap("punishments")
+    public java.util.List<PunishmentResponse> punishments;
 
     // 角色
     @NameInMap("role")
@@ -189,6 +195,14 @@ public class UpdateUserResponse extends TeaModel {
         return this.isSync;
     }
 
+    public UpdateUserResponse setLastLoginTime(Long lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+        return this;
+    }
+    public Long getLastLoginTime() {
+        return this.lastLoginTime;
+    }
+
     public UpdateUserResponse setNeedChangePasswordNextLogin(Boolean needChangePasswordNextLogin) {
         this.needChangePasswordNextLogin = needChangePasswordNextLogin;
         return this;
@@ -235,6 +249,14 @@ public class UpdateUserResponse extends TeaModel {
     }
     public Long getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public UpdateUserResponse setPunishments(java.util.List<PunishmentResponse> punishments) {
+        this.punishments = punishments;
+        return this;
+    }
+    public java.util.List<PunishmentResponse> getPunishments() {
+        return this.punishments;
     }
 
     public UpdateUserResponse setRole(String role) {

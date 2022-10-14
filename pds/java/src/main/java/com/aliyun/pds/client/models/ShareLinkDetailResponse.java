@@ -11,6 +11,10 @@ public class ShareLinkDetailResponse extends TeaModel {
     @NameInMap("access_quota")
     public Long accessQuota;
 
+    // 是否启用分享token验证码功能
+    @NameInMap("enable_nvc_share_token")
+    public Boolean enableNvcShareToken;
+
     // 企业是否开通了分享可在线编辑的文档的功能
     @NameInMap("enable_office_editable")
     public Boolean enableOfficeEditable;
@@ -30,6 +34,14 @@ public class ShareLinkDetailResponse extends TeaModel {
     }
     public Long getAccessQuota() {
         return this.accessQuota;
+    }
+
+    public ShareLinkDetailResponse setEnableNvcShareToken(Boolean enableNvcShareToken) {
+        this.enableNvcShareToken = enableNvcShareToken;
+        return this;
+    }
+    public Boolean getEnableNvcShareToken() {
+        return this.enableNvcShareToken;
     }
 
     public ShareLinkDetailResponse setEnableOfficeEditable(Boolean enableOfficeEditable) {

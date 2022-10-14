@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class CheckExistResponse extends TeaModel {
     // 当前手机号是否存在

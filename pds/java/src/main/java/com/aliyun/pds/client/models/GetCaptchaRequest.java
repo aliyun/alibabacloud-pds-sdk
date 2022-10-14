@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- *
+ * 
  */
 public class GetCaptchaRequest extends TeaModel {
     // App ID, 当前访问的App
