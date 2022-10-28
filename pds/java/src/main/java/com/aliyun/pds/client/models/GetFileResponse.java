@@ -206,6 +206,10 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("thumbnail")
     public String thumbnail;
 
+    // thumbnail_urls
+    @NameInMap("thumbnail_urls")
+    public java.util.Map<String, ?> thumbnailUrls;
+
     // Trashed
     // type: boolean
     @NameInMap("trashed")
@@ -640,6 +644,14 @@ public class GetFileResponse extends TeaModel {
     }
     public String getThumbnail() {
         return this.thumbnail;
+    }
+
+    public GetFileResponse setThumbnailUrls(java.util.Map<String, ?> thumbnailUrls) {
+        this.thumbnailUrls = thumbnailUrls;
+        return this;
+    }
+    public java.util.Map<String, ?> getThumbnailUrls() {
+        return this.thumbnailUrls;
     }
 
     public GetFileResponse setTrashed(Boolean trashed) {

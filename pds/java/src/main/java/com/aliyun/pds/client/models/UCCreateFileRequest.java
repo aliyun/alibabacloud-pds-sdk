@@ -20,6 +20,10 @@ public class UCCreateFileRequest extends TeaModel {
     @NameInMap("callback")
     public CcpCallback callback;
 
+    // category
+    @NameInMap("category")
+    public String category;
+
     // check_name_mode
     @NameInMap("check_name_mode")
     public String checkNameMode;
@@ -156,6 +160,10 @@ public class UCCreateFileRequest extends TeaModel {
     @NameInMap("proof_code")
     public String proofCode;
 
+    // proof_seed
+    @NameInMap("proof_seed")
+    public String proofSeed;
+
     // proof_version
     @NameInMap("proof_version")
     public String proofVersion;
@@ -228,6 +236,14 @@ public class UCCreateFileRequest extends TeaModel {
     }
     public CcpCallback getCallback() {
         return this.callback;
+    }
+
+    public UCCreateFileRequest setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public UCCreateFileRequest setCheckNameMode(String checkNameMode) {
@@ -516,6 +532,14 @@ public class UCCreateFileRequest extends TeaModel {
     }
     public String getProofCode() {
         return this.proofCode;
+    }
+
+    public UCCreateFileRequest setProofSeed(String proofSeed) {
+        this.proofSeed = proofSeed;
+        return this;
+    }
+    public String getProofSeed() {
+        return this.proofSeed;
     }
 
     public UCCreateFileRequest setProofVersion(String proofVersion) {

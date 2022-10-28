@@ -82,6 +82,9 @@ public class ListFileByCustomIndexKeyRequest extends TeaModel {
     @NameInMap("status")
     public String status;
 
+    @NameInMap("thumbnail_processes")
+    public java.util.Map<String, ?> thumbnailProcesses;
+
     // type
     @NameInMap("type")
     public String type;
@@ -251,6 +254,14 @@ public class ListFileByCustomIndexKeyRequest extends TeaModel {
     }
     public String getStatus() {
         return this.status;
+    }
+
+    public ListFileByCustomIndexKeyRequest setThumbnailProcesses(java.util.Map<String, ?> thumbnailProcesses) {
+        this.thumbnailProcesses = thumbnailProcesses;
+        return this;
+    }
+    public java.util.Map<String, ?> getThumbnailProcesses() {
+        return this.thumbnailProcesses;
     }
 
     public ListFileByCustomIndexKeyRequest setType(String type) {

@@ -86,6 +86,9 @@ public class ListFileInRecycleBinRequest extends TeaModel {
     @NameInMap("status")
     public String status;
 
+    @NameInMap("thumbnail_processes")
+    public java.util.Map<String, ?> thumbnailProcesses;
+
     // type
     @NameInMap("type")
     public String type;
@@ -263,6 +266,14 @@ public class ListFileInRecycleBinRequest extends TeaModel {
     }
     public String getStatus() {
         return this.status;
+    }
+
+    public ListFileInRecycleBinRequest setThumbnailProcesses(java.util.Map<String, ?> thumbnailProcesses) {
+        this.thumbnailProcesses = thumbnailProcesses;
+        return this;
+    }
+    public java.util.Map<String, ?> getThumbnailProcesses() {
+        return this.thumbnailProcesses;
     }
 
     public ListFileInRecycleBinRequest setType(String type) {

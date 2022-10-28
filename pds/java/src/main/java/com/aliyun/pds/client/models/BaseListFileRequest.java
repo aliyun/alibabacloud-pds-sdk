@@ -50,6 +50,9 @@ public class BaseListFileRequest extends TeaModel {
     @NameInMap("sign_token")
     public String signToken;
 
+    @NameInMap("thumbnail_processes")
+    public java.util.Map<String, ?> thumbnailProcesses;
+
     // video_thumbnail_process
     // type:string
     @NameInMap("video_thumbnail_process")
@@ -146,6 +149,14 @@ public class BaseListFileRequest extends TeaModel {
     }
     public String getSignToken() {
         return this.signToken;
+    }
+
+    public BaseListFileRequest setThumbnailProcesses(java.util.Map<String, ?> thumbnailProcesses) {
+        this.thumbnailProcesses = thumbnailProcesses;
+        return this;
+    }
+    public java.util.Map<String, ?> getThumbnailProcesses() {
+        return this.thumbnailProcesses;
     }
 
     public BaseListFileRequest setVideoThumbnailProcess(String videoThumbnailProcess) {

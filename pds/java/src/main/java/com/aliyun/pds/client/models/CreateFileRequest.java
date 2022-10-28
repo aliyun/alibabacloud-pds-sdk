@@ -17,6 +17,10 @@ public class CreateFileRequest extends TeaModel {
     @NameInMap("auto_rename")
     public Boolean autoRename;
 
+    // category
+    @NameInMap("category")
+    public String category;
+
     // check_name_mode
     @NameInMap("check_name_mode")
     public String checkNameMode;
@@ -133,6 +137,10 @@ public class CreateFileRequest extends TeaModel {
     @NameInMap("proof_code")
     public String proofCode;
 
+    // proof_seed
+    @NameInMap("proof_seed")
+    public String proofSeed;
+
     // proof_version
     @NameInMap("proof_version")
     public String proofVersion;
@@ -196,6 +204,14 @@ public class CreateFileRequest extends TeaModel {
     }
     public Boolean getAutoRename() {
         return this.autoRename;
+    }
+
+    public CreateFileRequest setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public CreateFileRequest setCheckNameMode(String checkNameMode) {
@@ -444,6 +460,14 @@ public class CreateFileRequest extends TeaModel {
     }
     public String getProofCode() {
         return this.proofCode;
+    }
+
+    public CreateFileRequest setProofSeed(String proofSeed) {
+        this.proofSeed = proofSeed;
+        return this;
+    }
+    public String getProofSeed() {
+        return this.proofSeed;
     }
 
     public CreateFileRequest setProofVersion(String proofVersion) {
