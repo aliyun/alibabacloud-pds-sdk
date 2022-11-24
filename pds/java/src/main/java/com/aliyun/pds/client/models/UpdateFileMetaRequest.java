@@ -10,6 +10,9 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    @NameInMap("category")
+    public String category;
+
     // check_name_mode
     @NameInMap("check_name_mode")
     public String checkNameMode;
@@ -110,6 +113,14 @@ public class UpdateFileMetaRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public UpdateFileMetaRequest setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public UpdateFileMetaRequest setCheckNameMode(String checkNameMode) {

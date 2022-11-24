@@ -72,6 +72,9 @@ public class SearchFileRequest extends TeaModel {
     @NameInMap("sign_token")
     public String signToken;
 
+    @NameInMap("thumbnail_processes")
+    public java.util.Map<String, ?> thumbnailProcesses;
+
     // url_expire_sec
     @NameInMap("url_expire_sec")
     @Validation(maximum = 14400, minimum = 10)
@@ -213,6 +216,14 @@ public class SearchFileRequest extends TeaModel {
     }
     public String getSignToken() {
         return this.signToken;
+    }
+
+    public SearchFileRequest setThumbnailProcesses(java.util.Map<String, ?> thumbnailProcesses) {
+        this.thumbnailProcesses = thumbnailProcesses;
+        return this;
+    }
+    public java.util.Map<String, ?> getThumbnailProcesses() {
+        return this.thumbnailProcesses;
     }
 
     public SearchFileRequest setUrlExpireSec(Long urlExpireSec) {

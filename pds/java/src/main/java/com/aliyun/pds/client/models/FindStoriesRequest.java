@@ -19,7 +19,7 @@ public class FindStoriesRequest extends TeaModel {
     public String coverVideoThumbnailProcess;
 
     @NameInMap("create_time_range")
-    public FindStoryRequestTimeRange createTimeRange;
+    public QueryRequestTimeRange createTimeRange;
 
     // custom_labels
     @NameInMap("custom_labels")
@@ -51,7 +51,7 @@ public class FindStoriesRequest extends TeaModel {
     public String sort;
 
     @NameInMap("story_end_time_range")
-    public FindStoryRequestTimeRange storyEndTimeRange;
+    public QueryRequestTimeRange storyEndTimeRange;
 
     // story_id
     @NameInMap("story_id")
@@ -62,7 +62,7 @@ public class FindStoriesRequest extends TeaModel {
     public String storyName;
 
     @NameInMap("story_start_time_range")
-    public FindStoryRequestTimeRange storyStartTimeRange;
+    public QueryRequestTimeRange storyStartTimeRange;
 
     // story_type
     @NameInMap("story_type")
@@ -105,11 +105,11 @@ public class FindStoriesRequest extends TeaModel {
         return this.coverVideoThumbnailProcess;
     }
 
-    public FindStoriesRequest setCreateTimeRange(FindStoryRequestTimeRange createTimeRange) {
+    public FindStoriesRequest setCreateTimeRange(QueryRequestTimeRange createTimeRange) {
         this.createTimeRange = createTimeRange;
         return this;
     }
-    public FindStoryRequestTimeRange getCreateTimeRange() {
+    public QueryRequestTimeRange getCreateTimeRange() {
         return this.createTimeRange;
     }
 
@@ -169,11 +169,11 @@ public class FindStoriesRequest extends TeaModel {
         return this.sort;
     }
 
-    public FindStoriesRequest setStoryEndTimeRange(FindStoryRequestTimeRange storyEndTimeRange) {
+    public FindStoriesRequest setStoryEndTimeRange(QueryRequestTimeRange storyEndTimeRange) {
         this.storyEndTimeRange = storyEndTimeRange;
         return this;
     }
-    public FindStoryRequestTimeRange getStoryEndTimeRange() {
+    public QueryRequestTimeRange getStoryEndTimeRange() {
         return this.storyEndTimeRange;
     }
 
@@ -193,11 +193,11 @@ public class FindStoriesRequest extends TeaModel {
         return this.storyName;
     }
 
-    public FindStoriesRequest setStoryStartTimeRange(FindStoryRequestTimeRange storyStartTimeRange) {
+    public FindStoriesRequest setStoryStartTimeRange(QueryRequestTimeRange storyStartTimeRange) {
         this.storyStartTimeRange = storyStartTimeRange;
         return this;
     }
-    public FindStoryRequestTimeRange getStoryStartTimeRange() {
+    public QueryRequestTimeRange getStoryStartTimeRange() {
         return this.storyStartTimeRange;
     }
 

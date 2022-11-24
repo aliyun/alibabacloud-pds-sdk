@@ -40,6 +40,9 @@ public class GetStoryRequest extends TeaModel {
     @Validation(required = true)
     public String storyId;
 
+    @NameInMap("thumbnail_processes")
+    public java.util.Map<String, ?> thumbnailProcesses;
+
     // url_expire_sec
     @NameInMap("url_expire_sec")
     public Long urlExpireSec;
@@ -116,6 +119,14 @@ public class GetStoryRequest extends TeaModel {
     }
     public String getStoryId() {
         return this.storyId;
+    }
+
+    public GetStoryRequest setThumbnailProcesses(java.util.Map<String, ?> thumbnailProcesses) {
+        this.thumbnailProcesses = thumbnailProcesses;
+        return this;
+    }
+    public java.util.Map<String, ?> getThumbnailProcesses() {
+        return this.thumbnailProcesses;
     }
 
     public GetStoryRequest setUrlExpireSec(Long urlExpireSec) {

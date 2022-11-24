@@ -10,6 +10,9 @@ public class CreateStoryRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    @NameInMap("address")
+    public Address address;
+
     // custom_id
     @NameInMap("custom_id")
     public String customId;
@@ -67,6 +70,14 @@ public class CreateStoryRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public CreateStoryRequest setAddress(Address address) {
+        this.address = address;
+        return this;
+    }
+    public Address getAddress() {
+        return this.address;
     }
 
     public CreateStoryRequest setCustomId(String customId) {

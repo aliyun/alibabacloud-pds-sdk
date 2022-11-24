@@ -93,6 +93,9 @@ public class CCPWalkFileRequest extends TeaModel {
     @NameInMap("status")
     public String status;
 
+    @NameInMap("thumbnail_processes")
+    public java.util.Map<String, ?> thumbnailProcesses;
+
     // type
     @NameInMap("type")
     public String type;
@@ -286,6 +289,14 @@ public class CCPWalkFileRequest extends TeaModel {
     }
     public String getStatus() {
         return this.status;
+    }
+
+    public CCPWalkFileRequest setThumbnailProcesses(java.util.Map<String, ?> thumbnailProcesses) {
+        this.thumbnailProcesses = thumbnailProcesses;
+        return this;
+    }
+    public java.util.Map<String, ?> getThumbnailProcesses() {
+        return this.thumbnailProcesses;
     }
 
     public CCPWalkFileRequest setType(String type) {
