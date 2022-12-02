@@ -19194,6 +19194,121 @@ api findStoriesEx(request: FindStoriesRequest, runtime: RuntimeOptions): FindSto
   ignoreSSL = runtime.ignoreSSL
 }
 
+model GetFacegroupInfoModel {
+  headers?: map[string]string(name='headers'),
+  body: ImageFaceGroupResponse(name='body'),
+}
+
+/**
+ * 该接口将会获取人脸分组信息
+ * @tags image
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function getFacegroupInfo(request: GetFaceGroupInfoRequest) throws: GetFacegroupInfoModel  {
+  var runtime = new RuntimeOptions{};
+  return getFacegroupInfoEx(request, runtime);
+}
+
+/**
+ * 该接口将会获取人脸分组信息
+ * @tags image
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api getFacegroupInfoEx(request: GetFaceGroupInfoRequest, runtime: RuntimeOptions): GetFacegroupInfoModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/image/get_facegroup_info`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.httpheaders
+  };
+  realReq.httpheaders = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
 model GetPhotoCountModel {
   headers?: map[string]string(name='headers'),
   body: GetImageCountResponse(name='body'),
@@ -22502,6 +22617,7 @@ type: boolean', enum='false, true', example=false),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
+  punishReason?: string(name='punish_reason', description='PunishReason'),
   revisionId?: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
   revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
   shareId?: string(name='share_id'),
@@ -22697,6 +22813,23 @@ type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
 
 /**
+ * 
+ */
+model BaseMediaResponse {
+  addressLine?: string(name='address_line', description='address_line', example='北京市昌平区白各庄新村路'),
+  city?: string(name='city', description='city', example='杭州'),
+  country?: string(name='country', description='country', example='中国'),
+  district?: string(name='district', description='district', example='余杭区'),
+  height?: int64(name='height', default=0, description='height', example=720, format='int64'),
+  imageTags?: [ SystemTag ](name='image_tags', description='system_tags', items='{"$ref":"#/definitions/SystemTag"}'),
+  location?: string(name='location', description='location', example='40.110333,116.349311'),
+  province?: string(name='province', description='province', example='浙江省'),
+  time?: string(name='time', description='time', format='date-time'),
+  township?: string(name='township', description='township', example='沙河镇'),
+  width?: int64(name='width', default=0, description='width', example=1024, format='int64'),
+}
+
+/**
  * 文件移动请求
  */
 model BaseMoveFileRequest {
@@ -22820,6 +22953,14 @@ model BaseShareResponse {
 }
 
 /**
+ * 
+ */
+model BaseSortShareLinkRequest {
+  orderBy?: string(name='order_by', description='order_by', enum='share_name, description, created_at, updated_at', example='share_name'),
+  orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
+}
+
+/**
  * user_tags 字段
  */
 model BaseUserTagsRequest {
@@ -22893,6 +23034,13 @@ model CCPArchiveRequest {
   driveId?: string(name='drive_id', description='TODO 增加对ShareID的支持'),
   fileId?: string(name='file_id'),
   password?: string(name='password'),
+}
+
+/**
+ * 
+ */
+model CCPArchiveResponse {
+  state?: string(name='state'),
 }
 
 /**
@@ -23053,6 +23201,7 @@ model CCPWalkFileRequest {
   httpheaders?: map[string]string,
   additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
   all?: boolean(name='all', default=true, description='all', enum='false, true', example=false),
+  beforeUpdatedAt?: string(name='before_updated_at', description='before_updated_at', example='2022-10-28T03:12:50.968Z'),
   category?: string(name='category', description='category', enum='image, video, music, doc, other', example='image'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fields?: string(name='fields', description='fields', example='*'),
@@ -23243,6 +23392,7 @@ type: boolean', enum='false, true', example=false),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
+  punishReason?: string(name='punish_reason', description='PunishReason'),
   revisionId?: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
   revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
   shareId?: string(name='share_id'),
@@ -24273,6 +24423,7 @@ type: boolean', enum='false, true', example=false),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
+  punishReason?: string(name='punish_reason', description='PunishReason'),
   revisionId?: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
   revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
   shareId?: string(name='share_id'),
@@ -24367,6 +24518,7 @@ type: boolean', enum='false, true', example=false),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
+  punishReason?: string(name='punish_reason', description='PunishReason'),
   revisionId?: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
   revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
   shareId?: string(name='share_id'),
@@ -25959,6 +26111,27 @@ model NameCheckResult {
 }
 
 /**
+ * 
+ */
+model Permission {
+  ActionList?: [ ActionItem ](name='ActionList', items='{"$ref":"#/definitions/ActionItem"}'),
+  Collection?: string(name='Collection'),
+  Condition?: Condition(name='Condition'),
+  CreatedAt?: int64(name='CreatedAt', format='int64'),
+  Deleted?: string(name='Deleted'),
+  DomainID?: string(name='DomainID'),
+  Effect?: string(name='Effect'),
+  IdentityID?: string(name='IdentityID'),
+  IdentityType?: string(name='IdentityType'),
+  Resource?: string(name='Resource'),
+  ResourceType?: string(name='ResourceType'),
+  SequenceNumber?: int64(name='SequenceNumber', format='int64'),
+  UpdatedAt?: int64(name='UpdatedAt', format='int64'),
+  UpdatedBy?: string(name='UpdatedBy'),
+  UserTags?: [ string ](name='UserTags', items='{"type":"string"}'),
+}
+
+/**
  * play_media request
  */
 model PlayMediaRequest {
@@ -26491,6 +26664,33 @@ model SimpleStreamInfo {
 /**
  * 
  */
+model Store {
+  accelerateEndpoint?: string(name='accelerate_endpoint', description='全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  basePath?: string(name='base_path', description='存储公共前缀', example='pds-data'),
+  bucket: string(name='bucket', description='bucket名称', example='data-sz-bucket'),
+  cdnEndpoint?: string(name='cdn_endpoint', description='内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  cdnRatelimitDisable?: boolean(name='cdn_ratelimit_disable', description='命中限速用户时是否关闭CDN地址返回', example=false),
+  cdnTimelimit?: string(name='cdn_timelimit', description='CDN时间控制', example='0-8 or 23-5'),
+  cdnUrlAuthKey?: string(name='cdn_url_auth_key', description='CDN鉴权key'),
+  customizedAccelerateEndpoint?: string(name='customized_accelerate_endpoint', description='自定义全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  customizedCdnEndpoint?: string(name='customized_cdn_endpoint', description='自定义内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  customizedEndpoint?: string(name='customized_endpoint', description='自定义Public访问地址', example='https://{regionid}-data.mydomain.com/'),
+  customizedInternalEndpoint?: string(name='customized_internal_endpoint', description='自定义vpc访问地址', example='https://{regionid}-data-vpc.mydomain.com/'),
+  endpoint: string(name='endpoint', description='Public访问地址', example='https://{domainid}.{regionid}.data.aliyunpds.com/'),
+  enetEndpoint?: string(name='enet_endpoint', description='冷流地址', example='https://oss-cn-shenzhen-enet.aliyuncs.com/'),
+  enetPercentConfig?: WhitePercentConfig(name='enet_percent_config'),
+  internalEndpoint?: string(name='internal_endpoint', description='vpc访问地址', example='https://{domainid}.{regionid}.data-vpc.aliyunpds.com/'),
+  location?: string(name='location', description='地点', example='cn-hangzhou'),
+  ownership: string(name='ownership', description='存储归属，system表示系统提供，custom表示使用自己的存储', enum='system, custom', example='system'),
+  policy: string(name='policy', description='Policy授权,system类型store会将bucket权限授予当前云账号'),
+  roleArn?: string(name='role_arn', description='访问Bucket的角色ARN', example='acs:oss:*:*:*'),
+  storeId: string(name='store_id', description='store ID', example='101'),
+  type: string(name='type', description='存储类型，当前只支持oss', enum='oss', example='oss'),
+}
+
+/**
+ * 
+ */
 model StoreFile {
   domainId?: string(name='domain_id'),
   name?: string(name='name'),
@@ -26740,6 +26940,7 @@ type: boolean', enum='false, true', example=false),
   objectKey?: string(name='object_key', description='object_key'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
+  punishReason?: string(name='punish_reason', description='PunishReason'),
   revisionId?: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
   revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
   shareId?: string(name='share_id'),
@@ -27115,6 +27316,7 @@ type: boolean', enum='false, true', example=false),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
+  punishReason?: string(name='punish_reason', description='PunishReason'),
   revisionId?: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
   revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
   shareId?: string(name='share_id'),
@@ -27334,6 +27536,15 @@ model UploadPartInfo {
   partSize?: int64(name='part_size', description='PartSize：', example=1024, format='int64', maximum=5368709120),
   uploadFormInfo?: UploadFormInfo(name='upload_form_info'),
   uploadUrl?: string(name='upload_url', description='upload_url', example='https://ccp.data.aliyuncs.com/xxx/xxx?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx&partNumber=1&uploadId=0CC175B9C0F1B6A831C399E269772661'),
+}
+
+/**
+ * 
+ */
+model UrlInfo {
+  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
 }
 
 /**
@@ -27645,6 +27856,16 @@ model ArchiveConfig {
   enabled?: boolean(name='enabled'),
   role?: string(name='role'),
   uncompressFileMaxSize?: int64(name='uncompress_file_max_size', format='int64'),
+}
+
+/**
+ * 
+ */
+model AssignRoleSettingDetail {
+  manageResourceId?: string(name='manage_resource_id', description='manage_resource_id', example='a123'),
+  manageResourceName?: string(name='manage_resource_name', description='manage_resource_name', example='user_name_123'),
+  manageResourceType?: string(name='manage_resource_type', description='manage_resource_type', example='user'),
+  roleId?: string(name='role_id', description='role_id', example='SystemBaseSettingAdmin'),
 }
 
 /**
@@ -28321,7 +28542,6 @@ model GetBizCNameInfoResponse {
   cnameType?: string(name='cname_type', description='cname type', example='api'),
   domainId: string(name='domain_id', description='domain ID', example='sz100'),
   isVpc?: boolean(name='is_vpc', description='is vpc', example=false),
-  subdomainId: string(name='subdomain_id', description='subdomain ID', example='sz100'),
 }
 
 /**
@@ -28828,33 +29048,6 @@ model ShareLogSettingDetail {
 /**
  * 
  */
-model Store {
-  accelerateEndpoint?: string(name='accelerate_endpoint', description='全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  basePath?: string(name='base_path', description='存储公共前缀', example='pds-data'),
-  bucket: string(name='bucket', description='bucket名称', example='data-sz-bucket'),
-  cdnEndpoint?: string(name='cdn_endpoint', description='内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  cdnRatelimitDisable?: boolean(name='cdn_ratelimit_disable', description='命中限速用户时是否关闭CDN地址返回', example=false),
-  cdnTimelimit?: string(name='cdn_timelimit', description='CDN时间控制', example='0-8 or 23-5'),
-  cdnUrlAuthKey?: string(name='cdn_url_auth_key', description='CDN鉴权key'),
-  customizedAccelerateEndpoint?: string(name='customized_accelerate_endpoint', description='自定义全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  customizedCdnEndpoint?: string(name='customized_cdn_endpoint', description='自定义内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  customizedEndpoint?: string(name='customized_endpoint', description='自定义Public访问地址', example='https://{regionid}-data.mydomain.com/'),
-  customizedInternalEndpoint?: string(name='customized_internal_endpoint', description='自定义vpc访问地址', example='https://{regionid}-data-vpc.mydomain.com/'),
-  endpoint: string(name='endpoint', description='Public访问地址', example='https://{domainid}.{regionid}.data.aliyunpds.com/'),
-  enetEndpoint?: string(name='enet_endpoint', description='冷流地址', example='https://oss-cn-shenzhen-enet.aliyuncs.com/'),
-  enetPercentConfig?: WhitePercentConfig(name='enet_percent_config'),
-  internalEndpoint?: string(name='internal_endpoint', description='vpc访问地址', example='https://{domainid}.{regionid}.data-vpc.aliyunpds.com/'),
-  location?: string(name='location', description='地点', example='cn-hangzhou'),
-  ownership: string(name='ownership', description='存储归属，system表示系统提供，custom表示使用自己的存储', enum='system, custom', example='system'),
-  policy: string(name='policy', description='Policy授权,system类型store会将bucket权限授予当前云账号'),
-  roleArn?: string(name='role_arn', description='访问Bucket的角色ARN', example='acs:oss:*:*:*'),
-  storeId: string(name='store_id', description='store ID', example='101'),
-  type: string(name='type', description='存储类型，当前只支持oss', enum='oss', example='oss'),
-}
-
-/**
- * 
- */
 model SubdomainConfig {
   enableRootDomainCreateResource?: boolean(name='enable_root_domain_create_resource'),
   enabled?: boolean(name='enabled'),
@@ -29043,6 +29236,16 @@ model VideoPreviewAppConfig {
   offlineVideoTranscodeEnable?: boolean(name='offline_video_transcode_enable'),
   onlineAudioTranscodeEnable?: boolean(name='online_audio_transcode_enable'),
   onlineVideoTranscodeEnable?: boolean(name='online_video_transcode_enable'),
+}
+
+/**
+ * 音频转码参数
+ */
+model VideoPreviewAudio {
+  audioBitrate?: int64(name='audio_bitrate', format='int64'),
+  audioChannel?: int64(name='audio_channel', format='int64'),
+  audioCodec?: string(name='audio_codec'),
+  audioSampleRate?: int64(name='audio_sample_rate', format='int64'),
 }
 
 /**
@@ -29235,6 +29438,18 @@ model VideoPreviewThumbnailConfig {
 }
 
 /**
+ * 视频转码参数
+ */
+model VideoPreviewVideo {
+  height?: int64(name='height', format='int64'),
+  keepOriginal?: boolean(name='keep_original'),
+  videoBitrate?: int64(name='video_bitrate', format='int64'),
+  videoCodec?: string(name='video_codec'),
+  videoFrameRate?: int64(name='video_frame_rate', format='int64'),
+  width?: int64(name='width', format='int64'),
+}
+
+/**
  * 视频转码配置
  */
 model VideoPreviewVideoConfig {
@@ -29297,40 +29512,25 @@ model WatermarkEnableConfig {
 }
 
 /**
+ * WatermarkTextConfig 文字水印配置
+ */
+model WatermarkTextConfig {
+  bold?: boolean(name='bold'),
+  fillStyle?: string(name='fill_style'),
+  font?: string(name='font'),
+  horizontal?: int64(name='horizontal', format='int64'),
+  rotate?: int64(name='rotate', format='int64'),
+  size?: int64(name='size', format='int64'),
+  vertical?: int64(name='vertical', format='int64'),
+}
+
+/**
  * 
  */
 model WxTrustedDomainConfig {
   content?: string(name='content'),
   name?: string(name='name'),
   show?: boolean(name='show'),
-}
-
-/**
- * 
- */
-model CCPArchiveResponse {
-  state?: string(name='state'),
-}
-
-/**
- * 
- */
-model Permission {
-  ActionList?: [ ActionItem ](name='ActionList', items='{"$ref":"#/definitions/ActionItem"}'),
-  Collection?: string(name='Collection'),
-  Condition?: Condition(name='Condition'),
-  CreatedAt?: int64(name='CreatedAt', format='int64'),
-  Deleted?: string(name='Deleted'),
-  DomainID?: string(name='DomainID'),
-  Effect?: string(name='Effect'),
-  IdentityID?: string(name='IdentityID'),
-  IdentityType?: string(name='IdentityType'),
-  Resource?: string(name='Resource'),
-  ResourceType?: string(name='ResourceType'),
-  SequenceNumber?: int64(name='SequenceNumber', format='int64'),
-  UpdatedAt?: int64(name='UpdatedAt', format='int64'),
-  UpdatedBy?: string(name='UpdatedBy'),
-  UserTags?: [ string ](name='UserTags', items='{"type":"string"}'),
 }
 
 /**
@@ -29414,6 +29614,7 @@ model Address {
   city?: string(name='city'),
   country?: string(name='country'),
   district?: string(name='district'),
+  location?: string(name='location'),
   province?: string(name='province'),
   township?: string(name='township'),
 }
@@ -29519,23 +29720,6 @@ model BaseGroupResponse {
 /**
  * 
  */
-model BaseMediaResponse {
-  addressLine?: string(name='address_line', description='address_line', example='北京市昌平区白各庄新村路'),
-  city?: string(name='city', description='city', example='杭州'),
-  country?: string(name='country', description='country', example='中国'),
-  district?: string(name='district', description='district', example='余杭区'),
-  height?: int64(name='height', default=0, description='height', example=720, format='int64'),
-  imageTags?: [ SystemTag ](name='image_tags', description='system_tags', items='{"$ref":"#/definitions/SystemTag"}'),
-  location?: string(name='location', description='location', example='40.110333,116.349311'),
-  province?: string(name='province', description='province', example='浙江省'),
-  time?: string(name='time', description='time', format='date-time'),
-  township?: string(name='township', description='township', example='沙河镇'),
-  width?: int64(name='width', default=0, description='width', example=1024, format='int64'),
-}
-
-/**
- * 
- */
 model BaseMembershipResponse {
   createdAt?: int64(name='created_at', description='created_at', example=1111, format='int64'),
   creator?: string(name='creator', description='creator', example='system'),
@@ -29568,6 +29752,15 @@ model BasePermissionResponse {
 }
 
 /**
+ * 
+ */
+model BaseRequest {
+  category: string(name='category', description='category', example='"album"'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  viewId: string(name='view_id', description='view_id', example='123'),
+}
+
+/**
  * List identity role response
  */
 model BaseRoleMemberResponse {
@@ -29577,14 +29770,6 @@ model BaseRoleMemberResponse {
   identityName: string(name='identity_name', description='查询的用户或团队的名称', example='张三'),
   isAdmin: boolean(name='is_admin', description='是否为管理员', example=false),
   subdomainId?: string(name='subdomain_id'),
-}
-
-/**
- * 
- */
-model BaseSortShareLinkRequest {
-  orderBy?: string(name='order_by', description='order_by', enum='share_name, description, created_at, updated_at', example='share_name'),
-  orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
 }
 
 /**
@@ -30091,6 +30276,15 @@ model GetAppDebugCmdResponse {
 }
 
 /**
+ * Get face group info request
+ */
+model GetFaceGroupInfoRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  groupId: string(name='group_id', description='group_id 列举人脸分组接口中获取', example='"group-asdasdasdeop"'),
+}
+
+/**
  * 
  */
 model GetGroupRequest {
@@ -30306,6 +30500,7 @@ type: boolean', enum='false, true', example=false),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
+  punishReason?: string(name='punish_reason', description='PunishReason'),
   revisionId?: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
   revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
   shareId?: string(name='share_id'),
@@ -30412,7 +30607,7 @@ model ImageAddressResponse {
 }
 
 /**
- * 
+ * 人脸分组信息
  */
 model ImageFaceGroupResponse {
   createdAt?: string(name='created_at', description='人脸分组生成时间', example='2019-02-20T09:35:51.057Z'),
@@ -30561,7 +30756,7 @@ model ListGroupRequest {
  * 
  */
 model ListGroupResponse {
-  items?: [ GroupExtraItem ](name='items', description='items', example='items', items='{"$ref":"#/definitions/GroupExtraItem"}'),
+  items?: [ BaseGroupResponse ](name='items', description='items', example='items', items='{"$ref":"#/definitions/BaseGroupResponse"}'),
   nextMarker?: string(name='next_marker', description='翻页标记', example='nextmarker'),
 }
 
@@ -31128,6 +31323,7 @@ model SimpleQueryResponse {
  * 
  */
 model StoryFile {
+  driveId?: string(name='drive_id'),
   fileId?: string(name='file_id'),
   revisionId?: string(name='revision_id'),
 }
@@ -31403,15 +31599,6 @@ model UpgradeCheckAppResponse {
 /**
  * 
  */
-model UrlInfo {
-  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-}
-
-/**
- * 
- */
 model ViewFileBaseRequest {
   category: string(name='category', description='category', example='"album"'),
   driveId?: string(name='drive_id'),
@@ -31465,6 +31652,7 @@ type: boolean', enum='false, true', example=false),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
+  punishReason?: string(name='punish_reason', description='PunishReason'),
   revisionId?: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
   revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
   shareId?: string(name='share_id'),
