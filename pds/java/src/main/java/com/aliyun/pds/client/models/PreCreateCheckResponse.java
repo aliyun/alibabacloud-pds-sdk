@@ -10,7 +10,9 @@ public class PreCreateCheckResponse extends TeaModel {
     @NameInMap("name_check_result")
     public NameCheckResult nameCheckResult;
 
-    // result_code
+    /**
+     * <p>result_code</p>
+     */
     @NameInMap("result_code")
     public String resultCode;
 

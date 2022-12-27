@@ -10,20 +10,28 @@ public class CheckExistRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // App ID, 当前访问的App
+    /**
+     * <p>App ID, 当前访问的App</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;
 
-    // 邮箱
+    /**
+     * <p>邮箱</p>
+     */
     @NameInMap("email")
     public String email;
 
-    // 待发送验证短信的手机号
+    /**
+     * <p>待发送验证短信的手机号</p>
+     */
     @NameInMap("phone_number")
     public String phoneNumber;
 
-    // 国家编号，默认86，不需要填+号，直接填数字
+    /**
+     * <p>国家编号，默认86，不需要填+号，直接填数字</p>
+     */
     @NameInMap("phone_region")
     public String phoneRegion;
 

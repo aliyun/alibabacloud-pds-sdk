@@ -10,21 +10,29 @@ public class GetDownloadUrlRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // expire_sec
+    /**
+     * <p>expire_sec</p>
+     */
     @NameInMap("expire_sec")
     @Validation(maximum = 115200, minimum = 1)
     public Long expireSec;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
@@ -32,23 +40,31 @@ public class GetDownloadUrlRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
-    // file_name
+    /**
+     * <p>file_name</p>
+     */
     @NameInMap("file_name")
     @Validation(maxLength = 1024, minLength = 1)
     public String fileName;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
     @NameInMap("referer")
     public String referer;
 
-    // revision_id
+    /**
+     * <p>revision_id</p>
+     */
     @NameInMap("revision_id")
     public String revisionId;
 
-    // share_id, either share_id or drive_id is required
+    /**
+     * <p>share_id, either share_id or drive_id is required</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 

@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 
  */
 public class LiveTranscodingSubtitleTaskResponse extends TeaModel {
-    // language, 字幕语言
+    /**
+     * <p>language, 字幕语言</p>
+     */
     @NameInMap("language")
     public String language;
 
-    // status
+    /**
+     * <p>status</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // url, finished 的时候才存在
+    /**
+     * <p>url, finished 的时候才存在</p>
+     */
     @NameInMap("url")
     public String url;
 

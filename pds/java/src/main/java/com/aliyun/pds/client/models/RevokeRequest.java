@@ -10,12 +10,16 @@ public class RevokeRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // App ID, 当前访问的App
+    /**
+     * <p>App ID, 当前访问的App</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;
 
-    // refresh token, 登录时返回的
+    /**
+     * <p>refresh token, 登录时返回的</p>
+     */
     @NameInMap("refresh_token")
     @Validation(required = true)
     public String refreshToken;

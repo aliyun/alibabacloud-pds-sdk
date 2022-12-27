@@ -52,8 +52,10 @@ public class VideoPreviewLiveTranscodingConfig extends TeaModel {
     @NameInMap("template_name_map")
     public java.util.Map<String, ?> templateNameMap;
 
-    // Mode              string   `json:"mode"`               // 默认media模式
-    // 以下几个count需要根据task的status和stage来判断, 当前实时转码的状态
+    /**
+     * <p>Mode              string   `json:"mode"`               // 默认media模式</p>
+     * <p>以下几个count需要根据task的status和stage来判断, 当前实时转码的状态</p>
+     */
     @NameInMap("ts_count_when_init_m3u8")
     public Long tsCountWhenInitM3u8;
 

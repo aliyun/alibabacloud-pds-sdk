@@ -7,70 +7,102 @@ import com.aliyun.tea.*;
  * 获取download url response
  */
 public class GetDownloadUrlResponse extends TeaModel {
-    // cdn_url
+    /**
+     * <p>cdn_url</p>
+     */
     @NameInMap("cdn_url")
     public String cdnUrl;
 
-    // Content Hash
+    /**
+     * <p>Content Hash</p>
+     */
     @NameInMap("content_hash")
     public String contentHash;
 
-    // content_hash_name
+    /**
+     * <p>content_hash_name</p>
+     */
     @NameInMap("content_hash_name")
     public String contentHashName;
 
-    // crc64_hash
+    /**
+     * <p>crc64_hash</p>
+     */
     @NameInMap("crc64_hash")
     public String crc64Hash;
 
-    // DomainID
+    /**
+     * <p>DomainID</p>
+     */
     @NameInMap("domain_id")
     @Validation(pattern = "[a-z0-9A-Z]+")
     public String domainId;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // expiration
+    /**
+     * <p>expiration</p>
+     */
     @NameInMap("expiration")
     public String expiration;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // internal_url
+    /**
+     * <p>internal_url</p>
+     */
     @NameInMap("internal_url")
     public String internalUrl;
 
-    // method
+    /**
+     * <p>method</p>
+     */
     @NameInMap("method")
     public String method;
 
-    // PunishFlag
+    /**
+     * <p>PunishFlag</p>
+     */
     @NameInMap("punish_flag")
     public Long punishFlag;
 
-    // revision_id
+    /**
+     * <p>revision_id</p>
+     */
     @NameInMap("revision_id")
     public String revisionId;
 
-    // size
+    /**
+     * <p>size</p>
+     */
     @NameInMap("size")
     public Long size;
 
-    // streams info
+    /**
+     * <p>streams info</p>
+     */
     @NameInMap("streams_info")
     public java.util.Map<String, ?> streamsInfo;
 
-    // streams url info
+    /**
+     * <p>streams url info</p>
+     */
     @NameInMap("streams_url")
     public java.util.Map<String, ?> streamsUrl;
 
-    // url
+    /**
+     * <p>url</p>
+     */
     @NameInMap("url")
     public String url;
 

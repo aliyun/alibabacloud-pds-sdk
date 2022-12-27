@@ -10,69 +10,97 @@ public class FindStoriesRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // cover_image_thumbnail_process
+    /**
+     * <p>cover_image_thumbnail_process</p>
+     */
     @NameInMap("cover_image_thumbnail_process")
     public String coverImageThumbnailProcess;
 
-    // cover_video_thumbnail_process
+    /**
+     * <p>cover_video_thumbnail_process</p>
+     */
     @NameInMap("cover_video_thumbnail_process")
     public String coverVideoThumbnailProcess;
 
     @NameInMap("create_time_range")
     public QueryRequestTimeRange createTimeRange;
 
-    // custom_labels
+    /**
+     * <p>custom_labels</p>
+     */
     @NameInMap("custom_labels")
     public String customLabels;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // face_group_ids
+    /**
+     * <p>face_group_ids</p>
+     */
     @NameInMap("face_group_ids")
     public java.util.List<String> faceGroupIds;
 
-    // limit
+    /**
+     * <p>limit</p>
+     */
     @NameInMap("limit")
     public Long limit;
 
-    // marker
+    /**
+     * <p>marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // order
+    /**
+     * <p>order</p>
+     */
     @NameInMap("order")
     public String order;
 
-    // sort
+    /**
+     * <p>sort</p>
+     */
     @NameInMap("sort")
     public String sort;
 
     @NameInMap("story_end_time_range")
     public QueryRequestTimeRange storyEndTimeRange;
 
-    // story_id
+    /**
+     * <p>story_id</p>
+     */
     @NameInMap("story_id")
     public String storyId;
 
-    // story_name
+    /**
+     * <p>story_name</p>
+     */
     @NameInMap("story_name")
     public String storyName;
 
     @NameInMap("story_start_time_range")
     public QueryRequestTimeRange storyStartTimeRange;
 
-    // story_type
+    /**
+     * <p>story_type</p>
+     */
     @NameInMap("story_type")
     public String storyType;
 
-    // url_expire_sec
+    /**
+     * <p>url_expire_sec</p>
+     */
     @NameInMap("url_expire_sec")
     public Long urlExpireSec;
 
-    // with_empty_stories
+    /**
+     * <p>with_empty_stories</p>
+     */
     @NameInMap("with_empty_stories")
     public Boolean withEmptyStories;
 

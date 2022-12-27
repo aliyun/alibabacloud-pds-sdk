@@ -10,33 +10,47 @@ public class UpdateShareRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("description")
     @Validation(maxLength = 1024)
     public String description;
 
-    // expiration
+    /**
+     * <p>expiration</p>
+     */
     @NameInMap("expiration")
     public String expiration;
 
-    // permissions
+    /**
+     * <p>permissions</p>
+     */
     @NameInMap("permissions")
     public java.util.List<String> permissions;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(required = true)
     public String shareId;
 
-    // share_name
+    /**
+     * <p>share_name</p>
+     */
     @NameInMap("share_name")
     public String shareName;
 
-    // share_policy
+    /**
+     * <p>share_policy</p>
+     */
     @NameInMap("share_policy")
     public java.util.List<SharePermissionPolicy> sharePolicy;
 
-    // status
+    /**
+     * <p>status</p>
+     */
     @NameInMap("status")
     public String status;
 

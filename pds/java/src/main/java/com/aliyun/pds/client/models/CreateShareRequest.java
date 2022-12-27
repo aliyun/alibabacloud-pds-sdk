@@ -10,51 +10,73 @@ public class CreateShareRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // expiration
+    /**
+     * <p>expiration</p>
+     */
     @NameInMap("expiration")
     public String expiration;
 
-    // owner
+    /**
+     * <p>owner</p>
+     */
     @NameInMap("owner")
     @Validation(required = true)
     public String owner;
 
-    // owner_type
+    /**
+     * <p>owner_type</p>
+     */
     @NameInMap("owner_type")
     public String ownerType;
 
-    // permissions
+    /**
+     * <p>permissions</p>
+     */
     @NameInMap("permissions")
     public java.util.List<String> permissions;
 
-    // share_file_id
+    /**
+     * <p>share_file_id</p>
+     */
     @NameInMap("share_file_id")
     public String shareFileId;
 
-    // share_file_path
+    /**
+     * <p>share_file_path</p>
+     */
     @NameInMap("share_file_path")
     public String shareFilePath;
 
-    // share_name
+    /**
+     * <p>share_name</p>
+     */
     @NameInMap("share_name")
     public String shareName;
 
-    // share create policy
-    // 
-    // share_policy
+    /**
+     * <p>share create policy</p>
+     * <br>
+     * <p>share_policy</p>
+     */
     @NameInMap("share_policy")
     public java.util.List<SharePermissionPolicy> sharePolicy;
 
-    // status
+    /**
+     * <p>status</p>
+     */
     @NameInMap("status")
     public String status;
 

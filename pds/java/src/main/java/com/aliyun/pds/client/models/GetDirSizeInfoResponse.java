@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 获取文件夹size信息
  */
 public class GetDirSizeInfoResponse extends TeaModel {
-    // dir_count
+    /**
+     * <p>dir_count</p>
+     */
     @NameInMap("dir_count")
     public Long dirCount;
 
-    // file_count
+    /**
+     * <p>file_count</p>
+     */
     @NameInMap("file_count")
     public Long fileCount;
 
-    // size
+    /**
+     * <p>size</p>
+     */
     @NameInMap("size")
     public Long size;
 

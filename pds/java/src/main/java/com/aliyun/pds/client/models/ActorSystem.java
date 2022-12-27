@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class ActorSystem extends TeaModel {
-    // EventType
+    /**
+     * <p>EventType</p>
+     */
     @NameInMap("event_type")
     public String eventType;
 

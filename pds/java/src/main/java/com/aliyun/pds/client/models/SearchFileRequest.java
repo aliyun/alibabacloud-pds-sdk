@@ -10,78 +10,119 @@ public class SearchFileRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // drive_ids
+    /**
+     * <p>drive_ids</p>
+     */
     @NameInMap("drive_id_list")
     public java.util.List<String> driveIdList;
 
     @NameInMap("image_cropping_aspect_ratios")
     public java.util.List<String> imageCroppingAspectRatios;
 
-    // image_thumbnail_process
+    /**
+     * <p>image_thumbnail_process</p>
+     */
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
-    // image_url_process
+    /**
+     * <p>image_url_process</p>
+     */
     @NameInMap("image_url_process")
     public String imageUrlProcess;
 
-    // limit
+    /**
+     * <p>limit</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
-    // Marker
+    /**
+     * <p>Marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // office_thumbnail_process
+    /**
+     * <p>office_thumbnail_process</p>
+     */
     @NameInMap("office_thumbnail_process")
     public String officeThumbnailProcess;
 
-    // order_by
+    /**
+     * <p>order_by</p>
+     */
     @NameInMap("order_by")
     public String orderBy;
 
-    // query
+    /**
+     * <p>query</p>
+     */
     @NameInMap("query")
     @Validation(maxLength = 4096)
     public String query;
 
-    // referer
+    @NameInMap("recursive")
+    public Boolean recursive;
+
+    /**
+     * <p>referer</p>
+     */
     @NameInMap("referer")
     public String referer;
 
-    // return_total_count 是否返回查询总数
+    /**
+     * <p>return_total_count 是否返回查询总数</p>
+     */
     @NameInMap("return_total_count")
     public Boolean returnTotalCount;
 
-    // sign_token
+    /**
+     * <p>sign_token</p>
+     */
     @NameInMap("sign_token")
     public String signToken;
+
+    /**
+     * <p>system_folders</p>
+     */
+    @NameInMap("system_folders")
+    public java.util.List<String> systemFolders;
 
     @NameInMap("thumbnail_processes")
     public java.util.Map<String, ?> thumbnailProcesses;
 
-    // url_expire_sec
+    /**
+     * <p>url_expire_sec</p>
+     */
     @NameInMap("url_expire_sec")
     @Validation(maximum = 14400, minimum = 10)
     public Long urlExpireSec;
 
-    // video_thumbnail_process
-    // type:string
+    /**
+     * <p>video_thumbnail_process</p>
+     * <p>type:string</p>
+     */
     @NameInMap("video_thumbnail_process")
     public String videoThumbnailProcess;
 
@@ -194,6 +235,14 @@ public class SearchFileRequest extends TeaModel {
         return this.query;
     }
 
+    public SearchFileRequest setRecursive(Boolean recursive) {
+        this.recursive = recursive;
+        return this;
+    }
+    public Boolean getRecursive() {
+        return this.recursive;
+    }
+
     public SearchFileRequest setReferer(String referer) {
         this.referer = referer;
         return this;
@@ -216,6 +265,14 @@ public class SearchFileRequest extends TeaModel {
     }
     public String getSignToken() {
         return this.signToken;
+    }
+
+    public SearchFileRequest setSystemFolders(java.util.List<String> systemFolders) {
+        this.systemFolders = systemFolders;
+        return this;
+    }
+    public java.util.List<String> getSystemFolders() {
+        return this.systemFolders;
     }
 
     public SearchFileRequest setThumbnailProcesses(java.util.Map<String, ?> thumbnailProcesses) {

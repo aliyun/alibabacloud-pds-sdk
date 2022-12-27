@@ -7,31 +7,45 @@ import com.aliyun.tea.*;
  * 
  */
 public class ImageTagResponse extends TeaModel {
-    // 聚类标签计数
+    /**
+     * <p>聚类标签计数</p>
+     */
     @NameInMap("count")
     public Long count;
 
-    // cover_file_category
+    /**
+     * <p>cover_file_category</p>
+     */
     @NameInMap("cover_file_category")
     public String coverFileCategory;
 
-    // cover_file_id
+    /**
+     * <p>cover_file_id</p>
+     */
     @NameInMap("cover_file_id")
     public String coverFileId;
 
-    // cover_score
+    /**
+     * <p>cover_score</p>
+     */
     @NameInMap("cover_overall_score")
     public Double coverOverallScore;
 
-    // cover_tag_confidence
+    /**
+     * <p>cover_tag_confidence</p>
+     */
     @NameInMap("cover_tag_confidence")
     public Double coverTagConfidence;
 
-    // 聚类标签封面图片地址
+    /**
+     * <p>聚类标签封面图片地址</p>
+     */
     @NameInMap("cover_url")
     public String coverUrl;
 
-    // 聚类标签名称
+    /**
+     * <p>聚类标签名称</p>
+     */
     @NameInMap("name")
     public String name;
 

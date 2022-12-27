@@ -10,7 +10,9 @@ public class ListUserResponse extends TeaModel {
     @NameInMap("items")
     public java.util.List<BaseUserResponse> items;
 
-    // 翻页标记
+    /**
+     * <p>翻页标记</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 

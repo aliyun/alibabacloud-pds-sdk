@@ -10,19 +10,27 @@ public class ExportAuditLogRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // file_name
+    /**
+     * <p>file_name</p>
+     */
     @NameInMap("file_name")
     public String fileName;
 
-    // language
+    /**
+     * <p>language</p>
+     */
     @NameInMap("language")
     public String language;
 
-    // order_by
+    /**
+     * <p>order_by</p>
+     */
     @NameInMap("order_by")
     public String orderBy;
 
-    // query
+    /**
+     * <p>query</p>
+     */
     @NameInMap("query")
     @Validation(maxLength = 4096)
     public String query;

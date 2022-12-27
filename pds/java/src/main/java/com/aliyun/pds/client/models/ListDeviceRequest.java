@@ -10,11 +10,15 @@ public class ListDeviceRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // limit
+    /**
+     * <p>limit</p>
+     */
     @NameInMap("limit")
     public Integer limit;
 
-    // marker
+    /**
+     * <p>marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 

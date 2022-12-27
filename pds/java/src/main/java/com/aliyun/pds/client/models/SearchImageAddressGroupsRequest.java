@@ -10,32 +10,46 @@ public class SearchImageAddressGroupsRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 查询的地点级别
+    /**
+     * <p>查询的地点级别</p>
+     */
     @NameInMap("address_level")
     public String addressLevel;
 
-    // 查询的地点数组
+    /**
+     * <p>查询的地点数组</p>
+     */
     @NameInMap("address_names")
     public java.util.List<String> addressNames;
 
-    // br_geo_point
+    /**
+     * <p>br_geo_point</p>
+     */
     @NameInMap("br_geo_point")
     public String brGeoPoint;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // image_thumbnail_process
+    /**
+     * <p>image_thumbnail_process</p>
+     */
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
-    // tl_geo_point
+    /**
+     * <p>tl_geo_point</p>
+     */
     @NameInMap("tl_geo_point")
     public String tlGeoPoint;
 
-    // video_thumbnail_process
+    /**
+     * <p>video_thumbnail_process</p>
+     */
     @NameInMap("video_thumbnail_process")
     public String videoThumbnailProcess;
 

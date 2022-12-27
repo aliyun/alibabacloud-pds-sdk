@@ -7,30 +7,42 @@ import com.aliyun.tea.*;
  * 
  */
 public class GroupExtraItem extends TeaModel {
-    // created_at
+    /**
+     * <p>created_at</p>
+     */
     @NameInMap("created_at")
     public Long createdAt;
 
-    // creator
+    /**
+     * <p>creator</p>
+     */
     @NameInMap("creator")
     public String creator;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // domain id
+    /**
+     * <p>domain id</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
     @NameInMap("drive_list")
     public java.util.List<BaseDriveResponse> driveList;
 
-    // group id
+    /**
+     * <p>group id</p>
+     */
     @NameInMap("group_id")
     public String groupId;
 
-    // group name
+    /**
+     * <p>group name</p>
+     */
     @NameInMap("group_name")
     public String groupName;
 
@@ -40,7 +52,9 @@ public class GroupExtraItem extends TeaModel {
     @NameInMap("permission")
     public java.util.Map<String, ?> permission;
 
-    // updated_at
+    /**
+     * <p>updated_at</p>
+     */
     @NameInMap("updated_at")
     public Long updatedAt;
 

@@ -10,21 +10,29 @@ public class AccountTokenRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // App ID, 当前访问的App
+    /**
+     * <p>App ID, 当前访问的App</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;
 
-    // 只能填refresh_token
+    /**
+     * <p>只能填refresh_token</p>
+     */
     @NameInMap("grant_type")
     @Validation(required = true)
     public String grantType;
 
-    // refresh token, 登录时返回的
+    /**
+     * <p>refresh token, 登录时返回的</p>
+     */
     @NameInMap("refresh_token")
     @Validation(required = true)
     public String refreshToken;

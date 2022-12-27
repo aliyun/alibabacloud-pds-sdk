@@ -7,31 +7,45 @@ import com.aliyun.tea.*;
  * 
  */
 public class BaseStoreInfoResponse extends TeaModel {
-    // bucket名称
+    /**
+     * <p>bucket名称</p>
+     */
     @NameInMap("bucket")
     public String bucket;
 
-    // 自定义Public访问地址
+    /**
+     * <p>自定义Public访问地址</p>
+     */
     @NameInMap("customized_endpoint")
     public String customizedEndpoint;
 
-    // Public访问地址
+    /**
+     * <p>Public访问地址</p>
+     */
     @NameInMap("endpoint")
     public String endpoint;
 
-    // 存储归属，system表示系统提供，custom表示使用自己的存储
+    /**
+     * <p>存储归属，system表示系统提供，custom表示使用自己的存储</p>
+     */
     @NameInMap("ownership")
     public String ownership;
 
-    // store ID
+    /**
+     * <p>store ID</p>
+     */
     @NameInMap("store_id")
     public String storeId;
 
-    // 是否开启传输加速
+    /**
+     * <p>是否开启传输加速</p>
+     */
     @NameInMap("transfer_acc_enabled")
     public Boolean transferAccEnabled;
 
-    // 存储类型，当前只支持oss
+    /**
+     * <p>存储类型，当前只支持oss</p>
+     */
     @NameInMap("type")
     public String type;
 

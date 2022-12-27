@@ -7,20 +7,28 @@ import com.aliyun.tea.*;
  * 
  */
 public class LoginByCodeRequest extends TeaModel {
-    // 鉴权后返回的accessToken，淘宝登录需要此字段
+    /**
+     * <p>鉴权后返回的accessToken，淘宝登录需要此字段</p>
+     */
     @NameInMap("access_token")
     public String accessToken;
 
-    // App ID, 当前访问的App
+    /**
+     * <p>App ID, 当前访问的App</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;
 
-    // 鉴权后返回的AuthCode，支付宝登录需要此字段
+    /**
+     * <p>鉴权后返回的AuthCode，支付宝登录需要此字段</p>
+     */
     @NameInMap("auth_code")
     public String authCode;
 
-    // 鉴权类型，淘宝、支付宝
+    /**
+     * <p>鉴权类型，淘宝、支付宝</p>
+     */
     @NameInMap("type")
     @Validation(required = true)
     public String type;

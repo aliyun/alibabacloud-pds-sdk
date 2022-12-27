@@ -7,45 +7,63 @@ import com.aliyun.tea.*;
  * 下载文件请求body
  */
 public class DownloadRequest extends TeaModel {
-    // drive id
+    /**
+     * <p>drive id</p>
+     */
     @NameInMap("DriveID")
     public String DriveID;
 
-    // file id
+    /**
+     * <p>file id</p>
+     */
     @NameInMap("FileID")
     @Validation(required = true)
     public String FileID;
 
-    // in: query
-    // image_thumbnail_process
+    /**
+     * <p>in: query</p>
+     * <p>image_thumbnail_process</p>
+     */
     @NameInMap("ImageThumbnailProcess")
     public String ImageThumbnailProcess;
 
-    // office_thumbnail_process
+    /**
+     * <p>office_thumbnail_process</p>
+     */
     @NameInMap("OfficeThumbnailProcess")
     public String OfficeThumbnailProcess;
 
-    // revision id
+    /**
+     * <p>revision id</p>
+     */
     @NameInMap("RevisionID")
     public String RevisionID;
 
-    // share_id, either share_id or drive_id is required
+    /**
+     * <p>share_id, either share_id or drive_id is required</p>
+     */
     @NameInMap("ShareID")
     public String ShareID;
 
-    // video_thumbnail_process
-    // type:string
+    /**
+     * <p>video_thumbnail_process</p>
+     * <p>type:string</p>
+     */
     @NameInMap("VideoThumbnailProcess")
     public String VideoThumbnailProcess;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
     @NameInMap("file_id_path")
     public String fileIdPath;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 

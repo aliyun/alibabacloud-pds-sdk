@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 获取office文档在线编辑地址 response
  */
 public class GetOfficeEditUrlResponse extends TeaModel {
-    // EditUrl
+    /**
+     * <p>EditUrl</p>
+     */
     @NameInMap("edit_url")
     public String editUrl;
 
-    // AccessToken
+    /**
+     * <p>AccessToken</p>
+     */
     @NameInMap("office_access_token")
     public String officeAccessToken;
 
-    // RefreshToken
+    /**
+     * <p>RefreshToken</p>
+     */
     @NameInMap("office_refresh_token")
     public String officeRefreshToken;
 

@@ -7,30 +7,40 @@ import com.aliyun.tea.*;
  * 
  */
 public class UploadPartInfo extends TeaModel {
-    // content_type
+    /**
+     * <p>content_type</p>
+     */
     @NameInMap("content_type")
     public String contentType;
 
-    // etag
+    /**
+     * <p>etag</p>
+     */
     @NameInMap("etag")
     public String etag;
 
     @NameInMap("internal_upload_form_info")
     public UploadFormInfo internalUploadFormInfo;
 
-    // internal_upload_url
+    /**
+     * <p>internal_upload_url</p>
+     */
     @NameInMap("internal_upload_url")
     public String internalUploadUrl;
 
     @NameInMap("parallel_sha1_ctx")
     public SHA1CTX parallelSha1Ctx;
 
-    // PartNumber
+    /**
+     * <p>PartNumber</p>
+     */
     @NameInMap("part_number")
     @Validation(maximum = 10000, minimum = 1)
     public Long partNumber;
 
-    // PartSize：
+    /**
+     * <p>PartSize：</p>
+     */
     @NameInMap("part_size")
     @Validation(maximum = 5368709120D)
     public Long partSize;
@@ -38,7 +48,9 @@ public class UploadPartInfo extends TeaModel {
     @NameInMap("upload_form_info")
     public UploadFormInfo uploadFormInfo;
 
-    // upload_url
+    /**
+     * <p>upload_url</p>
+     */
     @NameInMap("upload_url")
     public String uploadUrl;
 

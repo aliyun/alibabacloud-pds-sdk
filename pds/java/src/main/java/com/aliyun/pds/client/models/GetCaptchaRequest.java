@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetCaptchaRequest extends TeaModel {
-    // App ID, 当前访问的App
+    /**
+     * <p>App ID, 当前访问的App</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;

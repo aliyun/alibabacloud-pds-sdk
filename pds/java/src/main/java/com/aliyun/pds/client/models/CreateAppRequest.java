@@ -7,40 +7,56 @@ import com.aliyun.tea.*;
  * 
  */
 public class CreateAppRequest extends TeaModel {
-    // App名称
+    /**
+     * <p>App名称</p>
+     */
     @NameInMap("app_name")
     @Validation(required = true, maxLength = 128, minLength = 1)
     public String appName;
 
-    // App描述
+    /**
+     * <p>App描述</p>
+     */
     @NameInMap("description")
     @Validation(maxLength = 128)
     public String description;
 
-    // 是否是domain私有App
+    /**
+     * <p>是否是domain私有App</p>
+     */
     @NameInMap("is_third_party")
     public Boolean isThirdParty;
 
-    // App图标
+    /**
+     * <p>App图标</p>
+     */
     @NameInMap("logo")
     @Validation(required = true)
     public String logo;
 
-    // RSA加密算法的公钥, PEM格式
+    /**
+     * <p>RSA加密算法的公钥, PEM格式</p>
+     */
     @NameInMap("public_key")
     @Validation(required = true)
     public String publicKey;
 
-    // App回调地址
+    /**
+     * <p>App回调地址</p>
+     */
     @NameInMap("redirect_uri")
     public String redirectUri;
 
-    // App权限列表
+    /**
+     * <p>App权限列表</p>
+     */
     @NameInMap("scope")
     @Validation(required = true)
     public java.util.List<String> scope;
 
-    // App类型
+    /**
+     * <p>App类型</p>
+     */
     @NameInMap("type")
     @Validation(required = true)
     public String type;

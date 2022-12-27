@@ -7,130 +7,196 @@ import com.aliyun.tea.*;
  * 根据路径获取文件元数据response
  */
 public class GetFileByPathResponse extends TeaModel {
-    // action_list
+    /**
+     * <p>action_list</p>
+     */
     @NameInMap("action_list")
     public java.util.List<String> actionList;
 
-    // auto_delete_left_sec
+    /**
+     * <p>auto_delete_left_sec</p>
+     */
     @NameInMap("auto_delete_left_sec")
     public Long autoDeleteLeftSec;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     public String category;
 
-    // CharacteristicHash
+    /**
+     * <p>CharacteristicHash</p>
+     */
     @NameInMap("characteristic_hash")
     public String characteristicHash;
 
-    // Content Hash
+    /**
+     * <p>Content Hash</p>
+     */
     @NameInMap("content_hash")
     public String contentHash;
 
-    // content_hash_name
+    /**
+     * <p>content_hash_name</p>
+     */
     @NameInMap("content_hash_name")
     public String contentHashName;
 
-    // content_type
+    /**
+     * <p>content_type</p>
+     */
     @NameInMap("content_type")
     public String contentType;
 
-    // crc64_hash
+    /**
+     * <p>crc64_hash</p>
+     */
     @NameInMap("crc64_hash")
     public String crc64Hash;
 
-    // created_at
+    /**
+     * <p>created_at</p>
+     */
     @NameInMap("created_at")
     public String createdAt;
 
-    // creator_id
+    /**
+     * <p>creator_id</p>
+     */
     @NameInMap("creator_id")
     public String creatorId;
 
-    // creator_name
+    /**
+     * <p>creator_name</p>
+     */
     @NameInMap("creator_name")
     public String creatorName;
 
-    // creator_type
+    /**
+     * <p>creator_type</p>
+     */
     @NameInMap("creator_type")
     public String creatorType;
 
-    // custom_field_1
+    /**
+     * <p>custom_field_1</p>
+     */
     @NameInMap("custom_field_1")
     public String customField1;
 
-    // custom_field_2
+    /**
+     * <p>custom_field_2</p>
+     */
     @NameInMap("custom_field_2")
     public String customField2;
 
-    // custom_type
+    /**
+     * <p>custom_type</p>
+     */
     @NameInMap("custom_type")
     public String customType;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // DomainID
+    /**
+     * <p>DomainID</p>
+     */
     @NameInMap("domain_id")
     @Validation(pattern = "[a-z0-9A-Z]+")
     public String domainId;
 
-    // download_url
+    /**
+     * <p>download_url</p>
+     */
     @NameInMap("download_url")
     public String downloadUrl;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // encrypt_mode
+    /**
+     * <p>encrypt_mode</p>
+     */
     @NameInMap("encrypt_mode")
     public String encryptMode;
 
-    // ex_fields_info
+    /**
+     * <p>ex_fields_info</p>
+     */
     @NameInMap("ex_fields_info")
     public java.util.Map<String, ?> exFieldsInfo;
 
-    // file_extension
+    /**
+     * <p>file_extension</p>
+     */
     @NameInMap("file_extension")
     public String fileExtension;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析
+    /**
+     * <p>TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析</p>
+     */
     @NameInMap("file_path_type")
     public String filePathType;
 
-    // Hidden
-    // type: boolean
+    /**
+     * <p>Hidden</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("hidden")
     public Boolean hidden;
 
     @NameInMap("image_media_metadata")
     public ImageMediaResponse imageMediaMetadata;
 
-    // labels
+    /**
+     * <p>InvestigationStatus</p>
+     */
+    @NameInMap("investigation_status")
+    public Long investigationStatus;
+
+    /**
+     * <p>labels</p>
+     */
     @NameInMap("labels")
     public java.util.List<String> labels;
 
-    // last_modifier_id
+    /**
+     * <p>last_modifier_id</p>
+     */
     @NameInMap("last_modifier_id")
     public String lastModifierId;
 
-    // last_modifier_name
+    /**
+     * <p>last_modifier_name</p>
+     */
     @NameInMap("last_modifier_name")
     public String lastModifierName;
 
-    // last_modifier_type
+    /**
+     * <p>last_modifier_type</p>
+     */
     @NameInMap("last_modifier_type")
     public String lastModifierType;
 
-    // local_created_at
+    /**
+     * <p>local_created_at</p>
+     */
     @NameInMap("local_created_at")
     public String localCreatedAt;
 
@@ -140,106 +206,160 @@ public class GetFileByPathResponse extends TeaModel {
     @NameInMap("meta")
     public String meta;
 
-    // mime_extension
+    /**
+     * <p>mime_extension</p>
+     */
     @NameInMap("mime_extension")
     public String mimeExtension;
 
-    // mime_type
+    /**
+     * <p>mime_type</p>
+     */
     @NameInMap("mime_type")
     public String mimeType;
 
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     @Validation(required = true, pattern = "[a-zA-Z0-9.-]{1,1000}")
     public String name;
 
-    // parent_file_id
+    /**
+     * <p>parent_file_id</p>
+     */
     @NameInMap("parent_file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String parentFileId;
 
-    // PunishFlag
+    /**
+     * <p>PunishFlag</p>
+     */
     @NameInMap("punish_flag")
     public Long punishFlag;
 
-    // revision_id
+    /**
+     * <p>PunishReason</p>
+     */
+    @NameInMap("punish_reason")
+    public String punishReason;
+
+    /**
+     * <p>revision_id</p>
+     */
     @NameInMap("revision_id")
     public String revisionId;
 
-    // revision_version
+    /**
+     * <p>revision_version</p>
+     */
     @NameInMap("revision_version")
     public Long revisionVersion;
 
     @NameInMap("share_id")
     public String shareId;
 
-    // Size
+    /**
+     * <p>Size</p>
+     */
     @NameInMap("size")
     public Long size;
 
-    // starred
-    // type: boolean
+    /**
+     * <p>starred</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("starred")
     public Boolean starred;
 
-    // status
+    /**
+     * <p>status</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // @Deprecated streams url info
+    /**
+     * <p>@Deprecated streams url info</p>
+     */
     @NameInMap("streams_info")
     public java.util.Map<String, ?> streamsInfo;
 
-    // sync_device_flag
+    /**
+     * <p>sync_device_flag</p>
+     */
     @NameInMap("sync_device_flag")
     public Boolean syncDeviceFlag;
 
-    // sync_flag
+    /**
+     * <p>sync_flag</p>
+     */
     @NameInMap("sync_flag")
     public Boolean syncFlag;
 
-    // sync_meta
+    /**
+     * <p>sync_meta</p>
+     */
     @NameInMap("sync_meta")
     public String syncMeta;
 
-    // thumbnail
+    /**
+     * <p>thumbnail</p>
+     */
     @NameInMap("thumbnail")
     public String thumbnail;
 
-    // thumbnail_urls
+    /**
+     * <p>thumbnail_urls</p>
+     */
     @NameInMap("thumbnail_urls")
     public java.util.Map<String, ?> thumbnailUrls;
 
-    // Trashed
-    // type: boolean
+    /**
+     * <p>Trashed</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("trashed")
     public Boolean trashed;
 
-    // trashed_at
+    /**
+     * <p>trashed_at</p>
+     */
     @NameInMap("trashed_at")
     public String trashedAt;
 
-    // type
+    /**
+     * <p>type</p>
+     */
     @NameInMap("type")
     public String type;
 
-    // updated_at
+    /**
+     * <p>updated_at</p>
+     */
     @NameInMap("updated_at")
     public String updatedAt;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 
-    // url
+    /**
+     * <p>url</p>
+     */
     @NameInMap("url")
     public String url;
 
-    // user_meta
+    /**
+     * <p>user_meta</p>
+     */
     @NameInMap("user_meta")
     public String userMeta;
 
-    // user_tags
+    /**
+     * <p>user_tags</p>
+     */
     @NameInMap("user_tags")
     public java.util.Map<String, ?> userTags;
 
@@ -462,6 +582,14 @@ public class GetFileByPathResponse extends TeaModel {
         return this.imageMediaMetadata;
     }
 
+    public GetFileByPathResponse setInvestigationStatus(Long investigationStatus) {
+        this.investigationStatus = investigationStatus;
+        return this;
+    }
+    public Long getInvestigationStatus() {
+        return this.investigationStatus;
+    }
+
     public GetFileByPathResponse setLabels(java.util.List<String> labels) {
         this.labels = labels;
         return this;
@@ -556,6 +684,14 @@ public class GetFileByPathResponse extends TeaModel {
     }
     public Long getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public GetFileByPathResponse setPunishReason(String punishReason) {
+        this.punishReason = punishReason;
+        return this;
+    }
+    public String getPunishReason() {
+        return this.punishReason;
     }
 
     public GetFileByPathResponse setRevisionId(String revisionId) {

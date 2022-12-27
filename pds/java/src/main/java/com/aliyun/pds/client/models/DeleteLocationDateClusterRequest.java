@@ -13,7 +13,9 @@ public class DeleteLocationDateClusterRequest extends TeaModel {
     @NameInMap("cluster_id")
     public String clusterId;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;

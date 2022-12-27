@@ -10,32 +10,46 @@ public class GetStoryRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // cover_image_thumbnail_process
+    /**
+     * <p>cover_image_thumbnail_process</p>
+     */
     @NameInMap("cover_image_thumbnail_process")
     public String coverImageThumbnailProcess;
 
-    // cover_video_thumbnail_process
+    /**
+     * <p>cover_video_thumbnail_process</p>
+     */
     @NameInMap("cover_video_thumbnail_process")
     public String coverVideoThumbnailProcess;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // image_thumbnail_process
+    /**
+     * <p>image_thumbnail_process</p>
+     */
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
-    // image_url_process
+    /**
+     * <p>image_url_process</p>
+     */
     @NameInMap("image_url_process")
     public String imageUrlProcess;
 
-    // office_thumbnail_process
+    /**
+     * <p>office_thumbnail_process</p>
+     */
     @NameInMap("office_thumbnail_process")
     public String officeThumbnailProcess;
 
-    // story_id
+    /**
+     * <p>story_id</p>
+     */
     @NameInMap("story_id")
     @Validation(required = true)
     public String storyId;
@@ -43,12 +57,16 @@ public class GetStoryRequest extends TeaModel {
     @NameInMap("thumbnail_processes")
     public java.util.Map<String, ?> thumbnailProcesses;
 
-    // url_expire_sec
+    /**
+     * <p>url_expire_sec</p>
+     */
     @NameInMap("url_expire_sec")
     public Long urlExpireSec;
 
-    // video_thumbnail_process
-    // type:string
+    /**
+     * <p>video_thumbnail_process</p>
+     * <p>type:string</p>
+     */
     @NameInMap("video_thumbnail_process")
     public String videoThumbnailProcess;
 

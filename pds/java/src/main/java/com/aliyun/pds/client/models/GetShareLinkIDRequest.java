@@ -10,7 +10,9 @@ public class GetShareLinkIDRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // share_msg
+    /**
+     * <p>share_msg</p>
+     */
     @NameInMap("share_msg")
     public String shareMsg;
 

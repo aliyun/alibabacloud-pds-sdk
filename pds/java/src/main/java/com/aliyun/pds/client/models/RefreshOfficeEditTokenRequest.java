@@ -10,26 +10,36 @@ public class RefreshOfficeEditTokenRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
-    // AccessToken
+    /**
+     * <p>AccessToken</p>
+     */
     @NameInMap("office_access_token")
     @Validation(required = true)
     public String officeAccessToken;
 
-    // RefreshToken
+    /**
+     * <p>RefreshToken</p>
+     */
     @NameInMap("office_refresh_token")
     @Validation(required = true)
     public String officeRefreshToken;
 
-    // share_id
-    // example
+    /**
+     * <p>share_id</p>
+     * <p>example</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 

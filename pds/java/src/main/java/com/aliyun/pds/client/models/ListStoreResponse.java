@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * List storage
  */
 public class ListStoreResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<StoreItemResponse> items;
 

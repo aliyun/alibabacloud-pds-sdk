@@ -10,7 +10,9 @@ public class ReportEventRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // event_type
+    /**
+     * <p>event_type</p>
+     */
     @NameInMap("event_type")
     public String eventType;
 

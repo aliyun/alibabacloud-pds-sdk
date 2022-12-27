@@ -10,25 +10,35 @@ public class ListDriveRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 每页大小限制
+    /**
+     * <p>每页大小限制</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // 翻页标记, 接口返回的标记值
+    /**
+     * <p>翻页标记, 接口返回的标记值</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // 所属者
+    /**
+     * <p>所属者</p>
+     */
     @NameInMap("owner")
     public String owner;
 
-    // owner_type
-    // 所述者类型
+    /**
+     * <p>owner_type</p>
+     * <p>所述者类型</p>
+     */
     @NameInMap("owner_type")
     public String ownerType;
 
-    // Subdomain ID
+    /**
+     * <p>Subdomain ID</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

@@ -10,31 +10,41 @@ public class UpdateRevisionRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // keep_forever
-    // type: boolean
+    /**
+     * <p>keep_forever</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("keep_forever")
     public Boolean keepForever;
 
     @NameInMap("referer")
     public String referer;
 
-    // revision_description
-    // type: string
+    /**
+     * <p>revision_description</p>
+     * <p>type: string</p>
+     */
     @NameInMap("revision_description")
     @Validation(maxLength = 1024)
     public String revisionDescription;
 
-    // revision_id
+    /**
+     * <p>revision_id</p>
+     */
     @NameInMap("revision_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String revisionId;

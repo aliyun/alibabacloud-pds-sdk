@@ -10,34 +10,48 @@ public class ListViewsRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     @Validation(required = true)
     public String category;
 
-    // 每页大小限制
+    /**
+     * <p>每页大小限制</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // marker
+    /**
+     * <p>marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // order_by
+    /**
+     * <p>order_by</p>
+     */
     @NameInMap("order_by")
     public String orderBy;
 
-    // order_direction
+    /**
+     * <p>order_direction</p>
+     */
     @NameInMap("order_direction")
     public String orderDirection;
 
-    // owner
+    /**
+     * <p>owner</p>
+     */
     @NameInMap("owner")
     @Validation(required = true)
     public String owner;
 
-    // user_id
+    /**
+     * <p>user_id</p>
+     */
     @NameInMap("user_id")
     public String userId;
 

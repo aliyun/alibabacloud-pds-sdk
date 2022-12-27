@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class DomainBaseInfoLogDetail extends TeaModel {
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     public String name;
 

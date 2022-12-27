@@ -7,24 +7,34 @@ import com.aliyun.tea.*;
  * list store file
  */
 public class ListStoreFileRequest extends TeaModel {
-    // limit
+    /**
+     * <p>limit</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 1000, minimum = 1)
     public Long limit;
 
-    // marker
+    /**
+     * <p>marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // parent_file_path
+    /**
+     * <p>parent_file_path</p>
+     */
     @NameInMap("parent_file_path")
     public String parentFilePath;
 
-    // store_id
+    /**
+     * <p>store_id</p>
+     */
     @NameInMap("store_id")
     public String storeId;
 
-    // type
+    /**
+     * <p>type</p>
+     */
     @NameInMap("type")
     public String type;
 

@@ -10,57 +10,81 @@ public class ImportUserRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 认证方式的显示名称
+    /**
+     * <p>认证方式的显示名称</p>
+     */
     @NameInMap("authentication_display_name")
     public String authenticationDisplayName;
 
-    // 认证类型
+    /**
+     * <p>认证类型</p>
+     */
     @NameInMap("authentication_type")
     @Validation(required = true)
     public String authenticationType;
 
-    // 自动创建空间
+    /**
+     * <p>自动创建空间</p>
+     */
     @NameInMap("auto_create_drive")
     public Boolean autoCreateDrive;
 
     @NameInMap("custom_identity")
     public String customIdentity;
 
-    // 是否能自己修改密码
+    /**
+     * <p>是否能自己修改密码</p>
+     */
     @NameInMap("deny_change_password_by_self")
     public Boolean denyChangePasswordBySelf;
 
-    // 空间大小
+    /**
+     * <p>空间大小</p>
+     */
     @NameInMap("drive_total_size")
     public Long driveTotalSize;
 
-    // 用户过期时间
+    /**
+     * <p>用户过期时间</p>
+     */
     @NameInMap("expired_at")
     public Long expiredAt;
 
-    // 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
+    /**
+     * <p>额外的信息，比如type为mobile时，此字段为国家编号，不填默认86</p>
+     */
     @NameInMap("extra")
     public String extra;
 
-    // 唯一身份标识
+    /**
+     * <p>唯一身份标识</p>
+     */
     @NameInMap("identity")
     @Validation(required = true)
     public String identity;
 
-    // 下次登录后是否强制修改密码
+    /**
+     * <p>下次登录后是否强制修改密码</p>
+     */
     @NameInMap("need_change_password_next_login")
     public Boolean needChangePasswordNextLogin;
 
-    // 昵称
+    /**
+     * <p>昵称</p>
+     */
     @NameInMap("nick_name")
     @Validation(required = true)
     public String nickName;
 
-    // 加入到group
+    /**
+     * <p>加入到group</p>
+     */
     @NameInMap("parent_group_id")
     public String parentGroupId;
 
-    // 用户明文密码
+    /**
+     * <p>用户明文密码</p>
+     */
     @NameInMap("plain_password")
     public String plainPassword;
 

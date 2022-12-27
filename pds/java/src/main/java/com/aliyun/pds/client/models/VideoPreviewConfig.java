@@ -16,6 +16,9 @@ public class VideoPreviewConfig extends TeaModel {
     @NameInMap("audio_thumbnail")
     public VideoPreviewThumbnailConfig audioThumbnail;
 
+    @NameInMap("auto_category_config")
+    public VideoPreviewAutoCategoryConfig autoCategoryConfig;
+
     @NameInMap("backup_config")
     public VideoPreviewBackupConfig backupConfig;
 
@@ -31,6 +34,9 @@ public class VideoPreviewConfig extends TeaModel {
     @NameInMap("live_transcoding_config")
     public VideoPreviewLiveTranscodingConfig liveTranscodingConfig;
 
+    @NameInMap("quick_video_config")
+    public VideoPreviewQuickVideoConfig quickVideoConfig;
+
     @NameInMap("rate_limit_config")
     public VideoPreviewRateLimitConfig rateLimitConfig;
 
@@ -45,6 +51,9 @@ public class VideoPreviewConfig extends TeaModel {
 
     @NameInMap("template_list")
     public java.util.List<String> templateList;
+
+    @NameInMap("template_name_map")
+    public java.util.Map<String, ?> templateNameMap;
 
     @NameInMap("template_policy_config")
     public VideoPreviewTemplatePolicyConfig templatePolicyConfig;
@@ -87,6 +96,14 @@ public class VideoPreviewConfig extends TeaModel {
         return this.audioThumbnail;
     }
 
+    public VideoPreviewConfig setAutoCategoryConfig(VideoPreviewAutoCategoryConfig autoCategoryConfig) {
+        this.autoCategoryConfig = autoCategoryConfig;
+        return this;
+    }
+    public VideoPreviewAutoCategoryConfig getAutoCategoryConfig() {
+        return this.autoCategoryConfig;
+    }
+
     public VideoPreviewConfig setBackupConfig(VideoPreviewBackupConfig backupConfig) {
         this.backupConfig = backupConfig;
         return this;
@@ -127,6 +144,14 @@ public class VideoPreviewConfig extends TeaModel {
         return this.liveTranscodingConfig;
     }
 
+    public VideoPreviewConfig setQuickVideoConfig(VideoPreviewQuickVideoConfig quickVideoConfig) {
+        this.quickVideoConfig = quickVideoConfig;
+        return this;
+    }
+    public VideoPreviewQuickVideoConfig getQuickVideoConfig() {
+        return this.quickVideoConfig;
+    }
+
     public VideoPreviewConfig setRateLimitConfig(VideoPreviewRateLimitConfig rateLimitConfig) {
         this.rateLimitConfig = rateLimitConfig;
         return this;
@@ -165,6 +190,14 @@ public class VideoPreviewConfig extends TeaModel {
     }
     public java.util.List<String> getTemplateList() {
         return this.templateList;
+    }
+
+    public VideoPreviewConfig setTemplateNameMap(java.util.Map<String, ?> templateNameMap) {
+        this.templateNameMap = templateNameMap;
+        return this;
+    }
+    public java.util.Map<String, ?> getTemplateNameMap() {
+        return this.templateNameMap;
     }
 
     public VideoPreviewConfig setTemplatePolicyConfig(VideoPreviewTemplatePolicyConfig templatePolicyConfig) {

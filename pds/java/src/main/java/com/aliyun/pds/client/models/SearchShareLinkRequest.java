@@ -10,37 +10,53 @@ public class SearchShareLinkRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // categories
+    /**
+     * <p>categories</p>
+     */
     @NameInMap("categories")
     public java.util.List<String> categories;
 
-    // creators
+    /**
+     * <p>creators</p>
+     */
     @NameInMap("creators")
     public java.util.List<String> creators;
 
-    // limit
+    /**
+     * <p>limit</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // marker
+    /**
+     * <p>marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // order_by
+    /**
+     * <p>order_by</p>
+     */
     @NameInMap("order_by")
     public String orderBy;
 
-    // order_direction
+    /**
+     * <p>order_direction</p>
+     */
     @NameInMap("order_direction")
     public String orderDirection;
 
-    // query
+    /**
+     * <p>query</p>
+     */
     @NameInMap("query")
     @Validation(maxLength = 4096)
     public String query;
 
-    // return_total_count 是否返回查询总数
+    /**
+     * <p>return_total_count 是否返回查询总数</p>
+     */
     @NameInMap("return_total_count")
     public Boolean returnTotalCount;
 

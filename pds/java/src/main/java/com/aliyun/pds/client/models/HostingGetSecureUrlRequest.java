@@ -7,25 +7,35 @@ import com.aliyun.tea.*;
  * 获取文件安全地址的请求body
  */
 public class HostingGetSecureUrlRequest extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // expire_sec 单位秒
+    /**
+     * <p>expire_sec 单位秒</p>
+     */
     @NameInMap("expire_sec")
     public Long expireSec;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     @Validation(required = true, maxLength = 1000, minLength = 1)
     public String filePath;
 
-    // secure_ip
+    /**
+     * <p>secure_ip</p>
+     */
     @NameInMap("secure_ip")
     public String secureIp;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;

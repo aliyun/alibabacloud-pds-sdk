@@ -10,31 +10,43 @@ public class VerifyCodeRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // App ID, 当前访问的App
+    /**
+     * <p>App ID, 当前访问的App</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;
 
-    // 手机号
+    /**
+     * <p>手机号</p>
+     */
     @NameInMap("phone_number")
     @Validation(required = true)
     public String phoneNumber;
 
-    // 国家编号，默认86，不需要填+号，直接填数字
+    /**
+     * <p>国家编号，默认86，不需要填+号，直接填数字</p>
+     */
     @NameInMap("phone_region")
     public String phoneRegion;
 
-    // 短信验证码内容
+    /**
+     * <p>短信验证码内容</p>
+     */
     @NameInMap("sms_code")
     @Validation(required = true)
     public String smsCode;
 
-    // 短信验证码ID
+    /**
+     * <p>短信验证码ID</p>
+     */
     @NameInMap("sms_code_id")
     @Validation(required = true)
     public String smsCodeId;
 
-    // 需要被校验内容的类型
+    /**
+     * <p>需要被校验内容的类型</p>
+     */
     @NameInMap("verify_type")
     public String verifyType;
 

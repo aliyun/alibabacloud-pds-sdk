@@ -10,16 +10,22 @@ public class ListFileDeltaRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // cursor 游标
+    /**
+     * <p>cursor 游标</p>
+     */
     @NameInMap("cursor")
     public String cursor;
 
-    // disable_characteristic_hash
-    // default false
+    /**
+     * <p>disable_characteristic_hash</p>
+     * <p>default false</p>
+     */
     @NameInMap("disable_characteristic_hash")
     public Boolean disableCharacteristicHash;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
@@ -27,29 +33,41 @@ public class ListFileDeltaRequest extends TeaModel {
     @NameInMap("image_cropping_aspect_ratios")
     public java.util.List<String> imageCroppingAspectRatios;
 
-    // image_thumbnail_process
+    /**
+     * <p>image_thumbnail_process</p>
+     */
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
-    // image_url_process
+    /**
+     * <p>image_url_process</p>
+     */
     @NameInMap("image_url_process")
     public String imageUrlProcess;
 
-    // limit
-    // default 100
+    /**
+     * <p>limit</p>
+     * <p>default 100</p>
+     */
     @NameInMap("limit")
     public Integer limit;
 
-    // office_thumbnail_process
+    /**
+     * <p>office_thumbnail_process</p>
+     */
     @NameInMap("office_thumbnail_process")
     public String officeThumbnailProcess;
 
-    // sync_root_id
+    /**
+     * <p>sync_root_id</p>
+     */
     @NameInMap("sync_root_id")
     public String syncRootId;
 
-    // video_thumbnail_process
-    // type:string
+    /**
+     * <p>video_thumbnail_process</p>
+     * <p>type:string</p>
+     */
     @NameInMap("video_thumbnail_process")
     public String videoThumbnailProcess;
 

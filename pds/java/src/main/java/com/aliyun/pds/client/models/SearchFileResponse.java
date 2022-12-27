@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * search file response
  */
 public class SearchFileResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<BaseCCPFileResponse> items;
 
-    // next_marker
+    /**
+     * <p>next_marker</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 
-    // total_count
+    /**
+     * <p>total_count</p>
+     */
     @NameInMap("total_count")
     public Long totalCount;
 

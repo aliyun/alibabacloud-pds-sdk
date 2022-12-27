@@ -13,7 +13,9 @@ public class SimpleQueryRequest extends TeaModel {
     @NameInMap("aggregations")
     public java.util.List<Aggregation> aggregations;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;

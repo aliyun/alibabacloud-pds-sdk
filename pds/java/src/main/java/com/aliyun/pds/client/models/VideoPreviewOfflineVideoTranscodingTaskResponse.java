@@ -4,26 +4,36 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 离线视频转码信息task响应
+ * 离线视频转码task响应
  */
 public class VideoPreviewOfflineVideoTranscodingTaskResponse extends TeaModel {
-    // keep_original_resolution 转码后的视频分辨率是否保持原画(template分辨率大于当前视频)
+    /**
+     * <p>keep_original_resolution 转码后的视频分辨率是否保持原画(template分辨率大于当前视频)</p>
+     */
     @NameInMap("keep_original_resolution")
     public Boolean keepOriginalResolution;
 
-    // protection_system DRM加密方式
+    /**
+     * <p>protection_system DRM加密方式</p>
+     */
     @NameInMap("protection_system")
     public String protectionSystem;
 
-    // status, 转码状态
+    /**
+     * <p>status, 转码状态</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // template_id, 转码模板id
+    /**
+     * <p>template_id, 转码模板id</p>
+     */
     @NameInMap("template_id")
     public String templateId;
 
-    // url, 视频播放地址
+    /**
+     * <p>url, 视频播放地址</p>
+     */
     @NameInMap("url")
     public String url;
 

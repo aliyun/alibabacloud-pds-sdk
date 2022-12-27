@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.aliyun</groupId>
   <artifactId>aliyun-sdk-pds</artifactId>
-  <version>0.4.2</version>
+  <version>0.4.4</version>
   <packaging>jar</packaging>
   <name>aliyun-sdk-pds</name>
   <description>Aliyun PDS SDK for Java
@@ -58,7 +58,7 @@
     <dependency>
       <groupId>com.aliyun</groupId>
       <artifactId>credentials-java</artifactId>
-      <version>0.2.4</version>
+      <version>0.2.9</version>
       <exclusions>
         <exclusion>
           <groupId>com.aliyun</groupId>

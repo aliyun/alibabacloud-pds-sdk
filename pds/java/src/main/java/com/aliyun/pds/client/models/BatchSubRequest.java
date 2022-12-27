@@ -7,25 +7,35 @@ import com.aliyun.tea.*;
  * 
  */
 public class BatchSubRequest extends TeaModel {
-    // body 子请求的请求参数 json 字符串，可参考对于子请求文档, 当指定了body 必须传headers ： "Content-Type" 对应的类型，目前子请求入参是"application/json"
+    /**
+     * <p>body 子请求的请求参数 json 字符串，可参考对于子请求文档, 当指定了body 必须传headers ： "Content-Type" 对应的类型，目前子请求入参是"application/json"</p>
+     */
     @NameInMap("body")
     public java.util.Map<String, ?> body;
 
-    // headers 请求头，表示body传入数据的类型
+    /**
+     * <p>headers 请求头，表示body传入数据的类型</p>
+     */
     @NameInMap("headers")
     public java.util.Map<String, ?> headers;
 
-    // id 用于request 和 response关联， 不允许重复
+    /**
+     * <p>id 用于request 和 response关联， 不允许重复</p>
+     */
     @NameInMap("id")
     @Validation(required = true)
     public String id;
 
-    // method
+    /**
+     * <p>method</p>
+     */
     @NameInMap("method")
     @Validation(required = true)
     public String method;
 
-    // url 子请求的api path路径， 可参考对于子请求文档
+    /**
+     * <p>url 子请求的api path路径， 可参考对于子请求文档</p>
+     */
     @NameInMap("url")
     @Validation(required = true)
     public String url;

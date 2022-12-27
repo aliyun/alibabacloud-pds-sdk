@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 实时转码meta响应
  */
 public class LiveTranscodingMetaResponse extends TeaModel {
-    // ts_pre_count
+    /**
+     * <p>ts_pre_count</p>
+     */
     @NameInMap("ts_pre_count")
     public Long tsPreCount;
 
-    // ts_segment
+    /**
+     * <p>ts_segment</p>
+     */
     @NameInMap("ts_segment")
     public Long tsSegment;
 
-    // ts_total_count
+    /**
+     * <p>ts_total_count</p>
+     */
     @NameInMap("ts_total_count")
     public Long tsTotalCount;
 

@@ -10,22 +10,30 @@ public class FileAddPermissionRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 文件所属的drive_id
+    /**
+     * <p>文件所属的drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true)
     public String driveId;
 
-    // 文件的file_id
+    /**
+     * <p>文件的file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true)
     public String fileId;
 
-    // 被授权的用户或团队列表
+    /**
+     * <p>被授权的用户或团队列表</p>
+     */
     @NameInMap("member_list")
     @Validation(required = true)
     public java.util.List<FilePermissionMember> memberList;
 
-    // 文件所属的subdomain_id
+    /**
+     * <p>文件所属的subdomain_id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

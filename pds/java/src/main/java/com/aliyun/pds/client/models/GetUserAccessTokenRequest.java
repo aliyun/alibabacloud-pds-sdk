@@ -10,11 +10,15 @@ public class GetUserAccessTokenRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // subdomain ID
+    /**
+     * <p>subdomain ID</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 
-    // 用户 ID
+    /**
+     * <p>用户 ID</p>
+     */
     @NameInMap("user_id")
     @Validation(required = true)
     public String userId;

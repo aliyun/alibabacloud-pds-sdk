@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class DomainCnameInfoLogDetail extends TeaModel {
-    // cert_name
+    /**
+     * <p>cert_name</p>
+     */
     @NameInMap("cert_name")
     public String certName;
 
-    // cname
+    /**
+     * <p>cname</p>
+     */
     @NameInMap("cname")
     public String cname;
 

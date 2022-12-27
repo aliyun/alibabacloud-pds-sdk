@@ -10,25 +10,35 @@ public class GetVideoPreviewURLRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // audio_template_id
+    /**
+     * <p>audio_template_id</p>
+     */
     @NameInMap("audio_template_id")
     public String audioTemplateId;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // expire_sec
+    /**
+     * <p>expire_sec</p>
+     */
     @NameInMap("expire_sec")
     @Validation(maximum = 14400, minimum = 1)
     public Long expireSec;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
@@ -36,18 +46,24 @@ public class GetVideoPreviewURLRequest extends TeaModel {
     @NameInMap("referer")
     public String referer;
 
-    // revision_id
+    /**
+     * <p>revision_id</p>
+     */
     @NameInMap("revision_id")
     public String revisionId;
 
-    // share_id, either share_id or drive_id is required
+    /**
+     * <p>share_id, either share_id or drive_id is required</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
     @NameInMap("sign_token")
     public String signToken;
 
-    // template_id
+    /**
+     * <p>template_id</p>
+     */
     @NameInMap("template_id")
     public String templateId;
 

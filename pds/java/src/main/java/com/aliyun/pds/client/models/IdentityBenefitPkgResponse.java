@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * Identity benefit package response
  */
 public class IdentityBenefitPkgResponse extends TeaModel {
-    // 权益包中的权益列表
+    /**
+     * <p>权益包中的权益列表</p>
+     */
     @NameInMap("benefit_list")
     public java.util.List<BenefitBaseResponse> benefitList;
 
-    // 权益包的唯一标识
+    /**
+     * <p>权益包的唯一标识</p>
+     */
     @NameInMap("benefit_pkg_id")
     public String benefitPkgId;
 
-    // 权益包的下发信息
+    /**
+     * <p>权益包的下发信息</p>
+     */
     @NameInMap("delivery_info_list")
     public java.util.List<BenefitPkgDeliveryInfoResponse> deliveryInfoList;
 
-    // 权益包的名称
+    /**
+     * <p>权益包的名称</p>
+     */
     @NameInMap("name")
     public String name;
 

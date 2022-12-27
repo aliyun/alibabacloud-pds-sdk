@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 获取download url response
  */
 public class HostingGetDownloadUrlResponse extends TeaModel {
-    // expiration
+    /**
+     * <p>expiration</p>
+     */
     @NameInMap("expiration")
     public String expiration;
 
-    // method
+    /**
+     * <p>method</p>
+     */
     @NameInMap("method")
     public String method;
 
-    // url
+    /**
+     * <p>url</p>
+     */
     @NameInMap("url")
     public String url;
 

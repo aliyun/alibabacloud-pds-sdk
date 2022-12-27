@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 
  */
 public class BatchSubResponse extends TeaModel {
-    // body 子请求的返回结果，可参考对于子请求文档 json 字符串
+    /**
+     * <p>body 子请求的返回结果，可参考对于子请求文档 json 字符串</p>
+     */
     @NameInMap("body")
     public java.util.Map<String, ?> body;
 
-    // id 请求带过来的id, 可以跟 request 进行关联
+    /**
+     * <p>id 请求带过来的id, 可以跟 request 进行关联</p>
+     */
     @NameInMap("id")
     public String id;
 
-    // status 子请求的返回状态码，可参考对于子请求文档
+    /**
+     * <p>status 子请求的返回状态码，可参考对于子请求文档</p>
+     */
     @NameInMap("status")
     public Long status;
 

@@ -10,23 +10,33 @@ public class ListDirectChildMembershipsRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // group id
+    /**
+     * <p>group id</p>
+     */
     @NameInMap("group_id")
     public String groupId;
 
-    // 分页获取的数量，默认为100
+    /**
+     * <p>分页获取的数量，默认为100</p>
+     */
     @NameInMap("limit")
     public Integer limit;
 
-    // 游标
+    /**
+     * <p>游标</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // 角色，可选值，["", "user", "group"], ""表示获取所有类型
+    /**
+     * <p>角色，可选值，["", "user", "group"], ""表示获取所有类型</p>
+     */
     @NameInMap("member_type")
     public String memberType;
 
-    // subdomain id
+    /**
+     * <p>subdomain id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

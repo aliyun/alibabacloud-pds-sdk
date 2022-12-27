@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class RPVerifyTokenResponse extends TeaModel {
-    // 是否需要实人认证，如果用户已通过认证，或者未开启实人认证，返回false
+    /**
+     * <p>是否需要实人认证，如果用户已通过认证，或者未开启实人认证，返回false</p>
+     */
     @NameInMap("need_rp_verify")
     @Validation(required = true)
     public Boolean needRpVerify;

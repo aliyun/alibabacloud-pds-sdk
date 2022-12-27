@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * 
  */
 public class VideoPreviewAudioMusicMeta extends TeaModel {
-    // album
+    /**
+     * <p>album</p>
+     */
     @NameInMap("album")
     public String album;
 
-    // artist
+    /**
+     * <p>artist</p>
+     */
     @NameInMap("artist")
     public String artist;
 
-    // cover_url
+    /**
+     * <p>cover_url</p>
+     */
     @NameInMap("cover_url")
     public String coverUrl;
 
-    // title
+    /**
+     * <p>title</p>
+     */
     @NameInMap("title")
     public String title;
 

@@ -10,11 +10,15 @@ public class CreateCustomizedStoryRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // custom_labels
+    /**
+     * <p>custom_labels</p>
+     */
     @NameInMap("custom_labels")
     public java.util.Map<String, ?> customLabels;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
@@ -22,19 +26,27 @@ public class CreateCustomizedStoryRequest extends TeaModel {
     @NameInMap("story_cover")
     public StoryFile storyCover;
 
-    // story_file_ids
+    /**
+     * <p>story_file_ids</p>
+     */
     @NameInMap("story_files")
     public java.util.List<StoryFile> storyFiles;
 
-    // story_name
+    /**
+     * <p>story_name</p>
+     */
     @NameInMap("story_name")
     public String storyName;
 
-    // story_sub_type
+    /**
+     * <p>story_sub_type</p>
+     */
     @NameInMap("story_sub_type")
     public String storySubType;
 
-    // story_type
+    /**
+     * <p>story_type</p>
+     */
     @NameInMap("story_type")
     @Validation(required = true)
     public String storyType;

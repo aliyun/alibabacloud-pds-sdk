@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * create domain response
  */
 public class UpdateDomainResponse extends TeaModel {
-    // Domain APICName
+    /**
+     * <p>Domain APICName</p>
+     */
     @NameInMap("api_cname")
     public String apiCname;
 
-    // Domain AppCName
+    /**
+     * <p>Domain AppCName</p>
+     */
     @NameInMap("app_cname")
     public String appCname;
 
@@ -21,99 +25,141 @@ public class UpdateDomainResponse extends TeaModel {
     @NameInMap("archive_config")
     public ArchiveConfig archiveConfig;
 
-    // 打包下载配置
+    /**
+     * <p>打包下载配置</p>
+     */
     @NameInMap("archive_files_enable")
     public Boolean archiveFilesEnable;
 
     @NameInMap("audit_log_config")
     public AuditLogConfig auditLogConfig;
 
-    // Domain AuthCName
+    /**
+     * <p>Domain AuthCName</p>
+     */
     @NameInMap("auth_cname")
     public String authCname;
 
-    // 登录相关信息
+    /**
+     * <p>登录相关信息</p>
+     */
     @NameInMap("auth_config")
     public java.util.Map<String, ?> authConfig;
 
-    // 钉钉 App Id
+    /**
+     * <p>钉钉 App Id</p>
+     */
     @NameInMap("auth_dingding_app_id")
     public String authDingdingAppId;
 
-    // 钉钉 App Secret
+    /**
+     * <p>钉钉 App Secret</p>
+     */
     @NameInMap("auth_dingding_app_secret")
     public String authDingdingAppSecret;
 
-    // 是否开启了钉钉认证
+    /**
+     * <p>是否开启了钉钉认证</p>
+     */
     @NameInMap("auth_dingding_enable")
     public Boolean authDingdingEnable;
 
-    // RAM App Id
+    /**
+     * <p>RAM App Id</p>
+     */
     @NameInMap("auth_ram_app_id")
     public String authRamAppId;
 
-    // RAM App Secret
+    /**
+     * <p>RAM App Secret</p>
+     */
     @NameInMap("auth_ram_app_secret")
     public String authRamAppSecret;
 
-    // 是否开启了 RAM 认证
+    /**
+     * <p>是否开启了 RAM 认证</p>
+     */
     @NameInMap("auth_ram_enable")
     public Boolean authRamEnable;
 
     @NameInMap("benefits")
     public java.util.Map<String, ?> benefits;
 
-    // Domain 创建时间
+    /**
+     * <p>Domain 创建时间</p>
+     */
     @NameInMap("created_at")
     public String createdAt;
 
-    // 数据 Hash 算法
+    /**
+     * <p>数据 Hash 算法</p>
+     */
     @NameInMap("data_hash_name")
     public String dataHashName;
 
     @NameInMap("default_super_admin_config")
     public DomainSuperAdminConfig defaultSuperAdminConfig;
 
-    // Domain 描述
+    /**
+     * <p>Domain 描述</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // Domain ID
+    /**
+     * <p>Domain ID</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
-    // Domain 描述
+    /**
+     * <p>Domain 描述</p>
+     */
     @NameInMap("domain_name")
     public String domainName;
 
     @NameInMap("endpoints")
     public DomainEndpointsResponse endpoints;
 
-    // 企业文件管理专属登录开关
+    /**
+     * <p>企业文件管理专属登录开关</p>
+     */
     @NameInMap("enterprise_customized_login")
     public Boolean enterpriseCustomizedLogin;
 
-    // 事件通知 MNS 匹配文件名
+    /**
+     * <p>事件通知 MNS 匹配文件名</p>
+     */
     @NameInMap("event_filename_matches")
     public String eventFilenameMatches;
 
-    // 事件通知 MNS Endpoint
+    /**
+     * <p>事件通知 MNS Endpoint</p>
+     */
     @NameInMap("event_mns_endpoint")
     public String eventMnsEndpoint;
 
-    // 事件通知 MNS Topic
+    /**
+     * <p>事件通知 MNS Topic</p>
+     */
     @NameInMap("event_mns_topic")
     public String eventMnsTopic;
 
-    // 事件名列表
+    /**
+     * <p>事件名列表</p>
+     */
     @NameInMap("event_names")
     public java.util.List<String> eventNames;
 
-    // 事件通知 Role Arn
+    /**
+     * <p>事件通知 Role Arn</p>
+     */
     @NameInMap("event_role_arn")
     public String eventRoleArn;
 
-    // 预付费domain过期时间
+    /**
+     * <p>预付费domain过期时间</p>
+     */
     @NameInMap("expire_time")
     public Long expireTime;
 
@@ -126,19 +172,27 @@ public class UpdateDomainResponse extends TeaModel {
     @NameInMap("group_single_drive_enabled")
     public Boolean groupSingleDriveEnabled;
 
-    // 是否开启了自动初始化 Drive
+    /**
+     * <p>是否开启了自动初始化 Drive</p>
+     */
     @NameInMap("init_drive_enable")
     public Boolean initDriveEnable;
 
-    // 自动初始化 Drive 大小
+    /**
+     * <p>自动初始化 Drive 大小</p>
+     */
     @NameInMap("init_drive_size")
     public Long initDriveSize;
 
-    // 自动初始化 Drive 所用 Store ID
+    /**
+     * <p>自动初始化 Drive 所用 Store ID</p>
+     */
     @NameInMap("init_drive_store_id")
     public String initDriveStoreId;
 
-    // Domain 类型
+    /**
+     * <p>Domain 类型</p>
+     */
     @NameInMap("mode")
     public String mode;
 
@@ -154,15 +208,21 @@ public class UpdateDomainResponse extends TeaModel {
     @NameInMap("parallel_upload_enabled")
     public Boolean parallelUploadEnabled;
 
-    // Parent Domain ID
+    /**
+     * <p>Parent Domain ID</p>
+     */
     @NameInMap("parent_domain_id")
     public String parentDomainId;
 
-    // Domain 类型
+    /**
+     * <p>Domain 类型</p>
+     */
     @NameInMap("path_type")
     public String pathType;
 
-    // 预付费套餐
+    /**
+     * <p>预付费套餐</p>
+     */
     @NameInMap("prepaid_package")
     public String prepaidPackage;
 
@@ -175,11 +235,15 @@ public class UpdateDomainResponse extends TeaModel {
     @NameInMap("role_config")
     public RoleConfig roleConfig;
 
-    // Domain ServiceCode
+    /**
+     * <p>Domain ServiceCode</p>
+     */
     @NameInMap("service_code")
     public String serviceCode;
 
-    // 是否开启了共享
+    /**
+     * <p>是否开启了共享</p>
+     */
     @NameInMap("sharable")
     public Boolean sharable;
 
@@ -189,50 +253,72 @@ public class UpdateDomainResponse extends TeaModel {
     @NameInMap("share_link_detail")
     public ShareLinkDetailResponse shareLinkDetail;
 
-    // 是否开启了分享
+    /**
+     * <p>是否开启了分享</p>
+     */
     @NameInMap("share_link_enabled")
     public Boolean shareLinkEnabled;
 
-    // 容量配额
+    /**
+     * <p>容量配额</p>
+     */
     @NameInMap("size_quota")
     public Long sizeQuota;
 
-    // SPI 实例 id
+    /**
+     * <p>SPI 实例 id</p>
+     */
     @NameInMap("spi_instance_id")
     public String spiInstanceId;
 
-    // domain状态：创建中，正常，已过期
+    /**
+     * <p>domain状态：创建中，正常，已过期</p>
+     */
     @NameInMap("status")
     public Long status;
 
-    // 存储级别
+    /**
+     * <p>存储级别</p>
+     */
     @NameInMap("store_level")
     public String storeLevel;
 
-    // 存储 Region 列表
+    /**
+     * <p>存储 Region 列表</p>
+     */
     @NameInMap("store_region_list")
     public java.util.List<String> storeRegionList;
 
     @NameInMap("subdomain_config")
     public SubdomainConfig subdomainConfig;
 
-    // Domain 更新时间
+    /**
+     * <p>Domain 更新时间</p>
+     */
     @NameInMap("updated_at")
     public String updatedAt;
 
-    // 逻辑空间使用量，单位为字节
+    /**
+     * <p>逻辑空间使用量，单位为字节</p>
+     */
     @NameInMap("used_size")
     public Long usedSize;
 
-    // 逻辑空间刷新周期，单位：秒
+    /**
+     * <p>逻辑空间刷新周期，单位：秒</p>
+     */
     @NameInMap("used_size_refresh_interval")
     public Long usedSizeRefreshInterval;
 
-    // 用户数配额
+    /**
+     * <p>用户数配额</p>
+     */
     @NameInMap("user_count_quota")
     public Long userCountQuota;
 
-    // user和group只能有一个drive的开关
+    /**
+     * <p>user和group只能有一个drive的开关</p>
+     */
     @NameInMap("user_single_drive_enabled")
     public Boolean userSingleDriveEnabled;
 

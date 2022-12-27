@@ -10,7 +10,9 @@ public class GetLinkInfoByUserIDRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // user ID
+    /**
+     * <p>user ID</p>
+     */
     @NameInMap("user_id")
     @Validation(required = true)
     public String userId;

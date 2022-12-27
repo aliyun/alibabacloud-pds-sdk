@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * scan file meta response
  */
 public class ScanFileMetaResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<BaseCCPFileResponse> items;
 
-    // next_marker
+    /**
+     * <p>next_marker</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 

@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 
  */
 public class ListAppsRequest extends TeaModel {
-    // 返回结果数据
+    /**
+     * <p>返回结果数据</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // 下次查询游标
+    /**
+     * <p>下次查询游标</p>
+     */
     @NameInMap("marker")
     public String marker;
 

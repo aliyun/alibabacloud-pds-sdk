@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * copy view files
  */
 public class CopyViewFilesResponse extends TeaModel {
-    // async_task_id
+    /**
+     * <p>async_task_id</p>
+     */
     @NameInMap("async_task_id")
     public String asyncTaskId;
 

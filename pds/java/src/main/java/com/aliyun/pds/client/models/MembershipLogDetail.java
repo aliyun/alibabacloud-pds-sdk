@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * 
  */
 public class MembershipLogDetail extends TeaModel {
-    // group_id
+    /**
+     * <p>group_id</p>
+     */
     @NameInMap("group_id")
     public String groupId;
 
-    // group_name
+    /**
+     * <p>group_name</p>
+     */
     @NameInMap("group_name")
     public String groupName;
 
-    // member_name
+    /**
+     * <p>member_name</p>
+     */
     @NameInMap("member_name")
     public String memberName;
 
-    // member_type
+    /**
+     * <p>member_type</p>
+     */
     @NameInMap("member_type")
     public String memberType;
 

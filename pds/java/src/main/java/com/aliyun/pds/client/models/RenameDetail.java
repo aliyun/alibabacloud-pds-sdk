@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class RenameDetail extends TeaModel {
-    // NewName
+    /**
+     * <p>NewName</p>
+     */
     @NameInMap("new_name")
     public String newName;
 
-    // OldName
+    /**
+     * <p>OldName</p>
+     */
     @NameInMap("old_name")
     public String oldName;
 

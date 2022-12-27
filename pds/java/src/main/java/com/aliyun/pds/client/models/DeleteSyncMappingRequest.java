@@ -10,19 +10,30 @@ public class DeleteSyncMappingRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // device_name
+    @NameInMap("Mode")
+    public String Mode;
+
+    /**
+     * <p>device_name</p>
+     */
     @NameInMap("device_name")
     public String deviceName;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // fs_id
+    /**
+     * <p>fs_id</p>
+     */
     @NameInMap("fs_id")
     public String fsId;
 
-    // local_path
+    /**
+     * <p>local_path</p>
+     */
     @NameInMap("local_path")
     public String localPath;
 
@@ -37,6 +48,14 @@ public class DeleteSyncMappingRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public DeleteSyncMappingRequest setMode(String Mode) {
+        this.Mode = Mode;
+        return this;
+    }
+    public String getMode() {
+        return this.Mode;
     }
 
     public DeleteSyncMappingRequest setDeviceName(String deviceName) {

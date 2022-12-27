@@ -13,15 +13,21 @@ public class ListGroupRequest extends TeaModel {
     @NameInMap("extra_return_info")
     public java.util.List<String> extraReturnInfo;
 
-    // 分页获取的数量，默认为100
+    /**
+     * <p>分页获取的数量，默认为100</p>
+     */
     @NameInMap("limit")
     public Integer limit;
 
-    // 游标
+    /**
+     * <p>游标</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // 列举 subdomain 下的group
+    /**
+     * <p>列举 subdomain 下的group</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

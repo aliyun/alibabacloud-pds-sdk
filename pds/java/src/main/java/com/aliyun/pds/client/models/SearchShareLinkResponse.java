@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * search_share_link response
  */
 public class SearchShareLinkResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<BaseShareLinkResponse> items;
 
-    // next_marker
+    /**
+     * <p>next_marker</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 
-    // total_count
+    /**
+     * <p>total_count</p>
+     */
     @NameInMap("total_count")
     public Long totalCount;
 

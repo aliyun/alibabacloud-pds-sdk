@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetRPVerifyTokenRequest extends TeaModel {
-    // User ID, 当前访问的用户
+    /**
+     * <p>User ID, 当前访问的用户</p>
+     */
     @NameInMap("user_id")
     @Validation(required = true)
     public String userId;

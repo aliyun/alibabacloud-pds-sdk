@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 
  */
 public class SetShareLinkStatusRequest extends TeaModel {
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // enabled
+    /**
+     * <p>enabled</p>
+     */
     @NameInMap("enabled")
     @Validation(required = true)
     public Boolean enabled;

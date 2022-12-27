@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * 
  */
 public class ActorShareLinkUser extends TeaModel {
-    // Creator
+    /**
+     * <p>Creator</p>
+     */
     @NameInMap("creator")
     public String creator;
 
-    // ShareID
+    /**
+     * <p>ShareID</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
-    // UserID
+    /**
+     * <p>UserID</p>
+     */
     @NameInMap("user_id")
     public String userId;
 
-    // UserName
+    /**
+     * <p>UserName</p>
+     */
     @NameInMap("user_name")
     public String userName;
 

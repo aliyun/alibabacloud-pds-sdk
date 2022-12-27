@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 获取文档预览地址 response
  */
 public class GetOfficePreviewUrlResponse extends TeaModel {
-    // AccessToken
+    /**
+     * <p>AccessToken</p>
+     */
     @NameInMap("access_token")
     public String accessToken;
 
-    // preview_url
+    /**
+     * <p>preview_url</p>
+     */
     @NameInMap("preview_url")
     public String previewUrl;
 

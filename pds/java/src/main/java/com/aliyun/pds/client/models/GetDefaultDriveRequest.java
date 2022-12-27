@@ -10,11 +10,15 @@ public class GetDefaultDriveRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // Subdomain ID
+    /**
+     * <p>Subdomain ID</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 
-    // 用户ID
+    /**
+     * <p>用户ID</p>
+     */
     @NameInMap("user_id")
     public String userId;
 

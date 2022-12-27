@@ -10,11 +10,15 @@ public class DeleteGroupRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // group id
+    /**
+     * <p>group id</p>
+     */
     @NameInMap("group_id")
     public String groupId;
 
-    // subdomain id
+    /**
+     * <p>subdomain id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

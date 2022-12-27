@@ -10,8 +10,10 @@ public class GetUserRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 用户 ID, 使用ak方式访问，该项必传, access_token访问如果不传，默认取自己的user信息
-    // example
+    /**
+     * <p>用户 ID, 使用ak方式访问，该项必传, access_token访问如果不传，默认取自己的user信息</p>
+     * <p>example</p>
+     */
     @NameInMap("user_id")
     public String userId;
 

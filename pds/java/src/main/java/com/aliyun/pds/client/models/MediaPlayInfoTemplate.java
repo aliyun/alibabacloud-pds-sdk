@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 
  */
 public class MediaPlayInfoTemplate extends TeaModel {
-    // status
+    /**
+     * <p>status</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // template_id
+    /**
+     * <p>template_id</p>
+     */
     @NameInMap("template_id")
     public String templateId;
 
-    // url
+    /**
+     * <p>url</p>
+     */
     @NameInMap("url")
     public String url;
 

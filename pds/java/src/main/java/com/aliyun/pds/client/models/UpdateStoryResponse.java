@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * update story response
  */
 public class UpdateStoryResponse extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // story_id
+    /**
+     * <p>story_id</p>
+     */
     @NameInMap("story_id")
     public String storyId;
 

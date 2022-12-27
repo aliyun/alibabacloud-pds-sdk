@@ -6392,6 +6392,228 @@ api getMediaPlayUrlEx(request: GetMediaPlayURLRequest, runtime: RuntimeOptions):
   ignoreSSL = runtime.ignoreSSL
 }
 
+model GetMediaPreviewInfoModel {
+  headers?: map[string]string(name='headers'),
+  body: CCPGetVideoPreviewPlayInfoResponse(name='body'),
+}
+
+/**
+ * 获取媒体文件播放信息
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function getMediaPreviewInfo(request: CCPGetVideoPreviewPlayInfoRequest) throws: GetMediaPreviewInfoModel  {
+  var runtime = new RuntimeOptions{};
+  return getMediaPreviewInfoEx(request, runtime);
+}
+
+/**
+ * 获取媒体文件播放信息
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api getMediaPreviewInfoEx(request: CCPGetVideoPreviewPlayInfoRequest, runtime: RuntimeOptions): GetMediaPreviewInfoModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/file/get_media_preview_info`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.httpheaders
+  };
+  realReq.httpheaders = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
+model GetMediaPreviewMetaModel {
+  headers?: map[string]string(name='headers'),
+  body: CCPGetVideoPreviewPlayMetaResponse(name='body'),
+}
+
+/**
+ * 获取媒体文件播放元信息
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function getMediaPreviewMeta(request: CCPGetVideoPreviewPlayMetaRequest) throws: GetMediaPreviewMetaModel  {
+  var runtime = new RuntimeOptions{};
+  return getMediaPreviewMetaEx(request, runtime);
+}
+
+/**
+ * 获取媒体文件播放元信息
+ * @tags file
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api getMediaPreviewMetaEx(request: CCPGetVideoPreviewPlayMetaRequest, runtime: RuntimeOptions): GetMediaPreviewMetaModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/file/get_media_preview_meta`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.httpheaders
+  };
+  realReq.httpheaders = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
 model GetOfficeEditUrlModel {
   headers?: map[string]string(name='headers'),
   body: GetOfficeEditUrlResponse(name='body'),
@@ -18167,123 +18389,6 @@ api updateUserEx(request: UpdateUserRequest, runtime: RuntimeOptions): UpdateUse
   ignoreSSL = runtime.ignoreSSL
 }
 
-model UpdateDataProcessTemplateModel {
-  headers?: map[string]string(name='headers'),
-  body: UpdateDataProcessTemplateResponse(name='body'),
-}
-
-/**
- * 更新用户指定的资源的数据处理模版
- * @tags user
- * @error InvalidParameter The input parameter {parameter_name} is not valid.
- * @error AccessTokenInvalid AccessToken is invalid. {message}
- * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
- * @error NotFound The resource {resource_name} cannot be found. Please check.
- * @error StateConflict User operation is not valid.
- * @error InternalError The request has been failed due to some unknown error.
- * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
- */
-async function updateDataProcessTemplate(request: UpdateDataProcessTemplateRequest) throws: UpdateDataProcessTemplateModel  {
-  var runtime = new RuntimeOptions{};
-  return updateDataProcessTemplateEx(request, runtime);
-}
-
-/**
- * 更新用户指定的资源的数据处理模版
- * @tags user
- * @error InvalidParameter The input parameter {parameter_name} is not valid.
- * @error AccessTokenInvalid AccessToken is invalid. {message}
- * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
- * @error NotFound The resource {resource_name} cannot be found. Please check.
- * @error StateConflict User operation is not valid.
- * @error InternalError The request has been failed due to some unknown error.
- * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
- */
-api updateDataProcessTemplateEx(request: UpdateDataProcessTemplateRequest, runtime: RuntimeOptions): UpdateDataProcessTemplateModel  {
-  var accesskeyId = getAccessKeyId();
-  var accessKeySecret = getAccessKeySecret();
-  var securityToken = getSecurityToken();
-  var accessToken = getAccessToken();
-  var realReq = Util.toMap(request);
-  __request.protocol = Util.defaultString(@protocol, 'https');
-  __request.method = 'POST';
-  __request.pathname = getPathname(@nickname, `/v2/user/update_data_process_template`);
-  __request.headers = {
-    user-agent = getUserAgent(),
-    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
-    content-type = 'application/json; charset=utf-8',
-    ...request.httpheaders
-  };
-  realReq.httpheaders = null;
-
-  if (!Util.empty(accessToken)) {
-    __request.headers.authorization = `Bearer ${accessToken}`;
-  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
-    if (!Util.empty(securityToken)) {
-      __request.headers.x-acs-security-token = securityToken;
-    }
-    __request.headers.date = Util.getDateUTCString();
-    __request.headers.accept = 'application/json';
-    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
-    __request.headers.x-acs-signature-version = '1.0';
-    var stringToSign = ROAUtil.getStringToSign(__request);
-    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
-  }
-  __request.body = Util.toJSONString(realReq);
-} returns {
-  var respMap : object = null;
-  var obj : any = null;
-  if (Util.equalNumber(__response.statusCode, 200)) {
-    obj = Util.readAsJSON(__response.body);
-    respMap = Util.assertAsMap(obj);
-    return {
-      body = respMap,
-      headers =  __response.headers,
-    };
-  }
-
-  if (!Util.empty(__response.headers.x-ca-error-message)) {
-    throw {
-      data = {
-        requestId = __response.headers.x-ca-request-id,
-        statusCode = __response.statusCode,
-        statusMessage = __response.statusMessage,
-      },
-      message = __response.headers.x-ca-error-message,
-    };
-  }
-  obj = Util.readAsJSON(__response.body);
-  respMap = Util.assertAsMap(obj);
-  throw {
-    data = {
-      requestId = __response.headers.x-ca-request-id,
-      statusCode = __response.statusCode,
-      statusMessage = __response.statusMessage,
-    },
-    ...respMap,
-  };
-} runtime {
-  timeouted = 'retry',
-  readTimeout = runtime.readTimeout,
-  connectTimeout = runtime.connectTimeout,
-  localAddr = runtime.localAddr,
-  httpProxy = runtime.httpProxy,
-  httpsProxy = runtime.httpsProxy,
-  noProxy = runtime.noProxy,
-  maxIdleConns = runtime.maxIdleConns,
-  socks5Proxy = runtime.socks5Proxy,
-  socks5NetWork = runtime.socks5NetWork,
-  retry = {
-    retryable = runtime.autoretry,
-    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
-  },
-  backoff = {
-    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
-    period = Util.defaultNumber(runtime.backoffPeriod, 1),
-  },
-  ignoreSSL = runtime.ignoreSSL
-}
-
 model SearchUserGroupModel {
   headers?: map[string]string(name='headers'),
   body: SearchUserAndGroupResponse(name='body'),
@@ -18619,6 +18724,240 @@ api unassignFacegroupItemEx(request: UnAssignFaceGroupItemRequest, runtime: Runt
   ignoreSSL = runtime.ignoreSSL
 }
 
+model GetDataProcessTemplateModel {
+  headers?: map[string]string(name='headers'),
+  body: GetDriveDataProcessTemplateResponse(name='body'),
+}
+
+/**
+ * 获取 drive 的数据处理模版
+ * @tags drive
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error StateConflict User operation is not valid.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function getDataProcessTemplate(request: GetDriveDataProcessTemplateRequest) throws: GetDataProcessTemplateModel  {
+  var runtime = new RuntimeOptions{};
+  return getDataProcessTemplateEx(request, runtime);
+}
+
+/**
+ * 获取 drive 的数据处理模版
+ * @tags drive
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error StateConflict User operation is not valid.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api getDataProcessTemplateEx(request: GetDriveDataProcessTemplateRequest, runtime: RuntimeOptions): GetDataProcessTemplateModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/drive/get_data_process_template`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.httpheaders
+  };
+  realReq.httpheaders = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
+model UpdateDataProcessTemplateModel {
+  headers?: map[string]string(name='headers'),
+  body: UpdateDriveDataProcessTemplateResponse(name='body'),
+}
+
+/**
+ * 更新 drive 的数据处理模版
+ * @tags drive
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error StateConflict User operation is not valid.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function updateDataProcessTemplate(request: UpdateDriveDataProcessTemplateRequest) throws: UpdateDataProcessTemplateModel  {
+  var runtime = new RuntimeOptions{};
+  return updateDataProcessTemplateEx(request, runtime);
+}
+
+/**
+ * 更新 drive 的数据处理模版
+ * @tags drive
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error StateConflict User operation is not valid.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api updateDataProcessTemplateEx(request: UpdateDriveDataProcessTemplateRequest, runtime: RuntimeOptions): UpdateDataProcessTemplateModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/drive/update_data_process_template`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.httpheaders
+  };
+  realReq.httpheaders = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
 model AddStoryFilesModel {
   headers?: map[string]string(name='headers'),
   body: AddStoryFilesResponse(name='body'),
@@ -18888,6 +19227,121 @@ api createStoryEx(request: CreateStoryRequest, runtime: RuntimeOptions): CreateS
   __request.protocol = Util.defaultString(@protocol, 'https');
   __request.method = 'POST';
   __request.pathname = getPathname(@nickname, `/v2/image/create_story`);
+  __request.headers = {
+    user-agent = getUserAgent(),
+    host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
+    content-type = 'application/json; charset=utf-8',
+    ...request.httpheaders
+  };
+  realReq.httpheaders = null;
+
+  if (!Util.empty(accessToken)) {
+    __request.headers.authorization = `Bearer ${accessToken}`;
+  } else if (!Util.empty(accesskeyId) && !Util.empty(accessKeySecret)) {
+    if (!Util.empty(securityToken)) {
+      __request.headers.x-acs-security-token = securityToken;
+    }
+    __request.headers.date = Util.getDateUTCString();
+    __request.headers.accept = 'application/json';
+    __request.headers.x-acs-signature-method = 'HMAC-SHA1';
+    __request.headers.x-acs-signature-version = '1.0';
+    var stringToSign = ROAUtil.getStringToSign(__request);
+    __request.headers.authorization = `acs ${accesskeyId}:${ROAUtil.getSignature(stringToSign, accessKeySecret)}`;
+  }
+  __request.body = Util.toJSONString(realReq);
+} returns {
+  var respMap : object = null;
+  var obj : any = null;
+  if (Util.equalNumber(__response.statusCode, 200)) {
+    obj = Util.readAsJSON(__response.body);
+    respMap = Util.assertAsMap(obj);
+    return {
+      body = respMap,
+      headers =  __response.headers,
+    };
+  }
+
+  if (!Util.empty(__response.headers.x-ca-error-message)) {
+    throw {
+      data = {
+        requestId = __response.headers.x-ca-request-id,
+        statusCode = __response.statusCode,
+        statusMessage = __response.statusMessage,
+      },
+      message = __response.headers.x-ca-error-message,
+    };
+  }
+  obj = Util.readAsJSON(__response.body);
+  respMap = Util.assertAsMap(obj);
+  throw {
+    data = {
+      requestId = __response.headers.x-ca-request-id,
+      statusCode = __response.statusCode,
+      statusMessage = __response.statusMessage,
+    },
+    ...respMap,
+  };
+} runtime {
+  timeouted = 'retry',
+  readTimeout = runtime.readTimeout,
+  connectTimeout = runtime.connectTimeout,
+  localAddr = runtime.localAddr,
+  httpProxy = runtime.httpProxy,
+  httpsProxy = runtime.httpsProxy,
+  noProxy = runtime.noProxy,
+  maxIdleConns = runtime.maxIdleConns,
+  socks5Proxy = runtime.socks5Proxy,
+  socks5NetWork = runtime.socks5NetWork,
+  retry = {
+    retryable = runtime.autoretry,
+    maxAttempts = Util.defaultNumber(runtime.maxAttempts, 3),
+  },
+  backoff = {
+    policy = Util.defaultString(runtime.backoffPolicy, 'no'),
+    period = Util.defaultNumber(runtime.backoffPeriod, 1),
+  },
+  ignoreSSL = runtime.ignoreSSL
+}
+
+model DeleteLocationDateClusterModel {
+  headers?: map[string]string(name='headers'),
+  body: DeleteLocationDateClusterResponse(name='body'),
+}
+
+/**
+ * 该接口将会删除时空聚类分组
+ * @tags image
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+async function deleteLocationDateCluster(request: DeleteLocationDateClusterRequest) throws: DeleteLocationDateClusterModel  {
+  var runtime = new RuntimeOptions{};
+  return deleteLocationDateClusterEx(request, runtime);
+}
+
+/**
+ * 该接口将会删除时空聚类分组
+ * @tags image
+ * @error InvalidParameter The input parameter {parameter_name} is not valid.
+ * @error AccessTokenInvalid AccessToken is invalid. {message}
+ * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+ * @error NotFound The resource {resource_name} cannot be found. Please check.
+ * @error InternalError The request has been failed due to some unknown error.
+ * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+ */
+api deleteLocationDateClusterEx(request: DeleteLocationDateClusterRequest, runtime: RuntimeOptions): DeleteLocationDateClusterModel  {
+  var accesskeyId = getAccessKeyId();
+  var accessKeySecret = getAccessKeySecret();
+  var securityToken = getSecurityToken();
+  var accessToken = getAccessToken();
+  var realReq = Util.toMap(request);
+  __request.protocol = Util.defaultString(@protocol, 'https');
+  __request.method = 'POST';
+  __request.pathname = getPathname(@nickname, `/v2/image/delete_location_date_cluster`);
   __request.headers = {
     user-agent = getUserAgent(),
     host = Util.defaultString(@endpoint, `${@domainId}.api.aliyunpds.com`),
@@ -19997,13 +20451,13 @@ api parseKeywordsEx(request: ParseKeywordsRequest, runtime: RuntimeOptions): Par
   ignoreSSL = runtime.ignoreSSL
 }
 
-model DeleteLocationDateClusterModel {
+model QueryLocationDateClusterModel {
   headers?: map[string]string(name='headers'),
-  body: DeleteLocationDateClusterResponse(name='body'),
+  body: QueryLocationClustersResponse(name='body'),
 }
 
 /**
- * 该接口将会删除时空聚类分组
+ * 该接口将会查询时空聚类列表
  * @tags image
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -20012,13 +20466,13 @@ model DeleteLocationDateClusterModel {
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
-async function deleteLocationDateCluster(request: DeleteLocationDateClusterRequest) throws: DeleteLocationDateClusterModel  {
+async function queryLocationDateCluster(request: QueryLocationDateClustersRequest) throws: QueryLocationDateClusterModel  {
   var runtime = new RuntimeOptions{};
-  return deleteLocationDateClusterEx(request, runtime);
+  return queryLocationDateClusterEx(request, runtime);
 }
 
 /**
- * 该接口将会删除时空聚类分组
+ * 该接口将会查询时空聚类列表
  * @tags image
  * @error InvalidParameter The input parameter {parameter_name} is not valid.
  * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -20027,7 +20481,7 @@ async function deleteLocationDateCluster(request: DeleteLocationDateClusterReque
  * @error InternalError The request has been failed due to some unknown error.
  * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
  */
-api deleteLocationDateClusterEx(request: DeleteLocationDateClusterRequest, runtime: RuntimeOptions): DeleteLocationDateClusterModel  {
+api queryLocationDateClusterEx(request: QueryLocationDateClustersRequest, runtime: RuntimeOptions): QueryLocationDateClusterModel  {
   var accesskeyId = getAccessKeyId();
   var accessKeySecret = getAccessKeySecret();
   var securityToken = getSecurityToken();
@@ -22511,6 +22965,24 @@ model ArchiveUncompressResponse {
 }
 
 /**
+ * 音频转码信息meta响应
+ */
+model AudioPreviewPlayInfoMetaResponse {
+  bitrate?: int64(name='bitrate', description='bitrate, 码率', example=123456, format='int64'),
+  channels?: int64(name='channels', description='channels, 声道数', example=2, format='int64'),
+  duration?: double(name='duration', description='duration, 视频长度', example=123, format='double'),
+  sampleRate?: int64(name='sample_rate', description='sample_rate, 采样率', example=44100, format='int64'),
+}
+
+/**
+ * 音频转码信息响应
+ */
+model AudioPreviewPlayInfoResponse {
+  meta?: AudioPreviewPlayInfoMetaResponse(name='meta'),
+  offlineAudioList?: [ VideoPreviewOfflineAudioTranscodingTaskResponse ](name='offline_audio_list', description='离线转码有效', items='{"$ref":"#/definitions/VideoPreviewOfflineAudioTranscodingTaskResponse"}'),
+}
+
+/**
  * 
  */
 model AuthConfig {
@@ -22566,6 +23038,13 @@ model BaseAdditionDataRequest {
 }
 
 /**
+ * 从value只支持string升级为支持所有类型的附加数据，按需升级
+ */
+model BaseAdditionDataV2Request {
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
+}
+
+/**
  * 
  */
 model BaseAuthentication {
@@ -22605,6 +23084,7 @@ model BaseCCPFileResponse {
   hidden?: boolean(name='hidden', description='Hidden
 type: boolean', enum='false, true', example=false),
   imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
+  investigationStatus?: int64(name='investigation_status', description='InvestigationStatus', format='int64'),
   labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
   lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
   lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
@@ -22646,7 +23126,7 @@ type: boolean', example=false),
  * complete file request
  */
 model BaseCompleteFileRequest {
-  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   crc64Hash?: string(name='crc64_hash', description='crc64_hash'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   partInfoList?: [ UploadPartInfo ](name='part_info_list', description='part_info_list', items='{"$ref":"#/definitions/UploadPartInfo"}'),
@@ -22658,7 +23138,7 @@ model BaseCompleteFileRequest {
  * create file request
  */
 model BaseCreateFileRequest {
-  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   contentMd5?: string(name='content_md5', description='ContentMd5', example='E10ADC3949BA59ABBE56E057F20F883E'),
   contentType?: string(name='content_type', description='ContentType', example='application/json'),
   name: string(name='name', description='Name', example='ccp.jpg', maxLength=1024, minLength=1),
@@ -22690,6 +23170,7 @@ model BaseDriveResponse {
   storeId?: string(name='store_id', description='存储 ID, domain的PathType为OSSPath时返回', example='123'),
   subdomainId?: string(name='subdomain_id', description='subdomain_id'),
   totalSize?: int64(name='total_size', description='Drive 空间总量', example=102400, format='int64'),
+  updatedAt?: string(name='updated_at'),
   usedSize?: int64(name='used_size', description='Drive 空间已使用量', example=1024, format='int64'),
 }
 
@@ -22813,23 +23294,6 @@ type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
 
 /**
- * 
- */
-model BaseMediaResponse {
-  addressLine?: string(name='address_line', description='address_line', example='北京市昌平区白各庄新村路'),
-  city?: string(name='city', description='city', example='杭州'),
-  country?: string(name='country', description='country', example='中国'),
-  district?: string(name='district', description='district', example='余杭区'),
-  height?: int64(name='height', default=0, description='height', example=720, format='int64'),
-  imageTags?: [ SystemTag ](name='image_tags', description='system_tags', items='{"$ref":"#/definitions/SystemTag"}'),
-  location?: string(name='location', description='location', example='40.110333,116.349311'),
-  province?: string(name='province', description='province', example='浙江省'),
-  time?: string(name='time', description='time', format='date-time'),
-  township?: string(name='township', description='township', example='沙河镇'),
-  width?: int64(name='width', default=0, description='width', example=1024, format='int64'),
-}
-
-/**
  * 文件移动请求
  */
 model BaseMoveFileRequest {
@@ -22950,14 +23414,6 @@ model BaseShareResponse {
   sharePolicy?: [ SharePermissionPolicy ](name='share_policy', items='{"$ref":"#/definitions/SharePermissionPolicy"}'),
   status?: string(name='status', description='status', example='enabled'),
   updatedAt?: string(name='updated_at', description='updated_at', example='2006-01-02T15:04:05.999Z'),
-}
-
-/**
- * 
- */
-model BaseSortShareLinkRequest {
-  orderBy?: string(name='order_by', description='order_by', enum='share_name, description, created_at, updated_at', example='share_name'),
-  orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
 }
 
 /**
@@ -23099,6 +23555,8 @@ type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
  * 获取分享中媒体播放地址response
  */
 model CCPGetShareLinkVideoPreviewPlayInfoResponse {
+  audioPreviewPlayInfo?: AudioPreviewPlayInfoResponse(name='audio_preview_play_info'),
+  category?: string(name='category', description='category'),
   fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
   videoPreviewPlayInfo?: VideoPreviewPlayInfoResponse(name='video_preview_play_info'),
@@ -23131,6 +23589,8 @@ model CCPGetVideoPreviewPlayInfoRequest {
  * 获取转码信息响应
  */
 model CCPGetVideoPreviewPlayInfoResponse {
+  audioPreviewPlayInfo?: AudioPreviewPlayInfoResponse(name='audio_preview_play_info'),
+  category?: string(name='category', description='category', enum='quick_video,  offline_audio,  live_transcoding,  offline_video', example='quick_video'),
   domainId?: string(name='domain_id', description='domain_id', example='test001', pattern='[a-z0-9A-Z]+'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
@@ -23154,6 +23614,8 @@ model CCPGetVideoPreviewPlayMetaRequest {
  * 获取播放元信息响应
  */
 model CCPGetVideoPreviewPlayMetaResponse {
+  audioPreviewPlayMeta?: AudioPreviewPlayInfoResponse(name='audio_preview_play_meta'),
+  category?: string(name='category', description='category'),
   domainId?: string(name='domain_id', description='domain_id', example='test001', pattern='[a-z0-9A-Z]+'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
@@ -23288,16 +23750,6 @@ model CcpCallback {
 /**
  * 
  */
-model CertInfo {
-  CertID?: string(name='CertID'),
-  certBody: string(name='cert_body', description='cert body', example='xxxxxxxxxxx'),
-  certName: string(name='cert_name', description='cert name', example='mysite2020cert'),
-  certPrivatekey: string(name='cert_privatekey', description='cert privatekey', example='yyyyyyyyyy'),
-}
-
-/**
- * 
- */
 model CheckExistRequest {
   httpheaders?: map[string]string,
   appId: string(name='app_id', description='App ID, 当前访问的App', example='csaklidwasdhjwid'),
@@ -23320,7 +23772,9 @@ model CheckExistResponse {
  */
 model ClearRecycleBinRequest {
   httpheaders?: map[string]string,
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+  taskCategory?: string(name='task_category'),
 }
 
 /**
@@ -23338,7 +23792,7 @@ model ClearRecycleBinResponse {
  */
 model CompleteFileRequest {
   httpheaders?: map[string]string,
-  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   crc64Hash?: string(name='crc64_hash', description='crc64_hash'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
@@ -23379,6 +23833,7 @@ model CompleteFileResponse {
   hidden?: boolean(name='hidden', description='Hidden
 type: boolean', enum='false, true', example=false),
   imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
+  investigationStatus?: int64(name='investigation_status', description='InvestigationStatus', format='int64'),
   labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
   lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
   lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
@@ -23448,6 +23903,7 @@ type: boolean', example=false),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
   fileIdPath?: string(name='file_id_path'),
+  keepUserTags?: KeepUserTags(name='keep_user_tags'),
   newName?: string(name='new_name', description='new_name', example='ccp.jpg', maxLength=1024, minLength=1),
   referer?: string(name='referer'),
   shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
@@ -23496,6 +23952,7 @@ model CreateAppRequest {
  */
 model CreateDetail {
   createType?: string(name='create_type', description='CreateType'),
+  isOverWrite?: boolean(name='is_over_write'),
   srcFileId?: string(name='src_file_id', description='SrcFileID'),
 }
 
@@ -23569,10 +24026,11 @@ model CreateDriveResponse {
  */
 model CreateFileRequest {
   httpheaders?: map[string]string,
-  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   autoRename?: boolean(name='auto_rename'),
   category?: string(name='category', description='category'),
   checkNameMode?: string(name='check_name_mode', default='ignore', description='check_name_mode', enum='ignore, auto_rename, refuse'),
+  checkParentFileIdPath?: string(name='check_parent_file_id_path'),
   contentHash?: string(name='content_hash', description='content_hash', example='7C4A8D09CA3762AF61E59520943DC26494F8941B'),
   contentHashName?: string(name='content_hash_name', description='content_hash_name', enum='sha1', example='sha1'),
   contentMd5?: string(name='content_md5', description='ContentMd5', example='E10ADC3949BA59ABBE56E057F20F883E'),
@@ -23638,23 +24096,6 @@ type: boolean', example=false),
   streamsUploadInfo?: object(name='streams_upload_info', additionalProperties='{"$ref":"#/definitions/StreamUploadInfo"}', description='streams_upload_info'),
   type?: string(name='type', description='type', enum='file, folder', example='file'),
   uploadId?: string(name='upload_id', description='upload_id', example='C9DCFE5A82644AC7A02DB74C30C934A6'),
-}
-
-/**
- * 
- */
-model CreateShareLinkPermissionRequest {
-  creatable?: boolean(name='creatable', description='允许上传', example=true),
-  disableDownload?: boolean(name='disable_download', description='禁止下载分享中的文件', example=true),
-  disablePreview?: boolean(name='disable_preview', description='禁止预览分享中的文件', example=true),
-  disableSave?: boolean(name='disable_save', description='禁止转存分享中的文件', example=true),
-  disableVisible?: boolean(name='disable_visible', description='分享中的文件不可见', example=true),
-  downloadLimit?: int64(name='download_limit', description='分享下载次数限制', example=10, format='int64'),
-  officeEditable?: boolean(name='office_editable', description='允许在线编辑文档', example=true),
-  previewLimit?: int64(name='preview_limit', description='分享预览次数限制', example=10, format='int64'),
-  requireLogin?: boolean(name='require_login', description='企业内(domain)登录后才允许使用分享', example=true),
-  saveDownloadLimit?: int64(name='save_download_limit', description='分享转存和下载的总次数限制', example=10, format='int64'),
-  saveLimit?: int64(name='save_limit', description='分享转存次数限制', example=10, format='int64'),
 }
 
 /**
@@ -23870,6 +24311,8 @@ model DeleteDataCNameAndCertRequest {
  * 
  */
 model DeleteDetail {
+  srcParentFileId?: string(name='src_parent_file_id', description='SrcParentFileID'),
+  tgtParentFileId?: string(name='tgt_parent_file_id', description='TgtParentFileID'),
 }
 
 /**
@@ -23899,6 +24342,7 @@ model DeleteDriveResponse {
  */
 model DeleteFileRequest {
   httpheaders?: map[string]string,
+  checkFolderEmpty?: boolean(name='check_folder_empty'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId?: string(name='file_id'),
   fileIdPath?: string(name='file_id_path'),
@@ -23922,6 +24366,7 @@ model DeleteFileResponse {
  */
 model DeleteFileUserTagsRequest {
   httpheaders?: map[string]string,
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   driveId: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
   keyList?: [ string ](name='key_list', description='key_list', items='{"type":"string"}'),
@@ -24358,6 +24803,7 @@ model GetDriveResponse {
   storeId?: string(name='store_id', description='存储 ID, domain的PathType为OSSPath时返回', example='123'),
   subdomainId?: string(name='subdomain_id', description='subdomain_id'),
   totalSize?: int64(name='total_size', description='Drive 空间总量', example=102400, format='int64'),
+  updatedAt?: string(name='updated_at'),
   usedSize?: int64(name='used_size', description='Drive 空间已使用量', example=1024, format='int64'),
 }
 
@@ -24411,6 +24857,7 @@ model GetFileByPathResponse {
   hidden?: boolean(name='hidden', description='Hidden
 type: boolean', enum='false, true', example=false),
   imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
+  investigationStatus?: int64(name='investigation_status', description='InvestigationStatus', format='int64'),
   labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
   lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
   lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
@@ -24506,6 +24953,7 @@ model GetFileResponse {
   hidden?: boolean(name='hidden', description='Hidden
 type: boolean', enum='false, true', example=false),
   imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
+  investigationStatus?: int64(name='investigation_status', description='InvestigationStatus', format='int64'),
   labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
   lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
   lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
@@ -25002,7 +25450,7 @@ model GetVideoPreviewURLResponse {
  * complete file request
  */
 model HostingCompleteFileRequest {
-  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   crc64Hash?: string(name='crc64_hash', description='crc64_hash'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   filePath?: string(name='file_path'),
@@ -25074,7 +25522,7 @@ model HostingCopyFileResponse {
  * create file request
  */
 model HostingCreateFileRequest {
-  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   contentMd5?: string(name='content_md5', description='ContentMd5', example='E10ADC3949BA59ABBE56E057F20F883E'),
   contentType?: string(name='content_type', description='ContentType', example='application/json'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
@@ -25512,6 +25960,14 @@ model ImageQuality {
   exposure?: double(name='exposure', format='double'),
   exposureScore?: double(name='exposure_score', format='double'),
   overallScore?: double(name='overall_score', format='double'),
+}
+
+/**
+ * 
+ */
+model KeepUserTags {
+  all?: boolean(name='all'),
+  keys?: [ string ](name='keys', items='{"type":"string"}'),
 }
 
 /**
@@ -26003,7 +26459,7 @@ model LiveTranscodingSubtitleTaskResponse {
 }
 
 /**
- * 实时转码信息task响应
+ * 实时转码task响应
  */
 model LiveTranscodingTaskResponse {
   keepOriginalResolution?: boolean(name='keep_original_resolution', description='keep_original_resolution 转码后的视频分辨率是否保持原画(template分辨率大于当前视频)', example=true),
@@ -26164,6 +26620,7 @@ model PreHashCheckSuccessResponse {
  */
 model PutFileUserTagsRequest {
   httpheaders?: map[string]string,
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   driveId: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
   userTags?: [ UserTag ](name='user_tags', description='user_tags', items='{"$ref":"#/definitions/UserTag"}'),
@@ -26174,6 +26631,18 @@ model PutFileUserTagsRequest {
  */
 model PutFileUserTagsResponse {
   fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', pattern='[a-z0-9]{1,50}'),
+}
+
+/**
+ * 快速转码task响应
+ */
+model QuickVideoTaskResponse {
+  status?: string(name='status', description='status, 转码状态', example='finished'),
+  templateHeight?: int64(name='template_height', description='template_height', example=720, format='int64'),
+  templateId?: string(name='template_id', description='template_id, 转码模板id', example='264_720p'),
+  templateName?: string(name='template_name', description='template_name, 模板文案id', example='pdsHD'),
+  templateWidth?: int64(name='template_width', description='template_width', example=1280, format='int64'),
+  url?: string(name='url', description='url, 视频播放地址', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
 }
 
 /**
@@ -26300,6 +26769,8 @@ model ReportShareLinkEventRequest {
  * 
  */
 model RestoreDetail {
+  srcParentFileId?: string(name='src_parent_file_id', description='SrcParentFileID'),
+  tgtParentFileId?: string(name='tgt_parent_file_id', description='TgtParentFileID'),
 }
 
 /**
@@ -26326,6 +26797,7 @@ model RestoreFileResponse {
  */
 model RestoreRevisionRequest {
   httpheaders?: map[string]string,
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   driveId: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
   revisionId: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
@@ -26456,9 +26928,11 @@ model SearchFileRequest {
   officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
   orderBy?: string(name='order_by', default='updated_at', description='order_by', enum='name, created_at, updated_at, size', example='size'),
   query?: string(name='query', description='query', example='not name=123', maxLength=4096),
+  recursive?: boolean(name='recursive'),
   referer?: string(name='referer', description='referer'),
   returnTotalCount?: boolean(name='return_total_count', description='return_total_count 是否返回查询总数'),
   signToken?: string(name='sign_token', description='sign_token'),
+  systemFolders?: [ string ](name='system_folders', default='root', description='system_folders', example='root, sbox, recyclebin', items='{"type":"string"}'),
   thumbnailProcesses?: object(name='thumbnail_processes', additionalProperties='{"$ref":"#/definitions/BaseImageProcessRequest"}'),
   urlExpireSec?: int64(name='url_expire_sec', default=900, description='url_expire_sec', example=900, format='int64', maximum=14400, minimum=10),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
@@ -26664,33 +27138,6 @@ model SimpleStreamInfo {
 /**
  * 
  */
-model Store {
-  accelerateEndpoint?: string(name='accelerate_endpoint', description='全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  basePath?: string(name='base_path', description='存储公共前缀', example='pds-data'),
-  bucket: string(name='bucket', description='bucket名称', example='data-sz-bucket'),
-  cdnEndpoint?: string(name='cdn_endpoint', description='内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  cdnRatelimitDisable?: boolean(name='cdn_ratelimit_disable', description='命中限速用户时是否关闭CDN地址返回', example=false),
-  cdnTimelimit?: string(name='cdn_timelimit', description='CDN时间控制', example='0-8 or 23-5'),
-  cdnUrlAuthKey?: string(name='cdn_url_auth_key', description='CDN鉴权key'),
-  customizedAccelerateEndpoint?: string(name='customized_accelerate_endpoint', description='自定义全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  customizedCdnEndpoint?: string(name='customized_cdn_endpoint', description='自定义内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  customizedEndpoint?: string(name='customized_endpoint', description='自定义Public访问地址', example='https://{regionid}-data.mydomain.com/'),
-  customizedInternalEndpoint?: string(name='customized_internal_endpoint', description='自定义vpc访问地址', example='https://{regionid}-data-vpc.mydomain.com/'),
-  endpoint: string(name='endpoint', description='Public访问地址', example='https://{domainid}.{regionid}.data.aliyunpds.com/'),
-  enetEndpoint?: string(name='enet_endpoint', description='冷流地址', example='https://oss-cn-shenzhen-enet.aliyuncs.com/'),
-  enetPercentConfig?: WhitePercentConfig(name='enet_percent_config'),
-  internalEndpoint?: string(name='internal_endpoint', description='vpc访问地址', example='https://{domainid}.{regionid}.data-vpc.aliyunpds.com/'),
-  location?: string(name='location', description='地点', example='cn-hangzhou'),
-  ownership: string(name='ownership', description='存储归属，system表示系统提供，custom表示使用自己的存储', enum='system, custom', example='system'),
-  policy: string(name='policy', description='Policy授权,system类型store会将bucket权限授予当前云账号'),
-  roleArn?: string(name='role_arn', description='访问Bucket的角色ARN', example='acs:oss:*:*:*'),
-  storeId: string(name='store_id', description='store ID', example='101'),
-  type: string(name='type', description='存储类型，当前只支持oss', enum='oss', example='oss'),
-}
-
-/**
- * 
- */
 model StoreFile {
   domainId?: string(name='domain_id'),
   name?: string(name='name'),
@@ -26856,7 +27303,8 @@ model TokenRequest {
  * 
  */
 model TrashDetail {
-  parentFileId?: string(name='parent_file_id', description='ParentFileID'),
+  srcParentFileId?: string(name='src_parent_file_id', description='SrcParentFileID'),
+  tgtParentFileId?: string(name='tgt_parent_file_id', description='TgtParentFileID'),
 }
 
 /**
@@ -26864,6 +27312,7 @@ model TrashDetail {
  */
 model TrashFileRequest {
   httpheaders?: map[string]string,
+  checkFolderEmpty?: boolean(name='check_folder_empty'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
@@ -26884,7 +27333,7 @@ model TrashFileResponse {
  */
 model UCCompleteFileRequest {
   httpheaders?: map[string]string,
-  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   crc64Hash?: string(name='crc64_hash', description='crc64_hash'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
   fileId: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
@@ -26927,6 +27376,7 @@ model UCCompleteFileResponse {
   hidden?: boolean(name='hidden', description='Hidden
 type: boolean', enum='false, true', example=false),
   imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
+  investigationStatus?: int64(name='investigation_status', description='InvestigationStatus', format='int64'),
   labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
   lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
   lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
@@ -26970,11 +27420,12 @@ type: boolean', example=false),
  */
 model UCCreateFileRequest {
   httpheaders?: map[string]string,
-  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   autoRename?: boolean(name='auto_rename'),
   callback?: CcpCallback(name='callback'),
   category?: string(name='category', description='category'),
   checkNameMode?: string(name='check_name_mode', default='ignore', description='check_name_mode', enum='ignore, auto_rename, refuse'),
+  checkParentFileIdPath?: string(name='check_parent_file_id_path'),
   contentHash?: string(name='content_hash', description='content_hash', example='7C4A8D09CA3762AF61E59520943DC26494F8941B'),
   contentHashMutable?: boolean(name='content_hash_mutable', description='content_hash_mutable'),
   contentHashName?: string(name='content_hash_name', description='content_hash_name', enum='sha1', example='sha1'),
@@ -27235,6 +27686,7 @@ model UpdateDriveResponse {
   storeId?: string(name='store_id', description='存储 ID, domain的PathType为OSSPath时返回', example='123'),
   subdomainId?: string(name='subdomain_id', description='subdomain_id'),
   totalSize?: int64(name='total_size', description='Drive 空间总量', example=102400, format='int64'),
+  updatedAt?: string(name='updated_at'),
   usedSize?: int64(name='used_size', description='Drive 空间已使用量', example=1024, format='int64'),
 }
 
@@ -27243,6 +27695,7 @@ model UpdateDriveResponse {
  */
 model UpdateFileMetaRequest {
   httpheaders?: map[string]string,
+  additionData?: object(name='addition_data', additionalProperties='{"type":"object"}', description='addition_data'),
   category?: string(name='category'),
   checkNameMode?: string(name='check_name_mode', default='ignore', description='check_name_mode', enum='ignore, auto_rename, refuse'),
   customField1?: string(name='custom_field_1'),
@@ -27304,6 +27757,7 @@ model UpdateFileMetaResponse {
   hidden?: boolean(name='hidden', description='Hidden
 type: boolean', enum='false, true', example=false),
   imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
+  investigationStatus?: int64(name='investigation_status', description='InvestigationStatus', format='int64'),
   labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
   lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
   lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
@@ -27355,23 +27809,6 @@ type: boolean', example=false),
 type: string', example='description', maxLength=1024),
   revisionId: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9.-_]{1,50}'),
   signToken?: string(name='sign_token'),
-}
-
-/**
- * 
- */
-model UpdateShareLinkPermissionRequest {
-  creatable?: boolean(name='creatable', description='允许上传', example=true),
-  disableDownload?: boolean(name='disable_download', description='禁止下载分享中的文件', example=true),
-  disablePreview?: boolean(name='disable_preview', description='禁止预览分享中的文件', example=true),
-  disableSave?: boolean(name='disable_save', description='禁止转存分享中的文件', example=true),
-  disableVisible?: boolean(name='disable_visible', description='分享中的文件不可见', example=true),
-  downloadLimit?: int64(name='download_limit', description='分享下载次数限制', example=10, format='int64'),
-  officeEditable?: boolean(name='office_editable', description='允许在线编辑文档', example=true),
-  previewLimit?: int64(name='preview_limit', description='分享预览次数限制', example=10, format='int64'),
-  requireLogin?: boolean(name='require_login', description='企业内(domain)登录后才允许使用分享', example=true),
-  saveDownloadLimit?: int64(name='save_download_limit', description='分享转存和下载的总次数限制', example=10, format='int64'),
-  saveLimit?: int64(name='save_limit', description='分享转存次数限制', example=10, format='int64'),
 }
 
 /**
@@ -27673,7 +28110,18 @@ model VideoPreviewAudioMusicMeta {
 }
 
 /**
- * 离线视频转码信息task响应
+ * 离线音频转码task响应
+ */
+model VideoPreviewOfflineAudioTranscodingTaskResponse {
+  status?: string(name='status', description='status, 转码状态', example='finished'),
+  templateBitrate?: int64(name='template_bitrate', description='template_bitrate, 音频码率，单位Kbps', example=128, format='int64'),
+  templateId?: string(name='template_id', description='template_id, 转码模板id', example='LQ'),
+  templateName?: string(name='template_name', description='template_name, 模板文案id', example='pdsLQ'),
+  url?: string(name='url', description='url, 播放地址', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+}
+
+/**
+ * 离线视频转码task响应
  */
 model VideoPreviewOfflineVideoTranscodingTaskResponse {
   keepOriginalResolution?: boolean(name='keep_original_resolution', description='keep_original_resolution 转码后的视频分辨率是否保持原画(template分辨率大于当前视频)', example=true),
@@ -27684,7 +28132,7 @@ model VideoPreviewOfflineVideoTranscodingTaskResponse {
 }
 
 /**
- * 获取视频转码信息meta响应
+ * 视频转码meta响应
  */
 model VideoPreviewPlayInfoMetaResponse {
   duration?: double(name='duration', description='duration, 视频长度', example=123, format='double'),
@@ -27697,11 +28145,13 @@ model VideoPreviewPlayInfoMetaResponse {
  * 转码信息响应
  */
 model VideoPreviewPlayInfoResponse {
-  category?: string(name='category', description='category', enum='live_transcoding,  offline_video_transcoding', example='live_transcoding'),
+  category?: string(name='category', description='deprecated, 使用外层Response中的同名字段替代
+category，此字段为保持兼容而继续存在', enum='live_transcoding,  offline_video_transcoding', example='live_transcoding'),
   liveTranscodingSubtitleTaskList?: [ LiveTranscodingSubtitleTaskResponse ](name='live_transcoding_subtitle_task_list', items='{"$ref":"#/definitions/LiveTranscodingSubtitleTaskResponse"}'),
   liveTranscodingTaskList?: [ LiveTranscodingTaskResponse ](name='live_transcoding_task_list', description='边转边播有效', items='{"$ref":"#/definitions/LiveTranscodingTaskResponse"}'),
   meta?: VideoPreviewPlayInfoMetaResponse(name='meta'),
   offlineVideoTranscodingList?: [ VideoPreviewOfflineVideoTranscodingTaskResponse ](name='offline_video_transcoding_list', description='离线转码有效', items='{"$ref":"#/definitions/VideoPreviewOfflineVideoTranscodingTaskResponse"}'),
+  quickVideoList?: [ QuickVideoTaskResponse ](name='quick_video_list', description='imm边转边播', items='{"$ref":"#/definitions/QuickVideoTaskResponse"}'),
 }
 
 /**
@@ -27856,16 +28306,6 @@ model ArchiveConfig {
   enabled?: boolean(name='enabled'),
   role?: string(name='role'),
   uncompressFileMaxSize?: int64(name='uncompress_file_max_size', format='int64'),
-}
-
-/**
- * 
- */
-model AssignRoleSettingDetail {
-  manageResourceId?: string(name='manage_resource_id', description='manage_resource_id', example='a123'),
-  manageResourceName?: string(name='manage_resource_name', description='manage_resource_name', example='user_name_123'),
-  manageResourceType?: string(name='manage_resource_type', description='manage_resource_type', example='user'),
-  roleId?: string(name='role_id', description='role_id', example='SystemBaseSettingAdmin'),
 }
 
 /**
@@ -28035,6 +28475,23 @@ model BaseIdentityToBenefitPkgMappingResponse {
 }
 
 /**
+ * 
+ */
+model BaseMediaResponse {
+  addressLine?: string(name='address_line', description='address_line', example='北京市昌平区白各庄新村路'),
+  city?: string(name='city', description='city', example='杭州'),
+  country?: string(name='country', description='country', example='中国'),
+  district?: string(name='district', description='district', example='余杭区'),
+  height?: int64(name='height', default=0, description='height', example=720, format='int64'),
+  imageTags?: [ SystemTag ](name='image_tags', description='system_tags', items='{"$ref":"#/definitions/SystemTag"}'),
+  location?: string(name='location', description='location', example='40.110333,116.349311'),
+  province?: string(name='province', description='province', example='浙江省'),
+  time?: string(name='time', description='time', format='date-time'),
+  township?: string(name='township', description='township', example='沙河镇'),
+  width?: int64(name='width', default=0, description='width', example=1024, format='int64'),
+}
+
+/**
  * base multi revision config response
  */
 model BaseMultiRevisionConfigResponse {
@@ -28042,6 +28499,14 @@ model BaseMultiRevisionConfigResponse {
   revisionCount?: int64(name='revision_count', format='int64'),
   revisionMergeEnabled?: boolean(name='revision_merge_enabled'),
   revisionRecyclePeriod?: int64(name='revision_recycle_period', format='int64'),
+}
+
+/**
+ * 
+ */
+model BaseSortShareLinkRequest {
+  orderBy?: string(name='order_by', description='order_by', enum='share_name, description, created_at, updated_at', example='share_name'),
+  orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
 }
 
 /**
@@ -28142,6 +28607,16 @@ model CNameStatus {
   bingdingState: string(name='bingding_state', description='binding state', example='BINDING'),
   legalState: string(name='legal_state', description='legal state', example='NORMAL'),
   remark: string(name='remark', description='remark', example='beian'),
+}
+
+/**
+ * 
+ */
+model CertInfo {
+  CertID?: string(name='CertID'),
+  certBody: string(name='cert_body', description='cert body', example='xxxxxxxxxxx'),
+  certName: string(name='cert_name', description='cert name', example='mysite2020cert'),
+  certPrivatekey: string(name='cert_privatekey', description='cert privatekey', example='yyyyyyyyyy'),
 }
 
 /**
@@ -28542,6 +29017,7 @@ model GetBizCNameInfoResponse {
   cnameType?: string(name='cname_type', description='cname type', example='api'),
   domainId: string(name='domain_id', description='domain ID', example='sz100'),
   isVpc?: boolean(name='is_vpc', description='is vpc', example=false),
+  subdomainId: string(name='subdomain_id', description='subdomain ID', example='sz100'),
 }
 
 /**
@@ -29048,6 +29524,33 @@ model ShareLogSettingDetail {
 /**
  * 
  */
+model Store {
+  accelerateEndpoint?: string(name='accelerate_endpoint', description='全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  basePath?: string(name='base_path', description='存储公共前缀', example='pds-data'),
+  bucket: string(name='bucket', description='bucket名称', example='data-sz-bucket'),
+  cdnEndpoint?: string(name='cdn_endpoint', description='内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  cdnRatelimitDisable?: boolean(name='cdn_ratelimit_disable', description='命中限速用户时是否关闭CDN地址返回', example=false),
+  cdnTimelimit?: string(name='cdn_timelimit', description='CDN时间控制', example='0-8 or 23-5'),
+  cdnUrlAuthKey?: string(name='cdn_url_auth_key', description='CDN鉴权key'),
+  customizedAccelerateEndpoint?: string(name='customized_accelerate_endpoint', description='自定义全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  customizedCdnEndpoint?: string(name='customized_cdn_endpoint', description='自定义内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  customizedEndpoint?: string(name='customized_endpoint', description='自定义Public访问地址', example='https://{regionid}-data.mydomain.com/'),
+  customizedInternalEndpoint?: string(name='customized_internal_endpoint', description='自定义vpc访问地址', example='https://{regionid}-data-vpc.mydomain.com/'),
+  endpoint: string(name='endpoint', description='Public访问地址', example='https://{domainid}.{regionid}.data.aliyunpds.com/'),
+  enetEndpoint?: string(name='enet_endpoint', description='冷流地址', example='https://oss-cn-shenzhen-enet.aliyuncs.com/'),
+  enetPercentConfig?: WhitePercentConfig(name='enet_percent_config'),
+  internalEndpoint?: string(name='internal_endpoint', description='vpc访问地址', example='https://{domainid}.{regionid}.data-vpc.aliyunpds.com/'),
+  location?: string(name='location', description='地点', example='cn-hangzhou'),
+  ownership: string(name='ownership', description='存储归属，system表示系统提供，custom表示使用自己的存储', enum='system, custom', example='system'),
+  policy: string(name='policy', description='Policy授权,system类型store会将bucket权限授予当前云账号'),
+  roleArn?: string(name='role_arn', description='访问Bucket的角色ARN', example='acs:oss:*:*:*'),
+  storeId: string(name='store_id', description='store ID', example='101'),
+  type: string(name='type', description='存储类型，当前只支持oss', enum='oss', example='oss'),
+}
+
+/**
+ * 
+ */
 model SubdomainConfig {
   enableRootDomainCreateResource?: boolean(name='enable_root_domain_create_resource'),
   enabled?: boolean(name='enabled'),
@@ -29185,6 +29688,23 @@ model UpdateIdentityToBenefitPkgMappingResponse {
 /**
  * 
  */
+model UpdateShareLinkPermissionRequest {
+  creatable?: boolean(name='creatable', description='允许上传', example=true),
+  disableDownload?: boolean(name='disable_download', description='禁止下载分享中的文件', example=true),
+  disablePreview?: boolean(name='disable_preview', description='禁止预览分享中的文件', example=true),
+  disableSave?: boolean(name='disable_save', description='禁止转存分享中的文件', example=true),
+  disableVisible?: boolean(name='disable_visible', description='分享中的文件不可见', example=true),
+  downloadLimit?: int64(name='download_limit', description='分享下载次数限制', example=10, format='int64'),
+  officeEditable?: boolean(name='office_editable', description='允许在线编辑文档', example=true),
+  previewLimit?: int64(name='preview_limit', description='分享预览次数限制', example=10, format='int64'),
+  requireLogin?: boolean(name='require_login', description='企业内(domain)登录后才允许使用分享', example=true),
+  saveDownloadLimit?: int64(name='save_download_limit', description='分享转存和下载的总次数限制', example=10, format='int64'),
+  saveLimit?: int64(name='save_limit', description='分享转存次数限制', example=10, format='int64'),
+}
+
+/**
+ * 
+ */
 model UpdateSubdomainRequest {
   httpheaders?: map[string]string,
   description?: string(name='description', description='描述', example='"描述-1"'),
@@ -29271,6 +29791,14 @@ model VideoPreviewAudioTemplate {
 /**
  * 
  */
+model VideoPreviewAutoCategoryConfig {
+  defaultAudioCategory?: string(name='default_audio_category'),
+  defaultVideoCategory?: string(name='default_video_category'),
+}
+
+/**
+ * 
+ */
 model VideoPreviewAutoScaleConfig {
   enabled?: boolean(name='enabled'),
   maxLength?: int64(name='max_length', format='int64'),
@@ -29292,16 +29820,19 @@ model VideoPreviewConfig {
   audioConfig?: VideoPreviewAudioConfig(name='audio_config'),
   audioTemplateList?: [ string ](name='audio_template_list', items='{"type":"string"}'),
   audioThumbnail?: VideoPreviewThumbnailConfig(name='audio_thumbnail'),
+  autoCategoryConfig?: VideoPreviewAutoCategoryConfig(name='auto_category_config'),
   backupConfig?: VideoPreviewBackupConfig(name='backup_config'),
   drmConfig?: VideoPreviewDrmConfig(name='drm_config'),
   enableConfig?: VideoPreviewEnableConfig(name='enable_config'),
   enabled?: boolean(name='enabled'),
   liveTranscodingConfig?: VideoPreviewLiveTranscodingConfig(name='live_transcoding_config'),
+  quickVideoConfig?: VideoPreviewQuickVideoConfig(name='quick_video_config'),
   rateLimitConfig?: VideoPreviewRateLimitConfig(name='rate_limit_config'),
   sprite?: VideoPreviewSpriteConfig(name='sprite'),
   store?: Store(name='store'),
   storeIdMap?: object(name='store_id_map', additionalProperties='{"type":"string"}'),
   templateList?: [ string ](name='template_list', items='{"type":"string"}'),
+  templateNameMap?: object(name='template_name_map', additionalProperties='{"type":"string"}'),
   templatePolicyConfig?: VideoPreviewTemplatePolicyConfig(name='template_policy_config'),
   thumbnail?: VideoPreviewThumbnailConfig(name='thumbnail'),
   videoConfig?: VideoPreviewVideoConfig(name='video_config'),
@@ -29386,6 +29917,32 @@ model VideoPreviewM3U8Config {
 }
 
 /**
+ * 
+ */
+model VideoPreviewQuickVideoConfig {
+  currentVersion?: int64(name='current_version', format='int64'),
+  deprecatedVersion?: int64(name='deprecated_version', format='int64'),
+  enableConfig?: VideoPreviewLiveTranscodingEnableConfig(name='enable_config'),
+  enabled?: boolean(name='enabled'),
+  initialTsConfig?: VideoPreviewQuickVideoInitialTsConfig(name='initial_ts_config'),
+  leadingPrefix?: string(name='leading_prefix'),
+  m3u8FilePrefix?: string(name='m3u8_file_prefix'),
+  segment?: int64(name='segment', format='int64'),
+  subtitleConfig?: VideoPreviewLiveTranscodingSubtitleConfig(name='subtitle_config'),
+  templateList?: [ string ](name='template_list', items='{"type":"string"}'),
+  templateNameMap?: object(name='template_name_map', additionalProperties='{"type":"string"}'),
+  tsCountWhenTs404?: int64(name='ts_count_when_ts_404', format='int64'),
+}
+
+/**
+ * 快速起播配置
+ */
+model VideoPreviewQuickVideoInitialTsConfig {
+  initialDuration?: double(name='initial_duration', format='double'),
+  initialTsList?: [ integer ](name='initial_ts_list', items='{"format":"int64","type":"integer"}'),
+}
+
+/**
  * 转码文件下载限速配置
  */
 model VideoPreviewRateLimitConfig {
@@ -29435,18 +29992,6 @@ model VideoPreviewTemplatePolicyConfig {
 model VideoPreviewThumbnailConfig {
   skipBeginPercent?: string(name='skip_begin_percent'),
   skipBeginSec?: double(name='skip_begin_sec', format='double'),
-}
-
-/**
- * 视频转码参数
- */
-model VideoPreviewVideo {
-  height?: int64(name='height', format='int64'),
-  keepOriginal?: boolean(name='keep_original'),
-  videoBitrate?: int64(name='video_bitrate', format='int64'),
-  videoCodec?: string(name='video_codec'),
-  videoFrameRate?: int64(name='video_frame_rate', format='int64'),
-  width?: int64(name='width', format='int64'),
 }
 
 /**
@@ -29512,36 +30057,12 @@ model WatermarkEnableConfig {
 }
 
 /**
- * WatermarkTextConfig 文字水印配置
- */
-model WatermarkTextConfig {
-  bold?: boolean(name='bold'),
-  fillStyle?: string(name='fill_style'),
-  font?: string(name='font'),
-  horizontal?: int64(name='horizontal', format='int64'),
-  rotate?: int64(name='rotate', format='int64'),
-  size?: int64(name='size', format='int64'),
-  vertical?: int64(name='vertical', format='int64'),
-}
-
-/**
  * 
  */
 model WxTrustedDomainConfig {
   content?: string(name='content'),
   name?: string(name='name'),
   show?: boolean(name='show'),
-}
-
-/**
- * 处罚文件请求
- */
-model PunishFileRequest {
-  httpheaders?: map[string]string,
-  actionCode?: string(name='action_code'),
-  driveId?: string(name='drive_id'),
-  fileId?: string(name='file_id'),
-  punishReason?: string(name='punish_reason'),
 }
 
 /**
@@ -29572,16 +30093,6 @@ model AddStoryFilesResponse {
   files?: [ AddStoryFile ](name='files', description='files', items='{"$ref":"#/definitions/AddStoryFile"}'),
   requestId?: string(name='request_id', description='request_id'),
   storyId?: string(name='story_id', description='story_id'),
-}
-
-/**
- * Add user to subdomain request
- */
-model AddUserToSubdomainRequest {
-  httpheaders?: map[string]string,
-  role?: string(name='role'),
-  subdomainId?: string(name='subdomain_id', description='subdomain id'),
-  userId: string(name='user_id', description='用户 ID', example='ccpuserid'),
 }
 
 /**
@@ -29642,6 +30153,1008 @@ model AggregationsGroup {
  */
 model AlbumsBaseRequest {
   driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+}
+
+/**
+ * 
+ */
+model BaseRequest {
+  category: string(name='category', description='category', example='"album"'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  viewId: string(name='view_id', description='view_id', example='123'),
+}
+
+/**
+ * Copy view files
+ */
+model CopyViewFilesRequest {
+  httpheaders?: map[string]string,
+  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
+  autoRename?: boolean(name='auto_rename', default=false, description='auto_rename
+type: boolean', example=false),
+  category: string(name='category', description='category', example='"album"'),
+  driveFileList?: [ ShareFile ](name='drive_file_list', items='{"$ref":"#/definitions/ShareFile"}'),
+  referer?: string(name='referer'),
+  shareId?: string(name='share_id', description='share_id', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
+  toDriveId?: string(name='to_drive_id', description='to_drive_id', example='1', pattern='[0-9]+'),
+  toParentFileId: string(name='to_parent_file_id', description='to_parent_file_id', example='root', maxLength=50, minLength=4, pattern='[a-z0-9.-_]{1,50}'),
+  toViewId: string(name='to_view_id', description='to_view_id', example='123'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  viewId: string(name='view_id', description='view_id', example='123'),
+}
+
+/**
+ * copy view files
+ */
+model CopyViewFilesResponse {
+  asyncTaskId?: string(name='async_task_id', description='async_task_id', example='000e89fb-cf8f-11e9-8ab4-b6e980803a3b'),
+}
+
+/**
+ * Create custom story request
+ */
+model CreateCustomizedStoryRequest {
+  httpheaders?: map[string]string,
+  customLabels?: object(name='custom_labels', additionalProperties='{"type":"object"}', description='custom_labels'),
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  storyCover?: StoryFile(name='story_cover'),
+  storyFiles?: [ StoryFile ](name='story_files', description='story_file_ids', items='{"$ref":"#/definitions/StoryFile"}'),
+  storyName?: string(name='story_name', description='story_name', example='"custom"'),
+  storySubType?: string(name='story_sub_type', description='story_sub_type', example='"ThisWeekInThePast"'),
+  storyType: string(name='story_type', description='story_type', example='"TimeMemory"'),
+}
+
+/**
+ * 生成自定义故事
+ */
+model CreateCustomizedStoryResponse {
+  driveId?: string(name='drive_id', description='drive_id'),
+  storyId?: string(name='story_id'),
+}
+
+/**
+ * Create story request
+ */
+model CreateStoryRequest {
+  httpheaders?: map[string]string,
+  address?: Address(name='address'),
+  customId?: string(name='custom_id', description='custom_id'),
+  customLabels?: object(name='custom_labels', additionalProperties='{"type":"object"}', description='custom_labels'),
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  maxImageCount?: int64(name='max_image_count', description='max_image_count', example=100, format='int64'),
+  minImageCount?: int64(name='min_image_count', description='min_image_count', example=1, format='int64'),
+  storyEndTime?: string(name='story_end_time', description='story_end_time', example='"2199-01-01T00:00:01.544Z"'),
+  storyId?: string(name='story_id', description='story_id'),
+  storyName?: string(name='story_name', description='story_name', example='"custom"'),
+  storyStartTime?: string(name='story_start_time', description='story_start_time', example='"2020-11-10T00:00:01.544Z"'),
+  storySubType?: string(name='story_sub_type', description='story_sub_type', example='"storySubType"'),
+  storyType: string(name='story_type', description='story_type', example='"TimeMemory"'),
+}
+
+/**
+ * 生成故事
+ */
+model CreateStoryResponse {
+  driveId?: string(name='drive_id', description='drive_id'),
+}
+
+/**
+ * Create view request
+ */
+model CreateViewRequest {
+  httpheaders?: map[string]string,
+  category: string(name='category', description='category', example='"album"'),
+  description?: string(name='description', description='description', example='"abc"'),
+  name: string(name='name', description='name', example='"abc"'),
+  owner: string(name='owner', description='owner', example='"123"'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+}
+
+/**
+ * 创建逻辑视图
+ */
+model CreateViewResponse {
+  category?: string(name='category'),
+  owner?: string(name='owner'),
+  viewId?: string(name='view_id'),
+}
+
+/**
+ * delete locationCluster request
+ */
+model DeleteLocationDateClusterRequest {
+  httpheaders?: map[string]string,
+  clusterId?: string(name='cluster_id'),
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+}
+
+/**
+ * delete locationCluster response
+ */
+model DeleteLocationDateClusterResponse {
+  clusterId?: string(name='cluster_id'),
+  driveId?: string(name='drive_id'),
+}
+
+/**
+ * delete story request
+ */
+model DeleteStoryRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  storyId: string(name='story_id', description='story_id', example='"Story-uuid"'),
+}
+
+/**
+ * 删除故事
+ */
+model DeleteStoryResponse {
+  driveId?: string(name='drive_id', description='drive_id'),
+}
+
+/**
+ * Delete view request
+ */
+model DeleteViewRequest {
+  httpheaders?: map[string]string,
+  category: string(name='category', description='category', example='"album"'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  viewId: string(name='view_id', description='view_id', example='123'),
+}
+
+/**
+ * 
+ */
+model FaceBoundary {
+  Height?: int64(name='Height', format='int64'),
+  Left?: int64(name='Left', format='int64'),
+  Top?: int64(name='Top', format='int64'),
+  Width?: int64(name='Width', format='int64'),
+}
+
+/**
+ * find story request
+ */
+model FindStoriesRequest {
+  httpheaders?: map[string]string,
+  coverImageThumbnailProcess?: string(name='cover_image_thumbnail_process', description='cover_image_thumbnail_process'),
+  coverVideoThumbnailProcess?: string(name='cover_video_thumbnail_process', description='cover_video_thumbnail_process'),
+  createTimeRange?: QueryRequestTimeRange(name='create_time_range'),
+  customLabels?: string(name='custom_labels', description='custom_labels'),
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  faceGroupIds?: [ string ](name='face_group_ids', description='face_group_ids', items='{"type":"string"}'),
+  limit?: int64(name='limit', description='limit', format='int64'),
+  marker?: string(name='marker', description='marker'),
+  order?: string(name='order', description='order'),
+  sort?: string(name='sort', description='sort'),
+  storyEndTimeRange?: QueryRequestTimeRange(name='story_end_time_range'),
+  storyId?: string(name='story_id', description='story_id', example='"story112312"'),
+  storyName?: string(name='story_name', description='story_name'),
+  storyStartTimeRange?: QueryRequestTimeRange(name='story_start_time_range'),
+  storyType?: string(name='story_type', description='story_type'),
+  urlExpireSec?: int64(name='url_expire_sec', description='url_expire_sec', format='int64'),
+  withEmptyStories?: boolean(name='with_empty_stories', description='with_empty_stories'),
+}
+
+/**
+ * 查询故事
+ */
+model FindStoriesResponse {
+  items?: [ GetStoryResponse ](name='items', description='items', items='{"$ref":"#/definitions/GetStoryResponse"}'),
+  nextMarker?: string(name='next_marker', description='next_marker'),
+}
+
+/**
+ * get drive data process template request
+ */
+model GetDriveDataProcessTemplateRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+}
+
+/**
+ * get drive data process template response
+ */
+model GetDriveDataProcessTemplateResponse {
+  templateId?: string(name='template_id'),
+}
+
+/**
+ * Get face group info request
+ */
+model GetFaceGroupInfoRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  groupId: string(name='group_id', description='group_id 列举人脸分组接口中获取', example='"group-asdasdasdeop"'),
+}
+
+/**
+ * Get photo count request
+ */
+model GetImageCountRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+}
+
+/**
+ * 获取云照片个数结果
+ */
+model GetImageCountResponse {
+  imageCount?: int64(name='image_count', description='image_count', example=1, format='int64'),
+}
+
+/**
+ * Get story request
+ */
+model GetStoryRequest {
+  httpheaders?: map[string]string,
+  coverImageThumbnailProcess?: string(name='cover_image_thumbnail_process', description='cover_image_thumbnail_process'),
+  coverVideoThumbnailProcess?: string(name='cover_video_thumbnail_process', description='cover_video_thumbnail_process'),
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
+  imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
+  storyId: string(name='story_id', description='story_id', example='"story112312"'),
+  thumbnailProcesses?: object(name='thumbnail_processes', additionalProperties='{"$ref":"#/definitions/BaseImageProcessRequest"}'),
+  urlExpireSec?: int64(name='url_expire_sec', description='url_expire_sec', format='int64'),
+  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
+type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
+}
+
+/**
+ * 生成故事
+ */
+model GetStoryResponse {
+  coverFileId?: string(name='cover_file_id', description='cover_file_id'),
+  coverFileThumbnailUrl?: string(name='cover_file_thumbnail_url', description='cover_file_url'),
+  createdAt?: string(name='created_at', description='created_at'),
+  customId?: string(name='custom_id', description='custom_id'),
+  customLabels?: object(name='custom_labels', additionalProperties='{"type":"object"}', description='custom_labels'),
+  faceGroupIds?: [ string ](name='face_group_ids', description='face_group_ids', items='{"type":"string"}'),
+  storyEndTime?: string(name='story_end_time', description='story_end_time'),
+  storyFileList?: [ BaseCCPFileResponse ](name='story_file_list', items='{"$ref":"#/definitions/BaseCCPFileResponse"}'),
+  storyId?: string(name='story_id', description='story_id'),
+  storyName?: string(name='story_name', description='story_name'),
+  storyStartTime?: string(name='story_start_time', description='story_start_time'),
+  storySubType?: string(name='story_sub_type', description='story_sub_type'),
+  storyType?: string(name='story_type', description='story_type'),
+  updatedAt?: string(name='updated_at', description='updated_at'),
+}
+
+/**
+ * get file from view
+ */
+model GetViewFileRequest {
+  httpheaders?: map[string]string,
+  category: string(name='category', description='category', example='"album"'),
+  driveId?: string(name='drive_id'),
+  fileId?: string(name='file_id'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  viewId: string(name='view_id', description='view_id', example='123'),
+}
+
+/**
+ * get view file response
+ */
+model GetViewFileResponse {
+  actionList?: [ string ](name='action_list', description='action_list', items='{"type":"string"}'),
+  autoDeleteLeftSec?: int64(name='auto_delete_left_sec', description='auto_delete_left_sec', example=10000, format='int64'),
+  category?: string(name='category', description='category', enum='doc, image, audio, video', example='doc'),
+  characteristicHash?: string(name='characteristic_hash', description='CharacteristicHash'),
+  contentHash?: string(name='content_hash', description='Content Hash', example='EA4942AA8761213890A5C386F88E6464D2C31CA3'),
+  contentHashName?: string(name='content_hash_name', description='content_hash_name', enum='sha1', example='sha1'),
+  contentType?: string(name='content_type', description='content_type', example='application/json'),
+  crc64Hash?: string(name='crc64_hash', description='crc64_hash'),
+  createdAt?: string(name='created_at', description='created_at', example='2019-08-20T06:51:27.292Z'),
+  creatorId?: string(name='creator_id', description='creator_id', example='123abc'),
+  creatorName?: string(name='creator_name', description='creator_name', example='test_user'),
+  creatorType?: string(name='creator_type', description='creator_type', example='User, AliUser'),
+  customField1?: string(name='custom_field_1', description='custom_field_1'),
+  customField2?: string(name='custom_field_2', description='custom_field_2'),
+  customType?: string(name='custom_type', description='custom_type'),
+  description?: string(name='description', description='description', example='file description'),
+  domainId?: string(name='domain_id', description='DomainID', example='test001', pattern='[a-z0-9A-Z]+'),
+  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+  encryptMode?: string(name='encrypt_mode', description='encrypt_mode', example='pin'),
+  exFieldsInfo?: object(name='ex_fields_info', additionalProperties='{"type":"object"}', description='ex_fields_info'),
+  fields?: object(name='fields', additionalProperties='{"type":"object"}'),
+  fileExtension?: string(name='file_extension', description='file_extension', example='jpg'),
+  fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
+  filePathType?: string(name='file_path_type', description='TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析'),
+  fileRevisionId?: string(name='file_revision_id'),
+  hidden?: boolean(name='hidden', description='Hidden
+type: boolean', enum='false, true', example=false),
+  imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
+  investigationStatus?: int64(name='investigation_status', description='InvestigationStatus', format='int64'),
+  joinedAt?: int64(name='joined_at', format='int64'),
+  labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
+  lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
+  lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
+  lastModifierType?: string(name='last_modifier_type', description='last_modifier_type', example='User, AliUser'),
+  localCreatedAt?: string(name='local_created_at', description='local_created_at', example='2019-08-20T06:51:27.292Z'),
+  localModifiedAt?: string(name='local_modified_at'),
+  meta?: string(name='meta'),
+  mimeExtension?: string(name='mime_extension', description='mime_extension', example='mov'),
+  mimeType?: string(name='mime_type', description='mime_type', example='video/quicktime'),
+  name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
+  parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
+  punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
+  punishReason?: string(name='punish_reason', description='PunishReason'),
+  revisionId?: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
+  revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
+  shareId?: string(name='share_id'),
+  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
+  starred?: boolean(name='starred', description='starred
+type: boolean', example=false),
+  status?: string(name='status', description='status', enum='uploading, available', example='available'),
+  streamsInfo?: object(name='streams_info', additionalProperties='{"$ref":"#/definitions/SimpleStreamInfo"}', description='@Deprecated streams url info'),
+  syncDeviceFlag?: boolean(name='sync_device_flag', description='sync_device_flag'),
+  syncFlag?: boolean(name='sync_flag', description='sync_flag'),
+  syncMeta?: string(name='sync_meta', description='sync_meta'),
+  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  thumbnailUrls?: object(name='thumbnail_urls', additionalProperties='{"type":"string"}', description='thumbnail_urls'),
+  trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
+  type?: string(name='type', description='type', enum='file, folder', example='file'),
+  updatedAt?: string(name='updated_at', description='updated_at', format='date-time'),
+  uploadId?: string(name='upload_id', description='upload_id', example='C9DCFE5A82644AC7A02DB74C30C934A6'),
+  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
+  userTags?: object(name='user_tags', additionalProperties='{"type":"string"}', description='user_tags'),
+  videoMediaMetadata?: VideoMediaResponse(name='video_media_metadata'),
+  videoPreviewMetadata?: VideoPreviewResponse(name='video_preview_metadata'),
+  viewId?: string(name='view_id'),
+}
+
+/**
+ * Get view request
+ */
+model GetViewRequest {
+  httpheaders?: map[string]string,
+  category: string(name='category', description='category', example='"album"'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  viewId: string(name='view_id', description='view_id', example='123'),
+}
+
+/**
+ * 获取指定逻辑视图信息
+ */
+model GetViewResponse {
+  category?: string(name='category'),
+  createdAt?: string(name='created_at'),
+  description?: string(name='description'),
+  exFieldsInfo?: object(name='ex_fields_info', additionalProperties='{"type":"object"}'),
+  fileCount?: int64(name='file_count', format='int64'),
+  name?: string(name='name'),
+  owner?: string(name='owner'),
+  updatedAt?: string(name='updated_at'),
+  viewId?: string(name='view_id'),
+}
+
+/**
+ * 
+ */
+model ImageAddressResponse {
+  addressDetail?: Address(name='address_detail'),
+  count?: int64(name='count', description='聚类地点计数', example=1, format='int64'),
+  coverFileId?: string(name='cover_file_id', description='cover_file_id'),
+  coverUrl?: string(name='cover_url', description='聚类地点封面图片地址', example='http://imm-dev-wmt/tags/05.jpg?x-oss-process=xxx'),
+  location?: string(name='location', description='经纬度', example='39.21211,101.32111'),
+  name?: string(name='name', description='聚类地点名称', example='杭州'),
+}
+
+/**
+ * 人脸分组信息
+ */
+model ImageFaceGroupResponse {
+  createdAt?: string(name='created_at', description='人脸分组生成时间', example='2019-02-20T09:35:51.057Z'),
+  groupCoverFaceBoundary?: FaceBoundary(name='group_cover_face_boundary'),
+  groupCoverFileId?: string(name='group_cover_file_id', description='group_cover_file_id'),
+  groupCoverHeight?: int64(name='group_cover_height', description='group_cover_height', format='int64'),
+  groupCoverUrl?: string(name='group_cover_url', description='人脸分组封面头像地址', example='http://imm-dev-wmt/facegroup/05.jpg?x-oss-process=xxx'),
+  groupCoverWidth?: int64(name='group_cover_width', description='group_cover_width', format='int64'),
+  groupId?: string(name='group_id', description='人脸分组 ID', example='abc'),
+  groupName?: string(name='group_name', description='人脸分组名称', example='abc'),
+  imageCount?: int64(name='image_count', description='照片个数', example=2, format='int64'),
+  remarks?: string(name='remarks', description='remarks'),
+  remarksArray?: [ string ](name='remarks_array', description='remarks_array', items='{"type":"string"}'),
+  updatedAt?: string(name='updated_at', description='人脸分组修改时间', example='2019-02-20T09:35:51.057Z'),
+}
+
+/**
+ * 
+ */
+model ImageTagResponse {
+  count?: int64(name='count', description='聚类标签计数', example=1, format='int64'),
+  coverFileCategory?: string(name='cover_file_category', description='cover_file_category'),
+  coverFileId?: string(name='cover_file_id', description='cover_file_id'),
+  coverOverallScore?: double(name='cover_overall_score', description='cover_score', format='double'),
+  coverTagConfidence?: double(name='cover_tag_confidence', description='cover_tag_confidence', format='double'),
+  coverUrl?: string(name='cover_url', description='聚类标签封面图片地址', example='http://imm-dev-wmt/tags/05.jpg?x-oss-process=xxx'),
+  name?: string(name='name', description='聚类标签名称', example='篮球'),
+}
+
+/**
+ * list file view ids
+ */
+model ListFileViewsRequest {
+  httpheaders?: map[string]string,
+  category?: string(name='category'),
+  driveId?: string(name='drive_id'),
+  fileId?: string(name='file_id'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+}
+
+/**
+ * list file view ids
+ */
+model ListFileViewsResponse {
+  items?: [ GetViewResponse ](name='items', items='{"$ref":"#/definitions/GetViewResponse"}'),
+}
+
+/**
+ * List image address groups request
+ */
+model ListImageAddressGroupsRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
+  limit?: int32(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
+  marker?: string(name='marker', description='翻页标记', example='marker'),
+  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
+}
+
+/**
+ * 展示地点分组集合
+ */
+model ListImageAddressGroupsResponse {
+  items?: [ ImageAddressResponse ](name='items', items='{"$ref":"#/definitions/ImageAddressResponse"}'),
+  nextMarker?: string(name='next_marker'),
+}
+
+/**
+ * List image face groups request
+ */
+model ListImageFaceGroupsRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  limit?: int64(name='limit', default=100, description='每页大小限制', example=10, format='int64', maximum=100, minimum=1),
+  marker?: string(name='marker', description='翻页标记', example='marker'),
+  remarks?: string(name='remarks'),
+}
+
+/**
+ * 展示人脸分组集合
+ */
+model ListImageFaceGroupsResponse {
+  items?: [ ImageFaceGroupResponse ](name='items', items='{"$ref":"#/definitions/ImageFaceGroupResponse"}'),
+  nextMarker?: string(name='next_marker'),
+}
+
+/**
+ * List image tags request
+ */
+model ListImageTagsRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
+  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
+type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
+}
+
+/**
+ * 展示标签集合
+ */
+model ListImageTagsResponse {
+  tags?: [ ImageTagResponse ](name='tags', items='{"$ref":"#/definitions/ImageTagResponse"}'),
+}
+
+/**
+ * list view file
+ */
+model ListViewFilesRequest {
+  httpheaders?: map[string]string,
+  category: string(name='category', description='category', example='"album"'),
+  fields?: string(name='fields'),
+  filter?: string(name='filter'),
+  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
+  imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
+  limit?: int32(name='limit', format='int32'),
+  marker?: string(name='marker'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
+  orderBy?: string(name='order_by'),
+  orderDirection?: string(name='order_direction'),
+  thumbnailProcesses?: object(name='thumbnail_processes', additionalProperties='{"$ref":"#/definitions/BaseImageProcessRequest"}'),
+  urlExpireSec?: int32(name='url_expire_sec', format='int32'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
+type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
+  viewId: string(name='view_id', description='view_id', example='123'),
+}
+
+/**
+ * list view files response
+ */
+model ListViewFilesResponse {
+  items?: [ ViewFileItem ](name='items', items='{"$ref":"#/definitions/ViewFileItem"}'),
+  nextMarker?: string(name='next_marker'),
+}
+
+/**
+ * List views request
+ */
+model ListViewsRequest {
+  httpheaders?: map[string]string,
+  category: string(name='category', description='category', example='"album"'),
+  limit?: int32(name='limit', default=50, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
+  marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
+  orderBy?: string(name='order_by', description='order_by', example='"abc"'),
+  orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
+  owner: string(name='owner', description='owner', example='"123"'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+}
+
+/**
+ * 获取逻辑视图列表信息
+ */
+model ListViewsResponse {
+  items?: [ GetViewResponse ](name='items', items='{"$ref":"#/definitions/GetViewResponse"}'),
+  nextMarker?: string(name='next_marker'),
+}
+
+/**
+ * 
+ */
+model LocationDateCluster {
+  address?: Address(name='address'),
+  clusterId?: string(name='cluster_id'),
+  createdAt?: string(name='created_at'),
+  customLabels?: object(name='custom_labels', additionalProperties='{"type":"object"}'),
+  driveId?: string(name='drive_id'),
+  endTime?: string(name='end_time'),
+  level?: string(name='level'),
+  startTime?: string(name='start_time'),
+  title?: string(name='title'),
+  updatedAt?: string(name='updated_at'),
+}
+
+/**
+ * Merge face group request
+ */
+model MergeFaceGroupRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  fromGroupId: string(name='from_group_id', description='from_group_id', example='abc'),
+  toGroupId: string(name='to_group_id', description='to_group_id', example='bcd'),
+}
+
+/**
+ * Merge face group response
+ */
+model MergeFaceGroupResponse {
+  status?: string(name='status'),
+  taskId?: string(name='task_id'),
+}
+
+/**
+ * Parse keywords request
+ */
+model ParseKeywordsRequest {
+  httpheaders?: map[string]string,
+  keywords?: string(name='keywords'),
+}
+
+/**
+ * Parse keywords response
+ */
+model ParseKeywordsResponse {
+  addressLine?: string(name='address_line', description='AddressLine'),
+  tags?: [ SystemTag ](name='tags', items='{"$ref":"#/definitions/SystemTag"}'),
+  timeRange?: ParseTimeRange(name='time_range'),
+}
+
+/**
+ * 
+ */
+model ParseTimeRange {
+  end?: string(name='end'),
+  start?: string(name='start'),
+}
+
+/**
+ * 处罚文件请求
+ */
+model PunishFileRequest {
+  httpheaders?: map[string]string,
+  actionCode?: string(name='action_code'),
+  driveId?: string(name='drive_id'),
+  fileId?: string(name='file_id'),
+  punishReason?: string(name='punish_reason'),
+}
+
+/**
+ * query locationCluster response
+ */
+model QueryLocationClustersResponse {
+  locationDateClusters?: [ LocationDateCluster ](name='location_date_clusters', items='{"$ref":"#/definitions/LocationDateCluster"}'),
+  nextMarker?: string(name='next_marker'),
+}
+
+/**
+ * query locationCluster request
+ */
+model QueryLocationDateClustersRequest {
+  httpheaders?: map[string]string,
+  address?: Address(name='address'),
+  clusterId?: string(name='cluster_id'),
+  createTimeRange?: QueryRequestTimeRange(name='create_time_range'),
+  customLabels?: string(name='custom_labels'),
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  endTimeRange?: QueryRequestTimeRange(name='end_time_range'),
+  levels?: [ string ](name='levels', items='{"type":"string"}'),
+  limit?: int32(name='limit', format='int32'),
+  marker?: string(name='marker'),
+  order?: string(name='order'),
+  sort?: string(name='sort'),
+  startTimeRange?: QueryRequestTimeRange(name='start_time_range'),
+  title?: string(name='title'),
+  updateTimeRange?: QueryRequestTimeRange(name='update_time_range'),
+}
+
+/**
+ * 
+ */
+model QueryRequestTimeRange {
+  end?: string(name='end', description='end'),
+  start?: string(name='start', description='start'),
+}
+
+/**
+ * remove story files request
+ */
+model RemoveStoryFilesRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  files?: [ StoryFile ](name='files', items='{"$ref":"#/definitions/StoryFile"}'),
+  storyId: string(name='story_id', description='story_id'),
+}
+
+/**
+ * remove story files response
+ */
+model RemoveStoryFilesResponse {
+  driveId?: string(name='drive_id', description='drive_id'),
+  requestId?: string(name='request_id', description='request_id'),
+  storyId?: string(name='story_id', description='story_id'),
+}
+
+/**
+ * remove file from view
+ */
+model RemoveViewFileRequest {
+  httpheaders?: map[string]string,
+  category: string(name='category', description='category', example='"album"'),
+  driveId?: string(name='drive_id'),
+  fileId?: string(name='file_id'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  viewId: string(name='view_id', description='view_id', example='123'),
+}
+
+/**
+ * Search image address groups request
+ */
+model SearchImageAddressGroupsRequest {
+  httpheaders?: map[string]string,
+  addressLevel?: string(name='address_level', default='city', description='查询的地点级别', example='city'),
+  addressNames?: [ string ](name='address_names', description='查询的地点数组', example='杭州市, 北京市', items='{"type":"string"}'),
+  brGeoPoint?: string(name='br_geo_point', description='br_geo_point', example='39.121,101.2121'),
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
+  tlGeoPoint?: string(name='tl_geo_point', description='tl_geo_point', example='39.121,101.2121'),
+  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
+}
+
+/**
+ * 展示地点分组列表
+ */
+model SearchImageAddressGroupsResponse {
+  items?: [ ImageAddressResponse ](name='items', items='{"$ref":"#/definitions/ImageAddressResponse"}'),
+}
+
+/**
+ * search view file
+ */
+model SearchViewFilesRequest {
+  httpheaders?: map[string]string,
+  category: string(name='category', description='category', example='"album"'),
+  fields?: string(name='fields'),
+  filter?: string(name='filter'),
+  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
+  imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
+  limit?: int32(name='limit', format='int32'),
+  marker?: string(name='marker'),
+  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
+  orderBy?: string(name='order_by'),
+  orderDirection?: string(name='order_direction'),
+  query?: string(name='query', description='query', example='not name=123', maxLength=4096),
+  returnTotalCount?: boolean(name='return_total_count', description='return_total_count 是否返回查询总数'),
+  thumbnailProcesses?: object(name='thumbnail_processes', additionalProperties='{"$ref":"#/definitions/BaseImageProcessRequest"}'),
+  urlExpireSec?: int32(name='url_expire_sec', format='int32'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
+type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
+  viewId: string(name='view_id', description='view_id', example='123'),
+}
+
+/**
+ * search view files response
+ */
+model SearchViewFilesResponse {
+  items?: [ ViewFileItem ](name='items', items='{"$ref":"#/definitions/ViewFileItem"}'),
+  nextMarker?: string(name='next_marker'),
+  totalCount?: int64(name='total_count', format='int64'),
+}
+
+/**
+ * Search view request
+ */
+model SearchViewsRequest {
+  httpheaders?: map[string]string,
+  category: string(name='category', description='category', example='"album"'),
+  limit?: int32(name='limit', default=50, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
+  marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
+  name?: string(name='name', description='name', example='"name"'),
+  orderBy?: string(name='order_by', description='order_by', example='"created_at"'),
+  orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='DESC'),
+  owner?: string(name='owner', description='owner', example='"123"'),
+  returnTotalCount?: boolean(name='return_total_count', description='return_total_count 是否返回查询总数'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+}
+
+/**
+ * 获取逻辑视图列表信息
+ */
+model SearchViewsResponse {
+  items?: [ GetViewResponse ](name='items', items='{"$ref":"#/definitions/GetViewResponse"}'),
+  nextMarker?: string(name='next_marker'),
+  totalCount?: int64(name='total_count', format='int64'),
+}
+
+/**
+ * 
+ */
+model SimpleQuery {
+  field?: string(name='field'),
+  operation?: string(name='operation'),
+  subQueries?: [ SimpleQuery ](name='sub_queries', items='{"$ref":"#/definitions/SimpleQuery"}'),
+  value?: string(name='value'),
+}
+
+/**
+ * simple query request
+ */
+model SimpleQueryRequest {
+  httpheaders?: map[string]string,
+  aggregations?: [ Aggregation ](name='aggregations', items='{"$ref":"#/definitions/Aggregation"}'),
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  limit?: int32(name='limit', format='int32'),
+  marker?: string(name='marker'),
+  order?: string(name='order'),
+  query?: SimpleQuery(name='query'),
+  sort?: string(name='sort'),
+}
+
+/**
+ * simple query response
+ */
+model SimpleQueryResponse {
+  aggregations?: [ Aggregation ](name='aggregations', items='{"$ref":"#/definitions/Aggregation"}'),
+  files?: [ BaseCCPFileResponse ](name='files', items='{"$ref":"#/definitions/BaseCCPFileResponse"}'),
+  nextMarker?: string(name='next_marker'),
+}
+
+/**
+ * 
+ */
+model StoryFile {
+  driveId?: string(name='drive_id'),
+  fileId?: string(name='file_id'),
+  revisionId?: string(name='revision_id'),
+}
+
+/**
+ * Unassign facegroup item request
+ */
+model UnAssignFaceGroupItemRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  faceGroupId?: string(name='face_group_id', description='face_group_id', example='abc'),
+  fileId: string(name='file_id', description='file_id', example='abc'),
+  groupId?: string(name='group_id', description='group_id 列举人脸分组接口中获取', example='"group-asdasdasdeop"'),
+}
+
+/**
+ * update drive data process template request
+ */
+model UpdateDriveDataProcessTemplateRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  templateId?: string(name='template_id'),
+}
+
+/**
+ * update drive data process template response
+ */
+model UpdateDriveDataProcessTemplateResponse {
+  driveId?: string(name='drive_id'),
+  templateId?: string(name='template_id'),
+}
+
+/**
+ * Update face group info request
+ */
+model UpdateFaceGroupInfoRequest {
+  httpheaders?: map[string]string,
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  groupCoverFaceId?: string(name='group_cover_face_id', description='group_cover_face_id', example='"abcdefg"'),
+  groupId: string(name='group_id', description='group_id 列举人脸分组接口中获取', example='"group-asdasdasdeop"'),
+  groupName?: string(name='group_name', description='group_name', example='"张XX"'),
+  remarks?: string(name='remarks', description='remarks', example='"hidden"'),
+}
+
+/**
+ * 更新人脸分组信息结果
+ */
+model UpdateFaceGroupInfoResponse {
+  driveId?: string(name='drive_id', description='drive_id', example='"101"'),
+  groupId?: string(name='group_id', description='group_id', example='"group-aas11002ddeac"'),
+}
+
+/**
+ * update locationCluster request
+ */
+model UpdateLocationDateClusterRequest {
+  httpheaders?: map[string]string,
+  clusterId?: string(name='cluster_id'),
+  customLabels?: object(name='custom_labels', additionalProperties='{"type":"string"}'),
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  title?: string(name='title'),
+}
+
+/**
+ * update locationCluster response
+ */
+model UpdateLocationDateClusterResponse {
+  clusterId?: string(name='cluster_id'),
+  driveId?: string(name='drive_id'),
+}
+
+/**
+ * Update story request
+ */
+model UpdateStoryRequest {
+  httpheaders?: map[string]string,
+  cover?: StoryFile(name='cover'),
+  customId?: string(name='custom_id', description='custom_id'),
+  customLabels?: object(name='custom_labels', additionalProperties='{"type":"object"}', description='custom_labels'),
+  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
+  storyId: string(name='story_id', description='story_id'),
+  storyName?: string(name='story_name', description='story_name'),
+}
+
+/**
+ * update story response
+ */
+model UpdateStoryResponse {
+  driveId?: string(name='drive_id', description='drive_id'),
+  storyId?: string(name='story_id', description='story_id'),
+}
+
+/**
+ * Update view request
+ */
+model UpdateViewRequest {
+  httpheaders?: map[string]string,
+  category: string(name='category', description='category', example='"album"'),
+  description?: string(name='description', description='description', example='"abc"'),
+  exFieldsInfo?: object(name='ex_fields_info', additionalProperties='{"type":"object"}', description='ex_fields_info'),
+  fileCount?: int64(name='file_count', description='description', example=10, format='int64'),
+  name?: string(name='name', description='name', example='"abc"'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  viewId: string(name='view_id', description='view_id', example='123'),
+}
+
+/**
+ * 
+ */
+model ViewFileBaseRequest {
+  category: string(name='category', description='category', example='"album"'),
+  driveId?: string(name='drive_id'),
+  userId?: string(name='user_id', description='user_id', example='"abc"'),
+  viewId: string(name='view_id', description='view_id', example='123'),
+}
+
+/**
+ * 
+ */
+model ViewFileItem {
+  actionList?: [ string ](name='action_list', description='action_list', items='{"type":"string"}'),
+  autoDeleteLeftSec?: int64(name='auto_delete_left_sec', description='auto_delete_left_sec', example=10000, format='int64'),
+  category?: string(name='category', description='category', enum='doc, image, audio, video', example='doc'),
+  characteristicHash?: string(name='characteristic_hash', description='CharacteristicHash'),
+  contentHash?: string(name='content_hash', description='Content Hash', example='EA4942AA8761213890A5C386F88E6464D2C31CA3'),
+  contentHashName?: string(name='content_hash_name', description='content_hash_name', enum='sha1', example='sha1'),
+  contentType?: string(name='content_type', description='content_type', example='application/json'),
+  crc64Hash?: string(name='crc64_hash', description='crc64_hash'),
+  createdAt?: string(name='created_at', description='created_at', example='2019-08-20T06:51:27.292Z'),
+  creatorId?: string(name='creator_id', description='creator_id', example='123abc'),
+  creatorName?: string(name='creator_name', description='creator_name', example='test_user'),
+  creatorType?: string(name='creator_type', description='creator_type', example='User, AliUser'),
+  customField1?: string(name='custom_field_1', description='custom_field_1'),
+  customField2?: string(name='custom_field_2', description='custom_field_2'),
+  customType?: string(name='custom_type', description='custom_type'),
+  description?: string(name='description', description='description', example='file description'),
+  domainId?: string(name='domain_id', description='DomainID', example='test001', pattern='[a-z0-9A-Z]+'),
+  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+  encryptMode?: string(name='encrypt_mode', description='encrypt_mode', example='pin'),
+  exFieldsInfo?: object(name='ex_fields_info', additionalProperties='{"type":"object"}', description='ex_fields_info'),
+  fields?: object(name='fields', additionalProperties='{"type":"object"}'),
+  fileExtension?: string(name='file_extension', description='file_extension', example='jpg'),
+  fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
+  filePathType?: string(name='file_path_type', description='TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析'),
+  fileRevisionId?: string(name='file_revision_id'),
+  hidden?: boolean(name='hidden', description='Hidden
+type: boolean', enum='false, true', example=false),
+  imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
+  investigationStatus?: int64(name='investigation_status', description='InvestigationStatus', format='int64'),
+  joinedAt?: int64(name='joined_at', format='int64'),
+  labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
+  lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
+  lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
+  lastModifierType?: string(name='last_modifier_type', description='last_modifier_type', example='User, AliUser'),
+  localCreatedAt?: string(name='local_created_at', description='local_created_at', example='2019-08-20T06:51:27.292Z'),
+  localModifiedAt?: string(name='local_modified_at'),
+  meta?: string(name='meta'),
+  mimeExtension?: string(name='mime_extension', description='mime_extension', example='mov'),
+  mimeType?: string(name='mime_type', description='mime_type', example='video/quicktime'),
+  name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
+  parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
+  punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
+  punishReason?: string(name='punish_reason', description='PunishReason'),
+  revisionId?: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
+  revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
+  shareId?: string(name='share_id'),
+  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
+  starred?: boolean(name='starred', description='starred
+type: boolean', example=false),
+  status?: string(name='status', description='status', enum='uploading, available', example='available'),
+  streamsInfo?: object(name='streams_info', additionalProperties='{"$ref":"#/definitions/SimpleStreamInfo"}', description='@Deprecated streams url info'),
+  syncDeviceFlag?: boolean(name='sync_device_flag', description='sync_device_flag'),
+  syncFlag?: boolean(name='sync_flag', description='sync_flag'),
+  syncMeta?: string(name='sync_meta', description='sync_meta'),
+  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  thumbnailUrls?: object(name='thumbnail_urls', additionalProperties='{"type":"string"}', description='thumbnail_urls'),
+  trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
+  type?: string(name='type', description='type', enum='file, folder', example='file'),
+  updatedAt?: string(name='updated_at', description='updated_at', format='date-time'),
+  uploadId?: string(name='upload_id', description='upload_id', example='C9DCFE5A82644AC7A02DB74C30C934A6'),
+  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
+  userTags?: object(name='user_tags', additionalProperties='{"type":"string"}', description='user_tags'),
+  videoMediaMetadata?: VideoMediaResponse(name='video_media_metadata'),
+  videoPreviewMetadata?: VideoPreviewResponse(name='video_preview_metadata'),
+  viewId?: string(name='view_id'),
+}
+
+/**
+ * Add user to subdomain request
+ */
+model AddUserToSubdomainRequest {
+  httpheaders?: map[string]string,
+  role?: string(name='role'),
+  subdomainId?: string(name='subdomain_id', description='subdomain id'),
+  userId: string(name='user_id', description='用户 ID', example='ccpuserid'),
 }
 
 /**
@@ -29752,15 +31265,6 @@ model BasePermissionResponse {
 }
 
 /**
- * 
- */
-model BaseRequest {
-  category: string(name='category', description='category', example='"album"'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  viewId: string(name='view_id', description='view_id', example='123'),
-}
-
-/**
  * List identity role response
  */
 model BaseRoleMemberResponse {
@@ -29842,54 +31346,6 @@ model CancelAssignRequest {
 }
 
 /**
- * Copy view files
- */
-model CopyViewFilesRequest {
-  httpheaders?: map[string]string,
-  additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
-  autoRename?: boolean(name='auto_rename', default=false, description='auto_rename
-type: boolean', example=false),
-  category: string(name='category', description='category', example='"album"'),
-  driveFileList?: [ ShareFile ](name='drive_file_list', items='{"$ref":"#/definitions/ShareFile"}'),
-  referer?: string(name='referer'),
-  shareId?: string(name='share_id', description='share_id', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
-  toDriveId?: string(name='to_drive_id', description='to_drive_id', example='1', pattern='[0-9]+'),
-  toParentFileId: string(name='to_parent_file_id', description='to_parent_file_id', example='root', maxLength=50, minLength=4, pattern='[a-z0-9.-_]{1,50}'),
-  toViewId: string(name='to_view_id', description='to_view_id', example='123'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  viewId: string(name='view_id', description='view_id', example='123'),
-}
-
-/**
- * copy view files
- */
-model CopyViewFilesResponse {
-  asyncTaskId?: string(name='async_task_id', description='async_task_id', example='000e89fb-cf8f-11e9-8ab4-b6e980803a3b'),
-}
-
-/**
- * Create custom story request
- */
-model CreateCustomizedStoryRequest {
-  httpheaders?: map[string]string,
-  customLabels?: object(name='custom_labels', additionalProperties='{"type":"object"}', description='custom_labels'),
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  storyCover?: StoryFile(name='story_cover'),
-  storyFiles?: [ StoryFile ](name='story_files', description='story_file_ids', items='{"$ref":"#/definitions/StoryFile"}'),
-  storyName?: string(name='story_name', description='story_name', example='"custom"'),
-  storySubType?: string(name='story_sub_type', description='story_sub_type', example='"ThisWeekInThePast"'),
-  storyType: string(name='story_type', description='story_type', example='"TimeMemory"'),
-}
-
-/**
- * 生成自定义故事
- */
-model CreateCustomizedStoryResponse {
-  driveId?: string(name='drive_id', description='drive_id'),
-  storyId?: string(name='story_id'),
-}
-
-/**
  * 
  */
 model CreateGroupRequest {
@@ -29964,29 +31420,20 @@ model CreatePermissionRequest {
 }
 
 /**
- * Create story request
+ * 
  */
-model CreateStoryRequest {
-  httpheaders?: map[string]string,
-  address?: Address(name='address'),
-  customId?: string(name='custom_id', description='custom_id'),
-  customLabels?: object(name='custom_labels', additionalProperties='{"type":"object"}', description='custom_labels'),
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  maxImageCount?: int64(name='max_image_count', description='max_image_count', example=100, format='int64'),
-  minImageCount?: int64(name='min_image_count', description='min_image_count', example=1, format='int64'),
-  storyEndTime?: string(name='story_end_time', description='story_end_time', example='"2199-01-01T00:00:01.544Z"'),
-  storyId?: string(name='story_id', description='story_id'),
-  storyName?: string(name='story_name', description='story_name', example='"custom"'),
-  storyStartTime?: string(name='story_start_time', description='story_start_time', example='"2020-11-10T00:00:01.544Z"'),
-  storySubType?: string(name='story_sub_type', description='story_sub_type', example='"storySubType"'),
-  storyType: string(name='story_type', description='story_type', example='"TimeMemory"'),
-}
-
-/**
- * 生成故事
- */
-model CreateStoryResponse {
-  driveId?: string(name='drive_id', description='drive_id'),
+model CreateShareLinkPermissionRequest {
+  creatable?: boolean(name='creatable', description='允许上传', example=true),
+  disableDownload?: boolean(name='disable_download', description='禁止下载分享中的文件', example=true),
+  disablePreview?: boolean(name='disable_preview', description='禁止预览分享中的文件', example=true),
+  disableSave?: boolean(name='disable_save', description='禁止转存分享中的文件', example=true),
+  disableVisible?: boolean(name='disable_visible', description='分享中的文件不可见', example=true),
+  downloadLimit?: int64(name='download_limit', description='分享下载次数限制', example=10, format='int64'),
+  officeEditable?: boolean(name='office_editable', description='允许在线编辑文档', example=true),
+  previewLimit?: int64(name='preview_limit', description='分享预览次数限制', example=10, format='int64'),
+  requireLogin?: boolean(name='require_login', description='企业内(domain)登录后才允许使用分享', example=true),
+  saveDownloadLimit?: int64(name='save_download_limit', description='分享转存和下载的总次数限制', example=10, format='int64'),
+  saveLimit?: int64(name='save_limit', description='分享转存次数限制', example=10, format='int64'),
 }
 
 /**
@@ -29994,11 +31441,15 @@ model CreateStoryResponse {
  */
 model CreateSyncMappingRequest {
   httpheaders?: map[string]string,
+  additionData?: string(name='addition_data', description='addition_data'),
   customMeta?: string(name='custom_meta', description='custom_meta'),
   deviceName?: string(name='device_name', description='device_name'),
   driveId?: string(name='drive_id', description='drive_id'),
+  fileId?: string(name='file_id', description='file_id'),
   fsId?: string(name='fs_id', description='fs_id'),
+  hidden?: boolean(name='hidden', description='hidden'),
   localPath?: string(name='local_path', description='local_path'),
+  name?: string(name='name', description='name'),
   syncMode?: string(name='sync_mode', description='sync_mode'),
 }
 
@@ -30007,7 +31458,9 @@ model CreateSyncMappingRequest {
  */
 model CreateSyncMappingResponse {
   driveId?: string(name='drive_id', description='drive_id'),
+  exist?: boolean(name='exist', description='exist'),
   fileId?: string(name='file_id', description='file_id'),
+  name?: string(name='name', description='name string'),
 }
 
 /**
@@ -30067,27 +31520,6 @@ model CreateUserResponse {
 }
 
 /**
- * Create view request
- */
-model CreateViewRequest {
-  httpheaders?: map[string]string,
-  category: string(name='category', description='category', example='"album"'),
-  description?: string(name='description', description='description', example='"abc"'),
-  name: string(name='name', description='name', example='"abc"'),
-  owner: string(name='owner', description='owner', example='"123"'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-}
-
-/**
- * 创建逻辑视图
- */
-model CreateViewResponse {
-  category?: string(name='category'),
-  owner?: string(name='owner'),
-  viewId?: string(name='view_id'),
-}
-
-/**
  * 
  */
 model DeleteGroupRequest {
@@ -30100,23 +31532,6 @@ model DeleteGroupRequest {
  * 
  */
 model DeleteGroupResponse {
-}
-
-/**
- * delete locationCluster request
- */
-model DeleteLocationDateClusterRequest {
-  httpheaders?: map[string]string,
-  clusterId?: string(name='cluster_id'),
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-}
-
-/**
- * delete locationCluster response
- */
-model DeleteLocationDateClusterResponse {
-  clusterId?: string(name='cluster_id'),
-  driveId?: string(name='drive_id'),
 }
 
 /**
@@ -30150,26 +31565,11 @@ model DeletePermissionRequest {
 }
 
 /**
- * delete story request
- */
-model DeleteStoryRequest {
-  httpheaders?: map[string]string,
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  storyId: string(name='story_id', description='story_id', example='"Story-uuid"'),
-}
-
-/**
- * 删除故事
- */
-model DeleteStoryResponse {
-  driveId?: string(name='drive_id', description='drive_id'),
-}
-
-/**
  * 
  */
 model DeleteSyncMappingRequest {
   httpheaders?: map[string]string,
+  Mode?: string(name='Mode'),
   deviceName?: string(name='device_name', description='device_name'),
   driveId?: string(name='drive_id', description='drive_id'),
   fsId?: string(name='fs_id', description='fs_id'),
@@ -30197,16 +31597,6 @@ model DeleteUserResponse {
 }
 
 /**
- * Delete view request
- */
-model DeleteViewRequest {
-  httpheaders?: map[string]string,
-  category: string(name='category', description='category', example='"album"'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  viewId: string(name='view_id', description='view_id', example='123'),
-}
-
-/**
  * 
  */
 model DeviceItem {
@@ -30216,48 +31606,6 @@ model DeviceItem {
   deviceName?: string(name='device_name', description='device_name'),
   deviceType?: string(name='device_type', description='device_type'),
   updatedAt?: string(name='updated_at', description='updated_at'),
-}
-
-/**
- * 
- */
-model FaceBoundary {
-  Height?: int64(name='Height', format='int64'),
-  Left?: int64(name='Left', format='int64'),
-  Top?: int64(name='Top', format='int64'),
-  Width?: int64(name='Width', format='int64'),
-}
-
-/**
- * find story request
- */
-model FindStoriesRequest {
-  httpheaders?: map[string]string,
-  coverImageThumbnailProcess?: string(name='cover_image_thumbnail_process', description='cover_image_thumbnail_process'),
-  coverVideoThumbnailProcess?: string(name='cover_video_thumbnail_process', description='cover_video_thumbnail_process'),
-  createTimeRange?: QueryRequestTimeRange(name='create_time_range'),
-  customLabels?: string(name='custom_labels', description='custom_labels'),
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  faceGroupIds?: [ string ](name='face_group_ids', description='face_group_ids', items='{"type":"string"}'),
-  limit?: int64(name='limit', description='limit', format='int64'),
-  marker?: string(name='marker', description='marker'),
-  order?: string(name='order', description='order'),
-  sort?: string(name='sort', description='sort'),
-  storyEndTimeRange?: QueryRequestTimeRange(name='story_end_time_range'),
-  storyId?: string(name='story_id', description='story_id', example='"story112312"'),
-  storyName?: string(name='story_name', description='story_name'),
-  storyStartTimeRange?: QueryRequestTimeRange(name='story_start_time_range'),
-  storyType?: string(name='story_type', description='story_type'),
-  urlExpireSec?: int64(name='url_expire_sec', description='url_expire_sec', format='int64'),
-  withEmptyStories?: boolean(name='with_empty_stories', description='with_empty_stories'),
-}
-
-/**
- * 查询故事
- */
-model FindStoriesResponse {
-  items?: [ GetStoryResponse ](name='items', description='items', items='{"$ref":"#/definitions/GetStoryResponse"}'),
-  nextMarker?: string(name='next_marker', description='next_marker'),
 }
 
 /**
@@ -30273,15 +31621,6 @@ model GetAppDebugCmdRequest {
  */
 model GetAppDebugCmdResponse {
   cmd?: string(name='cmd', description='cmd'),
-}
-
-/**
- * Get face group info request
- */
-model GetFaceGroupInfoRequest {
-  httpheaders?: map[string]string,
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  groupId: string(name='group_id', description='group_id 列举人脸分组接口中获取', example='"group-asdasdasdeop"'),
 }
 
 /**
@@ -30306,21 +31645,6 @@ model GetGroupResponse {
   isSync?: boolean(name='is_sync'),
   permission?: object(name='permission', additionalProperties='{"$ref":"#/definitions/IDPermission"}'),
   updatedAt?: int64(name='updated_at', description='updated_at', example=111111, format='int64'),
-}
-
-/**
- * Get photo count request
- */
-model GetImageCountRequest {
-  httpheaders?: map[string]string,
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-}
-
-/**
- * 获取云照片个数结果
- */
-model GetImageCountResponse {
-  imageCount?: int64(name='image_count', description='image_count', example=1, format='int64'),
 }
 
 /**
@@ -30365,44 +31689,6 @@ model GetPermissionRequest {
 }
 
 /**
- * Get story request
- */
-model GetStoryRequest {
-  httpheaders?: map[string]string,
-  coverImageThumbnailProcess?: string(name='cover_image_thumbnail_process', description='cover_image_thumbnail_process'),
-  coverVideoThumbnailProcess?: string(name='cover_video_thumbnail_process', description='cover_video_thumbnail_process'),
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
-  imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
-  storyId: string(name='story_id', description='story_id', example='"story112312"'),
-  thumbnailProcesses?: object(name='thumbnail_processes', additionalProperties='{"$ref":"#/definitions/BaseImageProcessRequest"}'),
-  urlExpireSec?: int64(name='url_expire_sec', description='url_expire_sec', format='int64'),
-  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
-type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
-}
-
-/**
- * 生成故事
- */
-model GetStoryResponse {
-  coverFileId?: string(name='cover_file_id', description='cover_file_id'),
-  coverFileThumbnailUrl?: string(name='cover_file_thumbnail_url', description='cover_file_url'),
-  createdAt?: string(name='created_at', description='created_at'),
-  customId?: string(name='custom_id', description='custom_id'),
-  customLabels?: object(name='custom_labels', additionalProperties='{"type":"object"}', description='custom_labels'),
-  faceGroupIds?: [ string ](name='face_group_ids', description='face_group_ids', items='{"type":"string"}'),
-  storyEndTime?: string(name='story_end_time', description='story_end_time'),
-  storyFileList?: [ BaseCCPFileResponse ](name='story_file_list', items='{"$ref":"#/definitions/BaseCCPFileResponse"}'),
-  storyId?: string(name='story_id', description='story_id'),
-  storyName?: string(name='story_name', description='story_name'),
-  storyStartTime?: string(name='story_start_time', description='story_start_time'),
-  storySubType?: string(name='story_sub_type', description='story_sub_type'),
-  storyType?: string(name='story_type', description='story_type'),
-  updatedAt?: string(name='updated_at', description='updated_at'),
-}
-
-/**
  * Get user request
  */
 model GetUserRequest {
@@ -30440,115 +31726,6 @@ model GetUserResponse {
   userData?: object(name='user_data', additionalProperties='{"type":"object"}', description='用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K', example='{ is_student: true }'),
   userId?: string(name='user_id', description='用户 ID', example='ccpuserid'),
   userName?: string(name='user_name', description='用户名称', example='name'),
-}
-
-/**
- * get file from view
- */
-model GetViewFileRequest {
-  httpheaders?: map[string]string,
-  category: string(name='category', description='category', example='"album"'),
-  driveId?: string(name='drive_id'),
-  fileId?: string(name='file_id'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  viewId: string(name='view_id', description='view_id', example='123'),
-}
-
-/**
- * get view file response
- */
-model GetViewFileResponse {
-  actionList?: [ string ](name='action_list', description='action_list', items='{"type":"string"}'),
-  autoDeleteLeftSec?: int64(name='auto_delete_left_sec', description='auto_delete_left_sec', example=10000, format='int64'),
-  category?: string(name='category', description='category', enum='doc, image, audio, video', example='doc'),
-  characteristicHash?: string(name='characteristic_hash', description='CharacteristicHash'),
-  contentHash?: string(name='content_hash', description='Content Hash', example='EA4942AA8761213890A5C386F88E6464D2C31CA3'),
-  contentHashName?: string(name='content_hash_name', description='content_hash_name', enum='sha1', example='sha1'),
-  contentType?: string(name='content_type', description='content_type', example='application/json'),
-  crc64Hash?: string(name='crc64_hash', description='crc64_hash'),
-  createdAt?: string(name='created_at', description='created_at', example='2019-08-20T06:51:27.292Z'),
-  creatorId?: string(name='creator_id', description='creator_id', example='123abc'),
-  creatorName?: string(name='creator_name', description='creator_name', example='test_user'),
-  creatorType?: string(name='creator_type', description='creator_type', example='User, AliUser'),
-  customField1?: string(name='custom_field_1', description='custom_field_1'),
-  customField2?: string(name='custom_field_2', description='custom_field_2'),
-  customType?: string(name='custom_type', description='custom_type'),
-  description?: string(name='description', description='description', example='file description'),
-  domainId?: string(name='domain_id', description='DomainID', example='test001', pattern='[a-z0-9A-Z]+'),
-  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
-  encryptMode?: string(name='encrypt_mode', description='encrypt_mode', example='pin'),
-  exFieldsInfo?: object(name='ex_fields_info', additionalProperties='{"type":"object"}', description='ex_fields_info'),
-  fields?: object(name='fields', additionalProperties='{"type":"object"}'),
-  fileExtension?: string(name='file_extension', description='file_extension', example='jpg'),
-  fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
-  filePathType?: string(name='file_path_type', description='TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析'),
-  fileRevisionId?: string(name='file_revision_id'),
-  hidden?: boolean(name='hidden', description='Hidden
-type: boolean', enum='false, true', example=false),
-  imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
-  joinedAt?: int64(name='joined_at', format='int64'),
-  labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
-  lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
-  lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
-  lastModifierType?: string(name='last_modifier_type', description='last_modifier_type', example='User, AliUser'),
-  localCreatedAt?: string(name='local_created_at', description='local_created_at', example='2019-08-20T06:51:27.292Z'),
-  localModifiedAt?: string(name='local_modified_at'),
-  meta?: string(name='meta'),
-  mimeExtension?: string(name='mime_extension', description='mime_extension', example='mov'),
-  mimeType?: string(name='mime_type', description='mime_type', example='video/quicktime'),
-  name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
-  parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
-  punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
-  punishReason?: string(name='punish_reason', description='PunishReason'),
-  revisionId?: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
-  revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
-  shareId?: string(name='share_id'),
-  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
-  starred?: boolean(name='starred', description='starred
-type: boolean', example=false),
-  status?: string(name='status', description='status', enum='uploading, available', example='available'),
-  streamsInfo?: object(name='streams_info', additionalProperties='{"$ref":"#/definitions/SimpleStreamInfo"}', description='@Deprecated streams url info'),
-  syncDeviceFlag?: boolean(name='sync_device_flag', description='sync_device_flag'),
-  syncFlag?: boolean(name='sync_flag', description='sync_flag'),
-  syncMeta?: string(name='sync_meta', description='sync_meta'),
-  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  thumbnailUrls?: object(name='thumbnail_urls', additionalProperties='{"type":"string"}', description='thumbnail_urls'),
-  trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
-  type?: string(name='type', description='type', enum='file, folder', example='file'),
-  updatedAt?: string(name='updated_at', description='updated_at', format='date-time'),
-  uploadId?: string(name='upload_id', description='upload_id', example='C9DCFE5A82644AC7A02DB74C30C934A6'),
-  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
-  userTags?: object(name='user_tags', additionalProperties='{"type":"string"}', description='user_tags'),
-  videoMediaMetadata?: VideoMediaResponse(name='video_media_metadata'),
-  videoPreviewMetadata?: VideoPreviewResponse(name='video_preview_metadata'),
-  viewId?: string(name='view_id'),
-}
-
-/**
- * Get view request
- */
-model GetViewRequest {
-  httpheaders?: map[string]string,
-  category: string(name='category', description='category', example='"album"'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  viewId: string(name='view_id', description='view_id', example='123'),
-}
-
-/**
- * 获取指定逻辑视图信息
- */
-model GetViewResponse {
-  category?: string(name='category'),
-  createdAt?: string(name='created_at'),
-  description?: string(name='description'),
-  exFieldsInfo?: object(name='ex_fields_info', additionalProperties='{"type":"object"}'),
-  fileCount?: int64(name='file_count', format='int64'),
-  name?: string(name='name'),
-  owner?: string(name='owner'),
-  updatedAt?: string(name='updated_at'),
-  viewId?: string(name='view_id'),
 }
 
 /**
@@ -30592,49 +31769,6 @@ model HasMemberRequest {
  */
 model HasMembershipResponse {
   result?: boolean(name='result'),
-}
-
-/**
- * 
- */
-model ImageAddressResponse {
-  addressDetail?: Address(name='address_detail'),
-  count?: int64(name='count', description='聚类地点计数', example=1, format='int64'),
-  coverFileId?: string(name='cover_file_id', description='cover_file_id'),
-  coverUrl?: string(name='cover_url', description='聚类地点封面图片地址', example='http://imm-dev-wmt/tags/05.jpg?x-oss-process=xxx'),
-  location?: string(name='location', description='经纬度', example='39.21211,101.32111'),
-  name?: string(name='name', description='聚类地点名称', example='杭州'),
-}
-
-/**
- * 人脸分组信息
- */
-model ImageFaceGroupResponse {
-  createdAt?: string(name='created_at', description='人脸分组生成时间', example='2019-02-20T09:35:51.057Z'),
-  groupCoverFaceBoundary?: FaceBoundary(name='group_cover_face_boundary'),
-  groupCoverFileId?: string(name='group_cover_file_id', description='group_cover_file_id'),
-  groupCoverHeight?: int64(name='group_cover_height', description='group_cover_height', format='int64'),
-  groupCoverUrl?: string(name='group_cover_url', description='人脸分组封面头像地址', example='http://imm-dev-wmt/facegroup/05.jpg?x-oss-process=xxx'),
-  groupCoverWidth?: int64(name='group_cover_width', description='group_cover_width', format='int64'),
-  groupId?: string(name='group_id', description='人脸分组 ID', example='abc'),
-  groupName?: string(name='group_name', description='人脸分组名称', example='abc'),
-  imageCount?: int64(name='image_count', description='照片个数', example=2, format='int64'),
-  remarks?: string(name='remarks', description='remarks'),
-  remarksArray?: [ string ](name='remarks_array', description='remarks_array', items='{"type":"string"}'),
-  updatedAt?: string(name='updated_at', description='人脸分组修改时间', example='2019-02-20T09:35:51.057Z'),
-}
-
-/**
- * 
- */
-model ImageTagResponse {
-  count?: int64(name='count', description='聚类标签计数', example=1, format='int64'),
-  coverFileCategory?: string(name='cover_file_category', description='cover_file_category'),
-  coverFileId?: string(name='cover_file_id', description='cover_file_id'),
-  coverOverallScore?: double(name='cover_overall_score', description='cover_score', format='double'),
-  coverTagConfidence?: double(name='cover_tag_confidence', description='cover_tag_confidence', format='double'),
-  coverUrl?: string(name='cover_url', description='聚类标签封面图片地址', example='http://imm-dev-wmt/tags/05.jpg?x-oss-process=xxx'),
-  name?: string(name='name', description='聚类标签名称', example='篮球'),
 }
 
 /**
@@ -30724,24 +31858,6 @@ model ListDirectParentMembershipsResponse {
 }
 
 /**
- * list file view ids
- */
-model ListFileViewsRequest {
-  httpheaders?: map[string]string,
-  category?: string(name='category'),
-  driveId?: string(name='drive_id'),
-  fileId?: string(name='file_id'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-}
-
-/**
- * list file view ids
- */
-model ListFileViewsResponse {
-  items?: [ GetViewResponse ](name='items', items='{"$ref":"#/definitions/GetViewResponse"}'),
-}
-
-/**
  * 
  */
 model ListGroupRequest {
@@ -30771,63 +31887,6 @@ model ListIdentityRoleRequest {
 }
 
 /**
- * List image address groups request
- */
-model ListImageAddressGroupsRequest {
-  httpheaders?: map[string]string,
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
-  limit?: int32(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
-  marker?: string(name='marker', description='翻页标记', example='marker'),
-  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
-}
-
-/**
- * 展示地点分组集合
- */
-model ListImageAddressGroupsResponse {
-  items?: [ ImageAddressResponse ](name='items', items='{"$ref":"#/definitions/ImageAddressResponse"}'),
-  nextMarker?: string(name='next_marker'),
-}
-
-/**
- * List image face groups request
- */
-model ListImageFaceGroupsRequest {
-  httpheaders?: map[string]string,
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  limit?: int64(name='limit', default=100, description='每页大小限制', example=10, format='int64', maximum=100, minimum=1),
-  marker?: string(name='marker', description='翻页标记', example='marker'),
-  remarks?: string(name='remarks'),
-}
-
-/**
- * 展示人脸分组集合
- */
-model ListImageFaceGroupsResponse {
-  items?: [ ImageFaceGroupResponse ](name='items', items='{"$ref":"#/definitions/ImageFaceGroupResponse"}'),
-  nextMarker?: string(name='next_marker'),
-}
-
-/**
- * List image tags request
- */
-model ListImageTagsRequest {
-  httpheaders?: map[string]string,
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
-  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
-type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
-}
-
-/**
- * 展示标签集合
- */
-model ListImageTagsResponse {
-  tags?: [ ImageTagResponse ](name='tags', items='{"$ref":"#/definitions/ImageTagResponse"}'),
-}
-
-/**
  * request
  */
 model ListPermissionRequest {
@@ -30851,6 +31910,7 @@ model ListPermissionResponse {
  */
 model ListSyncMappingRequest {
   httpheaders?: map[string]string,
+  SyncMode?: string(name='SyncMode', description='SyncMode'),
   deviceName?: string(name='device_name', description='device_name'),
   limit?: int32(name='limit', description='limit', format='int32'),
   marker?: string(name='marker', description='marker'),
@@ -30885,98 +31945,12 @@ model ListUserResponse {
 }
 
 /**
- * list view file
- */
-model ListViewFilesRequest {
-  httpheaders?: map[string]string,
-  category: string(name='category', description='category', example='"album"'),
-  fields?: string(name='fields'),
-  filter?: string(name='filter'),
-  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
-  imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  limit?: int32(name='limit', format='int32'),
-  marker?: string(name='marker'),
-  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
-  orderBy?: string(name='order_by'),
-  orderDirection?: string(name='order_direction'),
-  urlExpireSec?: int32(name='url_expire_sec', format='int32'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
-type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
-  viewId: string(name='view_id', description='view_id', example='123'),
-}
-
-/**
- * list view files response
- */
-model ListViewFilesResponse {
-  items?: [ ViewFileItem ](name='items', items='{"$ref":"#/definitions/ViewFileItem"}'),
-  nextMarker?: string(name='next_marker'),
-}
-
-/**
- * List views request
- */
-model ListViewsRequest {
-  httpheaders?: map[string]string,
-  category: string(name='category', description='category', example='"album"'),
-  limit?: int32(name='limit', default=50, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
-  marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
-  orderBy?: string(name='order_by', description='order_by', example='"abc"'),
-  orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='ASC'),
-  owner: string(name='owner', description='owner', example='"123"'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-}
-
-/**
- * 获取逻辑视图列表信息
- */
-model ListViewsResponse {
-  items?: [ GetViewResponse ](name='items', items='{"$ref":"#/definitions/GetViewResponse"}'),
-  nextMarker?: string(name='next_marker'),
-}
-
-/**
- * 
- */
-model LocationDateCluster {
-  address?: Address(name='address'),
-  clusterId?: string(name='cluster_id'),
-  createdAt?: string(name='created_at'),
-  customLabels?: object(name='custom_labels', additionalProperties='{"type":"object"}'),
-  driveId?: string(name='drive_id'),
-  endTime?: string(name='end_time'),
-  level?: string(name='level'),
-  startTime?: string(name='start_time'),
-  title?: string(name='title'),
-  updatedAt?: string(name='updated_at'),
-}
-
-/**
  * 
  */
 model MemberIDInfo {
   memberType?: string(name='member_type'),
   subGroupId?: string(name='sub_group_id'),
   userId?: string(name='user_id'),
-}
-
-/**
- * Merge face group request
- */
-model MergeFaceGroupRequest {
-  httpheaders?: map[string]string,
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  fromGroupId: string(name='from_group_id', description='from_group_id', example='abc'),
-  toGroupId: string(name='to_group_id', description='to_group_id', example='bcd'),
-}
-
-/**
- * Merge face group response
- */
-model MergeFaceGroupResponse {
-  status?: string(name='status'),
-  taskId?: string(name='task_id'),
 }
 
 /**
@@ -30995,31 +31969,6 @@ model MigrateUserToSubdomainResponse {
 }
 
 /**
- * Parse keywords request
- */
-model ParseKeywordsRequest {
-  httpheaders?: map[string]string,
-  keywords?: string(name='keywords'),
-}
-
-/**
- * Parse keywords response
- */
-model ParseKeywordsResponse {
-  addressLine?: string(name='address_line', description='AddressLine'),
-  tags?: [ SystemTag ](name='tags', items='{"$ref":"#/definitions/SystemTag"}'),
-  timeRange?: ParseTimeRange(name='time_range'),
-}
-
-/**
- * 
- */
-model ParseTimeRange {
-  end?: string(name='end'),
-  start?: string(name='start'),
-}
-
-/**
  * 
  */
 model PunishmentResponse {
@@ -31030,79 +31979,12 @@ model PunishmentResponse {
 }
 
 /**
- * query locationCluster response
- */
-model QueryLocationClustersResponse {
-  locationDateClusters?: [ LocationDateCluster ](name='location_date_clusters', items='{"$ref":"#/definitions/LocationDateCluster"}'),
-  nextMarker?: string(name='next_marker'),
-}
-
-/**
- * query locationCluster request
- */
-model QueryLocationDateClustersRequest {
-  address?: Address(name='address'),
-  clusterId?: string(name='cluster_id'),
-  createTimeRange?: QueryRequestTimeRange(name='create_time_range'),
-  customLabels?: string(name='custom_labels'),
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  endTimeRange?: QueryRequestTimeRange(name='end_time_range'),
-  levels?: [ string ](name='levels', items='{"type":"string"}'),
-  limit?: int32(name='limit', format='int32'),
-  marker?: string(name='marker'),
-  order?: string(name='order'),
-  sort?: string(name='sort'),
-  startTimeRange?: QueryRequestTimeRange(name='start_time_range'),
-  title?: string(name='title'),
-  updateTimeRange?: QueryRequestTimeRange(name='update_time_range'),
-}
-
-/**
- * 
- */
-model QueryRequestTimeRange {
-  end?: string(name='end', description='end'),
-  start?: string(name='start', description='start'),
-}
-
-/**
- * remove story files request
- */
-model RemoveStoryFilesRequest {
-  httpheaders?: map[string]string,
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  files?: [ StoryFile ](name='files', items='{"$ref":"#/definitions/StoryFile"}'),
-  storyId: string(name='story_id', description='story_id'),
-}
-
-/**
- * remove story files response
- */
-model RemoveStoryFilesResponse {
-  driveId?: string(name='drive_id', description='drive_id'),
-  requestId?: string(name='request_id', description='request_id'),
-  storyId?: string(name='story_id', description='story_id'),
-}
-
-/**
  * Remove user to subdomain request
  */
 model RemoveUserFromSubdomainRequest {
   httpheaders?: map[string]string,
   subdomainId?: string(name='subdomain_id', description='subdomain id'),
   userId: string(name='user_id', description='用户 ID', example='ccpuserid'),
-}
-
-/**
- * remove file from view
- */
-model RemoveViewFileRequest {
-  httpheaders?: map[string]string,
-  category: string(name='category', description='category', example='"album"'),
-  driveId?: string(name='drive_id'),
-  fileId?: string(name='file_id'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  viewId: string(name='view_id', description='view_id', example='123'),
 }
 
 /**
@@ -31139,27 +32021,6 @@ model SearchGroupRequest {
 model SearchGroupResponse {
   items?: [ BaseGroupResponse ](name='items', description='items', example='items', items='{"$ref":"#/definitions/BaseGroupResponse"}'),
   nextMarker?: string(name='next_marker', description='next_marker', example='nextmarker'),
-}
-
-/**
- * Search image address groups request
- */
-model SearchImageAddressGroupsRequest {
-  httpheaders?: map[string]string,
-  addressLevel?: string(name='address_level', default='city', description='查询的地点级别', example='city'),
-  addressNames?: [ string ](name='address_names', description='查询的地点数组', example='杭州市, 北京市', items='{"type":"string"}'),
-  brGeoPoint?: string(name='br_geo_point', description='br_geo_point', example='39.121,101.2121'),
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
-  tlGeoPoint?: string(name='tl_geo_point', description='tl_geo_point', example='39.121,101.2121'),
-  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
-}
-
-/**
- * 展示地点分组列表
- */
-model SearchImageAddressGroupsResponse {
-  items?: [ ImageAddressResponse ](name='items', items='{"$ref":"#/definitions/ImageAddressResponse"}'),
 }
 
 /**
@@ -31229,106 +32090,6 @@ model SearchUserRequest {
 }
 
 /**
- * search view file
- */
-model SearchViewFilesRequest {
-  httpheaders?: map[string]string,
-  category: string(name='category', description='category', example='"album"'),
-  fields?: string(name='fields'),
-  filter?: string(name='filter'),
-  imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
-  imageUrlProcess?: string(name='image_url_process', description='image_url_process', example='image/resize,w_200'),
-  limit?: int32(name='limit', format='int32'),
-  marker?: string(name='marker'),
-  officeThumbnailProcess?: string(name='office_thumbnail_process', description='office_thumbnail_process', example='image/resize,w_200'),
-  orderBy?: string(name='order_by'),
-  orderDirection?: string(name='order_direction'),
-  query?: string(name='query', description='query', example='not name=123', maxLength=4096),
-  returnTotalCount?: boolean(name='return_total_count', description='return_total_count 是否返回查询总数'),
-  urlExpireSec?: int32(name='url_expire_sec', format='int32'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process
-type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
-  viewId: string(name='view_id', description='view_id', example='123'),
-}
-
-/**
- * search view files response
- */
-model SearchViewFilesResponse {
-  items?: [ ViewFileItem ](name='items', items='{"$ref":"#/definitions/ViewFileItem"}'),
-  nextMarker?: string(name='next_marker'),
-  totalCount?: int64(name='total_count', format='int64'),
-}
-
-/**
- * Search view request
- */
-model SearchViewsRequest {
-  httpheaders?: map[string]string,
-  category: string(name='category', description='category', example='"album"'),
-  limit?: int32(name='limit', default=50, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
-  marker?: string(name='marker', description='marker', example='NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg'),
-  name?: string(name='name', description='name', example='"name"'),
-  orderBy?: string(name='order_by', description='order_by', example='"created_at"'),
-  orderDirection?: string(name='order_direction', description='order_direction', enum='ASC, DESC', example='DESC'),
-  owner?: string(name='owner', description='owner', example='"123"'),
-  returnTotalCount?: boolean(name='return_total_count', description='return_total_count 是否返回查询总数'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-}
-
-/**
- * 获取逻辑视图列表信息
- */
-model SearchViewsResponse {
-  items?: [ GetViewResponse ](name='items', items='{"$ref":"#/definitions/GetViewResponse"}'),
-  nextMarker?: string(name='next_marker'),
-  totalCount?: int64(name='total_count', format='int64'),
-}
-
-/**
- * 
- */
-model SimpleQuery {
-  field?: string(name='field'),
-  operation?: string(name='operation'),
-  subQueries?: [ SimpleQuery ](name='sub_queries', items='{"$ref":"#/definitions/SimpleQuery"}'),
-  value?: string(name='value'),
-}
-
-/**
- * simple query request
- */
-model SimpleQueryRequest {
-  httpheaders?: map[string]string,
-  aggregations?: [ Aggregation ](name='aggregations', items='{"$ref":"#/definitions/Aggregation"}'),
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  limit?: int32(name='limit', format='int32'),
-  marker?: string(name='marker'),
-  order?: string(name='order'),
-  query?: SimpleQuery(name='query'),
-  sort?: string(name='sort'),
-}
-
-/**
- * simple query response
- */
-model SimpleQueryResponse {
-  aggregations?: [ Aggregation ](name='aggregations', items='{"$ref":"#/definitions/Aggregation"}'),
-  files?: [ BaseCCPFileResponse ](name='files', items='{"$ref":"#/definitions/BaseCCPFileResponse"}'),
-  nextMarker?: string(name='next_marker'),
-}
-
-/**
- * 
- */
-model StoryFile {
-  driveId?: string(name='drive_id'),
-  fileId?: string(name='file_id'),
-  revisionId?: string(name='revision_id'),
-}
-
-/**
  * 
  */
 model SyncMappingItem {
@@ -31341,57 +32102,6 @@ model SyncMappingItem {
   localPath?: string(name='local_path', description='local_path'),
   syncMode?: string(name='sync_mode', description='sync_mode'),
   updatedAt?: string(name='updated_at', description='updated_at'),
-}
-
-/**
- * Unassign facegroup item request
- */
-model UnAssignFaceGroupItemRequest {
-  httpheaders?: map[string]string,
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  faceGroupId?: string(name='face_group_id', description='face_group_id', example='abc'),
-  fileId: string(name='file_id', description='file_id', example='abc'),
-  groupId?: string(name='group_id', description='group_id 列举人脸分组接口中获取', example='"group-asdasdasdeop"'),
-}
-
-/**
- * update data process template request
- */
-model UpdateDataProcessTemplateRequest {
-  httpheaders?: map[string]string,
-  resourceId?: string(name='resource_id'),
-  resourceType?: string(name='resource_type'),
-  template?: string(name='template'),
-  userId?: string(name='user_id'),
-}
-
-/**
- * template update response
- */
-model UpdateDataProcessTemplateResponse {
-  resourceId?: string(name='resource_id'),
-  resourceType?: string(name='resource_type'),
-  template?: string(name='template'),
-}
-
-/**
- * Update face group info request
- */
-model UpdateFaceGroupInfoRequest {
-  httpheaders?: map[string]string,
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  groupCoverFaceId?: string(name='group_cover_face_id', description='group_cover_face_id', example='"abcdefg"'),
-  groupId: string(name='group_id', description='group_id 列举人脸分组接口中获取', example='"group-asdasdasdeop"'),
-  groupName?: string(name='group_name', description='group_name', example='"张XX"'),
-  remarks?: string(name='remarks', description='remarks', example='"hidden"'),
-}
-
-/**
- * 更新人脸分组信息结果
- */
-model UpdateFaceGroupInfoResponse {
-  driveId?: string(name='drive_id', description='drive_id', example='"101"'),
-  groupId?: string(name='group_id', description='group_id', example='"group-aas11002ddeac"'),
 }
 
 /**
@@ -31419,25 +32129,6 @@ model UpdateGroupResponse {
   isSync?: boolean(name='is_sync'),
   permission?: object(name='permission', additionalProperties='{"$ref":"#/definitions/IDPermission"}'),
   updatedAt?: int64(name='updated_at', description='updated_at', example=111111, format='int64'),
-}
-
-/**
- * update locationCluster request
- */
-model UpdateLocationDateClusterRequest {
-  httpheaders?: map[string]string,
-  clusterId?: string(name='cluster_id'),
-  customLabels?: object(name='custom_labels', additionalProperties='{"type":"string"}'),
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  title?: string(name='title'),
-}
-
-/**
- * update locationCluster response
- */
-model UpdateLocationDateClusterResponse {
-  clusterId?: string(name='cluster_id'),
-  driveId?: string(name='drive_id'),
 }
 
 /**
@@ -31485,27 +32176,6 @@ model UpdatePermissionRequest {
   resource?: string(name='resource'),
   resourceType?: string(name='resource_type'),
   userTags?: [ string ](name='user_tags', items='{"type":"string"}'),
-}
-
-/**
- * Update story request
- */
-model UpdateStoryRequest {
-  httpheaders?: map[string]string,
-  cover?: StoryFile(name='cover'),
-  customId?: string(name='custom_id', description='custom_id'),
-  customLabels?: object(name='custom_labels', additionalProperties='{"type":"object"}', description='custom_labels'),
-  driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  storyId: string(name='story_id', description='story_id'),
-  storyName?: string(name='story_name', description='story_name'),
-}
-
-/**
- * update story response
- */
-model UpdateStoryResponse {
-  driveId?: string(name='drive_id', description='drive_id'),
-  storyId?: string(name='story_id', description='story_id'),
 }
 
 /**
@@ -31562,20 +32232,6 @@ model UpdateUserResponse {
 }
 
 /**
- * Update view request
- */
-model UpdateViewRequest {
-  httpheaders?: map[string]string,
-  category: string(name='category', description='category', example='"album"'),
-  description?: string(name='description', description='description', example='"abc"'),
-  exFieldsInfo?: object(name='ex_fields_info', additionalProperties='{"type":"object"}', description='ex_fields_info'),
-  fileCount?: int64(name='file_count', description='description', example=10, format='int64'),
-  name?: string(name='name', description='name', example='"abc"'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  viewId: string(name='view_id', description='view_id', example='123'),
-}
-
-/**
  * 
  */
 model UpgradeCheckAppRequest {
@@ -31594,88 +32250,6 @@ model UpgradeCheckAppResponse {
   releaseNotesUrl?: string(name='release_notes_url', description='release_notes_url'),
   url?: string(name='url', description='url'),
   version?: string(name='version', description='version'),
-}
-
-/**
- * 
- */
-model ViewFileBaseRequest {
-  category: string(name='category', description='category', example='"album"'),
-  driveId?: string(name='drive_id'),
-  userId?: string(name='user_id', description='user_id', example='"abc"'),
-  viewId: string(name='view_id', description='view_id', example='123'),
-}
-
-/**
- * 
- */
-model ViewFileItem {
-  actionList?: [ string ](name='action_list', description='action_list', items='{"type":"string"}'),
-  autoDeleteLeftSec?: int64(name='auto_delete_left_sec', description='auto_delete_left_sec', example=10000, format='int64'),
-  category?: string(name='category', description='category', enum='doc, image, audio, video', example='doc'),
-  characteristicHash?: string(name='characteristic_hash', description='CharacteristicHash'),
-  contentHash?: string(name='content_hash', description='Content Hash', example='EA4942AA8761213890A5C386F88E6464D2C31CA3'),
-  contentHashName?: string(name='content_hash_name', description='content_hash_name', enum='sha1', example='sha1'),
-  contentType?: string(name='content_type', description='content_type', example='application/json'),
-  crc64Hash?: string(name='crc64_hash', description='crc64_hash'),
-  createdAt?: string(name='created_at', description='created_at', example='2019-08-20T06:51:27.292Z'),
-  creatorId?: string(name='creator_id', description='creator_id', example='123abc'),
-  creatorName?: string(name='creator_name', description='creator_name', example='test_user'),
-  creatorType?: string(name='creator_type', description='creator_type', example='User, AliUser'),
-  customField1?: string(name='custom_field_1', description='custom_field_1'),
-  customField2?: string(name='custom_field_2', description='custom_field_2'),
-  customType?: string(name='custom_type', description='custom_type'),
-  description?: string(name='description', description='description', example='file description'),
-  domainId?: string(name='domain_id', description='DomainID', example='test001', pattern='[a-z0-9A-Z]+'),
-  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
-  encryptMode?: string(name='encrypt_mode', description='encrypt_mode', example='pin'),
-  exFieldsInfo?: object(name='ex_fields_info', additionalProperties='{"type":"object"}', description='ex_fields_info'),
-  fields?: object(name='fields', additionalProperties='{"type":"object"}'),
-  fileExtension?: string(name='file_extension', description='file_extension', example='jpg'),
-  fileId?: string(name='file_id', description='file_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
-  filePathType?: string(name='file_path_type', description='TODO 先不在API上透出该字段，file_path_type目前在edm中返回；path type是否在PDS通用逻辑中展示，展示的含义是什么，需要再做分析'),
-  fileRevisionId?: string(name='file_revision_id'),
-  hidden?: boolean(name='hidden', description='Hidden
-type: boolean', enum='false, true', example=false),
-  imageMediaMetadata?: ImageMediaResponse(name='image_media_metadata'),
-  joinedAt?: int64(name='joined_at', format='int64'),
-  labels?: [ string ](name='labels', description='labels', example='label1:1, label2:2', items='{"type":"string"}'),
-  lastModifierId?: string(name='last_modifier_id', description='last_modifier_id', example='123abc'),
-  lastModifierName?: string(name='last_modifier_name', description='last_modifier_name', example='test_user'),
-  lastModifierType?: string(name='last_modifier_type', description='last_modifier_type', example='User, AliUser'),
-  localCreatedAt?: string(name='local_created_at', description='local_created_at', example='2019-08-20T06:51:27.292Z'),
-  localModifiedAt?: string(name='local_modified_at'),
-  meta?: string(name='meta'),
-  mimeExtension?: string(name='mime_extension', description='mime_extension', example='mov'),
-  mimeType?: string(name='mime_type', description='mime_type', example='video/quicktime'),
-  name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
-  parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
-  punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
-  punishReason?: string(name='punish_reason', description='PunishReason'),
-  revisionId?: string(name='revision_id', description='revision_id', example='5d5b846942cf94fa72324c14a4bda34e81da635d'),
-  revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
-  shareId?: string(name='share_id'),
-  size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
-  starred?: boolean(name='starred', description='starred
-type: boolean', example=false),
-  status?: string(name='status', description='status', enum='uploading, available', example='available'),
-  streamsInfo?: object(name='streams_info', additionalProperties='{"$ref":"#/definitions/SimpleStreamInfo"}', description='@Deprecated streams url info'),
-  syncDeviceFlag?: boolean(name='sync_device_flag', description='sync_device_flag'),
-  syncFlag?: boolean(name='sync_flag', description='sync_flag'),
-  syncMeta?: string(name='sync_meta', description='sync_meta'),
-  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  thumbnailUrls?: object(name='thumbnail_urls', additionalProperties='{"type":"string"}', description='thumbnail_urls'),
-  trashedAt?: string(name='trashed_at', description='trashed_at', format='date-time'),
-  type?: string(name='type', description='type', enum='file, folder', example='file'),
-  updatedAt?: string(name='updated_at', description='updated_at', format='date-time'),
-  uploadId?: string(name='upload_id', description='upload_id', example='C9DCFE5A82644AC7A02DB74C30C934A6'),
-  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  userMeta?: string(name='user_meta', description='user_meta', example='user_meta'),
-  userTags?: object(name='user_tags', additionalProperties='{"type":"string"}', description='user_tags'),
-  videoMediaMetadata?: VideoMediaResponse(name='video_media_metadata'),
-  videoPreviewMetadata?: VideoPreviewResponse(name='video_preview_metadata'),
-  viewId?: string(name='view_id'),
 }
 
 /**

@@ -16,7 +16,9 @@ public class UpdateLocationDateClusterRequest extends TeaModel {
     @NameInMap("custom_labels")
     public java.util.Map<String, ?> customLabels;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;

@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 更新人脸分组信息结果
  */
 public class UpdateFaceGroupInfoResponse extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // group_id
+    /**
+     * <p>group_id</p>
+     */
     @NameInMap("group_id")
     public String groupId;
 

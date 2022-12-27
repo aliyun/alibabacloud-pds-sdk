@@ -10,12 +10,16 @@ public class ListUploadedPartRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
@@ -23,19 +27,25 @@ public class ListUploadedPartRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
-    // limit
+    /**
+     * <p>limit</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 1000, minimum = 1)
     public Long limit;
 
-    // part_number_marker
+    /**
+     * <p>part_number_marker</p>
+     */
     @NameInMap("part_number_marker")
     public Long partNumberMarker;
 
     @NameInMap("share_id")
     public String shareId;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 

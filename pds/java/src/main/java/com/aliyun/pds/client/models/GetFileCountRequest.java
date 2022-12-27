@@ -10,16 +10,22 @@ public class GetFileCountRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_ext
+    /**
+     * <p>file_ext</p>
+     */
     @NameInMap("file_ext")
     public String fileExt;
 
-    // subdomain
+    /**
+     * <p>subdomain</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

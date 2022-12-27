@@ -16,7 +16,9 @@ public class VideoPreviewEnableConfig extends TeaModel {
     @NameInMap("enable_role_chain")
     public Boolean enableRoleChain;
 
-    // Deprecated, 后续通过 VideoPreviewNeedTranscodeErrorMap 来判断是否允许重新转码
+    /**
+     * <p>Deprecated, 后续通过 VideoPreviewNeedTranscodeErrorMap 来判断是否允许重新转码</p>
+     */
     @NameInMap("enable_transcode_when_play")
     public Boolean enableTranscodeWhenPlay;
 

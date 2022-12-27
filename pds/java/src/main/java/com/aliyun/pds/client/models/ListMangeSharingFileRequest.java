@@ -10,16 +10,22 @@ public class ListMangeSharingFileRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 查询的用户列表，传入用户ID列表，不传默认查询所有有权限管理的共享
+    /**
+     * <p>查询的用户列表，传入用户ID列表，不传默认查询所有有权限管理的共享</p>
+     */
     @NameInMap("creator_list")
     public java.util.List<String> creatorList;
 
-    // 查询返回的记录数
+    /**
+     * <p>查询返回的记录数</p>
+     */
     @NameInMap("limit")
     @Validation(required = true)
     public Integer limit;
 
-    // 上次查询返回的游标
+    /**
+     * <p>上次查询返回的游标</p>
+     */
     @NameInMap("marker")
     public String marker;
 

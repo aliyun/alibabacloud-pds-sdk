@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 文件移动请求
  */
 public class BaseMoveFileRequest extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // new_name
+    /**
+     * <p>new_name</p>
+     */
     @NameInMap("new_name")
     @Validation(maxLength = 1024, minLength = 1)
     public String newName;

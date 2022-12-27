@@ -10,23 +10,33 @@ public class ImageAddressResponse extends TeaModel {
     @NameInMap("address_detail")
     public Address addressDetail;
 
-    // 聚类地点计数
+    /**
+     * <p>聚类地点计数</p>
+     */
     @NameInMap("count")
     public Long count;
 
-    // cover_file_id
+    /**
+     * <p>cover_file_id</p>
+     */
     @NameInMap("cover_file_id")
     public String coverFileId;
 
-    // 聚类地点封面图片地址
+    /**
+     * <p>聚类地点封面图片地址</p>
+     */
     @NameInMap("cover_url")
     public String coverUrl;
 
-    // 经纬度
+    /**
+     * <p>经纬度</p>
+     */
     @NameInMap("location")
     public String location;
 
-    // 聚类地点名称
+    /**
+     * <p>聚类地点名称</p>
+     */
     @NameInMap("name")
     public String name;
 

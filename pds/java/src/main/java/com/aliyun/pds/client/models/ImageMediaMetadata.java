@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 
  */
 public class ImageMediaMetadata extends TeaModel {
-    // height
+    /**
+     * <p>height</p>
+     */
     @NameInMap("height")
     public Long height;
 
-    // taken_at
+    /**
+     * <p>taken_at</p>
+     */
     @NameInMap("taken_at")
     public String takenAt;
 
-    // width：
+    /**
+     * <p>width：</p>
+     */
     @NameInMap("width")
     public Long width;
 
