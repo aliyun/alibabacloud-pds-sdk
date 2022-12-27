@@ -45,6 +45,9 @@ public class ListViewFilesRequest extends TeaModel {
     @NameInMap("order_direction")
     public String orderDirection;
 
+    @NameInMap("thumbnail_processes")
+    public java.util.Map<String, ?> thumbnailProcesses;
+
     @NameInMap("url_expire_sec")
     public Integer urlExpireSec;
 
@@ -153,6 +156,14 @@ public class ListViewFilesRequest extends TeaModel {
     }
     public String getOrderDirection() {
         return this.orderDirection;
+    }
+
+    public ListViewFilesRequest setThumbnailProcesses(java.util.Map<String, ?> thumbnailProcesses) {
+        this.thumbnailProcesses = thumbnailProcesses;
+        return this;
+    }
+    public java.util.Map<String, ?> getThumbnailProcesses() {
+        return this.thumbnailProcesses;
     }
 
     public ListViewFilesRequest setUrlExpireSec(Integer urlExpireSec) {

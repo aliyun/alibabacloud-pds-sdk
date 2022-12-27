@@ -25,6 +25,9 @@ public class CreateFileRequest extends TeaModel {
     @NameInMap("check_name_mode")
     public String checkNameMode;
 
+    @NameInMap("check_parent_file_id_path")
+    public String checkParentFileIdPath;
+
     // content_hash
     @NameInMap("content_hash")
     public String contentHash;
@@ -220,6 +223,14 @@ public class CreateFileRequest extends TeaModel {
     }
     public String getCheckNameMode() {
         return this.checkNameMode;
+    }
+
+    public CreateFileRequest setCheckParentFileIdPath(String checkParentFileIdPath) {
+        this.checkParentFileIdPath = checkParentFileIdPath;
+        return this;
+    }
+    public String getCheckParentFileIdPath() {
+        return this.checkParentFileIdPath;
     }
 
     public CreateFileRequest setContentHash(String contentHash) {

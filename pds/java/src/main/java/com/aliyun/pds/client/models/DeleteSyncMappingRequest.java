@@ -10,6 +10,9 @@ public class DeleteSyncMappingRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    @NameInMap("Mode")
+    public String Mode;
+
     // device_name
     @NameInMap("device_name")
     public String deviceName;
@@ -37,6 +40,14 @@ public class DeleteSyncMappingRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public DeleteSyncMappingRequest setMode(String Mode) {
+        this.Mode = Mode;
+        return this;
+    }
+    public String getMode() {
+        return this.Mode;
     }
 
     public DeleteSyncMappingRequest setDeviceName(String deviceName) {

@@ -11,6 +11,9 @@ public class CreateDetail extends TeaModel {
     @NameInMap("create_type")
     public String createType;
 
+    @NameInMap("is_over_write")
+    public Boolean isOverWrite;
+
     // SrcFileID
     @NameInMap("src_file_id")
     public String srcFileId;
@@ -26,6 +29,14 @@ public class CreateDetail extends TeaModel {
     }
     public String getCreateType() {
         return this.createType;
+    }
+
+    public CreateDetail setIsOverWrite(Boolean isOverWrite) {
+        this.isOverWrite = isOverWrite;
+        return this;
+    }
+    public Boolean getIsOverWrite() {
+        return this.isOverWrite;
     }
 
     public CreateDetail setSrcFileId(String srcFileId) {

@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 实时转码信息task响应
+ * 实时转码task响应
  */
 public class LiveTranscodingTaskResponse extends TeaModel {
     // keep_original_resolution 转码后的视频分辨率是否保持原画(template分辨率大于当前视频)

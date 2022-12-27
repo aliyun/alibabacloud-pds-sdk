@@ -7,7 +7,8 @@ import com.aliyun.tea.*;
  * 转码信息响应
  */
 public class VideoPreviewPlayInfoResponse extends TeaModel {
-    // category
+    // deprecated, 使用外层Response中的同名字段替代
+    // category，此字段为保持兼容而继续存在
     @NameInMap("category")
     public String category;
 
@@ -24,6 +25,10 @@ public class VideoPreviewPlayInfoResponse extends TeaModel {
     // 离线转码有效
     @NameInMap("offline_video_transcoding_list")
     public java.util.List<VideoPreviewOfflineVideoTranscodingTaskResponse> offlineVideoTranscodingList;
+
+    // imm边转边播
+    @NameInMap("quick_video_list")
+    public java.util.List<QuickVideoTaskResponse> quickVideoList;
 
     public static VideoPreviewPlayInfoResponse build(java.util.Map<String, ?> map) throws Exception {
         VideoPreviewPlayInfoResponse self = new VideoPreviewPlayInfoResponse();
@@ -68,6 +73,14 @@ public class VideoPreviewPlayInfoResponse extends TeaModel {
     }
     public java.util.List<VideoPreviewOfflineVideoTranscodingTaskResponse> getOfflineVideoTranscodingList() {
         return this.offlineVideoTranscodingList;
+    }
+
+    public VideoPreviewPlayInfoResponse setQuickVideoList(java.util.List<QuickVideoTaskResponse> quickVideoList) {
+        this.quickVideoList = quickVideoList;
+        return this;
+    }
+    public java.util.List<QuickVideoTaskResponse> getQuickVideoList() {
+        return this.quickVideoList;
     }
 
 }

@@ -10,6 +10,9 @@ public class DeleteFileRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    @NameInMap("check_folder_empty")
+    public Boolean checkFolderEmpty;
+
     // drive_id
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
@@ -40,6 +43,14 @@ public class DeleteFileRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public DeleteFileRequest setCheckFolderEmpty(Boolean checkFolderEmpty) {
+        this.checkFolderEmpty = checkFolderEmpty;
+        return this;
+    }
+    public Boolean getCheckFolderEmpty() {
+        return this.checkFolderEmpty;
     }
 
     public DeleteFileRequest setDriveId(String driveId) {

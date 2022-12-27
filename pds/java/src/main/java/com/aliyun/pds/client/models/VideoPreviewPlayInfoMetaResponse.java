@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 获取视频转码信息meta响应
+ * 视频转码meta响应
  */
 public class VideoPreviewPlayInfoMetaResponse extends TeaModel {
     // duration, 视频长度

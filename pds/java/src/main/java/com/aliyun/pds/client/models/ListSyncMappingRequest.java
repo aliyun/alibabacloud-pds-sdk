@@ -10,6 +10,10 @@ public class ListSyncMappingRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
+    // SyncMode
+    @NameInMap("SyncMode")
+    public String SyncMode;
+
     // device_name
     @NameInMap("device_name")
     public String deviceName;
@@ -33,6 +37,14 @@ public class ListSyncMappingRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public ListSyncMappingRequest setSyncMode(String SyncMode) {
+        this.SyncMode = SyncMode;
+        return this;
+    }
+    public String getSyncMode() {
+        return this.SyncMode;
     }
 
     public ListSyncMappingRequest setDeviceName(String deviceName) {

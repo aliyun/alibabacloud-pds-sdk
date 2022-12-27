@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 
+ * 人脸分组信息
  */
 public class ImageFaceGroupResponse extends TeaModel {
     // 人脸分组生成时间

@@ -122,6 +122,10 @@ public class UCCompleteFileResponse extends TeaModel {
     @NameInMap("image_media_metadata")
     public ImageMediaResponse imageMediaMetadata;
 
+    // InvestigationStatus
+    @NameInMap("investigation_status")
+    public Long investigationStatus;
+
     // labels
     @NameInMap("labels")
     public java.util.List<String> labels;
@@ -173,6 +177,10 @@ public class UCCompleteFileResponse extends TeaModel {
     // PunishFlag
     @NameInMap("punish_flag")
     public Long punishFlag;
+
+    // PunishReason
+    @NameInMap("punish_reason")
+    public String punishReason;
 
     // revision_id
     @NameInMap("revision_id")
@@ -485,6 +493,14 @@ public class UCCompleteFileResponse extends TeaModel {
         return this.imageMediaMetadata;
     }
 
+    public UCCompleteFileResponse setInvestigationStatus(Long investigationStatus) {
+        this.investigationStatus = investigationStatus;
+        return this;
+    }
+    public Long getInvestigationStatus() {
+        return this.investigationStatus;
+    }
+
     public UCCompleteFileResponse setLabels(java.util.List<String> labels) {
         this.labels = labels;
         return this;
@@ -587,6 +603,14 @@ public class UCCompleteFileResponse extends TeaModel {
     }
     public Long getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public UCCompleteFileResponse setPunishReason(String punishReason) {
+        this.punishReason = punishReason;
+        return this;
+    }
+    public String getPunishReason() {
+        return this.punishReason;
     }
 
     public UCCompleteFileResponse setRevisionId(String revisionId) {

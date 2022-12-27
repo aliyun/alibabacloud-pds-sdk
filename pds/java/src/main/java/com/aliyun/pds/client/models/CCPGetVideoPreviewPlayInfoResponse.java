@@ -7,6 +7,13 @@ import com.aliyun.tea.*;
  * 获取转码信息响应
  */
 public class CCPGetVideoPreviewPlayInfoResponse extends TeaModel {
+    @NameInMap("audio_preview_play_info")
+    public AudioPreviewPlayInfoResponse audioPreviewPlayInfo;
+
+    // category
+    @NameInMap("category")
+    public String category;
+
     // domain_id
     @NameInMap("domain_id")
     @Validation(pattern = "[a-z0-9A-Z]+")
@@ -32,6 +39,22 @@ public class CCPGetVideoPreviewPlayInfoResponse extends TeaModel {
     public static CCPGetVideoPreviewPlayInfoResponse build(java.util.Map<String, ?> map) throws Exception {
         CCPGetVideoPreviewPlayInfoResponse self = new CCPGetVideoPreviewPlayInfoResponse();
         return TeaModel.build(map, self);
+    }
+
+    public CCPGetVideoPreviewPlayInfoResponse setAudioPreviewPlayInfo(AudioPreviewPlayInfoResponse audioPreviewPlayInfo) {
+        this.audioPreviewPlayInfo = audioPreviewPlayInfo;
+        return this;
+    }
+    public AudioPreviewPlayInfoResponse getAudioPreviewPlayInfo() {
+        return this.audioPreviewPlayInfo;
+    }
+
+    public CCPGetVideoPreviewPlayInfoResponse setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public CCPGetVideoPreviewPlayInfoResponse setDomainId(String domainId) {
