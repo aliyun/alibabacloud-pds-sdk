@@ -120,6 +120,10 @@ public class ViewFileItem extends TeaModel {
     @NameInMap("image_media_metadata")
     public ImageMediaResponse imageMediaMetadata;
 
+    // InvestigationStatus
+    @NameInMap("investigation_status")
+    public Long investigationStatus;
+
     @NameInMap("joined_at")
     public Long joinedAt;
 
@@ -170,6 +174,10 @@ public class ViewFileItem extends TeaModel {
     // PunishFlag
     @NameInMap("punish_flag")
     public Long punishFlag;
+
+    // PunishReason
+    @NameInMap("punish_reason")
+    public String punishReason;
 
     // revision_id
     @NameInMap("revision_id")
@@ -485,6 +493,14 @@ public class ViewFileItem extends TeaModel {
         return this.imageMediaMetadata;
     }
 
+    public ViewFileItem setInvestigationStatus(Long investigationStatus) {
+        this.investigationStatus = investigationStatus;
+        return this;
+    }
+    public Long getInvestigationStatus() {
+        return this.investigationStatus;
+    }
+
     public ViewFileItem setJoinedAt(Long joinedAt) {
         this.joinedAt = joinedAt;
         return this;
@@ -587,6 +603,14 @@ public class ViewFileItem extends TeaModel {
     }
     public Long getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public ViewFileItem setPunishReason(String punishReason) {
+        this.punishReason = punishReason;
+        return this;
+    }
+    public String getPunishReason() {
+        return this.punishReason;
     }
 
     public ViewFileItem setRevisionId(String revisionId) {

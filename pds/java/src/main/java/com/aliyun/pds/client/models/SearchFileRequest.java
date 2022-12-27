@@ -72,6 +72,10 @@ public class SearchFileRequest extends TeaModel {
     @NameInMap("sign_token")
     public String signToken;
 
+    // system_folders
+    @NameInMap("system_folders")
+    public java.util.List<String> systemFolders;
+
     @NameInMap("thumbnail_processes")
     public java.util.Map<String, ?> thumbnailProcesses;
 
@@ -216,6 +220,14 @@ public class SearchFileRequest extends TeaModel {
     }
     public String getSignToken() {
         return this.signToken;
+    }
+
+    public SearchFileRequest setSystemFolders(java.util.List<String> systemFolders) {
+        this.systemFolders = systemFolders;
+        return this;
+    }
+    public java.util.List<String> getSystemFolders() {
+        return this.systemFolders;
     }
 
     public SearchFileRequest setThumbnailProcesses(java.util.Map<String, ?> thumbnailProcesses) {

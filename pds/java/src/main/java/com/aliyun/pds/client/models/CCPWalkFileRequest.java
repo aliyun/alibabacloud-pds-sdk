@@ -18,6 +18,10 @@ public class CCPWalkFileRequest extends TeaModel {
     @NameInMap("all")
     public Boolean all;
 
+    // before_updated_at
+    @NameInMap("before_updated_at")
+    public String beforeUpdatedAt;
+
     // category
     @NameInMap("category")
     public String category;
@@ -137,6 +141,14 @@ public class CCPWalkFileRequest extends TeaModel {
     }
     public Boolean getAll() {
         return this.all;
+    }
+
+    public CCPWalkFileRequest setBeforeUpdatedAt(String beforeUpdatedAt) {
+        this.beforeUpdatedAt = beforeUpdatedAt;
+        return this;
+    }
+    public String getBeforeUpdatedAt() {
+        return this.beforeUpdatedAt;
     }
 
     public CCPWalkFileRequest setCategory(String category) {

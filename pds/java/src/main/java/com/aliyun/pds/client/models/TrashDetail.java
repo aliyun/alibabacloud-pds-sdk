@@ -7,21 +7,33 @@ import com.aliyun.tea.*;
  * 
  */
 public class TrashDetail extends TeaModel {
-    // ParentFileID
-    @NameInMap("parent_file_id")
-    public String parentFileId;
+    // SrcParentFileID
+    @NameInMap("src_parent_file_id")
+    public String srcParentFileId;
+
+    // TgtParentFileID
+    @NameInMap("tgt_parent_file_id")
+    public String tgtParentFileId;
 
     public static TrashDetail build(java.util.Map<String, ?> map) throws Exception {
         TrashDetail self = new TrashDetail();
         return TeaModel.build(map, self);
     }
 
-    public TrashDetail setParentFileId(String parentFileId) {
-        this.parentFileId = parentFileId;
+    public TrashDetail setSrcParentFileId(String srcParentFileId) {
+        this.srcParentFileId = srcParentFileId;
         return this;
     }
-    public String getParentFileId() {
-        return this.parentFileId;
+    public String getSrcParentFileId() {
+        return this.srcParentFileId;
+    }
+
+    public TrashDetail setTgtParentFileId(String tgtParentFileId) {
+        this.tgtParentFileId = tgtParentFileId;
+        return this;
+    }
+    public String getTgtParentFileId() {
+        return this.tgtParentFileId;
     }
 
 }

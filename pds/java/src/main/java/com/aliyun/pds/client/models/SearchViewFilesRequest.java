@@ -54,6 +54,9 @@ public class SearchViewFilesRequest extends TeaModel {
     @NameInMap("return_total_count")
     public Boolean returnTotalCount;
 
+    @NameInMap("thumbnail_processes")
+    public java.util.Map<String, ?> thumbnailProcesses;
+
     @NameInMap("url_expire_sec")
     public Integer urlExpireSec;
 
@@ -178,6 +181,14 @@ public class SearchViewFilesRequest extends TeaModel {
     }
     public Boolean getReturnTotalCount() {
         return this.returnTotalCount;
+    }
+
+    public SearchViewFilesRequest setThumbnailProcesses(java.util.Map<String, ?> thumbnailProcesses) {
+        this.thumbnailProcesses = thumbnailProcesses;
+        return this;
+    }
+    public java.util.Map<String, ?> getThumbnailProcesses() {
+        return this.thumbnailProcesses;
     }
 
     public SearchViewFilesRequest setUrlExpireSec(Integer urlExpireSec) {

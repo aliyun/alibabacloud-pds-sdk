@@ -9,7 +9,7 @@ import com.aliyun.tea.*;
 public class ListGroupResponse extends TeaModel {
     // items
     @NameInMap("items")
-    public java.util.List<GroupExtraItem> items;
+    public java.util.List<BaseGroupResponse> items;
 
     // 翻页标记
     @NameInMap("next_marker")
@@ -20,11 +20,11 @@ public class ListGroupResponse extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ListGroupResponse setItems(java.util.List<GroupExtraItem> items) {
+    public ListGroupResponse setItems(java.util.List<BaseGroupResponse> items) {
         this.items = items;
         return this;
     }
-    public java.util.List<GroupExtraItem> getItems() {
+    public java.util.List<BaseGroupResponse> getItems() {
         return this.items;
     }
 

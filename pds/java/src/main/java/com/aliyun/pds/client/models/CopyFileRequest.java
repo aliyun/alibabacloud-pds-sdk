@@ -35,6 +35,9 @@ public class CopyFileRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
+    @NameInMap("keep_user_tags")
+    public KeepUserTags keepUserTags;
+
     // new_name
     @NameInMap("new_name")
     @Validation(maxLength = 1024, minLength = 1)
@@ -121,6 +124,14 @@ public class CopyFileRequest extends TeaModel {
     }
     public String getFileIdPath() {
         return this.fileIdPath;
+    }
+
+    public CopyFileRequest setKeepUserTags(KeepUserTags keepUserTags) {
+        this.keepUserTags = keepUserTags;
+        return this;
+    }
+    public KeepUserTags getKeepUserTags() {
+        return this.keepUserTags;
     }
 
     public CopyFileRequest setNewName(String newName) {

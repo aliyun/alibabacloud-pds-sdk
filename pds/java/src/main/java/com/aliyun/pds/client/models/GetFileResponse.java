@@ -114,6 +114,10 @@ public class GetFileResponse extends TeaModel {
     @NameInMap("image_media_metadata")
     public ImageMediaResponse imageMediaMetadata;
 
+    // InvestigationStatus
+    @NameInMap("investigation_status")
+    public Long investigationStatus;
+
     // labels
     @NameInMap("labels")
     public java.util.List<String> labels;
@@ -161,6 +165,10 @@ public class GetFileResponse extends TeaModel {
     // PunishFlag
     @NameInMap("punish_flag")
     public Long punishFlag;
+
+    // PunishReason
+    @NameInMap("punish_reason")
+    public String punishReason;
 
     // revision_id
     @NameInMap("revision_id")
@@ -462,6 +470,14 @@ public class GetFileResponse extends TeaModel {
         return this.imageMediaMetadata;
     }
 
+    public GetFileResponse setInvestigationStatus(Long investigationStatus) {
+        this.investigationStatus = investigationStatus;
+        return this;
+    }
+    public Long getInvestigationStatus() {
+        return this.investigationStatus;
+    }
+
     public GetFileResponse setLabels(java.util.List<String> labels) {
         this.labels = labels;
         return this;
@@ -556,6 +572,14 @@ public class GetFileResponse extends TeaModel {
     }
     public Long getPunishFlag() {
         return this.punishFlag;
+    }
+
+    public GetFileResponse setPunishReason(String punishReason) {
+        this.punishReason = punishReason;
+        return this;
+    }
+    public String getPunishReason() {
+        return this.punishReason;
     }
 
     public GetFileResponse setRevisionId(String revisionId) {
