@@ -13,7 +13,9 @@ public class DeleteFileRequest extends TeaModel {
     @NameInMap("check_folder_empty")
     public Boolean checkFolderEmpty;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
@@ -24,8 +26,10 @@ public class DeleteFileRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
-    // permanently
-    // type: false
+    /**
+     * <p>permanently</p>
+     * <p>type: false</p>
+     */
     @NameInMap("permanently")
     public Boolean permanently;
 

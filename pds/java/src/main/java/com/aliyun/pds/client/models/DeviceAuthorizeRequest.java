@@ -7,25 +7,35 @@ import com.aliyun.tea.*;
  * 
  */
 public class DeviceAuthorizeRequest extends TeaModel {
-    // Client ID, 此处填写创建App时返回的AppID
+    /**
+     * <p>Client ID, 此处填写创建App时返回的AppID</p>
+     */
     @NameInMap("ClientID")
     @Validation(required = true)
     public String ClientID;
 
-    // 设备信息，用于用户识别设备
+    /**
+     * <p>设备信息，用于用户识别设备</p>
+     */
     @NameInMap("DeviceInfo")
     public String DeviceInfo;
 
-    // 设备名，实现方需保证不同设备的设备名不重复（推荐用硬件名称+硬件型号作为设备名）
+    /**
+     * <p>设备名，实现方需保证不同设备的设备名不重复（推荐用硬件名称+硬件型号作为设备名）</p>
+     */
     @NameInMap("DeviceName")
     @Validation(required = true)
     public String DeviceName;
 
-    // 鉴权方式，目前支持ding,ram鉴权
+    /**
+     * <p>鉴权方式，目前支持ding,ram鉴权</p>
+     */
     @NameInMap("LoginType")
     public String LoginType;
 
-    // 申请的权限列表, 默认为所有权限
+    /**
+     * <p>申请的权限列表, 默认为所有权限</p>
+     */
     @NameInMap("Scope")
     public java.util.List<String> Scope;
 

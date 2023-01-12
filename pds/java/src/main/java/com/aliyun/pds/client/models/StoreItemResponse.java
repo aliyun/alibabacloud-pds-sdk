@@ -7,94 +7,134 @@ import com.aliyun.tea.*;
  * 
  */
 public class StoreItemResponse extends TeaModel {
-    // 全球加速地址
+    /**
+     * <p>全球加速地址</p>
+     */
     @NameInMap("accelerate_endpoint")
     public String accelerateEndpoint;
 
-    // 存储公共前缀
+    /**
+     * <p>存储公共前缀</p>
+     */
     @NameInMap("base_path")
     public String basePath;
 
-    // bucket名称
+    /**
+     * <p>bucket名称</p>
+     */
     @NameInMap("bucket")
     @Validation(required = true)
     public String bucket;
 
-    // 内容分发地址
+    /**
+     * <p>内容分发地址</p>
+     */
     @NameInMap("cdn_endpoint")
     public String cdnEndpoint;
 
-    // 命中限速用户时是否关闭CDN地址返回
+    /**
+     * <p>命中限速用户时是否关闭CDN地址返回</p>
+     */
     @NameInMap("cdn_ratelimit_disable")
     public Boolean cdnRatelimitDisable;
 
-    // CDN时间控制
+    /**
+     * <p>CDN时间控制</p>
+     */
     @NameInMap("cdn_timelimit")
     public String cdnTimelimit;
 
-    // CDN鉴权key
+    /**
+     * <p>CDN鉴权key</p>
+     */
     @NameInMap("cdn_url_auth_key")
     public String cdnUrlAuthKey;
 
-    // 自定义全球加速地址
+    /**
+     * <p>自定义全球加速地址</p>
+     */
     @NameInMap("customized_accelerate_endpoint")
     public String customizedAccelerateEndpoint;
 
-    // 自定义内容分发地址
+    /**
+     * <p>自定义内容分发地址</p>
+     */
     @NameInMap("customized_cdn_endpoint")
     public String customizedCdnEndpoint;
 
-    // 自定义Public访问地址
+    /**
+     * <p>自定义Public访问地址</p>
+     */
     @NameInMap("customized_endpoint")
     public String customizedEndpoint;
 
-    // 自定义vpc访问地址
+    /**
+     * <p>自定义vpc访问地址</p>
+     */
     @NameInMap("customized_internal_endpoint")
     public String customizedInternalEndpoint;
 
     @NameInMap("domain_id")
     public String domainId;
 
-    // Public访问地址
+    /**
+     * <p>Public访问地址</p>
+     */
     @NameInMap("endpoint")
     @Validation(required = true)
     public String endpoint;
 
-    // 冷流地址
+    /**
+     * <p>冷流地址</p>
+     */
     @NameInMap("enet_endpoint")
     public String enetEndpoint;
 
     @NameInMap("enet_percent_config")
     public WhitePercentConfig enetPercentConfig;
 
-    // vpc访问地址
+    /**
+     * <p>vpc访问地址</p>
+     */
     @NameInMap("internal_endpoint")
     public String internalEndpoint;
 
-    // 地点
+    /**
+     * <p>地点</p>
+     */
     @NameInMap("location")
     public String location;
 
-    // 存储归属，system表示系统提供，custom表示使用自己的存储
+    /**
+     * <p>存储归属，system表示系统提供，custom表示使用自己的存储</p>
+     */
     @NameInMap("ownership")
     @Validation(required = true)
     public String ownership;
 
-    // Policy授权,system类型store会将bucket权限授予当前云账号
+    /**
+     * <p>Policy授权,system类型store会将bucket权限授予当前云账号</p>
+     */
     @NameInMap("policy")
     @Validation(required = true)
     public String policy;
 
-    // 访问Bucket的角色ARN
+    /**
+     * <p>访问Bucket的角色ARN</p>
+     */
     @NameInMap("role_arn")
     public String roleArn;
 
-    // store ID
+    /**
+     * <p>store ID</p>
+     */
     @NameInMap("store_id")
     @Validation(required = true)
     public String storeId;
 
-    // 存储类型，当前只支持oss
+    /**
+     * <p>存储类型，当前只支持oss</p>
+     */
     @NameInMap("type")
     @Validation(required = true)
     public String type;

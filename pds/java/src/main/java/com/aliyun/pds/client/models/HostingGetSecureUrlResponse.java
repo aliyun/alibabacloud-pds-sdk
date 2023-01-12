@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 获取secure url response
  */
 public class HostingGetSecureUrlResponse extends TeaModel {
-    // expiration
+    /**
+     * <p>expiration</p>
+     */
     @NameInMap("expiration")
     public String expiration;
 
-    // url
+    /**
+     * <p>url</p>
+     */
     @NameInMap("url")
     public String url;
 

@@ -7,31 +7,43 @@ import com.aliyun.tea.*;
  * 
  */
 public class DefaultChangePasswordRequest extends TeaModel {
-    // App ID, 当前访问的App
+    /**
+     * <p>App ID, 当前访问的App</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;
 
-    // AES-256对称加密密钥，通过App公钥加密后传输
+    /**
+     * <p>AES-256对称加密密钥，通过App公钥加密后传输</p>
+     */
     @NameInMap("encrypted_key")
     @Validation(required = true)
     public String encryptedKey;
 
-    // 新密码，必须包含数字和字母，长度8-20个字符
+    /**
+     * <p>新密码，必须包含数字和字母，长度8-20个字符</p>
+     */
     @NameInMap("new_password")
     @Validation(required = true)
     public String newPassword;
 
-    // 手机号
+    /**
+     * <p>手机号</p>
+     */
     @NameInMap("phone_number")
     @Validation(required = true)
     public String phoneNumber;
 
-    // 国家编号，默认86，不需要填+号，直接填数字
+    /**
+     * <p>国家编号，默认86，不需要填+号，直接填数字</p>
+     */
     @NameInMap("phone_region")
     public String phoneRegion;
 
-    // 修改密码的临时授权码
+    /**
+     * <p>修改密码的临时授权码</p>
+     */
     @NameInMap("state")
     @Validation(required = true)
     public String state;

@@ -7,26 +7,34 @@ import com.aliyun.tea.*;
  * 转码信息响应
  */
 public class VideoPreviewPlayInfoResponse extends TeaModel {
-    // deprecated, 使用外层Response中的同名字段替代
-    // category，此字段为保持兼容而继续存在
+    /**
+     * <p>deprecated, 使用外层Response中的同名字段替代</p>
+     * <p>category，此字段为保持兼容而继续存在</p>
+     */
     @NameInMap("category")
     public String category;
 
     @NameInMap("live_transcoding_subtitle_task_list")
     public java.util.List<LiveTranscodingSubtitleTaskResponse> liveTranscodingSubtitleTaskList;
 
-    // 边转边播有效
+    /**
+     * <p>边转边播有效</p>
+     */
     @NameInMap("live_transcoding_task_list")
     public java.util.List<LiveTranscodingTaskResponse> liveTranscodingTaskList;
 
     @NameInMap("meta")
     public VideoPreviewPlayInfoMetaResponse meta;
 
-    // 离线转码有效
+    /**
+     * <p>离线转码有效</p>
+     */
     @NameInMap("offline_video_transcoding_list")
     public java.util.List<VideoPreviewOfflineVideoTranscodingTaskResponse> offlineVideoTranscodingList;
 
-    // imm边转边播
+    /**
+     * <p>imm边转边播</p>
+     */
     @NameInMap("quick_video_list")
     public java.util.List<QuickVideoTaskResponse> quickVideoList;
 

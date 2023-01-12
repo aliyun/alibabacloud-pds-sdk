@@ -10,17 +10,23 @@ public class MergeFaceGroupRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // from_group_id
+    /**
+     * <p>from_group_id</p>
+     */
     @NameInMap("from_group_id")
     @Validation(required = true)
     public String fromGroupId;
 
-    // to_group_id
+    /**
+     * <p>to_group_id</p>
+     */
     @NameInMap("to_group_id")
     @Validation(required = true)
     public String toGroupId;

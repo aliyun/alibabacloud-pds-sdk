@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class VideoPreviewResponse extends TeaModel {
-    // audio_channels
+    /**
+     * <p>audio_channels</p>
+     */
     @NameInMap("audio_channels")
     public Long audioChannels;
 
-    // audio_format
+    /**
+     * <p>audio_format</p>
+     */
     @NameInMap("audio_format")
     public String audioFormat;
 
@@ -21,46 +25,66 @@ public class VideoPreviewResponse extends TeaModel {
     @NameInMap("audio_music_meta")
     public VideoPreviewAudioMusicMeta audioMusicMeta;
 
-    // audio_sample_rate
+    /**
+     * <p>audio_sample_rate</p>
+     */
     @NameInMap("audio_sample_rate")
     public String audioSampleRate;
 
-    // audio_template_list
+    /**
+     * <p>audio_template_list</p>
+     */
     @NameInMap("audio_template_list")
     public java.util.List<VideoPreviewTranscode> audioTemplateList;
 
-    // bitrate
+    /**
+     * <p>bitrate</p>
+     */
     @NameInMap("bitrate")
     public String bitrate;
 
-    // duration
+    /**
+     * <p>duration</p>
+     */
     @NameInMap("duration")
     public String duration;
 
-    // frame_rate
+    /**
+     * <p>frame_rate</p>
+     */
     @NameInMap("frame_rate")
     public String frameRate;
 
-    // height
+    /**
+     * <p>height</p>
+     */
     @NameInMap("height")
     public Long height;
 
     @NameInMap("sprite_info")
     public VideoPreviewSpriteResponse spriteInfo;
 
-    // template_list
+    /**
+     * <p>template_list</p>
+     */
     @NameInMap("template_list")
     public java.util.List<VideoPreviewTranscode> templateList;
 
-    // thumbnail
+    /**
+     * <p>thumbnail</p>
+     */
     @NameInMap("thumbnail")
     public String thumbnail;
 
-    // video_format
+    /**
+     * <p>video_format</p>
+     */
     @NameInMap("video_format")
     public String videoFormat;
 
-    // width
+    /**
+     * <p>width</p>
+     */
     @NameInMap("width")
     public Long width;
 

@@ -10,25 +10,35 @@ public class CCPGetVideoPreviewPlayMetaRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     public String category;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // share_id, either share_id or drive_id is required
+    /**
+     * <p>share_id, either share_id or drive_id is required</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 

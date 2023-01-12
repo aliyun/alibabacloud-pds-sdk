@@ -7,21 +7,29 @@ import com.aliyun.tea.*;
  * 获取视频分辨率列表
  */
 public class HostingVideoDefinitionRequest extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     @Validation(required = true, maxLength = 1000, minLength = 1)
     public String filePath;
 
-    // protection_scheme
+    /**
+     * <p>protection_scheme</p>
+     */
     @NameInMap("protection_scheme")
     public String protectionScheme;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;

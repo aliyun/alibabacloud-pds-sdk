@@ -10,16 +10,22 @@ public class CCPGetShareLinkVideoPreviewPlayInfoResponse extends TeaModel {
     @NameInMap("audio_preview_play_info")
     public AudioPreviewPlayInfoResponse audioPreviewPlayInfo;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     public String category;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 

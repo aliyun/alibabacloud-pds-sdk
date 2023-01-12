@@ -10,17 +10,29 @@ public class RestoreRevisionRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drive_id
+    /**
+     * <p>addition_data</p>
+     */
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // revision_id
+    /**
+     * <p>revision_id</p>
+     */
     @NameInMap("revision_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String revisionId;
@@ -36,6 +48,14 @@ public class RestoreRevisionRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public RestoreRevisionRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public RestoreRevisionRequest setDriveId(String driveId) {

@@ -7,25 +7,35 @@ import com.aliyun.tea.*;
  * 
  */
 public class SubdomainDeleteBizCNameAndCertRequest extends TeaModel {
-    // api cname
+    /**
+     * <p>api cname</p>
+     */
     @NameInMap("biz_cname")
     public String bizCname;
 
-    // cname type
+    /**
+     * <p>cname type</p>
+     */
     @NameInMap("cname_type")
     @Validation(required = true)
     public String cnameType;
 
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // vpc
+    /**
+     * <p>vpc</p>
+     */
     @NameInMap("is_vpc")
     public Boolean isVpc;
 
-    // subdomain ID
+    /**
+     * <p>subdomain ID</p>
+     */
     @NameInMap("subdomain_id")
     @Validation(required = true)
     public String subdomainId;

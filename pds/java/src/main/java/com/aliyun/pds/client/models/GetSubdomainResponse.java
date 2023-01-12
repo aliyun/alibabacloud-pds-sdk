@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetSubdomainResponse extends TeaModel {
-    // 创建时间
+    /**
+     * <p>创建时间</p>
+     */
     @NameInMap("created_at")
     @Validation(required = true)
     public String createdAt;
 
-    // 描述
+    /**
+     * <p>描述</p>
+     */
     @NameInMap("description")
     @Validation(required = true)
     public String description;
@@ -20,12 +24,16 @@ public class GetSubdomainResponse extends TeaModel {
     @NameInMap("group_singe_drive_enable")
     public Boolean groupSingeDriveEnable;
 
-    // 名称
+    /**
+     * <p>名称</p>
+     */
     @NameInMap("name")
     @Validation(required = true)
     public String name;
 
-    // 是否开启了共享
+    /**
+     * <p>是否开启了共享</p>
+     */
     @NameInMap("sharable")
     public Boolean sharable;
 
@@ -35,38 +43,54 @@ public class GetSubdomainResponse extends TeaModel {
     @NameInMap("share_link_detail")
     public ShareLinkDetailResponse shareLinkDetail;
 
-    // 是否开启了分享
+    /**
+     * <p>是否开启了分享</p>
+     */
     @NameInMap("share_link_enabled")
     public Boolean shareLinkEnabled;
 
-    // 当前状态
+    /**
+     * <p>当前状态</p>
+     */
     @NameInMap("status")
     public Long status;
 
-    // 用以唯一标识subdomain
+    /**
+     * <p>用以唯一标识subdomain</p>
+     */
     @NameInMap("subdomain_id")
     @Validation(required = true)
     public String subdomainId;
 
-    // 逻辑空间quota，-1表示无限制，单位为字节
+    /**
+     * <p>逻辑空间quota，-1表示无限制，单位为字节</p>
+     */
     @NameInMap("total_size")
     @Validation(required = true)
     public Long totalSize;
 
-    // 更新时间
+    /**
+     * <p>更新时间</p>
+     */
     @NameInMap("updated_at")
     @Validation(required = true)
     public String updatedAt;
 
-    // 逻辑空间使用量，单位为字节
+    /**
+     * <p>逻辑空间使用量，单位为字节</p>
+     */
     @NameInMap("used_size")
     public Long usedSize;
 
-    // 逻辑空间刷新周期，单位：秒
+    /**
+     * <p>逻辑空间刷新周期，单位：秒</p>
+     */
     @NameInMap("used_size_refresh_interval")
     public Long usedSizeRefreshInterval;
 
-    // 用户数quota，-1表示无限制
+    /**
+     * <p>用户数quota，-1表示无限制</p>
+     */
     @NameInMap("user_quota")
     @Validation(required = true)
     public Long userQuota;

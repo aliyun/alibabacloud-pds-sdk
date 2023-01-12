@@ -10,26 +10,36 @@ public class CreateViewRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     @Validation(required = true)
     public String category;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     @Validation(required = true)
     public String name;
 
-    // owner
+    /**
+     * <p>owner</p>
+     */
     @NameInMap("owner")
     @Validation(required = true)
     public String owner;
 
-    // user_id
+    /**
+     * <p>user_id</p>
+     */
     @NameInMap("user_id")
     public String userId;
 

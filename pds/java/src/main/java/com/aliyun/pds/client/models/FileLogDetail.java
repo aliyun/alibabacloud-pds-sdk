@@ -10,35 +10,51 @@ public class FileLogDetail extends TeaModel {
     @NameInMap("decompress_file_list")
     public java.util.List<String> decompressFileList;
 
-    // new_name
+    /**
+     * <p>new_name</p>
+     */
     @NameInMap("new_name")
     public String newName;
 
-    // parent_path
+    /**
+     * <p>parent_path</p>
+     */
     @NameInMap("parent_path")
     public String parentPath;
 
-    // revision_version
+    /**
+     * <p>revision_version</p>
+     */
     @NameInMap("rev_version")
     public Long revVersion;
 
-    // revision_id
+    /**
+     * <p>revision_id</p>
+     */
     @NameInMap("revision_id")
     public String revisionId;
 
-    // Size
+    /**
+     * <p>Size</p>
+     */
     @NameInMap("size")
     public Long size;
 
-    // to_parent_path
+    /**
+     * <p>to_parent_path</p>
+     */
     @NameInMap("to_parent_path")
     public String toParentPath;
 
-    // to_parent_path_type
+    /**
+     * <p>to_parent_path_type</p>
+     */
     @NameInMap("to_parent_path_type")
     public String toParentPathType;
 
-    // type
+    /**
+     * <p>type</p>
+     */
     @NameInMap("type")
     public String type;
 

@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetAppDebugCmdResponse extends TeaModel {
-    // cmd
+    /**
+     * <p>cmd</p>
+     */
     @NameInMap("cmd")
     public String cmd;
 

@@ -10,33 +10,47 @@ public class SearchUserAndGroupRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 搜索实体对象类型
+    /**
+     * <p>搜索实体对象类型</p>
+     */
     @NameInMap("identity_type_list")
     public java.util.List<String> identityTypeList;
 
-    // 每页大小限制
+    /**
+     * <p>每页大小限制</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // 翻页标记
+    /**
+     * <p>翻页标记</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // 名称前缀搜索，Group名，或者用户昵称
+    /**
+     * <p>名称前缀搜索，Group名，或者用户昵称</p>
+     */
     @NameInMap("name")
     public String name;
 
-    // 名称模糊搜索，Group名，或者用户昵称
+    /**
+     * <p>名称模糊搜索，Group名，或者用户昵称</p>
+     */
     @NameInMap("name_for_fuzzy")
     public String nameForFuzzy;
 
-    // 用户状态
-    // status: enabled
+    /**
+     * <p>用户状态</p>
+     * <p>status: enabled</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // subdomain id
+    /**
+     * <p>subdomain id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

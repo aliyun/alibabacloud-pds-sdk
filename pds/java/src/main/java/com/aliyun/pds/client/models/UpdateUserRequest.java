@@ -10,63 +10,91 @@ public class UpdateUserRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 头像
+    /**
+     * <p>头像</p>
+     */
     @NameInMap("avatar")
     public String avatar;
 
-    // 是否能自己修改密码
+    /**
+     * <p>是否能自己修改密码</p>
+     */
     @NameInMap("deny_change_password_by_self")
     public Boolean denyChangePasswordBySelf;
 
-    // 描述信息
+    /**
+     * <p>描述信息</p>
+     */
     @NameInMap("description")
     @Validation(maxLength = 1024)
     public String description;
 
-    // 邮箱
+    /**
+     * <p>邮箱</p>
+     */
     @NameInMap("email")
     public String email;
 
-    // 用户过期时间
+    /**
+     * <p>用户过期时间</p>
+     */
     @NameInMap("expired_at")
     public Long expiredAt;
 
     @NameInMap("group_info_list")
     public java.util.List<GroupInfo> groupInfoList;
 
-    // 下次登录后是否强制修改密码
+    /**
+     * <p>下次登录后是否强制修改密码</p>
+     */
     @NameInMap("need_change_password_next_login")
     public Boolean needChangePasswordNextLogin;
 
-    // 昵称
+    /**
+     * <p>昵称</p>
+     */
     @NameInMap("nick_name")
     public String nickName;
 
-    // 电话号码
+    /**
+     * <p>电话号码</p>
+     */
     @NameInMap("phone")
     public String phone;
 
-    // 国家编码
+    /**
+     * <p>国家编码</p>
+     */
     @NameInMap("phone_region")
     public String phoneRegion;
 
-    // 用户明文密码
+    /**
+     * <p>用户明文密码</p>
+     */
     @NameInMap("plain_password")
     public String plainPassword;
 
-    // 角色
+    /**
+     * <p>角色</p>
+     */
     @NameInMap("role")
     public String role;
 
-    // 状态
+    /**
+     * <p>状态</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
+    /**
+     * <p>用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K</p>
+     */
     @NameInMap("user_data")
     public java.util.Map<String, ?> userData;
 
-    // 用户 ID
+    /**
+     * <p>用户 ID</p>
+     */
     @NameInMap("user_id")
     @Validation(required = true)
     public String userId;

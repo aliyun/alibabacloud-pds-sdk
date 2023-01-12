@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 
  */
 public class UrlInfo extends TeaModel {
-    // download_url
+    /**
+     * <p>download_url</p>
+     */
     @NameInMap("download_url")
     public String downloadUrl;
 
-    // thumbnail
+    /**
+     * <p>thumbnail</p>
+     */
     @NameInMap("thumbnail")
     public String thumbnail;
 
-    // url
+    /**
+     * <p>url</p>
+     */
     @NameInMap("url")
     public String url;
 

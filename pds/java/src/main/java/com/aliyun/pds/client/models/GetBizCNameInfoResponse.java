@@ -7,35 +7,49 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetBizCNameInfoResponse extends TeaModel {
-    // biz cname
+    /**
+     * <p>biz cname</p>
+     */
     @NameInMap("biz_cname")
     public String bizCname;
 
-    // cert name
+    /**
+     * <p>cert name</p>
+     */
     @NameInMap("cert_id")
     public String certId;
 
-    // cert name
+    /**
+     * <p>cert name</p>
+     */
     @NameInMap("cert_name")
     public String certName;
 
     @NameInMap("cname_status")
     public CNameStatus cnameStatus;
 
-    // cname type
+    /**
+     * <p>cname type</p>
+     */
     @NameInMap("cname_type")
     public String cnameType;
 
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // is vpc
+    /**
+     * <p>is vpc</p>
+     */
     @NameInMap("is_vpc")
     public Boolean isVpc;
 
-    // subdomain ID
+    /**
+     * <p>subdomain ID</p>
+     */
     @NameInMap("subdomain_id")
     @Validation(required = true)
     public String subdomainId;

@@ -13,48 +13,70 @@ public class CreateStoryRequest extends TeaModel {
     @NameInMap("address")
     public Address address;
 
-    // custom_id
+    /**
+     * <p>custom_id</p>
+     */
     @NameInMap("custom_id")
     public String customId;
 
-    // custom_labels
+    /**
+     * <p>custom_labels</p>
+     */
     @NameInMap("custom_labels")
     public java.util.Map<String, ?> customLabels;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // max_image_count
+    /**
+     * <p>max_image_count</p>
+     */
     @NameInMap("max_image_count")
     public Long maxImageCount;
 
-    // min_image_count
+    /**
+     * <p>min_image_count</p>
+     */
     @NameInMap("min_image_count")
     public Long minImageCount;
 
-    // story_end_time
+    /**
+     * <p>story_end_time</p>
+     */
     @NameInMap("story_end_time")
     public String storyEndTime;
 
-    // story_id
+    /**
+     * <p>story_id</p>
+     */
     @NameInMap("story_id")
     public String storyId;
 
-    // story_name
+    /**
+     * <p>story_name</p>
+     */
     @NameInMap("story_name")
     public String storyName;
 
-    // story_start_time
+    /**
+     * <p>story_start_time</p>
+     */
     @NameInMap("story_start_time")
     public String storyStartTime;
 
-    // story_sub_type
+    /**
+     * <p>story_sub_type</p>
+     */
     @NameInMap("story_sub_type")
     public String storySubType;
 
-    // story_type
+    /**
+     * <p>story_type</p>
+     */
     @NameInMap("story_type")
     @Validation(required = true)
     public String storyType;

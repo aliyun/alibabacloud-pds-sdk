@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class UserTag extends TeaModel {
-    // key
+    /**
+     * <p>key</p>
+     */
     @NameInMap("key")
     public String key;
 
-    // value
+    /**
+     * <p>value</p>
+     */
     @NameInMap("value")
     public String value;
 

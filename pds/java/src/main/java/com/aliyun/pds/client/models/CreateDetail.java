@@ -7,14 +7,18 @@ import com.aliyun.tea.*;
  * 
  */
 public class CreateDetail extends TeaModel {
-    // CreateType
+    /**
+     * <p>CreateType</p>
+     */
     @NameInMap("create_type")
     public String createType;
 
     @NameInMap("is_over_write")
     public Boolean isOverWrite;
 
-    // SrcFileID
+    /**
+     * <p>SrcFileID</p>
+     */
     @NameInMap("src_file_id")
     public String srcFileId;
 

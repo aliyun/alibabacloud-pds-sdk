@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 
  */
 public class ListSubdomainsResponse extends TeaModel {
-    // 分页的 subdomain 数据
+    /**
+     * <p>分页的 subdomain 数据</p>
+     */
     @NameInMap("items")
     @Validation(required = true)
     public java.util.List<BaseSubdomainResponse> items;
 
-    // 分页游标，可以用作下次list的起点
+    /**
+     * <p>分页游标，可以用作下次list的起点</p>
+     */
     @NameInMap("next_marker")
     @Validation(required = true)
     public String nextMarker;

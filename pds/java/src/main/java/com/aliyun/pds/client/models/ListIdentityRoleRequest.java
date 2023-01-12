@@ -14,7 +14,9 @@ public class ListIdentityRoleRequest extends TeaModel {
     @Validation(required = true)
     public Identity identity;
 
-    // 是否包含所属父级团队的角色
+    /**
+     * <p>是否包含所属父级团队的角色</p>
+     */
     @NameInMap("include_group_role")
     @Validation(required = true)
     public Boolean includeGroupRole;

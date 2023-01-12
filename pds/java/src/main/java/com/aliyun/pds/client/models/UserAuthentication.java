@@ -7,51 +7,71 @@ import com.aliyun.tea.*;
  * 
  */
 public class UserAuthentication extends TeaModel {
-    // 认证类型
+    /**
+     * <p>认证类型</p>
+     */
     @NameInMap("AuthenticationType")
     @Validation(required = true)
     public String AuthenticationType;
 
-    // 创建时间
+    /**
+     * <p>创建时间</p>
+     */
     @NameInMap("CreatedAt")
     @Validation(required = true)
     public Long CreatedAt;
 
-    // 详情
+    /**
+     * <p>详情</p>
+     */
     @NameInMap("Detail")
     @Validation(required = true)
     public String Detail;
 
-    // Domain ID
+    /**
+     * <p>Domain ID</p>
+     */
     @NameInMap("DomainID")
     @Validation(required = true)
     public String DomainID;
 
-    // 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
+    /**
+     * <p>额外的信息，比如type为mobile时，此字段为国家编号，不填默认86</p>
+     */
     @NameInMap("Extra")
     public String Extra;
 
-    // 唯一身份标识
+    /**
+     * <p>唯一身份标识</p>
+     */
     @NameInMap("Identity")
     @Validation(required = true)
     public String Identity;
 
-    // 最后登录时间
+    /**
+     * <p>最后登录时间</p>
+     */
     @NameInMap("LastLoginTime")
     @Validation(required = true)
     public Long LastLoginTime;
 
-    // 状态
+    /**
+     * <p>状态</p>
+     */
     @NameInMap("Status")
     @Validation(required = true)
     public String Status;
 
-    // 用户ID
+    /**
+     * <p>用户ID</p>
+     */
     @NameInMap("UserID")
     @Validation(required = true)
     public String UserID;
 
-    // subdomain id
+    /**
+     * <p>subdomain id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

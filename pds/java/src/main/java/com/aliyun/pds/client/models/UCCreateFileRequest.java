@@ -10,7 +10,9 @@ public class UCCreateFileRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
@@ -20,34 +22,48 @@ public class UCCreateFileRequest extends TeaModel {
     @NameInMap("callback")
     public CcpCallback callback;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     public String category;
 
-    // check_name_mode
+    /**
+     * <p>check_name_mode</p>
+     */
     @NameInMap("check_name_mode")
     public String checkNameMode;
 
     @NameInMap("check_parent_file_id_path")
     public String checkParentFileIdPath;
 
-    // content_hash
+    /**
+     * <p>content_hash</p>
+     */
     @NameInMap("content_hash")
     public String contentHash;
 
-    // content_hash_mutable
+    /**
+     * <p>content_hash_mutable</p>
+     */
     @NameInMap("content_hash_mutable")
     public Boolean contentHashMutable;
 
-    // content_hash_name
+    /**
+     * <p>content_hash_name</p>
+     */
     @NameInMap("content_hash_name")
     public String contentHashName;
 
-    // ContentMd5
+    /**
+     * <p>ContentMd5</p>
+     */
     @NameInMap("content_md5")
     public String contentMd5;
 
-    // ContentType
+    /**
+     * <p>ContentType</p>
+     */
     @NameInMap("content_type")
     public String contentType;
 
@@ -63,16 +79,22 @@ public class UCCreateFileRequest extends TeaModel {
     @NameInMap("custom_type")
     public String customType;
 
-    // date
+    /**
+     * <p>date</p>
+     */
     @NameInMap("date")
     public String date;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("description")
     @Validation(maxLength = 1024)
     public String description;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
@@ -80,51 +102,69 @@ public class UCCreateFileRequest extends TeaModel {
     @NameInMap("encrypt_mode")
     public String encryptMode;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     public String fileId;
 
-    // force_upload_to_location
+    /**
+     * <p>force_upload_to_location</p>
+     */
     @NameInMap("force_upload_to_location")
     public Boolean forceUploadToLocation;
 
-    // headers
+    /**
+     * <p>headers</p>
+     */
     @NameInMap("headers")
     public java.util.Map<String, ?> headers;
 
-    // hidden
+    /**
+     * <p>hidden</p>
+     */
     @NameInMap("hidden")
     public Boolean hidden;
 
     @NameInMap("image_media_metadata")
     public ImageMediaMetadata imageMediaMetadata;
 
-    // labels
+    /**
+     * <p>labels</p>
+     */
     @NameInMap("labels")
     public java.util.List<String> labels;
 
     @NameInMap("last_revision_id")
     public String lastRevisionId;
 
-    // last_updated_at
+    /**
+     * <p>last_updated_at</p>
+     */
     @NameInMap("last_updated_at")
     public String lastUpdatedAt;
 
-    // local_created_at
+    /**
+     * <p>local_created_at</p>
+     */
     @NameInMap("local_created_at")
     public String localCreatedAt;
 
     @NameInMap("local_modified_at")
     public String localModifiedAt;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
     @NameInMap("meta")
     public String meta;
 
-    // Name
+    /**
+     * <p>Name</p>
+     */
     @NameInMap("name")
     @Validation(required = true, maxLength = 1024, minLength = 1)
     public String name;
@@ -132,18 +172,24 @@ public class UCCreateFileRequest extends TeaModel {
     @NameInMap("need_merge_period_revision")
     public Boolean needMergePeriodRevision;
 
-    // overwrite
+    /**
+     * <p>overwrite</p>
+     */
     @NameInMap("overwrite")
     public Boolean overwrite;
 
     @NameInMap("parallel_upload")
     public Boolean parallelUpload;
 
-    // parameters
+    /**
+     * <p>parameters</p>
+     */
     @NameInMap("parameters")
     public java.util.Map<String, ?> parameters;
 
-    // parent_file_id
+    /**
+     * <p>parent_file_id</p>
+     */
     @NameInMap("parent_file_id")
     @Validation(required = true, pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 4)
     public String parentFileId;
@@ -151,53 +197,77 @@ public class UCCreateFileRequest extends TeaModel {
     @NameInMap("parent_file_id_path")
     public String parentFileIdPath;
 
-    // part_info_list
+    /**
+     * <p>part_info_list</p>
+     */
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
-    // pre_hash
+    /**
+     * <p>pre_hash</p>
+     */
     @NameInMap("pre_hash")
     public String preHash;
 
-    // proof_code
+    /**
+     * <p>proof_code</p>
+     */
     @NameInMap("proof_code")
     public String proofCode;
 
-    // proof_seed
+    /**
+     * <p>proof_seed</p>
+     */
     @NameInMap("proof_seed")
     public String proofSeed;
 
-    // proof_version
+    /**
+     * <p>proof_version</p>
+     */
     @NameInMap("proof_version")
     public String proofVersion;
 
-    // share_id
-    // example
+    /**
+     * <p>share_id</p>
+     * <p>example</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
-    // Size
+    /**
+     * <p>Size</p>
+     */
     @NameInMap("size")
     public Long size;
 
-    // streams_info
+    /**
+     * <p>streams_info</p>
+     */
     @NameInMap("streams_info")
     public java.util.Map<String, ?> streamsInfo;
 
-    // Type
+    /**
+     * <p>Type</p>
+     */
     @NameInMap("type")
     @Validation(required = true)
     public String type;
 
-    // upload_type
+    /**
+     * <p>upload_type</p>
+     */
     @NameInMap("upload_type")
     public String uploadType;
 
-    // user_meta
+    /**
+     * <p>user_meta</p>
+     */
     @NameInMap("user_meta")
     public String userMeta;
 
-    // user_tags
+    /**
+     * <p>user_tags</p>
+     */
     @NameInMap("user_tags")
     public java.util.List<UserTag> userTags;
 

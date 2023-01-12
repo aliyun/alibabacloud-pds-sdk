@@ -10,7 +10,9 @@ public class GetSubdomainRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 用以唯一标识subdomain
+    /**
+     * <p>用以唯一标识subdomain</p>
+     */
     @NameInMap("subdomain_id")
     @Validation(required = true)
     public String subdomainId;

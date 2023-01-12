@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * Create share response
  */
 public class CreateShareResponse extends TeaModel {
-    // domain_id
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 

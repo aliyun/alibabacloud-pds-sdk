@@ -10,15 +10,21 @@ public class CreateMembershipRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 描述
+    /**
+     * <p>描述</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // group id
+    /**
+     * <p>group id</p>
+     */
     @NameInMap("group_id")
     public String groupId;
 
-    // 角色， member or admin
+    /**
+     * <p>角色， member or admin</p>
+     */
     @NameInMap("member_role")
     public String memberRole;
 

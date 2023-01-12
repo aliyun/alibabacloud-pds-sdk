@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * batch operation response
  */
 public class BatchResponse extends TeaModel {
-    // responses 返回结果合集
+    /**
+     * <p>responses 返回结果合集</p>
+     */
     @NameInMap("responses")
     public java.util.List<BatchSubResponse> responses;
 

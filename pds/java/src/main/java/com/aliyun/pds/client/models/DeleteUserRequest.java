@@ -10,7 +10,9 @@ public class DeleteUserRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 用户 ID
+    /**
+     * <p>用户 ID</p>
+     */
     @NameInMap("user_id")
     @Validation(required = true)
     public String userId;

@@ -7,14 +7,18 @@ import com.aliyun.tea.*;
  * 
  */
 public class LoginMgmtLogDetail extends TeaModel {
-    // app_id
+    /**
+     * <p>app_id</p>
+     */
     @NameInMap("app_id")
     public String appId;
 
     @NameInMap("ding_sync_config")
     public DingSyncConfig dingSyncConfig;
 
-    // enable
+    /**
+     * <p>enable</p>
+     */
     @NameInMap("enable")
     public Boolean enable;
 

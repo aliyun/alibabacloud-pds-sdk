@@ -10,15 +10,21 @@ public class UpgradeCheckAppRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // app_id
+    /**
+     * <p>app_id</p>
+     */
     @NameInMap("app_id")
     public String appId;
 
-    // arch
+    /**
+     * <p>arch</p>
+     */
     @NameInMap("arch")
     public String arch;
 
-    // version
+    /**
+     * <p>version</p>
+     */
     @NameInMap("version")
     public String version;
 

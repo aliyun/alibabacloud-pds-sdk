@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * add story files response
  */
 public class AddStoryFilesResponse extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // files
+    /**
+     * <p>files</p>
+     */
     @NameInMap("files")
     public java.util.List<AddStoryFile> files;
 
-    // request_id
+    /**
+     * <p>request_id</p>
+     */
     @NameInMap("request_id")
     public String requestId;
 
-    // story_id
+    /**
+     * <p>story_id</p>
+     */
     @NameInMap("story_id")
     public String storyId;
 

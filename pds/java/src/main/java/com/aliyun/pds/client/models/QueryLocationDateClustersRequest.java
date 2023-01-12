@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * query locationCluster request
  */
 public class QueryLocationDateClustersRequest extends TeaModel {
+    @NameInMap("httpheaders")
+    public java.util.Map<String, String> httpheaders;
+
     @NameInMap("address")
     public Address address;
 
@@ -19,7 +22,9 @@ public class QueryLocationDateClustersRequest extends TeaModel {
     @NameInMap("custom_labels")
     public String customLabels;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
@@ -54,6 +59,14 @@ public class QueryLocationDateClustersRequest extends TeaModel {
     public static QueryLocationDateClustersRequest build(java.util.Map<String, ?> map) throws Exception {
         QueryLocationDateClustersRequest self = new QueryLocationDateClustersRequest();
         return TeaModel.build(map, self);
+    }
+
+    public QueryLocationDateClustersRequest setHttpheaders(java.util.Map<String, String> httpheaders) {
+        this.httpheaders = httpheaders;
+        return this;
+    }
+    public java.util.Map<String, String> getHttpheaders() {
+        return this.httpheaders;
     }
 
     public QueryLocationDateClustersRequest setAddress(Address address) {

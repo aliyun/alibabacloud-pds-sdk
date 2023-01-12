@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 删除故事
  */
 public class DeleteStoryResponse extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 

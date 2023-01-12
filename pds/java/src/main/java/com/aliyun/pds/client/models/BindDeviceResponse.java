@@ -7,27 +7,39 @@ import com.aliyun.tea.*;
  * 
  */
 public class BindDeviceResponse extends TeaModel {
-    // created_at
+    /**
+     * <p>created_at</p>
+     */
     @NameInMap("created_at")
     public String createdAt;
 
-    // device_id
+    /**
+     * <p>device_id</p>
+     */
     @NameInMap("device_id")
     public String deviceId;
 
-    // device_info
+    /**
+     * <p>device_info</p>
+     */
     @NameInMap("device_info")
     public String deviceInfo;
 
-    // device_name
+    /**
+     * <p>device_name</p>
+     */
     @NameInMap("device_name")
     public String deviceName;
 
-    // device_type
+    /**
+     * <p>device_type</p>
+     */
     @NameInMap("device_type")
     public String deviceType;
 
-    // updated_at
+    /**
+     * <p>updated_at</p>
+     */
     @NameInMap("updated_at")
     public String updatedAt;
 

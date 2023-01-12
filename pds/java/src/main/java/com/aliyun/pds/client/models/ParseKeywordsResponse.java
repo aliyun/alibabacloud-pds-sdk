@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * Parse keywords response
  */
 public class ParseKeywordsResponse extends TeaModel {
-    // AddressLine
+    /**
+     * <p>AddressLine</p>
+     */
     @NameInMap("address_line")
     public String addressLine;
 

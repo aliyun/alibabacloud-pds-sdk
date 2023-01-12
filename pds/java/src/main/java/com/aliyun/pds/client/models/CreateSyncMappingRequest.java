@@ -10,43 +10,63 @@ public class CreateSyncMappingRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public String additionData;
 
-    // custom_meta
+    /**
+     * <p>custom_meta</p>
+     */
     @NameInMap("custom_meta")
     public String customMeta;
 
-    // device_name
+    /**
+     * <p>device_name</p>
+     */
     @NameInMap("device_name")
     public String deviceName;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     public String fileId;
 
-    // fs_id
+    /**
+     * <p>fs_id</p>
+     */
     @NameInMap("fs_id")
     public String fsId;
 
-    // hidden
+    /**
+     * <p>hidden</p>
+     */
     @NameInMap("hidden")
     public Boolean hidden;
 
-    // local_path
+    /**
+     * <p>local_path</p>
+     */
     @NameInMap("local_path")
     public String localPath;
 
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     public String name;
 
-    // sync_mode
+    /**
+     * <p>sync_mode</p>
+     */
     @NameInMap("sync_mode")
     public String syncMode;
 

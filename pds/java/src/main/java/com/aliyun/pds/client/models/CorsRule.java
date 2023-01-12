@@ -7,23 +7,33 @@ import com.aliyun.tea.*;
  * 
  */
 public class CorsRule extends TeaModel {
-    // AllowedHeader
+    /**
+     * <p>AllowedHeader</p>
+     */
     @NameInMap("allowed_header")
     public java.util.List<String> allowedHeader;
 
-    // AllowedMethod
+    /**
+     * <p>AllowedMethod</p>
+     */
     @NameInMap("allowed_method")
     public java.util.List<String> allowedMethod;
 
-    // AllowedOrigin
+    /**
+     * <p>AllowedOrigin</p>
+     */
     @NameInMap("allowed_origin")
     public java.util.List<String> allowedOrigin;
 
-    // ExposeHeader
+    /**
+     * <p>ExposeHeader</p>
+     */
     @NameInMap("expose_header")
     public java.util.List<String> exposeHeader;
 
-    // MaxAgeSeconds
+    /**
+     * <p>MaxAgeSeconds</p>
+     */
     @NameInMap("max_age_seconds")
     public Long maxAgeSeconds;
 

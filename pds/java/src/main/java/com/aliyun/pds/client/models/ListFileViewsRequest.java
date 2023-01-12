@@ -19,7 +19,9 @@ public class ListFileViewsRequest extends TeaModel {
     @NameInMap("file_id")
     public String fileId;
 
-    // user_id
+    /**
+     * <p>user_id</p>
+     */
     @NameInMap("user_id")
     public String userId;
 

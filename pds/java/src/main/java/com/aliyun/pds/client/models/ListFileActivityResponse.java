@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * list file activity response
  */
 public class ListFileActivityResponse extends TeaModel {
-    // Activities
+    /**
+     * <p>Activities</p>
+     */
     @NameInMap("activities")
     public java.util.List<FileActivity> activities;
 
-    // NextMarker
+    /**
+     * <p>NextMarker</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 

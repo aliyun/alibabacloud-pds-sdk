@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class BaseAdditionDataRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 

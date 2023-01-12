@@ -10,19 +10,27 @@ public class ListSyncMappingRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // SyncMode
+    /**
+     * <p>SyncMode</p>
+     */
     @NameInMap("SyncMode")
     public String SyncMode;
 
-    // device_name
+    /**
+     * <p>device_name</p>
+     */
     @NameInMap("device_name")
     public String deviceName;
 
-    // limit
+    /**
+     * <p>limit</p>
+     */
     @NameInMap("limit")
     public Integer limit;
 
-    // marker
+    /**
+     * <p>marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 

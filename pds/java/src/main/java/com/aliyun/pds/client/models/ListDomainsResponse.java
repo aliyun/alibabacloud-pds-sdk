@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * list domain response
  */
 public class ListDomainsResponse extends TeaModel {
-    // domain 列表
+    /**
+     * <p>domain 列表</p>
+     */
     @NameInMap("items")
     public java.util.List<BaseDomainResponse> items;
 
-    // 下次分页查询游标
+    /**
+     * <p>下次分页查询游标</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 

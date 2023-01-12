@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * 
  */
 public class BackUpConfig extends TeaModel {
-    // folder_id
+    /**
+     * <p>folder_id</p>
+     */
     @NameInMap("folder_id")
     public String folderId;
 
-    // photo_folder_id
+    /**
+     * <p>photo_folder_id</p>
+     */
     @NameInMap("photo_folder_id")
     public String photoFolderId;
 
-    // sub_folder
+    /**
+     * <p>sub_folder</p>
+     */
     @NameInMap("sub_folder")
     public java.util.Map<String, ?> subFolder;
 
-    // video_folder_id
+    /**
+     * <p>video_folder_id</p>
+     */
     @NameInMap("video_folder_id")
     public String videoFolderId;
 

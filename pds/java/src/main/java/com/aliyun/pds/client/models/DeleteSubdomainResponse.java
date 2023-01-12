@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class DeleteSubdomainResponse extends TeaModel {
-    // 用以唯一标识subdomain
+    /**
+     * <p>用以唯一标识subdomain</p>
+     */
     @NameInMap("subdomain_id")
     @Validation(required = true)
     public String subdomainId;

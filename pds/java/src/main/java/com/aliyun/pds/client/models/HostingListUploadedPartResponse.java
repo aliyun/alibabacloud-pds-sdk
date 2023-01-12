@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * 获取签名 response
  */
 public class HostingListUploadedPartResponse extends TeaModel {
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     public String filePath;
 
-    // next_part_number_marker
+    /**
+     * <p>next_part_number_marker</p>
+     */
     @NameInMap("next_part_number_marker")
     public String nextPartNumberMarker;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 
-    // uploaded_parts
+    /**
+     * <p>uploaded_parts</p>
+     */
     @NameInMap("uploaded_parts")
     public java.util.List<UploadPartInfo> uploadedParts;
 

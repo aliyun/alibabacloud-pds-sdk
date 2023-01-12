@@ -7,96 +7,140 @@ import com.aliyun.tea.*;
  * 获取文件元数据response
  */
 public class HostingGetFileResponse extends TeaModel {
-    // Content Hash
+    /**
+     * <p>Content Hash</p>
+     */
     @NameInMap("content_hash")
     public String contentHash;
 
-    // content_hash_name
+    /**
+     * <p>content_hash_name</p>
+     */
     @NameInMap("content_hash_name")
     public String contentHashName;
 
-    // content_type
+    /**
+     * <p>content_type</p>
+     */
     @NameInMap("content_type")
     public String contentType;
 
-    // crc64_hash
+    /**
+     * <p>crc64_hash</p>
+     */
     @NameInMap("crc64_hash")
     public String crc64Hash;
 
-    // created_at
+    /**
+     * <p>created_at</p>
+     */
     @NameInMap("created_at")
     public String createdAt;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // domain_id
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     @Validation(pattern = "[a-z0-9A-Z]+")
     public String domainId;
 
-    // download_url
+    /**
+     * <p>download_url</p>
+     */
     @NameInMap("download_url")
     public String downloadUrl;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_extension
+    /**
+     * <p>file_extension</p>
+     */
     @NameInMap("file_extension")
     public String fileExtension;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     public String filePath;
 
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     @Validation(required = true, pattern = "[a-zA-Z0-9.-]{1,1000}")
     public String name;
 
-    // parent_file_id
+    /**
+     * <p>parent_file_id</p>
+     */
     @NameInMap("parent_file_path")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String parentFilePath;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9]+")
     public String shareId;
 
-    // Size
+    /**
+     * <p>Size</p>
+     */
     @NameInMap("size")
     public Long size;
 
-    // status
+    /**
+     * <p>status</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // thumbnail
+    /**
+     * <p>thumbnail</p>
+     */
     @NameInMap("thumbnail")
     public String thumbnail;
 
-    // trashed_at
+    /**
+     * <p>trashed_at</p>
+     */
     @NameInMap("trashed_at")
     public String trashedAt;
 
-    // type
+    /**
+     * <p>type</p>
+     */
     @NameInMap("type")
     public String type;
 
-    // updated_at
+    /**
+     * <p>updated_at</p>
+     */
     @NameInMap("updated_at")
     public String updatedAt;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 
-    // url
+    /**
+     * <p>url</p>
+     */
     @NameInMap("url")
     public String url;
 

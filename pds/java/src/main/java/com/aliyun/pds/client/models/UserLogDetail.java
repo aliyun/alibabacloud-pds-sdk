@@ -7,22 +7,30 @@ import com.aliyun.tea.*;
  * 
  */
 public class UserLogDetail extends TeaModel {
-    // email
+    /**
+     * <p>email</p>
+     */
     @NameInMap("email")
     public String email;
 
     @NameInMap("expired_at")
     public Long expiredAt;
 
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     public String name;
 
-    // phone
+    /**
+     * <p>phone</p>
+     */
     @NameInMap("phone")
     public String phone;
 
-    // role_id
+    /**
+     * <p>role_id</p>
+     */
     @NameInMap("role_id")
     public String roleId;
 

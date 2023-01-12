@@ -13,17 +13,23 @@ public class TrashFileRequest extends TeaModel {
     @NameInMap("check_folder_empty")
     public Boolean checkFolderEmpty;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // share_id, either share_id or drive_id is required
+    /**
+     * <p>share_id, either share_id or drive_id is required</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 

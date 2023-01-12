@@ -7,27 +7,39 @@ import com.aliyun.tea.*;
  * 快速转码task响应
  */
 public class QuickVideoTaskResponse extends TeaModel {
-    // status, 转码状态
+    /**
+     * <p>status, 转码状态</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // template_height
+    /**
+     * <p>template_height</p>
+     */
     @NameInMap("template_height")
     public Long templateHeight;
 
-    // template_id, 转码模板id
+    /**
+     * <p>template_id, 转码模板id</p>
+     */
     @NameInMap("template_id")
     public String templateId;
 
-    // template_name, 模板文案id
+    /**
+     * <p>template_name, 模板文案id</p>
+     */
     @NameInMap("template_name")
     public String templateName;
 
-    // template_width
+    /**
+     * <p>template_width</p>
+     */
     @NameInMap("template_width")
     public Long templateWidth;
 
-    // url, 视频播放地址
+    /**
+     * <p>url, 视频播放地址</p>
+     */
     @NameInMap("url")
     public String url;
 

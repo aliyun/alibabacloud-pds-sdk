@@ -10,11 +10,15 @@ public class MigrateUserToSubdomainRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // subdomain_id
+    /**
+     * <p>subdomain_id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 
-    // user_id
+    /**
+     * <p>user_id</p>
+     */
     @NameInMap("user_id")
     public String userId;
 

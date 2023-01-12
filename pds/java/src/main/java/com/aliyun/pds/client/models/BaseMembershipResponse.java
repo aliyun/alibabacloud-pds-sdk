@@ -7,30 +7,42 @@ import com.aliyun.tea.*;
  * 
  */
 public class BaseMembershipResponse extends TeaModel {
-    // created_at
+    /**
+     * <p>created_at</p>
+     */
     @NameInMap("created_at")
     public Long createdAt;
 
-    // creator
+    /**
+     * <p>creator</p>
+     */
     @NameInMap("creator")
     public String creator;
 
-    // 描述
+    /**
+     * <p>描述</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // domain id
+    /**
+     * <p>domain id</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
-    // group id
+    /**
+     * <p>group id</p>
+     */
     @NameInMap("group_id")
     public String groupId;
 
     @NameInMap("is_sync")
     public Boolean isSync;
 
-    // 角色， member or admin
+    /**
+     * <p>角色， member or admin</p>
+     */
     @NameInMap("member_role")
     public String memberRole;
 
@@ -40,7 +52,9 @@ public class BaseMembershipResponse extends TeaModel {
     @NameInMap("sub_group_id")
     public String subGroupId;
 
-    // updated_at
+    /**
+     * <p>updated_at</p>
+     */
     @NameInMap("updated_at")
     public Long updatedAt;
 

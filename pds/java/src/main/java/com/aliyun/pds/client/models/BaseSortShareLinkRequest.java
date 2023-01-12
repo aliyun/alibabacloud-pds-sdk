@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class BaseSortShareLinkRequest extends TeaModel {
-    // order_by
+    /**
+     * <p>order_by</p>
+     */
     @NameInMap("order_by")
     public String orderBy;
 
-    // order_direction
+    /**
+     * <p>order_direction</p>
+     */
     @NameInMap("order_direction")
     public String orderDirection;
 

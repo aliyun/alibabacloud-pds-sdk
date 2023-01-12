@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * domain get request
  */
 public class DomainGetRequest extends TeaModel {
-    // fields,需要获取的属性字段,英文逗号分隔,*表示获取所有fields支持的枚举属性字段,为空不获取任何枚举属性字段
+    /**
+     * <p>fields,需要获取的属性字段,英文逗号分隔,*表示获取所有fields支持的枚举属性字段,为空不获取任何枚举属性字段</p>
+     */
     @NameInMap("fields")
     public String fields;
 
-    // 是否获取share/share_link详情
+    /**
+     * <p>是否获取share/share_link详情</p>
+     */
     @NameInMap("get_share_detail")
     public Boolean getShareDetail;
 
-    // 是否 merge parent 配置
+    /**
+     * <p>是否 merge parent 配置</p>
+     */
     @NameInMap("merge_parent")
     public Boolean mergeParent;
 

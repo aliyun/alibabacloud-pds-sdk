@@ -10,20 +10,28 @@ public class SearchAuditLogRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // limit
+    /**
+     * <p>limit</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 200, minimum = 1)
     public Integer limit;
 
-    // Marker
+    /**
+     * <p>Marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // order_by
+    /**
+     * <p>order_by</p>
+     */
     @NameInMap("order_by")
     public String orderBy;
 
-    // query
+    /**
+     * <p>query</p>
+     */
     @NameInMap("query")
     @Validation(maxLength = 4096)
     public String query;

@@ -7,41 +7,57 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetUserAccessTokenResponse extends TeaModel {
-    // 用于调用业务接口的accessToken
+    /**
+     * <p>用于调用业务接口的accessToken</p>
+     */
     @NameInMap("access_token")
     @Validation(required = true)
     public String accessToken;
 
-    // Default Drive ID
+    /**
+     * <p>Default Drive ID</p>
+     */
     @NameInMap("default_drive_id")
     @Validation(required = true)
     public String defaultDriveId;
 
-    // accessToken过期时间，ISO时间
+    /**
+     * <p>accessToken过期时间，ISO时间</p>
+     */
     @NameInMap("expire_time")
     @Validation(required = true)
     public String expireTime;
 
-    // accessToken过期时间，单位秒
+    /**
+     * <p>accessToken过期时间，单位秒</p>
+     */
     @NameInMap("expires_in")
     @Validation(required = true)
     public Long expiresIn;
 
-    // 用于刷新accessToken
+    /**
+     * <p>用于刷新accessToken</p>
+     */
     @NameInMap("refresh_token")
     public String refreshToken;
 
-    // 当前用户角色
+    /**
+     * <p>当前用户角色</p>
+     */
     @NameInMap("role")
     @Validation(required = true)
     public String role;
 
-    // accessToken类型，Bearer
+    /**
+     * <p>accessToken类型，Bearer</p>
+     */
     @NameInMap("token_type")
     @Validation(required = true)
     public String tokenType;
 
-    // 当前用户ID
+    /**
+     * <p>当前用户ID</p>
+     */
     @NameInMap("user_id")
     @Validation(required = true)
     public String userId;

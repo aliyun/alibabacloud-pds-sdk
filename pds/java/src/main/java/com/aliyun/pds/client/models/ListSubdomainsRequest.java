@@ -10,11 +10,15 @@ public class ListSubdomainsRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 数量，默认为50
+    /**
+     * <p>数量，默认为50</p>
+     */
     @NameInMap("limit")
     public Integer limit;
 
-    // 分页游标，可从 response 中获取
+    /**
+     * <p>分页游标，可从 response 中获取</p>
+     */
     @NameInMap("marker")
     public String marker;
 

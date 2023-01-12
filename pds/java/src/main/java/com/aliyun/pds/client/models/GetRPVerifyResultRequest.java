@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetRPVerifyResultRequest extends TeaModel {
-    // During Verify Process, 是否在实人认证流程中调用
+    /**
+     * <p>During Verify Process, 是否在实人认证流程中调用</p>
+     */
     @NameInMap("during_verify_process")
     public Boolean duringVerifyProcess;
 
-    // User ID, 当前访问的用户
+    /**
+     * <p>User ID, 当前访问的用户</p>
+     */
     @NameInMap("user_id")
     @Validation(required = true)
     public String userId;

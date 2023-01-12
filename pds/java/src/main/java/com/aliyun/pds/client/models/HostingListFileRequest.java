@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * list file request
  */
 public class HostingListFileRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
@@ -19,28 +23,40 @@ public class HostingListFileRequest extends TeaModel {
     @NameInMap("image_cropping_aspect_ratios")
     public java.util.List<String> imageCroppingAspectRatios;
 
-    // image_thumbnail_process
+    /**
+     * <p>image_thumbnail_process</p>
+     */
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
-    // image_url_process
+    /**
+     * <p>image_url_process</p>
+     */
     @NameInMap("image_url_process")
     public String imageUrlProcess;
 
-    // limit
+    /**
+     * <p>limit</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 200)
     public Long limit;
 
-    // marker
+    /**
+     * <p>marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // office_thumbnail_process
+    /**
+     * <p>office_thumbnail_process</p>
+     */
     @NameInMap("office_thumbnail_process")
     public String officeThumbnailProcess;
 
-    // ParentFilePath
+    /**
+     * <p>ParentFilePath</p>
+     */
     @NameInMap("parent_file_path")
     @Validation(required = true)
     public String parentFilePath;
@@ -48,7 +64,9 @@ public class HostingListFileRequest extends TeaModel {
     @NameInMap("referer")
     public String referer;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;
@@ -59,13 +77,17 @@ public class HostingListFileRequest extends TeaModel {
     @NameInMap("thumbnail_processes")
     public java.util.Map<String, ?> thumbnailProcesses;
 
-    // url_expire_sec
+    /**
+     * <p>url_expire_sec</p>
+     */
     @NameInMap("url_expire_sec")
     @Validation(maximum = 14400, minimum = 10)
     public Long urlExpireSec;
 
-    // video_thumbnail_process
-    // type:string
+    /**
+     * <p>video_thumbnail_process</p>
+     * <p>type:string</p>
+     */
     @NameInMap("video_thumbnail_process")
     public String videoThumbnailProcess;
 

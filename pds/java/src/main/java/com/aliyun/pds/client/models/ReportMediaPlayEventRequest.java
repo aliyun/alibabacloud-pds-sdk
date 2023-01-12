@@ -7,31 +7,45 @@ import com.aliyun.tea.*;
  * report_media_play_event request
  */
 public class ReportMediaPlayEventRequest extends TeaModel {
-    // duration
+    /**
+     * <p>duration</p>
+     */
     @NameInMap("duration")
     public Long duration;
 
-    // error
+    /**
+     * <p>error</p>
+     */
     @NameInMap("error")
     public String error;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     public String fileId;
 
-    // player_version
+    /**
+     * <p>player_version</p>
+     */
     @NameInMap("player_version")
     public String playerVersion;
 
-    // sub_type
+    /**
+     * <p>sub_type</p>
+     */
     @NameInMap("sub_type")
     public String subType;
 
-    // template_id
+    /**
+     * <p>template_id</p>
+     */
     @NameInMap("template_id")
     public String templateId;
 
-    // wait_count
+    /**
+     * <p>wait_count</p>
+     */
     @NameInMap("wait_count")
     public Long waitCount;
 

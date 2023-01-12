@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * share_link detail response
  */
 public class ShareLinkDetailResponse extends TeaModel {
-    // 企业未配置独立域名时，允许的访问次数
+    /**
+     * <p>企业未配置独立域名时，允许的访问次数</p>
+     */
     @NameInMap("access_quota")
     public Long accessQuota;
 
-    // 是否启用分享token验证码功能
+    /**
+     * <p>是否启用分享token验证码功能</p>
+     */
     @NameInMap("enable_nvc_share_token")
     public Boolean enableNvcShareToken;
 
-    // 企业是否开通了分享可在线编辑的文档的功能
+    /**
+     * <p>企业是否开通了分享可在线编辑的文档的功能</p>
+     */
     @NameInMap("enable_office_editable")
     public Boolean enableOfficeEditable;
 
-    // 企业未配置独立域名时，是否超过允许的访问次数
+    /**
+     * <p>企业未配置独立域名时，是否超过允许的访问次数</p>
+     */
     @NameInMap("exceed_access_quota")
     public Boolean exceedAccessQuota;
 

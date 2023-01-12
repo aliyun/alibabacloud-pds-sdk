@@ -7,24 +7,32 @@ import com.aliyun.tea.*;
  * 获取文件上传URL
  */
 public class BaseGetUploadUrlRequest extends TeaModel {
-    // content_md5
+    /**
+     * <p>content_md5</p>
+     */
     @NameInMap("content_md5")
     @Validation(maxLength = 32)
     public String contentMd5;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // upload_part_list
+    /**
+     * <p>upload_part_list</p>
+     */
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
     @NameInMap("share_id")
     public String shareId;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     @Validation(required = true)
     public String uploadId;

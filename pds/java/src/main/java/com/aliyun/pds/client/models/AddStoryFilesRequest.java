@@ -10,7 +10,9 @@ public class AddStoryFilesRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
@@ -18,7 +20,9 @@ public class AddStoryFilesRequest extends TeaModel {
     @NameInMap("files")
     public java.util.List<StoryFile> files;
 
-    // story_id
+    /**
+     * <p>story_id</p>
+     */
     @NameInMap("story_id")
     @Validation(required = true)
     public String storyId;

@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class QueryRequestTimeRange extends TeaModel {
-    // end
+    /**
+     * <p>end</p>
+     */
     @NameInMap("end")
     public String end;
 
-    // start
+    /**
+     * <p>start</p>
+     */
     @NameInMap("start")
     public String start;
 

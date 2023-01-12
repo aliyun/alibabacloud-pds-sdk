@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * GetDriveUsedSizeResponse
  */
 public class GetDriveUsedSizeResponse extends TeaModel {
-    // used_size
+    /**
+     * <p>used_size</p>
+     */
     @NameInMap("used_size")
     public Long usedSize;
 

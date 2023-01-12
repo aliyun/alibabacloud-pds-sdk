@@ -10,17 +10,23 @@ public class CertInfo extends TeaModel {
     @NameInMap("CertID")
     public String CertID;
 
-    // cert body
+    /**
+     * <p>cert body</p>
+     */
     @NameInMap("cert_body")
     @Validation(required = true)
     public String certBody;
 
-    // cert name
+    /**
+     * <p>cert name</p>
+     */
     @NameInMap("cert_name")
     @Validation(required = true)
     public String certName;
 
-    // cert privatekey
+    /**
+     * <p>cert privatekey</p>
+     */
     @NameInMap("cert_privatekey")
     @Validation(required = true)
     public String certPrivatekey;

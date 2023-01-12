@@ -10,41 +10,59 @@ public class SearchViewsRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     @Validation(required = true)
     public String category;
 
-    // 每页大小限制
+    /**
+     * <p>每页大小限制</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // marker
+    /**
+     * <p>marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     public String name;
 
-    // order_by
+    /**
+     * <p>order_by</p>
+     */
     @NameInMap("order_by")
     public String orderBy;
 
-    // order_direction
+    /**
+     * <p>order_direction</p>
+     */
     @NameInMap("order_direction")
     public String orderDirection;
 
-    // owner
+    /**
+     * <p>owner</p>
+     */
     @NameInMap("owner")
     public String owner;
 
-    // return_total_count 是否返回查询总数
+    /**
+     * <p>return_total_count 是否返回查询总数</p>
+     */
     @NameInMap("return_total_count")
     public Boolean returnTotalCount;
 
-    // user_id
+    /**
+     * <p>user_id</p>
+     */
     @NameInMap("user_id")
     public String userId;
 

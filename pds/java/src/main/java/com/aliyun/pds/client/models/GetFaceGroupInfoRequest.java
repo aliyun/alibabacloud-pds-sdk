@@ -10,12 +10,16 @@ public class GetFaceGroupInfoRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // group_id 列举人脸分组接口中获取
+    /**
+     * <p>group_id 列举人脸分组接口中获取</p>
+     */
     @NameInMap("group_id")
     @Validation(required = true)
     public String groupId;

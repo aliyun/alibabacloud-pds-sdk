@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * GetOfficeEditUrlOption 权限控制
  */
 public class GetOfficeEditUrlOption extends TeaModel {
-    // Copy
+    /**
+     * <p>Copy</p>
+     */
     @NameInMap("copy")
     public Boolean copy;
 

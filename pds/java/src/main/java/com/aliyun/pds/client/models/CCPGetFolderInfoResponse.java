@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 获取文件夹信息
  */
 public class CCPGetFolderInfoResponse extends TeaModel {
-    // total_size
+    /**
+     * <p>total_size</p>
+     */
     @NameInMap("total_size")
     public Long totalSize;
 
-    // used_size
+    /**
+     * <p>used_size</p>
+     */
     @NameInMap("used_size")
     public Long usedSize;
 

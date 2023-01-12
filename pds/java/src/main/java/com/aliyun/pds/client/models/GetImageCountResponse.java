@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 获取云照片个数结果
  */
 public class GetImageCountResponse extends TeaModel {
-    // image_count
+    /**
+     * <p>image_count</p>
+     */
     @NameInMap("image_count")
     public Long imageCount;
 

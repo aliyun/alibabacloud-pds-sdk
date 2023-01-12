@@ -7,47 +7,69 @@ import com.aliyun.tea.*;
  * 
  */
 public class UpdateShareLinkPermissionRequest extends TeaModel {
-    // 允许上传
+    /**
+     * <p>允许上传</p>
+     */
     @NameInMap("creatable")
     public Boolean creatable;
 
-    // 禁止下载分享中的文件
+    /**
+     * <p>禁止下载分享中的文件</p>
+     */
     @NameInMap("disable_download")
     public Boolean disableDownload;
 
-    // 禁止预览分享中的文件
+    /**
+     * <p>禁止预览分享中的文件</p>
+     */
     @NameInMap("disable_preview")
     public Boolean disablePreview;
 
-    // 禁止转存分享中的文件
+    /**
+     * <p>禁止转存分享中的文件</p>
+     */
     @NameInMap("disable_save")
     public Boolean disableSave;
 
-    // 分享中的文件不可见
+    /**
+     * <p>分享中的文件不可见</p>
+     */
     @NameInMap("disable_visible")
     public Boolean disableVisible;
 
-    // 分享下载次数限制
+    /**
+     * <p>分享下载次数限制</p>
+     */
     @NameInMap("download_limit")
     public Long downloadLimit;
 
-    // 允许在线编辑文档
+    /**
+     * <p>允许在线编辑文档</p>
+     */
     @NameInMap("office_editable")
     public Boolean officeEditable;
 
-    // 分享预览次数限制
+    /**
+     * <p>分享预览次数限制</p>
+     */
     @NameInMap("preview_limit")
     public Long previewLimit;
 
-    // 企业内(domain)登录后才允许使用分享
+    /**
+     * <p>企业内(domain)登录后才允许使用分享</p>
+     */
     @NameInMap("require_login")
     public Boolean requireLogin;
 
-    // 分享转存和下载的总次数限制
+    /**
+     * <p>分享转存和下载的总次数限制</p>
+     */
     @NameInMap("save_download_limit")
     public Long saveDownloadLimit;
 
-    // 分享转存次数限制
+    /**
+     * <p>分享转存次数限制</p>
+     */
     @NameInMap("save_limit")
     public Long saveLimit;
 

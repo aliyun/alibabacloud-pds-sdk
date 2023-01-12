@@ -7,17 +7,23 @@ import com.aliyun.tea.*;
  * 
  */
 public class BaseRevisionRequest extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // revision_id
+    /**
+     * <p>revision_id</p>
+     */
     @NameInMap("revision_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String revisionId;

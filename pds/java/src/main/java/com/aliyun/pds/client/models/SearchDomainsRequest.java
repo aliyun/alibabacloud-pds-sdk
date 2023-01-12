@@ -7,28 +7,40 @@ import com.aliyun.tea.*;
  * search domain request
  */
 public class SearchDomainsRequest extends TeaModel {
-    // 通过购买的实例ID搜索domain
+    /**
+     * <p>通过购买的实例ID搜索domain</p>
+     */
     @NameInMap("instance_id")
     public String instanceId;
 
-    // 分页大小
+    /**
+     * <p>分页大小</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // 查询游标
+    /**
+     * <p>查询游标</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // domain名称，模糊匹配
+    /**
+     * <p>domain名称，模糊匹配</p>
+     */
     @NameInMap("name")
     public String name;
 
-    // 排序规则
+    /**
+     * <p>排序规则</p>
+     */
     @NameInMap("order_by")
     public String orderBy;
 
-    // 通过不同ServiceCode搜索
+    /**
+     * <p>通过不同ServiceCode搜索</p>
+     */
     @NameInMap("service_code")
     public String serviceCode;
 

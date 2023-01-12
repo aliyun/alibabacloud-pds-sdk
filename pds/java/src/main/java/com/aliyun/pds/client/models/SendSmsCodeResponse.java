@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class SendSmsCodeResponse extends TeaModel {
-    // 验证码ID
+    /**
+     * <p>验证码ID</p>
+     */
     @NameInMap("sms_code_id")
     @Validation(required = true)
     public String smsCodeId;

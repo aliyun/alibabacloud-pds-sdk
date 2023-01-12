@@ -10,42 +10,60 @@ public class CreateIdentityToBenefitPkgMappingRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 权益包数量
+    /**
+     * <p>权益包数量</p>
+     */
     @NameInMap("amount")
     public Long amount;
 
-    // 权益包的唯一标识
+    /**
+     * <p>权益包的唯一标识</p>
+     */
     @NameInMap("benefit_pkg_id")
     @Validation(required = true)
     public String benefitPkgId;
 
-    // 实体权益包关联的自定义Meta
+    /**
+     * <p>实体权益包关联的自定义Meta</p>
+     */
     @NameInMap("custom_benefit_meta")
     public java.util.Map<String, ?> customBenefitMeta;
 
-    // 权益下发的唯一标识
+    /**
+     * <p>权益下发的唯一标识</p>
+     */
     @NameInMap("delivery_id")
     public String deliveryId;
 
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
-    // 权益包超期时间的时间戳，单位为毫秒
+    /**
+     * <p>权益包超期时间的时间戳，单位为毫秒</p>
+     */
     @NameInMap("expire_time")
     public Long expireTime;
 
-    // 实体的唯一标识，如 userID
+    /**
+     * <p>实体的唯一标识，如 userID</p>
+     */
     @NameInMap("identity_id")
     @Validation(required = true)
     public String identityId;
 
-    // 实体类型，当前支持user类型实体
+    /**
+     * <p>实体类型，当前支持user类型实体</p>
+     */
     @NameInMap("identity_type")
     @Validation(required = true)
     public String identityType;
 
-    // nonce ID
+    /**
+     * <p>nonce ID</p>
+     */
     @NameInMap("nonce_id")
     public String nonceId;
 

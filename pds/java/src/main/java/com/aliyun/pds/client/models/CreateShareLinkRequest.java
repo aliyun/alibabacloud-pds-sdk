@@ -10,124 +10,182 @@ public class CreateShareLinkRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     public String category;
 
-    // comments
+    /**
+     * <p>comments</p>
+     */
     @NameInMap("comments")
     public String comments;
 
-    // 允许上传
+    /**
+     * <p>允许上传</p>
+     */
     @NameInMap("creatable")
     public Boolean creatable;
 
-    // 允许上传的目录列表
+    /**
+     * <p>允许上传的目录列表</p>
+     */
     @NameInMap("creatable_file_id_list")
     public java.util.List<String> creatableFileIdList;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // 禁止下载分享中的文件
+    /**
+     * <p>禁止下载分享中的文件</p>
+     */
     @NameInMap("disable_download")
     public Boolean disableDownload;
 
-    // 禁止预览分享中的文件
+    /**
+     * <p>禁止预览分享中的文件</p>
+     */
     @NameInMap("disable_preview")
     public Boolean disablePreview;
 
-    // 禁止转存分享中的文件
+    /**
+     * <p>禁止转存分享中的文件</p>
+     */
     @NameInMap("disable_save")
     public Boolean disableSave;
 
-    // 分享中的文件不可见
+    /**
+     * <p>分享中的文件不可见</p>
+     */
     @NameInMap("disable_visible")
     public Boolean disableVisible;
 
-    // 分享下载次数限制
+    /**
+     * <p>分享下载次数限制</p>
+     */
     @NameInMap("download_limit")
     public Long downloadLimit;
 
-    // 多drive使用该字段，view分享支持跨drive，使用该字段，如果为空，则是分享view下所有文件
+    /**
+     * <p>多drive使用该字段，view分享支持跨drive，使用该字段，如果为空，则是分享view下所有文件</p>
+     */
     @NameInMap("drive_file_list")
     public java.util.List<ShareFile> driveFileList;
 
-    // 单drive使用以下字段，文件共享目前使用该字段
-    // drive_id
+    /**
+     * <p>单drive使用以下字段，文件共享目前使用该字段</p>
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // enable_file_changed_notify
+    /**
+     * <p>enable_file_changed_notify</p>
+     */
     @NameInMap("enable_file_changed_notify")
     public Boolean enableFileChangedNotify;
 
-    // expiration
+    /**
+     * <p>expiration</p>
+     */
     @NameInMap("expiration")
     public String expiration;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     public String fileId;
 
-    // file_id_list
+    /**
+     * <p>file_id_list</p>
+     */
     @NameInMap("file_id_list")
     public java.util.List<String> fileIdList;
 
-    // file_path_list
+    /**
+     * <p>file_path_list</p>
+     */
     @NameInMap("file_path_list")
     public java.util.List<String> filePathList;
 
-    // filter_group
+    /**
+     * <p>filter_group</p>
+     */
     @NameInMap("filter_group")
     public String filterGroup;
 
-    // 允许在线编辑文档
+    /**
+     * <p>允许在线编辑文档</p>
+     */
     @NameInMap("office_editable")
     public Boolean officeEditable;
 
-    // 分享预览次数限制
+    /**
+     * <p>分享预览次数限制</p>
+     */
     @NameInMap("preview_limit")
     public Long previewLimit;
 
     @NameInMap("referer")
     public String referer;
 
-    // 企业内(domain)登录后才允许使用分享
+    /**
+     * <p>企业内(domain)登录后才允许使用分享</p>
+     */
     @NameInMap("require_login")
     public Boolean requireLogin;
 
-    // 分享转存和下载的总次数限制
+    /**
+     * <p>分享转存和下载的总次数限制</p>
+     */
     @NameInMap("save_download_limit")
     public Long saveDownloadLimit;
 
-    // 分享转存次数限制
+    /**
+     * <p>分享转存次数限制</p>
+     */
     @NameInMap("save_limit")
     public Long saveLimit;
 
-    // share_icon
+    /**
+     * <p>share_icon</p>
+     */
     @NameInMap("share_icon")
     public String shareIcon;
 
-    // share_name
+    /**
+     * <p>share_name</p>
+     */
     @NameInMap("share_name")
     public String shareName;
 
-    // share_pwd
+    /**
+     * <p>share_pwd</p>
+     */
     @NameInMap("share_pwd")
     public String sharePwd;
 
-    // user_id, only admin or aksk can set
+    /**
+     * <p>user_id, only admin or aksk can set</p>
+     */
     @NameInMap("user_id")
     public String userId;
 
-    // view_id
+    /**
+     * <p>view_id</p>
+     */
     @NameInMap("view_id")
     public String viewId;
 

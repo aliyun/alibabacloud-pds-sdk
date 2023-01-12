@@ -7,66 +7,96 @@ import com.aliyun.tea.*;
  * 
  */
 public class ImageMediaResponse extends TeaModel {
-    // address_line
+    /**
+     * <p>address_line</p>
+     */
     @NameInMap("address_line")
     public String addressLine;
 
-    // city
+    /**
+     * <p>city</p>
+     */
     @NameInMap("city")
     public String city;
 
-    // country
+    /**
+     * <p>country</p>
+     */
     @NameInMap("country")
     public String country;
 
-    // cropping_suggestion
+    /**
+     * <p>cropping_suggestion</p>
+     */
     @NameInMap("cropping_suggestion")
     public java.util.List<CroppingSuggestionItem> croppingSuggestion;
 
-    // district
+    /**
+     * <p>district</p>
+     */
     @NameInMap("district")
     public String district;
 
-    // exif json string
+    /**
+     * <p>exif json string</p>
+     */
     @NameInMap("exif")
     public String exif;
 
-    // faces json string
+    /**
+     * <p>faces json string</p>
+     */
     @NameInMap("faces")
     public String faces;
 
-    // faces_thumbnail_list
+    /**
+     * <p>faces_thumbnail_list</p>
+     */
     @NameInMap("faces_thumbnail")
     public java.util.List<FaceThumbnail> facesThumbnail;
 
-    // height
+    /**
+     * <p>height</p>
+     */
     @NameInMap("height")
     public Long height;
 
     @NameInMap("image_quality")
     public ImageQuality imageQuality;
 
-    // system_tags
+    /**
+     * <p>system_tags</p>
+     */
     @NameInMap("image_tags")
     public java.util.List<SystemTag> imageTags;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
-    // province
+    /**
+     * <p>province</p>
+     */
     @NameInMap("province")
     public String province;
 
-    // time
+    /**
+     * <p>time</p>
+     */
     @NameInMap("time")
     public String time;
 
-    // township
+    /**
+     * <p>township</p>
+     */
     @NameInMap("township")
     public String township;
 
-    // width
+    /**
+     * <p>width</p>
+     */
     @NameInMap("width")
     public Long width;
 

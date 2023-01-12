@@ -7,25 +7,35 @@ import com.aliyun.tea.*;
  * 
  */
 public class StreamUploadInfo extends TeaModel {
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
-    // part_info_list
+    /**
+     * <p>part_info_list</p>
+     */
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
-    // pre_rapid_upload
-    // type: boolean
+    /**
+     * <p>pre_rapid_upload</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("pre_rapid_upload")
     public Boolean preRapidUpload;
 
-    // rapid_upload
-    // type: boolean
+    /**
+     * <p>rapid_upload</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("rapid_upload")
     public Boolean rapidUpload;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 

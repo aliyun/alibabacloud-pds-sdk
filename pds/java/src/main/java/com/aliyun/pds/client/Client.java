@@ -62,6 +62,13 @@ public class Client {
         this._domainId = config.domainId;
     }
 
+    /**
+     * 取消绑定关系，生成新用户，返回访问令牌
+     * @tags account
+     * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public CancelLinkModel cancelLinkEx(CancelLinkRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -182,6 +189,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查询手机号是否已被注册
+     * @tags account
+     * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public CheckExistModel checkExistEx(CheckExistRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -302,6 +317,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 确认绑定关系, 成功后返回访问令牌
+     * @tags account
+     * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public ConfirmLinkModel confirmLinkEx(ConfirmLinkRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -422,6 +446,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 校验手机短信验证码，用于重置密码时校验手机，通过校验后返回state，可通过state重新设置密码
+     * @tags account
+     * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public VerifyCodeModel verifyCodeEx(VerifyCodeRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -542,6 +574,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 管理员通过账号信息直接获取用户的访问令牌
+     * @tags account
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public GetAccessTokenByLinkInfoModel getAccessTokenByLinkInfoEx(GetAccessTokenByLinkInfoRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -662,6 +702,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取用户认证方式详情
+     * @tags account
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public GetLinkInfoModel getLinkInfoEx(GetByLinkInfoRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -782,6 +830,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取用户的所有绑定信息
+     * @tags account
+     * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public GetLinkInfoByUserIdModel getLinkInfoByUserIdEx(GetLinkInfoByUserIDRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -902,6 +957,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取公钥，用于加密对称密钥
+     * @tags account
+     * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public GetPublicKeyModel getPublicKeyEx(GetPublicKeyRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1022,6 +1085,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 绑定用户认证方式
+     * @tags account
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error AlreadyExist {resource} has already exists. {extra_msg}
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public LinkModel linkEx(AccountLinkRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1142,6 +1214,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 通过手机号+短信或密码登录，返回刷新令牌和访问令牌
+     * @tags account
+     * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public LoginModel loginEx(LoginRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1262,6 +1342,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 通过手机号+短信验证码注册账号
+     * @tags account
+     * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error AlreadyExist {resource} has already exists. {extra_msg}
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public RegisterModel registerEx(RegisterRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1382,6 +1471,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 用户退出登录
+     * @tags account
+     * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public AccountRevokeModel accountRevokeEx(RevokeRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1499,6 +1596,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 发送短信验证码，用于登录、注册、修改密码、绑定等
+     * @tags account
+     * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public SendSmsCodeModel sendSmsCodeEx(SendSmsCodeRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1619,6 +1724,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 用户通过刷新令牌（refresh_token）获取访问令牌（access_token）
+     * @tags account
+     * @error InvalidParameterMissing The input parameter {parameter_name} is missing.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public AccountTokenModel accountTokenEx(AccountTokenRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1739,6 +1852,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 解绑用户认证方式
+     * @tags account
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public UnlinkModel unlinkEx(AccountUnLinkRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1856,6 +1976,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * export audit log
+     * @tags audit_log
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public ExportAuditLogModel exportAuditLogEx(ExportAuditLogRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1976,6 +2103,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * search audit log
+     * @tags audit_log
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public SearchAuditLogModel searchAuditLogEx(SearchAuditLogRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2096,6 +2230,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 创建实体权益包关联
+     * @tags benefit
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateIdentityToBenefitPkgMappingModel createIdentityToBenefitPkgMappingEx(CreateIdentityToBenefitPkgMappingRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2216,6 +2359,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 删除实体权益包关联
+     * @tags benefit
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteIdentityToBenefitPkgMappingModel deleteIdentityToBenefitPkgMappingEx(DeleteIdentityToBenefitPkgMappingRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2336,6 +2487,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取实体权益包关联
+     * @tags benefit
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetIdentityToBenefitPkgMappingModel getIdentityToBenefitPkgMappingEx(GetIdentityToBenefitPkgMappingRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2456,6 +2616,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举实体关联的所有权益包
+     * @tags benefit
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListIdentityToBenefitPkgMappingModel listIdentityToBenefitPkgMappingEx(ListIdentityToBenefitPkgMappingRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2576,6 +2744,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 更新实体权益包关联
+     * @tags benefit
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateIdentityToBenefitPkgMappingModel updateIdentityToBenefitPkgMappingEx(UpdateIdentityToBenefitPkgMappingRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2696,6 +2873,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举实体的权益
+     * @tags benefit
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListIdentityBenefitPkgModel listIdentityBenefitPkgEx(ListIdentityBenefitPkgRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2816,6 +3002,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举Store列表
+     * @tags admin
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public AdminListStoresModel adminListStoresEx(AdminListStoresRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2936,6 +3129,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * create subdomain
+     * @tags subdomain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public CreateSubdomainModel createSubdomainEx(CreateSubdomainRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3056,6 +3256,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * delete subdomain
+     * @tags subdomain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public DeleteSubdomainModel deleteSubdomainEx(DeleteSubdomainRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3176,6 +3383,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * get subdomain
+     * @tags subdomain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public GetSubdomainModel getSubdomainEx(GetSubdomainRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3296,6 +3510,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * list subdomain
+     * @tags subdomain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public ListSubdomainsModel listSubdomainsEx(ListSubdomainsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3416,6 +3637,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * update subdomain
+     * @tags subdomain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public UpdateSubdomainModel updateSubdomainEx(UpdateSubdomainRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3536,6 +3764,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取用户的accessToken
+     * @tags admin
+     * @error undefined undefined
+     * @error undefined undefined
+     * @error undefined undefined
+     * @error undefined undefined
+     * @error undefined undefined
+     */
     public GetUserAccessTokenModel getUserAccessTokenEx(GetUserAccessTokenRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3656,6 +3893,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 指定文 ID，处罚文件。
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public PunishFileModel punishFileEx(PunishFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3773,6 +4019,17 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 如果目录拷贝、目录删除不能在限定时间内完成，将访问一个异步任务id，
+     * 通过此接口获取异步任务的信息，以确定任务是否执行成功。
+     * @tags async_task
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetAsyncTaskInfoModel getAsyncTaskInfoEx(GetAsyncTaskRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3893,6 +4150,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 对多个原子操作封装成一个批处理请求，服务端并行处理并打包返回每个操作的执行结果。
+     * 支持对文件和文件夹的移动、删除、修改，每个批处理请求最多包含100个原则操作。
+     * @tags batch
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public BatchOperationModel batchOperationEx(BatchRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -4013,6 +4280,17 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 支持normal和large两种drive，
+     * large类型的drive用于文件数多的场景，不支持list操作，
+     * 当drive的文件数量大于1亿时，建议使用large类型。
+     * @tags drive
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateDriveModel createDriveEx(CreateDriveRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -4133,6 +4411,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 删除指定drive_id对应的Drive
+     * @tags drive
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteDriveModel deleteDriveEx(DeleteDriveRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -4250,6 +4537,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取指定drive_id对应的Drive详细信息。
+     * @tags drive
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetDriveModel getDriveEx(GetDriveRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -4370,6 +4667,17 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 一个用户可拥有多个drive，在创建drive时通过参数指定是否为这个用户的默认drive，
+     * 每个用户只能设置一个默认drive。
+     * @tags drive
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetDefaultDriveModel getDefaultDriveEx(GetDefaultDriveRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -4490,6 +4798,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 管理员列举指定用户的Drive
+     * @tags drive
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListDrivesModel listDrivesEx(ListDriveRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -4610,6 +4927,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举当前用户（访问令牌）的Drive
+     * @tags drive
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListMyDrivesModel listMyDrivesEx(ListMyDriveRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -4730,6 +5056,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 按照名称或拥有者搜索相关Drive
+     * @tags drive
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public SearchDrivesModel searchDrivesEx(SearchDriveRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -4850,6 +5185,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 更新指定drive_id的Drive信息
+     * @tags drive
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateDriveModel updateDriveEx(UpdateDriveRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -4970,6 +5315,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 将文件共享/授权给其他用户或团队
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public AddPermissionModel addPermissionEx(FileAddPermissionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -5087,6 +5442,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * archive_files
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ArchiveFilesModel archiveFilesEx(CCPArchiveFilesRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -5207,6 +5571,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 完成文件上传。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CompleteFileModel completeFileEx(CompleteFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -5327,6 +5701,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * UCCompleteFileRequest
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CompleteFileWithStoreInfoModel completeFileWithStoreInfoEx(UCCompleteFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -5447,6 +5830,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 指定源文件或文件夹，拷贝到指定的文件夹。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CopyFileModel copyFileEx(CopyFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -5576,6 +5969,18 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 在指定文件夹下创建文件或者文件夹，
+     * 根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error AlreadyExist {resource} has already exists. {extra_msg}
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateFileModel createFileEx(CreateFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -5696,6 +6101,18 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 在指定文件夹下创建文件或者文件夹，
+     * 根文件夹用root表示，其他文件夹使用创建文件夹时返回的file_id。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error AlreadyExist {resource} has already exists. {extra_msg}
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateFileWithProofModel createFileWithProofEx(CreateFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -5816,6 +6233,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * CreateFileWithSignature
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateFileWithSignatureModel createFileWithSignatureEx(UCCreateFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -5936,6 +6362,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 指定文件或文件夹ID，删除文件或者文件夹。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteFileModel deleteFileEx(DeleteFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -6062,6 +6498,17 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 对指定的文件或文件夹删除 user tags。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error StateConflict User operation is not valid.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteUsertagsModel deleteUsertagsEx(DeleteFileUserTagsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -6179,6 +6626,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取指定文件或文件夹ID的信息。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetFileModel getFileEx(GetFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -6299,6 +6756,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 根据路径获取指定文件或文件夹的信息。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetFileByPathModel getFileByPathEx(GetFileByPathRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -6419,6 +6886,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取文件的下载地址，调用者可自己设置range头并发下载。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetDownloadUrlModel getDownloadUrlEx(GetDownloadUrlRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -6539,6 +7016,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取drive内，增量数据最新的游标
+     * @tags file_delta
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetLastCursorModel getLastCursorEx(GetLastCursorRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -6659,6 +7146,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取media文件播放URL地址（当前仅支持m3u8）
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetMediaPlayUrlModel getMediaPlayUrlEx(GetMediaPlayURLRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -6779,6 +7275,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取媒体文件播放信息
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetMediaPreviewInfoModel getMediaPreviewInfoEx(CCPGetVideoPreviewPlayInfoRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -6899,6 +7403,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取媒体文件播放元信息
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetMediaPreviewMetaModel getMediaPreviewMetaEx(CCPGetVideoPreviewPlayMetaRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -7019,6 +7531,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取文档的在线编辑地址
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetOfficeEditUrlModel getOfficeEditUrlEx(GetOfficeEditUrlRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -7139,6 +7661,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取文档的预览地址（office文档）
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetOfficePreviewUrlModel getOfficePreviewUrlEx(GetOfficePreviewUrlRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -7259,6 +7791,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取分享中文件的下载地址，调用者可自己设置range头并发下载。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetShareLinkDownloadUrlModel getShareLinkDownloadUrlEx(GetShareLinkDownloadURLRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -7379,6 +7921,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取分享中文件播放信息
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetShareLinkVideoPreviewPlayInfoModel getShareLinkVideoPreviewPlayInfoEx(CCPGetShareLinkVideoPreviewPlayInfoRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -7499,6 +8051,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * GetFileSignature
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetFileSignatureModel getFileSignatureEx(UCFileGetSignatureRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -7619,6 +8180,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 可指定分片信息，一次获取多个分片的上传地址。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetUploadUrlModel getUploadUrlEx(GetUploadUrlRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -7739,6 +8310,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取视频文件播放信息
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetVideoPreviewPlayInfoModel getVideoPreviewPlayInfoEx(CCPGetVideoPreviewPlayInfoRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -7859,6 +8438,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取视频文件播放元信息
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetVideoPreviewPlayMetaModel getVideoPreviewPlayMetaEx(CCPGetVideoPreviewPlayMetaRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -7979,6 +8566,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取视频雪碧图地址
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetVideoPreviewSpriteUrlModel getVideoPreviewSpriteUrlEx(GetVideoPreviewSpriteURLRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -8099,6 +8696,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取视频播放地址
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetVideoPreviewUrlModel getVideoPreviewUrlEx(GetVideoPreviewURLRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -8219,6 +8826,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举指定目录下的文件或文件夹。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListFileModel listFileEx(ListFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -8339,6 +8956,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * list file activity
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListFileActivityModel listFileActivityEx(ListFileActivityRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -8459,6 +9086,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查看分享中的文件列表
+     * @tags share_link
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ShareLinkTokenInvalid ShareToken is invalid. {message}
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListFileByAnonymousModel listFileByAnonymousEx(ListByAnonymousRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -8579,6 +9215,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 根据自定义同步索引键列举文件或文件夹。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListFileByCustomIndexKeyModel listFileByCustomIndexKeyEx(ListFileByCustomIndexKeyRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -8699,6 +9345,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取drive内，增量数据列表
+     * @tags file_delta
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListFileDeltaModel listFileDeltaEx(ListFileDeltaRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -8819,6 +9475,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举文件继承的共享/授权记录
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListInheritPermissionModel listInheritPermissionEx(FileListInheritPermissionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -8939,6 +9605,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举当前用户管理的共享记录
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListManageSharingFileModel listManageSharingFileEx(ListMangeSharingFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -9059,6 +9734,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举文件的共享/授权记录
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListPermissionModel listPermissionEx(FileListPermissionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -9179,6 +9864,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举当前用户收到的共享记录
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListReceivedFileModel listReceivedFileEx(ListReceivedFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -9299,6 +9993,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举当前用户的共享记录
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListSharingFileModel listSharingFileEx(ListSharingFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -9419,6 +10122,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举upload_id对应的已上传分片。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListUploadedPartsModel listUploadedPartsEx(ListUploadedPartRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -9539,6 +10252,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举用户的所有共享/授权记录
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListUserPermissionModel listUserPermissionEx(FileListUserPermissionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -9659,6 +10382,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * live_transcode
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public LiveTranscodeModel liveTranscodeEx(CCPLiveTranscodeRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -9779,6 +10510,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 指定源文件或文件夹，移动到指定的文件夹。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public MoveFileModel moveFileEx(MoveFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -9899,6 +10640,17 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 对指定的文件或文件夹更新 user tags。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error StateConflict User operation is not valid.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public PutUsertagsModel putUsertagsEx(PutFileUserTagsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -10019,6 +10771,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 刷新在线编辑Token
+     * @tags file, refresh, office, edit
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public TokenModel tokenEx(RefreshOfficeEditTokenRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -10139,6 +10901,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 取消文件共享/授权
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public RemovePermissionModel removePermissionEx(FileRemovePermissionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -10256,6 +11028,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 指定文件ID和版本ID，删除版本。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteFileRevisionModel deleteFileRevisionEx(DeleteRevisionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -10373,6 +11155,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 指定文件ID和版本ID，获取版本。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetFileRevisionModel getFileRevisionEx(GetRevisionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -10493,6 +11285,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 指定文件ID，列举版本。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListFileRevisionModel listFileRevisionEx(ListRevisionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -10613,6 +11415,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 指定文件ID和版本ID，还原版本。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public RestoreFileRevisionModel restoreFileRevisionEx(RestoreRevisionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -10733,6 +11545,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 指定文件ID和版本ID，更新版本。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateFileRevisionModel updateFileRevisionEx(UpdateRevisionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -10853,6 +11675,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 在指定drive下全量获取文件元信息。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ScanFileMetaModel scanFileMetaEx(ScanFileMetaRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -10973,6 +11805,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 根据筛选条件，在指定drive下搜索文件。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public SearchFileModel searchFileEx(SearchFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -11093,6 +11935,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查询文件
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public SearchFileFpRefsModel searchFileFpRefsEx(SearchFileFpRefsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -11213,6 +12064,17 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 对指定的文件或文件夹更新信息。
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error AlreadyExist {resource} has already exists. {extra_msg}
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateFileModel updateFileEx(UpdateFileMetaRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -11333,6 +12195,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * UpdateFileUploadContentHash
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateFileUploadContentHashModel updateFileUploadContentHashEx(UCUpdateUploadContentHashRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -11453,6 +12324,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取视频的DRM License
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public VideoDrmLicenseModel videoDrmLicenseEx(CCPVideoDRMLicenseRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -11573,6 +12453,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * walk file
+     * @tags file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public WalkFileModel walkFileEx(CCPWalkFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -11693,6 +12583,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * clear_recyclebin
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ClearRecyclebinModel clearRecyclebinEx(ClearRecycleBinRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -11813,6 +12710,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * list_recyclebin
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListRecyclebinModel listRecyclebinEx(ListFileInRecycleBinRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -11933,6 +12837,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * restore_file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public RestoreFileModel restoreFileEx(RestoreFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -12059,6 +12970,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * trash_file
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public TrashFileModel trashFileEx(TrashFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -12185,6 +13103,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 上报事件
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ReportEventModel reportEventEx(ReportEventRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -12305,6 +13231,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 创建共享。
+     * @tags share
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateShareModel createShareEx(CreateShareRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -12425,6 +13361,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 删除指定共享
+     * @tags share
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteShareModel deleteShareEx(DeleteShareRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -12542,6 +13487,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取共享信息。
+     * @tags share
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetShareModel getShareEx(GetShareRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -12662,6 +13617,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举指定用户的共享
+     * @tags share
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListShareModel listShareEx(ListShareRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -12782,6 +13746,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 修改指定共享
+     * @tags share
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateShareModel updateShareEx(UpdateShareRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -12902,6 +13876,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 取消指定分享
+     * @tags share_link
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CancelShareLinkModel cancelShareLinkEx(CancelShareLinkRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -13019,6 +14002,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 创建分享。
+     * @tags share_link
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateShareLinkModel createShareLinkEx(CreateShareLinkRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -13139,6 +14132,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查看分享的所有信息
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetShareLinkModel getShareLinkEx(GetShareLinkRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -13259,6 +14259,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查看分享的基本信息，比如分享者、到期时间等
+     * @tags share_link
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetShareByAnonymousModel getShareByAnonymousEx(GetShareLinkByAnonymousRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -13379,6 +14387,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 使用分享口令换取分享id
+     * @tags share_link
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetShareIdModel getShareIdEx(GetShareLinkIDRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -13499,6 +14516,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 使用分享码+提取码换取分享token
+     * @tags share_link
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetShareTokenModel getShareTokenEx(GetShareLinkTokenRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -13619,6 +14644,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举指定用户的分享
+     * @tags share_link
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListShareLinkModel listShareLinkEx(ListShareLinkRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -13739,6 +14773,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 上报分享事件
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ShareLinkTokenInvalid ShareToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ReportShareLinkEventModel reportShareLinkEventEx(ReportEventRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -13859,6 +14901,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 搜索指定条件的分享
+     * @tags share_link
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public SearchShareLinkModel searchShareLinkEx(SearchShareLinkRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -13979,6 +15030,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 更新分享。
+     * @tags share_link
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateShareLinkModel updateShareLinkEx(UpdateShareLinkRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -14099,6 +15159,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 添加权限记录
+     * @tags permission
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateModel createEx(CreatePermissionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -14219,6 +15288,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 删除权限记录
+     * @tags permission
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteModel deleteEx(DeletePermissionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -14336,6 +15414,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查询权限记录
+     * @tags permission
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetModel getEx(GetPermissionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -14456,6 +15543,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举权限记录
+     * @tags permission
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListModel listEx(ListPermissionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -14576,6 +15672,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 搜索权限记录
+     * @tags permission
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public SearchModel searchEx(SearchPermissionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -14696,6 +15801,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 修改权限记录
+     * @tags permission
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateModel updateEx(UpdatePermissionRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -14813,6 +15927,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 给用户或团队分配一个角色
+     * @tags role
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public AssignModel assignEx(AssignRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -14930,6 +16053,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 取消用户或团队的一个角色
+     * @tags role
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CancelAssignModel cancelAssignEx(CancelAssignRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -15047,6 +16179,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举用户或团队已分配的角色列表
+     * @tags role
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListIdentityRoleModel listIdentityRoleEx(ListIdentityRoleRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -15167,6 +16308,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查询 Drive 使用空间
+     * @tags statistics
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetDriveUsedSizeModel getDriveUsedSizeEx(GetDriveUsedSizeRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -15287,6 +16437,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查询 Domain 或 Drive 下文件数
+     * @tags statistics
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetFileCountModel getFileCountEx(GetFileCountRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -15407,6 +16566,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取 Subdomain summary
+     * @tags statistics
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetSubdomainSummaryModel getSubdomainSummaryEx(GetSubdomainSummaryRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -15536,6 +16704,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取 Domain summary
+     * @tags statistics
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetDomainSummaryModel getDomainSummaryEx(GetDomainSummaryRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -15665,6 +16842,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * GetAppDebugCmd
+     * @tags app
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetAppDebugCmdModel getAppDebugCmdEx(GetAppDebugCmdRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -15785,6 +16971,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * UpgradeCheckApp
+     * @tags app
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpgradeCheckAppModel upgradeCheckAppEx(UpgradeCheckAppRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -15905,6 +17100,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * BindDevice
+     * @tags device
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public BindDeviceModel bindDeviceEx(BindDeviceRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -16025,6 +17229,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * ListDevice
+     * @tags device
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListDeviceModel listDeviceEx(ListDeviceRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -16145,6 +17358,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 创建用户组
+     * @tags group
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateGroupModel createGroupEx(CreateGroupRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -16265,6 +17487,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 删除用户组
+     * @tags group
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteGroupModel deleteGroupEx(DeleteGroupRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -16382,6 +17613,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取用户组
+     * @tags group
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetGroupModel getGroupEx(GetGroupRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -16502,6 +17742,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举用户组
+     * @tags group
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListGroupModel listGroupEx(ListGroupRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -16622,6 +17871,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 搜索用户组
+     * @tags group
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public SearchGroupModel searchGroupEx(SearchGroupRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -16742,6 +18000,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 更新用户组
+     * @tags group
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateGroupModel updateGroupEx(UpdateGroupRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -16862,6 +18129,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 创建membership
+     * @tags membership
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateMembershipModel createMembershipEx(CreateMembershipRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -16982,6 +18258,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 删除membership
+     * @tags membership
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteMembershipModel deleteMembershipEx(DeleteMembershipRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -17099,6 +18384,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取membership
+     * @tags membership
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetMembershipModel getMembershipEx(GetMembershipRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -17219,6 +18513,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 检查group是否包含某个member
+     * @tags membership
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public HasMemberModel hasMemberEx(HasMemberRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -17339,6 +18642,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举直属的子membership
+     * @tags membership
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListDirectChildMembershipsModel listDirectChildMembershipsEx(ListDirectChildMembershipsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -17459,6 +18771,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举直属的membership
+     * @tags membership
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListDirectMembershipsModel listDirectMembershipsEx(ListDirectParentMembershipsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -17579,6 +18900,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举直属的父membership
+     * @tags membership
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListDirectParentMembershipsModel listDirectParentMembershipsEx(ListDirectParentMembershipsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -17699,6 +19029,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 更新membership
+     * @tags membership
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateMembershipModel updateMembershipEx(UpdateMembershipRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -17819,6 +19158,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * CreateSyncMapping
+     * @tags sync_mapping
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateSyncMappingModel createSyncMappingEx(CreateSyncMappingRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -17939,6 +19287,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * DeleteSyncMapping
+     * @tags sync_mapping
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteSyncMappingModel deleteSyncMappingEx(DeleteSyncMappingRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -18059,6 +19416,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * ListSyncMapping
+     * @tags sync_mapping
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListSyncMappingModel listSyncMappingEx(ListSyncMappingRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -18179,6 +19545,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 只有管理员可以调用
+     * @tags user
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public AddUserToSubdomainModel addUserToSubdomainEx(AddUserToSubdomainRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -18296,6 +19671,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 创建用户，只有管理员可以调用
+     * @tags user
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateUserModel createUserEx(CreateUserRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -18416,6 +19800,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 只有管理员可以调用
+     * @tags user
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteUserModel deleteUserEx(DeleteUserRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -18533,6 +19926,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取用户详细信息，普通用户只能获取自己的信息，管理员可以获取任意用户的信息。
+     * @tags user
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetUserModel getUserEx(GetUserRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -18653,6 +20056,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 只有管理员可以调用
+     * @tags user
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ImportUserModel importUserEx(ImportUserRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -18773,6 +20185,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 只有管理员可以调用
+     * @tags user
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListUsersModel listUsersEx(ListUserRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -18893,6 +20314,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * migrate_user_to_subdomain
+     * @tags user
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public MigrateUserToSubdomainModel migrateUserToSubdomainEx(MigrateUserToSubdomainRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -19013,6 +20443,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 只有管理员可以调用
+     * @tags user
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public RemoveUserFromSubdomainModel removeUserFromSubdomainEx(RemoveUserFromSubdomainRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -19130,6 +20569,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * rollback_from_subdomain
+     * @tags user
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public RollbackUserFromSubdomainModel rollbackUserFromSubdomainEx(RollbackUserFromSubdomainRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -19250,6 +20698,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会根据条件查询用户，只有管理员可以调用
+     * @tags user
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public SearchUserModel searchUserEx(SearchUserRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -19370,6 +20827,18 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 用户可以修改自己的description，nick_name，avatar；
+     * 管理员在用户基础上还可修改status（可以修改任意用户）；
+     * 超级管理员在管理员基础上还可修改role（可以修改任意用户）。
+     * @tags user
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateUserModel updateUserEx(UpdateUserRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -19490,6 +20959,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会根据条件查询用户和团队，只有管理员可以调用
+     * @tags user_group
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public SearchUserGroupModel searchUserGroupEx(SearchUserAndGroupRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -19610,6 +21088,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会对两个人脸分组进行合并
+     * @tags face_group
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public MergeModel mergeEx(MergeFaceGroupRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -19730,6 +21217,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会对移除人脸分组中指定的图片
+     * @tags albums
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UnassignFacegroupItemModel unassignFacegroupItemEx(UnAssignFaceGroupItemRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -19847,6 +21343,17 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取 drive 的数据处理模版
+     * @tags drive
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error StateConflict User operation is not valid.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetDataProcessTemplateModel getDataProcessTemplateEx(GetDriveDataProcessTemplateRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -19967,6 +21474,17 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 更新 drive 的数据处理模版
+     * @tags drive
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error StateConflict User operation is not valid.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateDataProcessTemplateModel updateDataProcessTemplateEx(UpdateDriveDataProcessTemplateRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -20087,6 +21605,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会在指定的故事中添加文件
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public AddStoryFilesModel addStoryFilesEx(AddStoryFilesRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -20207,6 +21735,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会创建故事
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateCustomizedStoryModel createCustomizedStoryEx(CreateCustomizedStoryRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -20327,6 +21865,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会创建故事
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateStoryModel createStoryEx(CreateStoryRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -20447,6 +21995,146 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会删除时空聚类分组
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
+    public DeleteLocationDateClusterModel deleteLocationDateClusterEx(DeleteLocationDateClusterRequest request, RuntimeOptions runtime) throws Exception {
+        TeaModel.validateParams(request, "request");
+        TeaModel.validateParams(runtime, "runtime");
+        java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
+            new TeaPair("timeouted", "retry"),
+            new TeaPair("readTimeout", runtime.readTimeout),
+            new TeaPair("connectTimeout", runtime.connectTimeout),
+            new TeaPair("localAddr", runtime.localAddr),
+            new TeaPair("httpProxy", runtime.httpProxy),
+            new TeaPair("httpsProxy", runtime.httpsProxy),
+            new TeaPair("noProxy", runtime.noProxy),
+            new TeaPair("maxIdleConns", runtime.maxIdleConns),
+            new TeaPair("socks5Proxy", runtime.socks5Proxy),
+            new TeaPair("socks5NetWork", runtime.socks5NetWork),
+            new TeaPair("retry", TeaConverter.buildMap(
+                new TeaPair("retryable", runtime.autoretry),
+                new TeaPair("maxAttempts", com.aliyun.teautil.Common.defaultNumber(runtime.maxAttempts, 3))
+            )),
+            new TeaPair("backoff", TeaConverter.buildMap(
+                new TeaPair("policy", com.aliyun.teautil.Common.defaultString(runtime.backoffPolicy, "no")),
+                new TeaPair("period", com.aliyun.teautil.Common.defaultNumber(runtime.backoffPeriod, 1))
+            )),
+            new TeaPair("ignoreSSL", runtime.ignoreSSL)
+        );
+
+        TeaRequest _lastRequest = null;
+        Exception _lastException = null;
+        long _now = System.currentTimeMillis();
+        int _retryTimes = 0;
+        while (Tea.allowRetry((java.util.Map<String, Object>) runtime_.get("retry"), _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                int backoffTime = Tea.getBackoffTime(runtime_.get("backoff"), _retryTimes);
+                if (backoffTime > 0) {
+                    Tea.sleep(backoffTime);
+                }
+            }
+            _retryTimes = _retryTimes + 1;
+            try {
+                TeaRequest request_ = new TeaRequest();
+                String accesskeyId = this.getAccessKeyId();
+                String accessKeySecret = this.getAccessKeySecret();
+                String securityToken = this.getSecurityToken();
+                String accessToken = this.getAccessToken();
+                java.util.Map<String, Object> realReq = com.aliyun.teautil.Common.toMap(request);
+                request_.protocol = com.aliyun.teautil.Common.defaultString(_protocol, "https");
+                request_.method = "POST";
+                request_.pathname = this.getPathname(_nickname, "/v2/image/delete_location_date_cluster");
+                request_.headers = TeaConverter.merge(String.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("user-agent", this.getUserAgent()),
+                        new TeaPair("host", com.aliyun.teautil.Common.defaultString(_endpoint, "" + _domainId + ".api.aliyunpds.com")),
+                        new TeaPair("content-type", "application/json; charset=utf-8")
+                    ),
+                    request.httpheaders
+                );
+                realReq.put("httpheaders", null);
+                if (!com.aliyun.teautil.Common.empty(accessToken)) {
+                    request_.headers.put("authorization", "Bearer " + accessToken + "");
+                } else if (!com.aliyun.teautil.Common.empty(accesskeyId) && !com.aliyun.teautil.Common.empty(accessKeySecret)) {
+                    if (!com.aliyun.teautil.Common.empty(securityToken)) {
+                        request_.headers.put("x-acs-security-token", securityToken);
+                    }
+
+                    request_.headers.put("date", com.aliyun.teautil.Common.getDateUTCString());
+                    request_.headers.put("accept", "application/json");
+                    request_.headers.put("x-acs-signature-method", "HMAC-SHA1");
+                    request_.headers.put("x-acs-signature-version", "1.0");
+                    String stringToSign = com.aliyun.roautil.Client.getStringToSign(request_);
+                    request_.headers.put("authorization", "acs " + accesskeyId + ":" + com.aliyun.roautil.Client.getSignature(stringToSign, accessKeySecret) + "");
+                }
+
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(realReq));
+                _lastRequest = request_;
+                TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
+
+                java.util.Map<String, Object> respMap = null;
+                Object obj = null;
+                if (com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                    respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                    return TeaModel.toModel(TeaConverter.buildMap(
+                        new TeaPair("body", respMap),
+                        new TeaPair("headers", response_.headers)
+                    ), new DeleteLocationDateClusterModel());
+                }
+
+                if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        )),
+                        new TeaPair("message", response_.headers.get("x-ca-error-message"))
+                    ));
+                }
+
+                obj = com.aliyun.teautil.Common.readAsJSON(response_.body);
+                respMap = com.aliyun.teautil.Common.assertAsMap(obj);
+                throw new TeaException(TeaConverter.merge(Object.class,
+                    TeaConverter.buildMap(
+                        new TeaPair("data", TeaConverter.buildMap(
+                            new TeaPair("requestId", response_.headers.get("x-ca-request-id")),
+                            new TeaPair("statusCode", response_.statusCode),
+                            new TeaPair("statusMessage", response_.statusMessage)
+                        ))
+                    ),
+                    respMap
+                ));
+            } catch (Exception e) {
+                if (Tea.isRetryable(e)) {
+                    _lastException = e;
+                    continue;
+                }
+                throw e;
+            }
+        }
+        throw new TeaUnretryableException(_lastRequest, _lastException);
+    }
+
+    /**
+     * 该接口将会删除故事
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteStoryModel deleteStoryEx(DeleteStoryRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -20567,6 +22255,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会查询故事列表
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public FindStoriesModel findStoriesEx(FindStoriesRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -20687,6 +22385,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会获取人脸分组信息
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetFacegroupInfoModel getFacegroupInfoEx(GetFaceGroupInfoRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -20807,6 +22515,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将返回用户Drive下的云照片个数
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetPhotoCountModel getPhotoCountEx(GetImageCountRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -20927,6 +22645,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会获取故事详情
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetStoryModel getStoryEx(GetStoryRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -21047,6 +22775,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会展示用户图片的地点分组
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListAddressGroupsModel listAddressGroupsEx(ListImageAddressGroupsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -21167,6 +22905,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会列举人脸分组
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListFacegroupsModel listFacegroupsEx(ListImageFaceGroupsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -21287,6 +23035,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会展示场景标记
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListTagsModel listTagsEx(ListImageTagsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -21407,6 +23165,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会对用户输入内容语义解析出标签，地点，时间
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ParseKeywordsModel parseKeywordsEx(ParseKeywordsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -21527,7 +23294,17 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
-    public DeleteLocationDateClusterModel deleteLocationDateClusterEx(DeleteLocationDateClusterRequest request, RuntimeOptions runtime) throws Exception {
+    /**
+     * 该接口将会查询时空聚类列表
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
+    public QueryLocationDateClusterModel queryLocationDateClusterEx(QueryLocationDateClustersRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
         java.util.Map<String, Object> runtime_ = TeaConverter.buildMap(
@@ -21610,7 +23387,7 @@ public class Client {
                     return TeaModel.toModel(TeaConverter.buildMap(
                         new TeaPair("body", respMap),
                         new TeaPair("headers", response_.headers)
-                    ), new DeleteLocationDateClusterModel());
+                    ), new QueryLocationDateClusterModel());
                 }
 
                 if (!com.aliyun.teautil.Common.empty(response_.headers.get("x-ca-error-message"))) {
@@ -21647,6 +23424,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会在指定的故事中移除文件
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public RemoveStoryFilesModel removeStoryFilesEx(RemoveStoryFilesRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -21767,6 +23554,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会展示用户图片的地点分组
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public SearchAddressGroupsModel searchAddressGroupsEx(SearchImageAddressGroupsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -21887,6 +23684,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会进行图片视频检索
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ImageSimpleQueryModel imageSimpleQueryEx(SimpleQueryRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -22007,6 +23813,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会更新人脸分组信息
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateFacegroupInfoModel updateFacegroupInfoEx(UpdateFaceGroupInfoRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -22127,6 +23943,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会更新时空聚类分组信息
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateLocationDateClusterModel updateLocationDateClusterEx(UpdateLocationDateClusterRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -22247,6 +24073,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会更新故事
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateStoryModel updateStoryEx(UpdateStoryRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -22367,6 +24203,17 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 视图添加文件
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error StateConflict User operation is not valid.
+     * @error TooManyRequests Too many requests
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public AddFileModel addFileEx(AddViewFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -22487,6 +24334,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会拷贝一个逻辑视图下的文件到另外一个逻辑视图
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CopyFilesModel copyFilesEx(CopyViewFilesRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -22607,6 +24464,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 该接口将会创建一个逻辑视图
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateViewModel createViewEx(CreateViewRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -22727,6 +24594,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 删除指定view_id对应的View
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteViewModel deleteViewEx(DeleteViewRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -22844,6 +24721,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取指定view_id对应的View详细信息。
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetViewModel getViewEx(GetViewRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -22964,6 +24851,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 从视图中获取指定的文件
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error TooManyRequests Too many requests
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public GetViewFileModel getViewFileEx(GetViewFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -23084,6 +24981,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举View列表
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public ListViewsModel listViewsEx(ListViewsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -23204,6 +25110,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取视图文件列表
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error TooManyRequests Too many requests
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public ViewListFileModel viewListFileEx(ListViewFilesRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -23324,6 +25239,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列出文件关联视图
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error TooManyRequests Too many requests
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public ListFileViewsModel listFileViewsEx(ListFileViewsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -23444,6 +25369,16 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 从视图中删除文件
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error TooManyRequests Too many requests
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public RemoveFileModel removeFileEx(RemoveViewFileRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -23561,6 +25496,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 搜索View列表
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public SearchViewsModel searchViewsEx(SearchViewsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -23681,6 +25625,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 搜索视图中的文件
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error TooManyRequests Too many requests
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public ViewSearchFileModel viewSearchFileEx(SearchViewFilesRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -23801,6 +25754,17 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 更新指定view的相关信息
+     * @tags view
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error undefined undefined
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateViewModel updateViewEx(UpdateViewRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -26329,6 +28293,21 @@ public class Client {
     }
 
     /**
+     * 该接口将会删除时空聚类分组
+     * @tags image
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error AccessTokenInvalid AccessToken is invalid. {message}
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
+    public DeleteLocationDateClusterModel deleteLocationDateCluster(DeleteLocationDateClusterRequest request) throws Exception {
+        RuntimeOptions runtime = new RuntimeOptions();
+        return this.deleteLocationDateClusterEx(request, runtime);
+    }
+
+    /**
      * 该接口将会删除故事
      * @tags image
      * @error InvalidParameter The input parameter {parameter_name} is not valid.
@@ -26463,7 +28442,7 @@ public class Client {
     }
 
     /**
-     * 该接口将会删除时空聚类分组
+     * 该接口将会查询时空聚类列表
      * @tags image
      * @error InvalidParameter The input parameter {parameter_name} is not valid.
      * @error AccessTokenInvalid AccessToken is invalid. {message}
@@ -26472,9 +28451,9 @@ public class Client {
      * @error InternalError The request has been failed due to some unknown error.
      * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
      */
-    public DeleteLocationDateClusterModel deleteLocationDateCluster(DeleteLocationDateClusterRequest request) throws Exception {
+    public QueryLocationDateClusterModel queryLocationDateCluster(QueryLocationDateClustersRequest request) throws Exception {
         RuntimeOptions runtime = new RuntimeOptions();
-        return this.deleteLocationDateClusterEx(request, runtime);
+        return this.queryLocationDateClusterEx(request, runtime);
     }
 
     /**

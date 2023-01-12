@@ -7,22 +7,30 @@ import com.aliyun.tea.*;
  * 
  */
 public class SetBizCNameRequest extends TeaModel {
-    // biz cname
+    /**
+     * <p>biz cname</p>
+     */
     @NameInMap("biz_cname")
     @Validation(required = true)
     public String bizCname;
 
-    // cname type
+    /**
+     * <p>cname type</p>
+     */
     @NameInMap("cname_type")
     @Validation(required = true)
     public String cnameType;
 
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // biz cname
+    /**
+     * <p>biz cname</p>
+     */
     @NameInMap("is_vpc")
     public Boolean isVpc;
 

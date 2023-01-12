@@ -10,12 +10,16 @@ public class FileListPermissionRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 文件所属的drive_id
+    /**
+     * <p>文件所属的drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true)
     public String driveId;
 
-    // 文件的file_id
+    /**
+     * <p>文件的file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true)
     public String fileId;

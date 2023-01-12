@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 刷新office文档在线编辑凭证 response
  */
 public class RefreshOfficeEditTokenResponse extends TeaModel {
-    // AccessToken
+    /**
+     * <p>AccessToken</p>
+     */
     @NameInMap("office_access_token")
     public String officeAccessToken;
 
-    // RefreshToken
+    /**
+     * <p>RefreshToken</p>
+     */
     @NameInMap("office_refresh_token")
     public String officeRefreshToken;
 

@@ -16,16 +16,22 @@ public class MoveFileRequest extends TeaModel {
     @NameInMap("category_list")
     public java.util.List<String> categoryList;
 
-    // check_name_mode
+    /**
+     * <p>check_name_mode</p>
+     */
     @NameInMap("check_name_mode")
     public String checkNameMode;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
@@ -33,7 +39,9 @@ public class MoveFileRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
-    // new_name
+    /**
+     * <p>new_name</p>
+     */
     @NameInMap("new_name")
     @Validation(maxLength = 1024, minLength = 1)
     public String newName;
@@ -41,12 +49,16 @@ public class MoveFileRequest extends TeaModel {
     @NameInMap("share_id")
     public String shareId;
 
-    // to_drive_id
+    /**
+     * <p>to_drive_id</p>
+     */
     @NameInMap("to_drive_id")
     @Validation(pattern = "[0-9]+")
     public String toDriveId;
 
-    // to_parent_file_id
+    /**
+     * <p>to_parent_file_id</p>
+     */
     @NameInMap("to_parent_file_id")
     @Validation(required = true, maxLength = 50, minLength = 4)
     public String toParentFileId;

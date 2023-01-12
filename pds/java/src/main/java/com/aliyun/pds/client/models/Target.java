@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 
  */
 public class Target extends TeaModel {
-    // FileID
+    /**
+     * <p>FileID</p>
+     */
     @NameInMap("file_id")
     public String fileId;
 
-    // FileName
+    /**
+     * <p>FileName</p>
+     */
     @NameInMap("file_name")
     public String fileName;
 
-    // FileType
+    /**
+     * <p>FileType</p>
+     */
     @NameInMap("file_type")
     public String fileType;
 

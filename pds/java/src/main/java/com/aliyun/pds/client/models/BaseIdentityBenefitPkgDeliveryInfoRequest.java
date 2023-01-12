@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 
  */
 public class BaseIdentityBenefitPkgDeliveryInfoRequest extends TeaModel {
-    // 权益包数量
+    /**
+     * <p>权益包数量</p>
+     */
     @NameInMap("amount")
     public Long amount;
 
-    // 权益下发的唯一标识
+    /**
+     * <p>权益下发的唯一标识</p>
+     */
     @NameInMap("delivery_id")
     public String deliveryId;
 
-    // 权益包超期时间的时间戳，单位为毫秒
+    /**
+     * <p>权益包超期时间的时间戳，单位为毫秒</p>
+     */
     @NameInMap("expire_time")
     public Long expireTime;
 

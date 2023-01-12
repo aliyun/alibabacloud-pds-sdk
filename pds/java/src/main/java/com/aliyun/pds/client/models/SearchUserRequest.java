@@ -13,27 +13,37 @@ public class SearchUserRequest extends TeaModel {
     @NameInMap("drive_status")
     public String driveStatus;
 
-    // 邮箱
+    /**
+     * <p>邮箱</p>
+     */
     @NameInMap("email")
     public String email;
 
     @NameInMap("expired_at_range")
     public Int64Range expiredAtRange;
 
-    // 每页大小限制
+    /**
+     * <p>每页大小限制</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // 翻页标记
+    /**
+     * <p>翻页标记</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // 昵称
+    /**
+     * <p>昵称</p>
+     */
     @NameInMap("nick_name")
     public String nickName;
 
-    // 昵称-模糊搜索
+    /**
+     * <p>昵称-模糊搜索</p>
+     */
     @NameInMap("nick_name_for_fuzzy")
     public String nickNameForFuzzy;
 
@@ -43,23 +53,33 @@ public class SearchUserRequest extends TeaModel {
     @NameInMap("order_direction")
     public String orderDirection;
 
-    // 电话号码
+    /**
+     * <p>电话号码</p>
+     */
     @NameInMap("phone")
     public String phone;
 
-    // 角色
+    /**
+     * <p>角色</p>
+     */
     @NameInMap("role")
     public String role;
 
-    // 状态
+    /**
+     * <p>状态</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // subdomain id
+    /**
+     * <p>subdomain id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 
-    // 用户名
+    /**
+     * <p>用户名</p>
+     */
     @NameInMap("user_name")
     public String userName;
 

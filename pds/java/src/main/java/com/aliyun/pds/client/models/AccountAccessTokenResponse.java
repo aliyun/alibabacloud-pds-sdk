@@ -7,101 +7,149 @@ import com.aliyun.tea.*;
  * 
  */
 public class AccountAccessTokenResponse extends TeaModel {
-    // 用于调用业务接口的accessToken
+    /**
+     * <p>用于调用业务接口的accessToken</p>
+     */
     @NameInMap("access_token")
     @Validation(required = true)
     public String accessToken;
 
-    // 当前用户头像
+    /**
+     * <p>当前用户头像</p>
+     */
     @NameInMap("avatar")
     public String avatar;
 
-    // Default Drive ID
+    /**
+     * <p>Default Drive ID</p>
+     */
     @NameInMap("default_drive_id")
     public String defaultDriveId;
 
-    // Default Sbox Drive ID
+    /**
+     * <p>Default Sbox Drive ID</p>
+     */
     @NameInMap("default_sbox_drive_id")
     public String defaultSboxDriveId;
 
-    // device_id 通过device flow 绑定的设备ID
+    /**
+     * <p>device_id 通过device flow 绑定的设备ID</p>
+     */
     @NameInMap("device_id")
     public String deviceId;
 
-    // device_name 通过device flow 绑定的设备名
+    /**
+     * <p>device_name 通过device flow 绑定的设备名</p>
+     */
     @NameInMap("device_name")
     public String deviceName;
 
-    // domainID 用户登录的domainID
+    /**
+     * <p>domainID 用户登录的domainID</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
-    // 当前用户已存在的登录方式
+    /**
+     * <p>当前用户已存在的登录方式</p>
+     */
     @NameInMap("exist_link")
     public java.util.List<LinkInfo> existLink;
 
-    // accessToken过期时间，ISO时间
+    /**
+     * <p>accessToken过期时间，ISO时间</p>
+     */
     @NameInMap("expire_time")
     public String expireTime;
 
-    // accessToken过期时间，单位秒
+    /**
+     * <p>accessToken过期时间，单位秒</p>
+     */
     @NameInMap("expires_in")
     public Long expiresIn;
 
-    // 用户是否为第一次登录
+    /**
+     * <p>用户是否为第一次登录</p>
+     */
     @NameInMap("is_first_login")
     public Boolean isFirstLogin;
 
-    // 是否需要绑定
+    /**
+     * <p>是否需要绑定</p>
+     */
     @NameInMap("need_link")
     @Validation(required = true)
     public Boolean needLink;
 
-    // 用户是否需要进行的实人认证
+    /**
+     * <p>用户是否需要进行的实人认证</p>
+     */
     @NameInMap("need_rp_verify")
     public Boolean needRpVerify;
 
-    // 当前用户昵称
+    /**
+     * <p>当前用户昵称</p>
+     */
     @NameInMap("nick_name")
     public String nickName;
 
-    // 用户的数据密码是否设置过
+    /**
+     * <p>用户的数据密码是否设置过</p>
+     */
     @NameInMap("pin_setup")
     public Boolean pinSetup;
 
-    // 用于刷新accessToken
+    /**
+     * <p>用于刷新accessToken</p>
+     */
     @NameInMap("refresh_token")
     public String refreshToken;
 
-    // 当前用户角色
+    /**
+     * <p>当前用户角色</p>
+     */
     @NameInMap("role")
     public String role;
 
-    // 临时权限，用于登录成功后设置密码
+    /**
+     * <p>临时权限，用于登录成功后设置密码</p>
+     */
     @NameInMap("state")
     public String state;
 
-    // 当前用户状态
+    /**
+     * <p>当前用户状态</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // subdomain_id 用户登录的subdomain_id
+    /**
+     * <p>subdomain_id 用户登录的subdomain_id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 
-    // accessToken类型，Bearer
+    /**
+     * <p>accessToken类型，Bearer</p>
+     */
     @NameInMap("token_type")
     public String tokenType;
 
-    // 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
+    /**
+     * <p>用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K</p>
+     */
     @NameInMap("user_data")
     public java.util.Map<String, ?> userData;
 
-    // 当前用户ID
+    /**
+     * <p>当前用户ID</p>
+     */
     @NameInMap("user_id")
     public String userId;
 
-    // 当前用户名
+    /**
+     * <p>当前用户名</p>
+     */
     @NameInMap("user_name")
     public String userName;
 

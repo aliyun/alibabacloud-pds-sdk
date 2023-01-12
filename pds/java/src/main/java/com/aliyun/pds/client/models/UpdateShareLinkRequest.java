@@ -10,111 +10,165 @@ public class UpdateShareLinkRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // comments
+    /**
+     * <p>comments</p>
+     */
     @NameInMap("comments")
     public String comments;
 
-    // 允许上传
+    /**
+     * <p>允许上传</p>
+     */
     @NameInMap("creatable")
     public Boolean creatable;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // 禁止下载分享中的文件
+    /**
+     * <p>禁止下载分享中的文件</p>
+     */
     @NameInMap("disable_download")
     public Boolean disableDownload;
 
-    // 禁止预览分享中的文件
+    /**
+     * <p>禁止预览分享中的文件</p>
+     */
     @NameInMap("disable_preview")
     public Boolean disablePreview;
 
-    // 禁止转存分享中的文件
+    /**
+     * <p>禁止转存分享中的文件</p>
+     */
     @NameInMap("disable_save")
     public Boolean disableSave;
 
-    // 分享中的文件不可见
+    /**
+     * <p>分享中的文件不可见</p>
+     */
     @NameInMap("disable_visible")
     public Boolean disableVisible;
 
-    // download_count
+    /**
+     * <p>download_count</p>
+     */
     @NameInMap("download_count")
     public Long downloadCount;
 
-    // 分享下载次数限制
+    /**
+     * <p>分享下载次数限制</p>
+     */
     @NameInMap("download_limit")
     public Long downloadLimit;
 
-    // enable_file_changed_notify
+    /**
+     * <p>enable_file_changed_notify</p>
+     */
     @NameInMap("enable_file_changed_notify")
     public Boolean enableFileChangedNotify;
 
-    // expiration
+    /**
+     * <p>expiration</p>
+     */
     @NameInMap("expiration")
     public String expiration;
 
-    // is_subscribed
+    /**
+     * <p>is_subscribed</p>
+     */
     @NameInMap("is_subscribed")
     public Boolean isSubscribed;
 
-    // num_of_subscribers
+    /**
+     * <p>num_of_subscribers</p>
+     */
     @NameInMap("num_of_subscribers")
     public Long numOfSubscribers;
 
-    // 允许在线编辑文档
+    /**
+     * <p>允许在线编辑文档</p>
+     */
     @NameInMap("office_editable")
     public Boolean officeEditable;
 
-    // preview_count
+    /**
+     * <p>preview_count</p>
+     */
     @NameInMap("preview_count")
     public Long previewCount;
 
-    // 分享预览次数限制
+    /**
+     * <p>分享预览次数限制</p>
+     */
     @NameInMap("preview_limit")
     public Long previewLimit;
 
-    // report_count
+    /**
+     * <p>report_count</p>
+     */
     @NameInMap("report_count")
     public Long reportCount;
 
-    // 企业内(domain)登录后才允许使用分享
+    /**
+     * <p>企业内(domain)登录后才允许使用分享</p>
+     */
     @NameInMap("require_login")
     public Boolean requireLogin;
 
-    // save_count
+    /**
+     * <p>save_count</p>
+     */
     @NameInMap("save_count")
     public Long saveCount;
 
-    // 分享转存和下载的总次数限制
+    /**
+     * <p>分享转存和下载的总次数限制</p>
+     */
     @NameInMap("save_download_limit")
     public Long saveDownloadLimit;
 
-    // 分享转存次数限制
+    /**
+     * <p>分享转存次数限制</p>
+     */
     @NameInMap("save_limit")
     public Long saveLimit;
 
-    // share_icon
+    /**
+     * <p>share_icon</p>
+     */
     @NameInMap("share_icon")
     public String shareIcon;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
-    // share_name
+    /**
+     * <p>share_name</p>
+     */
     @NameInMap("share_name")
     public String shareName;
 
-    // share_pwd
+    /**
+     * <p>share_pwd</p>
+     */
     @NameInMap("share_pwd")
     public String sharePwd;
 
-    // status
+    /**
+     * <p>status</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // video_preview_count
+    /**
+     * <p>video_preview_count</p>
+     */
     @NameInMap("video_preview_count")
     public Long videoPreviewCount;
 

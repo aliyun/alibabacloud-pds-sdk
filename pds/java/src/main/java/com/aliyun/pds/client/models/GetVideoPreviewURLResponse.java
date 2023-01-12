@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 获取视频文件播放 url response
  */
 public class GetVideoPreviewURLResponse extends TeaModel {
-    // preview_url
+    /**
+     * <p>preview_url</p>
+     */
     @NameInMap("preview_url")
     public String previewUrl;
 

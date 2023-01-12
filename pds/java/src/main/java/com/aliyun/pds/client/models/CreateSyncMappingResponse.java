@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * 
  */
 public class CreateSyncMappingResponse extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // exist
+    /**
+     * <p>exist</p>
+     */
     @NameInMap("exist")
     public Boolean exist;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     public String fileId;
 
-    // name string
+    /**
+     * <p>name string</p>
+     */
     @NameInMap("name")
     public String name;
 

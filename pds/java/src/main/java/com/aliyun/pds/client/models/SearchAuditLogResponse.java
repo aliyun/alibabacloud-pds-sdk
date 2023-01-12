@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 查询审计日志response
  */
 public class SearchAuditLogResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<BaseAuditLogResponse> items;
 
-    // next_marker
+    /**
+     * <p>next_marker</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 

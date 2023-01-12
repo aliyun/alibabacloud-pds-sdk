@@ -7,23 +7,33 @@ import com.aliyun.tea.*;
  * 离线音频转码task响应
  */
 public class VideoPreviewOfflineAudioTranscodingTaskResponse extends TeaModel {
-    // status, 转码状态
+    /**
+     * <p>status, 转码状态</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // template_bitrate, 音频码率，单位Kbps
+    /**
+     * <p>template_bitrate, 音频码率，单位Kbps</p>
+     */
     @NameInMap("template_bitrate")
     public Long templateBitrate;
 
-    // template_id, 转码模板id
+    /**
+     * <p>template_id, 转码模板id</p>
+     */
     @NameInMap("template_id")
     public String templateId;
 
-    // template_name, 模板文案id
+    /**
+     * <p>template_name, 模板文案id</p>
+     */
     @NameInMap("template_name")
     public String templateName;
 
-    // url, 播放地址
+    /**
+     * <p>url, 播放地址</p>
+     */
     @NameInMap("url")
     public String url;
 

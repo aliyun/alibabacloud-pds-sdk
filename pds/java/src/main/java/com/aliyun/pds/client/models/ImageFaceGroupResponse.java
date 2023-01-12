@@ -7,50 +7,72 @@ import com.aliyun.tea.*;
  * 人脸分组信息
  */
 public class ImageFaceGroupResponse extends TeaModel {
-    // 人脸分组生成时间
+    /**
+     * <p>人脸分组生成时间</p>
+     */
     @NameInMap("created_at")
     public String createdAt;
 
     @NameInMap("group_cover_face_boundary")
     public FaceBoundary groupCoverFaceBoundary;
 
-    // group_cover_file_id
+    /**
+     * <p>group_cover_file_id</p>
+     */
     @NameInMap("group_cover_file_id")
     public String groupCoverFileId;
 
-    // group_cover_height
+    /**
+     * <p>group_cover_height</p>
+     */
     @NameInMap("group_cover_height")
     public Long groupCoverHeight;
 
-    // 人脸分组封面头像地址
+    /**
+     * <p>人脸分组封面头像地址</p>
+     */
     @NameInMap("group_cover_url")
     public String groupCoverUrl;
 
-    // group_cover_width
+    /**
+     * <p>group_cover_width</p>
+     */
     @NameInMap("group_cover_width")
     public Long groupCoverWidth;
 
-    // 人脸分组 ID
+    /**
+     * <p>人脸分组 ID</p>
+     */
     @NameInMap("group_id")
     public String groupId;
 
-    // 人脸分组名称
+    /**
+     * <p>人脸分组名称</p>
+     */
     @NameInMap("group_name")
     public String groupName;
 
-    // 照片个数
+    /**
+     * <p>照片个数</p>
+     */
     @NameInMap("image_count")
     public Long imageCount;
 
-    // remarks
+    /**
+     * <p>remarks</p>
+     */
     @NameInMap("remarks")
     public String remarks;
 
-    // remarks_array
+    /**
+     * <p>remarks_array</p>
+     */
     @NameInMap("remarks_array")
     public java.util.List<String> remarksArray;
 
-    // 人脸分组修改时间
+    /**
+     * <p>人脸分组修改时间</p>
+     */
     @NameInMap("updated_at")
     public String updatedAt;
 

@@ -10,7 +10,9 @@ public class AudioPreviewPlayInfoResponse extends TeaModel {
     @NameInMap("meta")
     public AudioPreviewPlayInfoMetaResponse meta;
 
-    // 离线转码有效
+    /**
+     * <p>离线转码有效</p>
+     */
     @NameInMap("offline_audio_list")
     public java.util.List<VideoPreviewOfflineAudioTranscodingTaskResponse> offlineAudioList;
 

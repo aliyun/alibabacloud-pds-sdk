@@ -16,6 +16,9 @@ public class VideoPreviewConfig extends TeaModel {
     @NameInMap("audio_thumbnail")
     public VideoPreviewThumbnailConfig audioThumbnail;
 
+    @NameInMap("auto_category_config")
+    public VideoPreviewAutoCategoryConfig autoCategoryConfig;
+
     @NameInMap("backup_config")
     public VideoPreviewBackupConfig backupConfig;
 
@@ -91,6 +94,14 @@ public class VideoPreviewConfig extends TeaModel {
     }
     public VideoPreviewThumbnailConfig getAudioThumbnail() {
         return this.audioThumbnail;
+    }
+
+    public VideoPreviewConfig setAutoCategoryConfig(VideoPreviewAutoCategoryConfig autoCategoryConfig) {
+        this.autoCategoryConfig = autoCategoryConfig;
+        return this;
+    }
+    public VideoPreviewAutoCategoryConfig getAutoCategoryConfig() {
+        return this.autoCategoryConfig;
     }
 
     public VideoPreviewConfig setBackupConfig(VideoPreviewBackupConfig backupConfig) {

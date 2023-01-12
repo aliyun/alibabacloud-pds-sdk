@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class TimeRange extends TeaModel {
-    // EndTime
+    /**
+     * <p>EndTime</p>
+     */
     @NameInMap("end_time")
     public String endTime;
 
-    // StartTime
+    /**
+     * <p>StartTime</p>
+     */
     @NameInMap("start_time")
     public String startTime;
 

@@ -7,16 +7,22 @@ import com.aliyun.tea.*;
  * 
  */
 public class BaseGroupRequest extends TeaModel {
-    // 描述
+    /**
+     * <p>描述</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // 名称
+    /**
+     * <p>名称</p>
+     */
     @NameInMap("group_name")
     @Validation(required = true)
     public String groupName;
 
-    // 是否是根group
+    /**
+     * <p>是否是根group</p>
+     */
     @NameInMap("is_root")
     public Boolean isRoot;
 

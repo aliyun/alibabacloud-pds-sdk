@@ -7,23 +7,33 @@ import com.aliyun.tea.*;
  * 
  */
 public class ShareLogSettingDetail extends TeaModel {
-    // disinherit_sub_group
+    /**
+     * <p>disinherit_sub_group</p>
+     */
     @NameInMap("disinherit_sub_group")
     public Boolean disinheritSubGroup;
 
-    // expiration
+    /**
+     * <p>expiration</p>
+     */
     @NameInMap("expiration")
     public String expiration;
 
-    // permissions
+    /**
+     * <p>permissions</p>
+     */
     @NameInMap("permissions")
     public java.util.List<String> permissions;
 
-    // role_id
+    /**
+     * <p>role_id</p>
+     */
     @NameInMap("role_id")
     public String roleId;
 
-    // role_name
+    /**
+     * <p>role_name</p>
+     */
     @NameInMap("role_name")
     public String roleName;
 

@@ -7,42 +7,60 @@ import com.aliyun.tea.*;
  * 
  */
 public class TokenRequest extends TeaModel {
-    // JWT方式授权需要传此参数，传入JWT签名的声明，用于更换accessToken
+    /**
+     * <p>JWT方式授权需要传此参数，传入JWT签名的声明，用于更换accessToken</p>
+     */
     @NameInMap("Assertion")
     public String Assertion;
 
-    // Client ID, 此处填写创建App时返回的AppID
+    /**
+     * <p>Client ID, 此处填写创建App时返回的AppID</p>
+     */
     @NameInMap("ClientID")
     @Validation(required = true)
     public String ClientID;
 
-    // Client ID, 此处填写创建App时返回的AppSecret
+    /**
+     * <p>Client ID, 此处填写创建App时返回的AppSecret</p>
+     */
     @NameInMap("ClientSecret")
     @Validation(required = true)
     public String ClientSecret;
 
-    // 认证后回调参数中的code
+    /**
+     * <p>认证后回调参数中的code</p>
+     */
     @NameInMap("Code")
     public String Code;
 
-    // OAuth2.0 device flow换取token参数
+    /**
+     * <p>OAuth2.0 device flow换取token参数</p>
+     */
     @NameInMap("DeviceCode")
     public String DeviceCode;
 
-    // 通过code获取accessToken或者通过refresh_token获取accessToken
+    /**
+     * <p>通过code获取accessToken或者通过refresh_token获取accessToken</p>
+     */
     @NameInMap("GrantType")
     @Validation(required = true)
     public String GrantType;
 
-    // 回调地址, 此处填写创建App时填写的回调地址，OAuth方式登录时需要传入
+    /**
+     * <p>回调地址, 此处填写创建App时填写的回调地址，OAuth方式登录时需要传入</p>
+     */
     @NameInMap("RedirectUri")
     public String RedirectUri;
 
-    // 刷新accessToken使用的refreshToken
+    /**
+     * <p>刷新accessToken使用的refreshToken</p>
+     */
     @NameInMap("RefreshToken")
     public String RefreshToken;
 
-    // SubDomainID
+    /**
+     * <p>SubDomainID</p>
+     */
     @NameInMap("SubDomainID")
     public String SubDomainID;
 

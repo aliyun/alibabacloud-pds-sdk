@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class TrashDetail extends TeaModel {
-    // SrcParentFileID
+    /**
+     * <p>SrcParentFileID</p>
+     */
     @NameInMap("src_parent_file_id")
     public String srcParentFileId;
 
-    // TgtParentFileID
+    /**
+     * <p>TgtParentFileID</p>
+     */
     @NameInMap("tgt_parent_file_id")
     public String tgtParentFileId;
 

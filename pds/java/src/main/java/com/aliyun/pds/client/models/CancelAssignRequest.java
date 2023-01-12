@@ -14,17 +14,23 @@ public class CancelAssignRequest extends TeaModel {
     @Validation(required = true)
     public Identity identity;
 
-    // 管辖的资源ID
+    /**
+     * <p>管辖的资源ID</p>
+     */
     @NameInMap("manage_resource_id")
     @Validation(required = true)
     public String manageResourceId;
 
-    // 管辖的资源类型，目前只支持团队: IT_Group
+    /**
+     * <p>管辖的资源类型，目前只支持团队: IT_Group</p>
+     */
     @NameInMap("manage_resource_type")
     @Validation(required = true)
     public String manageResourceType;
 
-    // 授予的角色，目前支持：SystemGroupAdmin(团队管理员)
+    /**
+     * <p>授予的角色，目前支持：SystemGroupAdmin(团队管理员)</p>
+     */
     @NameInMap("role_id")
     @Validation(required = true)
     public String roleId;

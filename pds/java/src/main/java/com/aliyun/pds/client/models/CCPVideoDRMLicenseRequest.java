@@ -10,11 +10,15 @@ public class CCPVideoDRMLicenseRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drmType
+    /**
+     * <p>drmType</p>
+     */
     @NameInMap("drmType")
     public String drmType;
 
-    // licenseRequest
+    /**
+     * <p>licenseRequest</p>
+     */
     @NameInMap("licenseRequest")
     public String licenseRequest;
 

@@ -10,7 +10,9 @@ public class GetPublicKeyRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // App ID
+    /**
+     * <p>App ID</p>
+     */
     @NameInMap("app_id")
     public String appId;
 

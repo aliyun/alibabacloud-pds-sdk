@@ -10,8 +10,10 @@ public class GetAsyncTaskRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // async_task_id
-    // type:string
+    /**
+     * <p>async_task_id</p>
+     * <p>type:string</p>
+     */
     @NameInMap("async_task_id")
     public String asyncTaskId;
 

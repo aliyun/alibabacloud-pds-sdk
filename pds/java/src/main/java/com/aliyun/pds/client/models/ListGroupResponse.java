@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class ListGroupResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<BaseGroupResponse> items;
 
-    // 翻页标记
+    /**
+     * <p>翻页标记</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 

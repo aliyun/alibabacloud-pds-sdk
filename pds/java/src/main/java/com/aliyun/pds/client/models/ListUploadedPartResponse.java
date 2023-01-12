@@ -10,23 +10,31 @@ public class ListUploadedPartResponse extends TeaModel {
     @NameInMap("drive_id")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // next_part_number_marker
+    /**
+     * <p>next_part_number_marker</p>
+     */
     @NameInMap("next_part_number_marker")
     public String nextPartNumberMarker;
 
     @NameInMap("parallel_upload")
     public Boolean parallelUpload;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 
-    // uploaded_parts
+    /**
+     * <p>uploaded_parts</p>
+     */
     @NameInMap("uploaded_parts")
     public java.util.List<UploadPartInfo> uploadedParts;
 

@@ -13,19 +13,27 @@ public class DeleteSyncMappingRequest extends TeaModel {
     @NameInMap("Mode")
     public String Mode;
 
-    // device_name
+    /**
+     * <p>device_name</p>
+     */
     @NameInMap("device_name")
     public String deviceName;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // fs_id
+    /**
+     * <p>fs_id</p>
+     */
     @NameInMap("fs_id")
     public String fsId;
 
-    // local_path
+    /**
+     * <p>local_path</p>
+     */
     @NameInMap("local_path")
     public String localPath;
 

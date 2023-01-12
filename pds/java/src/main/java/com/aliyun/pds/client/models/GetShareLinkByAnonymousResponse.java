@@ -7,127 +7,189 @@ import com.aliyun.tea.*;
  * get_share_link_by_anonymous response
  */
 public class GetShareLinkByAnonymousResponse extends TeaModel {
-    // access_count
+    /**
+     * <p>access_count</p>
+     */
     @NameInMap("access_count")
     public Long accessCount;
 
-    // avatar
+    /**
+     * <p>avatar</p>
+     */
     @NameInMap("avatar")
     public String avatar;
 
-    // 文件分享大类
+    /**
+     * <p>文件分享大类</p>
+     */
     @NameInMap("category")
     public String category;
 
-    // comments
+    /**
+     * <p>comments</p>
+     */
     @NameInMap("comments")
     public String comments;
 
-    // 允许上传
+    /**
+     * <p>允许上传</p>
+     */
     @NameInMap("creatable")
     public Boolean creatable;
 
-    // 允许上传的目录列表
+    /**
+     * <p>允许上传的目录列表</p>
+     */
     @NameInMap("creatable_file_id_list")
     public java.util.List<String> creatableFileIdList;
 
-    // creator_id
+    /**
+     * <p>creator_id</p>
+     */
     @NameInMap("creator_id")
     public String creatorId;
 
-    // creator_name
+    /**
+     * <p>creator_name</p>
+     */
     @NameInMap("creator_name")
     public String creatorName;
 
-    // creator_phone
+    /**
+     * <p>creator_phone</p>
+     */
     @NameInMap("creator_phone")
     public String creatorPhone;
 
-    // 禁止下载分享中的文件
+    /**
+     * <p>禁止下载分享中的文件</p>
+     */
     @NameInMap("disable_download")
     public Boolean disableDownload;
 
-    // 禁止预览分享中的文件
+    /**
+     * <p>禁止预览分享中的文件</p>
+     */
     @NameInMap("disable_preview")
     public Boolean disablePreview;
 
-    // 禁止转存分享中的文件
+    /**
+     * <p>禁止转存分享中的文件</p>
+     */
     @NameInMap("disable_save")
     public Boolean disableSave;
 
-    // 分享中的文件不可见
+    /**
+     * <p>分享中的文件不可见</p>
+     */
     @NameInMap("disable_visible")
     public Boolean disableVisible;
 
-    // 下载次数
+    /**
+     * <p>下载次数</p>
+     */
     @NameInMap("download_count")
     public Long downloadCount;
 
-    // 分享下载次数限制
+    /**
+     * <p>分享下载次数限制</p>
+     */
     @NameInMap("download_limit")
     public Long downloadLimit;
 
-    // expiration
+    /**
+     * <p>expiration</p>
+     */
     @NameInMap("expiration")
     public String expiration;
 
-    // file_count
+    /**
+     * <p>file_count</p>
+     */
     @NameInMap("file_count")
     public Long fileCount;
 
-    // has_pwd
+    /**
+     * <p>has_pwd</p>
+     */
     @NameInMap("has_pwd")
     public Boolean hasPwd;
 
-    // need_check_pwd
+    /**
+     * <p>need_check_pwd</p>
+     */
     @NameInMap("need_check_pwd")
     public Boolean needCheckPwd;
 
-    // 允许在线编辑文档
+    /**
+     * <p>允许在线编辑文档</p>
+     */
     @NameInMap("office_editable")
     public Boolean officeEditable;
 
-    // preview_count
+    /**
+     * <p>preview_count</p>
+     */
     @NameInMap("preview_count")
     public Long previewCount;
 
-    // 分享预览次数限制
+    /**
+     * <p>分享预览次数限制</p>
+     */
     @NameInMap("preview_limit")
     public Long previewLimit;
 
-    // 举报次数
+    /**
+     * <p>举报次数</p>
+     */
     @NameInMap("report_count")
     public Long reportCount;
 
-    // 企业内(domain)登录后才允许使用分享
+    /**
+     * <p>企业内(domain)登录后才允许使用分享</p>
+     */
     @NameInMap("require_login")
     public Boolean requireLogin;
 
-    // 转存次数
+    /**
+     * <p>转存次数</p>
+     */
     @NameInMap("save_count")
     public Long saveCount;
 
-    // 分享转存和下载的总次数限制
+    /**
+     * <p>分享转存和下载的总次数限制</p>
+     */
     @NameInMap("save_download_limit")
     public Long saveDownloadLimit;
 
-    // 分享转存次数限制
+    /**
+     * <p>分享转存次数限制</p>
+     */
     @NameInMap("save_limit")
     public Long saveLimit;
 
-    // share_icon
+    /**
+     * <p>share_icon</p>
+     */
     @NameInMap("share_icon")
     public String shareIcon;
 
-    // share_name
+    /**
+     * <p>share_name</p>
+     */
     @NameInMap("share_name")
     public String shareName;
 
-    // updated_at
+    /**
+     * <p>updated_at</p>
+     */
     @NameInMap("updated_at")
     public String updatedAt;
 
-    // 音视频播放次数
+    /**
+     * <p>音视频播放次数</p>
+     */
     @NameInMap("video_preview_count")
     public Long videoPreviewCount;
 

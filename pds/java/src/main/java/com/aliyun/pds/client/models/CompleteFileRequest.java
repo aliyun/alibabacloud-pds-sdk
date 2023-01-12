@@ -10,20 +10,28 @@ public class CompleteFileRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // crc64_hash
+    /**
+     * <p>crc64_hash</p>
+     */
     @NameInMap("crc64_hash")
     public String crc64Hash;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
@@ -31,14 +39,18 @@ public class CompleteFileRequest extends TeaModel {
     @NameInMap("last_revision_id")
     public String lastRevisionId;
 
-    // part_info_list
+    /**
+     * <p>part_info_list</p>
+     */
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
     @NameInMap("share_id")
     public String shareId;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 

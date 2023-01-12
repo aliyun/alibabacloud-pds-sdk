@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * 音频转码信息meta响应
  */
 public class AudioPreviewPlayInfoMetaResponse extends TeaModel {
-    // bitrate, 码率
+    /**
+     * <p>bitrate, 码率</p>
+     */
     @NameInMap("bitrate")
     public Long bitrate;
 
-    // channels, 声道数
+    /**
+     * <p>channels, 声道数</p>
+     */
     @NameInMap("channels")
     public Long channels;
 
-    // duration, 视频长度
+    /**
+     * <p>duration, 视频长度</p>
+     */
     @NameInMap("duration")
     public Double duration;
 
-    // sample_rate, 采样率
+    /**
+     * <p>sample_rate, 采样率</p>
+     */
     @NameInMap("sample_rate")
     public Long sampleRate;
 

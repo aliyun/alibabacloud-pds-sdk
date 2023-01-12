@@ -10,22 +10,30 @@ public class SearchFileFpRefsRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true)
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true)
     public String fileId;
 
-    // file_revision_id
+    /**
+     * <p>file_revision_id</p>
+     */
     @NameInMap("file_revision_id")
     @Validation(required = true)
     public String fileRevisionId;
 
-    // marker
+    /**
+     * <p>marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 

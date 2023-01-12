@@ -10,7 +10,9 @@ public class SearchViewFilesRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     @Validation(required = true)
     public String category;
@@ -21,11 +23,15 @@ public class SearchViewFilesRequest extends TeaModel {
     @NameInMap("filter")
     public String filter;
 
-    // image_thumbnail_process
+    /**
+     * <p>image_thumbnail_process</p>
+     */
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
-    // image_url_process
+    /**
+     * <p>image_url_process</p>
+     */
     @NameInMap("image_url_process")
     public String imageUrlProcess;
 
@@ -35,7 +41,9 @@ public class SearchViewFilesRequest extends TeaModel {
     @NameInMap("marker")
     public String marker;
 
-    // office_thumbnail_process
+    /**
+     * <p>office_thumbnail_process</p>
+     */
     @NameInMap("office_thumbnail_process")
     public String officeThumbnailProcess;
 
@@ -45,12 +53,16 @@ public class SearchViewFilesRequest extends TeaModel {
     @NameInMap("order_direction")
     public String orderDirection;
 
-    // query
+    /**
+     * <p>query</p>
+     */
     @NameInMap("query")
     @Validation(maxLength = 4096)
     public String query;
 
-    // return_total_count 是否返回查询总数
+    /**
+     * <p>return_total_count 是否返回查询总数</p>
+     */
     @NameInMap("return_total_count")
     public Boolean returnTotalCount;
 
@@ -60,16 +72,22 @@ public class SearchViewFilesRequest extends TeaModel {
     @NameInMap("url_expire_sec")
     public Integer urlExpireSec;
 
-    // user_id
+    /**
+     * <p>user_id</p>
+     */
     @NameInMap("user_id")
     public String userId;
 
-    // video_thumbnail_process
-    // type:string
+    /**
+     * <p>video_thumbnail_process</p>
+     * <p>type:string</p>
+     */
     @NameInMap("video_thumbnail_process")
     public String videoThumbnailProcess;
 
-    // view_id
+    /**
+     * <p>view_id</p>
+     */
     @NameInMap("view_id")
     @Validation(required = true)
     public String viewId;

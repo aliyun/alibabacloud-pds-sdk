@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * list cors rule request
  */
 public class SetCorsRuleListRequest extends TeaModel {
-    // cors rule list
+    /**
+     * <p>cors rule list</p>
+     */
     @NameInMap("cors_rule_list")
     @Validation(required = true)
     public java.util.List<CorsRule> corsRuleList;
 
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;

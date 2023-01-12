@@ -7,33 +7,47 @@ import com.aliyun.tea.*;
  * 
  */
 public class AddStoreRequest extends TeaModel {
-    // 存储公共前缀
+    /**
+     * <p>存储公共前缀</p>
+     */
     @NameInMap("base_path")
     public String basePath;
 
-    // bucket名称
+    /**
+     * <p>bucket名称</p>
+     */
     @NameInMap("bucket")
     public String bucket;
 
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // 存储访问地址
+    /**
+     * <p>存储访问地址</p>
+     */
     @NameInMap("endpoint")
     @Validation(required = true)
     public String endpoint;
 
-    // 存储归属，system表示系统提供，custom表示使用自己的存储
+    /**
+     * <p>存储归属，system表示系统提供，custom表示使用自己的存储</p>
+     */
     @NameInMap("ownership")
     public String ownership;
 
-    // 访问Bucket的角色ARN
+    /**
+     * <p>访问Bucket的角色ARN</p>
+     */
     @NameInMap("role_arn")
     public String roleArn;
 
-    // 存储类型，当前只支持oss
+    /**
+     * <p>存储类型，当前只支持oss</p>
+     */
     @NameInMap("type")
     @Validation(required = true)
     public String type;
