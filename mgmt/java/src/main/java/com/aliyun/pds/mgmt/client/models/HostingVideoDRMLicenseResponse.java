@@ -7,17 +7,23 @@ import com.aliyun.tea.*;
  * DRM License response
  */
 public class HostingVideoDRMLicenseResponse extends TeaModel {
-    // drm_data
+    /**
+     * <p>drm_data</p>
+     */
     @NameInMap("data")
     @Validation(required = true)
     public String data;
 
-    // device_info
+    /**
+     * <p>device_info</p>
+     */
     @NameInMap("device_info")
     @Validation(required = true)
     public String deviceInfo;
 
-    // states
+    /**
+     * <p>states</p>
+     */
     @NameInMap("states")
     @Validation(required = true)
     public Long states;

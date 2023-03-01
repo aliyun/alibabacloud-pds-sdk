@@ -7,31 +7,45 @@ import com.aliyun.tea.*;
  * 
  */
 public class VideoPreviewSpriteResponse extends TeaModel {
-    // col
+    /**
+     * <p>col</p>
+     */
     @NameInMap("col")
     public Long col;
 
-    // count
+    /**
+     * <p>count</p>
+     */
     @NameInMap("count")
     public Long count;
 
-    // frame_count
+    /**
+     * <p>frame_count</p>
+     */
     @NameInMap("frame_count")
     public Long frameCount;
 
-    // frame_height
+    /**
+     * <p>frame_height</p>
+     */
     @NameInMap("frame_height")
     public Long frameHeight;
 
-    // frame_width
+    /**
+     * <p>frame_width</p>
+     */
     @NameInMap("frame_width")
     public Long frameWidth;
 
-    // row
+    /**
+     * <p>row</p>
+     */
     @NameInMap("row")
     public Long row;
 
-    // status
+    /**
+     * <p>status</p>
+     */
     @NameInMap("status")
     public String status;
 

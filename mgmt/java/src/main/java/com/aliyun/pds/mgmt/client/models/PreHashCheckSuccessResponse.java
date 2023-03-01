@@ -7,24 +7,34 @@ import com.aliyun.tea.*;
  * Pre hash check Response
  */
 public class PreHashCheckSuccessResponse extends TeaModel {
-    // code
+    /**
+     * <p>code</p>
+     */
     @NameInMap("code")
     public String code;
 
-    // file_name
+    /**
+     * <p>file_name</p>
+     */
     @NameInMap("file_name")
     public String fileName;
 
-    // message
+    /**
+     * <p>message</p>
+     */
     @NameInMap("message")
     public String message;
 
-    // parent_file_id
+    /**
+     * <p>parent_file_id</p>
+     */
     @NameInMap("parent_file_id")
     @Validation(required = true, pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String parentFileId;
 
-    // pre_hash
+    /**
+     * <p>pre_hash</p>
+     */
     @NameInMap("pre_hash")
     public String preHash;
 

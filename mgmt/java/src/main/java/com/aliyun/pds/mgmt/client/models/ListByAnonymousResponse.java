@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * list_file_by_anonymous response
  */
 public class ListByAnonymousResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<BaseFileAnonymousResponse> items;
 
-    // next_marker
+    /**
+     * <p>next_marker</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 
-    // punished_file_count
+    /**
+     * <p>punished_file_count</p>
+     */
     @NameInMap("punished_file_count")
     public Long punishedFileCount;
 

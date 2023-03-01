@@ -7,36 +7,52 @@ import com.aliyun.tea.*;
  * 
  */
 public class FileStreamInfo extends TeaModel {
-    // content_hash
+    /**
+     * <p>content_hash</p>
+     */
     @NameInMap("content_hash")
     public String contentHash;
 
-    // content_hash_name
+    /**
+     * <p>content_hash_name</p>
+     */
     @NameInMap("content_hash_name")
     public String contentHashName;
 
-    // ContentMd5
+    /**
+     * <p>ContentMd5</p>
+     */
     @NameInMap("content_md5")
     @Validation(required = true)
     public String contentMd5;
 
-    // part_info_list
+    /**
+     * <p>part_info_list</p>
+     */
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
-    // pre_hash
+    /**
+     * <p>pre_hash</p>
+     */
     @NameInMap("pre_hash")
     public String preHash;
 
-    // proof_code
+    /**
+     * <p>proof_code</p>
+     */
     @NameInMap("proof_code")
     public String proofCode;
 
-    // proof_version
+    /**
+     * <p>proof_version</p>
+     */
     @NameInMap("proof_version")
     public String proofVersion;
 
-    // Size
+    /**
+     * <p>Size</p>
+     */
     @NameInMap("size")
     @Validation(required = true)
     public Long size;

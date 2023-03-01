@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 获取视频DRM License
  */
 public class HostingVideoDRMLicenseRequest extends TeaModel {
-    // drmType
+    /**
+     * <p>drmType</p>
+     */
     @NameInMap("drmType")
     @Validation(required = true)
     public String drmType;
 
-    // licenseRequest
+    /**
+     * <p>licenseRequest</p>
+     */
     @NameInMap("licenseRequest")
     @Validation(required = true)
     public String licenseRequest;

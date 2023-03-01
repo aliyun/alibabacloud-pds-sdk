@@ -7,44 +7,71 @@ import com.aliyun.tea.*;
  * Update drive request
  */
 public class UpdateDriveRequest extends TeaModel {
-    // 描述信息
+    @NameInMap("category")
+    public String category;
+
+    /**
+     * <p>描述信息</p>
+     */
     @NameInMap("description")
     @Validation(maxLength = 1024)
     public String description;
 
-    // Drive ID
+    /**
+     * <p>Drive ID</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true)
     public String driveId;
 
-    // Drive 名称
+    /**
+     * <p>Drive 名称</p>
+     */
     @NameInMap("drive_name")
     @Validation(maxLength = 1024)
     public String driveName;
 
-    // 授权访问加密数据
+    /**
+     * <p>授权访问加密数据</p>
+     */
     @NameInMap("encrypt_data_access")
     public Boolean encryptDataAccess;
 
-    // 加密模式
+    /**
+     * <p>加密模式</p>
+     */
     @NameInMap("encrypt_mode")
     public String encryptMode;
 
-    // 状态
+    /**
+     * <p>状态</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // Subdomain ID
+    /**
+     * <p>Subdomain ID</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 
-    // 总大小,单位Byte [如果设置 -1 代表不限制]
+    /**
+     * <p>总大小,单位Byte [如果设置 -1 代表不限制]</p>
+     */
     @NameInMap("total_size")
     public Long totalSize;
 
     public static UpdateDriveRequest build(java.util.Map<String, ?> map) throws Exception {
         UpdateDriveRequest self = new UpdateDriveRequest();
         return TeaModel.build(map, self);
+    }
+
+    public UpdateDriveRequest setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public UpdateDriveRequest setDescription(String description) {

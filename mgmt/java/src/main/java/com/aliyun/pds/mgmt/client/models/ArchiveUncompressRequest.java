@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 解压
  */
 public class ArchiveUncompressRequest extends TeaModel {
-    // 格式类型，如果是uc，使用特殊格式
+    /**
+     * <p>格式类型，如果是uc，使用特殊格式</p>
+     */
     @NameInMap("Format")
     public String Format;
 
@@ -20,7 +22,9 @@ public class ArchiveUncompressRequest extends TeaModel {
     @NameInMap("domain_id")
     public String domainId;
 
-    // TODO 增加对ShareID的支持
+    /**
+     * <p>TODO 增加对ShareID的支持</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 

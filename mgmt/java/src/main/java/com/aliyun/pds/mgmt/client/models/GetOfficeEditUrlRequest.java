@@ -7,22 +7,41 @@ import com.aliyun.tea.*;
  * 获取office文档在线编辑地址
  */
 public class GetOfficeEditUrlRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
     @NameInMap("option")
     public GetOfficeEditUrlOption option;
+
+    /**
+     * <p>revision_id</p>
+     */
+    @NameInMap("revision_id")
+    public String revisionId;
+
+    /**
+     * <p>share_id</p>
+     * <p>example</p>
+     */
+    @NameInMap("share_id")
+    public String shareId;
 
     @NameInMap("watermark")
     public GetOfficeEditUrlWatermark watermark;
@@ -62,6 +81,22 @@ public class GetOfficeEditUrlRequest extends TeaModel {
     }
     public GetOfficeEditUrlOption getOption() {
         return this.option;
+    }
+
+    public GetOfficeEditUrlRequest setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+        return this;
+    }
+    public String getRevisionId() {
+        return this.revisionId;
+    }
+
+    public GetOfficeEditUrlRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public GetOfficeEditUrlRequest setWatermark(GetOfficeEditUrlWatermark watermark) {

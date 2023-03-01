@@ -7,18 +7,42 @@ import com.aliyun.tea.*;
  * 转码信息响应
  */
 public class VideoPreviewPlayInfoResponse extends TeaModel {
-    // category
+    /**
+     * <p>deprecated, 使用外层Response中的同名字段替代</p>
+     * <p>category，此字段为保持兼容而继续存在</p>
+     */
     @NameInMap("category")
     public String category;
 
     @NameInMap("live_transcoding_subtitle_task_list")
     public java.util.List<LiveTranscodingSubtitleTaskResponse> liveTranscodingSubtitleTaskList;
 
+    /**
+     * <p>边转边播有效</p>
+     */
     @NameInMap("live_transcoding_task_list")
     public java.util.List<LiveTranscodingTaskResponse> liveTranscodingTaskList;
 
+    /**
+     * <p>master playlist 播放地址</p>
+     */
+    @NameInMap("master_url")
+    public String masterUrl;
+
     @NameInMap("meta")
     public VideoPreviewPlayInfoMetaResponse meta;
+
+    /**
+     * <p>离线转码有效</p>
+     */
+    @NameInMap("offline_video_transcoding_list")
+    public java.util.List<VideoPreviewOfflineVideoTranscodingTaskResponse> offlineVideoTranscodingList;
+
+    /**
+     * <p>imm边转边播</p>
+     */
+    @NameInMap("quick_video_list")
+    public java.util.List<QuickVideoTaskResponse> quickVideoList;
 
     public static VideoPreviewPlayInfoResponse build(java.util.Map<String, ?> map) throws Exception {
         VideoPreviewPlayInfoResponse self = new VideoPreviewPlayInfoResponse();
@@ -49,12 +73,36 @@ public class VideoPreviewPlayInfoResponse extends TeaModel {
         return this.liveTranscodingTaskList;
     }
 
+    public VideoPreviewPlayInfoResponse setMasterUrl(String masterUrl) {
+        this.masterUrl = masterUrl;
+        return this;
+    }
+    public String getMasterUrl() {
+        return this.masterUrl;
+    }
+
     public VideoPreviewPlayInfoResponse setMeta(VideoPreviewPlayInfoMetaResponse meta) {
         this.meta = meta;
         return this;
     }
     public VideoPreviewPlayInfoMetaResponse getMeta() {
         return this.meta;
+    }
+
+    public VideoPreviewPlayInfoResponse setOfflineVideoTranscodingList(java.util.List<VideoPreviewOfflineVideoTranscodingTaskResponse> offlineVideoTranscodingList) {
+        this.offlineVideoTranscodingList = offlineVideoTranscodingList;
+        return this;
+    }
+    public java.util.List<VideoPreviewOfflineVideoTranscodingTaskResponse> getOfflineVideoTranscodingList() {
+        return this.offlineVideoTranscodingList;
+    }
+
+    public VideoPreviewPlayInfoResponse setQuickVideoList(java.util.List<QuickVideoTaskResponse> quickVideoList) {
+        this.quickVideoList = quickVideoList;
+        return this;
+    }
+    public java.util.List<QuickVideoTaskResponse> getQuickVideoList() {
+        return this.quickVideoList;
     }
 
 }

@@ -14,7 +14,9 @@ public class VideoPreviewVideoFilterConfig extends TeaModel {
     @NameInMap("audio_channel")
     public Long audioChannel;
 
-    // 音频信息过滤
+    /**
+     * <p>音频信息过滤</p>
+     */
     @NameInMap("audio_codec_list")
     public java.util.List<String> audioCodecList;
 
@@ -24,7 +26,9 @@ public class VideoPreviewVideoFilterConfig extends TeaModel {
     @NameInMap("bitrate")
     public Long bitrate;
 
-    // 综合信息过滤
+    /**
+     * <p>综合信息过滤</p>
+     */
     @NameInMap("duration")
     public Long duration;
 
@@ -40,7 +44,9 @@ public class VideoPreviewVideoFilterConfig extends TeaModel {
     @NameInMap("video_bitrate")
     public Long videoBitrate;
 
-    // 视频信息过滤
+    /**
+     * <p>视频信息过滤</p>
+     */
     @NameInMap("video_codec_list")
     public java.util.List<String> videoCodecList;
 

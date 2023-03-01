@@ -7,23 +7,38 @@ import com.aliyun.tea.*;
  * 刷新office文档在线编辑凭证
  */
 public class RefreshOfficeEditTokenRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
-    // AccessToken
+    /**
+     * <p>AccessToken</p>
+     */
     @NameInMap("office_access_token")
     @Validation(required = true)
     public String officeAccessToken;
 
-    // RefreshToken
+    /**
+     * <p>RefreshToken</p>
+     */
     @NameInMap("office_refresh_token")
     @Validation(required = true)
     public String officeRefreshToken;
+
+    /**
+     * <p>share_id</p>
+     * <p>example</p>
+     */
+    @NameInMap("share_id")
+    public String shareId;
 
     public static RefreshOfficeEditTokenRequest build(java.util.Map<String, ?> map) throws Exception {
         RefreshOfficeEditTokenRequest self = new RefreshOfficeEditTokenRequest();
@@ -60,6 +75,14 @@ public class RefreshOfficeEditTokenRequest extends TeaModel {
     }
     public String getOfficeRefreshToken() {
         return this.officeRefreshToken;
+    }
+
+    public RefreshOfficeEditTokenRequest setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
 }

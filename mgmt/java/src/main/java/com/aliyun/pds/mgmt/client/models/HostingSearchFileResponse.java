@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * search file response
  */
 public class HostingSearchFileResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<BaseHostingFileResponse> items;
 
-    // next_marker
+    /**
+     * <p>next_marker</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 

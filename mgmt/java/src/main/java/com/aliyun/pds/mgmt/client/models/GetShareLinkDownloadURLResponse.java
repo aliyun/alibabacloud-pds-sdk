@@ -7,31 +7,45 @@ import com.aliyun.tea.*;
  * 获取分享中文件数据response
  */
 public class GetShareLinkDownloadURLResponse extends TeaModel {
-    // audio_template_list
+    /**
+     * <p>audio_template_list</p>
+     */
     @NameInMap("audio_template_list")
     public java.util.List<MediaPlayInfoTemplate> audioTemplateList;
 
-    // download_url
+    /**
+     * <p>download_url</p>
+     */
     @NameInMap("download_url")
     public String downloadUrl;
 
-    // @Deprecated streams url info
+    /**
+     * <p>@Deprecated streams url info</p>
+     */
     @NameInMap("streams_info")
     public java.util.Map<String, ?> streamsInfo;
 
-    // streams url info
+    /**
+     * <p>streams url info</p>
+     */
     @NameInMap("streams_url")
     public java.util.Map<String, ?> streamsUrl;
 
-    // thumbnail
+    /**
+     * <p>thumbnail</p>
+     */
     @NameInMap("thumbnail")
     public String thumbnail;
 
-    // url
+    /**
+     * <p>url</p>
+     */
     @NameInMap("url")
     public String url;
 
-    // video_template_list
+    /**
+     * <p>video_template_list</p>
+     */
     @NameInMap("video_template_list")
     public java.util.List<MediaPlayInfoTemplate> videoTemplateList;
 

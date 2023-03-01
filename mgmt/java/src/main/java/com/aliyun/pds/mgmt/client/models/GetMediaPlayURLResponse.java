@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * get_media_play_url response
  */
 public class GetMediaPlayURLResponse extends TeaModel {
-    // url
+    /**
+     * <p>url</p>
+     */
     @NameInMap("url")
     public String url;
 

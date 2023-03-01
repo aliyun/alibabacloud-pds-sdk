@@ -4,59 +4,87 @@ package com.aliyun.pds.mgmt.client.models;
 import com.aliyun.tea.*;
 
 public class RuntimeOptions extends TeaModel {
-    // whether to try again
+    /**
+     * <p>whether to try again</p>
+     */
     @NameInMap("autoretry")
     public Boolean autoretry;
 
-    // ignore SSL validation
+    /**
+     * <p>ignore SSL validation</p>
+     */
     @NameInMap("ignoreSSL")
     public Boolean ignoreSSL;
 
-    // maximum number of retries
+    /**
+     * <p>maximum number of retries</p>
+     */
     @NameInMap("maxAttempts")
     public Number maxAttempts;
 
-    // backoff policy
+    /**
+     * <p>backoff policy</p>
+     */
     @NameInMap("backoffPolicy")
     public String backoffPolicy;
 
-    // backoff period
+    /**
+     * <p>backoff period</p>
+     */
     @NameInMap("backoffPeriod")
     public Number backoffPeriod;
 
-    // read timeout
+    /**
+     * <p>read timeout</p>
+     */
     @NameInMap("readTimeout")
     public Number readTimeout;
 
-    // connect timeout
+    /**
+     * <p>connect timeout</p>
+     */
     @NameInMap("connectTimeout")
     public Number connectTimeout;
 
-    // http proxy url
+    /**
+     * <p>http proxy url</p>
+     */
     @NameInMap("httpProxy")
     public String httpProxy;
 
-    // https Proxy url
+    /**
+     * <p>https Proxy url</p>
+     */
     @NameInMap("httpsProxy")
     public String httpsProxy;
 
-    // agent blacklist
+    /**
+     * <p>agent blacklist</p>
+     */
     @NameInMap("noProxy")
     public String noProxy;
 
-    // maximum number of connections
+    /**
+     * <p>maximum number of connections</p>
+     */
     @NameInMap("maxIdleConns")
     public Number maxIdleConns;
 
-    // local addr
+    /**
+     * <p>local addr</p>
+     */
     @NameInMap("localAddr")
     public String localAddr;
 
-    // SOCKS5 proxy
+    /**
+     * <p>SOCKS5 proxy</p>
+     */
     @NameInMap("socks5Proxy")
     public String socks5Proxy;
 
-    // SOCKS5 netWork
+    /**
+     * <p>SOCKS5 netWork</p>
+     */
     @NameInMap("socks5NetWork")
     public String socks5NetWork;
 

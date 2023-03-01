@@ -10,40 +10,56 @@ public class SubdomainSetBizCNameCertRequest extends TeaModel {
     @NameInMap("CertID")
     public String CertID;
 
-    // biz cname
+    /**
+     * <p>biz cname</p>
+     */
     @NameInMap("biz_cname")
     public String bizCname;
 
-    // cert body
+    /**
+     * <p>cert body</p>
+     */
     @NameInMap("cert_body")
     @Validation(required = true)
     public String certBody;
 
-    // cert name
+    /**
+     * <p>cert name</p>
+     */
     @NameInMap("cert_name")
     @Validation(required = true)
     public String certName;
 
-    // cert privatekey
+    /**
+     * <p>cert privatekey</p>
+     */
     @NameInMap("cert_privatekey")
     @Validation(required = true)
     public String certPrivatekey;
 
-    // cname type
+    /**
+     * <p>cname type</p>
+     */
     @NameInMap("cname_type")
     @Validation(required = true)
     public String cnameType;
 
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // biz cname
+    /**
+     * <p>biz cname</p>
+     */
     @NameInMap("is_vpc")
     public Boolean isVpc;
 
-    // subdomain ID
+    /**
+     * <p>subdomain ID</p>
+     */
     @NameInMap("subdomain_id")
     @Validation(required = true)
     public String subdomainId;

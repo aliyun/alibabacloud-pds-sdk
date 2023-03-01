@@ -10,30 +10,45 @@ public class BaseDriveResponse extends TeaModel {
     @NameInMap("action_list")
     public java.util.List<String> actionList;
 
+    @NameInMap("category")
+    public String category;
+
     @NameInMap("created_at")
     public String createdAt;
 
-    // Drive 创建者
+    /**
+     * <p>Drive 创建者</p>
+     */
     @NameInMap("creator")
     public String creator;
 
-    // Drive 备注信息
+    /**
+     * <p>Drive 备注信息</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // Domain ID
+    /**
+     * <p>Domain ID</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
-    // Drive ID
+    /**
+     * <p>Drive ID</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // Drive 名称
+    /**
+     * <p>Drive 名称</p>
+     */
     @NameInMap("drive_name")
     public String driveName;
 
-    // Drive 类型
+    /**
+     * <p>Drive 类型</p>
+     */
     @NameInMap("drive_type")
     public String driveType;
 
@@ -43,38 +58,57 @@ public class BaseDriveResponse extends TeaModel {
     @NameInMap("encrypt_mode")
     public String encryptMode;
 
-    // Drive 所有者
+    /**
+     * <p>Drive 所有者</p>
+     */
     @NameInMap("owner")
     public String owner;
 
-    // Drive 所有者类型
+    /**
+     * <p>Drive 所有者类型</p>
+     */
     @NameInMap("owner_type")
     public String ownerType;
 
     @NameInMap("permission")
     public java.util.Map<String, ?> permission;
 
-    // Drive存储基于store的相对路径，domain的PathType为OSSPath时返回
+    /**
+     * <p>Drive存储基于store的相对路径，domain的PathType为OSSPath时返回</p>
+     */
     @NameInMap("relative_path")
     public String relativePath;
 
-    // Drive 状态
+    /**
+     * <p>Drive 状态</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // 存储 ID, domain的PathType为OSSPath时返回
+    /**
+     * <p>存储 ID, domain的PathType为OSSPath时返回</p>
+     */
     @NameInMap("store_id")
     public String storeId;
 
-    // subdomain_id
+    /**
+     * <p>subdomain_id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 
-    // Drive 空间总量
+    /**
+     * <p>Drive 空间总量</p>
+     */
     @NameInMap("total_size")
     public Long totalSize;
 
-    // Drive 空间已使用量
+    @NameInMap("updated_at")
+    public String updatedAt;
+
+    /**
+     * <p>Drive 空间已使用量</p>
+     */
     @NameInMap("used_size")
     public Long usedSize;
 
@@ -89,6 +123,14 @@ public class BaseDriveResponse extends TeaModel {
     }
     public java.util.List<String> getActionList() {
         return this.actionList;
+    }
+
+    public BaseDriveResponse setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public BaseDriveResponse setCreatedAt(String createdAt) {
@@ -225,6 +267,14 @@ public class BaseDriveResponse extends TeaModel {
     }
     public Long getTotalSize() {
         return this.totalSize;
+    }
+
+    public BaseDriveResponse setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+        return this;
+    }
+    public String getUpdatedAt() {
+        return this.updatedAt;
     }
 
     public BaseDriveResponse setUsedSize(Long usedSize) {

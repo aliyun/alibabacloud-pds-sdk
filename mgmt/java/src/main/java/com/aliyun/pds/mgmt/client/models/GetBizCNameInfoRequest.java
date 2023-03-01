@@ -10,17 +10,23 @@ public class GetBizCNameInfoRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // cname type
+    /**
+     * <p>cname type</p>
+     */
     @NameInMap("cname_type")
     @Validation(required = true)
     public String cnameType;
 
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // is vpc
+    /**
+     * <p>is vpc</p>
+     */
     @NameInMap("is_vpc")
     public Boolean isVpc;
 

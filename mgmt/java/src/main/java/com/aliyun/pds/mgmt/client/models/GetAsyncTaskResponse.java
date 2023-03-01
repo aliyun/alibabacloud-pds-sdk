@@ -7,37 +7,59 @@ import com.aliyun.tea.*;
  * Get AsyncTask Response
  */
 public class GetAsyncTaskResponse extends TeaModel {
-    // async_task_id
-    // type:string
+    /**
+     * <p>async_task_id</p>
+     * <p>type:string</p>
+     */
     @NameInMap("async_task_id")
     public String asyncTaskId;
 
-    // consumed_process
+    /**
+     * <p>consumed_process</p>
+     */
     @NameInMap("consumed_process")
     public Long consumedProcess;
 
-    // err_code
+    /**
+     * <p>err_code</p>
+     */
     @NameInMap("err_code")
     public Long errCode;
 
-    // message
+    /**
+     * <p>message</p>
+     */
     @NameInMap("message")
     public String message;
 
-    // punished_file_count
+    /**
+     * <p>punished_file_count</p>
+     */
     @NameInMap("punished_file_count")
     public Long punishedFileCount;
 
-    // state
+    /**
+     * <p>state</p>
+     */
     @NameInMap("state")
     public String state;
 
-    // total_process
+    /**
+     * <p>status</p>
+     */
+    @NameInMap("status")
+    public String status;
+
+    /**
+     * <p>total_process</p>
+     */
     @NameInMap("total_process")
     public Long totalProcess;
 
-    // download_url
-    // example
+    /**
+     * <p>download_url</p>
+     * <p>example</p>
+     */
     @NameInMap("url")
     public String url;
 
@@ -92,6 +114,14 @@ public class GetAsyncTaskResponse extends TeaModel {
     }
     public String getState() {
         return this.state;
+    }
+
+    public GetAsyncTaskResponse setStatus(String status) {
+        this.status = status;
+        return this;
+    }
+    public String getStatus() {
+        return this.status;
     }
 
     public GetAsyncTaskResponse setTotalProcess(Long totalProcess) {

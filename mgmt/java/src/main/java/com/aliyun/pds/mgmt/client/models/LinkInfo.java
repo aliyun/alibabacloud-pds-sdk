@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 
  */
 public class LinkInfo extends TeaModel {
-    // 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
+    /**
+     * <p>额外的信息，比如type为mobile时，此字段为国家编号，不填默认86</p>
+     */
     @NameInMap("extra")
     public String extra;
 
-    // 当前用户已存在的登录标识
+    /**
+     * <p>当前用户已存在的登录标识</p>
+     */
     @NameInMap("identity")
     public String identity;
 
-    // 当前用户已存在的登录方式
+    /**
+     * <p>当前用户已存在的登录方式</p>
+     */
     @NameInMap("type")
     public String type;
 

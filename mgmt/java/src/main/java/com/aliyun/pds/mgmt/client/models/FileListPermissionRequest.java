@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 列举当前文件的共享/授权记录请求
  */
 public class FileListPermissionRequest extends TeaModel {
-    // 文件所属的drive_id
+    /**
+     * <p>文件所属的drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true)
     public String driveId;
 
-    // 文件的file_id
+    /**
+     * <p>文件的file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true)
     public String fileId;

@@ -7,29 +7,48 @@ import com.aliyun.tea.*;
  * 获取签名 response
  */
 public class ListUploadedPartResponse extends TeaModel {
-    // file_id
+    @NameInMap("drive_id")
+    public String driveId;
+
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // next_part_number_marker
+    /**
+     * <p>next_part_number_marker</p>
+     */
     @NameInMap("next_part_number_marker")
     public String nextPartNumberMarker;
 
     @NameInMap("parallel_upload")
     public Boolean parallelUpload;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 
-    // uploaded_parts
+    /**
+     * <p>uploaded_parts</p>
+     */
     @NameInMap("uploaded_parts")
     public java.util.List<UploadPartInfo> uploadedParts;
 
     public static ListUploadedPartResponse build(java.util.Map<String, ?> map) throws Exception {
         ListUploadedPartResponse self = new ListUploadedPartResponse();
         return TeaModel.build(map, self);
+    }
+
+    public ListUploadedPartResponse setDriveId(String driveId) {
+        this.driveId = driveId;
+        return this;
+    }
+    public String getDriveId() {
+        return this.driveId;
     }
 
     public ListUploadedPartResponse setFileId(String fileId) {

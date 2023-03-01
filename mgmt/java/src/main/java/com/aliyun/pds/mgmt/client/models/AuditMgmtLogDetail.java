@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class AuditMgmtLogDetail extends TeaModel {
-    // file_name
+    /**
+     * <p>file_name</p>
+     */
     @NameInMap("file_name")
     public String fileName;
 
-    // query
+    /**
+     * <p>query</p>
+     */
     @NameInMap("query")
     public String query;
 

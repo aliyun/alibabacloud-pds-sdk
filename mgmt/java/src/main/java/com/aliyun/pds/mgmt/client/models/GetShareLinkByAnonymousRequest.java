@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * get_share_link_by_anonymous request
  */
 public class GetShareLinkByAnonymousRequest extends TeaModel {
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 

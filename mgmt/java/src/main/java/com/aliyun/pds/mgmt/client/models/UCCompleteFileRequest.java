@@ -7,28 +7,47 @@ import com.aliyun.tea.*;
  * UCCompleteFileRequest complete with store exist
  */
 public class UCCompleteFileRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // drive_id
+    /**
+     * <p>crc64_hash</p>
+     */
+    @NameInMap("crc64_hash")
+    public String crc64Hash;
+
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // part_info_list
+    @NameInMap("last_revision_id")
+    public String lastRevisionId;
+
+    /**
+     * <p>part_info_list</p>
+     */
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
     @NameInMap("share_id")
     public String shareId;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 
@@ -45,6 +64,14 @@ public class UCCompleteFileRequest extends TeaModel {
         return this.additionData;
     }
 
+    public UCCompleteFileRequest setCrc64Hash(String crc64Hash) {
+        this.crc64Hash = crc64Hash;
+        return this;
+    }
+    public String getCrc64Hash() {
+        return this.crc64Hash;
+    }
+
     public UCCompleteFileRequest setDriveId(String driveId) {
         this.driveId = driveId;
         return this;
@@ -59,6 +86,14 @@ public class UCCompleteFileRequest extends TeaModel {
     }
     public String getFileId() {
         return this.fileId;
+    }
+
+    public UCCompleteFileRequest setLastRevisionId(String lastRevisionId) {
+        this.lastRevisionId = lastRevisionId;
+        return this;
+    }
+    public String getLastRevisionId() {
+        return this.lastRevisionId;
     }
 
     public UCCompleteFileRequest setPartInfoList(java.util.List<UploadPartInfo> partInfoList) {

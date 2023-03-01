@@ -7,43 +7,63 @@ import com.aliyun.tea.*;
  * UCFileGetSignatureRequest get file upload signature
  */
 public class UCFileGetSignatureRequest extends TeaModel {
-    // action
+    /**
+     * <p>action</p>
+     */
     @NameInMap("action")
     public String action;
 
-    // bucket
+    /**
+     * <p>bucket</p>
+     */
     @NameInMap("bucket")
     public String bucket;
 
-    // content_md5
+    /**
+     * <p>content_md5</p>
+     */
     @NameInMap("content_md5")
     public String contentMd5;
 
-    // content_type
+    /**
+     * <p>content_type</p>
+     */
     @NameInMap("content_type")
     public String contentType;
 
-    // date
+    /**
+     * <p>date</p>
+     */
     @NameInMap("date")
     public String date;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // headers
+    /**
+     * <p>headers</p>
+     */
     @NameInMap("headers")
     public java.util.Map<String, ?> headers;
 
-    // object_key
+    /**
+     * <p>object_key</p>
+     */
     @NameInMap("object_key")
     public String objectKey;
 
-    // parameters
+    /**
+     * <p>parameters</p>
+     */
     @NameInMap("parameters")
     public java.util.Map<String, ?> parameters;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 

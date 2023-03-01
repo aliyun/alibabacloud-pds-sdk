@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 批处理
  */
 public class BatchRequest extends TeaModel {
-    // Requests 请求合集
+    /**
+     * <p>Requests 请求合集</p>
+     */
     @NameInMap("requests")
     @Validation(required = true)
     public java.util.List<BatchSubRequest> requests;
 
-    // 支持的资源类型
+    /**
+     * <p>支持的资源类型</p>
+     */
     @NameInMap("resource")
     @Validation(required = true)
     public String resource;

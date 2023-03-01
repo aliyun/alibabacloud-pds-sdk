@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class BaseFileListInheritPermissionResponse extends TeaModel {
-    // 被授权的文件ID
+    /**
+     * <p>被授权的文件ID</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true)
     public String fileId;

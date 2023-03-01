@@ -7,47 +7,65 @@ import com.aliyun.tea.*;
  * 用户文件共享/授权列表返回信息
  */
 public class BaseFileUserPermissionResponse extends TeaModel {
-    // 当前用户是否能访问此授权
+    /**
+     * <p>当前用户是否能访问此授权</p>
+     */
     @NameInMap("can_access")
     @Validation(required = true)
     public Boolean canAccess;
 
-    // 创建时间
+    /**
+     * <p>创建时间</p>
+     */
     @NameInMap("created_at")
     @Validation(required = true)
     public Long createdAt;
 
-    // 创建者的UserID
+    /**
+     * <p>创建者的UserID</p>
+     */
     @NameInMap("creator")
     @Validation(required = true)
     public String creator;
 
-    // 是否禁用子团队继承
+    /**
+     * <p>是否禁用子团队继承</p>
+     */
     @NameInMap("disinherit_sub_group")
     @Validation(required = true)
     public Boolean disinheritSubGroup;
 
-    // domain_id
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // 被授权的driveID
+    /**
+     * <p>被授权的driveID</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true)
     public String driveId;
 
-    // 过期时间
+    /**
+     * <p>过期时间</p>
+     */
     @NameInMap("expire_time")
     @Validation(required = true)
     public Long expireTime;
 
-    // 授权的文件ID
+    /**
+     * <p>授权的文件ID</p>
+     */
     @NameInMap("file_full_path")
     @Validation(required = true)
     public String fileFullPath;
 
-    // 授权的文件ID
+    /**
+     * <p>授权的文件ID</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true)
     public String fileId;
@@ -56,7 +74,9 @@ public class BaseFileUserPermissionResponse extends TeaModel {
     @Validation(required = true)
     public Identity identity;
 
-    // 授予的角色
+    /**
+     * <p>授予的角色</p>
+     */
     @NameInMap("role_id")
     @Validation(required = true)
     public String roleId;

@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * Get drive request
  */
 public class GetDriveRequest extends TeaModel {
-    // Drive ID
+    /**
+     * <p>Drive ID</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true)
     public String driveId;
 
-    // Subdomain ID
+    /**
+     * <p>Subdomain ID</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

@@ -7,7 +7,12 @@ import com.aliyun.tea.*;
  * 删除文件请求
  */
 public class DeleteFileRequest extends TeaModel {
-    // drive_id
+    @NameInMap("check_folder_empty")
+    public Boolean checkFolderEmpty;
+
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
@@ -18,8 +23,10 @@ public class DeleteFileRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
-    // permanently
-    // type: false
+    /**
+     * <p>permanently</p>
+     * <p>type: false</p>
+     */
     @NameInMap("permanently")
     public Boolean permanently;
 
@@ -29,6 +36,14 @@ public class DeleteFileRequest extends TeaModel {
     public static DeleteFileRequest build(java.util.Map<String, ?> map) throws Exception {
         DeleteFileRequest self = new DeleteFileRequest();
         return TeaModel.build(map, self);
+    }
+
+    public DeleteFileRequest setCheckFolderEmpty(Boolean checkFolderEmpty) {
+        this.checkFolderEmpty = checkFolderEmpty;
+        return this;
+    }
+    public Boolean getCheckFolderEmpty() {
+        return this.checkFolderEmpty;
     }
 
     public DeleteFileRequest setDriveId(String driveId) {

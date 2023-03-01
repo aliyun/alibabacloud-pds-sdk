@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 列举当前用户收到的共享文件列表
  */
 public class ListReceivedFileRequest extends TeaModel {
-    // 查询返回的记录数
+    /**
+     * <p>查询返回的记录数</p>
+     */
     @NameInMap("limit")
     @Validation(required = true)
     public Integer limit;
 
-    // 上次查询返回的游标
+    /**
+     * <p>上次查询返回的游标</p>
+     */
     @NameInMap("marker")
     public String marker;
 

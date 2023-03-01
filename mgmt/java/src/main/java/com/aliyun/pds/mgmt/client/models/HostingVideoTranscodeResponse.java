@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 转码接口response
  */
 public class HostingVideoTranscodeResponse extends TeaModel {
-    // definition_list
+    /**
+     * <p>definition_list</p>
+     */
     @NameInMap("definition_list")
     public java.util.List<String> definitionList;
 
-    // duration
+    /**
+     * <p>duration</p>
+     */
     @NameInMap("duration")
     public Long duration;
 
-    // hls_time
+    /**
+     * <p>hls_time</p>
+     */
     @NameInMap("hls_time")
     public Long hlsTime;
 

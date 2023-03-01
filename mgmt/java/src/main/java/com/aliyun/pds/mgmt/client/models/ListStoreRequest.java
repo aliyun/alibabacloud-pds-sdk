@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * list storage file
  */
 public class ListStoreRequest extends TeaModel {
-    // domain_id
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 

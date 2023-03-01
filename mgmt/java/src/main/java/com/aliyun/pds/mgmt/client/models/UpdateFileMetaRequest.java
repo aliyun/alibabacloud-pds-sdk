@@ -7,7 +7,18 @@ import com.aliyun.tea.*;
  * 更新文件元数据
  */
 public class UpdateFileMetaRequest extends TeaModel {
-    // check_name_mode
+    /**
+     * <p>addition_data</p>
+     */
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
+    @NameInMap("category")
+    public String category;
+
+    /**
+     * <p>check_name_mode</p>
+     */
     @NameInMap("check_name_mode")
     public String checkNameMode;
 
@@ -23,13 +34,17 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("custom_type")
     public String customType;
 
-    // description
-    // type: string
+    /**
+     * <p>description</p>
+     * <p>type: string</p>
+     */
     @NameInMap("description")
     @Validation(maxLength = 1024)
     public String description;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
@@ -37,11 +52,15 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("encrypt_mode")
     public String encryptMode;
 
-    // ex_fields_info
+    /**
+     * <p>ex_fields_info</p>
+     */
     @NameInMap("ex_fields_info")
     public java.util.Map<String, ?> exFieldsInfo;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
@@ -49,12 +68,16 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
-    // hidden
-    // type: boolean
+    /**
+     * <p>hidden</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("hidden")
     public Boolean hidden;
 
-    // labels
+    /**
+     * <p>labels</p>
+     */
     @NameInMap("labels")
     public java.util.List<String> labels;
 
@@ -70,7 +93,9 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("mime_type")
     public String mimeType;
 
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     @Validation(maxLength = 1024, minLength = 1)
     public String name;
@@ -84,21 +109,41 @@ public class UpdateFileMetaRequest extends TeaModel {
     @NameInMap("sign_token")
     public String signToken;
 
-    // starred
-    // type: boolean
+    /**
+     * <p>starred</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("starred")
     public Boolean starred;
 
     @NameInMap("taken_at")
     public String takenAt;
 
-    // user_meta
+    /**
+     * <p>user_meta</p>
+     */
     @NameInMap("user_meta")
     public String userMeta;
 
     public static UpdateFileMetaRequest build(java.util.Map<String, ?> map) throws Exception {
         UpdateFileMetaRequest self = new UpdateFileMetaRequest();
         return TeaModel.build(map, self);
+    }
+
+    public UpdateFileMetaRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
+    }
+
+    public UpdateFileMetaRequest setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public UpdateFileMetaRequest setCheckNameMode(String checkNameMode) {

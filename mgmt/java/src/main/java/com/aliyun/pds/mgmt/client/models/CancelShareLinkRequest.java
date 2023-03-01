@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * cancel_share_link request
  */
 public class CancelShareLinkRequest extends TeaModel {
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 

@@ -7,18 +7,24 @@ import com.aliyun.tea.*;
  * Benefit base info of benefit package
  */
 public class BenefitBaseResponse extends TeaModel {
-    // 权益的唯一标识
+    /**
+     * <p>权益的唯一标识</p>
+     */
     @NameInMap("benefit_id")
     public String benefitId;
 
     @NameInMap("benefit_meta")
     public BenefitMetaResponse benefitMeta;
 
-    // 权益包的唯一标识
+    /**
+     * <p>权益包的唯一标识</p>
+     */
     @NameInMap("benefit_pkg_id")
     public String benefitPkgId;
 
-    // 权益的名称
+    /**
+     * <p>权益的名称</p>
+     */
     @NameInMap("name")
     public String name;
 

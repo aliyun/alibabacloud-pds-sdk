@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * list share request
  */
 public class ListShareRequest extends TeaModel {
-    // creator
+    /**
+     * <p>creator</p>
+     */
     @NameInMap("creator")
     public String creator;
 
@@ -15,24 +17,34 @@ public class ListShareRequest extends TeaModel {
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // limit
+    /**
+     * <p>limit</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // marker
+    /**
+     * <p>marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // Owner
+    /**
+     * <p>Owner</p>
+     */
     @NameInMap("owner")
     public String owner;
 
-    // owner_type
+    /**
+     * <p>owner_type</p>
+     */
     @NameInMap("owner_type")
     public String ownerType;
 
-    // share_file_path
+    /**
+     * <p>share_file_path</p>
+     */
     @NameInMap("share_file_path")
     public String shareFilePath;
 

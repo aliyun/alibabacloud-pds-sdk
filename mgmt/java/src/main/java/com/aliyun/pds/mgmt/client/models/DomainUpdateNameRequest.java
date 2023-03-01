@@ -10,12 +10,16 @@ public class DomainUpdateNameRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // Domain ID
+    /**
+     * <p>Domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // Domain 名称
+    /**
+     * <p>Domain 名称</p>
+     */
     @NameInMap("name")
     @Validation(required = true)
     public String name;

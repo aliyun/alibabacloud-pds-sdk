@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 
  */
 public class ListAppsResponse extends TeaModel {
-    // App 列表
+    /**
+     * <p>App 列表</p>
+     */
     @NameInMap("items")
     @Validation(required = true)
     public java.util.List<GetAppResponse> items;
 
-    // App 分批查询游标
+    /**
+     * <p>App 分批查询游标</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 

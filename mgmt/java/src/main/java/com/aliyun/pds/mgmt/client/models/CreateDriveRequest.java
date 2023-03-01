@@ -7,64 +7,99 @@ import com.aliyun.tea.*;
  * create drive request
  */
 public class CreateDriveRequest extends TeaModel {
-    // 是否默认drive, 只允许设置一个默认drive
+    @NameInMap("category")
+    public String category;
+
+    /**
+     * <p>是否默认drive, 只允许设置一个默认drive</p>
+     */
     @NameInMap("default")
     public Boolean _default;
 
-    // 描述信息
+    /**
+     * <p>描述信息</p>
+     */
     @NameInMap("description")
     @Validation(maxLength = 1024)
     public String description;
 
-    // Drive 名称
+    /**
+     * <p>Drive 名称</p>
+     */
     @NameInMap("drive_name")
     @Validation(required = true, maxLength = 1024)
     public String driveName;
 
-    // Drive类型
+    /**
+     * <p>Drive类型</p>
+     */
     @NameInMap("drive_type")
     public String driveType;
 
     @NameInMap("encrypt_mode")
     public String encryptMode;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
-    // 所属者
+    /**
+     * <p>所属者</p>
+     */
     @NameInMap("owner")
     @Validation(required = true)
     public String owner;
 
-    // 所属者
+    /**
+     * <p>所属者</p>
+     */
     @NameInMap("owner_type")
     @Validation(required = true)
     public String ownerType;
 
-    // domain的PathType为OSSPath时必选。 Drive存储基于store的相对路径
+    /**
+     * <p>domain的PathType为OSSPath时必选。 Drive存储基于store的相对路径</p>
+     */
     @NameInMap("relative_path")
     public String relativePath;
 
-    // 状态
+    /**
+     * <p>状态</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // StoreID , domain的PathType为OSSPath时必选
+    /**
+     * <p>StoreID , domain的PathType为OSSPath时必选</p>
+     */
     @NameInMap("store_id")
     public String storeId;
 
-    // Subdomain ID
+    /**
+     * <p>Subdomain ID</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 
-    // 总大小,单位Byte [如果设置 -1 代表不限制]
+    /**
+     * <p>总大小,单位Byte [如果设置 -1 代表不限制]</p>
+     */
     @NameInMap("total_size")
     public Long totalSize;
 
     public static CreateDriveRequest build(java.util.Map<String, ?> map) throws Exception {
         CreateDriveRequest self = new CreateDriveRequest();
         return TeaModel.build(map, self);
+    }
+
+    public CreateDriveRequest setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public CreateDriveRequest set_default(Boolean _default) {

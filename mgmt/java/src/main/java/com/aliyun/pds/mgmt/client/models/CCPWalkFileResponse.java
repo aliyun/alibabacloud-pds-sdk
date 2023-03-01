@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 列举文件response
  */
 public class CCPWalkFileResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<BaseCCPFileResponse> items;
 
-    // next_marker
+    /**
+     * <p>next_marker</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 
-    // punished_file_count
+    /**
+     * <p>punished_file_count</p>
+     */
     @NameInMap("punished_file_count")
     public Long punishedFileCount;
 

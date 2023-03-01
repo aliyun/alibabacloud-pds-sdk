@@ -4,8 +4,7 @@ package com.aliyun.pds.mgmt.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 前端判断是否可以播放视频流程
-if OnlineVideoTranscodeEnable then do video_preview play  // 如果是离线转码, 那么用OfflineVideoTranscodeEnable代替, 音频类似
+ * if OnlineVideoTranscodeEnable then do video_preview play  // 如果是离线转码, 那么用OfflineVideoTranscodeEnable代替, 音频类似
 else if appConfig.VideoPlayEnable then do source file play // 音频用AudioPlayEnable代替
 else notify user the function not support
  */

@@ -10,34 +10,48 @@ public class UpdateAppRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // App ID
+    /**
+     * <p>App ID</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;
 
-    // App名称
+    /**
+     * <p>App名称</p>
+     */
     @NameInMap("app_name")
     @Validation(maxLength = 128, minLength = 1)
     public String appName;
 
-    // App描述
+    /**
+     * <p>App描述</p>
+     */
     @NameInMap("description")
     @Validation(maxLength = 1024)
     public String description;
 
-    // App图标
+    /**
+     * <p>App图标</p>
+     */
     @NameInMap("logo")
     public String logo;
 
-    // App回调地址
+    /**
+     * <p>App回调地址</p>
+     */
     @NameInMap("redirect_uri")
     public String redirectUri;
 
-    // App权限列表
+    /**
+     * <p>App权限列表</p>
+     */
     @NameInMap("scope")
     public java.util.List<String> scope;
 
-    // App类型
+    /**
+     * <p>App类型</p>
+     */
     @NameInMap("type")
     public String type;
 

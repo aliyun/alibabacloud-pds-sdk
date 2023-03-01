@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * delete share request
  */
 public class DeleteShareRequest extends TeaModel {
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(required = true)
     public String shareId;

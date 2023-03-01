@@ -7,28 +7,40 @@ import com.aliyun.tea.*;
  * Get AsyncTask Response
  */
 public class AsyncTaskResponse extends TeaModel {
-    // async_task_id
-    // type:string
+    /**
+     * <p>async_task_id</p>
+     * <p>type:string</p>
+     */
     @NameInMap("async_task_id")
     public String asyncTaskId;
 
-    // created_at
+    /**
+     * <p>created_at</p>
+     */
     @NameInMap("created_at")
     public Long createdAt;
 
-    // err_code
+    /**
+     * <p>err_code</p>
+     */
     @NameInMap("err_code")
     public Long errCode;
 
-    // message
+    /**
+     * <p>message</p>
+     */
     @NameInMap("message")
     public String message;
 
-    // state
+    /**
+     * <p>state</p>
+     */
     @NameInMap("state")
     public String state;
 
-    // type
+    /**
+     * <p>type</p>
+     */
     @NameInMap("type")
     public String type;
 

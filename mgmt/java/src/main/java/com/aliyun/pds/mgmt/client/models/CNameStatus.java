@@ -7,17 +7,23 @@ import com.aliyun.tea.*;
  * 
  */
 public class CNameStatus extends TeaModel {
-    // binding state
+    /**
+     * <p>binding state</p>
+     */
     @NameInMap("bingding_state")
     @Validation(required = true)
     public String bingdingState;
 
-    // legal state
+    /**
+     * <p>legal state</p>
+     */
     @NameInMap("legal_state")
     @Validation(required = true)
     public String legalState;
 
-    // remark
+    /**
+     * <p>remark</p>
+     */
     @NameInMap("remark")
     @Validation(required = true)
     public String remark;

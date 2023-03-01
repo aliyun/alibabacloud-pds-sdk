@@ -7,33 +7,54 @@ import com.aliyun.tea.*;
  * 获取office文档预览地址
  */
 public class GetOfficePreviewUrlRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // allow_copy
-    // default true
+    /**
+     * <p>allow_copy</p>
+     * <p>default true</p>
+     */
     @NameInMap("allow_copy")
     public Boolean allowCopy;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // language
+    /**
+     * <p>language</p>
+     */
     @NameInMap("language")
     public String language;
+
+    @NameInMap("option")
+    public GetOfficePreviewUrlOption option;
 
     @NameInMap("referer")
     public String referer;
 
-    // share_id, either share_id or drive_id is required
+    /**
+     * <p>revision_id</p>
+     */
+    @NameInMap("revision_id")
+    public String revisionId;
+
+    /**
+     * <p>share_id, either share_id or drive_id is required</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
@@ -82,12 +103,28 @@ public class GetOfficePreviewUrlRequest extends TeaModel {
         return this.language;
     }
 
+    public GetOfficePreviewUrlRequest setOption(GetOfficePreviewUrlOption option) {
+        this.option = option;
+        return this;
+    }
+    public GetOfficePreviewUrlOption getOption() {
+        return this.option;
+    }
+
     public GetOfficePreviewUrlRequest setReferer(String referer) {
         this.referer = referer;
         return this;
     }
     public String getReferer() {
         return this.referer;
+    }
+
+    public GetOfficePreviewUrlRequest setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+        return this;
+    }
+    public String getRevisionId() {
+        return this.revisionId;
     }
 
     public GetOfficePreviewUrlRequest setShareId(String shareId) {

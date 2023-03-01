@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * 删除文件到回收站response
  */
 public class TrashFileResponse extends TeaModel {
-    // async_task_id
+    /**
+     * <p>async_task_id</p>
+     */
     @NameInMap("async_task_id")
     public String asyncTaskId;
 
-    // domain_id
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     public String fileId;
 

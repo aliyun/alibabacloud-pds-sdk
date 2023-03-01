@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class AccountLogDetail extends TeaModel {
-    // authentication_type
+    /**
+     * <p>authentication_type</p>
+     */
     @NameInMap("authentication_type")
     public String authenticationType;
 
-    // login_type
+    /**
+     * <p>login_type</p>
+     */
     @NameInMap("login_type")
     public String loginType;
 

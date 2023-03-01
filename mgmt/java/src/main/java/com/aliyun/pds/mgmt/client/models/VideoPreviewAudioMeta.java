@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * 
  */
 public class VideoPreviewAudioMeta extends TeaModel {
-    // bitrate
+    /**
+     * <p>bitrate</p>
+     */
     @NameInMap("bitrate")
     public Double bitrate;
 
-    // channels
+    /**
+     * <p>channels</p>
+     */
     @NameInMap("channels")
     public Long channels;
 
-    // duration
+    /**
+     * <p>duration</p>
+     */
     @NameInMap("duration")
     public Double duration;
 
-    // sample_rate
+    /**
+     * <p>sample_rate</p>
+     */
     @NameInMap("sample_rate")
     public Double sampleRate;
 

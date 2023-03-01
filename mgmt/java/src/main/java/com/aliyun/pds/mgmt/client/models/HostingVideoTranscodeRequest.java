@@ -7,34 +7,48 @@ import com.aliyun.tea.*;
  * 启动视频转码请求
  */
 public class HostingVideoTranscodeRequest extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     @Validation(required = true, maxLength = 1000, minLength = 1)
     public String filePath;
 
-    // hls_time
+    /**
+     * <p>hls_time</p>
+     */
     @NameInMap("hls_time")
     public Long hlsTime;
 
-    // protection_scheme
+    /**
+     * <p>protection_scheme</p>
+     */
     @NameInMap("protection_scheme")
     public String protectionScheme;
 
-    // remarks
+    /**
+     * <p>remarks</p>
+     */
     @NameInMap("remarks")
     public String remarks;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;
 
-    // transcode
+    /**
+     * <p>transcode</p>
+     */
     @NameInMap("transcode")
     public Boolean transcode;
 

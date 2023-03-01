@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class RoleLogSettingDetail extends TeaModel {
-    // role_tag_description
+    /**
+     * <p>role_tag_description</p>
+     */
     @NameInMap("role_tag_description")
     public String roleTagDescription;
 
-    // role_tag_name
+    /**
+     * <p>role_tag_name</p>
+     */
     @NameInMap("role_tag_name")
     public String roleTagName;
 

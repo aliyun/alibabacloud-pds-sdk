@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * Create drive response
  */
 public class CreateDriveResponse extends TeaModel {
-    // Domain ID
+    /**
+     * <p>Domain ID</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
-    // Drive ID
+    /**
+     * <p>Drive ID</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 

@@ -10,11 +10,17 @@ public class AuthConfig extends TeaModel {
     @NameInMap("app_id")
     public String appId;
 
+    @NameInMap("app_scheme")
+    public String appScheme;
+
     @NameInMap("app_secret")
     public String appSecret;
 
     @NameInMap("callback_security")
     public Boolean callbackSecurity;
+
+    @NameInMap("ding_sync_config")
+    public DingSyncConfig dingSyncConfig;
 
     @NameInMap("enable")
     public Boolean enable;
@@ -65,6 +71,14 @@ public class AuthConfig extends TeaModel {
         return this.appId;
     }
 
+    public AuthConfig setAppScheme(String appScheme) {
+        this.appScheme = appScheme;
+        return this;
+    }
+    public String getAppScheme() {
+        return this.appScheme;
+    }
+
     public AuthConfig setAppSecret(String appSecret) {
         this.appSecret = appSecret;
         return this;
@@ -79,6 +93,14 @@ public class AuthConfig extends TeaModel {
     }
     public Boolean getCallbackSecurity() {
         return this.callbackSecurity;
+    }
+
+    public AuthConfig setDingSyncConfig(DingSyncConfig dingSyncConfig) {
+        this.dingSyncConfig = dingSyncConfig;
+        return this;
+    }
+    public DingSyncConfig getDingSyncConfig() {
+        return this.dingSyncConfig;
     }
 
     public AuthConfig setEnable(Boolean enable) {

@@ -7,35 +7,51 @@ import com.aliyun.tea.*;
  * UCUpdateUploadContentHashRequest update upload info
  */
 public class UCUpdateUploadContentHashRequest extends TeaModel {
-    // content_hash
+    /**
+     * <p>content_hash</p>
+     */
     @NameInMap("content_hash")
     public String contentHash;
 
-    // content_hash_name
+    /**
+     * <p>content_hash_name</p>
+     */
     @NameInMap("content_hash_name")
     public String contentHashName;
 
-    // content_md5
+    /**
+     * <p>content_md5</p>
+     */
     @NameInMap("content_md5")
     public String contentMd5;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     public String fileId;
 
-    // overwrite
+    /**
+     * <p>overwrite</p>
+     */
     @NameInMap("overwrite")
     public Boolean overwrite;
 
-    // size
+    /**
+     * <p>size</p>
+     */
     @NameInMap("size")
     public Long size;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 

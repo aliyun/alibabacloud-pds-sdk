@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class LinkInfoListResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     @Validation(required = true)
     public java.util.List<LinkInfoResponse> items;

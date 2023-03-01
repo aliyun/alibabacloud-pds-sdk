@@ -7,9 +7,14 @@ import com.aliyun.tea.*;
  * report_event request
  */
 public class ReportEventRequest extends TeaModel {
-    // event_type
+    /**
+     * <p>event_type</p>
+     */
     @NameInMap("event_type")
     public String eventType;
+
+    @NameInMap("media_play")
+    public ReportMediaPlayEventRequest mediaPlay;
 
     @NameInMap("share_link")
     public ReportShareLinkEventRequest shareLink;
@@ -28,6 +33,14 @@ public class ReportEventRequest extends TeaModel {
     }
     public String getEventType() {
         return this.eventType;
+    }
+
+    public ReportEventRequest setMediaPlay(ReportMediaPlayEventRequest mediaPlay) {
+        this.mediaPlay = mediaPlay;
+        return this;
+    }
+    public ReportMediaPlayEventRequest getMediaPlay() {
+        return this.mediaPlay;
     }
 
     public ReportEventRequest setShareLink(ReportShareLinkEventRequest shareLink) {

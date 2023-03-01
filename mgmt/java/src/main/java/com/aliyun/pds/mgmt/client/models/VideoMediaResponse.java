@@ -7,47 +7,69 @@ import com.aliyun.tea.*;
  * 
  */
 public class VideoMediaResponse extends TeaModel {
-    // address_line
+    /**
+     * <p>address_line</p>
+     */
     @NameInMap("address_line")
     public String addressLine;
 
-    // city
+    /**
+     * <p>city</p>
+     */
     @NameInMap("city")
     public String city;
 
-    // country
+    /**
+     * <p>country</p>
+     */
     @NameInMap("country")
     public String country;
 
-    // district
+    /**
+     * <p>district</p>
+     */
     @NameInMap("district")
     public String district;
 
-    // duration 单位 秒
+    /**
+     * <p>duration 单位 秒</p>
+     */
     @NameInMap("duration")
     public String duration;
 
-    // height
+    /**
+     * <p>height</p>
+     */
     @NameInMap("height")
     public Long height;
 
-    // system_tags
+    /**
+     * <p>system_tags</p>
+     */
     @NameInMap("image_tags")
     public java.util.List<SystemTag> imageTags;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
-    // province
+    /**
+     * <p>province</p>
+     */
     @NameInMap("province")
     public String province;
 
-    // time
+    /**
+     * <p>time</p>
+     */
     @NameInMap("time")
     public String time;
 
-    // township
+    /**
+     * <p>township</p>
+     */
     @NameInMap("township")
     public String township;
 
@@ -57,7 +79,9 @@ public class VideoMediaResponse extends TeaModel {
     @NameInMap("video_media_video_stream")
     public java.util.List<VideoMediaVideoStream> videoMediaVideoStream;
 
-    // width
+    /**
+     * <p>width</p>
+     */
     @NameInMap("width")
     public Long width;
 

@@ -7,10 +7,6 @@ import com.aliyun.tea.interceptor.RuntimeOptionsInterceptor;
 import com.aliyun.tea.interceptor.RequestInterceptor;
 import com.aliyun.tea.interceptor.ResponseInterceptor;
 import com.aliyun.pds.mgmt.client.models.*;
-import com.aliyun.teautil.*;
-import com.aliyun.roautil.*;
-import com.aliyun.credentials.*;
-import com.aliyun.credentials.models.*;
 
 public class Client {
 
@@ -23,7 +19,7 @@ public class Client {
     public String _userAgent;
     public com.aliyun.credentials.Client _credential;
     public Client(com.aliyun.pds.mgmt.client.models.Config config) throws Exception {
-        if (com.aliyun.teautil.Common.isUnset(TeaModel.buildMap(config))) {
+        if (com.aliyun.teautil.Common.isUnset(config)) {
             throw new TeaException(TeaConverter.buildMap(
                 new TeaPair("name", "ParameterMissing"),
                 new TeaPair("message", "'config' can not be unset")
@@ -52,6 +48,13 @@ public class Client {
         this._region = config.region;
     }
 
+    /**
+     * 创建App
+     * @tags app
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public CreateAppModel createAppEx(CreateAppRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -169,6 +172,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 删除App
+     * @tags app
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public DeleteAppModel deleteAppEx(DeleteAppRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -283,6 +294,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查询App
+     * @tags app
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public GetAppModel getAppEx(GetAppRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -400,6 +419,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查询App设置的公钥
+     * @tags app
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public GetPublicKeyModel getPublicKeyEx(GetAppPublicKeyRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -517,6 +543,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查询App列表
+     * @tags app
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public ListAppModel listAppEx(ListAppsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -634,6 +667,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查询已发布的App列表
+     * @tags app
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public ListPublishedAppModel listPublishedAppEx(ListAppsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -751,6 +791,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 设置App公钥
+     * @tags app
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public SetPublicKeyModel setPublicKeyEx(SetAppPublicKeyRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -865,6 +912,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 修改App
+     * @tags app
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public UpdateAppModel updateAppEx(UpdateAppRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -982,6 +1037,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 添加Store
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public AddStoreModel addStoreEx(AddStoreRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1099,6 +1161,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 创建 Domain
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public CreateDomainModel createDomainEx(CreateDomainRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1216,6 +1286,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 删除domain业务面自定义域名的证书
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public DeleteSubdomainBizCnameCertModel deleteSubdomainBizCnameCertEx(DeleteBizCNameCertRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1330,6 +1407,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 删除 Domain
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public DeleteDomainModel deleteDomainEx(DeleteDomainRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1444,6 +1530,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 删除domain业务面自定义域名和证书
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public DeleteSubdomainBizCnameAndCertModel deleteSubdomainBizCnameAndCertEx(DeleteBizCNameAndCertRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1558,6 +1651,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 删除domain数据面自定义域名和证书
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public DeleteDataCnameAndCertModel deleteDataCnameAndCertEx(DeleteDataCNameAndCertRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1672,6 +1773,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取 Domain
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public GetDomainModel getDomainEx(GetDomainRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1789,6 +1899,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取domain业务面自定义域名信息
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public GetSubdomainBizCnameInfoModel getSubdomainBizCnameInfoEx(GetBizCNameInfoRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -1906,6 +2023,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取 domain 跨域规则列表
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public GetCorsRuleListModel getCorsRuleListEx(GetCorsRuleListRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2023,6 +2148,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 获取domain数据面自定义域名信息
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public GetDataCnameInfoModel getDataCnameInfoEx(GetDataCNameInfoRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2140,6 +2273,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 列举 Domain
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error undefined undefined
+     */
     public ListDomainModel listDomainEx(ListDomainsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2257,6 +2398,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 查询Store列表
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public ListStoresModel listStoresEx(ListStoresRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2374,6 +2522,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 移除Store
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public RemoveStoreModel removeStoreEx(RemoveStoreRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2488,6 +2643,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 搜索domain
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public SearchModel searchEx(SearchDomainsRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2605,6 +2768,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 设置domain业务面cname
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public SetBizCnameModel setBizCnameEx(SetBizCNameRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2722,6 +2893,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 设置domain业务面自定义域名的证书
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public SetSubdomainBizCnameCertModel setSubdomainBizCnameCertEx(SetBizCNameCertRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2839,6 +3017,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 增加 domain 跨域规则
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public SetCorsRuleListModel setCorsRuleListEx(SetCorsRuleListRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -2956,6 +3142,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 设置domain数据面cname
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public SetDataCnameModel setDataCnameEx(SetDataCNameRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3073,6 +3267,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 分享功能开关
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public SetShareLinkStatusModel setShareLinkStatusEx(SetShareLinkStatusRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3190,6 +3392,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 共享功能开关
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public SetShareStatusModel setShareStatusEx(SetShareStatusRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3307,6 +3517,15 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 更新 Domain
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error ForbiddenNoPermission No Permission to access resource {resource_name}.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     * @error ServiceUnavailable The request has failed due to a temporary failure of the server.
+     */
     public UpdateDomainModel updateDomainEx(UpdateDomainRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3424,6 +3643,14 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 修改domain的名称
+     * @tags domain
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public UpdateNameModel updateNameEx(DomainUpdateNameRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");
@@ -3541,6 +3768,13 @@ public class Client {
         throw new TeaUnretryableException(_lastRequest, _lastException);
     }
 
+    /**
+     * 设置domain业务面cname
+     * @error InvalidParameter The input parameter {parameter_name} is not valid.
+     * @error Forbidden User not authorized to operate on the specified APIs.
+     * @error NotFound The resource {resource_name} cannot be found. Please check.
+     * @error InternalError The request has been failed due to some unknown error.
+     */
     public SetSubdomainBizCnameModel setSubdomainBizCnameEx(SetBizCNameRequest request, RuntimeOptions runtime) throws Exception {
         TeaModel.validateParams(request, "request");
         TeaModel.validateParams(runtime, "runtime");

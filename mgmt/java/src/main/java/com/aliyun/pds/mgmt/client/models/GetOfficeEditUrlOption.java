@@ -7,9 +7,14 @@ import com.aliyun.tea.*;
  * GetOfficeEditUrlOption 权限控制
  */
 public class GetOfficeEditUrlOption extends TeaModel {
-    // Copy
+    /**
+     * <p>Copy</p>
+     */
     @NameInMap("copy")
     public Boolean copy;
+
+    @NameInMap("print")
+    public Boolean print;
 
     @NameInMap("readonly")
     public Boolean readonly;
@@ -25,6 +30,14 @@ public class GetOfficeEditUrlOption extends TeaModel {
     }
     public Boolean getCopy() {
         return this.copy;
+    }
+
+    public GetOfficeEditUrlOption setPrint(Boolean print) {
+        this.print = print;
+        return this;
+    }
+    public Boolean getPrint() {
+        return this.print;
     }
 
     public GetOfficeEditUrlOption setReadonly(Boolean readonly) {

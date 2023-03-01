@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 
  */
 public class ActorAliUser extends TeaModel {
-    // AliUserID
+    /**
+     * <p>AliUserID</p>
+     */
     @NameInMap("ali_user_id")
     public String aliUserId;
 
-    // AliUserType
+    /**
+     * <p>AliUserType</p>
+     */
     @NameInMap("ali_user_type")
     public String aliUserType;
 
-    // AsUserID
+    /**
+     * <p>AsUserID</p>
+     */
     @NameInMap("as_user_id")
     public String asUserId;
 
