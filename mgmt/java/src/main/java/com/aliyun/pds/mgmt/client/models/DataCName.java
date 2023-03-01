@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 
  */
 public class DataCName extends TeaModel {
-    // datacname
+    /**
+     * <p>datacname</p>
+     */
     @NameInMap("data_cname")
     @Validation(required = true)
     public String dataCname;
 
-    // data location
+    /**
+     * <p>data location</p>
+     */
     @NameInMap("location")
     @Validation(required = true)
     public String location;

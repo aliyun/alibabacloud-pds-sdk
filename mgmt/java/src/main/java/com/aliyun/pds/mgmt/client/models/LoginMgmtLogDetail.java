@@ -7,16 +7,26 @@ import com.aliyun.tea.*;
  * 
  */
 public class LoginMgmtLogDetail extends TeaModel {
-    // app_id
+    /**
+     * <p>app_id</p>
+     */
     @NameInMap("app_id")
     public String appId;
 
-    // enable
+    @NameInMap("ding_sync_config")
+    public DingSyncConfig dingSyncConfig;
+
+    /**
+     * <p>enable</p>
+     */
     @NameInMap("enable")
     public Boolean enable;
 
     @NameInMap("ldap_config")
     public LdapConfig ldapConfig;
+
+    @NameInMap("wechat_sync_config")
+    public WeChatSyncConfig wechatSyncConfig;
 
     public static LoginMgmtLogDetail build(java.util.Map<String, ?> map) throws Exception {
         LoginMgmtLogDetail self = new LoginMgmtLogDetail();
@@ -29,6 +39,14 @@ public class LoginMgmtLogDetail extends TeaModel {
     }
     public String getAppId() {
         return this.appId;
+    }
+
+    public LoginMgmtLogDetail setDingSyncConfig(DingSyncConfig dingSyncConfig) {
+        this.dingSyncConfig = dingSyncConfig;
+        return this;
+    }
+    public DingSyncConfig getDingSyncConfig() {
+        return this.dingSyncConfig;
     }
 
     public LoginMgmtLogDetail setEnable(Boolean enable) {
@@ -45,6 +63,14 @@ public class LoginMgmtLogDetail extends TeaModel {
     }
     public LdapConfig getLdapConfig() {
         return this.ldapConfig;
+    }
+
+    public LoginMgmtLogDetail setWechatSyncConfig(WeChatSyncConfig wechatSyncConfig) {
+        this.wechatSyncConfig = wechatSyncConfig;
+        return this;
+    }
+    public WeChatSyncConfig getWechatSyncConfig() {
+        return this.wechatSyncConfig;
     }
 
 }

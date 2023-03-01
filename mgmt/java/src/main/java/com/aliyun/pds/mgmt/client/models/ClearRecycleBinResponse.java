@@ -7,21 +7,41 @@ import com.aliyun.tea.*;
  * ClearRecycleBinResponse
  */
 public class ClearRecycleBinResponse extends TeaModel {
-    // domain_id
+    /**
+     * <p>async_task_id</p>
+     */
+    @NameInMap("async_task_id")
+    public String asyncTaskId;
+
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // task_id
+    /**
+     * <p>task_id</p>
+     */
     @NameInMap("task_id")
     public String taskId;
 
     public static ClearRecycleBinResponse build(java.util.Map<String, ?> map) throws Exception {
         ClearRecycleBinResponse self = new ClearRecycleBinResponse();
         return TeaModel.build(map, self);
+    }
+
+    public ClearRecycleBinResponse setAsyncTaskId(String asyncTaskId) {
+        this.asyncTaskId = asyncTaskId;
+        return this;
+    }
+    public String getAsyncTaskId() {
+        return this.asyncTaskId;
     }
 
     public ClearRecycleBinResponse setDomainId(String domainId) {

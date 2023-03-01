@@ -7,31 +7,45 @@ import com.aliyun.tea.*;
  * GetOfficeEditUrlWatermark 水印配置
  */
 public class GetOfficeEditUrlWatermark extends TeaModel {
-    // FillStyle
+    /**
+     * <p>FillStyle</p>
+     */
     @NameInMap("fillstyle")
     public String fillstyle;
 
-    // Font
+    /**
+     * <p>Font</p>
+     */
     @NameInMap("font")
     public String font;
 
-    // Horizontal
+    /**
+     * <p>Horizontal</p>
+     */
     @NameInMap("horizontal")
     public Long horizontal;
 
-    // Rotate
+    /**
+     * <p>Rotate</p>
+     */
     @NameInMap("rotate")
     public Double rotate;
 
-    // Type
+    /**
+     * <p>Type</p>
+     */
     @NameInMap("type")
     public Integer type;
 
-    // Value
+    /**
+     * <p>Value</p>
+     */
     @NameInMap("value")
     public String value;
 
-    // Vertical
+    /**
+     * <p>Vertical</p>
+     */
     @NameInMap("vertical")
     public Long vertical;
 

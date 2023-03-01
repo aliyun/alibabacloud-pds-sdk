@@ -7,46 +7,64 @@ import com.aliyun.tea.*;
  * 
  */
 public class LinkInfoResponse extends TeaModel {
-    // 认证类型
+    /**
+     * <p>认证类型</p>
+     */
     @NameInMap("authentication_type")
     @Validation(required = true)
     public String authenticationType;
 
-    // 创建时间
+    /**
+     * <p>创建时间</p>
+     */
     @NameInMap("created_at")
     @Validation(required = true)
     public Long createdAt;
 
-    // 显示名称
+    /**
+     * <p>显示名称</p>
+     */
     @NameInMap("display_name")
     @Validation(required = true)
     public String displayName;
 
-    // Domain ID
+    /**
+     * <p>Domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
+    /**
+     * <p>额外的信息，比如type为mobile时，此字段为国家编号，不填默认86</p>
+     */
     @NameInMap("extra")
     public String extra;
 
-    // 唯一身份标识
+    /**
+     * <p>唯一身份标识</p>
+     */
     @NameInMap("identity")
     @Validation(required = true)
     public String identity;
 
-    // 最后登录时间
+    /**
+     * <p>最后登录时间</p>
+     */
     @NameInMap("last_login_time")
     @Validation(required = true)
     public Long lastLoginTime;
 
-    // 状态
+    /**
+     * <p>状态</p>
+     */
     @NameInMap("status")
     @Validation(required = true)
     public String status;
 
-    // 用户ID
+    /**
+     * <p>用户ID</p>
+     */
     @NameInMap("user_id")
     @Validation(required = true)
     public String userId;

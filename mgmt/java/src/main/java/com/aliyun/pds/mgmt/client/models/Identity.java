@@ -7,16 +7,22 @@ import com.aliyun.tea.*;
  * 表示用户或团队
  */
 public class Identity extends TeaModel {
-    // 用户或团队的ID
+    /**
+     * <p>用户或团队的ID</p>
+     */
     @NameInMap("identity_id")
     @Validation(required = true)
     public String identityId;
 
-    // 显示名称
+    /**
+     * <p>显示名称</p>
+     */
     @NameInMap("identity_name")
     public String identityName;
 
-    // 类型，目前可传：IT_User(用户)、IT_Group(团队)
+    /**
+     * <p>类型，目前可传：IT_User(用户)、IT_Group(团队)</p>
+     */
     @NameInMap("identity_type")
     @Validation(required = true)
     public String identityType;

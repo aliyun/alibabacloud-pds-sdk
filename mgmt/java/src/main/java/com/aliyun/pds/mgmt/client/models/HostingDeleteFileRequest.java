@@ -7,22 +7,30 @@ import com.aliyun.tea.*;
  * 删除文件请求
  */
 public class HostingDeleteFileRequest extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     @Validation(required = true, maxLength = 1000, minLength = 1)
     public String filePath;
 
-    // permanently
-    // type: false
+    /**
+     * <p>permanently</p>
+     * <p>type: false</p>
+     */
     @NameInMap("permanently")
     public Boolean permanently;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;

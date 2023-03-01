@@ -7,17 +7,23 @@ import com.aliyun.tea.*;
  * 
  */
 public class CheckExistResponse extends TeaModel {
-    // 当前手机号是否存在
+    /**
+     * <p>当前手机号是否存在</p>
+     */
     @NameInMap("is_exist")
     @Validation(required = true)
     public Boolean isExist;
 
-    // 待查询的手机号
+    /**
+     * <p>待查询的手机号</p>
+     */
     @NameInMap("phone_number")
     @Validation(required = true)
     public String phoneNumber;
 
-    // 国家编号，默认86，不需要填+号，直接填数字
+    /**
+     * <p>国家编号，默认86，不需要填+号，直接填数字</p>
+     */
     @NameInMap("phone_region")
     public String phoneRegion;
 

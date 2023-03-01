@@ -7,17 +7,23 @@ import com.aliyun.tea.*;
  * 
  */
 public class Captcha extends TeaModel {
-    // 图片验证码，base64格式
+    /**
+     * <p>图片验证码，base64格式</p>
+     */
     @NameInMap("captcha")
     @Validation(required = true)
     public String captcha;
 
-    // 图片格式
+    /**
+     * <p>图片格式</p>
+     */
     @NameInMap("captcha_format")
     @Validation(required = true)
     public String captchaFormat;
 
-    // 图片验证码ID
+    /**
+     * <p>图片验证码ID</p>
+     */
     @NameInMap("captcha_id")
     @Validation(required = true)
     public String captchaId;

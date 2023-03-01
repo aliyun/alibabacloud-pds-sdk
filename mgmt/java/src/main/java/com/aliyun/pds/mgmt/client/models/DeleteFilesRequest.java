@@ -7,17 +7,23 @@ import com.aliyun.tea.*;
  * 批量删除文件请求
  */
 public class DeleteFilesRequest extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_id_list
+    /**
+     * <p>file_id_list</p>
+     */
     @NameInMap("file_id_list")
     @Validation(required = true)
     public java.util.List<String> fileIdList;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 

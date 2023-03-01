@@ -7,31 +7,43 @@ import com.aliyun.tea.*;
  * 获取文件上传URL
  */
 public class HostingGetUploadUrlRequest extends TeaModel {
-    // content_md5
+    /**
+     * <p>content_md5</p>
+     */
     @NameInMap("content_md5")
     @Validation(maxLength = 32)
     public String contentMd5;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     @Validation(required = true)
     public String filePath;
 
-    // upload_part_list
+    /**
+     * <p>upload_part_list</p>
+     */
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     @Validation(required = true)
     public String uploadId;

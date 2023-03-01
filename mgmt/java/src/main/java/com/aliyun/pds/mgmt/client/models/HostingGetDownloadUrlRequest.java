@@ -7,25 +7,35 @@ import com.aliyun.tea.*;
  * 获取文件下载地址的请求body
  */
 public class HostingGetDownloadUrlRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // expire_sec
+    /**
+     * <p>expire_sec</p>
+     */
     @NameInMap("expire_sec")
     @Validation(maximum = 115200, minimum = 10)
     public Long expireSec;
 
-    // file_name
+    /**
+     * <p>file_name</p>
+     */
     @NameInMap("file_name")
     public String fileName;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     @Validation(required = true, maxLength = 1000, minLength = 1)
     public String filePath;
@@ -33,7 +43,9 @@ public class HostingGetDownloadUrlRequest extends TeaModel {
     @NameInMap("referer")
     public String referer;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;

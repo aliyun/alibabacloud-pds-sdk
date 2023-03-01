@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 
  */
 public class DataBoxPrivileges extends TeaModel {
-    // feature_attr_id
+    /**
+     * <p>feature_attr_id</p>
+     */
     @NameInMap("feature_attr_id")
     public String featureAttrId;
 
-    // feature_id
+    /**
+     * <p>feature_id</p>
+     */
     @NameInMap("feature_id")
     public String featureId;
 
-    // quota
+    /**
+     * <p>quota</p>
+     */
     @NameInMap("quota")
     public Long quota;
 

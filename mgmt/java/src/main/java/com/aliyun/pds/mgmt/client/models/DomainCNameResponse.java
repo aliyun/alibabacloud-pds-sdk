@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 
  */
 public class DomainCNameResponse extends TeaModel {
-    // data cname list
+    /**
+     * <p>data cname list</p>
+     */
     @NameInMap("data_cname_list")
     @Validation(required = true)
     public java.util.List<DataCName> dataCnameList;
 
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;

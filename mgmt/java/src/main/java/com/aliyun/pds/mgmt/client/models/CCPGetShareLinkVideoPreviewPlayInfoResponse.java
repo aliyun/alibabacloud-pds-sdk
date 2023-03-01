@@ -7,12 +7,25 @@ import com.aliyun.tea.*;
  * 获取分享中媒体播放地址response
  */
 public class CCPGetShareLinkVideoPreviewPlayInfoResponse extends TeaModel {
-    // file_id
+    @NameInMap("audio_preview_play_info")
+    public AudioPreviewPlayInfoResponse audioPreviewPlayInfo;
+
+    /**
+     * <p>category</p>
+     */
+    @NameInMap("category")
+    public String category;
+
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
@@ -22,6 +35,22 @@ public class CCPGetShareLinkVideoPreviewPlayInfoResponse extends TeaModel {
     public static CCPGetShareLinkVideoPreviewPlayInfoResponse build(java.util.Map<String, ?> map) throws Exception {
         CCPGetShareLinkVideoPreviewPlayInfoResponse self = new CCPGetShareLinkVideoPreviewPlayInfoResponse();
         return TeaModel.build(map, self);
+    }
+
+    public CCPGetShareLinkVideoPreviewPlayInfoResponse setAudioPreviewPlayInfo(AudioPreviewPlayInfoResponse audioPreviewPlayInfo) {
+        this.audioPreviewPlayInfo = audioPreviewPlayInfo;
+        return this;
+    }
+    public AudioPreviewPlayInfoResponse getAudioPreviewPlayInfo() {
+        return this.audioPreviewPlayInfo;
+    }
+
+    public CCPGetShareLinkVideoPreviewPlayInfoResponse setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public CCPGetShareLinkVideoPreviewPlayInfoResponse setFileId(String fileId) {

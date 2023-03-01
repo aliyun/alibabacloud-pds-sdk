@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * list_share_link response
  */
 public class ListShareLinkResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<BaseShareLinkResponse> items;
 
-    // next_marker
+    /**
+     * <p>next_marker</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 

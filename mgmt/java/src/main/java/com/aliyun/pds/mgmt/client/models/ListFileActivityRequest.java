@@ -7,23 +7,33 @@ import com.aliyun.tea.*;
  * 
  */
 public class ListFileActivityRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // DriveID
+    /**
+     * <p>DriveID</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // FileID
+    /**
+     * <p>FileID</p>
+     */
     @NameInMap("file_id")
     public String fileId;
 
-    // Limit, default
+    /**
+     * <p>Limit, default</p>
+     */
     @NameInMap("limit")
     public Integer limit;
 
-    // Marker
+    /**
+     * <p>Marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 

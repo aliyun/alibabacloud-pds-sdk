@@ -7,11 +7,21 @@ import com.aliyun.tea.*;
  * complete file request
  */
 public class HostingCompleteFileRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // drive_id
+    /**
+     * <p>crc64_hash</p>
+     */
+    @NameInMap("crc64_hash")
+    public String crc64Hash;
+
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
@@ -19,19 +29,25 @@ public class HostingCompleteFileRequest extends TeaModel {
     @NameInMap("file_path")
     public String filePath;
 
-    // forbid_overwrite
-    // type: boolean
+    /**
+     * <p>forbid_overwrite</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("forbid_overwrite")
     public Boolean forbidOverwrite;
 
-    // part_info_list
+    /**
+     * <p>part_info_list</p>
+     */
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
     @NameInMap("share_id")
     public String shareId;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 
@@ -46,6 +62,14 @@ public class HostingCompleteFileRequest extends TeaModel {
     }
     public java.util.Map<String, ?> getAdditionData() {
         return this.additionData;
+    }
+
+    public HostingCompleteFileRequest setCrc64Hash(String crc64Hash) {
+        this.crc64Hash = crc64Hash;
+        return this;
+    }
+    public String getCrc64Hash() {
+        return this.crc64Hash;
     }
 
     public HostingCompleteFileRequest setDriveId(String driveId) {

@@ -7,20 +7,28 @@ import com.aliyun.tea.*;
  * 获取分享中文件下载地址的请求body
  */
 public class GetShareLinkDownloadURLRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // drive_id is optional
+    /**
+     * <p>drive_id is optional</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // expire_sec
+    /**
+     * <p>expire_sec</p>
+     */
     @NameInMap("expire_sec")
     @Validation(maximum = 600, minimum = 1)
     public Long expireSec;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
@@ -28,38 +36,54 @@ public class GetShareLinkDownloadURLRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
-    // get_audio_play_info
+    /**
+     * <p>get_audio_play_info</p>
+     */
     @NameInMap("get_audio_play_info")
     public Boolean getAudioPlayInfo;
 
-    // get_streams_url
+    /**
+     * <p>get_streams_url</p>
+     */
     @NameInMap("get_streams_url")
     public Boolean getStreamsUrl;
 
-    // get_video_play_info
+    /**
+     * <p>get_video_play_info</p>
+     */
     @NameInMap("get_video_play_info")
     public Boolean getVideoPlayInfo;
 
-    // image_thumbnail_process
+    /**
+     * <p>image_thumbnail_process</p>
+     */
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
-    // image_url_process
+    /**
+     * <p>image_url_process</p>
+     */
     @NameInMap("image_url_process")
     public String imageUrlProcess;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
-    // office_thumbnail_process
+    /**
+     * <p>office_thumbnail_process</p>
+     */
     @NameInMap("office_thumbnail_process")
     public String officeThumbnailProcess;
 
     @NameInMap("referer")
     public String referer;
 
-    // share_id is required
+    /**
+     * <p>share_id is required</p>
+     */
     @NameInMap("share_id")
     @Validation(required = true)
     public String shareId;
@@ -67,8 +91,10 @@ public class GetShareLinkDownloadURLRequest extends TeaModel {
     @NameInMap("sign_token")
     public String signToken;
 
-    // video_thumbnail_process
-    // type:string
+    /**
+     * <p>video_thumbnail_process</p>
+     * <p>type:string</p>
+     */
     @NameInMap("video_thumbnail_process")
     public String videoThumbnailProcess;
 

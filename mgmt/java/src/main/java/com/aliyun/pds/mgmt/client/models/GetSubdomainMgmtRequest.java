@@ -7,16 +7,22 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetSubdomainMgmtRequest extends TeaModel {
-    // 用以唯一标识domain
+    /**
+     * <p>用以唯一标识domain</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // 是否获取share/share_link详情
+    /**
+     * <p>是否获取share/share_link详情</p>
+     */
     @NameInMap("get_share_detail")
     public Boolean getShareDetail;
 
-    // 用以唯一标识subdomain
+    /**
+     * <p>用以唯一标识subdomain</p>
+     */
     @NameInMap("subdomain_id")
     @Validation(required = true)
     public String subdomainId;

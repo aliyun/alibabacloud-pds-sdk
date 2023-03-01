@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * share detail response
  */
 public class ShareDetailResponse extends TeaModel {
-    // 企业未配置独立域名时，允许的访问次数
+    /**
+     * <p>企业未配置独立域名时，允许的访问次数</p>
+     */
     @NameInMap("access_quota")
     public Long accessQuota;
 
-    // 企业未配置独立域名时，是否超过允许的访问次数
+    /**
+     * <p>企业未配置独立域名时，是否超过允许的访问次数</p>
+     */
     @NameInMap("exceed_access_quota")
     public Boolean exceedAccessQuota;
 

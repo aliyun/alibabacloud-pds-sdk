@@ -13,113 +13,163 @@ public class UpdateDomainRequest extends TeaModel {
     @NameInMap("auth_config")
     public java.util.Map<String, ?> authConfig;
 
-    // 钉钉 App Id
+    /**
+     * <p>钉钉 App Id</p>
+     */
     @NameInMap("auth_dingding_app_id")
     public String authDingdingAppId;
 
-    // 钉钉 App Secret
+    /**
+     * <p>钉钉 App Secret</p>
+     */
     @NameInMap("auth_dingding_app_secret")
     public String authDingdingAppSecret;
 
-    // 启用钉钉认证
+    /**
+     * <p>启用钉钉认证</p>
+     */
     @NameInMap("auth_dingding_enable")
     public Boolean authDingdingEnable;
 
-    // RAM App Id
+    /**
+     * <p>RAM App Id</p>
+     */
     @NameInMap("auth_ram_app_id")
     public String authRamAppId;
 
-    // RAM App Secret
+    /**
+     * <p>RAM App Secret</p>
+     */
     @NameInMap("auth_ram_app_secret")
     public String authRamAppSecret;
 
-    // 启用 RAM 认证
+    /**
+     * <p>启用 RAM 认证</p>
+     */
     @NameInMap("auth_ram_enable")
     public Boolean authRamEnable;
 
     @NameInMap("custom_benefits")
     public java.util.Map<String, ?> customBenefits;
 
-    // 数据 Hash 算法
+    /**
+     * <p>数据 Hash 算法</p>
+     */
     @NameInMap("data_hash_name")
     public String dataHashName;
 
-    // Domain 描述
+    /**
+     * <p>Domain 描述</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // Domain ID
+    /**
+     * <p>Domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // Domain 名称
+    /**
+     * <p>Domain 名称</p>
+     */
     @NameInMap("domain_name")
     public String domainName;
 
-    // 事件通知 MNS 匹配文件名
+    /**
+     * <p>事件通知 MNS 匹配文件名</p>
+     */
     @NameInMap("event_filename_matches")
     public String eventFilenameMatches;
 
-    // 事件通知 MNS Endpoint
+    /**
+     * <p>事件通知 MNS Endpoint</p>
+     */
     @NameInMap("event_mns_endpoint")
     public String eventMnsEndpoint;
 
-    // 事件通知 MNS Topic
+    /**
+     * <p>事件通知 MNS Topic</p>
+     */
     @NameInMap("event_mns_topic")
     public String eventMnsTopic;
 
-    // 事件名列表
+    /**
+     * <p>事件名列表</p>
+     */
     @NameInMap("event_names")
     public java.util.List<String> eventNames;
 
-    // 事件通知 Role Arn
+    /**
+     * <p>事件通知 Role Arn</p>
+     */
     @NameInMap("event_role_arn")
     public String eventRoleArn;
 
     @NameInMap("get_benefit")
     public Boolean getBenefit;
 
-    // 单团队单drive
+    /**
+     * <p>单团队单drive</p>
+     */
     @NameInMap("group_single_drive_enabled")
     public Boolean groupSingleDriveEnabled;
 
-    // 开启自动初始化 Drive
+    /**
+     * <p>开启自动初始化 Drive</p>
+     */
     @NameInMap("init_drive_enable")
     public Boolean initDriveEnable;
 
-    // 自动初始化 Drive 大小
+    /**
+     * <p>自动初始化 Drive 大小</p>
+     */
     @NameInMap("init_drive_size")
     public Long initDriveSize;
 
-    // 自动初始化 Drive 使用 Store ID
+    /**
+     * <p>自动初始化 Drive 使用 Store ID</p>
+     */
     @NameInMap("init_drive_store_id")
     public String initDriveStoreId;
 
     @NameInMap("published_app_access_strategy")
     public AppAccessStrategy publishedAppAccessStrategy;
 
-    // 开启分享
+    /**
+     * <p>开启分享</p>
+     */
     @NameInMap("sharable")
     public Boolean sharable;
 
-    // 逻辑空间quota，默认为-1，无限制，单位为字节
+    /**
+     * <p>逻辑空间quota，默认为-1，无限制，单位为字节</p>
+     */
     @NameInMap("size_quota")
     public Long sizeQuota;
 
-    // 状态
+    /**
+     * <p>状态</p>
+     */
     @NameInMap("status")
     public Long status;
 
-    // 逻辑空间刷新周期，单位：秒
+    /**
+     * <p>逻辑空间刷新周期，单位：秒</p>
+     */
     @NameInMap("used_size_refresh_interval")
     public Long usedSizeRefreshInterval;
 
-    // 用户数quota，默认为-1，无限制
+    /**
+     * <p>用户数quota，默认为-1，无限制</p>
+     */
     @NameInMap("user_count_quota")
     public Long userCountQuota;
 
-    // 单用户单drive
+    /**
+     * <p>单用户单drive</p>
+     */
     @NameInMap("user_single_drive_enabled")
     public Boolean userSingleDriveEnabled;
 

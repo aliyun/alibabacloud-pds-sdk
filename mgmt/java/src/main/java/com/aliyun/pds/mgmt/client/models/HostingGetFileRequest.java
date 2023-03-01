@@ -7,36 +7,50 @@ import com.aliyun.tea.*;
  * 获取文件元数据
  */
 public class HostingGetFileRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_path")
     @Validation(required = true, maxLength = 1000, minLength = 1)
     public String filePath;
 
-    // image_thumbnail_process
+    /**
+     * <p>image_thumbnail_process</p>
+     */
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
-    // image_url_process
+    /**
+     * <p>image_url_process</p>
+     */
     @NameInMap("image_url_process")
     public String imageUrlProcess;
 
-    // office_thumbnail_process
+    /**
+     * <p>office_thumbnail_process</p>
+     */
     @NameInMap("office_thumbnail_process")
     public String officeThumbnailProcess;
 
     @NameInMap("referer")
     public String referer;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;
@@ -44,13 +58,17 @@ public class HostingGetFileRequest extends TeaModel {
     @NameInMap("sign_token")
     public String signToken;
 
-    // url_expire_sec
+    /**
+     * <p>url_expire_sec</p>
+     */
     @NameInMap("url_expire_sec")
     @Validation(maximum = 14400, minimum = 10)
     public Long urlExpireSec;
 
-    // video_thumbnail_process
-    // type:string
+    /**
+     * <p>video_thumbnail_process</p>
+     * <p>type:string</p>
+     */
     @NameInMap("video_thumbnail_process")
     public String videoThumbnailProcess;
 

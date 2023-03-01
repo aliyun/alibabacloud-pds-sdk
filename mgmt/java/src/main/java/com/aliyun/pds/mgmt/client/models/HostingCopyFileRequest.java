@@ -7,49 +7,67 @@ import com.aliyun.tea.*;
  * copy file request
  */
 public class HostingCopyFileRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     @Validation(required = true)
     public String filePath;
 
-    // new_name
+    /**
+     * <p>new_name</p>
+     */
     @NameInMap("new_name")
     @Validation(maxLength = 1024, minLength = 1)
     public String newName;
 
-    // overwrite
-    // type: boolean
+    /**
+     * <p>overwrite</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("overwrite")
     public Boolean overwrite;
 
     @NameInMap("referer")
     public String referer;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;
 
-    // to_drive_id
+    /**
+     * <p>to_drive_id</p>
+     */
     @NameInMap("to_drive_id")
     @Validation(pattern = "[0-9]+")
     public String toDriveId;
 
-    // to_parent_file_path
+    /**
+     * <p>to_parent_file_path</p>
+     */
     @NameInMap("to_parent_file_path")
     @Validation(required = true)
     public String toParentFilePath;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("to_share_id")
     public String toShareId;
 

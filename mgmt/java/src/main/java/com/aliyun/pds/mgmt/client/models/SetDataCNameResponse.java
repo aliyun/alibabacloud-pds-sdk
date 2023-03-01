@@ -7,17 +7,23 @@ import com.aliyun.tea.*;
  * 
  */
 public class SetDataCNameResponse extends TeaModel {
-    // datacname
+    /**
+     * <p>datacname</p>
+     */
     @NameInMap("data_cname")
     @Validation(required = true)
     public String dataCname;
 
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // data location
+    /**
+     * <p>data location</p>
+     */
     @NameInMap("location")
     @Validation(required = true)
     public String location;

@@ -7,21 +7,29 @@ import com.aliyun.tea.*;
  * 获取视频雪碧图地址的请求body
  */
 public class GetVideoPreviewSpriteURLRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // expire_sec
+    /**
+     * <p>expire_sec</p>
+     */
     @NameInMap("expire_sec")
     @Validation(maximum = 14400, minimum = 1)
     public Long expireSec;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
@@ -29,7 +37,15 @@ public class GetVideoPreviewSpriteURLRequest extends TeaModel {
     @NameInMap("referer")
     public String referer;
 
-    // share_id, either share_id or drive_id is required
+    /**
+     * <p>revision_id</p>
+     */
+    @NameInMap("revision_id")
+    public String revisionId;
+
+    /**
+     * <p>share_id, either share_id or drive_id is required</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
@@ -79,6 +95,14 @@ public class GetVideoPreviewSpriteURLRequest extends TeaModel {
     }
     public String getReferer() {
         return this.referer;
+    }
+
+    public GetVideoPreviewSpriteURLRequest setRevisionId(String revisionId) {
+        this.revisionId = revisionId;
+        return this;
+    }
+    public String getRevisionId() {
+        return this.revisionId;
     }
 
     public GetVideoPreviewSpriteURLRequest setShareId(String shareId) {

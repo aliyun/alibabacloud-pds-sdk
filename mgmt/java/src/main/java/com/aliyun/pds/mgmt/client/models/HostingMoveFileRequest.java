@@ -7,30 +7,42 @@ import com.aliyun.tea.*;
  * 文件移动请求
  */
 public class HostingMoveFileRequest extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     public String filePath;
 
-    // new_name
+    /**
+     * <p>new_name</p>
+     */
     @NameInMap("new_name")
     public String newName;
 
-    // overwrite
-    // type: boolean
+    /**
+     * <p>overwrite</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("overwrite")
     public Boolean overwrite;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("to_parent_file_path")
     public String toParentFilePath;
 

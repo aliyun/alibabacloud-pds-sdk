@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * get share request
  */
 public class GetShareRequest extends TeaModel {
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 

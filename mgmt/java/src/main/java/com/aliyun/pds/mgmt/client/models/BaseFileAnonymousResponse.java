@@ -7,29 +7,41 @@ import com.aliyun.tea.*;
  * list_file_by_anonymous base response
  */
 public class BaseFileAnonymousResponse extends TeaModel {
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     @Validation(pattern = "[a-zA-Z0-9.-]{1,1000}")
     public String name;
 
-    // size, type=file时才有效
+    /**
+     * <p>size, type=file时才有效</p>
+     */
     @NameInMap("size")
     public Long size;
 
-    // thumbnail
+    /**
+     * <p>thumbnail</p>
+     */
     @NameInMap("thumbnail")
     public String thumbnail;
 
-    // type
+    /**
+     * <p>type</p>
+     */
     @NameInMap("type")
     public String type;
 
-    // updated_at
+    /**
+     * <p>updated_at</p>
+     */
     @NameInMap("updated_at")
     public String updatedAt;
 

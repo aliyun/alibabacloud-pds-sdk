@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 实时转码子开关配置
  */
 public class VideoPreviewLiveTranscodingEnableConfig extends TeaModel {
+    @NameInMap("disable_live_transcode")
+    public Boolean disableLiveTranscode;
+
     @NameInMap("drop_file_created_event")
     public Boolean dropFileCreatedEvent;
 
@@ -19,6 +22,14 @@ public class VideoPreviewLiveTranscodingEnableConfig extends TeaModel {
     public static VideoPreviewLiveTranscodingEnableConfig build(java.util.Map<String, ?> map) throws Exception {
         VideoPreviewLiveTranscodingEnableConfig self = new VideoPreviewLiveTranscodingEnableConfig();
         return TeaModel.build(map, self);
+    }
+
+    public VideoPreviewLiveTranscodingEnableConfig setDisableLiveTranscode(Boolean disableLiveTranscode) {
+        this.disableLiveTranscode = disableLiveTranscode;
+        return this;
+    }
+    public Boolean getDisableLiveTranscode() {
+        return this.disableLiveTranscode;
     }
 
     public VideoPreviewLiveTranscodingEnableConfig setDropFileCreatedEvent(Boolean dropFileCreatedEvent) {

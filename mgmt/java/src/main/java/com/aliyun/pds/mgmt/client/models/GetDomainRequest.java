@@ -10,19 +10,37 @@ public class GetDomainRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // Domain ID
+    /**
+     * <p>Domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
+    /**
+     * <p>fields,需要获取的属性字段,英文逗号分隔,*表示获取所有fields支持的枚举属性字段,为空不获取任何枚举属性字段</p>
+     */
+    @NameInMap("fields")
+    public String fields;
+
     @NameInMap("get_benefit")
     public Boolean getBenefit;
 
-    // 是否获取share/share_link详情
+    /**
+     * <p>是否获取 quota 使用情况</p>
+     */
+    @NameInMap("get_quota_used")
+    public Boolean getQuotaUsed;
+
+    /**
+     * <p>是否获取share/share_link详情</p>
+     */
     @NameInMap("get_share_detail")
     public Boolean getShareDetail;
 
-    // 是否 merge parent 配置
+    /**
+     * <p>是否 merge parent 配置</p>
+     */
     @NameInMap("merge_parent")
     public Boolean mergeParent;
 
@@ -47,12 +65,28 @@ public class GetDomainRequest extends TeaModel {
         return this.domainId;
     }
 
+    public GetDomainRequest setFields(String fields) {
+        this.fields = fields;
+        return this;
+    }
+    public String getFields() {
+        return this.fields;
+    }
+
     public GetDomainRequest setGetBenefit(Boolean getBenefit) {
         this.getBenefit = getBenefit;
         return this;
     }
     public Boolean getGetBenefit() {
         return this.getBenefit;
+    }
+
+    public GetDomainRequest setGetQuotaUsed(Boolean getQuotaUsed) {
+        this.getQuotaUsed = getQuotaUsed;
+        return this;
+    }
+    public Boolean getGetQuotaUsed() {
+        return this.getQuotaUsed;
     }
 
     public GetDomainRequest setGetShareDetail(Boolean getShareDetail) {

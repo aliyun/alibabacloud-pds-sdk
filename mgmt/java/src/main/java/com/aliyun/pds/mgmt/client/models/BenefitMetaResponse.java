@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * Benefit meta response
  */
 public class BenefitMetaResponse extends TeaModel {
-    // 权益的配置
+    /**
+     * <p>权益的配置</p>
+     */
     @NameInMap("config")
     public String config;
 
-    // 权益的开关
+    /**
+     * <p>权益的开关</p>
+     */
     @NameInMap("enabled")
     public Boolean enabled;
 
-    // 权益的配额
+    /**
+     * <p>权益的配额</p>
+     */
     @NameInMap("quota")
     public Long quota;
 

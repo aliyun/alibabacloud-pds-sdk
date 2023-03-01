@@ -10,11 +10,17 @@ public class VideoPreviewVideoConfig extends TeaModel {
     @NameInMap("default_output_ext")
     public String defaultOutputExt;
 
+    @NameInMap("fix_resolution")
+    public Boolean fixResolution;
+
     @NameInMap("keep_original")
     public Boolean keepOriginal;
 
     @NameInMap("m3u8_config")
     public VideoPreviewM3U8Config m3u8Config;
+
+    @NameInMap("protection_system")
+    public String protectionSystem;
 
     @NameInMap("support_ext")
     public java.util.List<String> supportExt;
@@ -35,6 +41,14 @@ public class VideoPreviewVideoConfig extends TeaModel {
         return this.defaultOutputExt;
     }
 
+    public VideoPreviewVideoConfig setFixResolution(Boolean fixResolution) {
+        this.fixResolution = fixResolution;
+        return this;
+    }
+    public Boolean getFixResolution() {
+        return this.fixResolution;
+    }
+
     public VideoPreviewVideoConfig setKeepOriginal(Boolean keepOriginal) {
         this.keepOriginal = keepOriginal;
         return this;
@@ -49,6 +63,14 @@ public class VideoPreviewVideoConfig extends TeaModel {
     }
     public VideoPreviewM3U8Config getM3u8Config() {
         return this.m3u8Config;
+    }
+
+    public VideoPreviewVideoConfig setProtectionSystem(String protectionSystem) {
+        this.protectionSystem = protectionSystem;
+        return this;
+    }
+    public String getProtectionSystem() {
+        return this.protectionSystem;
     }
 
     public VideoPreviewVideoConfig setSupportExt(java.util.List<String> supportExt) {

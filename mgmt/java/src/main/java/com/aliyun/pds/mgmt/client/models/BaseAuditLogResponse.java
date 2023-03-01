@@ -7,62 +7,90 @@ import com.aliyun.tea.*;
  * 
  */
 public class BaseAuditLogResponse extends TeaModel {
-    // 客户端设备
+    /**
+     * <p>客户端设备</p>
+     */
     @NameInMap("ClientDevice")
     public String ClientDevice;
 
-    // 客户端IP
+    /**
+     * <p>客户端IP</p>
+     */
     @NameInMap("ClientIP")
     public String ClientIP;
 
-    // 客户端类型
+    /**
+     * <p>客户端类型</p>
+     */
     @NameInMap("ClientType")
     public String ClientType;
 
-    // 客户端版本
+    /**
+     * <p>客户端版本</p>
+     */
     @NameInMap("ClientVersion")
     public String ClientVersion;
 
-    // 操作时间
+    /**
+     * <p>操作时间</p>
+     */
     @NameInMap("acted_at")
     public String actedAt;
 
-    // 操作分类
+    /**
+     * <p>操作分类</p>
+     */
     @NameInMap("action_category")
     public String actionCategory;
 
-    // 操作类型
+    /**
+     * <p>操作类型</p>
+     */
     @NameInMap("action_type")
     public String actionType;
 
-    // 操作者ID
+    /**
+     * <p>操作者ID</p>
+     */
     @NameInMap("actor_id")
     public String actorId;
 
-    // 操作者名称
+    /**
+     * <p>操作者名称</p>
+     */
     @NameInMap("actor_name")
     public String actorName;
 
-    // 操作者类型
+    /**
+     * <p>操作者类型</p>
+     */
     @NameInMap("actor_type")
     public String actorType;
 
     @NameInMap("detail")
     public LogDetail detail;
 
-    // 文件空间类型
+    /**
+     * <p>文件空间类型</p>
+     */
     @NameInMap("file_path_type")
     public String filePathType;
 
-    // 唯一标识一条日志
+    /**
+     * <p>唯一标识一条日志</p>
+     */
     @NameInMap("log_id")
     public String logId;
 
-    // 对象ID
+    /**
+     * <p>对象ID</p>
+     */
     @NameInMap("object_id")
     public String objectId;
 
-    // 对象名
+    /**
+     * <p>对象名</p>
+     */
     @NameInMap("object_name")
     public String objectName;
 

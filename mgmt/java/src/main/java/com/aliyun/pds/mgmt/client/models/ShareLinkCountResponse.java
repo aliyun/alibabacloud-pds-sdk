@@ -7,27 +7,39 @@ import com.aliyun.tea.*;
  * 
  */
 public class ShareLinkCountResponse extends TeaModel {
-    // access_count
+    /**
+     * <p>access_count</p>
+     */
     @NameInMap("access_count")
     public Long accessCount;
 
-    // 下载次数
+    /**
+     * <p>下载次数</p>
+     */
     @NameInMap("download_count")
     public Long downloadCount;
 
-    // preview_count
+    /**
+     * <p>preview_count</p>
+     */
     @NameInMap("preview_count")
     public Long previewCount;
 
-    // 举报次数
+    /**
+     * <p>举报次数</p>
+     */
     @NameInMap("report_count")
     public Long reportCount;
 
-    // 转存次数
+    /**
+     * <p>转存次数</p>
+     */
     @NameInMap("save_count")
     public Long saveCount;
 
-    // 音视频播放次数
+    /**
+     * <p>音视频播放次数</p>
+     */
     @NameInMap("video_preview_count")
     public Long videoPreviewCount;
 

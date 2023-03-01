@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 更新文件 user tags response
  */
 public class PutFileUserTagsResponse extends TeaModel {
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}")
     public String fileId;

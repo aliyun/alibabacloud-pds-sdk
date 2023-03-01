@@ -10,22 +10,42 @@ public class SearchDomainsRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 分页大小
+    /**
+     * <p>通过购买的实例ID搜索domain</p>
+     */
+    @NameInMap("instance_id")
+    public String instanceId;
+
+    /**
+     * <p>分页大小</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // 查询游标
+    /**
+     * <p>查询游标</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // domain名称，模糊匹配
+    /**
+     * <p>domain名称，模糊匹配</p>
+     */
     @NameInMap("name")
     public String name;
 
-    // 排序规则
+    /**
+     * <p>排序规则</p>
+     */
     @NameInMap("order_by")
     public String orderBy;
+
+    /**
+     * <p>通过不同ServiceCode搜索</p>
+     */
+    @NameInMap("service_code")
+    public String serviceCode;
 
     public static SearchDomainsRequest build(java.util.Map<String, ?> map) throws Exception {
         SearchDomainsRequest self = new SearchDomainsRequest();
@@ -38,6 +58,14 @@ public class SearchDomainsRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public SearchDomainsRequest setInstanceId(String instanceId) {
+        this.instanceId = instanceId;
+        return this;
+    }
+    public String getInstanceId() {
+        return this.instanceId;
     }
 
     public SearchDomainsRequest setLimit(Integer limit) {
@@ -70,6 +98,14 @@ public class SearchDomainsRequest extends TeaModel {
     }
     public String getOrderBy() {
         return this.orderBy;
+    }
+
+    public SearchDomainsRequest setServiceCode(String serviceCode) {
+        this.serviceCode = serviceCode;
+        return this;
+    }
+    public String getServiceCode() {
+        return this.serviceCode;
     }
 
 }

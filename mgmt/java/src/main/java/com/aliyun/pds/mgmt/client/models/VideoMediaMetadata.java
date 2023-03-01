@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class VideoMediaMetadata extends TeaModel {
-    // Duration
+    /**
+     * <p>Duration</p>
+     */
     @NameInMap("duration")
     public String duration;
 
-    // taken_at
+    /**
+     * <p>taken_at</p>
+     */
     @NameInMap("taken_at")
     public String takenAt;
 

@@ -10,12 +10,16 @@ public class SetAppPublicKeyRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // App ID
+    /**
+     * <p>App ID</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;
 
-    // RSA加密算法的公钥, PEM格式
+    /**
+     * <p>RSA加密算法的公钥, PEM格式</p>
+     */
     @NameInMap("public_key")
     @Validation(required = true)
     public String publicKey;

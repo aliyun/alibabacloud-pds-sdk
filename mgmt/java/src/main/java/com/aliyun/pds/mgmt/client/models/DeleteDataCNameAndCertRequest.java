@@ -10,17 +10,23 @@ public class DeleteDataCNameAndCertRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // cn-shanghai data cname
+    /**
+     * <p>cn-shanghai data cname</p>
+     */
     @NameInMap("data_cname")
     @Validation(required = true)
     public String dataCname;
 
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     @Validation(required = true)
     public String location;

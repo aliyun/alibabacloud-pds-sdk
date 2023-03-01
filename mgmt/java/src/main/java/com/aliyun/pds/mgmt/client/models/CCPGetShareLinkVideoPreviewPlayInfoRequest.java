@@ -7,20 +7,28 @@ import com.aliyun.tea.*;
  * 获取分享中文件媒体播放地址的请求body
  */
 public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     public String category;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
@@ -28,38 +36,54 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
-    // get_preview_url
+    /**
+     * <p>get_preview_url</p>
+     */
     @NameInMap("get_preview_url")
     public Boolean getPreviewUrl;
 
-    // get_subtitle_info
+    /**
+     * <p>get_subtitle_info</p>
+     */
     @NameInMap("get_subtitle_info")
     public Boolean getSubtitleInfo;
 
-    // get_without_url
+    /**
+     * <p>get_without_url</p>
+     */
     @NameInMap("get_without_url")
     public Boolean getWithoutUrl;
 
-    // image_thumbnail_process
+    /**
+     * <p>image_thumbnail_process</p>
+     */
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
-    // image_url_process
+    /**
+     * <p>image_url_process</p>
+     */
     @NameInMap("image_url_process")
     public String imageUrlProcess;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
-    // office_thumbnail_process
+    /**
+     * <p>office_thumbnail_process</p>
+     */
     @NameInMap("office_thumbnail_process")
     public String officeThumbnailProcess;
 
     @NameInMap("referer")
     public String referer;
 
-    // share_id is required
+    /**
+     * <p>share_id is required</p>
+     */
     @NameInMap("share_id")
     @Validation(required = true)
     public String shareId;
@@ -67,21 +91,29 @@ public class CCPGetShareLinkVideoPreviewPlayInfoRequest extends TeaModel {
     @NameInMap("sign_token")
     public String signToken;
 
-    // subtitle_language_list, 根据语言获取压制在视频中的字幕, 不传则取所有
+    /**
+     * <p>subtitle_language_list, 根据语言获取压制在视频中的字幕, 不传则取所有</p>
+     */
     @NameInMap("subtitle_language_list")
     public java.util.List<String> subtitleLanguageList;
 
-    // template_id
+    /**
+     * <p>template_id</p>
+     */
     @NameInMap("template_id")
     public String templateId;
 
-    // url_expire_sec
+    /**
+     * <p>url_expire_sec</p>
+     */
     @NameInMap("url_expire_sec")
     @Validation(maximum = 600, minimum = 10)
     public Long urlExpireSec;
 
-    // video_thumbnail_process
-    // type:string
+    /**
+     * <p>video_thumbnail_process</p>
+     * <p>type:string</p>
+     */
     @NameInMap("video_thumbnail_process")
     public String videoThumbnailProcess;
 

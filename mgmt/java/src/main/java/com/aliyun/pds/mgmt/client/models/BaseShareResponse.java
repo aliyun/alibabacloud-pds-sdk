@@ -7,70 +7,102 @@ import com.aliyun.tea.*;
  * List share response
  */
 public class BaseShareResponse extends TeaModel {
-    // created_at
+    /**
+     * <p>created_at</p>
+     */
     @NameInMap("created_at")
     public String createdAt;
 
-    // creator
+    /**
+     * <p>creator</p>
+     */
     @NameInMap("creator")
     public String creator;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // domain_id
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // expiration
+    /**
+     * <p>expiration</p>
+     */
     @NameInMap("expiration")
     public String expiration;
 
-    // expired
+    /**
+     * <p>expired</p>
+     */
     @NameInMap("expired")
     public Boolean expired;
 
-    // owner
+    /**
+     * <p>owner</p>
+     */
     @NameInMap("owner")
     public String owner;
 
-    // owner
+    /**
+     * <p>owner</p>
+     */
     @NameInMap("owner_type")
     public String ownerType;
 
-    // permissions
+    /**
+     * <p>permissions</p>
+     */
     @NameInMap("permissions")
     public java.util.List<String> permissions;
 
-    // share_file_id
+    /**
+     * <p>share_file_id</p>
+     */
     @NameInMap("share_file_id")
     public String shareFileId;
 
-    // share_path
+    /**
+     * <p>share_path</p>
+     */
     @NameInMap("share_file_path")
     public String shareFilePath;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
-    // share_name
+    /**
+     * <p>share_name</p>
+     */
     @NameInMap("share_name")
     public String shareName;
 
     @NameInMap("share_policy")
     public java.util.List<SharePermissionPolicy> sharePolicy;
 
-    // status
+    /**
+     * <p>status</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // updated_at
+    /**
+     * <p>updated_at</p>
+     */
     @NameInMap("updated_at")
     public String updatedAt;
 

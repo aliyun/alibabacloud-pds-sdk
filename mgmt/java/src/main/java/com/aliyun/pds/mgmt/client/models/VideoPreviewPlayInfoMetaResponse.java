@@ -4,21 +4,27 @@ package com.aliyun.pds.mgmt.client.models;
 import com.aliyun.tea.*;
 
 /**
- * 获取转码信息meta响应
+ * 视频转码meta响应
  */
 public class VideoPreviewPlayInfoMetaResponse extends TeaModel {
-    // duration, 视频长度
+    /**
+     * <p>duration, 视频长度</p>
+     */
     @NameInMap("duration")
     public Double duration;
 
-    // height, 视频高度
+    /**
+     * <p>height, 视频高度</p>
+     */
     @NameInMap("height")
     public Long height;
 
     @NameInMap("live_transcoding_meta")
     public LiveTranscodingMetaResponse liveTranscodingMeta;
 
-    // width, 视频宽度
+    /**
+     * <p>width, 视频宽度</p>
+     */
     @NameInMap("width")
     public Long width;
 

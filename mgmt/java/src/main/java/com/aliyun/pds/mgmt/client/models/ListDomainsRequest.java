@@ -10,12 +10,16 @@ public class ListDomainsRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 分页大小
+    /**
+     * <p>分页大小</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // 查询游标
+    /**
+     * <p>查询游标</p>
+     */
     @NameInMap("marker")
     public String marker;
 

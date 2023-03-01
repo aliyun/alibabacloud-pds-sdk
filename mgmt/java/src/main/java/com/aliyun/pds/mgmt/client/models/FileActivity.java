@@ -7,21 +7,27 @@ import com.aliyun.tea.*;
  * 
  */
 public class FileActivity extends TeaModel {
-    // Actors
+    /**
+     * <p>Actors</p>
+     */
     @NameInMap("actors")
     public java.util.List<Actor> actors;
 
     @NameInMap("primary_action_detail")
     public ActionDetail primaryActionDetail;
 
-    // Targets
+    /**
+     * <p>Targets</p>
+     */
     @NameInMap("targets")
     public java.util.List<Target> targets;
 
     @NameInMap("time_range")
     public TimeRange timeRange;
 
-    // Timestamp
+    /**
+     * <p>Timestamp</p>
+     */
     @NameInMap("timestamp")
     public String timestamp;
 

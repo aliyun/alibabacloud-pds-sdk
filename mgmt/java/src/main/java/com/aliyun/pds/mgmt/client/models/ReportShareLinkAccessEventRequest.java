@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * report_share_link_access_event request
  */
 public class ReportShareLinkAccessEventRequest extends TeaModel {
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
-    // sub_type
+    /**
+     * <p>sub_type</p>
+     */
     @NameInMap("sub_type")
     public String subType;
 

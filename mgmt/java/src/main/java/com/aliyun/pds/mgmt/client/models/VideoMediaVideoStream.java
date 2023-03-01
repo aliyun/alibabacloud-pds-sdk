@@ -7,27 +7,39 @@ import com.aliyun.tea.*;
  * 
  */
 public class VideoMediaVideoStream extends TeaModel {
-    // bitrate 视频比特率 单位：bps
+    /**
+     * <p>bitrate 视频比特率 单位：bps</p>
+     */
     @NameInMap("bitrate")
     public String bitrate;
 
-    // clarity 清晰度（扫描）
+    /**
+     * <p>clarity 清晰度（扫描）</p>
+     */
     @NameInMap("clarity")
     public String clarity;
 
-    // code_name 视频编码模式
+    /**
+     * <p>code_name 视频编码模式</p>
+     */
     @NameInMap("code_name")
     public String codeName;
 
-    // duration 单位 秒
+    /**
+     * <p>duration 单位 秒</p>
+     */
     @NameInMap("duration")
     public String duration;
 
-    // fps 视频平均帧率
+    /**
+     * <p>fps 视频平均帧率</p>
+     */
     @NameInMap("fps")
     public String fps;
 
-    // rotate 视频横屏 竖屏
+    /**
+     * <p>rotate 视频横屏 竖屏</p>
+     */
     @NameInMap("rotate")
     public String rotate;
 

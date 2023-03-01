@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * list file op response
  */
 public class ListFileDeltaResponse extends TeaModel {
-    // cursor
+    /**
+     * <p>cursor</p>
+     */
     @NameInMap("cursor")
     public String cursor;
 
-    // has_more
+    /**
+     * <p>has_more</p>
+     */
     @NameInMap("has_more")
     public Boolean hasMore;
 
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<FileDeltaResponse> items;
 

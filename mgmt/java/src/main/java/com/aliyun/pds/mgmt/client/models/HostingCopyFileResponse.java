@@ -7,25 +7,35 @@ import com.aliyun.tea.*;
  * 文件拷贝 response
  */
 public class HostingCopyFileResponse extends TeaModel {
-    // async_task_id
+    /**
+     * <p>async_task_id</p>
+     */
     @NameInMap("async_task_id")
     public String asyncTaskId;
 
-    // domain_id
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     @Validation(pattern = "[a-z0-9A-Z-]+")
     public String domainId;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     public String filePath;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[a-z0-9A-Z]+")
     public String shareId;

@@ -7,24 +7,32 @@ import com.aliyun.tea.*;
  * 文件拷贝
  */
 public class CopyFileRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // auto_rename
-    // type: boolean
+    /**
+     * <p>auto_rename</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("auto_rename")
     public Boolean autoRename;
 
     @NameInMap("batch_id")
     public String batchId;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
@@ -32,7 +40,12 @@ public class CopyFileRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
-    // new_name
+    @NameInMap("keep_user_tags")
+    public KeepUserTags keepUserTags;
+
+    /**
+     * <p>new_name</p>
+     */
     @NameInMap("new_name")
     @Validation(maxLength = 1024, minLength = 1)
     public String newName;
@@ -40,21 +53,29 @@ public class CopyFileRequest extends TeaModel {
     @NameInMap("referer")
     public String referer;
 
-    // share_id, either share_id or drive_id is required
+    /**
+     * <p>share_id, either share_id or drive_id is required</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
-    // to_drive_id
+    /**
+     * <p>to_drive_id</p>
+     */
     @NameInMap("to_drive_id")
     @Validation(pattern = "[0-9]+")
     public String toDriveId;
 
-    // to_parent_file_id
+    /**
+     * <p>to_parent_file_id</p>
+     */
     @NameInMap("to_parent_file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 4)
     public String toParentFileId;
 
-    // to_drive_id
+    /**
+     * <p>to_drive_id</p>
+     */
     @NameInMap("to_share_id")
     @Validation(pattern = "[0-9]+")
     public String toShareId;
@@ -110,6 +131,14 @@ public class CopyFileRequest extends TeaModel {
     }
     public String getFileIdPath() {
         return this.fileIdPath;
+    }
+
+    public CopyFileRequest setKeepUserTags(KeepUserTags keepUserTags) {
+        this.keepUserTags = keepUserTags;
+        return this;
+    }
+    public KeepUserTags getKeepUserTags() {
+        return this.keepUserTags;
     }
 
     public CopyFileRequest setNewName(String newName) {

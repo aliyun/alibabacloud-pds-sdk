@@ -7,30 +7,48 @@ import com.aliyun.tea.*;
  * Get UploadUrl Response
  */
 public class GetUploadUrlResponse extends TeaModel {
-    // created_at
+    /**
+     * <p>created_at</p>
+     */
     @NameInMap("create_at")
     public String createAt;
 
-    // domain_id
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     @Validation(pattern = "[a-z0-9A-Z]+")
     public String domainId;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // part_info_list
+    /**
+     * <p>part_info_list</p>
+     */
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
-    // upload_id
+    /**
+     * <p>share_id</p>
+     */
+    @NameInMap("share_id")
+    public String shareId;
+
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 
@@ -77,6 +95,14 @@ public class GetUploadUrlResponse extends TeaModel {
     }
     public java.util.List<UploadPartInfo> getPartInfoList() {
         return this.partInfoList;
+    }
+
+    public GetUploadUrlResponse setShareId(String shareId) {
+        this.shareId = shareId;
+        return this;
+    }
+    public String getShareId() {
+        return this.shareId;
     }
 
     public GetUploadUrlResponse setUploadId(String uploadId) {

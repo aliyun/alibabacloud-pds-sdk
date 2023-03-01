@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class ListStoresResponse extends TeaModel {
-    // Store 列表
+    /**
+     * <p>Store 列表</p>
+     */
     @NameInMap("items")
     @Validation(required = true)
     public java.util.List<Store> items;

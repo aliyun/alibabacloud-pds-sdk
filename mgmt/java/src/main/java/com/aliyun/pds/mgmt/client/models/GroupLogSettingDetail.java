@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 
  */
 public class GroupLogSettingDetail extends TeaModel {
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     public String name;
 
-    // parent_group_id
+    /**
+     * <p>parent_group_id</p>
+     */
     @NameInMap("parent_group_id")
     public String parentGroupId;
 
-    // parent_group_name
+    /**
+     * <p>parent_group_name</p>
+     */
     @NameInMap("parent_group_name")
     public String parentGroupName;
 

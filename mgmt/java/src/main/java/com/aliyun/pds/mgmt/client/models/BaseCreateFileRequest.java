@@ -7,32 +7,46 @@ import com.aliyun.tea.*;
  * create file request
  */
 public class BaseCreateFileRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // ContentMd5
+    /**
+     * <p>ContentMd5</p>
+     */
     @NameInMap("content_md5")
     public String contentMd5;
 
-    // ContentType
+    /**
+     * <p>ContentType</p>
+     */
     @NameInMap("content_type")
     public String contentType;
 
-    // Name
+    /**
+     * <p>Name</p>
+     */
     @NameInMap("name")
     @Validation(required = true, maxLength = 1024, minLength = 1)
     public String name;
 
-    // part_info_list
+    /**
+     * <p>part_info_list</p>
+     */
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
-    // Size
+    /**
+     * <p>Size</p>
+     */
     @NameInMap("size")
     public Long size;
 
-    // Type
+    /**
+     * <p>Type</p>
+     */
     @NameInMap("type")
     @Validation(required = true)
     public String type;
