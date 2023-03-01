@@ -10,6 +10,9 @@ public class OfficeEditConfig extends TeaModel {
     @NameInMap("cross_region_pds_endpoint")
     public String crossRegionPdsEndpoint;
 
+    @NameInMap("disable_print")
+    public Boolean disablePrint;
+
     @NameInMap("enabled")
     public Boolean enabled;
 
@@ -30,6 +33,14 @@ public class OfficeEditConfig extends TeaModel {
     }
     public String getCrossRegionPdsEndpoint() {
         return this.crossRegionPdsEndpoint;
+    }
+
+    public OfficeEditConfig setDisablePrint(Boolean disablePrint) {
+        this.disablePrint = disablePrint;
+        return this;
+    }
+    public Boolean getDisablePrint() {
+        return this.disablePrint;
     }
 
     public OfficeEditConfig setEnabled(Boolean enabled) {

@@ -200,6 +200,12 @@ public class BaseShareLinkResponse extends TeaModel {
     public Long saveLimit;
 
     /**
+     * <p>是否分享整个drive中的文件，仅文件分享才有效，true时file_id_list字段无效</p>
+     */
+    @NameInMap("share_all_files")
+    public Boolean shareAllFiles;
+
+    /**
      * <p>share_icon</p>
      */
     @NameInMap("share_icon")
@@ -524,6 +530,14 @@ public class BaseShareLinkResponse extends TeaModel {
     }
     public Long getSaveLimit() {
         return this.saveLimit;
+    }
+
+    public BaseShareLinkResponse setShareAllFiles(Boolean shareAllFiles) {
+        this.shareAllFiles = shareAllFiles;
+        return this;
+    }
+    public Boolean getShareAllFiles() {
+        return this.shareAllFiles;
     }
 
     public BaseShareLinkResponse setShareIcon(String shareIcon) {

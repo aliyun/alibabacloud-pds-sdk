@@ -265,6 +265,9 @@ public class CreateDomainResponse extends TeaModel {
     @NameInMap("size_quota")
     public Long sizeQuota;
 
+    @NameInMap("size_quota_used")
+    public Long sizeQuotaUsed;
+
     /**
      * <p>SPI 实例 id</p>
      */
@@ -750,6 +753,14 @@ public class CreateDomainResponse extends TeaModel {
     }
     public Long getSizeQuota() {
         return this.sizeQuota;
+    }
+
+    public CreateDomainResponse setSizeQuotaUsed(Long sizeQuotaUsed) {
+        this.sizeQuotaUsed = sizeQuotaUsed;
+        return this;
+    }
+    public Long getSizeQuotaUsed() {
+        return this.sizeQuotaUsed;
     }
 
     public CreateDomainResponse setSpiInstanceId(String spiInstanceId) {

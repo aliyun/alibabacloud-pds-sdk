@@ -40,6 +40,12 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     public String fileIdPath;
 
     /**
+     * <p>获取master playlist播放地址，仅在quick_video中有效</p>
+     */
+    @NameInMap("get_master_url")
+    public Boolean getMasterUrl;
+
+    /**
      * <p>get_preview_url</p>
      */
     @NameInMap("get_preview_url")
@@ -151,6 +157,14 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     }
     public String getFileIdPath() {
         return this.fileIdPath;
+    }
+
+    public CCPGetVideoPreviewPlayInfoRequest setGetMasterUrl(Boolean getMasterUrl) {
+        this.getMasterUrl = getMasterUrl;
+        return this;
+    }
+    public Boolean getGetMasterUrl() {
+        return this.getMasterUrl;
     }
 
     public CCPGetVideoPreviewPlayInfoRequest setGetPreviewUrl(Boolean getPreviewUrl) {

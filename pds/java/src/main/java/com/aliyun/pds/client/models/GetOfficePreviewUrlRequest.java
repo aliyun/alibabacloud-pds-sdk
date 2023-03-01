@@ -43,6 +43,9 @@ public class GetOfficePreviewUrlRequest extends TeaModel {
     @NameInMap("language")
     public String language;
 
+    @NameInMap("option")
+    public GetOfficePreviewUrlOption option;
+
     @NameInMap("referer")
     public String referer;
 
@@ -109,6 +112,14 @@ public class GetOfficePreviewUrlRequest extends TeaModel {
     }
     public String getLanguage() {
         return this.language;
+    }
+
+    public GetOfficePreviewUrlRequest setOption(GetOfficePreviewUrlOption option) {
+        this.option = option;
+        return this;
+    }
+    public GetOfficePreviewUrlOption getOption() {
+        return this.option;
     }
 
     public GetOfficePreviewUrlRequest setReferer(String referer) {

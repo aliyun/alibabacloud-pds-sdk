@@ -24,6 +24,12 @@ public class GetDomainRequest extends TeaModel {
     public Boolean getBenefit;
 
     /**
+     * <p>是否获取 quota 使用情况</p>
+     */
+    @NameInMap("get_quota_used")
+    public Boolean getQuotaUsed;
+
+    /**
      * <p>是否获取share/share_link详情</p>
      */
     @NameInMap("get_share_detail")
@@ -62,6 +68,14 @@ public class GetDomainRequest extends TeaModel {
     }
     public Boolean getGetBenefit() {
         return this.getBenefit;
+    }
+
+    public GetDomainRequest setGetQuotaUsed(Boolean getQuotaUsed) {
+        this.getQuotaUsed = getQuotaUsed;
+        return this;
+    }
+    public Boolean getGetQuotaUsed() {
+        return this.getQuotaUsed;
     }
 
     public GetDomainRequest setGetShareDetail(Boolean getShareDetail) {

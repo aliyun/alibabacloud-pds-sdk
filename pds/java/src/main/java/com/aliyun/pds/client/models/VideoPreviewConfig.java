@@ -22,6 +22,9 @@ public class VideoPreviewConfig extends TeaModel {
     @NameInMap("backup_config")
     public VideoPreviewBackupConfig backupConfig;
 
+    @NameInMap("cdn_config")
+    public VideoPreviewCdnConfig cdnConfig;
+
     @NameInMap("drm_config")
     public VideoPreviewDrmConfig drmConfig;
 
@@ -30,6 +33,9 @@ public class VideoPreviewConfig extends TeaModel {
 
     @NameInMap("enabled")
     public Boolean enabled;
+
+    @NameInMap("hls_sign_params_config")
+    public VideoPreviewHlsSignParamsConfig hlsSignParamsConfig;
 
     @NameInMap("live_transcoding_config")
     public VideoPreviewLiveTranscodingConfig liveTranscodingConfig;
@@ -112,6 +118,14 @@ public class VideoPreviewConfig extends TeaModel {
         return this.backupConfig;
     }
 
+    public VideoPreviewConfig setCdnConfig(VideoPreviewCdnConfig cdnConfig) {
+        this.cdnConfig = cdnConfig;
+        return this;
+    }
+    public VideoPreviewCdnConfig getCdnConfig() {
+        return this.cdnConfig;
+    }
+
     public VideoPreviewConfig setDrmConfig(VideoPreviewDrmConfig drmConfig) {
         this.drmConfig = drmConfig;
         return this;
@@ -134,6 +148,14 @@ public class VideoPreviewConfig extends TeaModel {
     }
     public Boolean getEnabled() {
         return this.enabled;
+    }
+
+    public VideoPreviewConfig setHlsSignParamsConfig(VideoPreviewHlsSignParamsConfig hlsSignParamsConfig) {
+        this.hlsSignParamsConfig = hlsSignParamsConfig;
+        return this;
+    }
+    public VideoPreviewHlsSignParamsConfig getHlsSignParamsConfig() {
+        return this.hlsSignParamsConfig;
     }
 
     public VideoPreviewConfig setLiveTranscodingConfig(VideoPreviewLiveTranscodingConfig liveTranscodingConfig) {
