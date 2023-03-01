@@ -10,7 +10,9 @@ public class GetAppDebugCmdRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // app_id
+    /**
+     * <p>app_id</p>
+     */
     @NameInMap("app_id")
     public String appId;
 

@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 清理所有回收站文件元数据请求
  */
 public class ClearAllRecycleBinRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 

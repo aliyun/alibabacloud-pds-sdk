@@ -7,22 +7,39 @@ import com.aliyun.tea.*;
  * 获取转码信息响应
  */
 public class CCPGetVideoPreviewPlayInfoResponse extends TeaModel {
-    // domain_id
+    @NameInMap("audio_preview_play_info")
+    public AudioPreviewPlayInfoResponse audioPreviewPlayInfo;
+
+    /**
+     * <p>category</p>
+     */
+    @NameInMap("category")
+    public String category;
+
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     @Validation(pattern = "[a-z0-9A-Z]+")
     public String domainId;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
@@ -32,6 +49,22 @@ public class CCPGetVideoPreviewPlayInfoResponse extends TeaModel {
     public static CCPGetVideoPreviewPlayInfoResponse build(java.util.Map<String, ?> map) throws Exception {
         CCPGetVideoPreviewPlayInfoResponse self = new CCPGetVideoPreviewPlayInfoResponse();
         return TeaModel.build(map, self);
+    }
+
+    public CCPGetVideoPreviewPlayInfoResponse setAudioPreviewPlayInfo(AudioPreviewPlayInfoResponse audioPreviewPlayInfo) {
+        this.audioPreviewPlayInfo = audioPreviewPlayInfo;
+        return this;
+    }
+    public AudioPreviewPlayInfoResponse getAudioPreviewPlayInfo() {
+        return this.audioPreviewPlayInfo;
+    }
+
+    public CCPGetVideoPreviewPlayInfoResponse setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public CCPGetVideoPreviewPlayInfoResponse setDomainId(String domainId) {

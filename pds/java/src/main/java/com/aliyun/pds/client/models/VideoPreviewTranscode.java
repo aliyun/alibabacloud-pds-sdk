@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class VideoPreviewTranscode extends TeaModel {
-    // status
+    /**
+     * <p>status</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // template_id
+    /**
+     * <p>template_id</p>
+     */
     @NameInMap("template_id")
     public String templateId;
 

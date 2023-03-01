@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * remove story files response
  */
 public class RemoveStoryFilesResponse extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // request_id
+    /**
+     * <p>request_id</p>
+     */
     @NameInMap("request_id")
     public String requestId;
 
-    // story_id
+    /**
+     * <p>story_id</p>
+     */
     @NameInMap("story_id")
     public String storyId;
 

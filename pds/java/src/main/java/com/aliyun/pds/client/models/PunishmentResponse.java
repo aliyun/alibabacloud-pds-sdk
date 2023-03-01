@@ -10,7 +10,9 @@ public class PunishmentResponse extends TeaModel {
     @NameInMap("ends_at")
     public String endsAt;
 
-    // ActionCode  string `json:"action_code,omitempty"` // 无需求暂不提供
+    /**
+     * <p>ActionCode  string `json:"action_code,omitempty"` // 无需求暂不提供</p>
+     */
     @NameInMap("impermanent")
     public Boolean impermanent;
 

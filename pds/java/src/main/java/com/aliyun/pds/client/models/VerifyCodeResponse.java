@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class VerifyCodeResponse extends TeaModel {
-    // 修改密码的临时授权码
+    /**
+     * <p>修改密码的临时授权码</p>
+     */
     @NameInMap("state")
     @Validation(required = true)
     public String state;

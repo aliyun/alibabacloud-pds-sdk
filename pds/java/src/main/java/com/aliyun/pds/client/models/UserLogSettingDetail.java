@@ -10,11 +10,15 @@ public class UserLogSettingDetail extends TeaModel {
     @NameInMap("expired_at")
     public Long expiredAt;
 
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     public String name;
 
-    // role_id
+    /**
+     * <p>role_id</p>
+     */
     @NameInMap("role_id")
     public String roleId;
 

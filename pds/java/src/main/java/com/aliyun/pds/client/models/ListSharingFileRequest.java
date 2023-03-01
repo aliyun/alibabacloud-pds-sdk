@@ -10,12 +10,16 @@ public class ListSharingFileRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 查询返回的记录数
+    /**
+     * <p>查询返回的记录数</p>
+     */
     @NameInMap("limit")
     @Validation(required = true)
     public Integer limit;
 
-    // 上次查询返回的游标
+    /**
+     * <p>上次查询返回的游标</p>
+     */
     @NameInMap("marker")
     public String marker;
 

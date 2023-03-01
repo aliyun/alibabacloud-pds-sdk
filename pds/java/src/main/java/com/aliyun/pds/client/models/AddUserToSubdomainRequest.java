@@ -13,11 +13,15 @@ public class AddUserToSubdomainRequest extends TeaModel {
     @NameInMap("role")
     public String role;
 
-    // subdomain id
+    /**
+     * <p>subdomain id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 
-    // 用户 ID
+    /**
+     * <p>用户 ID</p>
+     */
     @NameInMap("user_id")
     @Validation(required = true)
     public String userId;

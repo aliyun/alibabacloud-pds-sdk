@@ -7,17 +7,23 @@ import com.aliyun.tea.*;
  * List identity role response item
  */
 public class BaseAssignmentResponse extends TeaModel {
-    // 创建时间
+    /**
+     * <p>创建时间</p>
+     */
     @NameInMap("created_at")
     @Validation(required = true)
     public Long createdAt;
 
-    // 创建者的UserID
+    /**
+     * <p>创建者的UserID</p>
+     */
     @NameInMap("creator")
     @Validation(required = true)
     public String creator;
 
-    // domain_id
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
@@ -26,22 +32,30 @@ public class BaseAssignmentResponse extends TeaModel {
     @Validation(required = true)
     public Identity identity;
 
-    // 管辖的资源ID
+    /**
+     * <p>管辖的资源ID</p>
+     */
     @NameInMap("manage_resource_id")
     @Validation(required = true)
     public String manageResourceId;
 
-    // 管辖的资源类型
+    /**
+     * <p>管辖的资源类型</p>
+     */
     @NameInMap("manage_resource_type")
     @Validation(required = true)
     public String manageResourceType;
 
-    // 授予的角色
+    /**
+     * <p>授予的角色</p>
+     */
     @NameInMap("role_id")
     @Validation(required = true)
     public String roleId;
 
-    // 修改时间
+    /**
+     * <p>修改时间</p>
+     */
     @NameInMap("updated_at")
     @Validation(required = true)
     public Long updatedAt;

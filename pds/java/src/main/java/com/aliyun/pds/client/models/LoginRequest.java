@@ -10,53 +10,77 @@ public class LoginRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // App ID, 当前访问的App
+    /**
+     * <p>App ID, 当前访问的App</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;
 
-    // 是否自动注册用户，使用密码登录此参数不生效
+    /**
+     * <p>是否自动注册用户，使用密码登录此参数不生效</p>
+     */
     @NameInMap("auto_register")
     public Boolean autoRegister;
 
-    // 图片验证码ID, 密码登录需要此参数
+    /**
+     * <p>图片验证码ID, 密码登录需要此参数</p>
+     */
     @NameInMap("captcha_id")
     public String captchaId;
 
-    // 用户输入的验证码值, 密码登录需要此参数
+    /**
+     * <p>用户输入的验证码值, 密码登录需要此参数</p>
+     */
     @NameInMap("captcha_text")
     public String captchaText;
 
-    // 邮箱
+    /**
+     * <p>邮箱</p>
+     */
     @NameInMap("email")
     public String email;
 
-    // AES-256对称加密密钥，通过App公钥加密后传输
+    /**
+     * <p>AES-256对称加密密钥，通过App公钥加密后传输</p>
+     */
     @NameInMap("encrypted_key")
     public String encryptedKey;
 
-    // 环境参数
+    /**
+     * <p>环境参数</p>
+     */
     @NameInMap("nvc_param")
     @Validation(required = true)
     public String nvcParam;
 
-    // 登录密码, 传入此参数则忽略短信验证码，不传此参数则默认使用短信登录。
+    /**
+     * <p>登录密码, 传入此参数则忽略短信验证码，不传此参数则默认使用短信登录。</p>
+     */
     @NameInMap("password")
     public String password;
 
-    // 待发送验证短信的手机号
+    /**
+     * <p>待发送验证短信的手机号</p>
+     */
     @NameInMap("phone_number")
     public String phoneNumber;
 
-    // 国家编号，默认86，不需要填+号，直接填数字
+    /**
+     * <p>国家编号，默认86，不需要填+号，直接填数字</p>
+     */
     @NameInMap("phone_region")
     public String phoneRegion;
 
-    // 短信验证码内容，使用密码登录此参数不生效
+    /**
+     * <p>短信验证码内容，使用密码登录此参数不生效</p>
+     */
     @NameInMap("sms_code")
     public String smsCode;
 
-    // 短信验证码ID，使用密码登录此参数不生效
+    /**
+     * <p>短信验证码ID，使用密码登录此参数不生效</p>
+     */
     @NameInMap("sms_code_id")
     public String smsCodeId;
 

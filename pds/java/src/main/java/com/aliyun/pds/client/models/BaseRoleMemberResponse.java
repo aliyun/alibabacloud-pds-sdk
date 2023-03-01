@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * List identity role response
  */
 public class BaseRoleMemberResponse extends TeaModel {
-    // 当前用户或团队分配的角色列表
+    /**
+     * <p>当前用户或团队分配的角色列表</p>
+     */
     @NameInMap("assignment_list")
     @Validation(required = true)
     public java.util.List<BaseAssignmentResponse> assignmentList;
 
-    // domain_id
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
@@ -21,12 +25,16 @@ public class BaseRoleMemberResponse extends TeaModel {
     @Validation(required = true)
     public Identity identity;
 
-    // 查询的用户或团队的名称
+    /**
+     * <p>查询的用户或团队的名称</p>
+     */
     @NameInMap("identity_name")
     @Validation(required = true)
     public String identityName;
 
-    // 是否为管理员
+    /**
+     * <p>是否为管理员</p>
+     */
     @NameInMap("is_admin")
     @Validation(required = true)
     public Boolean isAdmin;

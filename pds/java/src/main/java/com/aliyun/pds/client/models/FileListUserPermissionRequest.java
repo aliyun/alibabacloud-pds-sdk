@@ -13,11 +13,15 @@ public class FileListUserPermissionRequest extends TeaModel {
     @NameInMap("subdomain_id")
     public String subdomainId;
 
-    // 选择查看自己的或团队的或所有的，默认自己的
+    /**
+     * <p>选择查看自己的或团队的或所有的，默认自己的</p>
+     */
     @NameInMap("type")
     public String type;
 
-    // 需要查询的用户ID
+    /**
+     * <p>需要查询的用户ID</p>
+     */
     @NameInMap("user_id")
     @Validation(required = true)
     public String userId;

@@ -7,42 +7,60 @@ import com.aliyun.tea.*;
  * Update user response
  */
 public class UpdateUserResponse extends TeaModel {
-    // 头像
+    /**
+     * <p>头像</p>
+     */
     @NameInMap("avatar")
     public String avatar;
 
-    // 用户创建时间
+    /**
+     * <p>用户创建时间</p>
+     */
     @NameInMap("created_at")
     public Long createdAt;
 
-    // creator
+    /**
+     * <p>creator</p>
+     */
     @NameInMap("creator")
     public String creator;
 
-    // 默认 Drive ID
+    /**
+     * <p>默认 Drive ID</p>
+     */
     @NameInMap("default_drive_id")
     public String defaultDriveId;
 
     @NameInMap("default_location")
     public String defaultLocation;
 
-    // 禁止用户自行修改密码
+    /**
+     * <p>禁止用户自行修改密码</p>
+     */
     @NameInMap("deny_change_password_by_self")
     public Boolean denyChangePasswordBySelf;
 
-    // 用户备注信息
+    /**
+     * <p>用户备注信息</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // Domain ID
+    /**
+     * <p>Domain ID</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
-    // 邮箱
+    /**
+     * <p>邮箱</p>
+     */
     @NameInMap("email")
     public String email;
 
-    // 用户过期时间
+    /**
+     * <p>用户过期时间</p>
+     */
     @NameInMap("expired_at")
     public Long expiredAt;
 
@@ -52,53 +70,75 @@ public class UpdateUserResponse extends TeaModel {
     @NameInMap("last_login_time")
     public Long lastLoginTime;
 
-    // 下次登录强制修改密码
+    /**
+     * <p>下次登录强制修改密码</p>
+     */
     @NameInMap("need_change_password_next_login")
     public Boolean needChangePasswordNextLogin;
 
-    // 昵称
+    /**
+     * <p>昵称</p>
+     */
     @NameInMap("nick_name")
     public String nickName;
 
     @NameInMap("permission")
     public java.util.Map<String, ?> permission;
 
-    // 电话
+    /**
+     * <p>电话</p>
+     */
     @NameInMap("phone")
     public String phone;
 
-    // 国家编码
+    /**
+     * <p>国家编码</p>
+     */
     @NameInMap("phone_region")
     public String phoneRegion;
 
-    // 用户处罚标志
+    /**
+     * <p>用户处罚标志</p>
+     */
     @NameInMap("punish_flag")
     public Long punishFlag;
 
     @NameInMap("punishments")
     public java.util.List<PunishmentResponse> punishments;
 
-    // 角色
+    /**
+     * <p>角色</p>
+     */
     @NameInMap("role")
     public String role;
 
-    // 用户状态
+    /**
+     * <p>用户状态</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // 用户修改时间
+    /**
+     * <p>用户修改时间</p>
+     */
     @NameInMap("updated_at")
     public Long updatedAt;
 
-    // 用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K
+    /**
+     * <p>用户自定义数据，格式为json，可用于配置项、少量临时数据等存储，不超过1K</p>
+     */
     @NameInMap("user_data")
     public java.util.Map<String, ?> userData;
 
-    // 用户 ID
+    /**
+     * <p>用户 ID</p>
+     */
     @NameInMap("user_id")
     public String userId;
 
-    // 用户名称
+    /**
+     * <p>用户名称</p>
+     */
     @NameInMap("user_name")
     public String userName;
 

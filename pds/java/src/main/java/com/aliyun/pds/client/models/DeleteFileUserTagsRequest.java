@@ -10,17 +10,29 @@ public class DeleteFileUserTagsRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drive_id
+    /**
+     * <p>addition_data</p>
+     */
+    @NameInMap("addition_data")
+    public java.util.Map<String, ?> additionData;
+
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
 
-    // key_list
+    /**
+     * <p>key_list</p>
+     */
     @NameInMap("key_list")
     public java.util.List<String> keyList;
 
@@ -35,6 +47,14 @@ public class DeleteFileUserTagsRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public DeleteFileUserTagsRequest setAdditionData(java.util.Map<String, ?> additionData) {
+        this.additionData = additionData;
+        return this;
+    }
+    public java.util.Map<String, ?> getAdditionData() {
+        return this.additionData;
     }
 
     public DeleteFileUserTagsRequest setDriveId(String driveId) {

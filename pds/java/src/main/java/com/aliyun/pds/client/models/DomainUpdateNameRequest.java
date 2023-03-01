@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * domain update name request
  */
 public class DomainUpdateNameRequest extends TeaModel {
-    // Domain ID
+    /**
+     * <p>Domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // Domain 名称
+    /**
+     * <p>Domain 名称</p>
+     */
     @NameInMap("name")
     @Validation(required = true)
     public String name;

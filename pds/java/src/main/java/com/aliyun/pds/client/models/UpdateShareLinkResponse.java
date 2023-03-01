@@ -7,175 +7,267 @@ import com.aliyun.tea.*;
  * update_share_link response
  */
 public class UpdateShareLinkResponse extends TeaModel {
-    // access_count
+    /**
+     * <p>access_count</p>
+     */
     @NameInMap("access_count")
     public Long accessCount;
 
-    // Category
+    /**
+     * <p>Category</p>
+     */
     @NameInMap("category")
     public String category;
 
-    // comments
+    /**
+     * <p>comments</p>
+     */
     @NameInMap("comments")
     public String comments;
 
-    // 允许上传
+    /**
+     * <p>允许上传</p>
+     */
     @NameInMap("creatable")
     public Boolean creatable;
 
-    // 允许上传的目录列表
+    /**
+     * <p>允许上传的目录列表</p>
+     */
     @NameInMap("creatable_file_id_list")
     public java.util.List<String> creatableFileIdList;
 
-    // created_at
+    /**
+     * <p>created_at</p>
+     */
     @NameInMap("created_at")
     public String createdAt;
 
-    // creator
+    /**
+     * <p>creator</p>
+     */
     @NameInMap("creator")
     public String creator;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // 禁止下载分享中的文件
+    /**
+     * <p>禁止下载分享中的文件</p>
+     */
     @NameInMap("disable_download")
     public Boolean disableDownload;
 
-    // 禁止预览分享中的文件
+    /**
+     * <p>禁止预览分享中的文件</p>
+     */
     @NameInMap("disable_preview")
     public Boolean disablePreview;
 
-    // 禁止转存分享中的文件
+    /**
+     * <p>禁止转存分享中的文件</p>
+     */
     @NameInMap("disable_save")
     public Boolean disableSave;
 
-    // 分享中的文件不可见
+    /**
+     * <p>分享中的文件不可见</p>
+     */
     @NameInMap("disable_visible")
     public Boolean disableVisible;
 
-    // 下载次数
+    /**
+     * <p>下载次数</p>
+     */
     @NameInMap("download_count")
     public Long downloadCount;
 
-    // 分享下载次数限制
+    /**
+     * <p>分享下载次数限制</p>
+     */
     @NameInMap("download_limit")
     public Long downloadLimit;
 
-    // file_list
+    /**
+     * <p>file_list</p>
+     */
     @NameInMap("drive_file_list")
     public java.util.List<ShareFile> driveFileList;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // enable_file_changed_notify
+    /**
+     * <p>enable_file_changed_notify</p>
+     */
     @NameInMap("enable_file_changed_notify")
     public Boolean enableFileChangedNotify;
 
-    // expiration
+    /**
+     * <p>expiration</p>
+     */
     @NameInMap("expiration")
     public String expiration;
 
-    // expired
+    /**
+     * <p>expired</p>
+     */
     @NameInMap("expired")
     public Boolean expired;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     public String fileId;
 
-    // file_id_list
+    /**
+     * <p>file_id_list</p>
+     */
     @NameInMap("file_id_list")
     public java.util.List<String> fileIdList;
 
-    // file_id_list
+    /**
+     * <p>file_id_list</p>
+     */
     @NameInMap("file_path_list")
     public java.util.List<String> filePathList;
 
-    // is_subscribed
+    /**
+     * <p>is_subscribed</p>
+     */
     @NameInMap("is_subscribed")
     public Boolean isSubscribed;
 
-    // num_of_subscribers
+    /**
+     * <p>num_of_subscribers</p>
+     */
     @NameInMap("num_of_subscribers")
     public Long numOfSubscribers;
 
-    // 允许在线编辑文档
+    /**
+     * <p>允许在线编辑文档</p>
+     */
     @NameInMap("office_editable")
     public Boolean officeEditable;
 
-    // preview_count
+    /**
+     * <p>preview_count</p>
+     */
     @NameInMap("preview_count")
     public Long previewCount;
 
-    // 分享预览次数限制
+    /**
+     * <p>分享预览次数限制</p>
+     */
     @NameInMap("preview_limit")
     public Long previewLimit;
 
-    // 举报次数
+    /**
+     * <p>举报次数</p>
+     */
     @NameInMap("report_count")
     public Long reportCount;
 
-    // 企业内(domain)登录后才允许使用分享
+    /**
+     * <p>企业内(domain)登录后才允许使用分享</p>
+     */
     @NameInMap("require_login")
     public Boolean requireLogin;
 
-    // 转存次数
+    /**
+     * <p>转存次数</p>
+     */
     @NameInMap("save_count")
     public Long saveCount;
 
-    // 分享转存和下载的总次数限制
+    /**
+     * <p>分享转存和下载的总次数限制</p>
+     */
     @NameInMap("save_download_limit")
     public Long saveDownloadLimit;
 
-    // 分享转存次数限制
+    /**
+     * <p>分享转存次数限制</p>
+     */
     @NameInMap("save_limit")
     public Long saveLimit;
 
-    // share_icon
+    /**
+     * <p>是否分享整个drive中的文件，仅文件分享才有效，true时file_id_list字段无效</p>
+     */
+    @NameInMap("share_all_files")
+    public Boolean shareAllFiles;
+
+    /**
+     * <p>share_icon</p>
+     */
     @NameInMap("share_icon")
     public String shareIcon;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
-    // share_msg
+    /**
+     * <p>share_msg</p>
+     */
     @NameInMap("share_msg")
     public String shareMsg;
 
-    // share_name
+    /**
+     * <p>share_name</p>
+     */
     @NameInMap("share_name")
     public String shareName;
 
-    // share_policy
+    /**
+     * <p>share_policy</p>
+     */
     @NameInMap("share_policy")
     public String sharePolicy;
 
-    // share_pwd
+    /**
+     * <p>share_pwd</p>
+     */
     @NameInMap("share_pwd")
     public String sharePwd;
 
-    // share_url
+    /**
+     * <p>share_url</p>
+     */
     @NameInMap("share_url")
     public String shareUrl;
 
-    // status
+    /**
+     * <p>status</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // updated_at
+    /**
+     * <p>updated_at</p>
+     */
     @NameInMap("updated_at")
     public String updatedAt;
 
-    // 音视频播放次数
+    /**
+     * <p>音视频播放次数</p>
+     */
     @NameInMap("video_preview_count")
     public Long videoPreviewCount;
 
-    // ViewID
+    /**
+     * <p>ViewID</p>
+     */
     @NameInMap("view_id")
     public String viewId;
 
@@ -438,6 +530,14 @@ public class UpdateShareLinkResponse extends TeaModel {
     }
     public Long getSaveLimit() {
         return this.saveLimit;
+    }
+
+    public UpdateShareLinkResponse setShareAllFiles(Boolean shareAllFiles) {
+        this.shareAllFiles = shareAllFiles;
+        return this;
+    }
+    public Boolean getShareAllFiles() {
+        return this.shareAllFiles;
     }
 
     public UpdateShareLinkResponse setShareIcon(String shareIcon) {

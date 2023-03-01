@@ -10,16 +10,22 @@ public class CopyViewFilesRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // auto_rename
-    // type: boolean
+    /**
+     * <p>auto_rename</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("auto_rename")
     public Boolean autoRename;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     @Validation(required = true)
     public String category;
@@ -30,30 +36,42 @@ public class CopyViewFilesRequest extends TeaModel {
     @NameInMap("referer")
     public String referer;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
-    // to_drive_id
+    /**
+     * <p>to_drive_id</p>
+     */
     @NameInMap("to_drive_id")
     @Validation(pattern = "[0-9]+")
     public String toDriveId;
 
-    // to_parent_file_id
+    /**
+     * <p>to_parent_file_id</p>
+     */
     @NameInMap("to_parent_file_id")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 4)
     public String toParentFileId;
 
-    // to_view_id
+    /**
+     * <p>to_view_id</p>
+     */
     @NameInMap("to_view_id")
     @Validation(required = true)
     public String toViewId;
 
-    // user_id
+    /**
+     * <p>user_id</p>
+     */
     @NameInMap("user_id")
     public String userId;
 
-    // view_id
+    /**
+     * <p>view_id</p>
+     */
     @NameInMap("view_id")
     @Validation(required = true)
     public String viewId;

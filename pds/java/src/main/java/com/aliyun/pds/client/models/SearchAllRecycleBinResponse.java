@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * search all recycle bin response
  */
 public class SearchAllRecycleBinResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<BaseCCPFileResponse> items;
 
-    // next_marker
+    /**
+     * <p>next_marker</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 

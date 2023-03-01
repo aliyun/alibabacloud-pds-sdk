@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class StoryFile extends TeaModel {
+    @NameInMap("drive_id")
+    public String driveId;
+
     @NameInMap("file_id")
     public String fileId;
 
@@ -16,6 +19,14 @@ public class StoryFile extends TeaModel {
     public static StoryFile build(java.util.Map<String, ?> map) throws Exception {
         StoryFile self = new StoryFile();
         return TeaModel.build(map, self);
+    }
+
+    public StoryFile setDriveId(String driveId) {
+        this.driveId = driveId;
+        return this;
+    }
+    public String getDriveId() {
+        return this.driveId;
     }
 
     public StoryFile setFileId(String fileId) {

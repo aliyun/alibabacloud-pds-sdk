@@ -7,31 +7,45 @@ import com.aliyun.tea.*;
  * 
  */
 public class SimpleStreamInfo extends TeaModel {
-    // Content Hash
+    /**
+     * <p>Content Hash</p>
+     */
     @NameInMap("content_hash")
     public String contentHash;
 
-    // content_hash_name
+    /**
+     * <p>content_hash_name</p>
+     */
     @NameInMap("content_hash_name")
     public String contentHashName;
 
-    // crc64_hash
+    /**
+     * <p>crc64_hash</p>
+     */
     @NameInMap("crc64_hash")
     public String crc64Hash;
 
-    // download_url
+    /**
+     * <p>download_url</p>
+     */
     @NameInMap("download_url")
     public String downloadUrl;
 
-    // size
+    /**
+     * <p>size</p>
+     */
     @NameInMap("size")
     public Long size;
 
-    // thumbnail
+    /**
+     * <p>thumbnail</p>
+     */
     @NameInMap("thumbnail")
     public String thumbnail;
 
-    // url
+    /**
+     * <p>url</p>
+     */
     @NameInMap("url")
     public String url;
 

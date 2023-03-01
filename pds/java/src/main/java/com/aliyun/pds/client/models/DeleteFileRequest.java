@@ -10,7 +10,12 @@ public class DeleteFileRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drive_id
+    @NameInMap("check_folder_empty")
+    public Boolean checkFolderEmpty;
+
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
@@ -21,8 +26,10 @@ public class DeleteFileRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
-    // permanently
-    // type: false
+    /**
+     * <p>permanently</p>
+     * <p>type: false</p>
+     */
     @NameInMap("permanently")
     public Boolean permanently;
 
@@ -40,6 +47,14 @@ public class DeleteFileRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public DeleteFileRequest setCheckFolderEmpty(Boolean checkFolderEmpty) {
+        this.checkFolderEmpty = checkFolderEmpty;
+        return this;
+    }
+    public Boolean getCheckFolderEmpty() {
+        return this.checkFolderEmpty;
     }
 
     public DeleteFileRequest setDriveId(String driveId) {

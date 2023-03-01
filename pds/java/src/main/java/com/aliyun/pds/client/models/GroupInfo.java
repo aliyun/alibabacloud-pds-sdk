@@ -10,7 +10,9 @@ public class GroupInfo extends TeaModel {
     @NameInMap("group_id")
     public String groupId;
 
-    // MemberRole 暂不对外，只作保留
+    /**
+     * <p>MemberRole 暂不对外，只作保留</p>
+     */
     @NameInMap("member_role")
     public String memberRole;
 

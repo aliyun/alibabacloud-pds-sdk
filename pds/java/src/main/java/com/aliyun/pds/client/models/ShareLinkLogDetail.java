@@ -7,75 +7,111 @@ import com.aliyun.tea.*;
  * 
  */
 public class ShareLinkLogDetail extends TeaModel {
-    // creatable
+    /**
+     * <p>creatable</p>
+     */
     @NameInMap("creatable")
     public Boolean creatable;
 
-    // enable_preview
+    /**
+     * <p>enable_preview</p>
+     */
     @NameInMap("enable_preview")
     public Boolean enablePreview;
 
-    // enable_save_download
+    /**
+     * <p>enable_save_download</p>
+     */
     @NameInMap("enable_save_download")
     public Boolean enableSaveDownload;
 
-    // enable_visible
+    /**
+     * <p>enable_visible</p>
+     */
     @NameInMap("enable_visible")
     public Boolean enableVisible;
 
-    // expiration
+    /**
+     * <p>expiration</p>
+     */
     @NameInMap("expiration")
     public String expiration;
 
-    // has_multi_object
+    /**
+     * <p>has_multi_object</p>
+     */
     @NameInMap("has_multi_object")
     public Boolean hasMultiObject;
 
-    // has_pwd
+    /**
+     * <p>has_pwd</p>
+     */
     @NameInMap("has_pwd")
     public Boolean hasPwd;
 
-    // office_editable
+    /**
+     * <p>office_editable</p>
+     */
     @NameInMap("office_editable")
     public Boolean officeEditable;
 
-    // preview_limit
+    /**
+     * <p>preview_limit</p>
+     */
     @NameInMap("preview_limit")
     public Long previewLimit;
 
-    // require_login
+    /**
+     * <p>require_login</p>
+     */
     @NameInMap("require_login")
     public Boolean requireLogin;
 
-    // save_download_limit
+    /**
+     * <p>save_download_limit</p>
+     */
     @NameInMap("save_download_limit")
     public Long saveDownloadLimit;
 
-    // share_created_at
+    /**
+     * <p>share_created_at</p>
+     */
     @NameInMap("share_created_at")
     public String shareCreatedAt;
 
-    // share_creator_id
+    /**
+     * <p>share_creator_id</p>
+     */
     @NameInMap("share_creator_id")
     public String shareCreatorId;
 
-    // share_creator_name
+    /**
+     * <p>share_creator_name</p>
+     */
     @NameInMap("share_creator_name")
     public String shareCreatorName;
 
-    // share_id (脱敏)
+    /**
+     * <p>share_id (脱敏)</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
-    // to_parent_path
+    /**
+     * <p>to_parent_path</p>
+     */
     @NameInMap("to_parent_path")
     public String toParentPath;
 
-    // to_parent_path_type
+    /**
+     * <p>to_parent_path_type</p>
+     */
     @NameInMap("to_parent_path_type")
     public String toParentPathType;
 
-    // type
+    /**
+     * <p>type</p>
+     */
     @NameInMap("type")
     public String type;
 

@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * GetFileCountResponse
  */
 public class GetFileCountResponse extends TeaModel {
-    // file_count
+    /**
+     * <p>file_count</p>
+     */
     @NameInMap("file_count")
     public Long fileCount;
 

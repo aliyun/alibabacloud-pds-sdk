@@ -7,21 +7,29 @@ import com.aliyun.tea.*;
  * 批量删除文件 response
  */
 public class HostingDeleteFilesResponse extends TeaModel {
-    // deleted_file_id_list
+    /**
+     * <p>deleted_file_id_list</p>
+     */
     @NameInMap("deleted_file_id_list")
     public java.util.List<String> deletedFileIdList;
 
-    // domain_id
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     @Validation(pattern = "[a-z0-9A-Z]+")
     public String domainId;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9]+")
     public String shareId;

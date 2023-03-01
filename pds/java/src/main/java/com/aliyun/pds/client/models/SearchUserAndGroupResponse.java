@@ -10,7 +10,9 @@ public class SearchUserAndGroupResponse extends TeaModel {
     @NameInMap("groups")
     public java.util.List<BaseGroupResponse> groups;
 
-    // 翻页标记
+    /**
+     * <p>翻页标记</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 

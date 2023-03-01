@@ -10,7 +10,9 @@ public class ConfirmLinkRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 待绑定的临时token，此token只能访问绑定、取消绑定接口
+    /**
+     * <p>待绑定的临时token，此token只能访问绑定、取消绑定接口</p>
+     */
     @NameInMap("temporary_token")
     @Validation(required = true)
     public String temporaryToken;

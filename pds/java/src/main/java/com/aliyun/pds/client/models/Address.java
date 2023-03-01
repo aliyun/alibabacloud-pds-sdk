@@ -19,6 +19,9 @@ public class Address extends TeaModel {
     @NameInMap("district")
     public String district;
 
+    @NameInMap("location")
+    public String location;
+
     @NameInMap("province")
     public String province;
 
@@ -60,6 +63,14 @@ public class Address extends TeaModel {
     }
     public String getDistrict() {
         return this.district;
+    }
+
+    public Address setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+    public String getLocation() {
+        return this.location;
     }
 
     public Address setProvince(String province) {

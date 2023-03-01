@@ -7,58 +7,84 @@ import com.aliyun.tea.*;
  * 生成故事
  */
 public class GetStoryResponse extends TeaModel {
-    // cover_file_id
+    /**
+     * <p>cover_file_id</p>
+     */
     @NameInMap("cover_file_id")
     public String coverFileId;
 
-    // cover_file_url
+    /**
+     * <p>cover_file_url</p>
+     */
     @NameInMap("cover_file_thumbnail_url")
     public String coverFileThumbnailUrl;
 
-    // created_at
+    /**
+     * <p>created_at</p>
+     */
     @NameInMap("created_at")
     public String createdAt;
 
-    // custom_id
+    /**
+     * <p>custom_id</p>
+     */
     @NameInMap("custom_id")
     public String customId;
 
-    // custom_labels
+    /**
+     * <p>custom_labels</p>
+     */
     @NameInMap("custom_labels")
     public java.util.Map<String, ?> customLabels;
 
-    // face_group_ids
+    /**
+     * <p>face_group_ids</p>
+     */
     @NameInMap("face_group_ids")
     public java.util.List<String> faceGroupIds;
 
-    // story_end_time
+    /**
+     * <p>story_end_time</p>
+     */
     @NameInMap("story_end_time")
     public String storyEndTime;
 
     @NameInMap("story_file_list")
     public java.util.List<BaseCCPFileResponse> storyFileList;
 
-    // story_id
+    /**
+     * <p>story_id</p>
+     */
     @NameInMap("story_id")
     public String storyId;
 
-    // story_name
+    /**
+     * <p>story_name</p>
+     */
     @NameInMap("story_name")
     public String storyName;
 
-    // story_start_time
+    /**
+     * <p>story_start_time</p>
+     */
     @NameInMap("story_start_time")
     public String storyStartTime;
 
-    // story_sub_type
+    /**
+     * <p>story_sub_type</p>
+     */
     @NameInMap("story_sub_type")
     public String storySubType;
 
-    // story_type
+    /**
+     * <p>story_type</p>
+     */
     @NameInMap("story_type")
     public String storyType;
 
-    // updated_at
+    /**
+     * <p>updated_at</p>
+     */
     @NameInMap("updated_at")
     public String updatedAt;
 

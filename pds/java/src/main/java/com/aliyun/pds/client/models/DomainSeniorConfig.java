@@ -7,15 +7,21 @@ import com.aliyun.tea.*;
  * 
  */
 public class DomainSeniorConfig extends TeaModel {
-    // 桌面端管理
+    /**
+     * <p>桌面端管理</p>
+     */
     @NameInMap("client_download_enable")
     public Boolean clientDownloadEnable;
 
-    // 安全设置
+    /**
+     * <p>安全设置</p>
+     */
     @NameInMap("csp_frame_ancestors")
     public String cspFrameAncestors;
 
-    // 自定义登录页面
+    /**
+     * <p>自定义登录页面</p>
+     */
     @NameInMap("custom_login_appid")
     public String customLoginAppid;
 
@@ -25,11 +31,15 @@ public class DomainSeniorConfig extends TeaModel {
     @NameInMap("custom_logout_url")
     public String customLogoutUrl;
 
-    // 自定义链接
+    /**
+     * <p>自定义链接</p>
+     */
     @NameInMap("custom_side_link_list")
     public java.util.List<CustomSideLinkConfig> customSideLinkList;
 
-    // 界面设置
+    /**
+     * <p>界面设置</p>
+     */
     @NameInMap("home_page_bg_image_url")
     public String homePageBgImageUrl;
 

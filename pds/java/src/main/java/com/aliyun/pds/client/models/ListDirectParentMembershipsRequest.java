@@ -10,11 +10,15 @@ public class ListDirectParentMembershipsRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 分页获取的数量，默认为100
+    /**
+     * <p>分页获取的数量，默认为100</p>
+     */
     @NameInMap("limit")
     public Integer limit;
 
-    // 游标
+    /**
+     * <p>游标</p>
+     */
     @NameInMap("marker")
     public String marker;
 
@@ -24,7 +28,9 @@ public class ListDirectParentMembershipsRequest extends TeaModel {
     @NameInMap("sub_group_id")
     public String subGroupId;
 
-    // subdomain id
+    /**
+     * <p>subdomain id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

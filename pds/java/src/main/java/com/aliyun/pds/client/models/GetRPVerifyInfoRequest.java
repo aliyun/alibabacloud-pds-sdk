@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetRPVerifyInfoRequest extends TeaModel {
-    // Need Identity Info, 是否获取脱敏的身份信息
+    /**
+     * <p>Need Identity Info, 是否获取脱敏的身份信息</p>
+     */
     @NameInMap("need_identity_info")
     public Boolean needIdentityInfo;
 
-    // User ID, 当前访问的用户
+    /**
+     * <p>User ID, 当前访问的用户</p>
+     */
     @NameInMap("user_id")
     @Validation(required = true)
     public String userId;

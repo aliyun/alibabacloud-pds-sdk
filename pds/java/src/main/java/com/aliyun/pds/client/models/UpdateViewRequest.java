@@ -10,32 +10,46 @@ public class UpdateViewRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     @Validation(required = true)
     public String category;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // ex_fields_info
+    /**
+     * <p>ex_fields_info</p>
+     */
     @NameInMap("ex_fields_info")
     public java.util.Map<String, ?> exFieldsInfo;
 
-    // description
+    /**
+     * <p>description</p>
+     */
     @NameInMap("file_count")
     public Long fileCount;
 
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     public String name;
 
-    // user_id
+    /**
+     * <p>user_id</p>
+     */
     @NameInMap("user_id")
     public String userId;
 
-    // view_id
+    /**
+     * <p>view_id</p>
+     */
     @NameInMap("view_id")
     @Validation(required = true)
     public String viewId;

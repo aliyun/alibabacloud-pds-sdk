@@ -10,24 +10,34 @@ public class UpdateGroupRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 描述
+    /**
+     * <p>描述</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // group id
+    /**
+     * <p>group id</p>
+     */
     @NameInMap("group_id")
     public String groupId;
 
-    // 名称
+    /**
+     * <p>名称</p>
+     */
     @NameInMap("group_name")
     @Validation(required = true)
     public String groupName;
 
-    // 是否是根group
+    /**
+     * <p>是否是根group</p>
+     */
     @NameInMap("is_root")
     public Boolean isRoot;
 
-    // subdomain id
+    /**
+     * <p>subdomain id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 搜索所有回收站文件元数据请求
  */
 public class SearchAllRecycleBinRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // fields
+    /**
+     * <p>fields</p>
+     */
     @NameInMap("fields")
     public String fields;
 
@@ -21,55 +25,82 @@ public class SearchAllRecycleBinRequest extends TeaModel {
     @NameInMap("image_cropping_aspect_ratios")
     public java.util.List<String> imageCroppingAspectRatios;
 
-    // image_thumbnail_process
+    /**
+     * <p>image_thumbnail_process</p>
+     */
     @NameInMap("image_thumbnail_process")
     public String imageThumbnailProcess;
 
-    // image_url_process
+    /**
+     * <p>image_url_process</p>
+     */
     @NameInMap("image_url_process")
     public String imageUrlProcess;
 
-    // limit
+    /**
+     * <p>limit</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 200, minimum = 1)
     public Integer limit;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
-    // Marker
+    /**
+     * <p>Marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // office_thumbnail_process
+    /**
+     * <p>office_thumbnail_process</p>
+     */
     @NameInMap("office_thumbnail_process")
     public String officeThumbnailProcess;
 
-    // order_by
+    /**
+     * <p>order_by</p>
+     */
     @NameInMap("order_by")
     public String orderBy;
 
-    // query
+    /**
+     * <p>query</p>
+     */
     @NameInMap("query")
     @Validation(maxLength = 4096)
     public String query;
 
-    // referer
+    @NameInMap("recursive")
+    public Boolean recursive;
+
+    /**
+     * <p>referer</p>
+     */
     @NameInMap("referer")
     public String referer;
 
-    // sign_token
+    /**
+     * <p>sign_token</p>
+     */
     @NameInMap("sign_token")
     public String signToken;
 
-    // url_expire_sec
+    /**
+     * <p>url_expire_sec</p>
+     */
     @NameInMap("url_expire_sec")
     @Validation(maximum = 14400, minimum = 10)
     public Long urlExpireSec;
 
-    // video_thumbnail_process
-    // type:string
+    /**
+     * <p>video_thumbnail_process</p>
+     * <p>type:string</p>
+     */
     @NameInMap("video_thumbnail_process")
     public String videoThumbnailProcess;
 
@@ -172,6 +203,14 @@ public class SearchAllRecycleBinRequest extends TeaModel {
     }
     public String getQuery() {
         return this.query;
+    }
+
+    public SearchAllRecycleBinRequest setRecursive(Boolean recursive) {
+        this.recursive = recursive;
+        return this;
+    }
+    public Boolean getRecursive() {
+        return this.recursive;
     }
 
     public SearchAllRecycleBinRequest setReferer(String referer) {

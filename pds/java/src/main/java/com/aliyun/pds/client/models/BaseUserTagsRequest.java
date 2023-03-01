@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * user_tags 字段
  */
 public class BaseUserTagsRequest extends TeaModel {
-    // user_tags
+    /**
+     * <p>user_tags</p>
+     */
     @NameInMap("user_tags")
     public java.util.List<UserTag> userTags;
 

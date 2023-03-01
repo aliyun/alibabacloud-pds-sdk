@@ -10,12 +10,16 @@ public class GetLastCursorRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // sync_root_id
+    /**
+     * <p>sync_root_id</p>
+     */
     @NameInMap("sync_root_id")
     public String syncRootId;
 

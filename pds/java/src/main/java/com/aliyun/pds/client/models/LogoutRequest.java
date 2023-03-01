@@ -7,16 +7,22 @@ import com.aliyun.tea.*;
  * 
  */
 public class LogoutRequest extends TeaModel {
-    // 登出之后的跳转地址，默认跳转到App的域名下
+    /**
+     * <p>登出之后的跳转地址，默认跳转到App的域名下</p>
+     */
     @NameInMap("BackUrl")
     public String BackUrl;
 
-    // Client ID, 此处填写创建App时返回的AppID
+    /**
+     * <p>Client ID, 此处填写创建App时返回的AppID</p>
+     */
     @NameInMap("ClientID")
     @Validation(required = true)
     public String ClientID;
 
-    // 用户自定义字段，会在鉴权成功后的callback带回
+    /**
+     * <p>用户自定义字段，会在鉴权成功后的callback带回</p>
+     */
     @NameInMap("LoginType")
     public String LoginType;
 

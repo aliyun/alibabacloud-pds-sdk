@@ -10,32 +10,46 @@ public class CreateSubdomainRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 描述
+    /**
+     * <p>描述</p>
+     */
     @NameInMap("description")
     public String description;
 
-    // 单团队单drive
+    /**
+     * <p>单团队单drive</p>
+     */
     @NameInMap("group_single_drive_enabled")
     public Boolean groupSingleDriveEnabled;
 
-    // 名称，注意该字段会校验重名的subdomain
+    /**
+     * <p>名称，注意该字段会校验重名的subdomain</p>
+     */
     @NameInMap("name")
     @Validation(required = true)
     public String name;
 
-    // 逻辑空间quota，默认为-1，无限制，单位为字节
+    /**
+     * <p>逻辑空间quota，默认为-1，无限制，单位为字节</p>
+     */
     @NameInMap("total_size")
     public Long totalSize;
 
-    // 逻辑空间刷新周期，单位：秒
+    /**
+     * <p>逻辑空间刷新周期，单位：秒</p>
+     */
     @NameInMap("used_size_refresh_interval")
     public Long usedSizeRefreshInterval;
 
-    // 用户数quota，默认为-1，无限制
+    /**
+     * <p>用户数quota，默认为-1，无限制</p>
+     */
     @NameInMap("user_quota")
     public Long userQuota;
 
-    // 单用户单drive
+    /**
+     * <p>单用户单drive</p>
+     */
     @NameInMap("user_single_drive_enabled")
     public Boolean userSingleDriveEnabled;
 

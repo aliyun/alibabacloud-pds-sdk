@@ -7,23 +7,33 @@ import com.aliyun.tea.*;
  * 
  */
 public class DriveLogSettingDetail extends TeaModel {
-    // name
+    /**
+     * <p>name</p>
+     */
     @NameInMap("name")
     public String name;
 
-    // owner_id
+    /**
+     * <p>owner_id</p>
+     */
     @NameInMap("owner_id")
     public String ownerId;
 
-    // owner_name
+    /**
+     * <p>owner_name</p>
+     */
     @NameInMap("owner_name")
     public String ownerName;
 
-    // owner_type
+    /**
+     * <p>owner_type</p>
+     */
     @NameInMap("owner_type")
     public String ownerType;
 
-    // total_size
+    /**
+     * <p>total_size</p>
+     */
     @NameInMap("total_size")
     public Long totalSize;
 

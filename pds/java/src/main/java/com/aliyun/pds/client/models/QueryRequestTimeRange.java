@@ -6,21 +6,25 @@ import com.aliyun.tea.*;
 /**
  * 
  */
-public class FindStoryRequestTimeRange extends TeaModel {
-    // end
+public class QueryRequestTimeRange extends TeaModel {
+    /**
+     * <p>end</p>
+     */
     @NameInMap("end")
     public String end;
 
-    // start
+    /**
+     * <p>start</p>
+     */
     @NameInMap("start")
     public String start;
 
-    public static FindStoryRequestTimeRange build(java.util.Map<String, ?> map) throws Exception {
-        FindStoryRequestTimeRange self = new FindStoryRequestTimeRange();
+    public static QueryRequestTimeRange build(java.util.Map<String, ?> map) throws Exception {
+        QueryRequestTimeRange self = new QueryRequestTimeRange();
         return TeaModel.build(map, self);
     }
 
-    public FindStoryRequestTimeRange setEnd(String end) {
+    public QueryRequestTimeRange setEnd(String end) {
         this.end = end;
         return this;
     }
@@ -28,7 +32,7 @@ public class FindStoryRequestTimeRange extends TeaModel {
         return this.end;
     }
 
-    public FindStoryRequestTimeRange setStart(String start) {
+    public QueryRequestTimeRange setStart(String start) {
         this.start = start;
         return this;
     }

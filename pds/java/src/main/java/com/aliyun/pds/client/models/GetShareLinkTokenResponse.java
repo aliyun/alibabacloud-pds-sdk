@@ -7,17 +7,23 @@ import com.aliyun.tea.*;
  * get_share_token response
  */
 public class GetShareLinkTokenResponse extends TeaModel {
-    // expire_time
+    /**
+     * <p>expire_time</p>
+     */
     @NameInMap("expire_time")
     @Validation(required = true)
     public String expireTime;
 
-    // expires_in
+    /**
+     * <p>expires_in</p>
+     */
     @NameInMap("expires_in")
     @Validation(required = true)
     public Long expiresIn;
 
-    // share_token
+    /**
+     * <p>share_token</p>
+     */
     @NameInMap("share_token")
     @Validation(required = true)
     public String shareToken;

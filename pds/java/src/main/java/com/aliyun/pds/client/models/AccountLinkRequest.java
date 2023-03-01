@@ -13,29 +13,41 @@ public class AccountLinkRequest extends TeaModel {
     @NameInMap("custom_identity")
     public String customIdentity;
 
-    // 账号信息
+    /**
+     * <p>账号信息</p>
+     */
     @NameInMap("detail")
     public String detail;
 
-    // 额外的信息，比如type为mobile时，此字段为国家编号，不填默认86
+    /**
+     * <p>额外的信息，比如type为mobile时，此字段为国家编号，不填默认86</p>
+     */
     @NameInMap("extra")
     public String extra;
 
-    // 唯一身份标识
+    /**
+     * <p>唯一身份标识</p>
+     */
     @NameInMap("identity")
     @Validation(required = true)
     public String identity;
 
-    // 状态
+    /**
+     * <p>状态</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // 认证类型
+    /**
+     * <p>认证类型</p>
+     */
     @NameInMap("type")
     @Validation(required = true)
     public String type;
 
-    // 绑定的user_id
+    /**
+     * <p>绑定的user_id</p>
+     */
     @NameInMap("user_id")
     @Validation(required = true)
     public String userId;

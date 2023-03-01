@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 生成故事
  */
 public class CreateStoryResponse extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 

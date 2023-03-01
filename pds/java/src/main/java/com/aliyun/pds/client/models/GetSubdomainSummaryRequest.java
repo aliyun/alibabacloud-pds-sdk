@@ -10,7 +10,9 @@ public class GetSubdomainSummaryRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // subdomain
+    /**
+     * <p>subdomain</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

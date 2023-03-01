@@ -7,35 +7,49 @@ import com.aliyun.tea.*;
  * 获取视频的m3u8文件
  */
 public class HostingVideoM3U8Request extends TeaModel {
-    // definition
+    /**
+     * <p>definition</p>
+     */
     @NameInMap("definition")
     public String definition;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // expire_sec
+    /**
+     * <p>expire_sec</p>
+     */
     @NameInMap("expire_sec")
     @Validation(maximum = 86400, minimum = 60)
     public Long expireSec;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     @Validation(required = true, maxLength = 1000, minLength = 1)
     public String filePath;
 
-    // protection_scheme
+    /**
+     * <p>protection_scheme</p>
+     */
     @NameInMap("protection_scheme")
     public String protectionScheme;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;
 
-    // sign_token
+    /**
+     * <p>sign_token</p>
+     */
     @NameInMap("sign_token")
     @Validation(required = true)
     public String signToken;

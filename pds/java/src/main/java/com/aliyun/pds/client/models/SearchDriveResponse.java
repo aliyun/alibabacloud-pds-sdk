@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * search drive response
  */
 public class SearchDriveResponse extends TeaModel {
-    // Drive 列表
+    /**
+     * <p>Drive 列表</p>
+     */
     @NameInMap("items")
     public java.util.List<BaseDriveResponse> items;
 
-    // 翻页标记
+    /**
+     * <p>翻页标记</p>
+     */
     @NameInMap("next_marker")
     public String nextMarker;
 

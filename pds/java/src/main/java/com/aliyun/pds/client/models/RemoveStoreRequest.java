@@ -7,12 +7,16 @@ import com.aliyun.tea.*;
  * 
  */
 public class RemoveStoreRequest extends TeaModel {
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;
 
-    // store ID
+    /**
+     * <p>store ID</p>
+     */
     @NameInMap("store_id")
     @Validation(required = true)
     public String storeId;

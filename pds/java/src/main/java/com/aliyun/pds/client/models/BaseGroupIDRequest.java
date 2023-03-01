@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class BaseGroupIDRequest extends TeaModel {
-    // group id
+    /**
+     * <p>group id</p>
+     */
     @NameInMap("group_id")
     public String groupId;
 
-    // subdomain id
+    /**
+     * <p>subdomain id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class DeleteAppRequest extends TeaModel {
-    // App ID
+    /**
+     * <p>App ID</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;

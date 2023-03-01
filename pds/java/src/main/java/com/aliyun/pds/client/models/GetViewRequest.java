@@ -10,16 +10,22 @@ public class GetViewRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     @Validation(required = true)
     public String category;
 
-    // user_id
+    /**
+     * <p>user_id</p>
+     */
     @NameInMap("user_id")
     public String userId;
 
-    // view_id
+    /**
+     * <p>view_id</p>
+     */
     @NameInMap("view_id")
     @Validation(required = true)
     public String viewId;

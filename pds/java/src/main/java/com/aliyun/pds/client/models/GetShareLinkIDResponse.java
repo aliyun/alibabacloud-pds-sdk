@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * get_share_id response
  */
 public class GetShareLinkIDResponse extends TeaModel {
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
-    // share_pwd
+    /**
+     * <p>share_pwd</p>
+     */
     @NameInMap("share_pwd")
     public String sharePwd;
 

@@ -7,72 +7,100 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetAppResponse extends TeaModel {
-    // App 拥有者
+    /**
+     * <p>App 拥有者</p>
+     */
     @NameInMap("ali_owner_id")
     @Validation(required = true)
     public String aliOwnerId;
 
-    // App ID
+    /**
+     * <p>App ID</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;
 
-    // App名称
+    /**
+     * <p>App名称</p>
+     */
     @NameInMap("app_name")
     @Validation(required = true, pattern = "[0-9a-zA-Z]+", maxLength = 128, minLength = 1)
     public String appName;
 
-    // App 秘钥
+    /**
+     * <p>App 秘钥</p>
+     */
     @NameInMap("app_secret")
     @Validation(required = true)
     public String appSecret;
 
-    // App 创建时间
+    /**
+     * <p>App 创建时间</p>
+     */
     @NameInMap("created_at")
     @Validation(required = true)
     public String createdAt;
 
-    // App描述
+    /**
+     * <p>App描述</p>
+     */
     @NameInMap("description")
     @Validation(required = true, maxLength = 128)
     public String description;
 
-    // App图标
+    /**
+     * <p>App图标</p>
+     */
     @NameInMap("logo")
     @Validation(required = true)
     public String logo;
 
-    // App 提供方
+    /**
+     * <p>App 提供方</p>
+     */
     @NameInMap("provider")
     @Validation(required = true)
     public String provider;
 
-    // App回调地址
+    /**
+     * <p>App回调地址</p>
+     */
     @NameInMap("redirect_uri")
     @Validation(required = true)
     public String redirectUri;
 
-    // App权限列表
+    /**
+     * <p>App权限列表</p>
+     */
     @NameInMap("scope")
     @Validation(required = true)
     public java.util.List<String> scope;
 
-    // App 屏幕截图
+    /**
+     * <p>App 屏幕截图</p>
+     */
     @NameInMap("screenshots")
     @Validation(required = true)
     public java.util.List<String> screenshots;
 
-    // App 当前阶段
+    /**
+     * <p>App 当前阶段</p>
+     */
     @NameInMap("stage")
     @Validation(required = true)
     public String stage;
 
-    // App类型
+    /**
+     * <p>App类型</p>
+     */
     @NameInMap("type")
     @Validation(required = true)
     public String type;
 
-    // App 修改时间
+    /**
+     * <p>App 修改时间</p>
+     */
     @NameInMap("updated_at")
     @Validation(required = true)
     public String updatedAt;

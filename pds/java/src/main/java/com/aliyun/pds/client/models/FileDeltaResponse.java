@@ -11,7 +11,7 @@ public class FileDeltaResponse extends TeaModel {
     public String currentCategory;
 
     @NameInMap("file")
-    public BaseCCPFileResponse file;
+    public BaseFileDeltaInfo file;
 
     @NameInMap("file_id")
     public String fileId;
@@ -32,11 +32,11 @@ public class FileDeltaResponse extends TeaModel {
         return this.currentCategory;
     }
 
-    public FileDeltaResponse setFile(BaseCCPFileResponse file) {
+    public FileDeltaResponse setFile(BaseFileDeltaInfo file) {
         this.file = file;
         return this;
     }
-    public BaseCCPFileResponse getFile() {
+    public BaseFileDeltaInfo getFile() {
         return this.file;
     }
 

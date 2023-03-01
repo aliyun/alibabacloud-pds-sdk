@@ -7,17 +7,23 @@ import com.aliyun.tea.*;
  * play_media request
  */
 public class PlayMediaRequest extends TeaModel {
-    // auth_key
+    /**
+     * <p>auth_key</p>
+     */
     @NameInMap("AuthKey")
     @Validation(required = true, pattern = "[a-z0-9]+")
     public String AuthKey;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("DriveID")
     @Validation(required = true, pattern = "[0-9]+")
     public String DriveID;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("FileID")
     @Validation(required = true, pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String FileID;

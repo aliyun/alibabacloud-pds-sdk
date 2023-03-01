@@ -7,39 +7,57 @@ import com.aliyun.tea.*;
  * 
  */
 public class SyncMappingItem extends TeaModel {
-    // created_at
+    /**
+     * <p>created_at</p>
+     */
     @NameInMap("created_at")
     public String createdAt;
 
-    // custom_meta
+    /**
+     * <p>custom_meta</p>
+     */
     @NameInMap("custom_meta")
     public String customMeta;
 
-    // device_name
+    /**
+     * <p>device_name</p>
+     */
     @NameInMap("device_name")
     public String deviceName;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     public String fileId;
 
-    // fs_id
+    /**
+     * <p>fs_id</p>
+     */
     @NameInMap("fs_id")
     public String fsId;
 
-    // local_path
+    /**
+     * <p>local_path</p>
+     */
     @NameInMap("local_path")
     public String localPath;
 
-    // sync_mode
+    /**
+     * <p>sync_mode</p>
+     */
     @NameInMap("sync_mode")
     public String syncMode;
 
-    // updated_at
+    /**
+     * <p>updated_at</p>
+     */
     @NameInMap("updated_at")
     public String updatedAt;
 

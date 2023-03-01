@@ -10,11 +10,15 @@ public class CCPArchiveFilesRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
@@ -22,7 +26,9 @@ public class CCPArchiveFilesRequest extends TeaModel {
     @NameInMap("files")
     public java.util.List<FileInfo> files;
 
-    // file_name
+    /**
+     * <p>file_name</p>
+     */
     @NameInMap("name")
     @Validation(maxLength = 1024, minLength = 1)
     public String name;
@@ -30,7 +36,9 @@ public class CCPArchiveFilesRequest extends TeaModel {
     @NameInMap("referer")
     public String referer;
 
-    // share_id, either share_id or drive_id is required
+    /**
+     * <p>share_id, either share_id or drive_id is required</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 

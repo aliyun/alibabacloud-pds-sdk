@@ -7,19 +7,27 @@ import com.aliyun.tea.*;
  * 
  */
 public class FpRef extends TeaModel {
-    // domain_id
+    /**
+     * <p>domain_id</p>
+     */
     @NameInMap("domain_id")
     public String domainId;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     public String fileId;
 
-    // file_revision_id
+    /**
+     * <p>file_revision_id</p>
+     */
     @NameInMap("file_revision_id")
     public String fileRevisionId;
 

@@ -7,31 +7,45 @@ import com.aliyun.tea.*;
  * 
  */
 public class RoleLogDetail extends TeaModel {
-    // manage_resource_id
+    /**
+     * <p>manage_resource_id</p>
+     */
     @NameInMap("manage_resource_id")
     public String manageResourceId;
 
-    // manage_resource_name
+    /**
+     * <p>manage_resource_name</p>
+     */
     @NameInMap("manage_resource_name")
     public String manageResourceName;
 
-    // manage_resource_type
+    /**
+     * <p>manage_resource_type</p>
+     */
     @NameInMap("manage_resource_type")
     public String manageResourceType;
 
-    // member_type
+    /**
+     * <p>member_type</p>
+     */
     @NameInMap("member_type")
     public String memberType;
 
-    // role_id
+    /**
+     * <p>role_id</p>
+     */
     @NameInMap("role_id")
     public String roleId;
 
-    // role_tag_description
+    /**
+     * <p>role_tag_description</p>
+     */
     @NameInMap("role_tag_description")
     public String roleTagDescription;
 
-    // role_tag_name
+    /**
+     * <p>role_tag_name</p>
+     */
     @NameInMap("role_tag_name")
     public String roleTagName;
 

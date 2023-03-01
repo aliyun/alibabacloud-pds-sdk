@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class ListDeviceResponse extends TeaModel {
-    // items
+    /**
+     * <p>items</p>
+     */
     @NameInMap("items")
     public java.util.List<DeviceItem> items;
 
-    // marker
+    /**
+     * <p>marker</p>
+     */
     @NameInMap("marker")
     public String marker;
 

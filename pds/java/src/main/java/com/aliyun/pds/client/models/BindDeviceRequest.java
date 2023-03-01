@@ -10,31 +10,45 @@ public class BindDeviceRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // device_info
+    /**
+     * <p>device_info</p>
+     */
     @NameInMap("device_info")
     public String deviceInfo;
 
-    // device_name
+    /**
+     * <p>device_name</p>
+     */
     @NameInMap("device_name")
     public String deviceName;
 
-    // device_type
+    /**
+     * <p>device_type</p>
+     */
     @NameInMap("device_type")
     public String deviceType;
 
-    // fs_type
+    /**
+     * <p>fs_type</p>
+     */
     @NameInMap("fs_type")
     public String fsType;
 
-    // manufacturer
+    /**
+     * <p>manufacturer</p>
+     */
     @NameInMap("manufacturer")
     public String manufacturer;
 
-    // total_size
+    /**
+     * <p>total_size</p>
+     */
     @NameInMap("total_size")
     public Long totalSize;
 
-    // used_size
+    /**
+     * <p>used_size</p>
+     */
     @NameInMap("used_size")
     public Long usedSize;
 

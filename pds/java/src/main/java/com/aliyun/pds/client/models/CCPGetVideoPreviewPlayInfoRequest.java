@@ -10,20 +10,28 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // category
+    /**
+     * <p>category</p>
+     */
     @NameInMap("category")
     public String category;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_id
+    /**
+     * <p>file_id</p>
+     */
     @NameInMap("file_id")
     @Validation(pattern = "[a-z0-9.-_]{1,50}", maxLength = 50, minLength = 40)
     public String fileId;
@@ -31,45 +39,69 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     @NameInMap("file_id_path")
     public String fileIdPath;
 
-    // get_preview_url
+    /**
+     * <p>获取master playlist播放地址，仅在quick_video中有效</p>
+     */
+    @NameInMap("get_master_url")
+    public Boolean getMasterUrl;
+
+    /**
+     * <p>get_preview_url</p>
+     */
     @NameInMap("get_preview_url")
     public Boolean getPreviewUrl;
 
-    // get_subtitle_info
+    /**
+     * <p>get_subtitle_info</p>
+     */
     @NameInMap("get_subtitle_info")
     public Boolean getSubtitleInfo;
 
-    // get_without_url
+    /**
+     * <p>get_without_url</p>
+     */
     @NameInMap("get_without_url")
     public Boolean getWithoutUrl;
 
-    // location
+    /**
+     * <p>location</p>
+     */
     @NameInMap("location")
     public String location;
 
     @NameInMap("referer")
     public String referer;
 
-    // revision_id
+    /**
+     * <p>revision_id</p>
+     */
     @NameInMap("revision_id")
     public String revisionId;
 
-    // share_id, either share_id or drive_id is required
+    /**
+     * <p>share_id, either share_id or drive_id is required</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
     @NameInMap("sign_token")
     public String signToken;
 
-    // subtitle_language_list, 根据语言获取压制在视频中的字幕, 不传则取所有
+    /**
+     * <p>subtitle_language_list, 根据语言获取压制在视频中的字幕, 不传则取所有</p>
+     */
     @NameInMap("subtitle_language_list")
     public java.util.List<String> subtitleLanguageList;
 
-    // template_id
+    /**
+     * <p>template_id</p>
+     */
     @NameInMap("template_id")
     public String templateId;
 
-    // url_expire_sec
+    /**
+     * <p>url_expire_sec</p>
+     */
     @NameInMap("url_expire_sec")
     @Validation(maximum = 14400, minimum = 10)
     public Long urlExpireSec;
@@ -125,6 +157,14 @@ public class CCPGetVideoPreviewPlayInfoRequest extends TeaModel {
     }
     public String getFileIdPath() {
         return this.fileIdPath;
+    }
+
+    public CCPGetVideoPreviewPlayInfoRequest setGetMasterUrl(Boolean getMasterUrl) {
+        this.getMasterUrl = getMasterUrl;
+        return this;
+    }
+    public Boolean getGetMasterUrl() {
+        return this.getMasterUrl;
     }
 
     public CCPGetVideoPreviewPlayInfoRequest setGetPreviewUrl(Boolean getPreviewUrl) {

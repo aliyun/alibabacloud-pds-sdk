@@ -10,7 +10,9 @@ public class DeleteMembershipRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // group id
+    /**
+     * <p>group id</p>
+     */
     @NameInMap("group_id")
     public String groupId;
 
@@ -20,7 +22,9 @@ public class DeleteMembershipRequest extends TeaModel {
     @NameInMap("sub_group_id")
     public String subGroupId;
 
-    // subdomain id
+    /**
+     * <p>subdomain id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 

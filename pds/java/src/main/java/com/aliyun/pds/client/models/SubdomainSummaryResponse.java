@@ -7,23 +7,33 @@ import com.aliyun.tea.*;
  * SubdomainSummaryResponse
  */
 public class SubdomainSummaryResponse extends TeaModel {
-    // drive_count
+    /**
+     * <p>drive_count</p>
+     */
     @NameInMap("drive_count")
     public Long driveCount;
 
-    // state
+    /**
+     * <p>state</p>
+     */
     @NameInMap("state")
     public String state;
 
-    // statistics_time
+    /**
+     * <p>statistics_time</p>
+     */
     @NameInMap("statistics_time")
     public Long statisticsTime;
 
-    // used_size
+    /**
+     * <p>used_size</p>
+     */
     @NameInMap("used_size")
     public Long usedSize;
 
-    // user_count
+    /**
+     * <p>user_count</p>
+     */
     @NameInMap("user_count")
     public Long userCount;
 

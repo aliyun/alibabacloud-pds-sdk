@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetPublicKeyResponse extends TeaModel {
-    // App ID
+    /**
+     * <p>App ID</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;
@@ -15,7 +17,9 @@ public class GetPublicKeyResponse extends TeaModel {
     @NameInMap("key_pair_id")
     public String keyPairId;
 
-    // RSA加密算法的公钥, PEM格式
+    /**
+     * <p>RSA加密算法的公钥, PEM格式</p>
+     */
     @NameInMap("public_key")
     @Validation(required = true)
     public String publicKey;

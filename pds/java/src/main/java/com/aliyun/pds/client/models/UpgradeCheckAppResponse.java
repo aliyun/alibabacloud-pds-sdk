@@ -7,23 +7,33 @@ import com.aliyun.tea.*;
  * 
  */
 public class UpgradeCheckAppResponse extends TeaModel {
-    // option
+    /**
+     * <p>option</p>
+     */
     @NameInMap("option")
     public String option;
 
-    // release_date
+    /**
+     * <p>release_date</p>
+     */
     @NameInMap("release_date")
     public String releaseDate;
 
-    // release_notes_url
+    /**
+     * <p>release_notes_url</p>
+     */
     @NameInMap("release_notes_url")
     public String releaseNotesUrl;
 
-    // url
+    /**
+     * <p>url</p>
+     */
     @NameInMap("url")
     public String url;
 
-    // version
+    /**
+     * <p>version</p>
+     */
     @NameInMap("version")
     public String version;
 

@@ -7,31 +7,43 @@ import com.aliyun.tea.*;
  * 列举uploadID对应的已上传分片
  */
 public class HostingListUploadedPartRequest extends TeaModel {
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // file_path
+    /**
+     * <p>file_path</p>
+     */
     @NameInMap("file_path")
     @Validation(required = true)
     public String filePath;
 
-    // limit
+    /**
+     * <p>limit</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 1000, minimum = 1)
     public Long limit;
 
-    // part_number_marker
+    /**
+     * <p>part_number_marker</p>
+     */
     @NameInMap("part_number_marker")
     public Long partNumberMarker;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;
 
-    // upload_id
+    /**
+     * <p>upload_id</p>
+     */
     @NameInMap("upload_id")
     public String uploadId;
 

@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class BaseAuditLogRequest extends TeaModel {
-    // order_by
+    /**
+     * <p>order_by</p>
+     */
     @NameInMap("order_by")
     public String orderBy;
 
-    // query
+    /**
+     * <p>query</p>
+     */
     @NameInMap("query")
     @Validation(maxLength = 4096)
     public String query;

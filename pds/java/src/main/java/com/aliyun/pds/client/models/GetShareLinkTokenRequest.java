@@ -10,31 +10,43 @@ public class GetShareLinkTokenRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // check_share_pwd, effective for creator, admin or aksk only
+    /**
+     * <p>check_share_pwd, effective for creator, admin or aksk only</p>
+     */
     @NameInMap("check_share_pwd")
     public Boolean checkSharePwd;
 
-    // expire_sec
+    /**
+     * <p>expire_sec</p>
+     */
     @NameInMap("expire_sec")
     @Validation(maximum = 7200)
     public Long expireSec;
 
-    // nvc_param
+    /**
+     * <p>nvc_param</p>
+     */
     @NameInMap("nvc_param")
     public String nvcParam;
 
     @NameInMap("referer")
     public String referer;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     public String shareId;
 
-    // share_pwd
+    /**
+     * <p>share_pwd</p>
+     */
     @NameInMap("share_pwd")
     public String sharePwd;
 

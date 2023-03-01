@@ -10,41 +10,59 @@ public class SendSmsCodeRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // App ID, 当前访问的App
+    /**
+     * <p>App ID, 当前访问的App</p>
+     */
     @NameInMap("app_id")
     @Validation(required = true)
     public String appId;
 
-    // 图片验证码ID
+    /**
+     * <p>图片验证码ID</p>
+     */
     @NameInMap("captcha_id")
     public String captchaId;
 
-    // 用户输入的验证码值
+    /**
+     * <p>用户输入的验证码值</p>
+     */
     @NameInMap("captcha_text")
     public String captchaText;
 
-    // 邮箱
+    /**
+     * <p>邮箱</p>
+     */
     @NameInMap("email")
     public String email;
 
-    // 发短信的语言
+    /**
+     * <p>发短信的语言</p>
+     */
     @NameInMap("language")
     public String language;
 
-    // 环境参数
+    /**
+     * <p>环境参数</p>
+     */
     @NameInMap("nvc_param")
     @Validation(required = true)
     public String nvcParam;
 
-    // 待发送验证短信的手机号
+    /**
+     * <p>待发送验证短信的手机号</p>
+     */
     @NameInMap("phone_number")
     public String phoneNumber;
 
-    // 国家编号，默认86，不需要填+号，直接填数字
+    /**
+     * <p>国家编号，默认86，不需要填+号，直接填数字</p>
+     */
     @NameInMap("phone_region")
     public String phoneRegion;
 
-    // 验证码用途, 可下发: login、register、change_password
+    /**
+     * <p>验证码用途, 可下发: login、register、change_password</p>
+     */
     @NameInMap("type")
     @Validation(required = true)
     public String type;

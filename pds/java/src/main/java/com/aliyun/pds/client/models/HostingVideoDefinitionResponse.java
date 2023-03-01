@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 转码接口response
  */
 public class HostingVideoDefinitionResponse extends TeaModel {
-    // definition_list
+    /**
+     * <p>definition_list</p>
+     */
     @NameInMap("definition_list")
     public java.util.List<String> definitionList;
 
-    // frame_rate
+    /**
+     * <p>frame_rate</p>
+     */
     @NameInMap("frame_rate")
     public String frameRate;
 

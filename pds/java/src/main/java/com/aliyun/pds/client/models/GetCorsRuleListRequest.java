@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class GetCorsRuleListRequest extends TeaModel {
-    // domain ID
+    /**
+     * <p>domain ID</p>
+     */
     @NameInMap("domain_id")
     @Validation(required = true)
     public String domainId;

@@ -7,7 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class ShareConfigLogDetail extends TeaModel {
-    // enable
+    /**
+     * <p>enable</p>
+     */
     @NameInMap("enable")
     public Boolean enable;
 

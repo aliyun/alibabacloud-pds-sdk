@@ -7,27 +7,45 @@ import com.aliyun.tea.*;
  * DomainSummaryResponse
  */
 public class DomainSummaryResponse extends TeaModel {
-    // drive_count
+    /**
+     * <p>drive_count</p>
+     */
     @NameInMap("drive_count")
     public Long driveCount;
 
-    // file_count
+    /**
+     * <p>file_count</p>
+     */
     @NameInMap("file_count")
     public Long fileCount;
 
-    // state
+    /**
+     * <p>state</p>
+     */
     @NameInMap("state")
     public String state;
 
-    // statistics_time
+    /**
+     * <p>statistics_time</p>
+     */
     @NameInMap("statistics_time")
     public Long statisticsTime;
 
-    // used_size
+    /**
+     * <p>used_flow</p>
+     */
+    @NameInMap("used_flow")
+    public Long usedFlow;
+
+    /**
+     * <p>used_size</p>
+     */
     @NameInMap("used_size")
     public Long usedSize;
 
-    // user_count
+    /**
+     * <p>user_count</p>
+     */
     @NameInMap("user_count")
     public Long userCount;
 
@@ -66,6 +84,14 @@ public class DomainSummaryResponse extends TeaModel {
     }
     public Long getStatisticsTime() {
         return this.statisticsTime;
+    }
+
+    public DomainSummaryResponse setUsedFlow(Long usedFlow) {
+        this.usedFlow = usedFlow;
+        return this;
+    }
+    public Long getUsedFlow() {
+        return this.usedFlow;
     }
 
     public DomainSummaryResponse setUsedSize(Long usedSize) {

@@ -9,7 +9,7 @@ public class UpdateDataProcessTemplateModel extends TeaModel {
 
     @NameInMap("body")
     @Validation(required = true)
-    public UpdateDataProcessTemplateResponse body;
+    public UpdateDriveDataProcessTemplateResponse body;
 
     public static UpdateDataProcessTemplateModel build(java.util.Map<String, ?> map) throws Exception {
         UpdateDataProcessTemplateModel self = new UpdateDataProcessTemplateModel();
@@ -24,11 +24,11 @@ public class UpdateDataProcessTemplateModel extends TeaModel {
         return this.headers;
     }
 
-    public UpdateDataProcessTemplateModel setBody(UpdateDataProcessTemplateResponse body) {
+    public UpdateDataProcessTemplateModel setBody(UpdateDriveDataProcessTemplateResponse body) {
         this.body = body;
         return this;
     }
-    public UpdateDataProcessTemplateResponse getBody() {
+    public UpdateDriveDataProcessTemplateResponse getBody() {
         return this.body;
     }
 

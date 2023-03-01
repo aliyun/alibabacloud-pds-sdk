@@ -10,25 +10,35 @@ public class UpdateFaceGroupInfoRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(required = true, pattern = "[0-9]+")
     public String driveId;
 
-    // group_cover_face_id
+    /**
+     * <p>group_cover_face_id</p>
+     */
     @NameInMap("group_cover_face_id")
     public String groupCoverFaceId;
 
-    // group_id 列举人脸分组接口中获取
+    /**
+     * <p>group_id 列举人脸分组接口中获取</p>
+     */
     @NameInMap("group_id")
     @Validation(required = true)
     public String groupId;
 
-    // group_name
+    /**
+     * <p>group_name</p>
+     */
     @NameInMap("group_name")
     public String groupName;
 
-    // remarks
+    /**
+     * <p>remarks</p>
+     */
     @NameInMap("remarks")
     public String remarks;
 

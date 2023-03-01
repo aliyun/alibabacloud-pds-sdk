@@ -7,42 +7,60 @@ import com.aliyun.tea.*;
  * 
  */
 public class AuthorizeRequest extends TeaModel {
-    // Client ID, 此处填写创建App时返回的AppID
+    /**
+     * <p>Client ID, 此处填写创建App时返回的AppID</p>
+     */
     @NameInMap("ClientID")
     @Validation(required = true)
     public String ClientID;
 
-    // 内部使用
+    /**
+     * <p>内部使用</p>
+     */
     @NameInMap("DomainID")
     public String DomainID;
 
-    // 是否隐藏同意页面
+    /**
+     * <p>是否隐藏同意页面</p>
+     */
     @NameInMap("HideConsent")
     public Boolean HideConsent;
 
-    // 鉴权方式，目前支持ding,ram鉴权
+    /**
+     * <p>鉴权方式，目前支持ding,ram鉴权</p>
+     */
     @NameInMap("LoginType")
     public String LoginType;
 
-    // 回调地址, 此处填写创建App时填写的回调地址
+    /**
+     * <p>回调地址, 此处填写创建App时填写的回调地址</p>
+     */
     @NameInMap("RedirectUri")
     @Validation(required = true)
     public String RedirectUri;
 
-    // 返回类型, 只能填写code
+    /**
+     * <p>返回类型, 只能填写code</p>
+     */
     @NameInMap("ResponseType")
     @Validation(required = true)
     public String ResponseType;
 
-    // 申请的权限列表, 默认为所有权限
+    /**
+     * <p>申请的权限列表, 默认为所有权限</p>
+     */
     @NameInMap("Scope")
     public java.util.List<String> Scope;
 
-    // 用户自定义字段，会在鉴权成功后的callback带回
+    /**
+     * <p>用户自定义字段，会在鉴权成功后的callback带回</p>
+     */
     @NameInMap("State")
     public String State;
 
-    // 内部使用
+    /**
+     * <p>内部使用</p>
+     */
     @NameInMap("UserCode")
     public String UserCode;
 

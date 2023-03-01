@@ -10,11 +10,15 @@ public class CCPLiveTranscodeRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // object_path
+    /**
+     * <p>object_path</p>
+     */
     @NameInMap("object_path")
     public String objectPath;
 

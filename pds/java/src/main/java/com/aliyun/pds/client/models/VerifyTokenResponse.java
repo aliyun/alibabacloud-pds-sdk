@@ -7,17 +7,23 @@ import com.aliyun.tea.*;
  * 
  */
 public class VerifyTokenResponse extends TeaModel {
-    // 实人认证的Token
+    /**
+     * <p>实人认证的Token</p>
+     */
     @NameInMap("token")
     @Validation(required = true)
     public String token;
 
-    // 实人认证token有效秒数，如1800
+    /**
+     * <p>实人认证token有效秒数，如1800</p>
+     */
     @NameInMap("ttl")
     @Validation(required = true)
     public Long ttl;
 
-    // 实人认证的URL，包含Token
+    /**
+     * <p>实人认证的URL，包含Token</p>
+     */
     @NameInMap("url")
     @Validation(required = true)
     public String url;

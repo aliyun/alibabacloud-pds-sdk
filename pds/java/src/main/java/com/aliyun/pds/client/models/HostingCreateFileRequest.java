@@ -7,52 +7,74 @@ import com.aliyun.tea.*;
  * create file request
  */
 public class HostingCreateFileRequest extends TeaModel {
-    // addition_data
+    /**
+     * <p>addition_data</p>
+     */
     @NameInMap("addition_data")
     public java.util.Map<String, ?> additionData;
 
-    // ContentMd5
+    /**
+     * <p>ContentMd5</p>
+     */
     @NameInMap("content_md5")
     public String contentMd5;
 
-    // ContentType
+    /**
+     * <p>ContentType</p>
+     */
     @NameInMap("content_type")
     public String contentType;
 
-    // drive_id
+    /**
+     * <p>drive_id</p>
+     */
     @NameInMap("drive_id")
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
-    // forbid_overwrite
-    // type: boolean
+    /**
+     * <p>forbid_overwrite</p>
+     * <p>type: boolean</p>
+     */
     @NameInMap("forbid_overwrite")
     public Boolean forbidOverwrite;
 
-    // Name
+    /**
+     * <p>Name</p>
+     */
     @NameInMap("name")
     @Validation(required = true, maxLength = 1024, minLength = 1)
     public String name;
 
-    // parent_file_path
+    /**
+     * <p>parent_file_path</p>
+     */
     @NameInMap("parent_file_path")
     @Validation(required = true)
     public String parentFilePath;
 
-    // part_info_list
+    /**
+     * <p>part_info_list</p>
+     */
     @NameInMap("part_info_list")
     public java.util.List<UploadPartInfo> partInfoList;
 
-    // share_id
+    /**
+     * <p>share_id</p>
+     */
     @NameInMap("share_id")
     @Validation(pattern = "[0-9a-zA-Z-]+")
     public String shareId;
 
-    // Size
+    /**
+     * <p>Size</p>
+     */
     @NameInMap("size")
     public Long size;
 
-    // Type
+    /**
+     * <p>Type</p>
+     */
     @NameInMap("type")
     @Validation(required = true)
     public String type;

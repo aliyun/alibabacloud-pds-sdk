@@ -7,11 +7,15 @@ import com.aliyun.tea.*;
  * 
  */
 public class ActorUser extends TeaModel {
-    // UserID
+    /**
+     * <p>UserID</p>
+     */
     @NameInMap("user_id")
     public String userId;
 
-    // UserName
+    /**
+     * <p>UserName</p>
+     */
     @NameInMap("user_name")
     public String userName;
 

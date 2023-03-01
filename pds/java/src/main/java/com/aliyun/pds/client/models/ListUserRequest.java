@@ -10,21 +10,29 @@ public class ListUserRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    // 每页大小限制
+    /**
+     * <p>每页大小限制</p>
+     */
     @NameInMap("limit")
     @Validation(maximum = 100, minimum = 1)
     public Integer limit;
 
-    // 翻页标记
+    /**
+     * <p>翻页标记</p>
+     */
     @NameInMap("marker")
     public String marker;
 
-    // 用户状态
-    // status: enabled
+    /**
+     * <p>用户状态</p>
+     * <p>status: enabled</p>
+     */
     @NameInMap("status")
     public String status;
 
-    // subdomain id
+    /**
+     * <p>subdomain id</p>
+     */
     @NameInMap("subdomain_id")
     public String subdomainId;
 
