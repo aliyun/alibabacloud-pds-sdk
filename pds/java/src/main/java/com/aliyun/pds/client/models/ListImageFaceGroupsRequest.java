@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * List image face groups request
+ * # List image face groups request
  */
 public class ListImageFaceGroupsRequest extends TeaModel {
     @NameInMap("httpheaders")
@@ -32,6 +32,12 @@ public class ListImageFaceGroupsRequest extends TeaModel {
 
     @NameInMap("remarks")
     public String remarks;
+
+    /**
+     * <p>ReturnTotalCount 是否返回分组总数</p>
+     */
+    @NameInMap("return_total_count")
+    public Boolean returnTotalCount;
 
     public static ListImageFaceGroupsRequest build(java.util.Map<String, ?> map) throws Exception {
         ListImageFaceGroupsRequest self = new ListImageFaceGroupsRequest();
@@ -76,6 +82,14 @@ public class ListImageFaceGroupsRequest extends TeaModel {
     }
     public String getRemarks() {
         return this.remarks;
+    }
+
+    public ListImageFaceGroupsRequest setReturnTotalCount(Boolean returnTotalCount) {
+        this.returnTotalCount = returnTotalCount;
+        return this;
+    }
+    public Boolean getReturnTotalCount() {
+        return this.returnTotalCount;
     }
 
 }

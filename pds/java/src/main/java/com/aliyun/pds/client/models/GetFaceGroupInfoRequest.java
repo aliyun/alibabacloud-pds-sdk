@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * Get face group info request
+ * # Get face group info request
  */
 public class GetFaceGroupInfoRequest extends TeaModel {
     @NameInMap("httpheaders")

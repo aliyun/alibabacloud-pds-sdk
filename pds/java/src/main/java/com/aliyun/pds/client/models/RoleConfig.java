@@ -7,6 +7,9 @@ import com.aliyun.tea.*;
  * 
  */
 public class RoleConfig extends TeaModel {
+    @NameInMap("default_group_drive_inherit_sub_group")
+    public Boolean defaultGroupDriveInheritSubGroup;
+
     @NameInMap("default_group_drive_role")
     public String defaultGroupDriveRole;
 
@@ -25,6 +28,14 @@ public class RoleConfig extends TeaModel {
     public static RoleConfig build(java.util.Map<String, ?> map) throws Exception {
         RoleConfig self = new RoleConfig();
         return TeaModel.build(map, self);
+    }
+
+    public RoleConfig setDefaultGroupDriveInheritSubGroup(Boolean defaultGroupDriveInheritSubGroup) {
+        this.defaultGroupDriveInheritSubGroup = defaultGroupDriveInheritSubGroup;
+        return this;
+    }
+    public Boolean getDefaultGroupDriveInheritSubGroup() {
+        return this.defaultGroupDriveInheritSubGroup;
     }
 
     public RoleConfig setDefaultGroupDriveRole(String defaultGroupDriveRole) {

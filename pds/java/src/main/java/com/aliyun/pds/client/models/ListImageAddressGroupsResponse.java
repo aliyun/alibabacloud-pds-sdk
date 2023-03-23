@@ -13,6 +13,9 @@ public class ListImageAddressGroupsResponse extends TeaModel {
     @NameInMap("next_marker")
     public String nextMarker;
 
+    @NameInMap("total_count")
+    public Long totalCount;
+
     public static ListImageAddressGroupsResponse build(java.util.Map<String, ?> map) throws Exception {
         ListImageAddressGroupsResponse self = new ListImageAddressGroupsResponse();
         return TeaModel.build(map, self);
@@ -32,6 +35,14 @@ public class ListImageAddressGroupsResponse extends TeaModel {
     }
     public String getNextMarker() {
         return this.nextMarker;
+    }
+
+    public ListImageAddressGroupsResponse setTotalCount(Long totalCount) {
+        this.totalCount = totalCount;
+        return this;
+    }
+    public Long getTotalCount() {
+        return this.totalCount;
     }
 
 }

@@ -23890,6 +23890,23 @@ type:string', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
 
 /**
+ * 
+ */
+model BaseMediaResponse {
+  addressLine?: string(name='address_line', description='address_line', example='北京市昌平区白各庄新村路'),
+  city?: string(name='city', description='city', example='杭州'),
+  country?: string(name='country', description='country', example='中国'),
+  district?: string(name='district', description='district', example='余杭区'),
+  height?: int64(name='height', default=0, description='height', example=720, format='int64'),
+  imageTags?: [ SystemTag ](name='image_tags', description='system_tags', items='{"$ref":"#/definitions/SystemTag"}'),
+  location?: string(name='location', description='location', example='40.110333,116.349311'),
+  province?: string(name='province', description='province', example='浙江省'),
+  time?: string(name='time', description='time', format='date-time'),
+  township?: string(name='township', description='township', example='沙河镇'),
+  width?: int64(name='width', default=0, description='width', example=1024, format='int64'),
+}
+
+/**
  * 文件移动请求
  */
 model BaseMoveFileRequest {
@@ -24080,10 +24097,13 @@ model CCPArchiveFilesRequest {
   httpheaders?: map[string]string,
   additionData?: object(name='addition_data', additionalProperties='{"type":"string"}', description='addition_data'),
   driveId?: string(name='drive_id', description='drive_id', example='1', pattern='[0-9]+'),
+  fileIds?: [ string ](name='file_ids', items='{"type":"string"}'),
   files?: [ FileInfo ](name='files', items='{"$ref":"#/definitions/FileInfo"}'),
   name?: string(name='name', description='file_name', example='ccp.jpg', maxLength=1024, minLength=1),
+  recursive?: boolean(name='recursive'),
   referer?: string(name='referer'),
   shareId?: string(name='share_id', description='share_id, either share_id or drive_id is required', example='0018d25b-faed-4f5c-a67b-414e160b7953'),
+  taskCategory?: string(name='task_category'),
 }
 
 /**
@@ -24091,6 +24111,19 @@ model CCPArchiveFilesRequest {
  */
 model CCPArchiveFilesResponse {
   asyncTaskId?: string(name='async_task_id'),
+}
+
+/**
+ * 
+ */
+model CCPArchiveRequest {
+  Format?: string(name='Format', description='格式类型，如果是uc，使用特殊格式'),
+  RequestID?: string(name='RequestID'),
+  archiveType?: string(name='archive_type'),
+  domainId?: string(name='domain_id'),
+  driveId?: string(name='drive_id', description='TODO 增加对ShareID的支持'),
+  fileId?: string(name='file_id'),
+  password?: string(name='password'),
 }
 
 /**
@@ -24579,7 +24612,7 @@ model CreateAppRequest {
 }
 
 /**
- * Create custom story request
+ * # Create custom story request
  */
 model CreateCustomizedStoryRequest {
   httpheaders?: map[string]string,
@@ -24886,7 +24919,7 @@ model CreateSimilarImageClusterTaskRequest {
 }
 
 /**
- * Create story request
+ * # Create story request
  */
 model CreateStoryRequest {
   httpheaders?: map[string]string,
@@ -25026,11 +25059,12 @@ model DeleteDomainRequest {
 }
 
 /**
- * Delete drive request
+ * # Delete drive request
  */
 model DeleteDriveRequest {
   httpheaders?: map[string]string,
   driveId: string(name='drive_id', description='Drive ID', example='123'),
+  force?: boolean(name='force'),
   subdomainId?: string(name='subdomain_id', description='Subdomain ID', example='hz-123'),
 }
 
@@ -25467,7 +25501,7 @@ model GetDataCNameInfoRequest {
 }
 
 /**
- * Get default drive request
+ * # Get default drive request
  */
 model GetDefaultDriveRequest {
   httpheaders?: map[string]string,
@@ -25546,7 +25580,7 @@ model GetDriveDataProcessTemplateRequest {
 }
 
 /**
- * Get drive request
+ * # Get drive request
  */
 model GetDriveRequest {
   httpheaders?: map[string]string,
@@ -25582,7 +25616,7 @@ model GetDriveResponse {
 }
 
 /**
- * Get face group info request
+ * # Get face group info request
  */
 model GetFaceGroupInfoRequest {
   httpheaders?: map[string]string,
@@ -25787,7 +25821,7 @@ type: boolean', enum='false, true', example=false),
 }
 
 /**
- * Get photo count request
+ * # Get photo count request
  */
 model GetImageCountRequest {
   httpheaders?: map[string]string,
@@ -26171,7 +26205,7 @@ model GetShareResponse {
 }
 
 /**
- * Get story request
+ * # Get story request
  */
 model GetStoryRequest {
   httpheaders?: map[string]string,
@@ -26961,7 +26995,7 @@ model ListDomainsRequest {
 }
 
 /**
- * List drive request
+ * # List drive request
  */
 model ListDriveRequest {
   httpheaders?: map[string]string,
@@ -27153,7 +27187,7 @@ model ListFileViewsRequest {
 }
 
 /**
- * List image address groups request
+ * # List image address groups request
  */
 model ListImageAddressGroupsRequest {
   httpheaders?: map[string]string,
@@ -27161,11 +27195,12 @@ model ListImageAddressGroupsRequest {
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   limit?: int32(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
   marker?: string(name='marker', description='翻页标记', example='marker'),
+  returnTotalCount?: boolean(name='return_total_count', description='ReturnTotalCount 是否返回分组总数'),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
 
 /**
- * List image face groups request
+ * # List image face groups request
  */
 model ListImageFaceGroupsRequest {
   httpheaders?: map[string]string,
@@ -27173,10 +27208,11 @@ model ListImageFaceGroupsRequest {
   limit?: int64(name='limit', default=100, description='每页大小限制', example=10, format='int64', maximum=100, minimum=1),
   marker?: string(name='marker', description='翻页标记', example='marker'),
   remarks?: string(name='remarks'),
+  returnTotalCount?: boolean(name='return_total_count', description='ReturnTotalCount 是否返回分组总数'),
 }
 
 /**
- * List image tags request
+ * # List image tags request
  */
 model ListImageTagsRequest {
   httpheaders?: map[string]string,
@@ -27198,7 +27234,7 @@ model ListMangeSharingFileRequest {
 }
 
 /**
- * List my drive request
+ * # List my drive request
  */
 model ListMyDriveRequest {
   httpheaders?: map[string]string,
@@ -27488,12 +27524,13 @@ model MediaPlayInfoTemplate {
 }
 
 /**
- * Merge face group request
+ * # Merge face group request
  */
 model MergeFaceGroupRequest {
   httpheaders?: map[string]string,
   driveId: string(name='drive_id', description='drive_id', example='"101"', pattern='[0-9]+'),
-  fromGroupId: string(name='from_group_id', description='from_group_id', example='abc'),
+  fromGroupId?: string(name='from_group_id', description='from_group_id', example='abc'),
+  fromGroupIds: [ string ](name='from_group_ids', description='from_group_ids', example='group1, group2', items='{"type":"string"}'),
   toGroupId: string(name='to_group_id', description='to_group_id', example='bcd'),
 }
 
@@ -27544,11 +27581,32 @@ model NameCheckResult {
 }
 
 /**
- * Parse keywords request
+ * # Parse keywords request
  */
 model ParseKeywordsRequest {
   httpheaders?: map[string]string,
   keywords?: string(name='keywords'),
+}
+
+/**
+ * 
+ */
+model Permission {
+  ActionList?: [ ActionItem ](name='ActionList', items='{"$ref":"#/definitions/ActionItem"}'),
+  Collection?: string(name='Collection'),
+  Condition?: Condition(name='Condition'),
+  CreatedAt?: int64(name='CreatedAt', format='int64'),
+  Deleted?: string(name='Deleted'),
+  DomainID?: string(name='DomainID'),
+  Effect?: string(name='Effect'),
+  IdentityID?: string(name='IdentityID'),
+  IdentityType?: string(name='IdentityType'),
+  Resource?: string(name='Resource'),
+  ResourceType?: string(name='ResourceType'),
+  SequenceNumber?: int64(name='SequenceNumber', format='int64'),
+  UpdatedAt?: int64(name='UpdatedAt', format='int64'),
+  UpdatedBy?: string(name='UpdatedBy'),
+  UserTags?: [ string ](name='UserTags', items='{"type":"string"}'),
 }
 
 /**
@@ -27897,10 +27955,11 @@ model SearchDomainsRequest {
 }
 
 /**
- * Search drive request
+ * # Search drive request
  */
 model SearchDriveRequest {
   httpheaders?: map[string]string,
+  category?: string(name='category'),
   driveName?: string(name='drive_name', description='Drive Fuzz Name'),
   limit?: int32(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
   marker?: string(name='marker', description='翻页标记, 接口返回的标记值', example='marker'),
@@ -27977,7 +28036,7 @@ model SearchFileResponse {
 }
 
 /**
- * Search image address groups request
+ * # Search image address groups request
  */
 model SearchImageAddressGroupsRequest {
   httpheaders?: map[string]string,
@@ -28154,6 +28213,36 @@ model ShareFile {
 /**
  * 
  */
+model ShareLinkCountResponse {
+  accessCount?: int64(name='access_count', description='access_count', example=1, format='int64'),
+  downloadCount?: int64(name='download_count', description='下载次数', example=1, format='int64'),
+  previewCount?: int64(name='preview_count', description='preview_count', example=1, format='int64'),
+  reportCount?: int64(name='report_count', description='举报次数', example=1, format='int64'),
+  saveCount?: int64(name='save_count', description='转存次数', example=1, format='int64'),
+  videoPreviewCount?: int64(name='video_preview_count', description='音视频播放次数', example=1, format='int64'),
+}
+
+/**
+ * 
+ */
+model ShareLinkPermissionResponse {
+  creatable?: boolean(name='creatable', description='允许上传', example=true),
+  creatableFileIdList?: [ string ](name='creatable_file_id_list', description='允许上传的目录列表', example='xxx', items='{"type":"string"}'),
+  disableDownload?: boolean(name='disable_download', description='禁止下载分享中的文件', example=true),
+  disablePreview?: boolean(name='disable_preview', description='禁止预览分享中的文件', example=true),
+  disableSave?: boolean(name='disable_save', description='禁止转存分享中的文件', example=true),
+  disableVisible?: boolean(name='disable_visible', description='分享中的文件不可见', example=true),
+  downloadLimit?: int64(name='download_limit', description='分享下载次数限制', example=10, format='int64'),
+  officeEditable?: boolean(name='office_editable', description='允许在线编辑文档', example=true),
+  previewLimit?: int64(name='preview_limit', description='分享预览次数限制', example=10, format='int64'),
+  requireLogin?: boolean(name='require_login', description='企业内(domain)登录后才允许使用分享', example=true),
+  saveDownloadLimit?: int64(name='save_download_limit', description='分享转存和下载的总次数限制', example=10, format='int64'),
+  saveLimit?: int64(name='save_limit', description='分享转存次数限制', example=10, format='int64'),
+}
+
+/**
+ * 
+ */
 model SharePermissionPolicy {
   fileId?: string(name='file_id'),
   filePath?: string(name='file_path'),
@@ -28210,6 +28299,33 @@ model SimpleStreamInfo {
   size?: int64(name='size', description='size', format='int64'),
   thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
   url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+}
+
+/**
+ * 
+ */
+model Store {
+  accelerateEndpoint?: string(name='accelerate_endpoint', description='全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  basePath?: string(name='base_path', description='存储公共前缀', example='pds-data'),
+  bucket: string(name='bucket', description='bucket名称', example='data-sz-bucket'),
+  cdnEndpoint?: string(name='cdn_endpoint', description='内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  cdnRatelimitDisable?: boolean(name='cdn_ratelimit_disable', description='命中限速用户时是否关闭CDN地址返回', example=false),
+  cdnTimelimit?: string(name='cdn_timelimit', description='CDN时间控制', example='0-8 or 23-5'),
+  cdnUrlAuthKey?: string(name='cdn_url_auth_key', description='CDN鉴权key'),
+  customizedAccelerateEndpoint?: string(name='customized_accelerate_endpoint', description='自定义全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  customizedCdnEndpoint?: string(name='customized_cdn_endpoint', description='自定义内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
+  customizedEndpoint?: string(name='customized_endpoint', description='自定义Public访问地址', example='https://{regionid}-data.mydomain.com/'),
+  customizedInternalEndpoint?: string(name='customized_internal_endpoint', description='自定义vpc访问地址', example='https://{regionid}-data-vpc.mydomain.com/'),
+  endpoint: string(name='endpoint', description='Public访问地址', example='https://{domainid}.{regionid}.data.aliyunpds.com/'),
+  enetEndpoint?: string(name='enet_endpoint', description='冷流地址', example='https://oss-cn-shenzhen-enet.aliyuncs.com/'),
+  enetPercentConfig?: WhitePercentConfig(name='enet_percent_config'),
+  internalEndpoint?: string(name='internal_endpoint', description='vpc访问地址', example='https://{domainid}.{regionid}.data-vpc.aliyunpds.com/'),
+  location?: string(name='location', description='地点', example='cn-hangzhou'),
+  ownership: string(name='ownership', description='存储归属，system表示系统提供，custom表示使用自己的存储', enum='system, custom', example='system'),
+  policy: string(name='policy', description='Policy授权,system类型store会将bucket权限授予当前云账号'),
+  roleArn?: string(name='role_arn', description='访问Bucket的角色ARN', example='acs:oss:*:*:*'),
+  storeId: string(name='store_id', description='store ID', example='101'),
+  type: string(name='type', description='存储类型，当前只支持oss', enum='oss', example='oss'),
 }
 
 /**
@@ -28662,7 +28778,7 @@ model UCUpdateUploadContentHashResponse {
 }
 
 /**
- * Unassign facegroup item request
+ * # Unassign facegroup item request
  */
 model UnAssignFaceGroupItemRequest {
   httpheaders?: map[string]string,
@@ -28754,7 +28870,7 @@ model UpdateDriveDataProcessTemplateRequest {
 }
 
 /**
- * Update drive request
+ * # Update drive request
  */
 model UpdateDriveRequest {
   httpheaders?: map[string]string,
@@ -28797,7 +28913,7 @@ model UpdateDriveResponse {
 }
 
 /**
- * Update face group info request
+ * # Update face group info request
  */
 model UpdateFaceGroupInfoRequest {
   httpheaders?: map[string]string,
@@ -29079,7 +29195,7 @@ model UpdateShareResponse {
 }
 
 /**
- * Update story request
+ * # Update story request
  */
 model UpdateStoryRequest {
   httpheaders?: map[string]string,
@@ -29147,6 +29263,15 @@ model UploadPartInfo {
   partSize?: int64(name='part_size', description='PartSize：', example=1024, format='int64', maximum=5368709120),
   uploadFormInfo?: UploadFormInfo(name='upload_form_info'),
   uploadUrl?: string(name='upload_url', description='upload_url', example='https://ccp.data.aliyuncs.com/xxx/xxx?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx&partNumber=1&uploadId=0CC175B9C0F1B6A831C399E269772661'),
+}
+
+/**
+ * 
+ */
+model UrlInfo {
+  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
+  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
 }
 
 /**
@@ -29496,6 +29621,16 @@ model ArchiveConfig {
 }
 
 /**
+ * 
+ */
+model AssignRoleSettingDetail {
+  manageResourceId?: string(name='manage_resource_id', description='manage_resource_id', example='a123'),
+  manageResourceName?: string(name='manage_resource_name', description='manage_resource_name', example='user_name_123'),
+  manageResourceType?: string(name='manage_resource_type', description='manage_resource_type', example='user'),
+  roleId?: string(name='role_id', description='role_id', example='SystemBaseSettingAdmin'),
+}
+
+/**
  * Get AsyncTask Response
  */
 model AsyncTaskResponse {
@@ -29663,23 +29798,6 @@ model BaseIdentityToBenefitPkgMappingResponse {
 }
 
 /**
- * 
- */
-model BaseMediaResponse {
-  addressLine?: string(name='address_line', description='address_line', example='北京市昌平区白各庄新村路'),
-  city?: string(name='city', description='city', example='杭州'),
-  country?: string(name='country', description='country', example='中国'),
-  district?: string(name='district', description='district', example='余杭区'),
-  height?: int64(name='height', default=0, description='height', example=720, format='int64'),
-  imageTags?: [ SystemTag ](name='image_tags', description='system_tags', items='{"$ref":"#/definitions/SystemTag"}'),
-  location?: string(name='location', description='location', example='40.110333,116.349311'),
-  province?: string(name='province', description='province', example='浙江省'),
-  time?: string(name='time', description='time', format='date-time'),
-  township?: string(name='township', description='township', example='沙河镇'),
-  width?: int64(name='width', default=0, description='width', example=1024, format='int64'),
-}
-
-/**
  * base multi revision config response
  */
 model BaseMultiRevisionConfigResponse {
@@ -29778,19 +29896,6 @@ model BenefitPkgDeliveryInfoResponse {
   createdAt?: string(name='created_at', description='权益包下发的创建时间', example='2019-08-20T06:51:27.292Z'),
   expireTime?: string(name='expire_time', description='权益包下发的超期时间，is_permanent为false时，返回有效值', example='2019-08-20T06:51:27.292Z'),
   isPermanent?: boolean(name='is_permanent', description='权益包是否永久有效', example=false),
-}
-
-/**
- * 
- */
-model CCPArchiveRequest {
-  Format?: string(name='Format', description='格式类型，如果是uc，使用特殊格式'),
-  RequestID?: string(name='RequestID'),
-  archiveType?: string(name='archive_type'),
-  domainId?: string(name='domain_id'),
-  driveId?: string(name='drive_id', description='TODO 增加对ShareID的支持'),
-  fileId?: string(name='file_id'),
-  password?: string(name='password'),
 }
 
 /**
@@ -30201,6 +30306,7 @@ model GetBizCNameInfoResponse {
   cnameType?: string(name='cname_type', description='cname type', example='api'),
   domainId: string(name='domain_id', description='domain ID', example='sz100'),
   isVpc?: boolean(name='is_vpc', description='is vpc', example=false),
+  subdomainId: string(name='subdomain_id', description='subdomain ID', example='sz100'),
 }
 
 /**
@@ -30543,6 +30649,7 @@ model RecycleBinConfig {
  * 
  */
 model RoleConfig {
+  defaultGroupDriveInheritSubGroup?: boolean(name='default_group_drive_inherit_sub_group'),
   defaultGroupDriveRole?: string(name='default_group_drive_role'),
   disabledAdminFilePermission?: boolean(name='disabled_admin_file_permission'),
   enabled?: boolean(name='enabled'),
@@ -30654,18 +30761,6 @@ model ShareLinkConfigLogDetail {
 }
 
 /**
- * 
- */
-model ShareLinkCountResponse {
-  accessCount?: int64(name='access_count', description='access_count', example=1, format='int64'),
-  downloadCount?: int64(name='download_count', description='下载次数', example=1, format='int64'),
-  previewCount?: int64(name='preview_count', description='preview_count', example=1, format='int64'),
-  reportCount?: int64(name='report_count', description='举报次数', example=1, format='int64'),
-  saveCount?: int64(name='save_count', description='转存次数', example=1, format='int64'),
-  videoPreviewCount?: int64(name='video_preview_count', description='音视频播放次数', example=1, format='int64'),
-}
-
-/**
  * share_link detail response
  */
 model ShareLinkDetailResponse {
@@ -30702,24 +30797,6 @@ model ShareLinkLogDetail {
 /**
  * 
  */
-model ShareLinkPermissionResponse {
-  creatable?: boolean(name='creatable', description='允许上传', example=true),
-  creatableFileIdList?: [ string ](name='creatable_file_id_list', description='允许上传的目录列表', example='xxx', items='{"type":"string"}'),
-  disableDownload?: boolean(name='disable_download', description='禁止下载分享中的文件', example=true),
-  disablePreview?: boolean(name='disable_preview', description='禁止预览分享中的文件', example=true),
-  disableSave?: boolean(name='disable_save', description='禁止转存分享中的文件', example=true),
-  disableVisible?: boolean(name='disable_visible', description='分享中的文件不可见', example=true),
-  downloadLimit?: int64(name='download_limit', description='分享下载次数限制', example=10, format='int64'),
-  officeEditable?: boolean(name='office_editable', description='允许在线编辑文档', example=true),
-  previewLimit?: int64(name='preview_limit', description='分享预览次数限制', example=10, format='int64'),
-  requireLogin?: boolean(name='require_login', description='企业内(domain)登录后才允许使用分享', example=true),
-  saveDownloadLimit?: int64(name='save_download_limit', description='分享转存和下载的总次数限制', example=10, format='int64'),
-  saveLimit?: int64(name='save_limit', description='分享转存次数限制', example=10, format='int64'),
-}
-
-/**
- * 
- */
 model ShareLogDetail {
   disinheritSubGroup?: boolean(name='disinherit_sub_group', description='disinherit_sub_group', example=false),
   expiration?: string(name='expiration', description='expiration', example='2006-01-02T15:04:05.999Z'),
@@ -30743,33 +30820,6 @@ model ShareLogSettingDetail {
   permissions?: [ string ](name='permissions', description='permissions', example='', items='{"type":"string"}'),
   roleId?: string(name='role_id', description='role_id', example='SystemFileViewer'),
   roleName?: string(name='role_name', description='role_name', example='xxx'),
-}
-
-/**
- * 
- */
-model Store {
-  accelerateEndpoint?: string(name='accelerate_endpoint', description='全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  basePath?: string(name='base_path', description='存储公共前缀', example='pds-data'),
-  bucket: string(name='bucket', description='bucket名称', example='data-sz-bucket'),
-  cdnEndpoint?: string(name='cdn_endpoint', description='内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  cdnRatelimitDisable?: boolean(name='cdn_ratelimit_disable', description='命中限速用户时是否关闭CDN地址返回', example=false),
-  cdnTimelimit?: string(name='cdn_timelimit', description='CDN时间控制', example='0-8 or 23-5'),
-  cdnUrlAuthKey?: string(name='cdn_url_auth_key', description='CDN鉴权key'),
-  customizedAccelerateEndpoint?: string(name='customized_accelerate_endpoint', description='自定义全球加速地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  customizedCdnEndpoint?: string(name='customized_cdn_endpoint', description='自定义内容分发地址', example='https://oss-cn-shenzhen.aliyuncs.com/'),
-  customizedEndpoint?: string(name='customized_endpoint', description='自定义Public访问地址', example='https://{regionid}-data.mydomain.com/'),
-  customizedInternalEndpoint?: string(name='customized_internal_endpoint', description='自定义vpc访问地址', example='https://{regionid}-data-vpc.mydomain.com/'),
-  endpoint: string(name='endpoint', description='Public访问地址', example='https://{domainid}.{regionid}.data.aliyunpds.com/'),
-  enetEndpoint?: string(name='enet_endpoint', description='冷流地址', example='https://oss-cn-shenzhen-enet.aliyuncs.com/'),
-  enetPercentConfig?: WhitePercentConfig(name='enet_percent_config'),
-  internalEndpoint?: string(name='internal_endpoint', description='vpc访问地址', example='https://{domainid}.{regionid}.data-vpc.aliyunpds.com/'),
-  location?: string(name='location', description='地点', example='cn-hangzhou'),
-  ownership: string(name='ownership', description='存储归属，system表示系统提供，custom表示使用自己的存储', enum='system, custom', example='system'),
-  policy: string(name='policy', description='Policy授权,system类型store会将bucket权限授予当前云账号'),
-  roleArn?: string(name='role_arn', description='访问Bucket的角色ARN', example='acs:oss:*:*:*'),
-  storeId: string(name='store_id', description='store ID', example='101'),
-  type: string(name='type', description='存储类型，当前只支持oss', enum='oss', example='oss'),
 }
 
 /**
@@ -30935,15 +30985,6 @@ model UpdateSubdomainResponse {
 /**
  * 
  */
-model UrlInfo {
-  downloadUrl?: string(name='download_url', description='download_url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  thumbnail?: string(name='thumbnail', description='thumbnail', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-  url?: string(name='url', description='url', example='https://ccp.data.aliyuncs.com/hz22%2F5d5b986facbec311ef844c25954f96821497b383%2F5d5b986f955410dd991646bb87c6b4e899eff525?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx'),
-}
-
-/**
- * 
- */
 model UserLogDetail {
   email?: string(name='email', description='email', example='a****6@abc.com'),
   expiredAt?: int64(name='expired_at', format='int64'),
@@ -30972,6 +31013,16 @@ model VideoPreviewAppConfig {
   offlineVideoTranscodeEnable?: boolean(name='offline_video_transcode_enable'),
   onlineAudioTranscodeEnable?: boolean(name='online_audio_transcode_enable'),
   onlineVideoTranscodeEnable?: boolean(name='online_video_transcode_enable'),
+}
+
+/**
+ * 音频转码参数
+ */
+model VideoPreviewAudio {
+  audioBitrate?: int64(name='audio_bitrate', format='int64'),
+  audioChannel?: int64(name='audio_channel', format='int64'),
+  audioCodec?: string(name='audio_codec'),
+  audioSampleRate?: int64(name='audio_sample_rate', format='int64'),
 }
 
 /**
@@ -31219,6 +31270,18 @@ model VideoPreviewTemplatePolicyConfig {
 model VideoPreviewThumbnailConfig {
   skipBeginPercent?: string(name='skip_begin_percent'),
   skipBeginSec?: double(name='skip_begin_sec', format='double'),
+}
+
+/**
+ * 视频转码参数
+ */
+model VideoPreviewVideo {
+  height?: int64(name='height', format='int64'),
+  keepOriginal?: boolean(name='keep_original'),
+  videoBitrate?: int64(name='video_bitrate', format='int64'),
+  videoCodec?: string(name='video_codec'),
+  videoFrameRate?: int64(name='video_frame_rate', format='int64'),
+  width?: int64(name='width', format='int64'),
 }
 
 /**
@@ -31571,6 +31634,7 @@ model ListFileViewsResponse {
 model ListImageAddressGroupsResponse {
   items?: [ ImageAddressResponse ](name='items', items='{"$ref":"#/definitions/ImageAddressResponse"}'),
   nextMarker?: string(name='next_marker'),
+  totalCount?: int64(name='total_count', format='int64'),
 }
 
 /**
@@ -31579,6 +31643,7 @@ model ListImageAddressGroupsResponse {
 model ListImageFaceGroupsResponse {
   items?: [ ImageFaceGroupResponse ](name='items', items='{"$ref":"#/definitions/ImageFaceGroupResponse"}'),
   nextMarker?: string(name='next_marker'),
+  totalCount?: int64(name='total_count', format='int64'),
 }
 
 /**
@@ -31621,7 +31686,7 @@ model LocationDateCluster {
 }
 
 /**
- * Merge face group response
+ * merge face group response
  */
 model MergeFaceGroupResponse {
   status?: string(name='status'),
@@ -31629,7 +31694,7 @@ model MergeFaceGroupResponse {
 }
 
 /**
- * Parse keywords response
+ * parse keywords response
  */
 model ParseKeywordsResponse {
   addressLine?: string(name='address_line', description='AddressLine'),
@@ -32535,7 +32600,7 @@ model ListGroupRequest {
  * 
  */
 model ListGroupResponse {
-  items?: [ BaseGroupResponse ](name='items', description='items', example='items', items='{"$ref":"#/definitions/BaseGroupResponse"}'),
+  items?: [ GroupExtraItem ](name='items', description='items', example='items', items='{"$ref":"#/definitions/GroupExtraItem"}'),
   nextMarker?: string(name='next_marker', description='翻页标记', example='nextmarker'),
 }
 
@@ -32629,27 +32694,6 @@ model MigrateUserToSubdomainRequest {
  * MigrateUserToSubdomainResponse
  */
 model MigrateUserToSubdomainResponse {
-}
-
-/**
- * 
- */
-model Permission {
-  ActionList?: [ ActionItem ](name='ActionList', items='{"$ref":"#/definitions/ActionItem"}'),
-  Collection?: string(name='Collection'),
-  Condition?: Condition(name='Condition'),
-  CreatedAt?: int64(name='CreatedAt', format='int64'),
-  Deleted?: string(name='Deleted'),
-  DomainID?: string(name='DomainID'),
-  Effect?: string(name='Effect'),
-  IdentityID?: string(name='IdentityID'),
-  IdentityType?: string(name='IdentityType'),
-  Resource?: string(name='Resource'),
-  ResourceType?: string(name='ResourceType'),
-  SequenceNumber?: int64(name='SequenceNumber', format='int64'),
-  UpdatedAt?: int64(name='UpdatedAt', format='int64'),
-  UpdatedBy?: string(name='UpdatedBy'),
-  UserTags?: [ string ](name='UserTags', items='{"type":"string"}'),
 }
 
 /**

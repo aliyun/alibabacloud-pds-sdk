@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * Get photo count request
+ * # Get photo count request
  */
 public class GetImageCountRequest extends TeaModel {
     @NameInMap("httpheaders")

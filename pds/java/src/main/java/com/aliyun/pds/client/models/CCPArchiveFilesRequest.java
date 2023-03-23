@@ -23,6 +23,9 @@ public class CCPArchiveFilesRequest extends TeaModel {
     @Validation(pattern = "[0-9]+")
     public String driveId;
 
+    @NameInMap("file_ids")
+    public java.util.List<String> fileIds;
+
     @NameInMap("files")
     public java.util.List<FileInfo> files;
 
@@ -33,6 +36,9 @@ public class CCPArchiveFilesRequest extends TeaModel {
     @Validation(maxLength = 1024, minLength = 1)
     public String name;
 
+    @NameInMap("recursive")
+    public Boolean recursive;
+
     @NameInMap("referer")
     public String referer;
 
@@ -41,6 +47,9 @@ public class CCPArchiveFilesRequest extends TeaModel {
      */
     @NameInMap("share_id")
     public String shareId;
+
+    @NameInMap("task_category")
+    public String taskCategory;
 
     public static CCPArchiveFilesRequest build(java.util.Map<String, ?> map) throws Exception {
         CCPArchiveFilesRequest self = new CCPArchiveFilesRequest();
@@ -71,6 +80,14 @@ public class CCPArchiveFilesRequest extends TeaModel {
         return this.driveId;
     }
 
+    public CCPArchiveFilesRequest setFileIds(java.util.List<String> fileIds) {
+        this.fileIds = fileIds;
+        return this;
+    }
+    public java.util.List<String> getFileIds() {
+        return this.fileIds;
+    }
+
     public CCPArchiveFilesRequest setFiles(java.util.List<FileInfo> files) {
         this.files = files;
         return this;
@@ -87,6 +104,14 @@ public class CCPArchiveFilesRequest extends TeaModel {
         return this.name;
     }
 
+    public CCPArchiveFilesRequest setRecursive(Boolean recursive) {
+        this.recursive = recursive;
+        return this;
+    }
+    public Boolean getRecursive() {
+        return this.recursive;
+    }
+
     public CCPArchiveFilesRequest setReferer(String referer) {
         this.referer = referer;
         return this;
@@ -101,6 +126,14 @@ public class CCPArchiveFilesRequest extends TeaModel {
     }
     public String getShareId() {
         return this.shareId;
+    }
+
+    public CCPArchiveFilesRequest setTaskCategory(String taskCategory) {
+        this.taskCategory = taskCategory;
+        return this;
+    }
+    public String getTaskCategory() {
+        return this.taskCategory;
     }
 
 }

@@ -11,7 +11,7 @@ public class ListGroupResponse extends TeaModel {
      * <p>items</p>
      */
     @NameInMap("items")
-    public java.util.List<BaseGroupResponse> items;
+    public java.util.List<GroupExtraItem> items;
 
     /**
      * <p>翻页标记</p>
@@ -24,11 +24,11 @@ public class ListGroupResponse extends TeaModel {
         return TeaModel.build(map, self);
     }
 
-    public ListGroupResponse setItems(java.util.List<BaseGroupResponse> items) {
+    public ListGroupResponse setItems(java.util.List<GroupExtraItem> items) {
         this.items = items;
         return this;
     }
-    public java.util.List<BaseGroupResponse> getItems() {
+    public java.util.List<GroupExtraItem> getItems() {
         return this.items;
     }
 

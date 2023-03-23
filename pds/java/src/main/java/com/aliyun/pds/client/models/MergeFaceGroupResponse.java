@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * Merge face group response
+ * merge face group response
  */
 public class MergeFaceGroupResponse extends TeaModel {
     @NameInMap("status")
