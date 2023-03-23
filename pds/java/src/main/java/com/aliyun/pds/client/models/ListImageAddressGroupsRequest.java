@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * List image address groups request
+ * # List image address groups request
  */
 public class ListImageAddressGroupsRequest extends TeaModel {
     @NameInMap("httpheaders")
@@ -35,6 +35,12 @@ public class ListImageAddressGroupsRequest extends TeaModel {
      */
     @NameInMap("marker")
     public String marker;
+
+    /**
+     * <p>ReturnTotalCount 是否返回分组总数</p>
+     */
+    @NameInMap("return_total_count")
+    public Boolean returnTotalCount;
 
     /**
      * <p>video_thumbnail_process</p>
@@ -85,6 +91,14 @@ public class ListImageAddressGroupsRequest extends TeaModel {
     }
     public String getMarker() {
         return this.marker;
+    }
+
+    public ListImageAddressGroupsRequest setReturnTotalCount(Boolean returnTotalCount) {
+        this.returnTotalCount = returnTotalCount;
+        return this;
+    }
+    public Boolean getReturnTotalCount() {
+        return this.returnTotalCount;
     }
 
     public ListImageAddressGroupsRequest setVideoThumbnailProcess(String videoThumbnailProcess) {

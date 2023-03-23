@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * Unassign facegroup item request
+ * # Unassign facegroup item request
  */
 public class UnAssignFaceGroupItemRequest extends TeaModel {
     @NameInMap("httpheaders")

@@ -13,6 +13,9 @@ public class ListImageFaceGroupsResponse extends TeaModel {
     @NameInMap("next_marker")
     public String nextMarker;
 
+    @NameInMap("total_count")
+    public Long totalCount;
+
     public static ListImageFaceGroupsResponse build(java.util.Map<String, ?> map) throws Exception {
         ListImageFaceGroupsResponse self = new ListImageFaceGroupsResponse();
         return TeaModel.build(map, self);
@@ -32,6 +35,14 @@ public class ListImageFaceGroupsResponse extends TeaModel {
     }
     public String getNextMarker() {
         return this.nextMarker;
+    }
+
+    public ListImageFaceGroupsResponse setTotalCount(Long totalCount) {
+        this.totalCount = totalCount;
+        return this;
+    }
+    public Long getTotalCount() {
+        return this.totalCount;
     }
 
 }

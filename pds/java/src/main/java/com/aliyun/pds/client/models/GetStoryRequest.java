@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * Get story request
+ * # Get story request
  */
 public class GetStoryRequest extends TeaModel {
     @NameInMap("httpheaders")

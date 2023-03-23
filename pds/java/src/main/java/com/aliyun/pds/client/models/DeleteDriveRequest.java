@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * Delete drive request
+ * # Delete drive request
  */
 public class DeleteDriveRequest extends TeaModel {
     @NameInMap("httpheaders")
@@ -16,6 +16,9 @@ public class DeleteDriveRequest extends TeaModel {
     @NameInMap("drive_id")
     @Validation(required = true)
     public String driveId;
+
+    @NameInMap("force")
+    public Boolean force;
 
     /**
      * <p>Subdomain ID</p>
@@ -42,6 +45,14 @@ public class DeleteDriveRequest extends TeaModel {
     }
     public String getDriveId() {
         return this.driveId;
+    }
+
+    public DeleteDriveRequest setForce(Boolean force) {
+        this.force = force;
+        return this;
+    }
+    public Boolean getForce() {
+        return this.force;
     }
 
     public DeleteDriveRequest setSubdomainId(String subdomainId) {

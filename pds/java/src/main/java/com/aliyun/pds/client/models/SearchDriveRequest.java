@@ -4,11 +4,14 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * Search drive request
+ * # Search drive request
  */
 public class SearchDriveRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
+
+    @NameInMap("category")
+    public String category;
 
     /**
      * <p>Drive Fuzz Name</p>
@@ -65,6 +68,14 @@ public class SearchDriveRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
+    }
+
+    public SearchDriveRequest setCategory(String category) {
+        this.category = category;
+        return this;
+    }
+    public String getCategory() {
+        return this.category;
     }
 
     public SearchDriveRequest setDriveName(String driveName) {

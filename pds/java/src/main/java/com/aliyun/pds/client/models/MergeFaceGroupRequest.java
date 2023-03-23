@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * Merge face group request
+ * # Merge face group request
  */
 public class MergeFaceGroupRequest extends TeaModel {
     @NameInMap("httpheaders")
@@ -21,8 +21,14 @@ public class MergeFaceGroupRequest extends TeaModel {
      * <p>from_group_id</p>
      */
     @NameInMap("from_group_id")
-    @Validation(required = true)
     public String fromGroupId;
+
+    /**
+     * <p>from_group_ids</p>
+     */
+    @NameInMap("from_group_ids")
+    @Validation(required = true)
+    public java.util.List<String> fromGroupIds;
 
     /**
      * <p>to_group_id</p>
@@ -58,6 +64,14 @@ public class MergeFaceGroupRequest extends TeaModel {
     }
     public String getFromGroupId() {
         return this.fromGroupId;
+    }
+
+    public MergeFaceGroupRequest setFromGroupIds(java.util.List<String> fromGroupIds) {
+        this.fromGroupIds = fromGroupIds;
+        return this;
+    }
+    public java.util.List<String> getFromGroupIds() {
+        return this.fromGroupIds;
     }
 
     public MergeFaceGroupRequest setToGroupId(String toGroupId) {
