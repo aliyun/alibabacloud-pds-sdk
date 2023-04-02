@@ -27203,7 +27203,7 @@ model ListImageAddressGroupsRequest {
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   limit?: int32(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
   marker?: string(name='marker', description='翻页标记', example='marker'),
-  returnTotalCount?: boolean(name='return_total_count', description='ReturnTotalCount 是否返回人脸分组总数'),
+  returnTotalCount?: boolean(name='return_total_count', description='ReturnTotalCount 是否返回分组总数'),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
 
@@ -27216,7 +27216,7 @@ model ListImageFaceGroupsRequest {
   limit?: int64(name='limit', default=100, description='每页大小限制', example=10, format='int64', maximum=100, minimum=1),
   marker?: string(name='marker', description='翻页标记', example='marker'),
   remarks?: string(name='remarks'),
-  returnTotalCount?: boolean(name='return_total_count', description='ReturnTotalCount 是否返回人脸分组总数'),
+  returnTotalCount?: boolean(name='return_total_count', description='ReturnTotalCount 是否返回分组总数'),
 }
 
 /**

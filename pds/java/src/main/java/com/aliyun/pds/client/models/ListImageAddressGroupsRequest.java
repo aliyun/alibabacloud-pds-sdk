@@ -37,7 +37,7 @@ public class ListImageAddressGroupsRequest extends TeaModel {
     public String marker;
 
     /**
-     * <p>ReturnTotalCount 是否返回人脸分组总数</p>
+     * <p>ReturnTotalCount 是否返回分组总数</p>
      */
     @NameInMap("return_total_count")
     public Boolean returnTotalCount;

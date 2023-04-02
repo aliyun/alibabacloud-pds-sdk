@@ -34,7 +34,7 @@ public class ListImageFaceGroupsRequest extends TeaModel {
     public String remarks;
 
     /**
-     * <p>ReturnTotalCount 是否返回人脸分组总数</p>
+     * <p>ReturnTotalCount 是否返回分组总数</p>
      */
     @NameInMap("return_total_count")
     public Boolean returnTotalCount;
