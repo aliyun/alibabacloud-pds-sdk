@@ -10,9 +10,6 @@ public class DeleteSyncMappingRequest extends TeaModel {
     @NameInMap("httpheaders")
     public java.util.Map<String, String> httpheaders;
 
-    @NameInMap("Mode")
-    public String Mode;
-
     /**
      * <p>device_name</p>
      */
@@ -37,6 +34,18 @@ public class DeleteSyncMappingRequest extends TeaModel {
     @NameInMap("local_path")
     public String localPath;
 
+    /**
+     * <p>sync_mode</p>
+     */
+    @NameInMap("sync_mode")
+    public String syncMode;
+
+    /**
+     * <p>sync_root_id</p>
+     */
+    @NameInMap("sync_root_id")
+    public String syncRootId;
+
     public static DeleteSyncMappingRequest build(java.util.Map<String, ?> map) throws Exception {
         DeleteSyncMappingRequest self = new DeleteSyncMappingRequest();
         return TeaModel.build(map, self);
@@ -48,14 +57,6 @@ public class DeleteSyncMappingRequest extends TeaModel {
     }
     public java.util.Map<String, String> getHttpheaders() {
         return this.httpheaders;
-    }
-
-    public DeleteSyncMappingRequest setMode(String Mode) {
-        this.Mode = Mode;
-        return this;
-    }
-    public String getMode() {
-        return this.Mode;
     }
 
     public DeleteSyncMappingRequest setDeviceName(String deviceName) {
@@ -88,6 +89,22 @@ public class DeleteSyncMappingRequest extends TeaModel {
     }
     public String getLocalPath() {
         return this.localPath;
+    }
+
+    public DeleteSyncMappingRequest setSyncMode(String syncMode) {
+        this.syncMode = syncMode;
+        return this;
+    }
+    public String getSyncMode() {
+        return this.syncMode;
+    }
+
+    public DeleteSyncMappingRequest setSyncRootId(String syncRootId) {
+        this.syncRootId = syncRootId;
+        return this;
+    }
+    public String getSyncRootId() {
+        return this.syncRootId;
     }
 
 }

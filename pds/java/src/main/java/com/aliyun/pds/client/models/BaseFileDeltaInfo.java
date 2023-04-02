@@ -218,9 +218,6 @@ public class BaseFileDeltaInfo extends TeaModel {
     @NameInMap("mime_type")
     public String mimeType;
 
-    @NameInMap("move_type")
-    public String moveType;
-
     /**
      * <p>name</p>
      */
@@ -267,9 +264,6 @@ public class BaseFileDeltaInfo extends TeaModel {
      */
     @NameInMap("size")
     public Long size;
-
-    @NameInMap("src_parent_file_id")
-    public String srcParentFileId;
 
     /**
      * <p>starred</p>
@@ -661,14 +655,6 @@ public class BaseFileDeltaInfo extends TeaModel {
         return this.mimeType;
     }
 
-    public BaseFileDeltaInfo setMoveType(String moveType) {
-        this.moveType = moveType;
-        return this;
-    }
-    public String getMoveType() {
-        return this.moveType;
-    }
-
     public BaseFileDeltaInfo setName(String name) {
         this.name = name;
         return this;
@@ -731,14 +717,6 @@ public class BaseFileDeltaInfo extends TeaModel {
     }
     public Long getSize() {
         return this.size;
-    }
-
-    public BaseFileDeltaInfo setSrcParentFileId(String srcParentFileId) {
-        this.srcParentFileId = srcParentFileId;
-        return this;
-    }
-    public String getSrcParentFileId() {
-        return this.srcParentFileId;
     }
 
     public BaseFileDeltaInfo setStarred(Boolean starred) {

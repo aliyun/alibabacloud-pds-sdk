@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * Add user to subdomain request
+ * # Add user to subdomain request
  */
 public class AddUserToSubdomainRequest extends TeaModel {
     @NameInMap("httpheaders")

@@ -4,7 +4,7 @@ package com.aliyun.pds.client.models;
 import com.aliyun.tea.*;
 
 /**
- * Remove user to subdomain request
+ * # Remove user to subdomain request
  */
 public class RemoveUserFromSubdomainRequest extends TeaModel {
     @NameInMap("httpheaders")

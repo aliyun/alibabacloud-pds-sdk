@@ -23752,7 +23752,6 @@ type: boolean', enum='false, true', example=false),
   meta?: string(name='meta'),
   mimeExtension?: string(name='mime_extension', description='mime_extension', example='mov'),
   mimeType?: string(name='mime_type', description='mime_type', example='video/quicktime'),
-  moveType?: string(name='move_type'),
   name: string(name='name', description='name', example='ccp.jpg', pattern='[a-zA-Z0-9.-]{1,1000}'),
   parentFileId?: string(name='parent_file_id', description='parent_file_id', example='root', maxLength=50, minLength=40, pattern='[a-z0-9]{1,50}'),
   punishFlag?: int64(name='punish_flag', description='PunishFlag', format='int64'),
@@ -23761,7 +23760,6 @@ type: boolean', enum='false, true', example=false),
   revisionVersion?: int64(name='revision_version', description='revision_version', example=1024, format='int64'),
   shareId?: string(name='share_id'),
   size?: int64(name='size', description='Size', example=1024, format='int64', minimum=0),
-  srcParentFileId?: string(name='src_parent_file_id'),
   starred?: boolean(name='starred', description='starred
 type: boolean', example=false),
   status?: string(name='status', description='status', enum='uploading, available', example='available'),
@@ -25188,6 +25186,15 @@ model DeleteViewRequest {
 /**
  * 
  */
+model DeltaExtInfo {
+  moveType?: string(name='move_type'),
+  srcName?: string(name='src_name'),
+  srcParentFileId?: string(name='src_parent_file_id'),
+}
+
+/**
+ * 
+ */
 model DeviceAuthorizeRequest {
   ClientID: string(name='ClientID', description='Client ID, 此处填写创建App时返回的AppID', example='aksjoiajsoias'),
   DeviceInfo?: string(name='DeviceInfo', description='设备信息，用于用户识别设备'),
@@ -25284,7 +25291,8 @@ model FileAddPermissionRequest {
  */
 model FileDeltaResponse {
   currentCategory?: string(name='current_category'),
-  file?: BaseFileDeltaInfo(name='file'),
+  extInfo?: DeltaExtInfo(name='ext_info'),
+  file?: BaseCCPFileResponse(name='file'),
   fileId?: string(name='file_id'),
   op?: string(name='op'),
 }
@@ -27195,7 +27203,7 @@ model ListImageAddressGroupsRequest {
   imageThumbnailProcess?: string(name='image_thumbnail_process', description='image_thumbnail_process', example='image/resize,w_200'),
   limit?: int32(name='limit', default=100, description='每页大小限制', example=10, format='int32', maximum=100, minimum=1),
   marker?: string(name='marker', description='翻页标记', example='marker'),
-  returnTotalCount?: boolean(name='return_total_count', description='ReturnTotalCount 是否返回分组总数'),
+  returnTotalCount?: boolean(name='return_total_count', description='ReturnTotalCount 是否返回人脸分组总数'),
   videoThumbnailProcess?: string(name='video_thumbnail_process', description='video_thumbnail_process', example='video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast'),
 }
 
@@ -27208,7 +27216,7 @@ model ListImageFaceGroupsRequest {
   limit?: int64(name='limit', default=100, description='每页大小限制', example=10, format='int64', maximum=100, minimum=1),
   marker?: string(name='marker', description='翻页标记', example='marker'),
   remarks?: string(name='remarks'),
-  returnTotalCount?: boolean(name='return_total_count', description='ReturnTotalCount 是否返回分组总数'),
+  returnTotalCount?: boolean(name='return_total_count', description='ReturnTotalCount 是否返回人脸分组总数'),
 }
 
 /**
@@ -31893,7 +31901,7 @@ type: boolean', example=false),
 }
 
 /**
- * Add user to subdomain request
+ * # Add user to subdomain request
  */
 model AddUserToSubdomainRequest {
   httpheaders?: map[string]string,
@@ -32192,7 +32200,7 @@ model CreateSyncMappingResponse {
 }
 
 /**
- * Create user request
+ * # Create user request
  */
 model CreateUserRequest {
   httpheaders?: map[string]string,
@@ -32297,11 +32305,12 @@ model DeletePermissionRequest {
  */
 model DeleteSyncMappingRequest {
   httpheaders?: map[string]string,
-  Mode?: string(name='Mode'),
   deviceName?: string(name='device_name', description='device_name'),
   driveId?: string(name='drive_id', description='drive_id'),
   fsId?: string(name='fs_id', description='fs_id'),
   localPath?: string(name='local_path', description='local_path'),
+  syncMode?: string(name='sync_mode', description='sync_mode'),
+  syncRootId?: string(name='sync_root_id', description='sync_root_id'),
 }
 
 /**
@@ -32311,7 +32320,7 @@ model DeleteSyncMappingResponse {
 }
 
 /**
- * Delete user request
+ * # Delete user request
  */
 model DeleteUserRequest {
   httpheaders?: map[string]string,
@@ -32417,7 +32426,7 @@ model GetPermissionRequest {
 }
 
 /**
- * Get user request
+ * # Get user request
  */
 model GetUserRequest {
   httpheaders?: map[string]string,
@@ -32500,7 +32509,7 @@ model HasMembershipResponse {
 }
 
 /**
- * Import user request
+ * # Import user request
  */
 model ImportUserRequest {
   httpheaders?: map[string]string,
@@ -32600,7 +32609,7 @@ model ListGroupRequest {
  * 
  */
 model ListGroupResponse {
-  items?: [ GroupExtraItem ](name='items', description='items', example='items', items='{"$ref":"#/definitions/GroupExtraItem"}'),
+  items?: [ BaseGroupResponse ](name='items', description='items', example='items', items='{"$ref":"#/definitions/BaseGroupResponse"}'),
   nextMarker?: string(name='next_marker', description='翻页标记', example='nextmarker'),
 }
 
@@ -32653,7 +32662,7 @@ model ListSyncMappingResponse {
 }
 
 /**
- * List user request
+ * # List user request
  */
 model ListUserRequest {
   httpheaders?: map[string]string,
@@ -32707,7 +32716,7 @@ model PunishmentResponse {
 }
 
 /**
- * Remove user to subdomain request
+ * # Remove user to subdomain request
  */
 model RemoveUserFromSubdomainRequest {
   httpheaders?: map[string]string,
@@ -32773,7 +32782,7 @@ model SearchPermissionResponse {
 }
 
 /**
- * Search user and group request
+ * # Search user and group request
  */
 model SearchUserAndGroupRequest {
   httpheaders?: map[string]string,
@@ -32797,7 +32806,7 @@ model SearchUserAndGroupResponse {
 }
 
 /**
- * Search user request
+ * # Search user request
  */
 model SearchUserRequest {
   httpheaders?: map[string]string,
@@ -32907,7 +32916,7 @@ model UpdatePermissionRequest {
 }
 
 /**
- * Update user request
+ * # Update user request
  */
 model UpdateUserRequest {
   httpheaders?: map[string]string,
